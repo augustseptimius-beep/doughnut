@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { KommuneData } from "@/lib/shared";
-import { computeCategoryScores } from "@/lib/shared";
+import { computeCategoryScores, ECOLOGICAL_DIMENSIONS } from "@/lib/shared";
 import DoughnutRing from "@/components/DoughnutRing";
 import ScoreBars from "@/components/ScoreBars";
 import KommuneCompare from "@/components/KommuneCompare";
@@ -62,7 +62,26 @@ export default function KommuneClient({ kommune, allKommuner }: Props) {
             </p>
             <p>
               <span className="font-medium">Økologisk loft:</span>{" "}
-              <span className="text-gray-400">afventer data.</span>
+              {(() => {
+                const ecoWithData = ECOLOGICAL_DIMENSIONS.filter(
+                  (d) => kommune.eco_ratios[d.id] !== null
+                );
+                const ecoOvershoot = ecoWithData.filter(
+                  (d) => (kommune.eco_ratios[d.id] ?? 0) > 100
+                );
+                if (ecoWithData.length === 0) {
+                  return <span className="text-gray-400">afventer data.</span>;
+                }
+                return (
+                  <span>
+                    {ecoOvershoot.length} af {ecoWithData.length} dimensioner
+                    overskredet
+                    {ecoWithData.length < ECOLOGICAL_DIMENSIONS.length &&
+                      ` (${ECOLOGICAL_DIMENSIONS.length - ecoWithData.length} afventer data)`}
+                    .
+                  </span>
+                );
+              })()}
             </p>
           </div>
         </div>

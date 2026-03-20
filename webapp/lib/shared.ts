@@ -91,15 +91,24 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
   { id: "democracy", name: "Demokrati & fællesskab", indicatorIds: [] },
 ];
 
-// --- ECOLOGICAL CEILING PLACEHOLDERS ---
+// --- ECOLOGICAL CEILING ---
 
 export interface EcologicalDimension {
   id: string;
   name: string;
+  source?: string;
+  unit?: string;
+  boundary?: string; // Description of the planetary boundary
 }
 
 export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
-  { id: "climate_territorial", name: "Klima (territorial)" },
+  {
+    id: "climate_territorial",
+    name: "Klima (territorial)",
+    source: "https://klimaregnskabet.dk",
+    unit: "ton CO₂e/person",
+    boundary: "3 ton CO₂e/person/år (Paris-budget)",
+  },
   { id: "climate_consumption", name: "Klima (forbrug)" },
   { id: "water", name: "Vandmiljø" },
   { id: "biodiversity", name: "Biodiversitet" },
@@ -164,6 +173,7 @@ export interface KommuneData {
   kommune_kode: string;
   kommune_navn: string;
   ratios: Record<string, number | null>;
+  eco_ratios: Record<string, number | null>; // ecological dimension ratios
   social_avg: number | null;
   overall_avg: number | null;
 }

@@ -182,7 +182,10 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
       const endAngle = (i + 1) * angleStep - Math.PI / 2 - gap / 2;
       const midAngle = (startAngle + endAngle) / 2;
 
-      // No data yet — grey placeholder
+      const ecoScore = kommune.eco_ratios[dim.id] ?? null;
+      const hasEcoData = ecoScore !== null;
+
+      // Safe space segment
       const safePath = describeArc(
         center,
         center,
@@ -192,6 +195,23 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
         endAngle
       );
 
+      // Overshoot bar (stretches OUTWARD from ecoCeiling when score > 100)
+      let overshootPath = "";
+      if (hasEcoData && ecoScore > 100) {
+        const overshootFraction = (ecoScore - 100) / 100; // 0 to 1+
+        const rOut =
+          ecoCeiling +
+          (outerLimit - ecoCeiling) * Math.min(overshootFraction, 1);
+        overshootPath = describeArc(
+          center,
+          center,
+          rOut,
+          ecoCeiling,
+          startAngle,
+          endAngle
+        );
+      }
+
       // Label
       const labelRadius = (commonBoundary + ecoCeiling) / 2;
       const lx = center + labelRadius * Math.cos(midAngle);
@@ -199,6 +219,9 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
       const rotDeg = (midAngle * 180) / Math.PI;
       const shouldFlip = rotDeg > 0 && rotDeg < 180;
       const finalRot = shouldFlip ? rotDeg - 90 : rotDeg + 90;
+
+      const safeColor = hasEcoData ? "#e8f0e8" : "#f3f4f6";
+      const safeStroke = hasEcoData ? "#8faa8f" : "#d1d5db";
 
       return (
         <g
@@ -208,19 +231,28 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
             setHovered({
               label: dim.name,
               group: "ecological",
-              score: null,
-              hasData: false,
+              score: ecoScore,
+              hasData: hasEcoData,
             })
           }
           onMouseLeave={() => setHovered(null)}
         >
           <path
             d={safePath}
-            fill="#f3f4f6"
-            stroke="#d1d5db"
+            fill={safeColor}
+            stroke={safeStroke}
             strokeWidth="0.5"
             className="transition-colors hover:brightness-95"
           />
+          {/* Overshoot bar (red, outward) */}
+          {overshootPath && (
+            <path
+              d={overshootPath}
+              fill="#dc2626"
+              opacity="0.7"
+              className="transition-all duration-300"
+            />
+          )}
           {/* Radial separator */}
           <line
             x1={center + commonBoundary * Math.cos(startAngle - gap / 2)}
@@ -241,7 +273,7 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
             style={{
               fontSize: "12px",
               fontWeight: 800,
-              fill: "#9ca3af",
+              fill: hasEcoData ? "#2d4a2d" : "#9ca3af",
               textTransform: "uppercase",
               letterSpacing: "0.02em",
             }}
@@ -257,15 +289,22 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
   const getStatusText = (info: HoverInfo): string => {
     if (!info.hasData) return "Mangler data";
     if (info.score === null) return "Mangler data";
-    if (info.score >= 100) return "Mål nået";
-    if (info.group === "social") return `Shortfall ${(100 - info.score).toFixed(1)}%`;
+    if (info.group === "social") {
+      if (info.score >= 100) return "Mål nået";
+      return `Shortfall ${(100 - info.score).toFixed(1)}%`;
+    }
+    // Ecological: <= 100 is good (within boundary), > 100 is overshoot
+    if (info.score <= 100) return "Inden for grænsen";
     return `Overshoot ${(info.score - 100).toFixed(1)}%`;
   };
 
   const getStatusColor = (info: HoverInfo): string => {
     if (!info.hasData || info.score === null) return "text-gray-400";
-    if (info.score >= 100) return "text-emerald-600";
-    return "text-red-500";
+    if (info.group === "social") {
+      return info.score >= 100 ? "text-emerald-600" : "text-red-500";
+    }
+    // Ecological: <= 100 is safe
+    return info.score <= 100 ? "text-emerald-600" : "text-red-500";
   };
 
   return (
@@ -410,10 +449,16 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
               <div className="mt-3 h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
                 <div
                   className={`h-full transition-all duration-500 rounded-full ${
-                    hovered.score >= 100 ? "bg-emerald-500" : "bg-red-400"
+                    hovered.group === "social"
+                      ? hovered.score >= 100
+                        ? "bg-emerald-500"
+                        : "bg-red-400"
+                      : hovered.score <= 100
+                        ? "bg-emerald-500"
+                        : "bg-red-400"
                   }`}
                   style={{
-                    width: `${Math.min(hovered.score, 120) / 1.2}%`,
+                    width: `${Math.min(hovered.score, 200) / 2}%`,
                   }}
                 />
               </div>
