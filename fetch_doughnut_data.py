@@ -479,7 +479,7 @@ def auto_fill_missing_variables(resolved, info, area_var):
 
 def fetch_csv_data(table, variables_dict, area_var="OMRÅDE"):
     """
-    Fetch data as semicolon-separated CSV. Returns list of dicts.
+    Fetch data as CSV (or BULK if too large). Returns list of dicts.
     area_var specifies which variable holds the municipality dimension.
     """
     variables = [
@@ -496,10 +496,29 @@ def fetch_csv_data(table, variables_dict, area_var="OMRÅDE"):
         "valuePresentation": "CodeAndValue",
         "variables": variables,
     }
-    raw = api_post("data", payload)
 
-    reader = csv.DictReader(io.StringIO(raw), delimiter=";")
-    return list(reader)
+    try:
+        raw = api_post("data", payload, retries=1)
+        reader = csv.DictReader(io.StringIO(raw), delimiter=";")
+        return list(reader)
+    except (urllib.error.HTTPError, urllib.error.URLError):
+        # Retry with BULK format (allows up to 10M cells vs 1M for CSV)
+        print(f"  → CSV fejlede, prøver BULK format...")
+        payload["format"] = "BULK"
+        raw = api_post("data", payload)
+        # BULK uses semicolons too, parse same way
+        reader = csv.DictReader(io.StringIO(raw), delimiter=";")
+        return list(reader)
+
+
+def is_municipality_code(code):
+    """Check if a code is a valid Danish municipality (3-digit, 101-860) or national (000)."""
+    if code == "000":
+        return True
+    if len(code) == 3 and code.isdigit():
+        num = int(code)
+        return 101 <= num <= 860
+    return False
 
 
 def extract_municipal_values(rows, aggregate="single"):
@@ -507,6 +526,7 @@ def extract_municipal_values(rows, aggregate="single"):
     Parse CSV rows into {kommune_code: numeric_value}.
     Last column = value (INDHOLD). First column = area.
     Municipality code = first token before space.
+    Filters out non-municipality codes (landsdele, regioner).
     """
     if not rows:
         return {}
@@ -519,7 +539,7 @@ def extract_municipal_values(rows, aggregate="single"):
     for row in rows:
         area = row[area_col].strip()
         code = area.split()[0] if area else ""
-        if not code:
+        if not code or not is_municipality_code(code):
             continue
 
         raw_val = row[value_col].strip().replace(",", ".")
@@ -543,11 +563,18 @@ def compute_ratios(values, inverse=False, dk_code="000"):
     Compute ratio of each municipality vs national average.
     Normal:  ratio = kommune / DK * 100
     Inverse: ratio = DK / kommune * 100
+    If national average (dk_code) is missing, compute mean of all municipalities.
     """
     dk_val = values.get(dk_code)
     if dk_val is None or dk_val == 0:
-        print(f"  Warning: landsgennemsnit ikke fundet (kode={dk_code})", file=sys.stderr)
-        return {}
+        # Compute mean from municipality values as fallback
+        muni_vals = [v for k, v in values.items() if k != dk_code and v != 0]
+        if muni_vals:
+            dk_val = sum(muni_vals) / len(muni_vals)
+            print(f"  → Beregnet gennemsnit fra {len(muni_vals)} kommuner: {dk_val:.2f}")
+        else:
+            print(f"  Warning: landsgennemsnit ikke fundet (kode={dk_code})", file=sys.stderr)
+            return {}
 
     ratios = {}
     for code, val in values.items():
