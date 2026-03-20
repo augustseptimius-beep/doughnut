@@ -66,6 +66,100 @@ export const INDICATORS: Indicator[] = [
   },
 ];
 
+// --- SOCIAL CATEGORIES ---
+
+export interface SocialCategory {
+  id: string;
+  name: string;
+  indicatorIds: string[];
+}
+
+export const SOCIAL_CATEGORIES: SocialCategory[] = [
+  { id: "health", name: "Sundhed", indicatorIds: ["life_expectancy"] },
+  { id: "education_cat", name: "Uddannelse", indicatorIds: ["education"] },
+  {
+    id: "income_work",
+    name: "Indkomst & arbejde",
+    indicatorIds: ["disposable_income", "employment", "child_poverty"],
+  },
+  { id: "social_equality", name: "Social lighed", indicatorIds: ["gini"] },
+  {
+    id: "housing_infra",
+    name: "Bolig & infrastruktur",
+    indicatorIds: ["vacant_housing"],
+  },
+  { id: "democracy", name: "Demokrati & fællesskab", indicatorIds: [] },
+];
+
+// --- ECOLOGICAL CEILING PLACEHOLDERS ---
+
+export interface EcologicalDimension {
+  id: string;
+  name: string;
+}
+
+export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
+  { id: "climate_territorial", name: "Klima (territorial)" },
+  { id: "climate_consumption", name: "Klima (forbrug)" },
+  { id: "water", name: "Vandmiljø" },
+  { id: "biodiversity", name: "Biodiversitet" },
+  { id: "land_use", name: "Arealanvendelse" },
+  { id: "waste_resources", name: "Affald & ressourcer" },
+];
+
+// --- CATEGORY SCORE COMPUTATION ---
+
+export interface CategoryScore {
+  categoryId: string;
+  categoryName: string;
+  score: number | null; // 0-100 scale (ratio score), null if no data
+  indicatorCount: number;
+  hasData: boolean;
+  indicators: {
+    indicator: Indicator;
+    score: number | null;
+  }[];
+}
+
+export function computeCategoryScores(
+  ratios: Record<string, number | null>
+): CategoryScore[] {
+  return SOCIAL_CATEGORIES.map((cat) => {
+    const indicators = cat.indicatorIds.map((id) => ({
+      indicator: INDICATORS.find((ind) => ind.id === id)!,
+      score: ratios[id] ?? null,
+    }));
+
+    const validScores = indicators
+      .map((i) => i.score)
+      .filter((s): s is number => s !== null);
+
+    const score =
+      validScores.length > 0
+        ? validScores.reduce((a, b) => a + b, 0) / validScores.length
+        : null;
+
+    return {
+      categoryId: cat.id,
+      categoryName: cat.name,
+      score,
+      indicatorCount: cat.indicatorIds.length,
+      hasData: validScores.length > 0,
+      indicators,
+    };
+  });
+}
+
+export function computeOverallFromCategories(
+  categoryScores: CategoryScore[]
+): number | null {
+  const withData = categoryScores.filter((c) => c.hasData && c.score !== null);
+  if (withData.length === 0) return null;
+  return withData.reduce((a, b) => a + b.score!, 0) / withData.length;
+}
+
+// --- HELPERS ---
+
 export interface KommuneData {
   kommune_kode: string;
   kommune_navn: string;

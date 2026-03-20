@@ -4,11 +4,21 @@ import path from "path";
 // Re-export shared types and constants for server components
 export {
   INDICATORS,
+  SOCIAL_CATEGORIES,
+  ECOLOGICAL_DIMENSIONS,
   scoreColor,
   scoreBgColor,
   scoreBarColor,
+  computeCategoryScores,
+  computeOverallFromCategories,
 } from "./shared";
-export type { Indicator, KommuneData } from "./shared";
+export type {
+  Indicator,
+  KommuneData,
+  SocialCategory,
+  EcologicalDimension,
+  CategoryScore,
+} from "./shared";
 
 import { INDICATORS, type KommuneData } from "./shared";
 

@@ -1,266 +1,440 @@
 "use client";
 
 import { useState } from "react";
-import { INDICATORS, type KommuneData } from "@/lib/shared";
+import {
+  type KommuneData,
+  type CategoryScore,
+  ECOLOGICAL_DIMENSIONS,
+  computeCategoryScores,
+  computeOverallFromCategories,
+} from "@/lib/shared";
 
 interface DoughnutRingProps {
   kommune: KommuneData;
-  size?: number;
 }
 
-function arcColor(score: number | null): string {
-  if (score === null) return "#d1d5db";
-  if (score >= 100) return "#059669";
-  if (score >= 85) return "#d97706";
-  return "#dc2626";
-}
-
-function arcBg(score: number | null): string {
-  if (score === null) return "#f3f4f6";
-  if (score >= 100) return "#d1fae5";
-  if (score >= 85) return "#fef3c7";
-  return "#fee2e2";
-}
-
-interface ArcPath {
-  id: string;
-  name: string;
-  score: number | null;
-  safeD: string;
-  barD: string;
-  boundaryD: string;
-  labelX: number;
-  labelY: number;
-  labelAngle: number;
-}
-
-function buildArcs(
-  indicators: typeof INDICATORS,
-  kommune: KommuneData,
+// --- SVG ARC HELPER ---
+function describeArc(
   cx: number,
   cy: number,
-  innerR: number,
-  outerR: number
-): ArcPath[] {
-  const n = indicators.length;
-  if (n === 0) return [];
-
-  const gap = 0.03;
-  const segAngle = (2 * Math.PI - n * gap) / n;
-  const arcs: ArcPath[] = [];
-
-  indicators.forEach((ind, i) => {
-    const score = kommune.ratios[ind.id];
-    const startAngle = i * (segAngle + gap) - Math.PI / 2;
-    const endAngle = startAngle + segAngle;
-    const midAngle = (startAngle + endAngle) / 2;
-
-    // Safe space boundary at 100 mark
-    const safeR = innerR + ((outerR - innerR) * 100) / 150;
-
-    // Bar height scaled by score (clamped 0-150)
-    const clampedScore = Math.min(Math.max(score || 0, 0), 150);
-    const barR = innerR + ((outerR - innerR) * clampedScore) / 150;
-
-    const largeArc = segAngle > Math.PI ? 1 : 0;
-
-    // Safe space fill (always shown, light green background up to 100-mark)
-    const safeD = arcPathD(cx, cy, innerR, safeR, startAngle, endAngle, largeArc);
-
-    // Bar fill (actual score)
-    const barD = arcPathD(cx, cy, innerR, barR, startAngle, endAngle, largeArc);
-
-    // Outer boundary
-    const boundaryD = arcPathD(cx, cy, innerR, outerR, startAngle, endAngle, largeArc);
-
-    // Label position
-    const labelR = outerR + 14;
-    const labelX = cx + labelR * Math.cos(midAngle);
-    const labelY = cy + labelR * Math.sin(midAngle);
-    let labelAngle = (midAngle * 180) / Math.PI;
-    if (labelAngle > 90 && labelAngle < 270) labelAngle += 180;
-    if (labelAngle < -90 && labelAngle > -270) labelAngle += 180;
-
-    arcs.push({
-      id: ind.id,
-      name: ind.name,
-      score,
-      safeD,
-      barD,
-      boundaryD,
-      labelX,
-      labelY,
-      labelAngle,
-    });
-  });
-
-  return arcs;
-}
-
-function arcPathD(
-  cx: number,
-  cy: number,
-  innerR: number,
-  outerR: number,
+  rOuter: number,
+  rInner: number,
   startAngle: number,
-  endAngle: number,
-  largeArc: number
+  endAngle: number
 ): string {
-  const x1o = cx + outerR * Math.cos(startAngle);
-  const y1o = cy + outerR * Math.sin(startAngle);
-  const x2o = cx + outerR * Math.cos(endAngle);
-  const y2o = cy + outerR * Math.sin(endAngle);
-  const x1i = cx + innerR * Math.cos(endAngle);
-  const y1i = cy + innerR * Math.sin(endAngle);
-  const x2i = cx + innerR * Math.cos(startAngle);
-  const y2i = cy + innerR * Math.sin(startAngle);
-
-  return [
-    `M ${x2i} ${y2i}`,
-    `A ${innerR} ${innerR} 0 ${largeArc} 1 ${x1i} ${y1i}`,
-    `L ${x2o} ${y2o}`,
-    `A ${outerR} ${outerR} 0 ${largeArc} 0 ${x1o} ${y1o}`,
-    `Z`,
-  ].join(" ");
+  const x1 = cx + rOuter * Math.cos(startAngle);
+  const y1 = cy + rOuter * Math.sin(startAngle);
+  const x2 = cx + rOuter * Math.cos(endAngle);
+  const y2 = cy + rOuter * Math.sin(endAngle);
+  const x3 = cx + rInner * Math.cos(endAngle);
+  const y3 = cy + rInner * Math.sin(endAngle);
+  const x4 = cx + rInner * Math.cos(startAngle);
+  const y4 = cy + rInner * Math.sin(startAngle);
+  const largeArc = endAngle - startAngle <= Math.PI ? "0" : "1";
+  return `M ${x1} ${y1} A ${rOuter} ${rOuter} 0 ${largeArc} 1 ${x2} ${y2} L ${x3} ${y3} A ${rInner} ${rInner} 0 ${largeArc} 0 ${x4} ${y4} Z`;
 }
 
-export default function DoughnutRing({ kommune, size = 340 }: DoughnutRingProps) {
-  const [hovered, setHovered] = useState<string | null>(null);
+// --- GEOMETRY ---
+const vbSize = 1000;
+const center = vbSize / 2;
 
-  const indicators = INDICATORS.filter(
-    (ind) => kommune.ratios[ind.id] !== null
-  );
-  const n = indicators.length;
-  if (n === 0) return null;
+// Radii
+const innerLimit = 60; // Center of social shortfall bars
+const socialBase = 220; // Inner edge of safe space (social foundation line)
+const commonBoundary = 310; // Dividing line between social & ecological
+const ecoCeiling = 400; // Outer edge of safe space (ecological ceiling line)
+const outerLimit = 480; // Max extent of ecological overshoot bars
 
-  const cx = size / 2;
-  const cy = size / 2;
-  const outerR = size / 2 - 30;
-  const innerR = outerR * 0.5;
-  const safeMarkR = innerR + ((outerR - innerR) * 100) / 150;
+const gap = 0.04; // Gap between segments in radians
 
-  const arcs = buildArcs(indicators, kommune, cx, cy, innerR, outerR);
+interface HoverInfo {
+  label: string;
+  group: "social" | "ecological";
+  score: number | null;
+  hasData: boolean;
+}
 
-  const hoveredArc = arcs.find((a) => a.id === hovered);
+export default function DoughnutRing({ kommune }: DoughnutRingProps) {
+  const [hovered, setHovered] = useState<HoverInfo | null>(null);
 
-  return (
-    <div className="relative">
-      <svg
-        width="100%"
-        height="100%"
-        viewBox={`0 0 ${size} ${size}`}
-        className="max-w-[340px] mx-auto"
-      >
-        {/* Inner circle fill */}
-        <circle cx={cx} cy={cy} r={innerR} fill="white" stroke="#e5e7eb" strokeWidth="1" />
+  const categoryScores = computeCategoryScores(kommune.ratios);
+  const overallScore = computeOverallFromCategories(categoryScores);
+  const categoriesWithData = categoryScores.filter((c) => c.hasData).length;
 
-        {/* Safe space mark (dashed circle at 100) */}
-        <circle
-          cx={cx}
-          cy={cy}
-          r={safeMarkR}
-          fill="none"
-          stroke="#9ca3af"
-          strokeWidth="0.5"
-          strokeDasharray="3 3"
-        />
+  const socialCount = categoryScores.length;
+  const ecoCount = ECOLOGICAL_DIMENSIONS.length;
 
-        {/* Outer boundary */}
-        <circle cx={cx} cy={cy} r={outerR} fill="none" stroke="#e5e7eb" strokeWidth="0.5" />
+  // --- RENDER SOCIAL RING (inner) ---
+  const renderSocialRing = () => {
+    const angleStep = (2 * Math.PI) / socialCount;
+    return categoryScores.map((cat, i) => {
+      const startAngle = i * angleStep - Math.PI / 2 + gap / 2;
+      const endAngle = (i + 1) * angleStep - Math.PI / 2 - gap / 2;
+      const midAngle = (startAngle + endAngle) / 2;
 
-        {/* Arc segments */}
-        {arcs.map((arc) => (
-          <g
-            key={arc.id}
-            onMouseEnter={() => setHovered(arc.id)}
-            onMouseLeave={() => setHovered(null)}
-            className="cursor-pointer"
-          >
-            {/* Boundary outline */}
-            <path d={arc.boundaryD} fill="none" stroke="#e5e7eb" strokeWidth="0.5" />
+      // Safe space segment
+      const safePath = describeArc(
+        center,
+        center,
+        commonBoundary,
+        socialBase,
+        startAngle,
+        endAngle
+      );
 
-            {/* Safe space background (light) */}
-            <path d={arc.safeD} fill={arcBg(arc.score)} opacity="0.4" />
+      // Shortfall bar (stretches INWARD from socialBase when score < 100)
+      let shortfallPath = "";
+      if (cat.hasData && cat.score !== null && cat.score < 100) {
+        const shortfallFraction = (100 - cat.score) / 100; // 0 to 1
+        const rIn =
+          socialBase - (socialBase - innerLimit) * Math.min(shortfallFraction, 1);
+        shortfallPath = describeArc(
+          center,
+          center,
+          socialBase,
+          rIn,
+          startAngle,
+          endAngle
+        );
+      }
 
-            {/* Actual score bar */}
+      // Label
+      const labelRadius = (socialBase + commonBoundary) / 2;
+      const lx = center + labelRadius * Math.cos(midAngle);
+      const ly = center + labelRadius * Math.sin(midAngle);
+      const rotDeg = (midAngle * 180) / Math.PI;
+      const shouldFlip = rotDeg > 0 && rotDeg < 180;
+      const finalRot = shouldFlip ? rotDeg - 90 : rotDeg + 90;
+
+      const isNoData = !cat.hasData;
+      const safeColor = isNoData ? "#e5e7eb" : "#e8f0e8";
+      const safeStroke = isNoData ? "#d1d5db" : "#8faa8f";
+
+      return (
+        <g
+          key={cat.categoryId}
+          className="cursor-pointer"
+          onMouseEnter={() =>
+            setHovered({
+              label: cat.categoryName,
+              group: "social",
+              score: cat.score,
+              hasData: cat.hasData,
+            })
+          }
+          onMouseLeave={() => setHovered(null)}
+        >
+          {/* Safe space segment */}
+          <path
+            d={safePath}
+            fill={safeColor}
+            stroke={safeStroke}
+            strokeWidth="0.5"
+            className="transition-colors hover:brightness-95"
+          />
+          {/* Shortfall bar (red, inward) */}
+          {shortfallPath && (
             <path
-              d={arc.barD}
-              fill={arcColor(arc.score)}
-              opacity={hovered === arc.id ? 0.95 : 0.75}
-              className="transition-opacity duration-150"
+              d={shortfallPath}
+              fill="#dc2626"
+              opacity="0.7"
+              className="transition-all duration-300"
             />
-
-            {/* Hover hit area (invisible) */}
-            <path d={arc.boundaryD} fill="transparent" />
-          </g>
-        ))}
-
-        {/* Labels around the ring */}
-        {arcs.map((arc) => (
+          )}
+          {/* Radial separator */}
+          <line
+            x1={center + innerLimit * Math.cos(startAngle - gap / 2)}
+            y1={center + innerLimit * Math.sin(startAngle - gap / 2)}
+            x2={center + commonBoundary * Math.cos(startAngle - gap / 2)}
+            y2={center + commonBoundary * Math.sin(startAngle - gap / 2)}
+            stroke="#94a3b8"
+            strokeWidth="0.5"
+            strokeOpacity="0.15"
+          />
+          {/* Label */}
           <text
-            key={`label-${arc.id}`}
-            x={arc.labelX}
-            y={arc.labelY}
+            x={lx}
+            y={ly}
             textAnchor="middle"
             dominantBaseline="middle"
-            transform={`rotate(${arc.labelAngle}, ${arc.labelX}, ${arc.labelY})`}
-            className="fill-gray-500 pointer-events-none"
-            style={{ fontSize: "6.5px" }}
+            transform={`rotate(${finalRot}, ${lx}, ${ly})`}
+            className="pointer-events-none select-none"
+            style={{
+              fontSize: "13px",
+              fontWeight: 800,
+              fill: isNoData ? "#9ca3af" : "#2d4a2d",
+              textTransform: "uppercase",
+              letterSpacing: "0.02em",
+            }}
           >
-            {arc.name.length > 18 ? arc.name.substring(0, 16) + "…" : arc.name}
+            {cat.categoryName}
           </text>
-        ))}
+        </g>
+      );
+    });
+  };
 
-        {/* Center text */}
-        <text
-          x={cx}
-          y={cy - 10}
-          textAnchor="middle"
-          className="fill-gray-900 font-bold"
-          style={{ fontSize: "28px" }}
-        >
-          {kommune.overall_avg !== null ? Math.round(kommune.overall_avg) : "–"}
-        </text>
-        <text
-          x={cx}
-          y={cy + 10}
-          textAnchor="middle"
-          className="fill-gray-500"
-          style={{ fontSize: "10px" }}
-        >
-          samlet score
-        </text>
-      </svg>
+  // --- RENDER ECOLOGICAL RING (outer) ---
+  const renderEcoRing = () => {
+    const angleStep = (2 * Math.PI) / ecoCount;
+    return ECOLOGICAL_DIMENSIONS.map((dim, i) => {
+      const startAngle = i * angleStep - Math.PI / 2 + gap / 2;
+      const endAngle = (i + 1) * angleStep - Math.PI / 2 - gap / 2;
+      const midAngle = (startAngle + endAngle) / 2;
 
-      {/* Hover tooltip */}
-      {hoveredArc && (
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 bg-white border border-gray-200 rounded-lg shadow-lg px-3 py-2 text-sm z-10 whitespace-nowrap">
-          <div className="font-medium text-gray-900">{hoveredArc.name}</div>
-          <div className="flex items-center gap-2 mt-1">
-            <div
-              className="w-2.5 h-2.5 rounded-full"
-              style={{ backgroundColor: arcColor(hoveredArc.score) }}
-            />
-            <span className="text-gray-700">
-              {hoveredArc.score !== null ? `${hoveredArc.score.toFixed(1)}%` : "Ingen data"}
+      // No data yet — grey placeholder
+      const safePath = describeArc(
+        center,
+        center,
+        ecoCeiling,
+        commonBoundary,
+        startAngle,
+        endAngle
+      );
+
+      // Label
+      const labelRadius = (commonBoundary + ecoCeiling) / 2;
+      const lx = center + labelRadius * Math.cos(midAngle);
+      const ly = center + labelRadius * Math.sin(midAngle);
+      const rotDeg = (midAngle * 180) / Math.PI;
+      const shouldFlip = rotDeg > 0 && rotDeg < 180;
+      const finalRot = shouldFlip ? rotDeg - 90 : rotDeg + 90;
+
+      return (
+        <g
+          key={dim.id}
+          className="cursor-pointer"
+          onMouseEnter={() =>
+            setHovered({
+              label: dim.name,
+              group: "ecological",
+              score: null,
+              hasData: false,
+            })
+          }
+          onMouseLeave={() => setHovered(null)}
+        >
+          <path
+            d={safePath}
+            fill="#f3f4f6"
+            stroke="#d1d5db"
+            strokeWidth="0.5"
+            className="transition-colors hover:brightness-95"
+          />
+          {/* Radial separator */}
+          <line
+            x1={center + commonBoundary * Math.cos(startAngle - gap / 2)}
+            y1={center + commonBoundary * Math.sin(startAngle - gap / 2)}
+            x2={center + outerLimit * Math.cos(startAngle - gap / 2)}
+            y2={center + outerLimit * Math.sin(startAngle - gap / 2)}
+            stroke="#94a3b8"
+            strokeWidth="0.5"
+            strokeOpacity="0.15"
+          />
+          <text
+            x={lx}
+            y={ly}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            transform={`rotate(${finalRot}, ${lx}, ${ly})`}
+            className="pointer-events-none select-none"
+            style={{
+              fontSize: "12px",
+              fontWeight: 800,
+              fill: "#9ca3af",
+              textTransform: "uppercase",
+              letterSpacing: "0.02em",
+            }}
+          >
+            {dim.name}
+          </text>
+        </g>
+      );
+    });
+  };
+
+  // Hover card status text
+  const getStatusText = (info: HoverInfo): string => {
+    if (!info.hasData) return "Mangler data";
+    if (info.score === null) return "Mangler data";
+    if (info.score >= 100) return "Mål nået";
+    if (info.group === "social") return `Shortfall ${(100 - info.score).toFixed(1)}%`;
+    return `Overshoot ${(info.score - 100).toFixed(1)}%`;
+  };
+
+  const getStatusColor = (info: HoverInfo): string => {
+    if (!info.hasData || info.score === null) return "text-gray-400";
+    if (info.score >= 100) return "text-emerald-600";
+    return "text-red-500";
+  };
+
+  return (
+    <div className="relative w-full">
+      <div className="relative w-full aspect-square flex items-center justify-center">
+        <svg
+          viewBox={`0 0 ${vbSize} ${vbSize}`}
+          className="w-full h-full"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          {/* Soft background */}
+          <circle
+            cx={center}
+            cy={center}
+            r={outerLimit + 10}
+            fill="#fafafa"
+            opacity="0.5"
+          />
+
+          {/* Ecological ring (outer) */}
+          {renderEcoRing()}
+
+          {/* Social ring (inner) */}
+          {renderSocialRing()}
+
+          {/* Threshold lines */}
+          <circle
+            cx={center}
+            cy={center}
+            r={ecoCeiling}
+            fill="none"
+            stroke="#166534"
+            strokeWidth="2.5"
+            opacity="0.6"
+          />
+          <circle
+            cx={center}
+            cy={center}
+            r={socialBase}
+            fill="none"
+            stroke="#166534"
+            strokeWidth="2.5"
+            opacity="0.6"
+          />
+
+          {/* Center content */}
+          <circle
+            cx={center}
+            cy={center}
+            r={socialBase - 5}
+            fill="white"
+            opacity="0.9"
+          />
+          <text
+            x={center}
+            y={center - 30}
+            textAnchor="middle"
+            style={{ fontSize: "64px", fontWeight: 900, fill: "#1f2937" }}
+          >
+            {overallScore !== null ? Math.round(overallScore) : "–"}
+          </text>
+          <text
+            x={center}
+            y={center + 10}
+            textAnchor="middle"
+            style={{
+              fontSize: "14px",
+              fontWeight: 700,
+              fill: "#6b7280",
+              textTransform: "uppercase",
+              letterSpacing: "0.15em",
+            }}
+          >
+            samlet score
+          </text>
+
+          {/* Ring labels */}
+          <text
+            x={center}
+            y={center - ecoCeiling - 30}
+            textAnchor="middle"
+            style={{
+              fontSize: "12px",
+              fontWeight: 800,
+              fill: "#9ca3af",
+              textTransform: "uppercase",
+              letterSpacing: "0.2em",
+            }}
+          >
+            Økologisk loft
+          </text>
+          <text
+            x={center}
+            y={center + ecoCeiling + 45}
+            textAnchor="middle"
+            style={{
+              fontSize: "12px",
+              fontWeight: 800,
+              fill: "#6b7280",
+              textTransform: "uppercase",
+              letterSpacing: "0.2em",
+            }}
+          >
+            Socialt fundament
+          </text>
+        </svg>
+
+        {/* Hover card */}
+        {hovered && (
+          <div className="absolute bottom-4 right-4 md:top-4 md:right-4 bg-white/95 backdrop-blur-md shadow-2xl p-4 md:p-5 rounded-2xl w-48 md:w-56 border border-gray-100 pointer-events-none z-10">
+            <span
+              className={`text-[9px] font-bold px-2 py-0.5 rounded-full uppercase ${
+                hovered.group === "social"
+                  ? "bg-emerald-100 text-emerald-700"
+                  : "bg-gray-100 text-gray-500"
+              }`}
+            >
+              {hovered.group === "social"
+                ? "Socialt fundament"
+                : "Økologisk loft"}
             </span>
+            <h3 className="font-black text-base md:text-lg text-gray-800 mt-2 leading-tight">
+              {hovered.label}
+            </h3>
+            <div className="mt-2">
+              {hovered.hasData && hovered.score !== null ? (
+                <p className="text-2xl md:text-3xl font-black text-gray-900 tracking-tighter">
+                  {hovered.score.toFixed(1)}%
+                </p>
+              ) : (
+                <p className="text-sm font-medium text-gray-400">
+                  Ingen data endnu
+                </p>
+              )}
+              <p
+                className={`text-xs font-bold uppercase tracking-widest mt-1 ${getStatusColor(hovered)}`}
+              >
+                {getStatusText(hovered)}
+              </p>
+            </div>
+            {hovered.hasData && hovered.score !== null && (
+              <div className="mt-3 h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                <div
+                  className={`h-full transition-all duration-500 rounded-full ${
+                    hovered.score >= 100 ? "bg-emerald-500" : "bg-red-400"
+                  }`}
+                  style={{
+                    width: `${Math.min(hovered.score, 120) / 1.2}%`,
+                  }}
+                />
+              </div>
+            )}
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* Legend */}
-      <div className="flex justify-center gap-4 mt-2 text-xs text-gray-500">
-        <div className="flex items-center gap-1">
-          <div className="w-2.5 h-2.5 rounded-full bg-emerald-600" />
-          <span>≥ 100 (Safe)</span>
+      <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-3 text-xs text-gray-500">
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded bg-[#e8f0e8] border border-[#8faa8f]" />
+          <span className="font-medium">Safe space</span>
         </div>
-        <div className="flex items-center gap-1">
-          <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-          <span>85–99</span>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded bg-red-500 opacity-70" />
+          <span className="font-medium">Shortfall / Overshoot</span>
         </div>
-        <div className="flex items-center gap-1">
-          <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
-          <span>&lt; 85</span>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded bg-gray-200 border border-gray-300" />
+          <span className="font-medium">Mangler data</span>
         </div>
       </div>
     </div>

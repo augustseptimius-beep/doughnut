@@ -1,16 +1,16 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { scoreColor } from "@/lib/shared";
+import { SOCIAL_CATEGORIES, scoreColor } from "@/lib/shared";
 
 interface KommuneRow {
   kode: string;
   navn: string;
   overall: number | null;
-  social: number | null;
+  categories: Record<string, number | null>;
 }
 
-type SortKey = "navn" | "overall" | "social";
+type SortKey = "navn" | "overall" | string;
 type SortDir = "asc" | "desc";
 
 export default function KommuneTable({ data }: { data: KommuneRow[] }) {
@@ -28,9 +28,10 @@ export default function KommuneTable({ data }: { data: KommuneRow[] }) {
   };
 
   const sorted = useMemo(() => {
-    const filtered = data.filter((k) =>
-      k.navn.toLowerCase().includes(search.toLowerCase()) ||
-      k.kode.includes(search)
+    const filtered = data.filter(
+      (k) =>
+        k.navn.toLowerCase().includes(search.toLowerCase()) ||
+        k.kode.includes(search)
     );
 
     return filtered.sort((a, b) => {
@@ -38,8 +39,14 @@ export default function KommuneTable({ data }: { data: KommuneRow[] }) {
       if (sortKey === "navn") {
         return dir * a.navn.localeCompare(b.navn, "da");
       }
-      const av = a[sortKey] ?? -1;
-      const bv = b[sortKey] ?? -1;
+      if (sortKey === "overall") {
+        const av = a.overall ?? -1;
+        const bv = b.overall ?? -1;
+        return dir * (av - bv);
+      }
+      // Category sort
+      const av = a.categories[sortKey] ?? -1;
+      const bv = b.categories[sortKey] ?? -1;
       return dir * (av - bv);
     });
   }, [data, search, sortKey, sortDir]);
@@ -82,13 +89,20 @@ export default function KommuneTable({ data }: { data: KommuneRow[] }) {
               >
                 Samlet {arrow("overall")}
               </th>
-              <th
-                className="text-right px-3 py-2 font-medium text-gray-500 cursor-pointer hover:text-gray-700 select-none"
-                onClick={() => toggleSort("social")}
-              >
-                Social {arrow("social")}
-              </th>
-              <th className="px-3 py-2 w-40">
+              {SOCIAL_CATEGORIES.map((cat) => (
+                <th
+                  key={cat.id}
+                  className="text-right px-2 py-2 font-medium text-gray-500 cursor-pointer hover:text-gray-700 select-none whitespace-nowrap text-xs"
+                  onClick={() => toggleSort(cat.id)}
+                  title={cat.name}
+                >
+                  {cat.name.length > 12
+                    ? cat.name.substring(0, 10) + "…"
+                    : cat.name}{" "}
+                  {arrow(cat.id)}
+                </th>
+              ))}
+              <th className="px-3 py-2 w-32">
                 <span className="sr-only">Score bar</span>
               </th>
             </tr>
@@ -108,12 +122,22 @@ export default function KommuneTable({ data }: { data: KommuneRow[] }) {
                     {k.navn}
                   </a>
                 </td>
-                <td className={`px-3 py-2 text-right font-semibold ${scoreColor(k.overall)}`}>
+                <td
+                  className={`px-3 py-2 text-right font-semibold ${scoreColor(k.overall)}`}
+                >
                   {k.overall !== null ? k.overall.toFixed(1) : "–"}
                 </td>
-                <td className={`px-3 py-2 text-right ${scoreColor(k.social)}`}>
-                  {k.social !== null ? k.social.toFixed(1) : "–"}
-                </td>
+                {SOCIAL_CATEGORIES.map((cat) => {
+                  const val = k.categories[cat.id] ?? null;
+                  return (
+                    <td
+                      key={cat.id}
+                      className={`px-2 py-2 text-right text-xs ${scoreColor(val)}`}
+                    >
+                      {val !== null ? val.toFixed(1) : "–"}
+                    </td>
+                  );
+                })}
                 <td className="px-3 py-2">
                   <div className="h-2 bg-gray-100 rounded-full overflow-hidden relative">
                     <div
@@ -125,8 +149,8 @@ export default function KommuneTable({ data }: { data: KommuneRow[] }) {
                         (k.overall ?? 0) >= 100
                           ? "bg-emerald-500"
                           : (k.overall ?? 0) >= 85
-                          ? "bg-amber-400"
-                          : "bg-red-400"
+                            ? "bg-amber-400"
+                            : "bg-red-400"
                       }`}
                       style={{
                         width: `${Math.min(((k.overall ?? 0) / 150) * 100, 100)}%`,

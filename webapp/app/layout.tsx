@@ -41,8 +41,15 @@ export default function RootLayout({
             >
               Danmarks Statistik
             </a>{" "}
-            (CC BY 4.0) &middot; Metodik: Doughnut Economics v4.1 &middot; Lige
-            v&aelig;gtning, ingen manuelle justeringer
+            (CC BY 4.0) &middot; Metodik: Doughnut Economics v4.1 &middot;{" "}
+            <a
+              href="https://doughnuteconomics.org"
+              className="underline hover:text-gray-700"
+              target="_blank"
+              rel="noopener"
+            >
+              doughnuteconomics.org
+            </a>
           </div>
         </footer>
       </body>
