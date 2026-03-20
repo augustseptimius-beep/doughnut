@@ -53,7 +53,7 @@ INDICATORS = [
     },
     {
         "id": "education",
-        "name": "Kompetencegivende uddannelse (30-34 år)",
+        "name": "Kompetencegivende uddannelse (30-34 år, %)",
         "table": "HFUDD10",
         "want_variables": [
             {"purpose": "alder", "candidates": [
@@ -77,6 +77,12 @@ INDICATORS = [
         "inverse": False,
         "aggregate": "sum",
         "category": "social",
+        # Rate: compute educated/total * 100 per municipality
+        "rate_denominator": {
+            "change_var": "HFUDD",
+            "change_to": ["TOT"],
+            "aggregate": "single",
+        },
     },
     {
         "id": "disposable_income",
@@ -196,27 +202,17 @@ INDICATORS = [
         "inverse": True,
         "aggregate": "sum",
         "category": "social",
+        # Rate: compute ubeboede/(beboede+ubeboede) * 100 per municipality
+        "rate_denominator": {
+            "change_var": "BEBO",
+            "change_to": ["1000", "2000"],  # Beboede + ubeboede
+            "aggregate": "sum",
+        },
     },
-    {
-        "id": "voter_turnout",
-        "name": "Valgdeltagelse",
-        "table": "FVKOM",
-        "alt_tables": ["VALGK3"],
-        "want_variables": [
-            {"purpose": "valgresultat", "candidates": [
-                # FVKOM: Folketingsvalg per kommune med stemmeprocent
-                {"code": "VALRES", "values": ["STEMPCT"]},
-                {"code": "VALGRESULTAT", "values": ["STEMPCT"]},
-                {"code": "VALRES", "values": ["DELTAG"]},
-            ], "auto_discover": {
-                "search_vars": ["VALRES", "VALGRESULTAT"],
-                "search_text": ["stemmeprocent", "deltagelse", "valgdeltagelse"],
-            }},
-        ],
-        "inverse": False,
-        "aggregate": "single",
-        "category": "social",
-    },
+    # NOTE: Voter turnout removed — no DST table has kommune-level
+    # valgdeltagelse as percentage. KVPCT/FVPCT only have national data.
+    # FVKOM/VALGK3 only have absolute vote counts, not turnout %.
+    # Could be re-added if a suitable data source is found.
 ]
 
 
@@ -631,7 +627,37 @@ def fetch_indicator(ind):
         try:
             rows = fetch_csv_data(tbl, resolved_vars, area_var=area_var)
             values = extract_municipal_values(rows, aggregate=ind.get("aggregate", "single"))
-            print(f"  ✓ {len(values)} kommuner med data")
+            print(f"  ✓ {len(values)} kommuner med data (tæller)")
+
+            # If rate_denominator is defined, fetch denominator and compute rate
+            rate_cfg = ind.get("rate_denominator")
+            if rate_cfg and values:
+                denom_vars = dict(resolved_vars)  # copy
+                change_var = rate_cfg["change_var"]
+                # Find the actual variable name (case-insensitive)
+                actual_var = None
+                for k in denom_vars:
+                    if k.upper() == change_var.upper():
+                        actual_var = k
+                        break
+                if actual_var is None:
+                    # Variable might not have been in resolved_vars, add it
+                    actual_var = change_var
+                denom_vars[actual_var] = rate_cfg["change_to"]
+                print(f"  → Henter nævner: {actual_var}={rate_cfg['change_to']}")
+                denom_rows = fetch_csv_data(tbl, denom_vars, area_var=area_var)
+                denom_values = extract_municipal_values(
+                    denom_rows, aggregate=rate_cfg.get("aggregate", "single"))
+                # Compute rate = numerator / denominator * 100
+                rate_values = {}
+                for code in values:
+                    num = values[code]
+                    den = denom_values.get(code, 0)
+                    if den > 0:
+                        rate_values[code] = round(num / den * 100, 2)
+                values = rate_values
+                print(f"  ✓ {len(values)} kommuner med rate-data")
+
             if nat_code in values:
                 print(f"    Landsgennemsnit ({nat_code}): {values[nat_code]}")
             return values, nat_code
