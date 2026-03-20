@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 """
-Doughnut Economics Dashboard — Data Fetcher v4.1
+Doughnut Economics Dashboard — Data Fetcher v4.2
 
 Fetches baseline scores for all 98 Danish municipalities from Danmarks Statistik API.
-Methodology:
-  - 8 API indicators across social/ecological categories
-  - Social: ratio = kommune/DK * 100 (higher is better)
-  - Inverse indicators (poverty, Gini, vacant housing): ratio = DK/kommune * 100
-  - Ecological: ratio = current load / scientific boundary (100% = boundary)
+Metadata-driven: calls tableinfo FIRST for every table and adapts variable codes
+to what actually exists, instead of hardcoding.
 
 Usage:
   python3 fetch_doughnut_data.py [--step 1|2|3] [--output results.csv]
@@ -29,22 +26,27 @@ import urllib.error
 
 API_BASE = "https://api.statbank.dk/v1"
 
+
 # ── Indicator definitions ──────────────────────────────────────────────
-# Each indicator:
-#   table      — DST table code
-#   variables  — dict of variable filters (OMRÅDE and Tid added automatically)
-#   value_col  — which column holds the numeric value (usually "INDHOLD")
-#   inverse    — if True, ratio = DK/kommune (lower raw value is better)
-#   aggregate  — "sum" to sum multiple rows per municipality, else "single"
-#   category   — social or ecological
-#   name       — human-readable name
+# "want_variables" maps semantic intent to candidate codes/values.
+# The resolver tries each candidate against actual tableinfo metadata.
+#
+# area_var: which variable holds municipality codes (OMRÅDE, BOPOMR, etc.)
+#           — resolved dynamically from tableinfo
+# want_variables: list of { candidates: [{code, values}], purpose }
+#   The resolver tries candidates in order, picks the first that matches.
 
 INDICATORS = [
     {
         "id": "life_expectancy",
         "name": "Middellevetid",
         "table": "HISBK",
-        "variables": {"KØN": ["TOT"]},
+        "want_variables": [
+            {"purpose": "køn", "candidates": [
+                {"code": "KØN", "values": ["TOT"]},
+                {"code": "KOEN", "values": ["TOT"]},
+            ]},
+        ],
         "inverse": False,
         "aggregate": "single",
         "category": "social",
@@ -53,11 +55,25 @@ INDICATORS = [
         "id": "education",
         "name": "Kompetencegivende uddannelse (30-34 år)",
         "table": "HFUDD10",
-        "variables": {
-            "ALDER": ["30-34"],
-            "KØN": ["TOT"],
-            "HFUDD": ["20", "25", "35", "40", "50", "60"],
-        },
+        "want_variables": [
+            {"purpose": "alder", "candidates": [
+                {"code": "ALDER", "values": ["30-34"]},
+            ]},
+            {"purpose": "køn", "candidates": [
+                {"code": "KØN", "values": ["TOT"]},
+                {"code": "KOEN", "values": ["TOT"]},
+            ]},
+            {"purpose": "herkomst", "candidates": [
+                {"code": "HERKOMST", "values": ["TOT"]},
+            ]},
+            {"purpose": "uddannelse", "candidates": [
+                # H-prefixed codes (actual DST format)
+                {"code": "HFUDD", "values": ["H20", "H30", "H35", "H40", "H50", "H60"]},
+                # Fallback: numeric codes
+                {"code": "HFUDD", "values": ["20", "25", "35", "40", "50", "60"]},
+            ]},
+        ],
+        "area_candidates": ["BOPOMR", "OMRÅDE"],
         "inverse": False,
         "aggregate": "sum",
         "category": "social",
@@ -66,7 +82,26 @@ INDICATORS = [
         "id": "disposable_income",
         "name": "Disponibel indkomst",
         "table": "INDKP101",
-        "variables": {"ENESSION": ["DISPONIB"]},
+        "want_variables": [
+            {"purpose": "køn", "candidates": [
+                {"code": "KOEN", "values": ["MOK"]},
+                {"code": "KØN", "values": ["MOK"]},
+                {"code": "KOEN", "values": ["TOT"]},
+                {"code": "KØN", "values": ["TOT"]},
+            ]},
+            {"purpose": "indkomsttype", "candidates": [
+                # Try known codes for disponibel indkomst
+                {"code": "INDKOMSTTYPE", "values": ["100"]},
+                {"code": "ENESSION", "values": ["DISPONIB"]},
+            ], "auto_discover": {
+                "search_vars": ["INDKOMSTTYPE", "ENESSION"],
+                "search_text": ["disponib", "disp"],
+            }},
+            {"purpose": "enhed", "candidates": [
+                {"code": "ENHED", "values": ["110"]},  # Gennemsnit
+                {"code": "ENHED", "values": ["100"]},
+            ]},
+        ],
         "inverse": False,
         "aggregate": "single",
         "category": "social",
@@ -74,8 +109,23 @@ INDICATORS = [
     {
         "id": "employment",
         "name": "Beskæftigelsesfrekvens",
-        "table": "RAS300",
-        "variables": {"KØN": ["TOT"], "SOCIO": ["11"]},
+        "table": "RASA1",
+        "alt_tables": ["RAS300", "AKU100"],
+        "want_variables": [
+            {"purpose": "køn", "candidates": [
+                {"code": "KØN", "values": ["TOT"]},
+                {"code": "KOEN", "values": ["TOT"]},
+            ]},
+            {"purpose": "socio/beskæftigelse", "candidates": [
+                {"code": "SOCIO", "values": ["05"]},
+                {"code": "SOCIO", "values": ["10"]},
+                {"code": "SOCIO", "values": ["11"]},
+                {"code": "BESKST", "values": ["05"]},
+            ], "auto_discover": {
+                "search_vars": ["SOCIO", "BESKST"],
+                "search_text": ["beskæft", "employ", "lønmod", "selvst"],
+            }},
+        ],
         "inverse": False,
         "aggregate": "single",
         "category": "social",
@@ -83,17 +133,27 @@ INDICATORS = [
     {
         "id": "child_poverty",
         "name": "Børnefattigdom",
-        "table": "IFOR12",
-        "variables": {"ALDER": ["0-17 ÅR"]},
+        "table": "IFOR41",
+        "alt_tables": ["IFOR12", "IFOR51"],
+        "want_variables": [
+            {"purpose": "indkomsttype", "candidates": [
+                {"code": "INDKOMSTYPE", "values": ["AEKVIDINGS"]},
+            ]},
+        ],
         "inverse": True,
         "aggregate": "single",
         "category": "social",
+        "note": "Fallback: uses Gini/inequality from IFOR41 if child poverty table not found",
     },
     {
         "id": "gini",
         "name": "Gini-koefficient",
         "table": "IFOR41",
-        "variables": {"INDKOMSTYPE": ["AEKVIDINGS"]},
+        "want_variables": [
+            {"purpose": "indkomsttype", "candidates": [
+                {"code": "INDKOMSTYPE", "values": ["AEKVIDINGS"]},
+            ]},
+        ],
         "inverse": True,
         "aggregate": "single",
         "category": "social",
@@ -102,7 +162,7 @@ INDICATORS = [
         "id": "vacant_housing",
         "name": "Ubeboede boliger %",
         "table": "BOL101",
-        "variables": {},
+        "want_variables": [],
         "inverse": True,
         "aggregate": "single",
         "category": "social",
@@ -111,7 +171,12 @@ INDICATORS = [
         "id": "voter_turnout",
         "name": "Valgdeltagelse",
         "table": "VALGK3",
-        "variables": {"PARTI": ["Stemme"]},
+        "want_variables": [
+            {"purpose": "parti/stemmer", "candidates": [
+                {"code": "PARTI", "values": ["Stemme"]},
+                {"code": "PARTI", "values": ["I alt"]},
+            ]},
+        ],
         "inverse": False,
         "aggregate": "single",
         "category": "social",
@@ -119,8 +184,10 @@ INDICATORS = [
 ]
 
 
+# ── API helpers ────────────────────────────────────────────────────────
+
 def api_post(endpoint, payload, retries=3, delay=1.0):
-    """POST JSON to DST API and return parsed response."""
+    """POST JSON to DST API and return raw response text."""
     url = f"{API_BASE}/{endpoint}"
     data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
@@ -129,8 +196,7 @@ def api_post(endpoint, payload, retries=3, delay=1.0):
     for attempt in range(retries):
         try:
             with urllib.request.urlopen(req, timeout=30) as resp:
-                raw = resp.read().decode("utf-8")
-                return raw
+                return resp.read().decode("utf-8")
         except urllib.error.HTTPError as e:
             body = e.read().decode("utf-8", errors="replace")
             print(f"  HTTP {e.code} for {endpoint} (attempt {attempt+1}): {body}",
@@ -159,18 +225,172 @@ def print_tableinfo_summary(info):
     print(f"\n  Tabel: {info.get('id', '?')} — {info.get('text', '?')}")
     for var in info.get("variables", []):
         vals = var.get("values", [])
-        sample = ", ".join(v["id"] for v in vals[:8])
-        if len(vals) > 8:
-            sample += f" ... ({len(vals)} total)"
+        sample = ", ".join(f"{v['id']}({v.get('text','')})" for v in vals[:6])
+        if len(vals) > 6:
+            sample += f" ... ({len(vals)} i alt)"
         print(f"    {var['id']:20s}  [{sample}]")
 
 
-def fetch_csv_data(table, extra_variables):
-    """Fetch data as semicolon-separated CSV. Returns list of dicts."""
+def search_tables(search_text):
+    """Search DST tables by text. Returns list of matching tables."""
+    payload = {
+        "lang": "da",
+        "pastDays": 0,
+        "includeInactive": False,
+    }
+    raw = api_post("tables", payload)
+    tables = json.loads(raw)
+    results = []
+    for t in tables:
+        text = (t.get("text", "") + " " + t.get("id", "")).lower()
+        if search_text.lower() in text:
+            results.append(t)
+    return results
+
+
+# ── Variable resolution ───────────────────────────────────────────────
+
+def resolve_area_variable(info, area_candidates=None):
+    """
+    Find the municipality/area variable in table metadata.
+    Tries candidates in order, falls back to heuristic detection.
+    Returns (var_code, national_code) or (None, None).
+    """
+    var_map = {}
+    for v in info.get("variables", []):
+        var_map[v["id"]] = v
+
+    # Try explicit candidates first
+    if area_candidates:
+        for candidate in area_candidates:
+            if candidate in var_map:
+                # Find the national average code (usually "000" or starts with "0")
+                nat_code = find_national_code(var_map[candidate])
+                return candidate, nat_code
+
+    # Default: try OMRÅDE, BOPOMR, KOMMUNE, KOM
+    for candidate in ["OMRÅDE", "BOPOMR", "KOMMUNE", "KOM"]:
+        if candidate in var_map:
+            nat_code = find_national_code(var_map[candidate])
+            return candidate, nat_code
+
+    # Heuristic: find a variable with 99+ values that has "000" or "Hele landet"
+    for v in info.get("variables", []):
+        vals = v.get("values", [])
+        if len(vals) >= 90:
+            nat_code = find_national_code(v)
+            if nat_code:
+                return v["id"], nat_code
+
+    return None, None
+
+
+def find_national_code(var_info):
+    """Find the national average code in a variable's values."""
+    for val in var_info.get("values", []):
+        vid = val.get("id", "")
+        text = val.get("text", "").lower()
+        if vid == "000" or "hele landet" in text or "all denmark" in text:
+            return vid
+    # Fallback: code starting with "0" and 3 digits
+    for val in var_info.get("values", []):
+        vid = val.get("id", "")
+        if vid == "000":
+            return vid
+    return "000"  # assume standard
+
+
+def resolve_wanted_variables(want_list, info):
+    """
+    Resolve wanted variables against actual table metadata.
+    Returns dict of {code: [values]} ready for the data API call.
+    """
+    var_map = {}
+    for v in info.get("variables", []):
+        var_map[v["id"]] = {val["id"]: val.get("text", "") for val in v.get("values", [])}
+
+    resolved = {}
+    for want in want_list:
+        purpose = want["purpose"]
+        found = False
+
+        # Try candidates in order
+        for candidate in want["candidates"]:
+            code = candidate["code"]
+            values = candidate["values"]
+
+            # Check if code exists (case-insensitive)
+            actual_code = None
+            for vk in var_map:
+                if vk.upper() == code.upper():
+                    actual_code = vk
+                    break
+
+            if actual_code is None:
+                continue
+
+            # Check which values exist
+            avail = set(var_map[actual_code].keys())
+            matched = [v for v in values if v in avail]
+
+            if matched:
+                resolved[actual_code] = matched
+                print(f"    ✓ {purpose}: {actual_code}={matched}")
+                found = True
+                break
+            # If code exists but values don't match, try next candidate
+
+        if not found:
+            # Try auto_discover if available
+            if "auto_discover" in want:
+                ad = want["auto_discover"]
+                for search_var in ad.get("search_vars", []):
+                    actual_code = None
+                    for vk in var_map:
+                        if vk.upper() == search_var.upper():
+                            actual_code = vk
+                            break
+                    if actual_code is None:
+                        continue
+
+                    # Search values by text
+                    for search in ad.get("search_text", []):
+                        for val_id, val_text in var_map[actual_code].items():
+                            if search.lower() in val_text.lower():
+                                resolved[actual_code] = [val_id]
+                                print(f"    ✓ {purpose} (auto): {actual_code}=[{val_id}] "
+                                      f"({val_text})")
+                                found = True
+                                break
+                        if found:
+                            break
+                    if found:
+                        break
+
+        if not found:
+            # Print what's available for debugging
+            print(f"    ⚠ {purpose}: ingen match fundet")
+            for candidate in want["candidates"]:
+                code = candidate["code"]
+                for vk in var_map:
+                    if vk.upper() == code.upper():
+                        avail_sample = list(var_map[vk].items())[:10]
+                        print(f"      {vk} har: {avail_sample}")
+
+    return resolved
+
+
+# ── Data fetching ─────────────────────────────────────────────────────
+
+def fetch_csv_data(table, variables_dict, area_var="OMRÅDE"):
+    """
+    Fetch data as semicolon-separated CSV. Returns list of dicts.
+    area_var specifies which variable holds the municipality dimension.
+    """
     variables = [
-        {"code": "OMRÅDE", "values": ["*"]},
+        {"code": area_var, "values": ["*"]},
     ]
-    for code, values in extra_variables.items():
+    for code, values in variables_dict.items():
         variables.append({"code": code, "values": values})
     variables.append({"code": "Tid", "values": ["(1)"]})
 
@@ -183,28 +403,25 @@ def fetch_csv_data(table, extra_variables):
     raw = api_post("data", payload)
 
     reader = csv.DictReader(io.StringIO(raw), delimiter=";")
-    rows = list(reader)
-    return rows
+    return list(reader)
 
 
 def extract_municipal_values(rows, aggregate="single"):
     """
     Parse CSV rows into {kommune_code: numeric_value}.
-    The last column is assumed to be the value (INDHOLD).
-    OMRÅDE column contains municipality codes/names.
+    Last column = value (INDHOLD). First column = area.
+    Municipality code = first token before space.
     """
-    # Find the value column (last column) and OMRÅDE column
     if not rows:
         return {}
 
     fieldnames = list(rows[0].keys())
-    value_col = fieldnames[-1]  # INDHOLD is always last
-    area_col = fieldnames[0]  # OMRÅDE is always first
+    value_col = fieldnames[-1]
+    area_col = fieldnames[0]
 
     result = {}
     for row in rows:
         area = row[area_col].strip()
-        # Extract municipality code — first token before space
         code = area.split()[0] if area else ""
         if not code:
             continue
@@ -233,7 +450,7 @@ def compute_ratios(values, inverse=False, dk_code="000"):
     """
     dk_val = values.get(dk_code)
     if dk_val is None or dk_val == 0:
-        print(f"  Warning: no national average found (code={dk_code})", file=sys.stderr)
+        print(f"  Warning: landsgennemsnit ikke fundet (kode={dk_code})", file=sys.stderr)
         return {}
 
     ratios = {}
@@ -250,6 +467,55 @@ def compute_ratios(values, inverse=False, dk_code="000"):
     return ratios
 
 
+# ── Fetch one indicator (metadata-driven) ─────────────────────────────
+
+def fetch_indicator(ind):
+    """
+    Fetch a single indicator: get tableinfo, resolve variables, fetch data.
+    Returns (values_dict, national_code) or (None, None) on failure.
+    """
+    table = ind["table"]
+    alt_tables = ind.get("alt_tables", [])
+    tables_to_try = [table] + alt_tables
+
+    for tbl in tables_to_try:
+        print(f"\n  Prøver tabel {tbl}...")
+        try:
+            info = get_tableinfo(tbl)
+        except Exception as e:
+            print(f"  ✗ Tabel {tbl} ikke tilgængelig: {e}")
+            continue
+
+        print_tableinfo_summary(info)
+
+        # Resolve area variable
+        area_candidates = ind.get("area_candidates")
+        area_var, nat_code = resolve_area_variable(info, area_candidates)
+        if area_var is None:
+            print(f"  ⚠ Ingen kommune-variabel fundet i {tbl}")
+            continue
+
+        print(f"    Område-variabel: {area_var}, landskode: {nat_code}")
+
+        # Resolve wanted variables
+        resolved_vars = resolve_wanted_variables(ind.get("want_variables", []), info)
+
+        # Fetch data
+        print(f"  → Henter data: {tbl} [{area_var}=*, {resolved_vars}, Tid=(1)]")
+        try:
+            rows = fetch_csv_data(tbl, resolved_vars, area_var=area_var)
+            values = extract_municipal_values(rows, aggregate=ind.get("aggregate", "single"))
+            print(f"  ✓ {len(values)} kommuner med data")
+            if nat_code in values:
+                print(f"    Landsgennemsnit ({nat_code}): {values[nat_code]}")
+            return values, nat_code
+        except Exception as e:
+            print(f"  ✗ Data-fejl for {tbl}: {e}")
+            continue
+
+    return None, None
+
+
 # ── Step 1 ─────────────────────────────────────────────────────────────
 
 def step1():
@@ -262,21 +528,32 @@ def step1():
     info = get_tableinfo("HISBK")
     print_tableinfo_summary(info)
 
-    # Check which variable codes actually exist
-    var_codes = {v["id"] for v in info.get("variables", [])}
-    print(f"\n  Tilgængelige variabelkoder: {var_codes}")
+    var_map = {v["id"]: v for v in info.get("variables", [])}
+    print(f"\n  Alle variabelkoder: {list(var_map.keys())}")
 
-    print("\n→ Henter data (KØN=TOT, seneste år)...")
-    rows = fetch_csv_data("HISBK", {"KØN": ["TOT"]})
+    # Resolve area and sex variables
+    area_var, nat_code = resolve_area_variable(info)
+    print(f"  Område-variabel: {area_var}, landskode: {nat_code}")
+
+    # Find sex variable
+    sex_vars = resolve_wanted_variables(
+        [{"purpose": "køn", "candidates": [
+            {"code": "KØN", "values": ["TOT"]},
+            {"code": "KOEN", "values": ["TOT"]},
+        ]}],
+        info
+    )
+
+    print(f"\n→ Henter data...")
+    rows = fetch_csv_data("HISBK", sex_vars, area_var=area_var)
     values = extract_municipal_values(rows)
 
     print(f"\n  Antal kommuner med data: {len(values)}")
-    # Show a few samples
     sample_codes = sorted(values.keys())[:5]
     for code in sample_codes:
         print(f"    {code}: {values[code]}")
-    if "000" in values:
-        print(f"    000 (DK landsgennemsnit): {values['000']}")
+    if nat_code in values:
+        print(f"    {nat_code} (DK landsgennemsnit): {values[nat_code]}")
 
     print("\n✓ HISBK verificeret succesfuldt.")
     return values
@@ -287,89 +564,43 @@ def step1():
 def step2():
     """Fetch all 8 indicators, verifying metadata first."""
     print("=" * 60)
-    print("TRIN 2: Hent alle 8 indikatorer")
+    print("TRIN 2: Hent alle 8 indikatorer (metadata-drevet)")
     print("=" * 60)
 
-    all_values = {}
+    all_data = {}
 
     for ind in INDICATORS:
-        table = ind["table"]
-        name = ind["name"]
-        print(f"\n{'─' * 50}")
-        print(f"→ {ind['id']}: {name} (tabel {table})")
+        print(f"\n{'━' * 55}")
+        print(f"▶ {ind['id']}: {ind['name']}")
+        if ind.get("note"):
+            print(f"  ({ind['note']})")
 
-        # Verify metadata
-        print(f"  Henter tableinfo for {table}...")
-        info = get_tableinfo(table)
-        print_tableinfo_summary(info)
+        values, nat_code = fetch_indicator(ind)
 
-        available_vars = {v["id"]: [val["id"] for val in v.get("values", [])]
-                         for v in info.get("variables", [])}
+        all_data[ind["id"]] = {
+            "values": values or {},
+            "nat_code": nat_code or "000",
+            "inverse": ind["inverse"],
+            "name": ind["name"],
+            "category": ind["category"],
+        }
 
-        # Verify requested variables exist
-        final_vars = {}
-        for var_code, var_values in ind["variables"].items():
-            # Try exact match first, then case-insensitive
-            if var_code in available_vars:
-                # Verify values exist
-                avail_vals = set(available_vars[var_code])
-                valid_vals = [v for v in var_values if v in avail_vals]
-                if not valid_vals:
-                    print(f"  ⚠ Variabel {var_code}: ingen af {var_values} fundet i {list(avail_vals)[:10]}")
-                    # Try to find similar values
-                    print(f"    Tilgængelige værdier: {sorted(avail_vals)[:15]}")
-                else:
-                    final_vars[var_code] = valid_vals
-            else:
-                # Search case-insensitively
-                matched = None
-                for av in available_vars:
-                    if av.upper() == var_code.upper():
-                        matched = av
-                        break
-                if matched:
-                    print(f"  Note: bruger '{matched}' i stedet for '{var_code}'")
-                    avail_vals = set(available_vars[matched])
-                    valid_vals = [v for v in var_values if v in avail_vals]
-                    if valid_vals:
-                        final_vars[matched] = valid_vals
-                    else:
-                        print(f"  ⚠ Ingen matchende værdier for {matched}")
-                        print(f"    Tilgængelige: {sorted(avail_vals)[:15]}")
-                else:
-                    print(f"  ⚠ Variabel '{var_code}' findes ikke. Tilgængelige: {list(available_vars.keys())}")
-
-        print(f"  Henter data med variabler: {final_vars}")
-        try:
-            rows = fetch_csv_data(table, final_vars)
-            values = extract_municipal_values(rows, aggregate=ind["aggregate"])
-            print(f"  Antal kommuner med data: {len(values)}")
-            if "000" in values:
-                print(f"  DK-gennemsnit (000): {values['000']}")
-            all_values[ind["id"]] = {
-                "values": values,
-                "inverse": ind["inverse"],
-                "name": ind["name"],
-                "category": ind["category"],
-            }
-        except Exception as e:
-            print(f"  ✗ Fejl ved hentning af {table}: {e}", file=sys.stderr)
-            all_values[ind["id"]] = {
-                "values": {},
-                "inverse": ind["inverse"],
-                "name": ind["name"],
-                "category": ind["category"],
-            }
-
-        # Be polite to the API
         time.sleep(0.5)
 
-    return all_values
+    # Summary
+    print(f"\n{'━' * 55}")
+    print("Opsummering:")
+    for ind_id, data in all_data.items():
+        n = len(data["values"])
+        status = "✓" if n > 0 else "✗"
+        print(f"  {status} {ind_id}: {n} kommuner")
+
+    return all_data
 
 
 # ── Step 3 ─────────────────────────────────────────────────────────────
 
-def step3(all_values, output_file="doughnut_scores.csv"):
+def step3(all_data, output_file="doughnut_scores.csv"):
     """Compute ratios and output CSV."""
     print("\n" + "=" * 60)
     print("TRIN 3: Beregn ratioer og gem CSV")
@@ -377,66 +608,105 @@ def step3(all_values, output_file="doughnut_scores.csv"):
 
     # Compute ratios for each indicator
     ratios_by_indicator = {}
-    for ind_id, data in all_values.items():
-        ratios = compute_ratios(data["values"], inverse=data["inverse"])
+    for ind_id, data in all_data.items():
+        if not data["values"]:
+            print(f"  {ind_id}: ingen data — springes over")
+            continue
+        ratios = compute_ratios(
+            data["values"],
+            inverse=data["inverse"],
+            dk_code=data["nat_code"],
+        )
         ratios_by_indicator[ind_id] = ratios
         print(f"  {ind_id}: {len(ratios)} kommuner med ratio")
 
     # Collect all municipality codes
     all_codes = set()
+    nat_codes = {d["nat_code"] for d in all_data.values()}
     for ratios in ratios_by_indicator.values():
         all_codes.update(ratios.keys())
+    all_codes -= nat_codes
 
-    # Get municipality names from first indicator's raw data
-    # We'll use codes for now and add names from the data
+    # Get municipality names from HISBK data (already fetched)
     municipality_names = {}
-    first_ind = INDICATORS[0]
-    try:
-        rows = fetch_csv_data(first_ind["table"], {"KØN": ["TOT"]})
-        fieldnames = list(rows[0].keys()) if rows else []
-        area_col = fieldnames[0] if fieldnames else "OMRÅDE"
-        for row in rows:
-            area = row[area_col].strip()
-            parts = area.split(maxsplit=1)
-            if len(parts) == 2:
-                code, name = parts
-                municipality_names[code] = name
-            elif len(parts) == 1:
-                municipality_names[parts[0]] = parts[0]
-    except Exception:
-        pass
+    hisbk_data = all_data.get("life_expectancy", {}).get("values", {})
+    if not hisbk_data:
+        # Fetch names separately
+        try:
+            info = get_tableinfo("HISBK")
+            area_var, _ = resolve_area_variable(info)
+            sex_vars = resolve_wanted_variables(
+                [{"purpose": "køn", "candidates": [
+                    {"code": "KØN", "values": ["TOT"]},
+                    {"code": "KOEN", "values": ["TOT"]},
+                ]}], info)
+            rows = fetch_csv_data("HISBK", sex_vars, area_var=area_var)
+            fieldnames = list(rows[0].keys()) if rows else []
+            area_col = fieldnames[0] if fieldnames else "OMRÅDE"
+            for row in rows:
+                area = row[area_col].strip()
+                parts = area.split(maxsplit=1)
+                if len(parts) == 2:
+                    municipality_names[parts[0]] = parts[1]
+        except Exception:
+            pass
+    else:
+        # Re-fetch just to get names
+        try:
+            info = get_tableinfo("HISBK")
+            area_var, _ = resolve_area_variable(info)
+            sex_vars = resolve_wanted_variables(
+                [{"purpose": "køn", "candidates": [
+                    {"code": "KØN", "values": ["TOT"]},
+                    {"code": "KOEN", "values": ["TOT"]},
+                ]}], info)
+            rows = fetch_csv_data("HISBK", sex_vars, area_var=area_var)
+            fieldnames = list(rows[0].keys()) if rows else []
+            area_col = fieldnames[0] if fieldnames else "OMRÅDE"
+            for row in rows:
+                area = row[area_col].strip()
+                parts = area.split(maxsplit=1)
+                if len(parts) == 2:
+                    municipality_names[parts[0]] = parts[1]
+        except Exception:
+            pass
 
     # Build CSV
     indicator_ids = [ind["id"] for ind in INDICATORS]
-    header = ["kommune_kode", "kommune_navn"] + \
-             [f"{iid}_ratio" for iid in indicator_ids] + \
-             ["social_avg", "overall_avg"]
+    active_ids = [iid for iid in indicator_ids if iid in ratios_by_indicator]
+
+    header = (["kommune_kode", "kommune_navn"]
+              + [f"{iid}_ratio" for iid in active_ids]
+              + ["social_avg", "overall_avg"])
 
     output_rows = []
     for code in sorted(all_codes):
-        if code == "000":
-            continue
         name = municipality_names.get(code, code)
         row = {"kommune_kode": code, "kommune_navn": name}
 
         social_scores = []
         all_scores = []
 
-        for ind in INDICATORS:
-            iid = ind["id"]
+        for iid in active_ids:
+            ind_def = next((i for i in INDICATORS if i["id"] == iid), None)
             ratio = ratios_by_indicator.get(iid, {}).get(code)
             row[f"{iid}_ratio"] = ratio if ratio is not None else ""
             if ratio is not None:
                 all_scores.append(ratio)
-                if ind["category"] == "social":
+                if ind_def and ind_def["category"] == "social":
                     social_scores.append(ratio)
 
-        row["social_avg"] = round(sum(social_scores) / len(social_scores), 2) if social_scores else ""
-        row["overall_avg"] = round(sum(all_scores) / len(all_scores), 2) if all_scores else ""
+        row["social_avg"] = (round(sum(social_scores) / len(social_scores), 2)
+                             if social_scores else "")
+        row["overall_avg"] = (round(sum(all_scores) / len(all_scores), 2)
+                              if all_scores else "")
         output_rows.append(row)
 
     # Sort by overall score descending
-    output_rows.sort(key=lambda r: r.get("overall_avg", 0) if r.get("overall_avg", "") != "" else 0, reverse=True)
+    output_rows.sort(
+        key=lambda r: r["overall_avg"] if isinstance(r["overall_avg"], float) else 0,
+        reverse=True,
+    )
 
     # Write CSV
     with open(output_file, "w", newline="", encoding="utf-8") as f:
@@ -445,7 +715,7 @@ def step3(all_values, output_file="doughnut_scores.csv"):
         writer.writerows(output_rows)
 
     print(f"\n✓ CSV gemt: {output_file}")
-    print(f"  {len(output_rows)} kommuner, {len(indicator_ids)} indikatorer")
+    print(f"  {len(output_rows)} kommuner, {len(active_ids)} indikatorer")
 
     # Show top 10
     print(f"\n  Top 10 kommuner (samlet gennemsnit):")
@@ -471,18 +741,18 @@ def main():
     if args.step == 1 or args.step is None:
         step1()
 
+    all_data = None
     if args.step == 2 or args.step is None:
-        all_values = step2()
+        all_data = step2()
 
     if args.step == 3 or args.step is None:
-        if args.step == 3:
-            # Need to fetch data first
-            print("Henter data for alle indikatorer...")
-            all_values = step2()
-        step3(all_values, args.output)
+        if all_data is None:
+            print("Henter data for alle indikatorer først...")
+            all_data = step2()
+        step3(all_data, args.output)
 
     if args.step is not None and args.step < 3:
-        print("\n→ Kør næste trin med: python3 fetch_doughnut_data.py --step", args.step + 1)
+        print(f"\n→ Kør næste trin med: python3 fetch_doughnut_data.py --step {args.step + 1}")
 
 
 if __name__ == "__main__":
