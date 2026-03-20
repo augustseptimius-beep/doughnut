@@ -48,7 +48,7 @@ def load_dotenv():
 
 load_dotenv()
 
-API_BASE = "https://api.klimaregneskabet.dk/v1"
+API_BASE = "https://api.klimaregnskabet.dk/v1"
 PARIS_BUDGET_TONS = 3.0  # ton CO2e per person per year
 
 # All 98 Danish municipality codes
