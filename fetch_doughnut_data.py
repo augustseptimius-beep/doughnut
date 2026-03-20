@@ -508,12 +508,13 @@ def fetch_csv_data(table, variables_dict, area_var="OMRÅDE"):
 
 
 def is_municipality_code(code):
-    """Check if a code is a valid Danish municipality (3-digit, 101-860) or national (000)."""
+    """Check if a code is a valid Danish municipality (3-digit, 101-860) or national (000).
+    Excludes Christiansø (411) — too few inhabitants for meaningful ratios."""
     if code == "000":
         return True
     if len(code) == 3 and code.isdigit():
         num = int(code)
-        return 101 <= num <= 860
+        return 101 <= num <= 860 and num != 411
     return False
 
 
