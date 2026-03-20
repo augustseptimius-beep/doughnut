@@ -190,21 +190,18 @@ INDICATORS = [
     },
     {
         "id": "voter_turnout",
-        "name": "Valgdeltagelse",
-        "table": "VALGK3X",
-        "alt_tables": ["VALGK3"],
+        "name": "Valgdeltagelse (kommunalvalg)",
+        "table": "KVPCT",
+        "alt_tables": ["FVPCT", "VALGK3"],
         "want_variables": [
-            {"purpose": "parti/stemmer", "candidates": [
-                # Look for total/aggregate values
-                {"code": "PARTI", "values": ["Stemme"]},
-                {"code": "PARTI", "values": ["I alt"]},
+            {"purpose": "valgresultat", "candidates": [
+                # KVPCT has VALGRESULTAT variable with turnout %
+                {"code": "VALGRESULTAT", "values": ["DELTAG"]},
+                {"code": "VALGRESULTAT", "values": ["100"]},
             ], "auto_discover": {
-                "search_vars": ["PARTI"],
-                "search_text": ["i alt", "total", "stemme"],
+                "search_vars": ["VALGRESULTAT"],
+                "search_text": ["deltagelse", "valgdeltagelse", "turnout"],
             }},
-            {"purpose": "stemmer/type", "candidates": [
-                {"code": "STEMMER", "values": ["1"]},  # Gyldige stemmer
-            ]},
         ],
         "inverse": False,
         "aggregate": "single",
