@@ -109,8 +109,8 @@ INDICATORS = [
     {
         "id": "employment",
         "name": "Beskæftigelsesfrekvens",
-        "table": "RAS301",
-        "alt_tables": ["RASA11", "RASA1", "AKU121", "AKU100", "RAS300"],
+        "table": "RAS200",
+        "alt_tables": ["RAS301", "RAS302", "RAS201"],
         "want_variables": [
             {"purpose": "køn", "candidates": [
                 {"code": "KØN", "values": ["TOT"]},
@@ -121,21 +121,26 @@ INDICATORS = [
                 {"code": "ALDER", "values": ["15-64"]},
                 {"code": "ALDER", "values": ["TOT"]},
             ]},
+            {"purpose": "herkomst", "candidates": [
+                {"code": "HERKOMST", "values": ["TOT"]},
+            ]},
+            {"purpose": "frekvens", "candidates": [
+                # RAS200 has a FREKVENS variable — pick "beskæftigelsesfrekvens"
+                {"code": "FREKVENS", "values": ["BESKFREKV"]},
+                {"code": "FREKVENS", "values": ["ERHVFREKV"]},
+            ], "auto_discover": {
+                "search_vars": ["FREKVENS"],
+                "search_text": ["beskæft", "erhverv"],
+            }},
             {"purpose": "socio/beskæftigelse", "candidates": [
                 {"code": "SOCIO", "values": ["05"]},
                 {"code": "SOCIO", "values": ["10"]},
                 {"code": "SOCIO", "values": ["11"]},
                 {"code": "BESKST", "values": ["05"]},
-                {"code": "BESKST", "values": ["10"]},
             ], "auto_discover": {
                 "search_vars": ["SOCIO", "BESKST"],
-                "search_text": ["beskæft", "employ", "lønmod", "selvst"],
+                "search_text": ["beskæft", "employ", "lønmod"],
             }},
-            {"purpose": "branche", "candidates": [
-                {"code": "BRANCHE07", "values": ["TOT"]},
-                {"code": "BRANCHE07", "values": ["0-9"]},
-                {"code": "BRANCHE09", "values": ["TOT"]},
-            ]},
         ],
         "inverse": False,
         "aggregate": "single",
