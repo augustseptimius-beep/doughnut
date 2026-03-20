@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Doughnut Economics Dashboard — Data Fetcher v4.3
+Doughnut Economics Dashboard — Data Fetcher v4.4
 
 Fetches baseline scores for all 98 Danish municipalities from Danmarks Statistik API.
 Metadata-driven: calls tableinfo FIRST for every table and adapts variable codes
@@ -123,23 +123,16 @@ INDICATORS = [
             ]},
             {"purpose": "herkomst", "candidates": [
                 {"code": "HERKOMST", "values": ["TOT"]},
+                {"code": "HERKOMST", "values": ["00"]},  # RAS200 uses "00" for "I alt"
             ]},
             {"purpose": "frekvens", "candidates": [
-                # RAS200 has a FREKVENS variable — pick "beskæftigelsesfrekvens"
+                # RAS200 has BEREGNING variable (not FREKVENS)
+                {"code": "BEREGNING", "values": ["BFK"]},  # Beskæftigelsesfrekvens
                 {"code": "FREKVENS", "values": ["BESKFREKV"]},
                 {"code": "FREKVENS", "values": ["ERHVFREKV"]},
             ], "auto_discover": {
-                "search_vars": ["FREKVENS"],
+                "search_vars": ["BEREGNING", "FREKVENS"],
                 "search_text": ["beskæft", "erhverv"],
-            }},
-            {"purpose": "socio/beskæftigelse", "candidates": [
-                {"code": "SOCIO", "values": ["05"]},
-                {"code": "SOCIO", "values": ["10"]},
-                {"code": "SOCIO", "values": ["11"]},
-                {"code": "BESKST", "values": ["05"]},
-            ], "auto_discover": {
-                "search_vars": ["SOCIO", "BESKST"],
-                "search_text": ["beskæft", "employ", "lønmod"],
             }},
         ],
         "inverse": False,
@@ -148,28 +141,33 @@ INDICATORS = [
     },
     {
         "id": "child_poverty",
-        "name": "Børnefattigdom",
+        "name": "Børnefattigdom (Gini-proxy)",
         "table": "IFOR41",
         "alt_tables": ["IFOR12", "IFOR51"],
         "want_variables": [
-            {"purpose": "indkomsttype", "candidates": [
+            {"purpose": "ulighedsmål", "candidates": [
+                # IFOR41 uses ULLIG variable, "70" = Gini-koefficient
+                {"code": "ULLIG", "values": ["70"]},
                 {"code": "INDKOMSTYPE", "values": ["AEKVIDINGS"]},
             ]},
         ],
+        "area_candidates": ["KOMMUNEDK", "OMRÅDE"],
         "inverse": True,
         "aggregate": "single",
         "category": "social",
-        "note": "Fallback: uses Gini/inequality from IFOR41 if child poverty table not found",
+        "note": "Uses Gini coefficient from IFOR41 as proxy for child poverty",
     },
     {
         "id": "gini",
         "name": "Gini-koefficient",
         "table": "IFOR41",
         "want_variables": [
-            {"purpose": "indkomsttype", "candidates": [
+            {"purpose": "ulighedsmål", "candidates": [
+                {"code": "ULLIG", "values": ["70"]},  # Gini-koefficient
                 {"code": "INDKOMSTYPE", "values": ["AEKVIDINGS"]},
             ]},
         ],
+        "area_candidates": ["KOMMUNEDK", "OMRÅDE"],
         "inverse": True,
         "aggregate": "single",
         "category": "social",
@@ -178,19 +176,34 @@ INDICATORS = [
         "id": "vacant_housing",
         "name": "Ubeboede boliger %",
         "table": "BOL101",
-        "want_variables": [],
+        "want_variables": [
+            {"purpose": "beboelse", "candidates": [
+                {"code": "BEBO", "values": ["2000"]},  # Ubeboede boliger
+            ]},
+            {"purpose": "anvendelse", "candidates": [
+                {"code": "ANVENDELSE", "values": ["125", "130", "140"]},  # Parcelhuse + rækkehuse + etageboliger
+            ]},
+        ],
         "inverse": True,
-        "aggregate": "single",
+        "aggregate": "sum",
         "category": "social",
     },
     {
         "id": "voter_turnout",
         "name": "Valgdeltagelse",
-        "table": "VALGK3",
+        "table": "VALGK3X",
+        "alt_tables": ["VALGK3"],
         "want_variables": [
             {"purpose": "parti/stemmer", "candidates": [
+                # Look for total/aggregate values
                 {"code": "PARTI", "values": ["Stemme"]},
                 {"code": "PARTI", "values": ["I alt"]},
+            ], "auto_discover": {
+                "search_vars": ["PARTI"],
+                "search_text": ["i alt", "total", "stemme"],
+            }},
+            {"purpose": "stemmer/type", "candidates": [
+                {"code": "STEMMER", "values": ["1"]},  # Gyldige stemmer
             ]},
         ],
         "inverse": False,
@@ -466,6 +479,7 @@ def fetch_csv_data(table, variables_dict, area_var="OMRÅDE"):
         "table": table,
         "format": "CSV",
         "lang": "da",
+        "valuePresentation": "CodeAndValue",
         "variables": variables,
     }
     raw = api_post("data", payload)
