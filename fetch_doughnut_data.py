@@ -98,8 +98,8 @@ INDICATORS = [
                 "search_text": ["disponib", "disp"],
             }},
             {"purpose": "enhed", "candidates": [
-                {"code": "ENHED", "values": ["110"]},  # Gennemsnit
-                {"code": "ENHED", "values": ["100"]},
+                {"code": "ENHED", "values": ["116"]},  # Gennemsnit for alle personer (kr.)
+                {"code": "ENHED", "values": ["121"]},  # Gennemsnit for personer med indkomsttypen (kr.)
             ]},
         ],
         "inverse": False,
@@ -183,6 +183,15 @@ INDICATORS = [
             {"purpose": "anvendelse", "candidates": [
                 {"code": "ANVENDELSE", "values": ["125", "130", "140"]},  # Parcelhuse + rækkehuse + etageboliger
             ]},
+            {"purpose": "udlejningsforhold", "candidates": [
+                {"code": "UDLFORH", "values": ["*"]},  # Alle udlejningsforhold
+            ]},
+            {"purpose": "ejer", "candidates": [
+                {"code": "EJER", "values": ["*"]},  # Alle ejertyper
+            ]},
+            {"purpose": "opførelsesår", "candidates": [
+                {"code": "OPFØRELSESÅR", "values": ["*"]},  # Alle årgange
+            ]},
         ],
         "inverse": True,
         "aggregate": "sum",
@@ -190,17 +199,18 @@ INDICATORS = [
     },
     {
         "id": "voter_turnout",
-        "name": "Valgdeltagelse (kommunalvalg)",
-        "table": "KVPCT",
-        "alt_tables": ["FVPCT", "VALGK3"],
+        "name": "Valgdeltagelse",
+        "table": "FVKOM",
+        "alt_tables": ["VALGK3"],
         "want_variables": [
             {"purpose": "valgresultat", "candidates": [
-                # KVPCT has VALGRESULTAT variable with turnout %
-                {"code": "VALGRESULTAT", "values": ["DELTAG"]},
-                {"code": "VALGRESULTAT", "values": ["100"]},
+                # FVKOM: Folketingsvalg per kommune med stemmeprocent
+                {"code": "VALRES", "values": ["STEMPCT"]},
+                {"code": "VALGRESULTAT", "values": ["STEMPCT"]},
+                {"code": "VALRES", "values": ["DELTAG"]},
             ], "auto_discover": {
-                "search_vars": ["VALGRESULTAT"],
-                "search_text": ["deltagelse", "valgdeltagelse", "turnout"],
+                "search_vars": ["VALRES", "VALGRESULTAT"],
+                "search_text": ["stemmeprocent", "deltagelse", "valgdeltagelse"],
             }},
         ],
         "inverse": False,
@@ -354,6 +364,13 @@ def resolve_wanted_variables(want_list, info):
 
             if actual_code is None:
                 continue
+
+            # Special case: "*" means all values (pass through to API)
+            if values == ["*"]:
+                resolved[actual_code] = ["*"]
+                print(f"    ✓ {purpose}: {actual_code}=[*] (alle værdier)")
+                found = True
+                break
 
             # Check which values exist
             avail = set(var_map[actual_code].keys())
