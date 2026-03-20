@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Doughnut Economics Dashboard — Data Fetcher v4.2
+Doughnut Economics Dashboard — Data Fetcher v4.3
 
 Fetches baseline scores for all 98 Danish municipalities from Danmarks Statistik API.
 Metadata-driven: calls tableinfo FIRST for every table and adapts variable codes
@@ -109,22 +109,33 @@ INDICATORS = [
     {
         "id": "employment",
         "name": "Beskæftigelsesfrekvens",
-        "table": "RASA1",
-        "alt_tables": ["RAS300", "AKU100"],
+        "table": "RAS301",
+        "alt_tables": ["RASA11", "RASA1", "AKU121", "AKU100", "RAS300"],
         "want_variables": [
             {"purpose": "køn", "candidates": [
                 {"code": "KØN", "values": ["TOT"]},
                 {"code": "KOEN", "values": ["TOT"]},
+            ]},
+            {"purpose": "alder", "candidates": [
+                {"code": "ALDER", "values": ["16-64"]},
+                {"code": "ALDER", "values": ["15-64"]},
+                {"code": "ALDER", "values": ["TOT"]},
             ]},
             {"purpose": "socio/beskæftigelse", "candidates": [
                 {"code": "SOCIO", "values": ["05"]},
                 {"code": "SOCIO", "values": ["10"]},
                 {"code": "SOCIO", "values": ["11"]},
                 {"code": "BESKST", "values": ["05"]},
+                {"code": "BESKST", "values": ["10"]},
             ], "auto_discover": {
                 "search_vars": ["SOCIO", "BESKST"],
                 "search_text": ["beskæft", "employ", "lønmod", "selvst"],
             }},
+            {"purpose": "branche", "candidates": [
+                {"code": "BRANCHE07", "values": ["TOT"]},
+                {"code": "BRANCHE07", "values": ["0-9"]},
+                {"code": "BRANCHE09", "values": ["TOT"]},
+            ]},
         ],
         "inverse": False,
         "aggregate": "single",
@@ -380,6 +391,58 @@ def resolve_wanted_variables(want_list, info):
     return resolved
 
 
+def auto_fill_missing_variables(resolved, info, area_var):
+    """
+    DST API requires ALL variables to be specified.
+    For any table variable not yet in resolved (and not area/Tid),
+    try to auto-select a total/aggregate value.
+    """
+    resolved_upper = {k.upper() for k in resolved}
+    skip = {area_var.upper(), "TID"} if area_var else {"TID"}
+
+    for v in info.get("variables", []):
+        vid = v["id"]
+        if vid.upper() in skip or vid.upper() in resolved_upper:
+            continue
+
+        vals = v.get("values", [])
+        # Try to find a total/aggregate value
+        total_val = None
+        for val in vals:
+            val_id = val.get("id", "")
+            val_text = val.get("text", "").lower()
+            if val_id == "TOT" or "i alt" in val_text or "total" in val_text:
+                total_val = val_id
+                break
+        if total_val is None:
+            # Try common total codes
+            for candidate in ["TOT", "IALT", "000", "0-9", "99"]:
+                for val in vals:
+                    if val.get("id", "") == candidate:
+                        total_val = candidate
+                        break
+                if total_val:
+                    break
+        if total_val is None and len(vals) == 1:
+            # If only one value exists, use it
+            total_val = vals[0].get("id", "")
+
+        if total_val:
+            resolved[vid] = [total_val]
+            val_text = next(
+                (val.get("text", "") for val in vals if val.get("id") == total_val), ""
+            )
+            print(f"    ✓ auto-fill {vid}=[{total_val}] ({val_text})")
+        else:
+            # Use first value as last resort, but warn
+            if vals:
+                first_val = vals[0].get("id", "")
+                resolved[vid] = [first_val]
+                print(f"    ⚠ auto-fill {vid}=[{first_val}] (første værdi, ingen total fundet)")
+
+    return resolved
+
+
 # ── Data fetching ─────────────────────────────────────────────────────
 
 def fetch_csv_data(table, variables_dict, area_var="OMRÅDE"):
@@ -500,6 +563,9 @@ def fetch_indicator(ind):
         # Resolve wanted variables
         resolved_vars = resolve_wanted_variables(ind.get("want_variables", []), info)
 
+        # Auto-fill any mandatory variables not yet resolved
+        resolved_vars = auto_fill_missing_variables(resolved_vars, info, area_var)
+
         # Fetch data
         print(f"  → Henter data: {tbl} [{area_var}=*, {resolved_vars}, Tid=(1)]")
         try:
@@ -543,6 +609,9 @@ def step1():
         ]}],
         info
     )
+
+    # Auto-fill any remaining mandatory variables
+    sex_vars = auto_fill_missing_variables(sex_vars, info, area_var)
 
     print(f"\n→ Henter data...")
     rows = fetch_csv_data("HISBK", sex_vars, area_var=area_var)
