@@ -104,15 +104,52 @@ export interface EcologicalDimension {
 export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
   {
     id: "climate_territorial",
-    name: "Klima (territorial)",
+    name: "Klima (territorial CO2 pr. indb.)",
     source: "https://klimaregnskabet.dk",
     unit: "ton CO₂e/person",
     boundary: "3 ton CO₂e/person/år (Paris-budget)",
   },
-  { id: "climate_consumption", name: "Klima (forbrug)" },
+  {
+    id: "climate_consumption",
+    name: "Klima (forbrug)",
+    source: "Energistyrelsen GA25",
+    unit: "ton CO₂e/person",
+    boundary: "2,5 ton CO₂e/person/år (Paris-budget, forbrugsbaseret)",
+  },
+  {
+    id: "co2_energy",
+    name: "CO2 fra energisektoren pr. indb.",
+    source: "https://klimaregnskabet.dk",
+    unit: "ton CO₂e/person",
+  },
+  {
+    id: "co2_transport",
+    name: "CO2 fra transport pr. indb.",
+    source: "https://klimaregnskabet.dk",
+    unit: "ton CO₂e/person",
+  },
+  {
+    id: "ve_share",
+    name: "VE-andel af endeligt energiforbrug",
+    source: "https://klimaregnskabet.dk",
+    unit: "%",
+    boundary: "100% VE (klimaneutralitet)",
+  },
+  {
+    id: "ve_capacity_mw",
+    name: "Installeret VE-kapacitet",
+    source: "https://api.energidataservice.dk",
+    unit: "MW",
+  },
   { id: "water", name: "Vandmiljø" },
   { id: "biodiversity", name: "Biodiversitet" },
-  { id: "land_use", name: "Arealanvendelse" },
+  {
+    id: "land_use",
+    name: "Arealanvendelse",
+    source: "DST AREALDK2 + ARE207",
+    unit: "% naturområder",
+    boundary: "30% naturområder (EU Biodiversity Strategy 2030)",
+  },
   { id: "waste_resources", name: "Affald & ressourcer" },
 ];
 

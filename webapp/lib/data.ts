@@ -24,8 +24,11 @@ import { INDICATORS, ECOLOGICAL_DIMENSIONS, type KommuneData } from "./shared";
 
 let cachedData: KommuneData[] | null = null;
 
-function loadClimateData(): Record<string, number | null> {
-  const csvPath = path.join(process.cwd(), "..", "climate_scores.csv");
+function loadEcoCsv(
+  filename: string,
+  ratioColumn: string
+): Record<string, number | null> {
+  const csvPath = path.join(process.cwd(), "..", filename);
   try {
     if (!fs.existsSync(csvPath)) return {};
     const raw = fs.readFileSync(csvPath, "utf-8");
@@ -43,7 +46,7 @@ function loadClimateData(): Record<string, number | null> {
       });
 
       const kode = row["kommune_kode"];
-      const ratio = row["climate_territorial_ratio"];
+      const ratio = row[ratioColumn];
       if (kode) {
         result[kode] = ratio && ratio !== "" ? parseFloat(ratio) : null;
       }
@@ -63,7 +66,9 @@ export function loadData(): KommuneData[] {
   const headers = lines[0].split(",");
 
   // Load ecological data
-  const climateData = loadClimateData();
+  const climateData = loadEcoCsv("climate_scores.csv", "climate_territorial_ratio");
+  const consumptionData = loadEcoCsv("consumption_scores.csv", "climate_consumption_ratio");
+  const landUseData = loadEcoCsv("land_use_scores.csv", "land_use_ratio");
 
   const data: KommuneData[] = [];
   for (let i = 1; i < lines.length; i++) {
@@ -83,11 +88,29 @@ export function loadData(): KommuneData[] {
     // Ecological ratios
     const eco_ratios: Record<string, number | null> = {};
     const kode = row["kommune_kode"] || "";
+
+    // Legacy / fremtidige dimensioner fra separate CSV-filer
+    const ecoSources: Record<string, Record<string, number | null>> = {
+      climate_territorial: climateData,
+      climate_consumption: consumptionData,
+      land_use: landUseData,
+    };
+
+    // Klimaregnskabet + Energi Data Service: kolonner direkte i doughnut_scores.csv
+    const ecoFromScoresCsv: Record<string, string> = {
+      climate_territorial: "co2_per_capita_ratio",
+      co2_energy: "co2_energy_ratio",
+      co2_transport: "co2_transport_ratio",
+      ve_share: "ve_share_ratio",
+      ve_capacity_mw: "ve_capacity_mw_ratio",
+    };
+
     for (const dim of ECOLOGICAL_DIMENSIONS) {
-      if (dim.id === "climate_territorial") {
-        eco_ratios[dim.id] = climateData[kode] ?? null;
+      const inlineCol = ecoFromScoresCsv[dim.id];
+      if (inlineCol && row[inlineCol] && row[inlineCol] !== "") {
+        eco_ratios[dim.id] = parseFloat(row[inlineCol]);
       } else {
-        eco_ratios[dim.id] = null; // No data yet
+        eco_ratios[dim.id] = ecoSources[dim.id]?.[kode] ?? null;
       }
     }
 

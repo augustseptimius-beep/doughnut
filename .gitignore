@@ -1,2 +1,7 @@
 __pycache__/
 *.pyc
+*.bak
+.DS_Store
+node_modules/
+.next/
+*.copy.py

@@ -19,12 +19,25 @@ import argparse
 import csv
 import io
 import json
+import os
 import sys
 import time
 import urllib.request
 import urllib.error
+import urllib.parse
 
 API_BASE = "https://api.statbank.dk/v1"
+
+# ── Klimaregnskabet API ───────────────────────────────────────────────
+KLIMAREGNSKABET_BASE = "https://api.klimaregneskabet.dk/v1"
+KLIMAREGNSKABET_YEAR = 2023
+KLIMAREGNSKABET_API_KEY = os.environ.get(
+    "KLIMAREGNSKABET_API_KEY",
+    "72549c4a2b417163ccc0edd32e9d09221e86c178478adb6bedc69fd350b7b0f5"
+)
+
+# ── Energi Data Service ───────────────────────────────────────────────
+ENERGIDS_BASE = "https://api.energidataservice.dk"
 
 
 # ── Indicator definitions ──────────────────────────────────────────────
@@ -213,6 +226,71 @@ INDICATORS = [
     # valgdeltagelse as percentage. KVPCT/FVPCT only have national data.
     # FVKOM/VALGK3 only have absolute vote counts, not turnout %.
     # Could be re-added if a suitable data source is found.
+]
+
+# ── Ecological indicator definitions (Klimaregnskabet + Energi Data Service) ──
+# These are fetched via separate APIs — not DST statbank.
+# matcher: dict of {field: substring} all of which must match (case-insensitive)
+# in the JSON response object to identify the correct data point.
+ECOLOGICAL_INDICATORS = [
+    {
+        "id": "co2_per_capita",
+        "name": "CO2-udledning pr. indb. (ton CO2e)",
+        "source": "klimaregnskabet",
+        "matcher": {
+            "datatype": "nøgletal",
+            "sektor": "samlet",
+            "type": "samlet co2-udledning",
+            "enhed": "ton co2e/indb.",
+        },
+        "inverse": True,
+        "category": "ecological",
+    },
+    {
+        "id": "co2_energy",
+        "name": "CO2 fra energisektoren pr. indb.",
+        "source": "klimaregnskabet",
+        "matcher": {
+            "datatype": "nøgletal",
+            "sektor": "energi",
+            "type": "samlet co2-udledning",
+            "enhed": "ton co2e/indb.",
+        },
+        "inverse": True,
+        "category": "ecological",
+    },
+    {
+        "id": "co2_transport",
+        "name": "CO2 fra transport pr. indb.",
+        "source": "klimaregnskabet",
+        "matcher": {
+            "datatype": "nøgletal",
+            "sektor": "transport",
+            "type": "samlet co2-udledning",
+            "enhed": "ton co2e/indb.",
+        },
+        "inverse": True,
+        "category": "ecological",
+    },
+    {
+        "id": "ve_share",
+        "name": "VE-andel af endeligt energiforbrug (%)",
+        "source": "klimaregnskabet",
+        "matcher": {
+            "datatype": "resultat - energi",
+            "enhed": "%",
+            "kategori": "ve-andel",
+        },
+        "inverse": False,
+        "category": "ecological",
+    },
+    {
+        "id": "ve_capacity_mw",
+        "name": "Installeret VE-kapacitet (MW)",
+        "source": "energidataservice",
+        "inverse": False,
+        "category": "ecological",
+    },
 ]
 
 
@@ -471,7 +549,143 @@ def auto_fill_missing_variables(resolved, info, area_var):
     return resolved
 
 
-# ── Data fetching ─────────────────────────────────────────────────────
+# ── Klimaregnskabet helpers ───────────────────────────────────────────
+
+def _normalize_key(d, key):
+    """Find a dict value case-insensitively. Returns empty string if not found."""
+    key_lower = key.lower()
+    for k, v in d.items():
+        if k.lower() == key_lower:
+            return str(v) if v is not None else ""
+    return ""
+
+
+def _matches(record, matcher):
+    """Return True if all matcher conditions are satisfied (substring, case-insensitive)."""
+    for field, expected in matcher.items():
+        actual = _normalize_key(record, field).lower()
+        if expected.lower() not in actual:
+            return False
+    return True
+
+
+def fetch_klimaregnskabet_kommune(kommune_kode, year=KLIMAREGNSKABET_YEAR):
+    """
+    Fetch emissions data for one municipality from Klimaregnskabet API.
+    Returns list of data point dicts, or [] on error.
+    Endpoint: GET /v1/emissions?kommune={kode}&year={year}
+    """
+    url = f"{KLIMAREGNSKABET_BASE}/emissions?kommune={kommune_kode}&year={year}"
+    req = urllib.request.Request(
+        url,
+        headers={"x-api-key": KLIMAREGNSKABET_API_KEY},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            raw = resp.read().decode("utf-8")
+            return json.loads(raw)
+    except Exception as e:
+        print(f"  ⚠ Klimaregnskabet fejl for {kommune_kode}: {e}", file=sys.stderr)
+        return []
+
+
+def extract_ecological_from_response(records, indicator):
+    """
+    Find and return the numeric value for an ecological indicator
+    in the API response records using the indicator's matcher dict.
+    Returns float or None.
+    """
+    matcher = indicator.get("matcher", {})
+    for rec in records:
+        if _matches(rec, matcher):
+            # Try common value field names
+            for field in ("vaerdi", "value", "Værdi", "Value"):
+                raw = _normalize_key(rec, field)
+                if raw and raw not in ("", "null", "None"):
+                    try:
+                        return float(raw.replace(",", "."))
+                    except ValueError:
+                        pass
+    return None
+
+
+def fetch_all_klimaregnskabet(kommune_codes, year=KLIMAREGNSKABET_YEAR):
+    """
+    Fetch ecological indicator values for all municipalities.
+    Returns dict: {indicator_id: {kommune_kode: float}}
+    Makes one API call per municipality with polite rate limiting.
+    """
+    eco_ids = [i["id"] for i in ECOLOGICAL_INDICATORS if i["source"] == "klimaregnskabet"]
+    result = {iid: {} for iid in eco_ids}
+
+    print(f"\n→ Henter Klimaregnskabet data ({year}) for {len(kommune_codes)} kommuner...")
+    for i, kode in enumerate(sorted(kommune_codes)):
+        records = fetch_klimaregnskabet_kommune(kode, year)
+        if not records:
+            continue
+        for ind in ECOLOGICAL_INDICATORS:
+            if ind["source"] != "klimaregnskabet":
+                continue
+            val = extract_ecological_from_response(records, ind)
+            if val is not None:
+                result[ind["id"]][kode] = val
+
+        if (i + 1) % 10 == 0:
+            print(f"  {i + 1}/{len(kommune_codes)} kommuner hentet...")
+        time.sleep(0.3)
+
+    for iid in eco_ids:
+        n = len(result[iid])
+        status = "✓" if n > 0 else "✗"
+        print(f"  {status} {iid}: {n} kommuner")
+
+    return result
+
+
+# ── Energi Data Service helpers ───────────────────────────────────────
+
+def fetch_energids_ve_capacity():
+    """
+    Fetch latest installed VE capacity (wind + solar) per municipality
+    from Energi Data Service CapacityPerMunicipality dataset.
+    Returns dict: {kommune_kode_str: total_mw_float}
+    Municipality codes are zero-padded to 3 digits to match DST format.
+    """
+    url = (f"{ENERGIDS_BASE}/dataset/CapacityPerMunicipality"
+           "?limit=0&sort=Month desc")
+    try:
+        with urllib.request.urlopen(url, timeout=30) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except Exception as e:
+        print(f"  ⚠ Energi Data Service fejl: {e}", file=sys.stderr)
+        return {}
+
+    records = data.get("records", [])
+    if not records:
+        return {}
+
+    # Get the latest month for each municipality
+    latest = {}
+    for rec in records:
+        kode_raw = rec.get("MunicipalityNo") or rec.get("municipalityNo", "")
+        month = rec.get("Month") or rec.get("month", "")
+        kode = str(kode_raw).zfill(3)
+        if kode not in latest or month > latest[kode]["month"]:
+            latest[kode] = {"month": month, "rec": rec}
+
+    result = {}
+    for kode, entry in latest.items():
+        rec = entry["rec"]
+        wind = float(rec.get("OnshoreWindMW") or rec.get("onshoreWindMW") or 0)
+        solar = float(rec.get("SolarPowerMW") or rec.get("solarPowerMW") or 0)
+        other = float(rec.get("GenerationUnitsMW") or rec.get("generationUnitsMW") or 0)
+        result[kode] = round(wind + solar + other, 2)
+
+    print(f"  ✓ ve_capacity_mw: {len(result)} kommuner fra Energi Data Service")
+    return result
+
+
+# ── DST Data fetching ──────────────────────────────────────────────────
 
 def fetch_csv_data(table, variables_dict, area_var="OMRÅDE"):
     """
@@ -718,13 +932,14 @@ def step1():
 # ── Step 2 ─────────────────────────────────────────────────────────────
 
 def step2():
-    """Fetch all 8 indicators, verifying metadata first."""
+    """Fetch all indicators: DST social data + ecological data from external APIs."""
     print("=" * 60)
-    print("TRIN 2: Hent alle 8 indikatorer (metadata-drevet)")
+    print("TRIN 2: Hent alle indikatorer (DST + Klimaregnskabet + Energi Data Service)")
     print("=" * 60)
 
     all_data = {}
 
+    # ── DST sociale indikatorer ───────────────────────────────────────
     for ind in INDICATORS:
         print(f"\n{'━' * 55}")
         print(f"▶ {ind['id']}: {ind['name']}")
@@ -742,6 +957,43 @@ def step2():
         }
 
         time.sleep(0.5)
+
+    # ── Energi Data Service: VE-kapacitet (åbent API) ─────────────────
+    print(f"\n{'━' * 55}")
+    print("▶ ve_capacity_mw: Installeret VE-kapacitet (Energi Data Service)")
+    ve_cap = fetch_energids_ve_capacity()
+    all_data["ve_capacity_mw"] = {
+        "values": ve_cap,
+        "nat_code": "000",
+        "inverse": False,
+        "name": "Installeret VE-kapacitet (MW)",
+        "category": "ecological",
+    }
+
+    # ── Klimaregnskabet (kræver API-nøgle) ────────────────────────────
+    print(f"\n{'━' * 55}")
+    print("▶ Klimaregnskabet — CO2 og VE-andel (kræver KLIMAREGNSKABET_API_KEY)")
+    if not KLIMAREGNSKABET_API_KEY:
+        print("  ⚠ KLIMAREGNSKABET_API_KEY ikke sat — springer over")
+    else:
+        # Collect all municipality codes from DST data
+        dst_codes = set()
+        for data in all_data.values():
+            dst_codes.update(data["values"].keys())
+        dst_codes.discard("000")
+
+        eco_values = fetch_all_klimaregnskabet(dst_codes)
+
+        for ind in ECOLOGICAL_INDICATORS:
+            if ind["source"] != "klimaregnskabet":
+                continue
+            all_data[ind["id"]] = {
+                "values": eco_values.get(ind["id"], {}),
+                "nat_code": "mean",   # no national code — use mean of municipalities
+                "inverse": ind["inverse"],
+                "name": ind["name"],
+                "category": "ecological",
+            }
 
     # Summary
     print(f"\n{'━' * 55}")
@@ -771,7 +1023,7 @@ def step3(all_data, output_file="doughnut_scores.csv"):
         ratios = compute_ratios(
             data["values"],
             inverse=data["inverse"],
-            dk_code=data["nat_code"],
+            dk_code=data["nat_code"],   # "mean" triggers auto-average for ecological
         )
         ratios_by_indicator[ind_id] = ratios
         print(f"  {ind_id}: {len(ratios)} kommuner med ratio")
@@ -827,13 +1079,14 @@ def step3(all_data, output_file="doughnut_scores.csv"):
         except Exception:
             pass
 
-    # Build CSV
-    indicator_ids = [ind["id"] for ind in INDICATORS]
-    active_ids = [iid for iid in indicator_ids if iid in ratios_by_indicator]
+    # Build CSV — merge DST INDICATORS + ECOLOGICAL_INDICATORS for column order
+    all_indicator_defs = list(INDICATORS) + list(ECOLOGICAL_INDICATORS)
+    all_indicator_ids = [ind["id"] for ind in all_indicator_defs]
+    active_ids = [iid for iid in all_indicator_ids if iid in ratios_by_indicator]
 
     header = (["kommune_kode", "kommune_navn"]
               + [f"{iid}_ratio" for iid in active_ids]
-              + ["social_avg", "overall_avg"])
+              + ["social_avg", "ecological_avg", "overall_avg"])
 
     output_rows = []
     for code in sorted(all_codes):
@@ -841,19 +1094,25 @@ def step3(all_data, output_file="doughnut_scores.csv"):
         row = {"kommune_kode": code, "kommune_navn": name}
 
         social_scores = []
+        ecological_scores = []
         all_scores = []
 
         for iid in active_ids:
-            ind_def = next((i for i in INDICATORS if i["id"] == iid), None)
+            ind_def = next((i for i in all_indicator_defs if i["id"] == iid), None)
             ratio = ratios_by_indicator.get(iid, {}).get(code)
             row[f"{iid}_ratio"] = ratio if ratio is not None else ""
             if ratio is not None:
                 all_scores.append(ratio)
-                if ind_def and ind_def["category"] == "social":
+                cat = ind_def["category"] if ind_def else "social"
+                if cat == "social":
                     social_scores.append(ratio)
+                elif cat == "ecological":
+                    ecological_scores.append(ratio)
 
         row["social_avg"] = (round(sum(social_scores) / len(social_scores), 2)
                              if social_scores else "")
+        row["ecological_avg"] = (round(sum(ecological_scores) / len(ecological_scores), 2)
+                                 if ecological_scores else "")
         row["overall_avg"] = (round(sum(all_scores) / len(all_scores), 2)
                               if all_scores else "")
         output_rows.append(row)
