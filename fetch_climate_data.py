@@ -19,12 +19,13 @@ Paris budget = 3 ton CO2e per person per year
 
 import argparse
 import csv
-import json
 import os
 import sys
 import time
-import urllib.request
-import urllib.error
+
+import requests
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Try to load .env file
 def load_dotenv():
@@ -72,30 +73,26 @@ def api_get(endpoint, params=None, retries=4):
         sys.exit(1)
 
     url = f"{API_BASE}/{endpoint}"
-    if params:
-        query = "&".join(f"{k}={v}" for k, v in params.items())
-        url = f"{url}?{query}"
-
-    req = urllib.request.Request(url, headers={"x-api-key": api_key})
 
     for attempt in range(retries):
         try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                return json.loads(resp.read().decode("utf-8"))
-        except urllib.error.HTTPError as e:
-            body = e.read().decode("utf-8", errors="replace")
-            print(f"  HTTP {e.code} for {url} (forsøg {attempt+1}): {body}",
-                  file=sys.stderr)
-            if e.code == 401:
-                print("  → Ugyldig API-nøgle. Tjek KLIMAREGNSKAB_API_KEY.", file=sys.stderr)
+            resp = requests.get(url, params=params,
+                                headers={"x-api-key": api_key}, timeout=30,
+                                verify=False)
+            if resp.status_code == 401:
+                print(f"  HTTP 401 for {url}: Ugyldig API-nøgle.", file=sys.stderr)
                 sys.exit(1)
-            if attempt < retries - 1:
-                wait = 2 ** (attempt + 1)
-                print(f"  → Venter {wait}s før næste forsøg...", file=sys.stderr)
-                time.sleep(wait)
-            else:
-                raise
-        except urllib.error.URLError as e:
+            if resp.status_code >= 400:
+                print(f"  HTTP {resp.status_code} for {url} (forsøg {attempt+1}): {resp.text[:200]}",
+                      file=sys.stderr)
+                if attempt < retries - 1:
+                    wait = 2 ** (attempt + 1)
+                    print(f"  → Venter {wait}s...", file=sys.stderr)
+                    time.sleep(wait)
+                    continue
+                resp.raise_for_status()
+            return resp.json()
+        except requests.RequestException as e:
             print(f"  Netværksfejl for {url} (forsøg {attempt+1}): {e}",
                   file=sys.stderr)
             if attempt < retries - 1:
