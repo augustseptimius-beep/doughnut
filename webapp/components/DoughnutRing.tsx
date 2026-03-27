@@ -77,7 +77,6 @@ const SOCIAL_SYMBOLS: Record<string, string> = {
   velfaerd: "💰",
   bolig: "🏠",
   samskabelse: "🗳",
-  paavirkninger_udenfor: "🌍",
   faellesskaber: "🤝",
   lokalsamfund: "🏘",
   mobilitet: "🚲",

@@ -244,12 +244,6 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     indicatorIds: ["voter_turnout", "music_school"],
   },
   {
-    id: "paavirkninger_udenfor",
-    name: "Påvirkninger udenfor kommunen",
-    description: "Kommunens forbrugsbaserede klimaaftryk - de udledninger der sker uden for kommunens grænser som følge af borgernes forbrug.",
-    indicatorIds: [],
-  },
-  {
     id: "faellesskaber",
     name: "Fællesskaber",
     description: "Sociale netværk, fællesskaber og tilhørsforhold - modvirker ensomhed og styrker sammenhængskraft.",

@@ -58,11 +58,6 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     limitations: "Stemmedeltagelse fanger kun formel demokratisk deltagelse. Musikskoleelever er en proxy for kulturelt engagement, men dækker primært børn og unge.",
     csvFile: "democracy_scores.csv + samskabelse_extra_scores.csv",
   },
-  paavirkninger_udenfor: {
-    id: "paavirkninger_udenfor",
-    scoring: "Denne kategori har ingen sociale indikatorer. Forbrugsbaseret CO2 er flyttet til det økologiske loft (se 'Forbrugsbaseret CO2' under Økologisk loft).",
-    limitations: "Kategorien afventer relevante sociale indikatorer, f.eks. import af social udbytning.",
-  },
   faellesskaber: {
     id: "faellesskaber",
     scoring: "Gennemsnit af to indikatorer: (1) Idrætsmedlemskab som andel af befolkningen (IDRAKT02) - direkte ratio til landsgennemsnit. (2) Anmeldte forbrydelser pr. 1.000 indbyggere (STRAF11) - inverteret ratio (lavere kriminalitet = højere score). Score 100 = landsgennemsnit.",
