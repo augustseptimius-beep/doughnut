@@ -67,7 +67,7 @@ export function loadData(): KommuneData[] {
 
   // Load ecological data
   const climateData = loadEcoCsv("climate_scores.csv", "climate_territorial_ratio");
-  const consumptionData = loadEcoCsv("consumption_scores.csv", "climate_consumption_ratio");
+  const consumptionData = loadEcoCsv("consumption_scores.csv", "recycling_ratio");
   const landUseData = loadEcoCsv("land_use_scores.csv", "land_use_ratio");
 
   // Load democracy data
@@ -102,6 +102,7 @@ export function loadData(): KommuneData[] {
     const ecoSources: Record<string, Record<string, number | null>> = {
       climate_territorial: climateData,
       climate_consumption: consumptionData,
+      waste_resources: consumptionData,
       land_use: landUseData,
     };
 

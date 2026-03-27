@@ -158,7 +158,13 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     unit: "% naturområder",
     boundary: "30% naturområder (EU Biodiversity Strategy 2030)",
   },
-  { id: "waste_resources", name: "Affald & ressourcer" },
+  {
+    id: "waste_resources",
+    name: "Affald & ressourcer",
+    source: "Miljøstyrelsen, Affaldsstatistik 2023",
+    unit: "% reelt genanvendt",
+    boundary: "65% genanvendelse (EU-målsætning 2035)",
+  },
 ];
 
 // --- CATEGORY SCORE COMPUTATION ---
