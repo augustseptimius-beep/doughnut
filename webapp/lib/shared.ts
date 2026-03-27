@@ -64,6 +64,14 @@ export const INDICATORS: Indicator[] = [
     category: "social",
     inverse: true,
   },
+  {
+    id: "voter_turnout",
+    name: "Stemmedeltagelse kommunalvalg",
+    table: "LABY08",
+    source: "https://www.statistikbanken.dk/LABY08",
+    category: "social",
+    inverse: false,
+  },
 ];
 
 // --- SOCIAL CATEGORIES ---
@@ -88,7 +96,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     name: "Bolig & infrastruktur",
     indicatorIds: ["vacant_housing"],
   },
-  { id: "democracy", name: "Demokrati & fællesskab", indicatorIds: [] },
+  { id: "democracy", name: "Demokrati & fællesskab", indicatorIds: ["voter_turnout"] },
 ];
 
 // --- ECOLOGICAL CEILING ---

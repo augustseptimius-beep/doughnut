@@ -28,7 +28,7 @@ function loadEcoCsv(
   filename: string,
   ratioColumn: string
 ): Record<string, number | null> {
-  const csvPath = path.join(process.cwd(), "..", filename);
+  const csvPath = path.join(process.cwd(), "..", "data", filename);
   try {
     if (!fs.existsSync(csvPath)) return {};
     const raw = fs.readFileSync(csvPath, "utf-8");
@@ -60,7 +60,7 @@ function loadEcoCsv(
 export function loadData(): KommuneData[] {
   if (cachedData) return cachedData;
 
-  const csvPath = path.join(process.cwd(), "..", "doughnut_scores.csv");
+  const csvPath = path.join(process.cwd(), "..", "data", "doughnut_scores.csv");
   const raw = fs.readFileSync(csvPath, "utf-8");
   const lines = raw.trim().split("\n");
   const headers = lines[0].split(",");
@@ -69,6 +69,9 @@ export function loadData(): KommuneData[] {
   const climateData = loadEcoCsv("climate_scores.csv", "climate_territorial_ratio");
   const consumptionData = loadEcoCsv("consumption_scores.csv", "climate_consumption_ratio");
   const landUseData = loadEcoCsv("land_use_scores.csv", "land_use_ratio");
+
+  // Load democracy data
+  const democracyData = loadEcoCsv("democracy_scores.csv", "voter_turnout_ratio");
 
   const data: KommuneData[] = [];
   for (let i = 1; i < lines.length; i++) {
@@ -83,6 +86,12 @@ export function loadData(): KommuneData[] {
       const key = `${ind.id}_ratio`;
       const val = row[key];
       ratios[ind.id] = val && val !== "" ? parseFloat(val) : null;
+    }
+
+    // Inject democracy indicators from separate CSV
+    const kommuneKode = row["kommune_kode"] || "";
+    if (democracyData[kommuneKode] !== undefined) {
+      ratios["voter_turnout"] = democracyData[kommuneKode];
     }
 
     // Ecological ratios

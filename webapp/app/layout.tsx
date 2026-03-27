@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="da">
       <body className="min-h-screen bg-gray-50 text-gray-900 antialiased">
         <header className="border-b border-gray-200 bg-white">
-          <div className="mx-auto max-w-6xl px-4 py-4">
+          <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
             <a href="/" className="flex items-center gap-3 no-underline">
               <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-emerald-600">
                 <div className="h-4 w-4 rounded-full border-2 border-amber-400" />
@@ -25,6 +25,14 @@ export default function RootLayout({
                 Doughnut Economics — Danmark
               </h1>
             </a>
+            <nav className="flex items-center gap-5 text-sm">
+              <a href="/" className="text-gray-500 hover:text-gray-900 transition-colors">
+                Kommuner
+              </a>
+              <a href="/om" className="text-gray-500 hover:text-gray-900 transition-colors">
+                Om platformen
+              </a>
+            </nav>
           </div>
         </header>
 
@@ -41,7 +49,14 @@ export default function RootLayout({
             >
               Danmarks Statistik
             </a>{" "}
-            (CC BY 4.0) &middot; Metodik: Doughnut Economics v4.1 &middot;{" "}
+            (CC BY 4.0) &middot; Seneste datapunkt: 2022-2023 &middot; Metodik:{" "}
+            <a
+              href="/om"
+              className="underline hover:text-gray-700"
+            >
+              Doughnut Economics v4.1
+            </a>{" "}
+            &middot;{" "}
             <a
               href="https://doughnuteconomics.org"
               className="underline hover:text-gray-700"

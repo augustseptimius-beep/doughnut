@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import type { KommuneData } from "@/lib/shared";
 
 interface KommuneCompareProps {
@@ -13,6 +13,20 @@ export default function KommuneCompare({ allKommuner, current, onSelect }: Kommu
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState<KommuneData | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
 
   const filtered = allKommuner
     .filter(
@@ -23,7 +37,7 @@ export default function KommuneCompare({ allKommuner, current, onSelect }: Kommu
     .slice(0, 20);
 
   return (
-    <div className="relative">
+    <div ref={containerRef} className="relative">
       {selected ? (
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-600">Sammenligner med:</span>
