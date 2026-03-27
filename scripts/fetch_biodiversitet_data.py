@@ -158,9 +158,12 @@ with open(OUTPUT_FIL, "w", newline="", encoding="utf-8") as f:
         pct_u = round(s["pct_uerstattelig"] or 0.0, 2)
         mean  = round(s["mean"]             or 0.0, 2)
 
-        # Ratio: faktisk andel / mål × 100 (>100 = inden for grænsen)
-        bio_ratio = round(pct_v / MÅL_VASENTLIG    * 100, 2)
-        uer_ratio = round(pct_u / MÅL_UERSTATTELIG * 100, 2)
+        # Ratio: mål / faktisk andel × 100 - samme konvention som CO2:
+        # ratio > 100 = under målet (shortfall/dårligt), ratio < 100 = over målet (godt)
+        # Eks: 15% natur ud af 30% mål → ratio = (30/15)*100 = 200 (shortfall)
+        #      45% natur ud af 30% mål → ratio = (30/45)*100 = 67  (inden for grænsen)
+        bio_ratio = round(MÅL_VASENTLIG    / pct_v * 100, 2) if pct_v > 0 else 999.0
+        uer_ratio = round(MÅL_UERSTATTELIG / pct_u * 100, 2) if pct_u > 0 else 999.0
 
         writer.writerow([
             row["kode"],
