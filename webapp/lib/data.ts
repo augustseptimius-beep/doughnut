@@ -101,18 +101,13 @@ export function loadData(): KommuneData[] {
     // Legacy / fremtidige dimensioner fra separate CSV-filer
     const ecoSources: Record<string, Record<string, number | null>> = {
       climate_territorial: climateData,
-      climate_consumption: consumptionData,
       waste_resources: consumptionData,
       land_use: landUseData,
     };
 
-    // Klimaregnskabet + Energi Data Service: kolonner direkte i doughnut_scores.csv
+    // Klimaregnskabet: kolonner direkte i doughnut_scores.csv
     const ecoFromScoresCsv: Record<string, string> = {
       climate_territorial: "co2_per_capita_ratio",
-      co2_energy: "co2_energy_ratio",
-      co2_transport: "co2_transport_ratio",
-      ve_share: "ve_share_ratio",
-      ve_capacity_mw: "ve_capacity_mw_ratio",
     };
 
     for (const dim of ECOLOGICAL_DIMENSIONS) {

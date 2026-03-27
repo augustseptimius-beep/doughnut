@@ -104,6 +104,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
 export interface EcologicalDimension {
   id: string;
   name: string;
+  shortName: string; // Abbreviated label for SVG ring
   source?: string;
   unit?: string;
   boundary?: string; // Description of the planetary boundary
@@ -112,48 +113,26 @@ export interface EcologicalDimension {
 export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
   {
     id: "climate_territorial",
-    name: "Klima (territorial CO2 pr. indb.)",
+    name: "Territorial CO2 pr. indbygger",
+    shortName: "KLIMA",
     source: "https://klimaregnskabet.dk",
     unit: "ton CO₂e/person",
-    boundary: "3 ton CO₂e/person/år (Paris-budget)",
+    boundary: "3 ton CO₂e/person/år (Paris-budget, territorial)",
   },
   {
-    id: "climate_consumption",
-    name: "Klima (forbrug)",
-    source: "Energistyrelsen GA25",
-    unit: "ton CO₂e/person",
-    boundary: "2,5 ton CO₂e/person/år (Paris-budget, forbrugsbaseret)",
+    id: "water",
+    name: "Vandmiljø",
+    shortName: "VAND",
   },
   {
-    id: "co2_energy",
-    name: "CO2 fra energisektoren pr. indb.",
-    source: "https://klimaregnskabet.dk",
-    unit: "ton CO₂e/person",
+    id: "biodiversity",
+    name: "Biodiversitet",
+    shortName: "BIO",
   },
-  {
-    id: "co2_transport",
-    name: "CO2 fra transport pr. indb.",
-    source: "https://klimaregnskabet.dk",
-    unit: "ton CO₂e/person",
-  },
-  {
-    id: "ve_share",
-    name: "VE-andel af endeligt energiforbrug",
-    source: "https://klimaregnskabet.dk",
-    unit: "%",
-    boundary: "100% VE (klimaneutralitet)",
-  },
-  {
-    id: "ve_capacity_mw",
-    name: "Installeret VE-kapacitet",
-    source: "https://api.energidataservice.dk",
-    unit: "MW",
-  },
-  { id: "water", name: "Vandmiljø" },
-  { id: "biodiversity", name: "Biodiversitet" },
   {
     id: "land_use",
     name: "Arealanvendelse",
+    shortName: "AREAL",
     source: "DST AREALDK2 + ARE207",
     unit: "% naturområder",
     boundary: "30% naturområder (EU Biodiversity Strategy 2030)",
@@ -161,6 +140,7 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
   {
     id: "waste_resources",
     name: "Affald & ressourcer",
+    shortName: "AFFALD",
     source: "Miljøstyrelsen, Affaldsstatistik 2023",
     unit: "% reelt genanvendt",
     boundary: "65% genanvendelse (EU-målsætning 2035)",

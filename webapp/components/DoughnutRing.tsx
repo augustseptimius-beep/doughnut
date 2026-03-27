@@ -71,17 +71,16 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
 
       let shortfallPath = "";
       if (cat.hasData && cat.score !== null && cat.score < 100) {
+        // Amplify small shortfalls so even 5% under is clearly visible
         const shortfallFraction = (100 - cat.score) / 100;
-        const rIn = socialBase - (socialBase - innerLimit) * Math.min(shortfallFraction, 1);
+        const amplified = Math.max(Math.pow(Math.min(shortfallFraction, 1), 0.35), 0.18);
+        const rIn = socialBase - (socialBase - innerLimit) * amplified;
         shortfallPath = describeArc(center, center, socialBase, rIn, startAngle, endAngle);
       }
 
       const labelRadius = (socialBase + commonBoundary) / 2;
       const lx = center + labelRadius * Math.cos(midAngle);
       const ly = center + labelRadius * Math.sin(midAngle);
-      const rotDeg = (midAngle * 180) / Math.PI;
-      const shouldFlip = rotDeg > 0 && rotDeg < 180;
-      const finalRot = shouldFlip ? rotDeg - 90 : rotDeg + 90;
 
       const isNoData = !cat.hasData;
       const isActive = active?.label === cat.categoryName && active?.group === "social";
@@ -105,7 +104,7 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
         >
           <path d={safePath} fill={safeColor} stroke={safeStroke} strokeWidth="0.5" className="transition-colors" />
           {shortfallPath && (
-            <path d={shortfallPath} fill="#dc2626" opacity="0.7" className="transition-all duration-300" />
+            <path d={shortfallPath} fill="#dc2626" opacity="0.85" className="transition-all duration-300" />
           )}
           <line
             x1={center + innerLimit * Math.cos(startAngle - gap / 2)}
@@ -116,7 +115,6 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
           />
           <text
             x={lx} y={ly} textAnchor="middle" dominantBaseline="middle"
-            transform={`rotate(${finalRot}, ${lx}, ${ly})`}
             className="pointer-events-none select-none"
             style={{ fontSize: "13px", fontWeight: 800, fill: isNoData ? "#9ca3af" : "#2d4a2d", textTransform: "uppercase", letterSpacing: "0.02em" }}
           >
@@ -141,17 +139,16 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
 
       let overshootPath = "";
       if (hasEcoData && ecoScore > 100) {
+        // Amplify small overshoots: cube root scaling so even 5% overshoot is clearly visible
         const overshootFraction = (ecoScore - 100) / 100;
-        const rOut = ecoCeiling + (outerLimit - ecoCeiling) * Math.min(overshootFraction, 1);
+        const amplified = Math.max(Math.pow(Math.min(overshootFraction, 1), 0.35), 0.18);
+        const rOut = ecoCeiling + (outerLimit - ecoCeiling) * amplified;
         overshootPath = describeArc(center, center, rOut, ecoCeiling, startAngle, endAngle);
       }
 
       const labelRadius = (commonBoundary + ecoCeiling) / 2;
       const lx = center + labelRadius * Math.cos(midAngle);
       const ly = center + labelRadius * Math.sin(midAngle);
-      const rotDeg = (midAngle * 180) / Math.PI;
-      const shouldFlip = rotDeg > 0 && rotDeg < 180;
-      const finalRot = shouldFlip ? rotDeg - 90 : rotDeg + 90;
 
       const isActive = active?.label === dim.name && active?.group === "ecological";
       const safeColor = hasEcoData ? (isActive ? "#bbf7d0" : "#e8f0e8") : "#f3f4f6";
@@ -174,7 +171,7 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
         >
           <path d={safePath} fill={safeColor} stroke={safeStroke} strokeWidth="0.5" className="transition-colors" />
           {overshootPath && (
-            <path d={overshootPath} fill="#dc2626" opacity="0.7" className="transition-all duration-300" />
+            <path d={overshootPath} fill="#dc2626" opacity="0.85" className="transition-all duration-300" />
           )}
           <line
             x1={center + commonBoundary * Math.cos(startAngle - gap / 2)}
@@ -185,11 +182,10 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
           />
           <text
             x={lx} y={ly} textAnchor="middle" dominantBaseline="middle"
-            transform={`rotate(${finalRot}, ${lx}, ${ly})`}
             className="pointer-events-none select-none"
-            style={{ fontSize: "12px", fontWeight: 800, fill: hasEcoData ? "#2d4a2d" : "#9ca3af", textTransform: "uppercase", letterSpacing: "0.02em" }}
+            style={{ fontSize: "14px", fontWeight: 800, fill: hasEcoData ? "#2d4a2d" : "#9ca3af", textTransform: "uppercase", letterSpacing: "0.02em" }}
           >
-            {dim.name}
+            {dim.shortName}
           </text>
         </g>
       );

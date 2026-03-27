@@ -71,32 +71,39 @@ export default function OmPage() {
           <h3 className="text-base font-semibold text-gray-900 mb-3 pb-2 border-b border-gray-200">
             Datakilder
           </h3>
-          <div className="space-y-2 text-sm text-gray-700">
+          <div className="space-y-3 text-sm text-gray-700">
             <div className="flex gap-3">
               <span className="font-medium text-gray-900 w-44 shrink-0">Danmarks Statistik</span>
               <span className="text-gray-600">
                 Sociale indikatorer: middellevetid (HISBK), uddannelse (HFUDD10), indkomst (INDKP101),
-                beskæftigelse (RAS200), Gini og børnefattigdom (IFOR41), boliger (BOL101).
-                Data fra 2022-2023. CC BY 4.0.
+                beskæftigelse (RAS200), Gini og børnefattigdom (IFOR41), boliger (BOL101), stemmedeltagelse
+                kommunalvalg 2021 (LABY08). Data fra 2022-2023. CC BY 4.0.{" "}
+                <a href="https://www.statistikbanken.dk" target="_blank" rel="noopener" className="text-blue-600 hover:underline">statistikbanken.dk</a>
               </span>
             </div>
             <div className="flex gap-3">
               <span className="font-medium text-gray-900 w-44 shrink-0">Klimaregnskabet.dk</span>
               <span className="text-gray-600">
-                Territorial CO₂e pr. indbygger og sektoropdelte klimatal (energi, transport).
-                Dækker ca. 70 kommuner. Opgørelsesår 2021.
+                Territorial CO₂e pr. indbygger pr. kommune. Dækker ca. 70 kommuner. Opgørelsesår 2021.
+                Grænseværdi: 3 ton CO₂e/person/år (Paris-budget, territorial).{" "}
+                <a href="https://klimaregnskabet.dk" target="_blank" rel="noopener" className="text-blue-600 hover:underline">klimaregnskabet.dk</a>
               </span>
             </div>
             <div className="flex gap-3">
-              <span className="font-medium text-gray-900 w-44 shrink-0">Energistyrelsen GA25</span>
+              <span className="font-medium text-gray-900 w-44 shrink-0">Energistyrelsen</span>
               <span className="text-gray-600">
-                Forbrugsbaserede CO₂e-opgørelser pr. kommune. Dækker alle kommuner. 2020-data.
+                Forbrugsbaserede CO₂e-udledninger for Danmark. Seneste opgørelse: ca. 10 ton CO₂e pr.
+                dansker (inkl. importerede udledninger). Da tallet er nationalt og ikke differentieret
+                pr. kommune, indgår det som kontekst — ikke som ring-segment.{" "}
+                <a href="https://ens.dk/service/statistik-data-noegletal-og-kort/energi-og-co2-regnskab" target="_blank" rel="noopener" className="text-blue-600 hover:underline">ens.dk</a>
               </span>
             </div>
             <div className="flex gap-3">
-              <span className="font-medium text-gray-900 w-44 shrink-0">Energi Data Service</span>
+              <span className="font-medium text-gray-900 w-44 shrink-0">Miljøstyrelsen</span>
               <span className="text-gray-600">
-                Installeret VE-kapacitet (MW) og VE-andel pr. kommune. Opgøres løbende.
+                Affald & ressourcer: reel genanvendelsesprocent for husholdningsaffald pr. kommune, 2023.
+                Grænseværdi: 65% (EU Affaldsdirektiv 2035).{" "}
+                <a href="https://mst.dk/affald-jord-og-grundvand/affald/affaldsstatistik/" target="_blank" rel="noopener" className="text-blue-600 hover:underline">mst.dk</a>
               </span>
             </div>
           </div>
@@ -119,8 +126,8 @@ export default function OmPage() {
             <li className="flex gap-2">
               <span className="text-gray-400 mt-0.5">→</span>
               <span>
-                <strong>Manglende dimensioner:</strong> Demokrati og fællesskab har ingen datakilder endnu.
-                Biodiversitet, vandmiljø og affald mangler kommunalt opdelte data.
+                <strong>Manglende dimensioner:</strong> Biodiversitet og vandmiljø mangler kommunalt opdelte
+                data og vises uden score. Arealanvendelse og territorial CO₂ dækker ikke alle 98 kommuner.
               </span>
             </li>
             <li className="flex gap-2">
