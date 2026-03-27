@@ -100,8 +100,11 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   forurening: {
     id: "forurening",
-    scoring: "Ingen data endnu. Potentielle indikatorer: pesticidbelastning, PFAS-forurening, spildevandsrensning, luftforurening (PM2.5).",
-    limitations: "Kommunefordelte data er fragmenterede. Miljøstyrelsen har punktkildedata, men ikke et samlet kommunalt indeks.",
+    scoring: "Husholdningsaffald i kg pr. indbygger som proxy for materiel forurening. Ratio = (landsgennemsnit / kommune) * 100. Over 100 = under landsgennemsnittet (producerer mindre affald, bedre). Under 100 = over landsgennemsnittet (producerer mere affald).",
+    boundary: "Landsgennemsnittet som reference (2023: 543 kg/indb.). Inverteret - lavere affaldsproduktion er bedre.",
+    dataYear: "2023",
+    limitations: "Dækker kun husholdningsaffald, ikke erhvervsaffald, kemisk forurening, PFAS eller pesticider. Er en proxy-indikator - direkte forureningsdata er ikke kommunefordelt i StatBank.",
+    csvFile: "forurening_scores.csv",
   },
   luftkvalitet: {
     id: "luftkvalitet",
@@ -118,13 +121,19 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   naeringsstoffer: {
     id: "naeringsstoffer",
-    scoring: "Ingen data endnu. Potentielle indikatorer: kvælstofudvaskning pr. ha, fosforbelastning af vandløb, spildevandsoverløb.",
-    limitations: "Vandområdeplanerne har vandløbsspecifikke data, men de er ikke aggregeret pr. kommune.",
+    scoring: "Gennemsnit af to indikatorer: (1) Kvælstof-udledning (ton total-N) pr. 1.000 indbyggere via spildevand. (2) Fosfor-udledning (ton total-P) pr. 1.000 indbyggere via spildevand. Begge inverteret: ratio = (landsgennemsnit / kommune) * 100. Over 100 = under landsgennemsnittet (udleder mindre, bedre).",
+    boundary: "Landsgennemsnittet som reference. Inverteret - lavere næringsstofudledning er bedre for vandmiljøet.",
+    dataYear: "2024",
+    limitations: "Dækker kun punktkilder via spildevand (renseanlæg, dambrug, havbrug, industri, spredt bebyggelse, regnbetinget). Fanger ikke diffus udledning fra landbrug, som er den største kvælstofkilde i Danmark.",
+    csvFile: "naeringsstoffer_scores.csv",
   },
   vand: {
     id: "vand",
-    scoring: "Ingen data endnu. Potentielle indikatorer: vandindvinding vs. grundvandsdannelse, økologisk tilstand i vandløb, badevandskvalitet.",
-    limitations: "Miljøportalen har data, men ikke som et samlet kommunalt indeks.",
+    scoring: "Gennemsnit af to indikatorer: (1) Spildevandsudledning (1.000 m³) pr. 1.000 indbyggere. (2) Vandindvinding (mio. m³) pr. 1.000 indbyggere. Begge inverteret: ratio = (landsgennemsnit / kommune) * 100. Over 100 = under landsgennemsnittet (lavere pres på vandressourcer).",
+    boundary: "Landsgennemsnittet som reference. Inverteret - lavere vandforbrug og spildevandsudledning er bedre.",
+    dataYear: "2024",
+    limitations: "Måler kvantitativt pres på vandressourcer, ikke kvalitet (nitrat, pesticider, PFAS i grundvand). Grundvandskvalitetsdata er ikke kommunefordelt i StatBank. Vandindvinding til markvanding varierer kraftigt mellem kommuner.",
+    csvFile: "vand_scores.csv",
   },
   arealanvendelse: {
     id: "arealanvendelse",

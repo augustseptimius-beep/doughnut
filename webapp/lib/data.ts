@@ -71,6 +71,13 @@ export function loadData(): KommuneData[] {
   const landUseData = loadEcoCsv("land_use_scores.csv", "land_use_ratio");
   const biodiversitetData = loadEcoCsv("biodiversitet_scores.csv", "biodiversitet_ratio");
 
+  // New ecological data (Næringsstoffer, Vand, Forurening)
+  const naerNitrogen = loadEcoCsv("naeringsstoffer_scores.csv", "nitrogen_ratio");
+  const naerPhosphorus = loadEcoCsv("naeringsstoffer_scores.csv", "phosphorus_ratio");
+  const vandWastewater = loadEcoCsv("vand_scores.csv", "wastewater_ratio");
+  const vandExtraction = loadEcoCsv("vand_scores.csv", "water_extraction_ratio");
+  const forureningWaste = loadEcoCsv("forurening_scores.csv", "waste_ratio");
+
   // Forbrugsbaseret CO2 (national gennemsnit) - fast proxy for "Påvirkninger udenfor kommunen"
   // Kilde: CONCITO/Energistyrelsen. ~11 ton CO2e/person/år forbrugsbaseret.
   // Grænse: 3 ton (Paris-budget). Ratio = (11/3)*100 ≈ 366.7 (overshoot - samme konvention som øvrige eco)
@@ -202,6 +209,26 @@ export function loadData(): KommuneData[] {
     }
     // Forbrugsbaseret CO2 er ens for alle kommuner (nationalt gennemsnit)
     eco_ratios["forbrug_co2"] = CONSUMPTION_CO2_RATIO;
+
+    // Multi-indicator eco dimensions (gennemsnit af flere indikatorer)
+    // Næringsstoffer: kvælstof + fosfor udledning pr. capita (inverteret)
+    const naerN = naerNitrogen[kode] ?? null;
+    const naerP = naerPhosphorus[kode] ?? null;
+    const naerVals = [naerN, naerP].filter((v): v is number => v !== null);
+    eco_ratios["naeringsstoffer"] = naerVals.length > 0
+      ? parseFloat((naerVals.reduce((a, b) => a + b, 0) / naerVals.length).toFixed(2))
+      : null;
+
+    // Vand: spildevand + vandindvinding pr. capita (inverteret)
+    const vandWW = vandWastewater[kode] ?? null;
+    const vandEx = vandExtraction[kode] ?? null;
+    const vandVals = [vandWW, vandEx].filter((v): v is number => v !== null);
+    eco_ratios["vand"] = vandVals.length > 0
+      ? parseFloat((vandVals.reduce((a, b) => a + b, 0) / vandVals.length).toFixed(2))
+      : null;
+
+    // Forurening: husholdningsaffald pr. capita (inverteret)
+    eco_ratios["forurening"] = forureningWaste[kode] ?? null;
 
     const socialAvg = row["social_avg"];
     const overallAvg = row["overall_avg"];
