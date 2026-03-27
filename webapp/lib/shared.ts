@@ -140,6 +140,67 @@ export const INDICATORS: Indicator[] = [
     category: "social",
     inverse: true,
   },
+  // --- Sundhed (ekstra) ---
+  {
+    id: "hospital_use",
+    name: "Sygehusbenyttelse (andel med ophold)",
+    table: "SBR01",
+    source: "https://www.statistikbanken.dk/SBR01",
+    category: "social",
+    inverse: true,
+  },
+  // --- Uddannelse (ekstra) ---
+  {
+    id: "low_education",
+    name: "Unge 25-29 med kun grundskole",
+    table: "HFUDD11",
+    source: "https://www.statistikbanken.dk/HFUDD11",
+    category: "social",
+    inverse: true,
+  },
+  // --- Bolig (ekstra) ---
+  {
+    id: "housing_area",
+    name: "Boligareal pr. person (m²)",
+    table: "BOL106",
+    source: "https://www.statistikbanken.dk/BOL106",
+    category: "social",
+    inverse: false,
+  },
+  // --- Samskabelse (ekstra) ---
+  {
+    id: "music_school",
+    name: "Musikskoleelever pr. 1.000 indb.",
+    table: "SKOLM02B",
+    source: "https://www.statistikbanken.dk/SKOLM02B",
+    category: "social",
+    inverse: false,
+  },
+  // --- Lokalsamfund (ekstra) ---
+  {
+    id: "class_size",
+    name: "Klassekvotient grundskole",
+    table: "KVOTIEN",
+    source: "https://www.statistikbanken.dk/KVOTIEN",
+    category: "social",
+    inverse: true,
+  },
+  {
+    id: "daycare_ratio",
+    name: "Normering daginstitution (3-5 år)",
+    table: "BOERN8",
+    source: "https://www.statistikbanken.dk/BOERN8",
+    category: "social",
+    inverse: true,
+  },
+  {
+    id: "sports_spending",
+    name: "Kommunale idrætsudgifter pr. indb.",
+    table: "IDRFIN02",
+    source: "https://www.statistikbanken.dk/IDRFIN02",
+    category: "social",
+    inverse: false,
+  },
 ];
 
 // --- SOCIAL CATEGORIES (TORUS trivselsaspekter) ---
@@ -156,13 +217,13 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "sundhed",
     name: "Sundhed",
     description: "Borgernes fysiske og mentale sundhed, herunder livslængde, sygelighed og adgang til sundhedsydelser.",
-    indicatorIds: ["life_expectancy"],
+    indicatorIds: ["life_expectancy", "hospital_use"],
   },
   {
     id: "uddannelse",
     name: "Uddannelse",
     description: "Adgang til og gennemførelse af uddannelse for alle aldersgrupper - grundlag for personlig udvikling og samfundsdeltagelse.",
-    indicatorIds: ["education"],
+    indicatorIds: ["education", "low_education"],
   },
   {
     id: "velfaerd",
@@ -174,13 +235,13 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "bolig",
     name: "Bolig",
     description: "Adgang til gode, sunde og bæredygtige boliger i trygge nærmiljøer.",
-    indicatorIds: ["vacant_housing"],
+    indicatorIds: ["vacant_housing", "housing_area"],
   },
   {
     id: "samskabelse",
     name: "Samskabelse & demokrati",
     description: "Borgernes deltagelse i demokrati og lokalsamfund, tillid til institutioner og civilt engagement.",
-    indicatorIds: ["voter_turnout"],
+    indicatorIds: ["voter_turnout", "music_school"],
   },
   {
     id: "paavirkninger_udenfor",
@@ -198,7 +259,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "lokalsamfund",
     name: "Lokalsamfund",
     description: "Levende lokalsamfund med adgang til basale services, kultur og rekreative muligheder.",
-    indicatorIds: ["library_use", "sports_facilities"],
+    indicatorIds: ["library_use", "sports_facilities", "class_size", "daycare_ratio", "sports_spending"],
   },
   {
     id: "mobilitet",

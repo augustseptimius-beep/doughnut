@@ -89,6 +89,15 @@ export function loadData(): KommuneData[] {
   const velfaerdChildren = loadEcoCsv("velfaerd_extra_scores.csv", "vulnerable_children_ratio");
   const velfaerdNeet = loadEcoCsv("velfaerd_extra_scores.csv", "neet_ratio");
 
+  // Load extra social dimension data (round 2)
+  const sundhedHospital = loadEcoCsv("sundhed_extra_scores.csv", "hospital_use_ratio");
+  const uddannelseLow = loadEcoCsv("uddannelse_extra_scores.csv", "low_education_ratio");
+  const boligArea = loadEcoCsv("bolig_extra_scores.csv", "housing_area_ratio");
+  const samskabelseMusic = loadEcoCsv("samskabelse_extra_scores.csv", "music_school_ratio");
+  const lokalClassSize = loadEcoCsv("lokalsamfund_extra_scores.csv", "class_size_ratio");
+  const lokalDaycare = loadEcoCsv("lokalsamfund_extra_scores.csv", "daycare_ratio");
+  const lokalSportsSpend = loadEcoCsv("lokalsamfund_extra_scores.csv", "sports_spending_ratio");
+
   const data: KommuneData[] = [];
   for (let i = 1; i < lines.length; i++) {
     const cols = lines[i].split(",");
@@ -136,6 +145,32 @@ export function loadData(): KommuneData[] {
     }
     if (velfaerdNeet[kommuneKode] !== undefined) {
       ratios["neet"] = velfaerdNeet[kommuneKode];
+    }
+    // Sundhed (ekstra)
+    if (sundhedHospital[kommuneKode] !== undefined) {
+      ratios["hospital_use"] = sundhedHospital[kommuneKode];
+    }
+    // Uddannelse (ekstra)
+    if (uddannelseLow[kommuneKode] !== undefined) {
+      ratios["low_education"] = uddannelseLow[kommuneKode];
+    }
+    // Bolig (ekstra)
+    if (boligArea[kommuneKode] !== undefined) {
+      ratios["housing_area"] = boligArea[kommuneKode];
+    }
+    // Samskabelse (ekstra)
+    if (samskabelseMusic[kommuneKode] !== undefined) {
+      ratios["music_school"] = samskabelseMusic[kommuneKode];
+    }
+    // Lokalsamfund (ekstra)
+    if (lokalClassSize[kommuneKode] !== undefined) {
+      ratios["class_size"] = lokalClassSize[kommuneKode];
+    }
+    if (lokalDaycare[kommuneKode] !== undefined) {
+      ratios["daycare_ratio"] = lokalDaycare[kommuneKode];
+    }
+    if (lokalSportsSpend[kommuneKode] !== undefined) {
+      ratios["sports_spending"] = lokalSportsSpend[kommuneKode];
     }
 
     // consumption_co2 er nu en økologisk dimension - se eco_ratios nedenfor
