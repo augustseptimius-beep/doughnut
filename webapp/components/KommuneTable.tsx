@@ -55,9 +55,8 @@ const REGION_MAP: Record<string, string> = {
 
 const REGIONS = ["Alle regioner", "Hovedstaden", "Sjælland", "Syddanmark", "Midtjylland", "Nordjylland"];
 
-const ECO_DIMS_WITH_DATA = ECOLOGICAL_DIMENSIONS.filter((d) =>
-  ["climate_territorial", "climate_consumption", "co2_energy", "co2_transport", "ve_share", "ve_capacity_mw", "land_use"].includes(d.id)
-);
+// Vis alle økologiske dimensioner - dem uden data viser bare "–"
+const ECO_DIMS_WITH_DATA = ECOLOGICAL_DIMENSIONS;
 
 export default function KommuneTable({ data }: { data: KommuneRow[] }) {
   const [search, setSearch] = useState("");
