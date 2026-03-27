@@ -42,7 +42,7 @@ export const INDICATORS: Indicator[] = [
   },
   {
     id: "child_poverty",
-    name: "Børnefattigdom (Gini-proxy)",
+    name: "Børnefattigdom",
     table: "IFOR41",
     source: "https://www.statistikbanken.dk/IFOR41",
     category: "social",
@@ -72,39 +72,95 @@ export const INDICATORS: Indicator[] = [
     category: "social",
     inverse: false,
   },
+  {
+    id: "consumption_co2",
+    name: "Forbrugsbaseret CO₂ (nationalt gennemsnit)",
+    table: "CONCITO/Energistyrelsen",
+    source: "https://concito.dk",
+    category: "social",
+    inverse: true, // lavere er bedre
+  },
 ];
 
-// --- SOCIAL CATEGORIES ---
+// --- SOCIAL CATEGORIES (TORUS trivselsaspekter) ---
 
 export interface SocialCategory {
   id: string;
   name: string;
+  description?: string;
   indicatorIds: string[];
 }
 
 export const SOCIAL_CATEGORIES: SocialCategory[] = [
-  { id: "health", name: "Sundhed", indicatorIds: ["life_expectancy"] },
-  { id: "education_cat", name: "Uddannelse", indicatorIds: ["education"] },
   {
-    id: "income_work",
-    name: "Indkomst & arbejde",
-    indicatorIds: ["disposable_income", "employment", "child_poverty"],
+    id: "sundhed",
+    name: "Sundhed",
+    description: "Borgernes fysiske og mentale sundhed, herunder livslængde, sygelighed og adgang til sundhedsydelser.",
+    indicatorIds: ["life_expectancy"],
   },
-  { id: "social_equality", name: "Social lighed", indicatorIds: ["gini"] },
   {
-    id: "housing_infra",
-    name: "Bolig & infrastruktur",
+    id: "uddannelse",
+    name: "Uddannelse",
+    description: "Adgang til og gennemførelse af uddannelse for alle aldersgrupper - grundlag for personlig udvikling og samfundsdeltagelse.",
+    indicatorIds: ["education"],
+  },
+  {
+    id: "velfaerd",
+    name: "Velfærd",
+    description: "Materiel levevilkår, indkomst, beskæftigelse og social sikring - de grundlæggende betingelser for et godt liv.",
+    indicatorIds: ["disposable_income", "employment", "child_poverty", "gini"],
+  },
+  {
+    id: "bolig",
+    name: "Bolig",
+    description: "Adgang til gode, sunde og bæredygtige boliger i trygge nærmiljøer.",
     indicatorIds: ["vacant_housing"],
   },
-  { id: "democracy", name: "Demokrati & fællesskab", indicatorIds: ["voter_turnout"] },
+  {
+    id: "samskabelse",
+    name: "Samskabelse & demokrati",
+    description: "Borgernes deltagelse i demokrati og lokalsamfund, tillid til institutioner og civilt engagement.",
+    indicatorIds: ["voter_turnout"],
+  },
+  {
+    id: "paavirkninger_udenfor",
+    name: "Påvirkninger udenfor kommunen",
+    description: "Kommunens forbrugsbaserede klimaaftryk - de udledninger der sker uden for kommunens grænser som følge af borgernes forbrug.",
+    indicatorIds: ["consumption_co2"],
+  },
+  {
+    id: "faellesskaber",
+    name: "Fællesskaber",
+    description: "Sociale netværk, fællesskaber og tilhørsforhold - modvirker ensomhed og styrker sammenhængskraft.",
+    indicatorIds: [],
+  },
+  {
+    id: "lokalsamfund",
+    name: "Lokalsamfund",
+    description: "Levende lokalsamfund med adgang til basale services, kultur og rekreative muligheder.",
+    indicatorIds: [],
+  },
+  {
+    id: "mobilitet",
+    name: "Mobilitet",
+    description: "Adgang til bæredygtig og effektiv transport for alle borgere uanset geografi og økonomi.",
+    indicatorIds: [],
+  },
+  {
+    id: "klimatilpasning",
+    name: "Klimatilpasning",
+    description: "Kommunens robusthed over for klimaforandringer: oversvømmelse, hedebølger, tørke og ekstremvejr.",
+    indicatorIds: [],
+  },
 ];
 
-// --- ECOLOGICAL CEILING ---
+// --- ECOLOGICAL CEILING (TORUS miljøaspekter) ---
 
 export interface EcologicalDimension {
   id: string;
   name: string;
   shortName: string; // Abbreviated label for SVG ring
+  description?: string;
   source?: string;
   unit?: string;
   boundary?: string; // Description of the planetary boundary
@@ -112,38 +168,61 @@ export interface EcologicalDimension {
 
 export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
   {
-    id: "climate_territorial",
-    name: "Territorial CO2 pr. indbygger",
+    id: "klimapaavirkning",
+    name: "Klimapåvirkning",
     shortName: "KLIMA",
+    description: "Territoriale drivhusgasudledninger fra energi, transport, landbrug og industri inden for kommunens grænser.",
     source: "https://klimaregnskabet.dk",
     unit: "ton CO₂e/person",
     boundary: "3 ton CO₂e/person/år (Paris-budget, territorial)",
   },
   {
-    id: "water",
-    name: "Vandmiljø",
-    shortName: "VAND",
+    id: "forurening",
+    name: "Forurening (kemi & plastik)",
+    shortName: "FORUR",
+    description: "Udledning af skadelige kemikalier, mikroplast og giftstoffer til jord, vand og luft.",
   },
   {
-    id: "biodiversity",
-    name: "Biodiversitet",
-    shortName: "BIO",
+    id: "luftkvalitet",
+    name: "Luftkvalitet",
+    shortName: "LUFT",
+    description: "Koncentration af skadelige partikler og gasser (PM2.5, NOx, ozon) der påvirker folkesundhed og natur.",
   },
   {
-    id: "land_use",
-    name: "Arealanvendelse",
-    shortName: "AREAL",
-    source: "DST AREALDK2 + ARE207",
-    unit: "% naturområder",
-    boundary: "30% naturområder (EU Biodiversity Strategy 2030)",
-  },
-  {
-    id: "waste_resources",
-    name: "Affald & ressourcer",
-    shortName: "AFFALD",
-    source: "Miljøstyrelsen, Affaldsstatistik 2023",
+    id: "cirkularitet",
+    name: "Cirkularitet (materialer)",
+    shortName: "CIR",
+    description: "Genanvendelse og ressourceeffektivitet - andelen af affald der reelt genanvendes frem for deponeres eller forbrændes.",
+    source: "Miljøstyrelsen, Affaldsstatistik",
     unit: "% reelt genanvendt",
     boundary: "65% genanvendelse (EU-målsætning 2035)",
+  },
+  {
+    id: "naeringsstoffer",
+    name: "Næringsstoffer",
+    shortName: "NÆR",
+    description: "Næringsstofbelastning fra landbrug og spildevand - kvælstof og fosfor der forurener vandmiljøet.",
+  },
+  {
+    id: "vand",
+    name: "Vand",
+    shortName: "VAND",
+    description: "Kvalitet og tilgængelighed af ferskvand - grundvand, vandløb, søer og kystvande.",
+  },
+  {
+    id: "arealanvendelse",
+    name: "Arealanvendelse",
+    shortName: "AREAL",
+    description: "Andel af kommunens areal der er natur, skov og grønne arealer - modvirker tab af levesteder og fremmer biodiversitet.",
+    source: "DST AREALDK2 + ARE207",
+    unit: "% naturområder",
+    boundary: "30% naturområder (EU Biodiversitetsstrategi 2030)",
+  },
+  {
+    id: "biodiversitet",
+    name: "Biodiversitet",
+    shortName: "BIO",
+    description: "Tilstand og udvikling for lokale bestande af planter, dyr og insekter - indikatorer for naturkvalitet.",
   },
 ];
 

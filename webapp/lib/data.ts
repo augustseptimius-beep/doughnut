@@ -70,6 +70,11 @@ export function loadData(): KommuneData[] {
   const consumptionData = loadEcoCsv("consumption_scores.csv", "recycling_ratio");
   const landUseData = loadEcoCsv("land_use_scores.csv", "land_use_ratio");
 
+  // Forbrugsbaseret CO2 (national gennemsnit) - fast proxy for "Påvirkninger udenfor kommunen"
+  // Kilde: CONCITO/Energistyrelsen. ~11 ton CO2e/person/år forbrugsbaseret.
+  // Grænse: 3 ton (Paris-budget). Ratio = (3/11)*100 ≈ 27.3 (dvs. ~73% shortfall)
+  const CONSUMPTION_CO2_RATIO = parseFloat(((3 / 11) * 100).toFixed(2)); // 27.27
+
   // Load democracy data
   const democracyData = loadEcoCsv("democracy_scores.csv", "voter_turnout_ratio");
 
@@ -94,20 +99,23 @@ export function loadData(): KommuneData[] {
       ratios["voter_turnout"] = democracyData[kommuneKode];
     }
 
+    // Inject fixed national consumption CO2 ratio for all municipalities
+    ratios["consumption_co2"] = CONSUMPTION_CO2_RATIO;
+
     // Ecological ratios
     const eco_ratios: Record<string, number | null> = {};
     const kode = row["kommune_kode"] || "";
 
-    // Legacy / fremtidige dimensioner fra separate CSV-filer
+    // TORUS miljøaspekter - data fra separate CSV-filer
     const ecoSources: Record<string, Record<string, number | null>> = {
-      climate_territorial: climateData,
-      waste_resources: consumptionData,
-      land_use: landUseData,
+      klimapaavirkning: climateData,
+      cirkularitet: consumptionData,
+      arealanvendelse: landUseData,
     };
 
-    // Klimaregnskabet: kolonner direkte i doughnut_scores.csv
+    // Klimaregnskabet: kolonner direkte i doughnut_scores.csv (fallback)
     const ecoFromScoresCsv: Record<string, string> = {
-      climate_territorial: "co2_per_capita_ratio",
+      klimapaavirkning: "co2_per_capita_ratio",
     };
 
     for (const dim of ECOLOGICAL_DIMENSIONS) {
