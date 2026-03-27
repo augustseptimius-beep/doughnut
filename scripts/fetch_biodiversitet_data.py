@@ -165,8 +165,11 @@ with open(OUTPUT_FIL, "w", newline="", encoding="utf-8") as f:
         bio_ratio = round(MÅL_VASENTLIG    / pct_v * 100, 2) if pct_v > 0 else 999.0
         uer_ratio = round(MÅL_UERSTATTELIG / pct_u * 100, 2) if pct_u > 0 else 999.0
 
+        # Strip foranstillet nul fra kommunekode (DAWA: "0101" → "101")
+        kode = str(int(row["kode"]))
+
         writer.writerow([
-            row["kode"],
+            kode,
             row["navn"],
             pct_v,
             pct_u,

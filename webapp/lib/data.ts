@@ -73,8 +73,8 @@ export function loadData(): KommuneData[] {
 
   // Forbrugsbaseret CO2 (national gennemsnit) - fast proxy for "Påvirkninger udenfor kommunen"
   // Kilde: CONCITO/Energistyrelsen. ~11 ton CO2e/person/år forbrugsbaseret.
-  // Grænse: 3 ton (Paris-budget). Ratio = (3/11)*100 ≈ 27.3 (dvs. ~73% shortfall)
-  const CONSUMPTION_CO2_RATIO = parseFloat(((3 / 11) * 100).toFixed(2)); // 27.27
+  // Grænse: 3 ton (Paris-budget). Ratio = (11/3)*100 ≈ 366.7 (overshoot - samme konvention som øvrige eco)
+  const CONSUMPTION_CO2_RATIO = parseFloat(((11 / 3) * 100).toFixed(2)); // 366.67
 
   // Load democracy data
   const democracyData = loadEcoCsv("democracy_scores.csv", "voter_turnout_ratio");
