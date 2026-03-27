@@ -72,6 +72,74 @@ export const INDICATORS: Indicator[] = [
     category: "social",
     inverse: false,
   },
+  // --- Fællesskaber ---
+  {
+    id: "sports_membership",
+    name: "Idrætsmedlemskab (andel af befolkningen)",
+    table: "IDRAKT02",
+    source: "https://www.statistikbanken.dk/IDRAKT02",
+    category: "social",
+    inverse: false,
+  },
+  {
+    id: "crime_rate",
+    name: "Anmeldte forbrydelser pr. 1.000 indb.",
+    table: "STRAF11",
+    source: "https://www.statistikbanken.dk/STRAF11",
+    category: "social",
+    inverse: true,
+  },
+  // --- Lokalsamfund ---
+  {
+    id: "library_use",
+    name: "Biblioteksudlån pr. indbygger",
+    table: "BIB1",
+    source: "https://www.statistikbanken.dk/BIB1",
+    category: "social",
+    inverse: false,
+  },
+  {
+    id: "sports_facilities",
+    name: "Idrætsfaciliteter pr. 10.000 indb.",
+    table: "IDRFAC01",
+    source: "https://www.statistikbanken.dk/IDRFAC01",
+    category: "social",
+    inverse: false,
+  },
+  // --- Mobilitet ---
+  {
+    id: "commute_distance",
+    name: "Gennemsnitlig pendlingsafstand",
+    table: "AFSTB4",
+    source: "https://www.statistikbanken.dk/AFSTB4",
+    category: "social",
+    inverse: true,
+  },
+  {
+    id: "car_access",
+    name: "Familier med bilrådighed",
+    table: "BIL800",
+    source: "https://www.statistikbanken.dk/BIL800",
+    category: "social",
+    inverse: false,
+  },
+  // --- Velfærd (ekstra) ---
+  {
+    id: "vulnerable_children",
+    name: "Udsatte børn og unge (andel 0-22 år)",
+    table: "BU43",
+    source: "https://www.statistikbanken.dk/BU43",
+    category: "social",
+    inverse: true,
+  },
+  {
+    id: "neet",
+    name: "Unge uden for uddannelse/beskæftigelse (NEET)",
+    table: "NEET1",
+    source: "https://www.statistikbanken.dk/NEET1",
+    category: "social",
+    inverse: true,
+  },
 ];
 
 // --- SOCIAL CATEGORIES (TORUS trivselsaspekter) ---
@@ -100,7 +168,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "velfaerd",
     name: "Velfærd",
     description: "Materiel levevilkår, indkomst, beskæftigelse og social sikring - de grundlæggende betingelser for et godt liv.",
-    indicatorIds: ["disposable_income", "employment", "child_poverty", "gini"],
+    indicatorIds: ["disposable_income", "employment", "child_poverty", "gini", "vulnerable_children", "neet"],
   },
   {
     id: "bolig",
@@ -124,19 +192,19 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "faellesskaber",
     name: "Fællesskaber",
     description: "Sociale netværk, fællesskaber og tilhørsforhold - modvirker ensomhed og styrker sammenhængskraft.",
-    indicatorIds: [],
+    indicatorIds: ["sports_membership", "crime_rate"],
   },
   {
     id: "lokalsamfund",
     name: "Lokalsamfund",
     description: "Levende lokalsamfund med adgang til basale services, kultur og rekreative muligheder.",
-    indicatorIds: [],
+    indicatorIds: ["library_use", "sports_facilities"],
   },
   {
     id: "mobilitet",
     name: "Mobilitet",
     description: "Adgang til bæredygtig og effektiv transport for alle borgere uanset geografi og økonomi.",
-    indicatorIds: [],
+    indicatorIds: ["commute_distance", "car_access"],
   },
   {
     id: "klimatilpasning",

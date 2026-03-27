@@ -79,6 +79,16 @@ export function loadData(): KommuneData[] {
   // Load democracy data
   const democracyData = loadEcoCsv("democracy_scores.csv", "voter_turnout_ratio");
 
+  // Load new social dimension data
+  const faelleskaberSports = loadEcoCsv("faellesskaber_scores.csv", "sports_membership_ratio");
+  const faelleskaberCrime = loadEcoCsv("faellesskaber_scores.csv", "crime_ratio");
+  const lokalsamfundLibrary = loadEcoCsv("lokalsamfund_scores.csv", "library_ratio");
+  const lokalsamfundFacilities = loadEcoCsv("lokalsamfund_scores.csv", "facilities_ratio");
+  const mobilitetCommute = loadEcoCsv("mobilitet_scores.csv", "commute_ratio");
+  const mobilitetCar = loadEcoCsv("mobilitet_scores.csv", "car_access_ratio");
+  const velfaerdChildren = loadEcoCsv("velfaerd_extra_scores.csv", "vulnerable_children_ratio");
+  const velfaerdNeet = loadEcoCsv("velfaerd_extra_scores.csv", "neet_ratio");
+
   const data: KommuneData[] = [];
   for (let i = 1; i < lines.length; i++) {
     const cols = lines[i].split(",");
@@ -94,10 +104,38 @@ export function loadData(): KommuneData[] {
       ratios[ind.id] = val && val !== "" ? parseFloat(val) : null;
     }
 
-    // Inject democracy indicators from separate CSV
+    // Inject indicators from separate CSVs
     const kommuneKode = row["kommune_kode"] || "";
     if (democracyData[kommuneKode] !== undefined) {
       ratios["voter_turnout"] = democracyData[kommuneKode];
+    }
+    // Fællesskaber
+    if (faelleskaberSports[kommuneKode] !== undefined) {
+      ratios["sports_membership"] = faelleskaberSports[kommuneKode];
+    }
+    if (faelleskaberCrime[kommuneKode] !== undefined) {
+      ratios["crime_rate"] = faelleskaberCrime[kommuneKode];
+    }
+    // Lokalsamfund
+    if (lokalsamfundLibrary[kommuneKode] !== undefined) {
+      ratios["library_use"] = lokalsamfundLibrary[kommuneKode];
+    }
+    if (lokalsamfundFacilities[kommuneKode] !== undefined) {
+      ratios["sports_facilities"] = lokalsamfundFacilities[kommuneKode];
+    }
+    // Mobilitet
+    if (mobilitetCommute[kommuneKode] !== undefined) {
+      ratios["commute_distance"] = mobilitetCommute[kommuneKode];
+    }
+    if (mobilitetCar[kommuneKode] !== undefined) {
+      ratios["car_access"] = mobilitetCar[kommuneKode];
+    }
+    // Velfærd (ekstra)
+    if (velfaerdChildren[kommuneKode] !== undefined) {
+      ratios["vulnerable_children"] = velfaerdChildren[kommuneKode];
+    }
+    if (velfaerdNeet[kommuneKode] !== undefined) {
+      ratios["neet"] = velfaerdNeet[kommuneKode];
     }
 
     // consumption_co2 er nu en økologisk dimension - se eco_ratios nedenfor
