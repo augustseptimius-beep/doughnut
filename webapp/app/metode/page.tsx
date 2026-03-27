@@ -1,0 +1,408 @@
+import type { Metadata } from "next";
+import { SOCIAL_CATEGORIES, INDICATORS, ECOLOGICAL_DIMENSIONS } from "@/lib/shared";
+
+export const metadata: Metadata = {
+  title: "Metode & datakilder — Doughnut Economics Danmark",
+  description: "Detaljeret dokumentation af metodik, indikatorer, grænseværdier og datakilder for alle dimensioner.",
+};
+
+/* ─── Method metadata per dimension ─── */
+
+interface MethodInfo {
+  id: string;
+  scoring: string;         // how the score/ratio is calculated
+  boundary?: string;       // what the planetary boundary / social floor is
+  dataYear?: string;
+  limitations?: string;
+  csvFile?: string;
+}
+
+const SOCIAL_METHODS: Record<string, MethodInfo> = {
+  sundhed: {
+    id: "sundhed",
+    scoring: "Middellevetid (0-årige) for kommunens borgere sammenholdt med landsgennemsnittet. Score = (kommune / landsgennemsnit) * 100. En score på 100 betyder kommunen matcher landsgennemsnittet.",
+    boundary: "Socialt fundament: alle borgere bør have en forventet levetid der som minimum matcher landsgennemsnittet.",
+    dataYear: "2022-2023",
+    limitations: "Middellevetid er en gennemsnitsbetragtning og fanger ikke ulighed i sundhed inden for kommunen.",
+    csvFile: "doughnut_scores.csv",
+  },
+  uddannelse: {
+    id: "uddannelse",
+    scoring: "Andel af 30-34-årige med kompetencegivende uddannelse (erhvervs- eller videregående) sammenholdt med landsgennemsnittet. Score = (kommune / landsgennemsnit) * 100.",
+    boundary: "Socialt fundament: alle borgere bør have adgang til uddannelse. EU-mål: 45% af 25-34-årige med videregående uddannelse i 2030.",
+    dataYear: "2023",
+    csvFile: "doughnut_scores.csv",
+  },
+  velfaerd: {
+    id: "velfaerd",
+    scoring: "Gennemsnit af fire indikatorer: disponibel indkomst, beskæftigelsesfrekvens, børnefattigdom (inverteret) og Gini-koefficient (inverteret). Hver indikator normaliseres mod landsgennemsnittet (score 100 = gennemsnit). For inverterede indikatorer (hvor lavere er bedre) bruges formlen: (landsgennemsnit / kommune) * 100.",
+    boundary: "Socialt fundament: materielle levevilkår der sikrer værdigt liv for alle. Ingen absolut grænse - relativ til landsgennemsnit.",
+    dataYear: "2022-2023",
+    limitations: "Gini og børnefattigdom kommer fra samme DST-tabel (IFOR41) og kan korrelere. Disponibel indkomst justerer ikke for købekraft mellem kommuner.",
+    csvFile: "doughnut_scores.csv",
+  },
+  bolig: {
+    id: "bolig",
+    scoring: "Andel ubeboede boliger (inverteret, da flere tomme boliger er negativt). Score = (landsgennemsnit / kommune) * 100. Lavere tomgangsrate giver højere score.",
+    boundary: "Socialt fundament: alle borgere bør have adgang til en god bolig.",
+    dataYear: "2023",
+    limitations: "Ubeboede boliger er en grov proxy. Fanger ikke boligkvalitet, pris, overbelægning eller hjemløshed.",
+    csvFile: "doughnut_scores.csv",
+  },
+  samskabelse: {
+    id: "samskabelse",
+    scoring: "Stemmedeltagelse ved kommunalvalget 2021 sammenholdt med landsgennemsnittet. Score = (kommune / landsgennemsnit) * 100.",
+    boundary: "Socialt fundament: aktivt demokratisk medborgerskab.",
+    dataYear: "2021 (kommunalvalg)",
+    limitations: "Stemmedeltagelse er kun én indikator for demokratisk deltagelse. Fanger ikke civilsamfundsengagement, foreningsliv eller tillid til institutioner.",
+    csvFile: "democracy_scores.csv",
+  },
+  paavirkninger_udenfor: {
+    id: "paavirkninger_udenfor",
+    scoring: "Denne kategori har ingen sociale indikatorer. Forbrugsbaseret CO2 er flyttet til det økologiske loft (se 'Forbrugsbaseret CO2' under Økologisk loft).",
+    limitations: "Kategorien afventer relevante sociale indikatorer, f.eks. import af social udbytning.",
+  },
+  faellesskaber: {
+    id: "faellesskaber",
+    scoring: "Ingen data endnu. Potentielle indikatorer: ensomhedsandel, foreningsmedlemskab, frivilligt arbejde.",
+    limitations: "Afventer tilgængelige kommunefordelte data.",
+  },
+  lokalsamfund: {
+    id: "lokalsamfund",
+    scoring: "Ingen data endnu. Potentielle indikatorer: afstand til nærmeste skole/læge/indkøb, kulturtilbud, rekreative arealer.",
+    limitations: "Afventer tilgængelige kommunefordelte data.",
+  },
+  mobilitet: {
+    id: "mobilitet",
+    scoring: "Ingen data endnu. Potentielle indikatorer: kollektiv trafik-dækning, bilejerskab, cykelinfrastruktur, pendlingsafstande.",
+    limitations: "Afventer tilgængelige kommunefordelte data.",
+  },
+  klimatilpasning: {
+    id: "klimatilpasning",
+    scoring: "Ingen data endnu. Potentielle indikatorer: oversvømmelsesrisiko, klimatilpasningsplaner, grønne arealer til regnvandshåndtering.",
+    limitations: "Afventer tilgængelige kommunefordelte data.",
+  },
+};
+
+const ECO_METHODS: Record<string, MethodInfo> = {
+  klimapaavirkning: {
+    id: "klimapaavirkning",
+    scoring: "Territoriale CO2e-udledninger pr. indbygger. Ratio = (faktisk udledning / grænseværdi) * 100. Over 100 = overshoot (udleder mere end budgettet tillader).",
+    boundary: "3 ton CO2e pr. person pr. år (Paris-aftalens budget for territorial udledning, IPCC 1.5°C-scenarie).",
+    dataYear: "2021",
+    limitations: "Dækker ca. 70 af 98 kommuner. Territorialt regnskab fanger ikke forbrug - se Forbrugsbaseret CO2.",
+    csvFile: "climate_scores.csv",
+  },
+  forurening: {
+    id: "forurening",
+    scoring: "Ingen data endnu. Potentielle indikatorer: pesticidbelastning, PFAS-forurening, spildevandsrensning, luftforurening (PM2.5).",
+    limitations: "Kommunefordelte data er fragmenterede. Miljøstyrelsen har punktkildedata, men ikke et samlet kommunalt indeks.",
+  },
+  luftkvalitet: {
+    id: "luftkvalitet",
+    scoring: "Ingen data endnu. Potentielle indikatorer: PM2.5-koncentration, NOx, ozon-dage over grænseværdi.",
+    limitations: "DCE/Aarhus Universitet har modelberegninger, men de er ikke let tilgængelige som kommunalt datasæt.",
+  },
+  cirkularitet: {
+    id: "cirkularitet",
+    scoring: "Reel genanvendelsesprocent for husholdningsaffald pr. kommune. Ratio = (grænseværdi / faktisk genanvendelse) * 100. Over 100 = under grænsen (genanvender for lidt).",
+    boundary: "65% genanvendelse (EU Affaldsdirektiv, målsætning for 2035).",
+    dataYear: "2023",
+    limitations: "Reel genanvendelse kan afvige fra indsamlet til genanvendelse. Omfatter kun husholdningsaffald, ikke erhvervsaffald.",
+    csvFile: "consumption_scores.csv",
+  },
+  naeringsstoffer: {
+    id: "naeringsstoffer",
+    scoring: "Ingen data endnu. Potentielle indikatorer: kvælstofudvaskning pr. ha, fosforbelastning af vandløb, spildevandsoverløb.",
+    limitations: "Vandområdeplanerne har vandløbsspecifikke data, men de er ikke aggregeret pr. kommune.",
+  },
+  vand: {
+    id: "vand",
+    scoring: "Ingen data endnu. Potentielle indikatorer: vandindvinding vs. grundvandsdannelse, økologisk tilstand i vandløb, badevandskvalitet.",
+    limitations: "Miljøportalen har data, men ikke som et samlet kommunalt indeks.",
+  },
+  arealanvendelse: {
+    id: "arealanvendelse",
+    scoring: "Andel af kommunens areal der er naturområder (skov, hede, mose, eng, strandeng). Ratio = (grænseværdi / faktisk naturandel) * 100. Over 100 = under grænsen (for lidt natur).",
+    boundary: "30% naturområder (EU Biodiversitetsstrategi 2030, 30x30-målet).",
+    dataYear: "2022",
+    limitations: "Arealstatistik skelner ikke mellem naturkvalitet - en plantage tæller som skov. Se Biodiversitet for kvalitetsvurdering.",
+    csvFile: "land_use_scores.csv (afventer generering)",
+  },
+  biodiversitet: {
+    id: "biodiversitet",
+    scoring: "Baseret på DCE/Aarhus Universitets Bioscore (rapport SR456). Bioscore er 0-19 og sammensættes af Artsscore (0-9, dokumenterede arter) + Proxyscore (0-10, landskabsstruktur). Vi bruger andelen af kommunens areal med bioscore >= 8 (DCE's kategori 'væsentlige naturværdier'). Ratio = (30% mål / faktisk andel) * 100. Over 100 = under grænsen (for lidt kvalitetsnatur).",
+    boundary: "30% af kommunens areal med bioscore >= 8 (operationalisering af 30x30-målet med kvalitetskrav via DCE's tærskelværdier: <4 uvæsentlig, 4-7 potentielt interessant, 8-11 væsentlige naturværdier, 12-19 uerstattelige levesteder).",
+    dataYear: "2021",
+    limitations: "Bioscore er baseret på kortlægning fra 2021 og opdateres ikke løbende. Artsscore kræver at arealet er besøgt af biologer - ubesøgte arealer scorer lavt selv hvis de har høj naturværdi. Proxyscore kompenserer delvist for dette.",
+    csvFile: "biodiversitet_scores.csv",
+  },
+  forbrug_co2: {
+    id: "forbrug_co2",
+    scoring: "Nationalt gennemsnit for forbrugsbaseret CO2e pr. person (inkl. import). Ratio = (faktisk udledning / grænseværdi) * 100. Samme værdi for alle kommuner da data ikke er kommunefordelt. Aktuelt: ca. 11 ton CO2e/person, grænse 3 ton, dvs. ratio ca. 367 (kraftig overshoot).",
+    boundary: "3 ton CO2e pr. person pr. år (Paris-budget, forbrugsbaseret - inkluderer importerede udledninger).",
+    dataYear: "2022 (seneste CONCITO/Energistyrelsen-opgørelse)",
+    limitations: "Ikke kommunefordelt - alle kommuner får samme ratio. Det reelle forbrugsaftryk varierer med indkomst og livsstil. Forventes differentieret i fremtidige versioner.",
+    csvFile: "Hardkodet i data.ts (nationalt gennemsnit)",
+  },
+};
+
+function IndicatorCard({ id }: { id: string }) {
+  const ind = INDICATORS.find((i) => i.id === id);
+  if (!ind) return null;
+  return (
+    <div className="flex items-center justify-between py-1.5 px-3 bg-gray-50 rounded text-sm">
+      <span className="text-gray-700">{ind.name}</span>
+      <div className="flex items-center gap-3 text-xs text-gray-400">
+        <span>{ind.inverse ? "inverteret" : "direkte"}</span>
+        <a href={ind.source} target="_blank" rel="noopener" className="text-blue-600 hover:underline">
+          {ind.table} ↗
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function StatusBadge({ hasData }: { hasData: boolean }) {
+  return hasData ? (
+    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 uppercase">
+      Aktiv
+    </span>
+  ) : (
+    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-gray-100 text-gray-500 uppercase">
+      Afventer data
+    </span>
+  );
+}
+
+export default function MetodePage() {
+  return (
+    <div className="max-w-4xl mx-auto">
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">Metode & datakilder</h2>
+        <p className="text-gray-500 text-sm">
+          Detaljeret dokumentation af hvordan hver dimension beregnes, hvilke data der bruges, og hvilke begrænsninger der er.
+        </p>
+      </div>
+
+      {/* Quick navigation */}
+      <nav className="mb-8 p-4 bg-white border border-gray-200 rounded-xl">
+        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Gå til</p>
+        <div className="grid grid-cols-2 gap-x-8 gap-y-1">
+          <div>
+            <p className="text-xs font-semibold text-emerald-700 mb-1">Socialt fundament</p>
+            {SOCIAL_CATEGORIES.map((cat) => (
+              <a key={cat.id} href={`#${cat.id}`} className="block text-sm text-blue-600 hover:underline py-0.5">
+                {cat.name}
+                {cat.indicatorIds.length === 0 && <span className="text-gray-400 ml-1">(ingen data)</span>}
+              </a>
+            ))}
+          </div>
+          <div>
+            <p className="text-xs font-semibold text-red-600 mb-1">Økologisk loft</p>
+            {ECOLOGICAL_DIMENSIONS.map((dim) => {
+              const method = ECO_METHODS[dim.id];
+              const hasData = !!dim.source;
+              return (
+                <a key={dim.id} href={`#${dim.id}`} className="block text-sm text-blue-600 hover:underline py-0.5">
+                  {dim.name}
+                  {!hasData && <span className="text-gray-400 ml-1">(ingen data)</span>}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </nav>
+
+      {/* General scoring explanation */}
+      <section className="mb-10 p-5 bg-amber-50 border border-amber-200 rounded-xl">
+        <h3 className="text-base font-semibold text-gray-900 mb-2">Generelt om scoring</h3>
+        <p className="text-sm text-gray-700 leading-relaxed mb-2">
+          Platformen bruger to forskellige scoringskonventioner:
+        </p>
+        <p className="text-sm text-gray-700 leading-relaxed">
+          <strong>Socialt fundament:</strong> Score 100 = landsgennemsnit. Over 100 er bedre end gennemsnit (grønt), under 100 er dårligere (rødt).
+          Røde segmenter i den indre ring viser &quot;shortfall&quot; - kommunen lever ikke op til det sociale minimum.
+        </p>
+        <p className="text-sm text-gray-700 leading-relaxed mt-2">
+          <strong>Økologisk loft:</strong> Score 100 = grænseværdi. Under 100 er godt (inden for grænsen), over 100 er &quot;overshoot&quot; (rødt).
+          Røde segmenter i den ydre ring viser overskridelse af den planetære grænse.
+        </p>
+      </section>
+
+      {/* === SOCIALT FUNDAMENT === */}
+      <div className="mb-12">
+        <h3 className="text-lg font-bold text-gray-900 mb-6 pb-2 border-b-2 border-emerald-200">
+          Socialt fundament
+        </h3>
+
+        <div className="space-y-6">
+          {SOCIAL_CATEGORIES.map((cat) => {
+            const method = SOCIAL_METHODS[cat.id];
+            const hasData = cat.indicatorIds.length > 0;
+
+            return (
+              <section
+                key={cat.id}
+                id={cat.id}
+                className="p-5 bg-white border border-gray-200 rounded-xl scroll-mt-20"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <h4 className="text-base font-semibold text-gray-900">{cat.name}</h4>
+                  <StatusBadge hasData={hasData} />
+                </div>
+
+                {cat.description && (
+                  <p className="text-sm text-gray-600 mb-4">{cat.description}</p>
+                )}
+
+                {method && (
+                  <div className="space-y-3 text-sm">
+                    <div>
+                      <p className="font-medium text-gray-800 mb-1">Beregning</p>
+                      <p className="text-gray-600">{method.scoring}</p>
+                    </div>
+
+                    {method.boundary && (
+                      <div>
+                        <p className="font-medium text-gray-800 mb-1">Grænseværdi</p>
+                        <p className="text-gray-600">{method.boundary}</p>
+                      </div>
+                    )}
+
+                    {method.dataYear && (
+                      <div>
+                        <p className="font-medium text-gray-800 mb-1">Datatidspunkt</p>
+                        <p className="text-gray-600">{method.dataYear}</p>
+                      </div>
+                    )}
+
+                    {method.limitations && (
+                      <div>
+                        <p className="font-medium text-gray-800 mb-1">Begrænsninger</p>
+                        <p className="text-gray-600">{method.limitations}</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Indicator list */}
+                {cat.indicatorIds.length > 0 && (
+                  <div className="mt-4">
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                      Indikatorer ({cat.indicatorIds.length})
+                    </p>
+                    <div className="space-y-1">
+                      {cat.indicatorIds.map((id) => (
+                        <IndicatorCard key={id} id={id} />
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </section>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* === ØKOLOGISK LOFT === */}
+      <div className="mb-12">
+        <h3 className="text-lg font-bold text-gray-900 mb-6 pb-2 border-b-2 border-red-200">
+          Økologisk loft
+        </h3>
+
+        <div className="space-y-6">
+          {ECOLOGICAL_DIMENSIONS.map((dim) => {
+            const method = ECO_METHODS[dim.id];
+            const hasData = !!dim.source;
+
+            return (
+              <section
+                key={dim.id}
+                id={dim.id}
+                className="p-5 bg-white border border-gray-200 rounded-xl scroll-mt-20"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <h4 className="text-base font-semibold text-gray-900">{dim.name}</h4>
+                  <StatusBadge hasData={hasData} />
+                </div>
+
+                {dim.description && (
+                  <p className="text-sm text-gray-600 mb-4">{dim.description}</p>
+                )}
+
+                {method && (
+                  <div className="space-y-3 text-sm">
+                    <div>
+                      <p className="font-medium text-gray-800 mb-1">Beregning</p>
+                      <p className="text-gray-600">{method.scoring}</p>
+                    </div>
+
+                    {method.boundary && (
+                      <div>
+                        <p className="font-medium text-gray-800 mb-1">Grænseværdi</p>
+                        <p className="text-gray-600">{method.boundary}</p>
+                      </div>
+                    )}
+
+                    {dim.unit && (
+                      <div>
+                        <p className="font-medium text-gray-800 mb-1">Enhed</p>
+                        <p className="text-gray-600">{dim.unit}</p>
+                      </div>
+                    )}
+
+                    {method.dataYear && (
+                      <div>
+                        <p className="font-medium text-gray-800 mb-1">Datatidspunkt</p>
+                        <p className="text-gray-600">{method.dataYear}</p>
+                      </div>
+                    )}
+
+                    {dim.source && (
+                      <div>
+                        <p className="font-medium text-gray-800 mb-1">Datakilde</p>
+                        <p className="text-gray-600">
+                          <a href={dim.source} target="_blank" rel="noopener" className="text-blue-600 hover:underline">
+                            {dim.source} ↗
+                          </a>
+                        </p>
+                      </div>
+                    )}
+
+                    {method.csvFile && (
+                      <div>
+                        <p className="font-medium text-gray-800 mb-1">Datafil</p>
+                        <p className="text-gray-600 font-mono text-xs">{method.csvFile}</p>
+                      </div>
+                    )}
+
+                    {method.limitations && (
+                      <div>
+                        <p className="font-medium text-gray-800 mb-1">Begrænsninger</p>
+                        <p className="text-gray-600">{method.limitations}</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </section>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Data processing note */}
+      <section className="p-5 bg-gray-50 border border-gray-200 rounded-xl mb-8">
+        <h3 className="text-base font-semibold text-gray-900 mb-3">Databehandling og kildekode</h3>
+        <p className="text-sm text-gray-600 leading-relaxed">
+          Al databehandling sker via Python-scripts i <code className="bg-gray-200 px-1 py-0.5 rounded text-xs">scripts/</code>-mappen
+          i projektets GitHub-repo. CSV-filer i <code className="bg-gray-200 px-1 py-0.5 rounded text-xs">data/</code>-mappen
+          indeholder de beregnede ratioer der vises på platformen. Webappen er bygget med Next.js og deployet på Netlify.
+        </p>
+        <p className="text-sm text-gray-600 leading-relaxed mt-2">
+          Platformen er open source og under aktiv udvikling. Bidrag og feedback er velkomne.
+        </p>
+      </section>
+    </div>
+  );
+}

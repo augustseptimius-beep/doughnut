@@ -29,6 +29,9 @@ export default function RootLayout({
               <a href="/" className="text-gray-500 hover:text-gray-900 transition-colors">
                 Kommuner
               </a>
+              <a href="/metode" className="text-gray-500 hover:text-gray-900 transition-colors">
+                Metode & data
+              </a>
               <a href="/om" className="text-gray-500 hover:text-gray-900 transition-colors">
                 Om platformen
               </a>

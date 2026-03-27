@@ -33,7 +33,7 @@ export default function KommuneClient({ kommune, allKommuner }: Props) {
       </div>
 
       {/* Donut ring(s) */}
-      <div className={compare ? "grid grid-cols-2 gap-6 mb-6" : "max-w-lg mx-auto mb-6"}>
+      <div className={compare ? "grid grid-cols-2 gap-6 mb-6" : "max-w-3xl mx-auto mb-6"}>
         <div>
           {compare && (
             <h3 className="text-sm font-medium text-gray-500 mb-2 text-center">
@@ -54,7 +54,7 @@ export default function KommuneClient({ kommune, allKommuner }: Props) {
       </div>
 
       {/* Summary */}
-      <div className={`text-sm text-gray-600 bg-gray-50 rounded-lg p-4 space-y-1 mb-6 ${!compare ? "max-w-lg mx-auto" : ""}`}>
+      <div className={`text-sm text-gray-600 bg-gray-50 rounded-lg p-4 space-y-1 mb-6 ${!compare ? "max-w-3xl mx-auto" : ""}`}>
         <p>
           <span className="font-medium">Socialt fundament:</span>{" "}
           {categoriesAboveThreshold} af {categoriesWithData} kategorier
