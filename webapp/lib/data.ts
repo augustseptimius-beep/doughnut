@@ -69,6 +69,7 @@ export function loadData(): KommuneData[] {
   const climateData = loadEcoCsv("climate_scores.csv", "climate_territorial_ratio");
   const consumptionData = loadEcoCsv("consumption_scores.csv", "recycling_ratio");
   const landUseData = loadEcoCsv("land_use_scores.csv", "land_use_ratio");
+  const biodiversitetData = loadEcoCsv("biodiversitet_scores.csv", "biodiversitet_ratio");
 
   // Forbrugsbaseret CO2 (national gennemsnit) - fast proxy for "Påvirkninger udenfor kommunen"
   // Kilde: CONCITO/Energistyrelsen. ~11 ton CO2e/person/år forbrugsbaseret.
@@ -111,6 +112,7 @@ export function loadData(): KommuneData[] {
       klimapaavirkning: climateData,
       cirkularitet: consumptionData,
       arealanvendelse: landUseData,
+      biodiversitet: biodiversitetData,
     };
 
     // Klimaregnskabet: kolonner direkte i doughnut_scores.csv (fallback)
