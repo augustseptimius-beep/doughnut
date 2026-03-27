@@ -14,7 +14,7 @@ interface Props {
 
 export async function generateStaticParams() {
   const kommuner = getAllKommuner();
-  return kommuner.map((k) => ({ navn: encodeURIComponent(k.kommune_navn) }));
+  return kommuner.map((k) => ({ navn: k.kommune_navn }));
 }
 
 export default async function KommunePage({ params }: Props) {
