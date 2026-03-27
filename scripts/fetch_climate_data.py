@@ -142,21 +142,16 @@ def _match_co2_per_capita(item: dict) -> Optional[float]:
     if not isinstance(item, dict):
         return None
 
-    sektor = str(item.get("sektor") or item.get("Sektor") or item.get("sector") or "").lower()
-    kategori = str(item.get("type") or item.get("Type") or item.get("kategori") or
-                   item.get("Kategori") or item.get("category") or "").lower()
-    enhed = str(item.get("enhed") or item.get("Enhed") or item.get("unit") or "").lower()
-    vaerdi = item.get("vaerdi") or item.get("Vaerdi") or item.get("value") or item.get("Value")
+    sektor = str(item.get("sektor") or item.get("Sektor") or item.get("sector") or "").lower().strip()
+    type_felt = str(item.get("type") or item.get("Type") or "").lower().strip()
+    enhed = str(item.get("enhed") or item.get("Enhed") or item.get("unit") or "").lower().strip()
+    vaerdi = item.get("værdi") or item.get("vaerdi") or item.get("value") or item.get("Value")
 
-    # Primær match: Samlet sektor, CO2-udledning, per indbygger
-    if "samlet" in sektor and "co2" in kategori and "indb" in enhed and vaerdi is not None:
-        try:
-            return float(vaerdi)
-        except (ValueError, TypeError):
-            pass
-
-    # Bredere fallback
-    if "indb" in enhed and "co2" in kategori and vaerdi is not None:
+    # Præcis match: sektor="Samlet", type="Samlet CO2-udledning", enhed="Ton CO2e/indb."
+    if (sektor == "samlet" and
+            "co2-udledning" in type_felt and
+            "indb" in enhed and
+            vaerdi is not None):
         try:
             return float(vaerdi)
         except (ValueError, TypeError):
