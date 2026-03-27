@@ -193,7 +193,7 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     name: "Cirkularitet (materialer)",
     shortName: "CIR",
     description: "Genanvendelse og ressourceeffektivitet - andelen af affald der reelt genanvendes frem for deponeres eller forbrændes.",
-    source: "Miljøstyrelsen, Affaldsstatistik",
+    source: "https://mst.dk/erhverv/groen-produktion-og-affald/affald-og-genanvendelse/affaldshaandtering/affaldsdata-og-affaldsdatasystemet/find-affaldsstatistikker-og-kortlaegning",
     unit: "% reelt genanvendt",
     boundary: "65% genanvendelse (EU-målsætning 2035)",
   },
