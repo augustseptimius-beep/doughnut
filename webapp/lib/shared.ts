@@ -72,14 +72,6 @@ export const INDICATORS: Indicator[] = [
     category: "social",
     inverse: false,
   },
-  {
-    id: "consumption_co2",
-    name: "Forbrugsbaseret CO₂ (nationalt gennemsnit)",
-    table: "CONCITO/Energistyrelsen",
-    source: "https://concito.dk",
-    category: "social",
-    inverse: true, // lavere er bedre
-  },
 ];
 
 // --- SOCIAL CATEGORIES (TORUS trivselsaspekter) ---
@@ -126,7 +118,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "paavirkninger_udenfor",
     name: "Påvirkninger udenfor kommunen",
     description: "Kommunens forbrugsbaserede klimaaftryk - de udledninger der sker uden for kommunens grænser som følge af borgernes forbrug.",
-    indicatorIds: ["consumption_co2"],
+    indicatorIds: [],
   },
   {
     id: "faellesskaber",
@@ -223,6 +215,18 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     name: "Biodiversitet",
     shortName: "BIO",
     description: "Tilstand og udvikling for lokale bestande af planter, dyr og insekter - indikatorer for naturkvalitet.",
+    source: "https://arealdata.miljoeportal.dk",
+    unit: "% areal med bioscore ≥ 8",
+    boundary: "30% af kommunens areal med væsentlige naturværdier (30x30-målet)",
+  },
+  {
+    id: "forbrug_co2",
+    name: "Forbrugsbaseret CO₂",
+    shortName: "FORBRUG",
+    description: "Kommunens forbrugsbaserede klimaaftryk - udledninger der sker uden for kommunens grænser som følge af borgernes forbrug.",
+    source: "https://concito.dk",
+    unit: "ton CO₂e/person",
+    boundary: "3 ton CO₂e/person/år (Paris-budget, forbrugsbaseret)",
   },
 ];
 

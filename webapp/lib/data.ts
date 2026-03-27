@@ -100,8 +100,7 @@ export function loadData(): KommuneData[] {
       ratios["voter_turnout"] = democracyData[kommuneKode];
     }
 
-    // Inject fixed national consumption CO2 ratio for all municipalities
-    ratios["consumption_co2"] = CONSUMPTION_CO2_RATIO;
+    // consumption_co2 er nu en økologisk dimension - se eco_ratios nedenfor
 
     // Ecological ratios
     const eco_ratios: Record<string, number | null> = {};
@@ -128,6 +127,8 @@ export function loadData(): KommuneData[] {
         eco_ratios[dim.id] = ecoSources[dim.id]?.[kode] ?? null;
       }
     }
+    // Forbrugsbaseret CO2 er ens for alle kommuner (nationalt gennemsnit)
+    eco_ratios["forbrug_co2"] = CONSUMPTION_CO2_RATIO;
 
     const socialAvg = row["social_avg"];
     const overallAvg = row["overall_avg"];
