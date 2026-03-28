@@ -40,10 +40,12 @@ function labelArcPath(
   startAngle: number, endAngle: number
 ): string {
   const midAngle = (startAngle + endAngle) / 2;
-  const midDeg = ((midAngle * 180 / Math.PI) % 360 + 360) % 360;
 
-  // Bottom half: reverse the arc so text reads left-to-right
-  const isBottom = midDeg > 90 && midDeg < 270;
+  // In SVG, Y-axis points DOWN.
+  // sin(midAngle) > 0 means the midpoint is in the lower half of the screen.
+  // On a clockwise arc, lower-half text goes right-to-left → appears upside down.
+  // Fix: reverse to counter-clockwise for lower half.
+  const isBottom = Math.sin(midAngle) > 0;
 
   if (isBottom) {
     // Counter-clockwise: swap endpoints, sweep=0
@@ -237,24 +239,39 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
     });
   };
 
+  // Labels that should split across two lines: { id: [line1, line2] }
+  const SPLIT_LABELS: Record<string, [string, string]> = {
+    "samskabelse": ["Samskabelse &", "demokrati"],
+  };
+
   /* ── textPath label definitions (in <defs>) ── */
   const renderLabelDefs = () => {
     const socialStep = (2 * Math.PI) / socialCount;
     const ecoStep = (2 * Math.PI) / ecoCount;
     const socialLabelR = (socialBase + commonBoundary) / 2;
     const ecoLabelR = (commonBoundary + ecoCeiling) / 2;
+    const lineOffset = 9; // px between two lines
 
     const paths: React.ReactElement[] = [];
 
-    // Social label paths
+    // Social: one path for single-line, two paths (±offset) for split labels
     categoryScores.forEach((cat, i) => {
       const startAngle = i * socialStep - Math.PI / 2;
       const endAngle = (i + 1) * socialStep - Math.PI / 2;
-      const d = labelArcPath(center, center, socialLabelR, startAngle, endAngle);
-      paths.push(<path key={`sp-${cat.categoryId}`} id={`slabel-${cat.categoryId}`} d={d} fill="none" stroke="none" />);
+      const isSplit = cat.categoryId in SPLIT_LABELS;
+
+      if (isSplit) {
+        const d1 = labelArcPath(center, center, socialLabelR - lineOffset, startAngle, endAngle);
+        const d2 = labelArcPath(center, center, socialLabelR + lineOffset, startAngle, endAngle);
+        paths.push(<path key={`sp1-${cat.categoryId}`} id={`slabel1-${cat.categoryId}`} d={d1} fill="none" stroke="none" />);
+        paths.push(<path key={`sp2-${cat.categoryId}`} id={`slabel2-${cat.categoryId}`} d={d2} fill="none" stroke="none" />);
+      } else {
+        const d = labelArcPath(center, center, socialLabelR, startAngle, endAngle);
+        paths.push(<path key={`sp-${cat.categoryId}`} id={`slabel-${cat.categoryId}`} d={d} fill="none" stroke="none" />);
+      }
     });
 
-    // Eco label paths
+    // Eco label paths (single line)
     ECOLOGICAL_DIMENSIONS.forEach((dim, i) => {
       const startAngle = i * ecoStep - Math.PI / 2;
       const endAngle = (i + 1) * ecoStep - Math.PI / 2;
@@ -273,27 +290,38 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
     categoryScores.forEach((cat) => {
       const isNoData = !cat.hasData;
       const isActive = active?.id === cat.categoryId && active?.group === "social";
-      labels.push(
-        <text
-          key={`st-${cat.categoryId}`}
-          className="pointer-events-none select-none"
-          style={{
-            fontSize: "14px",
-            fontWeight: 800,
-            fill: isNoData ? "#64748b" : isActive ? "#fff" : "#fff",
-            textShadow: isNoData ? "none" : "0 1px 2px rgba(0,0,0,0.4)",
-          }}
-        >
-          <textPath
-            href={`#slabel-${cat.categoryId}`}
-            startOffset="50%"
-            textAnchor="middle"
-            dominantBaseline="central"
-          >
-            {cat.categoryName}
-          </textPath>
-        </text>
-      );
+      const fill = isNoData ? "#64748b" : "#fff";
+      const shadow = isNoData ? "none" : "0 1px 2px rgba(0,0,0,0.4)";
+      const split = SPLIT_LABELS[cat.categoryId];
+
+      if (split) {
+        // Two-line label
+        labels.push(
+          <text key={`st1-${cat.categoryId}`} className="pointer-events-none select-none"
+            style={{ fontSize: "13px", fontWeight: 800, fill, textShadow: shadow }}>
+            <textPath href={`#slabel1-${cat.categoryId}`} startOffset="50%" textAnchor="middle" dominantBaseline="central">
+              {split[0]}
+            </textPath>
+          </text>
+        );
+        labels.push(
+          <text key={`st2-${cat.categoryId}`} className="pointer-events-none select-none"
+            style={{ fontSize: "13px", fontWeight: 800, fill, textShadow: shadow }}>
+            <textPath href={`#slabel2-${cat.categoryId}`} startOffset="50%" textAnchor="middle" dominantBaseline="central">
+              {split[1]}
+            </textPath>
+          </text>
+        );
+      } else {
+        labels.push(
+          <text key={`st-${cat.categoryId}`} className="pointer-events-none select-none"
+            style={{ fontSize: "14px", fontWeight: 800, fill, textShadow: shadow }}>
+            <textPath href={`#slabel-${cat.categoryId}`} startOffset="50%" textAnchor="middle" dominantBaseline="central">
+              {cat.categoryName}
+            </textPath>
+          </text>
+        );
+      }
     });
 
     // Eco labels
