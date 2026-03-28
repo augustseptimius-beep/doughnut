@@ -14,12 +14,9 @@ interface DoughnutRingProps {
 }
 
 function describeArc(
-  cx: number,
-  cy: number,
-  rOuter: number,
-  rInner: number,
-  startAngle: number,
-  endAngle: number
+  cx: number, cy: number,
+  rOuter: number, rInner: number,
+  startAngle: number, endAngle: number
 ): string {
   const x1 = cx + rOuter * Math.cos(startAngle);
   const y1 = cy + rOuter * Math.sin(startAngle);
@@ -33,10 +30,46 @@ function describeArc(
   return `M ${x1} ${y1} A ${rOuter} ${rOuter} 0 ${largeArc} 1 ${x2} ${y2} L ${x3} ${y3} A ${rInner} ${rInner} 0 ${largeArc} 0 ${x4} ${y4} Z`;
 }
 
+/**
+ * Create an arc path string for textPath usage.
+ * For the bottom half of the circle, we reverse direction (counter-clockwise)
+ * so text doesn't render upside down.
+ */
+function labelArcPath(
+  cx: number, cy: number, r: number,
+  startAngle: number, endAngle: number
+): string {
+  const midAngle = (startAngle + endAngle) / 2;
+  const midDeg = ((midAngle * 180 / Math.PI) % 360 + 360) % 360;
+
+  // Bottom half: reverse the arc so text reads left-to-right
+  const isBottom = midDeg > 90 && midDeg < 270;
+
+  if (isBottom) {
+    // Counter-clockwise: swap endpoints, sweep=0
+    const x1 = cx + r * Math.cos(endAngle);
+    const y1 = cy + r * Math.sin(endAngle);
+    const x2 = cx + r * Math.cos(startAngle);
+    const y2 = cy + r * Math.sin(startAngle);
+    const span = endAngle - startAngle;
+    const largeArc = span <= Math.PI ? "0" : "1";
+    return `M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 0 ${x2} ${y2}`;
+  } else {
+    // Clockwise: normal direction
+    const x1 = cx + r * Math.cos(startAngle);
+    const y1 = cy + r * Math.sin(startAngle);
+    const x2 = cx + r * Math.cos(endAngle);
+    const y2 = cy + r * Math.sin(endAngle);
+    const span = endAngle - startAngle;
+    const largeArc = span <= Math.PI ? "0" : "1";
+    return `M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2}`;
+  }
+}
+
 /* ── Layout constants ── */
 const vbSize = 1000;
 const center = vbSize / 2;
-const innerLimit = 80; // shortfall teeth stop here
+const innerLimit = 80;
 const socialBase = 195;
 const commonBoundary = 290;
 const ecoCeiling = 385;
@@ -52,29 +85,13 @@ const RED = "#dc2626";
 const GRAY_NO_DATA = "#cbd5e1";
 const GRAY_NO_DATA_STROKE = "#94a3b8";
 
-/**
- * Log-scale overshoot radius.
- * 100% = no overshoot, 200% = moderate, 367% = significant, 5000% = extreme
- */
 function overshootRadius(score: number): number {
   if (score <= 100) return 0;
   const logVal = Math.log(score / 100);
-  const logMax = Math.log(50); // cap at 5000%
+  const logMax = Math.log(50);
   const normalized = Math.min(logVal / logMax, 1);
   const visual = Math.sqrt(normalized);
   return ecoCeiling + (outerMaxLimit - ecoCeiling) * visual;
-}
-
-/**
- * Correct text rotation so labels on ring segments are never upside down.
- * Returns rotation in degrees.
- */
-function readableRadialRotation(midAngleRad: number): number {
-  const deg = (midAngleRad * 180) / Math.PI;
-  const norm = ((deg % 360) + 360) % 360;
-  // Right half of circle: text reads center→outside
-  // Left half of circle: flip 180° so text reads outside→center (still right-side-up)
-  return norm > 90 && norm < 270 ? deg + 180 : deg;
 }
 
 interface ActiveInfo {
@@ -115,31 +132,12 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
     if (!pinned) setActive(null);
   };
 
-  /* ── Split label into lines ── */
-  const splitLabel = (name: string, maxChars: number): string[] => {
-    if (name.length <= maxChars) return [name];
-    const words = name.split(/[\s-]+/);
-    const lines: string[] = [];
-    let current = "";
-    for (const word of words) {
-      if (current && (current + " " + word).length > maxChars) {
-        lines.push(current);
-        current = word;
-      } else {
-        current = current ? current + " " + word : word;
-      }
-    }
-    if (current) lines.push(current);
-    return lines;
-  };
-
-  /* ── SOCIAL RING (green segments) ── */
+  /* ── SOCIAL RING ── */
   const renderSocialRing = () => {
     const angleStep = (2 * Math.PI) / socialCount;
     return categoryScores.map((cat, i) => {
       const startAngle = i * angleStep - Math.PI / 2;
       const endAngle = (i + 1) * angleStep - Math.PI / 2;
-      const midAngle = (startAngle + endAngle) / 2;
 
       const safePath = describeArc(center, center, commonBoundary, socialBase, startAngle, endAngle);
 
@@ -161,12 +159,6 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
         indicators: indicatorNames.length > 0 ? indicatorNames : undefined,
       };
 
-      const labelR = (socialBase + commonBoundary) / 2;
-      const lx = center + labelR * Math.cos(midAngle);
-      const ly = center + labelR * Math.sin(midAngle);
-      const textRotation = readableRadialRotation(midAngle);
-      const lines = splitLabel(cat.categoryName, 10);
-
       return (
         <g
           key={cat.categoryId}
@@ -176,60 +168,31 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
           onMouseLeave={handleLeave}
         >
           <path d={safePath} fill={safeColor} stroke={safeStroke} strokeWidth="0.5" className="transition-colors duration-200" />
-          <text
-            x={lx} y={ly}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            transform={`rotate(${textRotation}, ${lx}, ${ly})`}
-            className="pointer-events-none select-none"
-            style={{
-              fontSize: "14px",
-              fontWeight: 800,
-              fill: isNoData ? "#64748b" : "white",
-              textShadow: isNoData ? "none" : "0 1px 3px rgba(0,0,0,0.3)",
-            }}
-          >
-            {lines.map((line, li) => (
-              <tspan
-                key={li}
-                x={lx}
-                dy={li === 0 ? `${-(lines.length - 1) * 0.5}em` : "1.1em"}
-              >
-                {line}
-              </tspan>
-            ))}
-          </text>
         </g>
       );
     });
   };
 
-  /* ── SOCIAL SHORTFALL TEETH (red wedges pointing inward) ── */
+  /* ── SOCIAL SHORTFALL TEETH ── */
   const renderSocialShortfall = () => {
     const angleStep = (2 * Math.PI) / socialCount;
     return categoryScores.map((cat, i) => {
       if (!cat.hasData || cat.score === null || cat.score >= 100) return null;
       const startAngle = i * angleStep - Math.PI / 2;
       const endAngle = (i + 1) * angleStep - Math.PI / 2;
-
-      // Shortfall fraction determines how far inward the red tooth extends
       const fraction = Math.min((100 - cat.score) / 100, 1);
       const rIn = socialBase - (socialBase - innerLimit) * Math.sqrt(fraction);
       const toothPath = describeArc(center, center, socialBase, rIn, startAngle, endAngle);
-
-      return (
-        <path key={`sf-${cat.categoryId}`} d={toothPath} fill={RED} opacity="0.9" />
-      );
+      return <path key={`sf-${cat.categoryId}`} d={toothPath} fill={RED} opacity="0.9" />;
     });
   };
 
-  /* ── ECOLOGICAL RING (green segments + overshoot) ── */
+  /* ── ECOLOGICAL RING ── */
   const renderEcoRing = () => {
     const angleStep = (2 * Math.PI) / ecoCount;
     return ECOLOGICAL_DIMENSIONS.map((dim, i) => {
       const startAngle = i * angleStep - Math.PI / 2;
       const endAngle = (i + 1) * angleStep - Math.PI / 2;
-      const midAngle = (startAngle + endAngle) / 2;
 
       const ecoScore = kommune.eco_ratios[dim.id] ?? null;
       const hasEcoData = ecoScore !== null;
@@ -257,13 +220,6 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
         boundary: dim.boundary,
       };
 
-      // Label on the eco segment
-      const labelR = (commonBoundary + ecoCeiling) / 2;
-      const lx = center + labelR * Math.cos(midAngle);
-      const ly = center + labelR * Math.sin(midAngle);
-      const textRotation = readableRadialRotation(midAngle);
-      const lines = splitLabel(dim.name, 12);
-
       return (
         <g
           key={dim.id}
@@ -276,33 +232,110 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
           {overshootPath && (
             <path d={overshootPath} fill={RED} opacity="0.9" className="transition-all duration-300" />
           )}
-          {/* Label on segment */}
-          <text
-            x={lx} y={ly}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            transform={`rotate(${textRotation}, ${lx}, ${ly})`}
-            className="pointer-events-none select-none"
-            style={{
-              fontSize: "14px",
-              fontWeight: 800,
-              fill: hasEcoData ? "white" : "#64748b",
-              textShadow: hasEcoData ? "0 1px 3px rgba(0,0,0,0.3)" : "none",
-            }}
-          >
-            {lines.map((line, li) => (
-              <tspan
-                key={li}
-                x={lx}
-                dy={li === 0 ? `${-(lines.length - 1) * 0.5}em` : "1.1em"}
-              >
-                {line}
-              </tspan>
-            ))}
-          </text>
         </g>
       );
     });
+  };
+
+  /* ── textPath label definitions (in <defs>) ── */
+  const renderLabelDefs = () => {
+    const socialStep = (2 * Math.PI) / socialCount;
+    const ecoStep = (2 * Math.PI) / ecoCount;
+    const socialLabelR = (socialBase + commonBoundary) / 2;
+    const ecoLabelR = (commonBoundary + ecoCeiling) / 2;
+
+    const paths: JSX.Element[] = [];
+
+    // Social label paths
+    categoryScores.forEach((cat, i) => {
+      const startAngle = i * socialStep - Math.PI / 2;
+      const endAngle = (i + 1) * socialStep - Math.PI / 2;
+      const d = labelArcPath(center, center, socialLabelR, startAngle, endAngle);
+      paths.push(<path key={`sp-${cat.categoryId}`} id={`slabel-${cat.categoryId}`} d={d} fill="none" stroke="none" />);
+    });
+
+    // Eco label paths
+    ECOLOGICAL_DIMENSIONS.forEach((dim, i) => {
+      const startAngle = i * ecoStep - Math.PI / 2;
+      const endAngle = (i + 1) * ecoStep - Math.PI / 2;
+      const d = labelArcPath(center, center, ecoLabelR, startAngle, endAngle);
+      paths.push(<path key={`ep-${dim.id}`} id={`elabel-${dim.id}`} d={d} fill="none" stroke="none" />);
+    });
+
+    return paths;
+  };
+
+  /* ── Render curved text labels ── */
+  const renderCurvedLabels = () => {
+    const labels: JSX.Element[] = [];
+
+    // Social labels
+    categoryScores.forEach((cat) => {
+      const isNoData = !cat.hasData;
+      const isActive = active?.id === cat.categoryId && active?.group === "social";
+      labels.push(
+        <text
+          key={`st-${cat.categoryId}`}
+          className="pointer-events-none select-none"
+          style={{
+            fontSize: "14px",
+            fontWeight: 800,
+            fill: isNoData ? "#64748b" : isActive ? "#fff" : "#fff",
+            textShadow: isNoData ? "none" : "0 1px 2px rgba(0,0,0,0.4)",
+          }}
+        >
+          <textPath
+            href={`#slabel-${cat.categoryId}`}
+            startOffset="50%"
+            textAnchor="middle"
+            dominantBaseline="central"
+          >
+            {cat.categoryName}
+          </textPath>
+        </text>
+      );
+    });
+
+    // Eco labels
+    ECOLOGICAL_DIMENSIONS.forEach((dim) => {
+      const hasData = kommune.eco_ratios[dim.id] != null;
+      const isActive = active?.id === dim.id && active?.group === "ecological";
+      labels.push(
+        <text
+          key={`et-${dim.id}`}
+          className="pointer-events-none select-none"
+          style={{
+            fontSize: "13px",
+            fontWeight: 800,
+            fill: hasData ? (isActive ? "#fff" : "#fff") : "#64748b",
+            textShadow: hasData ? "0 1px 2px rgba(0,0,0,0.4)" : "none",
+          }}
+        >
+          <textPath
+            href={`#elabel-${dim.id}`}
+            startOffset="50%"
+            textAnchor="middle"
+            dominantBaseline="central"
+          >
+            {dim.name}
+          </textPath>
+        </text>
+      );
+    });
+
+    return labels;
+  };
+
+  /* ── Curved title arc path helper ── */
+  const titleArcPath = (id: string, r: number, startDeg: number, endDeg: number) => {
+    const s = (startDeg * Math.PI) / 180;
+    const e = (endDeg * Math.PI) / 180;
+    const x1 = center + r * Math.cos(s);
+    const y1 = center + r * Math.sin(s);
+    const x2 = center + r * Math.cos(e);
+    const y2 = center + r * Math.sin(e);
+    const la = endDeg - startDeg > 180 ? "1" : "0";
+    return <path id={id} d={`M ${x1} ${y1} A ${r} ${r} 0 ${la} 1 ${x2} ${y2}`} fill="none" stroke="none" />;
   };
 
   const getStatusText = (info: ActiveInfo): string => {
@@ -319,67 +352,45 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
     return info.score <= 100 ? "text-emerald-600" : "text-red-500";
   };
 
-  /* ── Curved text path helper ── */
-  const curvedTextPath = (id: string, r: number, startAngleDeg: number, endAngleDeg: number) => {
-    const startRad = (startAngleDeg * Math.PI) / 180;
-    const endRad = (endAngleDeg * Math.PI) / 180;
-    const x1 = center + r * Math.cos(startRad);
-    const y1 = center + r * Math.sin(startRad);
-    const x2 = center + r * Math.cos(endRad);
-    const y2 = center + r * Math.sin(endRad);
-    const largeArc = endAngleDeg - startAngleDeg > 180 ? "1" : "0";
-    return (
-      <path
-        id={id}
-        d={`M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2}`}
-        fill="none"
-        stroke="none"
-      />
-    );
-  };
-
   return (
     <div className="relative w-full">
       <div className="relative w-full aspect-square flex items-center justify-center">
         <svg viewBox={`-140 -140 ${vbSize + 280} ${vbSize + 280}`} className="w-full h-full" preserveAspectRatio="xMidYMid meet">
           <defs>
-            {/* Eco title on outer edge of eco ring */}
-            {curvedTextPath("ecoTitleArc", ecoCeiling + 8, -150, -30)}
-            {/* Social title inside the white center */}
-            {curvedTextPath("socialTitleArc", socialBase - 20, 200, 340)}
+            {renderLabelDefs()}
+            {titleArcPath("ecoTitleArc", ecoCeiling + 10, -150, -30)}
+            {titleArcPath("socialTitleArc", socialBase - 18, 200, 340)}
           </defs>
 
-          {/* ── 1. Eco ring (segments + overshoot) ── */}
+          {/* 1. Eco ring */}
           {renderEcoRing()}
 
-          {/* ── 2. Social ring (green segments) ── */}
+          {/* 2. Social ring */}
           {renderSocialRing()}
 
-          {/* ── 3. Boundary lines ── */}
+          {/* 3. Boundary lines */}
           <circle cx={center} cy={center} r={ecoCeiling} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="3" opacity="0.5" />
           <circle cx={center} cy={center} r={commonBoundary} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="2" opacity="0.3" />
           <circle cx={center} cy={center} r={socialBase} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="3" opacity="0.5" />
 
-          {/* ── 6. White center ── */}
+          {/* 4. White center */}
           <circle cx={center} cy={center} r={socialBase - 1} fill="white" />
 
-          {/* ── 7. Shortfall teeth (rendered ON TOP of white center) ── */}
+          {/* 5. Shortfall teeth */}
           {renderSocialShortfall()}
 
-          {/* ── 8. Curved ring titles on the boundary band ── */}
-          <text
-            className="pointer-events-none select-none"
-            style={{ fontSize: "18px", fontWeight: 900, fill: GREEN_DARK_BAND, letterSpacing: "0.3em" }}
-          >
+          {/* 6. Curved dimension labels */}
+          {renderCurvedLabels()}
+
+          {/* 7. Ring titles */}
+          <text className="pointer-events-none select-none"
+            style={{ fontSize: "18px", fontWeight: 900, fill: GREEN_DARK_BAND, letterSpacing: "0.3em" }}>
             <textPath href="#ecoTitleArc" startOffset="50%" textAnchor="middle">
               ØKOLOGISK LOFT
             </textPath>
           </text>
-
-          <text
-            className="pointer-events-none select-none"
-            style={{ fontSize: "16px", fontWeight: 900, fill: GREEN_DARK_BAND, letterSpacing: "0.25em" }}
-          >
+          <text className="pointer-events-none select-none"
+            style={{ fontSize: "16px", fontWeight: 900, fill: GREEN_DARK_BAND, letterSpacing: "0.25em" }}>
             <textPath href="#socialTitleArc" startOffset="50%" textAnchor="middle">
               SOCIALT FUNDAMENT
             </textPath>
@@ -396,29 +407,17 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
                 {active.group === "social" ? "Socialt fundament" : "Økologisk loft"}
               </span>
               {pinned && (
-                <button
-                  onClick={() => { setPinned(false); setActive(null); }}
-                  className="text-gray-300 hover:text-gray-500 text-xs"
-                >
-                  ✕
-                </button>
+                <button onClick={() => { setPinned(false); setActive(null); }}
+                  className="text-gray-300 hover:text-gray-500 text-xs">✕</button>
               )}
             </div>
-            <h3 className="font-black text-base text-gray-800 leading-tight">
-              {active.label}
-            </h3>
-
+            <h3 className="font-black text-base text-gray-800 leading-tight">{active.label}</h3>
             {active.description && (
-              <p className="text-[11px] text-gray-500 mt-1 leading-snug line-clamp-3">
-                {active.description}
-              </p>
+              <p className="text-[11px] text-gray-500 mt-1 leading-snug line-clamp-3">{active.description}</p>
             )}
-
             <div className="mt-2">
               {active.hasData && active.score !== null ? (
-                <p className="text-2xl font-black text-gray-900 tracking-tighter">
-                  {active.score.toFixed(1)}%
-                </p>
+                <p className="text-2xl font-black text-gray-900 tracking-tighter">{active.score.toFixed(1)}%</p>
               ) : (
                 <p className="text-sm font-medium text-gray-400">Ingen data endnu</p>
               )}
@@ -426,52 +425,37 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
                 {getStatusText(active)}
               </p>
             </div>
-
             {active.indicators && active.indicators.length > 0 && (
               <div className="mt-2 pt-2 border-t border-gray-100">
                 <p className="text-[9px] font-semibold text-gray-400 uppercase mb-1">Indikatorer</p>
                 {active.indicators.map((name) => (
-                  <p key={name} className="text-[11px] text-gray-600 leading-snug">
-                    · {name}
-                  </p>
+                  <p key={name} className="text-[11px] text-gray-600 leading-snug">· {name}</p>
                 ))}
               </div>
             )}
-
             {active.boundary && (
               <div className="mt-2 pt-2 border-t border-gray-100">
                 <p className="text-[9px] font-semibold text-gray-400 uppercase mb-1">Grænseværdi</p>
                 <p className="text-[11px] text-gray-600 leading-snug">{active.boundary}</p>
               </div>
             )}
-
             {active.unit && (
               <p className="text-[10px] text-gray-400 mt-1">Enhed: {active.unit}</p>
             )}
-
             {active.hasData && active.score !== null && (
               <div className="mt-2 h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                <div
-                  className={`h-full transition-all duration-500 rounded-full ${
-                    active.group === "social"
-                      ? active.score >= 100 ? "bg-emerald-500" : "bg-red-400"
-                      : active.score <= 100 ? "bg-emerald-500" : "bg-red-400"
-                  }`}
-                  style={{ width: `${Math.min(active.score, 200) / 2}%` }}
-                />
+                <div className={`h-full transition-all duration-500 rounded-full ${
+                  active.group === "social"
+                    ? active.score >= 100 ? "bg-emerald-500" : "bg-red-400"
+                    : active.score <= 100 ? "bg-emerald-500" : "bg-red-400"
+                }`} style={{ width: `${Math.min(active.score, 200) / 2}%` }} />
               </div>
             )}
-
             <div className="flex items-center justify-between mt-2">
-              <a
-                href={`/metode#${active.id}`}
-                className="text-[10px] text-blue-600 hover:underline pointer-events-auto"
-              >
+              <a href={`/metode#${active.id}`} className="text-[10px] text-blue-600 hover:underline pointer-events-auto">
                 Se metode →
               </a>
-              {!pinned && (
-                <p className="text-[9px] text-gray-300">Klik for at fastholde</p>
-              )}
+              {!pinned && <p className="text-[9px] text-gray-300">Klik for at fastholde</p>}
             </div>
           </div>
         )}
