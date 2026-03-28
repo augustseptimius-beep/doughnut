@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   type KommuneData,
   ECOLOGICAL_DIMENSIONS,
@@ -244,7 +244,7 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
     const socialLabelR = (socialBase + commonBoundary) / 2;
     const ecoLabelR = (commonBoundary + ecoCeiling) / 2;
 
-    const paths: JSX.Element[] = [];
+    const paths: React.ReactElement[] = [];
 
     // Social label paths
     categoryScores.forEach((cat, i) => {
@@ -267,7 +267,7 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
 
   /* ── Render curved text labels ── */
   const renderCurvedLabels = () => {
-    const labels: JSX.Element[] = [];
+    const labels: React.ReactElement[] = [];
 
     // Social labels
     categoryScores.forEach((cat) => {
