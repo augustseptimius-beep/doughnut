@@ -71,12 +71,13 @@ export function loadData(): KommuneData[] {
   const landUseData = loadEcoCsv("land_use_scores.csv", "land_use_ratio");
   const biodiversitetData = loadEcoCsv("biodiversitet_scores.csv", "biodiversitet_ratio");
 
-  // New ecological data (Næringsstoffer, Vand, Forurening)
+  // New ecological data (Næringsstoffer, Vand)
   const naerNitrogen = loadEcoCsv("naeringsstoffer_scores.csv", "nitrogen_ratio");
   const naerPhosphorus = loadEcoCsv("naeringsstoffer_scores.csv", "phosphorus_ratio");
   const vandWastewater = loadEcoCsv("vand_scores.csv", "wastewater_ratio");
   const vandExtraction = loadEcoCsv("vand_scores.csv", "water_extraction_ratio");
-  const forureningWaste = loadEcoCsv("forurening_scores.csv", "waste_ratio");
+  // Affald flyttes til cirkularitet (waste_ratio er inverteret: lav score = mere affald)
+  const wasteData = loadEcoCsv("forurening_scores.csv", "waste_ratio");
 
   // Forbrugsbaseret CO2 (national gennemsnit) - fast proxy for "Påvirkninger udenfor kommunen"
   // Kilde: CONCITO/Energistyrelsen. ~11 ton CO2e/person/år forbrugsbaseret.
@@ -187,9 +188,9 @@ export function loadData(): KommuneData[] {
     const kode = row["kommune_kode"] || "";
 
     // TORUS miljøaspekter - data fra separate CSV-filer
+    // NB: cirkularitet håndteres separat nedenfor (multi-indikator)
     const ecoSources: Record<string, Record<string, number | null>> = {
       klimapaavirkning: climateData,
-      cirkularitet: consumptionData,
       arealanvendelse: landUseData,
       biodiversitet: biodiversitetData,
     };
@@ -211,24 +212,46 @@ export function loadData(): KommuneData[] {
     eco_ratios["forbrug_co2"] = CONSUMPTION_CO2_RATIO;
 
     // Multi-indicator eco dimensions (gennemsnit af flere indikatorer)
-    // Næringsstoffer: kvælstof + fosfor udledning pr. capita (inverteret)
-    const naerN = naerNitrogen[kode] ?? null;
-    const naerP = naerPhosphorus[kode] ?? null;
+    // VIGTIGT: næringsstoffer, vand og forurening bruger ratio_inverse i CSV:
+    //   ratio_inverse = (national_avg / kommune_val) * 100
+    //   Lav score = MERE forurening = VÆRRE
+    // Vi konverterer til direkte ratio: direct = 10000 / inverse
+    //   Så høj forurening → score > 100 → overshoot (rød)
+    //   Og lav forurening → score < 100 → inden for grænsen (grøn)
+    function invertToDirectRatio(inverted: number | null): number | null {
+      if (inverted === null || inverted === 0) return null;
+      return parseFloat((10000 / inverted).toFixed(2));
+    }
+
+    // Næringsstoffer: kvælstof + fosfor udledning pr. capita
+    const naerN = invertToDirectRatio(naerNitrogen[kode] ?? null);
+    const naerP = invertToDirectRatio(naerPhosphorus[kode] ?? null);
     const naerVals = [naerN, naerP].filter((v): v is number => v !== null);
     eco_ratios["naeringsstoffer"] = naerVals.length > 0
       ? parseFloat((naerVals.reduce((a, b) => a + b, 0) / naerVals.length).toFixed(2))
       : null;
 
-    // Vand: spildevand + vandindvinding pr. capita (inverteret)
-    const vandWW = vandWastewater[kode] ?? null;
-    const vandEx = vandExtraction[kode] ?? null;
+    // Vand: spildevand + vandindvinding pr. capita
+    const vandWW = invertToDirectRatio(vandWastewater[kode] ?? null);
+    const vandEx = invertToDirectRatio(vandExtraction[kode] ?? null);
     const vandVals = [vandWW, vandEx].filter((v): v is number => v !== null);
     eco_ratios["vand"] = vandVals.length > 0
       ? parseFloat((vandVals.reduce((a, b) => a + b, 0) / vandVals.length).toFixed(2))
       : null;
 
-    // Forurening: husholdningsaffald pr. capita (inverteret)
-    eco_ratios["forurening"] = forureningWaste[kode] ?? null;
+    // Cirkularitet: genanvendelse (direkte) + affald pr. capita (inverteret)
+    // Genanvendelse: høj % = godt → score > 100 = bedre end landsgennemsnit
+    // Affald: waste_ratio er inverteret (lav score = mere affald = værre)
+    const recycling = consumptionData[kode] ?? null;
+    const wasteInverted = wasteData[kode] ?? null;
+    const wasteDirect = invertToDirectRatio(wasteInverted);
+    const cirkVals = [recycling, wasteDirect].filter((v): v is number => v !== null);
+    eco_ratios["cirkularitet"] = cirkVals.length > 0
+      ? parseFloat((cirkVals.reduce((a, b) => a + b, 0) / cirkVals.length).toFixed(2))
+      : null;
+
+    // Forurening (novel entities): ingen pålidelig kommunal datakilde endnu
+    eco_ratios["forurening"] = null;
 
     const socialAvg = row["social_avg"];
     const overallAvg = row["overall_avg"];

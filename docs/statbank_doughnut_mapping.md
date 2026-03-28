@@ -241,23 +241,30 @@ Se under social dimension 12 (Vand) ovenfor.
 
 ---
 
-### 7. Materialestrømme og affald
-**Dækning: God på nationalt niveau**
+### 7. Cirkularitet (materialestrømme og affald)
+**Dækning: God på kommunalt niveau**
+**Status: Implementeret** - to indikatorer: genanvendelsesprocent + affaldsmængde pr. capita
 
-| Tabel-ID | Titel | Kommuneniveau |
-|---|---|---|
-| AFFALD | Affaldsproduktion | Ja (delvis) |
-| LABY24 | Husholdningsaffald | Ja |
-| LABY25 | Nøgletal for husholdningsaffald | Ja |
-| MRM2 | Materialestrømsregnskab | Nej |
-| SDG08042 | Indenlandsk materialeanvendelse | Nej |
+| Tabel-ID | Titel | Kommuneniveau | Indikator |
+|---|---|---|---|
+| LABY25 | Nøgletal for husholdningsaffald | Ja | Affald kg/capita (inverteret - lavere er bedre) |
+| AFFALD | Affaldsproduktion | Ja (delvis) | - |
+| LABY24 | Husholdningsaffald | Ja | - |
+| MRM2 | Materialestrømsregnskab | Nej | - |
+
+*Genanvendelsesprocent hentes fra consumption_scores.csv (recycling_ratio). Affaldsdata (waste_ratio) er flyttet hertil fra den tidligere "Forurening"-dimension, da affald er en cirkularitetsindikator, ikke novel entities.*
 
 ---
 
-### 8. Kemisk forurening
-**Dækning: Svag i Statbank**
+### 8. Forurening (novel entities)
+**Dækning: Ingen - ingen pålidelig kommunal kilde**
 
-*Pesticid- og kemikaliedata findes primært i Miljøstyrelsens databaser.*
+*Den planetære grænse "novel entities" dækker kemisk forurening, mikroplast, persistent organisk forurening (POP), pesticider mv. Denne grænse er allerede overskredet globalt (Persson et al., 2022). Statbank har ingen kommunale data. Mulige fremtidige proxyer:*
+- *Pesticidbelastning (Bekæmpelsesmiddel-indikator, Miljøstyrelsen) - primært nationalt*
+- *Grundvandsboringer med pesticid-fund (GEUS/Jupiter) - usikkert på kommuneniveau*
+- *PFAS-forurening (regionale data fra Region Syddanmark/Nordjylland)*
+
+*Dimensionen vises som "ingen data" (grå) indtil en pålidelig kommunal kilde identificeres.*
 
 ---
 
@@ -289,8 +296,8 @@ Se under social dimension 12 (Vand) ovenfor.
 | Areal/natur | Delvis | Ja | - |
 | Biodiversitet | Svag | Nej | Naturdata.dk |
 | Kvælstof/fosfor | Svag | Nej | Miljøstyrelsen |
-| Affald | God | Ja | - |
-| Kemi | Ingen | Nej | Miljøstyrelsen |
+| Cirkularitet/affald | God | Ja | Genanvendelse + kg affald/capita |
+| Novel entities (kemi) | Ingen | Nej | Miljøstyrelsen, GEUS |
 | Ozon/havforsuring | Ingen | Nej | Nationale/EU-kilder |
 
 **Konklusion:** Statbank er en stærk kilde til sociale dimensioner (ca. 8/12 dækkes godt). De planetære grænser er svagest dækket - her er kommuneniveauet generelt fraværende, og platformen bør supplere med DK2020-data, Klimakompasset og Miljøstyrelsens databaser.
