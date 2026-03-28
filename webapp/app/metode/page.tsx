@@ -94,17 +94,14 @@ const ECO_METHODS: Record<string, MethodInfo> = {
     id: "klimapaavirkning",
     scoring: "Territoriale CO2e-udledninger pr. indbygger. Ratio = (faktisk udledning / grænseværdi) * 100. Over 100 = overshoot (udleder mere end budgettet tillader).",
     boundary: "3 ton CO2e pr. person pr. år (Paris-aftalens budget for territorial udledning, IPCC 1.5°C-scenarie).",
-    dataYear: "2021",
+    dataYear: "2023",
     limitations: "Dækker ca. 70 af 98 kommuner. Territorialt regnskab fanger ikke forbrug - se Forbrugsbaseret CO2.",
     csvFile: "climate_scores.csv",
   },
   forurening: {
     id: "forurening",
-    scoring: "Husholdningsaffald i kg pr. indbygger som proxy for materiel forurening. Ratio = (landsgennemsnit / kommune) * 100. Over 100 = under landsgennemsnittet (producerer mindre affald, bedre). Under 100 = over landsgennemsnittet (producerer mere affald).",
-    boundary: "Landsgennemsnittet som reference (2023: 543 kg/indb.). Inverteret - lavere affaldsproduktion er bedre.",
-    dataYear: "2023",
-    limitations: "Dækker kun husholdningsaffald, ikke erhvervsaffald, kemisk forurening, PFAS eller pesticider. Er en proxy-indikator - direkte forureningsdata er ikke kommunefordelt i StatBank.",
-    csvFile: "forurening_scores.csv",
+    scoring: "Ingen pålidelig kommunal datakilde endnu. Dækker den planetære grænse for 'novel entities' - kemisk forurening, mikroplast, PFAS, pesticider mv. Affaldsdata (tidligere brugt som proxy her) er flyttet til Cirkularitet-dimensionen, da affaldsmængde er en bedre indikator for materialeforbrug end for kemisk forurening.",
+    limitations: "Direkte forureningsdata (PFAS, pesticider, tungmetaller) er ikke kommunefordelt i StatBank. Potentielle fremtidige kilder: NOVANA-overvågning (Miljøstyrelsen), jordforureningsdata (regionerne), DCE luftkvalitetsmålinger.",
   },
   luftkvalitet: {
     id: "luftkvalitet",
@@ -113,24 +110,24 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   cirkularitet: {
     id: "cirkularitet",
-    scoring: "Reel genanvendelsesprocent for husholdningsaffald pr. kommune. Ratio = (grænseværdi / faktisk genanvendelse) * 100. Over 100 = under grænsen (genanvender for lidt).",
-    boundary: "65% genanvendelse (EU Affaldsdirektiv, målsætning for 2035).",
+    scoring: "Gennemsnit af to indikatorer: (1) Genanvendelsesprocent for husholdningsaffald - eco-ratio = (65% EU-mål / faktisk %) * 100. Over 100 = genanvender for lidt. (2) Husholdningsaffald i kg pr. indbygger (inverteret - lavere er bedre). Over 100 = producerer mere affald end landsgennemsnittet.",
+    boundary: "65% genanvendelse (EU Affaldsdirektiv 2035) + lavest muligt affald pr. capita (landsgennemsnit som reference).",
     dataYear: "2023",
     limitations: "Reel genanvendelse kan afvige fra indsamlet til genanvendelse. Omfatter kun husholdningsaffald, ikke erhvervsaffald.",
-    csvFile: "consumption_scores.csv",
+    csvFile: "consumption_scores.csv + forurening_scores.csv",
   },
   naeringsstoffer: {
     id: "naeringsstoffer",
-    scoring: "Gennemsnit af to indikatorer: (1) Kvælstof-udledning (ton total-N) pr. 1.000 indbyggere via spildevand. (2) Fosfor-udledning (ton total-P) pr. 1.000 indbyggere via spildevand. Begge inverteret: ratio = (landsgennemsnit / kommune) * 100. Over 100 = under landsgennemsnittet (udleder mindre, bedre).",
-    boundary: "Landsgennemsnittet som reference. Inverteret - lavere næringsstofudledning er bedre for vandmiljøet.",
+    scoring: "Gennemsnit af to indikatorer: (1) Kvælstof-udledning (ton total-N) pr. 1.000 indbyggere via spildevand. (2) Fosfor-udledning (ton total-P) pr. 1.000 indbyggere via spildevand. Eco-konvention: score over 100 = kommunen udleder mere end landsgennemsnittet (overshoot). Under 100 = udleder mindre (inden for grænsen).",
+    boundary: "Landsgennemsnittet som reference. Lavere næringsstofudledning er bedre for vandmiljøet.",
     dataYear: "2024",
     limitations: "Dækker kun punktkilder via spildevand (renseanlæg, dambrug, havbrug, industri, spredt bebyggelse, regnbetinget). Fanger ikke diffus udledning fra landbrug, som er den største kvælstofkilde i Danmark.",
     csvFile: "naeringsstoffer_scores.csv",
   },
   vand: {
     id: "vand",
-    scoring: "Gennemsnit af to indikatorer: (1) Spildevandsudledning (1.000 m³) pr. 1.000 indbyggere. (2) Vandindvinding (mio. m³) pr. 1.000 indbyggere. Begge inverteret: ratio = (landsgennemsnit / kommune) * 100. Over 100 = under landsgennemsnittet (lavere pres på vandressourcer).",
-    boundary: "Landsgennemsnittet som reference. Inverteret - lavere vandforbrug og spildevandsudledning er bedre.",
+    scoring: "Gennemsnit af to indikatorer: (1) Spildevandsudledning (1.000 m³) pr. 1.000 indbyggere. (2) Vandindvinding (mio. m³) pr. 1.000 indbyggere. Eco-konvention: score over 100 = kommunen bruger/udleder mere vand end landsgennemsnittet (overshoot). Under 100 = lavere pres på vandressourcer (inden for grænsen).",
+    boundary: "Landsgennemsnittet som reference. Lavere vandforbrug og spildevandsudledning er bedre.",
     dataYear: "2024",
     limitations: "Måler kvantitativt pres på vandressourcer, ikke kvalitet (nitrat, pesticider, PFAS i grundvand). Grundvandskvalitetsdata er ikke kommunefordelt i StatBank. Vandindvinding til markvanding varierer kraftigt mellem kommuner.",
     csvFile: "vand_scores.csv",
@@ -241,6 +238,17 @@ export default function MetodePage() {
         <p className="text-sm text-gray-700 leading-relaxed mt-2">
           <strong>Økologisk loft:</strong> Score 100 = grænseværdi. Under 100 er godt (inden for grænsen), over 100 er &quot;overshoot&quot; (rødt).
           Røde segmenter i den ydre ring viser overskridelse af den planetære grænse.
+        </p>
+        <p className="text-sm text-gray-700 leading-relaxed mt-4">
+          <strong>Vægtning:</strong> Hver kategori (f.eks. Sundhed, Velfærd, Bolig) beregnes som et simpelt gennemsnit af sine indikatorer.
+          Det samlede sociale gennemsnit er et gennemsnit af kategorierne - ikke af de individuelle indikatorer.
+          Det betyder at kategorier med få indikatorer (f.eks. Bolig med 2) vægter lige så tungt som kategorier med mange (f.eks. Velfærd med 6).
+          Dette er et bevidst valg: hver dimension i doughnut-modellen anses for lige vigtig, uanset hvor mange indikatorer der måler den.
+        </p>
+        <p className="text-sm text-gray-700 leading-relaxed mt-2">
+          <strong>Inverterede indikatorer:</strong> For indikatorer hvor lavere er bedre (f.eks. kriminalitet, affald, børnefattigdom)
+          beregnes ratioen inverteret: (landsgennemsnit / kommune) × 100. Kommuner med en værdi på 0 tildeles en score på 150 (cap)
+          for at undgå division med nul, og fordi manglende data ikke bør fortolkes som perfekt score.
         </p>
       </section>
 

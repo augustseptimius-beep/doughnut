@@ -3,6 +3,13 @@
 import { useState, useMemo } from "react";
 import { SOCIAL_CATEGORIES, ECOLOGICAL_DIMENSIONS, scoreColor } from "@/lib/shared";
 
+function ecoScoreColor(score: number | null): string {
+  if (score === null) return "text-gray-400";
+  if (score <= 85) return "text-emerald-600";   // klart under grænsen = godt
+  if (score <= 100) return "text-amber-500";    // tæt på grænsen
+  return "text-red-500";                         // overshoot
+}
+
 interface KommuneRow {
   kode: string;
   navn: string;
@@ -171,7 +178,7 @@ export default function KommuneTable({ data }: { data: KommuneRow[] }) {
                   </a>
                 </td>
                 <td className="px-2 py-2 text-xs text-gray-400">{REGION_MAP[k.kode] ?? "–"}</td>
-                <td className={`px-3 py-2 text-right font-semibold ${scoreColor(k.overall)}`}>
+                <td className={`px-3 py-2 text-right font-semibold ${view === "eco" ? ecoScoreColor(k.overall) : scoreColor(k.overall)}`}>
                   {k.overall !== null ? k.overall.toFixed(1) : "–"}
                 </td>
                 {activeColumns.map((col) => {
@@ -179,7 +186,7 @@ export default function KommuneTable({ data }: { data: KommuneRow[] }) {
                     ? (k.categories[col.id] ?? null)
                     : (k.eco_categories?.[col.id] ?? null);
                   return (
-                    <td key={col.id} className={`px-2 py-2 text-right text-xs ${scoreColor(val)}`}>
+                    <td key={col.id} className={`px-2 py-2 text-right text-xs ${view === "eco" ? ecoScoreColor(val) : scoreColor(val)}`}>
                       {val !== null ? val.toFixed(1) : "–"}
                     </td>
                   );
@@ -188,7 +195,11 @@ export default function KommuneTable({ data }: { data: KommuneRow[] }) {
                   <div className="h-2 bg-gray-100 rounded-full overflow-hidden relative">
                     <div className="absolute top-0 bottom-0 w-px bg-gray-300" style={{ left: `${(100 / 150) * 100}%` }} />
                     <div
-                      className={`h-full rounded-full transition-all ${(k.overall ?? 0) >= 100 ? "bg-emerald-500" : (k.overall ?? 0) >= 85 ? "bg-amber-400" : "bg-red-400"}`}
+                      className={`h-full rounded-full transition-all ${
+                        view === "eco"
+                          ? ((k.overall ?? 0) <= 85 ? "bg-emerald-500" : (k.overall ?? 0) <= 100 ? "bg-amber-400" : "bg-red-500")
+                          : ((k.overall ?? 0) >= 100 ? "bg-emerald-500" : (k.overall ?? 0) >= 85 ? "bg-amber-400" : "bg-red-400")
+                      }`}
                       style={{ width: `${Math.min(((k.overall ?? 0) / 150) * 100, 100)}%` }}
                     />
                   </div>

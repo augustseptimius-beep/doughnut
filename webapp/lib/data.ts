@@ -67,7 +67,8 @@ export function loadData(): KommuneData[] {
 
   // Load ecological data
   const climateData = loadEcoCsv("climate_scores.csv", "climate_territorial_ratio");
-  const consumptionData = loadEcoCsv("consumption_scores.csv", "recycling_ratio");
+  // Load raw recycling percentage (not the old social-convention ratio)
+  const recyclingPctData = loadEcoCsv("consumption_scores.csv", "recycling_pct");
   const landUseData = loadEcoCsv("land_use_scores.csv", "land_use_ratio");
   const biodiversitetData = loadEcoCsv("biodiversitet_scores.csv", "biodiversitet_ratio");
 
@@ -239,13 +240,16 @@ export function loadData(): KommuneData[] {
       ? parseFloat((vandVals.reduce((a, b) => a + b, 0) / vandVals.length).toFixed(2))
       : null;
 
-    // Cirkularitet: genanvendelse (direkte) + affald pr. capita (inverteret)
-    // Genanvendelse: høj % = godt → score > 100 = bedre end landsgennemsnit
-    // Affald: waste_ratio er inverteret (lav score = mere affald = værre)
-    const recycling = consumptionData[kode] ?? null;
+    // Cirkularitet: genanvendelse + affald pr. capita (begge eco-konvention: >100 = overshoot)
+    // Genanvendelse: eco ratio = (65% EU-mål / faktisk %) × 100. Over 100 = genanvender for lidt.
+    // Affald: waste_ratio er inverteret i CSV → konverteres til direkte eco-ratio via invertToDirectRatio.
+    const recyclingPct = recyclingPctData[kode] ?? null;
+    const recyclingEco = recyclingPct !== null && recyclingPct > 0
+      ? parseFloat(((65 / recyclingPct) * 100).toFixed(2))
+      : null;
     const wasteInverted = wasteData[kode] ?? null;
     const wasteDirect = invertToDirectRatio(wasteInverted);
-    const cirkVals = [recycling, wasteDirect].filter((v): v is number => v !== null);
+    const cirkVals = [recyclingEco, wasteDirect].filter((v): v is number => v !== null);
     eco_ratios["cirkularitet"] = cirkVals.length > 0
       ? parseFloat((cirkVals.reduce((a, b) => a + b, 0) / cirkVals.length).toFixed(2))
       : null;
