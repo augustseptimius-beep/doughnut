@@ -1,27 +1,28 @@
 #!/usr/bin/env python3
 """
-Arealanvendelse pr. danske kommune — §3-beskyttet natur
-=======================================================
-Henter §3-beskyttede naturarealer (hede, eng, mose, overdrev, strandeng, sø)
-fra Landbrugs- og Fiskeristyrelsen WFS og beregner naturandel pr. kommune.
+Arealanvendelse pr. danske kommune — §3-natur + markblokke
+===========================================================
+Henter to datasæt fra Landbrugs- og Fiskeristyrelsen WFS:
+  1. Paragraf3: §3-beskyttede naturarealer (hede, eng, mose, overdrev, strandeng, sø)
+  2. Markblokke: landbrugsarealer under dyrkning
 
-Kilde: geodata.fvm.dk (LFST) — Paragraf3-laget. Åbent, ingen login krævet.
+Kilde: geodata.fvm.dk (LFST). Åbent, ingen login krævet.
 
 Metode:
   1. Hent alle Paragraf3-polygoner fra LFST WFS (pagineret)
-  2. Hent kommunegrænser fra DAWA
-  3. Beregn intersection: hvilke §3-arealer ligger i hvilken kommune
-  4. Summer §3-areal pr. kommune, divider med kommunens totalareal
-  5. Score mod EU Biodiversitetsstrategi 30%-mål
+  2. Hent alle Markblokke-polygoner fra LFST WFS (pagineret)
+  3. Hent kommunegrænser fra DAWA
+  4. Spatial join: summer §3-areal og markblok-areal pr. kommune
+  5. Score §3-natur mod EU Biodiversitetsstrategi 30%-mål
 
-Grænseværdi: 30% naturarealer (30x30-målet, EU 2030)
+Grænseværdi (natur): 30% §3-naturarealer (30x30-målet, EU 2030)
 Ratio > 100 = for lidt natur (overshoot). < 100 = over målet (godt).
 
-Begrænsning: Dækker kun §3-beskyttet natur + skov fra ARE207 (DST).
-Ubeskyttede naturarealer med høj kvalitet tælles ikke med.
+Markblokke bruges som informationsdata (ikke direkte scoring endnu),
+men danner grundlag for fremtidig N/P-intensitetsberegning pr. ha landbrugsareal.
 
 Krav:
-  pip install geopandas requests --break-system-packages
+  pip install geopandas
 
 Brug:
   cd scripts/
@@ -312,13 +313,136 @@ def beregn_naturandel(p3: gpd.GeoDataFrame, kommuner: gpd.GeoDataFrame) -> dict:
     return natur_pr_kommune
 
 
+# ── Markblokke ───────────────────────────────────────────────────────────────
+
+def hent_markblokke() -> gpd.GeoDataFrame:
+    """
+    Henter alle Markblokke-features fra LFST WFS i sider.
+    Returnerer GeoDataFrame i EPSG:25832.
+    NB: Markblokke er et stort datasæt (~300.000 polygoner) - tager 10-20 min.
+    """
+    print("\n(Markblokke): Henter landbrugsarealer fra LFST WFS...")
+
+    # Find det korrekte lagnavn dynamisk
+    import xml.etree.ElementTree as ET
+    url = f"{LFST_WFS}?service=WFS&version=2.0.0&request=GetCapabilities"
+    req = urllib.request.Request(url, headers={"User-Agent": "DoughnutDK/1.0"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        raw_bytes = resp.read()
+        xml_raw = raw_bytes.decode("utf-8", errors="replace")
+
+    root = ET.fromstring(xml_raw)
+    ns = {"wfs": "http://www.opengis.net/wfs/2.0"}
+    kandidater = [
+        ft.text for ft in root.findall(".//wfs:FeatureType/wfs:Name", ns)
+        if ft.text and "markblok" in ft.text.lower()
+    ]
+
+    if not kandidater:
+        print("  ADVARSEL: Ingen Markblokke-lag fundet - springer over.")
+        return None
+
+    lag_navn = kandidater[0]
+    print(f"  Fandt lag: {lag_navn}")
+
+    alle_features = []
+    start = 0
+
+    while True:
+        url = (
+            f"{LFST_WFS}?service=WFS&version=2.0.0&request=GetFeature"
+            f"&typeName={lag_navn}"
+            f"&outputFormat=application/json"
+            f"&count={PAGE_SIZE}&startIndex={start}"
+        )
+        print(f"  Henter features {start} - {start + PAGE_SIZE}...", end=" ", flush=True)
+
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "DoughnutDK/1.0"})
+            with urllib.request.urlopen(req, timeout=180) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+        except Exception as e:
+            print(f"FEJL: {e}")
+            break
+
+        features = data.get("features", [])
+        print(f"modtog {len(features)}")
+
+        if not features:
+            break
+
+        alle_features.extend(features)
+        start += PAGE_SIZE
+
+        if len(features) < PAGE_SIZE:
+            break
+
+        time.sleep(0.5)
+
+    print(f"  Total: {len(alle_features)} markblok-polygoner hentet")
+
+    if not alle_features:
+        return None
+
+    gdf = gpd.GeoDataFrame.from_features(alle_features)
+    gdf = gdf[~gdf.geometry.is_empty & gdf.geometry.notna()].copy()
+
+    # Bestem CRS
+    if len(gdf) > 0:
+        sample_coord = list(gdf.geometry.iloc[0].centroid.coords)[0]
+        if abs(sample_coord[0]) > 1000:
+            gdf = gdf.set_crs(epsg=25832)
+        else:
+            gdf = gdf.set_crs(epsg=4326).to_crs(epsg=25832)
+
+    return gdf
+
+
+def beregn_landbrugsareal(markblokke: gpd.GeoDataFrame, kommuner: gpd.GeoDataFrame) -> dict:
+    """
+    Beregner markblok-areal pr. kommune via centroid spatial join.
+    Returnerer {kommunekode: markblok_km2}.
+    """
+    if markblokke is None or len(markblokke) == 0:
+        print("  Ingen markblokke-data - springer over.")
+        return {}
+
+    print("\n(Markblokke): Beregner landbrugsareal pr. kommune...")
+
+    markblokke = markblokke.copy()
+    markblokke["areal_km2"] = markblokke.geometry.area / 1_000_000
+    print(f"  Total markblok-areal: {markblokke['areal_km2'].sum():.0f} km²")
+
+    mb_cent = markblokke.copy()
+    mb_cent.geometry = mb_cent.geometry.centroid
+
+    joined = gpd.sjoin(
+        mb_cent[["geometry", "areal_km2"]],
+        kommuner[["kode", "geometry"]],
+        how="left",
+        predicate="within"
+    )
+
+    landbrug_pr_kommune = (
+        joined.dropna(subset=["kode"])
+        .groupby("kode")["areal_km2"]
+        .sum()
+        .to_dict()
+    )
+
+    print(f"  Landbrugsareal beregnet for {len(landbrug_pr_kommune)} kommuner")
+    return landbrug_pr_kommune
+
+
 # ── Trin 4: Gem CSV ──────────────────────────────────────────────────────────
 
-def gem_csv(kommuner: gpd.GeoDataFrame, natur_pr_kommune: dict):
+def gem_csv(kommuner: gpd.GeoDataFrame, natur_pr_kommune: dict, landbrug_pr_kommune: dict = None):
     """Beregner scores og skriver land_use_scores.csv."""
     print(f"\nTrin 4/4: Gemmer til {OUTPUT_FIL}...")
 
     OUTPUT_FIL.parent.mkdir(parents=True, exist_ok=True)
+
+    har_landbrug = bool(landbrug_pr_kommune)
 
     resultater = []
     for _, row in kommuner.iterrows():
@@ -326,19 +450,15 @@ def gem_csv(kommuner: gpd.GeoDataFrame, natur_pr_kommune: dict):
         navn = row["navn"]
         total_km2 = row["total_km2"]
         natur_km2 = natur_pr_kommune.get(kode, 0.0)
+        markblok_km2 = landbrug_pr_kommune.get(kode, 0.0) if har_landbrug else None
 
-        if total_km2 > 0:
-            natur_pct = round((natur_km2 / total_km2) * 100, 2)
-        else:
-            natur_pct = 0.0
+        natur_pct = round((natur_km2 / total_km2) * 100, 2) if total_km2 > 0 else 0.0
+        markblok_pct = round((markblok_km2 / total_km2) * 100, 2) if (har_landbrug and total_km2 > 0) else None
 
-        # Eco-ratio: (30% mål / faktisk %) × 100. Over 100 = for lidt natur.
-        if natur_pct > 0:
-            ratio = round((TARGET_PCT / natur_pct) * 100, 2)
-        else:
-            ratio = 999.0  # Ingen natur overhovedet
+        # Eco-ratio for natur: (30% mål / faktisk %) × 100. Over 100 = for lidt natur.
+        ratio = round((TARGET_PCT / natur_pct) * 100, 2) if natur_pct > 0 else 999.0
 
-        resultater.append({
+        rec = {
             "kommune_kode": kode,
             "kommune_navn": navn,
             "natur_km2": round(natur_km2, 1),
@@ -346,13 +466,20 @@ def gem_csv(kommuner: gpd.GeoDataFrame, natur_pr_kommune: dict):
             "natur_pct": natur_pct,
             "target_pct": TARGET_PCT,
             "land_use_ratio": ratio,
-        })
+        }
+        if har_landbrug:
+            rec["markblok_km2"]  = round(markblok_km2, 1)
+            rec["markblok_pct"]  = markblok_pct
+
+        resultater.append(rec)
+
+    fieldnames = ["kommune_kode", "kommune_navn", "natur_km2", "total_km2",
+                  "natur_pct", "target_pct", "land_use_ratio"]
+    if har_landbrug:
+        fieldnames += ["markblok_km2", "markblok_pct"]
 
     with open(OUTPUT_FIL, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=[
-            "kommune_kode", "kommune_navn", "natur_km2",
-            "total_km2", "natur_pct", "target_pct", "land_use_ratio"
-        ])
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(sorted(resultater, key=lambda r: r["kommune_kode"]))
 
@@ -363,36 +490,49 @@ def gem_csv(kommuner: gpd.GeoDataFrame, natur_pr_kommune: dict):
     over_mål = sum(1 for r in resultater if r["natur_pct"] >= TARGET_PCT)
 
     if pctscore:
-        print(f"\n  Naturandel: {min(pctscore):.1f}% - {max(pctscore):.1f}% (snit: {sum(pctscore)/len(pctscore):.1f}%)")
+        print(f"\n  §3-naturandel: {min(pctscore):.1f}% - {max(pctscore):.1f}% (snit: {sum(pctscore)/len(pctscore):.1f}%)")
         print(f"  Kommuner der opfylder 30%-målet: {over_mål}/{len(resultater)}")
     else:
         print("\n  ADVARSEL: Ingen naturandele beregnet - tjek spatial join ovenfor")
+
+    if har_landbrug:
+        mbpct = [r["markblok_pct"] for r in resultater if r.get("markblok_pct")]
+        if mbpct:
+            print(f"  Landbrugsandel: {min(mbpct):.1f}% - {max(mbpct):.1f}% (snit: {sum(mbpct)/len(mbpct):.1f}%)")
 
     # Thisted
     thisted = next((r for r in resultater if "thisted" in r["kommune_navn"].lower()), None)
     if thisted:
         print(f"\n  Thisted Kommune:")
-        print(f"    §3-natur: {thisted['natur_km2']} km² af {thisted['total_km2']} km²")
-        print(f"    Naturandel: {thisted['natur_pct']}% (mål: {TARGET_PCT}%)")
-        print(f"    Ratio: {thisted['land_use_ratio']}")
+        print(f"    §3-natur:   {thisted['natur_km2']} km² ({thisted['natur_pct']}%) — mål: {TARGET_PCT}%")
+        if har_landbrug:
+            print(f"    Landbrug:   {thisted.get('markblok_km2', '?')} km² ({thisted.get('markblok_pct', '?')}%)")
+            rest = round(thisted["total_km2"] - thisted["natur_km2"] - thisted.get("markblok_km2", 0), 1)
+            print(f"    Andet:      {rest} km² (by, vej, vand mv.)")
+        print(f"    Ratio:      {thisted['land_use_ratio']}")
 
 
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
     print("=" * 60)
-    print("Doughnut Economics — Arealanvendelse (§3-natur)")
+    print("Doughnut Economics — Arealanvendelse (§3-natur + markblokke)")
     print("=" * 60)
     print(f"Kilde: {LFST_WFS}")
-    print(f"Grænseværdi: {TARGET_PCT}% naturarealer (EU 30x30-mål)")
+    print(f"Grænseværdi natur: {TARGET_PCT}% (EU 30x30-mål)")
     print("=" * 60)
 
-    p3        = hent_paragraf3()
-    kommuner  = hent_kommuner()
-    natur     = beregn_naturandel(p3, kommuner)
-    gem_csv(kommuner, natur)
+    p3           = hent_paragraf3()
+    kommuner     = hent_kommuner()
+    natur        = beregn_naturandel(p3, kommuner)
+
+    markblokke   = hent_markblokke()
+    landbrug     = beregn_landbrugsareal(markblokke, kommuner)
+
+    gem_csv(kommuner, natur, landbrug)
 
     print("\nFærdig! Land use scores gemt i ../data/land_use_scores.csv")
+    print("Markblok-data er inkluderet som markblok_km2 og markblok_pct kolonner.")
     print("Kør derefter din normale deploy-process for at opdatere platformen.")
 
 
