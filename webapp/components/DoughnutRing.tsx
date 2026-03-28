@@ -36,33 +36,46 @@ function describeArc(
 /* ── Layout constants ── */
 const vbSize = 1000;
 const center = vbSize / 2;
+const innerLimit = 80; // shortfall teeth stop here
 const socialBase = 195;
 const commonBoundary = 290;
 const ecoCeiling = 385;
-const outerSoftLimit = 470;  // "normal" overshoot extends to here
-const outerMaxLimit = 620;   // extreme overshoot can reach this far
-const gap = 0;
+const outerMaxLimit = 620;
+
+/* ── Colors ── */
+const GREEN_SOCIAL = "#4ade80";
+const GREEN_SOCIAL_HOVER = "#22c55e";
+const GREEN_ECO = "#22c55e";
+const GREEN_ECO_HOVER = "#16a34a";
+const GREEN_DARK_BAND = "#15803d";
+const RED = "#dc2626";
+const GRAY_NO_DATA = "#cbd5e1";
+const GRAY_NO_DATA_STROKE = "#94a3b8";
 
 /**
- * Maps an overshoot/shortfall score to a radius extension.
- * Uses log scale so 200% is visually different from 500% which is different from 5000%.
- * - score 100 = no overshoot (returns 0)
- * - score 200 = moderate overshoot
- * - score 367 = significant overshoot (forbrug_co2)
- * - score 5000 = extreme overshoot
+ * Log-scale overshoot radius.
+ * 100% = no overshoot, 200% = moderate, 367% = significant, 5000% = extreme
  */
-function overshootRadius(score: number, rBase: number, rSoft: number, rMax: number): number {
+function overshootRadius(score: number): number {
   if (score <= 100) return 0;
-  // Log scale: log(1)=0, log(2)=0.69, log(3.67)=1.30, log(50)=3.91
-  const overshootMultiple = score / 100; // e.g. 3.67 for 367%
-  const logVal = Math.log(overshootMultiple); // 0 at 100%, grows unbounded
-  const logMax = Math.log(50); // cap visual at 5000% (log(50)≈3.91)
-  const normalized = Math.min(logVal / logMax, 1); // 0..1
-  // Smooth curve: sqrt gives more visual range in the lower end
+  const logVal = Math.log(score / 100);
+  const logMax = Math.log(50); // cap at 5000%
+  const normalized = Math.min(logVal / logMax, 1);
   const visual = Math.sqrt(normalized);
-  return rBase + (rMax - rBase) * visual;
+  return ecoCeiling + (outerMaxLimit - ecoCeiling) * visual;
 }
 
+/**
+ * Correct text rotation so labels on ring segments are never upside down.
+ * Returns rotation in degrees.
+ */
+function readableRadialRotation(midAngleRad: number): number {
+  const deg = (midAngleRad * 180) / Math.PI;
+  const norm = ((deg % 360) + 360) % 360;
+  // Right half of circle: text reads center→outside
+  // Left half of circle: flip 180° so text reads outside→center (still right-side-up)
+  return norm > 90 && norm < 270 ? deg + 180 : deg;
+}
 
 interface ActiveInfo {
   id: string;
@@ -102,33 +115,14 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
     if (!pinned) setActive(null);
   };
 
-  /* ── Helper: wrap text in arc for curved labels ── */
-  const curvedTextPath = (id: string, r: number, startAngleDeg: number, endAngleDeg: number) => {
-    const startRad = (startAngleDeg * Math.PI) / 180;
-    const endRad = (endAngleDeg * Math.PI) / 180;
-    const x1 = center + r * Math.cos(startRad);
-    const y1 = center + r * Math.sin(startRad);
-    const x2 = center + r * Math.cos(endRad);
-    const y2 = center + r * Math.sin(endRad);
-    const largeArc = endAngleDeg - startAngleDeg > 180 ? "1" : "0";
-    return (
-      <path
-        id={id}
-        d={`M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2}`}
-        fill="none"
-        stroke="none"
-      />
-    );
-  };
-
-  /* ── Helper: split label into lines that fit arc segment ── */
-  const splitLabel = (name: string, maxCharsPerLine: number): string[] => {
-    if (name.length <= maxCharsPerLine) return [name];
+  /* ── Split label into lines ── */
+  const splitLabel = (name: string, maxChars: number): string[] => {
+    if (name.length <= maxChars) return [name];
     const words = name.split(/[\s-]+/);
     const lines: string[] = [];
     let current = "";
     for (const word of words) {
-      if (current && (current + " " + word).length > maxCharsPerLine) {
+      if (current && (current + " " + word).length > maxChars) {
         lines.push(current);
         current = word;
       } else {
@@ -139,29 +133,20 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
     return lines;
   };
 
-  /* ── SOCIAL RING ── */
+  /* ── SOCIAL RING (green segments) ── */
   const renderSocialRing = () => {
     const angleStep = (2 * Math.PI) / socialCount;
     return categoryScores.map((cat, i) => {
-      const startAngle = i * angleStep - Math.PI / 2 + gap / 2;
-      const endAngle = (i + 1) * angleStep - Math.PI / 2 - gap / 2;
+      const startAngle = i * angleStep - Math.PI / 2;
+      const endAngle = (i + 1) * angleStep - Math.PI / 2;
+      const midAngle = (startAngle + endAngle) / 2;
 
-      // Shortfall shown WITHIN the band (socialBase to commonBoundary)
-      // Score 80% = inner 20% of band is red, outer 80% is green
-      const bandWidth = commonBoundary - socialBase;
-      let greenInnerR = socialBase;
-      let shortfallPath = "";
-      if (cat.hasData && cat.score !== null && cat.score < 100) {
-        const shortfallFraction = Math.min((100 - cat.score) / 100, 1);
-        greenInnerR = socialBase + shortfallFraction * bandWidth;
-        shortfallPath = describeArc(center, center, greenInnerR, socialBase, startAngle, endAngle);
-      }
-      const safePath = describeArc(center, center, commonBoundary, greenInnerR, startAngle, endAngle);
+      const safePath = describeArc(center, center, commonBoundary, socialBase, startAngle, endAngle);
 
       const isNoData = !cat.hasData;
       const isActive = active?.id === cat.categoryId && active?.group === "social";
-      const safeColor = isNoData ? "#e5e7eb" : isActive ? "#6ee7b7" : "#86efac";
-      const safeStroke = isNoData ? "#d1d5db" : "#16a34a";
+      const safeColor = isNoData ? GRAY_NO_DATA : isActive ? GREEN_SOCIAL_HOVER : GREEN_SOCIAL;
+      const safeStroke = isNoData ? GRAY_NO_DATA_STROKE : GREEN_DARK_BAND;
 
       const catDef = SOCIAL_CATEGORIES.find((c) => c.id === cat.categoryId);
       const indicatorNames = cat.indicators.map((ind) => ind.indicator.name);
@@ -176,6 +161,13 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
         indicators: indicatorNames.length > 0 ? indicatorNames : undefined,
       };
 
+      // Label on the segment
+      const labelR = (socialBase + commonBoundary) / 2;
+      const lx = center + labelR * Math.cos(midAngle);
+      const ly = center + labelR * Math.sin(midAngle);
+      const textRotation = readableRadialRotation(midAngle);
+      const lines = splitLabel(cat.categoryName, 10);
+
       return (
         <g
           key={cat.categoryId}
@@ -184,21 +176,62 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
           onMouseEnter={() => handleHover(info)}
           onMouseLeave={handleLeave}
         >
-          <path d={safePath} fill={safeColor} stroke={safeStroke} strokeWidth="1" className="transition-colors duration-200" />
-          {shortfallPath && (
-            <path d={shortfallPath} fill="#dc2626" opacity="0.9" className="transition-all duration-300" />
-          )}
+          <path d={safePath} fill={safeColor} stroke={safeStroke} strokeWidth="0.5" className="transition-colors duration-200" />
+          {/* Label on segment */}
+          <text
+            x={lx} y={ly}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            transform={`rotate(${textRotation}, ${lx}, ${ly})`}
+            className="pointer-events-none select-none"
+            style={{
+              fontSize: "16px",
+              fontWeight: 800,
+              fill: isNoData ? "#64748b" : "white",
+              textShadow: isNoData ? "none" : "0 1px 3px rgba(0,0,0,0.3)",
+            }}
+          >
+            {lines.map((line, li) => (
+              <tspan
+                key={li}
+                x={lx}
+                dy={li === 0 ? `${-(lines.length - 1) * 0.5}em` : "1.1em"}
+              >
+                {line}
+              </tspan>
+            ))}
+          </text>
         </g>
       );
     });
   };
 
-  /* ── ECOLOGICAL RING ── */
+  /* ── SOCIAL SHORTFALL TEETH (red wedges pointing inward) ── */
+  const renderSocialShortfall = () => {
+    const angleStep = (2 * Math.PI) / socialCount;
+    return categoryScores.map((cat, i) => {
+      if (!cat.hasData || cat.score === null || cat.score >= 100) return null;
+      const startAngle = i * angleStep - Math.PI / 2;
+      const endAngle = (i + 1) * angleStep - Math.PI / 2;
+
+      // Shortfall fraction determines how far inward the red tooth extends
+      const fraction = Math.min((100 - cat.score) / 100, 1);
+      const rIn = socialBase - (socialBase - innerLimit) * Math.sqrt(fraction);
+      const toothPath = describeArc(center, center, socialBase, rIn, startAngle, endAngle);
+
+      return (
+        <path key={`sf-${cat.categoryId}`} d={toothPath} fill={RED} opacity="0.9" />
+      );
+    });
+  };
+
+  /* ── ECOLOGICAL RING (green segments + overshoot) ── */
   const renderEcoRing = () => {
     const angleStep = (2 * Math.PI) / ecoCount;
     return ECOLOGICAL_DIMENSIONS.map((dim, i) => {
-      const startAngle = i * angleStep - Math.PI / 2 + gap / 2;
-      const endAngle = (i + 1) * angleStep - Math.PI / 2 - gap / 2;
+      const startAngle = i * angleStep - Math.PI / 2;
+      const endAngle = (i + 1) * angleStep - Math.PI / 2;
+      const midAngle = (startAngle + endAngle) / 2;
 
       const ecoScore = kommune.eco_ratios[dim.id] ?? null;
       const hasEcoData = ecoScore !== null;
@@ -207,13 +240,13 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
 
       let overshootPath = "";
       if (hasEcoData && ecoScore > 100) {
-        const rOut = overshootRadius(ecoScore, ecoCeiling, outerSoftLimit, outerMaxLimit);
+        const rOut = overshootRadius(ecoScore);
         overshootPath = describeArc(center, center, rOut, ecoCeiling, startAngle, endAngle);
       }
 
       const isActive = active?.id === dim.id && active?.group === "ecological";
-      const safeColor = hasEcoData ? (isActive ? "#6ee7b7" : "#86efac") : "#f3f4f6";
-      const safeStroke = hasEcoData ? "#16a34a" : "#d1d5db";
+      const safeColor = hasEcoData ? (isActive ? GREEN_ECO_HOVER : GREEN_ECO) : GRAY_NO_DATA;
+      const safeStroke = hasEcoData ? GREEN_DARK_BAND : GRAY_NO_DATA_STROKE;
 
       const info: ActiveInfo = {
         id: dim.id,
@@ -226,6 +259,13 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
         boundary: dim.boundary,
       };
 
+      // Label on the eco segment
+      const labelR = (commonBoundary + ecoCeiling) / 2;
+      const lx = center + labelR * Math.cos(midAngle);
+      const ly = center + labelR * Math.sin(midAngle);
+      const textRotation = readableRadialRotation(midAngle);
+      const lines = splitLabel(dim.name, 12);
+
       return (
         <g
           key={dim.id}
@@ -234,73 +274,46 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
           onMouseEnter={() => handleHover(info)}
           onMouseLeave={handleLeave}
         >
-          <path d={safePath} fill={safeColor} stroke={safeStroke} strokeWidth="1" className="transition-colors duration-200" />
+          <path d={safePath} fill={safeColor} stroke={safeStroke} strokeWidth="0.5" className="transition-colors duration-200" />
           {overshootPath && (
-            <path d={overshootPath} fill="#dc2626" opacity="0.9" className="transition-all duration-300" />
+            <path d={overshootPath} fill={RED} opacity="0.9" className="transition-all duration-300" />
           )}
+          {/* Label on segment */}
+          <text
+            x={lx} y={ly}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            transform={`rotate(${textRotation}, ${lx}, ${ly})`}
+            className="pointer-events-none select-none"
+            style={{
+              fontSize: "14px",
+              fontWeight: 800,
+              fill: hasEcoData ? "white" : "#64748b",
+              textShadow: hasEcoData ? "0 1px 3px rgba(0,0,0,0.3)" : "none",
+            }}
+          >
+            {lines.map((line, li) => (
+              <tspan
+                key={li}
+                x={lx}
+                dy={li === 0 ? `${-(lines.length - 1) * 0.5}em` : "1.1em"}
+              >
+                {line}
+              </tspan>
+            ))}
+          </text>
         </g>
       );
     });
   };
 
-  /* ── Social labels INSIDE the doughnut hole ── */
-  const renderInnerSocialLabels = () => {
-    const angleStep = (2 * Math.PI) / socialCount;
-    const labelR = socialBase - 22;
-    return categoryScores.map((cat, i) => {
-      const startAngle = i * angleStep - Math.PI / 2 + gap / 2;
-      const endAngle = (i + 1) * angleStep - Math.PI / 2 - gap / 2;
-      const midAngle = (startAngle + endAngle) / 2;
-
-      const lx = center + labelR * Math.cos(midAngle);
-      const ly = center + labelR * Math.sin(midAngle);
-
-      const isActive = active?.id === cat.categoryId && active?.group === "social";
-      const hasData = cat.hasData;
-
-      // Text anchor based on position around the circle
-      const angleDeg = ((midAngle * 180) / Math.PI + 360) % 360;
-      let anchor: "start" | "middle" | "end" = "middle";
-      if (angleDeg > 20 && angleDeg < 160) anchor = "end";
-      else if (angleDeg > 200 && angleDeg < 340) anchor = "start";
-
-      const lines = splitLabel(cat.categoryName, 10);
-
-      return (
-        <text
-          key={`slabel-${cat.categoryId}`}
-          x={lx} y={ly}
-          textAnchor={anchor}
-          dominantBaseline="middle"
-          className="pointer-events-none select-none"
-          style={{
-            fontSize: "13px",
-            fontWeight: isActive ? 900 : 700,
-            fill: hasData ? (isActive ? "#166534" : "#374151") : "#9ca3af",
-            transition: "fill 0.2s",
-          }}
-        >
-          {lines.map((line, li) => (
-            <tspan
-              key={li}
-              x={lx}
-              dy={li === 0 ? `${-(lines.length - 1) * 0.5}em` : "1.1em"}
-            >
-              {line}
-            </tspan>
-          ))}
-        </text>
-      );
-    });
-  };
-
-  /* ── Eco labels OUTSIDE the ring (for overshoot readability) ── */
+  /* ── Eco labels OUTSIDE the ring ── */
   const renderOuterEcoLabels = () => {
     const angleStep = (2 * Math.PI) / ecoCount;
-    const labelR = outerMaxLimit + 25;
+    const labelR = outerMaxLimit + 30;
     return ECOLOGICAL_DIMENSIONS.map((dim, i) => {
-      const startAngle = i * angleStep - Math.PI / 2 + gap / 2;
-      const endAngle = (i + 1) * angleStep - Math.PI / 2 - gap / 2;
+      const startAngle = i * angleStep - Math.PI / 2;
+      const endAngle = (i + 1) * angleStep - Math.PI / 2;
       const midAngle = (startAngle + endAngle) / 2;
 
       const lx = center + labelR * Math.cos(midAngle);
@@ -310,26 +323,33 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
       const hasData = ecoScore !== null;
       const isActive = active?.id === dim.id && active?.group === "ecological";
 
-      const angleDeg = (midAngle * 180) / Math.PI;
-      let anchor: "start" | "middle" | "end" = "middle";
-      if (angleDeg > 20 && angleDeg < 160) anchor = "start";
-      else if (angleDeg > 200 && angleDeg < 340) anchor = "end";
+      const textRotation = readableRadialRotation(midAngle);
+      const lines = splitLabel(dim.name, 14);
 
       return (
         <text
           key={`olabel-${dim.id}`}
           x={lx} y={ly}
-          textAnchor={anchor}
+          textAnchor="middle"
           dominantBaseline="middle"
+          transform={`rotate(${textRotation}, ${lx}, ${ly})`}
           className="pointer-events-none select-none"
           style={{
-            fontSize: "14px",
-            fontWeight: isActive ? 900 : 700,
-            fill: hasData ? (isActive ? "#166534" : "#374151") : "#9ca3af",
+            fontSize: "18px",
+            fontWeight: isActive ? 900 : 800,
+            fill: hasData ? (isActive ? "#166534" : "#1e293b") : "#94a3b8",
             transition: "fill 0.2s",
           }}
         >
-          {dim.name}
+          {lines.map((line, li) => (
+            <tspan
+              key={li}
+              x={lx}
+              dy={li === 0 ? `${-(lines.length - 1) * 0.5}em` : "1.15em"}
+            >
+              {line}
+            </tspan>
+          ))}
         </text>
       );
     });
@@ -349,46 +369,67 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
     return info.score <= 100 ? "text-emerald-600" : "text-red-500";
   };
 
-  /* ── Curved ring title arc IDs ── */
-  const ecoTitleArcR = ecoCeiling + 12;
-  const socialTitleArcR = socialBase - 12;
+  /* ── Curved text path helper ── */
+  const curvedTextPath = (id: string, r: number, startAngleDeg: number, endAngleDeg: number) => {
+    const startRad = (startAngleDeg * Math.PI) / 180;
+    const endRad = (endAngleDeg * Math.PI) / 180;
+    const x1 = center + r * Math.cos(startRad);
+    const y1 = center + r * Math.sin(startRad);
+    const x2 = center + r * Math.cos(endRad);
+    const y2 = center + r * Math.sin(endRad);
+    const largeArc = endAngleDeg - startAngleDeg > 180 ? "1" : "0";
+    return (
+      <path
+        id={id}
+        d={`M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2}`}
+        fill="none"
+        stroke="none"
+      />
+    );
+  };
+
+  const boundaryR = commonBoundary;
+  const bandHalf = 14;
 
   return (
     <div className="relative w-full">
       <div className="relative w-full aspect-square flex items-center justify-center">
         <svg viewBox={`-200 -200 ${vbSize + 400} ${vbSize + 400}`} className="w-full h-full" preserveAspectRatio="xMidYMid meet">
-          {/* Defs for curved text paths */}
           <defs>
-            {/* Eco title arc - top half, clockwise */}
-            {curvedTextPath("ecoTitleArc", ecoTitleArcR, -160, -20)}
-            {/* Social title arc - bottom half, clockwise */}
-            {curvedTextPath("socialTitleArc", socialTitleArcR, 200, 340)}
+            {curvedTextPath("ecoTitleArc", boundaryR + bandHalf + 4, -155, -25)}
+            {curvedTextPath("socialTitleArc", boundaryR - bandHalf - 4, 205, 335)}
           </defs>
 
-          {/* Subtle background */}
-          <circle cx={center} cy={center} r={outerSoftLimit + 10} fill="#fafafa" opacity="0.3" />
-
+          {/* ── 1. Eco ring (segments + overshoot) ── */}
           {renderEcoRing()}
+
+          {/* ── 2. Social ring (green segments) ── */}
           {renderSocialRing()}
 
-          {/* Boundary circles - the "safe and just space" borders */}
-          <circle cx={center} cy={center} r={ecoCeiling} fill="none" stroke="#15803d" strokeWidth="3" opacity="0.7" />
-          <circle cx={center} cy={center} r={socialBase} fill="none" stroke="#15803d" strokeWidth="3" opacity="0.7" />
-          <circle cx={center} cy={center} r={commonBoundary} fill="none" stroke="#15803d" strokeWidth="1.5" opacity="0.3" />
+          {/* ── 3. Dark green boundary band ── */}
+          <circle cx={center} cy={center} r={boundaryR + bandHalf} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="2" />
+          <circle cx={center} cy={center} r={boundaryR - bandHalf} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="2" />
+          {/* Filled dark band */}
+          <circle cx={center} cy={center} r={boundaryR} fill="none" stroke={GREEN_DARK_BAND} strokeWidth={bandHalf * 2} opacity="0.35" />
 
-          {/* Clean center */}
-          <circle cx={center} cy={center} r={socialBase} fill="white" />
+          {/* ── 4. Outer eco boundary ── */}
+          <circle cx={center} cy={center} r={ecoCeiling} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="3" opacity="0.6" />
+          {/* ── 5. Inner social boundary ── */}
+          <circle cx={center} cy={center} r={socialBase} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="3" opacity="0.6" />
 
-          {/* Inner social labels (in the white center) */}
-          {renderInnerSocialLabels()}
+          {/* ── 6. White center ── */}
+          <circle cx={center} cy={center} r={socialBase - 1} fill="white" />
 
-          {/* Outer eco labels */}
+          {/* ── 7. Shortfall teeth (rendered ON TOP of white center) ── */}
+          {renderSocialShortfall()}
+
+          {/* ── 8. Outer eco labels ── */}
           {renderOuterEcoLabels()}
 
-          {/* ── Curved ring titles ── */}
+          {/* ── 9. Curved ring titles on the boundary band ── */}
           <text
             className="pointer-events-none select-none"
-            style={{ fontSize: "16px", fontWeight: 900, fill: "#15803d", letterSpacing: "0.25em" }}
+            style={{ fontSize: "18px", fontWeight: 900, fill: GREEN_DARK_BAND, letterSpacing: "0.3em" }}
           >
             <textPath href="#ecoTitleArc" startOffset="50%" textAnchor="middle">
               ØKOLOGISK LOFT
@@ -397,7 +438,7 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
 
           <text
             className="pointer-events-none select-none"
-            style={{ fontSize: "14px", fontWeight: 900, fill: "#15803d", letterSpacing: "0.2em" }}
+            style={{ fontSize: "16px", fontWeight: 900, fill: GREEN_DARK_BAND, letterSpacing: "0.25em" }}
           >
             <textPath href="#socialTitleArc" startOffset="50%" textAnchor="middle">
               SOCIALT FUNDAMENT
@@ -498,15 +539,15 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
 
       <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-2 text-xs text-gray-500">
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded" style={{ backgroundColor: "#86efac", border: "1px solid #16a34a" }} />
+          <div className="w-4 h-4 rounded" style={{ backgroundColor: GREEN_SOCIAL, border: `1px solid ${GREEN_DARK_BAND}` }} />
           <span className="font-medium">Sikkert rum</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded bg-red-600 opacity-90" />
+          <div className="w-4 h-4 rounded" style={{ backgroundColor: RED }} />
           <span className="font-medium">Underskud / Overskridelse</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded bg-gray-200 border border-gray-300" />
+          <div className="w-4 h-4 rounded" style={{ backgroundColor: GRAY_NO_DATA, border: `1px solid ${GRAY_NO_DATA_STROKE}` }} />
           <span className="font-medium">Mangler data</span>
         </div>
       </div>
