@@ -36,13 +36,12 @@ function describeArc(
 /* ── Layout constants ── */
 const vbSize = 1000;
 const center = vbSize / 2;
-const innerLimit = 55;
 const socialBase = 195;
 const commonBoundary = 290;
 const ecoCeiling = 385;
 const outerSoftLimit = 470;  // "normal" overshoot extends to here
 const outerMaxLimit = 620;   // extreme overshoot can reach this far
-const gap = 0.035;
+const gap = 0;
 
 /**
  * Maps an overshoot/shortfall score to a radius extension.
@@ -64,13 +63,6 @@ function overshootRadius(score: number, rBase: number, rSoft: number, rMax: numb
   return rBase + (rMax - rBase) * visual;
 }
 
-function shortfallRadius(score: number, rBase: number, rMin: number): number {
-  if (score >= 100) return rBase;
-  const shortfallPct = (100 - score) / 100; // 0..1 for 100..0%
-  // sqrt for visual emphasis on moderate shortfalls
-  const visual = Math.sqrt(Math.min(shortfallPct, 1));
-  return rBase - (rBase - rMin) * visual;
-}
 
 interface ActiveInfo {
   id: string;
@@ -153,20 +145,18 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
     return categoryScores.map((cat, i) => {
       const startAngle = i * angleStep - Math.PI / 2 + gap / 2;
       const endAngle = (i + 1) * angleStep - Math.PI / 2 - gap / 2;
-      const midAngle = (startAngle + endAngle) / 2;
 
-      const safePath = describeArc(center, center, commonBoundary, socialBase, startAngle, endAngle);
-
+      // Shortfall shown WITHIN the band (socialBase to commonBoundary)
+      // Score 80% = inner 20% of band is red, outer 80% is green
+      const bandWidth = commonBoundary - socialBase;
+      let greenInnerR = socialBase;
       let shortfallPath = "";
       if (cat.hasData && cat.score !== null && cat.score < 100) {
-        const rIn = shortfallRadius(cat.score, socialBase, innerLimit);
-        shortfallPath = describeArc(center, center, socialBase, rIn, startAngle, endAngle);
+        const shortfallFraction = Math.min((100 - cat.score) / 100, 1);
+        greenInnerR = socialBase + shortfallFraction * bandWidth;
+        shortfallPath = describeArc(center, center, greenInnerR, socialBase, startAngle, endAngle);
       }
-
-      // Label position - centered in the safe zone segment
-      const labelRadius = (socialBase + commonBoundary) / 2;
-      const lx = center + labelRadius * Math.cos(midAngle);
-      const ly = center + labelRadius * Math.sin(midAngle);
+      const safePath = describeArc(center, center, commonBoundary, greenInnerR, startAngle, endAngle);
 
       const isNoData = !cat.hasData;
       const isActive = active?.id === cat.categoryId && active?.group === "social";
@@ -186,13 +176,6 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
         indicators: indicatorNames.length > 0 ? indicatorNames : undefined,
       };
 
-      // Calculate rotation for text to follow the arc
-      const midAngleDeg = (midAngle * 180) / Math.PI;
-      const isBottom = midAngleDeg > 0 && midAngleDeg < 180;
-      const textRotation = isBottom ? midAngleDeg + 90 : midAngleDeg - 90;
-
-      const lines = splitLabel(cat.categoryName, 10);
-
       return (
         <g
           key={cat.categoryId}
@@ -205,37 +188,6 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
           {shortfallPath && (
             <path d={shortfallPath} fill="#dc2626" opacity="0.9" className="transition-all duration-300" />
           )}
-          <line
-            x1={center + innerLimit * Math.cos(startAngle - gap / 2)}
-            y1={center + innerLimit * Math.sin(startAngle - gap / 2)}
-            x2={center + commonBoundary * Math.cos(startAngle - gap / 2)}
-            y2={center + commonBoundary * Math.sin(startAngle - gap / 2)}
-            stroke="white" strokeWidth="2"
-          />
-          {/* Label directly on segment */}
-          <text
-            x={lx} y={ly}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            transform={`rotate(${textRotation}, ${lx}, ${ly})`}
-            className="pointer-events-none select-none"
-            style={{
-              fontSize: "15px",
-              fontWeight: 800,
-              fill: isNoData ? "#9ca3af" : "#065f46",
-              textShadow: "0 0 3px rgba(255,255,255,0.8)",
-            }}
-          >
-            {lines.map((line, li) => (
-              <tspan
-                key={li}
-                x={lx}
-                dy={li === 0 ? `${-(lines.length - 1) * 0.5}em` : "1.1em"}
-              >
-                {line}
-              </tspan>
-            ))}
-          </text>
         </g>
       );
     });
@@ -247,7 +199,6 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
     return ECOLOGICAL_DIMENSIONS.map((dim, i) => {
       const startAngle = i * angleStep - Math.PI / 2 + gap / 2;
       const endAngle = (i + 1) * angleStep - Math.PI / 2 - gap / 2;
-      const midAngle = (startAngle + endAngle) / 2;
 
       const ecoScore = kommune.eco_ratios[dim.id] ?? null;
       const hasEcoData = ecoScore !== null;
@@ -259,11 +210,6 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
         const rOut = overshootRadius(ecoScore, ecoCeiling, outerSoftLimit, outerMaxLimit);
         overshootPath = describeArc(center, center, rOut, ecoCeiling, startAngle, endAngle);
       }
-
-      // Label position - centered in the eco segment
-      const labelRadius = (commonBoundary + ecoCeiling) / 2;
-      const lx = center + labelRadius * Math.cos(midAngle);
-      const ly = center + labelRadius * Math.sin(midAngle);
 
       const isActive = active?.id === dim.id && active?.group === "ecological";
       const safeColor = hasEcoData ? (isActive ? "#6ee7b7" : "#86efac") : "#f3f4f6";
@@ -280,12 +226,6 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
         boundary: dim.boundary,
       };
 
-      const midAngleDeg = (midAngle * 180) / Math.PI;
-      const isBottom = midAngleDeg > 0 && midAngleDeg < 180;
-      const textRotation = isBottom ? midAngleDeg + 90 : midAngleDeg - 90;
-
-      const lines = splitLabel(dim.name, 12);
-
       return (
         <g
           key={dim.id}
@@ -298,38 +238,58 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
           {overshootPath && (
             <path d={overshootPath} fill="#dc2626" opacity="0.9" className="transition-all duration-300" />
           )}
-          <line
-            x1={center + commonBoundary * Math.cos(startAngle - gap / 2)}
-            y1={center + commonBoundary * Math.sin(startAngle - gap / 2)}
-            x2={center + outerMaxLimit * Math.cos(startAngle - gap / 2)}
-            y2={center + outerMaxLimit * Math.sin(startAngle - gap / 2)}
-            stroke="white" strokeWidth="2"
-          />
-          {/* Label directly on segment */}
-          <text
-            x={lx} y={ly}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            transform={`rotate(${textRotation}, ${lx}, ${ly})`}
-            className="pointer-events-none select-none"
-            style={{
-              fontSize: "14px",
-              fontWeight: 800,
-              fill: hasEcoData ? "#065f46" : "#9ca3af",
-              textShadow: "0 0 3px rgba(255,255,255,0.8)",
-            }}
-          >
-            {lines.map((line, li) => (
-              <tspan
-                key={li}
-                x={lx}
-                dy={li === 0 ? `${-(lines.length - 1) * 0.5}em` : "1.1em"}
-              >
-                {line}
-              </tspan>
-            ))}
-          </text>
         </g>
+      );
+    });
+  };
+
+  /* ── Social labels INSIDE the doughnut hole ── */
+  const renderInnerSocialLabels = () => {
+    const angleStep = (2 * Math.PI) / socialCount;
+    const labelR = socialBase - 22;
+    return categoryScores.map((cat, i) => {
+      const startAngle = i * angleStep - Math.PI / 2 + gap / 2;
+      const endAngle = (i + 1) * angleStep - Math.PI / 2 - gap / 2;
+      const midAngle = (startAngle + endAngle) / 2;
+
+      const lx = center + labelR * Math.cos(midAngle);
+      const ly = center + labelR * Math.sin(midAngle);
+
+      const isActive = active?.id === cat.categoryId && active?.group === "social";
+      const hasData = cat.hasData;
+
+      // Text anchor based on position around the circle
+      const angleDeg = ((midAngle * 180) / Math.PI + 360) % 360;
+      let anchor: "start" | "middle" | "end" = "middle";
+      if (angleDeg > 20 && angleDeg < 160) anchor = "end";
+      else if (angleDeg > 200 && angleDeg < 340) anchor = "start";
+
+      const lines = splitLabel(cat.categoryName, 10);
+
+      return (
+        <text
+          key={`slabel-${cat.categoryId}`}
+          x={lx} y={ly}
+          textAnchor={anchor}
+          dominantBaseline="middle"
+          className="pointer-events-none select-none"
+          style={{
+            fontSize: "13px",
+            fontWeight: isActive ? 900 : 700,
+            fill: hasData ? (isActive ? "#166534" : "#374151") : "#9ca3af",
+            transition: "fill 0.2s",
+          }}
+        >
+          {lines.map((line, li) => (
+            <tspan
+              key={li}
+              x={lx}
+              dy={li === 0 ? `${-(lines.length - 1) * 0.5}em` : "1.1em"}
+            >
+              {line}
+            </tspan>
+          ))}
+        </text>
       );
     });
   };
@@ -417,7 +377,10 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
           <circle cx={center} cy={center} r={commonBoundary} fill="none" stroke="#15803d" strokeWidth="1.5" opacity="0.3" />
 
           {/* Clean center */}
-          <circle cx={center} cy={center} r={socialBase - 5} fill="white" opacity="0.92" />
+          <circle cx={center} cy={center} r={socialBase} fill="white" />
+
+          {/* Inner social labels (in the white center) */}
+          {renderInnerSocialLabels()}
 
           {/* Outer eco labels */}
           {renderOuterEcoLabels()}
