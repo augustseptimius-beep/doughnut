@@ -161,7 +161,6 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
         indicators: indicatorNames.length > 0 ? indicatorNames : undefined,
       };
 
-      // Label on the segment
       const labelR = (socialBase + commonBoundary) / 2;
       const lx = center + labelR * Math.cos(midAngle);
       const ly = center + labelR * Math.sin(midAngle);
@@ -177,7 +176,6 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
           onMouseLeave={handleLeave}
         >
           <path d={safePath} fill={safeColor} stroke={safeStroke} strokeWidth="0.5" className="transition-colors duration-200" />
-          {/* Label on segment */}
           <text
             x={lx} y={ly}
             textAnchor="middle"
@@ -185,7 +183,7 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
             transform={`rotate(${textRotation}, ${lx}, ${ly})`}
             className="pointer-events-none select-none"
             style={{
-              fontSize: "16px",
+              fontSize: "14px",
               fontWeight: 800,
               fill: isNoData ? "#64748b" : "white",
               textShadow: isNoData ? "none" : "0 1px 3px rgba(0,0,0,0.3)",
@@ -307,54 +305,6 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
     });
   };
 
-  /* ── Eco labels OUTSIDE the ring ── */
-  const renderOuterEcoLabels = () => {
-    const angleStep = (2 * Math.PI) / ecoCount;
-    const labelR = outerMaxLimit + 30;
-    return ECOLOGICAL_DIMENSIONS.map((dim, i) => {
-      const startAngle = i * angleStep - Math.PI / 2;
-      const endAngle = (i + 1) * angleStep - Math.PI / 2;
-      const midAngle = (startAngle + endAngle) / 2;
-
-      const lx = center + labelR * Math.cos(midAngle);
-      const ly = center + labelR * Math.sin(midAngle);
-
-      const ecoScore = kommune.eco_ratios[dim.id] ?? null;
-      const hasData = ecoScore !== null;
-      const isActive = active?.id === dim.id && active?.group === "ecological";
-
-      const textRotation = readableRadialRotation(midAngle);
-      const lines = splitLabel(dim.name, 14);
-
-      return (
-        <text
-          key={`olabel-${dim.id}`}
-          x={lx} y={ly}
-          textAnchor="middle"
-          dominantBaseline="middle"
-          transform={`rotate(${textRotation}, ${lx}, ${ly})`}
-          className="pointer-events-none select-none"
-          style={{
-            fontSize: "18px",
-            fontWeight: isActive ? 900 : 800,
-            fill: hasData ? (isActive ? "#166534" : "#1e293b") : "#94a3b8",
-            transition: "fill 0.2s",
-          }}
-        >
-          {lines.map((line, li) => (
-            <tspan
-              key={li}
-              x={lx}
-              dy={li === 0 ? `${-(lines.length - 1) * 0.5}em` : "1.15em"}
-            >
-              {line}
-            </tspan>
-          ))}
-        </text>
-      );
-    });
-  };
-
   const getStatusText = (info: ActiveInfo): string => {
     if (!info.hasData || info.score === null) return "Mangler data";
     if (info.group === "social") {
@@ -388,16 +338,15 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
     );
   };
 
-  const boundaryR = commonBoundary;
-  const bandHalf = 14;
-
   return (
     <div className="relative w-full">
       <div className="relative w-full aspect-square flex items-center justify-center">
-        <svg viewBox={`-200 -200 ${vbSize + 400} ${vbSize + 400}`} className="w-full h-full" preserveAspectRatio="xMidYMid meet">
+        <svg viewBox={`-140 -140 ${vbSize + 280} ${vbSize + 280}`} className="w-full h-full" preserveAspectRatio="xMidYMid meet">
           <defs>
-            {curvedTextPath("ecoTitleArc", boundaryR + bandHalf + 4, -155, -25)}
-            {curvedTextPath("socialTitleArc", boundaryR - bandHalf - 4, 205, 335)}
+            {/* Eco title on outer edge of eco ring */}
+            {curvedTextPath("ecoTitleArc", ecoCeiling + 8, -150, -30)}
+            {/* Social title inside the white center */}
+            {curvedTextPath("socialTitleArc", socialBase - 20, 200, 340)}
           </defs>
 
           {/* ── 1. Eco ring (segments + overshoot) ── */}
@@ -406,16 +355,10 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
           {/* ── 2. Social ring (green segments) ── */}
           {renderSocialRing()}
 
-          {/* ── 3. Dark green boundary band ── */}
-          <circle cx={center} cy={center} r={boundaryR + bandHalf} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="2" />
-          <circle cx={center} cy={center} r={boundaryR - bandHalf} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="2" />
-          {/* Filled dark band */}
-          <circle cx={center} cy={center} r={boundaryR} fill="none" stroke={GREEN_DARK_BAND} strokeWidth={bandHalf * 2} opacity="0.35" />
-
-          {/* ── 4. Outer eco boundary ── */}
-          <circle cx={center} cy={center} r={ecoCeiling} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="3" opacity="0.6" />
-          {/* ── 5. Inner social boundary ── */}
-          <circle cx={center} cy={center} r={socialBase} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="3" opacity="0.6" />
+          {/* ── 3. Boundary lines ── */}
+          <circle cx={center} cy={center} r={ecoCeiling} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="3" opacity="0.5" />
+          <circle cx={center} cy={center} r={commonBoundary} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="2" opacity="0.3" />
+          <circle cx={center} cy={center} r={socialBase} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="3" opacity="0.5" />
 
           {/* ── 6. White center ── */}
           <circle cx={center} cy={center} r={socialBase - 1} fill="white" />
@@ -423,10 +366,7 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
           {/* ── 7. Shortfall teeth (rendered ON TOP of white center) ── */}
           {renderSocialShortfall()}
 
-          {/* ── 8. Outer eco labels ── */}
-          {renderOuterEcoLabels()}
-
-          {/* ── 9. Curved ring titles on the boundary band ── */}
+          {/* ── 8. Curved ring titles on the boundary band ── */}
           <text
             className="pointer-events-none select-none"
             style={{ fontSize: "18px", fontWeight: 900, fill: GREEN_DARK_BAND, letterSpacing: "0.3em" }}
