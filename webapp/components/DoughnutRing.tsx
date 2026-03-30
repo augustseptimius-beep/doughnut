@@ -86,41 +86,33 @@ const GREEN_DARK_BAND = "#15803d";
 const GRAY_NO_DATA = "#cbd5e1";
 const GRAY_NO_DATA_STROKE = "#94a3b8";
 
-/* ── Severity levels & gradient colors ── */
-type SeverityLevel = "safe" | "near" | "moderate" | "exceeded" | "high" | "extreme";
-
-const SEVERITY_COLORS: Record<SeverityLevel, string> = {
-  safe:     "#22c55e", // green
-  near:     "#eab308", // yellow
-  moderate: "#f97316", // orange
-  exceeded: "#ea580c", // dark orange
-  high:     "#dc2626", // red
-  extreme:  "#991b1b", // dark red
-};
+/* ── Severity levels ── */
+type SeverityLevel = "safe" | "exceeded" | "high" | "extreme";
 
 const SEVERITY_LABELS_ECO: Record<SeverityLevel, string> = {
   safe:     "Inden for grænsen",
-  near:     "Tæt på overskridelse",
-  moderate: "Moderat overskredet",
   exceeded: "Overskredet",
   high:     "Meget overskredet",
   extreme:  "Ekstremt overskredet",
 };
 
 const SEVERITY_LABELS_SOCIAL: Record<SeverityLevel, string> = {
-  safe:     "Mål nået",
-  near:     "Tæt på underskud",
-  moderate: "Moderat underskud",
+  safe:     "Intet underskud",
   exceeded: "Underskud",
   high:     "Stort underskud",
   extreme:  "Ekstremt underskud",
 };
 
+const SEVERITY_TEXT_COLORS: Record<SeverityLevel, string> = {
+  safe:     "text-emerald-600",
+  exceeded: "text-orange-500",
+  high:     "text-red-500",
+  extreme:  "text-red-700",
+};
+
 function getEcoSeverity(score: number | null): SeverityLevel {
   if (score === null) return "safe";
   if (score <= 100) return "safe";
-  if (score <= 115) return "near";
-  if (score <= 150) return "moderate";
   if (score <= 250) return "exceeded";
   if (score <= 500) return "high";
   return "extreme";
@@ -129,8 +121,6 @@ function getEcoSeverity(score: number | null): SeverityLevel {
 function getSocialSeverity(score: number | null): SeverityLevel {
   if (score === null) return "safe";
   if (score >= 100) return "safe";
-  if (score >= 85) return "near";
-  if (score >= 70) return "moderate";
   if (score >= 50) return "exceeded";
   if (score >= 25) return "high";
   return "extreme";
@@ -233,10 +223,8 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
       const endAngle = (i + 1) * angleStep - Math.PI / 2;
       const fraction = Math.min((100 - cat.score) / 100, 1);
       const rIn = socialBase - (socialBase - innerLimit) * Math.sqrt(fraction);
-      const severity = getSocialSeverity(cat.score);
-      const toothColor = SEVERITY_COLORS[severity];
       const toothPath = describeArc(center, center, socialBase, rIn, startAngle, endAngle);
-      return <path key={`sf-${cat.categoryId}`} d={toothPath} fill={toothColor} opacity="0.9" />;
+      return <path key={`sf-${cat.categoryId}`} d={toothPath} fill="url(#socialShortfallGrad)" opacity="0.9" />;
     });
   };
 
@@ -253,8 +241,6 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
       const safePath = describeArc(center, center, ecoCeiling, commonBoundary, startAngle, endAngle);
 
       let overshootPath = "";
-      const severity = getEcoSeverity(ecoScore);
-      const overshootColor = SEVERITY_COLORS[severity];
       if (hasEcoData && ecoScore > 100) {
         const rOut = overshootRadius(ecoScore);
         overshootPath = describeArc(center, center, rOut, ecoCeiling, startAngle, endAngle);
@@ -285,7 +271,7 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
         >
           <path d={safePath} fill={safeColor} stroke={safeStroke} strokeWidth="0.5" className="transition-colors duration-200" />
           {overshootPath && (
-            <path d={overshootPath} fill={overshootColor} opacity="0.9" className="transition-all duration-300" />
+            <path d={overshootPath} fill="url(#ecoOvershootGrad)" opacity="0.9" className="transition-all duration-300" />
           )}
         </g>
       );
@@ -434,14 +420,7 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
     const severity = info.group === "social"
       ? getSocialSeverity(info.score)
       : getEcoSeverity(info.score);
-    switch (severity) {
-      case "safe": return "text-emerald-600";
-      case "near": return "text-yellow-600";
-      case "moderate": return "text-orange-500";
-      case "exceeded": return "text-orange-600";
-      case "high": return "text-red-500";
-      case "extreme": return "text-red-700";
-    }
+    return SEVERITY_TEXT_COLORS[severity];
   };
 
   return (
@@ -452,6 +431,22 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
             {renderLabelDefs()}
             {titleArcPath("ecoTitleArc", ecoCeiling + 10, -150, -30)}
             {titleArcPath("socialTitleArc", socialBase - 18, 200, 340)}
+            {/* Eco overshoot: gradient outward from ecoCeiling (yellow) to outerMaxLimit (dark red) */}
+            <radialGradient id="ecoOvershootGrad" gradientUnits="userSpaceOnUse"
+              cx={center} cy={center} r={outerMaxLimit}>
+              <stop offset={`${ecoCeiling / outerMaxLimit}`} stopColor="#eab308" />
+              <stop offset={`${(ecoCeiling + (outerMaxLimit - ecoCeiling) * 0.4) / outerMaxLimit}`} stopColor="#f97316" />
+              <stop offset={`${(ecoCeiling + (outerMaxLimit - ecoCeiling) * 0.7) / outerMaxLimit}`} stopColor="#dc2626" />
+              <stop offset="1" stopColor="#991b1b" />
+            </radialGradient>
+            {/* Social shortfall: gradient inward from socialBase (yellow) to innerLimit (dark red) */}
+            <radialGradient id="socialShortfallGrad" gradientUnits="userSpaceOnUse"
+              cx={center} cy={center} r={socialBase}>
+              <stop offset={`${innerLimit / socialBase}`} stopColor="#991b1b" />
+              <stop offset={`${(innerLimit + (socialBase - innerLimit) * 0.3) / socialBase}`} stopColor="#dc2626" />
+              <stop offset={`${(innerLimit + (socialBase - innerLimit) * 0.6) / socialBase}`} stopColor="#f97316" />
+              <stop offset="1" stopColor="#eab308" />
+            </radialGradient>
           </defs>
 
           {/* 1. Eco ring */}
@@ -534,10 +529,8 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
               <p className="text-[10px] text-gray-400 mt-1">Enhed: {active.unit}</p>
             )}
             {active.hasData && active.score !== null && (() => {
-              const severity = active.group === "social"
-                ? getSocialSeverity(active.score)
-                : getEcoSeverity(active.score);
-              const barColor = SEVERITY_COLORS[severity];
+              const isBad = active.group === "social" ? active.score < 100 : active.score > 100;
+              const barColor = isBad ? "#dc2626" : "#22c55e";
               return (
                 <div className="mt-2 h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
                   <div className="h-full transition-all duration-500 rounded-full"
@@ -561,7 +554,7 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
           <span className="font-medium">Sikkert rum</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-12 h-4 rounded" style={{ background: `linear-gradient(to right, ${SEVERITY_COLORS.near}, ${SEVERITY_COLORS.moderate}, ${SEVERITY_COLORS.exceeded}, ${SEVERITY_COLORS.high}, ${SEVERITY_COLORS.extreme})` }} />
+          <div className="w-12 h-4 rounded" style={{ background: "linear-gradient(to right, #eab308, #f97316, #dc2626, #991b1b)" }} />
           <span className="font-medium">Underskud / Overskridelse</span>
         </div>
         <div className="flex items-center gap-2">
