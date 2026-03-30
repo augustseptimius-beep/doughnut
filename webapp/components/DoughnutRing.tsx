@@ -83,9 +83,58 @@ const GREEN_SOCIAL_HOVER = "#22c55e";
 const GREEN_ECO = "#22c55e";
 const GREEN_ECO_HOVER = "#16a34a";
 const GREEN_DARK_BAND = "#15803d";
-const RED = "#dc2626";
 const GRAY_NO_DATA = "#cbd5e1";
 const GRAY_NO_DATA_STROKE = "#94a3b8";
+
+/* ── Severity levels & gradient colors ── */
+type SeverityLevel = "safe" | "near" | "moderate" | "exceeded" | "high" | "extreme";
+
+const SEVERITY_COLORS: Record<SeverityLevel, string> = {
+  safe:     "#22c55e", // green
+  near:     "#eab308", // yellow
+  moderate: "#f97316", // orange
+  exceeded: "#ea580c", // dark orange
+  high:     "#dc2626", // red
+  extreme:  "#991b1b", // dark red
+};
+
+const SEVERITY_LABELS_ECO: Record<SeverityLevel, string> = {
+  safe:     "Inden for grænsen",
+  near:     "Tæt på overskridelse",
+  moderate: "Moderat overskredet",
+  exceeded: "Overskredet",
+  high:     "Meget overskredet",
+  extreme:  "Ekstremt overskredet",
+};
+
+const SEVERITY_LABELS_SOCIAL: Record<SeverityLevel, string> = {
+  safe:     "Mål nået",
+  near:     "Tæt på underskud",
+  moderate: "Moderat underskud",
+  exceeded: "Underskud",
+  high:     "Stort underskud",
+  extreme:  "Ekstremt underskud",
+};
+
+function getEcoSeverity(score: number | null): SeverityLevel {
+  if (score === null) return "safe";
+  if (score <= 100) return "safe";
+  if (score <= 115) return "near";
+  if (score <= 150) return "moderate";
+  if (score <= 250) return "exceeded";
+  if (score <= 500) return "high";
+  return "extreme";
+}
+
+function getSocialSeverity(score: number | null): SeverityLevel {
+  if (score === null) return "safe";
+  if (score >= 100) return "safe";
+  if (score >= 85) return "near";
+  if (score >= 70) return "moderate";
+  if (score >= 50) return "exceeded";
+  if (score >= 25) return "high";
+  return "extreme";
+}
 
 function overshootRadius(score: number): number {
   if (score <= 100) return 0;
@@ -184,8 +233,10 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
       const endAngle = (i + 1) * angleStep - Math.PI / 2;
       const fraction = Math.min((100 - cat.score) / 100, 1);
       const rIn = socialBase - (socialBase - innerLimit) * Math.sqrt(fraction);
+      const severity = getSocialSeverity(cat.score);
+      const toothColor = SEVERITY_COLORS[severity];
       const toothPath = describeArc(center, center, socialBase, rIn, startAngle, endAngle);
-      return <path key={`sf-${cat.categoryId}`} d={toothPath} fill={RED} opacity="0.9" />;
+      return <path key={`sf-${cat.categoryId}`} d={toothPath} fill={toothColor} opacity="0.9" />;
     });
   };
 
@@ -202,6 +253,8 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
       const safePath = describeArc(center, center, ecoCeiling, commonBoundary, startAngle, endAngle);
 
       let overshootPath = "";
+      const severity = getEcoSeverity(ecoScore);
+      const overshootColor = SEVERITY_COLORS[severity];
       if (hasEcoData && ecoScore > 100) {
         const rOut = overshootRadius(ecoScore);
         overshootPath = describeArc(center, center, rOut, ecoCeiling, startAngle, endAngle);
@@ -232,7 +285,7 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
         >
           <path d={safePath} fill={safeColor} stroke={safeStroke} strokeWidth="0.5" className="transition-colors duration-200" />
           {overshootPath && (
-            <path d={overshootPath} fill={RED} opacity="0.9" className="transition-all duration-300" />
+            <path d={overshootPath} fill={overshootColor} opacity="0.9" className="transition-all duration-300" />
           )}
         </g>
       );
@@ -369,15 +422,26 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
   const getStatusText = (info: ActiveInfo): string => {
     if (!info.hasData || info.score === null) return "Mangler data";
     if (info.group === "social") {
-      return info.score >= 100 ? "Mål nået" : `Underskud ${(100 - info.score).toFixed(1)}%`;
+      const severity = getSocialSeverity(info.score);
+      return SEVERITY_LABELS_SOCIAL[severity];
     }
-    return info.score <= 100 ? "Inden for grænsen" : `Overskridelse ${(info.score - 100).toFixed(1)}%`;
+    const severity = getEcoSeverity(info.score);
+    return SEVERITY_LABELS_ECO[severity];
   };
 
   const getStatusColor = (info: ActiveInfo): string => {
     if (!info.hasData || info.score === null) return "text-gray-400";
-    if (info.group === "social") return info.score >= 100 ? "text-emerald-600" : "text-red-500";
-    return info.score <= 100 ? "text-emerald-600" : "text-red-500";
+    const severity = info.group === "social"
+      ? getSocialSeverity(info.score)
+      : getEcoSeverity(info.score);
+    switch (severity) {
+      case "safe": return "text-emerald-600";
+      case "near": return "text-yellow-600";
+      case "moderate": return "text-orange-500";
+      case "exceeded": return "text-orange-600";
+      case "high": return "text-red-500";
+      case "extreme": return "text-red-700";
+    }
   };
 
   return (
@@ -445,13 +509,12 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
             )}
             <div className="mt-2">
               {active.hasData && active.score !== null ? (
-                <p className="text-2xl font-black text-gray-900 tracking-tighter">{active.score.toFixed(1)}%</p>
+                <p className={`text-lg font-black uppercase tracking-wide ${getStatusColor(active)}`}>
+                  {getStatusText(active)}
+                </p>
               ) : (
                 <p className="text-sm font-medium text-gray-400">Ingen data endnu</p>
               )}
-              <p className={`text-xs font-bold uppercase tracking-widest mt-0.5 ${getStatusColor(active)}`}>
-                {getStatusText(active)}
-              </p>
             </div>
             {active.indicators && active.indicators.length > 0 && (
               <div className="mt-2 pt-2 border-t border-gray-100">
@@ -470,15 +533,18 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
             {active.unit && (
               <p className="text-[10px] text-gray-400 mt-1">Enhed: {active.unit}</p>
             )}
-            {active.hasData && active.score !== null && (
-              <div className="mt-2 h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                <div className={`h-full transition-all duration-500 rounded-full ${
-                  active.group === "social"
-                    ? active.score >= 100 ? "bg-emerald-500" : "bg-red-400"
-                    : active.score <= 100 ? "bg-emerald-500" : "bg-red-400"
-                }`} style={{ width: `${Math.min(active.score, 200) / 2}%` }} />
-              </div>
-            )}
+            {active.hasData && active.score !== null && (() => {
+              const severity = active.group === "social"
+                ? getSocialSeverity(active.score)
+                : getEcoSeverity(active.score);
+              const barColor = SEVERITY_COLORS[severity];
+              return (
+                <div className="mt-2 h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                  <div className="h-full transition-all duration-500 rounded-full"
+                    style={{ width: `${Math.min(active.score, 200) / 2}%`, backgroundColor: barColor }} />
+                </div>
+              );
+            })()}
             <div className="flex items-center justify-between mt-2">
               <a href={`/metode#${active.id}`} className="text-[10px] text-blue-600 hover:underline pointer-events-auto">
                 Se metode →
@@ -495,7 +561,7 @@ export default function DoughnutRing({ kommune }: DoughnutRingProps) {
           <span className="font-medium">Sikkert rum</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded" style={{ backgroundColor: RED }} />
+          <div className="w-12 h-4 rounded" style={{ background: `linear-gradient(to right, ${SEVERITY_COLORS.near}, ${SEVERITY_COLORS.moderate}, ${SEVERITY_COLORS.exceeded}, ${SEVERITY_COLORS.high}, ${SEVERITY_COLORS.extreme})` }} />
           <span className="font-medium">Underskud / Overskridelse</span>
         </div>
         <div className="flex items-center gap-2">

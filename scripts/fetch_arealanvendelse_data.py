@@ -96,10 +96,19 @@ def fetch_dst_table(table: str, variables: list) -> list:
 
 # ── Trin 1: Hent §3-arealer fra LFST WFS ────────────────────────────────────
 
-def find_layer_navn() -> str:
-    """Henter capabilities og finder det korrekte lag-navn for Paragraf3."""
+def find_layer_navn(substring: str, lag_type: str = "lag") -> str:
+    """
+    Henter capabilities og finder det korrekte lag-navn.
+
+    Args:
+        substring: Del af lagnavnet at søge efter (case-insensitive)
+        lag_type: Navn på lagtype for fejlmeddelser (f.eks. "Paragraf3", "Markblokke")
+
+    Returns:
+        Fuld lagnavn fra capabilities
+    """
     import xml.etree.ElementTree as ET
-    print("  Finder korrekt lag-navn fra capabilities...")
+    print(f"  Finder korrekt lag-navn for {lag_type}...")
     url = f"{LFST_WFS}?service=WFS&version=2.0.0&request=GetCapabilities"
     req = urllib.request.Request(url, headers={"User-Agent": "DoughnutDK/1.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
@@ -110,21 +119,24 @@ def find_layer_navn() -> str:
     ns = {"wfs": "http://www.opengis.net/wfs/2.0"}
     kandidater = []
     for ft in root.findall(".//wfs:FeatureType/wfs:Name", ns):
-        if ft.text and "paragraf3" in ft.text.lower():
+        if ft.text and substring.lower() in ft.text.lower():
             kandidater.append(ft.text)
 
     if not kandidater:
         # Vis alle tilgængelige lag hvis ingen match
         alle = [ft.text for ft in root.findall(".//wfs:FeatureType/wfs:Name", ns)]
-        print(f"  ADVARSEL: Ingen Paragraf3-lag fundet. Tilgængelige lag ({len(alle)}):")
+        print(f"  ADVARSEL: Ingen {lag_type}-lag fundet. Tilgængelige lag ({len(alle)}):")
         for navn in sorted(alle):
             print(f"    {navn}")
-        raise SystemExit("Kan ikke finde Paragraf3-lag. Se listen ovenfor.")
+        raise SystemExit(f"Kan ikke finde {lag_type}-lag med '{substring}'. Se listen ovenfor.")
 
-    valgt = kandidater[0]
+    # Sortér kandidater og vælg den nyeste (antager årstal i navnets slutning)
+    kandidater_sorteret = sorted(kandidater)
+    valgt = kandidater_sorteret[-1]
     print(f"  Fandt lag: {valgt}")
-    if len(kandidater) > 1:
-        print(f"  (Andre kandidater: {kandidater[1:]})")
+    if len(kandidater_sorteret) > 1:
+        andre = [k for k in kandidater_sorteret if k != valgt]
+        print(f"  (Andre kandidater: {andre})")
     return valgt
 
 
@@ -136,7 +148,8 @@ def hent_paragraf3() -> gpd.GeoDataFrame:
     print("\nTrin 1/4: Henter §3-naturarealer fra LFST WFS...")
     print(f"  Kilde: {LFST_WFS}")
 
-    lag_navn = find_layer_navn()
+    # Søg efter "paragraf3_i_imk" for at undgå "_soer_"-varianten
+    lag_navn = find_layer_navn("paragraf3_i_imk", "Paragraf3")
 
     alle_features = []
     start = 0
@@ -323,27 +336,12 @@ def hent_markblokke() -> gpd.GeoDataFrame:
     """
     print("\n(Markblokke): Henter landbrugsarealer fra LFST WFS...")
 
-    # Find det korrekte lagnavn dynamisk
-    import xml.etree.ElementTree as ET
-    url = f"{LFST_WFS}?service=WFS&version=2.0.0&request=GetCapabilities"
-    req = urllib.request.Request(url, headers={"User-Agent": "DoughnutDK/1.0"})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        raw_bytes = resp.read()
-        xml_raw = raw_bytes.decode("utf-8", errors="replace")
-
-    root = ET.fromstring(xml_raw)
-    ns = {"wfs": "http://www.opengis.net/wfs/2.0"}
-    kandidater = [
-        ft.text for ft in root.findall(".//wfs:FeatureType/wfs:Name", ns)
-        if ft.text and "markblok" in ft.text.lower()
-    ]
-
-    if not kandidater:
+    try:
+        # Søg efter "Markblokke:Markblokke_" for at undgå "MarkblokkeSogn"-aggregater
+        lag_navn = find_layer_navn("markblokke:markblokke_", "Markblokke")
+    except SystemExit:
         print("  ADVARSEL: Ingen Markblokke-lag fundet - springer over.")
         return None
-
-    lag_navn = kandidater[0]
-    print(f"  Fandt lag: {lag_navn}")
 
     alle_features = []
     start = 0
