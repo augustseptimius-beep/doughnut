@@ -118,11 +118,11 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   naeringsstoffer: {
     id: "naeringsstoffer",
-    scoring: "Gennemsnit af to indikatorer: (1) Kvælstof-udledning (ton total-N) pr. 1.000 indbyggere via spildevand. (2) Fosfor-udledning (ton total-P) pr. 1.000 indbyggere via spildevand. Eco-konvention: score over 100 = kommunen udleder mere end landsgennemsnittet (overshoot). Under 100 = udleder mindre (inden for grænsen).",
-    boundary: "Landsgennemsnittet som reference. Lavere næringsstofudledning er bedre for vandmiljøet.",
-    dataYear: "2024",
-    limitations: "Dækker kun punktkilder via spildevand (renseanlæg, dambrug, havbrug, industri, spredt bebyggelse, regnbetinget). Fanger ikke diffus udledning fra landbrug, som er den største kvælstofkilde i Danmark.",
-    csvFile: "naeringsstoffer_scores.csv",
+    scoring: "Gennemsnit af tre indikatorer: (1) Kvælstof-udledning (ton total-N) pr. 1.000 indbyggere via spildevand. (2) Fosfor-udledning (ton total-P) pr. 1.000 indbyggere via spildevand. (3) Landbrugets N-loft pr. ha landbrugsjord beregnet fra Vandområdeplan 3 (VP3, 2025): malbelas_n (max bæredygtig N-tilførsel til kysten i tons) divideret med det faktiske landbrugsareal i oplandet pr. kommune - jo lavere N-loft pr. ha, jo mere N-presset er kommunen. Eco-konvention: score over 100 = kommunen er mere belastet end landsgennemsnittet (overshoot). Under 100 = lavere pres end gennemsnit.",
+    boundary: "Landsgennemsnittet som reference for alle tre indikatorer. Lavere næringsstofbelastning og strengere N-loft er bedre for vandmiljøet.",
+    dataYear: "2024 (spildevand), 2025 (VP3 N-loft), 2026 (markblokke)",
+    limitations: "Spildevand dækker kun punktkilder (renseanlæg, dambrug, havbrug, industri, spredt bebyggelse). Landbrugs-N viser det maksimale tilladte N-loft pr. ha - ikke den faktiske udvaskning, som kræver DCE's NLES5-model (kun tilgængeligt i PDF-rapporter). Grænseværdien er landsgennemsnittet, ikke en absolut planetær grænse.",
+    csvFile: "naeringsstoffer_scores.csv + n_landbrug_scores.csv",
   },
   vand: {
     id: "vand",

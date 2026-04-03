@@ -75,6 +75,10 @@ export function loadData(): KommuneData[] {
   // New ecological data (Næringsstoffer, Vand)
   const naerNitrogen = loadEcoCsv("naeringsstoffer_scores.csv", "nitrogen_ratio");
   const naerPhosphorus = loadEcoCsv("naeringsstoffer_scores.csv", "phosphorus_ratio");
+  // Landbrugs-N: N-loft pr. ha landbrugsjord fra VP3 (Vandområdeplan 3, 2025)
+  // n_ratio > 100 = mere presset end landsgennemsnit (strengere loft pr. ha)
+  // Allerede i eco-konvention (>100 = overshoot ift. landsgennemsnit)
+  const nLandbrug = loadEcoCsv("n_landbrug_scores.csv", "n_ratio");
   const vandWastewater = loadEcoCsv("vand_scores.csv", "wastewater_ratio");
   const vandExtraction = loadEcoCsv("vand_scores.csv", "water_extraction_ratio");
   // Affald flyttes til cirkularitet (waste_ratio er inverteret: lav score = mere affald)
@@ -224,10 +228,14 @@ export function loadData(): KommuneData[] {
       return parseFloat((10000 / inverted).toFixed(2));
     }
 
-    // Næringsstoffer: kvælstof + fosfor udledning pr. capita
+    // Næringsstoffer: tre indikatorer averaged
+    // (1) Kvælstof-udledning via spildevand pr. capita (inverteret ratio → direkte eco-ratio)
+    // (2) Fosfor-udledning via spildevand pr. capita (inverteret ratio → direkte eco-ratio)
+    // (3) Landbrugs-N loft pr. ha (VP3 malbelas_n) - allerede i eco-konvention
     const naerN = invertToDirectRatio(naerNitrogen[kode] ?? null);
     const naerP = invertToDirectRatio(naerPhosphorus[kode] ?? null);
-    const naerVals = [naerN, naerP].filter((v): v is number => v !== null);
+    const naerLandbrug = nLandbrug[kode] ?? null;
+    const naerVals = [naerN, naerP, naerLandbrug].filter((v): v is number => v !== null);
     eco_ratios["naeringsstoffer"] = naerVals.length > 0
       ? parseFloat((naerVals.reduce((a, b) => a + b, 0) / naerVals.length).toFixed(2))
       : null;

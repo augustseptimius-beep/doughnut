@@ -3,14 +3,17 @@
 Kvælstof-loft (økologisk grænse) pr. danske kommune
 ====================================================
 Henter max bæredygtig N-tilførsel (malbelas_n) pr. kystvandopland fra
-Vandområdeplan 3 (VP3) WFS og aggregerer til kommuneniveau.
+Vandområdeplan 3 (VP3) WFS og beregner N-loft pr. ha LANDBRUGSJORD
+i oplandet - ikke pr. ha totalt landareal.
 
 Datakilde:
   MiljøGIS VP3 2. endelig 2025 - lag: vp3_2e2025_opl_marin_inds
   WFS: wfs2-miljoegis.mim.dk/vp3_2endelig2025/ows
   Feltet `malbelas_n` = max bæredygtig N-tilførsel i tons N pr. kystvandopland.
-  Dette er det "økologiske loft" fra vandområdeplanerne - den N-grænse
-  vandmiljøet kan tåle for at opnå god økologisk tilstand.
+
+  LFST Markblokke - lag: Markblokke:Markblokke_*
+  WFS: geodata.fvm.dk/geoserver/ows
+  ~300.000 markblok-polygoner dækkende hele Danmark.
 
 Datakontekst:
   - VP3 WFS indeholder IKKE faktisk N-belastning (belast_n = -9999 overalt).
@@ -19,17 +22,17 @@ Datakontekst:
   - For Doughnut Economics ER dette den relevante grænse (planetary boundary).
 
 Metode:
-  1. Hent ~108 kystvandoplande med malbelas_n og polygon-geometri fra VP3 WFS
-  2. Hent kommunegrænser fra DAWA
-  3. Overlay (intersection): fordel malbelas_n arealmæssigt til kommuner
-  4. Kombiner med markblok_km2 fra land_use_scores.csv
-  5. Beregn N-loft pr. ha landbrugsjord (kg N/ha)
-  6. Beregn ratio (vægtet landssnit / kommune-ceiling × 100)
+  1. Hent ~108 kystvandoplande med malbelas_n fra VP3 WFS
+  2. Hent alle markblokke fra LFST WFS (~300.000 polygoner, 10-20 min)
+  3. Overlay markblokke × kystvandoplande → markblok_ha pr. opland
+  4. Beregn n_ceiling_kg_per_ha pr. opland = malbelas_n×1000 / markblok_ha
+  5. Hent kommunegrænser fra DAWA
+  6. Overlay kystvandoplande × kommuner, vægtet af markblok-overlap
+  7. Beregn kommunens N-loft som markblok-vægtet snit af oplandenes ceiling
 
 Scoring (Doughnut-ratio):
-  ratio > 100 = mere presset end landsgennemsnit (strengere N-loft)
-  ratio < 100 = mindre presset end landsgennemsnit (mere N-plads)
-  Kommuner med lavere ceiling/ha har strengere vandmiljøkrav.
+  ratio > 100 = mere presset end landsgennemsnit (strengere N-loft pr. ha)
+  ratio < 100 = mindre presset end landsgennemsnit (mere N-plads pr. ha)
 
 Krav:
   pip install geopandas
@@ -37,6 +40,7 @@ Krav:
 Brug:
   cd scripts/
   python3 fetch_naeringsstoffer_landbrug.py
+  NB: Tager 15-25 minutter pga. markblok-hentning.
 
 Output:
   ../data/n_landbrug_scores.csv
@@ -54,14 +58,16 @@ import geopandas as gpd
 
 # -- Konstanter ---------------------------------------------------------------
 
-VP3_WFS    = "https://wfs2-miljoegis.mim.dk/vp3_2endelig2025/ows"
-VP3_LAYER  = "vp3_2e2025_opl_marin_inds"
-DAWA_URL   = "https://dawa.aws.dk/kommuner?format=geojson"
-LAND_USE_CSV = Path("../data/land_use_scores.csv")
-OUTPUT_FIL = Path("../data/n_landbrug_scores.csv")
+VP3_WFS      = "https://wfs2-miljoegis.mim.dk/vp3_2endelig2025/ows"
+VP3_LAYER    = "vp3_2e2025_opl_marin_inds"
+LFST_WFS     = "https://geodata.fvm.dk/geoserver/ows"
+DAWA_URL     = "https://dawa.aws.dk/kommuner?format=geojson"
+OUTPUT_FIL   = Path("../data/n_landbrug_scores.csv")
 
-PAGE_SIZE  = 200   # VP3 har ~108 features, 200 er rigeligt
-NULL_VALUE = -9999  # MiljøGIS bruger -9999 som null-markør
+VP3_PAGE     = 200    # VP3 har ~108 features
+MB_PAGE      = 10000  # Markblokke: hent 10.000 ad gangen
+NULL_VALUE   = -9999  # MiljøGIS null-markør
+N_CAP        = 300.0  # Max kg N/ha - over dette er dataartifakt
 
 
 # -- Hjælpefunktioner ---------------------------------------------------------
@@ -119,9 +125,9 @@ def hent_kystvandoplande() -> gpd.GeoDataFrame:
             f"{VP3_WFS}?service=WFS&version=1.1.0&request=GetFeature"
             f"&typeName={VP3_LAYER}"
             f"&outputFormat=application/json"
-            f"&maxFeatures={PAGE_SIZE}&startIndex={start}"
+            f"&maxFeatures={VP3_PAGE}&startIndex={start}"
         )
-        print(f"  Henter features {start} - {start + PAGE_SIZE}...", end=" ", flush=True)
+        print(f"  Henter features {start} - {start + VP3_PAGE}...", end=" ", flush=True)
 
         try:
             data = fetch_json(url)
@@ -136,9 +142,9 @@ def hent_kystvandoplande() -> gpd.GeoDataFrame:
             break
 
         alle_features.extend(features)
-        start += PAGE_SIZE
+        start += VP3_PAGE
 
-        if len(features) < PAGE_SIZE:
+        if len(features) < VP3_PAGE:
             break
 
         time.sleep(0.5)
@@ -191,11 +197,157 @@ def hent_kystvandoplande() -> gpd.GeoDataFrame:
     return gdf
 
 
-# -- Trin 2: Hent kommunegrænser -----------------------------------------------
+# -- Trin 2: Hent markblokke fra LFST WFS -------------------------------------
+
+def find_markblok_lag() -> str:
+    """Finder det aktuelle markblok-lagnavn fra LFST WFS capabilities."""
+    import xml.etree.ElementTree as ET
+    print("  Finder markblok-lag fra LFST capabilities...")
+    url = f"{LFST_WFS}?service=WFS&version=2.0.0&request=GetCapabilities"
+    req = urllib.request.Request(url, headers={"User-Agent": "DoughnutDK/1.0"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        xml_raw = resp.read().decode("utf-8", errors="replace")
+    root = ET.fromstring(xml_raw)
+    ns = {"wfs": "http://www.opengis.net/wfs/2.0"}
+    kandidater = [
+        ft.text for ft in root.findall(".//wfs:FeatureType/wfs:Name", ns)
+        if ft.text and "markblokke:markblokke_" in ft.text.lower()
+    ]
+    if not kandidater:
+        raise SystemExit("FEJL: Ingen Markblokke-lag fundet i LFST capabilities.")
+    valgt = sorted(kandidater)[-1]
+    print(f"  Lag valgt: {valgt}")
+    return valgt
+
+
+def hent_markblokke() -> gpd.GeoDataFrame:
+    """
+    Henter alle markblok-polygoner fra LFST WFS i sider.
+    ~300.000 polygoner - tager 10-20 minutter.
+    Returnerer GeoDataFrame i EPSG:25832 med areal_ha.
+    """
+    print("\nTrin 2/6: Henter markblokke fra LFST WFS (10-20 min)...")
+    print(f"  Kilde: {LFST_WFS}")
+
+    lag_navn = find_markblok_lag()
+    alle_features = []
+    start = 0
+
+    while True:
+        url = (
+            f"{LFST_WFS}?service=WFS&version=2.0.0&request=GetFeature"
+            f"&typeName={lag_navn}"
+            f"&outputFormat=application/json"
+            f"&count={MB_PAGE}&startIndex={start}"
+        )
+        print(f"  Henter features {start:,} - {start + MB_PAGE:,}...", end=" ", flush=True)
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "DoughnutDK/1.0"})
+            with urllib.request.urlopen(req, timeout=180) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+        except Exception as e:
+            print(f"FEJL: {e}")
+            break
+        features = data.get("features", [])
+        print(f"modtog {len(features)}")
+        if not features:
+            break
+        alle_features.extend(features)
+        start += MB_PAGE
+        if len(features) < MB_PAGE:
+            break
+        time.sleep(0.3)
+
+    print(f"  Total: {len(alle_features):,} markblok-polygoner hentet")
+    if not alle_features:
+        raise SystemExit("FEJL: Ingen markblok-data modtaget.")
+
+    gdf = gpd.GeoDataFrame.from_features(alle_features)
+    gdf = gdf[~gdf.geometry.is_empty & gdf.geometry.notna()].copy()
+
+    sample_coord = list(gdf.geometry.iloc[0].centroid.coords)[0]
+    if abs(sample_coord[0]) > 1000:
+        gdf = gdf.set_crs(epsg=25832)
+    else:
+        gdf = gdf.set_crs(epsg=4326).to_crs(epsg=25832)
+
+    gdf["mb_areal_ha"] = gdf.geometry.area / 10_000
+    print(f"  Samlet markblok-areal: {gdf['mb_areal_ha'].sum():,.0f} ha")
+    return gdf
+
+
+# -- Trin 3: Markblok-areal pr. kystvandopland --------------------------------
+
+def beregn_markblok_pr_opland(
+    markblokke: gpd.GeoDataFrame,
+    oplande: gpd.GeoDataFrame
+) -> gpd.GeoDataFrame:
+    """
+    Beregner markblok-areal (ha) pr. kystvandopland via centroid spatial join.
+    Bruger centroid-metoden (hurtig og robust) frem for overlay.
+    Returnerer oplande GeoDataFrame med ny kolonne markblok_ha.
+    """
+    print("\nTrin 3/6: Beregner markblok-areal pr. kystvandopland...")
+    print("  Metode: centroid spatial join (hurtig)")
+
+    markblokke = markblokke.copy()
+    markblokke["geometry"] = markblokke.geometry.buffer(0)
+    oplande = oplande.copy()
+    oplande["geometry"] = oplande.geometry.buffer(0)
+
+    # Centroider for alle markblokke
+    mb_cent = markblokke[["mb_areal_ha"]].copy()
+    mb_cent["geometry"] = markblokke.geometry.centroid
+
+    # Spatial join: find hvilket kystvandopland hvert markblok-centroid ligger i
+    joined = gpd.sjoin(
+        gpd.GeoDataFrame(mb_cent, geometry="geometry", crs=markblokke.crs),
+        oplande[["geometry", "op_id"]],
+        how="left",
+        predicate="within"
+    )
+
+    matchede = joined["op_id"].notna().sum()
+    print(f"  Matchede markblokke: {matchede:,} af {len(markblokke):,} "
+          f"({matchede/len(markblokke)*100:.1f}%)")
+
+    # Summer markblok-areal pr. opland
+    mb_pr_opland = (
+        joined.dropna(subset=["op_id"])
+        .groupby("op_id")["mb_areal_ha"]
+        .sum()
+        .reset_index()
+        .rename(columns={"mb_areal_ha": "markblok_ha"})
+    )
+
+    oplande = oplande.merge(mb_pr_opland, on="op_id", how="left")
+    oplande["markblok_ha"] = oplande["markblok_ha"].fillna(0)
+
+    gyldige = (oplande["markblok_ha"] > 0).sum()
+    print(f"  Oplande med markblok-data: {gyldige} af {len(oplande)}")
+    print(f"  Total markblok-areal i oplande: {oplande['markblok_ha'].sum():,.0f} ha")
+
+    # Beregn N-loft pr. ha LANDBRUGSJORD i hvert opland
+    oplande["n_ceiling_kg_per_ha"] = oplande.apply(
+        lambda r: min((r["malbelas_n"] * 1000) / r["markblok_ha"], N_CAP)
+        if r["markblok_ha"] > 0 else 0.0,
+        axis=1
+    )
+
+    print(f"\n  N-loft pr. ha landbrugsjord pr. opland:")
+    gyldige_oplande = oplande[oplande["n_ceiling_kg_per_ha"] > 0]
+    print(f"    Min: {gyldige_oplande['n_ceiling_kg_per_ha'].min():.1f} kg N/ha")
+    print(f"    Max: {gyldige_oplande['n_ceiling_kg_per_ha'].max():.1f} kg N/ha")
+    print(f"    Snit: {gyldige_oplande['n_ceiling_kg_per_ha'].mean():.1f} kg N/ha")
+
+    return oplande
+
+
+# -- Trin 4: Hent kommunegrænser -----------------------------------------------
 
 def hent_kommuner() -> gpd.GeoDataFrame:
     """Henter kommunegrænser fra DAWA API."""
-    print("\nTrin 2/5: Henter kommunegrænser fra DAWA...")
+    print("\nTrin 4/6: Henter kommunegrænser fra DAWA...")
     try:
         kommuner = gpd.read_file(DAWA_URL)
         kommuner = kommuner.to_crs(epsg=25832)
@@ -208,181 +360,154 @@ def hent_kommuner() -> gpd.GeoDataFrame:
         sys.exit(1)
 
 
-# -- Trin 3: Overlay og aggregering -------------------------------------------
+# -- Trin 5: N-loft pr. kommune (markblok-vægtet) -----------------------------
 
-def beregn_n_pr_kommune(oplande: gpd.GeoDataFrame,
-                        kommuner: gpd.GeoDataFrame) -> dict:
+def beregn_n_pr_kommune(
+    oplande: gpd.GeoDataFrame,
+    kommuner: gpd.GeoDataFrame
+) -> list:
     """
-    Fordeler N-loft fra kystvandoplande til kommuner via overlay (intersection).
+    Beregner markblok-vægtet N-loft pr. ha pr. kommune.
 
-    Metode: For hvert skæringsstykke (opland x kommune) beregnes:
-      - skæringsareal i ha
-      - N-bidrag = (skæringsareal / opland-areal) × malbelas_n (tons)
-    Summeres pr. kommune.
-
-    Returnerer {kommune_kode: {"n_tons": float, "overlap_ha": float}}
+    Metode:
+      - Overlay kystvandoplande × kommuner
+      - For hvert skæringsstykke: markblok-areal i skæringen
+        (estimeret som andel af oplandets markblok-areal × skæringsandel)
+      - Vægtet snit af n_ceiling_kg_per_ha, vægtet af markblok-areal i skæringen
     """
-    print("\nTrin 3/5: Fordeler N-loft til kommuner via areal-overlay...")
-    print("  Dette kan tage 1-3 minutter...")
+    print("\nTrin 5/6: Beregner markblok-vægtet N-loft pr. kommune...")
 
-    # Sikr valide geometrier
-    oplande = oplande[oplande.geometry.is_valid & ~oplande.geometry.is_empty].copy()
-    kommuner_clean = kommuner[kommuner.geometry.is_valid & ~kommuner.geometry.is_empty].copy()
+    oplande_clean = oplande[
+        oplande.geometry.is_valid & ~oplande.geometry.is_empty &
+        (oplande["n_ceiling_kg_per_ha"] > 0)
+    ].copy()
+    oplande_clean["geometry"] = oplande_clean.geometry.buffer(0)
 
-    # Fix eventuelle ugyldige geometrier
-    oplande["geometry"] = oplande.geometry.buffer(0)
+    kommuner_clean = kommuner[
+        kommuner.geometry.is_valid & ~kommuner.geometry.is_empty
+    ].copy()
     kommuner_clean["geometry"] = kommuner_clean.geometry.buffer(0)
 
-    # Overlay: intersection af oplande med kommuner
+    # Overlay
     try:
         overlay = gpd.overlay(
-            oplande[["geometry", "malbelas_n", "opland_ha"]],
+            oplande_clean[["geometry", "op_id", "malbelas_n",
+                           "markblok_ha", "n_ceiling_kg_per_ha"]],
             kommuner_clean[["geometry", "kode", "navn"]],
             how="intersection"
         )
     except Exception as e:
-        print(f"  FEJL ved overlay: {e}")
-        print("  Prøver med reduceret geometri-præcision...")
-        oplande["geometry"] = oplande.geometry.simplify(10)
+        print(f"  FEJL: {e}. Prøver simplify...")
+        oplande_clean["geometry"] = oplande_clean.geometry.simplify(10)
         overlay = gpd.overlay(
-            oplande[["geometry", "malbelas_n", "opland_ha"]],
+            oplande_clean[["geometry", "op_id", "malbelas_n",
+                           "markblok_ha", "n_ceiling_kg_per_ha"]],
             kommuner_clean[["geometry", "kode", "navn"]],
             how="intersection"
         )
 
-    print(f"  Overlay producerede {len(overlay)} skæringsstykker")
+    print(f"  Overlay: {len(overlay)} skæringsstykker")
 
-    # Beregn areal af hvert skæringsstykke
+    # Beregn markblok-areal i hvert skæringsstykke
     overlay["intersection_ha"] = overlay.geometry.area / 10_000
-
-    # Beregn N-bidrag: proportional andel af oplandets N-loft
-    overlay["andel"] = overlay["intersection_ha"] / overlay["opland_ha"]
-    overlay["n_tons_bidrag"] = overlay["andel"] * overlay["malbelas_n"]
-
-    # Aggreger pr. kommune
-    result = {}
-    grouped = overlay.groupby("kode").agg(
-        n_tons_total=("n_tons_bidrag", "sum"),
-        overlap_ha=("intersection_ha", "sum")
+    overlay["opland_areal_ha"] = overlay.geometry.apply(
+        lambda g: g.area / 10_000
     )
 
-    for kode, row in grouped.iterrows():
-        result[kode] = {
-            "n_tons": round(row["n_tons_total"], 2),
-            "overlap_ha": round(row["overlap_ha"], 1)
-        }
+    # Estimer markblok i skæringen: andel af oplandets totale areal ×
+    # oplandets markblok_ha giver en approksimation
+    overlay["andel_af_opland"] = (
+        overlay["intersection_ha"] /
+        overlay.groupby("op_id")["intersection_ha"].transform("sum")
+    )
+    overlay["mb_ha_i_skaering"] = overlay["andel_af_opland"] * overlay["markblok_ha"]
 
-    matched = len(result)
-    print(f"  N-loft fordelt til {matched} kommuner")
+    # Aggreger pr. kommune: markblok-vægtet snit af n_ceiling_kg_per_ha
+    result = []
+    grouped = overlay.groupby("kode")
 
-    total_fordelt = sum(v["n_tons"] for v in result.values())
-    print(f"  Total fordelt N: {total_fordelt:.0f} tons")
+    for kode, gruppe in grouped:
+        total_mb = gruppe["mb_ha_i_skaering"].sum()
+        if total_mb > 0:
+            # Vægtet snit
+            vægtet_ceiling = (
+                (gruppe["n_ceiling_kg_per_ha"] * gruppe["mb_ha_i_skaering"]).sum()
+                / total_mb
+            )
+        else:
+            vægtet_ceiling = 0.0
+        result.append({
+            "kode": kode,
+            "n_ceiling_kg_per_ha": round(min(vægtet_ceiling, N_CAP), 1),
+            "mb_ha_i_opland": round(total_mb, 1)
+        })
 
-    # Vis top 5
-    sorted_by_n = sorted(result.items(), key=lambda x: x[1]["n_tons"], reverse=True)
-    print(f"\n  Top 5 kommuner (tons N-loft):")
-    for kode, vals in sorted_by_n[:5]:
-        print(f"    {kode}: {vals['n_tons']:.0f} tons N ({vals['overlap_ha']:.0f} ha opland)")
-
+    print(f"  N-loft beregnet for {len(result)} kommuner")
     return result
 
 
-# -- Trin 4: Læs markblok-data og beregn N-loft pr. ha ------------------------
+# -- Trin 6: Byg resultater og gem CSV ----------------------------------------
 
-def beregn_intensitet(n_pr_kommune: dict, kommuner: gpd.GeoDataFrame) -> list:
-    """
-    Kombinerer N-loft med markblok-areal og beregner kg N/ha landbrug.
+def beregn_og_gem(
+    n_pr_kommune: list,
+    kommuner: gpd.GeoDataFrame
+) -> list:
+    """Bygger resultater, beregner ratio og skriver CSV."""
+    print(f"\nTrin 6/6: Beregner ratio og gemmer til {OUTPUT_FIL}...")
 
-    Læser markblok_km2 fra land_use_scores.csv.
-    Beregner ratio mod vægtet landsgennemsnit (snit/kommune × 100).
-    """
-    print(f"\nTrin 4/5: Beregner N-loft pr. ha landbrug...")
+    # Indeks over n-data
+    n_idx = {r["kode"]: r for r in n_pr_kommune}
 
-    # Læs markblok-data
-    if not LAND_USE_CSV.exists():
-        print(f"FEJL: {LAND_USE_CSV} ikke fundet. Kør fetch_arealanvendelse_data.py først.")
-        sys.exit(1)
-
-    markblok = {}
-    with open(LAND_USE_CSV, "r", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            kode = row["kommune_kode"]
-            try:
-                markblok[kode] = float(row["markblok_km2"])
-            except (ValueError, KeyError):
-                markblok[kode] = 0.0
-
-    print(f"  Markblok-data for {len(markblok)} kommuner indlæst")
-
-    # Byg resultater
     resultater = []
     for _, row in kommuner.iterrows():
         kode = row["kode"]
         navn = row["navn"]
-
-        n_data = n_pr_kommune.get(kode, {"n_tons": 0, "overlap_ha": 0})
-        n_tons = n_data["n_tons"]
-        markblok_km2 = markblok.get(kode, 0.0)
-
-        # Beregn kg N / ha landbrugsareal
-        if markblok_km2 > 0:
-            markblok_ha = markblok_km2 * 100
-            n_kg_per_ha = round((n_tons * 1000) / markblok_ha, 1)
-        else:
-            n_kg_per_ha = 0.0
+        n_data = n_idx.get(kode, {})
+        n_kg_per_ha = n_data.get("n_ceiling_kg_per_ha", 0.0)
+        mb_ha = n_data.get("mb_ha_i_opland", 0.0)
 
         resultater.append({
             "kommune_kode": kode,
             "kommune_navn": navn,
-            "n_tons": n_tons,
-            "markblok_km2": markblok_km2,
-            "n_kg_per_ha": n_kg_per_ha,
+            "n_ceiling_kg_per_ha": n_kg_per_ha,
+            "markblok_ha_i_opland": round(mb_ha, 1),
+            "n_ratio": 0.0
         })
 
-    # Beregn vægtet landsgennemsnit
-    med_data = [r for r in resultater if r["n_kg_per_ha"] > 0]
+    # Vægtet landsgennemsnit
+    med_data = [r for r in resultater if r["n_ceiling_kg_per_ha"] > 0]
     if med_data:
-        total_n_kg = sum(r["n_tons"] * 1000 for r in med_data)
-        total_markblok_ha = sum(r["markblok_km2"] * 100 for r in med_data)
-        landssnit = total_n_kg / total_markblok_ha if total_markblok_ha > 0 else 0
-        print(f"  Vægtet landsgennemsnit N-loft: {landssnit:.1f} kg N/ha")
+        total_n = sum(r["n_ceiling_kg_per_ha"] * r["markblok_ha_i_opland"]
+                      for r in med_data)
+        total_mb = sum(r["markblok_ha_i_opland"] for r in med_data)
+        landssnit = total_n / total_mb if total_mb > 0 else 0
+        print(f"  Vægtet landsgennemsnit N-loft: {landssnit:.1f} kg N/ha landbrug")
     else:
         landssnit = 0
         print("  ADVARSEL: Ingen kommuner med N-data!")
 
-    # Beregn ratio (invers: landssnit / kommune × 100)
-    # ratio > 100 = strengere N-loft (mere presset)
-    # ratio < 100 = mildere N-loft (mindre presset)
+    # Ratio: landssnit / kommune × 100
     for r in resultater:
-        if r["n_kg_per_ha"] > 0 and landssnit > 0:
-            r["n_ratio"] = round((landssnit / r["n_kg_per_ha"]) * 100, 2)
-        elif r["markblok_km2"] == 0:
-            r["n_ratio"] = 150.0  # Ingen landbrug = ikke relevant
+        if r["n_ceiling_kg_per_ha"] > 0 and landssnit > 0:
+            r["n_ratio"] = round((landssnit / r["n_ceiling_kg_per_ha"]) * 100, 2)
+        elif r["markblok_ha_i_opland"] == 0:
+            r["n_ratio"] = 150.0
         else:
             r["n_ratio"] = ""
 
     # Statistik
-    ceilings = [r["n_kg_per_ha"] for r in resultater if r["n_kg_per_ha"] > 0]
+    ceilings = [r["n_ceiling_kg_per_ha"] for r in resultater
+                if r["n_ceiling_kg_per_ha"] > 0]
     if ceilings:
         print(f"  N-loft range: {min(ceilings):.1f} - {max(ceilings):.1f} kg N/ha")
-        over_snit = sum(1 for c in ceilings if c < landssnit)
-        print(f"  Kommuner under landsgennemsnit (mere presset): {over_snit}/{len(ceilings)}")
+        under_snit = sum(1 for c in ceilings if c < landssnit)
+        print(f"  Kommuner under landsgennemsnit (mere presset): "
+              f"{under_snit}/{len(ceilings)}")
 
-    return resultater
-
-
-# -- Trin 5: Gem CSV -----------------------------------------------------------
-
-def gem_csv(resultater: list):
-    """Skriver n_landbrug_scores.csv."""
-    print(f"\nTrin 5/5: Gemmer til {OUTPUT_FIL}...")
-
+    # Gem CSV
     OUTPUT_FIL.parent.mkdir(parents=True, exist_ok=True)
-
-    fieldnames = ["kommune_kode", "kommune_navn", "n_tons", "markblok_km2",
-                  "n_kg_per_ha", "n_ratio"]
-
+    fieldnames = ["kommune_kode", "kommune_navn", "n_ceiling_kg_per_ha",
+                  "markblok_ha_i_opland", "n_ratio"]
     with open(OUTPUT_FIL, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
@@ -390,37 +515,40 @@ def gem_csv(resultater: list):
 
     print(f"  OK: {len(resultater)} kommuner skrevet")
 
-    # Vis Thisted
-    thisted = next((r for r in resultater if "thisted" in r["kommune_navn"].lower()), None)
+    # Thisted
+    thisted = next(
+        (r for r in resultater if "thisted" in r["kommune_navn"].lower()), None
+    )
     if thisted:
         print(f"\n  Thisted Kommune:")
-        print(f"    N-loft:        {thisted['n_tons']} tons N")
-        print(f"    Landbrugsareal: {thisted['markblok_km2']} km2")
-        print(f"    N-loft/ha:     {thisted['n_kg_per_ha']} kg N/ha landbrug")
-        print(f"    Ratio:         {thisted['n_ratio']} (>100 = mere presset)")
+        print(f"    N-loft pr. ha landbrug: {thisted['n_ceiling_kg_per_ha']} kg N/ha")
+        print(f"    Markblok i oplande:     {thisted['markblok_ha_i_opland']} ha")
+        print(f"    Ratio:                  {thisted['n_ratio']} (>100 = mere presset)")
+
+    return resultater
 
 
 # -- Main ----------------------------------------------------------------------
 
 def main():
     print("=" * 65)
-    print("Doughnut Economics - Kvælstof-loft pr. kommune (VP3)")
+    print("Doughnut Economics - Kvælstof-loft pr. ha landbrug (VP3 + LFST)")
     print("=" * 65)
-    print(f"Kilde: {VP3_WFS}")
-    print(f"Lag: {VP3_LAYER}")
-    print(f"Indikator: malbelas_n (max baeredygtig N-tilfoersel, tons)")
+    print(f"VP3 WFS:  {VP3_WFS}")
+    print(f"LFST WFS: {LFST_WFS}")
+    print(f"Metode: malbelas_n / markblok_ha pr. kystvandopland")
     print("=" * 65)
     print()
-    print("NB: malbelas_n er det OEKOLOGISKE LOFT - max baeredygtig N-tilfoersel")
-    print("    pr. kystvandopland ifoelge Vandomraadeplan 3 (2025).")
-    print("    Lavere loft/ha = strengere krav = mere belastet vandmiljoe.")
-    print("    Faktisk N-udvaskning publiceres ikke maskinlaesbart (kun DCE PDF).")
+    print("NB: Tager 15-25 minutter pga. ~300.000 markblok-polygoner.")
+    print("    malbelas_n = max baeredygtig N-tilfoersel fra VP3 (2025).")
+    print("    Naevner = faktisk landbrugsareal i hvert kystvandopland.")
 
     oplande    = hent_kystvandoplande()
+    markblokke = hent_markblokke()
+    oplande    = beregn_markblok_pr_opland(markblokke, oplande)
     kommuner   = hent_kommuner()
     n_data     = beregn_n_pr_kommune(oplande, kommuner)
-    resultater = beregn_intensitet(n_data, kommuner)
-    gem_csv(resultater)
+    beregn_og_gem(n_data, kommuner)
 
     print(f"\nFaerdig! N-scores gemt i {OUTPUT_FIL}")
 
