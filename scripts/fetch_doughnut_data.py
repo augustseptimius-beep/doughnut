@@ -7,7 +7,15 @@ Metadata-driven: calls tableinfo FIRST for every table and adapts variable codes
 to what actually exists, instead of hardcoding.
 
 Usage:
-  python3 fetch_doughnut_data.py [--step 1|2|3] [--output results.csv]
+  VIGTIGT: Kør altid fra projektets RODMAPPE (doughnut/), IKKE indefra scripts/:
+
+    cd /sti/til/doughnut
+    python3 scripts/fetch_doughnut_data.py
+
+  Hvis du kører fra scripts/-mappen, gemmes doughnut_scores.csv i scripts/ i stedet
+  for data/ — og webapp'en bruger den forkerte (gamle) fil uden de nye indikatorer.
+
+  python3 scripts/fetch_doughnut_data.py [--step 1|2|3] [--output results.csv]
 
   Step 1: Verify HISBK table structure and fetch life expectancy data
   Step 2: Fetch all 8 indicators (verifies each table's metadata first)
