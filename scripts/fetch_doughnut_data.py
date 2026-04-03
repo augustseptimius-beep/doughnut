@@ -195,6 +195,21 @@ INDICATORS = [
         "category": "social",
     },
     {
+        "id": "low_income",
+        "name": "Andel i lavindkomstgruppe (%)",
+        "table": "LABY07",
+        "want_variables": [
+            {"purpose": "alder", "candidates": [
+                {"code": "ALDER", "values": ["IALT"]},  # Alle aldre samlet
+            ]},
+        ],
+        "area_candidates": ["KOMGRP", "BOPOMR", "KOMMUNEDK", "OMRÅDE"],
+        "inverse": True,    # Lavere andel i lavindkomst = bedre
+        "aggregate": "single",
+        "category": "social",
+        "note": "Relativ fattigdom: andel af befolkningen med ækvivaleret disponibel indkomst under 60% af medianindkomsten (DST LABY07)",
+    },
+    {
         "id": "vacant_housing",
         "name": "Ubeboede boliger %",
         "table": "BOL101",
@@ -655,7 +670,7 @@ def fetch_energids_ve_capacity():
     Municipality codes are zero-padded to 3 digits to match DST format.
     """
     url = (f"{ENERGIDS_BASE}/dataset/CapacityPerMunicipality"
-           "?limit=0&sort=Month desc")
+           "?limit=0&sort=Month%20desc")
     try:
         with urllib.request.urlopen(url, timeout=30) as resp:
             data = json.loads(resp.read().decode("utf-8"))

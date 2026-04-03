@@ -86,6 +86,16 @@ export const INDICATORS: Indicator[] = [
     baselineLevel: 3,
   },
   {
+    id: "low_income",
+    name: "Andel i lavindkomstgruppe",
+    table: "10518",
+    source: "https://www.statistikbanken.dk/10518",
+    category: "social",
+    inverse: true,
+    dataYear: "2022",
+    baselineLevel: 3,
+  },
+  {
     id: "vacant_housing",
     name: "Ubeboede boliger",
     table: "BOL101",
@@ -308,7 +318,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "velfaerd",
     name: "Velfærd",
     description: "Materiel levevilkår, indkomst, beskæftigelse og social sikring - de grundlæggende betingelser for et godt liv.",
-    indicatorIds: ["disposable_income", "employment", "child_poverty", "gini", "vulnerable_children", "neet"],
+    indicatorIds: ["disposable_income", "employment", "child_poverty", "gini", "low_income", "vulnerable_children", "neet"],
   },
   {
     id: "bolig",
