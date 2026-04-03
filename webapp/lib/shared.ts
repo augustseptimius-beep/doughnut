@@ -20,6 +20,7 @@ export interface Indicator {
   dataYear?: string;          // Årstal for seneste data, f.eks. "2023" eller "2021"
   baselineLevel?: BaselineLevel; // Hierarki-niveau for baseline
   absoluteTarget?: string;    // Beskrivelse af absolut mål, f.eks. "95% (nationalt mål)"
+  rawUnit?: string;           // Enhed for råværdi, f.eks. "pr. 1.000 indb.", "%", "km"
 }
 
 export const INDICATORS: Indicator[] = [
@@ -103,6 +104,7 @@ export const INDICATORS: Indicator[] = [
     inverse: false,
     dataYear: "2021",  // Kommunalvalg afholdes hvert 4. år — næste: 2025
     baselineLevel: 3,
+    rawUnit: "%",
   },
   // --- Fællesskaber ---
   {
@@ -114,6 +116,7 @@ export const INDICATORS: Indicator[] = [
     inverse: false,
     dataYear: "2022",
     baselineLevel: 3,
+    rawUnit: "%",
   },
   {
     id: "crime_rate",
@@ -122,8 +125,9 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/STRAF11",
     category: "social",
     inverse: true,
-    dataYear: "2023",
+    dataYear: "2024",
     baselineLevel: 3,
+    rawUnit: "pr. 1.000 indb.",
   },
   // --- Lokalsamfund ---
   {
@@ -135,6 +139,7 @@ export const INDICATORS: Indicator[] = [
     inverse: false,
     dataYear: "2023",
     baselineLevel: 3,
+    rawUnit: "udlån/indb.",
   },
   {
     id: "sports_facilities",
@@ -145,6 +150,7 @@ export const INDICATORS: Indicator[] = [
     inverse: false,
     dataYear: "2022",
     baselineLevel: 3,
+    rawUnit: "pr. 10.000 indb.",
   },
   // --- Mobilitet ---
   {
@@ -156,6 +162,7 @@ export const INDICATORS: Indicator[] = [
     inverse: true,
     dataYear: "2023",
     baselineLevel: 3,
+    rawUnit: "km",
   },
   {
     id: "car_access",
@@ -166,6 +173,7 @@ export const INDICATORS: Indicator[] = [
     inverse: false,
     dataYear: "2023",
     baselineLevel: 3,
+    rawUnit: "%",
   },
   // --- Velfærd (ekstra) ---
   {
@@ -177,6 +185,7 @@ export const INDICATORS: Indicator[] = [
     inverse: true,
     dataYear: "2022",
     baselineLevel: 3,
+    rawUnit: "%",
   },
   {
     id: "neet",
@@ -187,6 +196,7 @@ export const INDICATORS: Indicator[] = [
     inverse: true,
     dataYear: "2022",
     baselineLevel: 3,
+    rawUnit: "%",
   },
   // --- Sundhed (ekstra) ---
   {
@@ -198,6 +208,7 @@ export const INDICATORS: Indicator[] = [
     inverse: true,
     dataYear: "2023",
     baselineLevel: 3,
+    rawUnit: "%",
   },
   // --- Uddannelse (ekstra) ---
   {
@@ -209,6 +220,7 @@ export const INDICATORS: Indicator[] = [
     inverse: true,
     dataYear: "2023",
     baselineLevel: 3,
+    rawUnit: "%",
   },
   // --- Bolig (ekstra) ---
   {
@@ -220,6 +232,7 @@ export const INDICATORS: Indicator[] = [
     inverse: false,
     dataYear: "2023",
     baselineLevel: 3,
+    rawUnit: "m²",
   },
   // --- Samskabelse (ekstra) ---
   {
@@ -231,6 +244,7 @@ export const INDICATORS: Indicator[] = [
     inverse: false,
     dataYear: "2022",
     baselineLevel: 3,
+    rawUnit: "pr. 1.000 indb.",
   },
   // --- Lokalsamfund (ekstra) ---
   {
@@ -242,6 +256,7 @@ export const INDICATORS: Indicator[] = [
     inverse: true,
     dataYear: "2023",
     baselineLevel: 3,
+    rawUnit: "elever/klasse",
   },
   {
     id: "daycare_ratio",
@@ -252,6 +267,7 @@ export const INDICATORS: Indicator[] = [
     inverse: true,
     dataYear: "2022",
     baselineLevel: 3,
+    rawUnit: "børn/voksen",
   },
   {
     id: "sports_spending",
@@ -262,6 +278,7 @@ export const INDICATORS: Indicator[] = [
     inverse: false,
     dataYear: "2022",
     baselineLevel: 3,
+    rawUnit: "kr./indb.",
   },
 ];
 
@@ -482,6 +499,7 @@ export interface KommuneData {
   ratios: Record<string, number | null>;
   top10_ratios: Record<string, number | null>; // same indicators, top-10%-kommune som baseline
   eco_ratios: Record<string, number | null>; // ecological dimension ratios
+  rawValues: Record<string, number | null>;   // faktiske råværdier (til visning i UI)
   social_avg: number | null;
   overall_avg: number | null;
 }

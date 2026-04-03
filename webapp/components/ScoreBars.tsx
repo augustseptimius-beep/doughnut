@@ -118,6 +118,16 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                   <div className="border-t border-gray-100 bg-gray-50">
                     {cat.indicators.map(({ indicator: ind, score }) => {
                       const cmpScore = activeCompareRatios?.[ind.id] ?? compare?.ratios[ind.id] ?? null;
+                      const rawVal = kommune.rawValues?.[ind.id] ?? null;
+                      const cmpRawVal = compare?.rawValues?.[ind.id] ?? null;
+                      const formatRaw = (val: number, unit: string) => {
+                        const num = unit === "kr./indb."
+                          ? Math.round(val).toLocaleString("da-DK")
+                          : val % 1 === 0
+                            ? val.toFixed(0)
+                            : val.toFixed(1);
+                        return unit === "%" ? `${num}%` : `${num} ${unit}`;
+                      };
                       return (
                         <div key={ind.id} className="px-3 py-2.5 border-b border-gray-100 last:border-b-0">
                           <div className="flex items-center justify-between">
@@ -136,9 +146,23 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                             <div className={`h-full rounded-full ${scoreBarColor(score)} transition-all`}
                               style={{ width: `${Math.min((score || 0) / 150, 1) * 100}%` }} />
                           </div>
+                          {/* Råværdi-badge */}
+                          {rawVal !== null && ind.rawUnit && (
+                            <div className="mt-1.5 flex items-center gap-2 flex-wrap">
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gray-100 rounded text-[11px] text-gray-600 font-medium">
+                                <span className="text-gray-400">Faktisk:</span>
+                                {formatRaw(rawVal, ind.rawUnit)}
+                                {compare && cmpRawVal !== null && (
+                                  <span className="text-gray-400 font-normal">
+                                    {" "}vs. {formatRaw(cmpRawVal, ind.rawUnit)}
+                                  </span>
+                                )}
+                              </span>
+                            </div>
+                          )}
                           <div className="mt-1.5 flex items-center justify-between text-xs text-gray-500">
                             <div className="flex items-center gap-2 flex-wrap">
-                              <span>{ind.inverse ? "Lavere er bedre (inverteret)" : "Højere er bedre"}</span>
+                              <span>{ind.inverse ? "Lavere er bedre" : "Højere er bedre"}</span>
                               {ind.absoluteTarget && (
                                 <span className="px-1.5 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-medium">
                                   Mål: {ind.absoluteTarget}
