@@ -120,6 +120,13 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                       const cmpScore = activeCompareRatios?.[ind.id] ?? compare?.ratios[ind.id] ?? null;
                       const rawVal = kommune.rawValues?.[ind.id] ?? null;
                       const cmpRawVal = compare?.rawValues?.[ind.id] ?? null;
+                      // Brug original ratio (ikke top10-skaleret) til at back-beregne landsgennemsnit
+                      const originalRatio = kommune.ratios[ind.id] ?? null;
+                      const nationalAvg = (rawVal !== null && originalRatio !== null && originalRatio !== 0)
+                        ? ind.inverse
+                          ? (originalRatio * rawVal) / 100
+                          : (rawVal * 100) / originalRatio
+                        : null;
                       const formatRaw = (val: number, unit: string) => {
                         const num = unit === "kr./indb."
                           ? Math.round(val).toLocaleString("da-DK")
@@ -146,15 +153,20 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                             <div className={`h-full rounded-full ${scoreBarColor(score)} transition-all`}
                               style={{ width: `${Math.min((score || 0) / 150, 1) * 100}%` }} />
                           </div>
-                          {/* Råværdi-badge */}
+                          {/* Råværdi + landsgennemsnit */}
                           {rawVal !== null && ind.rawUnit && (
                             <div className="mt-1.5 flex items-center gap-2 flex-wrap">
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gray-100 rounded text-[11px] text-gray-600 font-medium">
-                                <span className="text-gray-400">Faktisk:</span>
+                              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-gray-100 rounded text-[11px] text-gray-600 font-medium">
+                                <span className="text-gray-400">Kommune:</span>
                                 {formatRaw(rawVal, ind.rawUnit)}
                                 {compare && cmpRawVal !== null && (
                                   <span className="text-gray-400 font-normal">
                                     {" "}vs. {formatRaw(cmpRawVal, ind.rawUnit)}
+                                  </span>
+                                )}
+                                {nationalAvg !== null && (
+                                  <span className="text-gray-400 font-normal before:content-['·'] before:mx-1">
+                                    Gns: {formatRaw(nationalAvg, ind.rawUnit)}
                                   </span>
                                 )}
                               </span>
