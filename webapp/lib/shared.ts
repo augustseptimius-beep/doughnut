@@ -1,3 +1,15 @@
+// --- DOUGHNUT-ÅR KONFIGURATION ---
+// "Doughnut-år" = den edition af modellen. Data-år = det seneste helårsdata.
+// Regel: en 2024-Doughnut bruger seneste tilgængelige helårsdata (typisk 2023-tal).
+// Indikatorer med særlige år (f.eks. kommunalvalg 2021) er markeret eksplicit.
+export const DOUGHNUT_EDITION_YEAR = "2024";
+export const DOUGHNUT_DEFAULT_DATA_YEAR = "2023";
+
+export type BaselineLevel = 1 | 2 | 3;
+// Niveau 1: Absolutte biofysiske/juridiske grænser (WHO, EU-direktiver)
+// Niveau 2: Nationale politiske mål (lovmål, regeringsmål)
+// Niveau 3: Landsgennemsnit (default når ingen absolut grænse findes)
+
 export interface Indicator {
   id: string;
   name: string;
@@ -5,6 +17,9 @@ export interface Indicator {
   source: string;
   category: "social" | "ecological";
   inverse: boolean;
+  dataYear?: string;          // Årstal for seneste data, f.eks. "2023" eller "2021"
+  baselineLevel?: BaselineLevel; // Hierarki-niveau for baseline
+  absoluteTarget?: string;    // Beskrivelse af absolut mål, f.eks. "95% (nationalt mål)"
 }
 
 export const INDICATORS: Indicator[] = [
@@ -15,6 +30,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/HISBK",
     category: "social",
     inverse: false,
+    dataYear: "2023",
+    baselineLevel: 3,
   },
   {
     id: "education",
@@ -23,6 +40,9 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/HFUDD10",
     category: "social",
     inverse: false,
+    dataYear: "2023",
+    baselineLevel: 2,
+    absoluteTarget: "95% (nationalt uddannelsesmål)",
   },
   {
     id: "disposable_income",
@@ -31,6 +51,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/INDKP101",
     category: "social",
     inverse: false,
+    dataYear: "2022",
+    baselineLevel: 3,
   },
   {
     id: "employment",
@@ -39,6 +61,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/RAS200",
     category: "social",
     inverse: false,
+    dataYear: "2023",
+    baselineLevel: 3,
   },
   {
     id: "child_poverty",
@@ -47,6 +71,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/IFOR41",
     category: "social",
     inverse: true,
+    dataYear: "2022",
+    baselineLevel: 3,
   },
   {
     id: "gini",
@@ -55,6 +81,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/IFOR41",
     category: "social",
     inverse: true,
+    dataYear: "2022",
+    baselineLevel: 3,
   },
   {
     id: "vacant_housing",
@@ -63,14 +91,18 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/BOL101",
     category: "social",
     inverse: true,
+    dataYear: "2023",
+    baselineLevel: 3,
   },
   {
     id: "voter_turnout",
     name: "Stemmedeltagelse kommunalvalg",
-    table: "LABY08",
-    source: "https://www.statistikbanken.dk/LABY08",
+    table: "KVBPCT",
+    source: "https://www.statistikbanken.dk/KVBPCT",
     category: "social",
     inverse: false,
+    dataYear: "2021",  // Kommunalvalg afholdes hvert 4. år — næste: 2025
+    baselineLevel: 3,
   },
   // --- Fællesskaber ---
   {
@@ -80,6 +112,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/IDRAKT02",
     category: "social",
     inverse: false,
+    dataYear: "2022",
+    baselineLevel: 3,
   },
   {
     id: "crime_rate",
@@ -88,6 +122,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/STRAF11",
     category: "social",
     inverse: true,
+    dataYear: "2023",
+    baselineLevel: 3,
   },
   // --- Lokalsamfund ---
   {
@@ -97,6 +133,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/BIB1",
     category: "social",
     inverse: false,
+    dataYear: "2023",
+    baselineLevel: 3,
   },
   {
     id: "sports_facilities",
@@ -105,6 +143,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/IDRFAC01",
     category: "social",
     inverse: false,
+    dataYear: "2022",
+    baselineLevel: 3,
   },
   // --- Mobilitet ---
   {
@@ -114,6 +154,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/AFSTB4",
     category: "social",
     inverse: true,
+    dataYear: "2023",
+    baselineLevel: 3,
   },
   {
     id: "car_access",
@@ -122,6 +164,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/BIL800",
     category: "social",
     inverse: false,
+    dataYear: "2023",
+    baselineLevel: 3,
   },
   // --- Velfærd (ekstra) ---
   {
@@ -131,6 +175,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/BU43",
     category: "social",
     inverse: true,
+    dataYear: "2022",
+    baselineLevel: 3,
   },
   {
     id: "neet",
@@ -139,6 +185,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/NEET1",
     category: "social",
     inverse: true,
+    dataYear: "2022",
+    baselineLevel: 3,
   },
   // --- Sundhed (ekstra) ---
   {
@@ -148,6 +196,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/SBR01",
     category: "social",
     inverse: true,
+    dataYear: "2023",
+    baselineLevel: 3,
   },
   // --- Uddannelse (ekstra) ---
   {
@@ -157,6 +207,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/HFUDD11",
     category: "social",
     inverse: true,
+    dataYear: "2023",
+    baselineLevel: 3,
   },
   // --- Bolig (ekstra) ---
   {
@@ -166,6 +218,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/BOL106",
     category: "social",
     inverse: false,
+    dataYear: "2023",
+    baselineLevel: 3,
   },
   // --- Samskabelse (ekstra) ---
   {
@@ -175,6 +229,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/SKOLM02B",
     category: "social",
     inverse: false,
+    dataYear: "2022",
+    baselineLevel: 3,
   },
   // --- Lokalsamfund (ekstra) ---
   {
@@ -184,6 +240,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/KVOTIEN",
     category: "social",
     inverse: true,
+    dataYear: "2023",
+    baselineLevel: 3,
   },
   {
     id: "daycare_ratio",
@@ -192,6 +250,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/BOERN8",
     category: "social",
     inverse: true,
+    dataYear: "2022",
+    baselineLevel: 3,
   },
   {
     id: "sports_spending",
@@ -200,6 +260,8 @@ export const INDICATORS: Indicator[] = [
     source: "https://www.statistikbanken.dk/IDRFIN02",
     category: "social",
     inverse: false,
+    dataYear: "2022",
+    baselineLevel: 3,
   },
 ];
 
@@ -418,9 +480,56 @@ export interface KommuneData {
   kommune_kode: string;
   kommune_navn: string;
   ratios: Record<string, number | null>;
+  top10_ratios: Record<string, number | null>; // same indicators, top-10%-kommune som baseline
   eco_ratios: Record<string, number | null>; // ecological dimension ratios
   social_avg: number | null;
   overall_avg: number | null;
+}
+
+/**
+ * Beregner Top 10%-baselines dynamisk fra eksisterende ratios.
+ * For hver social indikator: find de 10 bedste kommuner (højest ratio),
+ * brug deres gennemsnit som ny baseline, og rescale alle kommuners ratio
+ * til denne nye baseline.
+ * Ekologiske indikatorer har absolutte grænser og påvirkes ikke.
+ */
+export function computeTop10Ratios(allData: KommuneData[]): void {
+  const TOP_N = 10;
+  const realKommuner = allData.filter((k) => k.kommune_kode !== "000");
+
+  for (const k of allData) {
+    k.top10_ratios = {};
+  }
+
+  for (const ind of INDICATORS) {
+    if (ind.category !== "social") continue;
+
+    const vals = realKommuner
+      .map((k) => ({ kode: k.kommune_kode, ratio: k.ratios[ind.id] }))
+      .filter((v): v is { kode: string; ratio: number } => v.ratio !== null);
+
+    if (vals.length < TOP_N) {
+      // Ikke nok data - brug avg-ratio som fallback
+      for (const k of allData) {
+        k.top10_ratios[ind.id] = k.ratios[ind.id];
+      }
+      continue;
+    }
+
+    // Højest ratio = bedste performer (gælder for både normale og inverse,
+    // da inverse-indikatorer allerede er vendt i compute_ratios)
+    vals.sort((a, b) => b.ratio - a.ratio);
+    const top10Avg = vals.slice(0, TOP_N).reduce((s, v) => s + v.ratio, 0) / TOP_N;
+
+    for (const k of allData) {
+      const ratio = k.ratios[ind.id];
+      if (ratio === null || top10Avg === 0) {
+        k.top10_ratios[ind.id] = null;
+      } else {
+        k.top10_ratios[ind.id] = parseFloat(((ratio / top10Avg) * 100).toFixed(2));
+      }
+    }
+  }
 }
 
 export function scoreColor(score: number | null): string {

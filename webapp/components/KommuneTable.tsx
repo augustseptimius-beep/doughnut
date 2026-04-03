@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { SOCIAL_CATEGORIES, ECOLOGICAL_DIMENSIONS, scoreColor } from "@/lib/shared";
+import { useBaseline } from "@/lib/baseline-context";
 
 function ecoScoreColor(score: number | null): string {
   if (score === null) return "text-gray-400";
@@ -14,7 +15,9 @@ interface KommuneRow {
   kode: string;
   navn: string;
   overall: number | null;
+  top10_overall: number | null;
   categories: Record<string, number | null>;
+  top10_categories: Record<string, number | null>;
   eco_categories?: Record<string, number | null>;
 }
 
@@ -66,6 +69,7 @@ const REGIONS = ["Alle regioner", "Hovedstaden", "Sjælland", "Syddanmark", "Mid
 const ECO_DIMS_WITH_DATA = ECOLOGICAL_DIMENSIONS;
 
 export default function KommuneTable({ data }: { data: KommuneRow[] }) {
+  const { mode } = useBaseline();
   const [search, setSearch] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("overall");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
@@ -94,13 +98,17 @@ export default function KommuneTable({ data }: { data: KommuneRow[] }) {
       const dir = sortDir === "asc" ? 1 : -1;
       if (sortKey === "navn") return dir * a.navn.localeCompare(b.navn, "da");
       if (sortKey === "overall") {
-        return dir * ((a.overall ?? -1) - (b.overall ?? -1));
+        const aVal = mode === "top10" ? (a.top10_overall ?? -1) : (a.overall ?? -1);
+        const bVal = mode === "top10" ? (b.top10_overall ?? -1) : (b.overall ?? -1);
+        return dir * (aVal - bVal);
       }
-      const av = a.categories[sortKey] ?? a.eco_categories?.[sortKey] ?? -1;
-      const bv = b.categories[sortKey] ?? b.eco_categories?.[sortKey] ?? -1;
+      const aCats = mode === "top10" ? a.top10_categories : a.categories;
+      const bCats = mode === "top10" ? b.top10_categories : b.categories;
+      const av = aCats[sortKey] ?? a.eco_categories?.[sortKey] ?? -1;
+      const bv = bCats[sortKey] ?? b.eco_categories?.[sortKey] ?? -1;
       return dir * (av - bv);
     });
-  }, [data, search, sortKey, sortDir, region]);
+  }, [data, search, sortKey, sortDir, region, mode]);
 
   const arrow = (key: SortKey) => {
     if (sortKey !== key) return <span className="text-gray-300 ml-0.5">↕</span>;
@@ -178,12 +186,20 @@ export default function KommuneTable({ data }: { data: KommuneRow[] }) {
                   </a>
                 </td>
                 <td className="px-2 py-2 text-xs text-gray-400">{REGION_MAP[k.kode] ?? "–"}</td>
-                <td className={`px-3 py-2 text-right font-semibold ${view === "eco" ? ecoScoreColor(k.overall) : scoreColor(k.overall)}`}>
-                  {k.overall !== null ? k.overall.toFixed(1) : "–"}
-                </td>
+                {(() => {
+                  const overallVal = view === "eco"
+                    ? k.overall
+                    : (mode === "top10" ? k.top10_overall : k.overall);
+                  return (
+                    <td className={`px-3 py-2 text-right font-semibold ${view === "eco" ? ecoScoreColor(overallVal) : scoreColor(overallVal)}`}>
+                      {overallVal !== null ? overallVal.toFixed(1) : "–"}
+                    </td>
+                  );
+                })()}
                 {activeColumns.map((col) => {
+                  const cats = mode === "top10" ? k.top10_categories : k.categories;
                   const val = view === "social"
-                    ? (k.categories[col.id] ?? null)
+                    ? (cats[col.id] ?? null)
                     : (k.eco_categories?.[col.id] ?? null);
                   return (
                     <td key={col.id} className={`px-2 py-2 text-right text-xs ${view === "eco" ? ecoScoreColor(val) : scoreColor(val)}`}>
@@ -192,17 +208,24 @@ export default function KommuneTable({ data }: { data: KommuneRow[] }) {
                   );
                 })}
                 <td className="px-3 py-2">
-                  <div className="h-2 bg-gray-100 rounded-full overflow-hidden relative">
-                    <div className="absolute top-0 bottom-0 w-px bg-gray-300" style={{ left: `${(100 / 150) * 100}%` }} />
-                    <div
-                      className={`h-full rounded-full transition-all ${
-                        view === "eco"
-                          ? ((k.overall ?? 0) <= 85 ? "bg-emerald-500" : (k.overall ?? 0) <= 100 ? "bg-amber-400" : "bg-red-500")
-                          : ((k.overall ?? 0) >= 100 ? "bg-emerald-500" : (k.overall ?? 0) >= 85 ? "bg-amber-400" : "bg-red-400")
-                      }`}
-                      style={{ width: `${Math.min(((k.overall ?? 0) / 150) * 100, 100)}%` }}
-                    />
-                  </div>
+                  {(() => {
+                    const barVal = view === "eco"
+                      ? (k.overall ?? 0)
+                      : (mode === "top10" ? (k.top10_overall ?? 0) : (k.overall ?? 0));
+                    return (
+                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden relative">
+                        <div className="absolute top-0 bottom-0 w-px bg-gray-300" style={{ left: `${(100 / 150) * 100}%` }} />
+                        <div
+                          className={`h-full rounded-full transition-all ${
+                            view === "eco"
+                              ? (barVal <= 85 ? "bg-emerald-500" : barVal <= 100 ? "bg-amber-400" : "bg-red-500")
+                              : (barVal >= 100 ? "bg-emerald-500" : barVal >= 85 ? "bg-amber-400" : "bg-red-400")
+                          }`}
+                          style={{ width: `${Math.min((barVal / 150) * 100, 100)}%` }}
+                        />
+                      </div>
+                    );
+                  })()}
                 </td>
               </tr>
             ))}

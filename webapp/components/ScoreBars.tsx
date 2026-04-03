@@ -7,11 +7,14 @@ import {
   scoreColor,
   scoreBarColor,
   computeCategoryScores,
+  DOUGHNUT_DEFAULT_DATA_YEAR,
 } from "@/lib/shared";
 
 interface ScoreBarsProps {
   kommune: KommuneData;
   compare?: KommuneData | null;
+  ratios?: Record<string, number | null>; // override kommune.ratios (bruges til baseline-skift)
+  compareRatios?: Record<string, number | null>; // override compare.ratios
 }
 
 function ecoScoreColor(score: number | null): string {
@@ -28,12 +31,15 @@ function ecoBarColor(score: number | null): string {
   return "bg-red-500";
 }
 
-export default function ScoreBars({ kommune, compare }: ScoreBarsProps) {
+export default function ScoreBars({ kommune, compare, ratios, compareRatios }: ScoreBarsProps) {
   const [expanded, setExpanded] = useState<string | null>(null);
 
-  const categoryScores = computeCategoryScores(kommune.ratios);
+  const activeRatios = ratios ?? kommune.ratios;
+  const activeCompareRatios = compareRatios ?? compare?.ratios;
+
+  const categoryScores = computeCategoryScores(activeRatios);
   const compareCategoryScores = compare
-    ? computeCategoryScores(compare.ratios)
+    ? computeCategoryScores(activeCompareRatios ?? compare.ratios)
     : null;
 
   return (
@@ -111,7 +117,7 @@ export default function ScoreBars({ kommune, compare }: ScoreBarsProps) {
                 {isExpanded && cat.indicators.length > 0 && (
                   <div className="border-t border-gray-100 bg-gray-50">
                     {cat.indicators.map(({ indicator: ind, score }) => {
-                      const cmpScore = compare?.ratios[ind.id] ?? null;
+                      const cmpScore = activeCompareRatios?.[ind.id] ?? compare?.ratios[ind.id] ?? null;
                       return (
                         <div key={ind.id} className="px-3 py-2.5 border-b border-gray-100 last:border-b-0">
                           <div className="flex items-center justify-between">
@@ -131,10 +137,23 @@ export default function ScoreBars({ kommune, compare }: ScoreBarsProps) {
                               style={{ width: `${Math.min((score || 0) / 150, 1) * 100}%` }} />
                           </div>
                           <div className="mt-1.5 flex items-center justify-between text-xs text-gray-500">
-                            <span>{ind.inverse ? "Lavere er bedre (inverteret)" : "Højere er bedre"}</span>
-                            <a href={ind.source} target="_blank" rel="noopener" className="text-blue-600 hover:underline">
-                              {ind.table} ↗
-                            </a>
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span>{ind.inverse ? "Lavere er bedre (inverteret)" : "Højere er bedre"}</span>
+                              {ind.absoluteTarget && (
+                                <span className="px-1.5 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-medium">
+                                  Mål: {ind.absoluteTarget}
+                                </span>
+                              )}
+                              {!ind.absoluteTarget && (
+                                <span className="text-gray-400 text-[10px]">Baseline: landsgennemsnit</span>
+                              )}
+                            </div>
+                            <div className="flex items-center gap-2 shrink-0">
+                              <span className="text-gray-400 text-[10px]">Data: {ind.dataYear ?? DOUGHNUT_DEFAULT_DATA_YEAR}</span>
+                              <a href={ind.source} target="_blank" rel="noopener" className="text-blue-600 hover:underline">
+                                {ind.table} ↗
+                              </a>
+                            </div>
                           </div>
                         </div>
                       );

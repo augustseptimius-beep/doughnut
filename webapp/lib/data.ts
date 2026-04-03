@@ -11,6 +11,9 @@ export {
   scoreBarColor,
   computeCategoryScores,
   computeOverallFromCategories,
+  computeTop10Ratios,
+  DOUGHNUT_EDITION_YEAR,
+  DOUGHNUT_DEFAULT_DATA_YEAR,
 } from "./shared";
 export type {
   Indicator,
@@ -20,7 +23,7 @@ export type {
   CategoryScore,
 } from "./shared";
 
-import { INDICATORS, ECOLOGICAL_DIMENSIONS, type KommuneData } from "./shared";
+import { INDICATORS, ECOLOGICAL_DIMENSIONS, computeTop10Ratios, type KommuneData } from "./shared";
 
 let cachedData: KommuneData[] | null = null;
 
@@ -272,12 +275,16 @@ export function loadData(): KommuneData[] {
       kommune_kode: kode,
       kommune_navn: row["kommune_navn"] || "",
       ratios,
+      top10_ratios: {}, // udfyldes af computeTop10Ratios nedenfor
       eco_ratios,
       social_avg: socialAvg && socialAvg !== "" ? parseFloat(socialAvg) : null,
       overall_avg:
         overallAvg && overallAvg !== "" ? parseFloat(overallAvg) : null,
     });
   }
+
+  // Beregn Top 10%-baselines dynamisk fra de indlæste ratios
+  computeTop10Ratios(data);
 
   cachedData = data;
   return data;

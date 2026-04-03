@@ -11,6 +11,7 @@ import {
 
 interface DoughnutRingProps {
   kommune: KommuneData;
+  ratios?: Record<string, number | null>; // override kommune.ratios (bruges til baseline-skift)
 }
 
 function describeArc(
@@ -147,11 +148,12 @@ interface ActiveInfo {
   boundary?: string;
 }
 
-export default function DoughnutRing({ kommune }: DoughnutRingProps) {
+export default function DoughnutRing({ kommune, ratios }: DoughnutRingProps) {
   const [active, setActive] = useState<ActiveInfo | null>(null);
   const [pinned, setPinned] = useState(false);
 
-  const categoryScores = computeCategoryScores(kommune.ratios);
+  const activeRatios = ratios ?? kommune.ratios;
+  const categoryScores = computeCategoryScores(activeRatios);
   const socialCount = categoryScores.length;
   const ecoCount = ECOLOGICAL_DIMENSIONS.length;
 

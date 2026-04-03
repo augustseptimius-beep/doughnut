@@ -6,12 +6,22 @@ export default function Home() {
   const kommuner = getAllKommuner();
 
   const data = kommuner.map((k) => {
+    // Avg-baseline kategorier
     const cats = computeCategoryScores(k.ratios);
     const overall = computeOverallFromCategories(cats);
+
+    // Top 10%-baseline kategorier
+    const top10Cats = computeCategoryScores(k.top10_ratios);
+    const top10Overall = computeOverallFromCategories(top10Cats);
 
     const categoryMap: Record<string, number | null> = {};
     for (const cat of cats) {
       categoryMap[cat.categoryId] = cat.hasData ? cat.score : null;
+    }
+
+    const top10CategoryMap: Record<string, number | null> = {};
+    for (const cat of top10Cats) {
+      top10CategoryMap[cat.categoryId] = cat.hasData ? cat.score : null;
     }
 
     const ecoMap: Record<string, number | null> = {};
@@ -23,7 +33,9 @@ export default function Home() {
       kode: k.kommune_kode,
       navn: k.kommune_navn,
       overall,
+      top10_overall: top10Overall,
       categories: categoryMap,
+      top10_categories: top10CategoryMap,
       eco_categories: ecoMap,
     };
   });

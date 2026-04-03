@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { KommuneData } from "@/lib/shared";
 import { computeCategoryScores, ECOLOGICAL_DIMENSIONS } from "@/lib/shared";
+import { useBaseline } from "@/lib/baseline-context";
 import DoughnutRing from "@/components/DoughnutRing";
 import ScoreBars from "@/components/ScoreBars";
 import KommuneCompare from "@/components/KommuneCompare";
@@ -14,12 +15,21 @@ interface Props {
 
 export default function KommuneClient({ kommune, allKommuner }: Props) {
   const [compare, setCompare] = useState<KommuneData | null>(null);
+  const { mode } = useBaseline();
 
-  const categoryScores = computeCategoryScores(kommune.ratios);
+  // Vælg det rigtige ratios-sæt baseret på baseline-mode
+  const activeRatios = mode === "top10" ? kommune.top10_ratios : kommune.ratios;
+  const activeCompareRatios = compare
+    ? (mode === "top10" ? compare.top10_ratios : compare.ratios)
+    : undefined;
+
+  const categoryScores = computeCategoryScores(activeRatios);
   const categoriesAboveThreshold = categoryScores.filter(
     (c) => c.hasData && c.score !== null && c.score >= 100
   ).length;
   const categoriesWithData = categoryScores.filter((c) => c.hasData).length;
+
+  const baselineLabel = mode === "top10" ? "top 10%-niveauet" : "landsgennemsnittet";
 
   return (
     <div>
@@ -40,7 +50,7 @@ export default function KommuneClient({ kommune, allKommuner }: Props) {
               {kommune.kommune_navn}
             </h3>
           )}
-          <DoughnutRing kommune={kommune} />
+          <DoughnutRing kommune={kommune} ratios={activeRatios} />
         </div>
 
         {compare && (
@@ -48,7 +58,7 @@ export default function KommuneClient({ kommune, allKommuner }: Props) {
             <h3 className="text-sm font-medium text-gray-500 mb-2 text-center">
               {compare.kommune_navn}
             </h3>
-            <DoughnutRing kommune={compare} />
+            <DoughnutRing kommune={compare} ratios={activeCompareRatios} />
           </div>
         )}
       </div>
@@ -59,7 +69,7 @@ export default function KommuneClient({ kommune, allKommuner }: Props) {
           <span className="font-medium">Socialt fundament:</span>{" "}
           {categoriesAboveThreshold} af {categoriesWithData} kategorier
           {categoriesWithData < 6 && ` (${6 - categoriesWithData} mangler data)`}
-          {" "}over landsgennemsnit.
+          {" "}over {baselineLabel}.
         </p>
         <p>
           <span className="font-medium">Økologisk loft:</span>{" "}
@@ -93,7 +103,12 @@ export default function KommuneClient({ kommune, allKommuner }: Props) {
             <span className="text-gray-400 ml-1">(parentes = {compare.kommune_navn})</span>
           )}
         </h3>
-        <ScoreBars kommune={kommune} compare={compare} />
+        <ScoreBars
+          kommune={kommune}
+          compare={compare}
+          ratios={activeRatios}
+          compareRatios={activeCompareRatios}
+        />
       </div>
     </div>
   );

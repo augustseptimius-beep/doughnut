@@ -68,6 +68,9 @@ INDICATORS = [
         "id": "education",
         "name": "Kompetencegivende uddannelse (30-34 år, %)",
         "table": "HFUDD10",
+        # Niveau 2: Nationalt mål — 95% skal have erhvervskompetencegivende uddannelse
+        # Kilde: Regeringens uddannelsesmål / Børne- og Undervisningsministeriet
+        "absolute_baseline": 95.0,
         "want_variables": [
             {"purpose": "alder", "candidates": [
                 {"code": "ALDER", "values": ["30-34"]},
@@ -769,16 +772,36 @@ def extract_municipal_values(rows, aggregate="single"):
     return result
 
 
-def compute_ratios(values, inverse=False, dk_code="000"):
+def compute_ratios(values, inverse=False, dk_code="000", absolute_baseline=None):
     """
-    Compute ratio of each municipality vs national average.
-    Normal:  ratio = kommune / DK * 100
-    Inverse: ratio = DK / kommune * 100
-    If national average (dk_code) is missing, compute mean of all municipalities.
+    Compute ratio of each municipality vs a baseline.
+
+    Baseline hierarki (Doughnut-metode):
+      Niveau 1 (absolute_baseline givet):  ratio = val / absolute_baseline * 100
+      Niveau 2 (nationale lovmål, samme):  ratio = val / absolute_baseline * 100
+      Niveau 3 (landsgennemsnit):          ratio = val / dk_val * 100  (default)
+
+    Inverse-flag: vender retningen for indikatorer hvor lavt tal er godt
+    (f.eks. kriminalitet, fattigdom). Bruges kun for Niveau 3.
+    For absolutte baselines er invertering allerede implicit i baseline-valget.
     """
+    if absolute_baseline is not None and absolute_baseline != 0:
+        # Niveau 1/2: brug absolut grænse som nævner
+        print(f"  → Absolut baseline: {absolute_baseline} (Niveau 1/2)")
+        ratios = {}
+        for code, val in values.items():
+            if code == dk_code:
+                continue
+            if val == 0:
+                ratios[code] = 0.0
+                continue
+            ratios[code] = round(val / absolute_baseline * 100, 2)
+        return ratios
+
+    # Niveau 3: brug landsgennemsnit
     dk_val = values.get(dk_code)
     if dk_val is None or dk_val == 0:
-        # Compute mean from municipality values as fallback
+        # Beregn gennemsnit fra kommuner som fallback
         muni_vals = [v for k, v in values.items() if k != dk_code and v != 0]
         if muni_vals:
             dk_val = sum(muni_vals) / len(muni_vals)
@@ -954,6 +977,7 @@ def step2():
             "inverse": ind["inverse"],
             "name": ind["name"],
             "category": ind["category"],
+            "absolute_baseline": ind.get("absolute_baseline"),  # Niveau 1/2 grænse
         }
 
         time.sleep(0.5)
@@ -1023,7 +1047,8 @@ def step3(all_data, output_file="doughnut_scores.csv"):
         ratios = compute_ratios(
             data["values"],
             inverse=data["inverse"],
-            dk_code=data["nat_code"],   # "mean" triggers auto-average for ecological
+            dk_code=data["nat_code"],
+            absolute_baseline=data.get("absolute_baseline"),  # Niveau 1/2 hvis sat
         )
         ratios_by_indicator[ind_id] = ratios
         print(f"  {ind_id}: {len(ratios)} kommuner med ratio")
