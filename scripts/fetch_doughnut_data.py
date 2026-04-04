@@ -1165,6 +1165,7 @@ def step3(all_data, output_file="doughnut_scores.csv"):
 
     header = (["kommune_kode", "kommune_navn"]
               + [f"{iid}_ratio" for iid in active_ids]
+              + [f"{iid}_raw" for iid in active_ids]
               + ["social_avg", "ecological_avg", "overall_avg"])
 
     output_rows = []
@@ -1180,6 +1181,9 @@ def step3(all_data, output_file="doughnut_scores.csv"):
             ind_def = next((i for i in all_indicator_defs if i["id"] == iid), None)
             ratio = ratios_by_indicator.get(iid, {}).get(code)
             row[f"{iid}_ratio"] = ratio if ratio is not None else ""
+            # Also save the raw value (actual measurement, not ratio)
+            raw_val = all_data.get(iid, {}).get("values", {}).get(code)
+            row[f"{iid}_raw"] = round(raw_val, 4) if raw_val is not None else ""
             if ratio is not None:
                 all_scores.append(ratio)
                 cat = ind_def["category"] if ind_def else "social"

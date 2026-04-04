@@ -139,15 +139,21 @@ export function loadData(): KommuneData[] {
     });
 
     const ratios: Record<string, number | null> = {};
+    const rawValues: Record<string, number | null> = {};
     for (const ind of INDICATORS) {
-      const key = `${ind.id}_ratio`;
-      const val = row[key];
-      ratios[ind.id] = val && val !== "" ? parseFloat(val) : null;
+      const ratioKey = `${ind.id}_ratio`;
+      const rawKey = `${ind.id}_raw`;
+      const ratioVal = row[ratioKey];
+      const rawVal = row[rawKey];
+      ratios[ind.id] = ratioVal && ratioVal !== "" ? parseFloat(ratioVal) : null;
+      // Load raw value from CSV if present (added in script v4.5+)
+      if (rawVal && rawVal !== "") {
+        rawValues[ind.id] = parseFloat(rawVal);
+      }
     }
 
     // Inject indicators from separate CSVs
     const kommuneKode = row["kommune_kode"] || "";
-    const rawValues: Record<string, number | null> = {};
 
     if (democracyData[kommuneKode] !== undefined) {
       ratios["voter_turnout"] = democracyData[kommuneKode];
@@ -222,7 +228,6 @@ export function loadData(): KommuneData[] {
       ratios["sports_spending"] = lokalSportsSpend[kommuneKode];
       rawValues["sports_spending"] = lokalSportsSpendRaw[kommuneKode] ?? null;
     }
-
     // consumption_co2 er nu en økologisk dimension - se eco_ratios nedenfor
 
     // Ecological ratios
