@@ -252,6 +252,33 @@ INDICATORS = [
     # valgdeltagelse as percentage. KVPCT/FVPCT only have national data.
     # FVKOM/VALGK3 only have absolute vote counts, not turnout %.
     # Could be re-added if a suitable data source is found.
+    {
+        "id": "kultur_spending",
+        "name": "Kommunale kulturudgifter pr. indb. (kr.)",
+        "table": "REGK31",
+        # Funktionskoder: 33561=biografer, 33562=teatre, 33563=musikarrangementer,
+        # 33564=andre kulturelle opgaver. Ekskl. 33560 (folkebiblioteker) da
+        # biblioteksudlån allerede er separat indikator.
+        "want_variables": [
+            {"purpose": "funktion", "candidates": [
+                {"code": "FUNKTION", "values": ["33561", "33562", "33563", "33564"]},
+            ]},
+            {"purpose": "dranst", "candidates": [
+                {"code": "DRANST", "values": ["1"]},  # Driftskonti
+            ]},
+            {"purpose": "art", "candidates": [
+                {"code": "ART", "values": ["TOT"]},  # I alt (netto)
+            ]},
+            {"purpose": "prisenhed", "candidates": [
+                {"code": "PRISENHED", "values": ["INDL"]},  # Pr. indbygger, løbende priser (kr.)
+            ]},
+        ],
+        "area_candidates": ["OMRÅDE", "BOPOMR", "KOMMUNEDK"],
+        "inverse": False,   # Mere kulturudgifter = bedre
+        "aggregate": "sum", # Summer udgifter på tværs af de 4 funktionskoder
+        "category": "social",
+        "note": "Kommunale nettodriftsudgifter til biografer, teatre, musikarrangementer og anden kultur per indbygger (REGK31)",
+    },
 ]
 
 # ── Ecological indicator definitions (Klimaregnskabet + Energi Data Service) ──

@@ -244,7 +244,7 @@ export const INDICATORS: Indicator[] = [
     baselineLevel: 3,
     rawUnit: "m²",
   },
-  // --- Samskabelse (ekstra) ---
+  // --- Kultur & fritid ---
   {
     id: "music_school",
     name: "Musikskoleelever pr. 1.000 indb.",
@@ -255,6 +255,17 @@ export const INDICATORS: Indicator[] = [
     dataYear: "2022",
     baselineLevel: 3,
     rawUnit: "pr. 1.000 indb.",
+  },
+  {
+    id: "kultur_spending",
+    name: "Kommunale kulturudgifter pr. indb. (kr.)",
+    table: "REGK31",
+    source: "https://www.statistikbanken.dk/REGK31",
+    category: "social",
+    inverse: false,
+    dataYear: "2023",
+    baselineLevel: 3,
+    rawUnit: "kr./indb.",
   },
   // --- Lokalsamfund (ekstra) ---
   {
@@ -327,22 +338,28 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     indicatorIds: ["vacant_housing", "housing_area"],
   },
   {
-    id: "samskabelse",
-    name: "Samskabelse & demokrati",
-    description: "Borgernes deltagelse i demokrati og lokalsamfund, tillid til institutioner og civilt engagement.",
-    indicatorIds: ["voter_turnout", "music_school"],
+    id: "demokrati",
+    name: "Demokrati",
+    description: "Borgernes deltagelse i det formelle demokrati og kommunalpolitik. Valgdeltagelse er det mest direkte mål for demokratisk engagement på lokalt niveau.",
+    indicatorIds: ["voter_turnout"],
   },
   {
-    id: "faellesskaber",
-    name: "Fællesskaber",
-    description: "Sociale netværk, fællesskaber og tilhørsforhold - modvirker ensomhed og styrker sammenhængskraft.",
-    indicatorIds: ["sports_membership", "crime_rate"],
+    id: "kultur_fritid",
+    name: "Kultur & fritid",
+    description: "Adgang til og investering i kulturliv, fritidsaktiviteter og civile fællesskaber - biblioteker, musik, idræt og kommunal kultursatsning.",
+    indicatorIds: ["music_school", "library_use", "sports_membership", "kultur_spending"],
+  },
+  {
+    id: "tryghed",
+    name: "Tryghed & fællesskab",
+    description: "Tryghed og social sammenhæng i lokalsamfundet. Høj kriminalitet underminerer tillid, fællesskab og lyst til at deltage i det offentlige rum.",
+    indicatorIds: ["crime_rate"],
   },
   {
     id: "lokalsamfund",
     name: "Lokalsamfund",
-    description: "Levende lokalsamfund med adgang til basale services, kultur og rekreative muligheder.",
-    indicatorIds: ["library_use", "sports_facilities", "class_size", "daycare_ratio", "sports_spending"],
+    description: "Nærhed til velfungerende basale services: pasning, undervisning, idrætsfaciliteter og kommunal investering i nærområdet.",
+    indicatorIds: ["sports_facilities", "class_size", "daycare_ratio", "sports_spending"],
   },
   {
     id: "mobilitet",

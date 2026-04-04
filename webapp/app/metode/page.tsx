@@ -17,6 +17,44 @@ interface MethodInfo {
   csvFile?: string;
 }
 
+/* ─── Rationale per indicator ─── */
+const INDICATOR_RATIONALES: Record<string, string> = {
+  // Sundhed
+  life_expectancy: "Det mest direkte og internationalt sammenlignelige mål for befolkningens generelle sundhedstilstand. Langt tidsserie i DST (HISBK) giver høj datakvalitet.",
+  hospital_use: "Hyppig sygehusbenyttelse signalerer dårlig forebyggelse og høj sygelighed i befolkningen. Inverteret: kommuner med lavere benyttelse end landsgennemsnittet scorer bedre.",
+  // Uddannelse
+  education: "Andel af 30-34-årige med erhvervskompetencegivende uddannelse er det primære politiske måleparameter for uddannelsesniveau. Absolut baseline: nationalt mål på 95% (Børne- og Undervisningsministeriet).",
+  low_education: "Andel af 25-29-årige med kun grundskole som højeste uddannelse. Fanger den sårbare ende af uddannelsesspektret og er særligt vigtig som indikator i landdistrikter og socialt belastede områder.",
+  // Velfærd
+  disposable_income: "Disponibel indkomst pr. person er det bredeste mål for materiel levestandard - inkluderer løn, overførsler og kapitalindkomst minus skat og bidrag.",
+  employment: "Beskæftigelsesfrekvens afspejler adgang til arbejde, som er centralt for både indkomst, selvforsørgelse og social deltagelse.",
+  child_poverty: "Bruger Gini-koefficient som proxy for børnefattigdom da direkte kommunefordelte børnefattigdomsdata ikke er tilgængelige i DST. Høj ulighed er en stærk prædikator for negativ social arv.",
+  gini: "Gini-koefficient måler den samlede indkomstulighed i kommunen. Høj ulighed underminerer social sammenhæng, tillid og fælles institutioner.",
+  low_income: "Andel af befolkningen med indkomst under 60% af medianindkomsten - det internationale standardmål for relativ fattigdom (DST LABY07).",
+  vulnerable_children: "Andel udsatte børn og unge med anbringelse eller forebyggende foranstaltninger (BU43) er en stærk indikator for social belastning og kommunens udfordringer med social arv.",
+  neet: "Andel unge (16-24 år) uden for uddannelse og beskæftigelse (NEET) signalerer risiko for langsigtet social eksklusion og er et anerkendt EU-måleparameter.",
+  // Bolig
+  vacant_housing: "Høj andel tomme boliger signalerer fraflytning og lavt boligmarked. Inverteret: kommuner med færre tomme boliger scorer bedre.",
+  housing_area: "Boligareal pr. person afspejler boligstandard og -træthed. Mere plads er generelt forbundet med bedre livskvalitet.",
+  // Demokrati
+  voter_turnout: "Stemmedeltagelse ved kommunalvalg er det mest direkte og sammenlignelige mål for demokratisk engagement på lokalt plan. God datadækning for alle 98 kommuner (valg 2021).",
+  // Kultur & fritid
+  music_school: "Musikskoleelever pr. 1.000 indb. måler kulturel deltagelse og adgang til musikuddannelse for børn og unge. Et unikt dansk måleparameter for kommunal kultursatsning.",
+  library_use: "Biblioteksudlån pr. indbygger er en anerkendt proxy for kulturel aktivitet, læring og brug af offentlige kulturinstitutioner. God datakvalitet (BIB1) og lang tidsserie.",
+  sports_membership: "Andel af befolkningen med aktivt idrætsforeningsmedlemskab (DIF/DGI). Foreningsidræt er en central del af dansk civilsamfund og en proxy for frivilligt foreningsliv generelt.",
+  kultur_spending: "Kommunale nettodriftsudgifter til biografer, teatre, musikarrangementer og kulturinstitutioner pr. indbygger (REGK31). Måler kommunens prioritering og investering i kulturlivet - uafhængigt af borgernes faktiske brug.",
+  // Tryghed & fællesskab
+  crime_rate: "Anmeldte forbrydelser pr. 1.000 indb. er den bedst tilgængelige kvantitative indikator for tryghed på kommuneniveau. Lav kriminalitet er en forudsætning for social tillid og aktivt deltagelse i det offentlige rum.",
+  // Lokalsamfund
+  sports_facilities: "Idrætsfaciliteter pr. 10.000 indb. (IDRFAC01) måler den fysiske kapacitet for idræt og aktivt foreningsliv - det grundlæggende anlægsgrundlag for et aktivt lokalmiljø.",
+  class_size: "Klassekvotient i grundskolen er en anerkendt kvalitetsindikator. Mindre klasser muliggør mere individuel opmærksomhed og er et politisk prioriteret mål.",
+  daycare_ratio: "Normering i daginstitutioner (børn pr. voksen) er et grundlæggende kvalitetsmål for det tidlige barndomsmiljø. Lav normering gavner børns trivsel og personalets arbejdsmiljø.",
+  sports_spending: "Kommunale idrætsudgifter pr. indb. (IDRFIN02) afspejler den samlede kommunale prioritering af idræt og fritid - og dermed forudsætningerne for foreningsliv og aktivt medborgerskab.",
+  // Mobilitet
+  commute_distance: "Gennemsnitlig pendlingsafstand afspejler tilgængelighed til arbejdsmarkedet. Lang pendling belaster livskvalitet og er typisk forbundet med lavere kollektiv trafikdækning.",
+  car_access: "Familier med bilrådighed er en proxy for transportmuligheder. I bykommuner signalerer lav bilrådighed god kollektiv trafik; i landkommuner kan det betyde manglende mobilitetsmuligheder.",
+};
+
 const SOCIAL_METHODS: Record<string, MethodInfo> = {
   sundhed: {
     id: "sundhed",
@@ -50,29 +88,37 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     limitations: "Ubeboede boliger fanger ikke boligkvalitet eller pris. Boligareal pr. person er et gennemsnit og skjuler ulighed.",
     csvFile: "doughnut_scores.csv + bolig_extra_scores.csv",
   },
-  samskabelse: {
-    id: "samskabelse",
-    scoring: "Gennemsnit af to indikatorer: (1) Stemmedeltagelse ved kommunalvalget 2021 (LABY08, direkte). (2) Musikskoleelever pr. 1.000 indbyggere (SKOLM02B, direkte - proxy for kulturdeltagelse og samskabelse). Score 100 = landsgennemsnit.",
-    boundary: "Socialt fundament: aktivt demokratisk medborgerskab og kulturel deltagelse.",
-    dataYear: "2021-2024",
-    limitations: "Stemmedeltagelse fanger kun formel demokratisk deltagelse. Musikskoleelever er en proxy for kulturelt engagement, men dækker primært børn og unge.",
-    csvFile: "democracy_scores.csv + samskabelse_extra_scores.csv",
+  demokrati: {
+    id: "demokrati",
+    scoring: "1 indikator: Stemmedeltagelse ved kommunalvalget 2021 (LABY08/KVBPCT, direkte ratio til landsgennemsnit). Score 100 = landsgennemsnit.",
+    boundary: "Socialt fundament: aktivt demokratisk medborgerskab. Alle borgere bør have mulighed for og lyst til at deltage i den demokratiske proces.",
+    dataYear: "2021",
+    limitations: "Måler kun formel valgdeltagelse - ikke bredere politisk deltagelse som borgermøder, lokalt engagement eller civilsamfundsaktivitet. Valgdeltagelse varierer strukturelt: højere i kommuner med velstillet, ældre befolkning. Opdateres kun hvert 4. år ved kommunalvalg.",
+    csvFile: "democracy_scores.csv",
   },
-  faellesskaber: {
-    id: "faellesskaber",
-    scoring: "Gennemsnit af to indikatorer: (1) Idrætsmedlemskab som andel af befolkningen (IDRAKT02) - direkte ratio til landsgennemsnit. (2) Anmeldte forbrydelser pr. 1.000 indbyggere (STRAF11) - inverteret ratio (lavere kriminalitet = højere score). Score 100 = landsgennemsnit.",
-    boundary: "Socialt fundament: stærke fællesskaber med aktivt foreningsliv og tryghed.",
+  kultur_fritid: {
+    id: "kultur_fritid",
+    scoring: "Gennemsnit af fire indikatorer: (1) Musikskoleelever pr. 1.000 indb. (SKOLM02B, direkte). (2) Biblioteksudlån pr. indb. (BIB1, direkte). (3) Idrætsforeningsmedlemmer som andel af befolkningen (IDRAKT02, direkte). (4) Kommunale kulturudgifter pr. indb. - nettodriftsudgifter til biografer, teatre, musikarrangementer og anden kultur (REGK31 funktion 33561-33564, direkte). Score 100 = landsgennemsnit.",
+    boundary: "Socialt fundament: adgang til kulturliv og fritidsaktiviteter er en forudsætning for trivsel, social deltagelse og levende lokalsamfund.",
+    dataYear: "2022-2024",
+    limitations: "Idrætsmedlemskab dækker kun organiseret DIF/DGI-idræt, ikke motionscentre eller uorganiseret idræt. Musikskoleelever dækker primært børn og unge. Biblioteksudlån afspejler ikke digitale udlån fuldt ud. Kulturudgifter eksluderer biblioteksudgifter (separat indikator) og idrætsudgifter (separat indikator i Lokalsamfund).",
+    csvFile: "faellesskaber_scores.csv + lokalsamfund_scores.csv + samskabelse_extra_scores.csv + doughnut_scores.csv (kultur_spending)",
+  },
+  tryghed: {
+    id: "tryghed",
+    scoring: "1 indikator: Anmeldte forbrydelser pr. 1.000 indb. (STRAF11) - inverteret ratio (lavere kriminalitet = højere score). Score 100 = landsgennemsnit.",
+    boundary: "Socialt fundament: borgere skal kunne leve trygt. Kriminalitet underminerer social sammenhæng, tillid og deltagelse i lokalsamfundet.",
     dataYear: "2024",
-    limitations: "Idrætsmedlemskab dækker kun organiseret idræt (DIF/DGI), ikke andre foreninger. Kriminalitet som tryghedsindikator fanger kun anmeldte forbrydelser og afspejler ikke nødvendigvis oplevet tryghed.",
+    limitations: "Anmeldt kriminalitet afspejler ikke nødvendigvis oplevet tryghed eller mørketallet for ikke-anmeldte forbrydelser. Politiets tilstedeværelse og anmeldelseskultur varierer kommunerne imellem. DST har ikke kommunefordelte data for husstandsvold, ensomhed eller mental sundhed - disse ville ideelt set supplere indikatoren.",
     csvFile: "faellesskaber_scores.csv",
   },
   lokalsamfund: {
     id: "lokalsamfund",
-    scoring: "Gennemsnit af fem indikatorer: (1) Biblioteksudlån pr. indbygger (BIB1, direkte). (2) Idrætsfaciliteter pr. 10.000 indb. (IDRFAC01, direkte). (3) Klassekvotient grundskole (KVOTIEN, inverteret - færre elever pr. klasse er bedre). (4) Normering daginstitution 3-5 år (BOERN8, inverteret - færre børn pr. voksen er bedre). (5) Kommunale idrætsudgifter pr. indb. (IDRFIN02, direkte). Score 100 = landsgennemsnit.",
-    boundary: "Socialt fundament: levende lokalsamfund med gode services, faciliteter og kulturtilbud.",
-    dataYear: "2023-2024",
-    limitations: "Proxyer for serviceadgang. Dækker ikke alle vigtige services (læger, butikker). Normering og klassekvotienter fanger ikke kvaliteten af tilbuddene.",
-    csvFile: "lokalsamfund_scores.csv + lokalsamfund_extra_scores.csv",
+    scoring: "Gennemsnit af fire indikatorer: (1) Idrætsfaciliteter pr. 10.000 indb. (IDRFAC01, direkte). (2) Klassekvotient grundskole (KVOTIEN, inverteret - færre elever pr. klasse er bedre). (3) Normering daginstitution 3-5 år (BOERN8, inverteret - færre børn pr. voksen er bedre). (4) Kommunale idrætsudgifter pr. indb. (IDRFIN02, direkte). Score 100 = landsgennemsnit.",
+    boundary: "Socialt fundament: nærhed til velfungerende basale services er en forudsætning for et godt hverdagsliv - uanset om man bor i by eller på land.",
+    dataYear: "2022-2024",
+    limitations: "Dækker ikke alle relevante services (praktiserende læger, indkøb, offentlig transport). Normering og klassekvotienter er strukturelle mål og fanger ikke tilbuddenes kvalitet eller personalets faglige niveau.",
+    csvFile: "lokalsamfund_extra_scores.csv",
   },
   mobilitet: {
     id: "mobilitet",
@@ -161,15 +207,21 @@ const ECO_METHODS: Record<string, MethodInfo> = {
 function IndicatorCard({ id }: { id: string }) {
   const ind = INDICATORS.find((i) => i.id === id);
   if (!ind) return null;
+  const rationale = INDICATOR_RATIONALES[id];
   return (
-    <div className="flex items-center justify-between py-1.5 px-3 bg-gray-50 rounded text-sm">
-      <span className="text-gray-700">{ind.name}</span>
-      <div className="flex items-center gap-3 text-xs text-gray-400">
-        <span>{ind.inverse ? "inverteret" : "direkte"}</span>
-        <a href={ind.source} target="_blank" rel="noopener" className="text-blue-600 hover:underline">
-          {ind.table} ↗
-        </a>
+    <div className="py-2 px-3 bg-gray-50 rounded text-sm">
+      <div className="flex items-center justify-between">
+        <span className="text-gray-700 font-medium">{ind.name}</span>
+        <div className="flex items-center gap-3 text-xs text-gray-400">
+          <span>{ind.inverse ? "inverteret" : "direkte"}</span>
+          <a href={ind.source} target="_blank" rel="noopener" className="text-blue-600 hover:underline">
+            {ind.table} ↗
+          </a>
+        </div>
       </div>
+      {rationale && (
+        <p className="mt-1 text-xs text-gray-500 leading-relaxed">{rationale}</p>
+      )}
     </div>
   );
 }
