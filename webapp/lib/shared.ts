@@ -88,8 +88,8 @@ export const INDICATORS: Indicator[] = [
   {
     id: "low_income",
     name: "Andel i lavindkomstgruppe",
-    table: "10518",
-    source: "https://www.statistikbanken.dk/10518",
+    table: "LABY07",
+    source: "https://www.statistikbanken.dk/LABY07",
     category: "social",
     inverse: true,
     dataYear: "2022",
