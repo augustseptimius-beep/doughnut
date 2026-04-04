@@ -12,8 +12,12 @@ Usage:
     cd /sti/til/doughnut
     python3 scripts/fetch_doughnut_data.py
 
-  Hvis du kører fra scripts/-mappen, gemmes doughnut_scores.csv i scripts/ i stedet
-  for data/ — og webapp'en bruger den forkerte (gamle) fil uden de nye indikatorer.
+  Scriptet gemmer til rodmappen (doughnut/doughnut_scores.csv).
+  Kopier altid til data/ bagefter:
+
+    cp doughnut_scores.csv data/doughnut_scores.csv
+
+  IKKE: cp scripts/doughnut_scores.csv data/doughnut_scores.csv (forkert!)
 
   python3 scripts/fetch_doughnut_data.py [--step 1|2|3] [--output results.csv]
 
