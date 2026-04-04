@@ -2,9 +2,6 @@ import { notFound } from "next/navigation";
 import {
   getKommune,
   getAllKommuner,
-  scoreColor,
-  computeCategoryScores,
-  computeOverallFromCategories,
 } from "@/lib/data";
 import KommuneClient from "./client";
 
@@ -24,30 +21,12 @@ export default async function KommunePage({ params }: Props) {
 
   const allKommuner = getAllKommuner();
 
-  // Calculate overall from categories
-  const categoryScores = computeCategoryScores(kommune.ratios);
-  const overallFromCats = computeOverallFromCategories(categoryScores);
-
-  // Rank based on category-based overall
-  const sorted = [...allKommuner]
-    .map((k) => ({
-      ...k,
-      catOverall: computeOverallFromCategories(
-        computeCategoryScores(k.ratios)
-      ),
-    }))
-    .filter((k) => k.catOverall !== null)
-    .sort((a, b) => (b.catOverall || 0) - (a.catOverall || 0));
-
-  const rank =
-    sorted.findIndex((k) => k.kommune_kode === kommune.kommune_kode) + 1;
-
   return (
     <div>
       {/* Header */}
       <div className="mb-6">
         <a href="/" className="text-sm text-blue-600 hover:underline">
-          &larr; Alle kommuner
+          &larr; Søg kommuner
         </a>
         <div className="mt-2 flex items-baseline gap-3">
           <h2 className="text-2xl font-bold text-gray-900">
@@ -55,17 +34,6 @@ export default async function KommunePage({ params }: Props) {
           </h2>
           <span className="text-sm text-gray-500">
             ({kommune.kommune_kode})
-          </span>
-        </div>
-        <div className="mt-1 flex items-center gap-4 text-sm">
-          <span
-            className={`font-semibold ${scoreColor(overallFromCats)}`}
-          >
-            Samlet:{" "}
-            {overallFromCats !== null ? overallFromCats.toFixed(1) : "–"}
-          </span>
-          <span className="text-gray-500">
-            Rang: {rank} af {sorted.length}
           </span>
         </div>
       </div>

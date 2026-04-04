@@ -275,6 +275,17 @@ export const INDICATORS: Indicator[] = [
     baselineLevel: 3,
     rawUnit: "kr./indb.",
   },
+  {
+    id: "civil_society",
+    name: "Udgifter til frivillige foreninger pr. indb. (kr.)",
+    table: "REGK31",
+    source: "https://www.statistikbanken.dk/REGK31",
+    category: "social",
+    inverse: false,
+    dataYear: "2023",
+    baselineLevel: 3,
+    rawUnit: "kr./indb.",
+  },
   // --- Lokalsamfund (ekstra) ---
   {
     id: "class_size",
@@ -366,8 +377,8 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
   {
     id: "lokalsamfund",
     name: "Lokalsamfund",
-    description: "Nærhed til velfungerende basale services: pasning, undervisning, idrætsfaciliteter og kommunal investering i nærområdet.",
-    indicatorIds: ["sports_facilities", "class_size", "daycare_ratio", "sports_spending"],
+    description: "Nærhed til velfungerende basale services: pasning, undervisning, idrætsfaciliteter, kommunal investering i nærområdet og støtte til det lokale foreningsliv.",
+    indicatorIds: ["sports_facilities", "class_size", "daycare_ratio", "sports_spending", "civil_society"],
   },
   {
     id: "mobilitet",

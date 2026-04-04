@@ -1,54 +1,37 @@
-import { getAllKommuner, computeCategoryScores, computeOverallFromCategories } from "@/lib/data";
-import { ECOLOGICAL_DIMENSIONS } from "@/lib/shared";
-import KommuneTable from "@/components/KommuneTable";
+import { getAllKommuner } from "@/lib/data";
+import KommuneSearch from "@/components/KommuneSearch";
 
 export default function Home() {
   const kommuner = getAllKommuner();
 
-  const data = kommuner.map((k) => {
-    // Avg-baseline kategorier
-    const cats = computeCategoryScores(k.ratios);
-    const overall = computeOverallFromCategories(cats);
-
-    // Top 10%-baseline kategorier
-    const top10Cats = computeCategoryScores(k.top10_ratios);
-    const top10Overall = computeOverallFromCategories(top10Cats);
-
-    const categoryMap: Record<string, number | null> = {};
-    for (const cat of cats) {
-      categoryMap[cat.categoryId] = cat.hasData ? cat.score : null;
-    }
-
-    const top10CategoryMap: Record<string, number | null> = {};
-    for (const cat of top10Cats) {
-      top10CategoryMap[cat.categoryId] = cat.hasData ? cat.score : null;
-    }
-
-    const ecoMap: Record<string, number | null> = {};
-    for (const dim of ECOLOGICAL_DIMENSIONS) {
-      ecoMap[dim.id] = k.eco_ratios[dim.id] ?? null;
-    }
-
-    return {
-      kode: k.kommune_kode,
-      navn: k.kommune_navn,
-      overall,
-      top10_overall: top10Overall,
-      categories: categoryMap,
-      top10_categories: top10CategoryMap,
-      eco_categories: ecoMap,
-    };
-  });
+  // Get first 6 municipalities alphabetically for the example grid
+  const exampleKommuner = [...kommuner]
+    .sort((a, b) => a.kommune_navn.localeCompare(b.kommune_navn))
+    .slice(0, 6);
 
   return (
-    <div>
-      <div className="mb-6">
-        <h2 className="text-xl font-bold text-gray-900">Alle kommuner</h2>
-        <p className="text-sm text-gray-500 mt-1">
-          Doughnut Economics-score for alle 98 danske kommuner. Klik på en kommune for at se detaljer.
+    <div className="max-w-6xl mx-auto">
+      {/* Hero Section */}
+      <div className="mb-12 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          Danmarks 98 Doughnuts
+        </h1>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          Doughnut Economics er en økonomisk model, der kombinerer økonomisk velstand med miljømæssig og social bæredygtighed. Dette værktøj visualiserer, hvordan danske kommuner performer på tværs af både sociale og økologiske indikatorer.
         </p>
       </div>
-      <KommuneTable data={data} />
+
+      {/* Search Section */}
+      <div className="mb-12">
+        <KommuneSearch kommuner={kommuner} exampleKommuner={exampleKommuner} />
+      </div>
+
+      {/* Footer info */}
+      <div className="mt-16 pt-8 border-t border-gray-200 text-center text-sm text-gray-500">
+        <p>
+          Udforsk økonomisk balance og bæredygtighed på tværs af alle danske kommuner
+        </p>
+      </div>
     </div>
   );
 }

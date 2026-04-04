@@ -164,7 +164,7 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                                     {" "}vs. {formatRaw(cmpRawVal, ind.rawUnit)}
                                   </span>
                                 )}
-                                {nationalAvg !== null && (
+                                {nationalAvg !== null && !ind.absoluteTarget && (
                                   <span className="text-gray-400 font-normal before:content-['·'] before:mx-1">
                                     Gns: {formatRaw(nationalAvg, ind.rawUnit)}
                                   </span>

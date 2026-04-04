@@ -43,6 +43,7 @@ const INDICATOR_RATIONALES: Record<string, string> = {
   library_use: "Biblioteksudlån pr. indbygger er en anerkendt proxy for kulturel aktivitet, læring og brug af offentlige kulturinstitutioner. God datakvalitet (BIB1) og lang tidsserie.",
   sports_membership: "Andel af befolkningen med aktivt idrætsforeningsmedlemskab (DIF/DGI). Foreningsidræt er en central del af dansk civilsamfund og en proxy for frivilligt foreningsliv generelt.",
   kultur_spending: "Kommunale nettodriftsudgifter til biografer, teatre, musikarrangementer og kulturinstitutioner pr. indbygger (REGK31). Måler kommunens prioritering og investering i kulturlivet - uafhængigt af borgernes faktiske brug.",
+  civil_society: "Kommunale udgifter til frivilligt folkeoplysende foreningsarbejde pr. indbygger (REGK31 funktion 33873). Proxy for kommunens investering i civilsamfund og det lokale foreningsliv - en central del af dansk demokratisk kultur.",
   // Tryghed & fællesskab
   crime_rate: "Anmeldte forbrydelser pr. 1.000 indb. er den bedst tilgængelige kvantitative indikator for tryghed på kommuneniveau. Lav kriminalitet er en forudsætning for social tillid og aktivt deltagelse i det offentlige rum.",
   // Lokalsamfund
@@ -74,10 +75,10 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   velfaerd: {
     id: "velfaerd",
-    scoring: "Gennemsnit af seks indikatorer: disponibel indkomst, beskæftigelsesfrekvens, børnefattigdom (inverteret), Gini-koefficient (inverteret), udsatte børn og unge (inverteret, BU43) og unge uden for uddannelse/beskæftigelse - NEET (inverteret, NEET1). Hver indikator normaliseres mod landsgennemsnittet (score 100 = gennemsnit). For inverterede indikatorer bruges formlen: (landsgennemsnit / kommune) * 100.",
+    scoring: "Gennemsnit af syv indikatorer: disponibel indkomst, beskæftigelsesfrekvens, børnefattigdom (inverteret, LABY07), Gini-koefficient (inverteret), lavindkomst (inverteret, LABY07), udsatte børn og unge (inverteret, BU43) og unge uden for uddannelse/beskæftigelse - NEET (inverteret, NEET1). Hver indikator normaliseres mod landsgennemsnittet (score 100 = gennemsnit). For inverterede indikatorer bruges formlen: (landsgennemsnit / kommune) * 100.",
     boundary: "Socialt fundament: materielle levevilkår der sikrer værdigt liv for alle. Ingen absolut grænse - relativ til landsgennemsnit.",
     dataYear: "2022-2024",
-    limitations: "Gini og børnefattigdom kommer fra samme DST-tabel (IFOR41) og kan korrelere. Disponibel indkomst justerer ikke for købekraft mellem kommuner. BU43 og NEET dækker forskellige aldersgrupper (0-22 og 16-24).",
+    limitations: "Børnefattigdom (LABY07) og lavindkomst (LABY07) kommer fra samme DST-tabel og kan korrelere. Disponibel indkomst justerer ikke for købekraft mellem kommuner. BU43 og NEET dækker forskellige aldersgrupper (0-22 og 16-24).",
     csvFile: "doughnut_scores.csv + velfaerd_extra_scores.csv",
   },
   bolig: {
@@ -114,7 +115,7 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   lokalsamfund: {
     id: "lokalsamfund",
-    scoring: "Gennemsnit af fire indikatorer: (1) Idrætsfaciliteter pr. 10.000 indb. (IDRFAC01, direkte). (2) Klassekvotient grundskole (KVOTIEN, inverteret - færre elever pr. klasse er bedre). (3) Normering daginstitution 3-5 år (BOERN8, inverteret - færre børn pr. voksen er bedre). (4) Kommunale idrætsudgifter pr. indb. (IDRFIN02, direkte). Score 100 = landsgennemsnit.",
+    scoring: "Gennemsnit af fem indikatorer: (1) Idrætsfaciliteter pr. 10.000 indb. (IDRFAC01, direkte). (2) Klassekvotient grundskole (KVOTIEN, inverteret - færre elever pr. klasse er bedre). (3) Normering daginstitution 3-5 år (BOERN8, inverteret - færre børn pr. voksen er bedre). (4) Kommunale idrætsudgifter pr. indb. (IDRFIN02, direkte). (5) Udgifter til frivillige foreninger pr. indb. (REGK31 funktion 33873, direkte). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: nærhed til velfungerende basale services er en forudsætning for et godt hverdagsliv - uanset om man bor i by eller på land.",
     dataYear: "2022-2024",
     limitations: "Dækker ikke alle relevante services (praktiserende læger, indkøb, offentlig transport). Normering og klassekvotienter er strukturelle mål og fanger ikke tilbuddenes kvalitet eller personalets faglige niveau.",
@@ -243,9 +244,40 @@ export default function MetodePage() {
     <div className="max-w-4xl mx-auto">
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Metode & datakilder</h2>
-        <p className="text-gray-500 text-sm">
-          Detaljeret dokumentation af hvordan hver dimension beregnes, hvilke data der bruges, og hvilke begrænsninger der er.
+        <p className="text-gray-600 text-sm leading-relaxed mb-4">
+          Danmarks 98 Doughnuts anvender Kate Raworths Doughnut Economics-ramme til at vurdere alle danske kommuners præstation på to linser: det <strong>sociale fundament</strong> (opfylder vi borgernes basale behov?) og det <strong>økologiske loft</strong> (respekterer vi naturens grænser?). Modellen er politisk neutral - den måler, ikke rangordner.
         </p>
+
+        {/* Baseline-hierarki */}
+        <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl mb-2">
+          <h3 className="font-bold text-emerald-900 mb-3">Hierarki for baseline-valg</h3>
+          <p className="text-sm text-emerald-800 mb-3">
+            For alle indikatorer defineres et "100-punkt" - grænsen for hvornår en kommune lever op til standarden. Vi vælger altid den højest mulige kategori:
+          </p>
+          <div className="space-y-2">
+            <div className="flex gap-3">
+              <span className="text-xs font-bold text-white bg-emerald-700 rounded px-2 py-0.5 h-fit whitespace-nowrap">Niveau 1</span>
+              <div>
+                <p className="text-sm font-semibold text-emerald-900">Absolutte biofysiske og juridiske grænser</p>
+                <p className="text-xs text-emerald-700">Naturen forhandler ikke. Eksempel: WHO&apos;s grænseværdi for partikelforurening (5 µg/m³) eller EU&apos;s Vandrammedirektiv.</p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-xs font-bold text-white bg-emerald-600 rounded px-2 py-0.5 h-fit whitespace-nowrap">Niveau 2</span>
+              <div>
+                <p className="text-sm font-semibold text-emerald-900">Nationale politiske målsætninger</p>
+                <p className="text-xs text-emerald-700">Demokratisk vedtagne mål. Eksempel: 95%-målet for kompetencegivende uddannelse eller klimalovens 70%-reduktionsmål.</p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-xs font-bold text-white bg-emerald-500 rounded px-2 py-0.5 h-fit whitespace-nowrap">Niveau 3</span>
+              <div>
+                <p className="text-sm font-semibold text-emerald-900">Frontløber-metoden (Top 10% decilen)</p>
+                <p className="text-xs text-emerald-700">Gennemsnittet af de 10 bedst præsterende danske kommuner. Logik: hvad 10 kommuner kan opnå, er empirisk muligt i en dansk kontekst.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Quick navigation */}

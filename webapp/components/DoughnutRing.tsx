@@ -323,6 +323,47 @@ export default function DoughnutRing({ kommune, ratios }: DoughnutRingProps) {
     return paths;
   };
 
+  /* ── Render segment dividers (white radial lines) ── */
+  const renderSegmentDividers = () => {
+    const dividers: React.ReactElement[] = [];
+
+    // Social dividers: from innerLimit to commonBoundary
+    const socialAngleStep = (2 * Math.PI) / socialCount;
+    for (let i = 0; i < socialCount; i++) {
+      const angle = i * socialAngleStep - Math.PI / 2;
+      const x1 = center + innerLimit * Math.cos(angle);
+      const y1 = center + innerLimit * Math.sin(angle);
+      const x2 = center + commonBoundary * Math.cos(angle);
+      const y2 = center + commonBoundary * Math.sin(angle);
+      dividers.push(
+        <line
+          key={`social-divider-${i}`}
+          x1={x1} y1={y1} x2={x2} y2={y2}
+          stroke="white" strokeWidth="1.5" opacity="0.5"
+        />
+      );
+    }
+
+    // Eco dividers: from commonBoundary to outerMaxLimit + 50
+    const ecoAngleStep = (2 * Math.PI) / ecoCount;
+    for (let i = 0; i < ecoCount; i++) {
+      const angle = i * ecoAngleStep - Math.PI / 2;
+      const x1 = center + commonBoundary * Math.cos(angle);
+      const y1 = center + commonBoundary * Math.sin(angle);
+      const x2 = center + (outerMaxLimit + 50) * Math.cos(angle);
+      const y2 = center + (outerMaxLimit + 50) * Math.sin(angle);
+      dividers.push(
+        <line
+          key={`eco-divider-${i}`}
+          x1={x1} y1={y1} x2={x2} y2={y2}
+          stroke="white" strokeWidth="1.5" opacity="0.5"
+        />
+      );
+    }
+
+    return dividers;
+  };
+
   /* ── Render curved text labels ── */
   const renderCurvedLabels = () => {
     const labels: React.ReactElement[] = [];
@@ -457,6 +498,9 @@ export default function DoughnutRing({ kommune, ratios }: DoughnutRingProps) {
           {/* 2. Social ring */}
           {renderSocialRing()}
 
+          {/* 2.5. Segment dividers */}
+          {renderSegmentDividers()}
+
           {/* 3. Boundary lines */}
           <circle cx={center} cy={center} r={ecoCeiling} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="3" opacity="0.5" />
           <circle cx={center} cy={center} r={commonBoundary} fill="none" stroke={GREEN_DARK_BAND} strokeWidth="2" opacity="0.3" />
@@ -488,7 +532,7 @@ export default function DoughnutRing({ kommune, ratios }: DoughnutRingProps) {
 
         {/* Info card */}
         {active && (
-          <div className={`absolute bottom-2 right-2 md:top-2 md:right-2 bg-white/95 backdrop-blur-md shadow-2xl p-4 rounded-2xl w-56 md:w-64 border border-gray-100 z-10 ${pinned ? "" : "pointer-events-none"}`}>
+          <div className={`absolute top-2 right-2 bg-white/95 backdrop-blur-md shadow-2xl p-3 rounded-2xl w-52 md:w-56 border border-gray-100 z-10 ${pinned ? "" : "pointer-events-none"}`}>
             <div className="flex items-center justify-between mb-2">
               <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full uppercase ${
                 active.group === "social" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-500"
@@ -502,11 +546,11 @@ export default function DoughnutRing({ kommune, ratios }: DoughnutRingProps) {
             </div>
             <h3 className="font-black text-base text-gray-800 leading-tight">{active.label}</h3>
             {active.description && (
-              <p className="text-[11px] text-gray-500 mt-1 leading-snug line-clamp-3">{active.description}</p>
+              <p className="text-[11px] text-gray-500 mt-1.5 leading-snug line-clamp-2">{active.description}</p>
             )}
-            <div className="mt-2">
+            <div className="mt-1.5">
               {active.hasData && active.score !== null ? (
-                <p className={`text-lg font-black uppercase tracking-wide ${getStatusColor(active)}`}>
+                <p className={`text-base font-black uppercase tracking-wide ${getStatusColor(active)}`}>
                   {getStatusText(active)}
                 </p>
               ) : (
@@ -514,33 +558,36 @@ export default function DoughnutRing({ kommune, ratios }: DoughnutRingProps) {
               )}
             </div>
             {active.indicators && active.indicators.length > 0 && (
-              <div className="mt-2 pt-2 border-t border-gray-100">
+              <div className="mt-1.5 pt-2 border-t border-gray-100">
                 <p className="text-[9px] font-semibold text-gray-400 uppercase mb-1">Indikatorer</p>
-                {active.indicators.map((name) => (
+                {active.indicators.slice(0, 4).map((name) => (
                   <p key={name} className="text-[11px] text-gray-600 leading-snug">· {name}</p>
                 ))}
+                {active.indicators.length > 4 && (
+                  <p className="text-[11px] text-gray-500 leading-snug italic">+ {active.indicators.length - 4} flere</p>
+                )}
               </div>
             )}
             {active.boundary && (
-              <div className="mt-2 pt-2 border-t border-gray-100">
+              <div className="mt-1.5 pt-2 border-t border-gray-100">
                 <p className="text-[9px] font-semibold text-gray-400 uppercase mb-1">Grænseværdi</p>
                 <p className="text-[11px] text-gray-600 leading-snug">{active.boundary}</p>
               </div>
             )}
             {active.unit && (
-              <p className="text-[10px] text-gray-400 mt-1">Enhed: {active.unit}</p>
+              <p className="text-[10px] text-gray-400 mt-1.5">Enhed: {active.unit}</p>
             )}
             {active.hasData && active.score !== null && (() => {
               const isBad = active.group === "social" ? active.score < 100 : active.score > 100;
               const barColor = isBad ? "#dc2626" : "#22c55e";
               return (
-                <div className="mt-2 h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                <div className="mt-1.5 h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
                   <div className="h-full transition-all duration-500 rounded-full"
                     style={{ width: `${Math.min(active.score, 200) / 2}%`, backgroundColor: barColor }} />
                 </div>
               );
             })()}
-            <div className="flex items-center justify-between mt-2">
+            <div className="flex items-center justify-between mt-1.5">
               <a href={`/metode#${active.id}`} className="text-[10px] text-blue-600 hover:underline pointer-events-auto">
                 Se metode →
               </a>

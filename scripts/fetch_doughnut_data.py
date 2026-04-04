@@ -280,6 +280,31 @@ INDICATORS = [
         "category": "social",
         "note": "Kommunale nettodriftsudgifter til biografer, teatre, musikarrangementer og anden kultur per indbygger (REGK31)",
     },
+    {
+        "id": "civil_society",
+        "name": "Kommunale udgifter til frivillige foreninger pr. indb. (kr.)",
+        "table": "REGK31",
+        # Funktionskode 33873: Frivilligt folkeoplysende foreningsarbejde
+        "want_variables": [
+            {"purpose": "funktion", "candidates": [
+                {"code": "FUNKTION", "values": ["33873"]},
+            ]},
+            {"purpose": "dranst", "candidates": [
+                {"code": "DRANST", "values": ["1"]},  # Driftskonti
+            ]},
+            {"purpose": "art", "candidates": [
+                {"code": "ART", "values": ["TOT"]},  # I alt (netto)
+            ]},
+            {"purpose": "prisenhed", "candidates": [
+                {"code": "PRISENHED", "values": ["INDL"]},  # Pr. indbygger, løbende priser (kr.)
+            ]},
+        ],
+        "area_candidates": ["OMRÅDE", "BOPOMR", "KOMMUNEDK"],
+        "inverse": False,   # Mere støtte til foreninger = bedre
+        "aggregate": "single",
+        "category": "social",
+        "note": "Kommunale nettodriftsudgifter til frivilligt folkeoplysende foreningsarbejde per indbygger (REGK31 funktion 33873)",
+    },
 ]
 
 # ── Ecological indicator definitions (Klimaregnskabet + Energi Data Service) ──
