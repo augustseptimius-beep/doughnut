@@ -33,6 +33,7 @@ export const INDICATORS: Indicator[] = [
     inverse: false,
     dataYear: "2023",
     baselineLevel: 3,
+    rawUnit: "år",
   },
   {
     id: "education",
@@ -44,6 +45,7 @@ export const INDICATORS: Indicator[] = [
     dataYear: "2023",
     baselineLevel: 2,
     absoluteTarget: "95% (nationalt uddannelsesmål)",
+    rawUnit: "%",
   },
   {
     id: "disposable_income",
@@ -54,6 +56,7 @@ export const INDICATORS: Indicator[] = [
     inverse: false,
     dataYear: "2022",
     baselineLevel: 3,
+    rawUnit: "kr./indb.",
   },
   {
     id: "employment",
@@ -64,16 +67,18 @@ export const INDICATORS: Indicator[] = [
     inverse: false,
     dataYear: "2023",
     baselineLevel: 3,
+    rawUnit: "%",
   },
   {
     id: "child_poverty",
-    name: "Børnefattigdom",
-    table: "IFOR41",
-    source: "https://www.statistikbanken.dk/IFOR41",
+    name: "Børnefattigdom (0-17 år)",
+    table: "LABY07",
+    source: "https://www.statistikbanken.dk/LABY07",
     category: "social",
     inverse: true,
     dataYear: "2022",
     baselineLevel: 3,
+    rawUnit: "%",
   },
   {
     id: "gini",
@@ -84,6 +89,7 @@ export const INDICATORS: Indicator[] = [
     inverse: true,
     dataYear: "2022",
     baselineLevel: 3,
+    rawUnit: "point",
   },
   {
     id: "low_income",
@@ -94,6 +100,7 @@ export const INDICATORS: Indicator[] = [
     inverse: true,
     dataYear: "2022",
     baselineLevel: 3,
+    rawUnit: "%",
   },
   {
     id: "vacant_housing",
@@ -104,6 +111,7 @@ export const INDICATORS: Indicator[] = [
     inverse: true,
     dataYear: "2023",
     baselineLevel: 3,
+    rawUnit: "%",
   },
   {
     id: "voter_turnout",

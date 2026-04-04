@@ -175,21 +175,18 @@ INDICATORS = [
     },
     {
         "id": "child_poverty",
-        "name": "Børnefattigdom (Gini-proxy)",
-        "table": "IFOR41",
-        "alt_tables": ["IFOR12", "IFOR51"],
+        "name": "Børnefattigdom (0-17 år, %)",
+        "table": "LABY07",
         "want_variables": [
-            {"purpose": "ulighedsmål", "candidates": [
-                # IFOR41 uses ULLIG variable, "70" = Gini-koefficient
-                {"code": "ULLIG", "values": ["70"]},
-                {"code": "INDKOMSTYPE", "values": ["AEKVIDINGS"]},
+            {"purpose": "alder", "candidates": [
+                {"code": "ALDER", "values": ["0117"]},  # 0-17 år
             ]},
         ],
-        "area_candidates": ["KOMMUNEDK", "OMRÅDE"],
+        "area_candidates": ["KOMGRP", "OMRÅDE"],
         "inverse": True,
         "aggregate": "single",
         "category": "social",
-        "note": "Uses Gini coefficient from IFOR41 as proxy for child poverty",
+        "note": "Andel af børn 0-17 år i relativ fattigdom (LABY07). Medianen for disponibel indkomst bruges som grænse.",
     },
     {
         "id": "gini",
