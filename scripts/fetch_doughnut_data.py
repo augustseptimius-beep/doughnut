@@ -40,14 +40,6 @@ import urllib.parse
 
 API_BASE = "https://api.statbank.dk/v1"
 
-# ── Klimaregnskabet API ───────────────────────────────────────────────
-KLIMAREGNSKABET_BASE = "https://api.klimaregneskabet.dk/v1"
-KLIMAREGNSKABET_YEAR = 2023
-KLIMAREGNSKABET_API_KEY = os.environ.get(
-    "KLIMAREGNSKABET_API_KEY",
-    "72549c4a2b417163ccc0edd32e9d09221e86c178478adb6bedc69fd350b7b0f5"
-)
-
 # ── Energi Data Service ───────────────────────────────────────────────
 ENERGIDS_BASE = "https://api.energidataservice.dk"
 
@@ -312,57 +304,9 @@ INDICATORS = [
 # matcher: dict of {field: substring} all of which must match (case-insensitive)
 # in the JSON response object to identify the correct data point.
 ECOLOGICAL_INDICATORS = [
-    {
-        "id": "co2_per_capita",
-        "name": "CO2-udledning pr. indb. (ton CO2e)",
-        "source": "klimaregnskabet",
-        "matcher": {
-            "datatype": "nøgletal",
-            "sektor": "samlet",
-            "type": "samlet co2-udledning",
-            "enhed": "ton co2e/indb.",
-        },
-        "inverse": True,
-        "category": "ecological",
-    },
-    {
-        "id": "co2_energy",
-        "name": "CO2 fra energisektoren pr. indb.",
-        "source": "klimaregnskabet",
-        "matcher": {
-            "datatype": "nøgletal",
-            "sektor": "energi",
-            "type": "samlet co2-udledning",
-            "enhed": "ton co2e/indb.",
-        },
-        "inverse": True,
-        "category": "ecological",
-    },
-    {
-        "id": "co2_transport",
-        "name": "CO2 fra transport pr. indb.",
-        "source": "klimaregnskabet",
-        "matcher": {
-            "datatype": "nøgletal",
-            "sektor": "transport",
-            "type": "samlet co2-udledning",
-            "enhed": "ton co2e/indb.",
-        },
-        "inverse": True,
-        "category": "ecological",
-    },
-    {
-        "id": "ve_share",
-        "name": "VE-andel af endeligt energiforbrug (%)",
-        "source": "klimaregnskabet",
-        "matcher": {
-            "datatype": "resultat - energi",
-            "enhed": "%",
-            "kategori": "ve-andel",
-        },
-        "inverse": False,
-        "category": "ecological",
-    },
+    # Klimaregnskabet-indikatorer (co2_per_capita, co2_energy, co2_transport, ve_share)
+    # er fjernet herfra. De håndteres udelukkende af scripts/fetch_climate_data.py
+    # som genererer data/climate_scores.csv. Brug det script til klimadata.
     {
         "id": "ve_capacity_mw",
         "name": "Installeret VE-kapacitet (MW)",
@@ -646,79 +590,6 @@ def _matches(record, matcher):
         if expected.lower() not in actual:
             return False
     return True
-
-
-def fetch_klimaregnskabet_kommune(kommune_kode, year=KLIMAREGNSKABET_YEAR):
-    """
-    Fetch emissions data for one municipality from Klimaregnskabet API.
-    Returns list of data point dicts, or [] on error.
-    Endpoint: GET /v1/emissions?kommune={kode}&year={year}
-    """
-    url = f"{KLIMAREGNSKABET_BASE}/emissions?kommune={kommune_kode}&year={year}"
-    req = urllib.request.Request(
-        url,
-        headers={"x-api-key": KLIMAREGNSKABET_API_KEY},
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            raw = resp.read().decode("utf-8")
-            return json.loads(raw)
-    except Exception as e:
-        print(f"  ⚠ Klimaregnskabet fejl for {kommune_kode}: {e}", file=sys.stderr)
-        return []
-
-
-def extract_ecological_from_response(records, indicator):
-    """
-    Find and return the numeric value for an ecological indicator
-    in the API response records using the indicator's matcher dict.
-    Returns float or None.
-    """
-    matcher = indicator.get("matcher", {})
-    for rec in records:
-        if _matches(rec, matcher):
-            # Try common value field names
-            for field in ("vaerdi", "value", "Værdi", "Value"):
-                raw = _normalize_key(rec, field)
-                if raw and raw not in ("", "null", "None"):
-                    try:
-                        return float(raw.replace(",", "."))
-                    except ValueError:
-                        pass
-    return None
-
-
-def fetch_all_klimaregnskabet(kommune_codes, year=KLIMAREGNSKABET_YEAR):
-    """
-    Fetch ecological indicator values for all municipalities.
-    Returns dict: {indicator_id: {kommune_kode: float}}
-    Makes one API call per municipality with polite rate limiting.
-    """
-    eco_ids = [i["id"] for i in ECOLOGICAL_INDICATORS if i["source"] == "klimaregnskabet"]
-    result = {iid: {} for iid in eco_ids}
-
-    print(f"\n→ Henter Klimaregnskabet data ({year}) for {len(kommune_codes)} kommuner...")
-    for i, kode in enumerate(sorted(kommune_codes)):
-        records = fetch_klimaregnskabet_kommune(kode, year)
-        if not records:
-            continue
-        for ind in ECOLOGICAL_INDICATORS:
-            if ind["source"] != "klimaregnskabet":
-                continue
-            val = extract_ecological_from_response(records, ind)
-            if val is not None:
-                result[ind["id"]][kode] = val
-
-        if (i + 1) % 10 == 0:
-            print(f"  {i + 1}/{len(kommune_codes)} kommuner hentet...")
-        time.sleep(0.3)
-
-    for iid in eco_ids:
-        n = len(result[iid])
-        status = "✓" if n > 0 else "✗"
-        print(f"  {status} {iid}: {n} kommuner")
-
-    return result
 
 
 # ── Energi Data Service helpers ───────────────────────────────────────
@@ -1070,30 +941,8 @@ def step2():
         "category": "ecological",
     }
 
-    # ── Klimaregnskabet (kræver API-nøgle) ────────────────────────────
-    print(f"\n{'━' * 55}")
-    print("▶ Klimaregnskabet — CO2 og VE-andel (kræver KLIMAREGNSKABET_API_KEY)")
-    if not KLIMAREGNSKABET_API_KEY:
-        print("  ⚠ KLIMAREGNSKABET_API_KEY ikke sat — springer over")
-    else:
-        # Collect all municipality codes from DST data
-        dst_codes = set()
-        for data in all_data.values():
-            dst_codes.update(data["values"].keys())
-        dst_codes.discard("000")
-
-        eco_values = fetch_all_klimaregnskabet(dst_codes)
-
-        for ind in ECOLOGICAL_INDICATORS:
-            if ind["source"] != "klimaregnskabet":
-                continue
-            all_data[ind["id"]] = {
-                "values": eco_values.get(ind["id"], {}),
-                "nat_code": "mean",   # no national code — use mean of municipalities
-                "inverse": ind["inverse"],
-                "name": ind["name"],
-                "category": "ecological",
-            }
+    # Klimaregnskabet-data (CO2, VE-andel) hentes IKKE her længere.
+    # Kør scripts/fetch_climate_data.py separat → data/climate_scores.csv
 
     # Summary
     print(f"\n{'━' * 55}")
