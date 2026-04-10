@@ -17,7 +17,7 @@ export default function Home() {
           Danmarks 98 Doughnuts
         </h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Doughnut Economics er en økonomisk model, der kombinerer økonomisk velstand med miljømæssig og social bæredygtighed. Dette værktøj visualiserer, hvordan danske kommuner performer på tværs af både sociale og økologiske indikatorer.
+          Doughnut Economics er en ramme der måler, om et samfund sikrer alle borgernes basisbehov uden at overskride planetens grænser. Dette værktøj visualiserer, hvordan danske kommuner performer på tværs af sociale og økologiske dimensioner.
         </p>
       </div>
 
