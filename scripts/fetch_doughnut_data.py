@@ -87,10 +87,10 @@ INDICATORS = [
                 {"code": "HERKOMST", "values": ["TOT"]},
             ]},
             {"purpose": "uddannelse", "candidates": [
-                # H-prefixed codes (actual DST format)
-                {"code": "HFUDD", "values": ["H20", "H30", "H35", "H40", "H50", "H60"]},
-                # Fallback: numeric codes
-                {"code": "HFUDD", "values": ["20", "25", "35", "40", "50", "60"]},
+                # Alle uddannelsesniveauer over grundskole (ekskl. H10-familien og H90/H9099)
+                # H20: Gymnasiale, H30: Erhvervsfaglige, H35: Adgangsgivende,
+                # H40: KVU, H50: MVU, H60: Bachelor, H70: LVU/kandidat, H80: Ph.d.
+                {"code": "HFUDD", "values": ["H20", "H30", "H35", "H40", "H50", "H60", "H70", "H80"]},
             ]},
         ],
         "area_candidates": ["BOPOMR", "OMRÅDE"],
