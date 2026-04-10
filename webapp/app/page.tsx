@@ -29,7 +29,7 @@ export default function Home() {
       {/* Footer info */}
       <div className="mt-16 pt-8 border-t border-gray-200 text-center text-sm text-gray-500">
         <p>
-          Udforsk økonomisk balance og bæredygtighed på tværs af alle danske kommuner
+          Udforsk sociale og økologiske dimensioner på tværs af alle danske kommuner
         </p>
       </div>
     </div>
