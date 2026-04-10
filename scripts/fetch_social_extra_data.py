@@ -33,6 +33,8 @@ Brug:
   python3 fetch_social_extra_data.py
 """
 
+from __future__ import annotations
+
 import csv
 import io
 import json
@@ -155,6 +157,63 @@ def fetch_hospital_use() -> tuple[dict[str, float], float | None]:
 
 
 # ---------------------------------------------------------------------------
+# SUNDHED: Afstand til praktiserende læge
+# ---------------------------------------------------------------------------
+
+def fetch_gp_distance() -> tuple[dict[str, float], float | None]:
+    """
+    SUNDAF01: Gennemsnitlig afstand (km) til nærmeste praktiserende læge pr. kommune.
+    BNØGLE='0010' = gennemsnitlig afstand i km.
+    LIVSKONT='2005' = alle borgere (uanset kontaktform).
+    Inverteret: kortere afstand er bedre.
+    """
+    print("Henter afstand til praktiserende læge (SUNDAF01)...")
+    rows = api_post("SUNDAF01", [
+        {"code": "KOMMUNEDK", "values": ["*"]},
+        {"code": "BNØGLE", "values": ["0010"]},      # Gennemsnitlig afstand (km)
+        {"code": "LIVSKONT", "values": ["2005"]},     # Alle borgere
+        {"code": "KØN", "values": ["00"]},            # Begge køn
+        {"code": "ALDER", "values": ["IALT"]},        # Alle aldre
+        {"code": "Tid", "values": ["2024"]},
+    ])
+    result = {}
+    national = None
+    for row in rows:
+        kode = row.get("KOMMUNEDK", "").strip()
+        val = parse_value(row.get("INDHOLD", ""))
+        if val is None:
+            continue
+        if kode == "000":
+            national = val
+        elif kode in VALID_CODES:
+            result[kode] = val
+    # Prøv 2023 hvis 2024 er tom
+    if len(result) < 50:
+        print("  Få resultater for 2024, prøver 2023...")
+        rows = api_post("SUNDAF01", [
+            {"code": "KOMMUNEDK", "values": ["*"]},
+            {"code": "BNØGLE", "values": ["0010"]},
+            {"code": "LIVSKONT", "values": ["2005"]},
+            {"code": "KØN", "values": ["00"]},
+            {"code": "ALDER", "values": ["IALT"]},
+            {"code": "Tid", "values": ["2023"]},
+        ])
+        result = {}
+        national = None
+        for row in rows:
+            kode = row.get("KOMMUNEDK", "").strip()
+            val = parse_value(row.get("INDHOLD", ""))
+            if val is None:
+                continue
+            if kode == "000":
+                national = val
+            elif kode in VALID_CODES:
+                result[kode] = val
+    print(f"  {len(result)} kommuner, landsgennemsnit: {national} km")
+    return result, national
+
+
+# ---------------------------------------------------------------------------
 # UDDANNELSE: Unge med kun grundskole
 # ---------------------------------------------------------------------------
 
@@ -261,6 +320,70 @@ def fetch_music_school() -> tuple[dict[str, float], float | None]:
             result[kode] = val
 
     print(f"  {len(result)} kommuner, landssamlet: {national}")
+    return result, national
+
+
+# ---------------------------------------------------------------------------
+# LOKALSAMFUND: Uddannet pædagogisk personale
+# ---------------------------------------------------------------------------
+
+def fetch_educated_staff() -> tuple[dict[str, float], float | None]:
+    """
+    BOERN1: Andel af pædagogisk personale med pædagoguddannelse (kode 460).
+    UDDANNELSE='460' = Pædagoguddannelse (professionsbachelor, 2019-)
+    UDDANNELSE='TOT' = I alt pædagogisk personale
+    Direkte: højere andel uddannede er bedre.
+    """
+    print("Henter pædagogisk personale (BOERN1)...")
+    rows = api_post("BOERN1", [
+        {"code": "OMRÅDE", "values": ["*"]},
+        {"code": "OVERENS", "values": ["TOT"]},      # Alle stillingskategorier
+        {"code": "UDDANNELSE", "values": ["TOT", "460"]},  # Total + pædagoguddannelse
+        {"code": "Tid", "values": ["2024"]},
+    ])
+    totals: dict[str, float] = {}
+    paed: dict[str, float] = {}
+    for row in rows:
+        kode = row.get("OMRÅDE", "").strip()
+        udd = row.get("UDDANNELSE", "").strip()
+        val = parse_value(row.get("INDHOLD", ""))
+        if val is None:
+            continue
+        if kode not in VALID_CODES and kode != "000":
+            continue
+        if udd == "TOT":
+            totals[kode] = val
+        elif udd == "460":
+            paed[kode] = val
+    # Prøv 2023 hvis 2024 er tom
+    if len(totals) < 50:
+        print("  Prøver 2023...")
+        rows = api_post("BOERN1", [
+            {"code": "OMRÅDE", "values": ["*"]},
+            {"code": "OVERENS", "values": ["TOT"]},
+            {"code": "UDDANNELSE", "values": ["TOT", "460"]},
+            {"code": "Tid", "values": ["2023"]},
+        ])
+        totals = {}
+        paed = {}
+        for row in rows:
+            kode = row.get("OMRÅDE", "").strip()
+            udd = row.get("UDDANNELSE", "").strip()
+            val = parse_value(row.get("INDHOLD", ""))
+            if val is None:
+                continue
+            if kode not in VALID_CODES and kode != "000":
+                continue
+            if udd == "TOT":
+                totals[kode] = val
+            elif udd == "460":
+                paed[kode] = val
+    result: dict[str, float] = {}
+    for kode in totals:
+        if kode in paed and totals[kode] > 0:
+            result[kode] = round(paed[kode] / totals[kode] * 100, 2)
+    national = result.pop("000", None)
+    print(f"  {len(result)} kommuner, landsgennemsnit: {national}% pædagoguddannede")
     return result, national
 
 
@@ -457,13 +580,24 @@ def main():
     # === SUNDHED ===
     print("\n--- SUNDHED ---")
     hospital, hosp_nat = fetch_hospital_use()
+    gp_dist, gp_nat = fetch_gp_distance()
     sundhed_rows = []
     for kode in sorted(VALID_CODES, key=int):
-        val = hospital.get(kode)
-        r = ratio_inverse(val, hosp_nat) if val is not None and hosp_nat else None
-        sundhed_rows.append([kode, val or "", r or ""])
+        h_val = hospital.get(kode)
+        h_r = ratio_inverse(h_val, hosp_nat) if h_val is not None and hosp_nat else None
+        g_val = gp_dist.get(kode)
+        g_r = ratio_inverse(g_val, gp_nat) if g_val is not None and gp_nat else None
+        sundhed_rows.append([
+            kode,
+            h_val if h_val is not None else "",
+            h_r if h_r is not None else "",
+            g_val if g_val is not None else "",
+            g_r if g_r is not None else "",
+        ])
     write_csv("sundhed_extra_scores.csv", [
-        "kommune_kode", "hospital_use_pct", "hospital_use_ratio",
+        "kommune_kode",
+        "hospital_use_pct", "hospital_use_ratio",
+        "gp_distance_km", "gp_distance_ratio",
     ], sundhed_rows)
 
     # === UDDANNELSE ===
@@ -516,6 +650,7 @@ def main():
     class_size, class_nat = fetch_class_size()
     daycare, daycare_nat = fetch_daycare_ratio()
     sports_spend, sports_nat = fetch_sports_spending()
+    edu_staff, edu_staff_nat = fetch_educated_staff()
 
     lokal_rows = []
     for kode in sorted(VALID_CODES, key=int):
@@ -525,17 +660,22 @@ def main():
         dc_ratio = ratio_inverse(dc_val, daycare_nat) if dc_val is not None and daycare_nat else None
         sp_val = sports_spend.get(kode)
         sp_ratio = ratio_direct(sp_val, sports_nat) if sp_val is not None and sports_nat else None
+        es_val = edu_staff.get(kode)
+        es_ratio = ratio_direct(es_val, edu_staff_nat) if es_val is not None and edu_staff_nat else None
         lokal_rows.append([
             kode,
             cs_val or "", cs_ratio or "",
             dc_val or "", dc_ratio or "",
             sp_val or "", sp_ratio or "",
+            es_val if es_val is not None else "",
+            es_ratio if es_ratio is not None else "",
         ])
     write_csv("lokalsamfund_extra_scores.csv", [
         "kommune_kode",
         "class_size", "class_size_ratio",
         "daycare_ratio_val", "daycare_ratio",
         "sports_spending_kr", "sports_spending_ratio",
+        "educated_staff_pct", "educated_staff_ratio",
     ], lokal_rows)
 
     print("\n" + "=" * 60)

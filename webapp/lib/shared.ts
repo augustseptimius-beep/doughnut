@@ -147,6 +147,17 @@ export const INDICATORS: Indicator[] = [
     baselineLevel: 3,
     rawUnit: "pr. 1.000 indb.",
   },
+  {
+    id: "traffic_accidents",
+    name: "Trafikulykker (tilskadekomne pr. 100.000 indb.)",
+    table: "UHELDK1",
+    source: "https://www.statistikbanken.dk/UHELDK1",
+    category: "social",
+    inverse: true,
+    dataYear: "2024",
+    baselineLevel: 3,
+    rawUnit: "pr. 100.000 indb.",
+  },
   // --- Lokalsamfund ---
   {
     id: "library_use",
@@ -193,6 +204,17 @@ export const INDICATORS: Indicator[] = [
     baselineLevel: 3,
     rawUnit: "%",
   },
+  {
+    id: "public_transport",
+    name: "God adgang til offentlig transport",
+    table: "LABY49",
+    source: "https://www.statistikbanken.dk/LABY49",
+    category: "social",
+    inverse: false,
+    dataYear: "2025",
+    baselineLevel: 3,
+    rawUnit: "%",
+  },
   // --- Velfærd (ekstra) ---
   {
     id: "vulnerable_children",
@@ -227,6 +249,17 @@ export const INDICATORS: Indicator[] = [
     dataYear: "2023",
     baselineLevel: 3,
     rawUnit: "%",
+  },
+  {
+    id: "gp_distance",
+    name: "Afstand til praktiserende læge",
+    table: "SUNDAF01",
+    source: "https://www.statistikbanken.dk/SUNDAF01",
+    category: "social",
+    inverse: true,
+    dataYear: "2024",
+    baselineLevel: 3,
+    rawUnit: "km",
   },
   // --- Uddannelse (ekstra) ---
   {
@@ -320,6 +353,17 @@ export const INDICATORS: Indicator[] = [
     baselineLevel: 3,
     rawUnit: "kr./indb.",
   },
+  {
+    id: "educated_staff",
+    name: "Uddannede pædagoger i daginstitutioner",
+    table: "BOERN1",
+    source: "https://www.statistikbanken.dk/BOERN1",
+    category: "social",
+    inverse: false,
+    dataYear: "2024",
+    baselineLevel: 3,
+    rawUnit: "%",
+  },
 ];
 
 // --- SOCIAL CATEGORIES (TORUS trivselsaspekter) ---
@@ -336,7 +380,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "sundhed",
     name: "Sundhed",
     description: "Borgernes fysiske og mentale sundhed, herunder livslængde, sygelighed og adgang til sundhedsydelser.",
-    indicatorIds: ["life_expectancy", "hospital_use"],
+    indicatorIds: ["life_expectancy", "hospital_use", "gp_distance"],
   },
   {
     id: "uddannelse",
@@ -366,25 +410,25 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "kultur_fritid",
     name: "Kultur & fritid",
     description: "Adgang til og investering i kulturliv, fritidsaktiviteter og civile fællesskaber - biblioteker, musik, idræt og kommunal kultursatsning.",
-    indicatorIds: ["music_school", "library_use", "sports_membership", "kultur_spending"],
+    indicatorIds: ["music_school", "library_use", "kultur_spending"],
   },
   {
     id: "tryghed",
     name: "Tryghed & fællesskab",
-    description: "Tryghed og social sammenhæng i lokalsamfundet. Høj kriminalitet underminerer tillid, fællesskab og lyst til at deltage i det offentlige rum.",
-    indicatorIds: ["crime_rate"],
+    description: "Tryghed og social sammenhæng i lokalsamfundet - kriminalitet, trafiksikkerhed og social kapital målt via idrætsdeltagelse.",
+    indicatorIds: ["crime_rate", "traffic_accidents", "sports_membership"],
   },
   {
     id: "lokalsamfund",
     name: "Lokalsamfund",
     description: "Nærhed til velfungerende basale services: pasning, undervisning, idrætsfaciliteter, kommunal investering i nærområdet og støtte til det lokale foreningsliv.",
-    indicatorIds: ["sports_facilities", "class_size", "daycare_ratio", "sports_spending", "civil_society"],
+    indicatorIds: ["sports_facilities", "class_size", "daycare_ratio", "sports_spending", "civil_society", "educated_staff"],
   },
   {
     id: "mobilitet",
     name: "Mobilitet",
     description: "Adgang til bæredygtig og effektiv transport for alle borgere uanset geografi og økonomi.",
-    indicatorIds: ["commute_distance", "car_access"],
+    indicatorIds: ["commute_distance", "car_access", "public_transport"],
   },
   {
     id: "klimatilpasning",

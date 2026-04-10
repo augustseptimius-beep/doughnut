@@ -101,6 +101,8 @@ export function loadData(): KommuneData[] {
   const faelleskaberSportsRaw = loadEcoCsv("faellesskaber_scores.csv", "sports_membership_pct");
   const faelleskaberCrime = loadEcoCsv("faellesskaber_scores.csv", "crime_ratio");
   const faelleskaberCrimeRaw = loadEcoCsv("faellesskaber_scores.csv", "crime_per_1k");
+  const faelleskaberAccidents = loadEcoCsv("faellesskaber_scores.csv", "traffic_accidents_ratio");
+  const faelleskaberAccidentsRaw = loadEcoCsv("faellesskaber_scores.csv", "traffic_accidents_per_100k");
   const lokalsamfundLibrary = loadEcoCsv("lokalsamfund_scores.csv", "library_ratio");
   const lokalsamfundLibraryRaw = loadEcoCsv("lokalsamfund_scores.csv", "library_loans_per_cap");
   const lokalsamfundFacilities = loadEcoCsv("lokalsamfund_scores.csv", "facilities_ratio");
@@ -109,6 +111,8 @@ export function loadData(): KommuneData[] {
   const mobilitetCommuteRaw = loadEcoCsv("mobilitet_scores.csv", "commute_distance_km");
   const mobilitetCar = loadEcoCsv("mobilitet_scores.csv", "car_access_ratio");
   const mobilitetCarRaw = loadEcoCsv("mobilitet_scores.csv", "car_access_pct");
+  const mobilitetTransport = loadEcoCsv("mobilitet_scores.csv", "public_transport_ratio");
+  const mobilitetTransportRaw = loadEcoCsv("mobilitet_scores.csv", "public_transport_pct");
   const velfaerdChildren = loadEcoCsv("velfaerd_extra_scores.csv", "vulnerable_children_ratio");
   const velfaerdChildrenRaw = loadEcoCsv("velfaerd_extra_scores.csv", "vulnerable_children_pct");
   const velfaerdNeet = loadEcoCsv("velfaerd_extra_scores.csv", "neet_ratio");
@@ -117,6 +121,8 @@ export function loadData(): KommuneData[] {
   // Load extra social dimension data (round 2)
   const sundhedHospital = loadEcoCsv("sundhed_extra_scores.csv", "hospital_use_ratio");
   const sundhedHospitalRaw = loadEcoCsv("sundhed_extra_scores.csv", "hospital_use_pct");
+  const sundhedGpDistance = loadEcoCsv("sundhed_extra_scores.csv", "gp_distance_ratio");
+  const sundhedGpDistanceRaw = loadEcoCsv("sundhed_extra_scores.csv", "gp_distance_km");
   const uddannelseLow = loadEcoCsv("uddannelse_extra_scores.csv", "low_education_ratio");
   const uddannelseLowRaw = loadEcoCsv("uddannelse_extra_scores.csv", "low_education_pct");
   const boligArea = loadEcoCsv("bolig_extra_scores.csv", "housing_area_ratio");
@@ -129,6 +135,8 @@ export function loadData(): KommuneData[] {
   const lokalDaycareRaw = loadEcoCsv("lokalsamfund_extra_scores.csv", "daycare_ratio_val");
   const lokalSportsSpend = loadEcoCsv("lokalsamfund_extra_scores.csv", "sports_spending_ratio");
   const lokalSportsSpendRaw = loadEcoCsv("lokalsamfund_extra_scores.csv", "sports_spending_kr");
+  const lokalEduStaff = loadEcoCsv("lokalsamfund_extra_scores.csv", "educated_staff_ratio");
+  const lokalEduStaffRaw = loadEcoCsv("lokalsamfund_extra_scores.csv", "educated_staff_pct");
 
   const data: KommuneData[] = [];
   for (let i = 1; i < lines.length; i++) {
@@ -168,6 +176,10 @@ export function loadData(): KommuneData[] {
       ratios["crime_rate"] = faelleskaberCrime[kommuneKode];
       rawValues["crime_rate"] = faelleskaberCrimeRaw[kommuneKode] ?? null;
     }
+    if (faelleskaberAccidents[kommuneKode] !== undefined) {
+      ratios["traffic_accidents"] = faelleskaberAccidents[kommuneKode];
+      rawValues["traffic_accidents"] = faelleskaberAccidentsRaw[kommuneKode] ?? null;
+    }
     // Lokalsamfund
     if (lokalsamfundLibrary[kommuneKode] !== undefined) {
       ratios["library_use"] = lokalsamfundLibrary[kommuneKode];
@@ -186,6 +198,10 @@ export function loadData(): KommuneData[] {
       ratios["car_access"] = mobilitetCar[kommuneKode];
       rawValues["car_access"] = mobilitetCarRaw[kommuneKode] ?? null;
     }
+    if (mobilitetTransport[kommuneKode] !== undefined) {
+      ratios["public_transport"] = mobilitetTransport[kommuneKode];
+      rawValues["public_transport"] = mobilitetTransportRaw[kommuneKode] ?? null;
+    }
     // Velfærd (ekstra)
     if (velfaerdChildren[kommuneKode] !== undefined) {
       ratios["vulnerable_children"] = velfaerdChildren[kommuneKode];
@@ -199,6 +215,10 @@ export function loadData(): KommuneData[] {
     if (sundhedHospital[kommuneKode] !== undefined) {
       ratios["hospital_use"] = sundhedHospital[kommuneKode];
       rawValues["hospital_use"] = sundhedHospitalRaw[kommuneKode] ?? null;
+    }
+    if (sundhedGpDistance[kommuneKode] !== undefined) {
+      ratios["gp_distance"] = sundhedGpDistance[kommuneKode];
+      rawValues["gp_distance"] = sundhedGpDistanceRaw[kommuneKode] ?? null;
     }
     // Uddannelse (ekstra)
     if (uddannelseLow[kommuneKode] !== undefined) {
@@ -227,6 +247,10 @@ export function loadData(): KommuneData[] {
     if (lokalSportsSpend[kommuneKode] !== undefined) {
       ratios["sports_spending"] = lokalSportsSpend[kommuneKode];
       rawValues["sports_spending"] = lokalSportsSpendRaw[kommuneKode] ?? null;
+    }
+    if (lokalEduStaff[kommuneKode] !== undefined) {
+      ratios["educated_staff"] = lokalEduStaff[kommuneKode];
+      rawValues["educated_staff"] = lokalEduStaffRaw[kommuneKode] ?? null;
     }
     // consumption_co2 er nu en økologisk dimension - se eco_ratios nedenfor
 

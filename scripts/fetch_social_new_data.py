@@ -31,6 +31,8 @@ Brug:
   python3 fetch_social_new_data.py
 """
 
+from __future__ import annotations
+
 import csv
 import io
 import json
@@ -199,6 +201,53 @@ def fetch_crime_rate() -> dict[str, float]:
     national = sums.pop("000", None)
     print(f"  {len(sums)} kommuner, landssamlet: {national}")
     return sums, national
+
+
+def fetch_traffic_accidents() -> tuple[dict[str, float], float | None]:
+    """
+    UHELDK1: Tilskadekomne og dræbte i færdselsuheld pr. kommune.
+    Henter UHELD='0' (personskade i alt) og summerer over alle transportmidler, aldre og køn.
+    Returnerer {kommune_kode: antal_tilskadekomne}, national_total.
+    """
+    print("Henter trafikulykker (UHELDK1)...")
+    rows = api_post("UHELDK1", [
+        {"code": "OMRÅDE", "values": ["*"]},
+        {"code": "UHELD", "values": ["0"]},       # Personskade i alt
+        {"code": "INDBLAND", "values": ["*"]},    # Alle transportmidler
+        {"code": "ALDER", "values": ["*"]},        # Alle aldre
+        {"code": "KØN", "values": ["*"]},          # Alle køn
+        {"code": "Tid", "values": ["2024"]},
+    ])
+    sums: dict[str, float] = {}
+    for row in rows:
+        kode = row.get("OMRÅDE", "").strip()
+        val = parse_value(row.get("INDHOLD", ""))
+        if val is None or val == 0:
+            continue
+        if kode in VALID_CODES or kode == "000":
+            sums[kode] = sums.get(kode, 0) + val
+    # Prøv 2023 hvis 2024 er tom
+    if len(sums) < 50:
+        print("  Få resultater for 2024, prøver 2023...")
+        rows = api_post("UHELDK1", [
+            {"code": "OMRÅDE", "values": ["*"]},
+            {"code": "UHELD", "values": ["0"]},
+            {"code": "INDBLAND", "values": ["*"]},
+            {"code": "ALDER", "values": ["*"]},
+            {"code": "KØN", "values": ["*"]},
+            {"code": "Tid", "values": ["2023"]},
+        ])
+        sums = {}
+        for row in rows:
+            kode = row.get("OMRÅDE", "").strip()
+            val = parse_value(row.get("INDHOLD", ""))
+            if val is None or val == 0:
+                continue
+            if kode in VALID_CODES or kode == "000":
+                sums[kode] = sums.get(kode, 0) + val
+    national_total = sums.pop("000", None)
+    print(f"  {len(sums)} kommuner, landssamlet: {national_total:.0f}" if national_total else f"  {len(sums)} kommuner")
+    return sums, national_total
 
 
 def fetch_population() -> dict[str, float]:
@@ -419,6 +468,99 @@ def fetch_car_access() -> dict[str, tuple[float, float]]:
 
 
 # ---------------------------------------------------------------------------
+# Officiel DST kommunegruppe-klassifikation (kilde: DST csv_da.csv, 2024)
+# G1: Hovedstadskommuner (24), G2: Storbykommuner (3),
+# G3: Provinsbykommuner (16), G4: Oplandskommuner (24), G5: Landkommuner (31)
+# ---------------------------------------------------------------------------
+KOMMUNEGRUPPE: dict[str, int] = {
+    # G1: Hovedstadskommuner (24)
+    "101": 1, "147": 1, "151": 1, "153": 1, "155": 1, "157": 1, "159": 1, "161": 1,
+    "163": 1, "165": 1, "167": 1, "169": 1, "173": 1, "175": 1, "183": 1, "185": 1,
+    "187": 1, "190": 1, "201": 1, "223": 1, "230": 1, "240": 1, "253": 1, "269": 1,
+    # G2: Storbykommuner (3)
+    "461": 2, "751": 2, "851": 2,
+    # G3: Provinsbykommuner (16)
+    "217": 3, "219": 3, "259": 3, "265": 3, "330": 3, "370": 3, "561": 3, "607": 3,
+    "615": 3, "621": 3, "630": 3, "657": 3, "661": 3, "730": 3, "740": 3, "791": 3,
+    # G4: Oplandskommuner (24)
+    "210": 4, "250": 4, "260": 4, "270": 4, "316": 4, "320": 4, "329": 4, "336": 4,
+    "340": 4, "350": 4, "410": 4, "420": 4, "430": 4, "440": 4, "450": 4, "480": 4,
+    "575": 4, "706": 4, "710": 4, "727": 4, "746": 4, "756": 4, "766": 4, "840": 4,
+    # G5: Landkommuner (31)
+    "306": 5, "326": 5, "360": 5, "376": 5, "390": 5, "400": 5, "479": 5, "482": 5,
+    "492": 5, "510": 5, "530": 5, "540": 5, "550": 5, "563": 5, "573": 5, "580": 5,
+    "665": 5, "671": 5, "707": 5, "741": 5, "760": 5, "773": 5, "779": 5, "787": 5,
+    "810": 5, "813": 5, "820": 5, "825": 5, "846": 5, "849": 5, "860": 5,
+}
+
+
+def fetch_public_transport() -> tuple[dict[str, float], float | None]:
+    """
+    LABY49: Offentlig transport - andel med god adgang (Meget højt + Højt serviceniveau).
+    Data er kun tilgængeligt på kommunegruppe-niveau (5 grupper, ikke enkeltkommune).
+    Alle kommuner i samme gruppe tildeles samme score.
+
+    METODE-DISCLAIMER: Indikatoren er baseret på DSTs kommunegruppe-klassifikation
+    og afspejler ikke variation inden for kommunegruppen. Landkommuner (G5) scorer lavt
+    uanset lokale forskelle.
+    """
+    print("Henter offentlig transport (LABY49)...")
+
+    # Fallback-scores fra DST 2025-data (% med "Meget højt" + "Højt" serviceniveau)
+    FALLBACK_SCORES: dict[int, float] = {1: 68.4, 2: 53.1, 3: 30.8, 4: 13.9, 5: 9.9}
+
+    grp_scores: dict[int, float] = {}
+    try:
+        rows = api_post("LABY49", [
+            {"code": "KOMGRP", "values": ["*"]},
+            {"code": "OFFENTRANSPORT", "values": ["*"]},
+            {"code": "Tid", "values": ["2025"]},
+        ])
+        group_totals: dict[str, float] = {}
+        group_good: dict[str, float] = {}
+        for row in rows:
+            grp = row.get("KOMGRP", "").strip()
+            level = row.get("OFFENTRANSPORT", "").strip()
+            val = parse_value(row.get("INDHOLD", ""))
+            if val is None or not grp:
+                continue
+            group_totals[grp] = group_totals.get(grp, 0) + val
+            # "Meget højt" (1345) og "Højt" (1350) = god adgang
+            if level in ("1345", "1350"):
+                group_good[grp] = group_good.get(grp, 0) + val
+        for grp_str, total in group_totals.items():
+            if total > 0:
+                good = group_good.get(grp_str, 0)
+                pct = round((good / total) * 100, 2)
+                try:
+                    grp_scores[int(grp_str)] = pct
+                except ValueError:
+                    pass
+        if len(grp_scores) < 5:
+            raise ValueError(f"Forventede 5 grupper, fik {len(grp_scores)}")
+        print(f"  Grupper: {grp_scores}")
+    except Exception as e:
+        print(f"  Advarsel: LABY49 fejlede ({e}), bruger hardkodet fallback fra DST 2025...")
+        grp_scores = FALLBACK_SCORES
+
+    # Tildel gruppescore til hver kommune
+    result: dict[str, float] = {}
+    for kode in VALID_CODES:
+        grp = KOMMUNEGRUPPE.get(kode)
+        if grp is not None and grp in grp_scores:
+            result[kode] = grp_scores[grp]
+
+    # National gennemsnit vægtet af antal kommuner pr. gruppe
+    group_counts = {1: 24, 2: 3, 3: 16, 4: 24, 5: 31}
+    total_weight = sum(group_counts.get(g, 1) for g in grp_scores)
+    national_avg = round(
+        sum(grp_scores[g] * group_counts.get(g, 1) for g in grp_scores) / total_weight, 2
+    )
+    print(f"  {len(result)} kommuner (kommunegruppe-niveau), nationalt vægtet gns.: {national_avg}%")
+    return result, national_avg
+
+
+# ---------------------------------------------------------------------------
 # VELFÆRD (ekstra)
 # ---------------------------------------------------------------------------
 
@@ -546,6 +688,7 @@ def main():
 
     sports, sports_nat = fetch_sports_membership()
     crime_raw, crime_nat_total = fetch_crime_rate()
+    accidents_raw, accidents_nat_total = fetch_traffic_accidents()
 
     # Kriminalitet pr. 1.000 indb.
     crime_per_1k = {}
@@ -556,24 +699,38 @@ def main():
         if kode in population and population[kode] > 0:
             crime_per_1k[kode] = round(count / population[kode] * 1000, 2)
 
+    # Trafikulykker pr. 100.000 indb.
+    accidents_per_100k = {}
+    accidents_nat_per_100k = None
+    if accidents_nat_total and nat_pop:
+        accidents_nat_per_100k = round(accidents_nat_total / nat_pop * 100_000, 2)
+    for kode, count in accidents_raw.items():
+        if kode in population and population[kode] > 0:
+            accidents_per_100k[kode] = round(count / population[kode] * 100_000, 2)
+
     faellesskab_rows = []
     for kode in sorted(VALID_CODES, key=int):
         s_val = sports.get(kode)
         s_ratio = ratio_direct(s_val, sports_nat) if s_val is not None and sports_nat else None
         c_val = crime_per_1k.get(kode)
         c_ratio = ratio_inverse(c_val, crime_nat_per_1k) if c_val is not None and crime_nat_per_1k else None
+        a_val = accidents_per_100k.get(kode)
+        a_ratio = ratio_inverse(a_val, accidents_nat_per_100k) if a_val is not None and accidents_nat_per_100k else None
         faellesskab_rows.append([
             kode,
             s_val if s_val is not None else "",
             s_ratio if s_ratio is not None else "",
             c_val if c_val is not None else "",
             c_ratio if c_ratio is not None else "",
+            a_val if a_val is not None else "",
+            a_ratio if a_ratio is not None else "",
         ])
 
     write_csv("faellesskaber_scores.csv", [
         "kommune_kode",
         "sports_membership_pct", "sports_membership_ratio",
         "crime_per_1k", "crime_ratio",
+        "traffic_accidents_per_100k", "traffic_accidents_ratio",
     ], faellesskab_rows)
 
     # === LOKALSAMFUND ===
@@ -625,6 +782,7 @@ def main():
 
     commute, commute_nat = fetch_commute_distance()
     car_data = fetch_car_access()
+    transport, transport_nat = fetch_public_transport()
 
     # Bilrådighed - pct med bil
     car_pct = {}
@@ -638,18 +796,23 @@ def main():
         d_ratio = ratio_inverse(d_val, commute_nat) if d_val is not None and commute_nat else None
         c_val = car_pct.get(kode)
         c_ratio = ratio_direct(c_val, car_nat) if c_val is not None and car_nat else None
+        t_val = transport.get(kode)
+        t_ratio = ratio_direct(t_val, transport_nat) if t_val is not None and transport_nat else None
         mobil_rows.append([
             kode,
             d_val if d_val is not None else "",
             d_ratio if d_ratio is not None else "",
             c_val if c_val is not None else "",
             c_ratio if c_ratio is not None else "",
+            t_val if t_val is not None else "",
+            t_ratio if t_ratio is not None else "",
         ])
 
     write_csv("mobilitet_scores.csv", [
         "kommune_kode",
         "commute_distance_km", "commute_ratio",
         "car_access_pct", "car_access_ratio",
+        "public_transport_pct", "public_transport_ratio",
     ], mobil_rows)
 
     # === VELFÆRD (ekstra) ===

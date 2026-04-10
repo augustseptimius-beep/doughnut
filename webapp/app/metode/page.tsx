@@ -46,23 +46,28 @@ const INDICATOR_RATIONALES: Record<string, string> = {
   civil_society: "Kommunale udgifter til frivilligt folkeoplysende foreningsarbejde pr. indbygger (REGK31 funktion 33873). Proxy for kommunens investering i civilsamfund og det lokale foreningsliv - en central del af dansk demokratisk kultur.",
   // Tryghed & fællesskab
   crime_rate: "Anmeldte forbrydelser pr. 1.000 indb. er den bedst tilgængelige kvantitative indikator for tryghed på kommuneniveau. Lav kriminalitet er en forudsætning for social tillid og aktivt deltagelse i det offentlige rum.",
+  traffic_accidents: "Tilskadekomne og dræbte i færdselsuheld pr. 100.000 indb. (UHELDK1). Trafiksikkerhed er en direkte indikator for fysisk tryghed i det offentlige rum og for kvaliteten af infrastruktur og hastighedszoner. Inverteret: færre ulykker er bedre.",
   // Lokalsamfund
   sports_facilities: "Idrætsfaciliteter pr. 10.000 indb. (IDRFAC01) måler den fysiske kapacitet for idræt og aktivt foreningsliv - det grundlæggende anlægsgrundlag for et aktivt lokalmiljø.",
   class_size: "Klassekvotient i grundskolen er en anerkendt kvalitetsindikator. Mindre klasser muliggør mere individuel opmærksomhed og er et politisk prioriteret mål.",
   daycare_ratio: "Normering i daginstitutioner (børn pr. voksen) er et grundlæggende kvalitetsmål for det tidlige barndomsmiljø. Lav normering gavner børns trivsel og personalets arbejdsmiljø.",
   sports_spending: "Kommunale idrætsudgifter pr. indb. (IDRFIN02) afspejler den samlede kommunale prioritering af idræt og fritid - og dermed forudsætningerne for foreningsliv og aktivt medborgerskab.",
+  educated_staff: "Andel af pædagogisk personale i kommunale og selvejende daginstitutioner med pædagoguddannelse (professionsbachelor, BOERN1 kode 460). Nationalt har 42% af personalet INGEN pædagogisk uddannelse - stor variation kommunerne imellem (18%-58%). Et rent kvalitetsmål: komplement til normering (BOERN8), der kun måler kvantitet.",
   // Mobilitet
   commute_distance: "Gennemsnitlig pendlingsafstand afspejler tilgængelighed til arbejdsmarkedet. Lang pendling belaster livskvalitet og er typisk forbundet med lavere kollektiv trafikdækning.",
   car_access: "Familier med bilrådighed er en proxy for transportmuligheder. I bykommuner signalerer lav bilrådighed god kollektiv trafik; i landkommuner kan det betyde manglende mobilitetsmuligheder.",
+  public_transport: "Andel af borgere med god adgang til offentlig transport (Meget højt + Højt serviceniveau), LABY49. Metodenote: data er kun tilgængeligt på kommunegruppe-niveau (5 grupper) - alle kommuner i samme gruppe tildeles identisk score. Landkommuner (G5) scorer konsekvent lavt uanset lokale forskelle.",
+  // Sundhed
+  gp_distance: "Gennemsnitlig afstand (km) til nærmeste praktiserende læge (SUNDAF01). Stor afstand er en adgangsbarriere for primær sundhedsydelse, særligt for ældre og ikke-bilister. Inverteret: kortere afstand er bedre.",
 };
 
 const SOCIAL_METHODS: Record<string, MethodInfo> = {
   sundhed: {
     id: "sundhed",
-    scoring: "Gennemsnit af to indikatorer: (1) Middellevetid (0-årige) sammenholdt med landsgennemsnittet. (2) Sygehusbenyttelse - andel af befolkningen med ophold på sygehus (SBR01, inverteret - lavere er bedre). Score 100 = landsgennemsnit.",
-    boundary: "Socialt fundament: alle borgere bør have en forventet levetid der som minimum matcher landsgennemsnittet.",
-    dataYear: "2022-2023",
-    limitations: "Middellevetid er en gennemsnitsbetragtning. Sygehusbenyttelse kan afspejle både dårligt helbred og god adgang til sundhedsvæsenet.",
+    scoring: "Gennemsnit af tre indikatorer: (1) Middellevetid (0-årige) sammenholdt med landsgennemsnittet. (2) Sygehusbenyttelse - andel af befolkningen med ophold på sygehus (SBR01, inverteret). (3) Afstand til nærmeste praktiserende læge i km (SUNDAF01, inverteret - kortere er bedre). Score 100 = landsgennemsnit.",
+    boundary: "Socialt fundament: alle borgere bør have en forventet levetid der som minimum matcher landsgennemsnittet og have rimelig adgang til primær sundhedsydelse.",
+    dataYear: "2022-2024",
+    limitations: "Middellevetid er en gennemsnitsbetragtning. Sygehusbenyttelse kan afspejle både dårligt helbred og god adgang til sundhedsvæsenet. Lægeafstand dækker ikke kapacitet eller ventetider.",
     csvFile: "doughnut_scores.csv + sundhed_extra_scores.csv",
   },
   uddannelse: {
@@ -99,34 +104,34 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   kultur_fritid: {
     id: "kultur_fritid",
-    scoring: "Gennemsnit af fire indikatorer: (1) Musikskoleelever pr. 1.000 indb. (SKOLM02B, direkte). (2) Biblioteksudlån pr. indb. (BIB1, direkte). (3) Idrætsforeningsmedlemmer som andel af befolkningen (IDRAKT02, direkte). (4) Kommunale kulturudgifter pr. indb. - nettodriftsudgifter til biografer, teatre, musikarrangementer og anden kultur (REGK31 funktion 33561-33564, direkte). Score 100 = landsgennemsnit.",
+    scoring: "Gennemsnit af tre indikatorer: (1) Musikskoleelever pr. 1.000 indb. (SKOLM02B, direkte). (2) Biblioteksudlån pr. indb. (BIB1, direkte). (3) Kommunale kulturudgifter pr. indb. - nettodriftsudgifter til biografer, teatre, musikarrangementer og anden kultur (REGK31 funktion 33561-33564, direkte). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: adgang til kulturliv og fritidsaktiviteter er en forudsætning for trivsel, social deltagelse og levende lokalsamfund.",
     dataYear: "2022-2024",
-    limitations: "Idrætsmedlemskab dækker kun organiseret DIF/DGI-idræt, ikke motionscentre eller uorganiseret idræt. Musikskoleelever dækker primært børn og unge. Biblioteksudlån afspejler ikke digitale udlån fuldt ud. Kulturudgifter eksluderer biblioteksudgifter (separat indikator) og idrætsudgifter (separat indikator i Lokalsamfund).",
-    csvFile: "faellesskaber_scores.csv + lokalsamfund_scores.csv + samskabelse_extra_scores.csv + doughnut_scores.csv (kultur_spending)",
+    limitations: "Musikskoleelever dækker primært børn og unge. Biblioteksudlån afspejler ikke digitale udlån fuldt ud. Kulturudgifter eksluderer biblioteksudgifter (separat indikator) og idrætsudgifter (separat indikator i Lokalsamfund). Idrætsmedlemskab er flyttet til Tryghed & fællesskab som mål for social kapital.",
+    csvFile: "lokalsamfund_scores.csv + samskabelse_extra_scores.csv + doughnut_scores.csv (kultur_spending)",
   },
   tryghed: {
     id: "tryghed",
-    scoring: "1 indikator: Anmeldte forbrydelser pr. 1.000 indb. (STRAF11) - inverteret ratio (lavere kriminalitet = højere score). Score 100 = landsgennemsnit.",
-    boundary: "Socialt fundament: borgere skal kunne leve trygt. Kriminalitet underminerer social sammenhæng, tillid og deltagelse i lokalsamfundet.",
-    dataYear: "2024",
-    limitations: "Anmeldt kriminalitet afspejler ikke nødvendigvis oplevet tryghed eller mørketallet for ikke-anmeldte forbrydelser. Politiets tilstedeværelse og anmeldelseskultur varierer kommunerne imellem. DST har ikke kommunefordelte data for husstandsvold, ensomhed eller mental sundhed - disse ville ideelt set supplere indikatoren.",
+    scoring: "Gennemsnit af tre indikatorer: (1) Anmeldte forbrydelser pr. 1.000 indb. (STRAF11, inverteret). (2) Trafikulykker - tilskadekomne og dræbte pr. 100.000 indb. (UHELDK1, inverteret). (3) Idrætsmedlemskab som andel af befolkningen (IDRAKT02, direkte - proxy for social kapital og foreningsliv). Score 100 = landsgennemsnit.",
+    boundary: "Socialt fundament: borgere skal kunne leve trygt - i det offentlige rum, i trafikken og med social sammenhæng i lokalsamfundet.",
+    dataYear: "2022-2024",
+    limitations: "Anmeldt kriminalitet afspejler ikke oplevet tryghed eller mørketallet. Politiets tilstedeværelse og anmeldelseskultur varierer. Trafikulykker varierer med vejnet og pendlingsforhold. Idrætsmedlemskab er en proxy for social kapital, ikke en direkte trygheds-indikator.",
     csvFile: "faellesskaber_scores.csv",
   },
   lokalsamfund: {
     id: "lokalsamfund",
-    scoring: "Gennemsnit af fem indikatorer: (1) Idrætsfaciliteter pr. 10.000 indb. (IDRFAC01, direkte). (2) Klassekvotient grundskole (KVOTIEN, inverteret - færre elever pr. klasse er bedre). (3) Normering daginstitution 3-5 år (BOERN8, inverteret - færre børn pr. voksen er bedre). (4) Kommunale idrætsudgifter pr. indb. (IDRFIN02, direkte). (5) Udgifter til frivillige foreninger pr. indb. (REGK31 funktion 33873, direkte). Score 100 = landsgennemsnit.",
+    scoring: "Gennemsnit af seks indikatorer: (1) Idrætsfaciliteter pr. 10.000 indb. (IDRFAC01, direkte). (2) Klassekvotient grundskole (KVOTIEN, inverteret). (3) Normering daginstitution 3-5 år (BOERN8, inverteret). (4) Kommunale idrætsudgifter pr. indb. (IDRFIN02, direkte). (5) Udgifter til frivillige foreninger pr. indb. (REGK31 funktion 33873, direkte). (6) Andel pædagoguddannede i daginstitutioner (BOERN1 kode 460, direkte). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: nærhed til velfungerende basale services er en forudsætning for et godt hverdagsliv - uanset om man bor i by eller på land.",
     dataYear: "2022-2024",
-    limitations: "Dækker ikke alle relevante services (praktiserende læger, indkøb, offentlig transport). Normering og klassekvotienter er strukturelle mål og fanger ikke tilbuddenes kvalitet eller personalets faglige niveau.",
+    limitations: "Dækker ikke alle relevante services (indkøb). BOERN8 (normering) og BOERN1 (uddannelse) er komplementære mål for daginstitutionskvalitet - normering dækker kvantitet, uddannelse dækker personalekvalitet. Klassekvotienter fanger ikke undervisningskvalitet.",
     csvFile: "lokalsamfund_extra_scores.csv",
   },
   mobilitet: {
     id: "mobilitet",
-    scoring: "Gennemsnit af to indikatorer: (1) Gennemsnitlig pendlingsafstand i km (AFSTB4) - inverteret ratio (kortere afstand = højere score). (2) Familier med bilrådighed (BIL800) - direkte ratio til landsgennemsnit. Score 100 = landsgennemsnit.",
+    scoring: "Gennemsnit af tre indikatorer: (1) Gennemsnitlig pendlingsafstand i km (AFSTB4, inverteret). (2) Familier med bilrådighed (BIL800, direkte). (3) Andel med god adgang til offentlig transport (LABY49, direkte - % med Meget højt + Højt serviceniveau). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: adgang til mobilitet uanset geografi og økonomi.",
-    dataYear: "2023-2024",
-    limitations: "Bilrådighed er en proxy for transportadgang - i bykommuner er lav bilrådighed et tegn på god kollektiv trafik, i landkommuner det modsatte. Pendlingsafstand fanger kun beskæftigedes transport, ikke ældre eller unges.",
+    dataYear: "2023-2025",
+    limitations: "Bilrådighed er en proxy for transportadgang - i bykommuner er lav bilrådighed et tegn på god kollektiv trafik, i landkommuner det modsatte. Pendlingsafstand fanger kun beskæftigedes transport. METODENOTE for offentlig transport (LABY49): data er KUN tilgængeligt på kommunegruppe-niveau (5 grupper) - alle kommuner i samme gruppe tildeles identisk score uanset lokale forskelle. Landkommuner (G5, herunder Thisted) scorer lavt som gruppe. Indikatoren er medtaget da retningen er korrekt og dataene er officielle DST-nøgletal.",
     csvFile: "mobilitet_scores.csv",
   },
   klimatilpasning: {
