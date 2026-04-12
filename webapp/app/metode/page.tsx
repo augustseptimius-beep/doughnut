@@ -202,11 +202,11 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   forbrug_co2: {
     id: "forbrug_co2",
-    scoring: "Nationalt gennemsnit for forbrugsbaseret CO2e pr. person (inkl. import). Ratio = (faktisk udledning / grænseværdi) * 100. Samme værdi for alle kommuner da data ikke er kommunefordelt. Aktuelt: ca. 11 ton CO2e/person, grænse 3 ton, dvs. ratio ca. 367 (kraftig overshoot).",
+    scoring: "Kommunespecifikt estimat for forbrugsbaseret CO2e pr. person (inkl. import). Ratio = (estimat / grænseværdi) * 100. Kilde: Osei-Owusu et al. (2020) kommunebaseline (2011) nutidsjusteret med ENS Global Afrapportering 2025 (ENS-til-ENS skalering, faktor 0,7186). Interval: 9,4-17,3 ton CO2e/person. Grænse: 3 ton. Se metodenote i /data/methodology_note.md.",
     boundary: "3 ton CO2e pr. person pr. år (Paris-budget, forbrugsbaseret - inkluderer importerede udledninger).",
-    dataYear: "2022 (seneste CONCITO/Energistyrelsen-opgørelse)",
-    limitations: "Ikke kommunefordelt - alle kommuner får samme ratio. Det reelle forbrugsaftryk varierer med indkomst og livsstil. Forventes differentieret i fremtidige versioner.",
-    csvFile: "Hardkodet i data.ts (nationalt gennemsnit)",
+    dataYear: "2023-estimat baseret på Osei-Owusu et al. 2020 + ENS GA 2025",
+    limitations: "Tier 1-estimat: alle kommuner skaleres med samme nationale faktor (ensartet -28,1%). Den relative rangorden fra 2011 er bevaret, men lokale ændringer (f.eks. udfasning af oliefyr, pendlingsmønster) er ikke indregnet. Hverken el- eller fjernvarmemix er opdateret kommunespecifikt. Usikkerhedsmargen ca. ±10%. Se metodenote for detaljer.",
+    csvFile: "cba_2023_estimate.csv (Osei-Owusu et al. 2020, DOI: 10.1016/j.ecolecon.2020.106778 + ENS Global Afrapportering 2025)",
   },
 };
 

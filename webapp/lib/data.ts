@@ -27,6 +27,37 @@ import { INDICATORS, ECOLOGICAL_DIMENSIONS, computeTop10Ratios, type KommuneData
 
 let cachedData: KommuneData[] | null = null;
 
+// Loader til cba_2023_estimate.csv som bruger kommunenavn (ikke kommune_kode) som nøgle
+function loadCbaCsv(): {
+  ratioByName: Record<string, number | null>;
+  rawByName: Record<string, number | null>;
+} {
+  const csvPath = path.join(process.cwd(), "..", "data", "cba_2023_estimate.csv");
+  const CBA_BOUNDARY = 3; // ton CO2e/cap/år (Paris-budget, forbrugsbaseret)
+  const ratioByName: Record<string, number | null> = {};
+  const rawByName: Record<string, number | null> = {};
+  try {
+    if (!fs.existsSync(csvPath)) return { ratioByName, rawByName };
+    const raw = fs.readFileSync(csvPath, "utf-8");
+    const lines = raw.trim().split("\n");
+    if (lines.length < 2) return { ratioByName, rawByName };
+    const headers = lines[0].split(",");
+    for (let i = 1; i < lines.length; i++) {
+      const cols = lines[i].split(",");
+      const row: Record<string, string> = {};
+      headers.forEach((h, idx) => { row[h.trim()] = (cols[idx] || "").trim(); });
+      const name = row["kommune"];
+      const estimate = row["cba_2023_estimate"];
+      if (name && estimate && estimate !== "") {
+        const tonPerCap = parseFloat(estimate);
+        rawByName[name] = tonPerCap;
+        ratioByName[name] = parseFloat(((tonPerCap / CBA_BOUNDARY) * 100).toFixed(2));
+      }
+    }
+  } catch { /* silent */ }
+  return { ratioByName, rawByName };
+}
+
 function loadEcoCsv(
   filename: string,
   ratioColumn: string
@@ -87,10 +118,11 @@ export function loadData(): KommuneData[] {
   // Affald flyttes til cirkularitet (waste_ratio er inverteret: lav score = mere affald)
   const wasteData = loadEcoCsv("forurening_scores.csv", "waste_ratio");
 
-  // Forbrugsbaseret CO2 (national gennemsnit) - fast proxy for "Påvirkninger udenfor kommunen"
-  // Kilde: CONCITO/Energistyrelsen. ~11 ton CO2e/person/år forbrugsbaseret.
-  // Grænse: 3 ton (Paris-budget). Ratio = (11/3)*100 ≈ 366.7 (overshoot - samme konvention som øvrige eco)
-  const CONSUMPTION_CO2_RATIO = parseFloat(((11 / 3) * 100).toFixed(2)); // 366.67
+  // Forbrugsbaseret CO2 (kommunespecifik) - Osei-Owusu et al. (2020) nutidsjusteret med ENS GA25
+  // Grænse: 3 ton CO2e/cap/år (Paris-budget). Ratio = (estimat / 3) * 100
+  // Fallback til nationalt gennemsnit (11 ton) hvis kommunen ikke findes i CSV.
+  const { ratioByName: cbaRatioByName, rawByName: cbaRawByName } = loadCbaCsv();
+  const CONSUMPTION_CO2_RATIO_FALLBACK = parseFloat(((11 / 3) * 100).toFixed(2)); // 366.67
 
   // Load democracy data
   const democracyData = loadEcoCsv("democracy_scores.csv", "voter_turnout_ratio");
@@ -279,8 +311,14 @@ export function loadData(): KommuneData[] {
         eco_ratios[dim.id] = ecoSources[dim.id]?.[kode] ?? null;
       }
     }
-    // Forbrugsbaseret CO2 er ens for alle kommuner (nationalt gennemsnit)
-    eco_ratios["forbrug_co2"] = CONSUMPTION_CO2_RATIO;
+    // Forbrugsbaseret CO2 - kommunespecifikt fra cba_2023_estimate.csv (Osei-Owusu + ENS skalering)
+    // Fallback til nationalt gennemsnit hvis kommunen ikke matcher
+    const kommuneNavn = row["kommune_navn"] || "";
+    const cbaRatio = cbaRatioByName[kommuneNavn];
+    eco_ratios["forbrug_co2"] = cbaRatio !== undefined ? cbaRatio : CONSUMPTION_CO2_RATIO_FALLBACK;
+    if (cbaRawByName[kommuneNavn] !== undefined) {
+      rawValues["forbrug_co2"] = cbaRawByName[kommuneNavn];
+    }
 
     // Multi-indicator eco dimensions (gennemsnit af flere indikatorer)
     // VIGTIGT: næringsstoffer, vand og forurening bruger ratio_inverse i CSV:
