@@ -8,10 +8,16 @@ export const metadata: Metadata = {
 
 /* ─── Method metadata per dimension ─── */
 
+interface MethodSource {
+  label: string;
+  url: string;
+}
+
 interface MethodInfo {
   id: string;
   scoring: string;         // how the score/ratio is calculated
   boundary?: string;       // what the planetary boundary / social floor is
+  boundarySources?: MethodSource[];  // clickable references for the boundary
   dataYear?: string;
   limitations?: string;
   csvFile?: string;
@@ -202,10 +208,18 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   forbrug_co2: {
     id: "forbrug_co2",
-    scoring: "Kommunespecifikt estimat for forbrugsbaseret CO2e pr. person (inkl. import). Ratio = (estimat / grænseværdi) * 100. Kilde: Osei-Owusu et al. (2020) kommunebaseline (2011) nutidsjusteret med ENS Global Afrapportering 2025 (ENS-til-ENS skalering, faktor 0,7186). Interval: 9,4-17,3 ton CO2e/person. Grænse: 3 ton. Se metodenote i /data/methodology_note.md.",
-    boundary: "3 ton CO2e pr. person pr. år (Paris-budget, forbrugsbaseret - inkluderer importerede udledninger).",
+    scoring: "Kommunespecifikt estimat for forbrugsbaseret CO2e pr. person (inkl. import). Ratio = (estimat / grænseværdi) * 100. Kilde: Osei-Owusu et al. (2020) kommunebaseline (2011) nutidsjusteret med ENS Global Afrapportering 2025 (ENS-til-ENS skalering, faktor 0,7186). Interval: 9,4-17,3 ton CO2e/person. Grænse: 3 ton.",
+    boundary: "3 ton CO2e/borger/år - et forskningsbaseret pejlemærke for forbrug foreneligt med Parisaftalens 1,5°C-mål. Ikke en officiel dansk eller EU-målsætning, men understøttet af tre uafhængige videnskabelige kilder: (1) Fanning et al. (2022) i Nature Sustainability analyserer 150 landes overshoot ift. per-capita planetære grænser og udgør det mest opdaterede grundlag for downscaled doughnut-modeller. (2) Hot or Cool Institute (2021) opstiller en tidstrappe: 2,5 ton (2030) - 1,4 ton (2040) - 0,7 ton (2050) baseret på IPCC's resterende kulstofbudget for 1,5°C. (3) Danske forskere (Tilsted, Bjørn, Lund m.fl.) anbefaler 3 ton i 2030 ud fra forsigtighedsprincippet og Danmarks historiske ansvar. Til sammenligning: den gennemsnitlige danskers forbrugsbaserede klimaaftryk er ca. 10 ton CO2e/år (ENS Global Afrapportering) - ca. 3 gange grænsen.",
+    boundarySources: [
+      { label: "Fanning et al. (2022), Nature Sustainability", url: "https://www.nature.com/articles/s41893-021-00799-z" },
+      { label: "O'Neill et al. (2018), Nature Sustainability", url: "https://doi.org/10.1038/s41893-018-0021-4" },
+      { label: "Good Life For All - interaktiv dataplatform (University of Leeds)", url: "https://goodlife.leeds.ac.uk/" },
+      { label: "Hot or Cool Institute (2021), 1.5-Degree Lifestyles", url: "https://hotorcool.org/1-5-degree-lifestyles-report/" },
+      { label: "Tilsted et al. - debatindlæg, Politiken (dec. 2023)", url: "https://samf.ku.dk/presse/kronikker-og-debat/2023/danmark-boer-indfoere-et-maal-for-vores-klimaaftryk-fra-forbrug" },
+      { label: "Energistyrelsen, Global Afrapportering", url: "https://ens.dk/" },
+    ],
     dataYear: "2023-estimat baseret på Osei-Owusu et al. 2020 + ENS GA 2025",
-    limitations: "Tier 1-estimat: alle kommuner skaleres med samme nationale faktor (ensartet -28,1%). Den relative rangorden fra 2011 er bevaret, men lokale ændringer (f.eks. udfasning af oliefyr, pendlingsmønster) er ikke indregnet. Hverken el- eller fjernvarmemix er opdateret kommunespecifikt. Usikkerhedsmargen ca. ±10%. Se metodenote for detaljer.",
+    limitations: "Tier 1-estimat: alle kommuner skaleres med samme nationale faktor (ensartet -28,1%). Den relative rangorden fra 2011 er bevaret, men lokale ændringer (f.eks. udfasning af oliefyr, pendlingsmønster) er ikke indregnet. Hverken el- eller fjernvarmemix er opdateret kommunespecifikt. Usikkerhedsmargen ca. ±10%.",
     csvFile: "cba_2023_estimate.csv (Osei-Owusu et al. 2020, DOI: 10.1016/j.ecolecon.2020.106778 + ENS Global Afrapportering 2025)",
   },
 };
@@ -378,6 +392,20 @@ export default function MetodePage() {
                       <div>
                         <p className="font-medium text-gray-800 mb-1">Grænseværdi</p>
                         <p className="text-gray-600">{method.boundary}</p>
+                        {method.boundarySources && method.boundarySources.length > 0 && (
+                          <div className="mt-2 space-y-1">
+                            <p className="text-xs font-medium text-gray-500">Kilder:</p>
+                            <ul className="list-none space-y-0.5">
+                              {method.boundarySources.map((src, idx) => (
+                                <li key={idx} className="text-xs">
+                                  <a href={src.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                                    {src.label} ↗
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                       </div>
                     )}
 
@@ -453,6 +481,20 @@ export default function MetodePage() {
                       <div>
                         <p className="font-medium text-gray-800 mb-1">Grænseværdi</p>
                         <p className="text-gray-600">{method.boundary}</p>
+                        {method.boundarySources && method.boundarySources.length > 0 && (
+                          <div className="mt-2 space-y-1">
+                            <p className="text-xs font-medium text-gray-500">Kilder:</p>
+                            <ul className="list-none space-y-0.5">
+                              {method.boundarySources.map((src, idx) => (
+                                <li key={idx} className="text-xs">
+                                  <a href={src.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                                    {src.label} ↗
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                       </div>
                     )}
 
