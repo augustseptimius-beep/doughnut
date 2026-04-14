@@ -288,16 +288,33 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                     {availableSubs.map((sub) => {
                       const raw = kommune.rawValues?.[sub.rawKey] ?? null;
                       const cmpRaw = compare?.rawValues?.[sub.rawKey] ?? null;
+                      const subRatio = sub.ratioKey ? (kommune.rawValues?.[sub.ratioKey] ?? null) : null;
+                      const cmpSubRatio = sub.ratioKey && compare ? (compare.rawValues?.[sub.ratioKey] ?? null) : null;
                       if (raw === null) return null;
-                      // Beregn sub-ratio til visning af score-bar (grænse hvis findes som tal)
-                      // Vi har ikke individuelle ratios for sub-indikatorer her, så brug
-                      // dimensionens overordnede score som proxy-bar - eller lad være.
                       return (
                         <div key={sub.rawKey} className="px-3 py-2.5 border-b border-gray-100 last:border-b-0">
                           <div className="flex items-center justify-between">
                             <span className="text-sm text-gray-700">{sub.label}</span>
+                            {subRatio !== null && (
+                              <div className="flex items-center gap-2 ml-2 shrink-0">
+                                <span className={`text-sm font-medium ${ecoScoreColor(subRatio)}`}>
+                                  {subRatio.toFixed(1)}
+                                </span>
+                                {compare && cmpSubRatio !== null && (
+                                  <span className={`text-xs ${ecoScoreColor(cmpSubRatio)}`}>({cmpSubRatio.toFixed(1)})</span>
+                                )}
+                              </div>
+                            )}
                           </div>
-                          {/* Råværdi-chip */}
+                          {/* Sub-bar (samme stil som sociale) */}
+                          {subRatio !== null && (
+                            <div className="mt-1 h-1.5 bg-gray-100 rounded-full overflow-hidden relative">
+                              <div className="absolute top-0 bottom-0 w-px bg-gray-300" style={{ left: "50%" }} />
+                              <div className={`h-full rounded-full ${ecoBarColor(subRatio)} transition-all`}
+                                style={{ width: `${Math.min((subRatio || 0) / 200, 1) * 100}%` }} />
+                            </div>
+                          )}
+                          {/* Råværdi-chip + landsgennemsnit/grænse */}
                           <div className="mt-1.5 flex items-center gap-2 flex-wrap">
                             <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-gray-100 rounded text-[11px] text-gray-600 font-medium">
                               <span className="text-gray-400">Kommune:</span>
@@ -315,16 +332,12 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                             </span>
                           </div>
                           <div className="mt-1.5 flex items-center justify-between text-xs text-gray-500">
-                            <div className="flex items-center gap-2 flex-wrap">
-                              <span>{sub.lowerIsBetter ? "Lavere er bedre" : "Højere er bedre"}</span>
-                            </div>
-                            <div className="flex items-center gap-2 shrink-0">
-                              {dim.source && (
-                                <a href={dim.source} target="_blank" rel="noopener" className="text-blue-600 hover:underline">
-                                  {dim.sourceLabel ?? "Kilde"} ↗
-                                </a>
-                              )}
-                            </div>
+                            <span>{sub.lowerIsBetter ? "Lavere er bedre" : "Højere er bedre"}</span>
+                            {dim.source && (
+                              <a href={dim.source} target="_blank" rel="noopener" className="text-blue-600 hover:underline">
+                                {dim.sourceLabel ?? "Kilde"} ↗
+                              </a>
+                            )}
                           </div>
                         </div>
                       );

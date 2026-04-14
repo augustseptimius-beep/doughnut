@@ -451,7 +451,8 @@ export interface EcologicalDimension {
   boundary?: string; // Description of the planetary boundary
   // Sub-indikatorer til visning i ScoreBars (rawValues-nøgle + label + enhed)
   subIndicators?: {
-    rawKey: string;       // nøgle i kommune.rawValues
+    rawKey: string;       // nøgle i kommune.rawValues for råværdi (µg/m³, %, kg, ...)
+    ratioKey?: string;    // nøgle i kommune.rawValues for sub-ratio (0-200) til at tegne bar
     label: string;        // visningsnavn
     unit: string;         // enhed
     boundary?: string;    // grænseværdi for denne sub-indikator
@@ -470,7 +471,7 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     unit: "ton CO₂e/person",
     boundary: "3 ton CO₂e/person/år (Paris-budget, territorial)",
     subIndicators: [
-      { rawKey: "eco_klima_raw", label: "Territoriale udledninger", unit: "ton CO₂e/person", boundary: "Mål: 3 ton CO₂e/person/år", lowerIsBetter: true },
+      { rawKey: "eco_klima_raw", ratioKey: "klimapaavirkning_self", label: "Territoriale udledninger", unit: "ton CO₂e/person", boundary: "Mål: 3 ton CO₂e/person/år", lowerIsBetter: true },
     ],
   },
   {
@@ -491,8 +492,8 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     source: "https://arld-extgeo.miljoeportal.dk/geoserver/wfs",
     sourceLabel: "Miljøportal WFS (DCE/AU)",
     subIndicators: [
-      { rawKey: "luftkvalitet_no2",  label: "NO₂ (kvælstofdioxid)",  unit: "µg/m³", boundary: "WHO 2021: 10 µg/m³", lowerIsBetter: true },
-      { rawKey: "luftkvalitet_pm25", label: "PM2.5 (fine partikler)", unit: "µg/m³", boundary: "WHO 2021: 5 µg/m³",  lowerIsBetter: true },
+      { rawKey: "luftkvalitet_no2",  ratioKey: "luftkvalitet_no2_ratio",  label: "NO₂ (kvælstofdioxid)",  unit: "µg/m³", boundary: "WHO 2021: 10 µg/m³", lowerIsBetter: true },
+      { rawKey: "luftkvalitet_pm25", ratioKey: "luftkvalitet_pm25_ratio", label: "PM2.5 (fine partikler)", unit: "µg/m³", boundary: "WHO 2021: 5 µg/m³",  lowerIsBetter: true },
     ],
   },
   {
@@ -505,8 +506,8 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     unit: "% genanvendt + kg affald/person",
     boundary: "65% genanvendelse (EU 2035) + lavest muligt affald pr. capita",
     subIndicators: [
-      { rawKey: "eco_cirkularitet_raw", label: "Genanvendelsesprocent", unit: "%", boundary: "Mål: 65% (EU Affaldsdirektiv 2035)", lowerIsBetter: false },
-      { rawKey: "eco_affald_raw",       label: "Affald pr. person",    unit: "kg/person", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
+      { rawKey: "eco_cirkularitet_raw", ratioKey: "eco_cirkularitet_ratio", label: "Genanvendelsesprocent", unit: "%", boundary: "Mål: 65% (EU Affaldsdirektiv 2035)", lowerIsBetter: false },
+      { rawKey: "eco_affald_raw",       ratioKey: "eco_affald_ratio",       label: "Affald pr. person",    unit: "kg/person", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
     ],
   },
   {
@@ -519,8 +520,8 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     unit: "ton N/P pr. 1.000 indb. + kg N/ha loft (VP3)",
     boundary: "Landsgennemsnittet som reference - lavere belastning og strengere N-loft er bedre for vandmiljøet",
     subIndicators: [
-      { rawKey: "eco_naer_n_raw", label: "Kvælstofudledning (spildevand)", unit: "ton N/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
-      { rawKey: "eco_naer_p_raw", label: "Fosforudledning (spildevand)",   unit: "ton P/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
+      { rawKey: "eco_naer_n_raw", ratioKey: "eco_naer_n_ratio", label: "Kvælstofudledning (spildevand)", unit: "ton N/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
+      { rawKey: "eco_naer_p_raw", ratioKey: "eco_naer_p_ratio", label: "Fosforudledning (spildevand)",   unit: "ton P/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
     ],
   },
   {
@@ -533,8 +534,8 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     unit: "m³ spildevand + mio. m³ indvinding pr. 1.000 indb.",
     boundary: "Landsgennemsnittet som reference - lavere pres er bedre",
     subIndicators: [
-      { rawKey: "eco_vand_ww_raw",   label: "Spildevand pr. 1.000 indb.",   unit: "m³/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
-      { rawKey: "eco_vand_extr_raw", label: "Vandindvinding pr. 1.000 indb.", unit: "mio. m³/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
+      { rawKey: "eco_vand_ww_raw",   ratioKey: "eco_vand_ww_ratio",   label: "Spildevand pr. 1.000 indb.",     unit: "m³/1.000 indb.",      boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
+      { rawKey: "eco_vand_extr_raw", ratioKey: "eco_vand_extr_ratio", label: "Vandindvinding pr. 1.000 indb.", unit: "mio. m³/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
     ],
   },
   {
@@ -547,7 +548,7 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     unit: "% naturområder",
     boundary: "30% naturområder (EU Biodiversitetsstrategi 2030)",
     subIndicators: [
-      { rawKey: "eco_areal_raw", label: "Andel naturområder", unit: "%", boundary: "Mål: 30% (EU Biodiversitetsstrategi 2030)", lowerIsBetter: false },
+      { rawKey: "eco_areal_raw", ratioKey: "arealanvendelse_self", label: "Andel naturområder", unit: "%", boundary: "Mål: 30% (EU Biodiversitetsstrategi 2030)", lowerIsBetter: false },
     ],
   },
   {
@@ -560,7 +561,7 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     unit: "% areal med bioscore ≥ 8",
     boundary: "30% af kommunens areal med væsentlige naturværdier (30x30-målet)",
     subIndicators: [
-      { rawKey: "eco_bio_raw", label: "Areal med væsentlige naturværdier (bioscore ≥ 8)", unit: "%", boundary: "Mål: 30% (30x30-målet)", lowerIsBetter: false },
+      { rawKey: "eco_bio_raw", ratioKey: "biodiversitet_self", label: "Areal med væsentlige naturværdier (bioscore ≥ 8)", unit: "%", boundary: "Mål: 30% (30x30-målet)", lowerIsBetter: false },
     ],
   },
   {
@@ -573,7 +574,7 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     unit: "ton CO₂e/person",
     boundary: "3 ton CO₂e/person/år (Paris-budget, forbrugsbaseret)",
     subIndicators: [
-      { rawKey: "forbrug_co2", label: "Forbrugsbaseret CO₂ (estimat 2023)", unit: "ton CO₂e/person", boundary: "Mål: 3 ton CO₂e/person/år", lowerIsBetter: true },
+      { rawKey: "forbrug_co2", ratioKey: "forbrug_co2_self", label: "Forbrugsbaseret CO₂ (estimat 2023)", unit: "ton CO₂e/person", boundary: "Mål: 3 ton CO₂e/person/år", lowerIsBetter: true },
     ],
   },
 ];

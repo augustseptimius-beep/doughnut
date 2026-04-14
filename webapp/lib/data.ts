@@ -335,6 +335,9 @@ export function loadData(): KommuneData[] {
     if (recyclingPctData[kode] != null)     rawValues["eco_cirkularitet_raw"]  = recyclingPctData[kode]!;
     if (wasteRawData[kode] != null)         rawValues["eco_affald_raw"]        = wasteRawData[kode]!;
 
+    // Sub-ratios for single-indikator eco-dims (= dim-ratio)
+    // Sættes EFTER eco_ratios udfyldes nedenfor
+
     // Forbrugsbaseret CO2 - kommunespecifikt fra cba_2023_estimate.csv (Osei-Owusu + ENS skalering)
     // Fallback til nationalt gennemsnit hvis kommunen ikke matcher
     const kommuneNavn = row["kommune_navn"] || "";
@@ -356,39 +359,40 @@ export function loadData(): KommuneData[] {
       return parseFloat((10000 / inverted).toFixed(2));
     }
 
-    // Næringsstoffer: tre indikatorer averaged
-    // (1) Kvælstof-udledning via spildevand pr. capita (inverteret ratio → direkte eco-ratio)
-    // (2) Fosfor-udledning via spildevand pr. capita (inverteret ratio → direkte eco-ratio)
-    // (3) Landbrugs-N loft pr. ha (VP3 malbelas_n) - allerede i eco-konvention
+    // Multi-indikator eco-dimensioner: brug WORST-OF (max ratio) - planetary boundary-logik:
+    // Hvis bare én sub-grænse er overskredet, er dimensionen overskredet. Et gennemsnit
+    // ville skjule overskridelser bag bedre indikatorer.
+    function worstOf(vals: (number | null)[]): number | null {
+      const filtered = vals.filter((v): v is number => v !== null);
+      return filtered.length > 0 ? parseFloat(Math.max(...filtered).toFixed(2)) : null;
+    }
+
+    // Næringsstoffer: kvælstof + fosfor + landbrugs-N loft
     const naerN = invertToDirectRatio(naerNitrogen[kode] ?? null);
     const naerP = invertToDirectRatio(naerPhosphorus[kode] ?? null);
     const naerLandbrug = nLandbrug[kode] ?? null;
-    const naerVals = [naerN, naerP, naerLandbrug].filter((v): v is number => v !== null);
-    eco_ratios["naeringsstoffer"] = naerVals.length > 0
-      ? parseFloat((naerVals.reduce((a, b) => a + b, 0) / naerVals.length).toFixed(2))
-      : null;
+    eco_ratios["naeringsstoffer"] = worstOf([naerN, naerP, naerLandbrug]);
+    if (naerN !== null)         rawValues["eco_naer_n_ratio"]        = naerN;
+    if (naerP !== null)         rawValues["eco_naer_p_ratio"]        = naerP;
+    if (naerLandbrug !== null)  rawValues["eco_naer_landbrug_ratio"] = naerLandbrug;
 
     // Vand: spildevand + vandindvinding pr. capita
     const vandWW = invertToDirectRatio(vandWastewater[kode] ?? null);
     const vandEx = invertToDirectRatio(vandExtraction[kode] ?? null);
-    const vandVals = [vandWW, vandEx].filter((v): v is number => v !== null);
-    eco_ratios["vand"] = vandVals.length > 0
-      ? parseFloat((vandVals.reduce((a, b) => a + b, 0) / vandVals.length).toFixed(2))
-      : null;
+    eco_ratios["vand"] = worstOf([vandWW, vandEx]);
+    if (vandWW !== null) rawValues["eco_vand_ww_ratio"]   = vandWW;
+    if (vandEx !== null) rawValues["eco_vand_extr_ratio"] = vandEx;
 
-    // Cirkularitet: genanvendelse + affald pr. capita (begge eco-konvention: >100 = overshoot)
-    // Genanvendelse: eco ratio = (65% EU-mål / faktisk %) × 100. Over 100 = genanvender for lidt.
-    // Affald: waste_ratio er inverteret i CSV → konverteres til direkte eco-ratio via invertToDirectRatio.
+    // Cirkularitet: genanvendelse + affald pr. capita
     const recyclingPct = recyclingPctData[kode] ?? null;
     const recyclingEco = recyclingPct !== null && recyclingPct > 0
       ? parseFloat(((65 / recyclingPct) * 100).toFixed(2))
       : null;
     const wasteInverted = wasteData[kode] ?? null;
     const wasteDirect = invertToDirectRatio(wasteInverted);
-    const cirkVals = [recyclingEco, wasteDirect].filter((v): v is number => v !== null);
-    eco_ratios["cirkularitet"] = cirkVals.length > 0
-      ? parseFloat((cirkVals.reduce((a, b) => a + b, 0) / cirkVals.length).toFixed(2))
-      : null;
+    eco_ratios["cirkularitet"] = worstOf([recyclingEco, wasteDirect]);
+    if (recyclingEco !== null) rawValues["eco_cirkularitet_ratio"] = recyclingEco;
+    if (wasteDirect !== null)  rawValues["eco_affald_ratio"]       = wasteDirect;
 
     // Forurening (novel entities): ingen pålidelig kommunal datakilde endnu
     eco_ratios["forurening"] = null;
@@ -398,15 +402,20 @@ export function loadData(): KommuneData[] {
     // WHO 2021: NO2 = 10 µg/m³, PM2.5 = 5 µg/m³ (årsgennemsnit)
     const luftNo2 = luftNo2Data[kode] ?? null;
     const luftPm25 = luftPm25Data[kode] ?? null;
-    const luftVals = [luftNo2, luftPm25].filter((v): v is number => v !== null);
-    eco_ratios["luftkvalitet"] = luftVals.length > 0
-      ? parseFloat((luftVals.reduce((a, b) => a + b, 0) / luftVals.length).toFixed(2))
-      : null;
+    eco_ratios["luftkvalitet"] = worstOf([luftNo2, luftPm25]);
+    if (luftNo2 !== null)  rawValues["luftkvalitet_no2_ratio"]  = luftNo2;
+    if (luftPm25 !== null) rawValues["luftkvalitet_pm25_ratio"] = luftPm25;
     // Gem µg/m³ råværdier (ikke ratio) til sub-indikator visning
     const luftNo2Raw  = luftNo2RawData[kode]  ?? null;
     const luftPm25Raw = luftPm25RawData[kode] ?? null;
     if (luftNo2Raw  !== null) rawValues["luftkvalitet_no2"]  = luftNo2Raw;
     if (luftPm25Raw !== null) rawValues["luftkvalitet_pm25"] = luftPm25Raw;
+
+    // Sub-ratios for single-indikator dims = dim-ratio (så sub-bar matcher hovedbar)
+    if (eco_ratios["klimapaavirkning"] != null) rawValues["klimapaavirkning_self"] = eco_ratios["klimapaavirkning"]!;
+    if (eco_ratios["arealanvendelse"]  != null) rawValues["arealanvendelse_self"]  = eco_ratios["arealanvendelse"]!;
+    if (eco_ratios["biodiversitet"]    != null) rawValues["biodiversitet_self"]    = eco_ratios["biodiversitet"]!;
+    if (eco_ratios["forbrug_co2"]      != null) rawValues["forbrug_co2_self"]      = eco_ratios["forbrug_co2"]!;
 
     const socialAvg = row["social_avg"];
     const overallAvg = row["overall_avg"];
