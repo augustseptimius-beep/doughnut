@@ -115,39 +115,41 @@ def fetch_kommune(kode: int, navn: str, year: int, debug: bool = False) -> Optio
 def _extract_co2_per_capita(data) -> Optional[float]:
     """
     Trækker 'Samlet CO2-udledning, Ton CO2e/indb.' ud af API-svaret.
-    Håndterer liste- og dict-strukturer.
+    API'et returnerer to identiske rækker (sektor=Samlet, enhed=Ton CO2e/indb.):
+      - Den lille (~3.7 ton): uden landbrug
+      - Den store (~11.1 ton): inkl. landbrug - DETTE er hvad klimaregnskabet.dk viser
+    Vi tager den STØRSTE af de to for at matche klimaregnskabet.dk's frontside.
     """
+    items = []
     if isinstance(data, list):
-        for item in data:
-            val = _match_co2_per_capita(item)
-            if val is not None:
-                return val
+        items = data
     elif isinstance(data, dict):
-        val = _match_co2_per_capita(data)
-        if val is not None:
-            return val
         for key in ("data", "results", "items", "records"):
             if key in data and isinstance(data[key], list):
-                for item in data[key]:
-                    val = _match_co2_per_capita(item)
-                    if val is not None:
-                        return val
-    return None
+                items = data[key]
+                break
+
+    candidates = []
+    for item in items:
+        val = _match_co2_per_capita(item)
+        if val is not None:
+            candidates.append(val)
+
+    return max(candidates) if candidates else None
 
 
 def _match_co2_per_capita(item: dict) -> Optional[float]:
     """
-    Matcher én record mod Nøgletal / Samlet / CO2 / Ton CO2e/indb.
+    Matcher én record mod sektor=Samlet, type=Samlet CO2-udledning, enhed=Ton CO2e/indb.
     """
     if not isinstance(item, dict):
         return None
 
-    sektor = str(item.get("sektor") or item.get("Sektor") or item.get("sector") or "").lower().strip()
-    type_felt = str(item.get("type") or item.get("Type") or "").lower().strip()
-    enhed = str(item.get("enhed") or item.get("Enhed") or item.get("unit") or "").lower().strip()
-    vaerdi = item.get("værdi") or item.get("vaerdi") or item.get("value") or item.get("Value")
+    sektor = str(item.get("sektor") or "").lower().strip()
+    type_felt = str(item.get("type") or "").lower().strip()
+    enhed = str(item.get("enhed") or "").lower().strip()
+    vaerdi = item.get("værdi") or item.get("vaerdi") or item.get("value")
 
-    # Præcis match: sektor="Samlet", type="Samlet CO2-udledning", enhed="Ton CO2e/indb."
     if (sektor == "samlet" and
             "co2-udledning" in type_felt and
             "indb" in enhed and
