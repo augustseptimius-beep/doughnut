@@ -215,97 +215,121 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
             const score = kommune.eco_ratios[dim.id] ?? null;
             const cmpScore = compare ? (compare.eco_ratios[dim.id] ?? null) : null;
             const hasData = score !== null;
+            const isExpanded = expanded === dim.id;
             const subs = dim.subIndicators ?? [];
-            const subCount = subs.filter(s => (kommune.rawValues?.[s.rawKey] ?? null) !== null).length;
+            const availableSubs = subs.filter(s => (kommune.rawValues?.[s.rawKey] ?? null) !== null);
+            const subCount = availableSubs.length;
+
+            const formatRaw = (val: number, unit: string) => {
+              const num = val % 1 === 0 ? val.toFixed(0) : val.toFixed(2);
+              return unit === "%" ? `${num}%` : `${num} ${unit}`;
+            };
 
             return (
-              <div key={dim.id} className="border border-gray-200 rounded-lg px-3 py-2.5">
-                {/* Header */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold text-gray-900">{dim.name}</span>
-                    {!hasData && <span className="text-xs text-gray-400">afventer data</span>}
-                    {hasData && subCount > 0 && (
-                      <span className="text-xs text-gray-400">{subCount} indikator{subCount !== 1 ? "er" : ""}</span>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className={`text-sm font-semibold ${ecoScoreColor(score)}`}>
-                      {hasData ? score!.toFixed(1) : "–"}
-                    </span>
-                    {compare && cmpScore !== null && (
-                      <span className={`text-xs ${ecoScoreColor(cmpScore)}`}>({cmpScore.toFixed(1)})</span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Hovedbar */}
-                {hasData && (
-                  <div className="mt-1.5">
-                    <div className="h-2 bg-gray-100 rounded-full overflow-hidden relative">
-                      <div className="absolute top-0 bottom-0 w-px bg-gray-500" style={{ left: "50%" }} />
-                      <div className={`h-full rounded-full ${ecoBarColor(score)} transition-all`}
-                        style={{ width: `${Math.min((score || 0) / 200, 1) * 100}%` }} />
+              <div key={dim.id} className="border border-gray-200 rounded-lg overflow-hidden">
+                <button
+                  onClick={() => setExpanded(isExpanded ? null : dim.id)}
+                  disabled={subCount === 0}
+                  className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-gray-50 transition-colors text-left disabled:cursor-default disabled:hover:bg-transparent"
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-semibold text-gray-900 truncate">
+                          {dim.name}
+                        </span>
+                        <span className="text-xs text-gray-400">
+                          {hasData
+                            ? `${subCount} indikator${subCount !== 1 ? "er" : ""}`
+                            : "afventer data"}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 ml-2 shrink-0">
+                        <span className={`text-sm font-semibold ${hasData ? ecoScoreColor(score) : "text-gray-400"}`}>
+                          {hasData && score !== null ? score.toFixed(1) : "–"}
+                        </span>
+                        {compare && cmpScore !== null && (
+                          <span className={`text-xs ${ecoScoreColor(cmpScore)}`}>
+                            ({cmpScore.toFixed(1)})
+                          </span>
+                        )}
+                      </div>
                     </div>
-                    {compare && cmpScore !== null && (
-                      <div className="mt-1">
-                        <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden relative">
-                          <div className="absolute top-0 bottom-0 w-px bg-gray-500" style={{ left: "50%" }} />
-                          <div className={`h-full rounded-full ${ecoBarColor(cmpScore)} opacity-60 transition-all`}
-                            style={{ width: `${Math.min((cmpScore || 0) / 200, 1) * 100}%` }} />
+                    {hasData && (
+                      <div className="mt-1.5">
+                        <div className="h-2 bg-gray-100 rounded-full overflow-hidden relative">
+                          <div className="absolute top-0 bottom-0 w-px bg-gray-400" style={{ left: "50%" }} />
+                          <div className={`h-full rounded-full ${ecoBarColor(score)} transition-all`}
+                            style={{ width: `${Math.min((score || 0) / 200, 1) * 100}%` }} />
                         </div>
+                        {compare && cmpScore !== null && (
+                          <div className="mt-1">
+                            <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden relative">
+                              <div className="absolute top-0 bottom-0 w-px bg-gray-400" style={{ left: "50%" }} />
+                              <div className={`h-full rounded-full ${ecoBarColor(cmpScore)} opacity-60 transition-all`}
+                                style={{ width: `${Math.min((cmpScore || 0) / 200, 1) * 100}%` }} />
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
+                    {!hasData && <div className="mt-1.5 h-2 bg-gray-100 rounded-full" />}
                   </div>
-                )}
-                {!hasData && <div className="mt-1.5 h-2 bg-gray-100 rounded-full" />}
+                  {subCount > 0 && (
+                    <svg className={`w-4 h-4 text-gray-400 transition-transform shrink-0 ${isExpanded ? "rotate-180" : ""}`}
+                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  )}
+                </button>
 
-                {/* Sub-indikatorer */}
-                {hasData && subs.length > 0 && (
-                  <div className="mt-2 pt-2 border-t border-gray-100 space-y-2.5">
-                    {subs.map((sub) => {
+                {isExpanded && availableSubs.length > 0 && (
+                  <div className="border-t border-gray-100 bg-gray-50">
+                    {availableSubs.map((sub) => {
                       const raw = kommune.rawValues?.[sub.rawKey] ?? null;
                       const cmpRaw = compare?.rawValues?.[sub.rawKey] ?? null;
                       if (raw === null) return null;
+                      // Beregn sub-ratio til visning af score-bar (grænse hvis findes som tal)
+                      // Vi har ikke individuelle ratios for sub-indikatorer her, så brug
+                      // dimensionens overordnede score som proxy-bar - eller lad være.
                       return (
-                        <div key={sub.rawKey}>
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="text-[11px] text-gray-700 font-medium">{sub.label}</span>
-                            <div className="flex items-center gap-1.5 shrink-0 ml-2">
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gray-100 rounded text-[11px] text-gray-600 font-medium">
-                                <span className="text-gray-400">Kommune:</span>
-                                {raw.toFixed(2)} {sub.unit}
-                                {compare && cmpRaw !== null && (
-                                  <span className="text-gray-400 font-normal"> vs. {cmpRaw.toFixed(2)}</span>
-                                )}
-                              </span>
-                            </div>
+                        <div key={sub.rawKey} className="px-3 py-2.5 border-b border-gray-100 last:border-b-0">
+                          <div className="flex items-center justify-between">
+                            <span className="text-sm text-gray-700">{sub.label}</span>
                           </div>
-                          <div className="mt-1 flex items-center justify-between text-xs text-gray-500">
-                            <div className="flex items-center gap-2 flex-wrap">
-                              <span>{sub.lowerIsBetter ? "Lavere er bedre" : "Højere er bedre"}</span>
+                          {/* Råværdi-chip */}
+                          <div className="mt-1.5 flex items-center gap-2 flex-wrap">
+                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-gray-100 rounded text-[11px] text-gray-600 font-medium">
+                              <span className="text-gray-400">Kommune:</span>
+                              {formatRaw(raw, sub.unit)}
+                              {compare && cmpRaw !== null && (
+                                <span className="text-gray-400 font-normal">
+                                  {" "}vs. {formatRaw(cmpRaw, sub.unit)}
+                                </span>
+                              )}
                               {sub.boundary && (
-                                <span className="px-1.5 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-medium">
+                                <span className="text-gray-400 font-normal before:content-['·'] before:mx-1">
                                   {sub.boundary}
                                 </span>
                               )}
+                            </span>
+                          </div>
+                          <div className="mt-1.5 flex items-center justify-between text-xs text-gray-500">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span>{sub.lowerIsBetter ? "Lavere er bedre" : "Højere er bedre"}</span>
                             </div>
-                            {dim.source && (
-                              <a href={dim.source} target="_blank" rel="noopener"
-                                className="text-blue-600 hover:underline text-[10px] shrink-0">
-                                {dim.sourceLabel ?? dim.source} ↗
-                              </a>
-                            )}
+                            <div className="flex items-center gap-2 shrink-0">
+                              {dim.source && (
+                                <a href={dim.source} target="_blank" rel="noopener" className="text-blue-600 hover:underline">
+                                  {dim.sourceLabel ?? "Kilde"} ↗
+                                </a>
+                              )}
+                            </div>
                           </div>
                         </div>
                       );
                     })}
                   </div>
-                )}
-
-                {/* Grænse-tekst (kun hvis ingen sub-indikatorer) */}
-                {hasData && subs.length === 0 && dim.boundary && (
-                  <p className="text-xs text-gray-400 mt-1">Grænse: {dim.boundary}</p>
                 )}
               </div>
             );
