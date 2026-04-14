@@ -101,22 +101,28 @@ export function loadData(): KommuneData[] {
 
   // Load ecological data
   const climateData = loadEcoCsv("climate_scores.csv", "climate_territorial_ratio");
+  const climateRawData = loadEcoCsv("climate_scores.csv", "co2e_per_capita");
   // Load raw recycling percentage (not the old social-convention ratio)
   const recyclingPctData = loadEcoCsv("consumption_scores.csv", "recycling_pct");
   const landUseData = loadEcoCsv("land_use_scores.csv", "land_use_ratio");
+  const landUseRawData = loadEcoCsv("land_use_scores.csv", "natur_pct");
   const biodiversitetData = loadEcoCsv("biodiversitet_scores.csv", "biodiversitet_ratio");
+  const biodiversitetRawData = loadEcoCsv("biodiversitet_scores.csv", "pct_vasentlig_natur");
 
   // New ecological data (Næringsstoffer, Vand)
   const naerNitrogen = loadEcoCsv("naeringsstoffer_scores.csv", "nitrogen_ratio");
   const naerPhosphorus = loadEcoCsv("naeringsstoffer_scores.csv", "phosphorus_ratio");
+  const naerNitrogenRaw = loadEcoCsv("naeringsstoffer_scores.csv", "nitrogen_per_1000");
+  const naerPhosphorusRaw = loadEcoCsv("naeringsstoffer_scores.csv", "phosphorus_per_1000");
   // Landbrugs-N: N-loft pr. ha landbrugsjord fra VP3 (Vandområdeplan 3, 2025)
-  // n_ratio > 100 = mere presset end landsgennemsnit (strengere loft pr. ha)
-  // Allerede i eco-konvention (>100 = overshoot ift. landsgennemsnit)
   const nLandbrug = loadEcoCsv("n_landbrug_scores.csv", "n_ratio");
   const vandWastewater = loadEcoCsv("vand_scores.csv", "wastewater_ratio");
   const vandExtraction = loadEcoCsv("vand_scores.csv", "water_extraction_ratio");
+  const vandWastewaterRaw = loadEcoCsv("vand_scores.csv", "wastewater_per_1000");
+  const vandExtractionRaw = loadEcoCsv("vand_scores.csv", "water_extraction_per_1000");
   // Affald flyttes til cirkularitet (waste_ratio er inverteret: lav score = mere affald)
   const wasteData = loadEcoCsv("forurening_scores.csv", "waste_ratio");
+  const wasteRawData = loadEcoCsv("forurening_scores.csv", "waste_kg_per_capita");
 
   // Luftkvalitet: NO2 og PM2.5 ratio fra DCE/AU UBM-model 2023 (WHO 2021-grænser)
   const luftNo2Data    = loadEcoCsv("luftforurening_scores.csv", "no2_ratio");
@@ -318,6 +324,17 @@ export function loadData(): KommuneData[] {
         eco_ratios[dim.id] = ecoSources[dim.id]?.[kode] ?? null;
       }
     }
+    // Eco råværdier til visning i ScoreBars
+    if (climateRawData[kode] != null)       rawValues["eco_klima_raw"]         = climateRawData[kode]!;
+    if (landUseRawData[kode] != null)       rawValues["eco_areal_raw"]         = landUseRawData[kode]!;
+    if (biodiversitetRawData[kode] != null) rawValues["eco_bio_raw"]           = biodiversitetRawData[kode]!;
+    if (naerNitrogenRaw[kode] != null)      rawValues["eco_naer_n_raw"]        = naerNitrogenRaw[kode]!;
+    if (naerPhosphorusRaw[kode] != null)    rawValues["eco_naer_p_raw"]        = naerPhosphorusRaw[kode]!;
+    if (vandWastewaterRaw[kode] != null)    rawValues["eco_vand_ww_raw"]       = vandWastewaterRaw[kode]!;
+    if (vandExtractionRaw[kode] != null)    rawValues["eco_vand_extr_raw"]     = vandExtractionRaw[kode]!;
+    if (recyclingPctData[kode] != null)     rawValues["eco_cirkularitet_raw"]  = recyclingPctData[kode]!;
+    if (wasteRawData[kode] != null)         rawValues["eco_affald_raw"]        = wasteRawData[kode]!;
+
     // Forbrugsbaseret CO2 - kommunespecifikt fra cba_2023_estimate.csv (Osei-Owusu + ENS skalering)
     // Fallback til nationalt gennemsnit hvis kommunen ikke matcher
     const kommuneNavn = row["kommune_navn"] || "";

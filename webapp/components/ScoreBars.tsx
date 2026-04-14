@@ -215,37 +215,18 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
             const score = kommune.eco_ratios[dim.id] ?? null;
             const cmpScore = compare ? (compare.eco_ratios[dim.id] ?? null) : null;
             const hasData = score !== null;
-
-            // Sub-indikatorer for luftkvalitet: NO2 og PM2.5 råværdier + ratio
-            const luftSubIndicators = dim.id === "luftkvalitet" ? [
-              {
-                label: "NO₂ (kvælstofdioxid)",
-                raw: kommune.rawValues?.["luftkvalitet_no2"] ?? null,
-                cmpRaw: compare?.rawValues?.["luftkvalitet_no2"] ?? null,
-                ratio: (kommune.rawValues?.["luftkvalitet_no2"] ?? null) !== null
-                  ? parseFloat(((kommune.rawValues!["luftkvalitet_no2"]! / 10) * 100).toFixed(1))
-                  : null,
-                boundary: "WHO 2021: 10 µg/m³",
-              },
-              {
-                label: "PM2.5 (fine partikler)",
-                raw: kommune.rawValues?.["luftkvalitet_pm25"] ?? null,
-                cmpRaw: compare?.rawValues?.["luftkvalitet_pm25"] ?? null,
-                ratio: (kommune.rawValues?.["luftkvalitet_pm25"] ?? null) !== null
-                  ? parseFloat(((kommune.rawValues!["luftkvalitet_pm25"]! / 5) * 100).toFixed(1))
-                  : null,
-                boundary: "WHO 2021: 5 µg/m³",
-              },
-            ] : [];
+            const subs = dim.subIndicators ?? [];
+            const subCount = subs.filter(s => (kommune.rawValues?.[s.rawKey] ?? null) !== null).length;
 
             return (
               <div key={dim.id} className="border border-gray-200 rounded-lg px-3 py-2.5">
+                {/* Header */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-gray-900">{dim.name}</span>
                     {!hasData && <span className="text-xs text-gray-400">afventer data</span>}
-                    {luftSubIndicators.length > 0 && hasData && (
-                      <span className="text-xs text-gray-400">2 indikatorer</span>
+                    {hasData && subCount > 0 && (
+                      <span className="text-xs text-gray-400">{subCount} indikator{subCount !== 1 ? "er" : ""}</span>
                     )}
                   </div>
                   <div className="flex items-center gap-2">
@@ -257,58 +238,75 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                     )}
                   </div>
                 </div>
+
+                {/* Hovedbar */}
                 {hasData && (
                   <div className="mt-1.5">
                     <div className="h-2 bg-gray-100 rounded-full overflow-hidden relative">
-                      {/* Grænsemarkering ved 100 */}
-                      <div className="absolute top-0 bottom-0 w-px bg-gray-500" style={{ left: `${(100 / 200) * 100}%` }} />
+                      <div className="absolute top-0 bottom-0 w-px bg-gray-500" style={{ left: "50%" }} />
                       <div className={`h-full rounded-full ${ecoBarColor(score)} transition-all`}
                         style={{ width: `${Math.min((score || 0) / 200, 1) * 100}%` }} />
                     </div>
                     {compare && cmpScore !== null && (
                       <div className="mt-1">
                         <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden relative">
-                          <div className="absolute top-0 bottom-0 w-px bg-gray-500" style={{ left: `${(100 / 200) * 100}%` }} />
+                          <div className="absolute top-0 bottom-0 w-px bg-gray-500" style={{ left: "50%" }} />
                           <div className={`h-full rounded-full ${ecoBarColor(cmpScore)} opacity-60 transition-all`}
                             style={{ width: `${Math.min((cmpScore || 0) / 200, 1) * 100}%` }} />
                         </div>
                       </div>
                     )}
-                    {dim.boundary && (
-                      <p className="text-xs text-gray-400 mt-1">Grænse: {dim.boundary}</p>
-                    )}
-                    {/* Sub-indikatorer for luftkvalitet */}
-                    {luftSubIndicators.length > 0 && (
-                      <div className="mt-2 pt-2 border-t border-gray-100 space-y-2">
-                        {luftSubIndicators.map((sub) => (
-                          <div key={sub.label}>
-                            <div className="flex items-center justify-between mb-1">
-                              <span className="text-[11px] text-gray-600 font-medium">{sub.label}</span>
-                              <div className="flex items-center gap-1.5">
-                                {sub.raw !== null && (
-                                  <span className="text-[11px] text-gray-500">{sub.raw.toFixed(2)} µg/m³</span>
-                                )}
-                                {compare && sub.cmpRaw !== null && (
-                                  <span className="text-[10px] text-gray-400">vs. {sub.cmpRaw.toFixed(2)}</span>
-                                )}
-                                <span className={`text-[11px] font-semibold ${ecoScoreColor(sub.ratio)}`}>
-                                  {sub.ratio !== null ? `${sub.ratio.toFixed(0)}%` : "–"}
-                                </span>
-                              </div>
-                            </div>
-                            <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden relative">
-                              <div className="absolute top-0 bottom-0 w-px bg-gray-400" style={{ left: `${(100 / 200) * 100}%` }} />
-                              <div className={`h-full rounded-full ${ecoBarColor(sub.ratio)} transition-all`}
-                                style={{ width: `${Math.min((sub.ratio || 0) / 200, 1) * 100}%` }} />
-                            </div>
-                            <p className="text-[10px] text-gray-400 mt-0.5">{sub.boundary}</p>
-                          </div>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 )}
                 {!hasData && <div className="mt-1.5 h-2 bg-gray-100 rounded-full" />}
+
+                {/* Sub-indikatorer */}
+                {hasData && subs.length > 0 && (
+                  <div className="mt-2 pt-2 border-t border-gray-100 space-y-2.5">
+                    {subs.map((sub) => {
+                      const raw = kommune.rawValues?.[sub.rawKey] ?? null;
+                      const cmpRaw = compare?.rawValues?.[sub.rawKey] ?? null;
+                      if (raw === null) return null;
+                      return (
+                        <div key={sub.rawKey}>
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="text-[11px] text-gray-700 font-medium">{sub.label}</span>
+                            <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gray-100 rounded text-[11px] text-gray-600 font-medium">
+                                <span className="text-gray-400">Kommune:</span>
+                                {raw.toFixed(2)} {sub.unit}
+                                {compare && cmpRaw !== null && (
+                                  <span className="text-gray-400 font-normal"> vs. {cmpRaw.toFixed(2)}</span>
+                                )}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="mt-1 flex items-center justify-between text-xs text-gray-500">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span>{sub.lowerIsBetter ? "Lavere er bedre" : "Højere er bedre"}</span>
+                              {sub.boundary && (
+                                <span className="px-1.5 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-medium">
+                                  {sub.boundary}
+                                </span>
+                              )}
+                            </div>
+                            {dim.source && (
+                              <a href={dim.source} target="_blank" rel="noopener"
+                                className="text-blue-600 hover:underline text-[10px] shrink-0">
+                                {dim.sourceLabel ?? dim.source} ↗
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* Grænse-tekst (kun hvis ingen sub-indikatorer) */}
+                {hasData && subs.length === 0 && dim.boundary && (
+                  <p className="text-xs text-gray-400 mt-1">Grænse: {dim.boundary}</p>
+                )}
               </div>
             );
           })}

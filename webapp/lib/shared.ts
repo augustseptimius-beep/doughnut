@@ -446,8 +446,17 @@ export interface EcologicalDimension {
   shortName: string; // Abbreviated label for SVG ring
   description?: string;
   source?: string;
+  sourceLabel?: string; // Short label for source link
   unit?: string;
   boundary?: string; // Description of the planetary boundary
+  // Sub-indikatorer til visning i ScoreBars (rawValues-nøgle + label + enhed)
+  subIndicators?: {
+    rawKey: string;       // nøgle i kommune.rawValues
+    label: string;        // visningsnavn
+    unit: string;         // enhed
+    boundary?: string;    // grænseværdi for denne sub-indikator
+    lowerIsBetter?: boolean; // true = lavere er bedre (inverteret)
+  }[];
 }
 
 export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
@@ -457,8 +466,12 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     shortName: "KLIMA",
     description: "Territoriale drivhusgasudledninger fra energi, transport, landbrug og industri inden for kommunens grænser.",
     source: "https://klimaregnskabet.dk",
+    sourceLabel: "Klimaregnskabet.dk",
     unit: "ton CO₂e/person",
     boundary: "3 ton CO₂e/person/år (Paris-budget, territorial)",
+    subIndicators: [
+      { rawKey: "eco_klima_raw", label: "Territoriale udledninger", unit: "ton CO₂e/person", boundary: "Mål: 3 ton CO₂e/person/år", lowerIsBetter: true },
+    ],
   },
   {
     id: "forurening",
@@ -476,42 +489,66 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     unit: "µg/m³ (årsgennemsnit, WHO 2021)",
     boundary: "WHO 2021: NO2 = 10 µg/m³, PM2.5 = 5 µg/m³",
     source: "https://arld-extgeo.miljoeportal.dk/geoserver/wfs",
+    sourceLabel: "Miljøportal WFS (DCE/AU)",
+    subIndicators: [
+      { rawKey: "luftkvalitet_no2",  label: "NO₂ (kvælstofdioxid)",  unit: "µg/m³", boundary: "WHO 2021: 10 µg/m³", lowerIsBetter: true },
+      { rawKey: "luftkvalitet_pm25", label: "PM2.5 (fine partikler)", unit: "µg/m³", boundary: "WHO 2021: 5 µg/m³",  lowerIsBetter: true },
+    ],
   },
   {
     id: "cirkularitet",
     name: "Cirkularitet (materialer)",
     shortName: "CIR",
     description: "Ressourceeffektivitet målt via genanvendelsesprocent og affaldsmængde pr. indbygger - lavt affald og høj genanvendelse indikerer en cirkulær økonomi.",
-    source: "https://statbank.dk/LABY25 + https://mst.dk",
+    source: "https://statbank.dk/LABY25",
+    sourceLabel: "DST LABY25 + MST",
     unit: "% genanvendt + kg affald/person",
     boundary: "65% genanvendelse (EU 2035) + lavest muligt affald pr. capita",
+    subIndicators: [
+      { rawKey: "eco_cirkularitet_raw", label: "Genanvendelsesprocent", unit: "%", boundary: "Mål: 65% (EU Affaldsdirektiv 2035)", lowerIsBetter: false },
+      { rawKey: "eco_affald_raw",       label: "Affald pr. person",    unit: "kg/person", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
+    ],
   },
   {
     id: "naeringsstoffer",
     name: "Næringsstoffer",
     shortName: "NÆR",
     description: "Kvælstof- og fosforbelastning af vandmiljøet fra to kilder: (1) spildevand (punktkilder) og (2) landbrugets N-loft pr. ha fra Vandområdeplan 3 - overgødskning der forårsager iltsvind og algeopblomstring.",
-    source: "https://statbank.dk/VANDUD + VP3 WFS (wfs2-miljoegis.mim.dk)",
+    source: "https://statbank.dk/VANDUD",
+    sourceLabel: "DST VANDUD + VP3",
     unit: "ton N/P pr. 1.000 indb. + kg N/ha loft (VP3)",
     boundary: "Landsgennemsnittet som reference - lavere belastning og strengere N-loft er bedre for vandmiljøet",
+    subIndicators: [
+      { rawKey: "eco_naer_n_raw", label: "Kvælstofudledning (spildevand)", unit: "ton N/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
+      { rawKey: "eco_naer_p_raw", label: "Fosforudledning (spildevand)",   unit: "ton P/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
+    ],
   },
   {
     id: "vand",
     name: "Vand",
     shortName: "VAND",
     description: "Pres på vandressourcer målt via spildevandsudledning og vandindvinding pr. indbygger - højere pres indikerer større belastning af vandmiljøet.",
-    source: "https://statbank.dk/VANDUD + https://statbank.dk/VANDIND",
+    source: "https://statbank.dk/VANDUD",
+    sourceLabel: "DST VANDUD + VANDIND",
     unit: "m³ spildevand + mio. m³ indvinding pr. 1.000 indb.",
     boundary: "Landsgennemsnittet som reference - lavere pres er bedre",
+    subIndicators: [
+      { rawKey: "eco_vand_ww_raw",   label: "Spildevand pr. 1.000 indb.",   unit: "m³/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
+      { rawKey: "eco_vand_extr_raw", label: "Vandindvinding pr. 1.000 indb.", unit: "mio. m³/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
+    ],
   },
   {
     id: "arealanvendelse",
     name: "Arealanvendelse",
     shortName: "AREAL",
     description: "Andel af kommunens areal der er natur, skov og grønne arealer - modvirker tab af levesteder og fremmer biodiversitet.",
-    source: "DST AREALDK2 + ARE207",
+    source: "https://statbank.dk/AREALDK2",
+    sourceLabel: "DST AREALDK2 + ARE207",
     unit: "% naturområder",
     boundary: "30% naturområder (EU Biodiversitetsstrategi 2030)",
+    subIndicators: [
+      { rawKey: "eco_areal_raw", label: "Andel naturområder", unit: "%", boundary: "Mål: 30% (EU Biodiversitetsstrategi 2030)", lowerIsBetter: false },
+    ],
   },
   {
     id: "biodiversitet",
@@ -519,8 +556,12 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     shortName: "BIO",
     description: "Tilstand og udvikling for lokale bestande af planter, dyr og insekter - indikatorer for naturkvalitet.",
     source: "https://arealdata.miljoeportal.dk",
+    sourceLabel: "Miljøportal Bioscore",
     unit: "% areal med bioscore ≥ 8",
     boundary: "30% af kommunens areal med væsentlige naturværdier (30x30-målet)",
+    subIndicators: [
+      { rawKey: "eco_bio_raw", label: "Areal med væsentlige naturværdier (bioscore ≥ 8)", unit: "%", boundary: "Mål: 30% (30x30-målet)", lowerIsBetter: false },
+    ],
   },
   {
     id: "forbrug_co2",
@@ -528,8 +569,12 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     shortName: "FORBRUG",
     description: "Kommunens forbrugsbaserede klimaaftryk - udledninger der sker uden for kommunens grænser som følge af borgernes forbrug.",
     source: "https://concito.dk",
+    sourceLabel: "Osei-Owusu et al. + ENS GA25",
     unit: "ton CO₂e/person",
     boundary: "3 ton CO₂e/person/år (Paris-budget, forbrugsbaseret)",
+    subIndicators: [
+      { rawKey: "forbrug_co2", label: "Forbrugsbaseret CO₂ (estimat 2023)", unit: "ton CO₂e/person", boundary: "Mål: 3 ton CO₂e/person/år", lowerIsBetter: true },
+    ],
   },
 ];
 
