@@ -186,7 +186,7 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                             </div>
                             <div className="flex items-center gap-2 shrink-0">
                               <span className="text-gray-400 text-[10px]">Data: {ind.dataYear ?? DOUGHNUT_DEFAULT_DATA_YEAR}</span>
-                              <a href={ind.source} target="_blank" rel="noopener" className="text-blue-600 hover:underline">
+                              <a href={`/metode#${cat.categoryId}`} className="text-blue-600 hover:underline">
                                 {ind.table} ↗
                               </a>
                             </div>
@@ -333,11 +333,9 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                           </div>
                           <div className="mt-1.5 flex items-center justify-between text-xs text-gray-500">
                             <span>{sub.lowerIsBetter ? "Lavere er bedre" : "Højere er bedre"}</span>
-                            {dim.source && (
-                              <a href={dim.source} target="_blank" rel="noopener" className="text-blue-600 hover:underline">
-                                {dim.sourceLabel ?? "Kilde"} ↗
-                              </a>
-                            )}
+                            <a href={`/metode#${dim.id}`} className="text-blue-600 hover:underline">
+                              Se metode ↗
+                            </a>
                           </div>
                         </div>
                       );
