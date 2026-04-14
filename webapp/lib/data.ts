@@ -118,6 +118,10 @@ export function loadData(): KommuneData[] {
   // Affald flyttes til cirkularitet (waste_ratio er inverteret: lav score = mere affald)
   const wasteData = loadEcoCsv("forurening_scores.csv", "waste_ratio");
 
+  // Luftkvalitet: NO2 og PM2.5 ratio fra DCE/AU UBM-model 2023 (WHO 2021-grænser)
+  const luftNo2Data  = loadEcoCsv("luftforurening_scores.csv", "no2_ratio");
+  const luftPm25Data = loadEcoCsv("luftforurening_scores.csv", "pm25_ratio");
+
   // Forbrugsbaseret CO2 (kommunespecifik) - Osei-Owusu et al. (2020) nutidsjusteret med ENS GA25
   // Grænse: 3 ton CO2e/cap/år (Paris-budget). Ratio = (estimat / 3) * 100
   // Fallback til nationalt gennemsnit (11 ton) hvis kommunen ikke findes i CSV.
@@ -368,6 +372,18 @@ export function loadData(): KommuneData[] {
 
     // Forurening (novel entities): ingen pålidelig kommunal datakilde endnu
     eco_ratios["forurening"] = null;
+
+    // Luftkvalitet: NO2 + PM2.5 fra DCE/AU UBM-model 2023 via Miljøportal WFS
+    // Ratio = (koncentration / WHO 2021-grænse) × 100. Over 100 = over WHO-grænsen.
+    // WHO 2021: NO2 = 10 µg/m³, PM2.5 = 5 µg/m³ (årsgennemsnit)
+    const luftNo2 = luftNo2Data[kode] ?? null;
+    const luftPm25 = luftPm25Data[kode] ?? null;
+    const luftVals = [luftNo2, luftPm25].filter((v): v is number => v !== null);
+    eco_ratios["luftkvalitet"] = luftVals.length > 0
+      ? parseFloat((luftVals.reduce((a, b) => a + b, 0) / luftVals.length).toFixed(2))
+      : null;
+    if (luftNo2 !== null) rawValues["luftkvalitet_no2"] = luftNo2;
+    if (luftPm25 !== null) rawValues["luftkvalitet_pm25"] = luftPm25;
 
     const socialAvg = row["social_avg"];
     const overallAvg = row["overall_avg"];
