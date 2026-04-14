@@ -216,12 +216,37 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
             const cmpScore = compare ? (compare.eco_ratios[dim.id] ?? null) : null;
             const hasData = score !== null;
 
+            // Sub-indikatorer for luftkvalitet: NO2 og PM2.5 råværdier + ratio
+            const luftSubIndicators = dim.id === "luftkvalitet" ? [
+              {
+                label: "NO₂ (kvælstofdioxid)",
+                raw: kommune.rawValues?.["luftkvalitet_no2"] ?? null,
+                cmpRaw: compare?.rawValues?.["luftkvalitet_no2"] ?? null,
+                ratio: (kommune.rawValues?.["luftkvalitet_no2"] ?? null) !== null
+                  ? parseFloat(((kommune.rawValues!["luftkvalitet_no2"]! / 10) * 100).toFixed(1))
+                  : null,
+                boundary: "WHO 2021: 10 µg/m³",
+              },
+              {
+                label: "PM2.5 (fine partikler)",
+                raw: kommune.rawValues?.["luftkvalitet_pm25"] ?? null,
+                cmpRaw: compare?.rawValues?.["luftkvalitet_pm25"] ?? null,
+                ratio: (kommune.rawValues?.["luftkvalitet_pm25"] ?? null) !== null
+                  ? parseFloat(((kommune.rawValues!["luftkvalitet_pm25"]! / 5) * 100).toFixed(1))
+                  : null,
+                boundary: "WHO 2021: 5 µg/m³",
+              },
+            ] : [];
+
             return (
               <div key={dim.id} className="border border-gray-200 rounded-lg px-3 py-2.5">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-gray-900">{dim.name}</span>
                     {!hasData && <span className="text-xs text-gray-400">afventer data</span>}
+                    {luftSubIndicators.length > 0 && hasData && (
+                      <span className="text-xs text-gray-400">2 indikatorer</span>
+                    )}
                   </div>
                   <div className="flex items-center gap-2">
                     <span className={`text-sm font-semibold ${ecoScoreColor(score)}`}>
@@ -251,6 +276,35 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                     )}
                     {dim.boundary && (
                       <p className="text-xs text-gray-400 mt-1">Grænse: {dim.boundary}</p>
+                    )}
+                    {/* Sub-indikatorer for luftkvalitet */}
+                    {luftSubIndicators.length > 0 && (
+                      <div className="mt-2 pt-2 border-t border-gray-100 space-y-2">
+                        {luftSubIndicators.map((sub) => (
+                          <div key={sub.label}>
+                            <div className="flex items-center justify-between mb-1">
+                              <span className="text-[11px] text-gray-600 font-medium">{sub.label}</span>
+                              <div className="flex items-center gap-1.5">
+                                {sub.raw !== null && (
+                                  <span className="text-[11px] text-gray-500">{sub.raw.toFixed(2)} µg/m³</span>
+                                )}
+                                {compare && sub.cmpRaw !== null && (
+                                  <span className="text-[10px] text-gray-400">vs. {sub.cmpRaw.toFixed(2)}</span>
+                                )}
+                                <span className={`text-[11px] font-semibold ${ecoScoreColor(sub.ratio)}`}>
+                                  {sub.ratio !== null ? `${sub.ratio.toFixed(0)}%` : "–"}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden relative">
+                              <div className="absolute top-0 bottom-0 w-px bg-gray-400" style={{ left: `${(100 / 200) * 100}%` }} />
+                              <div className={`h-full rounded-full ${ecoBarColor(sub.ratio)} transition-all`}
+                                style={{ width: `${Math.min((sub.ratio || 0) / 200, 1) * 100}%` }} />
+                            </div>
+                            <p className="text-[10px] text-gray-400 mt-0.5">{sub.boundary}</p>
+                          </div>
+                        ))}
+                      </div>
                     )}
                   </div>
                 )}

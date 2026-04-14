@@ -472,7 +472,10 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     id: "luftkvalitet",
     name: "Luftkvalitet",
     shortName: "LUFT",
-    description: "Koncentration af skadelige partikler og gasser (PM2.5, NOx, ozon) der påvirker folkesundhed og natur.",
+    description: "Modelberegnet årsgennemsnit af NO2 og PM2.5 pr. kommune (DCE/AU UBM-model 2023) sammenholdt med WHO's retningslinjer fra 2021.",
+    unit: "µg/m³ (årsgennemsnit, WHO 2021)",
+    boundary: "WHO 2021: NO2 = 10 µg/m³, PM2.5 = 5 µg/m³ - alle 98 kommuner overskrider PM2.5-grænsen",
+    source: "https://arld-extgeo.miljoeportal.dk/geoserver/wfs",
   },
   {
     id: "cirkularitet",
