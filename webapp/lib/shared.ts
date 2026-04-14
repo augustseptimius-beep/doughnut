@@ -474,7 +474,7 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     shortName: "LUFT",
     description: "Modelberegnet årsgennemsnit af NO2 og PM2.5 pr. kommune (DCE/AU UBM-model 2023) sammenholdt med WHO's retningslinjer fra 2021.",
     unit: "µg/m³ (årsgennemsnit, WHO 2021)",
-    boundary: "WHO 2021: NO2 = 10 µg/m³, PM2.5 = 5 µg/m³ - alle 98 kommuner overskrider PM2.5-grænsen",
+    boundary: "WHO 2021: NO2 = 10 µg/m³, PM2.5 = 5 µg/m³",
     source: "https://arld-extgeo.miljoeportal.dk/geoserver/wfs",
   },
   {
