@@ -9,6 +9,7 @@
 - **Bruger:** August, projektleder i klimateamet, Thisted Kommune. Noob til programmering - skal hjælpes til de enkleste/bedste beslutninger. Undgå terminal så meget som muligt.
 - **Deploy:** Bruger IKKE terminal-git. Kun GitHub Desktop + Netlify.
 - **Krav til mig:** Lav altid plan først, anbefal LLM-model (Opus/Sonnet/Haiku) til opgaven, skriv dansk uden em-dash.
+- **Data-arkitektur (apr 2026):** Webapp læser nu kun fra `data/master_indicators.csv` (long format, genereret af `scripts/build_master_csv.py`). Rådata-CSV'er er bevaret som debug-spor.
 
 ## Projektstruktur
 
@@ -17,8 +18,12 @@ doughnut/
 ├── CLAUDE.md                ← denne fil
 ├── netlify.toml             ← base = webapp, publish = out, functions dir
 ├── .gitignore               ← ignorerer store zip-filer, biodiversitet_* mapper, node_modules
-├── data/                    ← alle CSV'er webapp'en læser fra (SINGLE SOURCE OF TRUTH)
-│   ├── doughnut_scores.csv        ← "hoved-CSV" med sociale indikatorer + ratios
+├── data/                    ← CSV-data
+│   ├── master_indicators.csv      ← ★ KONSOLIDERET MASTER-FIL (webapp læser KUN herfra)
+│   │                                Long format. Genereres af scripts/build_master_csv.py.
+│   ├── README.md                  ← dokumentation af master-skemaet (til forskere/partnere)
+│   ├── CHANGELOG.md               ← log over data-ændringer
+│   ├── doughnut_scores.csv        ← rådata-spor: sociale indikatorer fra fetch_doughnut_data.py
 │   ├── climate_scores.csv         ← CO2e territorialt (klimaregnskabet.dk)
 │   ├── luftforurening_scores.csv  ← NO2 + PM2.5 (Miljøportal WFS, DCE/AU)
 │   ├── biodiversitet_scores.csv
@@ -41,6 +46,8 @@ doughnut/
 │   ├── samskabelse_extra_scores.csv ← musikskole
 │   └── methodology_note.md        ← metodenote om CBA 2023-justering
 ├── scripts/                 ← Python fetchers, kør fra rodmappen (ikke fra scripts/)
+│   ├── build_master_csv.py        ← ★ konsoliderer alle rådata-CSV'er til master_indicators.csv
+│   │                                Skal køres efter ENHVER fetch-scriptkørsel.
 │   ├── fetch_doughnut_data.py     ← "hoved-scriptet", henter sociale + klima-fallback
 │   ├── fetch_climate_data.py      ← klimaregnskabet.dk (kræver API-nøgle)
 │   ├── fetch_luftforurening_data.py
@@ -148,11 +155,14 @@ interface KommuneData {
 }
 ```
 
-### Specialcases i data.ts
+### Specialcases i build_master_csv.py
 
-- **`cba_2023_estimate.csv`** bruger `kommune` (navn) som nøgle, ikke `kommune_kode` - har sin egen `loadCbaCsv()`. Fallback til nationalt gennemsnit (11 ton, ratio 366.67) hvis kommunen ikke matcher.
-- **`kommune_kode === "000"`** er et "Danmark samlet"-aggregat der filtreres fra i `getAllKommuner()`.
-- **Klimaregnskabet-data** kan komme enten inline i `doughnut_scores.csv` (kolonne `co2_per_capita_ratio`) ELLER fra `climate_scores.csv` - data.ts tjekker inline først, falder tilbage til CSV.
+Disse håndteres centralt i build-scriptet (ikke længere i `data.ts`):
+
+- **`cba_2023_estimate.csv`** bruger `kommune` (navn) som nøgle, ikke `kommune_kode`. Hvis en kommune ikke findes i CBA-data, sættes `forbrug_co2 = null` (vises som "data mangler"). Fallback-værdien (366.67) er bevidst fjernet i 2026 for transparens.
+- **`kommune_kode === "000"`** er et "Danmark samlet"-aggregat der ikke skal komme i master-CSV (filtreres ved indlæsning af kommunelisten).
+- **Worst-of dimension-aggregater** (`_dim_*`-rækker): luftkvalitet, naeringsstoffer, cirkularitet bruger max-ratio på sub-indikatorer. Single-indikator dims får dimension-score = sub-indikatorens ratio.
+- **Inverse eco-ratio-konvention** (waste, N, P): kildedata er `(national_avg / kommune_val) × 100`, konverteres til direct via `10000 / inverse` så høj=overshoot.
 
 ## Data pipeline - hvordan data opdateres
 
@@ -160,14 +170,19 @@ Datapipelinen er manuel og script-baseret. Der er IKKE CI/CD der henter data aut
 
 ### Typisk flow når en indikator skal opdateres
 
-1. **Kør relevant Python-script** fra rodmappen:
+1. **Kør relevant fetch-script** fra rodmappen:
    ```bash
    cd /sti/til/doughnut
    python3 scripts/fetch_XXX_data.py
    ```
-2. **Scriptet skriver CSV'en** til `data/` (nogle scripts skriver i stedet til rodmappen - se kritisk regel nedenfor).
-3. **Webapp'en læser automatisk fra `data/`** via `webapp/lib/data.ts::loadEcoCsv()` - ingen rebuild-step nødvendig udover en Next.js build (som sker automatisk ved push).
+2. **Scriptet opdaterer rådata-CSV** i `data/` (eller rodmappen for `fetch_doughnut_data.py` - se kritisk regel nedenfor).
+3. **Master-CSV regenereres AUTOMATISK** efter fetchet. Alle 11 fetch-scripts kalder `build_master_csv.auto_build_master()` til sidst. Du behøver IKKE køre build-scriptet manuelt længere.
 4. **Git commit + push via GitHub Desktop** → Netlify bygger og deployer.
+
+**Hvis auto-build fejler:** Rådata-CSV er allerede gemt OK. Kør manuelt:
+```bash
+python3 scripts/build_master_csv.py
+```
 
 ### Kritisk driftsregel
 
@@ -178,15 +193,26 @@ cd /sti/til/doughnut            # IKKE cd scripts/
 python3 scripts/fetch_doughnut_data.py
 ```
 
-Hvorfor: scriptet gemmer `doughnut_scores.csv` relativt til working directory. Fra `scripts/` havner den i `scripts/doughnut_scores.csv` i stedet for projektets rod, og webapp'en læser fra `data/` - så en forkert placering giver den effekt at scriptet kører fejlfrit men nye indikatorer ikke vises på sitet.
+Hvorfor: scriptet gemmer `doughnut_scores.csv` relativt til working directory. Fra `scripts/` havner den et forkert sted og build-scriptet finder den ikke.
 
 **Efter kørsel kopieres hoved-CSV'en altid:**
 
 ```bash
 cp doughnut_scores.csv data/doughnut_scores.csv
+# Master-CSV regenereres automatisk - ingen ekstra kommando
 ```
 
-**Tjek altid:** Efter scriptkørsel, verificer at `data/doughnut_scores.csv` har de nye kolonner i sin header.
+**Tjek altid:** Scriptet printer "AUTO-REBUILD af master_indicators.csv" til sidst. Verificer at "Skrev 4402 rækker" (eller flere) og "✓ Master-CSV opdateret" ses i outputtet. Hvis ikke: kør `python3 scripts/build_master_csv.py` manuelt.
+
+### Tilføj en ny indikator (efter april 2026)
+
+1. **Skriv eller udvid et fetch-script** der genererer en CSV med kolonner `kommune_kode, <din_indikator>_ratio, <din_indikator>_raw`. Hvis det er et nyt script: husk at tilføje `auto_build_master()`-blokken til sidst (se eksisterende fetch-scripts som skabelon).
+2. **Tilføj entry i `scripts/build_master_csv.py`** under SOCIAL_INDICATORS eller ECO_SUB_INDICATORS med id, csv-filnavn, kolonnenavne, enhed, kilde, dimension
+3. **Tilføj entry i `webapp/lib/shared.ts`** under INDICATORS med samme id, samt under SOCIAL_CATEGORIES.indicatorIds eller ECOLOGICAL_DIMENSIONS.subIndicators
+4. **For nye eco-sub-indikatorer**: tilføj rawKey-mapping i `webapp/lib/data.ts::ECO_RAW_KEY_MAP`
+5. **Opdater metode-siden** (`webapp/app/metode/page.tsx`)
+6. Kør fetch-scriptet - master-CSV opdateres automatisk
+7. Commit + push
 
 ### Klimaregnskabet DNS-fejl
 
@@ -222,19 +248,20 @@ Hero med titlen "Danmarks 98 Doughnuts", kort forklaring, søgefelt (autocomplet
 
 ## Vigtigste pitfalls og ting at huske på
 
-1. **Scripts skal køres fra rodmappen**, ikke fra `scripts/` (se kritisk driftsregel ovenfor).
-2. **Efter scriptkørsel:** kopier hoved-CSV'en til `data/` hvis scriptet ikke selv gør det. Tjek headers.
-3. **Ratio-konvention for forurenings-indikatorer:** kildedata er `ratio_inverse`, konverteres i data.ts med `invertToDirectRatio()` (10000/inverse).
-4. **Worst-of vs. gennemsnit:** multi-indikator øko-dimensioner bruger `worstOf()` (max), IKKE gennemsnit. Planetary-boundary-logik.
+1. **Master-CSV regenereres automatisk** efter alle fetch-scripts (kalder `auto_build_master()`). Du behøver IKKE huske at køre build manuelt. Hvis auto-build fejler: kør `python3 scripts/build_master_csv.py` manuelt.
+2. **Scripts skal køres fra rodmappen**, ikke fra `scripts/` (se kritisk driftsregel ovenfor).
+3. **Worst-of vs. gennemsnit:** multi-indikator øko-dimensioner bruger max-ratio (planetary boundary-logik), IKKE gennemsnit. Logikken bor nu i `build_master_csv.py`, ikke i TS.
+4. **Ratio-konvention for forurenings-indikatorer:** kildedata er `ratio_inverse`, konverteres i build_master_csv.py med `invert_to_direct_ratio()` (10000/inverse).
 5. **Farvelogik er OMVENDT for øko vs. social:** sociale vil op, økologiske vil ned.
-6. **`kommune_kode === "000"`** er Danmark-aggregat, filtreres fra i `getAllKommuner()`.
-7. **cba_2023_estimate.csv** bruger `kommune`-navn som nøgle, ikke `kommune_kode`.
+6. **`kommune_kode === "000"`** er Danmark-aggregat, kommer ikke i master-CSV.
+7. **cba_2023_estimate.csv** bruger `kommune`-navn som nøgle, ikke `kommune_kode`. Manglende match → `forbrug_co2 = null` (ingen fallback).
 8. **Christiansø** er filtreret fra i CBA-data (0 i kildedata, ~90 indbyggere).
 9. **Klimaregnskabet.dk** kræver API-nøgle - både Python-scriptet og Netlify-funktionen. Uden nøgle: DNS-fejl / 500.
 10. **Next.js 16 med `output: "export"`** - ingen SSR, ingen runtime API-routes i app/. Alt skal kunne statisk-genereres eller være en Netlify function.
 11. **Baseline-mode (avg/top10)** beregnes client-side, men påvirker KUN sociale indikatorer. Økologiske er altid absolutte.
 12. **Store filer** som `biodiversitet_2021.zip` (~570 MB) og `.fuse_hidden*` filer er ignoreret i `.gitignore` - MÅ ikke committes.
 13. **Deploy:** bruger GitHub Desktop, ikke terminal-git. Tilbyd aldrig at køre `git push` fra terminalen uden først at foreslå Desktop-flow.
+14. **Master-CSV'en SKAL committes** - den er ikke i .gitignore. Netlify læser fra den under build.
 
 ## Brugerens arbejdsstil og præferencer
 

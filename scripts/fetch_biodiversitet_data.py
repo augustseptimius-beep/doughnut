@@ -180,3 +180,20 @@ with open(OUTPUT_FIL, "w", newline="", encoding="utf-8") as f:
 
 print(f"  OK: {OUTPUT_FIL}")
 print("\nFærdig.")
+
+# ───────────────────────────────────────────────────────────────
+# AUTO-REBUILD af master_indicators.csv
+# Tilføjet 2026: efter denne fetch er færdig, regenereres master-CSV'en
+# automatisk så webapp viser de nye data uden manuel ekstra kommando.
+# Hvis build fejler, gemmes rådata stadigvæk - kør manuelt:
+#   python3 scripts/build_master_csv.py
+# ───────────────────────────────────────────────────────────────
+try:
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from build_master_csv import auto_build_master
+    auto_build_master()
+except Exception as _e:
+    print(f"\n⚠ Kunne ikke auto-rebuild master-CSV: {_e}")
+    print("  Rådata er gemt. Kør manuelt: python3 scripts/build_master_csv.py")

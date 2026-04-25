@@ -53,6 +53,10 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
             const cmpCat = compareCategoryScores?.find(
               (c) => c.categoryId === cat.categoryId
             );
+            // Datadækning: hvor mange af kategoriens indikatorer har faktisk en score for denne kommune?
+            const indicatorsWithData = cat.indicators.filter((i) => i.score !== null).length;
+            const totalIndicators = cat.indicatorCount;
+            const isPartialData = totalIndicators > 0 && indicatorsWithData > 0 && indicatorsWithData < totalIndicators;
 
             return (
               <div
@@ -69,11 +73,28 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                         <span className="text-sm font-semibold text-gray-900 truncate">
                           {cat.categoryName}
                         </span>
-                        <span className="text-xs text-gray-400">
-                          {cat.hasData
-                            ? `${cat.indicatorCount} indikator${cat.indicatorCount !== 1 ? "er" : ""}`
-                            : "mangler data"}
-                        </span>
+                        {totalIndicators === 0 ? (
+                          <span className="text-xs text-gray-400">afventer data</span>
+                        ) : !cat.hasData ? (
+                          <span
+                            className="text-xs text-gray-400"
+                            title={`0 af ${totalIndicators} indikatorer har data for denne kommune`}
+                          >
+                            0/{totalIndicators} indikatorer
+                          </span>
+                        ) : (
+                          <span
+                            className={`text-xs ${isPartialData ? "text-amber-600 font-medium" : "text-gray-400"}`}
+                            title={
+                              isPartialData
+                                ? `Bemærk: kun ${indicatorsWithData} af ${totalIndicators} indikatorer har data for denne kommune. Scoren er gennemsnit af de tilgængelige.`
+                                : `${indicatorsWithData} af ${totalIndicators} indikatorer har data`
+                            }
+                          >
+                            {indicatorsWithData}/{totalIndicators} indikator{totalIndicators !== 1 ? "er" : ""}
+                            {isPartialData && " ⓘ"}
+                          </span>
+                        )}
                       </div>
                       <div className="flex items-center gap-2 ml-2 shrink-0">
                         <span className={`text-sm font-semibold ${cat.hasData ? scoreColor(cat.score) : "text-gray-400"}`}>
@@ -219,6 +240,8 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
             const subs = dim.subIndicators ?? [];
             const availableSubs = subs.filter(s => (kommune.rawValues?.[s.rawKey] ?? null) !== null);
             const subCount = availableSubs.length;
+            const totalSubs = subs.length;
+            const isPartialEcoData = hasData && totalSubs > 1 && subCount > 0 && subCount < totalSubs;
 
             const formatRaw = (val: number, unit: string) => {
               const num = val % 1 === 0 ? val.toFixed(0) : val.toFixed(2);
@@ -238,11 +261,25 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                         <span className="text-sm font-semibold text-gray-900 truncate">
                           {dim.name}
                         </span>
-                        <span className="text-xs text-gray-400">
-                          {hasData
-                            ? `${subCount} indikator${subCount !== 1 ? "er" : ""}`
-                            : "afventer data"}
-                        </span>
+                        {!hasData ? (
+                          <span className="text-xs text-gray-400">afventer data</span>
+                        ) : totalSubs > 1 ? (
+                          <span
+                            className={`text-xs ${isPartialEcoData ? "text-amber-600 font-medium" : "text-gray-400"}`}
+                            title={
+                              isPartialEcoData
+                                ? `Bemærk: kun ${subCount} af ${totalSubs} sub-indikatorer har data. Worst-of-scoren er beregnet på de tilgængelige.`
+                                : `${subCount} af ${totalSubs} sub-indikatorer har data`
+                            }
+                          >
+                            {subCount}/{totalSubs} indikator{totalSubs !== 1 ? "er" : ""}
+                            {isPartialEcoData && " ⓘ"}
+                          </span>
+                        ) : (
+                          <span className="text-xs text-gray-400">
+                            {subCount} indikator{subCount !== 1 ? "er" : ""}
+                          </span>
+                        )}
                       </div>
                       <div className="flex items-center gap-2 ml-2 shrink-0">
                         <span className={`text-sm font-semibold ${hasData ? ecoScoreColor(score) : "text-gray-400"}`}>

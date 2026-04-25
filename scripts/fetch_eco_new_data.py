@@ -403,3 +403,16 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    # ───────────────────────────────────────────────────────────
+    # AUTO-REBUILD af master_indicators.csv (tilføjet 2026)
+    # ───────────────────────────────────────────────────────────
+    try:
+        import sys as _sys
+        from pathlib import Path as _Path
+        _sys.path.insert(0, str(_Path(__file__).resolve().parent))
+        from build_master_csv import auto_build_master
+        auto_build_master()
+    except Exception as _e:
+        print(f"\n⚠ Kunne ikke auto-rebuild master-CSV: {_e}")
+        print("  Rådata er gemt. Kør manuelt: python3 scripts/build_master_csv.py")

@@ -193,17 +193,10 @@ export const INDICATORS: Indicator[] = [
     baselineLevel: 3,
     rawUnit: "km",
   },
-  {
-    id: "car_access",
-    name: "Familier med bilrådighed",
-    table: "BIL800",
-    source: "https://www.statistikbanken.dk/BIL800",
-    category: "social",
-    inverse: false,
-    dataYear: "2023",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
+  // car_access (familier med bilrådighed) er fjernet 2026 - i en doughnut/bæredygtighedsramme
+  // er "flere biler = bedre" konceptuelt skævt. Indikatoren gav landdistrikter en kunstig høj
+  // mobilitets-score som kompenserede for dårlig kollektiv transport. Råværdier og CSV-data
+  // er bevaret i mobilitet_scores.csv så indikatoren kan genaktiveres hvis logikken revurderes.
   {
     id: "public_transport",
     name: "God adgang til offentlig transport",
@@ -428,7 +421,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "mobilitet",
     name: "Mobilitet",
     description: "Adgang til bæredygtig og effektiv transport for alle borgere uanset geografi og økonomi.",
-    indicatorIds: ["commute_distance", "car_access", "public_transport"],
+    indicatorIds: ["commute_distance", "public_transport"],
   },
   {
     id: "klimatilpasning",

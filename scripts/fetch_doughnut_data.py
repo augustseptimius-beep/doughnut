@@ -299,22 +299,14 @@ INDICATORS = [
     },
 ]
 
-# ── Ecological indicator definitions (Klimaregnskabet + Energi Data Service) ──
-# These are fetched via separate APIs — not DST statbank.
-# matcher: dict of {field: substring} all of which must match (case-insensitive)
-# in the JSON response object to identify the correct data point.
-ECOLOGICAL_INDICATORS = [
-    # Klimaregnskabet-indikatorer (co2_per_capita, co2_energy, co2_transport, ve_share)
-    # er fjernet herfra. De håndteres udelukkende af scripts/fetch_climate_data.py
-    # som genererer data/climate_scores.csv. Brug det script til klimadata.
-    {
-        "id": "ve_capacity_mw",
-        "name": "Installeret VE-kapacitet (MW)",
-        "source": "energidataservice",
-        "inverse": False,
-        "category": "ecological",
-    },
-]
+# ── Ecological indicator definitions ──
+# Klimaregnskabet-indikatorer (co2_per_capita, co2_energy, co2_transport, ve_share)
+# er fjernet herfra. De håndteres udelukkende af scripts/fetch_climate_data.py
+# som genererer data/climate_scores.csv. Brug det script til klimadata.
+# ve_capacity_mw (installeret VE-kapacitet) er fjernet i 2026 - blev ikke brugt
+# i webapp'en og var en død kolonne i CSV. Energi Data Service-koden er bevaret
+# nedenfor i tilfælde af at indikatoren skal genaktiveres.
+ECOLOGICAL_INDICATORS = []
 
 
 # ── API helpers ────────────────────────────────────────────────────────
@@ -929,17 +921,10 @@ def step2():
 
         time.sleep(0.5)
 
-    # ── Energi Data Service: VE-kapacitet (åbent API) ─────────────────
-    print(f"\n{'━' * 55}")
-    print("▶ ve_capacity_mw: Installeret VE-kapacitet (Energi Data Service)")
-    ve_cap = fetch_energids_ve_capacity()
-    all_data["ve_capacity_mw"] = {
-        "values": ve_cap,
-        "nat_code": "000",
-        "inverse": False,
-        "name": "Installeret VE-kapacitet (MW)",
-        "category": "ecological",
-    }
+    # ── ve_capacity_mw fjernet 2026 ───────────────────────────────────
+    # Tidligere blev installeret VE-kapacitet (MW) hentet fra Energi Data Service her.
+    # Indikatoren blev ikke brugt i webapp'en og er fjernet for at undgå død data.
+    # fetch_energids_ve_capacity() er bevaret som funktion til evt. genaktivering.
 
     # Klimaregnskabet-data (CO2, VE-andel) hentes IKKE her længere.
     # Kør scripts/fetch_climate_data.py separat → data/climate_scores.csv
@@ -1126,3 +1111,16 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    # ───────────────────────────────────────────────────────────
+    # AUTO-REBUILD af master_indicators.csv (tilføjet 2026)
+    # ───────────────────────────────────────────────────────────
+    try:
+        import sys as _sys
+        from pathlib import Path as _Path
+        _sys.path.insert(0, str(_Path(__file__).resolve().parent))
+        from build_master_csv import auto_build_master
+        auto_build_master()
+    except Exception as _e:
+        print(f"\n⚠ Kunne ikke auto-rebuild master-CSV: {_e}")
+        print("  Rådata er gemt. Kør manuelt: python3 scripts/build_master_csv.py")

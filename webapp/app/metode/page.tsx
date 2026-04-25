@@ -61,7 +61,6 @@ const INDICATOR_RATIONALES: Record<string, string> = {
   educated_staff: "Andel af pædagogisk personale i kommunale og selvejende daginstitutioner med pædagoguddannelse (professionsbachelor, BOERN1 kode 460). Nationalt har 42% af personalet INGEN pædagogisk uddannelse - stor variation kommunerne imellem (18%-58%). Et rent kvalitetsmål: komplement til normering (BOERN8), der kun måler kvantitet.",
   // Mobilitet
   commute_distance: "Gennemsnitlig pendlingsafstand afspejler tilgængelighed til arbejdsmarkedet. Lang pendling belaster livskvalitet og er typisk forbundet med lavere kollektiv trafikdækning.",
-  car_access: "Familier med bilrådighed er en proxy for transportmuligheder. I bykommuner signalerer lav bilrådighed god kollektiv trafik; i landkommuner kan det betyde manglende mobilitetsmuligheder.",
   public_transport: "Andel af borgere med god adgang til offentlig transport (Meget højt + Højt serviceniveau), LABY49. Metodenote: data er kun tilgængeligt på kommunegruppe-niveau (5 grupper) - alle kommuner i samme gruppe tildeles identisk score. Landkommuner (G5) scorer konsekvent lavt uanset lokale forskelle.",
   // Sundhed
   gp_distance: "Gennemsnitlig afstand (km) til nærmeste praktiserende læge (SUNDAF01). Stor afstand er en adgangsbarriere for primær sundhedsydelse, særligt for ældre og ikke-bilister. Inverteret: kortere afstand er bedre.",
@@ -134,10 +133,10 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   mobilitet: {
     id: "mobilitet",
-    scoring: "Gennemsnit af tre indikatorer: (1) Gennemsnitlig pendlingsafstand i km (AFSTB4, inverteret). (2) Familier med bilrådighed (BIL800, direkte). (3) Andel med god adgang til offentlig transport (LABY49, direkte - % med Meget højt + Højt serviceniveau). Score 100 = landsgennemsnit.",
-    boundary: "Socialt fundament: adgang til mobilitet uanset geografi og økonomi.",
+    scoring: "Gennemsnit af to indikatorer: (1) Gennemsnitlig pendlingsafstand i km (AFSTB4, inverteret). (2) Andel med god adgang til offentlig transport (LABY49, direkte - % med Meget højt + Højt serviceniveau). Score 100 = landsgennemsnit.",
+    boundary: "Socialt fundament: adgang til mobilitet uanset geografi og økonomi - med vægt på bæredygtige transportformer.",
     dataYear: "2023-2025",
-    limitations: "Bilrådighed er en proxy for transportadgang - i bykommuner er lav bilrådighed et tegn på god kollektiv trafik, i landkommuner det modsatte. Pendlingsafstand fanger kun beskæftigedes transport. METODENOTE for offentlig transport (LABY49): data er KUN tilgængeligt på kommunegruppe-niveau (5 grupper) - alle kommuner i samme gruppe tildeles identisk score uanset lokale forskelle. Landkommuner (G5, herunder Thisted) scorer lavt som gruppe. Indikatoren er medtaget da retningen er korrekt og dataene er officielle DST-nøgletal.",
+    limitations: "Pendlingsafstand fanger kun beskæftigedes transport. METODENOTE for offentlig transport (LABY49): data er KUN tilgængeligt på kommunegruppe-niveau (5 grupper) - alle kommuner i samme gruppe tildeles identisk score uanset lokale forskelle. Landkommuner (G5, herunder Thisted) scorer lavt som gruppe. Indikatoren er medtaget da retningen er korrekt og dataene er officielle DST-nøgletal. NB: Familier med bilrådighed (BIL800) er bevidst fjernet som scoring-indikator i 2026, da 'flere biler = bedre' er konceptuelt skævt i en doughnut/bæredygtighedsramme. Rådata er fortsat tilgængelig.",
     csvFile: "mobilitet_scores.csv",
   },
   klimatilpasning: {
@@ -163,7 +162,7 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   luftkvalitet: {
     id: "luftkvalitet",
-    scoring: "Gennemsnit af to indikatorer: (1) NO2-koncentration (kvælstofdioxid, µg/m³ årsgennemsnit) og (2) PM2.5-koncentration (fine partikler, µg/m³ årsgennemsnit). Begge sammenholdes med WHO's retningslinjer fra 2021. Ratio = (kommunens koncentration / WHO-grænse) × 100. Ratio over 100 = over WHO-grænsen. Beregnet som befolkningsvægtet gennemsnit af 1×1 km modelceller inden for kommunegrænsen via spatial join.",
+    scoring: "Worst-of af to indikatorer: (1) NO2-koncentration (kvælstofdioxid, µg/m³ årsgennemsnit) og (2) PM2.5-koncentration (fine partikler, µg/m³ årsgennemsnit). Begge sammenholdes med WHO's retningslinjer fra 2021. Ratio = (kommunens koncentration / WHO-grænse) × 100. Ratio over 100 = over WHO-grænsen. Dimensionens samlede score er den højeste (værste) af de to sub-indikatorer - planetary boundary-logik: hvis bare én grænse er overskredet, er dimensionen overskredet. Beregnet som befolkningsvægtet gennemsnit af 1×1 km modelceller inden for kommunegrænsen via spatial join.",
     boundary: "WHO 2021 Air Quality Guidelines (årsgennemsnit): NO2 = 10 µg/m³, PM2.5 = 5 µg/m³. WHO-grænsen er valgt frem for EU's grænseværdier (NO2: 40 µg/m³, PM2.5: 25 µg/m³) fordi WHO-grænsen er videnskabeligt baseret på sundhedseffekter, mens EU-grænsen er et politisk kompromis.",
     boundarySources: [
       { label: "WHO Air Quality Guidelines 2021", url: "https://www.who.int/publications/i/item/9789240034228" },
@@ -176,7 +175,7 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   cirkularitet: {
     id: "cirkularitet",
-    scoring: "Gennemsnit af to indikatorer: (1) Genanvendelsesprocent for husholdningsaffald - eco-ratio = (65% EU-mål / faktisk %) * 100. Over 100 = genanvender for lidt. (2) Husholdningsaffald i kg pr. indbygger (inverteret - lavere er bedre). Over 100 = producerer mere affald end landsgennemsnittet.",
+    scoring: "Worst-of af to indikatorer: (1) Genanvendelsesprocent for husholdningsaffald - eco-ratio = (65% EU-mål / faktisk %) * 100. Over 100 = genanvender for lidt. (2) Husholdningsaffald i kg pr. indbygger (inverteret - lavere er bedre). Over 100 = producerer mere affald end landsgennemsnittet. Dimensionens samlede score er den højeste (værste) af de to sub-indikatorer - planetary boundary-logik: hvis bare én grænse er overskredet, er dimensionen overskredet.",
     boundary: "65% genanvendelse (EU Affaldsdirektiv 2035) + lavest muligt affald pr. capita (landsgennemsnit som reference).",
     dataYear: "2023",
     limitations: "Reel genanvendelse kan afvige fra indsamlet til genanvendelse. Omfatter kun husholdningsaffald, ikke erhvervsaffald.",
@@ -184,7 +183,7 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   naeringsstoffer: {
     id: "naeringsstoffer",
-    scoring: "Gennemsnit af tre indikatorer: (1) Kvælstof-udledning (ton total-N) pr. 1.000 indbyggere via spildevand. (2) Fosfor-udledning (ton total-P) pr. 1.000 indbyggere via spildevand. (3) Landbrugets N-loft pr. ha landbrugsjord beregnet fra Vandområdeplan 3 (VP3, 2025): malbelas_n (max bæredygtig N-tilførsel til kysten i tons) divideret med det faktiske landbrugsareal i oplandet pr. kommune - jo lavere N-loft pr. ha, jo mere N-presset er kommunen. Eco-konvention: score over 100 = kommunen er mere belastet end landsgennemsnittet (overshoot). Under 100 = lavere pres end gennemsnit.",
+    scoring: "Worst-of af tre indikatorer: (1) Kvælstof-udledning (ton total-N) pr. 1.000 indbyggere via spildevand. (2) Fosfor-udledning (ton total-P) pr. 1.000 indbyggere via spildevand. (3) Landbrugets N-loft pr. ha landbrugsjord beregnet fra Vandområdeplan 3 (VP3, 2025): malbelas_n (max bæredygtig N-tilførsel til kysten i tons) divideret med det faktiske landbrugsareal i oplandet pr. kommune - jo lavere N-loft pr. ha, jo mere N-presset er kommunen. Eco-konvention: score over 100 = kommunen er mere belastet end landsgennemsnittet (overshoot). Under 100 = lavere pres end gennemsnit. Dimensionens samlede score er den højeste (værste) af de tre sub-indikatorer - planetary boundary-logik: hvis bare én grænse er overskredet, er dimensionen overskredet.",
     boundary: "Landsgennemsnittet som reference for alle tre indikatorer. Lavere næringsstofbelastning og strengere N-loft er bedre for vandmiljøet.",
     dataYear: "2024 (spildevand), 2025 (VP3 N-loft), 2026 (markblokke)",
     limitations: "Spildevand dækker kun punktkilder (renseanlæg, dambrug, havbrug, industri, spredt bebyggelse). Landbrugs-N viser det maksimale tilladte N-loft pr. ha - ikke den faktiske udvaskning, som kræver DCE's NLES5-model (kun tilgængeligt i PDF-rapporter). Grænseværdien er landsgennemsnittet, ikke en absolut planetær grænse.",
@@ -271,6 +270,25 @@ export default function MetodePage() {
     <div className="max-w-4xl mx-auto">
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Metode & datakilder</h2>
+
+        {/* MVP / prototype-banner */}
+        <div className="p-4 bg-amber-50 border-2 border-amber-300 rounded-xl mb-4">
+          <div className="flex items-start gap-3">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-200 text-amber-900 uppercase whitespace-nowrap mt-0.5">
+              MVP / prototype
+            </span>
+            <div className="text-sm text-amber-900 leading-relaxed">
+              <p className="font-semibold mb-1">Platformen er under udvikling.</p>
+              <p>
+                Danmarks 98 Doughnuts er en prototype - en første version til at afprøve, om Doughnut Economics-rammen kan bruges
+                til alle danske kommuner. Indikatorvalg, grænseværdier, beregningslogik og datadækning er stadig under udvikling og
+                kan ændre sig. Tal og scores skal læses som indikative pejlemærker, ikke som autoritativ måling. Feedback og kritik
+                er velkommen - se kontakt nederst.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <p className="text-gray-600 text-sm leading-relaxed mb-4">
           Danmarks 98 Doughnuts anvender Kate Raworths Doughnut Economics-ramme til at vurdere alle danske kommuners præstation på to linser: det <strong>sociale fundament</strong> (opfylder vi borgernes basale behov?) og det <strong>økologiske loft</strong> (respekterer vi naturens grænser?). Modellen er politisk neutral - den måler, ikke rangordner.
         </p>
@@ -358,8 +376,10 @@ export default function MetodePage() {
         </p>
         <p className="text-sm text-gray-700 leading-relaxed mt-2">
           <strong>Inverterede indikatorer:</strong> For indikatorer hvor lavere er bedre (f.eks. kriminalitet, affald, børnefattigdom)
-          beregnes ratioen inverteret: (landsgennemsnit / kommune) × 100. Kommuner med en værdi på 0 tildeles en score på 150 (cap)
-          for at undgå division med nul, og fordi manglende data ikke bør fortolkes som perfekt score.
+          beregnes ratioen inverteret: (landsgennemsnit / kommune) × 100, så højere ratio fortsat betyder bedre performance.
+          Kommuner med en værdi på 0 (typisk manglende data eller ingen registreret aktivitet) sættes til ratio 0, ikke perfekt score - dette er for at undgå at databrist
+          fejlagtigt fremstår som topscore. For multi-indikator økologiske dimensioner (luftkvalitet, cirkularitet, næringsstoffer) bruges en specialregel: ratio 150 anvendes
+          som loft for sub-indikatorer hvor data mangler eller hvor ingen aktivitet registreres (f.eks. kommuner uden markblokke i N-loft-beregningen).
         </p>
       </section>
 
