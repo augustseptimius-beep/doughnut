@@ -106,8 +106,7 @@ export function loadData(): KommuneData[] {
   const recyclingPctData = loadEcoCsv("consumption_scores.csv", "recycling_pct");
   const landUseData = loadEcoCsv("land_use_scores.csv", "land_use_ratio");
   const landUseRawData = loadEcoCsv("land_use_scores.csv", "natur_pct");
-  const biodiversitetData = loadEcoCsv("biodiversitet_scores.csv", "biodiversitet_ratio");
-  const biodiversitetRawData = loadEcoCsv("biodiversitet_scores.csv", "pct_vasentlig_natur");
+  // biodiversitet_scores.csv (bioscore-metoden) er fravalgt - biodiversitet bruger nu land_use_scores.csv
 
   // New ecological data (Næringsstoffer, Vand)
   const naerNitrogen = loadEcoCsv("naeringsstoffer_scores.csv", "nitrogen_ratio");
@@ -115,7 +114,8 @@ export function loadData(): KommuneData[] {
   const naerNitrogenRaw = loadEcoCsv("naeringsstoffer_scores.csv", "nitrogen_per_1000");
   const naerPhosphorusRaw = loadEcoCsv("naeringsstoffer_scores.csv", "phosphorus_per_1000");
   // Landbrugs-N: N-loft pr. ha landbrugsjord fra VP3 (Vandområdeplan 3, 2025)
-  const nLandbrug = loadEcoCsv("n_landbrug_scores.csv", "n_ratio");
+  const nLandbrug    = loadEcoCsv("n_landbrug_scores.csv", "n_ratio");
+  const nLandbrugRaw = loadEcoCsv("n_landbrug_scores.csv", "n_ceiling_kg_per_ha");
   const vandWastewater = loadEcoCsv("vand_scores.csv", "wastewater_ratio");
   const vandExtraction = loadEcoCsv("vand_scores.csv", "water_extraction_ratio");
   const vandWastewaterRaw = loadEcoCsv("vand_scores.csv", "wastewater_per_1000");
@@ -307,8 +307,8 @@ export function loadData(): KommuneData[] {
     // NB: cirkularitet håndteres separat nedenfor (multi-indikator)
     const ecoSources: Record<string, Record<string, number | null>> = {
       klimapaavirkning: climateData,
-      arealanvendelse: landUseData,
-      biodiversitet: biodiversitetData,
+      // arealanvendelse: ingen aktiv indikator - dimensionen er inaktiv
+      biodiversitet: landUseData, // bruger naturområder-data (DST AREALDK2), bioscore-metoden er fravalgt
     };
 
     // Klimaregnskabet: kolonner direkte i doughnut_scores.csv (fallback)
@@ -326,10 +326,11 @@ export function loadData(): KommuneData[] {
     }
     // Eco råværdier til visning i ScoreBars
     if (climateRawData[kode] != null)       rawValues["eco_klima_raw"]         = climateRawData[kode]!;
-    if (landUseRawData[kode] != null)       rawValues["eco_areal_raw"]         = landUseRawData[kode]!;
-    if (biodiversitetRawData[kode] != null) rawValues["eco_bio_raw"]           = biodiversitetRawData[kode]!;
+    // eco_areal_raw bruges ikke mere (arealanvendelse er inaktiv)
+    if (landUseRawData[kode] != null)       rawValues["eco_bio_raw"]           = landUseRawData[kode]!; // naturområder % til biodiversitet
     if (naerNitrogenRaw[kode] != null)      rawValues["eco_naer_n_raw"]        = naerNitrogenRaw[kode]!;
     if (naerPhosphorusRaw[kode] != null)    rawValues["eco_naer_p_raw"]        = naerPhosphorusRaw[kode]!;
+    if (nLandbrugRaw[kode] != null)         rawValues["eco_naer_landbrug_raw"] = nLandbrugRaw[kode]!;
     if (vandWastewaterRaw[kode] != null)    rawValues["eco_vand_ww_raw"]       = vandWastewaterRaw[kode]!;
     if (vandExtractionRaw[kode] != null)    rawValues["eco_vand_extr_raw"]     = vandExtractionRaw[kode]!;
     if (recyclingPctData[kode] != null)     rawValues["eco_cirkularitet_raw"]  = recyclingPctData[kode]!;
@@ -376,12 +377,8 @@ export function loadData(): KommuneData[] {
     if (naerP !== null)         rawValues["eco_naer_p_ratio"]        = naerP;
     if (naerLandbrug !== null)  rawValues["eco_naer_landbrug_ratio"] = naerLandbrug;
 
-    // Vand: spildevand + vandindvinding pr. capita
-    const vandWW = invertToDirectRatio(vandWastewater[kode] ?? null);
-    const vandEx = invertToDirectRatio(vandExtraction[kode] ?? null);
-    eco_ratios["vand"] = worstOf([vandWW, vandEx]);
-    if (vandWW !== null) rawValues["eco_vand_ww_ratio"]   = vandWW;
-    if (vandEx !== null) rawValues["eco_vand_extr_ratio"] = vandEx;
+    // Vand: dimensionen er inaktiv - metoden vurderes ikke fyldestgørende
+    eco_ratios["vand"] = null;
 
     // Cirkularitet: genanvendelse + affald pr. capita
     const recyclingPct = recyclingPctData[kode] ?? null;
