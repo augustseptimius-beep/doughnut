@@ -8,13 +8,15 @@ import {
   INDICATORS,
   computeCategoryScores,
 } from "@/lib/shared";
+import type { VurderingEntry } from "@/lib/vurdering";
 
 interface DoughnutRingProps {
   kommune: KommuneData;
   ratios?: Record<string, number | null>; // override kommune.ratios (bruges til baseline-skift)
-  // Vurderingsmode: intercept klik til projektvurdering
+  // Vurderingsmode: intercept klik + farveoverride
   vurderingsMode?: boolean;
   onVurderingKlik?: (id: string, navn: string, gruppe: "social" | "ecological") => void;
+  vurderinger?: Record<string, VurderingEntry>;
 }
 
 function describeArc(
@@ -90,6 +92,13 @@ const GREEN_DARK_BAND = "#15803d";
 const GRAY_NO_DATA = "#cbd5e1";
 const GRAY_NO_DATA_STROKE = "#94a3b8";
 
+/* ── Vurderingsfarver (overrider segment-fyld i vurderingsmode) ── */
+const VURDERING_COLORS = {
+  groen: "#10b981", // emerald-500
+  gul:   "#fbbf24", // amber-400
+  roed:  "#f43f5e", // rose-500
+} as const;
+
 /* ── Severity levels ── */
 type SeverityLevel = "safe" | "exceeded" | "high" | "extreme";
 
@@ -156,6 +165,7 @@ export default function DoughnutRing({
   ratios,
   vurderingsMode = false,
   onVurderingKlik,
+  vurderinger = {},
 }: DoughnutRingProps) {
   const [active, setActive] = useState<ActiveInfo | null>(null);
   const [pinned, setPinned] = useState(false);
@@ -207,8 +217,10 @@ export default function DoughnutRing({
 
       const isNoData = !cat.hasData;
       const isActive = active?.id === cat.categoryId && active?.group === "social";
-      const safeColor = isNoData ? GRAY_NO_DATA : isActive ? GREEN_SOCIAL_HOVER : GREEN_SOCIAL;
-      const safeStroke = isNoData ? GRAY_NO_DATA_STROKE : GREEN_DARK_BAND;
+      const vurderingScore = vurderingsMode ? (vurderinger[cat.categoryId]?.score ?? null) : null;
+      const vurderingColor = vurderingScore ? VURDERING_COLORS[vurderingScore] : null;
+      const safeColor = vurderingColor ?? (isNoData ? GRAY_NO_DATA : isActive ? GREEN_SOCIAL_HOVER : GREEN_SOCIAL);
+      const safeStroke = (!vurderingColor && isNoData) ? GRAY_NO_DATA_STROKE : GREEN_DARK_BAND;
 
       const catDef = SOCIAL_CATEGORIES.find((c) => c.id === cat.categoryId);
       const indicatorNames = cat.indicators.map((ind) => ind.indicator.name);
@@ -270,8 +282,10 @@ export default function DoughnutRing({
       }
 
       const isActive = active?.id === dim.id && active?.group === "ecological";
-      const safeColor = hasEcoData ? (isActive ? GREEN_ECO_HOVER : GREEN_ECO) : GRAY_NO_DATA;
-      const safeStroke = hasEcoData ? GREEN_DARK_BAND : GRAY_NO_DATA_STROKE;
+      const vurderingScore = vurderingsMode ? (vurderinger[dim.id]?.score ?? null) : null;
+      const vurderingColor = vurderingScore ? VURDERING_COLORS[vurderingScore] : null;
+      const safeColor = vurderingColor ?? (hasEcoData ? (isActive ? GREEN_ECO_HOVER : GREEN_ECO) : GRAY_NO_DATA);
+      const safeStroke = (!vurderingColor && !hasEcoData) ? GRAY_NO_DATA_STROKE : GREEN_DARK_BAND;
 
       const info: ActiveInfo = {
         id: dim.id,

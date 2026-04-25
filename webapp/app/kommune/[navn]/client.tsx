@@ -109,6 +109,7 @@ export default function KommuneClient({ kommune }: Props) {
             ratios={activeRatios}
             vurderingsMode={vurderingsMode}
             onVurderingKlik={handleVurderingKlik}
+            vurderinger={vurderinger}
           />
         </div>
 
