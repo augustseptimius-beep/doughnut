@@ -99,6 +99,10 @@ const VURDERING_COLORS = {
   roed:  "#f43f5e", // rose-500
 } as const;
 
+// Alle uvurderede segmenter er grå i vurderingsmode - kun vurderede farver skiller sig ud
+const VURDERING_DEFAULT_GRAY = "#cbd5e1"; // slate-300
+const VURDERING_DEFAULT_STROKE = "#94a3b8"; // slate-400
+
 /* ── Severity levels ── */
 type SeverityLevel = "safe" | "exceeded" | "high" | "extreme";
 
@@ -219,8 +223,12 @@ export default function DoughnutRing({
       const isActive = active?.id === cat.categoryId && active?.group === "social";
       const vurderingScore = vurderingsMode ? (vurderinger[cat.categoryId]?.score ?? null) : null;
       const vurderingColor = vurderingScore ? VURDERING_COLORS[vurderingScore] : null;
-      const safeColor = vurderingColor ?? (isNoData ? GRAY_NO_DATA : isActive ? GREEN_SOCIAL_HOVER : GREEN_SOCIAL);
-      const safeStroke = (!vurderingColor && isNoData) ? GRAY_NO_DATA_STROKE : GREEN_DARK_BAND;
+      // I vurderingsmode: vurderet = vurderingsfarve, uvurderet = grå. Normal-mode: kommunedata-farver
+      const safeColor = vurderingColor
+        ?? (vurderingsMode ? VURDERING_DEFAULT_GRAY : (isNoData ? GRAY_NO_DATA : isActive ? GREEN_SOCIAL_HOVER : GREEN_SOCIAL));
+      const safeStroke = vurderingColor
+        ? GREEN_DARK_BAND
+        : (vurderingsMode ? VURDERING_DEFAULT_STROKE : (isNoData ? GRAY_NO_DATA_STROKE : GREEN_DARK_BAND));
 
       const catDef = SOCIAL_CATEGORIES.find((c) => c.id === cat.categoryId);
       const indicatorNames = cat.indicators.map((ind) => ind.indicator.name);
@@ -284,8 +292,12 @@ export default function DoughnutRing({
       const isActive = active?.id === dim.id && active?.group === "ecological";
       const vurderingScore = vurderingsMode ? (vurderinger[dim.id]?.score ?? null) : null;
       const vurderingColor = vurderingScore ? VURDERING_COLORS[vurderingScore] : null;
-      const safeColor = vurderingColor ?? (hasEcoData ? (isActive ? GREEN_ECO_HOVER : GREEN_ECO) : GRAY_NO_DATA);
-      const safeStroke = (!vurderingColor && !hasEcoData) ? GRAY_NO_DATA_STROKE : GREEN_DARK_BAND;
+      // I vurderingsmode: vurderet = vurderingsfarve, uvurderet = grå. Normal-mode: kommunedata-farver
+      const safeColor = vurderingColor
+        ?? (vurderingsMode ? VURDERING_DEFAULT_GRAY : (hasEcoData ? (isActive ? GREEN_ECO_HOVER : GREEN_ECO) : GRAY_NO_DATA));
+      const safeStroke = vurderingColor
+        ? GREEN_DARK_BAND
+        : (vurderingsMode ? VURDERING_DEFAULT_STROKE : (hasEcoData ? GREEN_DARK_BAND : GRAY_NO_DATA_STROKE));
 
       const info: ActiveInfo = {
         id: dim.id,
@@ -632,20 +644,43 @@ export default function DoughnutRing({
         )}
       </div>
 
-      <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-2 text-xs text-gray-500">
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded" style={{ backgroundColor: GREEN_SOCIAL, border: `1px solid ${GREEN_DARK_BAND}` }} />
-          <span className="font-medium">Sikkert rum</span>
+      {vurderingsMode ? (
+        /* Legende i vurderingsmode: vis vurderingsfarver */
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-2 text-xs text-gray-500">
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded-full" style={{ backgroundColor: VURDERING_COLORS.groen }} />
+            <span className="font-medium">Positiv påvirkning</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded-full" style={{ backgroundColor: VURDERING_COLORS.gul }} />
+            <span className="font-medium">Ukendt / ingen påvirkning</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded-full" style={{ backgroundColor: VURDERING_COLORS.roed }} />
+            <span className="font-medium">Negativ påvirkning</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded" style={{ backgroundColor: VURDERING_DEFAULT_GRAY, border: `1px solid ${VURDERING_DEFAULT_STROKE}` }} />
+            <span className="font-medium">Ikke vurderet</span>
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          <div className="w-12 h-4 rounded" style={{ background: "linear-gradient(to right, #eab308, #f97316, #dc2626, #991b1b)" }} />
-          <span className="font-medium">Underskud / Overskridelse</span>
+      ) : (
+        /* Legende i normal-mode: kommunedata-farver */
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-2 text-xs text-gray-500">
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded" style={{ backgroundColor: GREEN_SOCIAL, border: `1px solid ${GREEN_DARK_BAND}` }} />
+            <span className="font-medium">Sikkert rum</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-12 h-4 rounded" style={{ background: "linear-gradient(to right, #eab308, #f97316, #dc2626, #991b1b)" }} />
+            <span className="font-medium">Underskud / Overskridelse</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded" style={{ backgroundColor: GRAY_NO_DATA, border: `1px solid ${GRAY_NO_DATA_STROKE}` }} />
+            <span className="font-medium">Mangler data</span>
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded" style={{ backgroundColor: GRAY_NO_DATA, border: `1px solid ${GRAY_NO_DATA_STROKE}` }} />
-          <span className="font-medium">Mangler data</span>
-        </div>
-      </div>
+      )}
     </div>
   );
 }

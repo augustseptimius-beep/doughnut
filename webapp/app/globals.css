@@ -1,34 +1,23 @@
 @import "tailwindcss";
 
 /* Print-styles til projektvurdering
-   Strategi: visibility-trick - skjuler ALT i body ved print,
-   og gøer kun #print-view synlig. Undgaar at skulle rode i layout.tsx. */
+   Strategi: display:none på alt tagget .no-print (ingen plads i layout = ingen ghost-sider).
+   Header og footer er tagget no-print i layout.tsx.
+   #print-view er synlig ved print og i normal flow - ingen position:absolute nødvendigt. */
 
 #print-view {
   display: none;
 }
 
 @media print {
-  /* Skjul alt */
-  body * {
-    visibility: hidden;
+  .no-print {
+    display: none !important;
   }
 
-  /* Vis kun print-view og dens indhold */
   #print-view {
     display: block !important;
-    visibility: visible !important;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
   }
 
-  #print-view * {
-    visibility: visible !important;
-  }
-
-  /* Undgaa sidenumre og URL'er i browser-standard print-header/footer */
   @page {
     margin: 1.5cm;
   }

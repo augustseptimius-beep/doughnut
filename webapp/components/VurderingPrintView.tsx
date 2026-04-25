@@ -136,7 +136,7 @@ export default function VurderingPrintView({
         </div>
 
         {/* Doughnut - stor, centreret, med vurderingsfarver */}
-        <div style={{ maxWidth: "560px", margin: "0 auto" }}>
+        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
           <DoughnutRing
             kommune={kommune}
             ratios={ratios}

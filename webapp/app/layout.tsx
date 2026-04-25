@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="da">
       <body className="min-h-screen bg-gray-50 text-gray-900 antialiased">
         <Providers>
-          <header className="border-b border-gray-200 bg-white">
+          <header className="no-print border-b border-gray-200 bg-white">
             <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between gap-4">
               <a href="/" className="flex items-center gap-3 no-underline shrink-0">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-emerald-600">
@@ -48,7 +48,7 @@ export default function RootLayout({
 
           <main className="mx-auto max-w-6xl px-4 py-6">{children}</main>
 
-          <footer className="border-t border-gray-200 bg-white mt-12">
+          <footer className="no-print border-t border-gray-200 bg-white mt-12">
             <div className="mx-auto max-w-6xl px-4 py-4 text-center text-xs text-gray-500">
               {DOUGHNUT_EDITION_YEAR}-Doughnut &middot; Data:{" "}
               <a
