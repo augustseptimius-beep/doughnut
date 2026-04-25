@@ -12,6 +12,9 @@ import {
 interface DoughnutRingProps {
   kommune: KommuneData;
   ratios?: Record<string, number | null>; // override kommune.ratios (bruges til baseline-skift)
+  // Vurderingsmode: intercept klik til projektvurdering
+  vurderingsMode?: boolean;
+  onVurderingKlik?: (id: string, navn: string, gruppe: "social" | "ecological") => void;
 }
 
 function describeArc(
@@ -148,7 +151,12 @@ interface ActiveInfo {
   boundary?: string;
 }
 
-export default function DoughnutRing({ kommune, ratios }: DoughnutRingProps) {
+export default function DoughnutRing({
+  kommune,
+  ratios,
+  vurderingsMode = false,
+  onVurderingKlik,
+}: DoughnutRingProps) {
   const [active, setActive] = useState<ActiveInfo | null>(null);
   const [pinned, setPinned] = useState(false);
 
@@ -158,6 +166,16 @@ export default function DoughnutRing({ kommune, ratios }: DoughnutRingProps) {
   const ecoCount = ECOLOGICAL_DIMENSIONS.length;
 
   const handleClick = (info: ActiveInfo) => {
+    // I vurderingsmode: send klik videre til overordnet handler
+    if (vurderingsMode && onVurderingKlik) {
+      onVurderingKlik(
+        info.id,
+        info.label,
+        info.group as "social" | "ecological"
+      );
+      return;
+    }
+    // Normal-mode: toggle info-kort
     if (pinned && active?.id === info.id && active?.group === info.group) {
       setPinned(false);
       setActive(null);
@@ -168,10 +186,13 @@ export default function DoughnutRing({ kommune, ratios }: DoughnutRingProps) {
   };
 
   const handleHover = (info: ActiveInfo) => {
+    // Info-kort vises ikke i vurderingsmode
+    if (vurderingsMode) return;
     if (!pinned) setActive(info);
   };
 
   const handleLeave = () => {
+    if (vurderingsMode) return;
     if (!pinned) setActive(null);
   };
 

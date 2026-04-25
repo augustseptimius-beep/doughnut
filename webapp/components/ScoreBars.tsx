@@ -9,12 +9,17 @@ import {
   computeCategoryScores,
   DOUGHNUT_DEFAULT_DATA_YEAR,
 } from "@/lib/shared";
+import type { VurderingScore, VurderingEntry } from "@/lib/vurdering";
 
 interface ScoreBarsProps {
   kommune: KommuneData;
   compare?: KommuneData | null;
   ratios?: Record<string, number | null>; // override kommune.ratios (bruges til baseline-skift)
   compareRatios?: Record<string, number | null>; // override compare.ratios
+  // Vurderingsmode
+  vurderingsMode?: boolean;
+  vurderinger?: Record<string, VurderingEntry>;
+  onVurderingKlik?: (id: string, navn: string, gruppe: "social" | "ecological") => void;
 }
 
 function ecoScoreColor(score: number | null): string {
@@ -31,7 +36,38 @@ function ecoBarColor(score: number | null): string {
   return "bg-red-500";
 }
 
-export default function ScoreBars({ kommune, compare, ratios, compareRatios }: ScoreBarsProps) {
+// Lille farvet prik der viser vurderingsstatus på en dimension
+function VurderingPrik({ score }: { score: VurderingScore | undefined }) {
+  if (!score) return null;
+  const farve =
+    score === "groen"
+      ? "bg-emerald-500"
+      : score === "gul"
+      ? "bg-amber-400"
+      : "bg-red-500";
+  return (
+    <span
+      className={`inline-block w-2 h-2 rounded-full shrink-0 ${farve}`}
+      title={
+        score === "groen"
+          ? "Vurderet: Positiv påvirkning"
+          : score === "gul"
+          ? "Vurderet: Ukendt / ingen påvirkning"
+          : "Vurderet: Negativ påvirkning"
+      }
+    />
+  );
+}
+
+export default function ScoreBars({
+  kommune,
+  compare,
+  ratios,
+  compareRatios,
+  vurderingsMode = false,
+  vurderinger = {},
+  onVurderingKlik,
+}: ScoreBarsProps) {
   const [expanded, setExpanded] = useState<string | null>(null);
 
   const activeRatios = ratios ?? kommune.ratios;
@@ -41,6 +77,24 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
   const compareCategoryScores = compare
     ? computeCategoryScores(activeCompareRatios ?? compare.ratios)
     : null;
+
+  // Klik-handler for sociale kategorier
+  const handleSocialKlik = (categoryId: string, categoryName: string) => {
+    if (vurderingsMode && onVurderingKlik) {
+      onVurderingKlik(categoryId, categoryName, "social");
+    } else {
+      setExpanded(expanded === categoryId ? null : categoryId);
+    }
+  };
+
+  // Klik-handler for okologiske dimensioner
+  const handleEcoKlik = (dimId: string, dimName: string, subCount: number) => {
+    if (vurderingsMode && onVurderingKlik) {
+      onVurderingKlik(dimId, dimName, "ecological");
+    } else if (subCount > 0) {
+      setExpanded(expanded === dimId ? null : dimId);
+    }
+  };
 
   return (
     <div className="space-y-4">
@@ -53,47 +107,64 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
             const cmpCat = compareCategoryScores?.find(
               (c) => c.categoryId === cat.categoryId
             );
-            // Datadækning: hvor mange af kategoriens indikatorer har faktisk en score for denne kommune?
             const indicatorsWithData = cat.indicators.filter((i) => i.score !== null).length;
             const totalIndicators = cat.indicatorCount;
             const isPartialData = totalIndicators > 0 && indicatorsWithData > 0 && indicatorsWithData < totalIndicators;
+            const harVurdering = vurderingsMode && vurderinger[cat.categoryId];
 
             return (
               <div
                 key={cat.categoryId}
-                className="border border-gray-200 rounded-lg overflow-hidden"
+                className={`border rounded-lg overflow-hidden transition-colors ${
+                  vurderingsMode
+                    ? "border-emerald-200 hover:border-emerald-400 cursor-pointer"
+                    : "border-gray-200"
+                }`}
               >
                 <button
-                  onClick={() => setExpanded(isExpanded ? null : cat.categoryId)}
+                  onClick={() => handleSocialKlik(cat.categoryId, cat.categoryName)}
                   className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-gray-50 transition-colors text-left"
                 >
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
+                        {/* Vurderingsprik - kun i vurderingsmode */}
+                        {vurderingsMode && (
+                          <VurderingPrik score={vurderinger[cat.categoryId]?.score} />
+                        )}
                         <span className="text-sm font-semibold text-gray-900 truncate">
                           {cat.categoryName}
                         </span>
-                        {totalIndicators === 0 ? (
-                          <span className="text-xs text-gray-400">afventer data</span>
-                        ) : !cat.hasData ? (
-                          <span
-                            className="text-xs text-gray-400"
-                            title={`0 af ${totalIndicators} indikatorer har data for denne kommune`}
-                          >
-                            0/{totalIndicators} indikatorer
-                          </span>
-                        ) : (
-                          <span
-                            className={`text-xs ${isPartialData ? "text-amber-600 font-medium" : "text-gray-400"}`}
-                            title={
-                              isPartialData
-                                ? `Bemærk: kun ${indicatorsWithData} af ${totalIndicators} indikatorer har data for denne kommune. Scoren er gennemsnit af de tilgængelige.`
-                                : `${indicatorsWithData} af ${totalIndicators} indikatorer har data`
-                            }
-                          >
-                            {indicatorsWithData}/{totalIndicators} indikator{totalIndicators !== 1 ? "er" : ""}
-                            {isPartialData && " ⓘ"}
-                          </span>
+                        {/* Datadækning-badge - skjul i vurderingsmode for at undgå rod */}
+                        {!vurderingsMode && (
+                          <>
+                            {totalIndicators === 0 ? (
+                              <span className="text-xs text-gray-400">afventer data</span>
+                            ) : !cat.hasData ? (
+                              <span
+                                className="text-xs text-gray-400"
+                                title={`0 af ${totalIndicators} indikatorer har data for denne kommune`}
+                              >
+                                0/{totalIndicators} indikatorer
+                              </span>
+                            ) : (
+                              <span
+                                className={`text-xs ${isPartialData ? "text-amber-600 font-medium" : "text-gray-400"}`}
+                                title={
+                                  isPartialData
+                                    ? `Bemærk: kun ${indicatorsWithData} af ${totalIndicators} indikatorer har data for denne kommune. Scoren er gennemsnit af de tilgængelige.`
+                                    : `${indicatorsWithData} af ${totalIndicators} indikatorer har data`
+                                }
+                              >
+                                {indicatorsWithData}/{totalIndicators} indikator{totalIndicators !== 1 ? "er" : ""}
+                                {isPartialData && " ⓘ"}
+                              </span>
+                            )}
+                          </>
+                        )}
+                        {/* Vurderingsmode hint */}
+                        {vurderingsMode && !harVurdering && (
+                          <span className="text-xs text-emerald-600">Klik for at vurdere</span>
                         )}
                       </div>
                       <div className="flex items-center gap-2 ml-2 shrink-0">
@@ -127,7 +198,8 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                     )}
                     {!cat.hasData && <div className="mt-1.5 h-2 bg-gray-100 rounded-full" />}
                   </div>
-                  {cat.indicatorCount > 0 && (
+                  {/* Pil-ikon - kun i normal-mode */}
+                  {!vurderingsMode && cat.indicatorCount > 0 && (
                     <svg className={`w-4 h-4 text-gray-400 transition-transform shrink-0 ${isExpanded ? "rotate-180" : ""}`}
                       fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -135,13 +207,13 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                   )}
                 </button>
 
-                {isExpanded && cat.indicators.length > 0 && (
+                {/* Udvidet sub-indikator panel - kun i normal-mode */}
+                {!vurderingsMode && isExpanded && cat.indicators.length > 0 && (
                   <div className="border-t border-gray-100 bg-gray-50">
                     {cat.indicators.map(({ indicator: ind, score }) => {
                       const cmpScore = activeCompareRatios?.[ind.id] ?? compare?.ratios[ind.id] ?? null;
                       const rawVal = kommune.rawValues?.[ind.id] ?? null;
                       const cmpRawVal = compare?.rawValues?.[ind.id] ?? null;
-                      // Brug original ratio (ikke top10-skaleret) til at back-beregne landsgennemsnit
                       const originalRatio = kommune.ratios[ind.id] ?? null;
                       const nationalAvg = (rawVal !== null && originalRatio !== null && originalRatio !== 0)
                         ? ind.inverse
@@ -174,7 +246,6 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                             <div className={`h-full rounded-full ${scoreBarColor(score)} transition-all`}
                               style={{ width: `${Math.min((score || 0) / 150, 1) * 100}%` }} />
                           </div>
-                          {/* Råværdi + landsgennemsnit */}
                           {rawVal !== null && ind.rawUnit && (
                             <div className="mt-1.5 flex items-center gap-2 flex-wrap">
                               <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-gray-100 rounded text-[11px] text-gray-600 font-medium">
@@ -217,7 +288,7 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                     })}
                   </div>
                 )}
-                {isExpanded && cat.indicators.length === 0 && (
+                {!vurderingsMode && isExpanded && cat.indicators.length === 0 && (
                   <div className="border-t border-gray-100 bg-gray-50 px-3 py-3 text-sm text-gray-400">
                     Ingen data tilgængelig endnu for denne kategori.
                   </div>
@@ -228,7 +299,7 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
         </div>
       </div>
 
-      {/* Økologisk loft */}
+      {/* Okologisk loft */}
       <div>
         <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Økologisk loft</p>
         <div className="space-y-2">
@@ -242,6 +313,7 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
             const subCount = availableSubs.length;
             const totalSubs = subs.length;
             const isPartialEcoData = hasData && totalSubs > 1 && subCount > 0 && subCount < totalSubs;
+            const harVurdering = vurderingsMode && vurderinger[dim.id];
 
             const formatRaw = (val: number, unit: string) => {
               const num = val % 1 === 0 ? val.toFixed(0) : val.toFixed(2);
@@ -249,36 +321,56 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
             };
 
             return (
-              <div key={dim.id} className="border border-gray-200 rounded-lg overflow-hidden">
+              <div
+                key={dim.id}
+                className={`border rounded-lg overflow-hidden transition-colors ${
+                  vurderingsMode
+                    ? "border-emerald-200 hover:border-emerald-400 cursor-pointer"
+                    : "border-gray-200"
+                }`}
+              >
                 <button
-                  onClick={() => setExpanded(isExpanded ? null : dim.id)}
-                  disabled={subCount === 0}
+                  onClick={() => handleEcoKlik(dim.id, dim.name, subCount)}
+                  disabled={!vurderingsMode && subCount === 0}
                   className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-gray-50 transition-colors text-left disabled:cursor-default disabled:hover:bg-transparent"
                 >
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
+                        {/* Vurderingsprik */}
+                        {vurderingsMode && (
+                          <VurderingPrik score={vurderinger[dim.id]?.score} />
+                        )}
                         <span className="text-sm font-semibold text-gray-900 truncate">
                           {dim.name}
                         </span>
-                        {!hasData ? (
-                          <span className="text-xs text-gray-400">afventer data</span>
-                        ) : totalSubs > 1 ? (
-                          <span
-                            className={`text-xs ${isPartialEcoData ? "text-amber-600 font-medium" : "text-gray-400"}`}
-                            title={
-                              isPartialEcoData
-                                ? `Bemærk: kun ${subCount} af ${totalSubs} sub-indikatorer har data. Worst-of-scoren er beregnet på de tilgængelige.`
-                                : `${subCount} af ${totalSubs} sub-indikatorer har data`
-                            }
-                          >
-                            {subCount}/{totalSubs} indikator{totalSubs !== 1 ? "er" : ""}
-                            {isPartialEcoData && " ⓘ"}
-                          </span>
-                        ) : (
-                          <span className="text-xs text-gray-400">
-                            {subCount} indikator{subCount !== 1 ? "er" : ""}
-                          </span>
+                        {/* Datadækning - kun i normal-mode */}
+                        {!vurderingsMode && (
+                          <>
+                            {!hasData ? (
+                              <span className="text-xs text-gray-400">afventer data</span>
+                            ) : totalSubs > 1 ? (
+                              <span
+                                className={`text-xs ${isPartialEcoData ? "text-amber-600 font-medium" : "text-gray-400"}`}
+                                title={
+                                  isPartialEcoData
+                                    ? `Bemærk: kun ${subCount} af ${totalSubs} sub-indikatorer har data. Worst-of-scoren er beregnet på de tilgængelige.`
+                                    : `${subCount} af ${totalSubs} sub-indikatorer har data`
+                                }
+                              >
+                                {subCount}/{totalSubs} indikator{totalSubs !== 1 ? "er" : ""}
+                                {isPartialEcoData && " ⓘ"}
+                              </span>
+                            ) : (
+                              <span className="text-xs text-gray-400">
+                                {subCount} indikator{subCount !== 1 ? "er" : ""}
+                              </span>
+                            )}
+                          </>
+                        )}
+                        {/* Vurderingsmode hint */}
+                        {vurderingsMode && !harVurdering && (
+                          <span className="text-xs text-emerald-600">Klik for at vurdere</span>
                         )}
                       </div>
                       <div className="flex items-center gap-2 ml-2 shrink-0">
@@ -312,7 +404,8 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                     )}
                     {!hasData && <div className="mt-1.5 h-2 bg-gray-100 rounded-full" />}
                   </div>
-                  {subCount > 0 && (
+                  {/* Pil-ikon - kun i normal-mode */}
+                  {!vurderingsMode && subCount > 0 && (
                     <svg className={`w-4 h-4 text-gray-400 transition-transform shrink-0 ${isExpanded ? "rotate-180" : ""}`}
                       fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -320,7 +413,8 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                   )}
                 </button>
 
-                {isExpanded && availableSubs.length > 0 && (
+                {/* Sub-indikator panel - kun i normal-mode */}
+                {!vurderingsMode && isExpanded && availableSubs.length > 0 && (
                   <div className="border-t border-gray-100 bg-gray-50">
                     {availableSubs.map((sub) => {
                       const raw = kommune.rawValues?.[sub.rawKey] ?? null;
@@ -343,7 +437,6 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                               </div>
                             )}
                           </div>
-                          {/* Sub-bar (samme stil som sociale) */}
                           {subRatio !== null && (
                             <div className="mt-1 h-1.5 bg-gray-100 rounded-full overflow-hidden relative">
                               <div className="absolute top-0 bottom-0 w-px bg-gray-300" style={{ left: "50%" }} />
@@ -351,7 +444,6 @@ export default function ScoreBars({ kommune, compare, ratios, compareRatios }: S
                                 style={{ width: `${Math.min((subRatio || 0) / 200, 1) * 100}%` }} />
                             </div>
                           )}
-                          {/* Råværdi-chip + landsgennemsnit/grænse */}
                           <div className="mt-1.5 flex items-center gap-2 flex-wrap">
                             <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-gray-100 rounded text-[11px] text-gray-600 font-medium">
                               <span className="text-gray-400">Kommune:</span>
