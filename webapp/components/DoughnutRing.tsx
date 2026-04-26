@@ -648,19 +648,19 @@ export default function DoughnutRing({
         /* Legende i vurderingsmode: vis vurderingsfarver */
         <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-2 text-xs text-gray-500">
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full" style={{ backgroundColor: VURDERING_COLORS.groen }} />
+            <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill={VURDERING_COLORS.groen} /></svg>
             <span className="font-medium">Positiv påvirkning</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full" style={{ backgroundColor: VURDERING_COLORS.gul }} />
+            <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill={VURDERING_COLORS.gul} /></svg>
             <span className="font-medium">Ukendt / ingen påvirkning</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full" style={{ backgroundColor: VURDERING_COLORS.roed }} />
+            <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill={VURDERING_COLORS.roed} /></svg>
             <span className="font-medium">Negativ påvirkning</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded" style={{ backgroundColor: VURDERING_DEFAULT_GRAY, border: `1px solid ${VURDERING_DEFAULT_STROKE}` }} />
+            <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill={VURDERING_DEFAULT_GRAY} stroke={VURDERING_DEFAULT_STROKE} strokeWidth="1" /></svg>
             <span className="font-medium">Ikke vurderet</span>
           </div>
         </div>
