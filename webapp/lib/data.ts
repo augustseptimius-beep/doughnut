@@ -53,6 +53,9 @@ const ECO_RAW_KEY_MAP: Record<string, { rawKey: string; ratioKey: string | null 
   biodiversitet: { rawKey: "eco_bio_raw", ratioKey: "biodiversitet_self" },
   // Forbrug CO2 (single)
   forbrug_co2: { rawKey: "forbrug_co2", ratioKey: "forbrug_co2_self" },
+  // Forurening - pesticider + nitrat i drikkevand (worst-of)
+  pesticider: { rawKey: "eco_pesticid_raw", ratioKey: "pesticider_self" },
+  nitrat:     { rawKey: "eco_nitrat_raw",   ratioKey: "nitrat_self" },
 };
 
 // ─── Master-CSV loader ───────────────────────────────────────────────

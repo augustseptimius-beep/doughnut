@@ -149,9 +149,13 @@ ECO_SUB_INDICATORS = [
 
     # === Forbrugsbaseret CO2 (single, navn-nøgle, ingen fallback) ===
     {"id": "forbrug_co2", "csv": "cba_2023_estimate.csv", "ratio_col": None, "raw_col": "cba_2023_estimate", "unit": "ton CO₂e/person", "data_year": "2023", "source": "Osei-Owusu et al. 2020 + ENS GA25", "category": "ecological", "dimension": "forbrug_co2", "inverse_ratio": False, "is_dimension_score": True, "special": "cba_navn_key"},
+
+    # === Forurening / Novel entities (worst-of: pesticider + nitrat) ===
+    {"id": "pesticider", "csv": "pesticider_scores.csv", "ratio_col": "pesticid_ratio", "raw_col": "pesticid_pct_over_graense", "unit": "% boringer over 0,1 µg/l", "data_year": "2023", "source": "DN/GEUS Jupiter 2019-2023", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": False},
+    {"id": "nitrat", "csv": "nitrat_scores.csv", "ratio_col": "nitrat_ratio", "raw_col": "nitrat_mg_l", "unit": "mg/L", "data_year": "2025", "source": "Greenpeace/GEUS Jupiter 2025", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": False},
 ]
 
-# Inaktive dimensioner uden data: vand, arealanvendelse, forurening (novel entities)
+# Inaktive dimensioner uden data: vand, arealanvendelse
 # klimatilpasning (social): ingen indikatorer endnu
 
 # ─── HJÆLPEFUNKTIONER ──────────────────────────────────────────────────

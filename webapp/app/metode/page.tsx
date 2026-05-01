@@ -175,8 +175,11 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   forurening: {
     id: "forurening",
-    scoring: "Ingen pålidelig kommunal datakilde endnu. Dækker den planetære grænse for 'novel entities' - kemisk forurening, mikroplast, PFAS, pesticider mv. Affaldsdata (tidligere brugt som proxy her) er flyttet til Cirkularitet-dimensionen, da affaldsmængde er en bedre indikator for materialeforbrug end for kemisk forurening.",
-    limitations: "Direkte forureningsdata (PFAS, pesticider, tungmetaller) er ikke kommunefordelt i StatBank. Potentielle fremtidige kilder: NOVANA-overvågning (Miljøstyrelsen), jordforureningsdata (regionerne), DCE luftkvalitetsmålinger.",
+    scoring: "Worst-of af to drikkevandsindikatorer: (1) Pesticider: andel af aktive vandindvindingsboringer med fund over drikkevandsnormen (0,1 µg/l), ratio = (kommunens % / nationalt gennemsnit %) × 100. (2) Nitrat: kommunalt gennemsnit i mg/L sammenholdt med ekspertgruppens anbefalede grænse på 6 mg/L, ratio = (faktisk mg/L / 6 mg/L) × 100. Dimensionens samlede score er den højeste (værste) af de to - planetary boundary-logik.",
+    boundary: "Pesticider: 0% af aktive boringer bør overstige 0,1 µg/l (drikkevandsnormen). Nitrat: 6 mg/L (ekspertgruppens anbefaling 2025, baseret på tarmkræftrisiko - markant lavere end den juridiske grænse på 50 mg/L).",
+    dataYear: "2023 (pesticider) / 2025 (nitrat)",
+    limitations: "Pesticider: data dækker 97/98 kommuner (Herlev mangler). Nationalt gennemsnit bruges som reference, ikke en absolut nulgrænse - ratio > 100 betyder over landsgennemsnittet. Nitrat: præcise kommunegennemsnit er kun offentliggjort for de 20 mest belastede kommuner (Greenpeace/GEUS Jupiter, november 2025). De resterende 78 kommuner tildeles 3,7 mg/L (Helsingørs niveau, #20 på listen) som konservativt estimat - de faktiske værdier er lavere. Begge indikatorer dækker kemisk forurening af drikkevand men afspejler ikke PFAS, mikroplast, tungmetaller eller jordforurening.",
+    csvFile: "pesticider_scores.csv + nitrat_scores.csv",
   },
   luftkvalitet: {
     id: "luftkvalitet",

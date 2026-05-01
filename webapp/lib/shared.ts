@@ -665,9 +665,15 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     id: "forurening",
     name: "Forurening (novel entities)",
     shortName: "FORUR",
-    description: "Kemisk forurening, mikroplast og persistent organisk forurening - den planetære grænse for 'novel entities'. Ingen pålidelig kommunal datakilde endnu.",
-    unit: "Ingen indikator endnu",
-    boundary: "Planetær grænse for novel entities (allerede overskredet globalt)",
+    description: "Kemisk forurening af drikkevand - pesticider og nitrat. Pesticider: andel af aktive boringer over 0,1 µg/l (DN/GEUS Jupiter 2019-2023). Nitrat: kommunalt gennemsnit i mg/L sammenholdt med ekspertgruppens anbefalede grænse på 6 mg/L (Greenpeace/GEUS Jupiter 2025, kun top-20 kommuner).",
+    source: "https://www.dn.dk/nyheder/tjek-din-kommune-sa-ofte-er-der-giftrester-i-grundvandet/",
+    sourceLabel: "DN/GEUS Jupiter + Greenpeace 2025",
+    unit: "Worst-of: pesticider (% boringer) + nitrat (mg/L)",
+    boundary: "Pesticider: 0% boringer over 0,1 µg/l - Nitrat: 6 mg/L (ekspertgruppe 2025)",
+    subIndicators: [
+      { rawKey: "eco_pesticid_raw", ratioKey: "pesticider_self", label: "Pesticider over grænseværdi", unit: "% boringer > 0,1 µg/l", boundary: "Grænse: 0% (drikkevandsnorm 0,1 µg/l)", lowerIsBetter: true },
+      { rawKey: "eco_nitrat_raw", ratioKey: "nitrat_self", label: "Nitrat i drikkevand", unit: "mg/L", boundary: "Grænse: 6 mg/L (ekspertgruppe 2025) - kun top-20 kommuner", lowerIsBetter: true },
+    ],
   },
   {
     id: "luftkvalitet",
