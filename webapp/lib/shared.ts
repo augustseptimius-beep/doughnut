@@ -494,13 +494,13 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "uddannelse",
     name: "Uddannelse",
     description: "Adgang til og gennemførelse af uddannelse for alle aldersgrupper - grundlag for personlig udvikling og samfundsdeltagelse.",
-    indicatorIds: ["education", "low_education", "exam_grade", "high_absence", "youth_education", "apprenticeship"],
+    indicatorIds: ["education", "low_education", "exam_grade", "high_absence", "youth_education", "apprenticeship", "class_size", "daycare_ratio", "educated_staff"],
   },
   {
     id: "velfaerd",
     name: "Velfærd",
     description: "Materiel levevilkår, indkomst, beskæftigelse og social sikring - de grundlæggende betingelser for et godt liv.",
-    indicatorIds: ["disposable_income", "employment", "child_poverty", "gini", "low_income", "vulnerable_children", "neet", "poverty_relative", "child_notifications"],
+    indicatorIds: ["disposable_income", "employment", "child_poverty", "vulnerable_children", "neet", "poverty_relative", "child_notifications"],
   },
   {
     id: "bolig",
@@ -512,7 +512,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "demokrati",
     name: "Demokrati",
     description: "Borgernes deltagelse i det formelle demokrati og kommunalpolitik. Valgdeltagelse er det mest direkte mål for demokratisk engagement på lokalt niveau.",
-    indicatorIds: ["voter_turnout", "gender_leadership"],
+    indicatorIds: ["voter_turnout"],
   },
   {
     id: "kultur_fritid",
@@ -529,14 +529,26 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
   {
     id: "lokalsamfund",
     name: "Lokalsamfund",
-    description: "Nærhed til velfungerende basale services: pasning, undervisning, idrætsfaciliteter, kommunal investering i nærområdet og støtte til det lokale foreningsliv.",
-    indicatorIds: ["sports_facilities", "class_size", "daycare_ratio", "sports_spending", "civil_society", "educated_staff"],
+    description: "Nærhed til velfungerende basale services: idrætsfaciliteter, kommunal investering i nærområdet og støtte til det lokale foreningsliv.",
+    indicatorIds: ["sports_facilities", "sports_spending", "civil_society"],
+  },
+  {
+    id: "lighed",
+    name: "Lighed",
+    description: "Fordelingen af indkomst og materielle ressourcer i kommunen - et mål for strukturel ulighed og sociale skel.",
+    indicatorIds: ["gini", "low_income"],
   },
   {
     id: "mobilitet",
     name: "Mobilitet",
     description: "Adgang til bæredygtig og effektiv transport for alle borgere uanset geografi og økonomi.",
     indicatorIds: ["commute_distance", "public_transport"],
+  },
+  {
+    id: "ligestilling",
+    name: "Ligestilling",
+    description: "Kønsbalance og lige muligheder i kommunen - herunder repræsentation på arbejdsmarkedet og i ledelse.",
+    indicatorIds: ["gender_leadership"],
   },
   {
     id: "klimatilpasning",
