@@ -663,7 +663,7 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
   },
   {
     id: "forurening",
-    name: "Forurening (novel entities)",
+    name: "Forurening",
     shortName: "FORUR",
     description: "Syntetiske pesticider i drikkevand - andel af aktive vandindvindingsboringer med fund over drikkevandsnormen (0.1 µg/l). Måler kemisk forurening fra syntetiske stoffer (novel entities) i grundvandsmagasinerne.",
     source: "https://www.dn.dk/nyheder/tjek-din-kommune-sa-ofte-er-der-giftrester-i-grundvandet/",
@@ -734,15 +734,14 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     id: "arealanvendelse",
     name: "Arealanvendelse",
     shortName: "AREAL",
-    description: "Intensitet af menneskelig arealanvendelse - andel natur og skov, intensivt landbrug og kunstigt befæstet areal. Tre sub-indikatorer med worst-of logik (den dårligste afgør dimensionsscoren).",
+    description: "Pres på det fysiske landskab fra to menneskeskabte arealanvendelser: intensivt landbrug og kunstigt befæstet areal (veje, bebyggelse). Worst-of logik - den dårligste afgør dimensionsscoren. Naturkvalitet måles separat i biodiversitetsdimensionen.",
     source: "https://www.statistikbanken.dk/AREALDK2",
     sourceLabel: "DST AREALDK2 (2024)",
     unit: "% af kommunens areal",
-    boundary: "30% natur + skov (EU 30x30-mål 2030); nationalt snit for landbrug og bebyggelse",
+    boundary: "Nationalt gennemsnit 2024 som reference (intensivt landbrug ~55%, bebygget ~14%)",
     subIndicators: [
-      { rawKey: "eco_areal_natur_raw",    ratioKey: "areal_natur_ratio",    label: "Natur + skov",       unit: "%", boundary: "Mål: 30% (EU Biodiversitetsstrategi 2030)", lowerIsBetter: false },
-      { rawKey: "eco_areal_intensiv_raw", ratioKey: "areal_intensiv_ratio", label: "Intensivt landbrug", unit: "%", boundary: "Nationalt snit: ~55%",                     lowerIsBetter: true },
-      { rawKey: "eco_areal_bebygget_raw", ratioKey: "areal_bebygget_ratio", label: "Bebygget + veje",    unit: "%", boundary: "Nationalt snit: ~14%",                     lowerIsBetter: true },
+      { rawKey: "eco_areal_intensiv_raw", ratioKey: "areal_intensiv_ratio", label: "Intensivt landbrug", unit: "%", boundary: "Nationalt snit: ~55%", lowerIsBetter: true },
+      { rawKey: "eco_areal_bebygget_raw", ratioKey: "areal_bebygget_ratio", label: "Bebygget + veje",    unit: "%", boundary: "Nationalt snit: ~14%", lowerIsBetter: true },
     ],
   },
   {

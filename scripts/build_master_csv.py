@@ -160,7 +160,6 @@ ECO_SUB_INDICATORS = [
     # natur_ratio    = (30% EU-maal / natur_pct) * 100  [lav natur = overshoot]
     # intensiv_ratio = (intensiv_pct / 54.7% nationalt snit) * 100  [meget landbrug = overshoot]
     # bebygget_ratio = (bebygget_pct / 14.2% nationalt snit) * 100  [meget by = overshoot]
-    {"id": "areal_natur",    "csv": "arealanvendelse_scores.csv", "ratio_col": "natur_ratio",    "raw_col": "natur_pct",    "unit": "%", "data_year": "2024", "source": "DST AREALDK2", "category": "ecological", "dimension": "arealanvendelse", "inverse_ratio": False, "is_dimension_score": False},
     {"id": "areal_intensiv", "csv": "arealanvendelse_scores.csv", "ratio_col": "intensiv_ratio", "raw_col": "intensiv_pct", "unit": "%", "data_year": "2024", "source": "DST AREALDK2", "category": "ecological", "dimension": "arealanvendelse", "inverse_ratio": False, "is_dimension_score": False},
     {"id": "areal_bebygget", "csv": "arealanvendelse_scores.csv", "ratio_col": "bebygget_ratio", "raw_col": "bebygget_pct", "unit": "%", "data_year": "2024", "source": "DST AREALDK2", "category": "ecological", "dimension": "arealanvendelse", "inverse_ratio": False, "is_dimension_score": False},
 ]

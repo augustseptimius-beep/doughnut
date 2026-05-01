@@ -220,10 +220,10 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   arealanvendelse: {
     id: "arealanvendelse",
-    scoring: "Tre sub-indikatorer med worst-of logik (dimensionsscoren = den højeste ratio af de tre): (1) Andel natur og skov (skov, heder, klitter, enge, moser, søer - DST kategorier E+F1+F2+G1): ratio = (30% / andel) × 100. Under 30% natur = overshoot. (2) Andel intensivt landbrug (korn, rodfrugter, permanente afgrøder, ikke-klassificeret - D1+D2+D4): ratio = (andel / 54,7%) × 100 mod nationalt gennemsnit 2024. (3) Andel bebygget og befæstet areal (veje, jernbaner, lufthavne, bebyggelse, råstofgrave - A1+A2+B1+B2+C1): ratio = (andel / 14,2%) × 100 mod nationalt gennemsnit 2024.",
-    boundary: "Natur + skov: 30% (EU Biodiversitetsstrategi 30x30-mål, 2030). Intensivt landbrug og bebyggelse: nationalt gennemsnit 2024 fra DST AREALDK2 (hhv. ~55% og ~14%).",
+    scoring: "To sub-indikatorer med worst-of logik (dimensionsscoren = den højeste ratio): (1) Andel intensivt landbrug (korn, rodfrugter, permanente afgrøder, ikke-klassificeret - DST kategorier D1+D2+D4): ratio = (andel / 54,7%) × 100 mod nationalt gennemsnit 2024. (2) Andel bebygget og befæstet areal (veje, jernbaner, lufthavne, bebyggelse, råstofgrave - A1+A2+B1+B2+C1): ratio = (andel / 14,2%) × 100 mod nationalt gennemsnit 2024. Naturkvalitet måles separat i biodiversitetsdimensionen (§3-beskyttede arealer).",
+    boundary: "Nationalt gennemsnit 2024 som reference: intensivt landbrug ~54,7%, bebygget og befæstet ~14,2% (DST AREALDK2). Over gennemsnittet = over grænsen.",
     dataYear: "2024",
-    limitations: "Intensivt landbrug og bebyggelse er målt mod nationalt gennemsnit (niveau 3 baseline), ikke absolutte planetære grænser - da disse ikke er operationaliseret på kommuneniveau. Natur-indikatoren overlapper delvist med biodiversitetsdimensionen (som måler §3-beskyttede arealer), men AREALDK2 dækker alle skov- og naturtyper uanset beskyttelsesstatus. Bykommuner scorer typisk dårligt på bebygget-indikatoren men godt på landbrug - og omvendt for landkommuner. Det er bevidst: worst-of logikken rammer det primære pres for den enkelte kommunes arealtype.",
+    limitations: "Begge indikatorer er målt mod nationalt gennemsnit (niveau 3 baseline), ikke absolutte planetære grænser. Bykommuner scorer typisk dårligt på bebygget men godt på landbrug - og omvendt for landkommuner. Det er bevidst: worst-of logikken fanger det dominerende pres for den enkelte kommunes arealtype. Dimensionen dækker ikke naturkvalitet (se biodiversitet) eller fragmentering af levesteder.",
     csvFile: "arealanvendelse_scores.csv",
   },
   biodiversitet: {

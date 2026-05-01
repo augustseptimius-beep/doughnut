@@ -215,10 +215,16 @@ for _, row in df.iterrows():
         ratio = None
         raw_val = None
     else:
-        # ratio = (kommune_pct / national_pct) × 100
-        # ratio > 100 = over nationalt gennemsnit (dårligere)
-        # ratio < 100 = under nationalt gennemsnit (bedre)
-        ratio = round((pct_over / national_pct) * 100, 1) if national_pct > 0 else 0.0
+        # Grænsen er 0% (drikkevandsnorm) - enhver >0% er overshoot.
+        # ratio = 0 hvis ingen fund, ellers max(101, relativ ratio):
+        #   - bevarer relativ rangering mellem kommuner med fund
+        #   - sikrer at ALLE kommuner med fund vises som rød (overshoot)
+        if pct_over == 0:
+            ratio = 0.0
+        elif national_pct > 0:
+            ratio = round(max(101.0, (pct_over / national_pct) * 100), 1)
+        else:
+            ratio = 101.0
         raw_val = round(pct_over, 2)
 
     results.append({
