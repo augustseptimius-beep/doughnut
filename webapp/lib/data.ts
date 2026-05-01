@@ -53,9 +53,11 @@ const ECO_RAW_KEY_MAP: Record<string, { rawKey: string; ratioKey: string | null 
   biodiversitet: { rawKey: "eco_bio_raw", ratioKey: "biodiversitet_self" },
   // Forbrug CO2 (single)
   forbrug_co2: { rawKey: "forbrug_co2", ratioKey: "forbrug_co2_self" },
-  // Forurening - pesticider + nitrat i drikkevand (worst-of)
+  // Forurening - pesticider (worst-of)
   pesticider: { rawKey: "eco_pesticid_raw", ratioKey: "pesticider_self" },
-  nitrat:     { rawKey: "eco_nitrat_raw",   ratioKey: "nitrat_self" },
+  // Vand (worst-of: nitrat + vandindvinding)
+  nitrat:          { rawKey: "eco_nitrat_raw",         ratioKey: "nitrat_self" },
+  vandindvinding:  { rawKey: "eco_vandindvinding_raw", ratioKey: "vandindvinding_self" },
   // Arealanvendelse (worst-of: intensivt landbrug + bebygget)
   areal_intensiv: { rawKey: "eco_areal_intensiv_raw", ratioKey: "areal_intensiv_ratio" },
   areal_bebygget: { rawKey: "eco_areal_bebygget_raw", ratioKey: "areal_bebygget_ratio" },
