@@ -1,0 +1,12 @@
+kategori,datakilde_niveau,nordjylland_2011_kt_co2e,thisted_2011_kt_co2e,thisted_2011_t_co2e_pcap,ga25_mapping,ga25_ratio_2023_2011,thisted_2023_kt_co2e,thisted_2023_t_co2e_pcap,aendring_kt,aendring_pct,retning
+Construction,Region (Nordjylland) skaleret til Thisted via indkomstandel,1160,87.55,1.95,Investeringer: bygninger + boliger + anlæg,1.094,95.78,2.217,8.23,9.4,↑ stigende
+Shelter (energi/varme/vand),Region (Nordjylland) skaleret til Thisted via indkomstandel,1086,81.97,1.826,Husholdninger / Energi og forsyning,0.364,29.84,0.691,-52.13,-63.6,↓↓ kraftigt faldende
+Food,Region (Nordjylland) skaleret til Thisted via indkomstandel,1062,80.16,1.786,Husholdninger / Føde- og drikkevarer,0.87,69.74,1.614,-10.42,-13.0,↓ faldende
+Clothing,Region (Nordjylland) skaleret til Thisted via indkomstandel,242,18.27,0.407,Husholdninger / Bolig og beklædning (proxy),0.863,15.76,0.365,-2.5,-13.7,↓ faldende
+Mobility,Region (Nordjylland) skaleret til Thisted via indkomstandel,283,21.36,0.476,Husholdninger / Transport,0.812,17.34,0.401,-4.02,-18.8,↓ faldende
+Manufactured products,Region (Nordjylland) skaleret til Thisted via indkomstandel,1324,99.93,2.226,Husholdninger / Elektronik + Andre produkter,0.789,78.85,1.825,-21.09,-21.1,↓ faldende
+Services,Region (Nordjylland) skaleret til Thisted via indkomstandel,3174,239.57,5.337,Husholdninger / Services + Kultur og fritid + Off. forbrug,0.772,184.94,4.281,-54.62,-22.8,↓ faldende
+Trade,Region (Nordjylland) skaleret til Thisted via indkomstandel,38,2.87,0.064,Total CBA-ratio (intet direkte match),0.764,2.19,0.051,-0.68,-23.6,↓ faldende
+Other,Region (Nordjylland) skaleret til Thisted via indkomstandel,18,1.36,0.03,Total CBA-ratio (intet direkte match),0.764,1.04,0.024,-0.32,-23.6,↓ faldende
+TOTAL (indirekte CBA),Sum,8387,633.03,14.102,-,0.783,495.48,11.47,-137.54,-21.7,↓ faldende
+"Food (kommune-niveau, faktiske tal mmc2.xlsx)",Kommune (direkte fra Osei-Owusu mmc2.xlsx),,83.46,1.859,Husholdninger / Føde- og drikkevarer,0.87,72.61,1.681,-10.85,-13.0,↓ faldende
