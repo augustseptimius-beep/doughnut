@@ -27,7 +27,8 @@ interface MethodInfo {
 const INDICATOR_RATIONALES: Record<string, string> = {
   // Sundhed
   life_expectancy: "Det mest direkte og internationalt sammenlignelige mål for befolkningens generelle sundhedstilstand. Langt tidsserie i DST (HISBK) giver høj datakvalitet.",
-  hospital_use: "Hyppig sygehusbenyttelse signalerer dårlig forebyggelse og høj sygelighed i befolkningen. Inverteret: kommuner med lavere benyttelse end landsgennemsnittet scorer bedre.",
+  hospital_short: "Andel af befolkningen med kortvarigt sygehusophold (under 12 timer, SBR01). Akutte og ambulante besøg - høj andel kan signalere høj sygelighed eller lavt forebyggelsesniveau. Inverteret: lavere andel er bedre.",
+  hospital_long: "Andel af befolkningen med indlæggelse på 12 timer eller derover (SBR01). Længere ophold indikerer alvorligere sygdomsforløb og er et stærkere signal om befolkningens helbredstilstand end kortere ophold. Inverteret: lavere andel er bedre.",
   // Uddannelse
   education: "Andel af 30-34-årige med erhvervskompetencegivende uddannelse er det primære politiske måleparameter for uddannelsesniveau. Absolut baseline: nationalt mål på 95% (Børne- og Undervisningsministeriet).",
   low_education: "Andel af 25-29-årige med kun grundskole som højeste uddannelse. Fanger den sårbare ende af uddannelsesspektret og er særligt vigtig som indikator i landdistrikter og socialt belastede områder.",
@@ -44,6 +45,7 @@ const INDICATOR_RATIONALES: Record<string, string> = {
   housing_area: "Boligareal pr. person afspejler boligstandard og -træthed. Mere plads er generelt forbundet med bedre livskvalitet.",
   // Demokrati
   voter_turnout: "Stemmedeltagelse ved kommunalvalg er det mest direkte og sammenlignelige mål for demokratisk engagement på lokalt plan. God datadækning for alle 98 kommuner (valg 2021).",
+  voter_turnout_national: "Stemmedeltagelse ved folketingsvalg 2026 (DST LABY09). Supplerer kommunalvalget med et nationalpolitisk mål for demokratisk engagement - de to valg trækker ikke altid i samme retning kommunerne imellem.",
   // Kultur & fritid
   music_school: "Musikskoleelever pr. 1.000 indb. måler kulturel deltagelse og adgang til musikuddannelse for børn og unge. Et unikt dansk måleparameter for kommunal kultursatsning.",
   library_use: "Biblioteksudlån pr. indbygger er en anerkendt proxy for kulturel aktivitet, læring og brug af offentlige kulturinstitutioner. God datakvalitet (BIB1) og lang tidsserie.",
@@ -69,10 +71,10 @@ const INDICATOR_RATIONALES: Record<string, string> = {
 const SOCIAL_METHODS: Record<string, MethodInfo> = {
   sundhed: {
     id: "sundhed",
-    scoring: "Gennemsnit af tre indikatorer: (1) Middellevetid (0-årige) sammenholdt med landsgennemsnittet. (2) Sygehusbenyttelse - andel af befolkningen med ophold på sygehus (SBR01, inverteret). (3) Afstand til nærmeste praktiserende læge i km (SUNDAF01, inverteret - kortere er bedre). Score 100 = landsgennemsnit.",
+    scoring: "Gennemsnit af fire indikatorer: (1) Middellevetid (0-årige) sammenholdt med landsgennemsnittet. (2) Andel med kortvarigt sygehusophold under 12 timer (SBR01, inverteret). (3) Andel med indlæggelse 12 timer eller derover (SBR01, inverteret). (4) Afstand til nærmeste praktiserende læge i km (SUNDAF01, inverteret - kortere er bedre). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: alle borgere bør have en forventet levetid der som minimum matcher landsgennemsnittet og have rimelig adgang til primær sundhedsydelse.",
-    dataYear: "2022-2024",
-    limitations: "Middellevetid er en gennemsnitsbetragtning. Sygehusbenyttelse kan afspejle både dårligt helbred og god adgang til sundhedsvæsenet. Lægeafstand dækker ikke kapacitet eller ventetider.",
+    dataYear: "2023-2024",
+    limitations: "Middellevetid er en gennemsnitsbetragtning. Sygehusbenyttelse kan afspejle både dårligt helbred og god adgang til sundhedsvæsenet. Korte og lange ophold er begge inverterede - dvs. høj score = lavt ophold. Lægeafstand dækker ikke kapacitet eller ventetider.",
     csvFile: "doughnut_scores.csv + sundhed_extra_scores.csv",
   },
   uddannelse: {
@@ -101,10 +103,10 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   demokrati: {
     id: "demokrati",
-    scoring: "1 indikator: Stemmedeltagelse ved kommunalvalget 2021 (LABY08/KVBPCT, direkte ratio til landsgennemsnit). Score 100 = landsgennemsnit. NB: Kønsbalance i ledelse er flyttet til dimensionen Ligestilling.",
+    scoring: "Gennemsnit af 2 indikatorer: (1) Stemmedeltagelse ved kommunalvalget 2021 (LABY08/KVBPCT, direkte ratio til landsgennemsnit). (2) Stemmedeltagelse ved folketingsvalget 2026 (LABY09, direkte ratio til landsgennemsnit). Score 100 = landsgennemsnit. NB: Kønsbalance i ledelse er flyttet til dimensionen Ligestilling.",
     boundary: "Socialt fundament: aktivt demokratisk medborgerskab. Alle borgere bør have mulighed for og lyst til at deltage i den demokratiske proces.",
-    dataYear: "2021",
-    limitations: "Måler kun formel valgdeltagelse - ikke bredere politisk deltagelse som borgermøder, lokalt engagement eller civilsamfundsaktivitet. Valgdeltagelse varierer strukturelt: højere i kommuner med velstillet, ældre befolkning. Opdateres kun hvert 4. år ved kommunalvalg.",
+    dataYear: "2021, 2026",
+    limitations: "Måler kun formel valgdeltagelse - ikke bredere politisk deltagelse som borgermøder, lokalt engagement eller civilsamfundsaktivitet. Valgdeltagelse varierer strukturelt: højere i kommuner med velstillet, ældre befolkning. Kommunalvalg opdateres hvert 4. år; folketingsvalg efter behov.",
     csvFile: "democracy_scores.csv",
   },
   kultur_fritid: {

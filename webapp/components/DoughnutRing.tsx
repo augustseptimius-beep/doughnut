@@ -19,19 +19,22 @@ interface DoughnutRingProps {
   vurderinger?: Record<string, VurderingEntry>;
 }
 
+/** Round to 6 decimal places to prevent SSR/client hydration mismatches from floating point drift. */
+const r6 = (n: number) => Math.round(n * 1e6) / 1e6;
+
 function describeArc(
   cx: number, cy: number,
   rOuter: number, rInner: number,
   startAngle: number, endAngle: number
 ): string {
-  const x1 = cx + rOuter * Math.cos(startAngle);
-  const y1 = cy + rOuter * Math.sin(startAngle);
-  const x2 = cx + rOuter * Math.cos(endAngle);
-  const y2 = cy + rOuter * Math.sin(endAngle);
-  const x3 = cx + rInner * Math.cos(endAngle);
-  const y3 = cy + rInner * Math.sin(endAngle);
-  const x4 = cx + rInner * Math.cos(startAngle);
-  const y4 = cy + rInner * Math.sin(startAngle);
+  const x1 = r6(cx + rOuter * Math.cos(startAngle));
+  const y1 = r6(cy + rOuter * Math.sin(startAngle));
+  const x2 = r6(cx + rOuter * Math.cos(endAngle));
+  const y2 = r6(cy + rOuter * Math.sin(endAngle));
+  const x3 = r6(cx + rInner * Math.cos(endAngle));
+  const y3 = r6(cy + rInner * Math.sin(endAngle));
+  const x4 = r6(cx + rInner * Math.cos(startAngle));
+  const y4 = r6(cy + rInner * Math.sin(startAngle));
   const largeArc = endAngle - startAngle <= Math.PI ? "0" : "1";
   return `M ${x1} ${y1} A ${rOuter} ${rOuter} 0 ${largeArc} 1 ${x2} ${y2} L ${x3} ${y3} A ${rInner} ${rInner} 0 ${largeArc} 0 ${x4} ${y4} Z`;
 }
@@ -55,19 +58,19 @@ function labelArcPath(
 
   if (isBottom) {
     // Counter-clockwise: swap endpoints, sweep=0
-    const x1 = cx + r * Math.cos(endAngle);
-    const y1 = cy + r * Math.sin(endAngle);
-    const x2 = cx + r * Math.cos(startAngle);
-    const y2 = cy + r * Math.sin(startAngle);
+    const x1 = r6(cx + r * Math.cos(endAngle));
+    const y1 = r6(cy + r * Math.sin(endAngle));
+    const x2 = r6(cx + r * Math.cos(startAngle));
+    const y2 = r6(cy + r * Math.sin(startAngle));
     const span = endAngle - startAngle;
     const largeArc = span <= Math.PI ? "0" : "1";
     return `M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 0 ${x2} ${y2}`;
   } else {
     // Clockwise: normal direction
-    const x1 = cx + r * Math.cos(startAngle);
-    const y1 = cy + r * Math.sin(startAngle);
-    const x2 = cx + r * Math.cos(endAngle);
-    const y2 = cy + r * Math.sin(endAngle);
+    const x1 = r6(cx + r * Math.cos(startAngle));
+    const y1 = r6(cy + r * Math.sin(startAngle));
+    const x2 = r6(cx + r * Math.cos(endAngle));
+    const y2 = r6(cy + r * Math.sin(endAngle));
     const span = endAngle - startAngle;
     const largeArc = span <= Math.PI ? "0" : "1";
     return `M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2}`;
@@ -378,10 +381,10 @@ export default function DoughnutRing({
     const socialAngleStep = (2 * Math.PI) / socialCount;
     for (let i = 0; i < socialCount; i++) {
       const angle = i * socialAngleStep - Math.PI / 2;
-      const x1 = center + innerLimit * Math.cos(angle);
-      const y1 = center + innerLimit * Math.sin(angle);
-      const x2 = center + commonBoundary * Math.cos(angle);
-      const y2 = center + commonBoundary * Math.sin(angle);
+      const x1 = r6(center + innerLimit * Math.cos(angle));
+      const y1 = r6(center + innerLimit * Math.sin(angle));
+      const x2 = r6(center + commonBoundary * Math.cos(angle));
+      const y2 = r6(center + commonBoundary * Math.sin(angle));
       dividers.push(
         <line
           key={`social-divider-${i}`}
@@ -395,10 +398,10 @@ export default function DoughnutRing({
     const ecoAngleStep = (2 * Math.PI) / ecoCount;
     for (let i = 0; i < ecoCount; i++) {
       const angle = i * ecoAngleStep - Math.PI / 2;
-      const x1 = center + commonBoundary * Math.cos(angle);
-      const y1 = center + commonBoundary * Math.sin(angle);
-      const x2 = center + (outerMaxLimit + 50) * Math.cos(angle);
-      const y2 = center + (outerMaxLimit + 50) * Math.sin(angle);
+      const x1 = r6(center + commonBoundary * Math.cos(angle));
+      const y1 = r6(center + commonBoundary * Math.sin(angle));
+      const x2 = r6(center + (outerMaxLimit + 50) * Math.cos(angle));
+      const y2 = r6(center + (outerMaxLimit + 50) * Math.sin(angle));
       dividers.push(
         <line
           key={`eco-divider-${i}`}
@@ -487,10 +490,10 @@ export default function DoughnutRing({
   const titleArcPath = (id: string, r: number, startDeg: number, endDeg: number) => {
     const s = (startDeg * Math.PI) / 180;
     const e = (endDeg * Math.PI) / 180;
-    const x1 = center + r * Math.cos(s);
-    const y1 = center + r * Math.sin(s);
-    const x2 = center + r * Math.cos(e);
-    const y2 = center + r * Math.sin(e);
+    const x1 = r6(center + r * Math.cos(s));
+    const y1 = r6(center + r * Math.sin(s));
+    const x2 = r6(center + r * Math.cos(e));
+    const y2 = r6(center + r * Math.sin(e));
     const la = endDeg - startDeg > 180 ? "1" : "0";
     return <path id={id} d={`M ${x1} ${y1} A ${r} ${r} 0 ${la} 1 ${x2} ${y2}`} fill="none" stroke="none" />;
   };

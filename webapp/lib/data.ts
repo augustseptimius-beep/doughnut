@@ -77,18 +77,13 @@ interface MasterRow {
 }
 
 function parseMasterCsv(): MasterRow[] {
-  const cwd = process.cwd();
-  const csvPath = path.join(cwd, "..", "data", "master_indicators.csv");
-  console.log(`[data.ts] process.cwd() = ${cwd}`);
-  console.log(`[data.ts] Forsøger at læse: ${csvPath}`);
+  const csvPath = path.join(process.cwd(), "..", "data", "master_indicators.csv");
   if (!fs.existsSync(csvPath)) {
-    console.error(`[data.ts] FEJL: Filen findes ikke på ${csvPath}`);
     throw new Error(
       `master_indicators.csv mangler på sti: ${csvPath}\n` +
       `Kør 'python3 scripts/build_master_csv.py' i projektets rodmappe og commit filen.`
     );
   }
-  console.log(`[data.ts] Filen fundet, læser...`);
   const raw = fs.readFileSync(csvPath, "utf-8");
   const lines = raw.trim().split("\n");
   if (lines.length < 2) return [];

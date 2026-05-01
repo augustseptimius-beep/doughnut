@@ -42,6 +42,49 @@ VALID_CODES = {
 }
 
 
+def fetch_national_voter_turnout(year: str = "2026") -> tuple[dict[str, float], float | None]:
+    """
+    Henter stemmeprocent ved FOLKETINGSVALG for alle kommuner.
+    Kilde: DST LABY09, VALRES=STEMPCT.
+    Returnerer (dict {kommune_kode: stemmepct}, landsgennemsnit).
+    """
+    params = urllib.parse.urlencode({
+        "KOMGRP": "*",
+        "VALRES": "STEMPCT",
+        "Tid": year,
+        "lang": "da",
+        "format": "CSV",
+        "delimiter": "Semicolon",
+        "valuePresentation": "Code",
+    })
+    url = f"{API_BASE}/LABY09/CSV?{params}"
+
+    print(f"Henter stemmedeltagelse folketingsvalg {year} fra DST (LABY09)...")
+    req = urllib.request.urlopen(url, timeout=20)
+    content = req.read().decode("utf-8-sig")
+
+    reader = csv.DictReader(io.StringIO(content), delimiter=";")
+    result = {}
+    national_avg = None
+
+    for row in reader:
+        kode = row.get("KOMGRP", "").strip()
+        raw = row.get("INDHOLD", "").strip()
+        if raw in ("", "..", "x", "X"):
+            continue
+        try:
+            val = float(raw.replace(",", "."))
+        except ValueError:
+            continue
+        if kode == "000":
+            national_avg = val
+        elif kode in VALID_CODES:
+            result[kode] = val
+
+    print(f"  Modtaget data for {len(result)} kommuner, landsgennemsnit: {national_avg}%")
+    return result, national_avg
+
+
 def fetch_voter_turnout(year: str = "2021") -> dict[str, float]:
     """
     Henter stemmeprocent for alle kommuner.
@@ -121,7 +164,14 @@ def compute_scores(data: dict[str, float]) -> dict[str, float]:
     return scores, national_avg
 
 
-def write_csv(data: dict[str, float], scores: dict[str, float], national_avg: float) -> None:
+def write_csv(
+    data: dict[str, float],
+    scores: dict[str, float],
+    national_avg: float,
+    nat_data: dict[str, float],
+    nat_scores: dict[str, float],
+    nat_national_avg: float,
+) -> None:
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_FILE, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
@@ -129,35 +179,43 @@ def write_csv(data: dict[str, float], scores: dict[str, float], national_avg: fl
             "kommune_kode",
             "voter_turnout_pct",
             "voter_turnout_ratio",
-            "national_avg_pct",
-            "year",
+            "voter_turnout_national_pct",
+            "voter_turnout_national_ratio",
         ])
-        for kode in sorted(data.keys(), key=int):
+        all_kodes = sorted(data.keys(), key=int)
+        for kode in all_kodes:
             writer.writerow([
                 kode,
                 round(data[kode], 2),
                 scores.get(kode, ""),
-                round(national_avg, 2),
-                "2021",
+                round(nat_data[kode], 2) if kode in nat_data else "",
+                nat_scores.get(kode, "") if kode in nat_data else "",
             ])
     print(f"  Gemt: {OUTPUT_FILE}")
     print(f"  Rækker: {len(data)}")
 
 
 def main():
+    # Kommunalvalg 2021
     data = fetch_voter_turnout("2021")
     scores, national_avg = compute_scores(data)
 
-    # Vis top 5 og bund 5
+    # Folketingsvalg 2026
+    nat_data, nat_national_avg = fetch_national_voter_turnout("2026")
+    nat_scores = {}
+    if nat_national_avg and nat_national_avg > 0:
+        nat_scores = {k: round((v / nat_national_avg) * 100, 2) for k, v in nat_data.items()}
+
+    # Vis top 5 og bund 5 for KV
     sorted_by_score = sorted(scores.items(), key=lambda x: x[1])
-    print("\nLavest stemmedeltagelse (relativt):")
+    print("\nLavest KV-stemmedeltagelse (relativt):")
     for kode, score in sorted_by_score[:5]:
         print(f"  {kode}: {data[kode]:.1f}% → score {score:.1f}")
-    print("Højest stemmedeltagelse (relativt):")
+    print("Højest KV-stemmedeltagelse (relativt):")
     for kode, score in sorted_by_score[-5:]:
         print(f"  {kode}: {data[kode]:.1f}% → score {score:.1f}")
 
-    write_csv(data, scores, national_avg)
+    write_csv(data, scores, national_avg, nat_data, nat_scores, nat_national_avg or 0.0)
     print("\nFærdigt.")
 
 

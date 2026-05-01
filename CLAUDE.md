@@ -101,7 +101,8 @@ doughnut/
 - **Node:** Next.js, React 19, TypeScript 5.
 - **Netlify:** `base = "webapp"`, `command = "npm run build"`, `publish = "out"`, functions i `webapp/netlify/functions/`.
 - **Netlify function:** `klimaregnskabet.mts` er en proxy der holder `KLIMAREGNSKABET_API_KEY` serverside (sat som env var i Netlify dashboard).
-- **Deploy-flow:** Bruger gemmer ændringer → GitHub Desktop commit + push til `main` → Netlify deployer automatisk. Ingen CLI-git, ingen manuel deploy.
+- **Deploy-flow:** Bruger gemmer ændringer → **preview lokalt** → GitHub Desktop commit + push til `main` → Netlify deployer automatisk. Ingen CLI-git, ingen manuel deploy.
+- **Lokal preview FØR push:** Dobbeltklik på [`Start udviklerserver.command`](file:///Users/augustseptimiuskrogh/Documents/GitHub/doughnut/Start%20udviklerserver.command) i projektmappen - åbner automatisk `http://127.0.0.1:3000` i browseren. Bemærk: `localhost` virker IKKE (IPv6-problem på Mac), brug altid `127.0.0.1:3000`.
 
 **Nuværende git-branch:** `claude/doughnut-economics-dashboard-IKiZe` (default-branch i repo, fungerer som main for Netlify).
 
@@ -177,7 +178,8 @@ Datapipelinen er manuel og script-baseret. Der er IKKE CI/CD der henter data aut
    ```
 2. **Scriptet opdaterer rådata-CSV** i `data/` (eller rodmappen for `fetch_doughnut_data.py` - se kritisk regel nedenfor).
 3. **Master-CSV regenereres AUTOMATISK** efter fetchet. Alle 11 fetch-scripts kalder `build_master_csv.auto_build_master()` til sidst. Du behøver IKKE køre build-scriptet manuelt længere.
-4. **Git commit + push via GitHub Desktop** → Netlify bygger og deployer.
+4. **Preview lokalt** før push: dobbeltklik [`Start udviklerserver.command`](file:///Users/augustseptimiuskrogh/Documents/GitHub/doughnut/Start%20udviklerserver.command) → tjek `http://127.0.0.1:3000`.
+5. **Git commit + push via GitHub Desktop** → Netlify bygger og deployer.
 
 **Hvis auto-build fejler:** Rådata-CSV er allerede gemt OK. Kør manuelt:
 ```bash

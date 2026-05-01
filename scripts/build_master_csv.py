@@ -51,7 +51,8 @@ OUTPUT = DATA_DIR / "master_indicators.csv"
 SOCIAL_INDICATORS = [
     # === Sundhed ===
     {"id": "life_expectancy", "csv": "doughnut_scores.csv", "ratio_col": "life_expectancy_ratio", "raw_col": "life_expectancy_raw", "unit": "år", "data_year": "2023", "source": "DST HISBK", "category": "social", "dimension": "sundhed"},
-    {"id": "hospital_use", "csv": "sundhed_extra_scores.csv", "ratio_col": "hospital_use_ratio", "raw_col": "hospital_use_pct", "unit": "%", "data_year": "2023", "source": "DST SBR01", "category": "social", "dimension": "sundhed"},
+    {"id": "hospital_short", "csv": "sundhed_extra_scores.csv", "ratio_col": "hospital_short_ratio", "raw_col": "hospital_short_pct", "unit": "%", "data_year": "2023", "source": "DST SBR01", "category": "social", "dimension": "sundhed"},
+    {"id": "hospital_long", "csv": "sundhed_extra_scores.csv", "ratio_col": "hospital_long_ratio", "raw_col": "hospital_long_pct", "unit": "%", "data_year": "2023", "source": "DST SBR01", "category": "social", "dimension": "sundhed"},
     {"id": "gp_distance", "csv": "sundhed_extra_scores.csv", "ratio_col": "gp_distance_ratio", "raw_col": "gp_distance_km", "unit": "km", "data_year": "2024", "source": "DST SUNDAF01", "category": "social", "dimension": "sundhed"},
     {"id": "wellbeing", "csv": "uvm_scores.csv", "ratio_col": "wellbeing_ratio", "raw_col": "wellbeing_score", "unit": "score (1-5)", "data_year": "2024", "source": "UVM GS/TRIV/TRIVIND", "category": "social", "dimension": "uddannelse"},
 
@@ -82,6 +83,7 @@ SOCIAL_INDICATORS = [
 
     # === Demokrati ===
     {"id": "voter_turnout", "csv": "democracy_scores.csv", "ratio_col": "voter_turnout_ratio", "raw_col": "voter_turnout_pct", "unit": "%", "data_year": "2021", "source": "DST KVBPCT", "category": "social", "dimension": "demokrati"},
+    {"id": "voter_turnout_national", "csv": "democracy_scores.csv", "ratio_col": "voter_turnout_national_ratio", "raw_col": "voter_turnout_national_pct", "unit": "%", "data_year": "2026", "source": "DST LABY09", "category": "social", "dimension": "demokrati"},
     {"id": "gender_leadership", "csv": "lighed_scores.csv", "ratio_col": "gender_leadership_ratio", "raw_col": "gender_leadership_pct", "unit": "% kvinder", "data_year": "2023", "source": "DST RAS301", "category": "social", "dimension": "ligestilling"},
 
     # === Kultur & fritid ===

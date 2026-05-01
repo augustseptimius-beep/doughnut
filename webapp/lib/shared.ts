@@ -124,6 +124,17 @@ export const INDICATORS: Indicator[] = [
     baselineLevel: 3,
     rawUnit: "%",
   },
+  {
+    id: "voter_turnout_national",
+    name: "Stemmedeltagelse folketingsvalg",
+    table: "LABY09",
+    source: "https://www.statistikbanken.dk/LABY09",
+    category: "social",
+    inverse: false,
+    dataYear: "2026",
+    baselineLevel: 3,
+    rawUnit: "%",
+  },
   // --- Fællesskaber ---
   {
     id: "sports_membership",
@@ -233,8 +244,19 @@ export const INDICATORS: Indicator[] = [
   },
   // --- Sundhed (ekstra) ---
   {
-    id: "hospital_use",
-    name: "Sygehusbenyttelse (andel med ophold)",
+    id: "hospital_short",
+    name: "Sygehusophold under 12 timer (andel)",
+    table: "SBR01",
+    source: "https://www.statistikbanken.dk/SBR01",
+    category: "social",
+    inverse: true,
+    dataYear: "2023",
+    baselineLevel: 3,
+    rawUnit: "%",
+  },
+  {
+    id: "hospital_long",
+    name: "Sygehusophold 12+ timer (andel)",
     table: "SBR01",
     source: "https://www.statistikbanken.dk/SBR01",
     category: "social",
@@ -488,7 +510,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "sundhed",
     name: "Sundhed",
     description: "Borgernes fysiske og mentale sundhed, herunder livslængde, sygelighed og adgang til sundhedsydelser.",
-    indicatorIds: ["life_expectancy", "hospital_use", "gp_distance"],
+    indicatorIds: ["life_expectancy", "hospital_short", "hospital_long", "gp_distance"],
   },
   {
     id: "uddannelse",
@@ -512,7 +534,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "demokrati",
     name: "Demokrati",
     description: "Borgernes deltagelse i det formelle demokrati og kommunalpolitik. Valgdeltagelse er det mest direkte mål for demokratisk engagement på lokalt niveau.",
-    indicatorIds: ["voter_turnout"],
+    indicatorIds: ["voter_turnout", "voter_turnout_national"],
   },
   {
     id: "kultur_fritid",

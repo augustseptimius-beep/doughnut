@@ -191,7 +191,8 @@ Disse indikatorer er implementeret i Danmarks 98 Doughnuts, men er ikke en del a
 | Udsatte børn og unge (`vulnerable_children`) | DST: `BU43` | velfaerd |
 | Tomme boliger (`vacant_housing`) | DST: `BOL101` | bolig |
 | Boligareal pr. person (`housing_area`) | DST: `BOL106` | bolig |
-| Sygehusbenyttelse (`hospital_use`) | DST: `SBR01` | sundhed |
+| Sygehusophold under 12 timer (`hospital_short`) | DST: `SBR01` | sundhed |
+| Sygehusophold 12+ timer (`hospital_long`) | DST: `SBR01` | sundhed |
 | Afstand til egen læge (`gp_distance`) | DST: `SUNDAF01` | sundhed |
 | Klassekvotient (`class_size`) | DST: `KVOTIEN` | lokalsamfund |
 | Børn pr. voksen i daginstitution (`daycare_ratio`) | DST: `BOERN8` | lokalsamfund |

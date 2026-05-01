@@ -116,23 +116,25 @@ def write_csv(filename: str, headers: list[str], rows: list[list]) -> None:
 # SUNDHED: Sygehusbenyttelse
 # ---------------------------------------------------------------------------
 
-def fetch_hospital_use() -> tuple[dict[str, float], float | None]:
+def fetch_hospital_use() -> tuple[dict[str, float], float | None, dict[str, float], float | None]:
     """
-    SBR01: Andel af befolkningen med ophold på sygehus.
-    Inverteret: lavere er bedre (sundere befolkning).
+    SBR01: Andel af befolkningen med sygehusophold opdelt på varighed.
+    - hospital_short: ophold under 12 timer (200220)
+    - hospital_long:  ophold 12 timer eller derover (200230)
+    Begge inverteret: lavere andel er bedre (sundere befolkning).
     """
-    print("Henter sygehusbenyttelse (SBR01)...")
-    # Hent total personer og personer med ophold
+    print("Henter sygehusbenyttelse opdelt på varighed (SBR01)...")
     rows = api_post("SBR01", [
         {"code": "KOMMUNEDK", "values": ["*"]},
-        {"code": "OPHOLD_PÅ_SYGEHUS", "values": ["200100", "200110"]},
+        {"code": "OPHOLD_PÅ_SYGEHUS", "values": ["200100", "200220", "200230"]},
         {"code": "ALDER", "values": ["TOT"]},
         {"code": "KØN", "values": ["00"]},
-        {"code": "Tid", "values": ["2022"]},
+        {"code": "Tid", "values": ["2023"]},
     ])
 
     total: dict[str, float] = {}
-    with_stay: dict[str, float] = {}
+    short_stay: dict[str, float] = {}
+    long_stay: dict[str, float] = {}
     for row in rows:
         kode = row.get("KOMMUNEDK", "").strip()
         ophold = row.get("OPHOLD_PÅ_SYGEHUS", "").strip()
@@ -143,17 +145,25 @@ def fetch_hospital_use() -> tuple[dict[str, float], float | None]:
             continue
         if ophold == "200100":
             total[kode] = val
-        elif ophold == "200110":
-            with_stay[kode] = val
+        elif ophold == "200220":
+            short_stay[kode] = val
+        elif ophold == "200230":
+            long_stay[kode] = val
 
-    result = {}
-    for kode in with_stay:
-        if kode in total and total[kode] > 0:
-            result[kode] = round((with_stay[kode] / total[kode]) * 100, 2)
+    short_result: dict[str, float] = {}
+    long_result: dict[str, float] = {}
+    for kode in total:
+        if total[kode] > 0:
+            if kode in short_stay:
+                short_result[kode] = round((short_stay[kode] / total[kode]) * 100, 2)
+            if kode in long_stay:
+                long_result[kode] = round((long_stay[kode] / total[kode]) * 100, 2)
 
-    national = result.pop("000", None)
-    print(f"  {len(result)} kommuner, landsgennemsnit: {national}%")
-    return result, national
+    short_nat = short_result.pop("000", None)
+    long_nat = long_result.pop("000", None)
+    print(f"  {len(short_result)} kommuner (kort), landsgennemsnit: {short_nat}%")
+    print(f"  {len(long_result)} kommuner (lang), landsgennemsnit: {long_nat}%")
+    return short_result, short_nat, long_result, long_nat
 
 
 # ---------------------------------------------------------------------------
@@ -579,24 +589,29 @@ def main():
 
     # === SUNDHED ===
     print("\n--- SUNDHED ---")
-    hospital, hosp_nat = fetch_hospital_use()
+    hosp_short, short_nat, hosp_long, long_nat = fetch_hospital_use()
     gp_dist, gp_nat = fetch_gp_distance()
     sundhed_rows = []
     for kode in sorted(VALID_CODES, key=int):
-        h_val = hospital.get(kode)
-        h_r = ratio_inverse(h_val, hosp_nat) if h_val is not None and hosp_nat else None
+        s_val = hosp_short.get(kode)
+        s_r = ratio_inverse(s_val, short_nat) if s_val is not None and short_nat else None
+        l_val = hosp_long.get(kode)
+        l_r = ratio_inverse(l_val, long_nat) if l_val is not None and long_nat else None
         g_val = gp_dist.get(kode)
         g_r = ratio_inverse(g_val, gp_nat) if g_val is not None and gp_nat else None
         sundhed_rows.append([
             kode,
-            h_val if h_val is not None else "",
-            h_r if h_r is not None else "",
+            s_val if s_val is not None else "",
+            s_r if s_r is not None else "",
+            l_val if l_val is not None else "",
+            l_r if l_r is not None else "",
             g_val if g_val is not None else "",
             g_r if g_r is not None else "",
         ])
     write_csv("sundhed_extra_scores.csv", [
         "kommune_kode",
-        "hospital_use_pct", "hospital_use_ratio",
+        "hospital_short_pct", "hospital_short_ratio",
+        "hospital_long_pct", "hospital_long_ratio",
         "gp_distance_km", "gp_distance_ratio",
     ], sundhed_rows)
 
