@@ -494,6 +494,39 @@ export const INDICATORS: Indicator[] = [
     baselineLevel: 3,
     rawUnit: "% kvinder",
   },
+  {
+    id: "le_gender_gap",
+    name: "Kønsgab i middellevetid (år)",
+    table: "HISBK",
+    source: "https://www.statistikbanken.dk/HISBK",
+    category: "social",
+    inverse: true,
+    dataYear: "2025",
+    baselineLevel: 3,
+    rawUnit: "år (kvinder - mænd)",
+  },
+  {
+    id: "income_gender_gap",
+    name: "Indkomstlighed mænd/kvinder (%)",
+    table: "INDKP101",
+    source: "https://www.statistikbanken.dk/INDKP101",
+    category: "social",
+    inverse: false,
+    dataYear: "2024",
+    baselineLevel: 3,
+    rawUnit: "% (kvinders andel af mænds indkomst)",
+  },
+  {
+    id: "employment_origin_gap",
+    name: "Beskæftigelse ikke-vestlige vs. dansk (%)",
+    table: "RAS200",
+    source: "https://www.statistikbanken.dk/RAS200",
+    category: "social",
+    inverse: false,
+    dataYear: "2024",
+    baselineLevel: 3,
+    rawUnit: "% (ikke-vestlig BFK / dansk BFK)",
+  },
 ];
 
 // --- SOCIAL CATEGORIES (TORUS trivselsaspekter) ---
@@ -558,7 +591,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "lighed",
     name: "Lighed",
     description: "Fordelingen af indkomst og materielle ressourcer i kommunen - et mål for strukturel ulighed og sociale skel.",
-    indicatorIds: ["gini", "low_income"],
+    indicatorIds: ["gini", "low_income", "employment_origin_gap"],
   },
   {
     id: "mobilitet",
@@ -570,7 +603,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "ligestilling",
     name: "Ligestilling",
     description: "Kønsbalance og lige muligheder i kommunen - herunder repræsentation på arbejdsmarkedet og i ledelse.",
-    indicatorIds: ["gender_leadership"],
+    indicatorIds: ["gender_leadership", "le_gender_gap", "income_gender_gap"],
   },
   {
     id: "klimatilpasning",
