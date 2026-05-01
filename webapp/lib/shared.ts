@@ -219,6 +219,18 @@ export const INDICATORS: Indicator[] = [
     baselineLevel: 3,
     rawUnit: "%",
   },
+  // --- Klimatilpasning ---
+  {
+    id: "vejr_skader",
+    name: "Vejrrelaterede forsikringsskader pr. 1.000 indb.",
+    table: "F&P skadesstatistik",
+    source: "https://fogp.dk/tal-og-analyser/saadan-er-danmark-blevet-ramt-af-vejrrelaterede-skader-de-seneste-aar/",
+    category: "social",
+    inverse: true,
+    dataYear: "2023-2025",
+    baselineLevel: 3,
+    rawUnit: "skader pr. 1.000 indb.",
+  },
   // --- Velfærd (ekstra) ---
   {
     id: "vulnerable_children",
@@ -609,7 +621,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "klimatilpasning",
     name: "Klimatilpasning",
     description: "Kommunens robusthed over for klimaforandringer: oversvømmelse, hedebølger, tørke og ekstremvejr.",
-    indicatorIds: [],
+    indicatorIds: ["vejr_skader"],
   },
 ];
 

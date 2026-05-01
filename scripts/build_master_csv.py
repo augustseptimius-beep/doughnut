@@ -111,6 +111,12 @@ SOCIAL_INDICATORS = [
     # NB: car_access er bevidst fjernet i 2026 - se shared.ts for begrundelse.
     {"id": "commute_distance", "csv": "mobilitet_scores.csv", "ratio_col": "commute_ratio", "raw_col": "commute_distance_km", "unit": "km", "data_year": "2023", "source": "DST AFSTB4", "category": "social", "dimension": "mobilitet"},
     {"id": "public_transport", "csv": "mobilitet_scores.csv", "ratio_col": "public_transport_ratio", "raw_col": "public_transport_pct", "unit": "%", "data_year": "2025", "source": "DST LABY49", "category": "social", "dimension": "mobilitet"},
+
+    # === Klimatilpasning ===
+    # Proxy: vejrrelaterede forsikringsskader pr. 1.000 indb. (F&P, 2023-2025).
+    # Invers indikator: lavere skader = bedre score. Navn-nøgle som cba_2023_estimate.csv.
+    # Se data/klimatilpasning.md for metodediskussion og fremtidige forbedringer.
+    {"id": "vejr_skader", "csv": "klimatilpasning_scores.csv", "ratio_col": "vejr_skader_ratio", "raw_col": "vejr_skader_raw", "unit": "skader pr. 1.000 indb.", "data_year": "2023-2025", "source": "F&P skadesstatistik", "category": "social", "dimension": "klimatilpasning", "navn_key": True},
 ]
 
 # ─── ØKOLOGISKE INDIKATORER (sub-indikatorer pr. dimension) ────────────
@@ -232,7 +238,37 @@ def build_master():
     print("Sociale indikatorer:")
     for ind in SOCIAL_INDICATORS:
         rows = get_csv(ind["csv"])
-        # Map kommune_kode → row (bevar første hvis duplikater)
+
+        # Specialcase: indikatorer der bruger kommunenavn som nøgle (ikke kode)
+        if ind.get("navn_key"):
+            by_navn = {r.get("kommune_navn"): r for r in rows if r.get("kommune_navn")}
+            n = 0
+            for kode, navn in kommuner:
+                r = by_navn.get(navn)
+                if r is None:
+                    continue
+                ratio = parse_float(r.get(ind["ratio_col"]))
+                raw = parse_float(r.get(ind["raw_col"])) if ind["raw_col"] else None
+                if ratio is None and raw is None:
+                    continue
+                output_rows.append({
+                    "kommune_kode": kode,
+                    "kommune_navn": navn,
+                    "indicator_id": ind["id"],
+                    "ratio": ratio if ratio is not None else "",
+                    "raw_value": raw if raw is not None else "",
+                    "unit": ind["unit"],
+                    "data_year": ind["data_year"],
+                    "source": ind["source"],
+                    "category": ind["category"],
+                    "dimension": ind["dimension"],
+                })
+                n += 1
+            indicator_coverage[ind["id"]] = n
+            print(f"  {ind['id']:25s}: {n}/98 kommuner (navn-nøgle)")
+            continue
+
+        # Standard: kommune_kode-nøgle
         by_kode = {}
         for r in rows:
             kode = r.get("kommune_kode")
