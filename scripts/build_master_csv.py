@@ -53,7 +53,7 @@ SOCIAL_INDICATORS = [
     {"id": "life_expectancy", "csv": "doughnut_scores.csv", "ratio_col": "life_expectancy_ratio", "raw_col": "life_expectancy_raw", "unit": "år", "data_year": "2023", "source": "DST HISBK", "category": "social", "dimension": "sundhed"},
     {"id": "hospital_use", "csv": "sundhed_extra_scores.csv", "ratio_col": "hospital_use_ratio", "raw_col": "hospital_use_pct", "unit": "%", "data_year": "2023", "source": "DST SBR01", "category": "social", "dimension": "sundhed"},
     {"id": "gp_distance", "csv": "sundhed_extra_scores.csv", "ratio_col": "gp_distance_ratio", "raw_col": "gp_distance_km", "unit": "km", "data_year": "2024", "source": "DST SUNDAF01", "category": "social", "dimension": "sundhed"},
-    {"id": "wellbeing", "csv": "uvm_scores.csv", "ratio_col": "wellbeing_ratio", "raw_col": "wellbeing_score", "unit": "score (1-5)", "data_year": "2024", "source": "UVM GS/TRIV/TRIVIND", "category": "social", "dimension": "sundhed"},
+    {"id": "wellbeing", "csv": "uvm_scores.csv", "ratio_col": "wellbeing_ratio", "raw_col": "wellbeing_score", "unit": "score (1-5)", "data_year": "2024", "source": "UVM GS/TRIV/TRIVIND", "category": "social", "dimension": "uddannelse"},
 
     # === Uddannelse ===
     {"id": "education", "csv": "doughnut_scores.csv", "ratio_col": "education_ratio", "raw_col": "education_raw", "unit": "%", "data_year": "2023", "source": "DST HFUDD10", "category": "social", "dimension": "uddannelse"},
@@ -89,10 +89,10 @@ SOCIAL_INDICATORS = [
     {"id": "library_use", "csv": "lokalsamfund_scores.csv", "ratio_col": "library_ratio", "raw_col": "library_loans_per_cap", "unit": "udlån/indb.", "data_year": "2023", "source": "DST BIB1", "category": "social", "dimension": "kultur_fritid"},
     {"id": "kultur_spending", "csv": "doughnut_scores.csv", "ratio_col": "kultur_spending_ratio", "raw_col": "kultur_spending_raw", "unit": "kr./indb.", "data_year": "2023", "source": "DST REGK31", "category": "social", "dimension": "kultur_fritid"},
 
-    # === Tryghed & fællesskab ===
+    # === Tryghed ===
     {"id": "crime_rate", "csv": "faellesskaber_scores.csv", "ratio_col": "crime_ratio", "raw_col": "crime_per_1k", "unit": "pr. 1.000 indb.", "data_year": "2024", "source": "DST STRAF11", "category": "social", "dimension": "tryghed"},
     {"id": "traffic_accidents", "csv": "faellesskaber_scores.csv", "ratio_col": "traffic_accidents_ratio", "raw_col": "traffic_accidents_per_100k", "unit": "pr. 100.000 indb.", "data_year": "2024", "source": "DST UHELDK1", "category": "social", "dimension": "tryghed"},
-    {"id": "sports_membership", "csv": "faellesskaber_scores.csv", "ratio_col": "sports_membership_ratio", "raw_col": "sports_membership_pct", "unit": "%", "data_year": "2022", "source": "DST IDRAKT02", "category": "social", "dimension": "tryghed"},
+    {"id": "sports_membership", "csv": "faellesskaber_scores.csv", "ratio_col": "sports_membership_ratio", "raw_col": "sports_membership_pct", "unit": "%", "data_year": "2022", "source": "DST IDRAKT02", "category": "social", "dimension": "lokalsamfund"},
 
     # === Lokalsamfund ===
     {"id": "sports_facilities", "csv": "lokalsamfund_scores.csv", "ratio_col": "facilities_ratio", "raw_col": "facilities_per_10k", "unit": "pr. 10.000 indb.", "data_year": "2022", "source": "DST IDRFAC01", "category": "social", "dimension": "lokalsamfund"},

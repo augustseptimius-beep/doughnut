@@ -289,101 +289,101 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,gp_distance,52.17,4.6,km,2024,DST SUNDAF01,social,sundhed
 741,Samsø,gp_distance,52.17,4.6,km,2024,DST SUNDAF01,social,sundhed
 482,Langeland,gp_distance,27.59,8.7,km,2024,DST SUNDAF01,social,sundhed
-201,Allerød,wellbeing,103.43,3.68,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-175,Rødovre,wellbeing,98.37,3.5,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-153,Brøndby,wellbeing,98.93,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-155,Dragør,wellbeing,102.87,3.66,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-190,Furesø,wellbeing,103.43,3.68,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-230,Rudersdal,wellbeing,101.75,3.62,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-151,Ballerup,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-167,Hvidovre,wellbeing,98.93,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-269,Solrød,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-746,Skanderborg,wellbeing,101.75,3.62,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-240,Egedal,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-265,Roskilde,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-223,Hørsholm,wellbeing,103.99,3.7,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-185,Tårnby,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-163,Herlev,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-173,Lyngby-Taarbæk,wellbeing,103.43,3.68,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-350,Lejre,wellbeing,96.69,3.44,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-210,Fredensborg,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-710,Favrskov,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-530,Billund,wellbeing,96.69,3.44,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-183,Ishøj,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-840,Rebild,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-147,Frederiksberg,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-259,Køge,wellbeing,98.93,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-253,Greve,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-187,Vallensbæk,wellbeing,101.75,3.62,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-661,Holstebro,wellbeing,102.31,3.64,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-217,Helsingør,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-250,Frederikssund,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-657,Herning,wellbeing,102.87,3.66,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-492,Ærø,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-561,Esbjerg,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-773,Morsø,wellbeing,98.37,3.5,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-219,Hillerød,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-740,Silkeborg,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-607,Fredericia,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-316,Holbæk,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-340,Sorø,wellbeing,98.93,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-260,Halsnæs,wellbeing,97.25,3.46,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-766,Hedensted,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-825,Læsø,wellbeing,102.31,3.64,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-615,Horsens,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-329,Ringsted,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-370,Næstved,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-851,Aalborg,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-336,Stevns,wellbeing,97.25,3.46,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-410,Middelfart,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-727,Odder,wellbeing,98.93,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-161,Glostrup,wellbeing,98.37,3.5,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-563,Fanø,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-813,Frederikshavn,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-270,Gribskov,wellbeing,97.25,3.46,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-751,Aarhus,wellbeing,101.75,3.62,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-760,Ringkøbing-Skjern,wellbeing,102.87,3.66,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-479,Svendborg,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-787,Thisted,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-810,Brønderslev,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-791,Viborg,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-165,Albertslund,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-480,Nordfyns,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-440,Kerteminde,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-860,Hjørring,wellbeing,101.75,3.62,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-706,Syddjurs,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-430,Faaborg-Midtfyn,wellbeing,98.37,3.5,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-573,Varde,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-730,Randers,wellbeing,101.75,3.62,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-621,Kolding,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-320,Faxe,wellbeing,95.0,3.38,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-169,Høje-Taastrup,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-461,Odense,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-420,Assens,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-756,Ikast-Brande,wellbeing,101.75,3.62,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-846,Mariagerfjord,wellbeing,102.87,3.66,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-580,Aabenraa,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-450,Nyborg,wellbeing,98.93,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-630,Vejle,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-540,Sønderborg,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-400,Bornholm,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-779,Skive,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-510,Haderslev,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-575,Vejen,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-820,Vesthimmerlands,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-707,Norddjurs,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-671,Struer,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-306,Odsherred,wellbeing,97.25,3.46,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-330,Slagelse,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-665,Lemvig,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-376,Guldborgsund,wellbeing,98.93,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-326,Kalundborg,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-849,Jammerbugt,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-550,Tønder,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-390,Vordingborg,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-360,Lolland,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-741,Samsø,wellbeing,97.25,3.46,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
-482,Langeland,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,sundhed
+201,Allerød,wellbeing,103.43,3.68,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+175,Rødovre,wellbeing,98.37,3.5,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+153,Brøndby,wellbeing,98.93,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+155,Dragør,wellbeing,102.87,3.66,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+190,Furesø,wellbeing,103.43,3.68,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+230,Rudersdal,wellbeing,101.75,3.62,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+151,Ballerup,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+167,Hvidovre,wellbeing,98.93,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+269,Solrød,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+746,Skanderborg,wellbeing,101.75,3.62,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+240,Egedal,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+265,Roskilde,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+223,Hørsholm,wellbeing,103.99,3.7,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+185,Tårnby,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+163,Herlev,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+173,Lyngby-Taarbæk,wellbeing,103.43,3.68,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+350,Lejre,wellbeing,96.69,3.44,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+210,Fredensborg,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+710,Favrskov,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+530,Billund,wellbeing,96.69,3.44,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+183,Ishøj,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+840,Rebild,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+147,Frederiksberg,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+259,Køge,wellbeing,98.93,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+253,Greve,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+187,Vallensbæk,wellbeing,101.75,3.62,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+661,Holstebro,wellbeing,102.31,3.64,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+217,Helsingør,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+250,Frederikssund,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+657,Herning,wellbeing,102.87,3.66,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+492,Ærø,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+561,Esbjerg,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+773,Morsø,wellbeing,98.37,3.5,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+219,Hillerød,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+740,Silkeborg,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+607,Fredericia,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+316,Holbæk,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+340,Sorø,wellbeing,98.93,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+260,Halsnæs,wellbeing,97.25,3.46,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+766,Hedensted,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+825,Læsø,wellbeing,102.31,3.64,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+615,Horsens,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+329,Ringsted,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+370,Næstved,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+851,Aalborg,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+336,Stevns,wellbeing,97.25,3.46,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+410,Middelfart,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+727,Odder,wellbeing,98.93,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+161,Glostrup,wellbeing,98.37,3.5,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+563,Fanø,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+813,Frederikshavn,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+270,Gribskov,wellbeing,97.25,3.46,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+751,Aarhus,wellbeing,101.75,3.62,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+760,Ringkøbing-Skjern,wellbeing,102.87,3.66,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+479,Svendborg,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+787,Thisted,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+810,Brønderslev,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+791,Viborg,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+165,Albertslund,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+480,Nordfyns,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+440,Kerteminde,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+860,Hjørring,wellbeing,101.75,3.62,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+706,Syddjurs,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+430,Faaborg-Midtfyn,wellbeing,98.37,3.5,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+573,Varde,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+730,Randers,wellbeing,101.75,3.62,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+621,Kolding,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+320,Faxe,wellbeing,95.0,3.38,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+169,Høje-Taastrup,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+461,Odense,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+420,Assens,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+756,Ikast-Brande,wellbeing,101.75,3.62,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+846,Mariagerfjord,wellbeing,102.87,3.66,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+580,Aabenraa,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+450,Nyborg,wellbeing,98.93,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+630,Vejle,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+540,Sønderborg,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+400,Bornholm,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+779,Skive,wellbeing,100.62,3.58,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+510,Haderslev,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+575,Vejen,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+820,Vesthimmerlands,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+707,Norddjurs,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+671,Struer,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+306,Odsherred,wellbeing,97.25,3.46,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+330,Slagelse,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+665,Lemvig,wellbeing,101.18,3.6,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+376,Guldborgsund,wellbeing,98.93,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+326,Kalundborg,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+849,Jammerbugt,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+550,Tønder,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+390,Vordingborg,wellbeing,100.06,3.56,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+360,Lolland,wellbeing,97.81,3.48,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+741,Samsø,wellbeing,97.25,3.46,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+482,Langeland,wellbeing,99.5,3.54,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
 201,Allerød,education,93.85,89.16,%,2023,DST HFUDD10,social,uddannelse
 175,Rødovre,education,86.41,82.09,%,2023,DST HFUDD10,social,uddannelse
 153,Brøndby,education,78.03,74.13,%,2023,DST HFUDD10,social,uddannelse
@@ -2925,104 +2925,104 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,traffic_accidents,58.73,71.57,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
 741,Samsø,traffic_accidents,19.21,218.82,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
 482,Langeland,traffic_accidents,100.65,41.76,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-201,Allerød,sports_membership,114.32,52.7,%,2022,DST IDRAKT02,social,tryghed
-175,Rødovre,sports_membership,54.66,25.2,%,2022,DST IDRAKT02,social,tryghed
-153,Brøndby,sports_membership,66.16,30.5,%,2022,DST IDRAKT02,social,tryghed
-155,Dragør,sports_membership,123.21,56.8,%,2022,DST IDRAKT02,social,tryghed
-190,Furesø,sports_membership,147.72,68.1,%,2022,DST IDRAKT02,social,tryghed
-230,Rudersdal,sports_membership,110.85,51.1,%,2022,DST IDRAKT02,social,tryghed
-151,Ballerup,sports_membership,73.97,34.1,%,2022,DST IDRAKT02,social,tryghed
-167,Hvidovre,sports_membership,72.45,33.4,%,2022,DST IDRAKT02,social,tryghed
-269,Solrød,sports_membership,96.75,44.6,%,2022,DST IDRAKT02,social,tryghed
-746,Skanderborg,sports_membership,133.19,61.4,%,2022,DST IDRAKT02,social,tryghed
-157,Gentofte,sports_membership,107.38,49.5,%,2022,DST IDRAKT02,social,tryghed
-240,Egedal,sports_membership,103.04,47.5,%,2022,DST IDRAKT02,social,tryghed
-265,Roskilde,sports_membership,131.89,60.8,%,2022,DST IDRAKT02,social,tryghed
-223,Hørsholm,sports_membership,129.5,59.7,%,2022,DST IDRAKT02,social,tryghed
-185,Tårnby,sports_membership,89.37,41.2,%,2022,DST IDRAKT02,social,tryghed
-163,Herlev,sports_membership,110.2,50.8,%,2022,DST IDRAKT02,social,tryghed
-173,Lyngby-Taarbæk,sports_membership,100.65,46.4,%,2022,DST IDRAKT02,social,tryghed
-350,Lejre,sports_membership,96.75,44.6,%,2022,DST IDRAKT02,social,tryghed
-210,Fredensborg,sports_membership,97.83,45.1,%,2022,DST IDRAKT02,social,tryghed
-710,Favrskov,sports_membership,112.58,51.9,%,2022,DST IDRAKT02,social,tryghed
-530,Billund,sports_membership,134.71,62.1,%,2022,DST IDRAKT02,social,tryghed
-183,Ishøj,sports_membership,75.27,34.7,%,2022,DST IDRAKT02,social,tryghed
-840,Rebild,sports_membership,112.36,51.8,%,2022,DST IDRAKT02,social,tryghed
-147,Frederiksberg,sports_membership,58.35,26.9,%,2022,DST IDRAKT02,social,tryghed
-259,Køge,sports_membership,108.68,50.1,%,2022,DST IDRAKT02,social,tryghed
-253,Greve,sports_membership,116.92,53.9,%,2022,DST IDRAKT02,social,tryghed
-187,Vallensbæk,sports_membership,92.84,42.8,%,2022,DST IDRAKT02,social,tryghed
-159,Gladsaxe,sports_membership,66.59,30.7,%,2022,DST IDRAKT02,social,tryghed
-661,Holstebro,sports_membership,107.81,49.7,%,2022,DST IDRAKT02,social,tryghed
-217,Helsingør,sports_membership,91.54,42.2,%,2022,DST IDRAKT02,social,tryghed
-250,Frederikssund,sports_membership,92.41,42.6,%,2022,DST IDRAKT02,social,tryghed
-657,Herning,sports_membership,115.62,53.3,%,2022,DST IDRAKT02,social,tryghed
-492,Ærø,sports_membership,133.62,61.6,%,2022,DST IDRAKT02,social,tryghed
-561,Esbjerg,sports_membership,96.1,44.3,%,2022,DST IDRAKT02,social,tryghed
-773,Morsø,sports_membership,99.13,45.7,%,2022,DST IDRAKT02,social,tryghed
-219,Hillerød,sports_membership,159.0,73.3,%,2022,DST IDRAKT02,social,tryghed
-740,Silkeborg,sports_membership,113.67,52.4,%,2022,DST IDRAKT02,social,tryghed
-607,Fredericia,sports_membership,98.92,45.6,%,2022,DST IDRAKT02,social,tryghed
-316,Holbæk,sports_membership,92.62,42.7,%,2022,DST IDRAKT02,social,tryghed
-340,Sorø,sports_membership,83.08,38.3,%,2022,DST IDRAKT02,social,tryghed
-260,Halsnæs,sports_membership,81.34,37.5,%,2022,DST IDRAKT02,social,tryghed
-766,Hedensted,sports_membership,113.88,52.5,%,2022,DST IDRAKT02,social,tryghed
-825,Læsø,sports_membership,244.03,112.5,%,2022,DST IDRAKT02,social,tryghed
-615,Horsens,sports_membership,78.52,36.2,%,2022,DST IDRAKT02,social,tryghed
-329,Ringsted,sports_membership,83.51,38.5,%,2022,DST IDRAKT02,social,tryghed
-370,Næstved,sports_membership,69.41,32.0,%,2022,DST IDRAKT02,social,tryghed
-851,Aalborg,sports_membership,125.6,57.9,%,2022,DST IDRAKT02,social,tryghed
-336,Stevns,sports_membership,106.94,49.3,%,2022,DST IDRAKT02,social,tryghed
-410,Middelfart,sports_membership,91.32,42.1,%,2022,DST IDRAKT02,social,tryghed
-727,Odder,sports_membership,100.65,46.4,%,2022,DST IDRAKT02,social,tryghed
-161,Glostrup,sports_membership,59.65,27.5,%,2022,DST IDRAKT02,social,tryghed
-563,Fanø,sports_membership,126.68,58.4,%,2022,DST IDRAKT02,social,tryghed
-813,Frederikshavn,sports_membership,119.31,55.0,%,2022,DST IDRAKT02,social,tryghed
-270,Gribskov,sports_membership,104.99,48.4,%,2022,DST IDRAKT02,social,tryghed
-751,Aarhus,sports_membership,99.57,45.9,%,2022,DST IDRAKT02,social,tryghed
-760,Ringkøbing-Skjern,sports_membership,140.35,64.7,%,2022,DST IDRAKT02,social,tryghed
-479,Svendborg,sports_membership,117.14,54.0,%,2022,DST IDRAKT02,social,tryghed
-787,Thisted,sports_membership,105.64,48.7,%,2022,DST IDRAKT02,social,tryghed
-810,Brønderslev,sports_membership,106.51,49.1,%,2022,DST IDRAKT02,social,tryghed
-791,Viborg,sports_membership,108.03,49.8,%,2022,DST IDRAKT02,social,tryghed
-165,Albertslund,sports_membership,244.47,112.7,%,2022,DST IDRAKT02,social,tryghed
-480,Nordfyns,sports_membership,106.72,49.2,%,2022,DST IDRAKT02,social,tryghed
-440,Kerteminde,sports_membership,99.13,45.7,%,2022,DST IDRAKT02,social,tryghed
-101,København,sports_membership,91.11,42.0,%,2022,DST IDRAKT02,social,tryghed
-860,Hjørring,sports_membership,120.39,55.5,%,2022,DST IDRAKT02,social,tryghed
-706,Syddjurs,sports_membership,106.51,49.1,%,2022,DST IDRAKT02,social,tryghed
-430,Faaborg-Midtfyn,sports_membership,90.46,41.7,%,2022,DST IDRAKT02,social,tryghed
-573,Varde,sports_membership,126.68,58.4,%,2022,DST IDRAKT02,social,tryghed
-730,Randers,sports_membership,79.18,36.5,%,2022,DST IDRAKT02,social,tryghed
-621,Kolding,sports_membership,92.19,42.5,%,2022,DST IDRAKT02,social,tryghed
-320,Faxe,sports_membership,67.46,31.1,%,2022,DST IDRAKT02,social,tryghed
-169,Høje-Taastrup,sports_membership,69.85,32.2,%,2022,DST IDRAKT02,social,tryghed
-461,Odense,sports_membership,98.7,45.5,%,2022,DST IDRAKT02,social,tryghed
-420,Assens,sports_membership,86.12,39.7,%,2022,DST IDRAKT02,social,tryghed
-756,Ikast-Brande,sports_membership,93.93,43.3,%,2022,DST IDRAKT02,social,tryghed
-846,Mariagerfjord,sports_membership,89.59,41.3,%,2022,DST IDRAKT02,social,tryghed
-580,Aabenraa,sports_membership,78.52,36.2,%,2022,DST IDRAKT02,social,tryghed
-450,Nyborg,sports_membership,110.2,50.8,%,2022,DST IDRAKT02,social,tryghed
-630,Vejle,sports_membership,101.74,46.9,%,2022,DST IDRAKT02,social,tryghed
-540,Sønderborg,sports_membership,88.72,40.9,%,2022,DST IDRAKT02,social,tryghed
-400,Bornholm,sports_membership,126.03,58.1,%,2022,DST IDRAKT02,social,tryghed
-779,Skive,sports_membership,112.15,51.7,%,2022,DST IDRAKT02,social,tryghed
-510,Haderslev,sports_membership,98.48,45.4,%,2022,DST IDRAKT02,social,tryghed
-575,Vejen,sports_membership,86.33,39.8,%,2022,DST IDRAKT02,social,tryghed
-820,Vesthimmerlands,sports_membership,119.31,55.0,%,2022,DST IDRAKT02,social,tryghed
-707,Norddjurs,sports_membership,80.69,37.2,%,2022,DST IDRAKT02,social,tryghed
-671,Struer,sports_membership,103.69,47.8,%,2022,DST IDRAKT02,social,tryghed
-306,Odsherred,sports_membership,104.34,48.1,%,2022,DST IDRAKT02,social,tryghed
-330,Slagelse,sports_membership,76.57,35.3,%,2022,DST IDRAKT02,social,tryghed
-665,Lemvig,sports_membership,179.61,82.8,%,2022,DST IDRAKT02,social,tryghed
-376,Guldborgsund,sports_membership,88.5,40.8,%,2022,DST IDRAKT02,social,tryghed
-326,Kalundborg,sports_membership,91.32,42.1,%,2022,DST IDRAKT02,social,tryghed
-849,Jammerbugt,sports_membership,116.49,53.7,%,2022,DST IDRAKT02,social,tryghed
-550,Tønder,sports_membership,92.62,42.7,%,2022,DST IDRAKT02,social,tryghed
-390,Vordingborg,sports_membership,74.84,34.5,%,2022,DST IDRAKT02,social,tryghed
-360,Lolland,sports_membership,70.93,32.7,%,2022,DST IDRAKT02,social,tryghed
-741,Samsø,sports_membership,220.82,101.8,%,2022,DST IDRAKT02,social,tryghed
-482,Langeland,sports_membership,97.83,45.1,%,2022,DST IDRAKT02,social,tryghed
+201,Allerød,sports_membership,114.32,52.7,%,2022,DST IDRAKT02,social,lokalsamfund
+175,Rødovre,sports_membership,54.66,25.2,%,2022,DST IDRAKT02,social,lokalsamfund
+153,Brøndby,sports_membership,66.16,30.5,%,2022,DST IDRAKT02,social,lokalsamfund
+155,Dragør,sports_membership,123.21,56.8,%,2022,DST IDRAKT02,social,lokalsamfund
+190,Furesø,sports_membership,147.72,68.1,%,2022,DST IDRAKT02,social,lokalsamfund
+230,Rudersdal,sports_membership,110.85,51.1,%,2022,DST IDRAKT02,social,lokalsamfund
+151,Ballerup,sports_membership,73.97,34.1,%,2022,DST IDRAKT02,social,lokalsamfund
+167,Hvidovre,sports_membership,72.45,33.4,%,2022,DST IDRAKT02,social,lokalsamfund
+269,Solrød,sports_membership,96.75,44.6,%,2022,DST IDRAKT02,social,lokalsamfund
+746,Skanderborg,sports_membership,133.19,61.4,%,2022,DST IDRAKT02,social,lokalsamfund
+157,Gentofte,sports_membership,107.38,49.5,%,2022,DST IDRAKT02,social,lokalsamfund
+240,Egedal,sports_membership,103.04,47.5,%,2022,DST IDRAKT02,social,lokalsamfund
+265,Roskilde,sports_membership,131.89,60.8,%,2022,DST IDRAKT02,social,lokalsamfund
+223,Hørsholm,sports_membership,129.5,59.7,%,2022,DST IDRAKT02,social,lokalsamfund
+185,Tårnby,sports_membership,89.37,41.2,%,2022,DST IDRAKT02,social,lokalsamfund
+163,Herlev,sports_membership,110.2,50.8,%,2022,DST IDRAKT02,social,lokalsamfund
+173,Lyngby-Taarbæk,sports_membership,100.65,46.4,%,2022,DST IDRAKT02,social,lokalsamfund
+350,Lejre,sports_membership,96.75,44.6,%,2022,DST IDRAKT02,social,lokalsamfund
+210,Fredensborg,sports_membership,97.83,45.1,%,2022,DST IDRAKT02,social,lokalsamfund
+710,Favrskov,sports_membership,112.58,51.9,%,2022,DST IDRAKT02,social,lokalsamfund
+530,Billund,sports_membership,134.71,62.1,%,2022,DST IDRAKT02,social,lokalsamfund
+183,Ishøj,sports_membership,75.27,34.7,%,2022,DST IDRAKT02,social,lokalsamfund
+840,Rebild,sports_membership,112.36,51.8,%,2022,DST IDRAKT02,social,lokalsamfund
+147,Frederiksberg,sports_membership,58.35,26.9,%,2022,DST IDRAKT02,social,lokalsamfund
+259,Køge,sports_membership,108.68,50.1,%,2022,DST IDRAKT02,social,lokalsamfund
+253,Greve,sports_membership,116.92,53.9,%,2022,DST IDRAKT02,social,lokalsamfund
+187,Vallensbæk,sports_membership,92.84,42.8,%,2022,DST IDRAKT02,social,lokalsamfund
+159,Gladsaxe,sports_membership,66.59,30.7,%,2022,DST IDRAKT02,social,lokalsamfund
+661,Holstebro,sports_membership,107.81,49.7,%,2022,DST IDRAKT02,social,lokalsamfund
+217,Helsingør,sports_membership,91.54,42.2,%,2022,DST IDRAKT02,social,lokalsamfund
+250,Frederikssund,sports_membership,92.41,42.6,%,2022,DST IDRAKT02,social,lokalsamfund
+657,Herning,sports_membership,115.62,53.3,%,2022,DST IDRAKT02,social,lokalsamfund
+492,Ærø,sports_membership,133.62,61.6,%,2022,DST IDRAKT02,social,lokalsamfund
+561,Esbjerg,sports_membership,96.1,44.3,%,2022,DST IDRAKT02,social,lokalsamfund
+773,Morsø,sports_membership,99.13,45.7,%,2022,DST IDRAKT02,social,lokalsamfund
+219,Hillerød,sports_membership,159.0,73.3,%,2022,DST IDRAKT02,social,lokalsamfund
+740,Silkeborg,sports_membership,113.67,52.4,%,2022,DST IDRAKT02,social,lokalsamfund
+607,Fredericia,sports_membership,98.92,45.6,%,2022,DST IDRAKT02,social,lokalsamfund
+316,Holbæk,sports_membership,92.62,42.7,%,2022,DST IDRAKT02,social,lokalsamfund
+340,Sorø,sports_membership,83.08,38.3,%,2022,DST IDRAKT02,social,lokalsamfund
+260,Halsnæs,sports_membership,81.34,37.5,%,2022,DST IDRAKT02,social,lokalsamfund
+766,Hedensted,sports_membership,113.88,52.5,%,2022,DST IDRAKT02,social,lokalsamfund
+825,Læsø,sports_membership,244.03,112.5,%,2022,DST IDRAKT02,social,lokalsamfund
+615,Horsens,sports_membership,78.52,36.2,%,2022,DST IDRAKT02,social,lokalsamfund
+329,Ringsted,sports_membership,83.51,38.5,%,2022,DST IDRAKT02,social,lokalsamfund
+370,Næstved,sports_membership,69.41,32.0,%,2022,DST IDRAKT02,social,lokalsamfund
+851,Aalborg,sports_membership,125.6,57.9,%,2022,DST IDRAKT02,social,lokalsamfund
+336,Stevns,sports_membership,106.94,49.3,%,2022,DST IDRAKT02,social,lokalsamfund
+410,Middelfart,sports_membership,91.32,42.1,%,2022,DST IDRAKT02,social,lokalsamfund
+727,Odder,sports_membership,100.65,46.4,%,2022,DST IDRAKT02,social,lokalsamfund
+161,Glostrup,sports_membership,59.65,27.5,%,2022,DST IDRAKT02,social,lokalsamfund
+563,Fanø,sports_membership,126.68,58.4,%,2022,DST IDRAKT02,social,lokalsamfund
+813,Frederikshavn,sports_membership,119.31,55.0,%,2022,DST IDRAKT02,social,lokalsamfund
+270,Gribskov,sports_membership,104.99,48.4,%,2022,DST IDRAKT02,social,lokalsamfund
+751,Aarhus,sports_membership,99.57,45.9,%,2022,DST IDRAKT02,social,lokalsamfund
+760,Ringkøbing-Skjern,sports_membership,140.35,64.7,%,2022,DST IDRAKT02,social,lokalsamfund
+479,Svendborg,sports_membership,117.14,54.0,%,2022,DST IDRAKT02,social,lokalsamfund
+787,Thisted,sports_membership,105.64,48.7,%,2022,DST IDRAKT02,social,lokalsamfund
+810,Brønderslev,sports_membership,106.51,49.1,%,2022,DST IDRAKT02,social,lokalsamfund
+791,Viborg,sports_membership,108.03,49.8,%,2022,DST IDRAKT02,social,lokalsamfund
+165,Albertslund,sports_membership,244.47,112.7,%,2022,DST IDRAKT02,social,lokalsamfund
+480,Nordfyns,sports_membership,106.72,49.2,%,2022,DST IDRAKT02,social,lokalsamfund
+440,Kerteminde,sports_membership,99.13,45.7,%,2022,DST IDRAKT02,social,lokalsamfund
+101,København,sports_membership,91.11,42.0,%,2022,DST IDRAKT02,social,lokalsamfund
+860,Hjørring,sports_membership,120.39,55.5,%,2022,DST IDRAKT02,social,lokalsamfund
+706,Syddjurs,sports_membership,106.51,49.1,%,2022,DST IDRAKT02,social,lokalsamfund
+430,Faaborg-Midtfyn,sports_membership,90.46,41.7,%,2022,DST IDRAKT02,social,lokalsamfund
+573,Varde,sports_membership,126.68,58.4,%,2022,DST IDRAKT02,social,lokalsamfund
+730,Randers,sports_membership,79.18,36.5,%,2022,DST IDRAKT02,social,lokalsamfund
+621,Kolding,sports_membership,92.19,42.5,%,2022,DST IDRAKT02,social,lokalsamfund
+320,Faxe,sports_membership,67.46,31.1,%,2022,DST IDRAKT02,social,lokalsamfund
+169,Høje-Taastrup,sports_membership,69.85,32.2,%,2022,DST IDRAKT02,social,lokalsamfund
+461,Odense,sports_membership,98.7,45.5,%,2022,DST IDRAKT02,social,lokalsamfund
+420,Assens,sports_membership,86.12,39.7,%,2022,DST IDRAKT02,social,lokalsamfund
+756,Ikast-Brande,sports_membership,93.93,43.3,%,2022,DST IDRAKT02,social,lokalsamfund
+846,Mariagerfjord,sports_membership,89.59,41.3,%,2022,DST IDRAKT02,social,lokalsamfund
+580,Aabenraa,sports_membership,78.52,36.2,%,2022,DST IDRAKT02,social,lokalsamfund
+450,Nyborg,sports_membership,110.2,50.8,%,2022,DST IDRAKT02,social,lokalsamfund
+630,Vejle,sports_membership,101.74,46.9,%,2022,DST IDRAKT02,social,lokalsamfund
+540,Sønderborg,sports_membership,88.72,40.9,%,2022,DST IDRAKT02,social,lokalsamfund
+400,Bornholm,sports_membership,126.03,58.1,%,2022,DST IDRAKT02,social,lokalsamfund
+779,Skive,sports_membership,112.15,51.7,%,2022,DST IDRAKT02,social,lokalsamfund
+510,Haderslev,sports_membership,98.48,45.4,%,2022,DST IDRAKT02,social,lokalsamfund
+575,Vejen,sports_membership,86.33,39.8,%,2022,DST IDRAKT02,social,lokalsamfund
+820,Vesthimmerlands,sports_membership,119.31,55.0,%,2022,DST IDRAKT02,social,lokalsamfund
+707,Norddjurs,sports_membership,80.69,37.2,%,2022,DST IDRAKT02,social,lokalsamfund
+671,Struer,sports_membership,103.69,47.8,%,2022,DST IDRAKT02,social,lokalsamfund
+306,Odsherred,sports_membership,104.34,48.1,%,2022,DST IDRAKT02,social,lokalsamfund
+330,Slagelse,sports_membership,76.57,35.3,%,2022,DST IDRAKT02,social,lokalsamfund
+665,Lemvig,sports_membership,179.61,82.8,%,2022,DST IDRAKT02,social,lokalsamfund
+376,Guldborgsund,sports_membership,88.5,40.8,%,2022,DST IDRAKT02,social,lokalsamfund
+326,Kalundborg,sports_membership,91.32,42.1,%,2022,DST IDRAKT02,social,lokalsamfund
+849,Jammerbugt,sports_membership,116.49,53.7,%,2022,DST IDRAKT02,social,lokalsamfund
+550,Tønder,sports_membership,92.62,42.7,%,2022,DST IDRAKT02,social,lokalsamfund
+390,Vordingborg,sports_membership,74.84,34.5,%,2022,DST IDRAKT02,social,lokalsamfund
+360,Lolland,sports_membership,70.93,32.7,%,2022,DST IDRAKT02,social,lokalsamfund
+741,Samsø,sports_membership,220.82,101.8,%,2022,DST IDRAKT02,social,lokalsamfund
+482,Langeland,sports_membership,97.83,45.1,%,2022,DST IDRAKT02,social,lokalsamfund
 201,Allerød,sports_facilities,110.81,22.96,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
 175,Rødovre,sports_facilities,61.49,12.74,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
 153,Brøndby,sports_facilities,69.31,14.36,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund

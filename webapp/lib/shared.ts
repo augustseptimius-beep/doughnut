@@ -488,13 +488,13 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "sundhed",
     name: "Sundhed",
     description: "Borgernes fysiske og mentale sundhed, herunder livslængde, sygelighed og adgang til sundhedsydelser.",
-    indicatorIds: ["life_expectancy", "hospital_use", "gp_distance", "wellbeing"],
+    indicatorIds: ["life_expectancy", "hospital_use", "gp_distance"],
   },
   {
     id: "uddannelse",
     name: "Uddannelse",
     description: "Adgang til og gennemførelse af uddannelse for alle aldersgrupper - grundlag for personlig udvikling og samfundsdeltagelse.",
-    indicatorIds: ["education", "low_education", "exam_grade", "high_absence", "youth_education", "apprenticeship", "class_size", "daycare_ratio", "educated_staff"],
+    indicatorIds: ["education", "low_education", "exam_grade", "high_absence", "youth_education", "apprenticeship", "wellbeing", "class_size", "daycare_ratio", "educated_staff"],
   },
   {
     id: "velfaerd",
@@ -522,15 +522,15 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
   },
   {
     id: "tryghed",
-    name: "Tryghed & fællesskab",
-    description: "Tryghed og social sammenhæng i lokalsamfundet - kriminalitet, trafiksikkerhed og social kapital målt via idrætsdeltagelse.",
-    indicatorIds: ["crime_rate", "traffic_accidents", "sports_membership"],
+    name: "Tryghed",
+    description: "Tryghed i lokalsamfundet målt via kriminalitetsniveau og trafiksikkerhed.",
+    indicatorIds: ["crime_rate", "traffic_accidents"],
   },
   {
     id: "lokalsamfund",
     name: "Lokalsamfund",
-    description: "Nærhed til velfungerende basale services: idrætsfaciliteter, kommunal investering i nærområdet og støtte til det lokale foreningsliv.",
-    indicatorIds: ["sports_facilities", "sports_spending", "civil_society"],
+    description: "Nærhed til velfungerende basale services: idrætsfaciliteter, idrætsdeltagelse, kommunal investering i nærområdet og støtte til det lokale foreningsliv.",
+    indicatorIds: ["sports_facilities", "sports_spending", "civil_society", "sports_membership"],
   },
   {
     id: "lighed",

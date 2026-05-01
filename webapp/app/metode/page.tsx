@@ -50,7 +50,7 @@ const INDICATOR_RATIONALES: Record<string, string> = {
   sports_membership: "Andel af befolkningen med aktivt idrætsforeningsmedlemskab (DIF/DGI). Foreningsidræt er en central del af dansk civilsamfund og en proxy for frivilligt foreningsliv generelt.",
   kultur_spending: "Kommunale nettodriftsudgifter til biografer, teatre, musikarrangementer og kulturinstitutioner pr. indbygger (REGK31). Måler kommunens prioritering og investering i kulturlivet - uafhængigt af borgernes faktiske brug.",
   civil_society: "Kommunale udgifter til frivilligt folkeoplysende foreningsarbejde pr. indbygger (REGK31 funktion 33873). Proxy for kommunens investering i civilsamfund og det lokale foreningsliv - en central del af dansk demokratisk kultur.",
-  // Tryghed & fællesskab
+  // Tryghed
   crime_rate: "Anmeldte forbrydelser pr. 1.000 indb. er den bedst tilgængelige kvantitative indikator for tryghed på kommuneniveau. Lav kriminalitet er en forudsætning for social tillid og aktivt deltagelse i det offentlige rum.",
   traffic_accidents: "Tilskadekomne og dræbte i færdselsuheld pr. 100.000 indb. (UHELDK1). Trafiksikkerhed er en direkte indikator for fysisk tryghed i det offentlige rum og for kvaliteten af infrastruktur og hastighedszoner. Inverteret: færre ulykker er bedre.",
   // Lokalsamfund
@@ -77,7 +77,7 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   uddannelse: {
     id: "uddannelse",
-    scoring: "Gennemsnit af ni indikatorer: (1) Andel af 30-34-årige med kompetencegivende uddannelse (HFUDD10, direkte). (2) Andel af 25-29-årige med kun grundskole (HFUDD11, inverteret). (3) Karaktergennemsnit folkeskolens afgangseksamen (UVM GS/KARA/KARAGNS, direkte). (4) Andel elever med >10% fravær (UVM GS/ELEVFRAV/FRAVAAR, inverteret). (5) Forventet ungdomsuddannelseskompetence (UVM GS/PROFMOD/PROFMOD, direkte). (6) Læreplads-søgende med afsluttet grundforløb (UVM EUD/PRAK/SØG, direkte). (7) Klassekvotient grundskole (KVOTIEN, inverteret). (8) Normering daginstitution 3-5 år (BOERN8, inverteret). (9) Andel pædagoguddannede i daginstitutioner (BOERN1 kode 460, direkte). Score 100 = landsgennemsnit.",
+    scoring: "Gennemsnit af ti indikatorer: (1) Andel af 30-34-årige med kompetencegivende uddannelse (HFUDD10, direkte). (2) Andel af 25-29-årige med kun grundskole (HFUDD11, inverteret). (3) Karaktergennemsnit folkeskolens afgangseksamen (UVM GS/KARA/KARAGNS, direkte). (4) Andel elever med >10% fravær (UVM GS/ELEVFRAV/FRAVAAR, inverteret). (5) Forventet ungdomsuddannelseskompetence (UVM GS/PROFMOD/PROFMOD, direkte). (6) Læreplads-søgende med afsluttet grundforløb (UVM EUD/PRAK/SØG, direkte). (7) Elevtrivsel i folkeskolen, gennemsnit (UVM GS/TRIV/TRIVIND, direkte). (8) Klassekvotient grundskole (KVOTIEN, inverteret). (9) Normering daginstitution 3-5 år (BOERN8, inverteret). (10) Andel pædagoguddannede i daginstitutioner (BOERN1 kode 460, direkte). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: alle borgere bør have adgang til uddannelse og et kvalitetsfuldt læringsmiljø. EU-mål: 45% af 25-34-årige med videregående uddannelse i 2030.",
     dataYear: "2022-2024",
     limitations: "Karaktergennemsnit afspejler ikke kun skolekvalitet men også socioøkonomisk baggrund. Klassekvotienter og normering fanger kvantitative mål, ikke undervisningskvalitet. UVM-data dækker skoleår 2023/2024 som seneste.",
@@ -112,24 +112,24 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     scoring: "Gennemsnit af tre indikatorer: (1) Musikskoleelever pr. 1.000 indb. (SKOLM02B, direkte). (2) Biblioteksudlån pr. indb. (BIB1, direkte). (3) Kommunale kulturudgifter pr. indb. - nettodriftsudgifter til biografer, teatre, musikarrangementer og anden kultur (REGK31 funktion 33561-33564, direkte). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: adgang til kulturliv og fritidsaktiviteter er en forudsætning for trivsel, social deltagelse og levende lokalsamfund.",
     dataYear: "2022-2024",
-    limitations: "Musikskoleelever dækker primært børn og unge. Biblioteksudlån afspejler ikke digitale udlån fuldt ud. Kulturudgifter eksluderer biblioteksudgifter (separat indikator) og idrætsudgifter (separat indikator i Lokalsamfund). Idrætsmedlemskab er flyttet til Tryghed & fællesskab som mål for social kapital.",
+    limitations: "Musikskoleelever dækker primært børn og unge. Biblioteksudlån afspejler ikke digitale udlån fuldt ud. Kulturudgifter eksluderer biblioteksudgifter (separat indikator) og idrætsudgifter (separat indikator i Lokalsamfund). Idrætsmedlemskab indgår i Lokalsamfund som mål for foreningsliv og social kapital.",
     csvFile: "lokalsamfund_scores.csv + samskabelse_extra_scores.csv + doughnut_scores.csv (kultur_spending)",
   },
   tryghed: {
     id: "tryghed",
-    scoring: "Gennemsnit af tre indikatorer: (1) Anmeldte forbrydelser pr. 1.000 indb. (STRAF11, inverteret). (2) Trafikulykker - tilskadekomne og dræbte pr. 100.000 indb. (UHELDK1, inverteret). (3) Idrætsmedlemskab som andel af befolkningen (IDRAKT02, direkte - proxy for social kapital og foreningsliv). Score 100 = landsgennemsnit.",
-    boundary: "Socialt fundament: borgere skal kunne leve trygt - i det offentlige rum, i trafikken og med social sammenhæng i lokalsamfundet.",
-    dataYear: "2022-2024",
-    limitations: "Anmeldt kriminalitet afspejler ikke oplevet tryghed eller mørketallet. Politiets tilstedeværelse og anmeldelseskultur varierer. Trafikulykker varierer med vejnet og pendlingsforhold. Idrætsmedlemskab er en proxy for social kapital, ikke en direkte trygheds-indikator.",
+    scoring: "Gennemsnit af to indikatorer: (1) Anmeldte forbrydelser pr. 1.000 indb. (STRAF11, inverteret). (2) Trafikulykker - tilskadekomne og dræbte pr. 100.000 indb. (UHELDK1, inverteret). Score 100 = landsgennemsnit.",
+    boundary: "Socialt fundament: borgere skal kunne leve trygt - i det offentlige rum og i trafikken.",
+    dataYear: "2024",
+    limitations: "Anmeldt kriminalitet afspejler ikke oplevet tryghed eller mørketallet. Politiets tilstedeværelse og anmeldelseskultur varierer. Trafikulykker varierer med vejnet og pendlingsforhold.",
     csvFile: "faellesskaber_scores.csv",
   },
   lokalsamfund: {
     id: "lokalsamfund",
-    scoring: "Gennemsnit af tre indikatorer: (1) Idrætsfaciliteter pr. 10.000 indb. (IDRFAC01, direkte). (2) Kommunale idrætsudgifter pr. indb. (IDRFIN02, direkte). (3) Udgifter til frivillige foreninger pr. indb. (REGK31 funktion 33873, direkte). Score 100 = landsgennemsnit. NB: Klassekvotient, normering og pædagoguddannede er flyttet til dimensionen Uddannelse.",
-    boundary: "Socialt fundament: nærhed til velfungerende basale services er en forudsætning for et godt hverdagsliv - uanset om man bor i by eller på land.",
+    scoring: "Gennemsnit af fire indikatorer: (1) Idrætsfaciliteter pr. 10.000 indb. (IDRFAC01, direkte). (2) Kommunale idrætsudgifter pr. indb. (IDRFIN02, direkte). (3) Udgifter til frivillige foreninger pr. indb. (REGK31 funktion 33873, direkte). (4) Idrætsmedlemskab som andel af befolkningen (IDRAKT02, direkte - proxy for foreningsliv og social kapital). Score 100 = landsgennemsnit. NB: Klassekvotient, normering og pædagoguddannede er flyttet til dimensionen Uddannelse.",
+    boundary: "Socialt fundament: nærhed til velfungerende basale services og levende foreningsliv er en forudsætning for et godt hverdagsliv - uanset om man bor i by eller på land.",
     dataYear: "2022-2024",
-    limitations: "Dækker ikke alle relevante services (indkøb). Idrætsudgifter og idrætsfaciliteter kan korrelere. Udgifter til frivillige foreninger er en proxy for kommunens investering i civilsamfund, ikke for faktisk foreningsaktivitet.",
-    csvFile: "lokalsamfund_scores.csv + lokalsamfund_extra_scores.csv",
+    limitations: "Dækker ikke alle relevante services (indkøb). Idrætsudgifter og idrætsfaciliteter kan korrelere. Udgifter til frivillige foreninger er en proxy for kommunens investering i civilsamfund, ikke for faktisk foreningsaktivitet. Idrætsmedlemskab dækker kun foreningsidræt, ikke selvorganiseret motion.",
+    csvFile: "lokalsamfund_scores.csv + lokalsamfund_extra_scores.csv + faellesskaber_scores.csv",
   },
   lighed: {
     id: "lighed",
