@@ -150,13 +150,20 @@ ECO_SUB_INDICATORS = [
     # === Forbrugsbaseret CO2 (single, navn-nøgle, ingen fallback) ===
     {"id": "forbrug_co2", "csv": "cba_2023_estimate.csv", "ratio_col": None, "raw_col": "cba_2023_estimate", "unit": "ton CO₂e/person", "data_year": "2023", "source": "Osei-Owusu et al. 2020 + ENS GA25", "category": "ecological", "dimension": "forbrug_co2", "inverse_ratio": False, "is_dimension_score": True, "special": "cba_navn_key"},
 
-    # === Forurening / Novel entities (worst-of: pesticider + nitrat) ===
-    {"id": "pesticider", "csv": "pesticider_scores.csv", "ratio_col": "pesticid_ratio", "raw_col": "pesticid_pct_over_graense", "unit": "% boringer over 0,1 µg/l", "data_year": "2023", "source": "DN/GEUS Jupiter 2019-2023", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": False},
-    {"id": "nitrat", "csv": "nitrat_scores.csv", "ratio_col": "nitrat_ratio", "raw_col": "nitrat_mg_l", "unit": "mg/L", "data_year": "2025", "source": "Greenpeace/GEUS Jupiter 2025", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": False},
-]
+    # === Forurening / Novel entities (single: pesticider i drikkevand) ===
+    {"id": "pesticider", "csv": "pesticider_scores.csv", "ratio_col": "pesticid_ratio", "raw_col": "pesticid_pct_over_graense", "unit": "% boringer over 0.1 µg/l", "data_year": "2023", "source": "DN/GEUS Jupiter 2019-2023", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": True},
+    # === Vand (nitrat i grundvand / drikkevand) ===
+    {"id": "nitrat", "csv": "nitrat_scores.csv", "ratio_col": "nitrat_ratio", "raw_col": "nitrat_mg_l", "unit": "mg/L", "data_year": "2025", "source": "Greenpeace/GEUS Jupiter 2025", "category": "ecological", "dimension": "vand", "inverse_ratio": False, "is_dimension_score": True},
 
-# Inaktive dimensioner uden data: vand, arealanvendelse
-# klimatilpasning (social): ingen indikatorer endnu
+    # === Arealanvendelse (worst-of: natur + intensivt landbrug + bebygget) ===
+    # Kilde: DST AREALDK2 2024 (pct af kommunens matrikulerede areal)
+    # natur_ratio    = (30% EU-maal / natur_pct) * 100  [lav natur = overshoot]
+    # intensiv_ratio = (intensiv_pct / 54.7% nationalt snit) * 100  [meget landbrug = overshoot]
+    # bebygget_ratio = (bebygget_pct / 14.2% nationalt snit) * 100  [meget by = overshoot]
+    {"id": "areal_natur",    "csv": "arealanvendelse_scores.csv", "ratio_col": "natur_ratio",    "raw_col": "natur_pct",    "unit": "%", "data_year": "2024", "source": "DST AREALDK2", "category": "ecological", "dimension": "arealanvendelse", "inverse_ratio": False, "is_dimension_score": False},
+    {"id": "areal_intensiv", "csv": "arealanvendelse_scores.csv", "ratio_col": "intensiv_ratio", "raw_col": "intensiv_pct", "unit": "%", "data_year": "2024", "source": "DST AREALDK2", "category": "ecological", "dimension": "arealanvendelse", "inverse_ratio": False, "is_dimension_score": False},
+    {"id": "areal_bebygget", "csv": "arealanvendelse_scores.csv", "ratio_col": "bebygget_ratio", "raw_col": "bebygget_pct", "unit": "%", "data_year": "2024", "source": "DST AREALDK2", "category": "ecological", "dimension": "arealanvendelse", "inverse_ratio": False, "is_dimension_score": False},
+]
 
 # ─── HJÆLPEFUNKTIONER ──────────────────────────────────────────────────
 

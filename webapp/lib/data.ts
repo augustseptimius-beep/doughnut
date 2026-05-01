@@ -56,6 +56,10 @@ const ECO_RAW_KEY_MAP: Record<string, { rawKey: string; ratioKey: string | null 
   // Forurening - pesticider + nitrat i drikkevand (worst-of)
   pesticider: { rawKey: "eco_pesticid_raw", ratioKey: "pesticider_self" },
   nitrat:     { rawKey: "eco_nitrat_raw",   ratioKey: "nitrat_self" },
+  // Arealanvendelse (worst-of: natur + intensivt landbrug + bebygget)
+  areal_natur:    { rawKey: "eco_areal_natur_raw",    ratioKey: "areal_natur_ratio" },
+  areal_intensiv: { rawKey: "eco_areal_intensiv_raw", ratioKey: "areal_intensiv_ratio" },
+  areal_bebygget: { rawKey: "eco_areal_bebygget_raw", ratioKey: "areal_bebygget_ratio" },
 };
 
 // ─── Master-CSV loader ───────────────────────────────────────────────
