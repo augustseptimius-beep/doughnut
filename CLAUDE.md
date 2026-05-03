@@ -28,10 +28,14 @@ doughnut/
 │   ├── luftforurening_scores.csv  ← NO2 + PM2.5 (Miljøportal WFS, DCE/AU)
 │   ├── biodiversitet_scores.csv
 │   ├── land_use_scores.csv
+│   ├── arealanvendelse_scores.csv ← intensivt landbrug + bebygget (DST AREALDK2 2024)
 │   ├── n_landbrug_scores.csv      ← N-loft fra VP3 (Vandområdeplan 3)
 │   ├── naeringsstoffer_scores.csv ← N+P fra spildevand (VANDUD)
 │   ├── vand_scores.csv
+│   ├── vandindvinding_scores.csv  ← m³/person fra almene vandværker (DST VANDIND 2024)
 │   ├── forurening_scores.csv      ← affald kg/person
+│   ├── pesticider_scores.csv      ← % boringer over 0.1 µg/l (DN/GEUS Jupiter 2019-2023)
+│   ├── nitrat_scores.csv          ← nitrat mg/L i drikkevand (Greenpeace/GEUS Jupiter 2025)
 │   ├── consumption_scores.csv     ← genanvendelse
 │   ├── cba_2023_estimate.csv      ← forbrugsbaseret CO2 (Osei-Owusu + ENS GA25)
 │   ├── democracy_scores.csv       ← valgdeltagelse KV21
@@ -44,6 +48,8 @@ doughnut/
 │   ├── uddannelse_extra_scores.csv ← kun grundskole (25-29 år)
 │   ├── bolig_extra_scores.csv     ← m² pr. person
 │   ├── samskabelse_extra_scores.csv ← musikskole
+│   ├── klimatilpasning_scores.csv ← vejrrelaterede forsikringsskader pr. 1.000 indb. (F&P 2023-2025)
+│   ├── klimatilpasning.md         ← metodenote + fremtidige indikator-kandidater for dimensionen
 │   └── methodology_note.md        ← metodenote om CBA 2023-justering
 ├── scripts/                 ← Python fetchers, kør fra rodmappen (ikke fra scripts/)
 │   ├── build_master_csv.py        ← ★ konsoliderer alle rådata-CSV'er til master_indicators.csv
@@ -53,8 +59,13 @@ doughnut/
 │   ├── fetch_luftforurening_data.py
 │   ├── fetch_biodiversitet_data.py
 │   ├── fetch_land_use_data.py
-│   ├── fetch_arealanvendelse_data.py
+│   ├── fetch_arealanvendelse_data.py  ← §3-natur + markblokke (GIS/WFS - bruges ikke aktivt)
+│   ├── fetch_dst_arealanvendelse.py   ← ★ arealanvendelse-dimension (DST AREALDK2, ingen GIS)
 │   ├── fetch_naeringsstoffer_landbrug.py
+│   ├── fetch_pesticider_data.py       ← pesticider i drikkevand (hardkodet fra DN/GEUS aktindsigt)
+│   ├── fetch_nitrat_data.py           ← nitrat i drikkevand (hardkodet top-20 fra Greenpeace 2025)
+│   ├── fetch_vandindvinding_data.py   ← vandindvinding m³/person (DST VANDIND, INDKAT=100)
+│   ├── fetch_klimatilpasning_data.py  ← ★ vejrskader pr. 1.000 indb. (F&P via Datawrapper)
 │   ├── fetch_democracy_data.py
 │   ├── fetch_eco_new_data.py
 │   ├── fetch_social_extra_data.py
@@ -119,15 +130,35 @@ Alle kommuner har et sæt **ratios** hvor `100 = niveau med landsgennemsnit` (so
 
 ### INDICATORS (sociale, i shared.ts)
 
-Liste af alle sociale indikatorer med id, navn, DST-tabel, kilde, kategori, inverse-flag, dataYear, baselineLevel (1=WHO/EU, 2=nationalt mål, 3=landsgennemsnit), rawUnit. **~27 sociale indikatorer** per april 2026.
+Liste af alle sociale indikatorer med id, navn, DST-tabel, kilde, kategori, inverse-flag, dataYear, baselineLevel (1=WHO/EU, 2=nationalt mål, 3=landsgennemsnit), rawUnit. **~28 sociale indikatorer** per maj 2026.
 
 ### SOCIAL_CATEGORIES (10 TORUS-trivselsaspekter)
 
-`sundhed`, `uddannelse`, `velfaerd`, `bolig`, `demokrati`, `kultur_fritid`, `tryghed`, `lokalsamfund`, `mobilitet`, `klimatilpasning` (sidstnævnte har ingen indikatorer endnu, er placeholder). Hver kategori har en liste af `indicatorIds` som aggregeres (simpelt gennemsnit) til en kategoriscore via `computeCategoryScores()`.
+`sundhed`, `uddannelse`, `velfaerd`, `bolig`, `demokrati`, `kultur_fritid`, `tryghed`, `lokalsamfund`, `mobilitet`, `klimatilpasning`. Hver kategori har en liste af `indicatorIds` som aggregeres (simpelt gennemsnit) til en kategoriscore via `computeCategoryScores()`.
 
 ### ECOLOGICAL_DIMENSIONS (9 planetære grænser, i shared.ts)
 
-`klimapaavirkning`, `forurening` (novel entities - INGEN data endnu), `luftkvalitet`, `cirkularitet`, `naeringsstoffer`, `vand`, `arealanvendelse`, `biodiversitet`, `forbrug_co2`. Multi-indikator-dimensioner (næringsstoffer, vand, cirkularitet, luftkvalitet) bruger **worst-of logic** (max ratio) - hvis bare én sub-grænse overskrides, er hele dimensionen overskredet. Dette er bevidst planetary-boundary-logik, IKKE gennemsnit.
+`klimapaavirkning`, `forurening` (pesticider i drikkevand - HAR data fra maj 2026), `luftkvalitet`, `cirkularitet`, `naeringsstoffer`, `vand` (nitrat i drikkevand - HAR data fra maj 2026), `arealanvendelse` (HAR data fra maj 2026), `biodiversitet`, `forbrug_co2`. Multi-indikator-dimensioner (næringsstoffer, cirkularitet, luftkvalitet, arealanvendelse) bruger **worst-of logic** (max ratio) - hvis bare én sub-grænse overskrides, er hele dimensionen overskredet. Dette er bevidst planetary-boundary-logik, IKKE gennemsnit.
+
+**Forurening-dimensionens sub-indikator (maj 2026):**
+- `pesticider`: andel af aktive vandindvindingsboringer med fund over drikkevandsnormen 0.1 µg/l (%), kilde: DN/GEUS Jupiter 2019-2023. Ratio = (kommune_pct / nationalt_gennemsnit_pct) × 100. Nationalt gennemsnit: ~7,55% boringer over grænsen. Herlev mangler data (null). Script: `fetch_pesticider_data.py` (hardkodet rådata fra DN aktindsigt via Ritzau).
+- **OBS enhedsformat:** brug ALTID `0.1` (punktum) i unit-feltet, ALDRIG `0,1` (komma) - komma i en CSV-kolonne ødelægger parsingen i data.ts (split(",")).
+
+**Vand-dimensionens sub-indikator (maj 2026):**
+- `nitrat`: nitrat i drikkevand (mg/L), grænse 6 mg/L (ekspertgruppe 2025, baseret på tarmkræftrisiko), kilde: Greenpeace/GEUS Jupiter november 2025. Ratio = (faktisk mg/L / 6 mg/L) × 100. Præcise data for top-20 kommuner; de resterende 78 estimeres til 3,7 mg/L (Helsingørs niveau = konservativt loft). Nitrat er IKKE en novel entity - det er placeret under Vand fordi det måler grundvandskvalitet, ikke kvælstofudledning til overfladevand (som hører under næringsstoffer). Script: `fetch_nitrat_data.py` (hardkodet top-20 fra Greenpeace PDF).
+
+**Arealanvendelse-dimensionens sub-indikatorer (maj 2026):**
+- `areal_intensiv`: andel intensivt landbrug (D1+D2+D4 fra AREALDK2, %), baseline: nationalt snit 54,7% (2024), kilde: DST AREALDK2. Høj andel = overshoot. Ratio = (andel / 54,7) × 100.
+- `areal_bebygget`: andel bebygget og befæstet areal (A1+A2+B1+B2+C1 fra AREALDK2, %), baseline: nationalt snit 14,2% (2024), kilde: DST AREALDK2. Høj andel = overshoot. Ratio = (andel / 14,2) × 100.
+- Naturkvalitet (natur+skov) er BEVIDST UDELADT - det måles i biodiversitetsdimensionen (§3-data). Arealanvendelse handler om presset, ikke naturkvaliteten.
+- Script: `fetch_dst_arealanvendelse.py` (ren DST API, ingen GIS). Auto-rebuilder master-CSV.
+
+
+**Klimatilpasning-kategoriens indikator (maj 2026):**
+- `vejr_skader`: vejrrelaterede forsikringsskader pr. 1.000 indb. (akkumuleret Q1 2023 - Q4 2025), kilde: F&P (Forsikring & Pension) via Datawrapper. Ratio = (landsgennemsnit / kommune_val) × 100. Landsgennemsnit: ~26 skader/1.000 indb. Lavere skader = højere score = bedre. Invers social indikator.
+- **OBS - dette er en PROXY:** Indikatoren måler vejrrelateret eksponering/outcome, ikke kommunens tilpasningskapacitet. Vestkyst- og ø-kommuner er strukturelt benadelantagede. Se `data/klimatilpasning.md` for fuld metodediskussion og fremtidige indikator-kandidater.
+- **Datakilde-URL:** `https://datawrapper.dwcdn.net/NDLlA/4/dataset.csv` (kan ændre sig ved fremtidige F&P-analyser - tjek ved opdatering)
+- Script: `fetch_klimatilpasning_data.py`. Bruger kommunenavn som nøgle (`navn_key: True`). Auto-rebuilder master-CSV.
 
 ### Ratio-konvention for "forurenings-indikatorer"
 
@@ -160,6 +191,7 @@ interface KommuneData {
 
 Disse håndteres centralt i build-scriptet (ikke længere i `data.ts`):
 
+- **`navn_key: True` (sociale indikatorer):** Indikatorer der bruger kommunenavn som nøgle i stedet for kommunekode. Pt. gælder det `klimatilpasning_scores.csv` (vejr_skader). Build-scriptet laver da opslag på `kommune_navn` i stedet for `kommune_kode`. Manglende match → null.
 - **`cba_2023_estimate.csv`** bruger `kommune` (navn) som nøgle, ikke `kommune_kode`. Hvis en kommune ikke findes i CBA-data, sættes `forbrug_co2 = null` (vises som "data mangler"). Fallback-værdien (366.67) er bevidst fjernet i 2026 for transparens.
 - **`kommune_kode === "000"`** er et "Danmark samlet"-aggregat der ikke skal komme i master-CSV (filtreres ved indlæsning af kommunelisten).
 - **Worst-of dimension-aggregater** (`_dim_*`-rækker): luftkvalitet, naeringsstoffer, cirkularitet bruger max-ratio på sub-indikatorer. Single-indikator dims får dimension-score = sub-indikatorens ratio.
@@ -177,7 +209,7 @@ Datapipelinen er manuel og script-baseret. Der er IKKE CI/CD der henter data aut
    python3 scripts/fetch_XXX_data.py
    ```
 2. **Scriptet opdaterer rådata-CSV** i `data/` (eller rodmappen for `fetch_doughnut_data.py` - se kritisk regel nedenfor).
-3. **Master-CSV regenereres AUTOMATISK** efter fetchet. Alle 11 fetch-scripts kalder `build_master_csv.auto_build_master()` til sidst. Du behøver IKKE køre build-scriptet manuelt længere.
+3. **Master-CSV regenereres AUTOMATISK** efter fetchet. Alle 13 fetch-scripts kalder `build_master_csv.auto_build_master()` til sidst. Du behøver IKKE køre build-scriptet manuelt længere.
 4. **Preview lokalt** før push: dobbeltklik [`Start udviklerserver.command`](file:///Users/augustseptimiuskrogh/Documents/GitHub/doughnut/Start%20udviklerserver.command) → tjek `http://127.0.0.1:3000`.
 5. **Git commit + push via GitHub Desktop** → Netlify bygger og deployer.
 
@@ -204,7 +236,7 @@ cp doughnut_scores.csv data/doughnut_scores.csv
 # Master-CSV regenereres automatisk - ingen ekstra kommando
 ```
 
-**Tjek altid:** Scriptet printer "AUTO-REBUILD af master_indicators.csv" til sidst. Verificer at "Skrev 4402 rækker" (eller flere) og "✓ Master-CSV opdateret" ses i outputtet. Hvis ikke: kør `python3 scripts/build_master_csv.py` manuelt.
+**Tjek altid:** Scriptet printer "AUTO-REBUILD af master_indicators.csv" til sidst. Verificer at "Skrev 6350 rækker" (eller flere) og "✓ Master-CSV opdateret" ses i outputtet. Hvis ikke: kør `python3 scripts/build_master_csv.py` manuelt.
 
 ### Tilføj en ny indikator (efter april 2026)
 
@@ -246,7 +278,7 @@ Hero med titlen "Danmarks 98 Doughnuts", kort forklaring, søgefelt (autocomplet
 - Ingen user accounts, ingen backend bortset fra klimaregnskabet-proxy.
 - Ingen tests (hvis der kommer tests, er det enhed/integration, ikke e2e).
 - TypeScript strict, men mange "any"-undtagelser pga. CSV-parsing.
-- Bevidst enkel CSV-parsing (split(",")) - brækker hvis et felt indeholder komma. Acceptabelt fordi data er kontrolleret.
+- Bevidst enkel CSV-parsing (split(",")) - brækker hvis et felt indeholder komma. **KRITISK:** unit-felter i build_master_csv.py MÅ ALDRIG indeholde komma. Brug altid punktum som decimaltegn i units (fx `0.1 µg/l`, ikke `0,1 µg/l`). Komma i unit-feltet forskyver alle efterfølgende kolonner og gør indikatoren usynlig i UI.
 
 ## Vigtigste pitfalls og ting at huske på
 
@@ -302,10 +334,19 @@ Default til Sonnet hvis i tvivl. Nævn altid model-anbefaling før jeg går i ga
 - **`docs/API_datapunkt_oversigt_v4.1.3.xlsx`** - oversigtsskema over API-datapunkter.
 - **`docs/Energi_Data_Service_API_Guide.pdf`** - guide til Energi Data Service.
 
+## Obligatorisk før hvert GitHub-push
+
+**Disse to filer SKAL altid opdateres før commit + push - ingen undtagelser:**
+
+1. **`webapp/app/metode/page.tsx`** - opdater scoring, boundary, dataYear, limitations og csvFile for berørte dimensioner.
+2. **`CLAUDE.md`** - opdater projektstruktur, sub-indikatorer, driftsregler eller andre afsnit der afspejler ændringen.
+
+Hvis en ændring kun er kosmetisk (tekstrettelse, farve o.l.) og ikke påvirker data eller metode, kan metodesiden undlades. CLAUDE.md opdateres altid.
+
 ## Vedligehold af denne fil
 
 Opdater CLAUDE.md når:
-- Ny dimension eller kategori tilføjes.
+- Ny dimension, kategori eller sub-indikator tilføjes.
 - Ratio-konvention ændres.
 - Deploy-flow ændres.
 - Nye kritiske driftsregler opdages.

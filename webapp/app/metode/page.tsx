@@ -212,11 +212,11 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   vand: {
     id: "vand",
-    scoring: "Nitratindhold i drikkevand som indikator for grundvandskvalitet. Ratio = (kommunalt gennemsnit mg/L / 6 mg/L) × 100. Ratio over 100 = over ekspertgruppens anbefalede grænse. Nitrat (NO₃⁻) er ikke en novel entity men et naturligt stof der ophobes i grundvandsmagasiner ved overdreven kvælstofbelastning fra landbrug - metodisk placeret her da det måler grundvandskvalitet, ikke kvælstofudledning til overfladevand (som dækkes af næringsstoffer).",
-    boundary: "6 mg/L (ekspertgruppens anbefaling 2025, baseret på sammenhæng med tarmkræftrisiko). Markant lavere end den juridiske grænseværdi på 50 mg/L.",
-    dataYear: "2025",
-    limitations: "Præcise kommunegennemsnit er kun offentliggjort for de 20 mest nitratbelastede kommuner (Greenpeace/GEUS Jupiter, november 2025). De resterende 78 kommuner er estimeret til 3,7 mg/L (Helsingørs niveau, #20) - et konservativt loft, de faktiske værdier er lavere. Dimensionen dækker ikke kvantitativt pres på ferskvandsressourcer (SRC's egentlige freshwater boundary).",
-    csvFile: "nitrat_scores.csv",
+    scoring: "To indikatorer - worst-of afgør dimensionsscore. (1) Nitrat: Ratio = (kommunalt gennemsnit mg/L / 6 mg/L) × 100. Over 100 = over ekspertgruppens grænse. (2) Vandindvinding: Ratio = (kommunens m³/person / nationalt gennemsnit) × 100. Over 100 = bruger mere end landsgennemsnittet. Nitrat (NO₃⁻) måler grundvandskvalitet; vandindvinding (alment vandværk, INDKAT=100) måler kvantitativt pres på grundvandsressourcerne.",
+    boundary: "Nitrat: 6 mg/L (ekspertgruppens anbefaling 2025, baseret på sammenhæng med tarmkræftrisiko) - markant lavere end den juridiske grænseværdi på 50 mg/L. Vandindvinding: landsgennemsnit (72,9 m³/person, 2024) som reference. Den egentlige planetære grænse (Rockström/Steffen: 4.000-6.000 km³/år globalt) dækker alt konsumtivt blåt vandforbrug inkl. landbrug og er ikke direkte operationaliserbar på kommuneniveau med tilgængeligt data.",
+    dataYear: "2025 (nitrat), 2024 (vandindvinding)",
+    limitations: "Nitrat: præcise kommunegennemsnit kun for de 20 mest belastede kommuner - øvrige 78 estimeret til 3,7 mg/L. Vandindvinding: data registreres ved vandværkets fysiske placering, ikke ved forbrugsstedet. Bykommuner der forsynes af vandværker beliggende i nabokommuner (fx HOFOR for storkøbenhavn) får kunstigt lave tal og er filtreret fra (6 kommuner uden data). Dækker kun almene vandværker - industri og markvanding er ikke inkluderet.",
+    csvFile: "nitrat_scores.csv + vandindvinding_scores.csv",
   },
   arealanvendelse: {
     id: "arealanvendelse",
