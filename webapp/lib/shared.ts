@@ -816,14 +816,6 @@ export function computeCategoryScores(
   });
 }
 
-export function computeOverallFromCategories(
-  categoryScores: CategoryScore[]
-): number | null {
-  const withData = categoryScores.filter((c) => c.hasData && c.score !== null);
-  if (withData.length === 0) return null;
-  return withData.reduce((a, b) => a + b.score!, 0) / withData.length;
-}
-
 // --- HELPERS ---
 
 export interface KommuneData {
@@ -888,13 +880,6 @@ export function scoreColor(score: number | null): string {
   if (score >= 100) return "text-emerald-600";
   if (score >= 85) return "text-amber-500";
   return "text-red-500";
-}
-
-export function scoreBgColor(score: number | null): string {
-  if (score === null) return "bg-gray-100";
-  if (score >= 100) return "bg-emerald-50";
-  if (score >= 85) return "bg-amber-50";
-  return "bg-red-50";
 }
 
 export function scoreBarColor(score: number | null): string {

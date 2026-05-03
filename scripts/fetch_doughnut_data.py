@@ -12,12 +12,7 @@ Usage:
     cd /sti/til/doughnut
     python3 scripts/fetch_doughnut_data.py
 
-  Scriptet gemmer til rodmappen (doughnut/doughnut_scores.csv).
-  Kopier altid til data/ bagefter:
-
-    cp doughnut_scores.csv data/doughnut_scores.csv
-
-  IKKE: cp scripts/doughnut_scores.csv data/doughnut_scores.csv (forkert!)
+  Scriptet gemmer direkte til data/doughnut_scores.csv.
 
   python3 scripts/fetch_doughnut_data.py [--step 1|2|3] [--output results.csv]
 
@@ -1063,6 +1058,7 @@ def step3(all_data, output_file="doughnut_scores.csv"):
     )
 
     # Write CSV
+    os.makedirs(os.path.dirname(output_file) or ".", exist_ok=True)
     with open(output_file, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=header)
         writer.writeheader()
@@ -1088,8 +1084,8 @@ def main():
     )
     parser.add_argument("--step", type=int, choices=[1, 2, 3],
                         help="Kør kun ét trin (default: alle)")
-    parser.add_argument("--output", default="doughnut_scores.csv",
-                        help="Output CSV-fil (default: doughnut_scores.csv)")
+    parser.add_argument("--output", default="data/doughnut_scores.csv",
+                        help="Output CSV-fil (default: data/doughnut_scores.csv)")
     args = parser.parse_args()
 
     if args.step == 1 or args.step is None:
