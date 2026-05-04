@@ -54,6 +54,10 @@ SOCIAL_INDICATORS = [
     {"id": "hospital_short", "csv": "sundhed_extra_scores.csv", "ratio_col": "hospital_short_ratio", "raw_col": "hospital_short_pct", "unit": "%", "data_year": "2023", "source": "DST SBR01", "category": "social", "dimension": "sundhed"},
     {"id": "hospital_long", "csv": "sundhed_extra_scores.csv", "ratio_col": "hospital_long_ratio", "raw_col": "hospital_long_pct", "unit": "%", "data_year": "2023", "source": "DST SBR01", "category": "social", "dimension": "sundhed"},
     {"id": "gp_distance", "csv": "sundhed_extra_scores.csv", "ratio_col": "gp_distance_ratio", "raw_col": "gp_distance_km", "unit": "km", "data_year": "2024", "source": "DST SUNDAF01", "category": "social", "dimension": "sundhed"},
+    {"id": "medicin", "csv": "medicin_scores.csv", "ratio_col": "medicin_ratio", "raw_col": "medicin_raw", "unit": "recepter/100 borgere", "data_year": "2024", "source": "DST MEDI1", "category": "social", "dimension": "sundhed"},
+    {"id": "laegekontakt", "csv": "laegekontakt_scores.csv", "ratio_col": "laegekontakt_ratio", "raw_col": "laegekontakt_raw", "unit": "%", "data_year": "2024", "source": "DST SYGP1", "category": "social", "dimension": "sundhed"},
+    {"id": "boerneovervaeght", "csv": "boerneovervaeght_scores.csv", "ratio_col": "boerneovervaeght_ratio", "raw_col": "boerneovervaeght_raw", "unit": "%", "data_year": "2018", "source": "DST LABY26", "category": "social", "dimension": "sundhed"},
+    {"id": "hjemsyg", "csv": "hjemsyg_scores.csv", "ratio_col": "hjemsyg_ratio", "raw_col": "hjemsyg_raw", "unit": "pr. 1.000 indb.", "data_year": "2025", "source": "DST HJEMSYG", "category": "social", "dimension": "sundhed"},
     {"id": "wellbeing", "csv": "uvm_scores.csv", "ratio_col": "wellbeing_ratio", "raw_col": "wellbeing_score", "unit": "score (1-5)", "data_year": "2024", "source": "UVM GS/TRIV/TRIVIND", "category": "social", "dimension": "uddannelse"},
 
     # === Uddannelse ===

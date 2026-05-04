@@ -27,13 +27,14 @@ export default function BaselineToggle() {
             key={opt.value}
             onClick={() => setMode(opt.value)}
             title={opt.title}
-            className={`px-3 py-1.5 text-xs transition-colors ${
+            className={`px-2 sm:px-3 py-1.5 text-xs transition-colors ${
               mode === opt.value
                 ? "bg-emerald-600 text-white font-medium"
                 : "bg-white text-gray-600 hover:bg-gray-50"
             } ${opt.value === "top10" ? "border-l border-gray-200" : ""}`}
           >
-            {opt.label}
+            <span className="hidden sm:inline">{opt.label}</span>
+            <span className="sm:hidden">{opt.value === "avg" ? "Gns" : "Top 10%"}</span>
           </button>
         ))}
       </div>

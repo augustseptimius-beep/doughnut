@@ -20,26 +20,28 @@ export default function RootLayout({
       <body className="min-h-screen bg-gray-50 text-gray-900 antialiased">
         <Providers>
           <header className="no-print border-b border-gray-200 bg-white">
-            <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between gap-4">
-              <a href="/" className="flex items-center gap-3 no-underline shrink-0">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-emerald-600">
-                  <div className="h-4 w-4 rounded-full border-2 border-amber-400" />
+            <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-2 sm:gap-4">
+              <a href="/" className="flex items-center gap-2.5 no-underline shrink-0 mr-auto">
+                <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full border-2 border-emerald-600">
+                  <div className="h-3.5 w-3.5 sm:h-4 sm:w-4 rounded-full border-2 border-amber-400" />
                 </div>
-                <h1 className="text-lg font-semibold text-gray-900">
-                  Doughnut Economics — Danmark
+                <h1 className="text-sm sm:text-lg font-semibold text-gray-900">
+                  <span className="hidden sm:inline">Doughnut Economics — Danmark</span>
+                  <span className="sm:hidden">Doughnut DK</span>
                 </h1>
               </a>
-              <div className="flex items-center gap-5">
+              <div className="flex items-center gap-2 sm:gap-5">
                 <BaselineToggle />
-                <nav className="flex items-center gap-5 text-sm">
-                  <a href="/" className="text-gray-500 hover:text-gray-900 transition-colors">
+                <nav className="flex items-center gap-2 sm:gap-5 text-xs sm:text-sm">
+                  <a href="/" className="hidden sm:inline text-gray-500 hover:text-gray-900 transition-colors">
                     Kommuner
                   </a>
                   <a href="/metode" className="text-gray-500 hover:text-gray-900 transition-colors">
-                    Metode & data
+                    <span className="sm:hidden">Metode</span>
+                    <span className="hidden sm:inline">Metode & data</span>
                   </a>
                   <a href="/om" className="text-gray-500 hover:text-gray-900 transition-colors">
-                    Om platformen
+                    Om
                   </a>
                 </nav>
               </div>

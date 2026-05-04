@@ -579,73 +579,73 @@ export default function DoughnutRing({
             </textPath>
           </text>
         </svg>
-
-        {/* Info card */}
-        {active && (
-          <div className={`absolute top-2 right-2 bg-white/95 backdrop-blur-md shadow-2xl p-3 rounded-2xl w-52 md:w-56 border border-gray-100 z-10 ${pinned ? "" : "pointer-events-none"}`}>
-            <div className="flex items-center justify-between mb-2">
-              <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full uppercase ${
-                active.group === "social" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-500"
-              }`}>
-                {active.group === "social" ? "Socialt fundament" : "Økologisk loft"}
-              </span>
-              {pinned && (
-                <button onClick={() => { setPinned(false); setActive(null); }}
-                  className="text-gray-300 hover:text-gray-500 text-xs">✕</button>
-              )}
-            </div>
-            <h3 className="font-black text-base text-gray-800 leading-tight">{active.label}</h3>
-            {active.description && (
-              <p className="text-[11px] text-gray-500 mt-1.5 leading-snug line-clamp-2">{active.description}</p>
-            )}
-            <div className="mt-1.5">
-              {active.hasData && active.score !== null ? (
-                <p className={`text-base font-black uppercase tracking-wide ${getStatusColor(active)}`}>
-                  {getStatusText(active)}
-                </p>
-              ) : (
-                <p className="text-sm font-medium text-gray-400">Ingen data endnu</p>
-              )}
-            </div>
-            {active.indicators && active.indicators.length > 0 && (
-              <div className="mt-1.5 pt-2 border-t border-gray-100">
-                <p className="text-[9px] font-semibold text-gray-400 uppercase mb-1">Indikatorer</p>
-                {active.indicators.slice(0, 4).map((name) => (
-                  <p key={name} className="text-[11px] text-gray-600 leading-snug">· {name}</p>
-                ))}
-                {active.indicators.length > 4 && (
-                  <p className="text-[11px] text-gray-500 leading-snug italic">+ {active.indicators.length - 4} flere</p>
-                )}
-              </div>
-            )}
-            {active.boundary && (
-              <div className="mt-1.5 pt-2 border-t border-gray-100">
-                <p className="text-[9px] font-semibold text-gray-400 uppercase mb-1">Grænseværdi</p>
-                <p className="text-[11px] text-gray-600 leading-snug">{active.boundary}</p>
-              </div>
-            )}
-            {active.unit && (
-              <p className="text-[10px] text-gray-400 mt-1.5">Enhed: {active.unit}</p>
-            )}
-            {active.hasData && active.score !== null && (() => {
-              const isBad = active.group === "social" ? active.score < 100 : active.score > 100;
-              const barColor = isBad ? "#dc2626" : "#22c55e";
-              return (
-                <div className="mt-1.5 h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                  <div className="h-full transition-all duration-500 rounded-full"
-                    style={{ width: `${Math.min(active.score, 200) / 2}%`, backgroundColor: barColor }} />
-                </div>
-              );
-            })()}
-            <div className="flex items-center justify-between mt-1.5">
-              <a href={`/metode#${active.id}`} className="text-[10px] text-blue-600 hover:underline pointer-events-auto">
-                Se metode →
-              </a>
-              {!pinned && <p className="text-[9px] text-gray-300">Klik for at fastholde</p>}
-            </div>
-          </div>
-        )}
       </div>
+
+      {/* Info card — under ringen på mobil, absolut placeret på sm+ */}
+      {active && (
+        <div className={`sm:absolute sm:top-2 sm:right-2 sm:w-52 md:w-56 w-full mt-2 sm:mt-0 bg-white/95 backdrop-blur-md shadow-2xl p-3 rounded-2xl border border-gray-100 z-10 ${pinned ? "" : "sm:pointer-events-none"}`}>
+          <div className="flex items-center justify-between mb-2">
+            <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full uppercase ${
+              active.group === "social" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-500"
+            }`}>
+              {active.group === "social" ? "Socialt fundament" : "Økologisk loft"}
+            </span>
+            {pinned && (
+              <button onClick={() => { setPinned(false); setActive(null); }}
+                className="text-gray-300 hover:text-gray-500 text-xs">✕</button>
+            )}
+          </div>
+          <h3 className="font-black text-base text-gray-800 leading-tight">{active.label}</h3>
+          {active.description && (
+            <p className="text-[11px] text-gray-500 mt-1.5 leading-snug line-clamp-2">{active.description}</p>
+          )}
+          <div className="mt-1.5">
+            {active.hasData && active.score !== null ? (
+              <p className={`text-base font-black uppercase tracking-wide ${getStatusColor(active)}`}>
+                {getStatusText(active)}
+              </p>
+            ) : (
+              <p className="text-sm font-medium text-gray-400">Ingen data endnu</p>
+            )}
+          </div>
+          {active.indicators && active.indicators.length > 0 && (
+            <div className="mt-1.5 pt-2 border-t border-gray-100">
+              <p className="text-[9px] font-semibold text-gray-400 uppercase mb-1">Indikatorer</p>
+              {active.indicators.slice(0, 4).map((name) => (
+                <p key={name} className="text-[11px] text-gray-600 leading-snug">· {name}</p>
+              ))}
+              {active.indicators.length > 4 && (
+                <p className="text-[11px] text-gray-500 leading-snug italic">+ {active.indicators.length - 4} flere</p>
+              )}
+            </div>
+          )}
+          {active.boundary && (
+            <div className="mt-1.5 pt-2 border-t border-gray-100">
+              <p className="text-[9px] font-semibold text-gray-400 uppercase mb-1">Grænseværdi</p>
+              <p className="text-[11px] text-gray-600 leading-snug">{active.boundary}</p>
+            </div>
+          )}
+          {active.unit && (
+            <p className="text-[10px] text-gray-400 mt-1.5">Enhed: {active.unit}</p>
+          )}
+          {active.hasData && active.score !== null && (() => {
+            const isBad = active.group === "social" ? active.score < 100 : active.score > 100;
+            const barColor = isBad ? "#dc2626" : "#22c55e";
+            return (
+              <div className="mt-1.5 h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                <div className="h-full transition-all duration-500 rounded-full"
+                  style={{ width: `${Math.min(active.score, 200) / 2}%`, backgroundColor: barColor }} />
+              </div>
+            );
+          })()}
+          <div className="flex items-center justify-between mt-1.5">
+            <a href={`/metode#${active.id}`} className="text-[10px] text-blue-600 hover:underline pointer-events-auto">
+              Se metode →
+            </a>
+            {!pinned && <p className="text-[9px] text-gray-300">Klik for at fastholde</p>}
+          </div>
+        </div>
+      )}
 
       {vurderingsMode ? (
         /* Legende i vurderingsmode: vis vurderingsfarver */

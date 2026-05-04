@@ -66,16 +66,20 @@ const INDICATOR_RATIONALES: Record<string, string> = {
   public_transport: "Andel af borgere med god adgang til offentlig transport (Meget højt + Højt serviceniveau), LABY49. Metodenote: data er kun tilgængeligt på kommunegruppe-niveau (5 grupper) - alle kommuner i samme gruppe tildeles identisk score. Landkommuner (G5) scorer konsekvent lavt uanset lokale forskelle.",
   // Sundhed
   gp_distance: "Gennemsnitlig afstand (km) til nærmeste praktiserende læge (SUNDAF01). Stor afstand er en adgangsbarriere for primær sundhedsydelse, særligt for ældre og ikke-bilister. Inverteret: kortere afstand er bedre.",
+  medicin: "Recepter pr. 100 borgere på psykoanaleptika (DST MEDI1, ATC-gruppe N06: antidepressiva, ADHD-medicin og demens-medicin). Anvendes som proxy for mental sundhed. Inverteret: lavere forbrug er bedre. NB: Højt forbrug kan også afspejle bedre adgang til diagnose og behandling, ikke kun ringere mental sundhed.",
+  laegekontakt: "Andel af befolkningen med mindst én kontakt til almen praktiserende læge i løbet af året (DST SYGP1). Måler adgang til og brug af primær sundhedsydelse. Direkte: højere andel er bedre, da det signalerer at borgerne kommer til lægen.",
+  boerneovervaeght: "Andel af 6-7-årige børn med overvægt ved skolestart (DST LABY26, baseret på skolesundhedsplejens målinger). Tidlig indikator for folkesundhed og social ulighed. Inverteret: lavere andel er bedre. Begrænsning: data går kun til 2018 - DST opdaterer ikke længere tabellen.",
+  hjemsyg: "Antal modtagere af hjemmesygepleje pr. 1.000 indbyggere (DST HJEMSYG). Proxy for sygelighed og plejebyrde, særligt blandt ældre. Inverteret: lavere antal er bedre. Begrænsning: 2025-tallene er foreløbige (baseret på første halvår) og kan ændre sig.",
 };
 
 const SOCIAL_METHODS: Record<string, MethodInfo> = {
   sundhed: {
     id: "sundhed",
-    scoring: "Gennemsnit af fire indikatorer: (1) Middellevetid (0-årige) sammenholdt med landsgennemsnittet. (2) Andel med kortvarigt sygehusophold under 12 timer (SBR01, inverteret). (3) Andel med indlæggelse 12 timer eller derover (SBR01, inverteret). (4) Afstand til nærmeste praktiserende læge i km (SUNDAF01, inverteret - kortere er bedre). Score 100 = landsgennemsnit.",
-    boundary: "Socialt fundament: alle borgere bør have en forventet levetid der som minimum matcher landsgennemsnittet og have rimelig adgang til primær sundhedsydelse.",
-    dataYear: "2023-2024",
-    limitations: "Middellevetid er en gennemsnitsbetragtning. Sygehusbenyttelse kan afspejle både dårligt helbred og god adgang til sundhedsvæsenet. Korte og lange ophold er begge inverterede - dvs. høj score = lavt ophold. Lægeafstand dækker ikke kapacitet eller ventetider.",
-    csvFile: "doughnut_scores.csv + sundhed_extra_scores.csv",
+    scoring: "Gennemsnit af otte indikatorer: (1) Middellevetid (0-årige) sammenholdt med landsgennemsnittet (HISBK). (2) Andel med kortvarigt sygehusophold under 12 timer (SBR01, inverteret). (3) Andel med indlæggelse 12 timer eller derover (SBR01, inverteret). (4) Afstand til nærmeste praktiserende læge i km (SUNDAF01, inverteret). (5) Antidepressivt forbrug, recepter pr. 100 borgere (MEDI1 N06, inverteret). (6) Andel med mindst én lægekontakt pr. år (SYGP1, direkte). (7) Overvægt blandt 6-7-årige (LABY26, inverteret). (8) Hjemmesygepleje-modtagere pr. 1.000 indb. (HJEMSYG, inverteret). Score 100 = landsgennemsnit.",
+    boundary: "Socialt fundament: alle borgere bør have en forventet levetid der som minimum matcher landsgennemsnittet, rimelig adgang til primær sundhedsydelse og en lav forekomst af kroniske helbredsproblemer.",
+    dataYear: "2018-2025",
+    limitations: "Middellevetid er en gennemsnitsbetragtning. Sygehusbenyttelse kan afspejle både dårligt helbred og god adgang til sundhedsvæsenet. Korte og lange ophold er begge inverterede - dvs. høj score = lavt ophold. Lægeafstand dækker ikke kapacitet eller ventetider. Antidepressivt forbrug er proxy for mental sundhed, men kan også afspejle bedre adgang til behandling. Børneovervægt-data går kun til 2018. Hjemmesygepleje 2025-tal er foreløbige.",
+    csvFile: "doughnut_scores.csv + sundhed_extra_scores.csv + medicin_scores.csv + laegekontakt_scores.csv + boerneovervaeght_scores.csv + hjemsyg_scores.csv",
   },
   uddannelse: {
     id: "uddannelse",

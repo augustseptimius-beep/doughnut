@@ -387,6 +387,395 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,gp_distance,52.17,4.6,km,2024,DST SUNDAF01,social,sundhed
 741,Samsø,gp_distance,52.17,4.6,km,2024,DST SUNDAF01,social,sundhed
 482,Langeland,gp_distance,27.59,8.7,km,2024,DST SUNDAF01,social,sundhed
+201,Allerød,medicin,115.75,56.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+175,Rødovre,medicin,123.4,53.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+153,Brøndby,medicin,130.28,50.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+155,Dragør,medicin,140.04,46.7,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+190,Furesø,medicin,120.66,54.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+230,Rudersdal,medicin,125.77,52.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+151,Ballerup,medicin,99.39,65.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+167,Hvidovre,medicin,128.49,50.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+269,Solrød,medicin,153.52,42.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+746,Skanderborg,medicin,96.6,67.7,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+157,Gentofte,medicin,134.85,48.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+240,Egedal,medicin,146.31,44.7,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+265,Roskilde,medicin,134.02,48.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+223,Hørsholm,medicin,131.06,49.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+185,Tårnby,medicin,137.68,47.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+163,Herlev,medicin,101.55,64.4,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+173,Lyngby-Taarbæk,medicin,123.4,53.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+350,Lejre,medicin,129.76,50.4,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+210,Fredensborg,medicin,114.34,57.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+710,Favrskov,medicin,91.85,71.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+530,Billund,medicin,92.37,70.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+183,Ishøj,medicin,138.56,47.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+840,Rebild,medicin,120.22,54.4,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+147,Frederiksberg,medicin,126.01,51.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+259,Køge,medicin,128.74,50.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+253,Greve,medicin,135.97,48.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+187,Vallensbæk,medicin,178.2,36.7,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+159,Gladsaxe,medicin,125.53,52.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+661,Holstebro,medicin,77.95,83.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+217,Helsingør,medicin,103.97,62.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+250,Frederikssund,medicin,102.67,63.7,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+657,Herning,medicin,80.25,81.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+492,Ærø,medicin,84.28,77.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+561,Esbjerg,medicin,104.64,62.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+773,Morsø,medicin,53.13,123.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+219,Hillerød,medicin,101.87,64.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+740,Silkeborg,medicin,90.08,72.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+607,Fredericia,medicin,89.96,72.7,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+316,Holbæk,medicin,116.79,56.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+340,Sorø,medicin,83.21,78.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+260,Halsnæs,medicin,104.47,62.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+766,Hedensted,medicin,98.79,66.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+825,Læsø,medicin,115.96,56.4,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+615,Horsens,medicin,91.09,71.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+329,Ringsted,medicin,131.85,49.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+370,Næstved,medicin,100.46,65.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+851,Aalborg,medicin,91.73,71.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+336,Stevns,medicin,127.98,51.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+410,Middelfart,medicin,104.98,62.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+727,Odder,medicin,78.51,83.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+161,Glostrup,medicin,106.34,61.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+563,Fanø,medicin,166.41,39.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+813,Frederikshavn,medicin,89.71,72.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+270,Gribskov,medicin,109.0,60.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+751,Aarhus,medicin,85.49,76.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+760,Ringkøbing-Skjern,medicin,78.42,83.4,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+479,Svendborg,medicin,89.1,73.4,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+787,Thisted,medicin,79.18,82.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+810,Brønderslev,medicin,95.89,68.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+791,Viborg,medicin,77.67,84.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+165,Albertslund,medicin,108.1,60.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+480,Nordfyns,medicin,115.75,56.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+440,Kerteminde,medicin,98.79,66.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+101,København,medicin,128.24,51.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+860,Hjørring,medicin,83.85,78.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+706,Syddjurs,medicin,79.95,81.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+430,Faaborg-Midtfyn,medicin,110.85,59.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+573,Varde,medicin,102.51,63.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+730,Randers,medicin,78.04,83.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+621,Kolding,medicin,101.08,64.7,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+320,Faxe,medicin,109.0,60.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+169,Høje-Taastrup,medicin,151.74,43.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+461,Odense,medicin,118.48,55.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+420,Assens,medicin,80.15,81.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+756,Ikast-Brande,medicin,84.61,77.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+846,Mariagerfjord,medicin,106.69,61.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+580,Aabenraa,medicin,82.68,79.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+450,Nyborg,medicin,98.35,66.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+630,Vejle,medicin,104.14,62.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+540,Sønderborg,medicin,81.65,80.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+400,Bornholm,medicin,75.87,86.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+779,Skive,medicin,73.48,89.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+510,Haderslev,medicin,64.43,101.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+575,Vejen,medicin,80.54,81.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+820,Vesthimmerlands,medicin,87.2,75.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+707,Norddjurs,medicin,62.88,104.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+671,Struer,medicin,76.58,85.4,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+306,Odsherred,medicin,104.64,62.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+330,Slagelse,medicin,90.71,72.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+665,Lemvig,medicin,98.64,66.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+376,Guldborgsund,medicin,98.35,66.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+326,Kalundborg,medicin,89.22,73.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+849,Jammerbugt,medicin,96.18,68.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+550,Tønder,medicin,73.65,88.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+390,Vordingborg,medicin,97.76,66.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+360,Lolland,medicin,84.39,77.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+741,Samsø,medicin,101.4,64.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+482,Langeland,medicin,83.95,77.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
+201,Allerød,laegekontakt,98.93,84.89,%,2024,DST SYGP1,social,sundhed
+175,Rødovre,laegekontakt,96.67,82.95,%,2024,DST SYGP1,social,sundhed
+153,Brøndby,laegekontakt,93.52,80.25,%,2024,DST SYGP1,social,sundhed
+155,Dragør,laegekontakt,101.45,87.05,%,2024,DST SYGP1,social,sundhed
+190,Furesø,laegekontakt,98.57,84.58,%,2024,DST SYGP1,social,sundhed
+230,Rudersdal,laegekontakt,98.64,84.64,%,2024,DST SYGP1,social,sundhed
+151,Ballerup,laegekontakt,95.86,82.26,%,2024,DST SYGP1,social,sundhed
+167,Hvidovre,laegekontakt,96.94,83.18,%,2024,DST SYGP1,social,sundhed
+269,Solrød,laegekontakt,99.27,85.18,%,2024,DST SYGP1,social,sundhed
+746,Skanderborg,laegekontakt,99.73,85.58,%,2024,DST SYGP1,social,sundhed
+157,Gentofte,laegekontakt,96.85,83.11,%,2024,DST SYGP1,social,sundhed
+240,Egedal,laegekontakt,97.6,83.75,%,2024,DST SYGP1,social,sundhed
+265,Roskilde,laegekontakt,97.11,83.33,%,2024,DST SYGP1,social,sundhed
+223,Hørsholm,laegekontakt,98.71,84.7,%,2024,DST SYGP1,social,sundhed
+185,Tårnby,laegekontakt,99.09,85.03,%,2024,DST SYGP1,social,sundhed
+163,Herlev,laegekontakt,95.2,81.69,%,2024,DST SYGP1,social,sundhed
+173,Lyngby-Taarbæk,laegekontakt,95.0,81.52,%,2024,DST SYGP1,social,sundhed
+350,Lejre,laegekontakt,97.04,83.27,%,2024,DST SYGP1,social,sundhed
+210,Fredensborg,laegekontakt,99.59,85.46,%,2024,DST SYGP1,social,sundhed
+710,Favrskov,laegekontakt,99.44,85.33,%,2024,DST SYGP1,social,sundhed
+530,Billund,laegekontakt,98.53,84.55,%,2024,DST SYGP1,social,sundhed
+183,Ishøj,laegekontakt,92.67,79.52,%,2024,DST SYGP1,social,sundhed
+840,Rebild,laegekontakt,100.0,85.81,%,2024,DST SYGP1,social,sundhed
+147,Frederiksberg,laegekontakt,96.83,83.09,%,2024,DST SYGP1,social,sundhed
+259,Køge,laegekontakt,98.64,84.64,%,2024,DST SYGP1,social,sundhed
+253,Greve,laegekontakt,97.65,83.79,%,2024,DST SYGP1,social,sundhed
+187,Vallensbæk,laegekontakt,93.37,80.12,%,2024,DST SYGP1,social,sundhed
+159,Gladsaxe,laegekontakt,96.25,82.59,%,2024,DST SYGP1,social,sundhed
+661,Holstebro,laegekontakt,99.86,85.69,%,2024,DST SYGP1,social,sundhed
+217,Helsingør,laegekontakt,100.62,86.34,%,2024,DST SYGP1,social,sundhed
+250,Frederikssund,laegekontakt,98.62,84.63,%,2024,DST SYGP1,social,sundhed
+657,Herning,laegekontakt,99.99,85.8,%,2024,DST SYGP1,social,sundhed
+492,Ærø,laegekontakt,98.12,84.2,%,2024,DST SYGP1,social,sundhed
+561,Esbjerg,laegekontakt,100.72,86.43,%,2024,DST SYGP1,social,sundhed
+773,Morsø,laegekontakt,103.73,89.01,%,2024,DST SYGP1,social,sundhed
+219,Hillerød,laegekontakt,96.87,83.12,%,2024,DST SYGP1,social,sundhed
+740,Silkeborg,laegekontakt,99.87,85.7,%,2024,DST SYGP1,social,sundhed
+607,Fredericia,laegekontakt,99.79,85.63,%,2024,DST SYGP1,social,sundhed
+316,Holbæk,laegekontakt,98.18,84.25,%,2024,DST SYGP1,social,sundhed
+340,Sorø,laegekontakt,96.73,83.0,%,2024,DST SYGP1,social,sundhed
+260,Halsnæs,laegekontakt,97.89,84.0,%,2024,DST SYGP1,social,sundhed
+766,Hedensted,laegekontakt,98.1,84.18,%,2024,DST SYGP1,social,sundhed
+825,Læsø,laegekontakt,102.91,88.31,%,2024,DST SYGP1,social,sundhed
+615,Horsens,laegekontakt,98.94,84.9,%,2024,DST SYGP1,social,sundhed
+329,Ringsted,laegekontakt,97.02,83.25,%,2024,DST SYGP1,social,sundhed
+370,Næstved,laegekontakt,99.0,84.95,%,2024,DST SYGP1,social,sundhed
+851,Aalborg,laegekontakt,98.88,84.85,%,2024,DST SYGP1,social,sundhed
+336,Stevns,laegekontakt,98.04,84.13,%,2024,DST SYGP1,social,sundhed
+410,Middelfart,laegekontakt,100.05,85.85,%,2024,DST SYGP1,social,sundhed
+727,Odder,laegekontakt,100.1,85.9,%,2024,DST SYGP1,social,sundhed
+161,Glostrup,laegekontakt,91.62,78.62,%,2024,DST SYGP1,social,sundhed
+563,Fanø,laegekontakt,105.52,90.55,%,2024,DST SYGP1,social,sundhed
+813,Frederikshavn,laegekontakt,101.85,87.4,%,2024,DST SYGP1,social,sundhed
+270,Gribskov,laegekontakt,99.51,85.39,%,2024,DST SYGP1,social,sundhed
+751,Aarhus,laegekontakt,97.63,83.78,%,2024,DST SYGP1,social,sundhed
+760,Ringkøbing-Skjern,laegekontakt,99.72,85.57,%,2024,DST SYGP1,social,sundhed
+479,Svendborg,laegekontakt,99.14,85.07,%,2024,DST SYGP1,social,sundhed
+787,Thisted,laegekontakt,101.65,87.23,%,2024,DST SYGP1,social,sundhed
+810,Brønderslev,laegekontakt,99.95,85.77,%,2024,DST SYGP1,social,sundhed
+791,Viborg,laegekontakt,100.44,86.19,%,2024,DST SYGP1,social,sundhed
+165,Albertslund,laegekontakt,96.85,83.11,%,2024,DST SYGP1,social,sundhed
+480,Nordfyns,laegekontakt,102.13,87.64,%,2024,DST SYGP1,social,sundhed
+440,Kerteminde,laegekontakt,100.16,85.95,%,2024,DST SYGP1,social,sundhed
+101,København,laegekontakt,93.1,79.89,%,2024,DST SYGP1,social,sundhed
+860,Hjørring,laegekontakt,101.32,86.94,%,2024,DST SYGP1,social,sundhed
+706,Syddjurs,laegekontakt,100.64,86.36,%,2024,DST SYGP1,social,sundhed
+430,Faaborg-Midtfyn,laegekontakt,100.37,86.13,%,2024,DST SYGP1,social,sundhed
+573,Varde,laegekontakt,100.28,86.05,%,2024,DST SYGP1,social,sundhed
+730,Randers,laegekontakt,101.38,86.99,%,2024,DST SYGP1,social,sundhed
+621,Kolding,laegekontakt,98.82,84.8,%,2024,DST SYGP1,social,sundhed
+320,Faxe,laegekontakt,97.02,83.25,%,2024,DST SYGP1,social,sundhed
+169,Høje-Taastrup,laegekontakt,93.1,79.89,%,2024,DST SYGP1,social,sundhed
+461,Odense,laegekontakt,98.54,84.56,%,2024,DST SYGP1,social,sundhed
+420,Assens,laegekontakt,101.27,86.9,%,2024,DST SYGP1,social,sundhed
+756,Ikast-Brande,laegekontakt,97.88,83.99,%,2024,DST SYGP1,social,sundhed
+846,Mariagerfjord,laegekontakt,101.78,87.34,%,2024,DST SYGP1,social,sundhed
+580,Aabenraa,laegekontakt,98.31,84.36,%,2024,DST SYGP1,social,sundhed
+450,Nyborg,laegekontakt,100.33,86.09,%,2024,DST SYGP1,social,sundhed
+630,Vejle,laegekontakt,97.9,84.01,%,2024,DST SYGP1,social,sundhed
+540,Sønderborg,laegekontakt,100.0,85.81,%,2024,DST SYGP1,social,sundhed
+400,Bornholm,laegekontakt,96.01,82.39,%,2024,DST SYGP1,social,sundhed
+779,Skive,laegekontakt,103.61,88.91,%,2024,DST SYGP1,social,sundhed
+510,Haderslev,laegekontakt,100.55,86.28,%,2024,DST SYGP1,social,sundhed
+575,Vejen,laegekontakt,99.49,85.37,%,2024,DST SYGP1,social,sundhed
+820,Vesthimmerlands,laegekontakt,100.99,86.66,%,2024,DST SYGP1,social,sundhed
+707,Norddjurs,laegekontakt,101.03,86.69,%,2024,DST SYGP1,social,sundhed
+671,Struer,laegekontakt,102.84,88.25,%,2024,DST SYGP1,social,sundhed
+306,Odsherred,laegekontakt,99.21,85.13,%,2024,DST SYGP1,social,sundhed
+330,Slagelse,laegekontakt,98.22,84.28,%,2024,DST SYGP1,social,sundhed
+665,Lemvig,laegekontakt,100.47,86.21,%,2024,DST SYGP1,social,sundhed
+376,Guldborgsund,laegekontakt,97.67,83.81,%,2024,DST SYGP1,social,sundhed
+326,Kalundborg,laegekontakt,98.53,84.55,%,2024,DST SYGP1,social,sundhed
+849,Jammerbugt,laegekontakt,101.12,86.77,%,2024,DST SYGP1,social,sundhed
+550,Tønder,laegekontakt,99.34,85.24,%,2024,DST SYGP1,social,sundhed
+390,Vordingborg,laegekontakt,100.44,86.19,%,2024,DST SYGP1,social,sundhed
+360,Lolland,laegekontakt,99.11,85.05,%,2024,DST SYGP1,social,sundhed
+741,Samsø,laegekontakt,101.75,87.31,%,2024,DST SYGP1,social,sundhed
+482,Langeland,laegekontakt,102.72,88.14,%,2024,DST SYGP1,social,sundhed
+201,Allerød,boerneovervaeght,147.37,9.5,%,2018,DST LABY26,social,sundhed
+175,Rødovre,boerneovervaeght,90.91,15.4,%,2018,DST LABY26,social,sundhed
+153,Brøndby,boerneovervaeght,145.83,9.6,%,2018,DST LABY26,social,sundhed
+155,Dragør,boerneovervaeght,134.62,10.4,%,2018,DST LABY26,social,sundhed
+190,Furesø,boerneovervaeght,133.33,10.5,%,2018,DST LABY26,social,sundhed
+230,Rudersdal,boerneovervaeght,166.67,8.4,%,2018,DST LABY26,social,sundhed
+151,Ballerup,boerneovervaeght,66.04,21.2,%,2018,DST LABY26,social,sundhed
+167,Hvidovre,boerneovervaeght,102.94,13.6,%,2018,DST LABY26,social,sundhed
+269,Solrød,boerneovervaeght,101.45,13.8,%,2018,DST LABY26,social,sundhed
+746,Skanderborg,boerneovervaeght,147.37,9.5,%,2018,DST LABY26,social,sundhed
+157,Gentofte,boerneovervaeght,118.64,11.8,%,2018,DST LABY26,social,sundhed
+240,Egedal,boerneovervaeght,130.84,10.7,%,2018,DST LABY26,social,sundhed
+265,Roskilde,boerneovervaeght,113.82,12.3,%,2018,DST LABY26,social,sundhed
+223,Hørsholm,boerneovervaeght,97.9,14.3,%,2018,DST LABY26,social,sundhed
+185,Tårnby,boerneovervaeght,96.55,14.5,%,2018,DST LABY26,social,sundhed
+163,Herlev,boerneovervaeght,88.05,15.9,%,2018,DST LABY26,social,sundhed
+173,Lyngby-Taarbæk,boerneovervaeght,134.62,10.4,%,2018,DST LABY26,social,sundhed
+350,Lejre,boerneovervaeght,126.13,11.1,%,2018,DST LABY26,social,sundhed
+210,Fredensborg,boerneovervaeght,95.89,14.6,%,2018,DST LABY26,social,sundhed
+710,Favrskov,boerneovervaeght,114.75,12.2,%,2018,DST LABY26,social,sundhed
+530,Billund,boerneovervaeght,95.89,14.6,%,2018,DST LABY26,social,sundhed
+183,Ishøj,boerneovervaeght,59.83,23.4,%,2018,DST LABY26,social,sundhed
+840,Rebild,boerneovervaeght,113.82,12.3,%,2018,DST LABY26,social,sundhed
+147,Frederiksberg,boerneovervaeght,147.37,9.5,%,2018,DST LABY26,social,sundhed
+259,Køge,boerneovervaeght,57.85,24.2,%,2018,DST LABY26,social,sundhed
+253,Greve,boerneovervaeght,92.72,15.1,%,2018,DST LABY26,social,sundhed
+187,Vallensbæk,boerneovervaeght,93.33,15.0,%,2018,DST LABY26,social,sundhed
+159,Gladsaxe,boerneovervaeght,75.68,18.5,%,2018,DST LABY26,social,sundhed
+661,Holstebro,boerneovervaeght,109.38,12.8,%,2018,DST LABY26,social,sundhed
+217,Helsingør,boerneovervaeght,100.72,13.9,%,2018,DST LABY26,social,sundhed
+250,Frederikssund,boerneovervaeght,93.96,14.9,%,2018,DST LABY26,social,sundhed
+657,Herning,boerneovervaeght,104.48,13.4,%,2018,DST LABY26,social,sundhed
+492,Ærø,boerneovervaeght,150.0,0.0,%,2018,DST LABY26,social,sundhed
+561,Esbjerg,boerneovervaeght,85.89,16.3,%,2018,DST LABY26,social,sundhed
+773,Morsø,boerneovervaeght,76.5,18.3,%,2018,DST LABY26,social,sundhed
+219,Hillerød,boerneovervaeght,93.96,14.9,%,2018,DST LABY26,social,sundhed
+740,Silkeborg,boerneovervaeght,112.0,12.5,%,2018,DST LABY26,social,sundhed
+607,Fredericia,boerneovervaeght,99.29,14.1,%,2018,DST LABY26,social,sundhed
+316,Holbæk,boerneovervaeght,103.7,13.5,%,2018,DST LABY26,social,sundhed
+340,Sorø,boerneovervaeght,130.84,10.7,%,2018,DST LABY26,social,sundhed
+260,Halsnæs,boerneovervaeght,66.67,21.0,%,2018,DST LABY26,social,sundhed
+766,Hedensted,boerneovervaeght,79.1,17.7,%,2018,DST LABY26,social,sundhed
+825,Læsø,boerneovervaeght,150.0,0.0,%,2018,DST LABY26,social,sundhed
+615,Horsens,boerneovervaeght,95.89,14.6,%,2018,DST LABY26,social,sundhed
+329,Ringsted,boerneovervaeght,76.92,18.2,%,2018,DST LABY26,social,sundhed
+370,Næstved,boerneovervaeght,79.1,17.7,%,2018,DST LABY26,social,sundhed
+851,Aalborg,boerneovervaeght,120.69,11.6,%,2018,DST LABY26,social,sundhed
+336,Stevns,boerneovervaeght,94.59,14.8,%,2018,DST LABY26,social,sundhed
+410,Middelfart,boerneovervaeght,107.69,13.0,%,2018,DST LABY26,social,sundhed
+727,Odder,boerneovervaeght,181.82,7.7,%,2018,DST LABY26,social,sundhed
+161,Glostrup,boerneovervaeght,118.64,11.8,%,2018,DST LABY26,social,sundhed
+563,Fanø,boerneovervaeght,89.74,15.6,%,2018,DST LABY26,social,sundhed
+813,Frederikshavn,boerneovervaeght,97.9,14.3,%,2018,DST LABY26,social,sundhed
+270,Gribskov,boerneovervaeght,82.84,16.9,%,2018,DST LABY26,social,sundhed
+751,Aarhus,boerneovervaeght,113.82,12.3,%,2018,DST LABY26,social,sundhed
+479,Svendborg,boerneovervaeght,101.45,13.8,%,2018,DST LABY26,social,sundhed
+787,Thisted,boerneovervaeght,82.84,16.9,%,2018,DST LABY26,social,sundhed
+810,Brønderslev,boerneovervaeght,79.55,17.6,%,2018,DST LABY26,social,sundhed
+791,Viborg,boerneovervaeght,63.06,22.2,%,2018,DST LABY26,social,sundhed
+165,Albertslund,boerneovervaeght,76.92,18.2,%,2018,DST LABY26,social,sundhed
+480,Nordfyns,boerneovervaeght,83.83,16.7,%,2018,DST LABY26,social,sundhed
+440,Kerteminde,boerneovervaeght,81.87,17.1,%,2018,DST LABY26,social,sundhed
+101,København,boerneovervaeght,121.74,11.5,%,2018,DST LABY26,social,sundhed
+860,Hjørring,boerneovervaeght,95.24,14.7,%,2018,DST LABY26,social,sundhed
+706,Syddjurs,boerneovervaeght,102.94,13.6,%,2018,DST LABY26,social,sundhed
+430,Faaborg-Midtfyn,boerneovervaeght,89.74,15.6,%,2018,DST LABY26,social,sundhed
+730,Randers,boerneovervaeght,81.87,17.1,%,2018,DST LABY26,social,sundhed
+621,Kolding,boerneovervaeght,65.42,21.4,%,2018,DST LABY26,social,sundhed
+320,Faxe,boerneovervaeght,150.0,0.0,%,2018,DST LABY26,social,sundhed
+169,Høje-Taastrup,boerneovervaeght,72.54,19.3,%,2018,DST LABY26,social,sundhed
+461,Odense,boerneovervaeght,93.96,14.9,%,2018,DST LABY26,social,sundhed
+420,Assens,boerneovervaeght,83.33,16.8,%,2018,DST LABY26,social,sundhed
+756,Ikast-Brande,boerneovervaeght,101.45,13.8,%,2018,DST LABY26,social,sundhed
+846,Mariagerfjord,boerneovervaeght,77.78,18.0,%,2018,DST LABY26,social,sundhed
+580,Aabenraa,boerneovervaeght,59.57,23.5,%,2018,DST LABY26,social,sundhed
+450,Nyborg,boerneovervaeght,237.29,5.9,%,2018,DST LABY26,social,sundhed
+630,Vejle,boerneovervaeght,97.9,14.3,%,2018,DST LABY26,social,sundhed
+540,Sønderborg,boerneovervaeght,150.0,0.0,%,2018,DST LABY26,social,sundhed
+400,Bornholm,boerneovervaeght,89.17,15.7,%,2018,DST LABY26,social,sundhed
+779,Skive,boerneovervaeght,86.42,16.2,%,2018,DST LABY26,social,sundhed
+510,Haderslev,boerneovervaeght,189.19,7.4,%,2018,DST LABY26,social,sundhed
+575,Vejen,boerneovervaeght,86.96,16.1,%,2018,DST LABY26,social,sundhed
+820,Vesthimmerlands,boerneovervaeght,101.45,13.8,%,2018,DST LABY26,social,sundhed
+707,Norddjurs,boerneovervaeght,66.35,21.1,%,2018,DST LABY26,social,sundhed
+671,Struer,boerneovervaeght,134.62,10.4,%,2018,DST LABY26,social,sundhed
+306,Odsherred,boerneovervaeght,56.0,25.0,%,2018,DST LABY26,social,sundhed
+330,Slagelse,boerneovervaeght,92.11,15.2,%,2018,DST LABY26,social,sundhed
+665,Lemvig,boerneovervaeght,70.35,19.9,%,2018,DST LABY26,social,sundhed
+376,Guldborgsund,boerneovervaeght,77.78,18.0,%,2018,DST LABY26,social,sundhed
+326,Kalundborg,boerneovervaeght,78.21,17.9,%,2018,DST LABY26,social,sundhed
+849,Jammerbugt,boerneovervaeght,76.92,18.2,%,2018,DST LABY26,social,sundhed
+550,Tønder,boerneovervaeght,80.92,17.3,%,2018,DST LABY26,social,sundhed
+390,Vordingborg,boerneovervaeght,80.46,17.4,%,2018,DST LABY26,social,sundhed
+360,Lolland,boerneovervaeght,64.22,21.8,%,2018,DST LABY26,social,sundhed
+482,Langeland,boerneovervaeght,81.87,17.1,%,2018,DST LABY26,social,sundhed
+201,Allerød,hjemsyg,159.09,15.96,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+175,Rødovre,hjemsyg,115.41,22.0,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+153,Brøndby,hjemsyg,120.39,21.09,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+155,Dragør,hjemsyg,95.31,26.64,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+190,Furesø,hjemsyg,139.74,18.17,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+230,Rudersdal,hjemsyg,122.95,20.65,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+151,Ballerup,hjemsyg,91.13,27.86,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+167,Hvidovre,hjemsyg,128.62,19.74,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+269,Solrød,hjemsyg,122.89,20.66,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+746,Skanderborg,hjemsyg,119.54,21.24,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+157,Gentofte,hjemsyg,153.97,16.49,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+240,Egedal,hjemsyg,119.15,21.31,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+265,Roskilde,hjemsyg,112.44,22.58,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+223,Hørsholm,hjemsyg,86.36,29.4,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+185,Tårnby,hjemsyg,112.79,22.51,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+163,Herlev,hjemsyg,129.41,19.62,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+173,Lyngby-Taarbæk,hjemsyg,135.78,18.7,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+350,Lejre,hjemsyg,116.68,21.76,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+210,Fredensborg,hjemsyg,124.71,20.36,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+710,Favrskov,hjemsyg,118.7,21.39,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+530,Billund,hjemsyg,73.38,34.6,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+183,Ishøj,hjemsyg,125.26,20.27,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+840,Rebild,hjemsyg,71.89,35.32,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+147,Frederiksberg,hjemsyg,143.12,17.74,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+259,Køge,hjemsyg,109.11,23.27,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+253,Greve,hjemsyg,97.35,26.08,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+187,Vallensbæk,hjemsyg,122.42,20.74,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+159,Gladsaxe,hjemsyg,118.31,21.46,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+661,Holstebro,hjemsyg,89.75,28.29,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+217,Helsingør,hjemsyg,95.56,26.57,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+250,Frederikssund,hjemsyg,87.46,29.03,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+657,Herning,hjemsyg,79.1,32.1,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+492,Ærø,hjemsyg,63.27,40.13,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+561,Esbjerg,hjemsyg,78.83,32.21,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+773,Morsø,hjemsyg,67.06,37.86,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+219,Hillerød,hjemsyg,134.69,18.85,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+740,Silkeborg,hjemsyg,104.23,24.36,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+607,Fredericia,hjemsyg,81.85,31.02,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+316,Holbæk,hjemsyg,84.02,30.22,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+340,Sorø,hjemsyg,107.31,23.66,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+260,Halsnæs,hjemsyg,87.76,28.93,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+766,Hedensted,hjemsyg,85.57,29.67,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+825,Læsø,hjemsyg,42.37,59.92,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+615,Horsens,hjemsyg,92.46,27.46,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+329,Ringsted,hjemsyg,112.2,22.63,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+370,Næstved,hjemsyg,102.21,24.84,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+851,Aalborg,hjemsyg,100.87,25.17,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+336,Stevns,hjemsyg,71.7,35.41,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+410,Middelfart,hjemsyg,80.48,31.55,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+727,Odder,hjemsyg,88.75,28.61,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+161,Glostrup,hjemsyg,113.96,22.28,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+563,Fanø,hjemsyg,57.26,44.34,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+813,Frederikshavn,hjemsyg,67.54,37.59,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+270,Gribskov,hjemsyg,106.01,23.95,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+751,Aarhus,hjemsyg,169.83,14.95,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+760,Ringkøbing-Skjern,hjemsyg,98.95,25.66,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+479,Svendborg,hjemsyg,80.86,31.4,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+787,Thisted,hjemsyg,62.28,40.77,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+810,Brønderslev,hjemsyg,85.26,29.78,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+791,Viborg,hjemsyg,78.83,32.21,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+165,Albertslund,hjemsyg,101.97,24.9,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+480,Nordfyns,hjemsyg,73.32,34.63,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+440,Kerteminde,hjemsyg,85.03,29.86,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+101,København,hjemsyg,232.51,10.92,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+860,Hjørring,hjemsyg,76.34,33.26,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+706,Syddjurs,hjemsyg,90.39,28.09,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+430,Faaborg-Midtfyn,hjemsyg,77.72,32.67,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+573,Varde,hjemsyg,75.52,33.62,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+730,Randers,hjemsyg,99.06,25.63,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+621,Kolding,hjemsyg,96.54,26.3,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+320,Faxe,hjemsyg,79.37,31.99,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+169,Høje-Taastrup,hjemsyg,131.21,19.35,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+461,Odense,hjemsyg,99.73,25.46,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+420,Assens,hjemsyg,82.41,30.81,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+756,Ikast-Brande,hjemsyg,103.3,24.58,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+846,Mariagerfjord,hjemsyg,63.44,40.02,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+580,Aabenraa,hjemsyg,74.09,34.27,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+450,Nyborg,hjemsyg,63.14,40.21,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+630,Vejle,hjemsyg,90.94,27.92,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+540,Sønderborg,hjemsyg,63.29,40.12,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+400,Bornholm,hjemsyg,60.32,42.09,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+779,Skive,hjemsyg,81.51,31.15,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+510,Haderslev,hjemsyg,80.81,31.42,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+575,Vejen,hjemsyg,83.8,30.3,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+820,Vesthimmerlands,hjemsyg,61.57,41.24,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+707,Norddjurs,hjemsyg,65.86,38.55,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+671,Struer,hjemsyg,63.57,39.94,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+306,Odsherred,hjemsyg,53.98,47.04,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+330,Slagelse,hjemsyg,79.72,31.85,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+665,Lemvig,hjemsyg,60.5,41.97,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+376,Guldborgsund,hjemsyg,74.96,33.87,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+326,Kalundborg,hjemsyg,71.5,35.51,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+849,Jammerbugt,hjemsyg,84.02,30.22,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+550,Tønder,hjemsyg,58.27,43.57,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+390,Vordingborg,hjemsyg,64.31,39.48,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+360,Lolland,hjemsyg,72.46,35.04,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+741,Samsø,hjemsyg,47.12,53.88,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
+482,Langeland,hjemsyg,46.41,54.71,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
 201,Allerød,wellbeing,103.43,3.68,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
 175,Rødovre,wellbeing,98.37,3.5,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
 153,Brøndby,wellbeing,98.93,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
