@@ -43,6 +43,7 @@ const INDICATOR_RATIONALES: Record<string, string> = {
   // Bolig
   vacant_housing: "Høj andel tomme boliger signalerer fraflytning og lavt boligmarked. Inverteret: kommuner med færre tomme boliger scorer bedre.",
   housing_area: "Boligareal pr. person afspejler boligstandard og -træthed. Mere plads er generelt forbundet med bedre livskvalitet.",
+  bolig_fossil: "Andel af befolkningen der bor i bolig opvarmet med naturgas eller olie (BOL202, 2026). Fossil opvarmning er dyrer, sundhedsskadeligt og klimabelastende. Inverteret: lavere andel er bedre. Landsgennemsnit: ca. 21%. Kommuner med udbredt fjernvarme scorer bedst. Ratio er capped ved 150 for at undgå ekstreme værdier for byer med næsten ingen fossil opvarmning.",
   // Demokrati
   voter_turnout: "Stemmedeltagelse ved kommunalvalg er det mest direkte og sammenlignelige mål for demokratisk engagement på lokalt plan. God datadækning for alle 98 kommuner (valg 2021).",
   voter_turnout_national: "Stemmedeltagelse ved folketingsvalg 2026 (DST LABY09). Supplerer kommunalvalget med et nationalpolitisk mål for demokratisk engagement - de to valg trækker ikke altid i samme retning kommunerne imellem.",
@@ -99,11 +100,11 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   bolig: {
     id: "bolig",
-    scoring: "Gennemsnit af to indikatorer: (1) Andel ubeboede boliger (BOL101, inverteret - lavere er bedre). (2) Gennemsnitligt boligareal pr. person i m² (BOL106, direkte - mere plads er bedre). Score 100 = landsgennemsnit.",
-    boundary: "Socialt fundament: alle borgere bør have adgang til en god og rummelig bolig.",
-    dataYear: "2023-2025",
-    limitations: "Ubeboede boliger fanger ikke boligkvalitet eller pris. Boligareal pr. person er et gennemsnit og skjuler ulighed.",
-    csvFile: "doughnut_scores.csv + bolig_extra_scores.csv",
+    scoring: "Gennemsnit af fem indikatorer: (1) Andel ubeboede boliger (BOL101, inverteret). (2) Gennemsnitligt boligareal pr. person i m² (BOL106, direkte). (3) Boliger uden eget toilet % (BOL102, inverteret). (4) Boliger uden eget bad % (BOL102, inverteret). (5) Andel af befolkning i fossilopvarmet bolig - gas/olie (BOL202, inverteret). Score 100 = landsgennemsnit.",
+    boundary: "Socialt fundament: alle borgere bør have adgang til en god, rummelig og bæredygtig bolig.",
+    dataYear: "2023-2026",
+    limitations: "Ubeboede boliger fanger ikke boligkvalitet eller pris. Boligareal pr. person er et gennemsnit og skjuler ulighed. Fossil opvarmning-ratio er capped ved 150 for kommuner med meget lav fossilandel.",
+    csvFile: "doughnut_scores.csv + bolig_extra_scores.csv + bolig_wc_scores.csv + bolig_fossil_scores.csv",
   },
   demokrati: {
     id: "demokrati",

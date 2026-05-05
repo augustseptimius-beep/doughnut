@@ -23,7 +23,11 @@ doughnut/
 │   ├── CHANGELOG.md               ← log over data-ændringer
 │   ├── methodology_note.md        ← CBA 2023-nutidsjustering
 │   ├── klimatilpasning.md         ← metodenote for vejr_skader-indikatoren
-│   └── *_scores.csv               ← rådata-spor (~25 CSV'er). Se data/README.md for fuld liste.
+│   ├── *_scores.csv               ← rådata-spor (~25 CSV'er). Se data/README.md for fuld liste.
+│   └── sundhedsdatabank/
+│       └── psyk_tilstande_pr_1000_2025.xlsx  ← Borgere med psykiatriske tilstande pr. 1.000 (Sundhedsdatabank 2025).
+│                                               Ikke brugt som aktiv indikator (trækkes ikke automatisk).
+│                                               Gemt til evt. fremtidig brug. Alternativ til medicin-indikatoren.
 ├── scripts/
 │   ├── build_master_csv.py        ← ★ konsoliderer alle rådata-CSV'er til master_indicators.csv
 │   ├── fetch_doughnut_data.py     ← hoved-script: sociale indikatorer + klima-fallback

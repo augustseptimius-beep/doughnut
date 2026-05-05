@@ -114,6 +114,17 @@ export const INDICATORS: Indicator[] = [
     rawUnit: "%",
   },
   {
+    id: "bolig_fossil",
+    name: "Fossil opvarmning (gas/olie)",
+    table: "BOL202",
+    source: "https://www.statistikbanken.dk/BOL202",
+    category: "social",
+    inverse: true,
+    dataYear: "2026",
+    baselineLevel: 3,
+    rawUnit: "%",
+  },
+  {
     id: "voter_turnout",
     name: "Stemmedeltagelse kommunalvalg",
     table: "KVBPCT",
@@ -617,7 +628,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "bolig",
     name: "Bolig",
     description: "Adgang til gode, sunde og bæredygtige boliger i trygge nærmiljøer.",
-    indicatorIds: ["vacant_housing", "housing_area", "housing_no_wc", "housing_no_bath"],
+    indicatorIds: ["vacant_housing", "housing_area", "housing_no_wc", "housing_no_bath", "bolig_fossil"],
   },
   {
     id: "demokrati",

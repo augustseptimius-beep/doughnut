@@ -84,6 +84,7 @@ SOCIAL_INDICATORS = [
     {"id": "housing_area", "csv": "bolig_extra_scores.csv", "ratio_col": "housing_area_ratio", "raw_col": "housing_area_m2", "unit": "m²", "data_year": "2023", "source": "DST BOL106", "category": "social", "dimension": "bolig"},
     {"id": "housing_no_wc", "csv": "bolig_wc_scores.csv", "ratio_col": "housing_no_wc_ratio", "raw_col": "housing_no_wc_pct", "unit": "%", "data_year": "2023", "source": "DST BOL102", "category": "social", "dimension": "bolig"},
     {"id": "housing_no_bath", "csv": "bolig_wc_scores.csv", "ratio_col": "housing_no_bath_ratio", "raw_col": "housing_no_bath_pct", "unit": "%", "data_year": "2023", "source": "DST BOL102", "category": "social", "dimension": "bolig"},
+    {"id": "bolig_fossil", "csv": "bolig_fossil_scores.csv", "ratio_col": "bolig_fossil_ratio", "raw_col": "bolig_fossil_raw", "unit": "%", "data_year": "2026", "source": "DST BOL202", "category": "social", "dimension": "bolig"},
 
     # === Demokrati ===
     {"id": "voter_turnout", "csv": "democracy_scores.csv", "ratio_col": "voter_turnout_ratio", "raw_col": "voter_turnout_pct", "unit": "%", "data_year": "2021", "source": "DST KVBPCT", "category": "social", "dimension": "demokrati"},
