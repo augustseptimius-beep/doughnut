@@ -100,11 +100,11 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   bolig: {
     id: "bolig",
-    scoring: "Gennemsnit af fem indikatorer: (1) Andel ubeboede boliger (BOL101, inverteret). (2) Gennemsnitligt boligareal pr. person i m² (BOL106, direkte). (3) Boliger uden eget toilet % (BOL102, inverteret). (4) Boliger uden eget bad % (BOL102, inverteret). (5) Andel af befolkning i fossilopvarmet bolig - gas/olie (BOL202, inverteret). Score 100 = landsgennemsnit.",
+    scoring: "Gennemsnit af tre indikatorer: (1) Andel ubeboede boliger (BOL101, inverteret). (2) Gennemsnitligt boligareal pr. person i m² (BOL106, direkte). (3) Andel af befolkning i fossilopvarmet bolig - gas/olie (BOL202, inverteret). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: alle borgere bør have adgang til en god, rummelig og bæredygtig bolig.",
     dataYear: "2023-2026",
     limitations: "Ubeboede boliger fanger ikke boligkvalitet eller pris. Boligareal pr. person er et gennemsnit og skjuler ulighed. Fossil opvarmning-ratio er capped ved 150 for kommuner med meget lav fossilandel.",
-    csvFile: "doughnut_scores.csv + bolig_extra_scores.csv + bolig_wc_scores.csv + bolig_fossil_scores.csv",
+    csvFile: "doughnut_scores.csv + bolig_extra_scores.csv + bolig_fossil_scores.csv",
   },
   demokrati: {
     id: "demokrati",
@@ -397,7 +397,7 @@ export default function MetodePage() {
         <p className="text-sm text-gray-700 leading-relaxed mt-4">
           <strong>Vægtning:</strong> Hver kategori (f.eks. Sundhed, Velfærd, Bolig) beregnes som et simpelt gennemsnit af sine indikatorer.
           Det samlede sociale gennemsnit er et gennemsnit af kategorierne - ikke af de individuelle indikatorer.
-          Det betyder at kategorier med få indikatorer (f.eks. Bolig med 2) vægter lige så tungt som kategorier med mange (f.eks. Velfærd med 6).
+          Det betyder at kategorier med få indikatorer (f.eks. Bolig med 3) vægter lige så tungt som kategorier med mange (f.eks. Velfærd med 6).
           Dette er et bevidst valg: hver dimension i doughnut-modellen anses for lige vigtig, uanset hvor mange indikatorer der måler den.
         </p>
         <p className="text-sm text-gray-700 leading-relaxed mt-2">

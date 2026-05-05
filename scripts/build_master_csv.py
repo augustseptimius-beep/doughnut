@@ -297,6 +297,9 @@ def build_master():
             if r is None:
                 continue
             ratio = parse_float(r.get(ind["ratio_col"]))
+            # Cap alle sociale ratios ved 150 for at undgå ekstreme inverse-værdier
+            if ratio is not None and ratio > 150:
+                ratio = 150.0
             raw = parse_float(r.get(ind["raw_col"])) if ind["raw_col"] else None
             if ratio is None and raw is None:
                 continue

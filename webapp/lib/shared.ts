@@ -628,7 +628,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "bolig",
     name: "Bolig",
     description: "Adgang til gode, sunde og bæredygtige boliger i trygge nærmiljøer.",
-    indicatorIds: ["vacant_housing", "housing_area", "housing_no_wc", "housing_no_bath", "bolig_fossil"],
+    indicatorIds: ["vacant_housing", "housing_area", "bolig_fossil"],
   },
   {
     id: "demokrati",
