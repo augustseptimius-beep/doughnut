@@ -1,0 +1,2 @@
+:HL["/_next/static/chunks/07~2gwa9hp9~y.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"kommune","param":null,"prefetchHints":0,"slots":{"children":{"name":"navn","param":{"type":"d","key":"Odder","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"GpMI0anQnFfMjn_d1IQYc"}
