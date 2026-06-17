@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { KommuneData } from "@/lib/shared";
-import { computeCategoryScores, ECOLOGICAL_DIMENSIONS } from "@/lib/shared";
+import { computeCategoryScores, ECOLOGICAL_DIMENSIONS, kommunegruppeNavn } from "@/lib/shared";
 import { useBaseline } from "@/lib/baseline-context";
 import DoughnutRing from "@/components/DoughnutRing";
 import ScoreBars from "@/components/ScoreBars";
@@ -25,7 +25,12 @@ interface AktivDimension {
 export default function KommuneClient({ kommune }: Props) {
   const { mode } = useBaseline();
 
-  const activeRatios = mode === "top10" ? kommune.top10_ratios : kommune.ratios;
+  const activeRatios =
+    mode === "top10"
+      ? kommune.top10_ratios
+      : mode === "kommunegruppe"
+      ? kommune.group_ratios
+      : kommune.ratios;
 
   const categoryScores = computeCategoryScores(activeRatios);
   const categoriesAboveThreshold = categoryScores.filter(
@@ -34,7 +39,11 @@ export default function KommuneClient({ kommune }: Props) {
   const categoriesWithData = categoryScores.filter((c) => c.hasData).length;
 
   const baselineLabel =
-    mode === "top10" ? "top 10%-niveauet" : "landsgennemsnittet";
+    mode === "top10"
+      ? "top 10%-niveauet"
+      : mode === "kommunegruppe"
+      ? `gennemsnittet for ${kommunegruppeNavn(kommune.kommune_kode)}`
+      : "landsgennemsnittet";
 
   // --- Vurderingsstate ---
   const [vurderingsMode, setVurderingsMode] = useState(false);

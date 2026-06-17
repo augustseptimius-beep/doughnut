@@ -878,6 +878,7 @@ export interface KommuneData {
   kommune_navn: string;
   ratios: Record<string, number | null>;
   top10_ratios: Record<string, number | null>; // same indicators, top-10%-kommune som baseline
+  group_ratios: Record<string, number | null>; // same indicators, kommunegruppe-gennemsnit som baseline
   eco_ratios: Record<string, number | null>; // ecological dimension ratios
   rawValues: Record<string, number | null>;   // faktiske råværdier (til visning i UI)
   social_avg: number | null;
@@ -925,6 +926,92 @@ export function computeTop10Ratios(allData: KommuneData[]): void {
         k.top10_ratios[ind.id] = null;
       } else {
         k.top10_ratios[ind.id] = parseFloat(((ratio / top10Avg) * 100).toFixed(2));
+      }
+    }
+  }
+}
+
+// --- KOMMUNEGRUPPE-MAPPING (DST KOMMUNEGRUPPER_V1_2018) ---
+// G1: Hovedstadskommuner (24), G2: Storbykommuner (3),
+// G3: Provinsbykommuner (16), G4: Oplandskommuner (24), G5: Landkommuner (31)
+export const KOMMUNEGRUPPE: Record<string, number> = {
+  // G1: Hovedstadskommuner
+  "101": 1, "147": 1, "151": 1, "153": 1, "155": 1, "157": 1, "159": 1, "161": 1,
+  "163": 1, "165": 1, "167": 1, "169": 1, "173": 1, "175": 1, "183": 1, "185": 1,
+  "187": 1, "190": 1, "201": 1, "223": 1, "230": 1, "240": 1, "253": 1, "269": 1,
+  // G2: Storbykommuner
+  "461": 2, "751": 2, "851": 2,
+  // G3: Provinsbykommuner
+  "217": 3, "219": 3, "259": 3, "265": 3, "330": 3, "370": 3, "561": 3, "607": 3,
+  "615": 3, "621": 3, "630": 3, "657": 3, "661": 3, "730": 3, "740": 3, "791": 3,
+  // G4: Oplandskommuner
+  "210": 4, "250": 4, "260": 4, "270": 4, "316": 4, "320": 4, "329": 4, "336": 4,
+  "340": 4, "350": 4, "410": 4, "420": 4, "430": 4, "440": 4, "450": 4, "480": 4,
+  "575": 4, "706": 4, "710": 4, "727": 4, "746": 4, "756": 4, "766": 4, "840": 4,
+  // G5: Landkommuner
+  "306": 5, "326": 5, "360": 5, "376": 5, "390": 5, "400": 5, "479": 5, "482": 5,
+  "492": 5, "510": 5, "530": 5, "540": 5, "550": 5, "563": 5, "573": 5, "580": 5,
+  "665": 5, "671": 5, "707": 5, "741": 5, "760": 5, "773": 5, "779": 5, "787": 5,
+  "810": 5, "813": 5, "820": 5, "825": 5, "846": 5, "849": 5, "860": 5,
+};
+
+export const KOMMUNEGRUPPE_NAVNE: Record<number, string> = {
+  1: "Hovedstadskommuner",
+  2: "Storbykommuner",
+  3: "Provinsbykommuner",
+  4: "Oplandskommuner",
+  5: "Landkommuner",
+};
+
+export function kommunegruppeNavn(kode: string): string {
+  const grp = KOMMUNEGRUPPE[kode];
+  return grp ? KOMMUNEGRUPPE_NAVNE[grp] : "Kommunegruppe";
+}
+
+/**
+ * Beregner kommunegruppe-baselines dynamisk fra eksisterende ratios.
+ * For hver social indikator og hver gruppe (G1-G5): beregn gruppens uvægtede
+ * gennemsnit, og omskaler alle kommuners ratio til denne baseline.
+ * 100 = den gennemsnitlige kommune i gruppen.
+ */
+export function computeGroupRatios(allData: KommuneData[]): void {
+  const realKommuner = allData.filter((k) => k.kommune_kode !== "000");
+
+  for (const k of allData) {
+    k.group_ratios = {};
+  }
+
+  for (const ind of INDICATORS) {
+    if (ind.category !== "social") continue;
+
+    const groupSums: Record<number, number> = {};
+    const groupCounts: Record<number, number> = {};
+
+    for (const k of realKommuner) {
+      const grp = KOMMUNEGRUPPE[k.kommune_kode];
+      if (!grp) continue;
+      const ratio = k.ratios[ind.id];
+      if (ratio === null) continue;
+      groupSums[grp] = (groupSums[grp] ?? 0) + ratio;
+      groupCounts[grp] = (groupCounts[grp] ?? 0) + 1;
+    }
+
+    const groupAvg: Record<number, number> = {};
+    for (const grp of Object.keys(groupSums).map(Number)) {
+      if (groupCounts[grp] > 0) {
+        groupAvg[grp] = groupSums[grp] / groupCounts[grp];
+      }
+    }
+
+    for (const k of allData) {
+      const grp = KOMMUNEGRUPPE[k.kommune_kode];
+      const ratio = k.ratios[ind.id];
+      const avg = grp ? groupAvg[grp] : undefined;
+
+      if (ratio === null || avg === undefined || avg === 0) {
+        k.group_ratios[ind.id] = null;
+      } else {
+        k.group_ratios[ind.id] = parseFloat(((ratio / avg) * 100).toFixed(2));
       }
     }
   }

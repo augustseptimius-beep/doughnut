@@ -21,7 +21,7 @@ export type {
   CategoryScore,
 } from "./shared";
 
-import { INDICATORS, ECOLOGICAL_DIMENSIONS, computeTop10Ratios, type KommuneData } from "./shared";
+import { INDICATORS, ECOLOGICAL_DIMENSIONS, computeTop10Ratios, computeGroupRatios, type KommuneData } from "./shared";
 
 let cachedData: KommuneData[] | null = null;
 
@@ -186,7 +186,8 @@ export function loadData(): KommuneData[] {
       kommune_kode: kode,
       kommune_navn: navn,
       ratios,
-      top10_ratios: {}, // udfyldes af computeTop10Ratios nedenfor
+      top10_ratios: {},  // udfyldes af computeTop10Ratios nedenfor
+      group_ratios: {},  // udfyldes af computeGroupRatios nedenfor
       eco_ratios,
       rawValues,
       // social_avg og overall_avg er pre-computed i den gamle CSV men
@@ -200,6 +201,8 @@ export function loadData(): KommuneData[] {
 
   // Beregn Top 10%-baselines dynamisk fra de indlæste ratios
   computeTop10Ratios(data);
+  // Beregn kommunegruppe-baselines
+  computeGroupRatios(data);
 
   cachedData = data;
   return data;

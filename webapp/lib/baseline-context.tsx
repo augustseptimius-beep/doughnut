@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState } from "react";
 
-export type BaselineMode = "avg" | "top10";
+export type BaselineMode = "avg" | "top10" | "kommunegruppe";
 
 interface BaselineContextValue {
   mode: BaselineMode;
@@ -10,12 +10,12 @@ interface BaselineContextValue {
 }
 
 const BaselineContext = createContext<BaselineContextValue>({
-  mode: "avg",
+  mode: "kommunegruppe",
   setMode: () => {},
 });
 
 export function BaselineProvider({ children }: { children: React.ReactNode }) {
-  const [mode, setMode] = useState<BaselineMode>("avg");
+  const [mode, setMode] = useState<BaselineMode>("kommunegruppe");
   return (
     <BaselineContext.Provider value={{ mode, setMode }}>
       {children}
