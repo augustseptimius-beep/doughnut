@@ -40,6 +40,10 @@ export default function RootLayout({
                     <span className="sm:hidden">Metode</span>
                     <span className="hidden sm:inline">Metode & data</span>
                   </a>
+                  <a href="/artikel/planetaere-graenser" className="text-gray-500 hover:text-gray-900 transition-colors">
+                    <span className="sm:hidden">Artikel</span>
+                    <span className="hidden sm:inline">Planetære grænser</span>
+                  </a>
                   <a href="/om" className="text-gray-500 hover:text-gray-900 transition-colors">
                     Om
                   </a>

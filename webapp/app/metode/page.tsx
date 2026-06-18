@@ -172,11 +172,16 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
 const ECO_METHODS: Record<string, MethodInfo> = {
   klimapaavirkning: {
     id: "klimapaavirkning",
-    scoring: "Territoriale CO2e-udledninger pr. indbygger. Ratio = (faktisk udledning / grænseværdi) * 100. Over 100 = overshoot (udleder mere end budgettet tillader).",
-    boundary: "3 ton CO2e pr. person pr. år (Paris-aftalens budget for territorial udledning, IPCC 1.5°C-scenarie).",
-    dataYear: "2023",
-    limitations: "Dækker ca. 70 af 98 kommuner. Territorialt regnskab fanger ikke forbrug - se Forbrugsbaseret CO2.",
-    csvFile: "climate_scores.csv",
+    scoring: "Worst-of af to indikatorer for samme klimagrænse: (1) Territoriale CO2e-udledninger pr. indbygger (udledninger inden for kommunens grænser, Klimaregnskabet.dk). (2) Forbrugsbaseret CO2e pr. indbygger (borgernes samlede aftryk inkl. importerede varer). For begge: ratio = (faktisk udledning / 3 ton) × 100; over 100 = overshoot. Dimensionens samlede score er den værste af de to - i praksis typisk den forbrugsbaserede, da danskeres forbrugsaftryk (ca. 10-17 ton) er markant større end det territoriale.",
+    boundary: "3 ton CO2e pr. person pr. år (Paris-aftalens 1.5°C-budget). Gælder både territorialt og forbrugsbaseret. Til sammenligning er den gennemsnitlige danskers forbrugsbaserede aftryk ca. 10 ton - over tre gange budgettet.",
+    boundarySources: [
+      { label: "Fanning et al. (2022), Nature Sustainability", url: "https://www.nature.com/articles/s41893-021-00799-z" },
+      { label: "Hot or Cool Institute (2021), 1.5-Degree Lifestyles", url: "https://hotorcool.org/1-5-degree-lifestyles-report/" },
+      { label: "Energistyrelsen, Global Afrapportering", url: "https://ens.dk/" },
+    ],
+    dataYear: "2023 (territorial: ca. 70/98 kommuner; forbrugsbaseret: estimat for alle)",
+    limitations: "Territorialt regnskab (Klimaregnskabet.dk) dækker ca. 70 af 98 kommuner og fanger ikke importerede udledninger. Forbrugsbaseret er et Tier 1-estimat: alle kommuner skaleres med samme nationale faktor (Osei-Owusu et al. 2020 nutidsjusteret med ENS GA25), så lokale ændringer siden 2011 er ikke indregnet (usikkerhed ca. ±10%). De to tal er ikke additive - det er to måder at opgøre samme klimapåvirkning.",
+    csvFile: "climate_scores.csv + cba_2023_estimate.csv",
   },
   forurening: {
     id: "forurening",
@@ -209,11 +214,11 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   naeringsstoffer: {
     id: "naeringsstoffer",
-    scoring: "Worst-of af tre indikatorer: (1) Kvælstof-udledning (ton total-N) pr. 1.000 indbyggere via spildevand. (2) Fosfor-udledning (ton total-P) pr. 1.000 indbyggere via spildevand. (3) Landbrugets N-loft pr. ha landbrugsjord beregnet fra Vandområdeplan 3 (VP3, 2025): malbelas_n (max bæredygtig N-tilførsel til kysten i tons) divideret med det faktiske landbrugsareal i oplandet pr. kommune - jo lavere N-loft pr. ha, jo mere N-presset er kommunen. Eco-konvention: score over 100 = kommunen er mere belastet end landsgennemsnittet (overshoot). Under 100 = lavere pres end gennemsnit. Dimensionens samlede score er den højeste (værste) af de tre sub-indikatorer - planetary boundary-logik: hvis bare én grænse er overskredet, er dimensionen overskredet.",
-    boundary: "Landsgennemsnittet som reference for alle tre indikatorer. Lavere næringsstofbelastning og strengere N-loft er bedre for vandmiljøet.",
-    dataYear: "2024 (spildevand), 2025 (VP3 N-loft), 2026 (markblokke)",
-    limitations: "Spildevand dækker kun punktkilder (renseanlæg, dambrug, havbrug, industri, spredt bebyggelse). Landbrugs-N viser det maksimale tilladte N-loft pr. ha - ikke den faktiske udvaskning, som kræver DCE's NLES5-model (kun tilgængeligt i PDF-rapporter). Grænseværdien er landsgennemsnittet, ikke en absolut planetær grænse.",
-    csvFile: "naeringsstoffer_scores.csv + n_landbrug_scores.csv",
+    scoring: "Worst-of af fire indikatorer - tre presmål og ét effektmål. Presmål: (1) Kvælstof-udledning (ton total-N) pr. 1.000 indbyggere via spildevand. (2) Fosfor-udledning (ton total-P) pr. 1.000 indbyggere via spildevand. (3) Landbrugets N-loft pr. ha landbrugsjord fra Vandområdeplan 3 (VP3): max bæredygtig N-tilførsel til kysten divideret med landbrugsarealet i oplandet - jo lavere N-loft pr. ha, jo mere N-presset er kommunen. Effektmål: (4) Andel af kommunens vandområder (vandløb, søer, kystvande) i mindst god økologisk tilstand (VP3) - den synlige eutrofiering de tre presmål forårsager; her er højere andel bedre, ratio = (landsgennemsnit / andel) × 100, cappet ved 300. Eco-konvention: score over 100 = mere belastet end landsgennemsnittet. Dimensionens samlede score er den værste af de fire sub-indikatorer (planetary boundary-logik).",
+    boundary: "Landsgennemsnittet som reference for alle fire indikatorer. For vandområdernes tilstand er EU's Vandrammedirektiv-mål (alle vandområder i mindst god tilstand i 2027) vist som kontekst - nationalt opfylder kun ca. 6% målet. Lavere næringsstofbelastning og flere vandområder i god tilstand er bedre.",
+    dataYear: "2024 (spildevand), 2025 (VP3 N-loft + økologisk tilstand), 2026 (markblokke)",
+    limitations: "Spildevand dækker kun punktkilder (renseanlæg, dambrug, havbrug, industri, spredt bebyggelse). Landbrugs-N viser det maksimale tilladte N-loft pr. ha - ikke den faktiske udvaskning. Vandområdernes tilstand tælles pr. styk (ikke vægtet efter længde/areal); kystvande er næsten alle i dårlig tilstand pga. iltsvind, hvilket trækker kystkommuner ned. Grænseværdierne er landsgennemsnittet (relativ baseline), ikke absolutte planetære grænser.",
+    csvFile: "naeringsstoffer_scores.csv + n_landbrug_scores.csv + vp3_vandkvalitet_scores.csv",
   },
   vand: {
     id: "vand",
@@ -225,35 +230,19 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   arealanvendelse: {
     id: "arealanvendelse",
-    scoring: "To sub-indikatorer med worst-of logik (dimensionsscoren = den højeste ratio): (1) Andel intensivt landbrug (korn, rodfrugter, permanente afgrøder, ikke-klassificeret - DST kategorier D1+D2+D4): ratio = (andel / 54,7%) × 100 mod nationalt gennemsnit 2024. (2) Andel bebygget og befæstet areal (veje, jernbaner, lufthavne, bebyggelse, råstofgrave - A1+A2+B1+B2+C1): ratio = (andel / 14,2%) × 100 mod nationalt gennemsnit 2024. Naturkvalitet måles separat i biodiversitetsdimensionen (§3-beskyttede arealer).",
-    boundary: "Nationalt gennemsnit 2024 som reference: intensivt landbrug ~54,7%, bebygget og befæstet ~14,2% (DST AREALDK2). Over gennemsnittet = over grænsen.",
+    scoring: "To sub-indikatorer med worst-of logik (dimensionsscoren = den højeste ratio): (1) Andel intensivt landbrug (korn, rodfrugter, permanente afgrøder, ikke-klassificeret - DST kategorier D1+D2+D4): ratio = (andel / 54,7%) × 100 mod nationalt gennemsnit 2024. (2) Andel bebygget og befæstet areal (veje, jernbaner, lufthavne, bebyggelse, råstofgrave - A1+A2+B1+B2+C1): ratio = (andel / 14,2%) × 100 mod nationalt gennemsnit 2024. Naturkvalitet måles separat i biodiversitetsdimensionen (DCE bioscore).",
+    boundary: "Nationalt gennemsnit 2024 som reference: intensivt landbrug ~54,7%, bebygget og befæstet ~14,2% (DST AREALDK2). Over gennemsnittet = over grænsen. Til kontekst: CONCITO-rapportens planetære grænse for arealsystemet er max 15% antropiseret areal (landbrug + bebygget tilsammen, Rockström 2009). Danmark ligger på 73-75% - en femdobbelt overskridelse. Vi scorer bevidst mod landsgennemsnittet i stedet for de 15%, så man kan se forskel mellem kommuner; ellers ville næsten alle lyse dybrødt.",
     dataYear: "2024",
     limitations: "Begge indikatorer er målt mod nationalt gennemsnit (niveau 3 baseline), ikke absolutte planetære grænser. Bykommuner scorer typisk dårligt på bebygget men godt på landbrug - og omvendt for landkommuner. Det er bevidst: worst-of logikken fanger det dominerende pres for den enkelte kommunes arealtype. Dimensionen dækker ikke naturkvalitet (se biodiversitet) eller fragmentering af levesteder.",
     csvFile: "arealanvendelse_scores.csv",
   },
   biodiversitet: {
     id: "biodiversitet",
-    scoring: "Andel af kommunens areal der er naturområder (skov, hede, mose, eng, strandeng, søer m.fl.) baseret på DST's arealstatistik (AREALDK2 + ARE207). Ratio = (grænseværdi / faktisk naturandel) * 100. Over 100 = under grænsen (for lidt natur). Den tidligere bioscore-metode (DCE/AU bioscore >= 8) er fravalgt, da den vurderes som for upræcis og svær at kommunikere.",
-    boundary: "30% naturområder (EU Biodiversitetsstrategi 2030, 30x30-målet).",
-    dataYear: "2022",
-    limitations: "Arealstatistik skelner ikke nødvendigvis fuldt ud mellem naturkvalitet - en produktionsskov tæller som skov. Metoden måler areal, ikke tilstand. En plantage og en gammel urørt skov giver samme bidrag til scoren.",
-    csvFile: "land_use_scores.csv",
-  },
-  forbrug_co2: {
-    id: "forbrug_co2",
-    scoring: "Kommunespecifikt estimat for forbrugsbaseret CO2e pr. person (inkl. import). Ratio = (estimat / grænseværdi) * 100. Kilde: Osei-Owusu et al. (2020) kommunebaseline (2011) nutidsjusteret med ENS Global Afrapportering 2025 (ENS-til-ENS skalering, faktor 0,7186). Interval: 9,4-17,3 ton CO2e/person. Grænse: 3 ton.",
-    boundary: "3 ton CO2e/borger/år - et forskningsbaseret pejlemærke for forbrug foreneligt med Parisaftalens 1,5°C-mål. Ikke en officiel dansk eller EU-målsætning, men understøttet af tre uafhængige videnskabelige kilder: (1) Fanning et al. (2022) i Nature Sustainability analyserer 150 landes overshoot ift. per-capita planetære grænser og udgør det mest opdaterede grundlag for downscaled doughnut-modeller. (2) Hot or Cool Institute (2021) opstiller en tidstrappe: 2,5 ton (2030) - 1,4 ton (2040) - 0,7 ton (2050) baseret på IPCC's resterende kulstofbudget for 1,5°C. (3) Danske forskere (Tilsted, Bjørn, Lund m.fl.) anbefaler 3 ton i 2030 ud fra forsigtighedsprincippet og Danmarks historiske ansvar. Til sammenligning: den gennemsnitlige danskers forbrugsbaserede klimaaftryk er ca. 10 ton CO2e/år (ENS Global Afrapportering) - ca. 3 gange grænsen.",
-    boundarySources: [
-      { label: "Fanning et al. (2022), Nature Sustainability", url: "https://www.nature.com/articles/s41893-021-00799-z" },
-      { label: "O'Neill et al. (2018), Nature Sustainability", url: "https://doi.org/10.1038/s41893-018-0021-4" },
-      { label: "Good Life For All - interaktiv dataplatform (University of Leeds)", url: "https://goodlife.leeds.ac.uk/" },
-      { label: "Hot or Cool Institute (2021), 1.5-Degree Lifestyles", url: "https://hotorcool.org/1-5-degree-lifestyles-report/" },
-      { label: "Tilsted et al. - debatindlæg, Politiken (dec. 2023)", url: "https://samf.ku.dk/presse/kronikker-og-debat/2023/danmark-boer-indfoere-et-maal-for-vores-klimaaftryk-fra-forbrug" },
-      { label: "Energistyrelsen, Global Afrapportering", url: "https://ens.dk/" },
-    ],
-    dataYear: "2023-estimat baseret på Osei-Owusu et al. 2020 + ENS GA 2025",
-    limitations: "Tier 1-estimat: alle kommuner skaleres med samme nationale faktor (ensartet -28,1%). Den relative rangorden fra 2011 er bevaret, men lokale ændringer (f.eks. udfasning af oliefyr, pendlingsmønster) er ikke indregnet. Hverken el- eller fjernvarmemix er opdateret kommunespecifikt. Usikkerhedsmargen ca. ±10%.",
-    csvFile: "cba_2023_estimate.csv (Osei-Owusu et al. 2020, DOI: 10.1016/j.ecolecon.2020.106778 + ENS Global Afrapportering 2025)",
+    scoring: "Worst-of af to tærskler fra DCE's biodiversitetskort (bioscore-raster, 10x10 m). Bioscore vurderer hvor værdifuldt hvert areal er som levested for truede arter. (1) Andel af kommunen med væsentlig naturværdi (bioscore ≥8): ratio = (30% / faktisk andel) × 100 mod EU's 30%-mål. (2) Andel med uerstattelig naturværdi (bioscore ≥12): ratio = (10% / faktisk andel) × 100 mod 10%-målet for strengt beskyttet natur. Over 100 = under målet (for lidt). Dimensionsscoren er den dårligste (højeste ratio) af de to. I modsætning til rent arealdække vægter bioscore naturkvalitet - en biologisk fattig plantage tæller derfor lavt.",
+    boundary: "30% væsentlig naturværdi + 10% uerstattelig naturværdi (EU Biodiversitetsstrategi 2030, 30x30-målet). VIGTIGT: Dette er EU's politiske mål, ikke den planetære grænse. CONCITO-rapporten (2025) vurderer Danmarks samlede biodiversitet til et Biodiversity Intactness Index på 44% mod en sikker planetær grænse på 90%. En kommune kan altså nå 30%-målet og lyse grønt uden at være inden for den biofysiske grænse.",
+    dataYear: "2021",
+    limitations: "Grænserne er politiske mål (30%/10%), ikke den planetære grænse. Den planetære BII-grænse (44% for DK) er et groft globalt modelestimat (0,25° opløsning, usikkerhed 41-61%) og kan ikke beregnes meningsfuldt per kommune - derfor bruges det lokalt forankrede danske bioscore-kort i stedet. Bioscore måler habitatkvalitet, ikke fredningsstatus: et areal kan have høj naturværdi uden at være beskyttet, og omvendt.",
+    csvFile: "biodiversitet_scores.csv (DCE Biodiversitetskort, bioscore-raster 2021)",
   },
 };
 
@@ -406,6 +395,20 @@ export default function MetodePage() {
           Kommuner med en værdi på 0 (typisk manglende data eller ingen registreret aktivitet) sættes til ratio 0, ikke perfekt score - dette er for at undgå at databrist
           fejlagtigt fremstår som topscore. For multi-indikator økologiske dimensioner (luftkvalitet, cirkularitet, næringsstoffer) bruges en specialregel: ratio 150 anvendes
           som loft for sub-indikatorer hvor data mangler eller hvor ingen aktivitet registreres (f.eks. kommuner uden markblokke i N-loft-beregningen).
+        </p>
+      </section>
+
+      {/* Ærlig note: absolutte vs relative grænser */}
+      <section className="mb-10 p-5 bg-blue-50 border border-blue-200 rounded-xl">
+        <h3 className="text-base font-semibold text-gray-900 mb-2">Om grænserne i det økologiske loft</h3>
+        <p className="text-sm text-gray-700 leading-relaxed">
+          Nogle dimensioner måles mod absolutte grænser (WHO&apos;s luftgrænser, EU&apos;s genanvendelsesmål, drikkevandsnormen for pesticider). Andre måles mod landsgennemsnittet, fordi der ikke findes en meningsfuld absolut grænse på kommuneniveau. Det betyder at en grøn score på en relativ dimension viser &quot;bedre end de fleste danske kommuner&quot; - ikke nødvendigvis &quot;inden for planetens grænser&quot;. Danmark som helhed overskrider de fleste planetære grænser markant.
+        </p>
+        <p className="text-sm text-gray-700 leading-relaxed mt-2">
+          Læs mere om hvordan de planetære grænser ser ud for Danmark, og hvad der bevidst ikke kan måles på kommuneniveau, i{" "}
+          <a href="/artikel/planetaere-graenser" className="text-blue-600 hover:underline font-medium">
+            artiklen om planetære grænser
+          </a>.
         </p>
       </section>
 

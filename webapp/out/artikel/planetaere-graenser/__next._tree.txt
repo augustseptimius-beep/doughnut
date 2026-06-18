@@ -1,0 +1,2 @@
+:HL["/_next/static/chunks/0294y2zqzf1lw.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"artikel","param":null,"prefetchHints":0,"slots":{"children":{"name":"planetaere-graenser","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"itX0IKXslNU9S6FTKxGNV"}

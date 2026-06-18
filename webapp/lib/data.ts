@@ -47,9 +47,10 @@ const ECO_RAW_KEY_MAP: Record<string, { rawKey: string; ratioKey: string | null 
   naer_nitrogen: { rawKey: "eco_naer_n_raw", ratioKey: "eco_naer_n_ratio" },
   naer_phosphorus: { rawKey: "eco_naer_p_raw", ratioKey: "eco_naer_p_ratio" },
   naer_landbrug: { rawKey: "eco_naer_landbrug_raw", ratioKey: "eco_naer_landbrug_ratio" },
-  // Biodiversitet (single)
-  biodiversitet: { rawKey: "eco_bio_raw", ratioKey: "biodiversitet_self" },
-  // Forbrug CO2 (single)
+  // Biodiversitet (worst-of: væsentlig + uerstattelig naturværdi, DCE bioscore)
+  bio_vasentlig:    { rawKey: "eco_bio_vasentlig_raw",    ratioKey: "bio_vasentlig_ratio" },
+  bio_uerstattelig: { rawKey: "eco_bio_uerstattelig_raw", ratioKey: "bio_uerstattelig_ratio" },
+  // Forbrugsbaseret CO2 - 2. indikator under Klimapåvirkning (samme planetære grænse)
   forbrug_co2: { rawKey: "forbrug_co2", ratioKey: "forbrug_co2_self" },
   // Forurening - pesticider (worst-of)
   pesticider: { rawKey: "eco_pesticid_raw", ratioKey: "pesticider_self" },
@@ -59,6 +60,8 @@ const ECO_RAW_KEY_MAP: Record<string, { rawKey: string; ratioKey: string | null 
   // Arealanvendelse (worst-of: intensivt landbrug + bebygget)
   areal_intensiv: { rawKey: "eco_areal_intensiv_raw", ratioKey: "areal_intensiv_ratio" },
   areal_bebygget: { rawKey: "eco_areal_bebygget_raw", ratioKey: "areal_bebygget_ratio" },
+  // Overfladevand (VP3 økologisk tilstand) - sub-indikator under Næringsstoffer (eutrofieringens effekt)
+  overfladevand: { rawKey: "eco_overfladevand_raw", ratioKey: "overfladevand_ratio" },
 };
 
 // ─── Master-CSV loader ───────────────────────────────────────────────

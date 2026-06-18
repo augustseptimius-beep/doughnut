@@ -5662,202 +5662,398 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,naer_landbrug,74.37,19.8,kg N/ha,2025,Vandområdeplan 3,ecological,naeringsstoffer
 741,Samsø,naer_landbrug,115.95,12.7,kg N/ha,2025,Vandområdeplan 3,ecological,naeringsstoffer
 482,Langeland,naer_landbrug,115.04,12.8,kg N/ha,2025,Vandområdeplan 3,ecological,naeringsstoffer
-201,Allerød,biodiversitet,427.96,7.01,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-175,Rødovre,biodiversitet,25000.0,0.12,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-153,Brøndby,biodiversitet,5454.55,0.55,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-155,Dragør,biodiversitet,339.37,8.84,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-190,Furesø,biodiversitet,294.99,10.17,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-230,Rudersdal,biodiversitet,345.22,8.69,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-151,Ballerup,biodiversitet,502.51,5.97,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-167,Hvidovre,biodiversitet,1986.75,1.51,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-269,Solrød,biodiversitet,428.57,7.0,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-746,Skanderborg,biodiversitet,506.76,5.92,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-157,Gentofte,biodiversitet,1060.07,2.83,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-240,Egedal,biodiversitet,302.11,9.93,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-265,Roskilde,biodiversitet,601.2,4.99,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-223,Hørsholm,biodiversitet,376.41,7.97,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-185,Tårnby,biodiversitet,68.46,43.82,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-163,Herlev,biodiversitet,810.81,3.7,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-173,Lyngby-Taarbæk,biodiversitet,254.45,11.79,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-350,Lejre,biodiversitet,513.7,5.84,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-210,Fredensborg,biodiversitet,584.8,5.13,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-710,Favrskov,biodiversitet,602.41,4.98,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-530,Billund,biodiversitet,278.81,10.76,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-183,Ishøj,biodiversitet,712.59,4.21,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-840,Rebild,biodiversitet,342.08,8.77,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-147,Frederiksberg,biodiversitet,999.0,0.0,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-259,Køge,biodiversitet,1111.11,2.7,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-253,Greve,biodiversitet,900.9,3.33,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-187,Vallensbæk,biodiversitet,259.29,11.57,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-159,Gladsaxe,biodiversitet,983.61,3.05,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-661,Holstebro,biodiversitet,266.43,11.26,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-217,Helsingør,biodiversitet,476.95,6.29,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-250,Frederikssund,biodiversitet,341.3,8.79,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-657,Herning,biodiversitet,262.7,11.42,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-492,Ærø,biodiversitet,259.97,11.54,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-561,Esbjerg,biodiversitet,358.42,8.37,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-773,Morsø,biodiversitet,405.41,7.4,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-219,Hillerød,biodiversitet,427.35,7.02,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-740,Silkeborg,biodiversitet,358.85,8.36,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-607,Fredericia,biodiversitet,401.07,7.48,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-316,Holbæk,biodiversitet,546.45,5.49,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-340,Sorø,biodiversitet,583.66,5.14,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-260,Halsnæs,biodiversitet,348.03,8.62,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-766,Hedensted,biodiversitet,545.45,5.5,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-825,Læsø,biodiversitet,68.14,44.03,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-615,Horsens,biodiversitet,412.09,7.28,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-329,Ringsted,biodiversitet,717.7,4.18,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-370,Næstved,biodiversitet,609.76,4.92,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-851,Aalborg,biodiversitet,291.55,10.29,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-336,Stevns,biodiversitet,1298.7,2.31,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-410,Middelfart,biodiversitet,513.7,5.84,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-727,Odder,biodiversitet,645.16,4.65,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-161,Glostrup,biodiversitet,3296.7,0.91,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-563,Fanø,biodiversitet,51.7,58.03,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-813,Frederikshavn,biodiversitet,141.58,21.19,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-270,Gribskov,biodiversitet,424.33,7.07,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-751,Aarhus,biodiversitet,813.01,3.69,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-760,Ringkøbing-Skjern,biodiversitet,214.59,13.98,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-479,Svendborg,biodiversitet,781.25,3.84,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-787,Thisted,biodiversitet,134.95,22.23,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-810,Brønderslev,biodiversitet,317.46,9.45,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-791,Viborg,biodiversitet,282.49,10.62,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-165,Albertslund,biodiversitet,480.77,6.24,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-480,Nordfyns,biodiversitet,660.79,4.54,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-440,Kerteminde,biodiversitet,659.34,4.55,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-101,København,biodiversitet,502.51,5.97,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-860,Hjørring,biodiversitet,255.1,11.76,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-706,Syddjurs,biodiversitet,368.1,8.15,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-430,Faaborg-Midtfyn,biodiversitet,530.97,5.65,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-573,Varde,biodiversitet,168.35,17.82,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-730,Randers,biodiversitet,387.1,7.75,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-621,Kolding,biodiversitet,584.8,5.13,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-320,Faxe,biodiversitet,759.49,3.95,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-169,Høje-Taastrup,biodiversitet,619.83,4.84,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-461,Odense,biodiversitet,618.56,4.85,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-420,Assens,biodiversitet,468.02,6.41,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-756,Ikast-Brande,biodiversitet,303.95,9.87,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-846,Mariagerfjord,biodiversitet,256.85,11.68,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-580,Aabenraa,biodiversitet,415.51,7.22,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-450,Nyborg,biodiversitet,694.44,4.32,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-630,Vejle,biodiversitet,436.68,6.87,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-540,Sønderborg,biodiversitet,617.28,4.86,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-400,Bornholm,biodiversitet,864.55,3.47,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-779,Skive,biodiversitet,292.68,10.25,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-510,Haderslev,biodiversitet,554.53,5.41,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-575,Vejen,biodiversitet,478.47,6.27,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-820,Vesthimmerlands,biodiversitet,300.0,10.0,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-707,Norddjurs,biodiversitet,422.54,7.1,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-671,Struer,biodiversitet,425.53,7.05,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-306,Odsherred,biodiversitet,449.1,6.68,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-330,Slagelse,biodiversitet,744.42,4.03,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-665,Lemvig,biodiversitet,327.87,9.15,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-376,Guldborgsund,biodiversitet,729.93,4.11,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-326,Kalundborg,biodiversitet,346.02,8.67,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-849,Jammerbugt,biodiversitet,172.31,17.41,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-550,Tønder,biodiversitet,348.43,8.61,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-390,Vordingborg,biodiversitet,497.51,6.03,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-360,Lolland,biodiversitet,1102.94,2.72,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-741,Samsø,biodiversitet,269.54,11.13,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-482,Langeland,biodiversitet,441.18,6.8,%,2022,DST AREALDK2 + ARE207,ecological,biodiversitet
-201,Allerød,forbrug_co2,459.0,13.77,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-175,Rødovre,forbrug_co2,357.33,10.72,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-153,Brøndby,forbrug_co2,330.33,9.91,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-155,Dragør,forbrug_co2,476.0,14.28,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-190,Furesø,forbrug_co2,440.0,13.2,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-230,Rudersdal,forbrug_co2,552.67,16.58,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-151,Ballerup,forbrug_co2,364.67,10.94,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-167,Hvidovre,forbrug_co2,352.67,10.58,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-269,Solrød,forbrug_co2,451.33,13.54,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-746,Skanderborg,forbrug_co2,386.0,11.58,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-157,Gentofte,forbrug_co2,576.33,17.29,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-240,Egedal,forbrug_co2,410.67,12.32,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-265,Roskilde,forbrug_co2,426.67,12.8,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-223,Hørsholm,forbrug_co2,555.33,16.66,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-185,Tårnby,forbrug_co2,376.33,11.29,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-163,Herlev,forbrug_co2,367.33,11.02,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-173,Lyngby-Taarbæk,forbrug_co2,463.67,13.91,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-350,Lejre,forbrug_co2,428.67,12.86,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-210,Fredensborg,forbrug_co2,422.33,12.67,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-710,Favrskov,forbrug_co2,369.67,11.09,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-530,Billund,forbrug_co2,360.33,10.81,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-183,Ishøj,forbrug_co2,318.67,9.56,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-840,Rebild,forbrug_co2,426.0,12.78,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-147,Frederiksberg,forbrug_co2,385.0,11.55,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-259,Køge,forbrug_co2,408.0,12.24,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-253,Greve,forbrug_co2,438.33,13.15,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-187,Vallensbæk,forbrug_co2,385.33,11.56,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-159,Gladsaxe,forbrug_co2,380.67,11.42,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-661,Holstebro,forbrug_co2,360.0,10.8,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-217,Helsingør,forbrug_co2,390.33,11.71,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-250,Frederikssund,forbrug_co2,380.33,11.41,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-657,Herning,forbrug_co2,362.67,10.88,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-492,Ærø,forbrug_co2,354.0,10.62,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-561,Esbjerg,forbrug_co2,356.67,10.7,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-773,Morsø,forbrug_co2,409.0,12.27,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-219,Hillerød,forbrug_co2,387.67,11.63,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-740,Silkeborg,forbrug_co2,368.0,11.04,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-607,Fredericia,forbrug_co2,348.33,10.45,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-316,Holbæk,forbrug_co2,400.67,12.02,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-340,Sorø,forbrug_co2,400.0,12.0,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-260,Halsnæs,forbrug_co2,349.0,10.47,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-766,Hedensted,forbrug_co2,371.33,11.14,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-825,Læsø,forbrug_co2,438.67,13.16,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-615,Horsens,forbrug_co2,365.33,10.96,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-329,Ringsted,forbrug_co2,391.33,11.74,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-370,Næstved,forbrug_co2,393.67,11.81,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-851,Aalborg,forbrug_co2,406.33,12.19,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-336,Stevns,forbrug_co2,414.67,12.44,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-410,Middelfart,forbrug_co2,375.67,11.27,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-727,Odder,forbrug_co2,375.33,11.26,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-161,Glostrup,forbrug_co2,372.33,11.17,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-563,Fanø,forbrug_co2,404.33,12.13,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-813,Frederikshavn,forbrug_co2,418.33,12.55,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-270,Gribskov,forbrug_co2,390.33,11.71,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-751,Aarhus,forbrug_co2,356.67,10.7,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-760,Ringkøbing-Skjern,forbrug_co2,360.33,10.81,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-479,Svendborg,forbrug_co2,367.33,11.02,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-787,Thisted,forbrug_co2,406.33,12.19,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-810,Brønderslev,forbrug_co2,395.0,11.85,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-791,Viborg,forbrug_co2,366.0,10.98,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-165,Albertslund,forbrug_co2,313.33,9.4,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-480,Nordfyns,forbrug_co2,360.67,10.82,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-440,Kerteminde,forbrug_co2,363.0,10.89,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-101,København,forbrug_co2,324.67,9.74,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-860,Hjørring,forbrug_co2,407.33,12.22,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-706,Syddjurs,forbrug_co2,370.33,11.11,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-430,Faaborg-Midtfyn,forbrug_co2,364.67,10.94,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-573,Varde,forbrug_co2,356.33,10.69,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-730,Randers,forbrug_co2,352.33,10.57,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-621,Kolding,forbrug_co2,364.67,10.94,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-320,Faxe,forbrug_co2,391.0,11.73,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-169,Høje-Taastrup,forbrug_co2,348.33,10.45,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-461,Odense,forbrug_co2,336.67,10.1,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-420,Assens,forbrug_co2,359.33,10.78,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-756,Ikast-Brande,forbrug_co2,351.33,10.54,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-846,Mariagerfjord,forbrug_co2,414.0,12.42,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-580,Aabenraa,forbrug_co2,351.67,10.55,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-450,Nyborg,forbrug_co2,356.0,10.68,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-630,Vejle,forbrug_co2,373.67,11.21,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-540,Sønderborg,forbrug_co2,352.33,10.57,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-400,Bornholm,forbrug_co2,341.0,10.23,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-779,Skive,forbrug_co2,362.67,10.88,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-510,Haderslev,forbrug_co2,356.67,10.7,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-575,Vejen,forbrug_co2,349.33,10.48,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-820,Vesthimmerlands,forbrug_co2,397.67,11.93,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-707,Norddjurs,forbrug_co2,351.67,10.55,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-671,Struer,forbrug_co2,355.33,10.66,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-306,Odsherred,forbrug_co2,383.67,11.51,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-330,Slagelse,forbrug_co2,386.0,11.58,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-665,Lemvig,forbrug_co2,367.0,11.01,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-376,Guldborgsund,forbrug_co2,363.67,10.91,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-326,Kalundborg,forbrug_co2,379.67,11.39,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-849,Jammerbugt,forbrug_co2,415.0,12.45,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-550,Tønder,forbrug_co2,343.33,10.3,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-390,Vordingborg,forbrug_co2,381.67,11.45,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-360,Lolland,forbrug_co2,358.67,10.76,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-741,Samsø,forbrug_co2,365.33,10.96,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
-482,Langeland,forbrug_co2,342.67,10.28,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,forbrug_co2
+201,Allerød,overfladevand,99.29,5.88,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+175,Rødovre,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+153,Brøndby,overfladevand,17.52,33.33,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+155,Dragør,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+190,Furesø,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+230,Rudersdal,overfladevand,110.99,5.26,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+151,Ballerup,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+167,Hvidovre,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+269,Solrød,overfladevand,81.77,7.14,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+746,Skanderborg,overfladevand,23.94,24.39,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+157,Gentofte,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+240,Egedal,overfladevand,250.57,2.33,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+265,Roskilde,overfladevand,119.64,4.88,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+223,Hørsholm,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+185,Tårnby,overfladevand,8.76,66.67,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+163,Herlev,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+173,Lyngby-Taarbæk,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+350,Lejre,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+210,Fredensborg,overfladevand,128.31,4.55,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+710,Favrskov,overfladevand,253.84,2.3,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+530,Billund,overfladevand,300.0,1.33,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+183,Ishøj,overfladevand,35.02,16.67,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+840,Rebild,overfladevand,223.69,2.61,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+147,Frederiksberg,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+259,Køge,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+253,Greve,overfladevand,87.53,6.67,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+187,Vallensbæk,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+159,Gladsaxe,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+661,Holstebro,overfladevand,286.19,2.04,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+217,Helsingør,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+250,Frederikssund,overfladevand,87.53,6.67,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+657,Herning,overfladevand,68.36,8.54,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+492,Ærø,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+561,Esbjerg,overfladevand,300.0,0.71,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+773,Morsø,overfladevand,300.0,1.82,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+219,Hillerød,overfladevand,53.71,10.87,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+740,Silkeborg,overfladevand,35.02,16.67,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+607,Fredericia,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+316,Holbæk,overfladevand,286.19,2.04,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+340,Sorø,overfladevand,74.95,7.79,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+260,Halsnæs,overfladevand,46.71,12.5,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+766,Hedensted,overfladevand,300.0,1.42,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+825,Læsø,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+615,Horsens,overfladevand,95.71,6.1,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+329,Ringsted,overfladevand,300.0,1.67,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+370,Næstved,overfladevand,262.98,2.22,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+851,Aalborg,overfladevand,97.79,5.97,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+336,Stevns,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+410,Middelfart,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+727,Odder,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+161,Glostrup,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+563,Fanø,overfladevand,5.84,100.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+813,Frederikshavn,overfladevand,245.3,2.38,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+270,Gribskov,overfladevand,105.0,5.56,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+751,Aarhus,overfladevand,300.0,0.55,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+760,Ringkøbing-Skjern,overfladevand,98.79,5.91,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+479,Svendborg,overfladevand,229.85,2.54,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+787,Thisted,overfladevand,34.02,17.16,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+810,Brønderslev,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+791,Viborg,overfladevand,65.3,8.94,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+165,Albertslund,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+480,Nordfyns,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+440,Kerteminde,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+101,København,overfladevand,93.41,6.25,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+860,Hjørring,overfladevand,300.0,1.16,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+706,Syddjurs,overfladevand,87.53,6.67,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+430,Faaborg-Midtfyn,overfladevand,163.54,3.57,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+573,Varde,overfladevand,164.0,3.56,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+730,Randers,overfladevand,300.0,1.9,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+621,Kolding,overfladevand,203.42,2.87,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+320,Faxe,overfladevand,101.18,5.77,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+169,Høje-Taastrup,overfladevand,40.86,14.29,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+461,Odense,overfladevand,245.3,2.38,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+420,Assens,overfladevand,300.0,1.47,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+756,Ikast-Brande,overfladevand,46.71,12.5,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+846,Mariagerfjord,overfladevand,81.77,7.14,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+580,Aabenraa,overfladevand,51.08,11.43,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+450,Nyborg,overfladevand,300.0,1.37,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+630,Vejle,overfladevand,49.14,11.88,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+540,Sønderborg,overfladevand,176.92,3.3,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+400,Bornholm,overfladevand,88.73,6.58,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+779,Skive,overfladevand,114.25,5.11,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+510,Haderslev,overfladevand,153.64,3.8,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+575,Vejen,overfladevand,199.26,2.93,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+820,Vesthimmerlands,overfladevand,191.42,3.05,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+707,Norddjurs,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+671,Struer,overfladevand,46.71,12.5,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+306,Odsherred,overfladevand,198.58,2.94,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+330,Slagelse,overfladevand,300.0,1.79,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+665,Lemvig,overfladevand,112.06,5.21,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+376,Guldborgsund,overfladevand,300.0,0.87,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+326,Kalundborg,overfladevand,57.63,10.13,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+849,Jammerbugt,overfladevand,64.23,9.09,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+550,Tønder,overfladevand,59.63,9.79,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+390,Vordingborg,overfladevand,286.19,2.04,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+360,Lolland,overfladevand,300.0,1.64,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+741,Samsø,overfladevand,300.0,0.0,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+482,Langeland,overfladevand,32.11,18.18,%,2025,Vandområdeplan 3 (VP3 2e2025),ecological,naeringsstoffer
+201,Allerød,bio_vasentlig,194.68,15.41,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+175,Rødovre,bio_vasentlig,300.0,0.33,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+153,Brøndby,bio_vasentlig,300.0,2.4,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+155,Dragør,bio_vasentlig,187.62,15.99,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+190,Furesø,bio_vasentlig,89.98,33.34,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+230,Rudersdal,bio_vasentlig,112.32,26.71,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+151,Ballerup,bio_vasentlig,300.0,1.33,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+167,Hvidovre,bio_vasentlig,300.0,0.29,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+269,Solrød,bio_vasentlig,300.0,3.32,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+746,Skanderborg,bio_vasentlig,277.01,10.83,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+157,Gentofte,bio_vasentlig,300.0,7.16,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+240,Egedal,bio_vasentlig,300.0,9.62,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+265,Roskilde,bio_vasentlig,300.0,4.09,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+223,Hørsholm,bio_vasentlig,300.0,4.99,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+185,Tårnby,bio_vasentlig,60.98,49.2,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+163,Herlev,bio_vasentlig,300.0,0.98,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+173,Lyngby-Taarbæk,bio_vasentlig,68.04,44.09,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+350,Lejre,bio_vasentlig,300.0,5.02,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+210,Fredensborg,bio_vasentlig,300.0,9.84,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+710,Favrskov,bio_vasentlig,300.0,1.74,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+530,Billund,bio_vasentlig,300.0,4.82,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+183,Ishøj,bio_vasentlig,300.0,3.61,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+840,Rebild,bio_vasentlig,300.0,5.05,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+147,Frederiksberg,bio_vasentlig,300.0,0.61,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+259,Køge,bio_vasentlig,300.0,7.02,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+253,Greve,bio_vasentlig,300.0,0.73,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+187,Vallensbæk,bio_vasentlig,300.0,2.53,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+159,Gladsaxe,bio_vasentlig,269.06,11.15,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+661,Holstebro,bio_vasentlig,300.0,5.11,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+217,Helsingør,bio_vasentlig,164.2,18.27,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+250,Frederikssund,bio_vasentlig,259.52,11.56,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+657,Herning,bio_vasentlig,300.0,3.8,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+492,Ærø,bio_vasentlig,300.0,4.89,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+561,Esbjerg,bio_vasentlig,300.0,3.71,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+773,Morsø,bio_vasentlig,300.0,1.55,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+219,Hillerød,bio_vasentlig,107.26,27.97,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+740,Silkeborg,bio_vasentlig,300.0,9.16,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+607,Fredericia,bio_vasentlig,300.0,6.51,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+316,Holbæk,bio_vasentlig,300.0,0.75,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+340,Sorø,bio_vasentlig,300.0,5.72,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+260,Halsnæs,bio_vasentlig,112.11,26.76,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+766,Hedensted,bio_vasentlig,300.0,2.83,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+825,Læsø,bio_vasentlig,53.95,55.61,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+615,Horsens,bio_vasentlig,300.0,4.78,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+329,Ringsted,bio_vasentlig,300.0,3.58,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+370,Næstved,bio_vasentlig,300.0,5.91,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+851,Aalborg,bio_vasentlig,300.0,6.95,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+336,Stevns,bio_vasentlig,300.0,7.02,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+410,Middelfart,bio_vasentlig,300.0,1.9,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+727,Odder,bio_vasentlig,300.0,1.98,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+161,Glostrup,bio_vasentlig,300.0,0.04,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+563,Fanø,bio_vasentlig,53.78,55.78,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+813,Frederikshavn,bio_vasentlig,239.81,12.51,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+270,Gribskov,bio_vasentlig,118.62,25.29,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+751,Aarhus,bio_vasentlig,300.0,3.65,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+760,Ringkøbing-Skjern,bio_vasentlig,300.0,9.64,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+479,Svendborg,bio_vasentlig,300.0,2.72,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+787,Thisted,bio_vasentlig,133.51,22.47,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+810,Brønderslev,bio_vasentlig,300.0,2.26,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+791,Viborg,bio_vasentlig,300.0,5.17,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+165,Albertslund,bio_vasentlig,300.0,2.14,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+480,Nordfyns,bio_vasentlig,300.0,2.55,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+440,Kerteminde,bio_vasentlig,300.0,2.02,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+101,København,bio_vasentlig,300.0,7.19,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+860,Hjørring,bio_vasentlig,300.0,3.05,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+706,Syddjurs,bio_vasentlig,299.4,10.02,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+430,Faaborg-Midtfyn,bio_vasentlig,300.0,3.24,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+573,Varde,bio_vasentlig,239.23,12.54,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+730,Randers,bio_vasentlig,300.0,2.99,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+621,Kolding,bio_vasentlig,300.0,2.17,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+320,Faxe,bio_vasentlig,300.0,6.95,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+169,Høje-Taastrup,bio_vasentlig,300.0,2.13,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+461,Odense,bio_vasentlig,300.0,0.8,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+420,Assens,bio_vasentlig,300.0,1.02,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+756,Ikast-Brande,bio_vasentlig,300.0,5.73,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+846,Mariagerfjord,bio_vasentlig,300.0,5.94,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+580,Aabenraa,bio_vasentlig,300.0,4.25,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+450,Nyborg,bio_vasentlig,300.0,0.82,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+630,Vejle,bio_vasentlig,300.0,2.8,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+540,Sønderborg,bio_vasentlig,300.0,2.04,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+400,Bornholm,bio_vasentlig,223.55,13.42,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+779,Skive,bio_vasentlig,300.0,3.07,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+510,Haderslev,bio_vasentlig,300.0,2.61,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+575,Vejen,bio_vasentlig,300.0,2.14,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+820,Vesthimmerlands,bio_vasentlig,300.0,2.35,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+707,Norddjurs,bio_vasentlig,300.0,6.4,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+671,Struer,bio_vasentlig,300.0,2.32,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+306,Odsherred,bio_vasentlig,300.0,4.16,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+330,Slagelse,bio_vasentlig,300.0,1.92,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+665,Lemvig,bio_vasentlig,300.0,7.59,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+376,Guldborgsund,bio_vasentlig,300.0,5.47,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+326,Kalundborg,bio_vasentlig,300.0,9.23,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+849,Jammerbugt,bio_vasentlig,295.57,10.15,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+550,Tønder,bio_vasentlig,300.0,9.18,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+390,Vordingborg,bio_vasentlig,300.0,6.53,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+360,Lolland,bio_vasentlig,300.0,3.3,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+741,Samsø,bio_vasentlig,293.54,10.22,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+482,Langeland,bio_vasentlig,300.0,3.01,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+201,Allerød,bio_uerstattelig,278.55,3.59,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+175,Rødovre,bio_uerstattelig,300.0,0.0,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+153,Brøndby,bio_uerstattelig,300.0,0.0,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+155,Dragør,bio_uerstattelig,132.45,7.55,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+190,Furesø,bio_uerstattelig,56.09,17.83,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+230,Rudersdal,bio_uerstattelig,68.73,14.55,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+151,Ballerup,bio_uerstattelig,300.0,0.08,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+167,Hvidovre,bio_uerstattelig,300.0,0.07,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+269,Solrød,bio_uerstattelig,300.0,1.19,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+746,Skanderborg,bio_uerstattelig,198.41,5.04,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+157,Gentofte,bio_uerstattelig,300.0,1.25,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+240,Egedal,bio_uerstattelig,243.31,4.11,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+265,Roskilde,bio_uerstattelig,300.0,1.09,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+223,Hørsholm,bio_uerstattelig,264.55,3.78,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+185,Tårnby,bio_uerstattelig,21.52,46.46,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+163,Herlev,bio_uerstattelig,300.0,0.12,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+173,Lyngby-Taarbæk,bio_uerstattelig,28.47,35.13,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+350,Lejre,bio_uerstattelig,300.0,1.29,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+210,Fredensborg,bio_uerstattelig,187.62,5.33,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+710,Favrskov,bio_uerstattelig,300.0,0.09,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+530,Billund,bio_uerstattelig,300.0,0.9,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+183,Ishøj,bio_uerstattelig,300.0,0.44,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+840,Rebild,bio_uerstattelig,300.0,0.63,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+147,Frederiksberg,bio_uerstattelig,300.0,0.0,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+259,Køge,bio_uerstattelig,300.0,0.1,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+253,Greve,bio_uerstattelig,300.0,0.06,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+187,Vallensbæk,bio_uerstattelig,300.0,0.0,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+159,Gladsaxe,bio_uerstattelig,189.75,5.27,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+661,Holstebro,bio_uerstattelig,300.0,1.06,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+217,Helsingør,bio_uerstattelig,113.64,8.8,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+250,Frederikssund,bio_uerstattelig,230.41,4.34,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+657,Herning,bio_uerstattelig,300.0,0.82,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+492,Ærø,bio_uerstattelig,300.0,1.26,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+561,Esbjerg,bio_uerstattelig,300.0,1.01,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+773,Morsø,bio_uerstattelig,300.0,0.05,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+219,Hillerød,bio_uerstattelig,70.82,14.12,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+740,Silkeborg,bio_uerstattelig,300.0,2.61,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+607,Fredericia,bio_uerstattelig,253.81,3.94,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+316,Holbæk,bio_uerstattelig,300.0,0.22,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+340,Sorø,bio_uerstattelig,300.0,0.7,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+260,Halsnæs,bio_uerstattelig,55.87,17.9,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+766,Hedensted,bio_uerstattelig,300.0,0.57,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+825,Læsø,bio_uerstattelig,31.49,31.76,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+615,Horsens,bio_uerstattelig,300.0,1.31,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+329,Ringsted,bio_uerstattelig,300.0,0.47,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+370,Næstved,bio_uerstattelig,300.0,2.18,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+851,Aalborg,bio_uerstattelig,263.85,3.79,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+336,Stevns,bio_uerstattelig,300.0,1.21,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+410,Middelfart,bio_uerstattelig,300.0,0.26,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+727,Odder,bio_uerstattelig,300.0,0.23,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+161,Glostrup,bio_uerstattelig,300.0,0.0,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+563,Fanø,bio_uerstattelig,31.01,32.25,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+813,Frederikshavn,bio_uerstattelig,176.37,5.67,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+270,Gribskov,bio_uerstattelig,50.43,19.83,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+751,Aarhus,bio_uerstattelig,300.0,1.06,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+760,Ringkøbing-Skjern,bio_uerstattelig,196.46,5.09,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+479,Svendborg,bio_uerstattelig,300.0,0.39,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+787,Thisted,bio_uerstattelig,83.89,11.92,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+810,Brønderslev,bio_uerstattelig,300.0,0.39,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+791,Viborg,bio_uerstattelig,300.0,1.38,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+165,Albertslund,bio_uerstattelig,300.0,0.0,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+480,Nordfyns,bio_uerstattelig,300.0,0.31,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+440,Kerteminde,bio_uerstattelig,300.0,0.68,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+101,København,bio_uerstattelig,300.0,1.59,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+860,Hjørring,bio_uerstattelig,300.0,0.77,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+706,Syddjurs,bio_uerstattelig,300.0,1.43,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+430,Faaborg-Midtfyn,bio_uerstattelig,300.0,0.19,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+573,Varde,bio_uerstattelig,149.48,6.69,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+730,Randers,bio_uerstattelig,300.0,0.16,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+621,Kolding,bio_uerstattelig,300.0,0.26,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+320,Faxe,bio_uerstattelig,300.0,0.84,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+169,Høje-Taastrup,bio_uerstattelig,300.0,0.71,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+461,Odense,bio_uerstattelig,300.0,0.13,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+420,Assens,bio_uerstattelig,300.0,0.13,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+756,Ikast-Brande,bio_uerstattelig,300.0,1.58,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+846,Mariagerfjord,bio_uerstattelig,300.0,2.2,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+580,Aabenraa,bio_uerstattelig,300.0,0.44,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+450,Nyborg,bio_uerstattelig,300.0,0.16,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+630,Vejle,bio_uerstattelig,300.0,0.37,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+540,Sønderborg,bio_uerstattelig,300.0,0.07,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+400,Bornholm,bio_uerstattelig,223.71,4.47,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+779,Skive,bio_uerstattelig,300.0,0.63,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+510,Haderslev,bio_uerstattelig,300.0,0.3,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+575,Vejen,bio_uerstattelig,300.0,0.1,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+820,Vesthimmerlands,bio_uerstattelig,300.0,0.63,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+707,Norddjurs,bio_uerstattelig,300.0,2.8,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+671,Struer,bio_uerstattelig,300.0,0.43,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+306,Odsherred,bio_uerstattelig,300.0,1.13,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+330,Slagelse,bio_uerstattelig,300.0,0.43,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+665,Lemvig,bio_uerstattelig,300.0,1.42,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+376,Guldborgsund,bio_uerstattelig,300.0,1.24,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+326,Kalundborg,bio_uerstattelig,250.63,3.99,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+849,Jammerbugt,bio_uerstattelig,259.07,3.86,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+550,Tønder,bio_uerstattelig,246.91,4.05,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+390,Vordingborg,bio_uerstattelig,300.0,3.33,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+360,Lolland,bio_uerstattelig,300.0,1.57,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+741,Samsø,bio_uerstattelig,300.0,2.99,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+482,Langeland,bio_uerstattelig,300.0,0.45,%,2021,DCE Biodiversitetskort (bioscore),ecological,biodiversitet
+201,Allerød,forbrug_co2,459.0,13.77,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+175,Rødovre,forbrug_co2,357.33,10.72,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+153,Brøndby,forbrug_co2,330.33,9.91,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+155,Dragør,forbrug_co2,476.0,14.28,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+190,Furesø,forbrug_co2,440.0,13.2,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+230,Rudersdal,forbrug_co2,552.67,16.58,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+151,Ballerup,forbrug_co2,364.67,10.94,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+167,Hvidovre,forbrug_co2,352.67,10.58,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+269,Solrød,forbrug_co2,451.33,13.54,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+746,Skanderborg,forbrug_co2,386.0,11.58,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+157,Gentofte,forbrug_co2,576.33,17.29,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+240,Egedal,forbrug_co2,410.67,12.32,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+265,Roskilde,forbrug_co2,426.67,12.8,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+223,Hørsholm,forbrug_co2,555.33,16.66,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+185,Tårnby,forbrug_co2,376.33,11.29,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+163,Herlev,forbrug_co2,367.33,11.02,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+173,Lyngby-Taarbæk,forbrug_co2,463.67,13.91,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+350,Lejre,forbrug_co2,428.67,12.86,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+210,Fredensborg,forbrug_co2,422.33,12.67,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+710,Favrskov,forbrug_co2,369.67,11.09,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+530,Billund,forbrug_co2,360.33,10.81,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+183,Ishøj,forbrug_co2,318.67,9.56,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+840,Rebild,forbrug_co2,426.0,12.78,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+147,Frederiksberg,forbrug_co2,385.0,11.55,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+259,Køge,forbrug_co2,408.0,12.24,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+253,Greve,forbrug_co2,438.33,13.15,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+187,Vallensbæk,forbrug_co2,385.33,11.56,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+159,Gladsaxe,forbrug_co2,380.67,11.42,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+661,Holstebro,forbrug_co2,360.0,10.8,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+217,Helsingør,forbrug_co2,390.33,11.71,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+250,Frederikssund,forbrug_co2,380.33,11.41,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+657,Herning,forbrug_co2,362.67,10.88,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+492,Ærø,forbrug_co2,354.0,10.62,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+561,Esbjerg,forbrug_co2,356.67,10.7,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+773,Morsø,forbrug_co2,409.0,12.27,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+219,Hillerød,forbrug_co2,387.67,11.63,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+740,Silkeborg,forbrug_co2,368.0,11.04,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+607,Fredericia,forbrug_co2,348.33,10.45,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+316,Holbæk,forbrug_co2,400.67,12.02,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+340,Sorø,forbrug_co2,400.0,12.0,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+260,Halsnæs,forbrug_co2,349.0,10.47,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+766,Hedensted,forbrug_co2,371.33,11.14,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+825,Læsø,forbrug_co2,438.67,13.16,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+615,Horsens,forbrug_co2,365.33,10.96,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+329,Ringsted,forbrug_co2,391.33,11.74,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+370,Næstved,forbrug_co2,393.67,11.81,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+851,Aalborg,forbrug_co2,406.33,12.19,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+336,Stevns,forbrug_co2,414.67,12.44,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+410,Middelfart,forbrug_co2,375.67,11.27,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+727,Odder,forbrug_co2,375.33,11.26,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+161,Glostrup,forbrug_co2,372.33,11.17,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+563,Fanø,forbrug_co2,404.33,12.13,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+813,Frederikshavn,forbrug_co2,418.33,12.55,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+270,Gribskov,forbrug_co2,390.33,11.71,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+751,Aarhus,forbrug_co2,356.67,10.7,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+760,Ringkøbing-Skjern,forbrug_co2,360.33,10.81,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+479,Svendborg,forbrug_co2,367.33,11.02,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+787,Thisted,forbrug_co2,406.33,12.19,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+810,Brønderslev,forbrug_co2,395.0,11.85,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+791,Viborg,forbrug_co2,366.0,10.98,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+165,Albertslund,forbrug_co2,313.33,9.4,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+480,Nordfyns,forbrug_co2,360.67,10.82,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+440,Kerteminde,forbrug_co2,363.0,10.89,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+101,København,forbrug_co2,324.67,9.74,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+860,Hjørring,forbrug_co2,407.33,12.22,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+706,Syddjurs,forbrug_co2,370.33,11.11,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+430,Faaborg-Midtfyn,forbrug_co2,364.67,10.94,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+573,Varde,forbrug_co2,356.33,10.69,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+730,Randers,forbrug_co2,352.33,10.57,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+621,Kolding,forbrug_co2,364.67,10.94,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+320,Faxe,forbrug_co2,391.0,11.73,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+169,Høje-Taastrup,forbrug_co2,348.33,10.45,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+461,Odense,forbrug_co2,336.67,10.1,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+420,Assens,forbrug_co2,359.33,10.78,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+756,Ikast-Brande,forbrug_co2,351.33,10.54,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+846,Mariagerfjord,forbrug_co2,414.0,12.42,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+580,Aabenraa,forbrug_co2,351.67,10.55,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+450,Nyborg,forbrug_co2,356.0,10.68,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+630,Vejle,forbrug_co2,373.67,11.21,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+540,Sønderborg,forbrug_co2,352.33,10.57,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+400,Bornholm,forbrug_co2,341.0,10.23,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+779,Skive,forbrug_co2,362.67,10.88,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+510,Haderslev,forbrug_co2,356.67,10.7,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+575,Vejen,forbrug_co2,349.33,10.48,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+820,Vesthimmerlands,forbrug_co2,397.67,11.93,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+707,Norddjurs,forbrug_co2,351.67,10.55,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+671,Struer,forbrug_co2,355.33,10.66,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+306,Odsherred,forbrug_co2,383.67,11.51,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+330,Slagelse,forbrug_co2,386.0,11.58,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+665,Lemvig,forbrug_co2,367.0,11.01,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+376,Guldborgsund,forbrug_co2,363.67,10.91,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+326,Kalundborg,forbrug_co2,379.67,11.39,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+849,Jammerbugt,forbrug_co2,415.0,12.45,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+550,Tønder,forbrug_co2,343.33,10.3,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+390,Vordingborg,forbrug_co2,381.67,11.45,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+360,Lolland,forbrug_co2,358.67,10.76,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+741,Samsø,forbrug_co2,365.33,10.96,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
+482,Langeland,forbrug_co2,342.67,10.28,ton CO₂e/person,2023,Osei-Owusu et al. 2020 + ENS GA25,ecological,klimapaavirkning
 201,Allerød,pesticider,101.0,6.06,% boringer over 0.1 µg/l,2023,DN/GEUS Jupiter 2019-2023,ecological,forurening
 175,Rødovre,pesticider,530.1,40.0,% boringer over 0.1 µg/l,2023,DN/GEUS Jupiter 2019-2023,ecological,forurening
 153,Brøndby,pesticider,662.6,50.0,% boringer over 0.1 µg/l,2023,DN/GEUS Jupiter 2019-2023,ecological,forurening
@@ -6342,417 +6538,371 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,areal_bebygget,66.9,9.5,%,2024,DST AREALDK2,ecological,arealanvendelse
 741,Samsø,areal_bebygget,78.87,11.2,%,2024,DST AREALDK2,ecological,arealanvendelse
 482,Langeland,areal_bebygget,77.46,11.0,%,2024,DST AREALDK2,ecological,arealanvendelse
-201,Allerød,_dim_klimapaavirkning,112.9,,,,,ecological_dimension,klimapaavirkning
+201,Allerød,_dim_klimapaavirkning,459.0,,,,,ecological_dimension,klimapaavirkning
 201,Allerød,_dim_luftkvalitet,154.0,,,,,ecological_dimension,luftkvalitet
 201,Allerød,_dim_cirkularitet,86.67,,,,,ecological_dimension,cirkularitet
-201,Allerød,_dim_naeringsstoffer,71.48,,,,,ecological_dimension,naeringsstoffer
-201,Allerød,_dim_biodiversitet,427.96,,,,,ecological_dimension,biodiversitet
-201,Allerød,_dim_forbrug_co2,459.0,,,,,ecological_dimension,forbrug_co2
+201,Allerød,_dim_naeringsstoffer,99.29,,,,,ecological_dimension,naeringsstoffer
+201,Allerød,_dim_biodiversitet,278.55,,,,,ecological_dimension,biodiversitet
 201,Allerød,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 201,Allerød,_dim_vand,152.15,,,,,ecological_dimension,vand
 201,Allerød,_dim_arealanvendelse,202.82,,,,,ecological_dimension,arealanvendelse
-175,Rødovre,_dim_klimapaavirkning,61.72,,,,,ecological_dimension,klimapaavirkning
+175,Rødovre,_dim_klimapaavirkning,357.33,,,,,ecological_dimension,klimapaavirkning
 175,Rødovre,_dim_luftkvalitet,153.4,,,,,ecological_dimension,luftkvalitet
 175,Rødovre,_dim_cirkularitet,110.17,,,,,ecological_dimension,cirkularitet
-175,Rødovre,_dim_naeringsstoffer,66.67,,,,,ecological_dimension,naeringsstoffer
-175,Rødovre,_dim_biodiversitet,25000.0,,,,,ecological_dimension,biodiversitet
-175,Rødovre,_dim_forbrug_co2,357.33,,,,,ecological_dimension,forbrug_co2
+175,Rødovre,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+175,Rødovre,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 175,Rødovre,_dim_forurening,530.1,,,,,ecological_dimension,forurening
 175,Rødovre,_dim_vand,61.7,,,,,ecological_dimension,vand
 175,Rødovre,_dim_arealanvendelse,619.72,,,,,ecological_dimension,arealanvendelse
-153,Brøndby,_dim_klimapaavirkning,108.86,,,,,ecological_dimension,klimapaavirkning
+153,Brøndby,_dim_klimapaavirkning,330.33,,,,,ecological_dimension,klimapaavirkning
 153,Brøndby,_dim_luftkvalitet,151.0,,,,,ecological_dimension,luftkvalitet
 153,Brøndby,_dim_cirkularitet,108.33,,,,,ecological_dimension,cirkularitet
 153,Brøndby,_dim_naeringsstoffer,49.75,,,,,ecological_dimension,naeringsstoffer
-153,Brøndby,_dim_biodiversitet,5454.55,,,,,ecological_dimension,biodiversitet
-153,Brøndby,_dim_forbrug_co2,330.33,,,,,ecological_dimension,forbrug_co2
+153,Brøndby,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 153,Brøndby,_dim_forurening,662.6,,,,,ecological_dimension,forurening
 153,Brøndby,_dim_vand,61.7,,,,,ecological_dimension,vand
 153,Brøndby,_dim_arealanvendelse,497.18,,,,,ecological_dimension,arealanvendelse
-155,Dragør,_dim_klimapaavirkning,60.82,,,,,ecological_dimension,klimapaavirkning
+155,Dragør,_dim_klimapaavirkning,476.0,,,,,ecological_dimension,klimapaavirkning
 155,Dragør,_dim_luftkvalitet,147.2,,,,,ecological_dimension,luftkvalitet
 155,Dragør,_dim_cirkularitet,127.44,,,,,ecological_dimension,cirkularitet
-155,Dragør,_dim_naeringsstoffer,73.0,,,,,ecological_dimension,naeringsstoffer
-155,Dragør,_dim_biodiversitet,339.37,,,,,ecological_dimension,biodiversitet
-155,Dragør,_dim_forbrug_co2,476.0,,,,,ecological_dimension,forbrug_co2
+155,Dragør,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+155,Dragør,_dim_biodiversitet,187.62,,,,,ecological_dimension,biodiversitet
 155,Dragør,_dim_forurening,530.1,,,,,ecological_dimension,forurening
 155,Dragør,_dim_vand,61.7,,,,,ecological_dimension,vand
 155,Dragør,_dim_arealanvendelse,319.72,,,,,ecological_dimension,arealanvendelse
-190,Furesø,_dim_klimapaavirkning,83.34,,,,,ecological_dimension,klimapaavirkning
+190,Furesø,_dim_klimapaavirkning,440.0,,,,,ecological_dimension,klimapaavirkning
 190,Furesø,_dim_luftkvalitet,154.2,,,,,ecological_dimension,luftkvalitet
 190,Furesø,_dim_cirkularitet,97.01,,,,,ecological_dimension,cirkularitet
-190,Furesø,_dim_naeringsstoffer,50.26,,,,,ecological_dimension,naeringsstoffer
-190,Furesø,_dim_biodiversitet,294.99,,,,,ecological_dimension,biodiversitet
-190,Furesø,_dim_forbrug_co2,440.0,,,,,ecological_dimension,forbrug_co2
+190,Furesø,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+190,Furesø,_dim_biodiversitet,89.98,,,,,ecological_dimension,biodiversitet
 190,Furesø,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 190,Furesø,_dim_vand,328.69,,,,,ecological_dimension,vand
 190,Furesø,_dim_arealanvendelse,259.15,,,,,ecological_dimension,arealanvendelse
-230,Rudersdal,_dim_klimapaavirkning,100.52,,,,,ecological_dimension,klimapaavirkning
+230,Rudersdal,_dim_klimapaavirkning,552.67,,,,,ecological_dimension,klimapaavirkning
 230,Rudersdal,_dim_luftkvalitet,153.0,,,,,ecological_dimension,luftkvalitet
 230,Rudersdal,_dim_cirkularitet,83.33,,,,,ecological_dimension,cirkularitet
-230,Rudersdal,_dim_naeringsstoffer,71.0,,,,,ecological_dimension,naeringsstoffer
-230,Rudersdal,_dim_biodiversitet,345.22,,,,,ecological_dimension,biodiversitet
-230,Rudersdal,_dim_forbrug_co2,552.67,,,,,ecological_dimension,forbrug_co2
+230,Rudersdal,_dim_naeringsstoffer,110.99,,,,,ecological_dimension,naeringsstoffer
+230,Rudersdal,_dim_biodiversitet,112.32,,,,,ecological_dimension,biodiversitet
 230,Rudersdal,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 230,Rudersdal,_dim_vand,86.06,,,,,ecological_dimension,vand
 230,Rudersdal,_dim_arealanvendelse,309.15,,,,,ecological_dimension,arealanvendelse
-151,Ballerup,_dim_klimapaavirkning,94.36,,,,,ecological_dimension,klimapaavirkning
+151,Ballerup,_dim_klimapaavirkning,364.67,,,,,ecological_dimension,klimapaavirkning
 151,Ballerup,_dim_luftkvalitet,152.8,,,,,ecological_dimension,luftkvalitet
 151,Ballerup,_dim_cirkularitet,108.33,,,,,ecological_dimension,cirkularitet
-151,Ballerup,_dim_naeringsstoffer,76.91,,,,,ecological_dimension,naeringsstoffer
-151,Ballerup,_dim_biodiversitet,502.51,,,,,ecological_dimension,biodiversitet
-151,Ballerup,_dim_forbrug_co2,364.67,,,,,ecological_dimension,forbrug_co2
+151,Ballerup,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+151,Ballerup,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 151,Ballerup,_dim_forurening,689.1,,,,,ecological_dimension,forurening
 151,Ballerup,_dim_vand,64.74,,,,,ecological_dimension,vand
 151,Ballerup,_dim_arealanvendelse,464.79,,,,,ecological_dimension,arealanvendelse
-167,Hvidovre,_dim_klimapaavirkning,75.07,,,,,ecological_dimension,klimapaavirkning
+167,Hvidovre,_dim_klimapaavirkning,352.67,,,,,ecological_dimension,klimapaavirkning
 167,Hvidovre,_dim_luftkvalitet,151.4,,,,,ecological_dimension,luftkvalitet
 167,Hvidovre,_dim_cirkularitet,141.3,,,,,ecological_dimension,cirkularitet
 167,Hvidovre,_dim_naeringsstoffer,302.94,,,,,ecological_dimension,naeringsstoffer
-167,Hvidovre,_dim_biodiversitet,1986.75,,,,,ecological_dimension,biodiversitet
-167,Hvidovre,_dim_forbrug_co2,352.67,,,,,ecological_dimension,forbrug_co2
+167,Hvidovre,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 167,Hvidovre,_dim_forurening,883.5,,,,,ecological_dimension,forurening
 167,Hvidovre,_dim_vand,61.7,,,,,ecological_dimension,vand
 167,Hvidovre,_dim_arealanvendelse,560.56,,,,,ecological_dimension,arealanvendelse
-269,Solrød,_dim_klimapaavirkning,116.19,,,,,ecological_dimension,klimapaavirkning
+269,Solrød,_dim_klimapaavirkning,451.33,,,,,ecological_dimension,klimapaavirkning
 269,Solrød,_dim_luftkvalitet,156.0,,,,,ecological_dimension,luftkvalitet
 269,Solrød,_dim_cirkularitet,100.0,,,,,ecological_dimension,cirkularitet
 269,Solrød,_dim_naeringsstoffer,98.77,,,,,ecological_dimension,naeringsstoffer
-269,Solrød,_dim_biodiversitet,428.57,,,,,ecological_dimension,biodiversitet
-269,Solrød,_dim_forbrug_co2,451.33,,,,,ecological_dimension,forbrug_co2
+269,Solrød,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 269,Solrød,_dim_forurening,132.5,,,,,ecological_dimension,forurening
 269,Solrød,_dim_vand,110.86,,,,,ecological_dimension,vand
 269,Solrød,_dim_arealanvendelse,222.54,,,,,ecological_dimension,arealanvendelse
-746,Skanderborg,_dim_klimapaavirkning,158.86,,,,,ecological_dimension,klimapaavirkning
+746,Skanderborg,_dim_klimapaavirkning,386.0,,,,,ecological_dimension,klimapaavirkning
 746,Skanderborg,_dim_luftkvalitet,145.6,,,,,ecological_dimension,luftkvalitet
 746,Skanderborg,_dim_cirkularitet,132.65,,,,,ecological_dimension,cirkularitet
 746,Skanderborg,_dim_naeringsstoffer,105.94,,,,,ecological_dimension,naeringsstoffer
-746,Skanderborg,_dim_biodiversitet,506.76,,,,,ecological_dimension,biodiversitet
-746,Skanderborg,_dim_forbrug_co2,386.0,,,,,ecological_dimension,forbrug_co2
+746,Skanderborg,_dim_biodiversitet,277.01,,,,,ecological_dimension,biodiversitet
 746,Skanderborg,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 746,Skanderborg,_dim_vand,68.79,,,,,ecological_dimension,vand
 746,Skanderborg,_dim_arealanvendelse,115.49,,,,,ecological_dimension,arealanvendelse
-157,Gentofte,_dim_klimapaavirkning,68.76,,,,,ecological_dimension,klimapaavirkning
+157,Gentofte,_dim_klimapaavirkning,576.33,,,,,ecological_dimension,klimapaavirkning
 157,Gentofte,_dim_luftkvalitet,151.2,,,,,ecological_dimension,luftkvalitet
 157,Gentofte,_dim_cirkularitet,106.63,,,,,ecological_dimension,cirkularitet
-157,Gentofte,_dim_naeringsstoffer,54.23,,,,,ecological_dimension,naeringsstoffer
-157,Gentofte,_dim_biodiversitet,1060.07,,,,,ecological_dimension,biodiversitet
-157,Gentofte,_dim_forbrug_co2,576.33,,,,,ecological_dimension,forbrug_co2
+157,Gentofte,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+157,Gentofte,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 157,Gentofte,_dim_forurening,220.9,,,,,ecological_dimension,forurening
 157,Gentofte,_dim_vand,61.7,,,,,ecological_dimension,vand
 157,Gentofte,_dim_arealanvendelse,594.37,,,,,ecological_dimension,arealanvendelse
-240,Egedal,_dim_klimapaavirkning,80.58,,,,,ecological_dimension,klimapaavirkning
+240,Egedal,_dim_klimapaavirkning,410.67,,,,,ecological_dimension,klimapaavirkning
 240,Egedal,_dim_luftkvalitet,156.8,,,,,ecological_dimension,luftkvalitet
 240,Egedal,_dim_cirkularitet,101.47,,,,,ecological_dimension,cirkularitet
-240,Egedal,_dim_naeringsstoffer,136.35,,,,,ecological_dimension,naeringsstoffer
-240,Egedal,_dim_biodiversitet,302.11,,,,,ecological_dimension,biodiversitet
-240,Egedal,_dim_forbrug_co2,410.67,,,,,ecological_dimension,forbrug_co2
+240,Egedal,_dim_naeringsstoffer,250.57,,,,,ecological_dimension,naeringsstoffer
+240,Egedal,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 240,Egedal,_dim_forurening,120.5,,,,,ecological_dimension,forurening
 240,Egedal,_dim_vand,183.53,,,,,ecological_dimension,vand
 240,Egedal,_dim_arealanvendelse,167.61,,,,,ecological_dimension,arealanvendelse
-265,Roskilde,_dim_klimapaavirkning,84.82,,,,,ecological_dimension,klimapaavirkning
+265,Roskilde,_dim_klimapaavirkning,426.67,,,,,ecological_dimension,klimapaavirkning
 265,Roskilde,_dim_luftkvalitet,158.0,,,,,ecological_dimension,luftkvalitet
 265,Roskilde,_dim_cirkularitet,100.55,,,,,ecological_dimension,cirkularitet
 265,Roskilde,_dim_naeringsstoffer,124.79,,,,,ecological_dimension,naeringsstoffer
-265,Roskilde,_dim_biodiversitet,601.2,,,,,ecological_dimension,biodiversitet
-265,Roskilde,_dim_forbrug_co2,426.67,,,,,ecological_dimension,forbrug_co2
+265,Roskilde,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 265,Roskilde,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 265,Roskilde,_dim_vand,272.31,,,,,ecological_dimension,vand
 265,Roskilde,_dim_arealanvendelse,197.89,,,,,ecological_dimension,arealanvendelse
-223,Hørsholm,_dim_klimapaavirkning,88.9,,,,,ecological_dimension,klimapaavirkning
+223,Hørsholm,_dim_klimapaavirkning,555.33,,,,,ecological_dimension,klimapaavirkning
 223,Hørsholm,_dim_luftkvalitet,146.6,,,,,ecological_dimension,luftkvalitet
 223,Hørsholm,_dim_cirkularitet,92.86,,,,,ecological_dimension,cirkularitet
-223,Hørsholm,_dim_naeringsstoffer,129.4,,,,,ecological_dimension,naeringsstoffer
-223,Hørsholm,_dim_biodiversitet,376.41,,,,,ecological_dimension,biodiversitet
-223,Hørsholm,_dim_forbrug_co2,555.33,,,,,ecological_dimension,forbrug_co2
+223,Hørsholm,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+223,Hørsholm,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 223,Hørsholm,_dim_forurening,165.6,,,,,ecological_dimension,forurening
 223,Hørsholm,_dim_vand,108.94,,,,,ecological_dimension,vand
 223,Hørsholm,_dim_arealanvendelse,297.89,,,,,ecological_dimension,arealanvendelse
-185,Tårnby,_dim_klimapaavirkning,78.44,,,,,ecological_dimension,klimapaavirkning
+185,Tårnby,_dim_klimapaavirkning,376.33,,,,,ecological_dimension,klimapaavirkning
 185,Tårnby,_dim_luftkvalitet,146.8,,,,,ecological_dimension,luftkvalitet
 185,Tårnby,_dim_cirkularitet,112.07,,,,,ecological_dimension,cirkularitet
 185,Tårnby,_dim_naeringsstoffer,147.93,,,,,ecological_dimension,naeringsstoffer
-185,Tårnby,_dim_biodiversitet,68.46,,,,,ecological_dimension,biodiversitet
-185,Tårnby,_dim_forbrug_co2,376.33,,,,,ecological_dimension,forbrug_co2
+185,Tårnby,_dim_biodiversitet,60.98,,,,,ecological_dimension,biodiversitet
 185,Tårnby,_dim_forurening,220.9,,,,,ecological_dimension,forurening
 185,Tårnby,_dim_vand,61.7,,,,,ecological_dimension,vand
 185,Tårnby,_dim_arealanvendelse,290.14,,,,,ecological_dimension,arealanvendelse
-163,Herlev,_dim_klimapaavirkning,69.45,,,,,ecological_dimension,klimapaavirkning
+163,Herlev,_dim_klimapaavirkning,367.33,,,,,ecological_dimension,klimapaavirkning
 163,Herlev,_dim_luftkvalitet,154.4,,,,,ecological_dimension,luftkvalitet
 163,Herlev,_dim_cirkularitet,108.33,,,,,ecological_dimension,cirkularitet
-163,Herlev,_dim_naeringsstoffer,66.67,,,,,ecological_dimension,naeringsstoffer
-163,Herlev,_dim_biodiversitet,810.81,,,,,ecological_dimension,biodiversitet
-163,Herlev,_dim_forbrug_co2,367.33,,,,,ecological_dimension,forbrug_co2
+163,Herlev,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+163,Herlev,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 163,Herlev,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 163,Herlev,_dim_vand,61.7,,,,,ecological_dimension,vand
 163,Herlev,_dim_arealanvendelse,569.72,,,,,ecological_dimension,arealanvendelse
-173,Lyngby-Taarbæk,_dim_klimapaavirkning,77.32,,,,,ecological_dimension,klimapaavirkning
+173,Lyngby-Taarbæk,_dim_klimapaavirkning,463.67,,,,,ecological_dimension,klimapaavirkning
 173,Lyngby-Taarbæk,_dim_luftkvalitet,155.0,,,,,ecological_dimension,luftkvalitet
 173,Lyngby-Taarbæk,_dim_cirkularitet,110.17,,,,,ecological_dimension,cirkularitet
-173,Lyngby-Taarbæk,_dim_naeringsstoffer,194.14,,,,,ecological_dimension,naeringsstoffer
-173,Lyngby-Taarbæk,_dim_biodiversitet,254.45,,,,,ecological_dimension,biodiversitet
-173,Lyngby-Taarbæk,_dim_forbrug_co2,463.67,,,,,ecological_dimension,forbrug_co2
+173,Lyngby-Taarbæk,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+173,Lyngby-Taarbæk,_dim_biodiversitet,68.04,,,,,ecological_dimension,biodiversitet
 173,Lyngby-Taarbæk,_dim_forurening,441.7,,,,,ecological_dimension,forurening
 173,Lyngby-Taarbæk,_dim_vand,61.7,,,,,ecological_dimension,vand
 173,Lyngby-Taarbæk,_dim_arealanvendelse,354.23,,,,,ecological_dimension,arealanvendelse
-350,Lejre,_dim_klimapaavirkning,169.47,,,,,ecological_dimension,klimapaavirkning
+350,Lejre,_dim_klimapaavirkning,428.67,,,,,ecological_dimension,klimapaavirkning
 350,Lejre,_dim_luftkvalitet,156.4,,,,,ecological_dimension,luftkvalitet
 350,Lejre,_dim_cirkularitet,98.48,,,,,ecological_dimension,cirkularitet
-350,Lejre,_dim_naeringsstoffer,128.05,,,,,ecological_dimension,naeringsstoffer
-350,Lejre,_dim_biodiversitet,513.7,,,,,ecological_dimension,biodiversitet
-350,Lejre,_dim_forbrug_co2,428.67,,,,,ecological_dimension,forbrug_co2
+350,Lejre,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+350,Lejre,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 350,Lejre,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 350,Lejre,_dim_vand,259.4,,,,,ecological_dimension,vand
 350,Lejre,_dim_arealanvendelse,102.11,,,,,ecological_dimension,arealanvendelse
-210,Fredensborg,_dim_klimapaavirkning,87.85,,,,,ecological_dimension,klimapaavirkning
+210,Fredensborg,_dim_klimapaavirkning,422.33,,,,,ecological_dimension,klimapaavirkning
 210,Fredensborg,_dim_luftkvalitet,145.8,,,,,ecological_dimension,luftkvalitet
 210,Fredensborg,_dim_cirkularitet,253.94,,,,,ecological_dimension,cirkularitet
-210,Fredensborg,_dim_naeringsstoffer,38.6,,,,,ecological_dimension,naeringsstoffer
-210,Fredensborg,_dim_biodiversitet,584.8,,,,,ecological_dimension,biodiversitet
-210,Fredensborg,_dim_forbrug_co2,422.33,,,,,ecological_dimension,forbrug_co2
+210,Fredensborg,_dim_naeringsstoffer,128.31,,,,,ecological_dimension,naeringsstoffer
+210,Fredensborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 210,Fredensborg,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 210,Fredensborg,_dim_vand,103.99,,,,,ecological_dimension,vand
 210,Fredensborg,_dim_arealanvendelse,169.01,,,,,ecological_dimension,arealanvendelse
-710,Favrskov,_dim_klimapaavirkning,233.67,,,,,ecological_dimension,klimapaavirkning
+710,Favrskov,_dim_klimapaavirkning,369.67,,,,,ecological_dimension,klimapaavirkning
 710,Favrskov,_dim_luftkvalitet,141.8,,,,,ecological_dimension,luftkvalitet
 710,Favrskov,_dim_cirkularitet,99.82,,,,,ecological_dimension,cirkularitet
-710,Favrskov,_dim_naeringsstoffer,110.72,,,,,ecological_dimension,naeringsstoffer
-710,Favrskov,_dim_biodiversitet,602.41,,,,,ecological_dimension,biodiversitet
-710,Favrskov,_dim_forbrug_co2,369.67,,,,,ecological_dimension,forbrug_co2
+710,Favrskov,_dim_naeringsstoffer,253.84,,,,,ecological_dimension,naeringsstoffer
+710,Favrskov,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 710,Favrskov,_dim_forurening,107.9,,,,,ecological_dimension,forurening
 710,Favrskov,_dim_vand,61.7,,,,,ecological_dimension,vand
 710,Favrskov,_dim_arealanvendelse,106.03,,,,,ecological_dimension,arealanvendelse
-530,Billund,_dim_klimapaavirkning,239.61,,,,,ecological_dimension,klimapaavirkning
+530,Billund,_dim_klimapaavirkning,360.33,,,,,ecological_dimension,klimapaavirkning
 530,Billund,_dim_luftkvalitet,147.4,,,,,ecological_dimension,luftkvalitet
 530,Billund,_dim_cirkularitet,97.01,,,,,ecological_dimension,cirkularitet
-530,Billund,_dim_naeringsstoffer,262.12,,,,,ecological_dimension,naeringsstoffer
-530,Billund,_dim_biodiversitet,278.81,,,,,ecological_dimension,biodiversitet
-530,Billund,_dim_forbrug_co2,360.33,,,,,ecological_dimension,forbrug_co2
+530,Billund,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+530,Billund,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 530,Billund,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 530,Billund,_dim_vand,131.19,,,,,ecological_dimension,vand
 530,Billund,_dim_arealanvendelse,92.14,,,,,ecological_dimension,arealanvendelse
-183,Ishøj,_dim_klimapaavirkning,90.02,,,,,ecological_dimension,klimapaavirkning
+183,Ishøj,_dim_klimapaavirkning,318.67,,,,,ecological_dimension,klimapaavirkning
 183,Ishøj,_dim_luftkvalitet,152.2,,,,,ecological_dimension,luftkvalitet
 183,Ishøj,_dim_cirkularitet,180.56,,,,,ecological_dimension,cirkularitet
 183,Ishøj,_dim_naeringsstoffer,70.8,,,,,ecological_dimension,naeringsstoffer
-183,Ishøj,_dim_biodiversitet,712.59,,,,,ecological_dimension,biodiversitet
-183,Ishøj,_dim_forbrug_co2,318.67,,,,,ecological_dimension,forbrug_co2
+183,Ishøj,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 183,Ishøj,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 183,Ishøj,_dim_vand,315.07,,,,,ecological_dimension,vand
 183,Ishøj,_dim_arealanvendelse,250.0,,,,,ecological_dimension,arealanvendelse
 840,Rebild,_dim_klimapaavirkning,561.35,,,,,ecological_dimension,klimapaavirkning
 840,Rebild,_dim_luftkvalitet,137.6,,,,,ecological_dimension,luftkvalitet
 840,Rebild,_dim_cirkularitet,118.18,,,,,ecological_dimension,cirkularitet
-840,Rebild,_dim_naeringsstoffer,131.58,,,,,ecological_dimension,naeringsstoffer
-840,Rebild,_dim_biodiversitet,342.08,,,,,ecological_dimension,biodiversitet
-840,Rebild,_dim_forbrug_co2,426.0,,,,,ecological_dimension,forbrug_co2
+840,Rebild,_dim_naeringsstoffer,223.69,,,,,ecological_dimension,naeringsstoffer
+840,Rebild,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 840,Rebild,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 840,Rebild,_dim_vand,120.0,,,,,ecological_dimension,vand
 840,Rebild,_dim_arealanvendelse,108.41,,,,,ecological_dimension,arealanvendelse
-147,Frederiksberg,_dim_klimapaavirkning,32.35,,,,,ecological_dimension,klimapaavirkning
+147,Frederiksberg,_dim_klimapaavirkning,385.0,,,,,ecological_dimension,klimapaavirkning
 147,Frederiksberg,_dim_luftkvalitet,155.2,,,,,ecological_dimension,luftkvalitet
 147,Frederiksberg,_dim_cirkularitet,154.76,,,,,ecological_dimension,cirkularitet
-147,Frederiksberg,_dim_naeringsstoffer,66.67,,,,,ecological_dimension,naeringsstoffer
-147,Frederiksberg,_dim_biodiversitet,999.0,,,,,ecological_dimension,biodiversitet
-147,Frederiksberg,_dim_forbrug_co2,385.0,,,,,ecological_dimension,forbrug_co2
+147,Frederiksberg,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+147,Frederiksberg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 147,Frederiksberg,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 147,Frederiksberg,_dim_vand,61.7,,,,,ecological_dimension,vand
 147,Frederiksberg,_dim_arealanvendelse,637.32,,,,,ecological_dimension,arealanvendelse
-259,Køge,_dim_klimapaavirkning,199.63,,,,,ecological_dimension,klimapaavirkning
+259,Køge,_dim_klimapaavirkning,408.0,,,,,ecological_dimension,klimapaavirkning
 259,Køge,_dim_luftkvalitet,156.6,,,,,ecological_dimension,luftkvalitet
 259,Køge,_dim_cirkularitet,110.17,,,,,ecological_dimension,cirkularitet
-259,Køge,_dim_naeringsstoffer,102.85,,,,,ecological_dimension,naeringsstoffer
-259,Køge,_dim_biodiversitet,1111.11,,,,,ecological_dimension,biodiversitet
-259,Køge,_dim_forbrug_co2,408.0,,,,,ecological_dimension,forbrug_co2
+259,Køge,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+259,Køge,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 259,Køge,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 259,Køge,_dim_vand,264.06,,,,,ecological_dimension,vand
 259,Køge,_dim_arealanvendelse,135.92,,,,,ecological_dimension,arealanvendelse
-253,Greve,_dim_klimapaavirkning,105.24,,,,,ecological_dimension,klimapaavirkning
+253,Greve,_dim_klimapaavirkning,438.33,,,,,ecological_dimension,klimapaavirkning
 253,Greve,_dim_luftkvalitet,155.0,,,,,ecological_dimension,luftkvalitet
 253,Greve,_dim_cirkularitet,100.0,,,,,ecological_dimension,cirkularitet
 253,Greve,_dim_naeringsstoffer,98.52,,,,,ecological_dimension,naeringsstoffer
-253,Greve,_dim_biodiversitet,900.9,,,,,ecological_dimension,biodiversitet
-253,Greve,_dim_forbrug_co2,438.33,,,,,ecological_dimension,forbrug_co2
+253,Greve,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 253,Greve,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 253,Greve,_dim_vand,74.26,,,,,ecological_dimension,vand
 253,Greve,_dim_arealanvendelse,316.2,,,,,ecological_dimension,arealanvendelse
-187,Vallensbæk,_dim_klimapaavirkning,75.18,,,,,ecological_dimension,klimapaavirkning
+187,Vallensbæk,_dim_klimapaavirkning,385.33,,,,,ecological_dimension,klimapaavirkning
 187,Vallensbæk,_dim_luftkvalitet,151.0,,,,,ecological_dimension,luftkvalitet
 187,Vallensbæk,_dim_cirkularitet,125.0,,,,,ecological_dimension,cirkularitet
-187,Vallensbæk,_dim_naeringsstoffer,70.8,,,,,ecological_dimension,naeringsstoffer
-187,Vallensbæk,_dim_biodiversitet,259.29,,,,,ecological_dimension,biodiversitet
-187,Vallensbæk,_dim_forbrug_co2,385.33,,,,,ecological_dimension,forbrug_co2
+187,Vallensbæk,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+187,Vallensbæk,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 187,Vallensbæk,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 187,Vallensbæk,_dim_vand,61.7,,,,,ecological_dimension,vand
 187,Vallensbæk,_dim_arealanvendelse,428.87,,,,,ecological_dimension,arealanvendelse
-159,Gladsaxe,_dim_klimapaavirkning,80.97,,,,,ecological_dimension,klimapaavirkning
+159,Gladsaxe,_dim_klimapaavirkning,380.67,,,,,ecological_dimension,klimapaavirkning
 159,Gladsaxe,_dim_luftkvalitet,155.4,,,,,ecological_dimension,luftkvalitet
 159,Gladsaxe,_dim_cirkularitet,101.56,,,,,ecological_dimension,cirkularitet
-159,Gladsaxe,_dim_naeringsstoffer,23.19,,,,,ecological_dimension,naeringsstoffer
-159,Gladsaxe,_dim_biodiversitet,983.61,,,,,ecological_dimension,biodiversitet
-159,Gladsaxe,_dim_forbrug_co2,380.67,,,,,ecological_dimension,forbrug_co2
+159,Gladsaxe,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+159,Gladsaxe,_dim_biodiversitet,269.06,,,,,ecological_dimension,biodiversitet
 159,Gladsaxe,_dim_forurening,311.8,,,,,ecological_dimension,forurening
 159,Gladsaxe,_dim_vand,61.7,,,,,ecological_dimension,vand
 159,Gladsaxe,_dim_arealanvendelse,565.49,,,,,ecological_dimension,arealanvendelse
-661,Holstebro,_dim_klimapaavirkning,270.79,,,,,ecological_dimension,klimapaavirkning
+661,Holstebro,_dim_klimapaavirkning,360.0,,,,,ecological_dimension,klimapaavirkning
 661,Holstebro,_dim_luftkvalitet,136.6,,,,,ecological_dimension,luftkvalitet
 661,Holstebro,_dim_cirkularitet,133.71,,,,,ecological_dimension,cirkularitet
-661,Holstebro,_dim_naeringsstoffer,173.73,,,,,ecological_dimension,naeringsstoffer
-661,Holstebro,_dim_biodiversitet,266.43,,,,,ecological_dimension,biodiversitet
-661,Holstebro,_dim_forbrug_co2,360.0,,,,,ecological_dimension,forbrug_co2
+661,Holstebro,_dim_naeringsstoffer,286.19,,,,,ecological_dimension,naeringsstoffer
+661,Holstebro,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 661,Holstebro,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 661,Holstebro,_dim_vand,108.83,,,,,ecological_dimension,vand
 661,Holstebro,_dim_arealanvendelse,97.07,,,,,ecological_dimension,arealanvendelse
-217,Helsingør,_dim_klimapaavirkning,72.28,,,,,ecological_dimension,klimapaavirkning
+217,Helsingør,_dim_klimapaavirkning,390.33,,,,,ecological_dimension,klimapaavirkning
 217,Helsingør,_dim_luftkvalitet,141.0,,,,,ecological_dimension,luftkvalitet
 217,Helsingør,_dim_cirkularitet,108.33,,,,,ecological_dimension,cirkularitet
-217,Helsingør,_dim_naeringsstoffer,152.79,,,,,ecological_dimension,naeringsstoffer
-217,Helsingør,_dim_biodiversitet,476.95,,,,,ecological_dimension,biodiversitet
-217,Helsingør,_dim_forbrug_co2,390.33,,,,,ecological_dimension,forbrug_co2
+217,Helsingør,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+217,Helsingør,_dim_biodiversitet,164.2,,,,,ecological_dimension,biodiversitet
 217,Helsingør,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 217,Helsingør,_dim_vand,75.02,,,,,ecological_dimension,vand
 217,Helsingør,_dim_arealanvendelse,219.72,,,,,ecological_dimension,arealanvendelse
-250,Frederikssund,_dim_klimapaavirkning,129.37,,,,,ecological_dimension,klimapaavirkning
+250,Frederikssund,_dim_klimapaavirkning,380.33,,,,,ecological_dimension,klimapaavirkning
 250,Frederikssund,_dim_luftkvalitet,153.4,,,,,ecological_dimension,luftkvalitet
 250,Frederikssund,_dim_cirkularitet,124.13,,,,,ecological_dimension,cirkularitet
 250,Frederikssund,_dim_naeringsstoffer,137.62,,,,,ecological_dimension,naeringsstoffer
-250,Frederikssund,_dim_biodiversitet,341.3,,,,,ecological_dimension,biodiversitet
-250,Frederikssund,_dim_forbrug_co2,380.33,,,,,ecological_dimension,forbrug_co2
+250,Frederikssund,_dim_biodiversitet,259.52,,,,,ecological_dimension,biodiversitet
 250,Frederikssund,_dim_forurening,189.4,,,,,ecological_dimension,forurening
 250,Frederikssund,_dim_vand,157.33,,,,,ecological_dimension,vand
 250,Frederikssund,_dim_arealanvendelse,141.55,,,,,ecological_dimension,arealanvendelse
-657,Herning,_dim_klimapaavirkning,244.54,,,,,ecological_dimension,klimapaavirkning
+657,Herning,_dim_klimapaavirkning,362.67,,,,,ecological_dimension,klimapaavirkning
 657,Herning,_dim_luftkvalitet,140.0,,,,,ecological_dimension,luftkvalitet
 657,Herning,_dim_cirkularitet,102.03,,,,,ecological_dimension,cirkularitet
 657,Herning,_dim_naeringsstoffer,176.77,,,,,ecological_dimension,naeringsstoffer
-657,Herning,_dim_biodiversitet,262.7,,,,,ecological_dimension,biodiversitet
-657,Herning,_dim_forbrug_co2,362.67,,,,,ecological_dimension,forbrug_co2
+657,Herning,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 657,Herning,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 657,Herning,_dim_vand,97.48,,,,,ecological_dimension,vand
 657,Herning,_dim_arealanvendelse,98.72,,,,,ecological_dimension,arealanvendelse
-492,Ærø,_dim_klimapaavirkning,172.55,,,,,ecological_dimension,klimapaavirkning
+492,Ærø,_dim_klimapaavirkning,354.0,,,,,ecological_dimension,klimapaavirkning
 492,Ærø,_dim_luftkvalitet,156.2,,,,,ecological_dimension,luftkvalitet
 492,Ærø,_dim_cirkularitet,208.29,,,,,ecological_dimension,cirkularitet
-492,Ærø,_dim_naeringsstoffer,124.79,,,,,ecological_dimension,naeringsstoffer
-492,Ærø,_dim_biodiversitet,259.97,,,,,ecological_dimension,biodiversitet
-492,Ærø,_dim_forbrug_co2,354.0,,,,,ecological_dimension,forbrug_co2
+492,Ærø,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+492,Ærø,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 492,Ærø,_dim_forurening,795.1,,,,,ecological_dimension,forurening
 492,Ærø,_dim_vand,166.7,,,,,ecological_dimension,vand
 492,Ærø,_dim_arealanvendelse,113.16,,,,,ecological_dimension,arealanvendelse
-561,Esbjerg,_dim_klimapaavirkning,252.11,,,,,ecological_dimension,klimapaavirkning
+561,Esbjerg,_dim_klimapaavirkning,356.67,,,,,ecological_dimension,klimapaavirkning
 561,Esbjerg,_dim_luftkvalitet,154.2,,,,,ecological_dimension,luftkvalitet
 561,Esbjerg,_dim_cirkularitet,128.73,,,,,ecological_dimension,cirkularitet
-561,Esbjerg,_dim_naeringsstoffer,127.28,,,,,ecological_dimension,naeringsstoffer
-561,Esbjerg,_dim_biodiversitet,358.42,,,,,ecological_dimension,biodiversitet
-561,Esbjerg,_dim_forbrug_co2,356.67,,,,,ecological_dimension,forbrug_co2
+561,Esbjerg,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+561,Esbjerg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 561,Esbjerg,_dim_forurening,183.5,,,,,ecological_dimension,forurening
 561,Esbjerg,_dim_vand,67.85,,,,,ecological_dimension,vand
 561,Esbjerg,_dim_arealanvendelse,108.59,,,,,ecological_dimension,arealanvendelse
-773,Morsø,_dim_klimapaavirkning,329.58,,,,,ecological_dimension,klimapaavirkning
+773,Morsø,_dim_klimapaavirkning,409.0,,,,,ecological_dimension,klimapaavirkning
 773,Morsø,_dim_luftkvalitet,132.6,,,,,ecological_dimension,luftkvalitet
 773,Morsø,_dim_cirkularitet,250.0,,,,,ecological_dimension,cirkularitet
-773,Morsø,_dim_naeringsstoffer,115.95,,,,,ecological_dimension,naeringsstoffer
-773,Morsø,_dim_biodiversitet,405.41,,,,,ecological_dimension,biodiversitet
-773,Morsø,_dim_forbrug_co2,409.0,,,,,ecological_dimension,forbrug_co2
+773,Morsø,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+773,Morsø,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 773,Morsø,_dim_forurening,168.7,,,,,ecological_dimension,forurening
 773,Morsø,_dim_vand,133.43,,,,,ecological_dimension,vand
 773,Morsø,_dim_arealanvendelse,127.97,,,,,ecological_dimension,arealanvendelse
-219,Hillerød,_dim_klimapaavirkning,105.02,,,,,ecological_dimension,klimapaavirkning
+219,Hillerød,_dim_klimapaavirkning,387.67,,,,,ecological_dimension,klimapaavirkning
 219,Hillerød,_dim_luftkvalitet,150.2,,,,,ecological_dimension,luftkvalitet
 219,Hillerød,_dim_cirkularitet,97.01,,,,,ecological_dimension,cirkularitet
 219,Hillerød,_dim_naeringsstoffer,136.35,,,,,ecological_dimension,naeringsstoffer
-219,Hillerød,_dim_biodiversitet,427.35,,,,,ecological_dimension,biodiversitet
-219,Hillerød,_dim_forbrug_co2,387.67,,,,,ecological_dimension,forbrug_co2
+219,Hillerød,_dim_biodiversitet,107.26,,,,,ecological_dimension,biodiversitet
 219,Hillerød,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 219,Hillerød,_dim_vand,192.43,,,,,ecological_dimension,vand
 219,Hillerød,_dim_arealanvendelse,133.1,,,,,ecological_dimension,arealanvendelse
-740,Silkeborg,_dim_klimapaavirkning,150.53,,,,,ecological_dimension,klimapaavirkning
+740,Silkeborg,_dim_klimapaavirkning,368.0,,,,,ecological_dimension,klimapaavirkning
 740,Silkeborg,_dim_luftkvalitet,141.0,,,,,ecological_dimension,luftkvalitet
 740,Silkeborg,_dim_cirkularitet,104.84,,,,,ecological_dimension,cirkularitet
 740,Silkeborg,_dim_naeringsstoffer,112.41,,,,,ecological_dimension,naeringsstoffer
-740,Silkeborg,_dim_biodiversitet,358.85,,,,,ecological_dimension,biodiversitet
-740,Silkeborg,_dim_forbrug_co2,368.0,,,,,ecological_dimension,forbrug_co2
+740,Silkeborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 740,Silkeborg,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 740,Silkeborg,_dim_vand,71.53,,,,,ecological_dimension,vand
 740,Silkeborg,_dim_arealanvendelse,100.7,,,,,ecological_dimension,arealanvendelse
 607,Fredericia,_dim_klimapaavirkning,363.11,,,,,ecological_dimension,klimapaavirkning
 607,Fredericia,_dim_luftkvalitet,158.4,,,,,ecological_dimension,luftkvalitet
 607,Fredericia,_dim_cirkularitet,110.17,,,,,ecological_dimension,cirkularitet
-607,Fredericia,_dim_naeringsstoffer,247.59,,,,,ecological_dimension,naeringsstoffer
-607,Fredericia,_dim_biodiversitet,401.07,,,,,ecological_dimension,biodiversitet
-607,Fredericia,_dim_forbrug_co2,348.33,,,,,ecological_dimension,forbrug_co2
+607,Fredericia,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+607,Fredericia,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 607,Fredericia,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 607,Fredericia,_dim_vand,96.4,,,,,ecological_dimension,vand
 607,Fredericia,_dim_arealanvendelse,223.94,,,,,ecological_dimension,arealanvendelse
-316,Holbæk,_dim_klimapaavirkning,151.18,,,,,ecological_dimension,klimapaavirkning
+316,Holbæk,_dim_klimapaavirkning,400.67,,,,,ecological_dimension,klimapaavirkning
 316,Holbæk,_dim_luftkvalitet,153.6,,,,,ecological_dimension,luftkvalitet
 316,Holbæk,_dim_cirkularitet,98.48,,,,,ecological_dimension,cirkularitet
-316,Holbæk,_dim_naeringsstoffer,125.86,,,,,ecological_dimension,naeringsstoffer
-316,Holbæk,_dim_biodiversitet,546.45,,,,,ecological_dimension,biodiversitet
-316,Holbæk,_dim_forbrug_co2,400.67,,,,,ecological_dimension,forbrug_co2
+316,Holbæk,_dim_naeringsstoffer,286.19,,,,,ecological_dimension,naeringsstoffer
+316,Holbæk,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 316,Holbæk,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 316,Holbæk,_dim_vand,99.38,,,,,ecological_dimension,vand
 316,Holbæk,_dim_arealanvendelse,105.3,,,,,ecological_dimension,arealanvendelse
-340,Sorø,_dim_klimapaavirkning,211.66,,,,,ecological_dimension,klimapaavirkning
+340,Sorø,_dim_klimapaavirkning,400.0,,,,,ecological_dimension,klimapaavirkning
 340,Sorø,_dim_luftkvalitet,155.2,,,,,ecological_dimension,luftkvalitet
 340,Sorø,_dim_cirkularitet,111.23,,,,,ecological_dimension,cirkularitet
 340,Sorø,_dim_naeringsstoffer,98.17,,,,,ecological_dimension,naeringsstoffer
-340,Sorø,_dim_biodiversitet,583.66,,,,,ecological_dimension,biodiversitet
-340,Sorø,_dim_forbrug_co2,400.0,,,,,ecological_dimension,forbrug_co2
+340,Sorø,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 340,Sorø,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 340,Sorø,_dim_vand,61.7,,,,,ecological_dimension,vand
 340,Sorø,_dim_arealanvendelse,95.07,,,,,ecological_dimension,arealanvendelse
-260,Halsnæs,_dim_klimapaavirkning,187.77,,,,,ecological_dimension,klimapaavirkning
+260,Halsnæs,_dim_klimapaavirkning,349.0,,,,,ecological_dimension,klimapaavirkning
 260,Halsnæs,_dim_luftkvalitet,143.6,,,,,ecological_dimension,luftkvalitet
 260,Halsnæs,_dim_cirkularitet,135.35,,,,,ecological_dimension,cirkularitet
 260,Halsnæs,_dim_naeringsstoffer,147.26,,,,,ecological_dimension,naeringsstoffer
-260,Halsnæs,_dim_biodiversitet,348.03,,,,,ecological_dimension,biodiversitet
-260,Halsnæs,_dim_forbrug_co2,349.0,,,,,ecological_dimension,forbrug_co2
+260,Halsnæs,_dim_biodiversitet,112.11,,,,,ecological_dimension,biodiversitet
 260,Halsnæs,_dim_forurening,143.3,,,,,ecological_dimension,forurening
 260,Halsnæs,_dim_vand,121.7,,,,,ecological_dimension,vand
 260,Halsnæs,_dim_arealanvendelse,219.72,,,,,ecological_dimension,arealanvendelse
-766,Hedensted,_dim_klimapaavirkning,240.16,,,,,ecological_dimension,klimapaavirkning
+766,Hedensted,_dim_klimapaavirkning,371.33,,,,,ecological_dimension,klimapaavirkning
 766,Hedensted,_dim_luftkvalitet,151.0,,,,,ecological_dimension,luftkvalitet
 766,Hedensted,_dim_cirkularitet,133.71,,,,,ecological_dimension,cirkularitet
-766,Hedensted,_dim_naeringsstoffer,184.33,,,,,ecological_dimension,naeringsstoffer
-766,Hedensted,_dim_biodiversitet,545.45,,,,,ecological_dimension,biodiversitet
-766,Hedensted,_dim_forbrug_co2,371.33,,,,,ecological_dimension,forbrug_co2
+766,Hedensted,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+766,Hedensted,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 766,Hedensted,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 766,Hedensted,_dim_vand,111.0,,,,,ecological_dimension,vand
 766,Hedensted,_dim_arealanvendelse,111.7,,,,,ecological_dimension,arealanvendelse
-825,Læsø,_dim_klimapaavirkning,160.02,,,,,ecological_dimension,klimapaavirkning
+825,Læsø,_dim_klimapaavirkning,438.67,,,,,ecological_dimension,klimapaavirkning
 825,Læsø,_dim_luftkvalitet,115.4,,,,,ecological_dimension,luftkvalitet
 825,Læsø,_dim_cirkularitet,238.66,,,,,ecological_dimension,cirkularitet
 825,Læsø,_dim_naeringsstoffer,473.71,,,,,ecological_dimension,naeringsstoffer
-825,Læsø,_dim_biodiversitet,68.14,,,,,ecological_dimension,biodiversitet
-825,Læsø,_dim_forbrug_co2,438.67,,,,,ecological_dimension,forbrug_co2
+825,Læsø,_dim_biodiversitet,53.95,,,,,ecological_dimension,biodiversitet
 825,Læsø,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 825,Læsø,_dim_vand,159.49,,,,,ecological_dimension,vand
 825,Læsø,_dim_arealanvendelse,67.61,,,,,ecological_dimension,arealanvendelse
-615,Horsens,_dim_klimapaavirkning,148.77,,,,,ecological_dimension,klimapaavirkning
+615,Horsens,_dim_klimapaavirkning,365.33,,,,,ecological_dimension,klimapaavirkning
 615,Horsens,_dim_luftkvalitet,148.2,,,,,ecological_dimension,luftkvalitet
 615,Horsens,_dim_cirkularitet,191.18,,,,,ecological_dimension,cirkularitet
 615,Horsens,_dim_naeringsstoffer,107.49,,,,,ecological_dimension,naeringsstoffer
-615,Horsens,_dim_biodiversitet,412.09,,,,,ecological_dimension,biodiversitet
-615,Horsens,_dim_forbrug_co2,365.33,,,,,ecological_dimension,forbrug_co2
+615,Horsens,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 615,Horsens,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 615,Horsens,_dim_vand,93.8,,,,,ecological_dimension,vand
 615,Horsens,_dim_arealanvendelse,120.42,,,,,ecological_dimension,arealanvendelse
-329,Ringsted,_dim_klimapaavirkning,159.46,,,,,ecological_dimension,klimapaavirkning
+329,Ringsted,_dim_klimapaavirkning,391.33,,,,,ecological_dimension,klimapaavirkning
 329,Ringsted,_dim_luftkvalitet,157.4,,,,,ecological_dimension,luftkvalitet
 329,Ringsted,_dim_cirkularitet,106.56,,,,,ecological_dimension,cirkularitet
-329,Ringsted,_dim_naeringsstoffer,89.25,,,,,ecological_dimension,naeringsstoffer
-329,Ringsted,_dim_biodiversitet,717.7,,,,,ecological_dimension,biodiversitet
-329,Ringsted,_dim_forbrug_co2,391.33,,,,,ecological_dimension,forbrug_co2
+329,Ringsted,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+329,Ringsted,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 329,Ringsted,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 329,Ringsted,_dim_vand,313.57,,,,,ecological_dimension,vand
 329,Ringsted,_dim_arealanvendelse,103.29,,,,,ecological_dimension,arealanvendelse
-370,Næstved,_dim_klimapaavirkning,169.65,,,,,ecological_dimension,klimapaavirkning
+370,Næstved,_dim_klimapaavirkning,393.67,,,,,ecological_dimension,klimapaavirkning
 370,Næstved,_dim_luftkvalitet,152.6,,,,,ecological_dimension,luftkvalitet
 370,Næstved,_dim_cirkularitet,109.95,,,,,ecological_dimension,cirkularitet
-370,Næstved,_dim_naeringsstoffer,87.13,,,,,ecological_dimension,naeringsstoffer
-370,Næstved,_dim_biodiversitet,609.76,,,,,ecological_dimension,biodiversitet
-370,Næstved,_dim_forbrug_co2,393.67,,,,,ecological_dimension,forbrug_co2
+370,Næstved,_dim_naeringsstoffer,262.98,,,,,ecological_dimension,naeringsstoffer
+370,Næstved,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 370,Næstved,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 370,Næstved,_dim_vand,61.7,,,,,ecological_dimension,vand
 370,Næstved,_dim_arealanvendelse,109.14,,,,,ecological_dimension,arealanvendelse
@@ -6760,80 +6910,71 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 851,Aalborg,_dim_luftkvalitet,134.2,,,,,ecological_dimension,luftkvalitet
 851,Aalborg,_dim_cirkularitet,154.76,,,,,ecological_dimension,cirkularitet
 851,Aalborg,_dim_naeringsstoffer,101.5,,,,,ecological_dimension,naeringsstoffer
-851,Aalborg,_dim_biodiversitet,291.55,,,,,ecological_dimension,biodiversitet
-851,Aalborg,_dim_forbrug_co2,406.33,,,,,ecological_dimension,forbrug_co2
+851,Aalborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 851,Aalborg,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 851,Aalborg,_dim_vand,345.0,,,,,ecological_dimension,vand
 851,Aalborg,_dim_arealanvendelse,112.68,,,,,ecological_dimension,arealanvendelse
-336,Stevns,_dim_klimapaavirkning,116.91,,,,,ecological_dimension,klimapaavirkning
+336,Stevns,_dim_klimapaavirkning,414.67,,,,,ecological_dimension,klimapaavirkning
 336,Stevns,_dim_luftkvalitet,151.8,,,,,ecological_dimension,luftkvalitet
 336,Stevns,_dim_cirkularitet,110.5,,,,,ecological_dimension,cirkularitet
-336,Stevns,_dim_naeringsstoffer,70.8,,,,,ecological_dimension,naeringsstoffer
-336,Stevns,_dim_biodiversitet,1298.7,,,,,ecological_dimension,biodiversitet
-336,Stevns,_dim_forbrug_co2,414.67,,,,,ecological_dimension,forbrug_co2
+336,Stevns,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+336,Stevns,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 336,Stevns,_dim_forurening,165.6,,,,,ecological_dimension,forurening
 336,Stevns,_dim_vand,61.7,,,,,ecological_dimension,vand
 336,Stevns,_dim_arealanvendelse,126.51,,,,,ecological_dimension,arealanvendelse
-410,Middelfart,_dim_klimapaavirkning,220.07,,,,,ecological_dimension,klimapaavirkning
+410,Middelfart,_dim_klimapaavirkning,375.67,,,,,ecological_dimension,klimapaavirkning
 410,Middelfart,_dim_luftkvalitet,157.8,,,,,ecological_dimension,luftkvalitet
 410,Middelfart,_dim_cirkularitet,126.71,,,,,ecological_dimension,cirkularitet
-410,Middelfart,_dim_naeringsstoffer,161.55,,,,,ecological_dimension,naeringsstoffer
-410,Middelfart,_dim_biodiversitet,513.7,,,,,ecological_dimension,biodiversitet
-410,Middelfart,_dim_forbrug_co2,375.67,,,,,ecological_dimension,forbrug_co2
+410,Middelfart,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+410,Middelfart,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 410,Middelfart,_dim_forurening,179.7,,,,,ecological_dimension,forurening
 410,Middelfart,_dim_vand,71.4,,,,,ecological_dimension,vand
 410,Middelfart,_dim_arealanvendelse,123.94,,,,,ecological_dimension,arealanvendelse
-727,Odder,_dim_klimapaavirkning,167.3,,,,,ecological_dimension,klimapaavirkning
+727,Odder,_dim_klimapaavirkning,375.33,,,,,ecological_dimension,klimapaavirkning
 727,Odder,_dim_luftkvalitet,145.2,,,,,ecological_dimension,luftkvalitet
 727,Odder,_dim_cirkularitet,130.0,,,,,ecological_dimension,cirkularitet
-727,Odder,_dim_naeringsstoffer,138.72,,,,,ecological_dimension,naeringsstoffer
-727,Odder,_dim_biodiversitet,645.16,,,,,ecological_dimension,biodiversitet
-727,Odder,_dim_forbrug_co2,375.33,,,,,ecological_dimension,forbrug_co2
+727,Odder,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+727,Odder,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 727,Odder,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 727,Odder,_dim_vand,79.69,,,,,ecological_dimension,vand
 727,Odder,_dim_arealanvendelse,117.73,,,,,ecological_dimension,arealanvendelse
-161,Glostrup,_dim_klimapaavirkning,104.68,,,,,ecological_dimension,klimapaavirkning
+161,Glostrup,_dim_klimapaavirkning,372.33,,,,,ecological_dimension,klimapaavirkning
 161,Glostrup,_dim_luftkvalitet,150.4,,,,,ecological_dimension,luftkvalitet
 161,Glostrup,_dim_cirkularitet,126.52,,,,,ecological_dimension,cirkularitet
-161,Glostrup,_dim_naeringsstoffer,32.74,,,,,ecological_dimension,naeringsstoffer
-161,Glostrup,_dim_biodiversitet,3296.7,,,,,ecological_dimension,biodiversitet
-161,Glostrup,_dim_forbrug_co2,372.33,,,,,ecological_dimension,forbrug_co2
+161,Glostrup,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+161,Glostrup,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 161,Glostrup,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 161,Glostrup,_dim_vand,88.2,,,,,ecological_dimension,vand
 161,Glostrup,_dim_arealanvendelse,531.69,,,,,ecological_dimension,arealanvendelse
-563,Fanø,_dim_klimapaavirkning,136.19,,,,,ecological_dimension,klimapaavirkning
+563,Fanø,_dim_klimapaavirkning,404.33,,,,,ecological_dimension,klimapaavirkning
 563,Fanø,_dim_luftkvalitet,149.0,,,,,ecological_dimension,luftkvalitet
 563,Fanø,_dim_cirkularitet,211.77,,,,,ecological_dimension,cirkularitet
 563,Fanø,_dim_naeringsstoffer,100.17,,,,,ecological_dimension,naeringsstoffer
-563,Fanø,_dim_biodiversitet,51.7,,,,,ecological_dimension,biodiversitet
-563,Fanø,_dim_forbrug_co2,404.33,,,,,ecological_dimension,forbrug_co2
+563,Fanø,_dim_biodiversitet,53.78,,,,,ecological_dimension,biodiversitet
 563,Fanø,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 563,Fanø,_dim_vand,125.77,,,,,ecological_dimension,vand
 563,Fanø,_dim_arealanvendelse,80.28,,,,,ecological_dimension,arealanvendelse
-813,Frederikshavn,_dim_klimapaavirkning,272.73,,,,,ecological_dimension,klimapaavirkning
+813,Frederikshavn,_dim_klimapaavirkning,418.33,,,,,ecological_dimension,klimapaavirkning
 813,Frederikshavn,_dim_luftkvalitet,123.2,,,,,ecological_dimension,luftkvalitet
 813,Frederikshavn,_dim_cirkularitet,118.6,,,,,ecological_dimension,cirkularitet
 813,Frederikshavn,_dim_naeringsstoffer,267.31,,,,,ecological_dimension,naeringsstoffer
-813,Frederikshavn,_dim_biodiversitet,141.58,,,,,ecological_dimension,biodiversitet
-813,Frederikshavn,_dim_forbrug_co2,418.33,,,,,ecological_dimension,forbrug_co2
+813,Frederikshavn,_dim_biodiversitet,239.81,,,,,ecological_dimension,biodiversitet
 813,Frederikshavn,_dim_forurening,174.0,,,,,ecological_dimension,forurening
 813,Frederikshavn,_dim_vand,66.31,,,,,ecological_dimension,vand
 813,Frederikshavn,_dim_arealanvendelse,98.59,,,,,ecological_dimension,arealanvendelse
-270,Gribskov,_dim_klimapaavirkning,132.41,,,,,ecological_dimension,klimapaavirkning
+270,Gribskov,_dim_klimapaavirkning,390.33,,,,,ecological_dimension,klimapaavirkning
 270,Gribskov,_dim_luftkvalitet,143.8,,,,,ecological_dimension,luftkvalitet
 270,Gribskov,_dim_cirkularitet,159.85,,,,,ecological_dimension,cirkularitet
 270,Gribskov,_dim_naeringsstoffer,147.26,,,,,ecological_dimension,naeringsstoffer
-270,Gribskov,_dim_biodiversitet,424.33,,,,,ecological_dimension,biodiversitet
-270,Gribskov,_dim_forbrug_co2,390.33,,,,,ecological_dimension,forbrug_co2
+270,Gribskov,_dim_biodiversitet,118.62,,,,,ecological_dimension,biodiversitet
 270,Gribskov,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 270,Gribskov,_dim_vand,78.71,,,,,ecological_dimension,vand
 270,Gribskov,_dim_arealanvendelse,165.49,,,,,ecological_dimension,arealanvendelse
-751,Aarhus,_dim_klimapaavirkning,104.44,,,,,ecological_dimension,klimapaavirkning
+751,Aarhus,_dim_klimapaavirkning,356.67,,,,,ecological_dimension,klimapaavirkning
 751,Aarhus,_dim_luftkvalitet,143.6,,,,,ecological_dimension,luftkvalitet
 751,Aarhus,_dim_cirkularitet,118.18,,,,,ecological_dimension,cirkularitet
-751,Aarhus,_dim_naeringsstoffer,89.25,,,,,ecological_dimension,naeringsstoffer
-751,Aarhus,_dim_biodiversitet,813.01,,,,,ecological_dimension,biodiversitet
-751,Aarhus,_dim_forbrug_co2,356.67,,,,,ecological_dimension,forbrug_co2
+751,Aarhus,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+751,Aarhus,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 751,Aarhus,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 751,Aarhus,_dim_vand,67.55,,,,,ecological_dimension,vand
 751,Aarhus,_dim_arealanvendelse,231.69,,,,,ecological_dimension,arealanvendelse
@@ -6841,305 +6982,271 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 760,Ringkøbing-Skjern,_dim_luftkvalitet,140.6,,,,,ecological_dimension,luftkvalitet
 760,Ringkøbing-Skjern,_dim_cirkularitet,125.96,,,,,ecological_dimension,cirkularitet
 760,Ringkøbing-Skjern,_dim_naeringsstoffer,270.49,,,,,ecological_dimension,naeringsstoffer
-760,Ringkøbing-Skjern,_dim_biodiversitet,214.59,,,,,ecological_dimension,biodiversitet
-760,Ringkøbing-Skjern,_dim_forbrug_co2,360.33,,,,,ecological_dimension,forbrug_co2
+760,Ringkøbing-Skjern,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 760,Ringkøbing-Skjern,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 760,Ringkøbing-Skjern,_dim_vand,150.45,,,,,ecological_dimension,vand
 760,Ringkøbing-Skjern,_dim_arealanvendelse,104.02,,,,,ecological_dimension,arealanvendelse
-479,Svendborg,_dim_klimapaavirkning,127.38,,,,,ecological_dimension,klimapaavirkning
+479,Svendborg,_dim_klimapaavirkning,367.33,,,,,ecological_dimension,klimapaavirkning
 479,Svendborg,_dim_luftkvalitet,157.6,,,,,ecological_dimension,luftkvalitet
 479,Svendborg,_dim_cirkularitet,114.04,,,,,ecological_dimension,cirkularitet
-479,Svendborg,_dim_naeringsstoffer,99.5,,,,,ecological_dimension,naeringsstoffer
-479,Svendborg,_dim_biodiversitet,781.25,,,,,ecological_dimension,biodiversitet
-479,Svendborg,_dim_forbrug_co2,367.33,,,,,ecological_dimension,forbrug_co2
+479,Svendborg,_dim_naeringsstoffer,229.85,,,,,ecological_dimension,naeringsstoffer
+479,Svendborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 479,Svendborg,_dim_forurening,355.0,,,,,ecological_dimension,forurening
 479,Svendborg,_dim_vand,73.11,,,,,ecological_dimension,vand
 479,Svendborg,_dim_arealanvendelse,106.34,,,,,ecological_dimension,arealanvendelse
-787,Thisted,_dim_klimapaavirkning,371.19,,,,,ecological_dimension,klimapaavirkning
+787,Thisted,_dim_klimapaavirkning,406.33,,,,,ecological_dimension,klimapaavirkning
 787,Thisted,_dim_luftkvalitet,126.2,,,,,ecological_dimension,luftkvalitet
 787,Thisted,_dim_cirkularitet,144.44,,,,,ecological_dimension,cirkularitet
 787,Thisted,_dim_naeringsstoffer,121.48,,,,,ecological_dimension,naeringsstoffer
-787,Thisted,_dim_biodiversitet,134.95,,,,,ecological_dimension,biodiversitet
-787,Thisted,_dim_forbrug_co2,406.33,,,,,ecological_dimension,forbrug_co2
+787,Thisted,_dim_biodiversitet,133.51,,,,,ecological_dimension,biodiversitet
 787,Thisted,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 787,Thisted,_dim_vand,231.7,,,,,ecological_dimension,vand
 787,Thisted,_dim_arealanvendelse,85.92,,,,,ecological_dimension,arealanvendelse
-810,Brønderslev,_dim_klimapaavirkning,364.66,,,,,ecological_dimension,klimapaavirkning
+810,Brønderslev,_dim_klimapaavirkning,395.0,,,,,ecological_dimension,klimapaavirkning
 810,Brønderslev,_dim_luftkvalitet,132.4,,,,,ecological_dimension,luftkvalitet
 810,Brønderslev,_dim_cirkularitet,113.07,,,,,ecological_dimension,cirkularitet
-810,Brønderslev,_dim_naeringsstoffer,88.73,,,,,ecological_dimension,naeringsstoffer
-810,Brønderslev,_dim_biodiversitet,317.46,,,,,ecological_dimension,biodiversitet
-810,Brønderslev,_dim_forbrug_co2,395.0,,,,,ecological_dimension,forbrug_co2
+810,Brønderslev,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+810,Brønderslev,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 810,Brønderslev,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 810,Brønderslev,_dim_vand,93.37,,,,,ecological_dimension,vand
 810,Brønderslev,_dim_arealanvendelse,115.9,,,,,ecological_dimension,arealanvendelse
-791,Viborg,_dim_klimapaavirkning,311.65,,,,,ecological_dimension,klimapaavirkning
+791,Viborg,_dim_klimapaavirkning,366.0,,,,,ecological_dimension,klimapaavirkning
 791,Viborg,_dim_luftkvalitet,138.0,,,,,ecological_dimension,luftkvalitet
 791,Viborg,_dim_cirkularitet,106.08,,,,,ecological_dimension,cirkularitet
 791,Viborg,_dim_naeringsstoffer,131.48,,,,,ecological_dimension,naeringsstoffer
-791,Viborg,_dim_biodiversitet,282.49,,,,,ecological_dimension,biodiversitet
-791,Viborg,_dim_forbrug_co2,366.0,,,,,ecological_dimension,forbrug_co2
+791,Viborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 791,Viborg,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 791,Viborg,_dim_vand,71.62,,,,,ecological_dimension,vand
 791,Viborg,_dim_arealanvendelse,93.05,,,,,ecological_dimension,arealanvendelse
-165,Albertslund,_dim_klimapaavirkning,85.1,,,,,ecological_dimension,klimapaavirkning
+165,Albertslund,_dim_klimapaavirkning,313.33,,,,,ecological_dimension,klimapaavirkning
 165,Albertslund,_dim_luftkvalitet,148.6,,,,,ecological_dimension,luftkvalitet
 165,Albertslund,_dim_cirkularitet,120.37,,,,,ecological_dimension,cirkularitet
-165,Albertslund,_dim_naeringsstoffer,55.99,,,,,ecological_dimension,naeringsstoffer
-165,Albertslund,_dim_biodiversitet,480.77,,,,,ecological_dimension,biodiversitet
-165,Albertslund,_dim_forbrug_co2,313.33,,,,,ecological_dimension,forbrug_co2
+165,Albertslund,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+165,Albertslund,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 165,Albertslund,_dim_forurening,441.7,,,,,ecological_dimension,forurening
 165,Albertslund,_dim_vand,61.7,,,,,ecological_dimension,vand
 165,Albertslund,_dim_arealanvendelse,347.18,,,,,ecological_dimension,arealanvendelse
-480,Nordfyns,_dim_klimapaavirkning,216.13,,,,,ecological_dimension,klimapaavirkning
+480,Nordfyns,_dim_klimapaavirkning,360.67,,,,,ecological_dimension,klimapaavirkning
 480,Nordfyns,_dim_luftkvalitet,154.8,,,,,ecological_dimension,luftkvalitet
 480,Nordfyns,_dim_cirkularitet,108.66,,,,,ecological_dimension,cirkularitet
-480,Nordfyns,_dim_naeringsstoffer,111.0,,,,,ecological_dimension,naeringsstoffer
-480,Nordfyns,_dim_biodiversitet,660.79,,,,,ecological_dimension,biodiversitet
-480,Nordfyns,_dim_forbrug_co2,360.67,,,,,ecological_dimension,forbrug_co2
+480,Nordfyns,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+480,Nordfyns,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 480,Nordfyns,_dim_forurening,105.2,,,,,ecological_dimension,forurening
 480,Nordfyns,_dim_vand,98.11,,,,,ecological_dimension,vand
 480,Nordfyns,_dim_arealanvendelse,122.67,,,,,ecological_dimension,arealanvendelse
-440,Kerteminde,_dim_klimapaavirkning,167.05,,,,,ecological_dimension,klimapaavirkning
+440,Kerteminde,_dim_klimapaavirkning,363.0,,,,,ecological_dimension,klimapaavirkning
 440,Kerteminde,_dim_luftkvalitet,153.0,,,,,ecological_dimension,luftkvalitet
 440,Kerteminde,_dim_cirkularitet,107.92,,,,,ecological_dimension,cirkularitet
-440,Kerteminde,_dim_naeringsstoffer,106.71,,,,,ecological_dimension,naeringsstoffer
-440,Kerteminde,_dim_biodiversitet,659.34,,,,,ecological_dimension,biodiversitet
-440,Kerteminde,_dim_forbrug_co2,363.0,,,,,ecological_dimension,forbrug_co2
+440,Kerteminde,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+440,Kerteminde,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 440,Kerteminde,_dim_forurening,588.9,,,,,ecological_dimension,forurening
 440,Kerteminde,_dim_vand,68.69,,,,,ecological_dimension,vand
 440,Kerteminde,_dim_arealanvendelse,117.37,,,,,ecological_dimension,arealanvendelse
-101,København,_dim_klimapaavirkning,42.61,,,,,ecological_dimension,klimapaavirkning
+101,København,_dim_klimapaavirkning,324.67,,,,,ecological_dimension,klimapaavirkning
 101,København,_dim_luftkvalitet,153.4,,,,,ecological_dimension,luftkvalitet
 101,København,_dim_cirkularitet,154.76,,,,,ecological_dimension,cirkularitet
 101,København,_dim_naeringsstoffer,104.37,,,,,ecological_dimension,naeringsstoffer
-101,København,_dim_biodiversitet,502.51,,,,,ecological_dimension,biodiversitet
-101,København,_dim_forbrug_co2,324.67,,,,,ecological_dimension,forbrug_co2
+101,København,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 101,København,_dim_forurening,662.6,,,,,ecological_dimension,forurening
 101,København,_dim_vand,61.7,,,,,ecological_dimension,vand
 101,København,_dim_arealanvendelse,546.48,,,,,ecological_dimension,arealanvendelse
-860,Hjørring,_dim_klimapaavirkning,372.01,,,,,ecological_dimension,klimapaavirkning
+860,Hjørring,_dim_klimapaavirkning,407.33,,,,,ecological_dimension,klimapaavirkning
 860,Hjørring,_dim_luftkvalitet,126.0,,,,,ecological_dimension,luftkvalitet
 860,Hjørring,_dim_cirkularitet,141.44,,,,,ecological_dimension,cirkularitet
-860,Hjørring,_dim_naeringsstoffer,141.46,,,,,ecological_dimension,naeringsstoffer
-860,Hjørring,_dim_biodiversitet,255.1,,,,,ecological_dimension,biodiversitet
-860,Hjørring,_dim_forbrug_co2,407.33,,,,,ecological_dimension,forbrug_co2
+860,Hjørring,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+860,Hjørring,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 860,Hjørring,_dim_forurening,290.5,,,,,ecological_dimension,forurening
 860,Hjørring,_dim_vand,151.57,,,,,ecological_dimension,vand
 860,Hjørring,_dim_arealanvendelse,104.39,,,,,ecological_dimension,arealanvendelse
-706,Syddjurs,_dim_klimapaavirkning,210.62,,,,,ecological_dimension,klimapaavirkning
+706,Syddjurs,_dim_klimapaavirkning,370.33,,,,,ecological_dimension,klimapaavirkning
 706,Syddjurs,_dim_luftkvalitet,136.0,,,,,ecological_dimension,luftkvalitet
 706,Syddjurs,_dim_cirkularitet,83.33,,,,,ecological_dimension,cirkularitet
 706,Syddjurs,_dim_naeringsstoffer,100.17,,,,,ecological_dimension,naeringsstoffer
-706,Syddjurs,_dim_biodiversitet,368.1,,,,,ecological_dimension,biodiversitet
-706,Syddjurs,_dim_forbrug_co2,370.33,,,,,ecological_dimension,forbrug_co2
+706,Syddjurs,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 706,Syddjurs,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 706,Syddjurs,_dim_vand,93.25,,,,,ecological_dimension,vand
 706,Syddjurs,_dim_arealanvendelse,93.66,,,,,ecological_dimension,arealanvendelse
-430,Faaborg-Midtfyn,_dim_klimapaavirkning,170.91,,,,,ecological_dimension,klimapaavirkning
+430,Faaborg-Midtfyn,_dim_klimapaavirkning,364.67,,,,,ecological_dimension,klimapaavirkning
 430,Faaborg-Midtfyn,_dim_luftkvalitet,158.6,,,,,ecological_dimension,luftkvalitet
 430,Faaborg-Midtfyn,_dim_cirkularitet,114.04,,,,,ecological_dimension,cirkularitet
-430,Faaborg-Midtfyn,_dim_naeringsstoffer,105.94,,,,,ecological_dimension,naeringsstoffer
-430,Faaborg-Midtfyn,_dim_biodiversitet,530.97,,,,,ecological_dimension,biodiversitet
-430,Faaborg-Midtfyn,_dim_forbrug_co2,364.67,,,,,ecological_dimension,forbrug_co2
+430,Faaborg-Midtfyn,_dim_naeringsstoffer,163.54,,,,,ecological_dimension,naeringsstoffer
+430,Faaborg-Midtfyn,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 430,Faaborg-Midtfyn,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 430,Faaborg-Midtfyn,_dim_vand,89.15,,,,,ecological_dimension,vand
 430,Faaborg-Midtfyn,_dim_arealanvendelse,104.94,,,,,ecological_dimension,arealanvendelse
 573,Varde,_dim_klimapaavirkning,502.43,,,,,ecological_dimension,klimapaavirkning
 573,Varde,_dim_luftkvalitet,146.0,,,,,ecological_dimension,luftkvalitet
 573,Varde,_dim_cirkularitet,148.81,,,,,ecological_dimension,cirkularitet
-573,Varde,_dim_naeringsstoffer,138.77,,,,,ecological_dimension,naeringsstoffer
-573,Varde,_dim_biodiversitet,168.35,,,,,ecological_dimension,biodiversitet
-573,Varde,_dim_forbrug_co2,356.33,,,,,ecological_dimension,forbrug_co2
+573,Varde,_dim_naeringsstoffer,164.0,,,,,ecological_dimension,naeringsstoffer
+573,Varde,_dim_biodiversitet,239.23,,,,,ecological_dimension,biodiversitet
 573,Varde,_dim_forurening,167.8,,,,,ecological_dimension,forurening
 573,Varde,_dim_vand,149.82,,,,,ecological_dimension,vand
 573,Varde,_dim_arealanvendelse,92.5,,,,,ecological_dimension,arealanvendelse
-730,Randers,_dim_klimapaavirkning,137.27,,,,,ecological_dimension,klimapaavirkning
+730,Randers,_dim_klimapaavirkning,352.33,,,,,ecological_dimension,klimapaavirkning
 730,Randers,_dim_luftkvalitet,138.4,,,,,ecological_dimension,luftkvalitet
 730,Randers,_dim_cirkularitet,110.17,,,,,ecological_dimension,cirkularitet
-730,Randers,_dim_naeringsstoffer,110.72,,,,,ecological_dimension,naeringsstoffer
-730,Randers,_dim_biodiversitet,387.1,,,,,ecological_dimension,biodiversitet
-730,Randers,_dim_forbrug_co2,352.33,,,,,ecological_dimension,forbrug_co2
+730,Randers,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+730,Randers,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 730,Randers,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 730,Randers,_dim_vand,75.0,,,,,ecological_dimension,vand
 730,Randers,_dim_arealanvendelse,112.61,,,,,ecological_dimension,arealanvendelse
-621,Kolding,_dim_klimapaavirkning,184.97,,,,,ecological_dimension,klimapaavirkning
+621,Kolding,_dim_klimapaavirkning,364.67,,,,,ecological_dimension,klimapaavirkning
 621,Kolding,_dim_luftkvalitet,157.8,,,,,ecological_dimension,luftkvalitet
 621,Kolding,_dim_cirkularitet,99.82,,,,,ecological_dimension,cirkularitet
-621,Kolding,_dim_naeringsstoffer,161.32,,,,,ecological_dimension,naeringsstoffer
-621,Kolding,_dim_biodiversitet,584.8,,,,,ecological_dimension,biodiversitet
-621,Kolding,_dim_forbrug_co2,364.67,,,,,ecological_dimension,forbrug_co2
+621,Kolding,_dim_naeringsstoffer,203.42,,,,,ecological_dimension,naeringsstoffer
+621,Kolding,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 621,Kolding,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 621,Kolding,_dim_vand,78.62,,,,,ecological_dimension,vand
 621,Kolding,_dim_arealanvendelse,112.68,,,,,ecological_dimension,arealanvendelse
-320,Faxe,_dim_klimapaavirkning,176.02,,,,,ecological_dimension,klimapaavirkning
+320,Faxe,_dim_klimapaavirkning,391.0,,,,,ecological_dimension,klimapaavirkning
 320,Faxe,_dim_luftkvalitet,152.8,,,,,ecological_dimension,luftkvalitet
 320,Faxe,_dim_cirkularitet,126.71,,,,,ecological_dimension,cirkularitet
 320,Faxe,_dim_naeringsstoffer,107.64,,,,,ecological_dimension,naeringsstoffer
-320,Faxe,_dim_biodiversitet,759.49,,,,,ecological_dimension,biodiversitet
-320,Faxe,_dim_forbrug_co2,391.0,,,,,ecological_dimension,forbrug_co2
+320,Faxe,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 320,Faxe,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 320,Faxe,_dim_vand,163.11,,,,,ecological_dimension,vand
 320,Faxe,_dim_arealanvendelse,102.74,,,,,ecological_dimension,arealanvendelse
-169,Høje-Taastrup,_dim_klimapaavirkning,101.47,,,,,ecological_dimension,klimapaavirkning
+169,Høje-Taastrup,_dim_klimapaavirkning,348.33,,,,,ecological_dimension,klimapaavirkning
 169,Høje-Taastrup,_dim_luftkvalitet,154.8,,,,,ecological_dimension,luftkvalitet
 169,Høje-Taastrup,_dim_cirkularitet,106.56,,,,,ecological_dimension,cirkularitet
 169,Høje-Taastrup,_dim_naeringsstoffer,105.94,,,,,ecological_dimension,naeringsstoffer
-169,Høje-Taastrup,_dim_biodiversitet,619.83,,,,,ecological_dimension,biodiversitet
-169,Høje-Taastrup,_dim_forbrug_co2,348.33,,,,,ecological_dimension,forbrug_co2
+169,Høje-Taastrup,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 169,Høje-Taastrup,_dim_forurening,212.0,,,,,ecological_dimension,forurening
 169,Høje-Taastrup,_dim_vand,61.7,,,,,ecological_dimension,vand
 169,Høje-Taastrup,_dim_arealanvendelse,262.68,,,,,ecological_dimension,arealanvendelse
-461,Odense,_dim_klimapaavirkning,128.26,,,,,ecological_dimension,klimapaavirkning
+461,Odense,_dim_klimapaavirkning,336.67,,,,,ecological_dimension,klimapaavirkning
 461,Odense,_dim_luftkvalitet,157.4,,,,,ecological_dimension,luftkvalitet
 461,Odense,_dim_cirkularitet,98.48,,,,,ecological_dimension,cirkularitet
-461,Odense,_dim_naeringsstoffer,102.59,,,,,ecological_dimension,naeringsstoffer
-461,Odense,_dim_biodiversitet,618.56,,,,,ecological_dimension,biodiversitet
-461,Odense,_dim_forbrug_co2,336.67,,,,,ecological_dimension,forbrug_co2
+461,Odense,_dim_naeringsstoffer,245.3,,,,,ecological_dimension,naeringsstoffer
+461,Odense,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 461,Odense,_dim_forurening,416.1,,,,,ecological_dimension,forurening
 461,Odense,_dim_vand,73.48,,,,,ecological_dimension,vand
 461,Odense,_dim_arealanvendelse,250.0,,,,,ecological_dimension,arealanvendelse
-420,Assens,_dim_klimapaavirkning,277.36,,,,,ecological_dimension,klimapaavirkning
+420,Assens,_dim_klimapaavirkning,359.33,,,,,ecological_dimension,klimapaavirkning
 420,Assens,_dim_luftkvalitet,158.6,,,,,ecological_dimension,luftkvalitet
 420,Assens,_dim_cirkularitet,113.82,,,,,ecological_dimension,cirkularitet
-420,Assens,_dim_naeringsstoffer,129.17,,,,,ecological_dimension,naeringsstoffer
-420,Assens,_dim_biodiversitet,468.02,,,,,ecological_dimension,biodiversitet
-420,Assens,_dim_forbrug_co2,359.33,,,,,ecological_dimension,forbrug_co2
+420,Assens,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+420,Assens,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 420,Assens,_dim_forurening,176.6,,,,,ecological_dimension,forurening
 420,Assens,_dim_vand,121.95,,,,,ecological_dimension,vand
 420,Assens,_dim_arealanvendelse,109.51,,,,,ecological_dimension,arealanvendelse
-756,Ikast-Brande,_dim_klimapaavirkning,233.05,,,,,ecological_dimension,klimapaavirkning
+756,Ikast-Brande,_dim_klimapaavirkning,351.33,,,,,ecological_dimension,klimapaavirkning
 756,Ikast-Brande,_dim_luftkvalitet,143.0,,,,,ecological_dimension,luftkvalitet
 756,Ikast-Brande,_dim_cirkularitet,118.23,,,,,ecological_dimension,cirkularitet
 756,Ikast-Brande,_dim_naeringsstoffer,122.64,,,,,ecological_dimension,naeringsstoffer
-756,Ikast-Brande,_dim_biodiversitet,303.95,,,,,ecological_dimension,biodiversitet
-756,Ikast-Brande,_dim_forbrug_co2,351.33,,,,,ecological_dimension,forbrug_co2
+756,Ikast-Brande,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 756,Ikast-Brande,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 756,Ikast-Brande,_dim_vand,111.56,,,,,ecological_dimension,vand
 756,Ikast-Brande,_dim_arealanvendelse,89.4,,,,,ecological_dimension,arealanvendelse
-846,Mariagerfjord,_dim_klimapaavirkning,403.33,,,,,ecological_dimension,klimapaavirkning
+846,Mariagerfjord,_dim_klimapaavirkning,414.0,,,,,ecological_dimension,klimapaavirkning
 846,Mariagerfjord,_dim_luftkvalitet,137.4,,,,,ecological_dimension,luftkvalitet
 846,Mariagerfjord,_dim_cirkularitet,130.0,,,,,ecological_dimension,cirkularitet
 846,Mariagerfjord,_dim_naeringsstoffer,91.46,,,,,ecological_dimension,naeringsstoffer
-846,Mariagerfjord,_dim_biodiversitet,256.85,,,,,ecological_dimension,biodiversitet
-846,Mariagerfjord,_dim_forbrug_co2,414.0,,,,,ecological_dimension,forbrug_co2
+846,Mariagerfjord,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 846,Mariagerfjord,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 846,Mariagerfjord,_dim_vand,65.9,,,,,ecological_dimension,vand
 846,Mariagerfjord,_dim_arealanvendelse,99.82,,,,,ecological_dimension,arealanvendelse
-580,Aabenraa,_dim_klimapaavirkning,346.61,,,,,ecological_dimension,klimapaavirkning
+580,Aabenraa,_dim_klimapaavirkning,351.67,,,,,ecological_dimension,klimapaavirkning
 580,Aabenraa,_dim_luftkvalitet,163.2,,,,,ecological_dimension,luftkvalitet
 580,Aabenraa,_dim_cirkularitet,147.73,,,,,ecological_dimension,cirkularitet
 580,Aabenraa,_dim_naeringsstoffer,194.44,,,,,ecological_dimension,naeringsstoffer
-580,Aabenraa,_dim_biodiversitet,415.51,,,,,ecological_dimension,biodiversitet
-580,Aabenraa,_dim_forbrug_co2,351.67,,,,,ecological_dimension,forbrug_co2
+580,Aabenraa,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 580,Aabenraa,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 580,Aabenraa,_dim_vand,119.26,,,,,ecological_dimension,vand
 580,Aabenraa,_dim_arealanvendelse,112.8,,,,,ecological_dimension,arealanvendelse
 450,Nyborg,_dim_klimapaavirkning,400.69,,,,,ecological_dimension,klimapaavirkning
 450,Nyborg,_dim_luftkvalitet,156.2,,,,,ecological_dimension,luftkvalitet
 450,Nyborg,_dim_cirkularitet,309.52,,,,,ecological_dimension,cirkularitet
-450,Nyborg,_dim_naeringsstoffer,176.3,,,,,ecological_dimension,naeringsstoffer
-450,Nyborg,_dim_biodiversitet,694.44,,,,,ecological_dimension,biodiversitet
-450,Nyborg,_dim_forbrug_co2,356.0,,,,,ecological_dimension,forbrug_co2
+450,Nyborg,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+450,Nyborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 450,Nyborg,_dim_forurening,123.2,,,,,ecological_dimension,forurening
 450,Nyborg,_dim_vand,97.53,,,,,ecological_dimension,vand
 450,Nyborg,_dim_arealanvendelse,116.82,,,,,ecological_dimension,arealanvendelse
-630,Vejle,_dim_klimapaavirkning,181.65,,,,,ecological_dimension,klimapaavirkning
+630,Vejle,_dim_klimapaavirkning,373.67,,,,,ecological_dimension,klimapaavirkning
 630,Vejle,_dim_luftkvalitet,151.4,,,,,ecological_dimension,luftkvalitet
 630,Vejle,_dim_cirkularitet,127.63,,,,,ecological_dimension,cirkularitet
 630,Vejle,_dim_naeringsstoffer,134.26,,,,,ecological_dimension,naeringsstoffer
-630,Vejle,_dim_biodiversitet,436.68,,,,,ecological_dimension,biodiversitet
-630,Vejle,_dim_forbrug_co2,373.67,,,,,ecological_dimension,forbrug_co2
+630,Vejle,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 630,Vejle,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 630,Vejle,_dim_vand,88.45,,,,,ecological_dimension,vand
 630,Vejle,_dim_arealanvendelse,97.18,,,,,ecological_dimension,arealanvendelse
-540,Sønderborg,_dim_klimapaavirkning,136.34,,,,,ecological_dimension,klimapaavirkning
+540,Sønderborg,_dim_klimapaavirkning,352.33,,,,,ecological_dimension,klimapaavirkning
 540,Sønderborg,_dim_luftkvalitet,162.4,,,,,ecological_dimension,luftkvalitet
 540,Sønderborg,_dim_cirkularitet,134.63,,,,,ecological_dimension,cirkularitet
-540,Sønderborg,_dim_naeringsstoffer,118.76,,,,,ecological_dimension,naeringsstoffer
-540,Sønderborg,_dim_biodiversitet,617.28,,,,,ecological_dimension,biodiversitet
-540,Sønderborg,_dim_forbrug_co2,352.33,,,,,ecological_dimension,forbrug_co2
+540,Sønderborg,_dim_naeringsstoffer,176.92,,,,,ecological_dimension,naeringsstoffer
+540,Sønderborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 540,Sønderborg,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 540,Sønderborg,_dim_vand,85.1,,,,,ecological_dimension,vand
 540,Sønderborg,_dim_arealanvendelse,115.49,,,,,ecological_dimension,arealanvendelse
-400,Bornholm,_dim_klimapaavirkning,175.87,,,,,ecological_dimension,klimapaavirkning
+400,Bornholm,_dim_klimapaavirkning,341.0,,,,,ecological_dimension,klimapaavirkning
 400,Bornholm,_dim_luftkvalitet,139.4,,,,,ecological_dimension,luftkvalitet
 400,Bornholm,_dim_cirkularitet,142.92,,,,,ecological_dimension,cirkularitet
 400,Bornholm,_dim_naeringsstoffer,146.26,,,,,ecological_dimension,naeringsstoffer
-400,Bornholm,_dim_biodiversitet,864.55,,,,,ecological_dimension,biodiversitet
-400,Bornholm,_dim_forbrug_co2,341.0,,,,,ecological_dimension,forbrug_co2
+400,Bornholm,_dim_biodiversitet,223.71,,,,,ecological_dimension,biodiversitet
 400,Bornholm,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 400,Bornholm,_dim_vand,109.06,,,,,ecological_dimension,vand
 400,Bornholm,_dim_arealanvendelse,99.63,,,,,ecological_dimension,arealanvendelse
-779,Skive,_dim_klimapaavirkning,295.77,,,,,ecological_dimension,klimapaavirkning
+779,Skive,_dim_klimapaavirkning,362.67,,,,,ecological_dimension,klimapaavirkning
 779,Skive,_dim_luftkvalitet,136.4,,,,,ecological_dimension,luftkvalitet
 779,Skive,_dim_cirkularitet,113.62,,,,,ecological_dimension,cirkularitet
 779,Skive,_dim_naeringsstoffer,119.72,,,,,ecological_dimension,naeringsstoffer
-779,Skive,_dim_biodiversitet,292.68,,,,,ecological_dimension,biodiversitet
-779,Skive,_dim_forbrug_co2,362.67,,,,,ecological_dimension,forbrug_co2
+779,Skive,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 779,Skive,_dim_forurening,116.9,,,,,ecological_dimension,forurening
 779,Skive,_dim_vand,108.24,,,,,ecological_dimension,vand
 779,Skive,_dim_arealanvendelse,113.71,,,,,ecological_dimension,arealanvendelse
-510,Haderslev,_dim_klimapaavirkning,257.01,,,,,ecological_dimension,klimapaavirkning
+510,Haderslev,_dim_klimapaavirkning,356.67,,,,,ecological_dimension,klimapaavirkning
 510,Haderslev,_dim_luftkvalitet,160.2,,,,,ecological_dimension,luftkvalitet
 510,Haderslev,_dim_cirkularitet,106.56,,,,,ecological_dimension,cirkularitet
 510,Haderslev,_dim_naeringsstoffer,181.06,,,,,ecological_dimension,naeringsstoffer
-510,Haderslev,_dim_biodiversitet,554.53,,,,,ecological_dimension,biodiversitet
-510,Haderslev,_dim_forbrug_co2,356.67,,,,,ecological_dimension,forbrug_co2
+510,Haderslev,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 510,Haderslev,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 510,Haderslev,_dim_vand,76.77,,,,,ecological_dimension,vand
 510,Haderslev,_dim_arealanvendelse,117.0,,,,,ecological_dimension,arealanvendelse
 575,Vejen,_dim_klimapaavirkning,381.82,,,,,ecological_dimension,klimapaavirkning
 575,Vejen,_dim_luftkvalitet,156.6,,,,,ecological_dimension,luftkvalitet
 575,Vejen,_dim_cirkularitet,100.0,,,,,ecological_dimension,cirkularitet
-575,Vejen,_dim_naeringsstoffer,190.69,,,,,ecological_dimension,naeringsstoffer
-575,Vejen,_dim_biodiversitet,478.47,,,,,ecological_dimension,biodiversitet
-575,Vejen,_dim_forbrug_co2,349.33,,,,,ecological_dimension,forbrug_co2
+575,Vejen,_dim_naeringsstoffer,199.26,,,,,ecological_dimension,naeringsstoffer
+575,Vejen,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 575,Vejen,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 575,Vejen,_dim_vand,221.51,,,,,ecological_dimension,vand
 575,Vejen,_dim_arealanvendelse,116.64,,,,,ecological_dimension,arealanvendelse
 820,Vesthimmerlands,_dim_klimapaavirkning,573.99,,,,,ecological_dimension,klimapaavirkning
 820,Vesthimmerlands,_dim_luftkvalitet,136.2,,,,,ecological_dimension,luftkvalitet
 820,Vesthimmerlands,_dim_cirkularitet,105.71,,,,,ecological_dimension,cirkularitet
-820,Vesthimmerlands,_dim_naeringsstoffer,124.79,,,,,ecological_dimension,naeringsstoffer
+820,Vesthimmerlands,_dim_naeringsstoffer,191.42,,,,,ecological_dimension,naeringsstoffer
 820,Vesthimmerlands,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
-820,Vesthimmerlands,_dim_forbrug_co2,397.67,,,,,ecological_dimension,forbrug_co2
 820,Vesthimmerlands,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 820,Vesthimmerlands,_dim_vand,133.95,,,,,ecological_dimension,vand
 820,Vesthimmerlands,_dim_arealanvendelse,114.63,,,,,ecological_dimension,arealanvendelse
-707,Norddjurs,_dim_klimapaavirkning,279.69,,,,,ecological_dimension,klimapaavirkning
+707,Norddjurs,_dim_klimapaavirkning,351.67,,,,,ecological_dimension,klimapaavirkning
 707,Norddjurs,_dim_luftkvalitet,132.8,,,,,ecological_dimension,luftkvalitet
 707,Norddjurs,_dim_cirkularitet,216.92,,,,,ecological_dimension,cirkularitet
-707,Norddjurs,_dim_naeringsstoffer,117.51,,,,,ecological_dimension,naeringsstoffer
-707,Norddjurs,_dim_biodiversitet,422.54,,,,,ecological_dimension,biodiversitet
-707,Norddjurs,_dim_forbrug_co2,351.67,,,,,ecological_dimension,forbrug_co2
+707,Norddjurs,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+707,Norddjurs,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 707,Norddjurs,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 707,Norddjurs,_dim_vand,130.88,,,,,ecological_dimension,vand
 707,Norddjurs,_dim_arealanvendelse,102.01,,,,,ecological_dimension,arealanvendelse
-671,Struer,_dim_klimapaavirkning,216.94,,,,,ecological_dimension,klimapaavirkning
+671,Struer,_dim_klimapaavirkning,355.33,,,,,ecological_dimension,klimapaavirkning
 671,Struer,_dim_luftkvalitet,135.2,,,,,ecological_dimension,luftkvalitet
 671,Struer,_dim_cirkularitet,100.55,,,,,ecological_dimension,cirkularitet
 671,Struer,_dim_naeringsstoffer,105.18,,,,,ecological_dimension,naeringsstoffer
-671,Struer,_dim_biodiversitet,425.53,,,,,ecological_dimension,biodiversitet
-671,Struer,_dim_forbrug_co2,355.33,,,,,ecological_dimension,forbrug_co2
+671,Struer,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 671,Struer,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 671,Struer,_dim_vand,94.87,,,,,ecological_dimension,vand
 671,Struer,_dim_arealanvendelse,125.41,,,,,ecological_dimension,arealanvendelse
-306,Odsherred,_dim_klimapaavirkning,228.49,,,,,ecological_dimension,klimapaavirkning
+306,Odsherred,_dim_klimapaavirkning,383.67,,,,,ecological_dimension,klimapaavirkning
 306,Odsherred,_dim_luftkvalitet,145.8,,,,,ecological_dimension,luftkvalitet
 306,Odsherred,_dim_cirkularitet,171.82,,,,,ecological_dimension,cirkularitet
-306,Odsherred,_dim_naeringsstoffer,132.66,,,,,ecological_dimension,naeringsstoffer
-306,Odsherred,_dim_biodiversitet,449.1,,,,,ecological_dimension,biodiversitet
-306,Odsherred,_dim_forbrug_co2,383.67,,,,,ecological_dimension,forbrug_co2
+306,Odsherred,_dim_naeringsstoffer,198.58,,,,,ecological_dimension,naeringsstoffer
+306,Odsherred,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 306,Odsherred,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 306,Odsherred,_dim_vand,102.1,,,,,ecological_dimension,vand
 306,Odsherred,_dim_arealanvendelse,167.61,,,,,ecological_dimension,arealanvendelse
-330,Slagelse,_dim_klimapaavirkning,166.54,,,,,ecological_dimension,klimapaavirkning
+330,Slagelse,_dim_klimapaavirkning,386.0,,,,,ecological_dimension,klimapaavirkning
 330,Slagelse,_dim_luftkvalitet,153.0,,,,,ecological_dimension,luftkvalitet
 330,Slagelse,_dim_cirkularitet,113.26,,,,,ecological_dimension,cirkularitet
-330,Slagelse,_dim_naeringsstoffer,111.28,,,,,ecological_dimension,naeringsstoffer
-330,Slagelse,_dim_biodiversitet,744.42,,,,,ecological_dimension,biodiversitet
-330,Slagelse,_dim_forbrug_co2,386.0,,,,,ecological_dimension,forbrug_co2
+330,Slagelse,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+330,Slagelse,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 330,Slagelse,_dim_forurening,126.8,,,,,ecological_dimension,forurening
 330,Slagelse,_dim_vand,86.87,,,,,ecological_dimension,vand
 330,Slagelse,_dim_arealanvendelse,113.53,,,,,ecological_dimension,arealanvendelse
@@ -7147,17 +7254,15 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 665,Lemvig,_dim_luftkvalitet,133.0,,,,,ecological_dimension,luftkvalitet
 665,Lemvig,_dim_cirkularitet,104.98,,,,,ecological_dimension,cirkularitet
 665,Lemvig,_dim_naeringsstoffer,346.5,,,,,ecological_dimension,naeringsstoffer
-665,Lemvig,_dim_biodiversitet,327.87,,,,,ecological_dimension,biodiversitet
-665,Lemvig,_dim_forbrug_co2,367.0,,,,,ecological_dimension,forbrug_co2
+665,Lemvig,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 665,Lemvig,_dim_forurening,0.0,,,,,ecological_dimension,forurening
 665,Lemvig,_dim_vand,182.29,,,,,ecological_dimension,vand
 665,Lemvig,_dim_arealanvendelse,106.58,,,,,ecological_dimension,arealanvendelse
-376,Guldborgsund,_dim_klimapaavirkning,235.95,,,,,ecological_dimension,klimapaavirkning
+376,Guldborgsund,_dim_klimapaavirkning,363.67,,,,,ecological_dimension,klimapaavirkning
 376,Guldborgsund,_dim_luftkvalitet,151.0,,,,,ecological_dimension,luftkvalitet
 376,Guldborgsund,_dim_cirkularitet,250.0,,,,,ecological_dimension,cirkularitet
-376,Guldborgsund,_dim_naeringsstoffer,192.09,,,,,ecological_dimension,naeringsstoffer
-376,Guldborgsund,_dim_biodiversitet,729.93,,,,,ecological_dimension,biodiversitet
-376,Guldborgsund,_dim_forbrug_co2,363.67,,,,,ecological_dimension,forbrug_co2
+376,Guldborgsund,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
+376,Guldborgsund,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 376,Guldborgsund,_dim_forurening,255.8,,,,,ecological_dimension,forurening
 376,Guldborgsund,_dim_vand,83.15,,,,,ecological_dimension,vand
 376,Guldborgsund,_dim_arealanvendelse,122.12,,,,,ecological_dimension,arealanvendelse
@@ -7165,17 +7270,15 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 326,Kalundborg,_dim_luftkvalitet,150.4,,,,,ecological_dimension,luftkvalitet
 326,Kalundborg,_dim_cirkularitet,128.17,,,,,ecological_dimension,cirkularitet
 326,Kalundborg,_dim_naeringsstoffer,361.79,,,,,ecological_dimension,naeringsstoffer
-326,Kalundborg,_dim_biodiversitet,346.02,,,,,ecological_dimension,biodiversitet
-326,Kalundborg,_dim_forbrug_co2,379.67,,,,,ecological_dimension,forbrug_co2
+326,Kalundborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 326,Kalundborg,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 326,Kalundborg,_dim_vand,219.44,,,,,ecological_dimension,vand
 326,Kalundborg,_dim_arealanvendelse,106.76,,,,,ecological_dimension,arealanvendelse
-849,Jammerbugt,_dim_klimapaavirkning,340.15,,,,,ecological_dimension,klimapaavirkning
+849,Jammerbugt,_dim_klimapaavirkning,415.0,,,,,ecological_dimension,klimapaavirkning
 849,Jammerbugt,_dim_luftkvalitet,128.8,,,,,ecological_dimension,luftkvalitet
 849,Jammerbugt,_dim_cirkularitet,186.92,,,,,ecological_dimension,cirkularitet
 849,Jammerbugt,_dim_naeringsstoffer,91.46,,,,,ecological_dimension,naeringsstoffer
-849,Jammerbugt,_dim_biodiversitet,172.31,,,,,ecological_dimension,biodiversitet
-849,Jammerbugt,_dim_forbrug_co2,415.0,,,,,ecological_dimension,forbrug_co2
+849,Jammerbugt,_dim_biodiversitet,295.57,,,,,ecological_dimension,biodiversitet
 849,Jammerbugt,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 849,Jammerbugt,_dim_vand,145.0,,,,,ecological_dimension,vand
 849,Jammerbugt,_dim_arealanvendelse,96.53,,,,,ecological_dimension,arealanvendelse
@@ -7183,44 +7286,39 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 550,Tønder,_dim_luftkvalitet,160.2,,,,,ecological_dimension,luftkvalitet
 550,Tønder,_dim_cirkularitet,108.84,,,,,ecological_dimension,cirkularitet
 550,Tønder,_dim_naeringsstoffer,156.59,,,,,ecological_dimension,naeringsstoffer
-550,Tønder,_dim_biodiversitet,348.43,,,,,ecological_dimension,biodiversitet
-550,Tønder,_dim_forbrug_co2,343.33,,,,,ecological_dimension,forbrug_co2
+550,Tønder,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 550,Tønder,_dim_forurening,228.5,,,,,ecological_dimension,forurening
 550,Tønder,_dim_vand,207.14,,,,,ecological_dimension,vand
 550,Tønder,_dim_arealanvendelse,120.11,,,,,ecological_dimension,arealanvendelse
-390,Vordingborg,_dim_klimapaavirkning,213.65,,,,,ecological_dimension,klimapaavirkning
+390,Vordingborg,_dim_klimapaavirkning,381.67,,,,,ecological_dimension,klimapaavirkning
 390,Vordingborg,_dim_luftkvalitet,148.0,,,,,ecological_dimension,luftkvalitet
 390,Vordingborg,_dim_cirkularitet,127.06,,,,,ecological_dimension,cirkularitet
-390,Vordingborg,_dim_naeringsstoffer,180.7,,,,,ecological_dimension,naeringsstoffer
-390,Vordingborg,_dim_biodiversitet,497.51,,,,,ecological_dimension,biodiversitet
-390,Vordingborg,_dim_forbrug_co2,381.67,,,,,ecological_dimension,forbrug_co2
+390,Vordingborg,_dim_naeringsstoffer,286.19,,,,,ecological_dimension,naeringsstoffer
+390,Vordingborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 390,Vordingborg,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 390,Vordingborg,_dim_vand,95.0,,,,,ecological_dimension,vand
 390,Vordingborg,_dim_arealanvendelse,110.05,,,,,ecological_dimension,arealanvendelse
-360,Lolland,_dim_klimapaavirkning,240.78,,,,,ecological_dimension,klimapaavirkning
+360,Lolland,_dim_klimapaavirkning,358.67,,,,,ecological_dimension,klimapaavirkning
 360,Lolland,_dim_luftkvalitet,151.8,,,,,ecological_dimension,luftkvalitet
 360,Lolland,_dim_cirkularitet,171.05,,,,,ecological_dimension,cirkularitet
 360,Lolland,_dim_naeringsstoffer,374.67,,,,,ecological_dimension,naeringsstoffer
-360,Lolland,_dim_biodiversitet,1102.94,,,,,ecological_dimension,biodiversitet
-360,Lolland,_dim_forbrug_co2,358.67,,,,,ecological_dimension,forbrug_co2
+360,Lolland,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 360,Lolland,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 360,Lolland,_dim_vand,98.11,,,,,ecological_dimension,vand
 360,Lolland,_dim_arealanvendelse,135.65,,,,,ecological_dimension,arealanvendelse
-741,Samsø,_dim_klimapaavirkning,275.16,,,,,ecological_dimension,klimapaavirkning
+741,Samsø,_dim_klimapaavirkning,365.33,,,,,ecological_dimension,klimapaavirkning
 741,Samsø,_dim_luftkvalitet,140.4,,,,,ecological_dimension,luftkvalitet
 741,Samsø,_dim_cirkularitet,144.44,,,,,ecological_dimension,cirkularitet
 741,Samsø,_dim_naeringsstoffer,384.76,,,,,ecological_dimension,naeringsstoffer
-741,Samsø,_dim_biodiversitet,269.54,,,,,ecological_dimension,biodiversitet
-741,Samsø,_dim_forbrug_co2,365.33,,,,,ecological_dimension,forbrug_co2
+741,Samsø,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 741,Samsø,_dim_forurening,305.9,,,,,ecological_dimension,forurening
 741,Samsø,_dim_vand,149.98,,,,,ecological_dimension,vand
 741,Samsø,_dim_arealanvendelse,114.08,,,,,ecological_dimension,arealanvendelse
-482,Langeland,_dim_klimapaavirkning,319.01,,,,,ecological_dimension,klimapaavirkning
+482,Langeland,_dim_klimapaavirkning,342.67,,,,,ecological_dimension,klimapaavirkning
 482,Langeland,_dim_luftkvalitet,154.2,,,,,ecological_dimension,luftkvalitet
 482,Langeland,_dim_cirkularitet,158.93,,,,,ecological_dimension,cirkularitet
 482,Langeland,_dim_naeringsstoffer,227.63,,,,,ecological_dimension,naeringsstoffer
-482,Langeland,_dim_biodiversitet,441.18,,,,,ecological_dimension,biodiversitet
-482,Langeland,_dim_forbrug_co2,342.67,,,,,ecological_dimension,forbrug_co2
+482,Langeland,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 482,Langeland,_dim_forurening,101.0,,,,,ecological_dimension,forurening
 482,Langeland,_dim_vand,137.39,,,,,ecological_dimension,vand
 482,Langeland,_dim_arealanvendelse,117.55,,,,,ecological_dimension,arealanvendelse

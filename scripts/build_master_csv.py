@@ -131,8 +131,8 @@ SOCIAL_INDICATORS = [
 # inverse_ratio=True betyder at ratio i CSV er "inverteret eco" hvor lav=værre.
 # Vi konverterer: direct = 10000 / inverse, så høj=overshoot.
 ECO_SUB_INDICATORS = [
-    # === Klimapåvirkning (single) ===
-    {"id": "klimapaavirkning", "csv": "climate_scores.csv", "ratio_col": "climate_territorial_ratio", "raw_col": "co2e_per_capita", "unit": "ton CO₂e/person", "data_year": "2023", "source": "Klimaregnskabet.dk", "category": "ecological", "dimension": "klimapaavirkning", "inverse_ratio": False, "is_dimension_score": True},
+    # === Klimapåvirkning (worst-of: territorial + forbrugsbaseret) ===
+    {"id": "klimapaavirkning", "csv": "climate_scores.csv", "ratio_col": "climate_territorial_ratio", "raw_col": "co2e_per_capita", "unit": "ton CO₂e/person", "data_year": "2023", "source": "Klimaregnskabet.dk", "category": "ecological", "dimension": "klimapaavirkning", "inverse_ratio": False, "is_dimension_score": False},
 
     # === Luftkvalitet (worst-of NO2 + PM2.5) ===
     {"id": "luftkvalitet_no2", "csv": "luftforurening_scores.csv", "ratio_col": "no2_ratio", "raw_col": "no2_ug_m3", "unit": "µg/m³", "data_year": "2023", "source": "DCE/AU UBM via Miljøportal WFS", "category": "ecological", "dimension": "luftkvalitet", "inverse_ratio": False, "is_dimension_score": False},
@@ -148,12 +148,21 @@ ECO_SUB_INDICATORS = [
     {"id": "naer_nitrogen", "csv": "naeringsstoffer_scores.csv", "ratio_col": "nitrogen_ratio", "raw_col": "nitrogen_per_1000", "unit": "ton N/1.000 indb.", "data_year": "2024", "source": "DST VANDUD", "category": "ecological", "dimension": "naeringsstoffer", "inverse_ratio": True, "is_dimension_score": False},
     {"id": "naer_phosphorus", "csv": "naeringsstoffer_scores.csv", "ratio_col": "phosphorus_ratio", "raw_col": "phosphorus_per_1000", "unit": "ton P/1.000 indb.", "data_year": "2024", "source": "DST VANDUD", "category": "ecological", "dimension": "naeringsstoffer", "inverse_ratio": True, "is_dimension_score": False},
     {"id": "naer_landbrug", "csv": "n_landbrug_scores.csv", "ratio_col": "n_ratio", "raw_col": "n_ceiling_kg_per_ha", "unit": "kg N/ha", "data_year": "2025", "source": "Vandområdeplan 3", "category": "ecological", "dimension": "naeringsstoffer", "inverse_ratio": False, "is_dimension_score": False},
+    # Effektmål: vandområdernes økologiske tilstand (VP3) = den synlige eutrofiering som N/P forårsager.
+    # Andel af kommunens vandområder (vandløb+søer+kyst) i god tilstand, scoret mod landsgennemsnit
+    # (ratio beregnet i fetch-scriptet, høj = værre). EU's 2027-mål vises som kontekst på metodesiden.
+    {"id": "overfladevand", "csv": "vp3_vandkvalitet_scores.csv", "ratio_col": "vandkvalitet_ratio", "raw_col": "pct_god_tilstand", "unit": "%", "data_year": "2025", "source": "Vandområdeplan 3 (VP3 2e2025)", "category": "ecological", "dimension": "naeringsstoffer", "inverse_ratio": False, "is_dimension_score": False, "cap": 300},
 
-    # === Biodiversitet (single - bruger naturareal) ===
-    {"id": "biodiversitet", "csv": "land_use_scores.csv", "ratio_col": "land_use_ratio", "raw_col": "natur_pct", "unit": "%", "data_year": "2022", "source": "DST AREALDK2 + ARE207", "category": "ecological", "dimension": "biodiversitet", "inverse_ratio": False, "is_dimension_score": True},
+    # === Biodiversitet (worst-of: væsentlig + uerstattelig naturværdi, DCE bioscore) ===
+    # Kilde: DCE Biodiversitetskort (Bioscore-raster, AU/DCE SR456). Måler habitatkvalitet,
+    # ikke rent arealdække. To tærskler matcher CONCITO/EU's biodiversitetsmål:
+    #   ≥8  = "væsentlige naturværdier"   → mod 30%-målet (biodiversitet_ratio)
+    #   ≥12 = "uerstattelige levesteder"  → mod 10%-målet (uerstattelig_ratio)
+    {"id": "bio_vasentlig",    "csv": "biodiversitet_scores.csv", "ratio_col": "biodiversitet_ratio", "raw_col": "pct_vasentlig_natur",    "unit": "%", "data_year": "2021", "source": "DCE Biodiversitetskort (bioscore)", "category": "ecological", "dimension": "biodiversitet", "inverse_ratio": False, "is_dimension_score": False, "cap": 300},
+    {"id": "bio_uerstattelig", "csv": "biodiversitet_scores.csv", "ratio_col": "uerstattelig_ratio", "raw_col": "pct_uerstattelig_natur", "unit": "%", "data_year": "2021", "source": "DCE Biodiversitetskort (bioscore)", "category": "ecological", "dimension": "biodiversitet", "inverse_ratio": False, "is_dimension_score": False, "cap": 300},
 
-    # === Forbrugsbaseret CO2 (single, navn-nøgle, ingen fallback) ===
-    {"id": "forbrug_co2", "csv": "cba_2023_estimate.csv", "ratio_col": None, "raw_col": "cba_2023_estimate", "unit": "ton CO₂e/person", "data_year": "2023", "source": "Osei-Owusu et al. 2020 + ENS GA25", "category": "ecological", "dimension": "forbrug_co2", "inverse_ratio": False, "is_dimension_score": True, "special": "cba_navn_key"},
+    # === Forbrugsbaseret CO2 (2. indikator under klimapaavirkning; navn-nøgle, ingen fallback) ===
+    {"id": "forbrug_co2", "csv": "cba_2023_estimate.csv", "ratio_col": None, "raw_col": "cba_2023_estimate", "unit": "ton CO₂e/person", "data_year": "2023", "source": "Osei-Owusu et al. 2020 + ENS GA25", "category": "ecological", "dimension": "klimapaavirkning", "inverse_ratio": False, "is_dimension_score": False, "special": "cba_navn_key"},
 
     # === Forurening / Novel entities (single: pesticider i drikkevand) ===
     {"id": "pesticider", "csv": "pesticider_scores.csv", "ratio_col": "pesticid_ratio", "raw_col": "pesticid_pct_over_graense", "unit": "% boringer over 0.1 µg/l", "data_year": "2023", "source": "DN/GEUS Jupiter 2019-2023", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": True},
@@ -382,6 +391,12 @@ def build_master():
                     ratio = invert_to_direct_ratio(csv_ratio)
                 else:
                     ratio = csv_ratio
+
+            # Cap ekstreme eco-ratioer (fx bioscore med pct nær 0 giver ratio i tusinder).
+            # Baren klipper alligevel ved 200; cap holder det viste tal og validering pæn.
+            cap = ind.get("cap")
+            if cap is not None and ratio is not None and ratio > cap:
+                ratio = float(cap)
 
             if ratio is None and raw is None:
                 continue

@@ -83,9 +83,9 @@ Se `INDICATORS` og `SOCIAL_CATEGORIES` i `webapp/lib/shared.ts` for aktuel liste
 **Sociale:** ≥100 grøn (`emerald`), 85-100 amber, <85 rød (`scoreColor` i shared.ts).
 **Økologiske:** ≤85 grøn, 85-100 amber, >100 rød - overshoot (`ecoScoreColor` i ScoreBars.tsx).
 
-### ECOLOGICAL_DIMENSIONS (9 planetære grænser)
+### ECOLOGICAL_DIMENSIONS (8 planetære grænser)
 
-Se `ECOLOGICAL_DIMENSIONS` i `webapp/lib/shared.ts` for aktuel liste. Multi-indikator-dimensioner (luftkvalitet, naeringsstoffer, cirkularitet, vand) bruger **worst-of logic** (max ratio) - hvis bare én sub-grænse overskrides, er hele dimensionen overskredet. Dette er bevidst planetary-boundary-logik, IKKE gennemsnit. Single-indikator dims (klimapaavirkning, biodiversitet, forbrug_co2, forurening, arealanvendelse) arver direkte ratio fra sub-indikatoren.
+Se `ECOLOGICAL_DIMENSIONS` i `webapp/lib/shared.ts` for aktuel liste. De fleste dimensioner er multi-indikator og bruger **worst-of logic** (max ratio) - hvis bare én sub-grænse overskrides, er hele dimensionen overskredet. Dette er bevidst planetary-boundary-logik, IKKE gennemsnit. Eksempler: klimapaavirkning (territorial + forbrugsbaseret CO₂), naeringsstoffer (N/P-belastning + vandområdernes økologiske tilstand VP3), biodiversitet (bioscore ≥8 mod 30% og ≥12 mod 10%), luftkvalitet, cirkularitet, vand, arealanvendelse. Kun forurening (pesticider) er single-indikator. **Designprincip:** én planetær grænse = én dimension; flere opgørelsesmetoder/indikatorer for samme grænse er sub-indikatorer, ikke separate dimensioner.
 
 ### KommuneData-type
 
