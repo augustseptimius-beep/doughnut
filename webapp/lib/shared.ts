@@ -20,6 +20,8 @@ export interface Indicator {
   dataYear?: string;          // Årstal for seneste data, f.eks. "2023" eller "2021"
   baselineLevel?: BaselineLevel; // Hierarki-niveau for baseline
   absoluteTarget?: string;    // Beskrivelse af absolut mål, f.eks. "95% (nationalt mål)"
+  absoluteScore?: boolean;    // true = ratio er en absolut score (fx 100-fossil%), ikke relativ
+                              // til landsgennemsnit. Påvirkes IKKE af baseline-toggle (avg/top10/gruppe).
   rawUnit?: string;           // Enhed for råværdi, f.eks. "pr. 1.000 indb.", "%", "km"
 }
 
@@ -45,6 +47,7 @@ export const INDICATORS: Indicator[] = [
     dataYear: "2023",
     baselineLevel: 2,
     absoluteTarget: "95% (nationalt uddannelsesmål)",
+    absoluteScore: true,
     rawUnit: "%",
   },
   {
@@ -115,13 +118,15 @@ export const INDICATORS: Indicator[] = [
   },
   {
     id: "bolig_fossil",
-    name: "Fossil opvarmning (gas/olie)",
+    name: "Fossil opvarmning (inkl. fjernvarme)",
     table: "BOL202",
     source: "https://www.statistikbanken.dk/BOL202",
     category: "social",
     inverse: true,
     dataYear: "2026",
-    baselineLevel: 3,
+    baselineLevel: 2,
+    absoluteTarget: "0% fossil (udfasningsmål)",
+    absoluteScore: true,
     rawUnit: "%",
   },
   {
@@ -628,7 +633,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "bolig",
     name: "Bolig",
     description: "Adgang til gode, sunde og bæredygtige boliger i trygge nærmiljøer.",
-    indicatorIds: ["vacant_housing", "housing_area", "bolig_fossil"],
+    indicatorIds: ["vacant_housing", "housing_area"],
   },
   {
     id: "demokrati",
@@ -678,6 +683,12 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     description: "Kommunens robusthed over for klimaforandringer: oversvømmelse, hedebølger, tørke og ekstremvejr.",
     indicatorIds: ["vejr_skader"],
   },
+  {
+    id: "energi",
+    name: "Energi",
+    description: "Husstandenes fossile energiafhængighed - andel boliger opvarmet med olie eller naturgas. Fossil opvarmning belaster klimaet og udsætter husstande for høje, svingende varmeregninger. Lokal VE-produktion og fjernvarmens brændselsmix vises som kontekst, men indgår ikke i scoren.",
+    indicatorIds: ["bolig_fossil"],
+  },
 ];
 
 // --- ECOLOGICAL CEILING (TORUS miljøaspekter) ---
@@ -699,6 +710,7 @@ export interface EcologicalDimension {
     unit: string;         // enhed
     boundary?: string;    // grænseværdi for denne sub-indikator
     lowerIsBetter?: boolean; // true = lavere er bedre (inverteret)
+    baselineType?: "absolut" | "relativ"; // mod fast mål vs mod landsgennemsnit
   }[];
 }
 
@@ -713,21 +725,24 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     unit: "ton CO₂e/person",
     boundary: "3 ton CO₂e/person/år (Paris-budget) - gælder både territorialt og forbrugsbaseret",
     subIndicators: [
-      { rawKey: "eco_klima_raw", ratioKey: "klimapaavirkning_self", label: "Territoriale udledninger",        unit: "ton CO₂e/person", boundary: "Mål: 3 ton CO₂e/person/år (territorial)",     lowerIsBetter: true },
-      { rawKey: "forbrug_co2",   ratioKey: "forbrug_co2_self",      label: "Forbrugsbaseret CO₂ (inkl. import)", unit: "ton CO₂e/person", boundary: "Mål: 3 ton CO₂e/person/år (forbrugsbaseret)", lowerIsBetter: true },
+      { rawKey: "eco_klima_raw", ratioKey: "klimapaavirkning_self", label: "Territoriale udledninger",        unit: "ton CO₂e/person", boundary: "Mål: 3 ton CO₂e/person/år (territorial)",     lowerIsBetter: true, baselineType: "absolut" },
+      { rawKey: "forbrug_co2",   ratioKey: "forbrug_co2_self",      label: "Forbrugsbaseret CO₂ (inkl. import)", unit: "ton CO₂e/person", boundary: "Mål: 3 ton CO₂e/person/år (forbrugsbaseret)", lowerIsBetter: true, baselineType: "absolut" },
     ],
   },
   {
     id: "forurening",
     name: "Forurening",
     shortName: "FORUR",
-    description: "Syntetiske pesticider i drikkevand - andel af aktive vandindvindingsboringer med fund over drikkevandsnormen (0.1 µg/l). Måler kemisk forurening fra syntetiske stoffer (novel entities) i grundvandsmagasinerne.",
+    description: "Kemisk forurening og materialecyklusser - fire indikatorer vægtet ens (gennemsnit, ikke worst-of): pesticider i grundvand, nitrat i drikkevand, husholdningsaffald og genanvendelse. Pesticider og nitrat dækker CONCITO-rapportens 'novel entities'-grænse; affald og genanvendelse dækker materialecyklusser.",
     source: "https://www.dn.dk/nyheder/tjek-din-kommune-sa-ofte-er-der-giftrester-i-grundvandet/",
-    sourceLabel: "DN/GEUS Jupiter 2019-2023",
-    unit: "% boringer over 0.1 µg/l",
-    boundary: "0% af aktive boringer bør overstige drikkevandsnormen (0.1 µg/l)",
+    sourceLabel: "DN/GEUS + Greenpeace/GEUS + DST",
+    unit: "% boringer, mg/L, kg/person, %",
+    boundary: "Pesticider: 0% over drikkevandsnormen. Nitrat: 6 mg/L. Affald + genanvendelse: mod landsgennemsnit og EU's 65%-mål.",
     subIndicators: [
-      { rawKey: "eco_pesticid_raw", ratioKey: "pesticider_self", label: "Pesticider over grænseværdi", unit: "% boringer > 0.1 µg/l", boundary: "Grænse: 0% (drikkevandsnorm)", lowerIsBetter: true },
+      { rawKey: "eco_pesticid_raw",     ratioKey: "pesticider_self",       label: "Pesticider i grundvand",      unit: "% boringer > 0.1 µg/l", boundary: "Grænse: 0% (drikkevandsnorm)", lowerIsBetter: true,  baselineType: "absolut" },
+      { rawKey: "eco_nitrat_raw",       ratioKey: "nitrat_self",           label: "Nitrat i drikkevand",         unit: "mg/L",                  boundary: "Grænse: 6 mg/L (ekspertgruppe 2025)", lowerIsBetter: true, baselineType: "absolut" },
+      { rawKey: "eco_cirkularitet_raw", ratioKey: "eco_cirkularitet_ratio", label: "Genanvendelse (husholdning)", unit: "%",                     boundary: "Mål: 65% (EU Affaldsdirektiv 2035)", lowerIsBetter: false, baselineType: "absolut" },
+      { rawKey: "eco_affald_raw",       ratioKey: "eco_affald_ratio",      label: "Affald pr. person",           unit: "kg/person",             boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true, baselineType: "relativ" },
     ],
   },
   {
@@ -740,22 +755,8 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     source: "https://arld-extgeo.miljoeportal.dk/geoserver/wfs",
     sourceLabel: "Miljøportal WFS (DCE/AU)",
     subIndicators: [
-      { rawKey: "luftkvalitet_no2",  ratioKey: "luftkvalitet_no2_ratio",  label: "NO₂ (kvælstofdioxid)",  unit: "µg/m³", boundary: "WHO 2021: 10 µg/m³", lowerIsBetter: true },
-      { rawKey: "luftkvalitet_pm25", ratioKey: "luftkvalitet_pm25_ratio", label: "PM2.5 (fine partikler)", unit: "µg/m³", boundary: "WHO 2021: 5 µg/m³",  lowerIsBetter: true },
-    ],
-  },
-  {
-    id: "cirkularitet",
-    name: "Cirkularitet (materialer)",
-    shortName: "CIR",
-    description: "Ressourceeffektivitet målt via genanvendelsesprocent og affaldsmængde pr. indbygger - lavt affald og høj genanvendelse indikerer en cirkulær økonomi.",
-    source: "https://statbank.dk/LABY25",
-    sourceLabel: "DST LABY25 + MST",
-    unit: "% genanvendt + kg affald/person",
-    boundary: "65% genanvendelse (EU 2035) + lavest muligt affald pr. capita",
-    subIndicators: [
-      { rawKey: "eco_cirkularitet_raw", ratioKey: "eco_cirkularitet_ratio", label: "Genanvendelsesprocent", unit: "%", boundary: "Mål: 65% (EU Affaldsdirektiv 2035)", lowerIsBetter: false },
-      { rawKey: "eco_affald_raw",       ratioKey: "eco_affald_ratio",       label: "Affald pr. person",    unit: "kg/person", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
+      { rawKey: "luftkvalitet_no2",  ratioKey: "luftkvalitet_no2_ratio",  label: "NO₂ (kvælstofdioxid)",  unit: "µg/m³", boundary: "WHO 2021: 10 µg/m³", lowerIsBetter: true, baselineType: "absolut" },
+      { rawKey: "luftkvalitet_pm25", ratioKey: "luftkvalitet_pm25_ratio", label: "PM2.5 (fine partikler)", unit: "µg/m³", boundary: "WHO 2021: 5 µg/m³",  lowerIsBetter: true, baselineType: "absolut" },
     ],
   },
   {
@@ -768,24 +769,23 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     unit: "ton N/P pr. 1.000 indb., kg N/ha, % vandområder i god tilstand",
     boundary: "Landsgennemsnittet som reference - lavere belastning og strengere N-loft er bedre for vandmiljøet",
     subIndicators: [
-      { rawKey: "eco_naer_n_raw",        ratioKey: "eco_naer_n_ratio",        label: "Kvælstofudledning (spildevand)", unit: "ton N/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
-      { rawKey: "eco_naer_p_raw",        ratioKey: "eco_naer_p_ratio",        label: "Fosforudledning (spildevand)",   unit: "ton P/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true },
-      { rawKey: "eco_naer_landbrug_raw", ratioKey: "eco_naer_landbrug_ratio", label: "N-loft landbrug (VP3)",          unit: "kg N/ha",           boundary: "Lavere N-loft pr. ha = mere presset end landsgennemsnit", lowerIsBetter: true },
-      { rawKey: "eco_overfladevand_raw", ratioKey: "overfladevand_ratio",     label: "Vandområder i god økologisk tilstand (VP3)", unit: "%",  boundary: "EU-mål: 100% i god tilstand (2027) - nationalt langtfra opfyldt. Scoret mod landsgennemsnit.", lowerIsBetter: false },
+      { rawKey: "eco_naer_n_raw",        ratioKey: "eco_naer_n_ratio",        label: "Kvælstofudledning (spildevand)", unit: "ton N/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true, baselineType: "relativ" },
+      { rawKey: "eco_naer_p_raw",        ratioKey: "eco_naer_p_ratio",        label: "Fosforudledning (spildevand)",   unit: "ton P/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true, baselineType: "relativ" },
+      { rawKey: "eco_naer_landbrug_raw", ratioKey: "eco_naer_landbrug_ratio", label: "N-loft landbrug (VP3)",          unit: "kg N/ha",           boundary: "Lavere N-loft pr. ha = mere presset end landsgennemsnit", lowerIsBetter: true, baselineType: "relativ" },
+      { rawKey: "eco_overfladevand_raw", ratioKey: "overfladevand_ratio",     label: "Vandområder i god økologisk tilstand (VP3)", unit: "%",  boundary: "EU-mål: 100% i god tilstand (2027) - nationalt langtfra opfyldt. Scoret mod landsgennemsnit.", lowerIsBetter: false, baselineType: "relativ" },
     ],
   },
   {
     id: "vand",
     name: "Vand",
     shortName: "VAND",
-    description: "To indikatorer for pres på ferskvandressourcerne: (1) Nitratindhold i drikkevand - ophobning fra landbrugets kvælstofbelastning af grundvandsmagasinerne. (2) Vandindvinding fra almene vandværker pr. capita - indirekte mål for grundvandspres. Dimensionen bruger worst-of-logik.",
-    source: "https://www.greenpeace.org/static/planet4-denmark-stateless/2025/11/d33ba39e-nitrat-i-danmarks-drikkevand.pdf",
-    sourceLabel: "Greenpeace/GEUS Jupiter 2025 + DST VANDIND 2024",
-    unit: "mg/L + m³/person",
-    boundary: "Nitrat: 6 mg/L (ekspertgruppe 2025). Vandindvinding: landsgennemsnit som reference.",
+    description: "Vandindvinding fra almene vandværker pr. person - et indirekte mål for pres på grundvandsressourcerne. Nitrat i drikkevand er flyttet til Forurening-dimensionen, da det er et forureningsspørgsmål (novel entities).",
+    source: "https://www.statistikbanken.dk/VANDIND",
+    sourceLabel: "DST VANDIND (2024)",
+    unit: "m³/person",
+    boundary: "Landsgennemsnit (72,9 m³/person, 2024) som reference. Jo lavere vandindvinding pr. person, jo mindre pres på grundvandet.",
     subIndicators: [
-      { rawKey: "eco_nitrat_raw",         ratioKey: "nitrat_self",         label: "Nitrat i drikkevand",              unit: "mg/L",      boundary: "Grænse: 6 mg/L (ekspertgruppe 2025) - top-20 præcist, øvrige estimeret til 3,7 mg/L", lowerIsBetter: true },
-      { rawKey: "eco_vandindvinding_raw", ratioKey: "vandindvinding_self", label: "Vandindvinding (alment vandværk)", unit: "m³/person", boundary: "Lavere end landsgennemsnittet er bedre. OBS: bykommuner kan mangle data pga. vandværkets registreringssted.", lowerIsBetter: true },
+      { rawKey: "eco_vandindvinding_raw", ratioKey: "vandindvinding_self", label: "Vandindvinding (alment vandværk)", unit: "m³/person", boundary: "Lavere end landsgennemsnittet er bedre. OBS: bykommuner kan mangle data pga. vandværkets registreringssted.", lowerIsBetter: true, baselineType: "relativ" },
     ],
   },
   {
@@ -798,8 +798,8 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     unit: "% af kommunens areal",
     boundary: "Nationalt gennemsnit 2024 som reference (intensivt landbrug ~55%, bebygget ~14%). Til kontekst: den planetære grænse er max 15% antropiseret areal (landbrug + bebygget tilsammen, Rockström 2009) - Danmark ligger på 73-75%, en femdobbelt overskridelse. Vi scorer mod landsgennemsnittet for at vise forskel mellem kommuner.",
     subIndicators: [
-      { rawKey: "eco_areal_intensiv_raw", ratioKey: "areal_intensiv_ratio", label: "Intensivt landbrug", unit: "%", boundary: "Nationalt snit: ~55%", lowerIsBetter: true },
-      { rawKey: "eco_areal_bebygget_raw", ratioKey: "areal_bebygget_ratio", label: "Bebygget + veje",    unit: "%", boundary: "Nationalt snit: ~14%", lowerIsBetter: true },
+      { rawKey: "eco_areal_intensiv_raw", ratioKey: "areal_intensiv_ratio", label: "Intensivt landbrug", unit: "%", boundary: "Nationalt snit: ~55%", lowerIsBetter: true, baselineType: "relativ" },
+      { rawKey: "eco_areal_bebygget_raw", ratioKey: "areal_bebygget_ratio", label: "Bebygget + veje",    unit: "%", boundary: "Nationalt snit: ~14%", lowerIsBetter: true, baselineType: "relativ" },
     ],
   },
   {
@@ -812,8 +812,8 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
     unit: "% af areal med naturværdi",
     boundary: "30% væsentlig naturværdi + 10% uerstattelig (EU Biodiversitetsstrategi 2030)",
     subIndicators: [
-      { rawKey: "eco_bio_vasentlig_raw",    ratioKey: "bio_vasentlig_ratio",    label: "Væsentlig naturværdi (bioscore ≥8)",    unit: "%", boundary: "Mål: 30% (EU Biodiversitetsstrategi 2030)", lowerIsBetter: false },
-      { rawKey: "eco_bio_uerstattelig_raw", ratioKey: "bio_uerstattelig_ratio", label: "Uerstattelig naturværdi (bioscore ≥12)", unit: "%", boundary: "Mål: 10% strengt beskyttet (EU 2030)",     lowerIsBetter: false },
+      { rawKey: "eco_bio_vasentlig_raw",    ratioKey: "bio_vasentlig_ratio",    label: "Væsentlig naturværdi (bioscore ≥8)",    unit: "%", boundary: "Mål: 30% (EU Biodiversitetsstrategi 2030)", lowerIsBetter: false, baselineType: "absolut" },
+      { rawKey: "eco_bio_uerstattelig_raw", ratioKey: "bio_uerstattelig_ratio", label: "Uerstattelig naturværdi (bioscore ≥12)", unit: "%", boundary: "Mål: 10% strengt beskyttet (EU 2030)",     lowerIsBetter: false, baselineType: "absolut" },
     ],
   },
 ];
@@ -861,6 +861,34 @@ export function computeCategoryScores(
   });
 }
 
+// --- BASELINE-TYPE: absolut (mod fast mål) vs relativ (mod landsgennemsnit) ---
+export type BaselineType = "absolut" | "relativ";
+export type DimBaselineType = BaselineType | "blandet";
+
+// En social indikators type følger dens scoringsadfærd.
+export function indicatorBaselineType(ind: Indicator): BaselineType {
+  return ind.absoluteScore ? "absolut" : "relativ";
+}
+
+function combineBaselineTypes(types: BaselineType[]): DimBaselineType {
+  if (types.length === 0) return "relativ";
+  if (types.every((t) => t === "absolut")) return "absolut";
+  if (types.every((t) => t === "relativ")) return "relativ";
+  return "blandet";
+}
+
+// Tager listen af indikatorer (fx fra CategoryScore.indicators eller en SocialCategory).
+export function categoryBaselineType(indicators: Indicator[]): DimBaselineType {
+  return combineBaselineTypes(indicators.map(indicatorBaselineType));
+}
+
+export function dimensionBaselineType(dim: EcologicalDimension): DimBaselineType {
+  const types = (dim.subIndicators ?? [])
+    .map((s) => s.baselineType)
+    .filter((t): t is BaselineType => !!t);
+  return combineBaselineTypes(types);
+}
+
 // --- HELPERS ---
 
 export interface KommuneData {
@@ -892,6 +920,13 @@ export function computeTop10Ratios(allData: KommuneData[]): void {
 
   for (const ind of INDICATORS) {
     if (ind.category !== "social") continue;
+
+    // Absolutte scorer (fx fossil opvarmning mod mål 0) omskaleres ikke - de er
+    // ikke relative til andre kommuner. Behold den absolutte værdi uændret.
+    if (ind.absoluteScore) {
+      for (const k of allData) k.top10_ratios[ind.id] = k.ratios[ind.id];
+      continue;
+    }
 
     const vals = realKommuner
       .map((k) => ({ kode: k.kommune_kode, ratio: k.ratios[ind.id] }))
@@ -973,6 +1008,12 @@ export function computeGroupRatios(allData: KommuneData[]): void {
 
   for (const ind of INDICATORS) {
     if (ind.category !== "social") continue;
+
+    // Absolutte scorer omskaleres ikke mod kommunegruppen - behold værdien.
+    if (ind.absoluteScore) {
+      for (const k of allData) k.group_ratios[ind.id] = k.ratios[ind.id];
+      continue;
+    }
 
     const groupSums: Record<number, number> = {};
     const groupCounts: Record<number, number> = {};

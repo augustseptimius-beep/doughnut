@@ -2,9 +2,22 @@
 """
 fetch_bolig_fossil.py
 
-Henter andel af befolkning der bor i fossilopvarmet bolig (gas + olie) pr. kommune.
-Kilde: DST BOL202 (Personer efter opvarmningstype).
-Forsøger 2026-data, falder tilbage på 2025 hvis 2026 mangler.
+Beregner kommunens SAMLEDE fossile varmeafhængighed pr. kommune - scoret mod
+et absolut mål på 0% fossil (ikke landsgennemsnit), da udfasning af olie/gas er
+dansk politik. Score = 100 - samlet_fossil%.
+
+Samlet fossil% = direkte fossil opvarmning (olie+gas)
+              + fjernvarme-dækning% × fjernvarmens fossile brændselsandel
+
+Kilder:
+  - DST BOL202 (Personer efter opvarmningstype): giver BÅDE direkte fossil
+    (CO=olie, CN=naturgas) OG fjernvarme-dækning (FJ) på samme befolkningsbasis.
+  - data/fjernvarme_mix_scores.csv (Energistyrelsen EPT): fjernvarmens fossile
+    brændselsandel pr. kommune. For de 18 fælles-net-kommuner uden lokalt mix
+    bruges landsgennemsnittet.
+
+VIGTIGT: fjernvarme_mix_scores.csv skal være genereret FØR dette script køres
+(kør fetch_fjernvarme_mix.py først).
 
 Kør fra projektets rodmappe:
   python3 scripts/fetch_bolig_fossil.py
@@ -89,16 +102,61 @@ def auto_build_master():
         print(result.stderr[-800:])
 
 
+def load_fjernvarme_fossil() -> tuple[dict[str, float], float]:
+    """Læser fjernvarmens fossile brændselsandel pr. kommune fra
+    fjernvarme_mix_scores.csv. Returnerer ({kode: fjv_fossil_pct}, landssnit).
+    Landssnit beregnes over kommuner med egen produktion (status=ok) og bruges
+    for de 18 fælles-net-kommuner uden lokalt mix."""
+    path = DATA_DIR / "fjernvarme_mix_scores.csv"
+    if not path.exists():
+        print("  ADVARSEL: fjernvarme_mix_scores.csv mangler - kør fetch_fjernvarme_mix.py først.")
+        print("  Fortsætter uden fjernvarme-bidrag (kun direkte fossil).")
+        return {}, 0.0
+    # NB: denne CSV er skrevet af Python med "." som DECIMAL-separator.
+    # Brug derfor almindelig float(), IKKE parse_value (som fjerner "." som
+    # dansk tusind-separator og ville lave 7.9 om til 79).
+    def csv_float(s: str) -> float | None:
+        s = (s or "").strip()
+        if not s:
+            return None
+        try:
+            return float(s)
+        except ValueError:
+            return None
+
+    per_kommune: dict[str, float] = {}
+    w_sum = 0.0  # sum(fossil_pct * tj)
+    tj_sum = 0.0
+    with open(path, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            kode = (row.get("kommune_kode") or "").strip()
+            val = csv_float(row.get("fjv_fossil_pct") or "")
+            tj = csv_float(row.get("fjv_total_tj") or "") or 0.0
+            if (row.get("fjv_status") or "").strip() == "ok" and val is not None:
+                per_kommune[kode] = val
+                w_sum += val * tj
+                tj_sum += tj
+    # TJ-vægtet landssnit: domineres af de store værker (typisk affald/biomasse,
+    # lav fossil), hvilket er mest retvisende for de fælles-net-kommuner der
+    # forsynes af netop de store metro-net.
+    nat_avg = round(w_sum / tj_sum, 2) if tj_sum else 0.0
+    print(f"  Fjernvarme-fossil: {len(per_kommune)} kommuner med eget mix, "
+          f"TJ-vægtet landssnit {nat_avg:.1f}% (bruges for fælles-net-kommuner)")
+    return per_kommune, nat_avg
+
+
 def fetch_bolig_fossil():
     print("\n" + "=" * 60)
-    print("BOL202: Fossil opvarmning (gas + olie) pr. kommune")
+    print("Samlet fossil varmeafhængighed pr. kommune (mål: 0%)")
     print("=" * 60)
+
+    fjv_fossil_pct, fjv_fossil_nat = load_fjernvarme_fossil()
 
     # Forsøg 2026, derefter 2025
     year_used = None
     rows = None
     for year in ["2026", "2025"]:
-        print(f"  Forsøger {year}...")
+        print(f"  Forsøger BOL202 {year}...")
         try:
             rows = api_post("BOL202", [
                 {"code": "AMT", "values": ["*"]},
@@ -121,8 +179,10 @@ def fetch_bolig_fossil():
         print("  FEJL: Ingen brugbar data fundet.")
         return
 
-    # Aggregér: fossil (CO=olie, CN=naturgas) og total pr. kommune
+    # Aggregér pr. kommune: direkte fossil (CO=olie, CN=naturgas),
+    # fjernvarme (FJ) og total - alt på befolkningsbasis fra BOL202.
     fossil_persons: dict[str, float] = defaultdict(float)
+    fjernvarme_persons: dict[str, float] = defaultdict(float)
     total_persons: dict[str, float] = defaultdict(float)
     FOSSIL_CODES = {"CO", "CN"}
 
@@ -137,37 +197,52 @@ def fetch_bolig_fossil():
         total_persons[kode] += val
         if opvarmning in FOSSIL_CODES:
             fossil_persons[kode] += val
+        elif opvarmning == "FJ":
+            fjernvarme_persons[kode] += val
 
-    # Beregn landsgennemsnit (uvægtet af de 98 kommuner)
     kommuner_med_data = [k for k in VALID_CODES if total_persons.get(k, 0) > 0]
     if not kommuner_med_data:
         print("  FEJL: Ingen kommuner med data.")
         return
 
-    nat_pcts = [fossil_persons[k] / total_persons[k] * 100 for k in kommuner_med_data]
-    nat_avg = sum(nat_pcts) / len(nat_pcts)
-    print(f"  Landsgennemsnit fossil%: {nat_avg:.1f}%")
-    print(f"  Kommuner med data: {len(kommuner_med_data)}")
-
-    # Skriv CSV
+    # Skriv CSV: score = 100 - samlet_fossil% (mål 0)
     output_path = DATA_DIR / "bolig_fossil_scores.csv"
+    samlet_pcts = []
+    thisted_dbg = None
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["kommune_kode", "bolig_fossil_ratio", "bolig_fossil_raw"])
+        writer.writerow([
+            "kommune_kode", "bolig_fossil_ratio", "bolig_fossil_raw",
+            "fossil_direkte_pct", "fossil_via_fjv_pct",
+        ])
         for kode in sorted(VALID_CODES):
             if total_persons.get(kode, 0) == 0:
-                writer.writerow([kode, "", ""])
+                writer.writerow([kode, "", "", "", ""])
                 continue
-            fossil_pct = fossil_persons[kode] / total_persons[kode] * 100
-            # Inverse: lavere fossil% = bedre → ratio = (nat_avg / fossil_pct) * 100
-            # Maksimalt 150 for at undgå ekstreme værdier (fx Frederiksberg med 0,2%)
-            if fossil_pct == 0:
-                ratio = 150.0
-            else:
-                ratio = min(round((nat_avg / fossil_pct) * 100, 2), 150.0)
-            writer.writerow([kode, ratio, round(fossil_pct, 2)])
+            direkte_pct = fossil_persons[kode] / total_persons[kode] * 100
+            fjv_daekning = fjernvarme_persons[kode] / total_persons[kode] * 100
+            fjv_andel = fjv_fossil_pct.get(kode, fjv_fossil_nat)
+            via_fjv_pct = fjv_daekning * fjv_andel / 100
+            samlet = direkte_pct + via_fjv_pct
+            # Score mod absolut mål 0%: 100 = ingen fossil. Klippes ved 0 (kan ikke gå negativt
+            # før samlet > 100%, hvilket ikke forekommer).
+            ratio = round(max(0.0, 100 - samlet), 2)
+            writer.writerow([
+                kode, ratio, round(samlet, 2),
+                round(direkte_pct, 2), round(via_fjv_pct, 2),
+            ])
+            samlet_pcts.append(samlet)
+            if kode == "787":
+                thisted_dbg = (direkte_pct, fjv_daekning, fjv_andel, via_fjv_pct, samlet, ratio)
 
-    print(f"  Gemt: {output_path} ({len(kommuner_med_data)} kommuner)")
+    print(f"  Kommuner med data: {len(kommuner_med_data)}")
+    if samlet_pcts:
+        print(f"  Samlet fossil%: min {min(samlet_pcts):.1f} / snit {sum(samlet_pcts)/len(samlet_pcts):.1f} / max {max(samlet_pcts):.1f}")
+    if thisted_dbg:
+        d, dk, fa, vf, s, r = thisted_dbg
+        print(f"  Thisted: direkte {d:.1f}% + fjernvarme-dækning {dk:.0f}% × {fa:.1f}% fossil "
+              f"= via fjv {vf:.1f}% → samlet {s:.1f}% → score {r}")
+    print(f"  Gemt: {output_path}")
 
 
 if __name__ == "__main__":

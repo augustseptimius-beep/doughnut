@@ -669,6 +669,7 @@ export default function DoughnutRing({
         </div>
       ) : (
         /* Legende i normal-mode: kommunedata-farver */
+        <>
         <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-2 text-xs text-gray-500">
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 rounded" style={{ backgroundColor: GREEN_SOCIAL, border: `1px solid ${GREEN_DARK_BAND}` }} />
@@ -683,6 +684,10 @@ export default function DoughnutRing({
             <span className="font-medium">Mangler data</span>
           </div>
         </div>
+        <p className="text-center text-[11px] text-gray-400 mt-2 max-w-md mx-auto px-2">
+          Dimensioner mærket &quot;mod mål&quot; måles mod en fast grænse (fx WHO, EU-mål, 0 % fossil); umærkede måles mod landsgennemsnittet.
+        </p>
+        </>
       )}
     </div>
   );

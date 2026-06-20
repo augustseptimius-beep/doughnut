@@ -152,12 +152,16 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
 
 1. **Master-CSV SKAL committes** - den er ikke i .gitignore. Netlify læser fra den under build.
 2. **Scripts fra rodmappen** - ikke fra `scripts/` (se kritisk driftsregel ovenfor).
-3. **Worst-of, ikke gennemsnit** - øko-dimensioner med sub-indikatorer bruger max-ratio. Logikken bor i `build_master_csv.py`.
+3. **Worst-of (med én undtagelse)** - øko-dimensioner med sub-indikatorer bruger max-ratio (worst-of). UNDTAGELSE: Forurening bruger gennemsnit (se `AVERAGE_DIMENSIONS` i `build_master_csv.py`), fordi dens 4 indikatorer er vidt forskellige forureningstyper. Logikken bor i `build_master_csv.py`.
 4. **Inverse ratio-konvention** - kildedata for forurenings-indikatorer (N, P, affald, pesticider, nitrat, vandindvinding) er `(national_avg / kommune_val) × 100`. Konverteres via `10000/inverse` i `build_master_csv.py`.
 5. **cba_2023_estimate.csv** bruger `kommune`-navn som nøgle, ikke `kommune_kode`. Manglende match → `forbrug_co2 = null` (ingen fallback). Christiansø er filtreret fra.
 6. **Farvelogik er OMVENDT:** sociale vil op (≥100 = grøn), økologiske vil ned (≤85 = grøn).
 7. **GitHub Desktop** - aldrig terminal-git. Aldrig `git push` fra terminalen.
 8. **Klimaregnskabet.dk kræver API-nøgle** - i Python-scriptet OG som Netlify env var (`KLIMAREGNSKABET_API_KEY`).
+9. **Kontekst-indikatorer (vises, scores IKKE)** - data der vises i UI men ikke indgår i nogen score. Defineres i `CONTEXT_INDICATORS` i `build_master_csv.py`, skrives til master med `category="context"`, rutes i `data.ts` til `kommune.rawValues[indicator_id]`, og renderes af en dedikeret komponent (fx `EnergiKontekst` i `ScoreBars.tsx`). Bruges pt. til Energi: lokal VE-kapacitet (`ctx_ve_*`, EDS CapacityPerMunicipality) og fjernvarmens brændselsmix (`ctx_fjv_*`, Energistyrelsen EPT `ens.dk/media/7199/download`). Begrundelse for ikke at score dem: se metode-siden (VE er national net-produktion; fjernvarme er overvejende afbrænding).
+10. **Energi-dimensionen (social)** - scores KUN på `bolig_fossil`, som nu er kommunens SAMLEDE fossile varmeafhængighed = direkte olie/gas% + (fjernvarme-dækning% × fjernvarmens fossile andel). Scoret mod ABSOLUT mål 0% (ikke landsgennemsnit): `ratio = 100 − samlet_fossil%`, beregnet i `fetch_bolig_fossil.py`. Konsekvens: ingen kommune når grønt (fossilfri varme findes ikke endnu); bedst er Aarhus (~4%). VE + fjernvarme-mix er kontekst (punkt 9). Fetch-scripts: `fetch_ve_kapacitet.py`, `fetch_fjernvarme_mix.py`. **Kørselsrækkefølge:** `fetch_fjernvarme_mix.py` FØR `fetch_bolig_fossil.py` (sidstnævnte læser fjernvarmens fossil-andel fra førstnævntes CSV; bruger TJ-vægtet landssnit for de 18 fælles-net-kommuner).
+11. **`absoluteScore`-flag** (i `INDICATORS`, `shared.ts`) - markerer en social indikator hvis ratio er en absolut score (fx `100 − fossil%` eller `andel/mål × 100`), ikke relativ til landsgennemsnit. Sådanne indikatorer omskaleres IKKE af baseline-toggle (avg/top10/gruppe) - `computeTop10Ratios`/`computeGroupRatios` springer dem over og beholder værdien. Pt. `bolig_fossil` og `education`. For direkte sociale indikatorer med absolut mål: sæt `abs_target`-felt i `build_master_csv.py` (beregner `raw/mål × 100`, capped 150) + `absoluteScore: true` i shared.ts.
+12. **baselineType (absolut vs relativ)** - hver dimension klassificeres: absolut (scoret mod fast mål - WHO, EU, 0% fossil, 95% uddannelse) eller relativ (mod landsgennemsnit); ens type i alle sub-indikatorer → den type, ellers "blandet" (pt. kun Uddannelse + Forurening). Udledes i `shared.ts` (`indicatorBaselineType`/`categoryBaselineType`/`dimensionBaselineType`); øko-sub-indikatorer har felt `baselineType`, sociale udleder fra `absoluteScore`. ScoreBars viser mærke "mod mål"/"blandet" på dimensions-bjælken (relativ = intet mærke, forklaret i ringens legende). Regel: scor mod mål hvor en meningsfuld per-kommune-grænse findes, ellers landsgennemsnit.
 
 ## Brugerens arbejdsstil og præferencer
 
@@ -192,6 +196,8 @@ Default til Sonnet hvis i tvivl.
 - **`data/README.md`** - skema-dokumentation for alle CSV'er i master-pipelinen.
 - **`app/metode/page.tsx`** - brugervendt metode per dimension (scoring, grænser, kilder, begrænsninger).
 - **`docs/statbank_doughnut_mapping.md`** - mapping mellem DST-tabeller og Doughnut-indikatorer.
+- **`docs/concito-analyse-og-roadmap.md`** - hvad vi kan/ikke kan bruge fra CONCITO-rapporten + bevidste fravalg. Læs før øko-ændringer.
+- **`docs/aabne-traade-juni-2026.md`** - prioriterede løse ender og uudnyttede indsigter (scoringsfilosofi, education-badge, REshare, energiforbrug m.m.). Læs før næste større runde.
 
 ## Vedligehold af denne fil
 

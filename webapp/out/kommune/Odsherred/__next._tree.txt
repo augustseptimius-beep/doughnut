@@ -1,2 +1,2 @@
-:HL["/_next/static/chunks/0294y2zqzf1lw.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"kommune","param":null,"prefetchHints":0,"slots":{"children":{"name":"navn","param":{"type":"d","key":"Odsherred","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"itX0IKXslNU9S6FTKxGNV"}
+:HL["/_next/static/chunks/00j4mne7lc.ff.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"kommune","param":null,"prefetchHints":0,"slots":{"children":{"name":"navn","param":{"type":"d","key":"Odsherred","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"D09GWWPxzMMbnngLXlM6-"}

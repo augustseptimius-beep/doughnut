@@ -30,7 +30,7 @@ const INDICATOR_RATIONALES: Record<string, string> = {
   hospital_short: "Andel af befolkningen med kortvarigt sygehusophold (under 12 timer, SBR01). Akutte og ambulante besøg - høj andel kan signalere høj sygelighed eller lavt forebyggelsesniveau. Inverteret: lavere andel er bedre.",
   hospital_long: "Andel af befolkningen med indlæggelse på 12 timer eller derover (SBR01). Længere ophold indikerer alvorligere sygdomsforløb og er et stærkere signal om befolkningens helbredstilstand end kortere ophold. Inverteret: lavere andel er bedre.",
   // Uddannelse
-  education: "Andel af 30-34-årige med erhvervskompetencegivende uddannelse er det primære politiske måleparameter for uddannelsesniveau. Absolut baseline: nationalt mål på 95% (Børne- og Undervisningsministeriet).",
+  education: "Andel af 30-34-årige med erhvervskompetencegivende uddannelse er det primære politiske måleparameter for uddannelsesniveau. Absolut baseline: nationalt mål på 95% (Børne- og Undervisningsministeriet). Scoren beregnes nu mod dette mål (100 = 95% nået), ikke mod landsgennemsnittet.",
   low_education: "Andel af 25-29-årige med kun grundskole som højeste uddannelse. Fanger den sårbare ende af uddannelsesspektret og er særligt vigtig som indikator i landdistrikter og socialt belastede områder.",
   // Velfærd
   disposable_income: "Disponibel indkomst pr. person er det bredeste mål for materiel levestandard - inkluderer løn, overførsler og kapitalindkomst minus skat og bidrag.",
@@ -43,7 +43,7 @@ const INDICATOR_RATIONALES: Record<string, string> = {
   // Bolig
   vacant_housing: "Høj andel tomme boliger signalerer fraflytning og lavt boligmarked. Inverteret: kommuner med færre tomme boliger scorer bedre.",
   housing_area: "Boligareal pr. person afspejler boligstandard og -træthed. Mere plads er generelt forbundet med bedre livskvalitet.",
-  bolig_fossil: "Andel af befolkningen der bor i bolig opvarmet med naturgas eller olie (BOL202, 2026). Fossil opvarmning er dyrer, sundhedsskadeligt og klimabelastende. Inverteret: lavere andel er bedre. Landsgennemsnit: ca. 21%. Kommuner med udbredt fjernvarme scorer bedst. Ratio er capped ved 150 for at undgå ekstreme værdier for byer med næsten ingen fossil opvarmning.",
+  bolig_fossil: "Kommunens samlede fossile varmeafhængighed: direkte olie-/gasopvarmning (BOL202) PLUS den fossile andel af fjernvarmen (fjernvarme-dækning × fjernvarmens fossile brændselsandel fra Energistyrelsens EPT). Scoret mod et absolut mål på 0% fossil, ikke landsgennemsnit, da udfasning af olie/gas er dansk politik. Inverteret: lavere andel er bedre. Værst er Nordsjællands gasområder (fx Furesø, Rudersdal); bedst er biomasse-fjernvarmebyer som Aarhus (~4%).",
   // Demokrati
   voter_turnout: "Stemmedeltagelse ved kommunalvalg er det mest direkte og sammenlignelige mål for demokratisk engagement på lokalt plan. God datadækning for alle 98 kommuner (valg 2021).",
   voter_turnout_national: "Stemmedeltagelse ved folketingsvalg 2026 (DST LABY09). Supplerer kommunalvalget med et nationalpolitisk mål for demokratisk engagement - de to valg trækker ikke altid i samme retning kommunerne imellem.",
@@ -84,7 +84,7 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   uddannelse: {
     id: "uddannelse",
-    scoring: "Gennemsnit af ti indikatorer: (1) Andel af 30-34-årige med kompetencegivende uddannelse (HFUDD10, direkte). (2) Andel af 25-29-årige med kun grundskole (HFUDD11, inverteret). (3) Karaktergennemsnit folkeskolens afgangseksamen (UVM GS/KARA/KARAGNS, direkte). (4) Andel elever med >10% fravær (UVM GS/ELEVFRAV/FRAVAAR, inverteret). (5) Forventet ungdomsuddannelseskompetence (UVM GS/PROFMOD/PROFMOD, direkte). (6) Læreplads-søgende med afsluttet grundforløb (UVM EUD/PRAK/SØG, direkte). (7) Elevtrivsel i folkeskolen, gennemsnit (UVM GS/TRIV/TRIVIND, direkte). (8) Klassekvotient grundskole (KVOTIEN, inverteret). (9) Normering daginstitution 3-5 år (BOERN8, inverteret). (10) Andel pædagoguddannede i daginstitutioner (BOERN1 kode 460, direkte). Score 100 = landsgennemsnit.",
+    scoring: "Gennemsnit af ti indikatorer: (1) Andel af 30-34-årige med kompetencegivende uddannelse (HFUDD10, scoret absolut mod det nationale 95 %-mål: ratio = andel/95 × 100). (2) Andel af 25-29-årige med kun grundskole (HFUDD11, inverteret). (3) Karaktergennemsnit folkeskolens afgangseksamen (UVM GS/KARA/KARAGNS, direkte). (4) Andel elever med >10% fravær (UVM GS/ELEVFRAV/FRAVAAR, inverteret). (5) Forventet ungdomsuddannelseskompetence (UVM GS/PROFMOD/PROFMOD, direkte). (6) Læreplads-søgende med afsluttet grundforløb (UVM EUD/PRAK/SØG, direkte). (7) Elevtrivsel i folkeskolen, gennemsnit (UVM GS/TRIV/TRIVIND, direkte). (8) Klassekvotient grundskole (KVOTIEN, inverteret). (9) Normering daginstitution 3-5 år (BOERN8, inverteret). (10) Andel pædagoguddannede i daginstitutioner (BOERN1 kode 460, direkte). Score 100 = landsgennemsnit (undtagen indikator 1, der scores mod 95 %-målet - derfor er kategorien 'blandet').",
     boundary: "Socialt fundament: alle borgere bør have adgang til uddannelse og et kvalitetsfuldt læringsmiljø. EU-mål: 45% af 25-34-årige med videregående uddannelse i 2030.",
     dataYear: "2022-2024",
     limitations: "Karaktergennemsnit afspejler ikke kun skolekvalitet men også socioøkonomisk baggrund. Klassekvotienter og normering fanger kvantitative mål, ikke undervisningskvalitet. UVM-data dækker skoleår 2023/2024 som seneste.",
@@ -100,11 +100,11 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   bolig: {
     id: "bolig",
-    scoring: "Gennemsnit af tre indikatorer: (1) Andel ubeboede boliger (BOL101, inverteret). (2) Gennemsnitligt boligareal pr. person i m² (BOL106, direkte). (3) Andel af befolkning i fossilopvarmet bolig - gas/olie (BOL202, inverteret). Score 100 = landsgennemsnit.",
+    scoring: "Gennemsnit af to indikatorer: (1) Andel ubeboede boliger (BOL101, inverteret). (2) Gennemsnitligt boligareal pr. person i m² (BOL106, direkte). Score 100 = landsgennemsnit. NB: Fossil opvarmning er flyttet til dimensionen Energi, da opvarmningskilde er et energispørgsmål, ikke boligstandard.",
     boundary: "Socialt fundament: alle borgere bør have adgang til en god, rummelig og bæredygtig bolig.",
-    dataYear: "2023-2026",
-    limitations: "Ubeboede boliger fanger ikke boligkvalitet eller pris. Boligareal pr. person er et gennemsnit og skjuler ulighed. Fossil opvarmning-ratio er capped ved 150 for kommuner med meget lav fossilandel.",
-    csvFile: "doughnut_scores.csv + bolig_extra_scores.csv + bolig_fossil_scores.csv",
+    dataYear: "2023",
+    limitations: "Ubeboede boliger fanger ikke boligkvalitet eller pris. Boligareal pr. person er et gennemsnit og skjuler ulighed.",
+    csvFile: "doughnut_scores.csv + bolig_extra_scores.csv",
   },
   demokrati: {
     id: "demokrati",
@@ -167,6 +167,14 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     scoring: "Ingen data endnu. Potentielle indikatorer: oversvømmelsesrisiko, klimatilpasningsplaner, grønne arealer til regnvandshåndtering.",
     limitations: "Afventer tilgængelige kommunefordelte data.",
   },
+  energi: {
+    id: "energi",
+    scoring: "Scores på kommunens SAMLEDE fossile varmeafhængighed, mod et absolut mål på 0% (ikke landsgennemsnit). Samlet fossil% = direkte fossil opvarmning (andel personer i olie-/gasopvarmet bolig, BOL202) + fjernvarme-dækning% × fjernvarmens fossile brændselsandel (Energistyrelsens EPT). Score = 100 − samlet fossil%, så 100 = ingen fossil opvarmning og afstanden ned til 100 svarer til den fossile andel. Eksempel: 17% samlet fossil → score 83. Lokal VE-kapacitet og fjernvarmens fulde brændselsmix vises som kontekst, men indgår ikke i scoren - se Begrænsninger.",
+    boundary: "Absolut mål: 0% fossil opvarmning (Niveau 2 - dansk politik om udfasning af olie- og gasfyr). Bemærk: fordi næsten alle kommuner har en vis fossil andel, når ingen kommune helt i grønt endnu - de bedste (fx Aarhus med biomasse-fjernvarme, ~4% fossil) ligger tæt på. Det er bevidst: målet er 0, ikke at være gennemsnitlig.",
+    dataYear: "2026 (opvarmning), 2024 (fjernvarmemix), 2024 (VE-kapacitet)",
+    limitations: "Kun fossil afhængighed indgår i scoren. (1) Lokal VE-kapacitet er bevidst holdt ude: en kommune kan have mange vindmøller OG mange oliefyr, og strømmen går til det nationale net - ikke til kommunens egne husstande. At gennemsnitte de to ville udvande scoren og antyde at vindmøller kompenserer for oliefyr. (2) Kun den FOSSILE del af fjernvarmen tælles med - biomasse og affald regnes hverken som grønt eller sort (det undgår det omdiskuterede værdivalg om biomasse). Fjernvarmens fulde mix vises som kontekst. (3) Fjernvarmens fossilandel stammer fra EPT, der opgøres ved produktionsstedet; for de 18 kommuner uden egen varmeproduktion (fx hovedstadskommuner på fælles net) bruges det TJ-vægtede landsgennemsnit (~13%). (4) Direkte fossil og fjernvarme-dækning er begge fra BOL202 på befolkningsbasis, så de er konsistente.",
+    csvFile: "bolig_fossil_scores.csv + ve_kapacitet_scores.csv + fjernvarme_mix_scores.csv",
+  },
 };
 
 const ECO_METHODS: Record<string, MethodInfo> = {
@@ -185,11 +193,11 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   forurening: {
     id: "forurening",
-    scoring: "Andel af aktive vandindvindingsboringer med pesticidfund over drikkevandsnormen (0,1 µg/l). Ratio = (kommunens % / nationalt gennemsnit %) × 100. Ratio over 100 = over landsgennemsnittet. Syntetiske pesticider er novel entities - stoffer der ikke fandtes i Earth system før industrielt landbrug.",
-    boundary: "0% af aktive boringer bør overstige drikkevandsnormen (0,1 µg/l). Nationalt gennemsnit bruges som praktisk reference da en absolut nulgrænse er teknisk uopnåelig med nuværende data.",
-    dataYear: "2019-2023",
-    limitations: "Data dækker 97/98 kommuner (Herlev mangler). Dækker ikke PFAS, mikroplast, tungmetaller, farmaceutika eller andre novel entities - kun pesticider der overstiger grænseværdien i aktive drikkevandsboringer.",
-    csvFile: "pesticider_scores.csv",
+    scoring: "Gennemsnit af fire indikatorer (ikke worst-of): (1) Pesticider: andel af aktive vandindvindingsboringer over drikkevandsnormen (0,1 µg/l) - ratio = (kommunens % / nationalt gennemsnit %) × 100. (2) Nitrat i drikkevand: ratio = (kommunalt gennemsnit mg/L / 6 mg/L) × 100. (3) Genanvendelse: ratio = (65% EU-mål / faktisk %) × 100 - over 100 = genanvender for lidt. (4) Affald: husholdningsaffald kg/person, inverteret ratio mod landsgennemsnit. Dimensionens score er det uvægtede gennemsnit af de fire.",
+    boundary: "Pesticider: 0% over drikkevandsnormen (0,1 µg/l). Nitrat: 6 mg/L (ekspertgruppens anbefaling 2025). Genanvendelse: 65% (EU Affaldsdirektiv 2035). Affald: landsgennemsnit som reference.",
+    dataYear: "2019-2025",
+    limitations: "Pesticidata dækker 97/98 kommuner (Herlev mangler). Nitratdata er kun præcist for de 20 mest belastede kommuner - øvrige 78 estimeret til 3,7 mg/L. Reel genanvendelse kan afvige fra indsamlet til genanvendelse. Affald dækker kun husholdningsaffald. Dimensionen bruger gennemsnit, ikke worst-of, da de fire indikatorer adresserer vidt forskellig forureningskilder - en kommune kan excellere på affald men fejle på pesticider.",
+    csvFile: "pesticider_scores.csv + nitrat_scores.csv + consumption_scores.csv + forurening_scores.csv",
   },
   luftkvalitet: {
     id: "luftkvalitet",
@@ -204,14 +212,6 @@ const ECO_METHODS: Record<string, MethodInfo> = {
     limitations: "Modelberegnet baggrundskoncentration (UBM, 1×1 km grid) - ikke målte værdier. Fanger ikke lokale hotspots ved travle gadestrækninger (OSPM-model dækker dette, men kun i store byer). Kommunegennemsnittet inkluderer landlige arealer med lav forurening, hvilket trækker byernes reelle eksponering ned. PM2.5 i Danmark er i høj grad påvirket af langtransport fra kontinentet og hav - ikke kun lokale kilder.",
     csvFile: "luftforurening_scores.csv",
   },
-  cirkularitet: {
-    id: "cirkularitet",
-    scoring: "Worst-of af to indikatorer: (1) Genanvendelsesprocent for husholdningsaffald - eco-ratio = (65% EU-mål / faktisk %) * 100. Over 100 = genanvender for lidt. (2) Husholdningsaffald i kg pr. indbygger (inverteret - lavere er bedre). Over 100 = producerer mere affald end landsgennemsnittet. Dimensionens samlede score er den højeste (værste) af de to sub-indikatorer - planetary boundary-logik: hvis bare én grænse er overskredet, er dimensionen overskredet.",
-    boundary: "65% genanvendelse (EU Affaldsdirektiv 2035) + lavest muligt affald pr. capita (landsgennemsnit som reference).",
-    dataYear: "2023",
-    limitations: "Reel genanvendelse kan afvige fra indsamlet til genanvendelse. Omfatter kun husholdningsaffald, ikke erhvervsaffald.",
-    csvFile: "consumption_scores.csv + forurening_scores.csv",
-  },
   naeringsstoffer: {
     id: "naeringsstoffer",
     scoring: "Worst-of af fire indikatorer - tre presmål og ét effektmål. Presmål: (1) Kvælstof-udledning (ton total-N) pr. 1.000 indbyggere via spildevand. (2) Fosfor-udledning (ton total-P) pr. 1.000 indbyggere via spildevand. (3) Landbrugets N-loft pr. ha landbrugsjord fra Vandområdeplan 3 (VP3): max bæredygtig N-tilførsel til kysten divideret med landbrugsarealet i oplandet - jo lavere N-loft pr. ha, jo mere N-presset er kommunen. Effektmål: (4) Andel af kommunens vandområder (vandløb, søer, kystvande) i mindst god økologisk tilstand (VP3) - den synlige eutrofiering de tre presmål forårsager; her er højere andel bedre, ratio = (landsgennemsnit / andel) × 100, cappet ved 300. Eco-konvention: score over 100 = mere belastet end landsgennemsnittet. Dimensionens samlede score er den værste af de fire sub-indikatorer (planetary boundary-logik).",
@@ -222,11 +222,11 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   },
   vand: {
     id: "vand",
-    scoring: "To indikatorer - worst-of afgør dimensionsscore. (1) Nitrat: Ratio = (kommunalt gennemsnit mg/L / 6 mg/L) × 100. Over 100 = over ekspertgruppens grænse. (2) Vandindvinding: Ratio = (kommunens m³/person / nationalt gennemsnit) × 100. Over 100 = bruger mere end landsgennemsnittet. Nitrat (NO₃⁻) måler grundvandskvalitet; vandindvinding (alment vandværk, INDKAT=100) måler kvantitativt pres på grundvandsressourcerne.",
-    boundary: "Nitrat: 6 mg/L (ekspertgruppens anbefaling 2025, baseret på sammenhæng med tarmkræftrisiko) - markant lavere end den juridiske grænseværdi på 50 mg/L. Vandindvinding: landsgennemsnit (72,9 m³/person, 2024) som reference. Den egentlige planetære grænse (Rockström/Steffen: 4.000-6.000 km³/år globalt) dækker alt konsumtivt blåt vandforbrug inkl. landbrug og er ikke direkte operationaliserbar på kommuneniveau med tilgængeligt data.",
-    dataYear: "2025 (nitrat), 2024 (vandindvinding)",
-    limitations: "Nitrat: præcise kommunegennemsnit kun for de 20 mest belastede kommuner - øvrige 78 estimeret til 3,7 mg/L. Vandindvinding: data registreres ved vandværkets fysiske placering, ikke ved forbrugsstedet. Bykommuner der forsynes af vandværker beliggende i nabokommuner (fx HOFOR for storkøbenhavn) får kunstigt lave tal og er filtreret fra (6 kommuner uden data). Dækker kun almene vandværker - industri og markvanding er ikke inkluderet.",
-    csvFile: "nitrat_scores.csv + vandindvinding_scores.csv",
+    scoring: "Enkelt indikator: Vandindvinding fra almene vandværker (INDKAT=100) pr. person. Ratio = (kommunens m³/person / nationalt gennemsnit) × 100. Over 100 = bruger mere end landsgennemsnittet. Nitrat er flyttet til Forurening-dimensionen (kemisk forurening af drikkevand).",
+    boundary: "Landsgennemsnit (72,9 m³/person, 2024) som reference. Den egentlige planetære grænse (Rockström/Steffen: 4.000-6.000 km³/år globalt) dækker alt konsumtivt blåt vandforbrug inkl. landbrug og er ikke direkte operationaliserbar på kommuneniveau med tilgængeligt data.",
+    dataYear: "2024",
+    limitations: "Data registreres ved vandværkets fysiske placering, ikke ved forbrugsstedet. Bykommuner der forsynes af vandværker beliggende i nabokommuner (fx HOFOR for storkøbenhavn) får kunstigt lave tal og er filtreret fra (6 kommuner uden data). Dækker kun almene vandværker - industri og markvanding er ikke inkluderet.",
+    csvFile: "vandindvinding_scores.csv",
   },
   arealanvendelse: {
     id: "arealanvendelse",
@@ -393,7 +393,7 @@ export default function MetodePage() {
           <strong>Inverterede indikatorer:</strong> For indikatorer hvor lavere er bedre (f.eks. kriminalitet, affald, børnefattigdom)
           beregnes ratioen inverteret: (landsgennemsnit / kommune) × 100, så højere ratio fortsat betyder bedre performance.
           Kommuner med en værdi på 0 (typisk manglende data eller ingen registreret aktivitet) sættes til ratio 0, ikke perfekt score - dette er for at undgå at databrist
-          fejlagtigt fremstår som topscore. For multi-indikator økologiske dimensioner (luftkvalitet, cirkularitet, næringsstoffer) bruges en specialregel: ratio 150 anvendes
+          fejlagtigt fremstår som topscore. For multi-indikator økologiske dimensioner (luftkvalitet, næringsstoffer, forurening) bruges en specialregel: ratio 150 anvendes
           som loft for sub-indikatorer hvor data mangler eller hvor ingen aktivitet registreres (f.eks. kommuner uden markblokke i N-loft-beregningen).
         </p>
       </section>
@@ -409,6 +409,9 @@ export default function MetodePage() {
           <a href="/artikel/planetaere-graenser" className="text-blue-600 hover:underline font-medium">
             artiklen om planetære grænser
           </a>.
+        </p>
+        <p className="text-sm text-gray-700 leading-relaxed mt-2">
+          Hver dimension er mærket efter hvad den måles imod: <strong>mod mål</strong> (en fast absolut grænse - WHO, EU-mål, drikkevandsnorm, 0 % fossil, 95 %-uddannelsesmål) eller <strong>mod landsgennemsnit</strong> (umærket - relativ til de øvrige kommuner). Et par dimensioner er <strong>blandet</strong>. På en &quot;mod mål&quot;-dimension betyder grøn &quot;inden for grænsen&quot;; på en relativ betyder grøn &quot;bedre end de fleste kommuner&quot;.
         </p>
       </section>
 

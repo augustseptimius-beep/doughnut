@@ -149,6 +149,12 @@ export function loadData(): KommuneData[] {
         continue;
       }
 
+      // Kontekst-råværdier (vises, scores ikke): rutes til rawValues[indicator_id]
+      if (r.category === "context") {
+        if (rawVal !== null) rawValues[r.indicator_id] = rawVal;
+        continue;
+      }
+
       // Sociale indikatorer: ratios + rawValues nøglet på indicator_id (matcher INDICATORS-id)
       if (r.category === "social") {
         ratios[r.indicator_id] = ratio;

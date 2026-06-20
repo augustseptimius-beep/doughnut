@@ -3,13 +3,24 @@
 import { useState } from "react";
 import {
   type KommuneData,
+  type DimBaselineType,
   ECOLOGICAL_DIMENSIONS,
   scoreColor,
   scoreBarColor,
   computeCategoryScores,
+  categoryBaselineType,
+  dimensionBaselineType,
   DOUGHNUT_DEFAULT_DATA_YEAR,
 } from "@/lib/shared";
 import type { VurderingScore, VurderingEntry } from "@/lib/vurdering";
+
+// Baseline-mærke vises kun for absolut og blandet; relativ er normen
+// (intet mærke, forklaret i ringens legende).
+function baselineTag(t: DimBaselineType): string | null {
+  if (t === "absolut") return "mod mål";
+  if (t === "blandet") return "blandet";
+  return null;
+}
 
 interface ScoreBarsProps {
   kommune: KommuneData;
@@ -59,6 +70,101 @@ function VurderingPrik({ score }: { score: VurderingScore | undefined }) {
   );
 }
 
+// Kontekst-blok under Energi-dimensionen: lokal VE + fjernvarmens brændselsmix.
+// Vises, men indgår IKKE i scoren (se metode-siden for begrundelse).
+function EnergiKontekst({ kommune }: { kommune: KommuneData }) {
+  const rv = kommune.rawValues ?? {};
+  const fossilSamlet = rv["bolig_fossil"] ?? null;
+  const fossilDirekte = rv["ctx_fossil_direkte"] ?? null;
+  const fossilViaFjv = rv["ctx_fossil_via_fjv"] ?? null;
+  const veKw = rv["ctx_ve_kw_per_indb"] ?? null;
+  const veSol = rv["ctx_ve_sol_mw"] ?? null;
+  const veVind = rv["ctx_ve_vind_mw"] ?? null;
+  const bio = rv["ctx_fjv_biomasse"] ?? null;
+  const affald = rv["ctx_fjv_affald"] ?? null;
+  const fossil = rv["ctx_fjv_fossil"] ?? null;
+  const ren = rv["ctx_fjv_ren"] ?? null;
+  const harMix = bio !== null && affald !== null && fossil !== null && ren !== null;
+  const harOpdeling = fossilDirekte !== null && fossilViaFjv !== null;
+
+  const mixSegs = harMix
+    ? [
+        { label: "Biomasse", pct: bio as number, color: "bg-amber-500" },
+        { label: "Affald", pct: affald as number, color: "bg-stone-400" },
+        { label: "Fossil", pct: fossil as number, color: "bg-red-500" },
+        { label: "Reelt vedvarende", pct: ren as number, color: "bg-emerald-500" },
+      ]
+    : [];
+
+  return (
+    <>
+      {/* Opdeling af den scorede samlede fossile opvarmning */}
+      {harOpdeling && (
+        <div className="px-3 py-2.5 border-b border-gray-100 text-[11px] text-gray-500 leading-relaxed">
+          Samlet fossil opvarmning{fossilSamlet !== null ? ` ${(fossilSamlet as number).toFixed(1)}%` : ""} ={" "}
+          direkte olie/gas {(fossilDirekte as number).toFixed(1)}% + via fjernvarme {(fossilViaFjv as number).toFixed(1)}%.
+          {" "}Scoret mod målet 0% fossil.
+        </div>
+      )}
+    <div className="px-3 py-3 bg-blue-50/40 border-t border-blue-100">
+      <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
+        Kontekst <span className="font-normal normal-case text-gray-400">- indgår ikke i scoren</span>
+      </p>
+
+      {/* Lokal VE-kapacitet */}
+      {veKw !== null && (
+        <div className="mb-3">
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-gray-700">Lokal VE-kapacitet (sol + landvind)</span>
+            <span className="text-sm font-medium text-gray-700">{veKw} kW/indb.</span>
+          </div>
+          <p className="mt-0.5 text-[11px] text-gray-400">
+            Sol {veSol ?? "–"} MW + landvind {veVind ?? "–"} MW. Leveres til det nationale elnet, ikke kun til kommunens egne husstande.
+          </p>
+        </div>
+      )}
+
+      {/* Fjernvarmens brændselsmix */}
+      <div>
+        <span className="text-sm text-gray-700">Fjernvarmens brændselsmix</span>
+        {harMix ? (
+          <>
+            <div className="mt-1.5 flex h-3 w-full overflow-hidden rounded-full bg-gray-100">
+              {mixSegs.map(
+                (s) =>
+                  s.pct > 0 && (
+                    <div
+                      key={s.label}
+                      className={s.color}
+                      style={{ width: `${s.pct}%` }}
+                      title={`${s.label}: ${s.pct}%`}
+                    />
+                  )
+              )}
+            </div>
+            <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1">
+              {mixSegs.map((s) => (
+                <span key={s.label} className="inline-flex items-center gap-1 text-[11px] text-gray-600">
+                  <span className={`inline-block w-2 h-2 rounded-sm ${s.color}`} />
+                  {s.label} {s.pct}%
+                </span>
+              ))}
+            </div>
+            <p className="mt-1.5 text-[11px] text-gray-400">
+              Biomasse og affald er afbrænding - ikke nødvendigvis CO₂-neutralt. Derfor vises mixet som kontekst, ikke som score.
+            </p>
+          </>
+        ) : (
+          <p className="mt-1 text-[11px] text-gray-400">
+            Begrænset egen varmeproduktion - kommunen indgår typisk i et fælles fjernvarmenet eller bruger individuel opvarmning.
+          </p>
+        )}
+      </div>
+    </div>
+    </>
+  );
+}
+
 export default function ScoreBars({
   kommune,
   compare,
@@ -104,6 +210,7 @@ export default function ScoreBars({
         <div className="space-y-2">
           {categoryScores.map((cat) => {
             const isExpanded = expanded === cat.categoryId;
+            const blTag = baselineTag(categoryBaselineType(cat.indicators.map((i) => i.indicator)));
             const cmpCat = compareCategoryScores?.find(
               (c) => c.categoryId === cat.categoryId
             );
@@ -115,6 +222,7 @@ export default function ScoreBars({
             return (
               <div
                 key={cat.categoryId}
+                data-category={cat.categoryId}
                 className={`border rounded-lg overflow-hidden transition-colors ${
                   vurderingsMode
                     ? "border-emerald-200 hover:border-emerald-400 cursor-pointer"
@@ -135,6 +243,11 @@ export default function ScoreBars({
                         <span className="text-sm font-semibold text-gray-900 truncate">
                           {cat.categoryName}
                         </span>
+                        {!vurderingsMode && blTag && (
+                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-500 whitespace-nowrap">
+                            {blTag}
+                          </span>
+                        )}
                         {/* Datadækning-badge - skjul i vurderingsmode for at undgå rod */}
                         {!vurderingsMode && (
                           <>
@@ -286,6 +399,7 @@ export default function ScoreBars({
                         </div>
                       );
                     })}
+                    {cat.categoryId === "energi" && <EnergiKontekst kommune={kommune} />}
                   </div>
                 )}
                 {!vurderingsMode && isExpanded && cat.indicators.length === 0 && (
@@ -314,6 +428,7 @@ export default function ScoreBars({
             const totalSubs = subs.length;
             const isPartialEcoData = hasData && totalSubs > 1 && subCount > 0 && subCount < totalSubs;
             const harVurdering = vurderingsMode && vurderinger[dim.id];
+            const blTag = baselineTag(dimensionBaselineType(dim));
 
             const formatRaw = (val: number, unit: string) => {
               const num = val % 1 === 0 ? val.toFixed(0) : val.toFixed(2);
@@ -344,6 +459,11 @@ export default function ScoreBars({
                         <span className="text-sm font-semibold text-gray-900 truncate">
                           {dim.name}
                         </span>
+                        {!vurderingsMode && blTag && (
+                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-500 whitespace-nowrap">
+                            {blTag}
+                          </span>
+                        )}
                         {/* Datadækning - kun i normal-mode */}
                         {!vurderingsMode && (
                           <>
@@ -461,7 +581,14 @@ export default function ScoreBars({
                             </span>
                           </div>
                           <div className="mt-1.5 flex items-center justify-between text-xs text-gray-500">
-                            <span>{sub.lowerIsBetter ? "Lavere er bedre" : "Højere er bedre"}</span>
+                            <div className="flex items-center gap-2">
+                              <span>{sub.lowerIsBetter ? "Lavere er bedre" : "Højere er bedre"}</span>
+                              {sub.baselineType && (
+                                <span className="text-gray-400 text-[10px]">
+                                  {sub.baselineType === "absolut" ? "mod mål" : "mod landsgns"}
+                                </span>
+                              )}
+                            </div>
                             <a href={`/metode#${dim.id}`} className="text-blue-600 hover:underline">
                               Se metode ↗
                             </a>
