@@ -59,6 +59,41 @@ df.query("kommune_navn == 'København' and indicator_id.str.startswith('_dim_')"
 ]
 ```
 
+## Retningsvisning: `trend_indicators.csv`
+
+Viser hvilken **vej** en kommune bevæger sig, ikke kun hvor den ligger. Én række pr. (kommune × indikator), plus `_dim_*`-rækker med én samlet retning pr. dimension/kategori.
+
+| Kolonne | Beskrivelse | Eksempel |
+|---|---|---|
+| `kommune_kode` | DST-kommunekode | `787` |
+| `indicator_id` | Matcher `master_indicators.csv`. `_dim_*` = dimensions-aggregat | `gini`, `_dim_sundhed` |
+| `periode_start` / `periode_slut` | Sammenlignede perioder. Treårsgennemsnit i begge ender når serien har mindst 6 år, så et enkelt ekstremår ikke afgør billedet | `2010-2012`, `2022-2024` |
+| `vaerdi_start` / `vaerdi_slut` | Råværdier i indikatorens egen enhed. Tomme for `_dim_*` (ingen fælles enhed) | `31.0`, `59.0` |
+| `pct` | Procentvis ændring. For `_dim_*`: gennemsnitlig **målrettet** ændring (positiv = mod målet) | `+29.54` |
+| `retning` | Se klasser nedenfor | `forkert` |
+| `n_aar` | Antal år i serien | `15` |
+| `noegle_indikator` | Kun på `_dim_*`: hvilken sub-indikator retningen kommer fra | `naer_nitrogen` |
+
+### Retningsklasser
+
+| Klasse | Betydning |
+|---|---|
+| `rigtig` | Mod målet, mindst lige så hurtigt som medianen af alle 98 kommuner |
+| `tempo` | Mod målet, men langsommere end medianen |
+| `stagneret` | Under 1 % ændring, eller under 1 procentpoint når niveauet er over 10 % |
+| `forkert` | Væk fra målet |
+| `kontekst` | Måles, men har ingen ønsket retning |
+| `ingen` | Ingen tidsserie - kan ikke vurderes |
+
+### Metode (vigtigt)
+
+- **Retningen beregnes på råværdier, aldrig på ratio.** Ratio er relativ til en baseline, og platformen har en baseline-toggle (avg/top10/gruppe). En ratio-baseret pil ville skifte retning når brugeren skifter baseline.
+- **Øko-dimensioner bruger worst-of:** pilen følger den sub-indikator der bestemmer dimensionens score (højeste ratio). Undtagelse: Forurening bruger gennemsnit, ligesom i scoren.
+- **Ingen fallback.** Har den score-afgørende sub-indikator ingen tidsserie, får dimensionen ingen pil. Ellers ville pilen beskrive noget andet end tallet ved siden af.
+- **Kun 42 af platformens indikatorer har historik.** Resten vises med et skraveret felt (`ingen`). DCE-luftkort, VP3-vandplaner og UVM-data (kræver MitID) findes ikke som årlige tidsserier.
+
+Genereres af `scripts/fetch_trend_history.py` → `scripts/build_trends_csv.py`. **Skal genberegnes sammen med `master_indicators.csv`**, ellers kan pil og tal komme til at høre til forskellige årgange.
+
 ## Rådata-CSV'er (debug/transparens)
 
 De 21 individuelle CSV-filer (`luftforurening_scores.csv`, `naeringsstoffer_scores.csv` mv.) er bevaret som **rådata-spor**. De genereres af deres respektive `scripts/fetch_*.py`-scripts og gør det muligt at debugge data-pipelinen tilbage til kilden.

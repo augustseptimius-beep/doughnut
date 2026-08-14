@@ -1,17 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   type KommuneData,
   type DimBaselineType,
+  type TrendPost,
   ECOLOGICAL_DIMENSIONS,
   scoreColor,
   scoreBarColor,
   computeCategoryScores,
   categoryBaselineType,
   dimensionBaselineType,
+  kommunegruppeNavn,
+  TREND_LABEL,
+  trendBeskrivelse,
+  trendPilOpad,
+  type TrendKontekst,
   DOUGHNUT_DEFAULT_DATA_YEAR,
 } from "@/lib/shared";
+import { useBaseline } from "@/lib/baseline-context";
 import type { VurderingScore, VurderingEntry } from "@/lib/vurdering";
 
 // Baseline-mærke vises kun for absolut og blandet; relativ er normen
@@ -45,6 +53,189 @@ function ecoBarColor(score: number | null): string {
   if (score <= 85) return "bg-emerald-500";
   if (score <= 100) return "bg-amber-400";
   return "bg-red-500";
+}
+
+// Retningsmarkør: viser om en indikators råværdi bevæger sig i positiv eller
+// forkert retning over tid. Skal kunne skelnes uden farve (~8% af mænd er
+// farveblinde), derfor bærer FORMEN retningen (pil op/ned/vandret streg/
+// skraveret felt) og farven forstærker vurderingen.
+// TREND_LABEL og trendBeskrivelse bor i shared.ts, så ScoreBars og
+// DoughnutRing altid formulerer retningen ens.
+function trendTitle(t: TrendPost, kontekst: TrendKontekst): string {
+  const hoved = trendBeskrivelse(t, kontekst);
+  return t.noegleIndikator ? `${hoved}. Bestemt af: ${t.noegleIndikator}` : hoved;
+}
+
+// Eget tooltip i stedet for SVG's indbyggede <title> - den native title-boks
+// har en indbygget forsinkelse på typisk 0,5-1 sekund og opfører sig
+// forskelligt fra browser til browser. Dette vises straks ved hover (og ved
+// tastaturfokus), via en portal til <body> så det ikke bliver beskåret af
+// kortenes egen overflow-hidden.
+function TrendMarker({ trend, kontekst = "indikator" }: { trend?: TrendPost; kontekst?: TrendKontekst }) {
+  const ref = useRef<SVGSVGElement>(null);
+  const [pos, setPos] = useState<{ x: number; y: number; above: boolean } | null>(null);
+
+  const label = !trend || trend.retning === "ingen" ? TREND_LABEL.ingen : trendTitle(trend, kontekst);
+
+  const vis = () => {
+    const r = ref.current?.getBoundingClientRect();
+    if (!r) return;
+    const above = r.top > 48;
+    setPos({ x: r.left + r.width / 2, y: above ? r.top - 6 : r.bottom + 6, above });
+  };
+  const skjul = () => setPos(null);
+  const handlers = { onMouseEnter: vis, onMouseLeave: skjul, onFocus: vis, onBlur: skjul };
+
+  let inner: React.ReactNode;
+  let farve: string;
+  if (!trend || trend.retning === "ingen") {
+    farve = "text-gray-300";
+    inner = (
+      <>
+        <rect x="1" y="1" width="10" height="10" rx="1.5" fill="none" stroke="currentColor" strokeWidth="1" />
+        <line x1="1" y1="11" x2="11" y2="1" stroke="currentColor" strokeWidth="1" />
+        <line x1="1" y1="6" x2="6" y2="1" stroke="currentColor" strokeWidth="1" />
+        <line x1="6" y1="11" x2="11" y2="6" stroke="currentColor" strokeWidth="1" />
+      </>
+    );
+  } else if (trend.retning === "stagneret") {
+    farve = "text-gray-400";
+    inner = <line x1="1.5" y1="6" x2="10.5" y2="6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />;
+  } else {
+    farve =
+      trend.retning === "rigtig" ? "text-emerald-600" :
+      trend.retning === "tempo" ? "text-amber-500" :
+      trend.retning === "forkert" ? "text-red-500" :
+      "text-gray-400"; // kontekst
+    inner = trendPilOpad(trend, kontekst)
+      ? <path d="M6 1.5 L10.5 9 L1.5 9 Z" fill="currentColor" />
+      : <path d="M6 10.5 L1.5 3 L10.5 3 Z" fill="currentColor" />;
+  }
+
+  const halvBredde = 110; // halvdelen af max-w-[220px] herunder
+
+  return (
+    <>
+      <svg
+        ref={ref}
+        width="12" height="12" viewBox="0 0 12 12"
+        className={`${farve} shrink-0 cursor-help`}
+        tabIndex={0}
+        role="img"
+        aria-label={label}
+        {...handlers}
+      >
+        {inner}
+      </svg>
+      {pos && typeof document !== "undefined" && createPortal(
+        <div
+          role="tooltip"
+          className={`fixed z-[100] -translate-x-1/2 ${pos.above ? "-translate-y-full" : ""} pointer-events-none w-max max-w-[220px] rounded-md bg-gray-900 px-2 py-1.5 text-[11px] leading-snug text-white shadow-lg`}
+          style={{
+            left: Math.min(Math.max(pos.x, halvBredde + 8), window.innerWidth - halvBredde - 8),
+            top: pos.y,
+          }}
+        >
+          {label}
+        </div>,
+        document.body
+      )}
+    </>
+  );
+}
+
+// Kontekst-blok under Klimapåvirkning-dimensionen: sektorfordeling af den
+// territoriale udledning, samlet energiforbrug og VE-el selvforsyningsgrad.
+// Vises, men indgår IKKE i scoren - sektorerne er blot en opdeling af det
+// allerede scorede territoriale tal (eco_klima_raw), ikke et nyt måltal.
+function KlimaKontekst({ kommune }: { kommune: KommuneData }) {
+  const rv = kommune.rawValues ?? {};
+  const total = rv["eco_klima_raw"] ?? null;
+  const landbrug = rv["ctx_klima_landbrug"] ?? null;
+  const energi = rv["ctx_klima_energi"] ?? null;
+  const transport = rv["ctx_klima_transport"] ?? null;
+  const energiforbrug = rv["ctx_energiforbrug"] ?? null;
+  const veSelvforsyning = rv["ctx_ve_selvforsyning"] ?? null;
+
+  const harSektorer = total !== null && total > 0 && landbrug !== null && energi !== null && transport !== null;
+  const segments = harSektorer
+    ? [
+        { label: "Landbrug", val: Math.max(landbrug as number, 0), color: "bg-amber-700" },
+        { label: "Energi", val: Math.max(energi as number, 0), color: "bg-red-500" },
+        { label: "Transport", val: Math.max(transport as number, 0), color: "bg-orange-400" },
+      ]
+    : [];
+  const segSum = segments.reduce((s, x) => s + x.val, 0);
+  const restPct = harSektorer ? Math.max(0, 100 - (segSum / (total as number)) * 100) : 0;
+
+  if (!harSektorer && energiforbrug === null && veSelvforsyning === null) return null;
+
+  return (
+    <div className="px-3 py-3 bg-blue-50/40 border-t border-blue-100">
+      <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
+        Kontekst <span className="font-normal normal-case text-gray-400">- indgår ikke i scoren</span>
+      </p>
+
+      {harSektorer && (
+        <div className="mb-3">
+          <span className="text-sm text-gray-700">Sektorfordeling af territorial udledning</span>
+          <div className="mt-1.5 flex h-3 w-full overflow-hidden rounded-full bg-gray-100">
+            {segments.map(
+              (s) =>
+                s.val > 0 && (
+                  <div
+                    key={s.label}
+                    className={s.color}
+                    style={{ width: `${(s.val / (total as number)) * 100}%` }}
+                    title={`${s.label}: ${s.val.toFixed(1)} ton CO₂e/indb.`}
+                  />
+                )
+            )}
+            {restPct > 0.5 && (
+              <div className="bg-gray-300" style={{ width: `${restPct}%` }}
+                title={`Øvrigt (affald, spildevand, kemisk industri): ${restPct.toFixed(0)}%`} />
+            )}
+          </div>
+          <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1">
+            {segments.map((s) => (
+              <span key={s.label} className="inline-flex items-center gap-1 text-[11px] text-gray-600">
+                <span className={`inline-block w-2 h-2 rounded-sm ${s.color}`} />
+                {s.label} {((s.val / (total as number)) * 100).toFixed(0)}%
+              </span>
+            ))}
+            {restPct > 0.5 && (
+              <span className="inline-flex items-center gap-1 text-[11px] text-gray-600">
+                <span className="inline-block w-2 h-2 rounded-sm bg-gray-300" />
+                Øvrigt {restPct.toFixed(0)}%
+              </span>
+            )}
+          </div>
+        </div>
+      )}
+
+      {(energiforbrug !== null || veSelvforsyning !== null) && (
+        <div className="flex flex-wrap gap-x-4 gap-y-2">
+          {energiforbrug !== null && (
+            <div className="text-sm">
+              <span className="text-gray-500">Samlet energiforbrug:</span>{" "}
+              <span className="font-medium text-gray-700">{(energiforbrug as number).toFixed(0)} GJ/indb.</span>
+            </div>
+          )}
+          {veSelvforsyning !== null && (
+            <div className="text-sm">
+              <span className="text-gray-500">VE-el selvforsyningsgrad:</span>{" "}
+              <span className="font-medium text-gray-700">{(veSelvforsyning as number).toFixed(0)}%</span>
+            </div>
+          )}
+        </div>
+      )}
+      <p className="mt-1.5 text-[11px] text-gray-400">
+        Sektorfordelingen viser hvad der udgør den territoriale udledning ovenfor. VE-el selvforsyningsgrad kan
+        overstige 100% - kommunen kan producere mere sol-/vindstrøm end den selv bruger og eksportere resten til
+        nettet.
+      </p>
+    </div>
+  );
 }
 
 // Lille farvet prik der viser vurderingsstatus på en dimension
@@ -84,8 +275,11 @@ function EnergiKontekst({ kommune }: { kommune: KommuneData }) {
   const affald = rv["ctx_fjv_affald"] ?? null;
   const fossil = rv["ctx_fjv_fossil"] ?? null;
   const ren = rv["ctx_fjv_ren"] ?? null;
+  const fritidFossil = rv["ctx_fritid_fossil"] ?? null;
+  const fritidAndel = rv["ctx_fritid_andel"] ?? null;
   const harMix = bio !== null && affald !== null && fossil !== null && ren !== null;
   const harOpdeling = fossilDirekte !== null && fossilViaFjv !== null;
+  const harFritid = fritidFossil !== null && fritidAndel !== null;
 
   const mixSegs = harMix
     ? [
@@ -103,13 +297,28 @@ function EnergiKontekst({ kommune }: { kommune: KommuneData }) {
         <div className="px-3 py-2.5 border-b border-gray-100 text-[11px] text-gray-500 leading-relaxed">
           Samlet fossil opvarmning{fossilSamlet !== null ? ` ${(fossilSamlet as number).toFixed(1)}%` : ""} ={" "}
           direkte olie/gas {(fossilDirekte as number).toFixed(1)}% + via fjernvarme {(fossilViaFjv as number).toFixed(1)}%.
-          {" "}Scoret mod målet 0% fossil.
+          {" "}Målt som andel af helårsboligernes opvarmede areal (m²). Scoret mod målet 0% fossil.
         </div>
       )}
     <div className="px-3 py-3 bg-blue-50/40 border-t border-blue-100">
       <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
         Kontekst <span className="font-normal normal-case text-gray-400">- indgår ikke i scoren</span>
       </p>
+
+      {/* Fritidsboliger - holdt uden for scoren */}
+      {harFritid && (
+        <div className="mb-3">
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-gray-700">Fritidsboliger, fossil opvarmning</span>
+            <span className="text-sm font-medium text-gray-700">{(fritidFossil as number).toFixed(1)}%</span>
+          </div>
+          <p className="mt-0.5 text-[11px] text-gray-400">
+            Udgør {(fritidAndel as number).toFixed(1)}% af kommunens samlede boligareal. Holdes uden for scoren:
+            sommerhuse er typisk elopvarmede og har derfor lavere fossilandel end helårsboliger. Hvis de talte med,
+            ville sommerhuskommuner fremstå kunstigt bedre på et mål der handler om husstandes varmeregninger.
+          </p>
+        </div>
+      )}
 
       {/* Lokal VE-kapacitet */}
       {veKw !== null && (
@@ -175,6 +384,16 @@ export default function ScoreBars({
   onVurderingKlik,
 }: ScoreBarsProps) {
   const [expanded, setExpanded] = useState<string | null>(null);
+  const { mode: baselineMode } = useBaseline();
+
+  // Navnet på det sammenligningsgrundlag scoren faktisk bruger. Skal følge
+  // baseline-toggle, ellers ser en score ud til at modsige det tal den står
+  // ved siden af (fx 4,4% mod "Gns: 3,6%" men grøn score, fordi scoren i
+  // virkeligheden var målt mod landkommunerne, ikke mod hele landet).
+  const baselineNavn =
+    baselineMode === "top10" ? "Top 10%"
+    : baselineMode === "kommunegruppe" ? kommunegruppeNavn(kommune.kommune_kode)
+    : "Landsgns";
 
   const activeRatios = ratios ?? kommune.ratios;
   const activeCompareRatios = compareRatios ?? compare?.ratios;
@@ -284,6 +503,9 @@ export default function ScoreBars({
                         <span className={`text-sm font-semibold ${cat.hasData ? scoreColor(cat.score) : "text-gray-400"}`}>
                           {cat.hasData && cat.score !== null ? cat.score.toFixed(1) : "–"}
                         </span>
+                        {!vurderingsMode && (
+                          <TrendMarker trend={kommune.trends?.[`_dim_${cat.categoryId}`]} kontekst="social" />
+                        )}
                         {compare && cmpCat && cmpCat.hasData && cmpCat.score !== null && (
                           <span className={`text-xs ${scoreColor(cmpCat.score)}`}>
                             ({cmpCat.score.toFixed(1)})
@@ -327,11 +549,14 @@ export default function ScoreBars({
                       const cmpScore = activeCompareRatios?.[ind.id] ?? compare?.ratios[ind.id] ?? null;
                       const rawVal = kommune.rawValues?.[ind.id] ?? null;
                       const cmpRawVal = compare?.rawValues?.[ind.id] ?? null;
-                      const originalRatio = kommune.ratios[ind.id] ?? null;
-                      const nationalAvg = (rawVal !== null && originalRatio !== null && originalRatio !== 0)
+                      // Sammenligningsværdien udledes af den AKTIVE score, ikke af
+                      // avg-ratioen. Ellers ville tallet vise landsgennemsnittet,
+                      // mens scoren måler mod kommunegruppen eller top 10% - og så
+                      // ser en grøn score forkert ud ved siden af en dårligere råværdi.
+                      const baselineAvg = (rawVal !== null && score !== null && score !== 0)
                         ? ind.inverse
-                          ? (originalRatio * rawVal) / 100
-                          : (rawVal * 100) / originalRatio
+                          ? (score * rawVal) / 100
+                          : (rawVal * 100) / score
                         : null;
                       const formatRaw = (val: number, unit: string) => {
                         const num = unit === "kr./indb."
@@ -349,6 +574,7 @@ export default function ScoreBars({
                               <span className={`text-sm font-medium ${scoreColor(score)}`}>
                                 {score !== null ? score.toFixed(1) : "–"}
                               </span>
+                              <TrendMarker trend={kommune.trends?.[ind.id]} />
                               {compare && cmpScore !== null && (
                                 <span className={`text-xs ${scoreColor(cmpScore)}`}>({cmpScore.toFixed(1)})</span>
                               )}
@@ -369,9 +595,9 @@ export default function ScoreBars({
                                     {" "}vs. {formatRaw(cmpRawVal, ind.rawUnit)}
                                   </span>
                                 )}
-                                {nationalAvg !== null && !ind.absoluteTarget && (
+                                {baselineAvg !== null && !ind.absoluteTarget && (
                                   <span className="text-gray-400 font-normal before:content-['·'] before:mx-1">
-                                    Gns: {formatRaw(nationalAvg, ind.rawUnit)}
+                                    {baselineNavn}: {formatRaw(baselineAvg, ind.rawUnit)}
                                   </span>
                                 )}
                               </span>
@@ -386,7 +612,11 @@ export default function ScoreBars({
                                 </span>
                               )}
                               {!ind.absoluteTarget && (
-                                <span className="text-gray-400 text-[10px]">Baseline: landsgennemsnit</span>
+                                <span className="text-gray-400 text-[10px]">
+                                  Baseline: {baselineMode === "top10" ? "top 10% af kommunerne"
+                                    : baselineMode === "kommunegruppe" ? kommunegruppeNavn(kommune.kommune_kode).toLowerCase()
+                                    : "landsgennemsnit"}
+                                </span>
                               )}
                             </div>
                             <div className="flex items-center gap-2 shrink-0">
@@ -497,6 +727,9 @@ export default function ScoreBars({
                         <span className={`text-sm font-semibold ${hasData ? ecoScoreColor(score) : "text-gray-400"}`}>
                           {hasData && score !== null ? score.toFixed(1) : "–"}
                         </span>
+                        {!vurderingsMode && (
+                          <TrendMarker trend={kommune.trends?.[`_dim_${dim.id}`]} kontekst="ecological" />
+                        )}
                         {compare && cmpScore !== null && (
                           <span className={`text-xs ${ecoScoreColor(cmpScore)}`}>
                             ({cmpScore.toFixed(1)})
@@ -546,16 +779,19 @@ export default function ScoreBars({
                         <div key={sub.rawKey} className="px-3 py-2.5 border-b border-gray-100 last:border-b-0">
                           <div className="flex items-center justify-between">
                             <span className="text-sm text-gray-700">{sub.label}</span>
-                            {subRatio !== null && (
-                              <div className="flex items-center gap-2 ml-2 shrink-0">
-                                <span className={`text-sm font-medium ${ecoScoreColor(subRatio)}`}>
-                                  {subRatio.toFixed(1)}
-                                </span>
-                                {compare && cmpSubRatio !== null && (
-                                  <span className={`text-xs ${ecoScoreColor(cmpSubRatio)}`}>({cmpSubRatio.toFixed(1)})</span>
-                                )}
-                              </div>
-                            )}
+                            <div className="flex items-center gap-2 ml-2 shrink-0">
+                              {subRatio !== null && (
+                                <>
+                                  <span className={`text-sm font-medium ${ecoScoreColor(subRatio)}`}>
+                                    {subRatio.toFixed(1)}
+                                  </span>
+                                  {compare && cmpSubRatio !== null && (
+                                    <span className={`text-xs ${ecoScoreColor(cmpSubRatio)}`}>({cmpSubRatio.toFixed(1)})</span>
+                                  )}
+                                </>
+                              )}
+                              <TrendMarker trend={kommune.trends?.[sub.rawKey]} />
+                            </div>
                           </div>
                           {subRatio !== null && (
                             <div className="mt-1 h-1.5 bg-gray-100 rounded-full overflow-hidden relative">
@@ -596,6 +832,7 @@ export default function ScoreBars({
                         </div>
                       );
                     })}
+                    {dim.id === "klimapaavirkning" && <KlimaKontekst kommune={kommune} />}
                   </div>
                 )}
               </div>

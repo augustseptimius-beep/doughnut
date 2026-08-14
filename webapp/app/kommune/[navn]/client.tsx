@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { KommuneData } from "@/lib/shared";
-import { computeCategoryScores, ECOLOGICAL_DIMENSIONS, kommunegruppeNavn } from "@/lib/shared";
+import { computeCategoryScores, ECOLOGICAL_DIMENSIONS, SOCIAL_CATEGORIES, kommunegruppeNavn } from "@/lib/shared";
 import { useBaseline } from "@/lib/baseline-context";
 import DoughnutRing from "@/components/DoughnutRing";
 import ScoreBars from "@/components/ScoreBars";
@@ -156,6 +156,39 @@ export default function KommuneClient({ kommune }: Props) {
               );
             })()}
           </p>
+          {/* Retning over tid, opgjort på tværs af alle 20 kategorier og
+              dimensioner. Måles på råværdier, ikke på score - se lib/shared.ts. */}
+          {(() => {
+            const alleIds = [
+              ...SOCIAL_CATEGORIES.map((c) => c.id),
+              ...ECOLOGICAL_DIMENSIONS.map((d) => d.id),
+            ];
+            let positiv = 0, forkert = 0, uaendret = 0, ingen = 0;
+            for (const id of alleIds) {
+              const t = kommune.trends?.[`_dim_${id}`];
+              if (!t || t.retning === "ingen") { ingen++; continue; }
+              if (t.retning === "rigtig" || t.retning === "tempo") positiv++;
+              else if (t.retning === "forkert") forkert++;
+              else uaendret++;
+            }
+            if (positiv + forkert + uaendret === 0) return null;
+            const dele: string[] = [];
+            if (positiv) dele.push(`${positiv} bevæger sig i positiv retning`);
+            if (forkert) dele.push(`${forkert} i forkert retning`);
+            if (uaendret) dele.push(`${uaendret} stort set uændret`);
+            return (
+              <p>
+                <span className="font-medium">Retning:</span>{" "}
+                {dele.join(", ")}
+                {ingen > 0 && (
+                  <span className="text-gray-400">
+                    {" "}({ingen} uden tidsserie)
+                  </span>
+                )}
+                .
+              </p>
+            );
+          })()}
         </div>
 
         {/* Score bars + "Start vurdering"-knap */}

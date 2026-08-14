@@ -1,0 +1,431 @@
+Kommuneliste: 98 kommuner (fra master_indicators.csv)
+==================================================================
+DST-historik, startet 2026-08-12 08:37
+51 rå udtræk, 98 kommuner, fra 2010
+==================================================================
+
+→ Folketal  [FOLK1A]
+   Udeladt, lægges sammen af DST: KØN, ALDER, CIVILSTAND
+   OK: Thisted 2010 = 45.297.0  →  2026 = 42.572.0  (1666 kommune-år i alt)
+
+Folketal hentet for 1666 kommune-år.
+
+
+→ Hjemmesygepleje-modtagere  [HJEMSYG]
+   Udeladt, lægges sammen af DST: ALDER1, KOEN
+   OK: Thisted 2016 = 1.169.0  →  2025 = 1.741.0  (872 kommune-år i alt)
+
+→ Antidepressivt forbrug  [MEDI1]
+   Nøgle: BNØGLE = ['Recepter pr. 100 borgere']
+   Filter: MEDICINTYPE = ['N06: Psykoanaleptika (antidepressiv medicin og midler mod ADHD/demens)']
+   ALERAMS = Alder i alt (pinnet, forholdstal)
+   OK: Thisted 2020 = 66.0  →  2024 = 82.6  (490 kommune-år i alt)
+
+→ Andel med lægekontakt  [SYGP1]
+   Nøgle: YDELSESART = ['ALMEN LÆGE I ALT']
+   Udeladt, lægges sammen af DST: ALERAMS, KØN
+   OK: Thisted 2010 = 38.698.0  →  2025 = 36.746.0  (1568 kommune-år i alt)
+
+→ Overvægt blandt 6-7-årige  [LABY26]
+   Nøgle: ALDER = ['6-7 år']
+   KØN = Køn i alt (pinnet, forholdstal)
+   OK: Thisted 2012 = 12.6  →  2018 = 16.9  (673 kommune-år i alt)
+
+→ Sygehusophold, alle varigheder  [SBR01]
+   Nøgle: OPHOLD_PÅ_SYGEHUS = ['Alle varigheder (antal personer med ophold på sygehus)']
+   Udeladt, lægges sammen af DST: ALDER, KØN
+   OK: Thisted 2017 = 21.926.0  →  2025 = 21.952.0  (882 kommune-år i alt)
+
+→ Sygehusophold, personer i alt  [SBR01]
+   Nøgle: OPHOLD_PÅ_SYGEHUS = ['Personer i alt']
+   Udeladt, lægges sammen af DST: ALDER, KØN
+   OK: Thisted 2017 = 43.716.0  →  2025 = 42.572.0  (882 kommune-år i alt)
+
+→ Klassekvotient i folkeskolen  [KVOTIEN]
+   Nøgle: KLASSE = ['I alt']
+   Filter: SKTPE = ['Folkeskoler']
+   OK: Thisted 2010 = 18.1  →  2025 = 18.6  (1568 kommune-år i alt)
+
+→ Normering i daginstitution 3-5 år  [BOERN8]
+   Nøgle: PASKAT = ['Daginstitution 3-5 år']
+   OK: Thisted 2023 = 6.0  →  2024 = 6.2  (196 kommune-år i alt)
+
+→ Pædagoguddannede  [BOERN1]
+   Nøgle: OVERENS = ['Pædagog', 'Pædagogisk leder']
+   Udeladt, lægges sammen af DST: UDDANNELSE
+   OK: Thisted 2015 = 111.0  →  2024 = 122.0  (940 kommune-år i alt)
+
+→ Personale i alt  [BOERN1]
+   Nøgle: OVERENS = ['I alt']
+   Udeladt, lægges sammen af DST: UDDANNELSE
+   OK: Thisted 2015 = 326.0  →  2024 = 324.0  (940 kommune-år i alt)
+
+→ 25-29-årige med kun grundskole  [HFUDD11]
+   Nøgle (kode): HFUDD = ['H10']
+   Filter: ALDER = ['25-29 år']
+   HERKOMST = I alt (pinnet, forholdstal)
+   KØN = I alt (pinnet, forholdstal)
+   OK: Thisted 2010 = 479.0  →  2025 = 419.0  (1568 kommune-år i alt)
+
+→ 25-29-årige i alt  [HFUDD11]
+   Nøgle: HERKOMST = ['I alt']
+   Filter: ALDER = ['25-29 år']
+   HFUDD = I alt (pinnet, forholdstal)
+   KØN = I alt (pinnet, forholdstal)
+   OK: Thisted 2010 = 1.787.0  →  2025 = 1.819.0  (1568 kommune-år i alt)
+
+→ 30-34-årige med kompetencegivende uddannelse  [HFUDD10]
+   Nøgle (kode): HFUDD = ['H20', 'H30', 'H35', 'H40', 'H50', 'H60', 'H70', 'H80']
+   Filter: ALDER = ['30-34 år']
+   HERKOMST = I alt (pinnet, forholdstal)
+   KØN = I alt (pinnet, forholdstal)
+   OK: Thisted 2010 = 1.793.0  →  2019 = 1.667.0  (980 kommune-år i alt)
+
+→ 30-34-årige i alt  [HFUDD10]
+   Nøgle: HERKOMST = ['I alt']
+   Filter: ALDER = ['30-34 år']
+   HFUDD = I alt (pinnet, forholdstal)
+   KØN = I alt (pinnet, forholdstal)
+   OK: Thisted 2010 = 2.375.0  →  2019 = 2.194.0  (980 kommune-år i alt)
+
+→ Udsatte børn og unge  [BU43]
+   Nøgle: FORANSTALT = ['Udsatte børn og unge i alt']
+   ALDER = I alt, 0-22 år (pinnet, forholdstal)
+   OK: Thisted 2015 = 4.0  →  2025 = 4.1  (1077 kommune-år i alt)
+
+→ Underretninger om børn  [UND2]
+   Nøgle: UNDERRET = ['I alt']
+   Udeladt, lægges sammen af DST: ALDER1, KON
+   OK: Thisted 2015 = 489.0  →  2024 = 691.0  (979 kommune-år i alt)
+
+→ NEET - ikke-aktive  [NEET1]
+   Nøgle: STATUSNEET = ['Ikke-aktive (NEET)']
+   Udeladt, lægges sammen af DST: KØN, SOCIO
+   OK: Thisted 2010 = 584.0  →  2023 = 510.0  (1372 kommune-år i alt)
+
+→ NEET - aktive og ikke-aktive i alt  [NEET1]
+   Nøgle: STATUSNEET = ['Aktive og ikke-aktive i alt']
+   Udeladt, lægges sammen af DST: KØN, SOCIO
+   OK: Thisted 2010 = 4.738.0  →  2023 = 4.161.0  (1372 kommune-år i alt)
+
+→ Relativ fattigdom  [IFOR12P]
+   Nøgle: INDKN = ['60 procent af medianindkomsten']
+   OK: Thisted 2010 = 11.3  →  2024 = 13.1  (1470 kommune-år i alt)
+
+→ Børnefattigdom 0-17 år  [LABY07]
+   Nøgle: ALDER = ['0-17 år']
+   OK: Thisted 2015 = 4.5  →  2024 = 4.2  (980 kommune-år i alt)
+
+→ Gini-koefficient  [IFOR41]
+   Nøgle: ULLIG = ['Gini-koefficient']
+   OK: Thisted 2010 = 26.4  →  2024 = 26.4  (1470 kommune-år i alt)
+
+→ Boligareal pr. person  [BOL106]
+   Nøgle: ENHED = ['Gennemsnitligt areal per person (m2)']
+   Filter: ANVENDELSE = ['I alt']
+   OK: Thisted 2010 = 59.9  →  2026 = 65.9  (1666 kommune-år i alt)
+
+→ Ubeboede boliger  [BOL101]
+   Nøgle: BEBO = ['Boliger uden CPR tilmeldte personer (ubeboede boliger)', 'Fritidshuse uden CPR tilmeldte personer (ubeboede fritidshuse)']
+   Udeladt, lægges sammen af DST: ANVENDELSE, UDLFORH, EJER, OPFØRELSESÅR
+   OK: Thisted 2010 = 6.023.0  →  2026 = 6.525.0  (1470 kommune-år i alt)
+
+→ Boliger i alt  [BOL101]
+   BEBO = alle 3 værdier lagt sammen (skal angives, ingen I alt)
+   Udeladt, lægges sammen af DST: ANVENDELSE, UDLFORH, EJER, OPFØRELSESÅR
+   OK: Thisted 2010 = 26.479.0  →  2026 = 27.040.0  (1470 kommune-år i alt)
+
+→ Stemmedeltagelse folketingsvalg  [LABY09]
+   Nøgle: VALRES = ['Stemmeprocent']
+   OK: Thisted 2011 = 87.1  →  2026 = 84.0  (490 kommune-år i alt)
+
+→ Musikskoleelever  [SKOLM02B]
+   ADVARSEL: kunne ikke finde ét fast tidspunkt pr. år i tabellen.
+   Tabellen kender ikke 2 af 98 kommuner. De udelades.
+   Udeladt, lægges sammen af DST: ALDER, KØN
+   OK: Thisted 2021 = 425.0  →  2024 = 493.0  (384 kommune-år i alt)
+
+→ Biblioteksudlån  [BIB1]
+   Nøgle: BNØGLE = ['Udlån i alt']
+   Tabellen kender ikke 1 af 98 kommuner. De udelades.
+   OK: Thisted 2010 = 308.874.0  →  2024 = 137.227.0  (1261 kommune-år i alt)
+
+→ Trafikulykker  [UHELDK1]
+   Nøgle: UHELD = ['Personskade i alt']
+   Udeladt, lægges sammen af DST: INDBLAND, ALDER, KØN
+   OK: Thisted 2010 = 64.0  →  2024 = 19.0  (1470 kommune-år i alt)
+
+→ Anmeldte forbrydelser  [STRAF11]
+   Nøgle: OVERTRÆD = ['Overtrædelsens art i alt']
+   Frasorterer ufuldstændige år: ['2026']
+   OK: Thisted 2010 = 2.458.0  →  2025 = 1.399.0  (1568 kommune-år i alt)
+
+→ Idrætsfaciliteter  [IDRFAC01]
+   IDRFAC = alle 28 værdier lagt sammen (skal angives, ingen I alt)
+   OK: Thisted 2017 = 140.0  →  2025 = 164.0  (882 kommune-år i alt)
+
+→ Idrætsmedlemskaber  [IDRAKT02]
+   KON = Køn i alt (pinnet, forholdstal)
+   ALDER1 = Alder i alt (pinnet, forholdstal)
+   OK: Thisted 2014 = 47.2  →  2025 = 49.5  (1176 kommune-år i alt)
+
+→ Kommunale idrætsudgifter  [IDRFIN02]
+   Nøgle: FUNKTION = ['I alt']
+   Filter: DRANST = ['I alt']
+   OK: Thisted 2011 = 490.0  →  2025 = 625.0  (1470 kommune-år i alt)
+
+→ Kvinder i lederstillinger  [RAS301]
+   Nøgle: KOEN = ['Kvinder']
+   Filter: SOCIO = ['Lønmodtager med ledelsesarbejde']
+   Udeladt, lægges sammen af DST: BRANCHE07, ALDER
+   OK: Thisted 2010 = 170.0  →  2024 = 176.0  (1470 kommune-år i alt)
+
+→ Ledere i alt  [RAS301]
+   Nøgle: SOCIO = ['Lønmodtager med ledelsesarbejde']
+   Udeladt, lægges sammen af DST: BRANCHE07, ALDER, KOEN
+   OK: Thisted 2010 = 744.0  →  2024 = 705.0  (1470 kommune-år i alt)
+
+→ Kvinders disponible indkomst  [INDKP101]
+   Nøgle: KOEN = ['Kvinder']
+   Filter: ENHED = ['Gennemsnit for alle personer (kr.)']
+   Filter: INDKOMSTTYPE = ['1 Disponibel indkomst (2+30-31-32-35)']
+   OK: Thisted 2010 = 165.585.0  →  2024 = 220.112.0  (1470 kommune-år i alt)
+
+→ Mænds disponible indkomst  [INDKP101]
+   Nøgle: KOEN = ['Mænd']
+   Filter: ENHED = ['Gennemsnit for alle personer (kr.)']
+   Filter: INDKOMSTTYPE = ['1 Disponibel indkomst (2+30-31-32-35)']
+   OK: Thisted 2010 = 185.826.0  →  2024 = 285.333.0  (1470 kommune-år i alt)
+
+→ Beskæftigelse, ikke-vestlige  [RAS200]
+   Nøgle: HERKOMST = ['Indvandrere fra ikke-vestlige lande']
+   Filter: BEREGNING = ['Beskæftigelsesfrekvens']
+   Filter: ALDER = ['16-64 år']
+   KØN = I alt (pinnet, forholdstal)
+   OK: Thisted 2010 = 50.9  →  2024 = 73.3  (1470 kommune-år i alt)
+
+→ Beskæftigelse, dansk oprindelse  [RAS200]
+   Nøgle: HERKOMST = ['Personer med dansk oprindelse']
+   Filter: BEREGNING = ['Beskæftigelsesfrekvens']
+   Filter: ALDER = ['16-64 år']
+   KØN = I alt (pinnet, forholdstal)
+   OK: Thisted 2010 = 73.3  →  2024 = 78.4  (1470 kommune-år i alt)
+
+→ Middellevetid kvinder  [HISBK]
+   ADVARSEL: kunne ikke finde ét fast tidspunkt pr. år i tabellen.
+   Nøgle: KØN = ['Kvinder']
+   OK: Thisted 2010 = 81.3  →  2021 = 82.8  (1128 kommune-år i alt)
+
+→ Middellevetid mænd  [HISBK]
+   ADVARSEL: kunne ikke finde ét fast tidspunkt pr. år i tabellen.
+   Nøgle: KØN = ['Mænd']
+   OK: Thisted 2010 = 77.1  →  2021 = 78.7  (1128 kommune-år i alt)
+
+→ Middellevetid  [HISBK]
+   ADVARSEL: kunne ikke finde ét fast tidspunkt pr. år i tabellen.
+   Nøgle: KØN = ['I alt']
+   OK: Thisted 2010 = 79.2  →  2021 = 80.7  (1128 kommune-år i alt)
+
+→ Beskæftigelsesfrekvens, i alt  [RAS200]
+   Nøgle: HERKOMST = ['I alt']
+   Filter: BEREGNING = ['Beskæftigelsesfrekvens']
+   Filter: ALDER = ['16-64 år']
+   KØN = I alt (pinnet, forholdstal)
+   OK: Thisted 2010 = 72.4  →  2024 = 77.9  (1470 kommune-år i alt)
+
+→ Disponibel indkomst  [INDKP101]
+   Nøgle: KOEN = ['Mænd og kvinder i alt']
+   Filter: ENHED = ['Gennemsnit for alle personer (kr.)']
+   Filter: INDKOMSTTYPE = ['1 Disponibel indkomst (2+30-31-32-35)']
+   OK: Thisted 2010 = 175.719.0  →  2024 = 252.934.0  (1470 kommune-år i alt)
+
+→ Pendlingsafstand  [AFSTB4]
+   Nøgle: SOCIO = ['Beskæftigede i alt']
+   KØN = I alt (pinnet, forholdstal)
+   OK: Thisted 2010 = 18.4  →  2024 = 23.6  (1470 kommune-år i alt)
+
+→ Kvælstofudledning til vandmiljø  [VANDUD]
+   Nøgle: UDL = ['Kvælstof, ton total-N']
+   ANLAEG = alle 6 værdier lagt sammen (skal angives, ingen I alt)
+   OK: Thisted 2010 = 31.0  →  2024 = 59.0  (1431 kommune-år i alt)
+
+→ Fosforudledning til vandmiljø  [VANDUD]
+   Nøgle: UDL = ['Fosfor, ton total-P']
+   ANLAEG = alle 6 værdier lagt sammen (skal angives, ingen I alt)
+   OK: Thisted 2010 = 3.0  →  2024 = 6.0  (1431 kommune-år i alt)
+
+→ Vandindvinding, alment vandværk  [VANDIND]
+   Nøgle: VANDTYP = ['Vand i alt']
+   Filter: INDKAT = ['Alment vandværk']
+   OK: Thisted 2010 = 5.6  →  2024 = 4.4  (1442 kommune-år i alt)
+
+→ Intensivt landbrugsareal  [AREALDK2]
+   Nøgle: ARE1 = ['Intensivt landbrug (korn, rodfrugter, og andre midlertidige afgrøder)']
+   Filter: ENHED = ['Andel af samlet område (pct.)']
+   OK: Thisted 2011 = 48.3  →  2024 = 46.7  (392 kommune-år i alt)
+
+→ Bebygget areal og infrastruktur  [AREALDK2]
+   Nøgle: ARE1 = ['Veje og jernbaner', 'Lufthavne og landingsbaner', 'Bebyggelse (undtagen erhvervsområder)', 'Bebyggelse kun med erhverv', 'Sportsanlæg, begravelsespladser og andre rekreative områder']
+   Filter: ENHED = ['Andel af samlet område (pct.)']
+   OK: Thisted 2011 = 9.6  →  2024 = 9.9  (392 kommune-år i alt)
+
+→ Husholdningsaffald pr. person  [LABY25]
+   Nøgle: BNØGLE = ['Husholdningsaffald (kg. pr. indbygger)']
+   OK: Thisted 2013 = 465.0  →  2023 = 508.0  (1078 kommune-år i alt)
+
+→ Genanvendelse af husholdningsaffald  [LABY25]
+   Nøgle: BNØGLE = ['Husholdningsaffald indsamlet til genanvendelse (pct.)']
+   OK: Thisted 2013 = 22.0  →  2023 = 45.0  (1078 kommune-år i alt)
+
+==================================================================
+DST-historik færdig. 0 rå udtræk fejlede: []
+
+==================================================================
+Klimaregnskabet.dk - klimapåvirkning (territorial CO2e/indb.)
+==================================================================
+  København            færdig
+  Frederiksberg        færdig
+  Ballerup             færdig
+  Brøndby              færdig
+  Dragør               færdig
+  Gentofte             færdig
+  Gladsaxe             færdig
+  Glostrup             færdig
+  Herlev               færdig
+  Albertslund          færdig
+  Hvidovre             færdig
+  Høje-Taastrup        færdig
+  Lyngby-Taarbæk       færdig
+  Rødovre              færdig
+  Ishøj                færdig
+  Tårnby               færdig
+  Vallensbæk           færdig
+  Furesø               færdig
+  Allerød              færdig
+  Fredensborg          færdig
+  Helsingør            færdig
+  Hillerød             færdig
+  Hørsholm             færdig
+  Rudersdal            færdig
+  Egedal               færdig
+  Frederikssund        færdig
+  Greve                færdig
+  Køge                 færdig
+  Halsnæs              færdig
+  Roskilde             færdig
+  Solrød               færdig
+  Gribskov             færdig
+  Odsherred            færdig
+  Holbæk               færdig
+  Faxe                 færdig
+  Kalundborg           færdig
+  Ringsted             færdig
+  Slagelse             færdig
+  Stevns               færdig
+  Sorø                 færdig
+  Lejre                færdig
+  Lolland              færdig
+  Næstved              færdig
+  Guldborgsund         færdig
+  Vordingborg          færdig
+  Bornholm             færdig
+  Middelfart           færdig
+  Assens               færdig
+  Faaborg-Midtfyn      færdig
+  Kerteminde           færdig
+  Nyborg               færdig
+  Odense               færdig
+  Svendborg            færdig
+  Nordfyns             færdig
+  Langeland            færdig
+  Ærø                  færdig
+  Haderslev            færdig
+  Billund              færdig
+  Sønderborg           færdig
+  Tønder               færdig
+  Esbjerg              færdig
+  Fanø                 færdig
+  Varde                færdig
+  Vejen                færdig
+  Aabenraa             færdig
+  Fredericia           færdig
+  Horsens              færdig
+  Kolding              færdig
+  Vejle                færdig
+  Herning              færdig
+  Holstebro            færdig
+  Lemvig               færdig
+  Struer               færdig
+  Syddjurs             færdig
+  Norddjurs            færdig
+  Favrskov             færdig
+  Odder                færdig
+  Randers              færdig
+  Silkeborg            færdig
+  Samsø                færdig
+  Skanderborg          færdig
+  Aarhus               færdig
+  Ikast-Brande         færdig
+  Ringkøbing-Skjern    færdig
+  Hedensted            færdig
+  Morsø                færdig
+  Skive                færdig
+  Thisted              færdig
+  Viborg               færdig
+  Brønderslev          færdig
+  Frederikshavn        færdig
+  Vesthimmerlands      færdig
+  Læsø                 færdig
+  Rebild               færdig
+  Mariagerfjord        færdig
+  Jammerbugt           færdig
+  Aalborg              færdig
+  Hjørring             færdig
+
+Klimaregnskabet færdig: 686 kommune-år, 0 uden svar.
+
+Skrevet: trend_history_raw.csv (47928 rækker)
+
+Dækning pr. indikator (antal kommuner med mindst ét år):
+  areal_bebygget               98/98 kommuner
+  areal_intensiv               98/98 kommuner
+  boerneovervaeght             98/98 kommuner
+  child_notifications          98/98 kommuner
+  child_poverty                98/98 kommuner
+  cirkularitet_recycling       98/98 kommuner
+  cirkularitet_waste           98/98 kommuner
+  class_size                   98/98 kommuner
+  commute_distance             98/98 kommuner
+  crime_rate                   98/98 kommuner
+  daycare_ratio                98/98 kommuner
+  disposable_income            98/98 kommuner
+  educated_staff               98/98 kommuner
+  education                    98/98 kommuner
+  employment                   98/98 kommuner
+  employment_origin_gap        98/98 kommuner
+  gender_leadership            98/98 kommuner
+  gini                         98/98 kommuner
+  hjemsyg                      98/98 kommuner
+  hospital_short               98/98 kommuner
+  housing_area                 98/98 kommuner
+  income_gender_gap            98/98 kommuner
+  klimapaavirkning             98/98 kommuner
+  laegekontakt                 98/98 kommuner
+  le_gender_gap                94/98 kommuner
+  library_use                  97/98 kommuner
+  life_expectancy              94/98 kommuner
+  low_education                98/98 kommuner
+  medicin                      98/98 kommuner
+  music_school                 96/98 kommuner
+  naer_nitrogen                98/98 kommuner
+  naer_phosphorus              98/98 kommuner
+  neet                         98/98 kommuner
+  poverty_relative             98/98 kommuner
+  sports_facilities            98/98 kommuner
+  sports_membership            98/98 kommuner
+  sports_spending              98/98 kommuner
+  traffic_accidents            98/98 kommuner
+  vacant_housing               98/98 kommuner
+  vandindvinding               97/98 kommuner
+  voter_turnout_national       98/98 kommuner
+  vulnerable_children          98/98 kommuner

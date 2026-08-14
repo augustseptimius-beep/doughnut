@@ -119,8 +119,8 @@ export const INDICATORS: Indicator[] = [
   {
     id: "bolig_fossil",
     name: "Fossil opvarmning (inkl. fjernvarme)",
-    table: "BOL202",
-    source: "https://www.statistikbanken.dk/BOL202",
+    table: "BYGB40",
+    source: "https://www.statistikbanken.dk/BYGB40",
     category: "social",
     inverse: true,
     dataYear: "2026",
@@ -686,7 +686,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
   {
     id: "energi",
     name: "Energi",
-    description: "Husstandenes fossile energiafhængighed - andel boliger opvarmet med olie eller naturgas. Fossil opvarmning belaster klimaet og udsætter husstande for høje, svingende varmeregninger. Lokal VE-produktion og fjernvarmens brændselsmix vises som kontekst, men indgår ikke i scoren.",
+    description: "Husstandenes fossile energiafhængighed - andel af det opvarmede boligareal (m²) der varmes med olie eller naturgas, direkte eller via fjernvarme. Fossil opvarmning belaster klimaet og udsætter husstande for høje, svingende varmeregninger. Måles på areal frem for antal beboere, fordi varmebehov skalerer med kvadratmeter. Omfatter kun helårsboliger. Fritidsboliger, lokal VE-produktion og fjernvarmens brændselsmix vises som kontekst, men indgår ikke i scoren.",
     indicatorIds: ["bolig_fossil"],
   },
 ];
@@ -891,6 +891,82 @@ export function dimensionBaselineType(dim: EcologicalDimension): DimBaselineType
 
 // --- HELPERS ---
 
+// --- RETNINGSVISNING (trend) ---
+// En pil pr. indikator der viser om kommunen bevæger sig mod eller væk fra
+// målet, beregnet på råværdier (ikke ratio) over en flerårig periode.
+// Data kommer fra data/trend_indicators.csv (scripts/build_trends_csv.py).
+// Dækker kun de indikatorer der har en efterprøvet historisk kilde - resten
+// får retning "ingen" (ikke fejl, bare ingen tidsserie endnu).
+export type TrendDirection = "rigtig" | "tempo" | "stagneret" | "forkert" | "kontekst" | "ingen";
+
+export interface TrendPost {
+  retning: TrendDirection;
+  pct: number | null;        // procentvis ændring fra periodeStart til periodeSlut
+  periodeStart: string;
+  periodeSlut: string;
+  vaerdiStart: number | null;  // null for _dim_*-aggregater (ingen fælles enhed)
+  vaerdiSlut: number | null;
+  nAar: number;
+  kilde: string;
+  // Kun sat på _dim_*-aggregater: hvilken sub-indikator retningen kommer fra
+  // (worst-of), eller "gennemsnit af N indikatorer". Vises i tooltip, så
+  // brugeren kan se hvad pilen faktisk beskriver.
+  noegleIndikator?: string;
+}
+
+// Ét sted for retningsteksterne, så ScoreBars og DoughnutRing altid siger det
+// samme. Bevidst formuleret som positiv/forkert retning UDEN at nævne et
+// konkret mål: retningen måles på råværdier og holdes op mod de øvrige
+// kommuners udvikling, ikke mod en fastsat målsætning. "Mod målet" ville
+// derfor være misvisende, især for de mange indikatorer der scores relativt.
+export const TREND_LABEL: Record<TrendDirection, string> = {
+  rigtig: "Bevæger sig i positiv retning",
+  tempo: "Bevæger sig i positiv retning, men langsommere end de fleste kommuner",
+  stagneret: "Stort set uændret",
+  forkert: "Bevæger sig i forkert retning",
+  kontekst: "Ingen entydig positiv eller negativ retning",
+  ingen: "Ingen tidsserie endnu",
+};
+
+// Hvor pilen sidder afgør hvad den skal betyde:
+//   "indikator"  - en enkelt måling. Pilen følger RÅVÆRDIENS faktiske retning,
+//                  så man ser det nuancerede billede: inden for Forurening skal
+//                  affald ned og genanvendelse op, og begge dele er positivt.
+//                  Farven fortæller om det er godt eller skidt.
+//   "social"     - en kategori i det sociale fundament. Underskud skal fyldes
+//                  OP mod fundamentet, så op = fremgang.
+//   "ecological" - en dimension under det økologiske loft. Overskridelse skal
+//                  ned UNDER loftet, så ned = fremgang.
+// De to sidste følger doughnut-geometrien: pilen peger mod det grønne bånd
+// når det går fremad, uanset hvad den underliggende råværdi gør.
+export type TrendKontekst = "indikator" | "social" | "ecological";
+
+/** Peger pilen opad? Se TrendKontekst for reglerne bag. */
+export function trendPilOpad(t: TrendPost, kontekst: TrendKontekst): boolean {
+  if (kontekst === "indikator") return (t.pct ?? 0) >= 0;
+  const fremgang = t.retning === "rigtig" || t.retning === "tempo";
+  return kontekst === "social" ? fremgang : !fremgang;
+}
+
+/** Fuld beskrivelse med periode og ændring i procent. Bruges i tooltip og panel. */
+export function trendBeskrivelse(t: TrendPost, kontekst: TrendKontekst = "indikator"): string {
+  const label = TREND_LABEL[t.retning];
+  const hoved = `${t.periodeStart} → ${t.periodeSlut}`;
+  if (t.pct === null) return `${hoved} (${label.charAt(0).toLowerCase()}${label.slice(1)})`;
+
+  if (kontekst === "indikator") {
+    // Råværdiens faktiske ændring - fortegnet er meningsfuldt i sig selv.
+    const pctTxt = `${t.pct > 0 ? "+" : ""}${t.pct.toFixed(1)}%`;
+    return `${hoved}: ${pctTxt} (${label.charAt(0).toLowerCase()}${label.slice(1)})`;
+  }
+  // Dimensionsniveau: pct er målrettet, så et negativt tal ville læses som
+  // "faldt" i stedet for "gik den forkerte vej". Skriv det ud i stedet.
+  const stoerrelse = Math.abs(t.pct).toFixed(1);
+  if (t.retning === "stagneret") return `${hoved}: stort set uændret`;
+  const vej = t.pct >= 0 ? "i positiv retning" : "i forkert retning";
+  return `${hoved}: ${stoerrelse}% ${vej}`;
+}
+
 export interface KommuneData {
   kommune_kode: string;
   kommune_navn: string;
@@ -899,6 +975,9 @@ export interface KommuneData {
   group_ratios: Record<string, number | null>; // same indicators, kommunegruppe-gennemsnit som baseline
   eco_ratios: Record<string, number | null>; // ecological dimension ratios
   rawValues: Record<string, number | null>;   // faktiske råværdier (til visning i UI)
+  // Nøglet på BÅDE indicator_id (sociale) og eco sub-indikatorens rawKey
+  // (økologiske), så ScoreBars kan slå op uden en ekstra mapping-tabel.
+  trends: Record<string, TrendPost>;
   social_avg: number | null;
   overall_avg: number | null;
 }

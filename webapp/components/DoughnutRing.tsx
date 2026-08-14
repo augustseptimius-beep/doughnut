@@ -1,12 +1,18 @@
 "use client";
 
 import React, { useState } from "react";
+import { useBaseline } from "@/lib/baseline-context";
 import {
   type KommuneData,
   ECOLOGICAL_DIMENSIONS,
   SOCIAL_CATEGORIES,
   INDICATORS,
   computeCategoryScores,
+  kommunegruppeNavn,
+  TREND_LABEL,
+  trendPilOpad,
+  type TrendPost,
+  type TrendKontekst,
 } from "@/lib/shared";
 import type { VurderingEntry } from "@/lib/vurdering";
 
@@ -176,6 +182,14 @@ export default function DoughnutRing({
 }: DoughnutRingProps) {
   const [active, setActive] = useState<ActiveInfo | null>(null);
   const [pinned, setPinned] = useState(false);
+  const { mode: baselineMode } = useBaseline();
+
+  // Legenden skal nævne det sammenligningsgrundlag der faktisk er valgt,
+  // ikke altid landsgennemsnittet.
+  const baselineTekst =
+    baselineMode === "top10" ? "top 10% af kommunerne"
+    : baselineMode === "kommunegruppe" ? kommunegruppeNavn(kommune.kommune_kode).toLowerCase()
+    : "landsgennemsnittet";
 
   const activeRatios = ratios ?? kommune.ratios;
   const categoryScores = computeCategoryScores(activeRatios);
@@ -516,6 +530,35 @@ export default function DoughnutRing({
     return SEVERITY_TEXT_COLORS[severity];
   };
 
+  // Retningsvisning i panelet. Samme form-før-farve-princip som i ScoreBars:
+  // trekant op/ned, vandret streg ved stilstand, så det kan aflæses uden farve.
+  const trendFarve = (retning: TrendPost["retning"]): string =>
+    retning === "rigtig" ? "text-emerald-600"
+    : retning === "tempo" ? "text-amber-500"
+    : retning === "forkert" ? "text-red-500"
+    : "text-gray-400";
+
+  // Pilen på dimensionsniveau følger doughnut-geometrien: sociale kategorier
+  // skal fyldes OP mod fundamentet, økologiske skal ned UNDER loftet. Derfor
+  // peger pilen mod det grønne bånd når det går fremad, uanset hvad den
+  // underliggende råværdi gør. Reglen bor i lib/shared.ts.
+  const TrendIkon = ({ trend, kontekst }: { trend: TrendPost; kontekst: TrendKontekst }) => {
+    const farve = trendFarve(trend.retning);
+    if (trend.retning === "stagneret" || trend.retning === "ingen") {
+      return (
+        <svg width="10" height="10" viewBox="0 0 12 12" className={`${farve} shrink-0`}>
+          <line x1="1.5" y1="6" x2="10.5" y2="6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
+    }
+    return (
+      <svg width="10" height="10" viewBox="0 0 12 12" className={`${farve} shrink-0`}>
+        <path d={trendPilOpad(trend, kontekst) ? "M6 1.5 L10.5 9 L1.5 9 Z" : "M6 10.5 L1.5 3 L10.5 3 Z"}
+          fill="currentColor" />
+      </svg>
+    );
+  };
+
   return (
     <div className="relative w-full">
       <div className="relative w-full aspect-square flex items-center justify-center">
@@ -608,6 +651,39 @@ export default function DoughnutRing({
               <p className="text-sm font-medium text-gray-400">Ingen data endnu</p>
             )}
           </div>
+
+          {/* Retning over tid. Beregnet på råværdier, se lib/shared.ts. */}
+          {(() => {
+            const trend = kommune.trends?.[`_dim_${active.id}`];
+            if (!trend) {
+              return (
+                <p className="mt-1.5 text-[10px] text-gray-400 italic">
+                  Ingen tidsserie for udvikling
+                </p>
+              );
+            }
+            // pct er målrettet på dimensionsniveau (positiv = positiv retning),
+            // så et negativt tal ville læses som "faldt" i stedet for "gik den
+            // forkerte vej". Vis derfor størrelsen uden fortegn.
+            const pctTxt = trend.pct !== null && trend.retning !== "stagneret"
+              ? `${Math.abs(trend.pct).toFixed(1)}%` : "";
+            const kontekst: TrendKontekst = active.group === "social" ? "social" : "ecological";
+            return (
+              <div className="mt-1.5 flex items-start gap-1.5">
+                <span className="mt-[3px]"><TrendIkon trend={trend} kontekst={kontekst} /></span>
+                <div className="min-w-0">
+                  <p className={`text-[11px] font-semibold leading-snug ${trendFarve(trend.retning)}`}>
+                    {TREND_LABEL[trend.retning]}
+                  </p>
+                  <p className="text-[10px] text-gray-400 leading-snug">
+                    {trend.periodeStart} → {trend.periodeSlut}
+                    {pctTxt ? ` · ${pctTxt}` : ""}
+                    {trend.noegleIndikator ? ` · ${trend.noegleIndikator}` : ""}
+                  </p>
+                </div>
+              </div>
+            );
+          })()}
           {active.indicators && active.indicators.length > 0 && (
             <div className="mt-1.5 pt-2 border-t border-gray-100">
               <p className="text-[9px] font-semibold text-gray-400 uppercase mb-1">Indikatorer</p>
@@ -685,7 +761,7 @@ export default function DoughnutRing({
           </div>
         </div>
         <p className="text-center text-[11px] text-gray-400 mt-2 max-w-md mx-auto px-2">
-          Dimensioner mærket &quot;mod mål&quot; måles mod en fast grænse (fx WHO, EU-mål, 0 % fossil); umærkede måles mod landsgennemsnittet.
+          Dimensioner mærket &quot;mod mål&quot; måles mod en fast grænse (fx WHO, EU-mål, 0 % fossil); umærkede måles mod {baselineTekst}.
         </p>
         </>
       )}

@@ -63,7 +63,13 @@ Vi bruger TJ-vægtet landssnit (~13 %) for kommuner uden egen varmeproduktion. E
 metro-kommunerne få deres reelle (typisk lave) fossilandel i stedet for landssnittet.
 
 **Anbefaling:** hvis Energi bliver en kerne-dimension, lav net-mappingen. Ellers er landssnittet OK for MVP.
-**Effort:** medium-høj.
+**Effort:** medium (revideret ned - se nedenfor).
+
+**Detaljeret, eksekverbar opgavebeskrivelse: [`docs/opgave-fjernvarme-net-mapping.md`](opgave-fjernvarme-net-mapping.md).**
+Datakilden (8519) og join'et er nu verificeret: `Fvnet_nr` matcher 7199's `fv_net`, og 8519 har leverings-
+mixet pr. net. Net 2 "Storkøbenhavns Fjernvarme" = 6,2 % fossil (mod landssnittets 13,3 %). 13 af de 18
+kommuner mappes automatisk via reservekedlens net; 4 (Dragør/Herlev/Rødovre/Vallensbæk) er en lille manuel
+mapping til net 2; 1 (Stevns, ubetydelig) kan beholde landssnittet.
 
 ---
 

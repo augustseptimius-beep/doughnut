@@ -9,13 +9,19 @@ Krav:
 Brug:
   python3 fetch_climate_data.py [--year 2023] [--output ../data/climate_scores.csv]
 
-Output CSV-kolonner:
+Output CSV-kolonner (climate_scores.csv, scores klimapaavirkning-dimensionen):
   kommune_kode, kommune_navn, co2e_per_capita, climate_territorial_ratio, year
 
 Ratio = (co2e_per_capita / Paris-budget) * 100
 Paris-budget = 3 ton CO2e/person/år
 > 100 = overshoot (overskrider planetær grænse)
 < 100 = inden for sikker zone
+
+Skriver desuden data/klimaregnskab_kontekst.csv - sektorfordeling af den
+territoriale udledning (landbrug/energi/transport), samlet energiforbrug og
+VE-el selvforsyningsgrad. Genbruger SAMME API-svar som ovenstående (58 rækker
+pr. kald indeholder allerede alt dette) - ingen ekstra kald. Vises som
+kontekst i UI'et (indgår ikke i nogen score), se CLAUDE.md punkt 9.
 """
 
 import argparse
@@ -64,8 +70,9 @@ KOMMUNER = [
 ]
 
 
-def fetch_kommune(kode: int, navn: str, year: int, debug: bool = False) -> Optional[float]:
-    """Henter Samlet CO2-udledning (Ton CO2e/indb.) for én kommune."""
+def fetch_kommune(kode: int, navn: str, year: int, debug: bool = False):
+    """Henter API-svaret for én kommune og returnerer
+    (co2e_per_capita, kontekst_dict). kontekst_dict er None hvis kaldet fejlede."""
     params = {
         "municipality": kode,
         "year": year,
@@ -102,14 +109,15 @@ def fetch_kommune(kode: int, navn: str, year: int, debug: bool = False) -> Optio
                 time.sleep(2 ** attempt)
                 continue
 
-            return _extract_co2_per_capita(r.json())
+            payload = r.json()
+            return _extract_co2_per_capita(payload), _extract_kontekst(payload)
 
         except requests.RequestException as e:
             print(f"  Netværksfejl for {navn}: {e} (forsøg {attempt+1})", file=sys.stderr)
             if attempt < 2:
                 time.sleep(2 ** attempt)
 
-    return None
+    return None, None
 
 
 def _extract_co2_per_capita(data) -> Optional[float]:
@@ -162,6 +170,56 @@ def _match_co2_per_capita(item: dict) -> Optional[float]:
     return None
 
 
+# Kontekst-felter: (id, type, sektor, enhed). Efterprøvet mod API-svaret
+# 11. august 2026 - alle fem findes, og de tre sektorer (Landbrug/Energi/
+# Transport) plus Affaldsdeponi/Kemiske processer/Spildevand summerer til
+# sektor=Samlet's totale udledning.
+KONTEKST_FELTER = [
+    ("klima_landbrug", "Samlet CO2-udledning", "Landbrug", "Ton CO2e/indb."),
+    ("klima_energi", "Samlet CO2-udledning", "Energi", "Ton CO2e/indb."),
+    ("klima_transport", "Samlet CO2-udledning", "Transport", "Ton CO2e/indb."),
+    ("energiforbrug", "Samlet slutenergiforbrug", "Samlet", "GJ/indb."),
+    ("ve_selvforsyning", "VE-el selvforsyningsgrad (Vind-, sol- og vandbaseret-elproduktion)",
+     "Samlet", "%"),
+]
+
+
+def _extract_kontekst(data) -> dict:
+    """Trækker sektorfordeling, energiforbrug og VE-selvforsyning ud af samme
+    API-svar som _extract_co2_per_capita bruger. Returnerer {id: værdi}."""
+    items = []
+    if isinstance(data, list):
+        items = data
+    elif isinstance(data, dict):
+        for key in ("data", "results", "items", "records"):
+            if key in data and isinstance(data[key], list):
+                items = data[key]
+                break
+
+    ud = {}
+    for iid, typ, sektor, enhed in KONTEKST_FELTER:
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            if (str(item.get("type") or "").strip() == typ
+                    and str(item.get("sektor") or "").strip() == sektor
+                    and str(item.get("enhed") or "").strip() == enhed):
+                vaerdi = item.get("værdi") or item.get("vaerdi") or item.get("value")
+                if vaerdi is None:
+                    continue
+                try:
+                    val = float(vaerdi)
+                except (ValueError, TypeError):
+                    continue
+                # FÆLDE: ve_selvforsyning leveres som forhold (1.71), ikke
+                # procent, selvom enheden hedder "%". Gang med 100.
+                if iid == "ve_selvforsyning":
+                    val *= 100
+                ud[iid] = round(val, 4)
+                break
+    return ud
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Hent territorial CO2e pr. capita fra klimaregnskabet.dk"
@@ -178,12 +236,13 @@ def main():
     print(f"Paris-budget: {PARIS_BUDGET} ton CO2e/person/år\n")
 
     results = []
+    kontekst_results = []
     failed = []
 
     for i, (kode, navn) in enumerate(KOMMUNER):
         # Debug kun for første kommune
         show_debug = args.debug and i == 0
-        co2e = fetch_kommune(kode, navn, args.year, debug=show_debug)
+        co2e, kontekst = fetch_kommune(kode, navn, args.year, debug=show_debug)
 
         if co2e is not None:
             ratio = round(co2e / PARIS_BUDGET * 100, 2)
@@ -201,8 +260,31 @@ def main():
             failed.append((kode, navn))
             print(f"  [{i+1:3d}/{len(KOMMUNER)}] {kode:4d} {navn:25s} — INGEN DATA")
 
+        if kontekst:
+            kontekst_results.append({
+                "kommune_kode": str(kode),
+                "kommune_navn": navn,
+                "klima_landbrug": kontekst.get("klima_landbrug", ""),
+                "klima_energi": kontekst.get("klima_energi", ""),
+                "klima_transport": kontekst.get("klima_transport", ""),
+                "energiforbrug": kontekst.get("energiforbrug", ""),
+                "ve_selvforsyning": kontekst.get("ve_selvforsyning", ""),
+                "year": args.year,
+            })
+
         if i < len(KOMMUNER) - 1:
             time.sleep(0.2)
+
+    if kontekst_results:
+        kontekst_path = os.path.normpath(os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "../data/klimaregnskab_kontekst.csv"))
+        with open(kontekst_path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=[
+                "kommune_kode", "kommune_navn", "klima_landbrug", "klima_energi",
+                "klima_transport", "energiforbrug", "ve_selvforsyning", "year"])
+            writer.writeheader()
+            writer.writerows(kontekst_results)
+        print(f"\n✓ Gemt: {kontekst_path} ({len(kontekst_results)} kommuner, kontekst - indgår ikke i score)")
 
     if results:
         out_path = os.path.normpath(

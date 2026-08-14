@@ -87,7 +87,9 @@ SOCIAL_INDICATORS = [
     # bolig_fossil: SAMLET fossil varmeafhængighed (direkte olie/gas + fjernvarmens fossile andel),
     # scoret mod absolut mål 0% (ratio = 100 - samlet_fossil%, beregnet i fetch_bolig_fossil.py).
     # Flyttet fra Bolig til Energi (2026) - opvarmningskilde er et energispørgsmål, ikke boligstandard.
-    {"id": "bolig_fossil", "csv": "bolig_fossil_scores.csv", "ratio_col": "bolig_fossil_ratio", "raw_col": "bolig_fossil_raw", "unit": "% fossil (mål 0)", "data_year": "2026", "source": "DST BOL202 + Energistyrelsen EPT", "category": "social", "dimension": "energi"},
+    # Grundlag skiftet fra BOL202 (personer) til BYGB40 (opvarmet areal i m²) august 2026 - varmebehov
+    # skalerer med areal, ikke med hoveder. Kun helårsbeboelse; fritidsboliger er kontekst (se nedenfor).
+    {"id": "bolig_fossil", "csv": "bolig_fossil_scores.csv", "ratio_col": "bolig_fossil_ratio", "raw_col": "bolig_fossil_raw", "unit": "% fossil (mål 0)", "data_year": "2026", "source": "DST BYGB40 + Energistyrelsen EPT", "category": "social", "dimension": "energi"},
 
     # === Demokrati ===
     {"id": "voter_turnout", "csv": "democracy_scores.csv", "ratio_col": "voter_turnout_ratio", "raw_col": "voter_turnout_pct", "unit": "%", "data_year": "2021", "source": "DST KVBPCT", "category": "social", "dimension": "demokrati"},
@@ -200,8 +202,23 @@ CONTEXT_INDICATORS = [
     {"id": "ctx_fjv_fossil",   "csv": "fjernvarme_mix_scores.csv", "raw_col": "fjv_fossil_pct",   "unit": "%", "data_year": "2024", "source": "Energistyrelsen EPT", "dimension": "energi"},
     {"id": "ctx_fjv_ren",      "csv": "fjernvarme_mix_scores.csv", "raw_col": "fjv_ren_pct",      "unit": "%", "data_year": "2024", "source": "Energistyrelsen EPT", "dimension": "energi"},
     # Opdeling af den samlede fossile varmeafhængighed (til breakdown-visning)
-    {"id": "ctx_fossil_direkte", "csv": "bolig_fossil_scores.csv", "raw_col": "fossil_direkte_pct", "unit": "%", "data_year": "2026", "source": "DST BOL202",       "dimension": "energi"},
-    {"id": "ctx_fossil_via_fjv", "csv": "bolig_fossil_scores.csv", "raw_col": "fossil_via_fjv_pct", "unit": "%", "data_year": "2026", "source": "DST BOL202 + EPT", "dimension": "energi"},
+    {"id": "ctx_fossil_direkte", "csv": "bolig_fossil_scores.csv", "raw_col": "fossil_direkte_pct", "unit": "%", "data_year": "2026", "source": "DST BYGB40",       "dimension": "energi"},
+    {"id": "ctx_fossil_via_fjv", "csv": "bolig_fossil_scores.csv", "raw_col": "fossil_via_fjv_pct", "unit": "%", "data_year": "2026", "source": "DST BYGB40 + EPT", "dimension": "energi"},
+    # Fritidsboliger: vises, scores IKKE. De har markant lavere fossilandel end helårsboliger
+    # (median ~7% mod ~20%), fordi sommerhuse typisk er elopvarmede. Hvis de indgik i scoren,
+    # ville sommerhuskommuner fremstå kunstigt bedre på et mål der handler om HUSSTANDES
+    # varmeregninger - og sommerhusene ejes typisk af folk fra andre kommuner.
+    {"id": "ctx_fritid_fossil", "csv": "bolig_fossil_scores.csv", "raw_col": "fritid_fossil_pct", "unit": "%", "data_year": "2026", "source": "DST BYGB40", "dimension": "energi"},
+    {"id": "ctx_fritid_andel",  "csv": "bolig_fossil_scores.csv", "raw_col": "fritid_andel_pct",  "unit": "%", "data_year": "2026", "source": "DST BYGB40", "dimension": "energi"},
+    # Klimaregnskabet.dk: sektorfordeling af den territoriale udledning (indgår
+    # allerede samlet i klimapaavirkning-scoren), samlet energiforbrug og
+    # VE-el selvforsyningsgrad. Vises under Klimapåvirkning som kontekst -
+    # scores ikke, da sektorerne blot er en opdeling af et allerede scoret tal.
+    {"id": "ctx_klima_landbrug",  "csv": "klimaregnskab_kontekst.csv", "raw_col": "klima_landbrug",  "unit": "ton CO₂e/indb.", "data_year": "2023", "source": "Klimaregnskabet.dk", "dimension": "klimapaavirkning"},
+    {"id": "ctx_klima_energi",    "csv": "klimaregnskab_kontekst.csv", "raw_col": "klima_energi",    "unit": "ton CO₂e/indb.", "data_year": "2023", "source": "Klimaregnskabet.dk", "dimension": "klimapaavirkning"},
+    {"id": "ctx_klima_transport", "csv": "klimaregnskab_kontekst.csv", "raw_col": "klima_transport", "unit": "ton CO₂e/indb.", "data_year": "2023", "source": "Klimaregnskabet.dk", "dimension": "klimapaavirkning"},
+    {"id": "ctx_energiforbrug",   "csv": "klimaregnskab_kontekst.csv", "raw_col": "energiforbrug",   "unit": "GJ/indb.",       "data_year": "2023", "source": "Klimaregnskabet.dk", "dimension": "klimapaavirkning"},
+    {"id": "ctx_ve_selvforsyning", "csv": "klimaregnskab_kontekst.csv", "raw_col": "ve_selvforsyning", "unit": "%",            "data_year": "2023", "source": "Klimaregnskabet.dk", "dimension": "klimapaavirkning"},
 ]
 
 # ─── HJÆLPEFUNKTIONER ──────────────────────────────────────────────────

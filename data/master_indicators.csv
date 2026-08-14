@@ -2730,104 +2730,104 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,housing_no_bath,48.03,2.6679,%,2023,DST BOL102,social,bolig
 741,Samsø,housing_no_bath,84.18,1.5221,%,2023,DST BOL102,social,bolig
 482,Langeland,housing_no_bath,59.86,2.1406,%,2023,DST BOL102,social,bolig
-201,Allerød,bolig_fossil,40.11,59.89,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-175,Rødovre,bolig_fossil,59.57,40.43,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-153,Brøndby,bolig_fossil,77.51,22.49,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-155,Dragør,bolig_fossil,25.12,74.88,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-190,Furesø,bolig_fossil,16.49,83.51,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-230,Rudersdal,bolig_fossil,17.96,82.04,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-151,Ballerup,bolig_fossil,56.3,43.7,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-167,Hvidovre,bolig_fossil,68.75,31.25,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-269,Solrød,bolig_fossil,60.98,39.02,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-746,Skanderborg,bolig_fossil,89.69,10.31,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-157,Gentofte,bolig_fossil,70.85,29.15,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-240,Egedal,bolig_fossil,56.37,43.63,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-265,Roskilde,bolig_fossil,78.1,21.9,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-223,Hørsholm,bolig_fossil,50.43,49.57,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-185,Tårnby,bolig_fossil,47.55,52.45,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-163,Herlev,bolig_fossil,58.49,41.51,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-173,Lyngby-Taarbæk,bolig_fossil,31.08,68.92,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-350,Lejre,bolig_fossil,64.32,35.68,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-210,Fredensborg,bolig_fossil,56.75,43.25,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-710,Favrskov,bolig_fossil,85.5,14.5,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-530,Billund,bolig_fossil,89.31,10.69,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-183,Ishøj,bolig_fossil,77.14,22.86,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-840,Rebild,bolig_fossil,82.88,17.12,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-147,Frederiksberg,bolig_fossil,86.54,13.46,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-259,Køge,bolig_fossil,38.61,61.39,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-253,Greve,bolig_fossil,49.9,50.1,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-187,Vallensbæk,bolig_fossil,63.43,36.57,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-159,Gladsaxe,bolig_fossil,30.94,69.06,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-661,Holstebro,bolig_fossil,90.38,9.62,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-217,Helsingør,bolig_fossil,59.54,40.46,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-250,Frederikssund,bolig_fossil,51.26,48.74,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-657,Herning,bolig_fossil,89.92,10.08,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-492,Ærø,bolig_fossil,89.97,10.03,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-561,Esbjerg,bolig_fossil,72.06,27.94,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-773,Morsø,bolig_fossil,53.21,46.79,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-219,Hillerød,bolig_fossil,61.7,38.3,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-740,Silkeborg,bolig_fossil,54.69,45.31,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-607,Fredericia,bolig_fossil,93.98,6.02,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-316,Holbæk,bolig_fossil,41.97,58.03,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-340,Sorø,bolig_fossil,57.79,42.21,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-260,Halsnæs,bolig_fossil,83.67,16.33,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-766,Hedensted,bolig_fossil,67.98,32.02,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-825,Læsø,bolig_fossil,75.15,24.85,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-615,Horsens,bolig_fossil,88.55,11.45,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-329,Ringsted,bolig_fossil,74.14,25.86,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-370,Næstved,bolig_fossil,63.23,36.77,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-851,Aalborg,bolig_fossil,50.57,49.43,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-336,Stevns,bolig_fossil,55.41,44.59,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-410,Middelfart,bolig_fossil,70.43,29.57,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-727,Odder,bolig_fossil,78.44,21.56,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-161,Glostrup,bolig_fossil,65.58,34.42,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-563,Fanø,bolig_fossil,89.18,10.82,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-813,Frederikshavn,bolig_fossil,74.81,25.19,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-270,Gribskov,bolig_fossil,73.03,26.97,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-751,Aarhus,bolig_fossil,96.48,3.52,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-760,Ringkøbing-Skjern,bolig_fossil,78.56,21.44,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-479,Svendborg,bolig_fossil,54.45,45.55,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-787,Thisted,bolig_fossil,83.05,16.95,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-810,Brønderslev,bolig_fossil,79.45,20.55,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-791,Viborg,bolig_fossil,60.82,39.18,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-165,Albertslund,bolig_fossil,86.53,13.47,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-480,Nordfyns,bolig_fossil,66.5,33.5,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-440,Kerteminde,bolig_fossil,70.55,29.45,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-101,København,bolig_fossil,90.74,9.26,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-860,Hjørring,bolig_fossil,86.13,13.87,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-706,Syddjurs,bolig_fossil,93.01,6.99,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-430,Faaborg-Midtfyn,bolig_fossil,66.71,33.29,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-573,Varde,bolig_fossil,73.99,26.01,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-730,Randers,bolig_fossil,82.19,17.81,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-621,Kolding,bolig_fossil,86.4,13.6,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-320,Faxe,bolig_fossil,63.69,36.31,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-169,Høje-Taastrup,bolig_fossil,66.59,33.41,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-461,Odense,bolig_fossil,82.89,17.11,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-420,Assens,bolig_fossil,77.19,22.81,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-756,Ikast-Brande,bolig_fossil,78.48,21.52,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-846,Mariagerfjord,bolig_fossil,74.8,25.2,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-580,Aabenraa,bolig_fossil,80.81,19.19,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-450,Nyborg,bolig_fossil,80.8,19.2,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-630,Vejle,bolig_fossil,75.47,24.53,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-540,Sønderborg,bolig_fossil,79.22,20.78,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-400,Bornholm,bolig_fossil,92.63,7.37,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-779,Skive,bolig_fossil,71.74,28.26,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-510,Haderslev,bolig_fossil,64.42,35.58,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-575,Vejen,bolig_fossil,73.01,26.99,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-820,Vesthimmerlands,bolig_fossil,89.3,10.7,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-707,Norddjurs,bolig_fossil,91.56,8.44,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-671,Struer,bolig_fossil,68.01,31.99,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-306,Odsherred,bolig_fossil,71.61,28.39,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-330,Slagelse,bolig_fossil,68.96,31.04,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-665,Lemvig,bolig_fossil,89.82,10.18,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-376,Guldborgsund,bolig_fossil,80.88,19.12,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-326,Kalundborg,bolig_fossil,90.22,9.78,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-849,Jammerbugt,bolig_fossil,78.78,21.22,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-550,Tønder,bolig_fossil,75.45,24.55,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-390,Vordingborg,bolig_fossil,78.26,21.74,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-360,Lolland,bolig_fossil,89.5,10.5,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-741,Samsø,bolig_fossil,90.36,9.64,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
-482,Langeland,bolig_fossil,89.54,10.46,% fossil (mål 0),2026,DST BOL202 + Energistyrelsen EPT,social,energi
+201,Allerød,bolig_fossil,38.25,61.75,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+175,Rødovre,bolig_fossil,60.16,39.84,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+153,Brøndby,bolig_fossil,76.36,23.64,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+155,Dragør,bolig_fossil,23.47,76.53,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+190,Furesø,bolig_fossil,16.87,83.13,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+230,Rudersdal,bolig_fossil,19.01,80.99,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+151,Ballerup,bolig_fossil,54.08,45.92,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+167,Hvidovre,bolig_fossil,67.92,32.08,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+269,Solrød,bolig_fossil,59.11,40.89,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+746,Skanderborg,bolig_fossil,88.89,11.11,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+157,Gentofte,bolig_fossil,70.13,29.87,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+240,Egedal,bolig_fossil,55.97,44.03,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+265,Roskilde,bolig_fossil,76.46,23.54,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+223,Hørsholm,bolig_fossil,48.45,51.55,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+185,Tårnby,bolig_fossil,46.86,53.14,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+163,Herlev,bolig_fossil,56.75,43.25,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+173,Lyngby-Taarbæk,bolig_fossil,30.32,69.68,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+350,Lejre,bolig_fossil,62.61,37.39,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+210,Fredensborg,bolig_fossil,54.89,45.11,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+710,Favrskov,bolig_fossil,83.71,16.29,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+530,Billund,bolig_fossil,88.25,11.75,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+183,Ishøj,bolig_fossil,74.09,25.91,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+840,Rebild,bolig_fossil,81.62,18.38,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+147,Frederiksberg,bolig_fossil,86.52,13.48,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+259,Køge,bolig_fossil,38.98,61.02,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+253,Greve,bolig_fossil,47.56,52.44,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+187,Vallensbæk,bolig_fossil,61.41,38.59,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+159,Gladsaxe,bolig_fossil,31.15,68.85,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+661,Holstebro,bolig_fossil,88.86,11.14,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+217,Helsingør,bolig_fossil,58.03,41.97,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+250,Frederikssund,bolig_fossil,50.07,49.93,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+657,Herning,bolig_fossil,89.26,10.74,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+492,Ærø,bolig_fossil,87.32,12.68,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+561,Esbjerg,bolig_fossil,71.72,28.28,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+773,Morsø,bolig_fossil,52.74,47.26,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+219,Hillerød,bolig_fossil,61.04,38.96,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+740,Silkeborg,bolig_fossil,54.81,45.19,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+607,Fredericia,bolig_fossil,93.66,6.34,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+316,Holbæk,bolig_fossil,42.99,57.01,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+340,Sorø,bolig_fossil,58.46,41.54,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+260,Halsnæs,bolig_fossil,82.03,17.97,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+766,Hedensted,bolig_fossil,66.82,33.18,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+825,Læsø,bolig_fossil,72.4,27.6,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+615,Horsens,bolig_fossil,87.43,12.57,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+329,Ringsted,bolig_fossil,73.44,26.56,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+370,Næstved,bolig_fossil,62.62,37.38,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+851,Aalborg,bolig_fossil,50.44,49.56,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+336,Stevns,bolig_fossil,53.92,46.08,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+410,Middelfart,bolig_fossil,69.31,30.69,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+727,Odder,bolig_fossil,77.36,22.64,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+161,Glostrup,bolig_fossil,64.46,35.54,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+563,Fanø,bolig_fossil,88.49,11.51,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+813,Frederikshavn,bolig_fossil,73.12,26.88,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+270,Gribskov,bolig_fossil,70.38,29.62,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+751,Aarhus,bolig_fossil,96.15,3.85,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+760,Ringkøbing-Skjern,bolig_fossil,77.44,22.56,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+479,Svendborg,bolig_fossil,55.12,44.88,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+787,Thisted,bolig_fossil,80.79,19.21,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+810,Brønderslev,bolig_fossil,78.21,21.79,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+791,Viborg,bolig_fossil,60.55,39.45,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+165,Albertslund,bolig_fossil,86.58,13.42,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+480,Nordfyns,bolig_fossil,65.15,34.85,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+440,Kerteminde,bolig_fossil,70.37,29.63,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+101,København,bolig_fossil,90.75,9.25,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+860,Hjørring,bolig_fossil,84.17,15.83,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+706,Syddjurs,bolig_fossil,90.92,9.08,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+430,Faaborg-Midtfyn,bolig_fossil,66.18,33.82,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+573,Varde,bolig_fossil,73.45,26.55,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+730,Randers,bolig_fossil,80.87,19.13,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+621,Kolding,bolig_fossil,85.01,14.99,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+320,Faxe,bolig_fossil,63.72,36.28,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+169,Høje-Taastrup,bolig_fossil,66.2,33.8,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+461,Odense,bolig_fossil,82.81,17.19,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+420,Assens,bolig_fossil,76.14,23.86,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+756,Ikast-Brande,bolig_fossil,78.41,21.59,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+846,Mariagerfjord,bolig_fossil,75.09,24.91,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+580,Aabenraa,bolig_fossil,78.65,21.35,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+450,Nyborg,bolig_fossil,79.85,20.15,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+630,Vejle,bolig_fossil,74.87,25.13,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+540,Sønderborg,bolig_fossil,77.84,22.16,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+400,Bornholm,bolig_fossil,90.48,9.52,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+779,Skive,bolig_fossil,70.72,29.28,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+510,Haderslev,bolig_fossil,64.83,35.17,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+575,Vejen,bolig_fossil,72.03,27.97,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+820,Vesthimmerlands,bolig_fossil,87.5,12.5,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+707,Norddjurs,bolig_fossil,89.35,10.65,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+671,Struer,bolig_fossil,67.21,32.79,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+306,Odsherred,bolig_fossil,69.12,30.88,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+330,Slagelse,bolig_fossil,67.49,32.51,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+665,Lemvig,bolig_fossil,87.65,12.35,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+376,Guldborgsund,bolig_fossil,78.47,21.53,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+326,Kalundborg,bolig_fossil,88.35,11.65,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+849,Jammerbugt,bolig_fossil,76.14,23.86,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+550,Tønder,bolig_fossil,74.71,25.29,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+390,Vordingborg,bolig_fossil,76.82,23.18,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+360,Lolland,bolig_fossil,84.44,15.56,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+741,Samsø,bolig_fossil,88.95,11.05,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
+482,Langeland,bolig_fossil,85.7,14.3,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi
 201,Allerød,voter_turnout,117.36,78.88,%,2021,DST KVBPCT,social,demokrati
 175,Rødovre,voter_turnout,89.06,59.86,%,2021,DST KVBPCT,social,demokrati
 153,Brøndby,voter_turnout,82.61,55.52,%,2021,DST KVBPCT,social,demokrati
@@ -4878,104 +4878,104 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,vejr_skader,76.11,34.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning
 741,Samsø,vejr_skader,60.18,43.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning
 482,Langeland,vejr_skader,41.74,62.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning
-201,Allerød,klimapaavirkning,112.9,3.387,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-175,Rødovre,klimapaavirkning,61.72,1.852,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-153,Brøndby,klimapaavirkning,108.86,3.266,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-155,Dragør,klimapaavirkning,60.82,1.825,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-190,Furesø,klimapaavirkning,83.34,2.5,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-230,Rudersdal,klimapaavirkning,100.52,3.016,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-151,Ballerup,klimapaavirkning,94.36,2.831,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-167,Hvidovre,klimapaavirkning,75.07,2.252,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-269,Solrød,klimapaavirkning,116.19,3.486,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-746,Skanderborg,klimapaavirkning,158.86,4.766,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-157,Gentofte,klimapaavirkning,68.76,2.063,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-240,Egedal,klimapaavirkning,80.58,2.417,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-265,Roskilde,klimapaavirkning,84.82,2.545,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-223,Hørsholm,klimapaavirkning,88.9,2.667,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-185,Tårnby,klimapaavirkning,78.44,2.353,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-163,Herlev,klimapaavirkning,69.45,2.084,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-173,Lyngby-Taarbæk,klimapaavirkning,77.32,2.32,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-350,Lejre,klimapaavirkning,169.47,5.084,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-210,Fredensborg,klimapaavirkning,87.85,2.636,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-710,Favrskov,klimapaavirkning,233.67,7.01,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-530,Billund,klimapaavirkning,239.61,7.188,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-183,Ishøj,klimapaavirkning,90.02,2.701,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-840,Rebild,klimapaavirkning,561.35,16.84,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-147,Frederiksberg,klimapaavirkning,32.35,0.971,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-259,Køge,klimapaavirkning,199.63,5.989,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-253,Greve,klimapaavirkning,105.24,3.157,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-187,Vallensbæk,klimapaavirkning,75.18,2.255,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-159,Gladsaxe,klimapaavirkning,80.97,2.429,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-661,Holstebro,klimapaavirkning,270.79,8.124,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-217,Helsingør,klimapaavirkning,72.28,2.169,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-250,Frederikssund,klimapaavirkning,129.37,3.881,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-657,Herning,klimapaavirkning,244.54,7.336,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-492,Ærø,klimapaavirkning,172.55,5.177,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-561,Esbjerg,klimapaavirkning,252.11,7.563,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-773,Morsø,klimapaavirkning,329.58,9.887,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-219,Hillerød,klimapaavirkning,105.02,3.151,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-740,Silkeborg,klimapaavirkning,150.53,4.516,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-607,Fredericia,klimapaavirkning,363.11,10.893,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-316,Holbæk,klimapaavirkning,151.18,4.535,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-340,Sorø,klimapaavirkning,211.66,6.35,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-260,Halsnæs,klimapaavirkning,187.77,5.633,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-766,Hedensted,klimapaavirkning,240.16,7.205,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-825,Læsø,klimapaavirkning,160.02,4.801,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-615,Horsens,klimapaavirkning,148.77,4.463,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-329,Ringsted,klimapaavirkning,159.46,4.784,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-370,Næstved,klimapaavirkning,169.65,5.09,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-851,Aalborg,klimapaavirkning,519.97,15.599,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-336,Stevns,klimapaavirkning,116.91,3.507,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-410,Middelfart,klimapaavirkning,220.07,6.602,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-727,Odder,klimapaavirkning,167.3,5.019,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-161,Glostrup,klimapaavirkning,104.68,3.14,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-563,Fanø,klimapaavirkning,136.19,4.086,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-813,Frederikshavn,klimapaavirkning,272.73,8.182,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-270,Gribskov,klimapaavirkning,132.41,3.972,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-751,Aarhus,klimapaavirkning,104.44,3.133,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-760,Ringkøbing-Skjern,klimapaavirkning,466.44,13.993,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-479,Svendborg,klimapaavirkning,127.38,3.821,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-787,Thisted,klimapaavirkning,371.19,11.136,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-810,Brønderslev,klimapaavirkning,364.66,10.94,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-791,Viborg,klimapaavirkning,311.65,9.349,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-165,Albertslund,klimapaavirkning,85.1,2.553,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-480,Nordfyns,klimapaavirkning,216.13,6.484,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-440,Kerteminde,klimapaavirkning,167.05,5.012,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-101,København,klimapaavirkning,42.61,1.278,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-860,Hjørring,klimapaavirkning,372.01,11.16,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-706,Syddjurs,klimapaavirkning,210.62,6.318,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-430,Faaborg-Midtfyn,klimapaavirkning,170.91,5.127,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-573,Varde,klimapaavirkning,502.43,15.073,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-730,Randers,klimapaavirkning,137.27,4.118,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-621,Kolding,klimapaavirkning,184.97,5.549,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-320,Faxe,klimapaavirkning,176.02,5.281,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-169,Høje-Taastrup,klimapaavirkning,101.47,3.044,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-461,Odense,klimapaavirkning,128.26,3.848,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-420,Assens,klimapaavirkning,277.36,8.321,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-756,Ikast-Brande,klimapaavirkning,233.05,6.991,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-846,Mariagerfjord,klimapaavirkning,403.33,12.1,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-580,Aabenraa,klimapaavirkning,346.61,10.398,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-450,Nyborg,klimapaavirkning,400.69,12.021,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-630,Vejle,klimapaavirkning,181.65,5.45,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-540,Sønderborg,klimapaavirkning,136.34,4.09,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-400,Bornholm,klimapaavirkning,175.87,5.276,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-779,Skive,klimapaavirkning,295.77,8.873,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-510,Haderslev,klimapaavirkning,257.01,7.71,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-575,Vejen,klimapaavirkning,381.82,11.455,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-820,Vesthimmerlands,klimapaavirkning,573.99,17.22,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-707,Norddjurs,klimapaavirkning,279.69,8.391,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-671,Struer,klimapaavirkning,216.94,6.508,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-306,Odsherred,klimapaavirkning,228.49,6.855,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-330,Slagelse,klimapaavirkning,166.54,4.996,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-665,Lemvig,klimapaavirkning,584.6,17.538,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-376,Guldborgsund,klimapaavirkning,235.95,7.079,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-326,Kalundborg,klimapaavirkning,515.88,15.476,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-849,Jammerbugt,klimapaavirkning,340.15,10.205,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-550,Tønder,klimapaavirkning,842.19,25.266,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-390,Vordingborg,klimapaavirkning,213.65,6.409,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-360,Lolland,klimapaavirkning,240.78,7.223,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-741,Samsø,klimapaavirkning,275.16,8.255,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-482,Langeland,klimapaavirkning,319.01,9.57,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+201,Allerød,klimapaavirkning,112.72,3.382,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+175,Rødovre,klimapaavirkning,62.2,1.866,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+153,Brøndby,klimapaavirkning,111.09,3.333,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+155,Dragør,klimapaavirkning,60.16,1.805,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+190,Furesø,klimapaavirkning,83.02,2.491,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+230,Rudersdal,klimapaavirkning,101.27,3.038,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+151,Ballerup,klimapaavirkning,94.43,2.833,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+167,Hvidovre,klimapaavirkning,76.06,2.282,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+269,Solrød,klimapaavirkning,117.45,3.523,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+746,Skanderborg,klimapaavirkning,159.03,4.771,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+157,Gentofte,klimapaavirkning,69.77,2.093,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+240,Egedal,klimapaavirkning,79.91,2.397,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+265,Roskilde,klimapaavirkning,86.0,2.58,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+223,Hørsholm,klimapaavirkning,89.72,2.692,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+185,Tårnby,klimapaavirkning,78.98,2.37,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+163,Herlev,klimapaavirkning,69.94,2.098,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+173,Lyngby-Taarbæk,klimapaavirkning,77.35,2.321,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+350,Lejre,klimapaavirkning,169.37,5.081,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+210,Fredensborg,klimapaavirkning,88.67,2.66,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+710,Favrskov,klimapaavirkning,233.23,6.997,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+530,Billund,klimapaavirkning,237.73,7.132,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+183,Ishøj,klimapaavirkning,90.62,2.719,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+840,Rebild,klimapaavirkning,562.1,16.863,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+147,Frederiksberg,klimapaavirkning,33.55,1.007,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+259,Køge,klimapaavirkning,200.2,6.006,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+253,Greve,klimapaavirkning,106.17,3.185,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+187,Vallensbæk,klimapaavirkning,70.92,2.128,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+159,Gladsaxe,klimapaavirkning,81.37,2.441,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+661,Holstebro,klimapaavirkning,275.02,8.251,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+217,Helsingør,klimapaavirkning,73.11,2.193,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+250,Frederikssund,klimapaavirkning,128.27,3.848,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+657,Herning,klimapaavirkning,243.7,7.311,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+492,Ærø,klimapaavirkning,172.4,5.172,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+561,Esbjerg,klimapaavirkning,255.65,7.67,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+773,Morsø,klimapaavirkning,325.72,9.772,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+219,Hillerød,klimapaavirkning,104.33,3.13,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+740,Silkeborg,klimapaavirkning,149.75,4.492,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+607,Fredericia,klimapaavirkning,367.65,11.029,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+316,Holbæk,klimapaavirkning,150.62,4.519,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+340,Sorø,klimapaavirkning,211.27,6.338,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+260,Halsnæs,klimapaavirkning,186.54,5.596,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+766,Hedensted,klimapaavirkning,237.87,7.136,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+825,Læsø,klimapaavirkning,157.36,4.721,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+615,Horsens,klimapaavirkning,147.9,4.437,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+329,Ringsted,klimapaavirkning,159.08,4.772,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+370,Næstved,klimapaavirkning,173.14,5.194,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+851,Aalborg,klimapaavirkning,521.24,15.637,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+336,Stevns,klimapaavirkning,115.98,3.48,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+410,Middelfart,klimapaavirkning,219.51,6.585,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+727,Odder,klimapaavirkning,166.46,4.994,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+161,Glostrup,klimapaavirkning,105.24,3.157,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+563,Fanø,klimapaavirkning,138.47,4.154,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+813,Frederikshavn,klimapaavirkning,271.7,8.151,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+270,Gribskov,klimapaavirkning,131.44,3.943,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+751,Aarhus,klimapaavirkning,105.11,3.153,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+760,Ringkøbing-Skjern,klimapaavirkning,464.23,13.927,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+479,Svendborg,klimapaavirkning,127.97,3.839,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+787,Thisted,klimapaavirkning,371.56,11.147,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+810,Brønderslev,klimapaavirkning,361.95,10.858,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+791,Viborg,klimapaavirkning,310.19,9.306,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+165,Albertslund,klimapaavirkning,82.52,2.476,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+480,Nordfyns,klimapaavirkning,214.31,6.429,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+440,Kerteminde,klimapaavirkning,167.07,5.012,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+101,København,klimapaavirkning,44.29,1.329,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+860,Hjørring,klimapaavirkning,372.55,11.176,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+706,Syddjurs,klimapaavirkning,208.87,6.266,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+430,Faaborg-Midtfyn,klimapaavirkning,169.59,5.088,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+573,Varde,klimapaavirkning,502.52,15.076,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+730,Randers,klimapaavirkning,136.64,4.099,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+621,Kolding,klimapaavirkning,184.65,5.54,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+320,Faxe,klimapaavirkning,176.21,5.286,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+169,Høje-Taastrup,klimapaavirkning,102.88,3.087,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+461,Odense,klimapaavirkning,129.72,3.892,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+420,Assens,klimapaavirkning,276.06,8.282,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+756,Ikast-Brande,klimapaavirkning,231.97,6.959,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+846,Mariagerfjord,klimapaavirkning,402.14,12.064,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+580,Aabenraa,klimapaavirkning,345.93,10.378,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+450,Nyborg,klimapaavirkning,400.25,12.007,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+630,Vejle,klimapaavirkning,181.07,5.432,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+540,Sønderborg,klimapaavirkning,135.74,4.072,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+400,Bornholm,klimapaavirkning,174.37,5.231,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+779,Skive,klimapaavirkning,293.38,8.801,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+510,Haderslev,klimapaavirkning,254.55,7.636,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+575,Vejen,klimapaavirkning,380.48,11.414,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+820,Vesthimmerlands,klimapaavirkning,574.29,17.229,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+707,Norddjurs,klimapaavirkning,276.61,8.298,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+671,Struer,klimapaavirkning,220.5,6.615,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+306,Odsherred,klimapaavirkning,227.17,6.815,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+330,Slagelse,klimapaavirkning,168.69,5.061,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+665,Lemvig,klimapaavirkning,579.64,17.389,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+376,Guldborgsund,klimapaavirkning,238.73,7.162,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+326,Kalundborg,klimapaavirkning,513.46,15.404,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+849,Jammerbugt,klimapaavirkning,339.33,10.18,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+550,Tønder,klimapaavirkning,838.83,25.165,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+390,Vordingborg,klimapaavirkning,213.92,6.418,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+360,Lolland,klimapaavirkning,240.21,7.206,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+741,Samsø,klimapaavirkning,272.97,8.189,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
+482,Langeland,klimapaavirkning,314.93,9.448,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
 201,Allerød,luftkvalitet_no2,86.6,8.66,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
 175,Rødovre,luftkvalitet_no2,100.9,10.09,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
 153,Brøndby,luftkvalitet_no2,95.8,9.58,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
@@ -7152,202 +7152,888 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,ctx_fjv_ren,,0.8,%,2024,Energistyrelsen EPT,context,energi
 741,Samsø,ctx_fjv_ren,,2.8,%,2024,Energistyrelsen EPT,context,energi
 482,Langeland,ctx_fjv_ren,,12.7,%,2024,Energistyrelsen EPT,context,energi
-201,Allerød,ctx_fossil_direkte,,57.61,%,2026,DST BOL202,context,energi
-175,Rødovre,ctx_fossil_direkte,,32.54,%,2026,DST BOL202,context,energi
-153,Brøndby,ctx_fossil_direkte,,11.12,%,2026,DST BOL202,context,energi
-155,Dragør,ctx_fossil_direkte,,74.14,%,2026,DST BOL202,context,energi
-190,Furesø,ctx_fossil_direkte,,34.84,%,2026,DST BOL202,context,energi
-230,Rudersdal,ctx_fossil_direkte,,52.8,%,2026,DST BOL202,context,energi
-151,Ballerup,ctx_fossil_direkte,,36.33,%,2026,DST BOL202,context,energi
-167,Hvidovre,ctx_fossil_direkte,,29.23,%,2026,DST BOL202,context,energi
-269,Solrød,ctx_fossil_direkte,,31.92,%,2026,DST BOL202,context,energi
-746,Skanderborg,ctx_fossil_direkte,,8.73,%,2026,DST BOL202,context,energi
-157,Gentofte,ctx_fossil_direkte,,18.89,%,2026,DST BOL202,context,energi
-240,Egedal,ctx_fossil_direkte,,38.4,%,2026,DST BOL202,context,energi
-265,Roskilde,ctx_fossil_direkte,,20.27,%,2026,DST BOL202,context,energi
-223,Hørsholm,ctx_fossil_direkte,,47.51,%,2026,DST BOL202,context,energi
-185,Tårnby,ctx_fossil_direkte,,47.14,%,2026,DST BOL202,context,energi
-163,Herlev,ctx_fossil_direkte,,34.03,%,2026,DST BOL202,context,energi
-173,Lyngby-Taarbæk,ctx_fossil_direkte,,52.48,%,2026,DST BOL202,context,energi
-350,Lejre,ctx_fossil_direkte,,33.08,%,2026,DST BOL202,context,energi
-210,Fredensborg,ctx_fossil_direkte,,37.64,%,2026,DST BOL202,context,energi
-710,Favrskov,ctx_fossil_direkte,,9.46,%,2026,DST BOL202,context,energi
-530,Billund,ctx_fossil_direkte,,7.23,%,2026,DST BOL202,context,energi
-183,Ishøj,ctx_fossil_direkte,,22.86,%,2026,DST BOL202,context,energi
-840,Rebild,ctx_fossil_direkte,,7.5,%,2026,DST BOL202,context,energi
-147,Frederiksberg,ctx_fossil_direkte,,0.19,%,2026,DST BOL202,context,energi
-259,Køge,ctx_fossil_direkte,,49.89,%,2026,DST BOL202,context,energi
-253,Greve,ctx_fossil_direkte,,45.22,%,2026,DST BOL202,context,energi
-187,Vallensbæk,ctx_fossil_direkte,,28.03,%,2026,DST BOL202,context,energi
-159,Gladsaxe,ctx_fossil_direkte,,31.8,%,2026,DST BOL202,context,energi
-661,Holstebro,ctx_fossil_direkte,,4.88,%,2026,DST BOL202,context,energi
-217,Helsingør,ctx_fossil_direkte,,35.61,%,2026,DST BOL202,context,energi
-250,Frederikssund,ctx_fossil_direkte,,36.29,%,2026,DST BOL202,context,energi
-657,Herning,ctx_fossil_direkte,,3.96,%,2026,DST BOL202,context,energi
-492,Ærø,ctx_fossil_direkte,,9.92,%,2026,DST BOL202,context,energi
-561,Esbjerg,ctx_fossil_direkte,,5.79,%,2026,DST BOL202,context,energi
-773,Morsø,ctx_fossil_direkte,,34.98,%,2026,DST BOL202,context,energi
-219,Hillerød,ctx_fossil_direkte,,12.64,%,2026,DST BOL202,context,energi
-740,Silkeborg,ctx_fossil_direkte,,18.14,%,2026,DST BOL202,context,energi
-607,Fredericia,ctx_fossil_direkte,,1.4,%,2026,DST BOL202,context,energi
-316,Holbæk,ctx_fossil_direkte,,53.98,%,2026,DST BOL202,context,energi
-340,Sorø,ctx_fossil_direkte,,36.18,%,2026,DST BOL202,context,energi
-260,Halsnæs,ctx_fossil_direkte,,12.38,%,2026,DST BOL202,context,energi
-766,Hedensted,ctx_fossil_direkte,,26.69,%,2026,DST BOL202,context,energi
-825,Læsø,ctx_fossil_direkte,,22.51,%,2026,DST BOL202,context,energi
-615,Horsens,ctx_fossil_direkte,,7.43,%,2026,DST BOL202,context,energi
-329,Ringsted,ctx_fossil_direkte,,22.26,%,2026,DST BOL202,context,energi
-370,Næstved,ctx_fossil_direkte,,31.14,%,2026,DST BOL202,context,energi
-851,Aalborg,ctx_fossil_direkte,,2.73,%,2026,DST BOL202,context,energi
-336,Stevns,ctx_fossil_direkte,,44.53,%,2026,DST BOL202,context,energi
-410,Middelfart,ctx_fossil_direkte,,21.71,%,2026,DST BOL202,context,energi
-727,Odder,ctx_fossil_direkte,,5.58,%,2026,DST BOL202,context,energi
-161,Glostrup,ctx_fossil_direkte,,32.27,%,2026,DST BOL202,context,energi
-563,Fanø,ctx_fossil_direkte,,2.61,%,2026,DST BOL202,context,energi
-813,Frederikshavn,ctx_fossil_direkte,,11.07,%,2026,DST BOL202,context,energi
-270,Gribskov,ctx_fossil_direkte,,17.16,%,2026,DST BOL202,context,energi
-751,Aarhus,ctx_fossil_direkte,,0.74,%,2026,DST BOL202,context,energi
-760,Ringkøbing-Skjern,ctx_fossil_direkte,,13.76,%,2026,DST BOL202,context,energi
-479,Svendborg,ctx_fossil_direkte,,37.35,%,2026,DST BOL202,context,energi
-787,Thisted,ctx_fossil_direkte,,12.08,%,2026,DST BOL202,context,energi
-810,Brønderslev,ctx_fossil_direkte,,9.46,%,2026,DST BOL202,context,energi
-791,Viborg,ctx_fossil_direkte,,19.41,%,2026,DST BOL202,context,energi
-165,Albertslund,ctx_fossil_direkte,,0.25,%,2026,DST BOL202,context,energi
-480,Nordfyns,ctx_fossil_direkte,,25.47,%,2026,DST BOL202,context,energi
-440,Kerteminde,ctx_fossil_direkte,,21.58,%,2026,DST BOL202,context,energi
-101,København,ctx_fossil_direkte,,0.42,%,2026,DST BOL202,context,energi
-860,Hjørring,ctx_fossil_direkte,,10.01,%,2026,DST BOL202,context,energi
-706,Syddjurs,ctx_fossil_direkte,,6.88,%,2026,DST BOL202,context,energi
-430,Faaborg-Midtfyn,ctx_fossil_direkte,,29.81,%,2026,DST BOL202,context,energi
-573,Varde,ctx_fossil_direkte,,16.57,%,2026,DST BOL202,context,energi
-730,Randers,ctx_fossil_direkte,,16.14,%,2026,DST BOL202,context,energi
-621,Kolding,ctx_fossil_direkte,,10.13,%,2026,DST BOL202,context,energi
-320,Faxe,ctx_fossil_direkte,,33.15,%,2026,DST BOL202,context,energi
-169,Høje-Taastrup,ctx_fossil_direkte,,6.79,%,2026,DST BOL202,context,energi
-461,Odense,ctx_fossil_direkte,,0.54,%,2026,DST BOL202,context,energi
-420,Assens,ctx_fossil_direkte,,20.15,%,2026,DST BOL202,context,energi
-756,Ikast-Brande,ctx_fossil_direkte,,8.43,%,2026,DST BOL202,context,energi
-846,Mariagerfjord,ctx_fossil_direkte,,20.66,%,2026,DST BOL202,context,energi
-580,Aabenraa,ctx_fossil_direkte,,19.08,%,2026,DST BOL202,context,energi
-450,Nyborg,ctx_fossil_direkte,,14.16,%,2026,DST BOL202,context,energi
-630,Vejle,ctx_fossil_direkte,,14.27,%,2026,DST BOL202,context,energi
-540,Sønderborg,ctx_fossil_direkte,,15.53,%,2026,DST BOL202,context,energi
-400,Bornholm,ctx_fossil_direkte,,6.39,%,2026,DST BOL202,context,energi
-779,Skive,ctx_fossil_direkte,,24.56,%,2026,DST BOL202,context,energi
-510,Haderslev,ctx_fossil_direkte,,25.3,%,2026,DST BOL202,context,energi
-575,Vejen,ctx_fossil_direkte,,24.39,%,2026,DST BOL202,context,energi
-820,Vesthimmerlands,ctx_fossil_direkte,,9.83,%,2026,DST BOL202,context,energi
-707,Norddjurs,ctx_fossil_direkte,,7.8,%,2026,DST BOL202,context,energi
-671,Struer,ctx_fossil_direkte,,10.38,%,2026,DST BOL202,context,energi
-306,Odsherred,ctx_fossil_direkte,,23.82,%,2026,DST BOL202,context,energi
-330,Slagelse,ctx_fossil_direkte,,27.63,%,2026,DST BOL202,context,energi
-665,Lemvig,ctx_fossil_direkte,,8.35,%,2026,DST BOL202,context,energi
-376,Guldborgsund,ctx_fossil_direkte,,7.69,%,2026,DST BOL202,context,energi
-326,Kalundborg,ctx_fossil_direkte,,9.62,%,2026,DST BOL202,context,energi
-849,Jammerbugt,ctx_fossil_direkte,,13.64,%,2026,DST BOL202,context,energi
-550,Tønder,ctx_fossil_direkte,,18.96,%,2026,DST BOL202,context,energi
-390,Vordingborg,ctx_fossil_direkte,,20.28,%,2026,DST BOL202,context,energi
-360,Lolland,ctx_fossil_direkte,,10.5,%,2026,DST BOL202,context,energi
-741,Samsø,ctx_fossil_direkte,,9.53,%,2026,DST BOL202,context,energi
-482,Langeland,ctx_fossil_direkte,,10.29,%,2026,DST BOL202,context,energi
-201,Allerød,ctx_fossil_via_fjv,,2.28,%,2026,DST BOL202 + EPT,context,energi
-175,Rødovre,ctx_fossil_via_fjv,,7.89,%,2026,DST BOL202 + EPT,context,energi
-153,Brøndby,ctx_fossil_via_fjv,,11.38,%,2026,DST BOL202 + EPT,context,energi
-155,Dragør,ctx_fossil_via_fjv,,0.74,%,2026,DST BOL202 + EPT,context,energi
-190,Furesø,ctx_fossil_via_fjv,,48.67,%,2026,DST BOL202 + EPT,context,energi
-230,Rudersdal,ctx_fossil_via_fjv,,29.24,%,2026,DST BOL202 + EPT,context,energi
-151,Ballerup,ctx_fossil_via_fjv,,7.37,%,2026,DST BOL202 + EPT,context,energi
-167,Hvidovre,ctx_fossil_via_fjv,,2.02,%,2026,DST BOL202 + EPT,context,energi
-269,Solrød,ctx_fossil_via_fjv,,7.1,%,2026,DST BOL202 + EPT,context,energi
-746,Skanderborg,ctx_fossil_via_fjv,,1.57,%,2026,DST BOL202 + EPT,context,energi
-157,Gentofte,ctx_fossil_via_fjv,,10.26,%,2026,DST BOL202 + EPT,context,energi
-240,Egedal,ctx_fossil_via_fjv,,5.22,%,2026,DST BOL202 + EPT,context,energi
-265,Roskilde,ctx_fossil_via_fjv,,1.64,%,2026,DST BOL202 + EPT,context,energi
-223,Hørsholm,ctx_fossil_via_fjv,,2.05,%,2026,DST BOL202 + EPT,context,energi
-185,Tårnby,ctx_fossil_via_fjv,,5.32,%,2026,DST BOL202 + EPT,context,energi
-163,Herlev,ctx_fossil_via_fjv,,7.47,%,2026,DST BOL202 + EPT,context,energi
-173,Lyngby-Taarbæk,ctx_fossil_via_fjv,,16.44,%,2026,DST BOL202 + EPT,context,energi
-350,Lejre,ctx_fossil_via_fjv,,2.6,%,2026,DST BOL202 + EPT,context,energi
-210,Fredensborg,ctx_fossil_via_fjv,,5.61,%,2026,DST BOL202 + EPT,context,energi
-710,Favrskov,ctx_fossil_via_fjv,,5.04,%,2026,DST BOL202 + EPT,context,energi
-530,Billund,ctx_fossil_via_fjv,,3.46,%,2026,DST BOL202 + EPT,context,energi
-183,Ishøj,ctx_fossil_via_fjv,,0.0,%,2026,DST BOL202 + EPT,context,energi
-840,Rebild,ctx_fossil_via_fjv,,9.63,%,2026,DST BOL202 + EPT,context,energi
-147,Frederiksberg,ctx_fossil_via_fjv,,13.27,%,2026,DST BOL202 + EPT,context,energi
-259,Køge,ctx_fossil_via_fjv,,11.5,%,2026,DST BOL202 + EPT,context,energi
-253,Greve,ctx_fossil_via_fjv,,4.88,%,2026,DST BOL202 + EPT,context,energi
-187,Vallensbæk,ctx_fossil_via_fjv,,8.54,%,2026,DST BOL202 + EPT,context,energi
-159,Gladsaxe,ctx_fossil_via_fjv,,37.26,%,2026,DST BOL202 + EPT,context,energi
-661,Holstebro,ctx_fossil_via_fjv,,4.74,%,2026,DST BOL202 + EPT,context,energi
-217,Helsingør,ctx_fossil_via_fjv,,4.85,%,2026,DST BOL202 + EPT,context,energi
-250,Frederikssund,ctx_fossil_via_fjv,,12.45,%,2026,DST BOL202 + EPT,context,energi
-657,Herning,ctx_fossil_via_fjv,,6.12,%,2026,DST BOL202 + EPT,context,energi
-492,Ærø,ctx_fossil_via_fjv,,0.11,%,2026,DST BOL202 + EPT,context,energi
-561,Esbjerg,ctx_fossil_via_fjv,,22.15,%,2026,DST BOL202 + EPT,context,energi
-773,Morsø,ctx_fossil_via_fjv,,11.81,%,2026,DST BOL202 + EPT,context,energi
-219,Hillerød,ctx_fossil_via_fjv,,25.66,%,2026,DST BOL202 + EPT,context,energi
-740,Silkeborg,ctx_fossil_via_fjv,,27.18,%,2026,DST BOL202 + EPT,context,energi
-607,Fredericia,ctx_fossil_via_fjv,,4.62,%,2026,DST BOL202 + EPT,context,energi
-316,Holbæk,ctx_fossil_via_fjv,,4.05,%,2026,DST BOL202 + EPT,context,energi
-340,Sorø,ctx_fossil_via_fjv,,6.03,%,2026,DST BOL202 + EPT,context,energi
-260,Halsnæs,ctx_fossil_via_fjv,,3.94,%,2026,DST BOL202 + EPT,context,energi
-766,Hedensted,ctx_fossil_via_fjv,,5.32,%,2026,DST BOL202 + EPT,context,energi
-825,Læsø,ctx_fossil_via_fjv,,2.33,%,2026,DST BOL202 + EPT,context,energi
-615,Horsens,ctx_fossil_via_fjv,,4.02,%,2026,DST BOL202 + EPT,context,energi
-329,Ringsted,ctx_fossil_via_fjv,,3.6,%,2026,DST BOL202 + EPT,context,energi
-370,Næstved,ctx_fossil_via_fjv,,5.63,%,2026,DST BOL202 + EPT,context,energi
-851,Aalborg,ctx_fossil_via_fjv,,46.7,%,2026,DST BOL202 + EPT,context,energi
-336,Stevns,ctx_fossil_via_fjv,,0.06,%,2026,DST BOL202 + EPT,context,energi
-410,Middelfart,ctx_fossil_via_fjv,,7.85,%,2026,DST BOL202 + EPT,context,energi
-727,Odder,ctx_fossil_via_fjv,,15.98,%,2026,DST BOL202 + EPT,context,energi
-161,Glostrup,ctx_fossil_via_fjv,,2.15,%,2026,DST BOL202 + EPT,context,energi
-563,Fanø,ctx_fossil_via_fjv,,8.2,%,2026,DST BOL202 + EPT,context,energi
-813,Frederikshavn,ctx_fossil_via_fjv,,14.12,%,2026,DST BOL202 + EPT,context,energi
-270,Gribskov,ctx_fossil_via_fjv,,9.81,%,2026,DST BOL202 + EPT,context,energi
-751,Aarhus,ctx_fossil_via_fjv,,2.78,%,2026,DST BOL202 + EPT,context,energi
-760,Ringkøbing-Skjern,ctx_fossil_via_fjv,,7.68,%,2026,DST BOL202 + EPT,context,energi
-479,Svendborg,ctx_fossil_via_fjv,,8.2,%,2026,DST BOL202 + EPT,context,energi
-787,Thisted,ctx_fossil_via_fjv,,4.87,%,2026,DST BOL202 + EPT,context,energi
-810,Brønderslev,ctx_fossil_via_fjv,,11.09,%,2026,DST BOL202 + EPT,context,energi
-791,Viborg,ctx_fossil_via_fjv,,19.78,%,2026,DST BOL202 + EPT,context,energi
-165,Albertslund,ctx_fossil_via_fjv,,13.21,%,2026,DST BOL202 + EPT,context,energi
-480,Nordfyns,ctx_fossil_via_fjv,,8.02,%,2026,DST BOL202 + EPT,context,energi
-440,Kerteminde,ctx_fossil_via_fjv,,7.87,%,2026,DST BOL202 + EPT,context,energi
-101,København,ctx_fossil_via_fjv,,8.84,%,2026,DST BOL202 + EPT,context,energi
-860,Hjørring,ctx_fossil_via_fjv,,3.86,%,2026,DST BOL202 + EPT,context,energi
-706,Syddjurs,ctx_fossil_via_fjv,,0.11,%,2026,DST BOL202 + EPT,context,energi
-430,Faaborg-Midtfyn,ctx_fossil_via_fjv,,3.48,%,2026,DST BOL202 + EPT,context,energi
-573,Varde,ctx_fossil_via_fjv,,9.44,%,2026,DST BOL202 + EPT,context,energi
-730,Randers,ctx_fossil_via_fjv,,1.67,%,2026,DST BOL202 + EPT,context,energi
-621,Kolding,ctx_fossil_via_fjv,,3.47,%,2026,DST BOL202 + EPT,context,energi
-320,Faxe,ctx_fossil_via_fjv,,3.16,%,2026,DST BOL202 + EPT,context,energi
-169,Høje-Taastrup,ctx_fossil_via_fjv,,26.62,%,2026,DST BOL202 + EPT,context,energi
-461,Odense,ctx_fossil_via_fjv,,16.57,%,2026,DST BOL202 + EPT,context,energi
-420,Assens,ctx_fossil_via_fjv,,2.66,%,2026,DST BOL202 + EPT,context,energi
-756,Ikast-Brande,ctx_fossil_via_fjv,,13.09,%,2026,DST BOL202 + EPT,context,energi
-846,Mariagerfjord,ctx_fossil_via_fjv,,4.54,%,2026,DST BOL202 + EPT,context,energi
-580,Aabenraa,ctx_fossil_via_fjv,,0.11,%,2026,DST BOL202 + EPT,context,energi
-450,Nyborg,ctx_fossil_via_fjv,,5.04,%,2026,DST BOL202 + EPT,context,energi
-630,Vejle,ctx_fossil_via_fjv,,10.27,%,2026,DST BOL202 + EPT,context,energi
-540,Sønderborg,ctx_fossil_via_fjv,,5.25,%,2026,DST BOL202 + EPT,context,energi
-400,Bornholm,ctx_fossil_via_fjv,,0.98,%,2026,DST BOL202 + EPT,context,energi
-779,Skive,ctx_fossil_via_fjv,,3.7,%,2026,DST BOL202 + EPT,context,energi
-510,Haderslev,ctx_fossil_via_fjv,,10.28,%,2026,DST BOL202 + EPT,context,energi
-575,Vejen,ctx_fossil_via_fjv,,2.59,%,2026,DST BOL202 + EPT,context,energi
-820,Vesthimmerlands,ctx_fossil_via_fjv,,0.87,%,2026,DST BOL202 + EPT,context,energi
-707,Norddjurs,ctx_fossil_via_fjv,,0.64,%,2026,DST BOL202 + EPT,context,energi
-671,Struer,ctx_fossil_via_fjv,,21.61,%,2026,DST BOL202 + EPT,context,energi
-306,Odsherred,ctx_fossil_via_fjv,,4.57,%,2026,DST BOL202 + EPT,context,energi
-330,Slagelse,ctx_fossil_via_fjv,,3.4,%,2026,DST BOL202 + EPT,context,energi
-665,Lemvig,ctx_fossil_via_fjv,,1.84,%,2026,DST BOL202 + EPT,context,energi
-376,Guldborgsund,ctx_fossil_via_fjv,,11.43,%,2026,DST BOL202 + EPT,context,energi
-326,Kalundborg,ctx_fossil_via_fjv,,0.15,%,2026,DST BOL202 + EPT,context,energi
-849,Jammerbugt,ctx_fossil_via_fjv,,7.58,%,2026,DST BOL202 + EPT,context,energi
-550,Tønder,ctx_fossil_via_fjv,,5.59,%,2026,DST BOL202 + EPT,context,energi
-390,Vordingborg,ctx_fossil_via_fjv,,1.47,%,2026,DST BOL202 + EPT,context,energi
-360,Lolland,ctx_fossil_via_fjv,,0.0,%,2026,DST BOL202 + EPT,context,energi
-741,Samsø,ctx_fossil_via_fjv,,0.11,%,2026,DST BOL202 + EPT,context,energi
-482,Langeland,ctx_fossil_via_fjv,,0.17,%,2026,DST BOL202 + EPT,context,energi
+201,Allerød,ctx_fossil_direkte,,59.73,%,2026,DST BYGB40,context,energi
+175,Rødovre,ctx_fossil_direkte,,31.83,%,2026,DST BYGB40,context,energi
+153,Brøndby,ctx_fossil_direkte,,12.48,%,2026,DST BYGB40,context,energi
+155,Dragør,ctx_fossil_direkte,,75.88,%,2026,DST BYGB40,context,energi
+190,Furesø,ctx_fossil_direkte,,36.76,%,2026,DST BYGB40,context,energi
+230,Rudersdal,ctx_fossil_direkte,,54.19,%,2026,DST BYGB40,context,energi
+151,Ballerup,ctx_fossil_direkte,,39.01,%,2026,DST BYGB40,context,energi
+167,Hvidovre,ctx_fossil_direkte,,30.11,%,2026,DST BYGB40,context,energi
+269,Solrød,ctx_fossil_direkte,,34.26,%,2026,DST BYGB40,context,energi
+746,Skanderborg,ctx_fossil_direkte,,9.61,%,2026,DST BYGB40,context,energi
+157,Gentofte,ctx_fossil_direkte,,19.73,%,2026,DST BYGB40,context,energi
+240,Egedal,ctx_fossil_direkte,,38.94,%,2026,DST BYGB40,context,energi
+265,Roskilde,ctx_fossil_direkte,,21.99,%,2026,DST BYGB40,context,energi
+223,Hørsholm,ctx_fossil_direkte,,49.69,%,2026,DST BYGB40,context,energi
+185,Tårnby,ctx_fossil_direkte,,47.96,%,2026,DST BYGB40,context,energi
+163,Herlev,ctx_fossil_direkte,,36.09,%,2026,DST BYGB40,context,energi
+173,Lyngby-Taarbæk,ctx_fossil_direkte,,54.26,%,2026,DST BYGB40,context,energi
+350,Lejre,ctx_fossil_direkte,,34.89,%,2026,DST BYGB40,context,energi
+210,Fredensborg,ctx_fossil_direkte,,40.22,%,2026,DST BYGB40,context,energi
+710,Favrskov,ctx_fossil_direkte,,11.59,%,2026,DST BYGB40,context,energi
+530,Billund,ctx_fossil_direkte,,8.47,%,2026,DST BYGB40,context,energi
+183,Ishøj,ctx_fossil_direkte,,25.91,%,2026,DST BYGB40,context,energi
+840,Rebild,ctx_fossil_direkte,,9.58,%,2026,DST BYGB40,context,energi
+147,Frederiksberg,ctx_fossil_direkte,,0.22,%,2026,DST BYGB40,context,energi
+259,Køge,ctx_fossil_direkte,,50.01,%,2026,DST BYGB40,context,energi
+253,Greve,ctx_fossil_direkte,,47.96,%,2026,DST BYGB40,context,energi
+187,Vallensbæk,ctx_fossil_direkte,,30.57,%,2026,DST BYGB40,context,energi
+159,Gladsaxe,ctx_fossil_direkte,,32.12,%,2026,DST BYGB40,context,energi
+661,Holstebro,ctx_fossil_direkte,,6.64,%,2026,DST BYGB40,context,energi
+217,Helsingør,ctx_fossil_direkte,,37.36,%,2026,DST BYGB40,context,energi
+250,Frederikssund,ctx_fossil_direkte,,37.42,%,2026,DST BYGB40,context,energi
+657,Herning,ctx_fossil_direkte,,4.83,%,2026,DST BYGB40,context,energi
+492,Ærø,ctx_fossil_direkte,,12.58,%,2026,DST BYGB40,context,energi
+561,Esbjerg,ctx_fossil_direkte,,6.74,%,2026,DST BYGB40,context,energi
+773,Morsø,ctx_fossil_direkte,,36.47,%,2026,DST BYGB40,context,energi
+219,Hillerød,ctx_fossil_direkte,,14.32,%,2026,DST BYGB40,context,energi
+740,Silkeborg,ctx_fossil_direkte,,19.25,%,2026,DST BYGB40,context,energi
+607,Fredericia,ctx_fossil_direkte,,1.81,%,2026,DST BYGB40,context,energi
+316,Holbæk,ctx_fossil_direkte,,53.02,%,2026,DST BYGB40,context,energi
+340,Sorø,ctx_fossil_direkte,,35.77,%,2026,DST BYGB40,context,energi
+260,Halsnæs,ctx_fossil_direkte,,13.93,%,2026,DST BYGB40,context,energi
+766,Hedensted,ctx_fossil_direkte,,28.39,%,2026,DST BYGB40,context,energi
+825,Læsø,ctx_fossil_direkte,,25.81,%,2026,DST BYGB40,context,energi
+615,Horsens,ctx_fossil_direkte,,8.74,%,2026,DST BYGB40,context,energi
+329,Ringsted,ctx_fossil_direkte,,23.19,%,2026,DST BYGB40,context,energi
+370,Næstved,ctx_fossil_direkte,,32.25,%,2026,DST BYGB40,context,energi
+851,Aalborg,ctx_fossil_direkte,,3.83,%,2026,DST BYGB40,context,energi
+336,Stevns,ctx_fossil_direkte,,46.03,%,2026,DST BYGB40,context,energi
+410,Middelfart,ctx_fossil_direkte,,23.41,%,2026,DST BYGB40,context,energi
+727,Odder,ctx_fossil_direkte,,7.57,%,2026,DST BYGB40,context,energi
+161,Glostrup,ctx_fossil_direkte,,33.45,%,2026,DST BYGB40,context,energi
+563,Fanø,ctx_fossil_direkte,,2.97,%,2026,DST BYGB40,context,energi
+813,Frederikshavn,ctx_fossil_direkte,,13.5,%,2026,DST BYGB40,context,energi
+270,Gribskov,ctx_fossil_direkte,,19.43,%,2026,DST BYGB40,context,energi
+751,Aarhus,ctx_fossil_direkte,,1.1,%,2026,DST BYGB40,context,energi
+760,Ringkøbing-Skjern,ctx_fossil_direkte,,15.31,%,2026,DST BYGB40,context,energi
+479,Svendborg,ctx_fossil_direkte,,37.2,%,2026,DST BYGB40,context,energi
+787,Thisted,ctx_fossil_direkte,,14.76,%,2026,DST BYGB40,context,energi
+810,Brønderslev,ctx_fossil_direkte,,11.47,%,2026,DST BYGB40,context,energi
+791,Viborg,ctx_fossil_direkte,,20.72,%,2026,DST BYGB40,context,energi
+165,Albertslund,ctx_fossil_direkte,,0.23,%,2026,DST BYGB40,context,energi
+480,Nordfyns,ctx_fossil_direkte,,27.52,%,2026,DST BYGB40,context,energi
+440,Kerteminde,ctx_fossil_direkte,,22.08,%,2026,DST BYGB40,context,energi
+101,København,ctx_fossil_direkte,,0.41,%,2026,DST BYGB40,context,energi
+860,Hjørring,ctx_fossil_direkte,,12.24,%,2026,DST BYGB40,context,energi
+706,Syddjurs,ctx_fossil_direkte,,8.98,%,2026,DST BYGB40,context,energi
+430,Faaborg-Midtfyn,ctx_fossil_direkte,,30.64,%,2026,DST BYGB40,context,energi
+573,Varde,ctx_fossil_direkte,,17.65,%,2026,DST BYGB40,context,energi
+730,Randers,ctx_fossil_direkte,,17.54,%,2026,DST BYGB40,context,energi
+621,Kolding,ctx_fossil_direkte,,11.7,%,2026,DST BYGB40,context,energi
+320,Faxe,ctx_fossil_direkte,,33.31,%,2026,DST BYGB40,context,energi
+169,Høje-Taastrup,ctx_fossil_direkte,,8.0,%,2026,DST BYGB40,context,energi
+461,Odense,ctx_fossil_direkte,,0.77,%,2026,DST BYGB40,context,energi
+420,Assens,ctx_fossil_direkte,,21.4,%,2026,DST BYGB40,context,energi
+756,Ikast-Brande,ctx_fossil_direkte,,8.91,%,2026,DST BYGB40,context,energi
+846,Mariagerfjord,ctx_fossil_direkte,,20.47,%,2026,DST BYGB40,context,energi
+580,Aabenraa,ctx_fossil_direkte,,21.24,%,2026,DST BYGB40,context,energi
+450,Nyborg,ctx_fossil_direkte,,15.45,%,2026,DST BYGB40,context,energi
+630,Vejle,ctx_fossil_direkte,,15.41,%,2026,DST BYGB40,context,energi
+540,Sønderborg,ctx_fossil_direkte,,17.3,%,2026,DST BYGB40,context,energi
+400,Bornholm,ctx_fossil_direkte,,8.62,%,2026,DST BYGB40,context,energi
+779,Skive,ctx_fossil_direkte,,25.78,%,2026,DST BYGB40,context,energi
+510,Haderslev,ctx_fossil_direkte,,25.35,%,2026,DST BYGB40,context,energi
+575,Vejen,ctx_fossil_direkte,,25.58,%,2026,DST BYGB40,context,energi
+820,Vesthimmerlands,ctx_fossil_direkte,,11.68,%,2026,DST BYGB40,context,energi
+707,Norddjurs,ctx_fossil_direkte,,10.05,%,2026,DST BYGB40,context,energi
+671,Struer,ctx_fossil_direkte,,12.47,%,2026,DST BYGB40,context,energi
+306,Odsherred,ctx_fossil_direkte,,26.12,%,2026,DST BYGB40,context,energi
+330,Slagelse,ctx_fossil_direkte,,29.36,%,2026,DST BYGB40,context,energi
+665,Lemvig,ctx_fossil_direkte,,10.66,%,2026,DST BYGB40,context,energi
+376,Guldborgsund,ctx_fossil_direkte,,11.11,%,2026,DST BYGB40,context,energi
+326,Kalundborg,ctx_fossil_direkte,,11.51,%,2026,DST BYGB40,context,energi
+849,Jammerbugt,ctx_fossil_direkte,,16.97,%,2026,DST BYGB40,context,energi
+550,Tønder,ctx_fossil_direkte,,20.18,%,2026,DST BYGB40,context,energi
+390,Vordingborg,ctx_fossil_direkte,,21.89,%,2026,DST BYGB40,context,energi
+360,Lolland,ctx_fossil_direkte,,15.56,%,2026,DST BYGB40,context,energi
+741,Samsø,ctx_fossil_direkte,,10.95,%,2026,DST BYGB40,context,energi
+482,Langeland,ctx_fossil_direkte,,14.16,%,2026,DST BYGB40,context,energi
+201,Allerød,ctx_fossil_via_fjv,,2.02,%,2026,DST BYGB40 + EPT,context,energi
+175,Rødovre,ctx_fossil_via_fjv,,8.01,%,2026,DST BYGB40 + EPT,context,energi
+153,Brøndby,ctx_fossil_via_fjv,,11.16,%,2026,DST BYGB40 + EPT,context,energi
+155,Dragør,ctx_fossil_via_fjv,,0.65,%,2026,DST BYGB40 + EPT,context,energi
+190,Furesø,ctx_fossil_via_fjv,,46.37,%,2026,DST BYGB40 + EPT,context,energi
+230,Rudersdal,ctx_fossil_via_fjv,,26.8,%,2026,DST BYGB40 + EPT,context,energi
+151,Ballerup,ctx_fossil_via_fjv,,6.91,%,2026,DST BYGB40 + EPT,context,energi
+167,Hvidovre,ctx_fossil_via_fjv,,1.98,%,2026,DST BYGB40 + EPT,context,energi
+269,Solrød,ctx_fossil_via_fjv,,6.62,%,2026,DST BYGB40 + EPT,context,energi
+746,Skanderborg,ctx_fossil_via_fjv,,1.5,%,2026,DST BYGB40 + EPT,context,energi
+157,Gentofte,ctx_fossil_via_fjv,,10.14,%,2026,DST BYGB40 + EPT,context,energi
+240,Egedal,ctx_fossil_via_fjv,,5.09,%,2026,DST BYGB40 + EPT,context,energi
+265,Roskilde,ctx_fossil_via_fjv,,1.55,%,2026,DST BYGB40 + EPT,context,energi
+223,Hørsholm,ctx_fossil_via_fjv,,1.87,%,2026,DST BYGB40 + EPT,context,energi
+185,Tårnby,ctx_fossil_via_fjv,,5.18,%,2026,DST BYGB40 + EPT,context,energi
+163,Herlev,ctx_fossil_via_fjv,,7.17,%,2026,DST BYGB40 + EPT,context,energi
+173,Lyngby-Taarbæk,ctx_fossil_via_fjv,,15.42,%,2026,DST BYGB40 + EPT,context,energi
+350,Lejre,ctx_fossil_via_fjv,,2.5,%,2026,DST BYGB40 + EPT,context,energi
+210,Fredensborg,ctx_fossil_via_fjv,,4.88,%,2026,DST BYGB40 + EPT,context,energi
+710,Favrskov,ctx_fossil_via_fjv,,4.7,%,2026,DST BYGB40 + EPT,context,energi
+530,Billund,ctx_fossil_via_fjv,,3.29,%,2026,DST BYGB40 + EPT,context,energi
+183,Ishøj,ctx_fossil_via_fjv,,0.0,%,2026,DST BYGB40 + EPT,context,energi
+840,Rebild,ctx_fossil_via_fjv,,8.8,%,2026,DST BYGB40 + EPT,context,energi
+147,Frederiksberg,ctx_fossil_via_fjv,,13.27,%,2026,DST BYGB40 + EPT,context,energi
+259,Køge,ctx_fossil_via_fjv,,11.01,%,2026,DST BYGB40 + EPT,context,energi
+253,Greve,ctx_fossil_via_fjv,,4.47,%,2026,DST BYGB40 + EPT,context,energi
+187,Vallensbæk,ctx_fossil_via_fjv,,8.02,%,2026,DST BYGB40 + EPT,context,energi
+159,Gladsaxe,ctx_fossil_via_fjv,,36.74,%,2026,DST BYGB40 + EPT,context,energi
+661,Holstebro,ctx_fossil_via_fjv,,4.5,%,2026,DST BYGB40 + EPT,context,energi
+217,Helsingør,ctx_fossil_via_fjv,,4.6,%,2026,DST BYGB40 + EPT,context,energi
+250,Frederikssund,ctx_fossil_via_fjv,,12.51,%,2026,DST BYGB40 + EPT,context,energi
+657,Herning,ctx_fossil_via_fjv,,5.9,%,2026,DST BYGB40 + EPT,context,energi
+492,Ærø,ctx_fossil_via_fjv,,0.1,%,2026,DST BYGB40 + EPT,context,energi
+561,Esbjerg,ctx_fossil_via_fjv,,21.54,%,2026,DST BYGB40 + EPT,context,energi
+773,Morsø,ctx_fossil_via_fjv,,10.78,%,2026,DST BYGB40 + EPT,context,energi
+219,Hillerød,ctx_fossil_via_fjv,,24.64,%,2026,DST BYGB40 + EPT,context,energi
+740,Silkeborg,ctx_fossil_via_fjv,,25.94,%,2026,DST BYGB40 + EPT,context,energi
+607,Fredericia,ctx_fossil_via_fjv,,4.53,%,2026,DST BYGB40 + EPT,context,energi
+316,Holbæk,ctx_fossil_via_fjv,,3.98,%,2026,DST BYGB40 + EPT,context,energi
+340,Sorø,ctx_fossil_via_fjv,,5.77,%,2026,DST BYGB40 + EPT,context,energi
+260,Halsnæs,ctx_fossil_via_fjv,,4.04,%,2026,DST BYGB40 + EPT,context,energi
+766,Hedensted,ctx_fossil_via_fjv,,4.79,%,2026,DST BYGB40 + EPT,context,energi
+825,Læsø,ctx_fossil_via_fjv,,1.79,%,2026,DST BYGB40 + EPT,context,energi
+615,Horsens,ctx_fossil_via_fjv,,3.83,%,2026,DST BYGB40 + EPT,context,energi
+329,Ringsted,ctx_fossil_via_fjv,,3.36,%,2026,DST BYGB40 + EPT,context,energi
+370,Næstved,ctx_fossil_via_fjv,,5.14,%,2026,DST BYGB40 + EPT,context,energi
+851,Aalborg,ctx_fossil_via_fjv,,45.73,%,2026,DST BYGB40 + EPT,context,energi
+336,Stevns,ctx_fossil_via_fjv,,0.05,%,2026,DST BYGB40 + EPT,context,energi
+410,Middelfart,ctx_fossil_via_fjv,,7.28,%,2026,DST BYGB40 + EPT,context,energi
+727,Odder,ctx_fossil_via_fjv,,15.07,%,2026,DST BYGB40 + EPT,context,energi
+161,Glostrup,ctx_fossil_via_fjv,,2.09,%,2026,DST BYGB40 + EPT,context,energi
+563,Fanø,ctx_fossil_via_fjv,,8.54,%,2026,DST BYGB40 + EPT,context,energi
+813,Frederikshavn,ctx_fossil_via_fjv,,13.39,%,2026,DST BYGB40 + EPT,context,energi
+270,Gribskov,ctx_fossil_via_fjv,,10.18,%,2026,DST BYGB40 + EPT,context,energi
+751,Aarhus,ctx_fossil_via_fjv,,2.76,%,2026,DST BYGB40 + EPT,context,energi
+760,Ringkøbing-Skjern,ctx_fossil_via_fjv,,7.25,%,2026,DST BYGB40 + EPT,context,energi
+479,Svendborg,ctx_fossil_via_fjv,,7.67,%,2026,DST BYGB40 + EPT,context,energi
+787,Thisted,ctx_fossil_via_fjv,,4.45,%,2026,DST BYGB40 + EPT,context,energi
+810,Brønderslev,ctx_fossil_via_fjv,,10.32,%,2026,DST BYGB40 + EPT,context,energi
+791,Viborg,ctx_fossil_via_fjv,,18.73,%,2026,DST BYGB40 + EPT,context,energi
+165,Albertslund,ctx_fossil_via_fjv,,13.19,%,2026,DST BYGB40 + EPT,context,energi
+480,Nordfyns,ctx_fossil_via_fjv,,7.33,%,2026,DST BYGB40 + EPT,context,energi
+440,Kerteminde,ctx_fossil_via_fjv,,7.55,%,2026,DST BYGB40 + EPT,context,energi
+101,København,ctx_fossil_via_fjv,,8.84,%,2026,DST BYGB40 + EPT,context,energi
+860,Hjørring,ctx_fossil_via_fjv,,3.59,%,2026,DST BYGB40 + EPT,context,energi
+706,Syddjurs,ctx_fossil_via_fjv,,0.1,%,2026,DST BYGB40 + EPT,context,energi
+430,Faaborg-Midtfyn,ctx_fossil_via_fjv,,3.18,%,2026,DST BYGB40 + EPT,context,energi
+573,Varde,ctx_fossil_via_fjv,,8.9,%,2026,DST BYGB40 + EPT,context,energi
+730,Randers,ctx_fossil_via_fjv,,1.59,%,2026,DST BYGB40 + EPT,context,energi
+621,Kolding,ctx_fossil_via_fjv,,3.3,%,2026,DST BYGB40 + EPT,context,energi
+320,Faxe,ctx_fossil_via_fjv,,2.98,%,2026,DST BYGB40 + EPT,context,energi
+169,Høje-Taastrup,ctx_fossil_via_fjv,,25.81,%,2026,DST BYGB40 + EPT,context,energi
+461,Odense,ctx_fossil_via_fjv,,16.42,%,2026,DST BYGB40 + EPT,context,energi
+420,Assens,ctx_fossil_via_fjv,,2.45,%,2026,DST BYGB40 + EPT,context,energi
+756,Ikast-Brande,ctx_fossil_via_fjv,,12.68,%,2026,DST BYGB40 + EPT,context,energi
+846,Mariagerfjord,ctx_fossil_via_fjv,,4.43,%,2026,DST BYGB40 + EPT,context,energi
+580,Aabenraa,ctx_fossil_via_fjv,,0.1,%,2026,DST BYGB40 + EPT,context,energi
+450,Nyborg,ctx_fossil_via_fjv,,4.7,%,2026,DST BYGB40 + EPT,context,energi
+630,Vejle,ctx_fossil_via_fjv,,9.72,%,2026,DST BYGB40 + EPT,context,energi
+540,Sønderborg,ctx_fossil_via_fjv,,4.85,%,2026,DST BYGB40 + EPT,context,energi
+400,Bornholm,ctx_fossil_via_fjv,,0.9,%,2026,DST BYGB40 + EPT,context,energi
+779,Skive,ctx_fossil_via_fjv,,3.5,%,2026,DST BYGB40 + EPT,context,energi
+510,Haderslev,ctx_fossil_via_fjv,,9.82,%,2026,DST BYGB40 + EPT,context,energi
+575,Vejen,ctx_fossil_via_fjv,,2.4,%,2026,DST BYGB40 + EPT,context,energi
+820,Vesthimmerlands,ctx_fossil_via_fjv,,0.82,%,2026,DST BYGB40 + EPT,context,energi
+707,Norddjurs,ctx_fossil_via_fjv,,0.6,%,2026,DST BYGB40 + EPT,context,energi
+671,Struer,ctx_fossil_via_fjv,,20.32,%,2026,DST BYGB40 + EPT,context,energi
+306,Odsherred,ctx_fossil_via_fjv,,4.76,%,2026,DST BYGB40 + EPT,context,energi
+330,Slagelse,ctx_fossil_via_fjv,,3.15,%,2026,DST BYGB40 + EPT,context,energi
+665,Lemvig,ctx_fossil_via_fjv,,1.69,%,2026,DST BYGB40 + EPT,context,energi
+376,Guldborgsund,ctx_fossil_via_fjv,,10.41,%,2026,DST BYGB40 + EPT,context,energi
+326,Kalundborg,ctx_fossil_via_fjv,,0.14,%,2026,DST BYGB40 + EPT,context,energi
+849,Jammerbugt,ctx_fossil_via_fjv,,6.89,%,2026,DST BYGB40 + EPT,context,energi
+550,Tønder,ctx_fossil_via_fjv,,5.11,%,2026,DST BYGB40 + EPT,context,energi
+390,Vordingborg,ctx_fossil_via_fjv,,1.29,%,2026,DST BYGB40 + EPT,context,energi
+360,Lolland,ctx_fossil_via_fjv,,0.0,%,2026,DST BYGB40 + EPT,context,energi
+741,Samsø,ctx_fossil_via_fjv,,0.1,%,2026,DST BYGB40 + EPT,context,energi
+482,Langeland,ctx_fossil_via_fjv,,0.14,%,2026,DST BYGB40 + EPT,context,energi
+201,Allerød,ctx_fritid_fossil,,22.22,%,2026,DST BYGB40,context,energi
+175,Rødovre,ctx_fritid_fossil,,25.0,%,2026,DST BYGB40,context,energi
+153,Brøndby,ctx_fritid_fossil,,0.0,%,2026,DST BYGB40,context,energi
+155,Dragør,ctx_fritid_fossil,,10.0,%,2026,DST BYGB40,context,energi
+190,Furesø,ctx_fritid_fossil,,26.32,%,2026,DST BYGB40,context,energi
+230,Rudersdal,ctx_fritid_fossil,,23.53,%,2026,DST BYGB40,context,energi
+151,Ballerup,ctx_fritid_fossil,,20.9,%,2026,DST BYGB40,context,energi
+167,Hvidovre,ctx_fritid_fossil,,9.09,%,2026,DST BYGB40,context,energi
+269,Solrød,ctx_fritid_fossil,,0.0,%,2026,DST BYGB40,context,energi
+746,Skanderborg,ctx_fritid_fossil,,13.95,%,2026,DST BYGB40,context,energi
+157,Gentofte,ctx_fritid_fossil,,63.64,%,2026,DST BYGB40,context,energi
+240,Egedal,ctx_fritid_fossil,,18.06,%,2026,DST BYGB40,context,energi
+265,Roskilde,ctx_fritid_fossil,,15.0,%,2026,DST BYGB40,context,energi
+223,Hørsholm,ctx_fritid_fossil,,50.0,%,2026,DST BYGB40,context,energi
+185,Tårnby,ctx_fritid_fossil,,14.47,%,2026,DST BYGB40,context,energi
+163,Herlev,ctx_fritid_fossil,,12.5,%,2026,DST BYGB40,context,energi
+173,Lyngby-Taarbæk,ctx_fritid_fossil,,44.44,%,2026,DST BYGB40,context,energi
+350,Lejre,ctx_fritid_fossil,,3.98,%,2026,DST BYGB40,context,energi
+210,Fredensborg,ctx_fritid_fossil,,36.84,%,2026,DST BYGB40,context,energi
+710,Favrskov,ctx_fritid_fossil,,13.33,%,2026,DST BYGB40,context,energi
+530,Billund,ctx_fritid_fossil,,1.5,%,2026,DST BYGB40,context,energi
+183,Ishøj,ctx_fritid_fossil,,5.88,%,2026,DST BYGB40,context,energi
+840,Rebild,ctx_fritid_fossil,,7.69,%,2026,DST BYGB40,context,energi
+147,Frederiksberg,ctx_fritid_fossil,,0.0,%,2026,DST BYGB40,context,energi
+259,Køge,ctx_fritid_fossil,,12.0,%,2026,DST BYGB40,context,energi
+253,Greve,ctx_fritid_fossil,,7.69,%,2026,DST BYGB40,context,energi
+187,Vallensbæk,ctx_fritid_fossil,,50.0,%,2026,DST BYGB40,context,energi
+159,Gladsaxe,ctx_fritid_fossil,,9.09,%,2026,DST BYGB40,context,energi
+661,Holstebro,ctx_fritid_fossil,,4.18,%,2026,DST BYGB40,context,energi
+217,Helsingør,ctx_fritid_fossil,,6.92,%,2026,DST BYGB40,context,energi
+250,Frederikssund,ctx_fritid_fossil,,4.0,%,2026,DST BYGB40,context,energi
+657,Herning,ctx_fritid_fossil,,6.45,%,2026,DST BYGB40,context,energi
+492,Ærø,ctx_fritid_fossil,,19.23,%,2026,DST BYGB40,context,energi
+561,Esbjerg,ctx_fritid_fossil,,4.65,%,2026,DST BYGB40,context,energi
+773,Morsø,ctx_fritid_fossil,,6.35,%,2026,DST BYGB40,context,energi
+219,Hillerød,ctx_fritid_fossil,,11.43,%,2026,DST BYGB40,context,energi
+740,Silkeborg,ctx_fritid_fossil,,11.51,%,2026,DST BYGB40,context,energi
+607,Fredericia,ctx_fritid_fossil,,6.38,%,2026,DST BYGB40,context,energi
+316,Holbæk,ctx_fritid_fossil,,6.79,%,2026,DST BYGB40,context,energi
+340,Sorø,ctx_fritid_fossil,,21.43,%,2026,DST BYGB40,context,energi
+260,Halsnæs,ctx_fritid_fossil,,3.22,%,2026,DST BYGB40,context,energi
+766,Hedensted,ctx_fritid_fossil,,2.46,%,2026,DST BYGB40,context,energi
+825,Læsø,ctx_fritid_fossil,,4.55,%,2026,DST BYGB40,context,energi
+615,Horsens,ctx_fritid_fossil,,10.0,%,2026,DST BYGB40,context,energi
+329,Ringsted,ctx_fritid_fossil,,7.69,%,2026,DST BYGB40,context,energi
+370,Næstved,ctx_fritid_fossil,,10.17,%,2026,DST BYGB40,context,energi
+851,Aalborg,ctx_fritid_fossil,,4.88,%,2026,DST BYGB40,context,energi
+336,Stevns,ctx_fritid_fossil,,9.02,%,2026,DST BYGB40,context,energi
+410,Middelfart,ctx_fritid_fossil,,5.04,%,2026,DST BYGB40,context,energi
+727,Odder,ctx_fritid_fossil,,2.46,%,2026,DST BYGB40,context,energi
+161,Glostrup,ctx_fritid_fossil,,4.35,%,2026,DST BYGB40,context,energi
+563,Fanø,ctx_fritid_fossil,,2.5,%,2026,DST BYGB40,context,energi
+813,Frederikshavn,ctx_fritid_fossil,,8.64,%,2026,DST BYGB40,context,energi
+270,Gribskov,ctx_fritid_fossil,,4.28,%,2026,DST BYGB40,context,energi
+751,Aarhus,ctx_fritid_fossil,,8.1,%,2026,DST BYGB40,context,energi
+760,Ringkøbing-Skjern,ctx_fritid_fossil,,3.52,%,2026,DST BYGB40,context,energi
+479,Svendborg,ctx_fritid_fossil,,12.82,%,2026,DST BYGB40,context,energi
+787,Thisted,ctx_fritid_fossil,,4.8,%,2026,DST BYGB40,context,energi
+810,Brønderslev,ctx_fritid_fossil,,9.38,%,2026,DST BYGB40,context,energi
+791,Viborg,ctx_fritid_fossil,,22.12,%,2026,DST BYGB40,context,energi
+165,Albertslund,ctx_fritid_fossil,,0.0,%,2026,DST BYGB40,context,energi
+480,Nordfyns,ctx_fritid_fossil,,2.39,%,2026,DST BYGB40,context,energi
+440,Kerteminde,ctx_fritid_fossil,,4.17,%,2026,DST BYGB40,context,energi
+101,København,ctx_fritid_fossil,,27.22,%,2026,DST BYGB40,context,energi
+860,Hjørring,ctx_fritid_fossil,,3.11,%,2026,DST BYGB40,context,energi
+706,Syddjurs,ctx_fritid_fossil,,2.47,%,2026,DST BYGB40,context,energi
+430,Faaborg-Midtfyn,ctx_fritid_fossil,,8.09,%,2026,DST BYGB40,context,energi
+573,Varde,ctx_fritid_fossil,,3.36,%,2026,DST BYGB40,context,energi
+730,Randers,ctx_fritid_fossil,,11.9,%,2026,DST BYGB40,context,energi
+621,Kolding,ctx_fritid_fossil,,8.28,%,2026,DST BYGB40,context,energi
+320,Faxe,ctx_fritid_fossil,,6.78,%,2026,DST BYGB40,context,energi
+169,Høje-Taastrup,ctx_fritid_fossil,,2.27,%,2026,DST BYGB40,context,energi
+461,Odense,ctx_fritid_fossil,,6.9,%,2026,DST BYGB40,context,energi
+420,Assens,ctx_fritid_fossil,,7.79,%,2026,DST BYGB40,context,energi
+756,Ikast-Brande,ctx_fritid_fossil,,3.23,%,2026,DST BYGB40,context,energi
+846,Mariagerfjord,ctx_fritid_fossil,,5.0,%,2026,DST BYGB40,context,energi
+580,Aabenraa,ctx_fritid_fossil,,12.63,%,2026,DST BYGB40,context,energi
+450,Nyborg,ctx_fritid_fossil,,6.59,%,2026,DST BYGB40,context,energi
+630,Vejle,ctx_fritid_fossil,,11.46,%,2026,DST BYGB40,context,energi
+540,Sønderborg,ctx_fritid_fossil,,7.45,%,2026,DST BYGB40,context,energi
+400,Bornholm,ctx_fritid_fossil,,7.81,%,2026,DST BYGB40,context,energi
+779,Skive,ctx_fritid_fossil,,4.5,%,2026,DST BYGB40,context,energi
+510,Haderslev,ctx_fritid_fossil,,7.78,%,2026,DST BYGB40,context,energi
+575,Vejen,ctx_fritid_fossil,,17.39,%,2026,DST BYGB40,context,energi
+820,Vesthimmerlands,ctx_fritid_fossil,,7.35,%,2026,DST BYGB40,context,energi
+707,Norddjurs,ctx_fritid_fossil,,2.71,%,2026,DST BYGB40,context,energi
+671,Struer,ctx_fritid_fossil,,11.21,%,2026,DST BYGB40,context,energi
+306,Odsherred,ctx_fritid_fossil,,2.44,%,2026,DST BYGB40,context,energi
+330,Slagelse,ctx_fritid_fossil,,6.35,%,2026,DST BYGB40,context,energi
+665,Lemvig,ctx_fritid_fossil,,2.62,%,2026,DST BYGB40,context,energi
+376,Guldborgsund,ctx_fritid_fossil,,3.41,%,2026,DST BYGB40,context,energi
+326,Kalundborg,ctx_fritid_fossil,,1.84,%,2026,DST BYGB40,context,energi
+849,Jammerbugt,ctx_fritid_fossil,,5.31,%,2026,DST BYGB40,context,energi
+550,Tønder,ctx_fritid_fossil,,4.0,%,2026,DST BYGB40,context,energi
+390,Vordingborg,ctx_fritid_fossil,,3.76,%,2026,DST BYGB40,context,energi
+360,Lolland,ctx_fritid_fossil,,5.81,%,2026,DST BYGB40,context,energi
+741,Samsø,ctx_fritid_fossil,,4.55,%,2026,DST BYGB40,context,energi
+482,Langeland,ctx_fritid_fossil,,3.47,%,2026,DST BYGB40,context,energi
+201,Allerød,ctx_fritid_andel,,0.61,%,2026,DST BYGB40,context,energi
+175,Rødovre,ctx_fritid_andel,,0.4,%,2026,DST BYGB40,context,energi
+153,Brøndby,ctx_fritid_andel,,0.34,%,2026,DST BYGB40,context,energi
+155,Dragør,ctx_fritid_andel,,4.78,%,2026,DST BYGB40,context,energi
+190,Furesø,ctx_fritid_andel,,0.84,%,2026,DST BYGB40,context,energi
+230,Rudersdal,ctx_fritid_andel,,0.49,%,2026,DST BYGB40,context,energi
+151,Ballerup,ctx_fritid_andel,,6.59,%,2026,DST BYGB40,context,energi
+167,Hvidovre,ctx_fritid_andel,,0.93,%,2026,DST BYGB40,context,energi
+269,Solrød,ctx_fritid_andel,,0.15,%,2026,DST BYGB40,context,energi
+746,Skanderborg,ctx_fritid_andel,,1.11,%,2026,DST BYGB40,context,energi
+157,Gentofte,ctx_fritid_andel,,0.25,%,2026,DST BYGB40,context,energi
+240,Egedal,ctx_fritid_andel,,2.97,%,2026,DST BYGB40,context,energi
+265,Roskilde,ctx_fritid_andel,,1.23,%,2026,DST BYGB40,context,energi
+223,Hørsholm,ctx_fritid_andel,,0.13,%,2026,DST BYGB40,context,energi
+185,Tårnby,ctx_fritid_andel,,3.68,%,2026,DST BYGB40,context,energi
+163,Herlev,ctx_fritid_andel,,1.12,%,2026,DST BYGB40,context,energi
+173,Lyngby-Taarbæk,ctx_fritid_andel,,0.31,%,2026,DST BYGB40,context,energi
+350,Lejre,ctx_fritid_andel,,9.53,%,2026,DST BYGB40,context,energi
+210,Fredensborg,ctx_fritid_andel,,0.82,%,2026,DST BYGB40,context,energi
+710,Favrskov,ctx_fritid_andel,,0.49,%,2026,DST BYGB40,context,energi
+530,Billund,ctx_fritid_andel,,6.98,%,2026,DST BYGB40,context,energi
+183,Ishøj,ctx_fritid_andel,,1.6,%,2026,DST BYGB40,context,energi
+840,Rebild,ctx_fritid_andel,,0.61,%,2026,DST BYGB40,context,energi
+147,Frederiksberg,ctx_fritid_andel,,0.07,%,2026,DST BYGB40,context,energi
+259,Køge,ctx_fritid_andel,,0.74,%,2026,DST BYGB40,context,energi
+253,Greve,ctx_fritid_andel,,0.46,%,2026,DST BYGB40,context,energi
+187,Vallensbæk,ctx_fritid_andel,,0.24,%,2026,DST BYGB40,context,energi
+159,Gladsaxe,ctx_fritid_andel,,0.69,%,2026,DST BYGB40,context,energi
+661,Holstebro,ctx_fritid_andel,,6.56,%,2026,DST BYGB40,context,energi
+217,Helsingør,ctx_fritid_andel,,7.79,%,2026,DST BYGB40,context,energi
+250,Frederikssund,ctx_fritid_andel,,15.82,%,2026,DST BYGB40,context,energi
+657,Herning,ctx_fritid_andel,,1.06,%,2026,DST BYGB40,context,energi
+492,Ærø,ctx_fritid_andel,,4.18,%,2026,DST BYGB40,context,energi
+561,Esbjerg,ctx_fritid_andel,,1.21,%,2026,DST BYGB40,context,energi
+773,Morsø,ctx_fritid_andel,,4.1,%,2026,DST BYGB40,context,energi
+219,Hillerød,ctx_fritid_andel,,1.18,%,2026,DST BYGB40,context,energi
+740,Silkeborg,ctx_fritid_andel,,2.21,%,2026,DST BYGB40,context,energi
+607,Fredericia,ctx_fritid_andel,,1.49,%,2026,DST BYGB40,context,energi
+316,Holbæk,ctx_fritid_andel,,4.87,%,2026,DST BYGB40,context,energi
+340,Sorø,ctx_fritid_andel,,0.73,%,2026,DST BYGB40,context,energi
+260,Halsnæs,ctx_fritid_andel,,31.6,%,2026,DST BYGB40,context,energi
+766,Hedensted,ctx_fritid_andel,,5.97,%,2026,DST BYGB40,context,energi
+825,Læsø,ctx_fritid_andel,,32.12,%,2026,DST BYGB40,context,energi
+615,Horsens,ctx_fritid_andel,,0.69,%,2026,DST BYGB40,context,energi
+329,Ringsted,ctx_fritid_andel,,0.64,%,2026,DST BYGB40,context,energi
+370,Næstved,ctx_fritid_andel,,3.44,%,2026,DST BYGB40,context,energi
+851,Aalborg,ctx_fritid_andel,,4.18,%,2026,DST BYGB40,context,energi
+336,Stevns,ctx_fritid_andel,,8.28,%,2026,DST BYGB40,context,energi
+410,Middelfart,ctx_fritid_andel,,5.11,%,2026,DST BYGB40,context,energi
+727,Odder,ctx_fritid_andel,,11.98,%,2026,DST BYGB40,context,energi
+161,Glostrup,ctx_fritid_andel,,5.63,%,2026,DST BYGB40,context,energi
+563,Fanø,ctx_fritid_andel,,54.26,%,2026,DST BYGB40,context,energi
+813,Frederikshavn,ctx_fritid_andel,,10.38,%,2026,DST BYGB40,context,energi
+270,Gribskov,ctx_fritid_andel,,37.52,%,2026,DST BYGB40,context,energi
+751,Aarhus,ctx_fritid_andel,,1.49,%,2026,DST BYGB40,context,energi
+760,Ringkøbing-Skjern,ctx_fritid_andel,,21.09,%,2026,DST BYGB40,context,energi
+479,Svendborg,ctx_fritid_andel,,2.04,%,2026,DST BYGB40,context,energi
+787,Thisted,ctx_fritid_andel,,10.14,%,2026,DST BYGB40,context,energi
+810,Brønderslev,ctx_fritid_andel,,1.25,%,2026,DST BYGB40,context,energi
+791,Viborg,ctx_fritid_andel,,1.61,%,2026,DST BYGB40,context,energi
+165,Albertslund,ctx_fritid_andel,,0.76,%,2026,DST BYGB40,context,energi
+480,Nordfyns,ctx_fritid_andel,,11.23,%,2026,DST BYGB40,context,energi
+440,Kerteminde,ctx_fritid_andel,,7.29,%,2026,DST BYGB40,context,energi
+101,København,ctx_fritid_andel,,0.55,%,2026,DST BYGB40,context,energi
+860,Hjørring,ctx_fritid_andel,,11.84,%,2026,DST BYGB40,context,energi
+706,Syddjurs,ctx_fritid_andel,,24.62,%,2026,DST BYGB40,context,energi
+430,Faaborg-Midtfyn,ctx_fritid_andel,,3.67,%,2026,DST BYGB40,context,energi
+573,Varde,ctx_fritid_andel,,22.03,%,2026,DST BYGB40,context,energi
+730,Randers,ctx_fritid_andel,,0.67,%,2026,DST BYGB40,context,energi
+621,Kolding,ctx_fritid_andel,,2.86,%,2026,DST BYGB40,context,energi
+320,Faxe,ctx_fritid_andel,,2.44,%,2026,DST BYGB40,context,energi
+169,Høje-Taastrup,ctx_fritid_andel,,1.62,%,2026,DST BYGB40,context,energi
+461,Odense,ctx_fritid_andel,,0.51,%,2026,DST BYGB40,context,energi
+420,Assens,ctx_fritid_andel,,2.7,%,2026,DST BYGB40,context,energi
+756,Ikast-Brande,ctx_fritid_andel,,1.14,%,2026,DST BYGB40,context,energi
+846,Mariagerfjord,ctx_fritid_andel,,8.75,%,2026,DST BYGB40,context,energi
+580,Aabenraa,ctx_fritid_andel,,2.35,%,2026,DST BYGB40,context,energi
+450,Nyborg,ctx_fritid_andel,,4.21,%,2026,DST BYGB40,context,energi
+630,Vejle,ctx_fritid_andel,,2.06,%,2026,DST BYGB40,context,energi
+540,Sønderborg,ctx_fritid_andel,,4.97,%,2026,DST BYGB40,context,energi
+400,Bornholm,ctx_fritid_andel,,13.67,%,2026,DST BYGB40,context,energi
+779,Skive,ctx_fritid_andel,,9.09,%,2026,DST BYGB40,context,energi
+510,Haderslev,ctx_fritid_andel,,4.68,%,2026,DST BYGB40,context,energi
+575,Vejen,ctx_fritid_andel,,0.79,%,2026,DST BYGB40,context,energi
+820,Vesthimmerlands,ctx_fritid_andel,,8.5,%,2026,DST BYGB40,context,energi
+707,Norddjurs,ctx_fritid_andel,,15.75,%,2026,DST BYGB40,context,energi
+671,Struer,ctx_fritid_andel,,7.48,%,2026,DST BYGB40,context,energi
+306,Odsherred,ctx_fritid_andel,,49.47,%,2026,DST BYGB40,context,energi
+330,Slagelse,ctx_fritid_andel,,7.46,%,2026,DST BYGB40,context,energi
+665,Lemvig,ctx_fritid_andel,,13.24,%,2026,DST BYGB40,context,energi
+376,Guldborgsund,ctx_fritid_andel,,14.77,%,2026,DST BYGB40,context,energi
+326,Kalundborg,ctx_fritid_andel,,16.24,%,2026,DST BYGB40,context,energi
+849,Jammerbugt,ctx_fritid_andel,,23.54,%,2026,DST BYGB40,context,energi
+550,Tønder,ctx_fritid_andel,,8.97,%,2026,DST BYGB40,context,energi
+390,Vordingborg,ctx_fritid_andel,,10.85,%,2026,DST BYGB40,context,energi
+360,Lolland,ctx_fritid_andel,,9.38,%,2026,DST BYGB40,context,energi
+741,Samsø,ctx_fritid_andel,,17.96,%,2026,DST BYGB40,context,energi
+482,Langeland,ctx_fritid_andel,,15.01,%,2026,DST BYGB40,context,energi
+201,Allerød,ctx_klima_landbrug,,0.121,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+175,Rødovre,ctx_klima_landbrug,,0.0091,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+153,Brøndby,ctx_klima_landbrug,,-0.1264,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+155,Dragør,ctx_klima_landbrug,,-0.1099,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+190,Furesø,ctx_klima_landbrug,,0.0585,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+230,Rudersdal,ctx_klima_landbrug,,0.1944,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+151,Ballerup,ctx_klima_landbrug,,0.011,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+167,Hvidovre,ctx_klima_landbrug,,-0.0151,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+269,Solrød,ctx_klima_landbrug,,0.1071,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+746,Skanderborg,ctx_klima_landbrug,,0.7586,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+157,Gentofte,ctx_klima_landbrug,,-0.0115,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+240,Egedal,ctx_klima_landbrug,,0.3728,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+265,Roskilde,ctx_klima_landbrug,,0.1368,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+223,Hørsholm,ctx_klima_landbrug,,0.0412,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+185,Tårnby,ctx_klima_landbrug,,0.1108,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+163,Herlev,ctx_klima_landbrug,,0.0048,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+173,Lyngby-Taarbæk,ctx_klima_landbrug,,0.0165,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+350,Lejre,ctx_klima_landbrug,,1.0538,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+210,Fredensborg,ctx_klima_landbrug,,0.078,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+710,Favrskov,ctx_klima_landbrug,,1.6951,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+530,Billund,ctx_klima_landbrug,,3.5171,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+183,Ishøj,ctx_klima_landbrug,,-0.0016,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+840,Rebild,ctx_klima_landbrug,,11.0834,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+147,Frederiksberg,ctx_klima_landbrug,,0.0,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+259,Køge,ctx_klima_landbrug,,0.5217,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+253,Greve,ctx_klima_landbrug,,0.0558,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+187,Vallensbæk,ctx_klima_landbrug,,0.0177,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+159,Gladsaxe,ctx_klima_landbrug,,-0.0426,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+661,Holstebro,ctx_klima_landbrug,,4.0321,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+217,Helsingør,ctx_klima_landbrug,,-0.0431,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+250,Frederikssund,ctx_klima_landbrug,,0.4236,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+657,Herning,ctx_klima_landbrug,,3.6514,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+492,Ærø,ctx_klima_landbrug,,3.054,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+561,Esbjerg,ctx_klima_landbrug,,3.1982,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+773,Morsø,ctx_klima_landbrug,,6.2563,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+219,Hillerød,ctx_klima_landbrug,,0.023,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+740,Silkeborg,ctx_klima_landbrug,,1.1081,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+607,Fredericia,ctx_klima_landbrug,,0.1522,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+316,Holbæk,ctx_klima_landbrug,,1.3387,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+340,Sorø,ctx_klima_landbrug,,2.331,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+260,Halsnæs,ctx_klima_landbrug,,0.3194,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+766,Hedensted,ctx_klima_landbrug,,2.2774,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+825,Læsø,ctx_klima_landbrug,,-9.9608,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+615,Horsens,ctx_klima_landbrug,,1.1247,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+329,Ringsted,ctx_klima_landbrug,,0.6458,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+370,Næstved,ctx_klima_landbrug,,1.1882,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+851,Aalborg,ctx_klima_landbrug,,1.9451,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+336,Stevns,ctx_klima_landbrug,,1.2396,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+410,Middelfart,ctx_klima_landbrug,,2.1436,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+727,Odder,ctx_klima_landbrug,,2.3581,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+161,Glostrup,ctx_klima_landbrug,,-0.0161,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+563,Fanø,ctx_klima_landbrug,,0.664,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+813,Frederikshavn,ctx_klima_landbrug,,1.4987,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+270,Gribskov,ctx_klima_landbrug,,1.2416,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+751,Aarhus,ctx_klima_landbrug,,0.1062,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+760,Ringkøbing-Skjern,ctx_klima_landbrug,,9.5094,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+479,Svendborg,ctx_klima_landbrug,,1.014,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+787,Thisted,ctx_klima_landbrug,,7.3345,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+810,Brønderslev,ctx_klima_landbrug,,7.4012,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+791,Viborg,ctx_klima_landbrug,,5.1242,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+165,Albertslund,ctx_klima_landbrug,,0.0094,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+480,Nordfyns,ctx_klima_landbrug,,3.1619,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+440,Kerteminde,ctx_klima_landbrug,,1.2789,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+101,København,ctx_klima_landbrug,,-0.0016,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+860,Hjørring,ctx_klima_landbrug,,5.9989,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+706,Syddjurs,ctx_klima_landbrug,,3.0181,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+430,Faaborg-Midtfyn,ctx_klima_landbrug,,2.1631,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+573,Varde,ctx_klima_landbrug,,11.2271,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+730,Randers,ctx_klima_landbrug,,1.6321,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+621,Kolding,ctx_klima_landbrug,,1.0329,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+320,Faxe,ctx_klima_landbrug,,0.9946,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+169,Høje-Taastrup,ctx_klima_landbrug,,-0.0579,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+461,Odense,ctx_klima_landbrug,,0.0568,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+420,Assens,ctx_klima_landbrug,,2.844,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+756,Ikast-Brande,ctx_klima_landbrug,,2.5392,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+846,Mariagerfjord,ctx_klima_landbrug,,6.2025,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+580,Aabenraa,ctx_klima_landbrug,,7.1848,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+450,Nyborg,ctx_klima_landbrug,,2.2818,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+630,Vejle,ctx_klima_landbrug,,1.5968,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+540,Sønderborg,ctx_klima_landbrug,,1.4087,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+400,Bornholm,ctx_klima_landbrug,,2.2515,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+779,Skive,ctx_klima_landbrug,,5.3307,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+510,Haderslev,ctx_klima_landbrug,,4.2712,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+575,Vejen,ctx_klima_landbrug,,6.732,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+820,Vesthimmerlands,ctx_klima_landbrug,,13.1242,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+707,Norddjurs,ctx_klima_landbrug,,4.9228,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+671,Struer,ctx_klima_landbrug,,3.0651,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+306,Odsherred,ctx_klima_landbrug,,1.3064,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+330,Slagelse,ctx_klima_landbrug,,0.7162,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+665,Lemvig,ctx_klima_landbrug,,9.6865,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+376,Guldborgsund,ctx_klima_landbrug,,2.6705,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+326,Kalundborg,ctx_klima_landbrug,,1.3606,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+849,Jammerbugt,ctx_klima_landbrug,,7.0536,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+550,Tønder,ctx_klima_landbrug,,20.4731,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+390,Vordingborg,ctx_klima_landbrug,,3.152,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+360,Lolland,ctx_klima_landbrug,,3.0606,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+741,Samsø,ctx_klima_landbrug,,4.0899,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+482,Langeland,ctx_klima_landbrug,,6.3384,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+201,Allerød,ctx_klima_energi,,1.7296,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+175,Rødovre,ctx_klima_energi,,0.9439,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+153,Brøndby,ctx_klima_energi,,1.2709,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+155,Dragør,ctx_klima_energi,,1.3763,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+190,Furesø,ctx_klima_energi,,1.1595,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+230,Rudersdal,ctx_klima_energi,,1.5498,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+151,Ballerup,ctx_klima_energi,,1.7849,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+167,Hvidovre,ctx_klima_energi,,1.4703,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+269,Solrød,ctx_klima_energi,,0.6163,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+746,Skanderborg,ctx_klima_energi,,1.5035,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+157,Gentofte,ctx_klima_energi,,1.2782,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+240,Egedal,ctx_klima_energi,,1.0917,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+265,Roskilde,ctx_klima_energi,,1.1931,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+223,Hørsholm,ctx_klima_energi,,1.6551,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+185,Tårnby,ctx_klima_energi,,1.5594,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+163,Herlev,ctx_klima_energi,,1.3429,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+173,Lyngby-Taarbæk,ctx_klima_energi,,1.3962,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+350,Lejre,ctx_klima_energi,,1.2135,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+210,Fredensborg,ctx_klima_energi,,1.2944,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+710,Favrskov,ctx_klima_energi,,1.6288,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+530,Billund,ctx_klima_energi,,1.6978,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+183,Ishøj,ctx_klima_energi,,0.998,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+840,Rebild,ctx_klima_energi,,1.4718,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+147,Frederiksberg,ctx_klima_energi,,0.6632,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+259,Køge,ctx_klima_energi,,2.7088,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+253,Greve,ctx_klima_energi,,1.1924,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+187,Vallensbæk,ctx_klima_energi,,0.8198,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+159,Gladsaxe,ctx_klima_energi,,1.3299,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+661,Holstebro,ctx_klima_energi,,2.0318,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+217,Helsingør,ctx_klima_energi,,1.3675,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+250,Frederikssund,ctx_klima_energi,,2.2162,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+657,Herning,ctx_klima_energi,,1.2491,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+492,Ærø,ctx_klima_energi,,0.6099,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+561,Esbjerg,ctx_klima_energi,,2.8384,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+773,Morsø,ctx_klima_energi,,1.3105,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+219,Hillerød,ctx_klima_energi,,1.5377,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+740,Silkeborg,ctx_klima_energi,,1.723,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+607,Fredericia,ctx_klima_energi,,8.3951,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+316,Holbæk,ctx_klima_energi,,1.349,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+340,Sorø,ctx_klima_energi,,1.3874,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+260,Halsnæs,ctx_klima_energi,,3.9518,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+766,Hedensted,ctx_klima_energi,,2.3384,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+825,Læsø,ctx_klima_energi,,2.6533,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+615,Horsens,ctx_klima_energi,,1.5326,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+329,Ringsted,ctx_klima_energi,,1.1742,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+370,Næstved,ctx_klima_energi,,2.229,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+851,Aalborg,ctx_klima_energi,,7.6755,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+336,Stevns,ctx_klima_energi,,1.4325,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+410,Middelfart,ctx_klima_energi,,1.5689,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+727,Odder,ctx_klima_energi,,1.4919,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+161,Glostrup,ctx_klima_energi,,1.6462,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+563,Fanø,ctx_klima_energi,,2.5803,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+813,Frederikshavn,ctx_klima_energi,,5.4507,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+270,Gribskov,ctx_klima_energi,,1.358,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+751,Aarhus,ctx_klima_energi,,1.8786,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+760,Ringkøbing-Skjern,ctx_klima_energi,,1.7981,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+479,Svendborg,ctx_klima_energi,,1.4211,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+787,Thisted,ctx_klima_energi,,2.3475,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+810,Brønderslev,ctx_klima_energi,,1.117,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+791,Viborg,ctx_klima_energi,,1.9666,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+165,Albertslund,ctx_klima_energi,,1.0211,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+480,Nordfyns,ctx_klima_energi,,1.6411,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+440,Kerteminde,ctx_klima_energi,,2.3267,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+101,København,ctx_klima_energi,,0.8298,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+860,Hjørring,ctx_klima_energi,,3.1145,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+706,Syddjurs,ctx_klima_energi,,1.3007,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+430,Faaborg-Midtfyn,ctx_klima_energi,,0.9563,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+573,Varde,ctx_klima_energi,,2.0066,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+730,Randers,ctx_klima_energi,,0.7904,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+621,Kolding,ctx_klima_energi,,1.976,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+320,Faxe,ctx_klima_energi,,1.5448,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+169,Høje-Taastrup,ctx_klima_energi,,1.2611,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+461,Odense,ctx_klima_energi,,2.4466,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+420,Assens,ctx_klima_energi,,1.6755,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+756,Ikast-Brande,ctx_klima_energi,,1.5804,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+846,Mariagerfjord,ctx_klima_energi,,3.0768,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+580,Aabenraa,ctx_klima_energi,,0.7158,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+450,Nyborg,ctx_klima_energi,,6.1708,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+630,Vejle,ctx_klima_energi,,1.522,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+540,Sønderborg,ctx_klima_energi,,1.2231,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+400,Bornholm,ctx_klima_energi,,1.3149,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+779,Skive,ctx_klima_energi,,0.7266,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+510,Haderslev,ctx_klima_energi,,0.9384,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+575,Vejen,ctx_klima_energi,,1.182,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+820,Vesthimmerlands,ctx_klima_energi,,1.909,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+707,Norddjurs,ctx_klima_energi,,2.133,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+671,Struer,ctx_klima_energi,,1.5914,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+306,Odsherred,ctx_klima_energi,,1.765,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+330,Slagelse,ctx_klima_energi,,1.3387,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+665,Lemvig,ctx_klima_energi,,5.6614,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+376,Guldborgsund,ctx_klima_energi,,2.8746,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+326,Kalundborg,ctx_klima_energi,,11.914,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+849,Jammerbugt,ctx_klima_energi,,1.2319,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+550,Tønder,ctx_klima_energi,,3.0092,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+390,Vordingborg,ctx_klima_energi,,0.7847,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+360,Lolland,ctx_klima_energi,,2.6608,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+741,Samsø,ctx_klima_energi,,1.1388,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+482,Langeland,ctx_klima_energi,,1.0056,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+201,Allerød,ctx_klima_transport,,1.3788,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+175,Rødovre,ctx_klima_transport,,0.7831,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+153,Brøndby,ctx_klima_transport,,1.9301,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+155,Dragør,ctx_klima_transport,,0.2843,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+190,Furesø,ctx_klima_transport,,1.1242,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+230,Rudersdal,ctx_klima_transport,,1.1508,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+151,Ballerup,ctx_klima_transport,,0.8868,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+167,Hvidovre,ctx_klima_transport,,0.6616,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+269,Solrød,ctx_klima_transport,,2.3256,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+746,Skanderborg,ctx_klima_transport,,2.3575,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+157,Gentofte,ctx_klima_transport,,0.6841,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+240,Egedal,ctx_klima_transport,,0.7893,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+265,Roskilde,ctx_klima_transport,,1.1007,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+223,Hørsholm,ctx_klima_transport,,0.8428,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+185,Tårnby,ctx_klima_transport,,0.5473,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+163,Herlev,ctx_klima_transport,,0.6021,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+173,Lyngby-Taarbæk,ctx_klima_transport,,0.7412,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+350,Lejre,ctx_klima_transport,,2.671,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+210,Fredensborg,ctx_klima_transport,,1.1436,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+710,Favrskov,ctx_klima_transport,,2.9333,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+530,Billund,ctx_klima_transport,,1.6662,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+183,Ishøj,ctx_klima_transport,,1.5904,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+840,Rebild,ctx_klima_transport,,4.1398,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+147,Frederiksberg,ctx_klima_transport,,0.2124,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+259,Køge,ctx_klima_transport,,2.6153,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+253,Greve,ctx_klima_transport,,1.7897,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+187,Vallensbæk,ctx_klima_transport,,1.1604,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+159,Gladsaxe,ctx_klima_transport,,0.9812,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+661,Holstebro,ctx_klima_transport,,1.8284,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+217,Helsingør,ctx_klima_transport,,0.6796,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+250,Frederikssund,ctx_klima_transport,,1.0615,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+657,Herning,ctx_klima_transport,,2.2541,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+492,Ærø,ctx_klima_transport,,1.3517,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+561,Esbjerg,ctx_klima_transport,,1.2719,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+773,Morsø,ctx_klima_transport,,1.6793,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+219,Hillerød,ctx_klima_transport,,1.4197,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+740,Silkeborg,ctx_klima_transport,,1.4771,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+607,Fredericia,ctx_klima_transport,,2.2661,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+316,Holbæk,ctx_klima_transport,,1.6853,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+340,Sorø,ctx_klima_transport,,2.4769,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+260,Halsnæs,ctx_klima_transport,,1.1835,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+766,Hedensted,ctx_klima_transport,,2.3761,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+825,Læsø,ctx_klima_transport,,1.9087,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+615,Horsens,ctx_klima_transport,,1.4727,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+329,Ringsted,ctx_klima_transport,,2.6932,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+370,Næstved,ctx_klima_transport,,1.5259,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+851,Aalborg,ctx_klima_transport,,1.4015,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+336,Stevns,ctx_klima_transport,,0.6627,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+410,Middelfart,ctx_klima_transport,,2.7209,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+727,Odder,ctx_klima_transport,,0.9978,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+161,Glostrup,ctx_klima_transport,,1.3497,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+563,Fanø,ctx_klima_transport,,0.7783,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+813,Frederikshavn,ctx_klima_transport,,1.0198,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+270,Gribskov,ctx_klima_transport,,1.1961,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+751,Aarhus,ctx_klima_transport,,1.0081,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+760,Ringkøbing-Skjern,ctx_klima_transport,,1.6997,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+479,Svendborg,ctx_klima_transport,,1.1709,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+787,Thisted,ctx_klima_transport,,1.2371,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+810,Brønderslev,ctx_klima_transport,,2.1251,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+791,Viborg,ctx_klima_transport,,1.8877,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+165,Albertslund,ctx_klima_transport,,1.3138,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+480,Nordfyns,ctx_klima_transport,,0.905,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+440,Kerteminde,ctx_klima_transport,,1.1694,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+101,København,ctx_klima_transport,,0.3464,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+860,Hjørring,ctx_klima_transport,,1.2957,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+706,Syddjurs,ctx_klima_transport,,1.7976,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+430,Faaborg-Midtfyn,ctx_klima_transport,,1.5712,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+573,Varde,ctx_klima_transport,,1.412,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+730,Randers,ctx_klima_transport,,1.5248,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+621,Kolding,ctx_klima_transport,,2.3534,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+320,Faxe,ctx_klima_transport,,2.4013,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+169,Høje-Taastrup,ctx_klima_transport,,1.6767,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+461,Odense,ctx_klima_transport,,1.2094,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+420,Assens,ctx_klima_transport,,3.4065,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+756,Ikast-Brande,ctx_klima_transport,,2.3901,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+846,Mariagerfjord,ctx_klima_transport,,2.5386,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+580,Aabenraa,ctx_klima_transport,,1.8916,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+450,Nyborg,ctx_klima_transport,,3.3953,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+630,Vejle,ctx_klima_transport,,2.1563,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+540,Sønderborg,ctx_klima_transport,,0.9102,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+400,Bornholm,ctx_klima_transport,,1.4646,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+779,Skive,ctx_klima_transport,,1.5826,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+510,Haderslev,ctx_klima_transport,,1.7674,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+575,Vejen,ctx_klima_transport,,2.8004,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+820,Vesthimmerlands,ctx_klima_transport,,1.3995,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+707,Norddjurs,ctx_klima_transport,,1.0851,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+671,Struer,ctx_klima_transport,,1.5346,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+306,Odsherred,ctx_klima_transport,,3.5999,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+330,Slagelse,ctx_klima_transport,,2.8448,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+665,Lemvig,ctx_klima_transport,,1.6782,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+376,Guldborgsund,ctx_klima_transport,,1.4196,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+326,Kalundborg,ctx_klima_transport,,1.4542,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+849,Jammerbugt,ctx_klima_transport,,1.7468,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+550,Tønder,ctx_klima_transport,,1.3651,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+390,Vordingborg,ctx_klima_transport,,2.1649,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+360,Lolland,ctx_klima_transport,,1.2948,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+741,Samsø,ctx_klima_transport,,2.8095,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+482,Langeland,ctx_klima_transport,,1.957,ton CO₂e/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+201,Allerød,ctx_energiforbrug,,70.3166,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+175,Rødovre,ctx_energiforbrug,,42.3881,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+153,Brøndby,ctx_energiforbrug,,77.4349,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+155,Dragør,ctx_energiforbrug,,41.8171,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+190,Furesø,ctx_energiforbrug,,51.6217,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+230,Rudersdal,ctx_energiforbrug,,63.7104,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+151,Ballerup,ctx_energiforbrug,,70.3122,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+167,Hvidovre,ctx_energiforbrug,,62.3303,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+269,Solrød,ctx_energiforbrug,,68.3682,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+746,Skanderborg,ctx_energiforbrug,,81.8564,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+157,Gentofte,ctx_energiforbrug,,53.7187,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+240,Egedal,ctx_energiforbrug,,46.2596,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+265,Roskilde,ctx_energiforbrug,,58.4871,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+223,Hørsholm,ctx_energiforbrug,,60.441,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+185,Tårnby,ctx_energiforbrug,,57.1753,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+163,Herlev,ctx_energiforbrug,,52.4369,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+173,Lyngby-Taarbæk,ctx_energiforbrug,,53.1042,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+350,Lejre,ctx_energiforbrug,,79.6901,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+210,Fredensborg,ctx_energiforbrug,,55.2825,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+710,Favrskov,ctx_energiforbrug,,111.641,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+530,Billund,ctx_energiforbrug,,125.9139,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+183,Ishøj,ctx_energiforbrug,,58.7395,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+840,Rebild,ctx_energiforbrug,,119.9726,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+147,Frederiksberg,ctx_energiforbrug,,36.5568,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+259,Køge,ctx_energiforbrug,,107.384,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+253,Greve,ctx_energiforbrug,,64.2933,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+187,Vallensbæk,ctx_energiforbrug,,43.8546,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+159,Gladsaxe,ctx_energiforbrug,,59.4645,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+661,Holstebro,ctx_energiforbrug,,114.2181,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+217,Helsingør,ctx_energiforbrug,,52.5328,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+250,Frederikssund,ctx_energiforbrug,,79.7801,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+657,Herning,ctx_energiforbrug,,96.6374,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+492,Ærø,ctx_energiforbrug,,81.6568,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+561,Esbjerg,ctx_energiforbrug,,84.3639,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+773,Morsø,ctx_energiforbrug,,110.7037,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+219,Hillerød,ctx_energiforbrug,,68.9417,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+740,Silkeborg,ctx_energiforbrug,,72.3347,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+607,Fredericia,ctx_energiforbrug,,217.0582,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+316,Holbæk,ctx_energiforbrug,,69.9447,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+340,Sorø,ctx_energiforbrug,,84.1142,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+260,Halsnæs,ctx_energiforbrug,,129.5946,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+766,Hedensted,ctx_energiforbrug,,107.8909,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+825,Læsø,ctx_energiforbrug,,133.4257,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+615,Horsens,ctx_energiforbrug,,76.7645,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+329,Ringsted,ctx_energiforbrug,,92.4146,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+370,Næstved,ctx_energiforbrug,,80.129,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+851,Aalborg,ctx_energiforbrug,,122.6813,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+336,Stevns,ctx_energiforbrug,,59.7077,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+410,Middelfart,ctx_energiforbrug,,95.7908,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+727,Odder,ctx_energiforbrug,,62.0511,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+161,Glostrup,ctx_energiforbrug,,77.0294,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+563,Fanø,ctx_energiforbrug,,80.1975,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+813,Frederikshavn,ctx_energiforbrug,,130.411,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+270,Gribskov,ctx_energiforbrug,,69.0761,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+751,Aarhus,ctx_energiforbrug,,55.4581,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+760,Ringkøbing-Skjern,ctx_energiforbrug,,168.411,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+479,Svendborg,ctx_energiforbrug,,67.2604,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+787,Thisted,ctx_energiforbrug,,104.7541,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+810,Brønderslev,ctx_energiforbrug,,95.493,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+791,Viborg,ctx_energiforbrug,,95.353,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+165,Albertslund,ctx_energiforbrug,,60.0631,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+480,Nordfyns,ctx_energiforbrug,,82.3,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+440,Kerteminde,ctx_energiforbrug,,88.2324,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+101,København,ctx_energiforbrug,,41.8807,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+860,Hjørring,ctx_energiforbrug,,114.3744,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+706,Syddjurs,ctx_energiforbrug,,99.875,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+430,Faaborg-Midtfyn,ctx_energiforbrug,,80.7912,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+573,Varde,ctx_energiforbrug,,102.4507,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+730,Randers,ctx_energiforbrug,,73.3989,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+621,Kolding,ctx_energiforbrug,,96.9878,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+320,Faxe,ctx_energiforbrug,,94.3669,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+169,Høje-Taastrup,ctx_energiforbrug,,69.8362,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+461,Odense,ctx_energiforbrug,,78.6064,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+420,Assens,ctx_energiforbrug,,117.8671,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+756,Ikast-Brande,ctx_energiforbrug,,120.1966,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+846,Mariagerfjord,ctx_energiforbrug,,154.1087,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+580,Aabenraa,ctx_energiforbrug,,102.3952,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+450,Nyborg,ctx_energiforbrug,,129.4917,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+630,Vejle,ctx_energiforbrug,,89.9069,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+540,Sønderborg,ctx_energiforbrug,,79.7602,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+400,Bornholm,ctx_energiforbrug,,85.1244,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+779,Skive,ctx_energiforbrug,,110.4125,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+510,Haderslev,ctx_energiforbrug,,90.7147,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+575,Vejen,ctx_energiforbrug,,111.9743,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+820,Vesthimmerlands,ctx_energiforbrug,,116.9372,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+707,Norddjurs,ctx_energiforbrug,,94.7624,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+671,Struer,ctx_energiforbrug,,84.097,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+306,Odsherred,ctx_energiforbrug,,118.3128,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+330,Slagelse,ctx_energiforbrug,,91.3186,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+665,Lemvig,ctx_energiforbrug,,180.6512,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+376,Guldborgsund,ctx_energiforbrug,,92.5987,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+326,Kalundborg,ctx_energiforbrug,,331.6622,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+849,Jammerbugt,ctx_energiforbrug,,91.4705,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+550,Tønder,ctx_energiforbrug,,134.5877,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+390,Vordingborg,ctx_energiforbrug,,92.3497,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+360,Lolland,ctx_energiforbrug,,115.0438,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+741,Samsø,ctx_energiforbrug,,127.3428,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+482,Langeland,ctx_energiforbrug,,102.5088,GJ/indb.,2023,Klimaregnskabet.dk,context,klimapaavirkning
+201,Allerød,ctx_ve_selvforsyning,,4.3993,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+175,Rødovre,ctx_ve_selvforsyning,,2.1363,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+153,Brøndby,ctx_ve_selvforsyning,,1.4916,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+155,Dragør,ctx_ve_selvforsyning,,2.4569,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+190,Furesø,ctx_ve_selvforsyning,,2.5379,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+230,Rudersdal,ctx_ve_selvforsyning,,2.4294,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+151,Ballerup,ctx_ve_selvforsyning,,1.515,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+167,Hvidovre,ctx_ve_selvforsyning,,8.3893,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+269,Solrød,ctx_ve_selvforsyning,,4.1544,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+746,Skanderborg,ctx_ve_selvforsyning,,12.7179,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+157,Gentofte,ctx_ve_selvforsyning,,1.0422,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+240,Egedal,ctx_ve_selvforsyning,,4.0109,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+265,Roskilde,ctx_ve_selvforsyning,,5.358,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+223,Hørsholm,ctx_ve_selvforsyning,,1.8136,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+185,Tårnby,ctx_ve_selvforsyning,,1.3738,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+163,Herlev,ctx_ve_selvforsyning,,2.1231,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+173,Lyngby-Taarbæk,ctx_ve_selvforsyning,,1.3257,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+350,Lejre,ctx_ve_selvforsyning,,12.1715,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+210,Fredensborg,ctx_ve_selvforsyning,,2.7298,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+710,Favrskov,ctx_ve_selvforsyning,,38.9885,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+530,Billund,ctx_ve_selvforsyning,,53.4543,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+183,Ishøj,ctx_ve_selvforsyning,,2.902,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+840,Rebild,ctx_ve_selvforsyning,,70.474,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+147,Frederiksberg,ctx_ve_selvforsyning,,0.4505,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+259,Køge,ctx_ve_selvforsyning,,3.8481,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+253,Greve,ctx_ve_selvforsyning,,5.1477,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+187,Vallensbæk,ctx_ve_selvforsyning,,2.0053,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+159,Gladsaxe,ctx_ve_selvforsyning,,1.2099,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+661,Holstebro,ctx_ve_selvforsyning,,103.5807,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+217,Helsingør,ctx_ve_selvforsyning,,2.0325,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+250,Frederikssund,ctx_ve_selvforsyning,,3.6959,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+657,Herning,ctx_ve_selvforsyning,,53.8787,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+492,Ærø,ctx_ve_selvforsyning,,129.9545,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+561,Esbjerg,ctx_ve_selvforsyning,,25.0631,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+773,Morsø,ctx_ve_selvforsyning,,129.8137,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+219,Hillerød,ctx_ve_selvforsyning,,4.3944,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+740,Silkeborg,ctx_ve_selvforsyning,,16.3442,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+607,Fredericia,ctx_ve_selvforsyning,,1.4819,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+316,Holbæk,ctx_ve_selvforsyning,,46.9377,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+340,Sorø,ctx_ve_selvforsyning,,12.899,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+260,Halsnæs,ctx_ve_selvforsyning,,5.344,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+766,Hedensted,ctx_ve_selvforsyning,,15.2114,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+825,Læsø,ctx_ve_selvforsyning,,52.2611,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+615,Horsens,ctx_ve_selvforsyning,,4.42,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+329,Ringsted,ctx_ve_selvforsyning,,8.6075,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+370,Næstved,ctx_ve_selvforsyning,,41.4975,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+851,Aalborg,ctx_ve_selvforsyning,,22.8427,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+336,Stevns,ctx_ve_selvforsyning,,21.4643,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+410,Middelfart,ctx_ve_selvforsyning,,19.4771,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+727,Odder,ctx_ve_selvforsyning,,37.3428,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+161,Glostrup,ctx_ve_selvforsyning,,1.3329,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+563,Fanø,ctx_ve_selvforsyning,,21.481,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+813,Frederikshavn,ctx_ve_selvforsyning,,26.4109,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+270,Gribskov,ctx_ve_selvforsyning,,3.7852,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+751,Aarhus,ctx_ve_selvforsyning,,2.7257,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+760,Ringkøbing-Skjern,ctx_ve_selvforsyning,,184.2459,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+479,Svendborg,ctx_ve_selvforsyning,,37.8624,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+787,Thisted,ctx_ve_selvforsyning,,171.0054,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+810,Brønderslev,ctx_ve_selvforsyning,,118.036,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+791,Viborg,ctx_ve_selvforsyning,,38.1235,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+165,Albertslund,ctx_ve_selvforsyning,,1.2731,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+480,Nordfyns,ctx_ve_selvforsyning,,26.4685,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+440,Kerteminde,ctx_ve_selvforsyning,,32.6147,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+101,København,ctx_ve_selvforsyning,,2.9715,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+860,Hjørring,ctx_ve_selvforsyning,,64.9087,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+706,Syddjurs,ctx_ve_selvforsyning,,15.9636,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+430,Faaborg-Midtfyn,ctx_ve_selvforsyning,,13.5726,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+573,Varde,ctx_ve_selvforsyning,,59.4069,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+730,Randers,ctx_ve_selvforsyning,,138.4788,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+621,Kolding,ctx_ve_selvforsyning,,10.6581,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+320,Faxe,ctx_ve_selvforsyning,,114.0127,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+169,Høje-Taastrup,ctx_ve_selvforsyning,,3.3671,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+461,Odense,ctx_ve_selvforsyning,,2.1181,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+420,Assens,ctx_ve_selvforsyning,,41.6515,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+756,Ikast-Brande,ctx_ve_selvforsyning,,38.1217,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+846,Mariagerfjord,ctx_ve_selvforsyning,,68.3601,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+580,Aabenraa,ctx_ve_selvforsyning,,111.2577,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+450,Nyborg,ctx_ve_selvforsyning,,23.264,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+630,Vejle,ctx_ve_selvforsyning,,38.9069,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+540,Sønderborg,ctx_ve_selvforsyning,,25.3028,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+400,Bornholm,ctx_ve_selvforsyning,,54.7843,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+779,Skive,ctx_ve_selvforsyning,,120.7756,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+510,Haderslev,ctx_ve_selvforsyning,,22.2772,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+575,Vejen,ctx_ve_selvforsyning,,28.8719,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+820,Vesthimmerlands,ctx_ve_selvforsyning,,136.9366,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+707,Norddjurs,ctx_ve_selvforsyning,,49.5439,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+671,Struer,ctx_ve_selvforsyning,,134.7652,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+306,Odsherred,ctx_ve_selvforsyning,,5.8532,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+330,Slagelse,ctx_ve_selvforsyning,,30.5686,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+665,Lemvig,ctx_ve_selvforsyning,,299.4062,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+376,Guldborgsund,ctx_ve_selvforsyning,,57.2176,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+326,Kalundborg,ctx_ve_selvforsyning,,29.9182,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+849,Jammerbugt,ctx_ve_selvforsyning,,209.0241,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+550,Tønder,ctx_ve_selvforsyning,,78.2937,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+390,Vordingborg,ctx_ve_selvforsyning,,51.8644,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+360,Lolland,ctx_ve_selvforsyning,,345.2861,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+741,Samsø,ctx_ve_selvforsyning,,232.1606,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
+482,Langeland,ctx_ve_selvforsyning,,145.7379,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
 201,Allerød,_dim_klimapaavirkning,459.0,,,,,ecological_dimension,klimapaavirkning
 201,Allerød,_dim_luftkvalitet,154.0,,,,,ecological_dimension,luftkvalitet
 201,Allerød,_dim_forurening,74.22,,,,,ecological_dimension,forurening
@@ -7498,7 +8184,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 183,Ishøj,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 183,Ishøj,_dim_vand,315.07,,,,,ecological_dimension,vand
 183,Ishøj,_dim_arealanvendelse,250.0,,,,,ecological_dimension,arealanvendelse
-840,Rebild,_dim_klimapaavirkning,561.35,,,,,ecological_dimension,klimapaavirkning
+840,Rebild,_dim_klimapaavirkning,562.1,,,,,ecological_dimension,klimapaavirkning
 840,Rebild,_dim_luftkvalitet,137.6,,,,,ecological_dimension,luftkvalitet
 840,Rebild,_dim_forurening,113.43,,,,,ecological_dimension,forurening
 840,Rebild,_dim_naeringsstoffer,223.69,,,,,ecological_dimension,naeringsstoffer
@@ -7603,7 +8289,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 740,Silkeborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 740,Silkeborg,_dim_vand,71.53,,,,,ecological_dimension,vand
 740,Silkeborg,_dim_arealanvendelse,100.7,,,,,ecological_dimension,arealanvendelse
-607,Fredericia,_dim_klimapaavirkning,363.11,,,,,ecological_dimension,klimapaavirkning
+607,Fredericia,_dim_klimapaavirkning,367.65,,,,,ecological_dimension,klimapaavirkning
 607,Fredericia,_dim_luftkvalitet,158.4,,,,,ecological_dimension,luftkvalitet
 607,Fredericia,_dim_forurening,62.4,,,,,ecological_dimension,forurening
 607,Fredericia,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
@@ -7666,7 +8352,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 370,Næstved,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 370,Næstved,_dim_vand,40.37,,,,,ecological_dimension,vand
 370,Næstved,_dim_arealanvendelse,109.14,,,,,ecological_dimension,arealanvendelse
-851,Aalborg,_dim_klimapaavirkning,519.97,,,,,ecological_dimension,klimapaavirkning
+851,Aalborg,_dim_klimapaavirkning,521.24,,,,,ecological_dimension,klimapaavirkning
 851,Aalborg,_dim_luftkvalitet,134.2,,,,,ecological_dimension,luftkvalitet
 851,Aalborg,_dim_forurening,174.27,,,,,ecological_dimension,forurening
 851,Aalborg,_dim_naeringsstoffer,101.5,,,,,ecological_dimension,naeringsstoffer
@@ -7729,7 +8415,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 751,Aarhus,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 751,Aarhus,_dim_vand,67.55,,,,,ecological_dimension,vand
 751,Aarhus,_dim_arealanvendelse,231.69,,,,,ecological_dimension,arealanvendelse
-760,Ringkøbing-Skjern,_dim_klimapaavirkning,466.44,,,,,ecological_dimension,klimapaavirkning
+760,Ringkøbing-Skjern,_dim_klimapaavirkning,464.23,,,,,ecological_dimension,klimapaavirkning
 760,Ringkøbing-Skjern,_dim_luftkvalitet,140.6,,,,,ecological_dimension,luftkvalitet
 760,Ringkøbing-Skjern,_dim_forurening,70.81,,,,,ecological_dimension,forurening
 760,Ringkøbing-Skjern,_dim_naeringsstoffer,270.49,,,,,ecological_dimension,naeringsstoffer
@@ -7811,7 +8497,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 430,Faaborg-Midtfyn,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 430,Faaborg-Midtfyn,_dim_vand,89.15,,,,,ecological_dimension,vand
 430,Faaborg-Midtfyn,_dim_arealanvendelse,104.94,,,,,ecological_dimension,arealanvendelse
-573,Varde,_dim_klimapaavirkning,502.43,,,,,ecological_dimension,klimapaavirkning
+573,Varde,_dim_klimapaavirkning,502.52,,,,,ecological_dimension,klimapaavirkning
 573,Varde,_dim_luftkvalitet,146.0,,,,,ecological_dimension,luftkvalitet
 573,Varde,_dim_forurening,125.83,,,,,ecological_dimension,forurening
 573,Varde,_dim_naeringsstoffer,164.0,,,,,ecological_dimension,naeringsstoffer
@@ -7881,7 +8567,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 580,Aabenraa,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 580,Aabenraa,_dim_vand,119.26,,,,,ecological_dimension,vand
 580,Aabenraa,_dim_arealanvendelse,112.8,,,,,ecological_dimension,arealanvendelse
-450,Nyborg,_dim_klimapaavirkning,400.69,,,,,ecological_dimension,klimapaavirkning
+450,Nyborg,_dim_klimapaavirkning,400.25,,,,,ecological_dimension,klimapaavirkning
 450,Nyborg,_dim_luftkvalitet,156.2,,,,,ecological_dimension,luftkvalitet
 450,Nyborg,_dim_forurening,145.7,,,,,ecological_dimension,forurening
 450,Nyborg,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
@@ -7923,14 +8609,14 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 510,Haderslev,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 510,Haderslev,_dim_vand,76.77,,,,,ecological_dimension,vand
 510,Haderslev,_dim_arealanvendelse,117.0,,,,,ecological_dimension,arealanvendelse
-575,Vejen,_dim_klimapaavirkning,381.82,,,,,ecological_dimension,klimapaavirkning
+575,Vejen,_dim_klimapaavirkning,380.48,,,,,ecological_dimension,klimapaavirkning
 575,Vejen,_dim_luftkvalitet,156.6,,,,,ecological_dimension,luftkvalitet
 575,Vejen,_dim_forurening,86.12,,,,,ecological_dimension,forurening
 575,Vejen,_dim_naeringsstoffer,199.26,,,,,ecological_dimension,naeringsstoffer
 575,Vejen,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 575,Vejen,_dim_vand,221.51,,,,,ecological_dimension,vand
 575,Vejen,_dim_arealanvendelse,116.64,,,,,ecological_dimension,arealanvendelse
-820,Vesthimmerlands,_dim_klimapaavirkning,573.99,,,,,ecological_dimension,klimapaavirkning
+820,Vesthimmerlands,_dim_klimapaavirkning,574.29,,,,,ecological_dimension,klimapaavirkning
 820,Vesthimmerlands,_dim_luftkvalitet,136.2,,,,,ecological_dimension,luftkvalitet
 820,Vesthimmerlands,_dim_forurening,91.72,,,,,ecological_dimension,forurening
 820,Vesthimmerlands,_dim_naeringsstoffer,191.42,,,,,ecological_dimension,naeringsstoffer
@@ -7965,7 +8651,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 330,Slagelse,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 330,Slagelse,_dim_vand,86.87,,,,,ecological_dimension,vand
 330,Slagelse,_dim_arealanvendelse,113.53,,,,,ecological_dimension,arealanvendelse
-665,Lemvig,_dim_klimapaavirkning,584.6,,,,,ecological_dimension,klimapaavirkning
+665,Lemvig,_dim_klimapaavirkning,579.64,,,,,ecological_dimension,klimapaavirkning
 665,Lemvig,_dim_luftkvalitet,133.0,,,,,ecological_dimension,luftkvalitet
 665,Lemvig,_dim_forurening,65.57,,,,,ecological_dimension,forurening
 665,Lemvig,_dim_naeringsstoffer,346.5,,,,,ecological_dimension,naeringsstoffer
@@ -7979,7 +8665,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 376,Guldborgsund,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 376,Guldborgsund,_dim_vand,83.15,,,,,ecological_dimension,vand
 376,Guldborgsund,_dim_arealanvendelse,122.12,,,,,ecological_dimension,arealanvendelse
-326,Kalundborg,_dim_klimapaavirkning,515.88,,,,,ecological_dimension,klimapaavirkning
+326,Kalundborg,_dim_klimapaavirkning,513.46,,,,,ecological_dimension,klimapaavirkning
 326,Kalundborg,_dim_luftkvalitet,150.4,,,,,ecological_dimension,luftkvalitet
 326,Kalundborg,_dim_forurening,98.51,,,,,ecological_dimension,forurening
 326,Kalundborg,_dim_naeringsstoffer,361.79,,,,,ecological_dimension,naeringsstoffer
@@ -7993,7 +8679,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 849,Jammerbugt,_dim_biodiversitet,295.57,,,,,ecological_dimension,biodiversitet
 849,Jammerbugt,_dim_vand,122.8,,,,,ecological_dimension,vand
 849,Jammerbugt,_dim_arealanvendelse,96.53,,,,,ecological_dimension,arealanvendelse
-550,Tønder,_dim_klimapaavirkning,842.19,,,,,ecological_dimension,klimapaavirkning
+550,Tønder,_dim_klimapaavirkning,838.83,,,,,ecological_dimension,klimapaavirkning
 550,Tønder,_dim_luftkvalitet,160.2,,,,,ecological_dimension,luftkvalitet
 550,Tønder,_dim_forurening,126.84,,,,,ecological_dimension,forurening
 550,Tønder,_dim_naeringsstoffer,156.59,,,,,ecological_dimension,naeringsstoffer

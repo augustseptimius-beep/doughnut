@@ -21,7 +21,7 @@ export type {
   CategoryScore,
 } from "./shared";
 
-import { INDICATORS, ECOLOGICAL_DIMENSIONS, computeTop10Ratios, computeGroupRatios, type KommuneData } from "./shared";
+import { INDICATORS, ECOLOGICAL_DIMENSIONS, computeTop10Ratios, computeGroupRatios, type KommuneData, type TrendPost, type TrendDirection } from "./shared";
 
 let cachedData: KommuneData[] | null = null;
 
@@ -117,10 +117,104 @@ function parseFloatOrNull(s: string): number | null {
   return isNaN(n) ? null : n;
 }
 
+// ─── Trend-CSV loader ─────────────────────────────────────────────────
+// data/trend_indicators.csv (scripts/build_trends_csv.py). Samme simple
+// split(",")-parsing som master-CSV'en - felter indeholder ikke komma.
+interface TrendRow {
+  kommune_kode: string;
+  indicator_id: string;
+  periode_start: string;
+  periode_slut: string;
+  vaerdi_start: string;
+  vaerdi_slut: string;
+  pct: string;
+  retning: string;
+  n_aar: string;
+  kilde: string;
+  noegle_indikator: string;
+}
+
+function parseTrendsCsv(): TrendRow[] {
+  const csvPath = path.join(process.cwd(), "..", "data", "trend_indicators.csv");
+  if (!fs.existsSync(csvPath)) return [];
+  const raw = fs.readFileSync(csvPath, "utf-8");
+  const lines = raw.trim().split("\n");
+  if (lines.length < 2) return [];
+
+  const headers = lines[0].split(",");
+  const rows: TrendRow[] = [];
+  for (let i = 1; i < lines.length; i++) {
+    const cols = lines[i].split(",");
+    const obj: Record<string, string> = {};
+    headers.forEach((h, idx) => {
+      obj[h.trim()] = (cols[idx] || "").trim();
+    });
+    rows.push(obj as unknown as TrendRow);
+  }
+  return rows;
+}
+
+// Økologiske sub-indikatorer nøgles i UI'et på rawKey (fx "eco_klima_raw"),
+// ikke på master indicator_id (fx "klimapaavirkning"). Byg den omvendte
+// mapping af ECO_RAW_KEY_MAP så trends kan slås op med samme nøgle.
+const RAW_KEY_BY_INDICATOR_ID: Record<string, string> = Object.fromEntries(
+  Object.entries(ECO_RAW_KEY_MAP).map(([indicatorId, keys]) => [indicatorId, keys.rawKey])
+);
+
+// Master indicator_id → menneskeligt navn, så tooltip på en dimensionspil kan
+// sige "bestemt af Fosforudledning" i stedet for "naer_phosphorus".
+const LABEL_BY_INDICATOR_ID: Record<string, string> = (() => {
+  const m: Record<string, string> = {};
+  for (const ind of INDICATORS) m[ind.id] = ind.name;
+  const labelByRawKey: Record<string, string> = {};
+  for (const dim of ECOLOGICAL_DIMENSIONS) {
+    for (const sub of dim.subIndicators ?? []) labelByRawKey[sub.rawKey] = sub.label;
+  }
+  for (const [indicatorId, keys] of Object.entries(ECO_RAW_KEY_MAP)) {
+    const label = labelByRawKey[keys.rawKey];
+    if (label) m[indicatorId] = label;
+  }
+  return m;
+})();
+
+function loadTrendsByKommune(): Map<string, Record<string, TrendPost>> {
+  const rows = parseTrendsCsv();
+  const byKommune = new Map<string, Record<string, TrendPost>>();
+
+  for (const r of rows) {
+    if (!r.retning) continue;
+
+    const noegle = r.noegle_indikator || "";
+    const post: TrendPost = {
+      retning: r.retning as TrendDirection,
+      pct: parseFloatOrNull(r.pct),
+      periodeStart: r.periode_start,
+      periodeSlut: r.periode_slut,
+      // _dim_*-aggregater har bevidst tomme værdier (ingen fælles enhed
+      // på tværs af sub-indikatorer) - derfor null, ikke frasortering.
+      vaerdiStart: parseFloatOrNull(r.vaerdi_start),
+      vaerdiSlut: parseFloatOrNull(r.vaerdi_slut),
+      nAar: parseInt(r.n_aar, 10) || 0,
+      kilde: r.kilde,
+      noegleIndikator: LABEL_BY_INDICATOR_ID[noegle] ?? noegle,
+    };
+
+    if (!byKommune.has(r.kommune_kode)) byKommune.set(r.kommune_kode, {});
+    const trends = byKommune.get(r.kommune_kode)!;
+    trends[r.indicator_id] = post;
+
+    const rawKey = RAW_KEY_BY_INDICATOR_ID[r.indicator_id];
+    if (rawKey) trends[rawKey] = post;
+  }
+
+  return byKommune;
+}
+
 export function loadData(): KommuneData[] {
   if (cachedData) return cachedData;
 
   const rows = parseMasterCsv();
+  const trendsByKommune = loadTrendsByKommune();
 
   // Group rows by kommune_kode
   const byKommune = new Map<string, { navn: string; rows: MasterRow[] }>();
@@ -199,6 +293,7 @@ export function loadData(): KommuneData[] {
       group_ratios: {},  // udfyldes af computeGroupRatios nedenfor
       eco_ratios,
       rawValues,
+      trends: trendsByKommune.get(kode) ?? {},
       // social_avg og overall_avg er pre-computed i den gamle CSV men
       // bruges ikke længere af UI'et (det beregnes via computeCategoryScores).
       // Vi sætter dem til null - hvis en gammel side stadig læser dem, vil de
