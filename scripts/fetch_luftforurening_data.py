@@ -41,15 +41,25 @@ from shapely.geometry import Point
 
 WFS_BASE   = "https://arld-extgeo.miljoeportal.dk/geoserver/wfs"
 DAWA_URL   = "https://api.dataforsyningen.dk/kommuner?format=geojson"
-OUTPUT_FIL = "../data/luftforurening_scores.csv"
+# Absolut sti, så scriptet kan køres fra projektets rodmappe som alle de andre
+# (CLAUDE.md's driftsregel). Med den gamle relative sti "../data/..." havnede
+# CSV'en et forkert sted hvis man ikke stod i scripts/.
+from pathlib import Path as _Path
+OUTPUT_FIL = str(_Path(__file__).resolve().parent.parent / "data" / "luftforurening_scores.csv")
 
 # WHO 2021 Annual Mean Guidelines (årsgennemsnit)
 WHO_NO2  = 10.0  # µg/m³
 WHO_PM25 =  5.0  # µg/m³
 
 # WFS lag-navne og property-nøgler
-LAG_NO2  = "luft:ID6_Luft_Koncentration_2023_NO2"
-LAG_PM25 = "luft:ID7_Luft_Koncentration_2023_PM2_5"
+# VIGTIGT: Miljøportalen udstiller kun ÉT år ad gangen og omdøber laget når et
+# nyt årgang lægges op (2023-lagene findes ikke længere). Fejler scriptet med
+# "layer not found", så tjek de aktuelle navne i GetCapabilities:
+#   https://arld-extgeo.miljoeportal.dk/geoserver/wfs?service=WFS&version=2.0.0&request=GetCapabilities
+# og opdatér årstallet her + data_year for luftkvalitet_* i build_master_csv.py.
+# Derfor findes der heller ingen tidsserie til retningspile på luftkvalitet.
+LAG_NO2  = "luft:ID6_Luft_Koncentration_2024_NO2"
+LAG_PM25 = "luft:ID7_Luft_Koncentration_2024_PM2_5"
 
 # ── Hjælpefunktioner ──────────────────────────────────────────────────────────
 

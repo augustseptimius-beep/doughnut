@@ -140,8 +140,8 @@ ECO_SUB_INDICATORS = [
     {"id": "klimapaavirkning", "csv": "climate_scores.csv", "ratio_col": "climate_territorial_ratio", "raw_col": "co2e_per_capita", "unit": "ton CO₂e/person", "data_year": "2023", "source": "Klimaregnskabet.dk", "category": "ecological", "dimension": "klimapaavirkning", "inverse_ratio": False, "is_dimension_score": False},
 
     # === Luftkvalitet (worst-of NO2 + PM2.5) ===
-    {"id": "luftkvalitet_no2", "csv": "luftforurening_scores.csv", "ratio_col": "no2_ratio", "raw_col": "no2_ug_m3", "unit": "µg/m³", "data_year": "2023", "source": "DCE/AU UBM via Miljøportal WFS", "category": "ecological", "dimension": "luftkvalitet", "inverse_ratio": False, "is_dimension_score": False},
-    {"id": "luftkvalitet_pm25", "csv": "luftforurening_scores.csv", "ratio_col": "pm25_ratio", "raw_col": "pm25_ug_m3", "unit": "µg/m³", "data_year": "2023", "source": "DCE/AU UBM via Miljøportal WFS", "category": "ecological", "dimension": "luftkvalitet", "inverse_ratio": False, "is_dimension_score": False},
+    {"id": "luftkvalitet_no2", "csv": "luftforurening_scores.csv", "ratio_col": "no2_ratio", "raw_col": "no2_ug_m3", "unit": "µg/m³", "data_year": "2024", "source": "DCE/AU UBM via Miljøportal WFS", "category": "ecological", "dimension": "luftkvalitet", "inverse_ratio": False, "is_dimension_score": False},
+    {"id": "luftkvalitet_pm25", "csv": "luftforurening_scores.csv", "ratio_col": "pm25_ratio", "raw_col": "pm25_ug_m3", "unit": "µg/m³", "data_year": "2024", "source": "DCE/AU UBM via Miljøportal WFS", "category": "ecological", "dimension": "luftkvalitet", "inverse_ratio": False, "is_dimension_score": False},
 
     # === Cirkularitet-indikatorer (flyttet til Forurening) ===
     # Genanvendelse: speciel logik - ratio = (65% EU-mål / faktisk) * 100 (high=undershoot)

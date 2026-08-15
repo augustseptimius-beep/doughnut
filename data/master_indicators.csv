@@ -4976,202 +4976,202 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,klimapaavirkning,240.21,7.206,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
 741,Samsø,klimapaavirkning,272.97,8.189,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
 482,Langeland,klimapaavirkning,314.93,9.448,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning
-201,Allerød,luftkvalitet_no2,86.6,8.66,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-175,Rødovre,luftkvalitet_no2,100.9,10.09,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-153,Brøndby,luftkvalitet_no2,95.8,9.58,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-155,Dragør,luftkvalitet_no2,88.6,8.86,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-190,Furesø,luftkvalitet_no2,91.4,9.14,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-230,Rudersdal,luftkvalitet_no2,93.6,9.36,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-151,Ballerup,luftkvalitet_no2,92.2,9.22,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-167,Hvidovre,luftkvalitet_no2,96.4,9.64,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-269,Solrød,luftkvalitet_no2,77.9,7.79,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-746,Skanderborg,luftkvalitet_no2,56.5,5.65,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-157,Gentofte,luftkvalitet_no2,104.6,10.46,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-240,Egedal,luftkvalitet_no2,87.5,8.75,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-265,Roskilde,luftkvalitet_no2,80.4,8.04,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-223,Hørsholm,luftkvalitet_no2,82.1,8.21,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-185,Tårnby,luftkvalitet_no2,95.4,9.54,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-163,Herlev,luftkvalitet_no2,99.0,9.9,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-173,Lyngby-Taarbæk,luftkvalitet_no2,103.6,10.36,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-350,Lejre,luftkvalitet_no2,69.2,6.92,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-210,Fredensborg,luftkvalitet_no2,80.2,8.02,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-710,Favrskov,luftkvalitet_no2,52.6,5.26,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-530,Billund,luftkvalitet_no2,46.8,4.68,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-183,Ishøj,luftkvalitet_no2,88.7,8.87,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-840,Rebild,luftkvalitet_no2,47.4,4.74,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-147,Frederiksberg,luftkvalitet_no2,103.2,10.32,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-259,Køge,luftkvalitet_no2,73.6,7.36,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-253,Greve,luftkvalitet_no2,86.5,8.65,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-187,Vallensbæk,luftkvalitet_no2,91.3,9.13,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-159,Gladsaxe,luftkvalitet_no2,105.3,10.53,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-661,Holstebro,luftkvalitet_no2,39.4,3.94,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-217,Helsingør,luftkvalitet_no2,78.6,7.86,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-250,Frederikssund,luftkvalitet_no2,69.7,6.97,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-657,Herning,luftkvalitet_no2,42.4,4.24,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-492,Ærø,luftkvalitet_no2,64.6,6.46,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-561,Esbjerg,luftkvalitet_no2,51.2,5.12,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-773,Morsø,luftkvalitet_no2,37.3,3.73,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-219,Hillerød,luftkvalitet_no2,79.7,7.97,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-740,Silkeborg,luftkvalitet_no2,45.0,4.5,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-607,Fredericia,luftkvalitet_no2,69.7,6.97,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-316,Holbæk,luftkvalitet_no2,61.8,6.18,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-340,Sorø,luftkvalitet_no2,62.8,6.28,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-260,Halsnæs,luftkvalitet_no2,61.6,6.16,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-766,Hedensted,luftkvalitet_no2,56.6,5.66,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-825,Læsø,luftkvalitet_no2,45.3,4.53,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-615,Horsens,luftkvalitet_no2,54.5,5.45,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-329,Ringsted,luftkvalitet_no2,66.1,6.61,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-370,Næstved,luftkvalitet_no2,63.3,6.33,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-851,Aalborg,luftkvalitet_no2,55.4,5.54,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-336,Stevns,luftkvalitet_no2,66.7,6.67,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-410,Middelfart,luftkvalitet_no2,62.0,6.2,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-727,Odder,luftkvalitet_no2,57.2,5.72,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-161,Glostrup,luftkvalitet_no2,94.6,9.46,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-563,Fanø,luftkvalitet_no2,44.7,4.47,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-813,Frederikshavn,luftkvalitet_no2,49.7,4.97,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-270,Gribskov,luftkvalitet_no2,71.5,7.15,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-751,Aarhus,luftkvalitet_no2,65.3,6.53,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-760,Ringkøbing-Skjern,luftkvalitet_no2,39.4,3.94,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-479,Svendborg,luftkvalitet_no2,72.5,7.25,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-787,Thisted,luftkvalitet_no2,37.4,3.74,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-810,Brønderslev,luftkvalitet_no2,51.6,5.16,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-791,Viborg,luftkvalitet_no2,42.1,4.21,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-165,Albertslund,luftkvalitet_no2,87.4,8.74,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-480,Nordfyns,luftkvalitet_no2,62.3,6.23,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-440,Kerteminde,luftkvalitet_no2,69.2,6.92,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-101,København,luftkvalitet_no2,109.2,10.92,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-860,Hjørring,luftkvalitet_no2,49.5,4.95,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-706,Syddjurs,luftkvalitet_no2,59.0,5.9,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-430,Faaborg-Midtfyn,luftkvalitet_no2,65.1,6.51,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-573,Varde,luftkvalitet_no2,44.0,4.4,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-730,Randers,luftkvalitet_no2,47.8,4.78,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-621,Kolding,luftkvalitet_no2,58.0,5.8,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-320,Faxe,luftkvalitet_no2,64.4,6.44,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-169,Høje-Taastrup,luftkvalitet_no2,87.5,8.75,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-461,Odense,luftkvalitet_no2,68.7,6.87,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-420,Assens,luftkvalitet_no2,59.9,5.99,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-756,Ikast-Brande,luftkvalitet_no2,44.0,4.4,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-846,Mariagerfjord,luftkvalitet_no2,44.6,4.46,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-580,Aabenraa,luftkvalitet_no2,59.5,5.95,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-450,Nyborg,luftkvalitet_no2,69.5,6.95,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-630,Vejle,luftkvalitet_no2,52.7,5.27,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-540,Sønderborg,luftkvalitet_no2,65.4,6.54,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-400,Bornholm,luftkvalitet_no2,48.7,4.87,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-779,Skive,luftkvalitet_no2,39.1,3.91,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-510,Haderslev,luftkvalitet_no2,55.5,5.55,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-575,Vejen,luftkvalitet_no2,52.2,5.22,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-820,Vesthimmerlands,luftkvalitet_no2,41.4,4.14,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-707,Norddjurs,luftkvalitet_no2,49.0,4.9,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-671,Struer,luftkvalitet_no2,39.3,3.93,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-306,Odsherred,luftkvalitet_no2,58.3,5.83,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-330,Slagelse,luftkvalitet_no2,69.5,6.95,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-665,Lemvig,luftkvalitet_no2,36.4,3.64,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-376,Guldborgsund,luftkvalitet_no2,73.5,7.35,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-326,Kalundborg,luftkvalitet_no2,66.2,6.62,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-849,Jammerbugt,luftkvalitet_no2,42.2,4.22,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-550,Tønder,luftkvalitet_no2,51.5,5.15,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-390,Vordingborg,luftkvalitet_no2,63.5,6.35,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-360,Lolland,luftkvalitet_no2,77.6,7.76,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-741,Samsø,luftkvalitet_no2,63.1,6.31,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-482,Langeland,luftkvalitet_no2,77.8,7.78,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-201,Allerød,luftkvalitet_pm25,154.0,7.7,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-175,Rødovre,luftkvalitet_pm25,153.4,7.67,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-153,Brøndby,luftkvalitet_pm25,151.0,7.55,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-155,Dragør,luftkvalitet_pm25,147.2,7.36,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-190,Furesø,luftkvalitet_pm25,154.2,7.71,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-230,Rudersdal,luftkvalitet_pm25,153.0,7.65,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-151,Ballerup,luftkvalitet_pm25,152.8,7.64,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-167,Hvidovre,luftkvalitet_pm25,151.4,7.57,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-269,Solrød,luftkvalitet_pm25,156.0,7.8,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-746,Skanderborg,luftkvalitet_pm25,145.6,7.28,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-157,Gentofte,luftkvalitet_pm25,151.2,7.56,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-240,Egedal,luftkvalitet_pm25,156.8,7.84,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-265,Roskilde,luftkvalitet_pm25,158.0,7.9,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-223,Hørsholm,luftkvalitet_pm25,146.6,7.33,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-185,Tårnby,luftkvalitet_pm25,146.8,7.34,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-163,Herlev,luftkvalitet_pm25,154.4,7.72,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-173,Lyngby-Taarbæk,luftkvalitet_pm25,155.0,7.75,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-350,Lejre,luftkvalitet_pm25,156.4,7.82,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-210,Fredensborg,luftkvalitet_pm25,145.8,7.29,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-710,Favrskov,luftkvalitet_pm25,141.8,7.09,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-530,Billund,luftkvalitet_pm25,147.4,7.37,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-183,Ishøj,luftkvalitet_pm25,152.2,7.61,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-840,Rebild,luftkvalitet_pm25,137.6,6.88,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-147,Frederiksberg,luftkvalitet_pm25,155.2,7.76,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-259,Køge,luftkvalitet_pm25,156.6,7.83,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-253,Greve,luftkvalitet_pm25,155.0,7.75,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-187,Vallensbæk,luftkvalitet_pm25,151.0,7.55,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-159,Gladsaxe,luftkvalitet_pm25,155.4,7.77,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-661,Holstebro,luftkvalitet_pm25,136.6,6.83,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-217,Helsingør,luftkvalitet_pm25,141.0,7.05,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-250,Frederikssund,luftkvalitet_pm25,153.4,7.67,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-657,Herning,luftkvalitet_pm25,140.0,7.0,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-492,Ærø,luftkvalitet_pm25,156.2,7.81,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-561,Esbjerg,luftkvalitet_pm25,154.2,7.71,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-773,Morsø,luftkvalitet_pm25,132.6,6.63,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-219,Hillerød,luftkvalitet_pm25,150.2,7.51,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-740,Silkeborg,luftkvalitet_pm25,141.0,7.05,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-607,Fredericia,luftkvalitet_pm25,158.4,7.92,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-316,Holbæk,luftkvalitet_pm25,153.6,7.68,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-340,Sorø,luftkvalitet_pm25,155.2,7.76,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-260,Halsnæs,luftkvalitet_pm25,143.6,7.18,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-766,Hedensted,luftkvalitet_pm25,151.0,7.55,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-825,Læsø,luftkvalitet_pm25,115.4,5.77,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-615,Horsens,luftkvalitet_pm25,148.2,7.41,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-329,Ringsted,luftkvalitet_pm25,157.4,7.87,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-370,Næstved,luftkvalitet_pm25,152.6,7.63,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-851,Aalborg,luftkvalitet_pm25,134.2,6.71,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-336,Stevns,luftkvalitet_pm25,151.8,7.59,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-410,Middelfart,luftkvalitet_pm25,157.8,7.89,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-727,Odder,luftkvalitet_pm25,145.2,7.26,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-161,Glostrup,luftkvalitet_pm25,150.4,7.52,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-563,Fanø,luftkvalitet_pm25,149.0,7.45,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-813,Frederikshavn,luftkvalitet_pm25,123.2,6.16,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-270,Gribskov,luftkvalitet_pm25,143.8,7.19,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-751,Aarhus,luftkvalitet_pm25,143.6,7.18,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-760,Ringkøbing-Skjern,luftkvalitet_pm25,140.6,7.03,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-479,Svendborg,luftkvalitet_pm25,157.6,7.88,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-787,Thisted,luftkvalitet_pm25,126.2,6.31,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-810,Brønderslev,luftkvalitet_pm25,132.4,6.62,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-791,Viborg,luftkvalitet_pm25,138.0,6.9,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-165,Albertslund,luftkvalitet_pm25,148.6,7.43,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-480,Nordfyns,luftkvalitet_pm25,154.8,7.74,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-440,Kerteminde,luftkvalitet_pm25,153.0,7.65,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-101,København,luftkvalitet_pm25,153.4,7.67,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-860,Hjørring,luftkvalitet_pm25,126.0,6.3,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-706,Syddjurs,luftkvalitet_pm25,136.0,6.8,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-430,Faaborg-Midtfyn,luftkvalitet_pm25,158.6,7.93,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-573,Varde,luftkvalitet_pm25,146.0,7.3,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-730,Randers,luftkvalitet_pm25,138.4,6.92,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-621,Kolding,luftkvalitet_pm25,157.8,7.89,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-320,Faxe,luftkvalitet_pm25,152.8,7.64,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-169,Høje-Taastrup,luftkvalitet_pm25,154.8,7.74,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-461,Odense,luftkvalitet_pm25,157.4,7.87,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-420,Assens,luftkvalitet_pm25,158.6,7.93,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-756,Ikast-Brande,luftkvalitet_pm25,143.0,7.15,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-846,Mariagerfjord,luftkvalitet_pm25,137.4,6.87,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-580,Aabenraa,luftkvalitet_pm25,163.2,8.16,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-450,Nyborg,luftkvalitet_pm25,156.2,7.81,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-630,Vejle,luftkvalitet_pm25,151.4,7.57,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-540,Sønderborg,luftkvalitet_pm25,162.4,8.12,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-400,Bornholm,luftkvalitet_pm25,139.4,6.97,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-779,Skive,luftkvalitet_pm25,136.4,6.82,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-510,Haderslev,luftkvalitet_pm25,160.2,8.01,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-575,Vejen,luftkvalitet_pm25,156.6,7.83,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-820,Vesthimmerlands,luftkvalitet_pm25,136.2,6.81,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-707,Norddjurs,luftkvalitet_pm25,132.8,6.64,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-671,Struer,luftkvalitet_pm25,135.2,6.76,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-306,Odsherred,luftkvalitet_pm25,145.8,7.29,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-330,Slagelse,luftkvalitet_pm25,153.0,7.65,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-665,Lemvig,luftkvalitet_pm25,133.0,6.65,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-376,Guldborgsund,luftkvalitet_pm25,151.0,7.55,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-326,Kalundborg,luftkvalitet_pm25,150.4,7.52,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-849,Jammerbugt,luftkvalitet_pm25,128.8,6.44,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-550,Tønder,luftkvalitet_pm25,160.2,8.01,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-390,Vordingborg,luftkvalitet_pm25,148.0,7.4,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-360,Lolland,luftkvalitet_pm25,151.8,7.59,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-741,Samsø,luftkvalitet_pm25,140.4,7.02,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
-482,Langeland,luftkvalitet_pm25,154.2,7.71,µg/m³,2023,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+201,Allerød,luftkvalitet_no2,58.3,5.83,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+175,Rødovre,luftkvalitet_no2,78.7,7.87,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+153,Brøndby,luftkvalitet_no2,74.8,7.48,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+155,Dragør,luftkvalitet_no2,74.6,7.46,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+190,Furesø,luftkvalitet_no2,61.1,6.11,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+230,Rudersdal,luftkvalitet_no2,64.0,6.4,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+151,Ballerup,luftkvalitet_no2,65.9,6.59,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+167,Hvidovre,luftkvalitet_no2,76.0,7.6,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+269,Solrød,luftkvalitet_no2,61.1,6.11,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+746,Skanderborg,luftkvalitet_no2,43.4,4.34,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+157,Gentofte,luftkvalitet_no2,79.6,7.96,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+240,Egedal,luftkvalitet_no2,57.1,5.71,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+265,Roskilde,luftkvalitet_no2,58.5,5.85,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+223,Hørsholm,luftkvalitet_no2,59.4,5.94,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+185,Tårnby,luftkvalitet_no2,77.1,7.71,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+163,Herlev,luftkvalitet_no2,73.4,7.34,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+173,Lyngby-Taarbæk,luftkvalitet_no2,72.5,7.25,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+350,Lejre,luftkvalitet_no2,52.3,5.23,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+210,Fredensborg,luftkvalitet_no2,56.5,5.65,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+710,Favrskov,luftkvalitet_no2,40.8,4.08,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+530,Billund,luftkvalitet_no2,36.6,3.66,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+183,Ishøj,luftkvalitet_no2,67.2,6.72,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+840,Rebild,luftkvalitet_no2,36.1,3.61,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+147,Frederiksberg,luftkvalitet_no2,79.4,7.94,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+259,Køge,luftkvalitet_no2,56.0,5.6,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+253,Greve,luftkvalitet_no2,64.8,6.48,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+187,Vallensbæk,luftkvalitet_no2,71.1,7.11,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+159,Gladsaxe,luftkvalitet_no2,80.0,8.0,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+661,Holstebro,luftkvalitet_no2,31.2,3.12,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+217,Helsingør,luftkvalitet_no2,58.9,5.89,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+250,Frederikssund,luftkvalitet_no2,50.3,5.03,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+657,Herning,luftkvalitet_no2,33.3,3.33,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+492,Ærø,luftkvalitet_no2,52.9,5.29,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+561,Esbjerg,luftkvalitet_no2,39.1,3.91,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+773,Morsø,luftkvalitet_no2,30.8,3.08,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+219,Hillerød,luftkvalitet_no2,58.7,5.87,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+740,Silkeborg,luftkvalitet_no2,36.1,3.61,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+607,Fredericia,luftkvalitet_no2,51.4,5.14,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+316,Holbæk,luftkvalitet_no2,47.5,4.75,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+340,Sorø,luftkvalitet_no2,47.9,4.79,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+260,Halsnæs,luftkvalitet_no2,48.2,4.82,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+766,Hedensted,luftkvalitet_no2,43.1,4.31,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+825,Læsø,luftkvalitet_no2,37.3,3.73,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+615,Horsens,luftkvalitet_no2,42.5,4.25,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+329,Ringsted,luftkvalitet_no2,49.6,4.96,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+370,Næstved,luftkvalitet_no2,48.9,4.89,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+851,Aalborg,luftkvalitet_no2,38.0,3.8,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+336,Stevns,luftkvalitet_no2,53.3,5.33,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+410,Middelfart,luftkvalitet_no2,45.7,4.57,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+727,Odder,luftkvalitet_no2,43.6,4.36,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+161,Glostrup,luftkvalitet_no2,73.5,7.35,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+563,Fanø,luftkvalitet_no2,34.9,3.49,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+813,Frederikshavn,luftkvalitet_no2,39.8,3.98,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+270,Gribskov,luftkvalitet_no2,54.8,5.48,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+751,Aarhus,luftkvalitet_no2,48.7,4.87,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+760,Ringkøbing-Skjern,luftkvalitet_no2,31.9,3.19,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+479,Svendborg,luftkvalitet_no2,52.6,5.26,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+787,Thisted,luftkvalitet_no2,29.9,2.99,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+810,Brønderslev,luftkvalitet_no2,37.4,3.74,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+791,Viborg,luftkvalitet_no2,34.1,3.41,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+165,Albertslund,luftkvalitet_no2,66.8,6.68,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+480,Nordfyns,luftkvalitet_no2,46.0,4.6,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+440,Kerteminde,luftkvalitet_no2,49.9,4.99,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+101,København,luftkvalitet_no2,83.8,8.38,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+860,Hjørring,luftkvalitet_no2,38.7,3.87,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+706,Syddjurs,luftkvalitet_no2,44.2,4.42,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+430,Faaborg-Midtfyn,luftkvalitet_no2,48.7,4.87,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+573,Varde,luftkvalitet_no2,34.1,3.41,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+730,Randers,luftkvalitet_no2,38.5,3.85,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+621,Kolding,luftkvalitet_no2,42.8,4.28,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+320,Faxe,luftkvalitet_no2,50.7,5.07,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+169,Høje-Taastrup,luftkvalitet_no2,63.6,6.36,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+461,Odense,luftkvalitet_no2,52.2,5.22,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+420,Assens,luftkvalitet_no2,45.6,4.56,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+756,Ikast-Brande,luftkvalitet_no2,35.0,3.5,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+846,Mariagerfjord,luftkvalitet_no2,35.8,3.58,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+580,Aabenraa,luftkvalitet_no2,47.9,4.79,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+450,Nyborg,luftkvalitet_no2,50.6,5.06,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+630,Vejle,luftkvalitet_no2,40.0,4.0,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+540,Sønderborg,luftkvalitet_no2,51.9,5.19,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+400,Bornholm,luftkvalitet_no2,38.4,3.84,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+779,Skive,luftkvalitet_no2,32.2,3.22,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+510,Haderslev,luftkvalitet_no2,42.9,4.29,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+575,Vejen,luftkvalitet_no2,39.4,3.94,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+820,Vesthimmerlands,luftkvalitet_no2,33.6,3.36,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+707,Norddjurs,luftkvalitet_no2,40.8,4.08,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+671,Struer,luftkvalitet_no2,31.6,3.16,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+306,Odsherred,luftkvalitet_no2,44.9,4.49,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+330,Slagelse,luftkvalitet_no2,51.2,5.12,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+665,Lemvig,luftkvalitet_no2,29.8,2.98,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+376,Guldborgsund,luftkvalitet_no2,59.6,5.96,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+326,Kalundborg,luftkvalitet_no2,49.0,4.9,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+849,Jammerbugt,luftkvalitet_no2,33.3,3.33,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+550,Tønder,luftkvalitet_no2,41.5,4.15,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+390,Vordingborg,luftkvalitet_no2,51.7,5.17,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+360,Lolland,luftkvalitet_no2,59.5,5.95,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+741,Samsø,luftkvalitet_no2,46.1,4.61,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+482,Langeland,luftkvalitet_no2,58.5,5.85,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+201,Allerød,luftkvalitet_pm25,135.8,6.79,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+175,Rødovre,luftkvalitet_pm25,141.2,7.06,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+153,Brøndby,luftkvalitet_pm25,138.8,6.94,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+155,Dragør,luftkvalitet_pm25,135.6,6.78,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+190,Furesø,luftkvalitet_pm25,137.4,6.87,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+230,Rudersdal,luftkvalitet_pm25,136.4,6.82,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+151,Ballerup,luftkvalitet_pm25,138.8,6.94,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+167,Hvidovre,luftkvalitet_pm25,138.6,6.93,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+269,Solrød,luftkvalitet_pm25,141.4,7.07,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+746,Skanderborg,luftkvalitet_pm25,136.4,6.82,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+157,Gentofte,luftkvalitet_pm25,137.6,6.88,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+240,Egedal,luftkvalitet_pm25,138.2,6.91,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+265,Roskilde,luftkvalitet_pm25,141.0,7.05,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+223,Hørsholm,luftkvalitet_pm25,133.4,6.67,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+185,Tårnby,luftkvalitet_pm25,134.6,6.73,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+163,Herlev,luftkvalitet_pm25,140.4,7.02,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+173,Lyngby-Taarbæk,luftkvalitet_pm25,138.0,6.9,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+350,Lejre,luftkvalitet_pm25,141.0,7.05,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+210,Fredensborg,luftkvalitet_pm25,132.4,6.62,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+710,Favrskov,luftkvalitet_pm25,133.2,6.66,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+530,Billund,luftkvalitet_pm25,138.6,6.93,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+183,Ishøj,luftkvalitet_pm25,138.8,6.94,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+840,Rebild,luftkvalitet_pm25,128.6,6.43,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+147,Frederiksberg,luftkvalitet_pm25,141.6,7.08,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+259,Køge,luftkvalitet_pm25,141.6,7.08,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+253,Greve,luftkvalitet_pm25,139.8,6.99,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+187,Vallensbæk,luftkvalitet_pm25,138.8,6.94,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+159,Gladsaxe,luftkvalitet_pm25,141.2,7.06,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+661,Holstebro,luftkvalitet_pm25,131.6,6.58,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+217,Helsingør,luftkvalitet_pm25,130.8,6.54,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+250,Frederikssund,luftkvalitet_pm25,137.4,6.87,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+657,Herning,luftkvalitet_pm25,133.8,6.69,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+492,Ærø,luftkvalitet_pm25,145.8,7.29,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+561,Esbjerg,luftkvalitet_pm25,143.8,7.19,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+773,Morsø,luftkvalitet_pm25,127.8,6.39,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+219,Hillerød,luftkvalitet_pm25,134.6,6.73,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+740,Silkeborg,luftkvalitet_pm25,133.8,6.69,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+607,Fredericia,luftkvalitet_pm25,145.0,7.25,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+316,Holbæk,luftkvalitet_pm25,140.2,7.01,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+340,Sorø,luftkvalitet_pm25,142.0,7.1,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+260,Halsnæs,luftkvalitet_pm25,133.0,6.65,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+766,Hedensted,luftkvalitet_pm25,139.8,6.99,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+825,Læsø,luftkvalitet_pm25,112.2,5.61,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+615,Horsens,luftkvalitet_pm25,138.4,6.92,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+329,Ringsted,luftkvalitet_pm25,142.6,7.13,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+370,Næstved,luftkvalitet_pm25,142.6,7.13,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+851,Aalborg,luftkvalitet_pm25,125.0,6.25,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+336,Stevns,luftkvalitet_pm25,140.0,7.0,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+410,Middelfart,luftkvalitet_pm25,144.4,7.22,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+727,Odder,luftkvalitet_pm25,135.4,6.77,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+161,Glostrup,luftkvalitet_pm25,138.8,6.94,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+563,Fanø,luftkvalitet_pm25,140.6,7.03,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+813,Frederikshavn,luftkvalitet_pm25,116.0,5.8,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+270,Gribskov,luftkvalitet_pm25,132.2,6.61,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+751,Aarhus,luftkvalitet_pm25,134.6,6.73,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+760,Ringkøbing-Skjern,luftkvalitet_pm25,135.6,6.78,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+479,Svendborg,luftkvalitet_pm25,145.6,7.28,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+787,Thisted,luftkvalitet_pm25,123.4,6.17,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+810,Brønderslev,luftkvalitet_pm25,123.0,6.15,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+791,Viborg,luftkvalitet_pm25,131.6,6.58,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+165,Albertslund,luftkvalitet_pm25,137.4,6.87,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+480,Nordfyns,luftkvalitet_pm25,142.2,7.11,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+440,Kerteminde,luftkvalitet_pm25,141.6,7.08,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+101,København,luftkvalitet_pm25,140.0,7.0,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+860,Hjørring,luftkvalitet_pm25,119.6,5.98,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+706,Syddjurs,luftkvalitet_pm25,128.4,6.42,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+430,Faaborg-Midtfyn,luftkvalitet_pm25,145.4,7.27,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+573,Varde,luftkvalitet_pm25,139.0,6.95,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+730,Randers,luftkvalitet_pm25,131.0,6.55,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+621,Kolding,luftkvalitet_pm25,143.8,7.19,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+320,Faxe,luftkvalitet_pm25,141.4,7.07,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+169,Høje-Taastrup,luftkvalitet_pm25,139.4,6.97,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+461,Odense,luftkvalitet_pm25,144.2,7.21,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+420,Assens,luftkvalitet_pm25,145.4,7.27,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+756,Ikast-Brande,luftkvalitet_pm25,135.2,6.76,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+846,Mariagerfjord,luftkvalitet_pm25,129.4,6.47,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+580,Aabenraa,luftkvalitet_pm25,150.6,7.53,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+450,Nyborg,luftkvalitet_pm25,143.8,7.19,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+630,Vejle,luftkvalitet_pm25,140.4,7.02,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+540,Sønderborg,luftkvalitet_pm25,149.6,7.48,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+400,Bornholm,luftkvalitet_pm25,135.2,6.76,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+779,Skive,luftkvalitet_pm25,130.2,6.51,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+510,Haderslev,luftkvalitet_pm25,146.2,7.31,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+575,Vejen,luftkvalitet_pm25,144.0,7.2,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+820,Vesthimmerlands,luftkvalitet_pm25,129.2,6.46,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+707,Norddjurs,luftkvalitet_pm25,126.8,6.34,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+671,Struer,luftkvalitet_pm25,130.8,6.54,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+306,Odsherred,luftkvalitet_pm25,135.4,6.77,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+330,Slagelse,luftkvalitet_pm25,142.6,7.13,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+665,Lemvig,luftkvalitet_pm25,130.2,6.51,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+376,Guldborgsund,luftkvalitet_pm25,144.4,7.22,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+326,Kalundborg,luftkvalitet_pm25,140.0,7.0,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+849,Jammerbugt,luftkvalitet_pm25,122.8,6.14,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+550,Tønder,luftkvalitet_pm25,149.0,7.45,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+390,Vordingborg,luftkvalitet_pm25,141.2,7.06,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+360,Lolland,luftkvalitet_pm25,145.0,7.25,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+741,Samsø,luftkvalitet_pm25,133.0,6.65,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
+482,Langeland,luftkvalitet_pm25,144.4,7.22,µg/m³,2024,DCE/AU UBM via Miljøportal WFS,ecological,luftkvalitet
 201,Allerød,cirkularitet_recycling,86.67,75.0,%,2023,DST LABY25,ecological,forurening
 175,Rødovre,cirkularitet_recycling,110.17,59.0,%,2023,DST LABY25,ecological,forurening
 153,Brøndby,cirkularitet_recycling,108.33,60.0,%,2023,DST LABY25,ecological,forurening
@@ -8035,680 +8035,680 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 741,Samsø,ctx_ve_selvforsyning,,232.1606,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
 482,Langeland,ctx_ve_selvforsyning,,145.7379,%,2023,Klimaregnskabet.dk,context,klimapaavirkning
 201,Allerød,_dim_klimapaavirkning,459.0,,,,,ecological_dimension,klimapaavirkning
-201,Allerød,_dim_luftkvalitet,154.0,,,,,ecological_dimension,luftkvalitet
+201,Allerød,_dim_luftkvalitet,135.8,,,,,ecological_dimension,luftkvalitet
 201,Allerød,_dim_forurening,74.22,,,,,ecological_dimension,forurening
 201,Allerød,_dim_naeringsstoffer,99.29,,,,,ecological_dimension,naeringsstoffer
 201,Allerød,_dim_biodiversitet,278.55,,,,,ecological_dimension,biodiversitet
 201,Allerød,_dim_vand,152.15,,,,,ecological_dimension,vand
 201,Allerød,_dim_arealanvendelse,202.82,,,,,ecological_dimension,arealanvendelse
 175,Rødovre,_dim_klimapaavirkning,357.33,,,,,ecological_dimension,klimapaavirkning
-175,Rødovre,_dim_luftkvalitet,153.4,,,,,ecological_dimension,luftkvalitet
+175,Rødovre,_dim_luftkvalitet,141.2,,,,,ecological_dimension,luftkvalitet
 175,Rødovre,_dim_forurening,199.34,,,,,ecological_dimension,forurening
 175,Rødovre,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 175,Rødovre,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 175,Rødovre,_dim_vand,18.39,,,,,ecological_dimension,vand
 175,Rødovre,_dim_arealanvendelse,619.72,,,,,ecological_dimension,arealanvendelse
 153,Brøndby,_dim_klimapaavirkning,330.33,,,,,ecological_dimension,klimapaavirkning
-153,Brøndby,_dim_luftkvalitet,151.0,,,,,ecological_dimension,luftkvalitet
+153,Brøndby,_dim_luftkvalitet,138.8,,,,,ecological_dimension,luftkvalitet
 153,Brøndby,_dim_forurening,233.57,,,,,ecological_dimension,forurening
 153,Brøndby,_dim_naeringsstoffer,49.75,,,,,ecological_dimension,naeringsstoffer
 153,Brøndby,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 153,Brøndby,_dim_vand,23.75,,,,,ecological_dimension,vand
 153,Brøndby,_dim_arealanvendelse,497.18,,,,,ecological_dimension,arealanvendelse
 155,Dragør,_dim_klimapaavirkning,476.0,,,,,ecological_dimension,klimapaavirkning
-155,Dragør,_dim_luftkvalitet,147.2,,,,,ecological_dimension,luftkvalitet
+155,Dragør,_dim_luftkvalitet,135.6,,,,,ecological_dimension,luftkvalitet
 155,Dragør,_dim_forurening,203.03,,,,,ecological_dimension,forurening
 155,Dragør,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 155,Dragør,_dim_biodiversitet,187.62,,,,,ecological_dimension,biodiversitet
 155,Dragør,_dim_arealanvendelse,319.72,,,,,ecological_dimension,arealanvendelse
 190,Furesø,_dim_klimapaavirkning,440.0,,,,,ecological_dimension,klimapaavirkning
-190,Furesø,_dim_luftkvalitet,154.2,,,,,ecological_dimension,luftkvalitet
+190,Furesø,_dim_luftkvalitet,137.4,,,,,ecological_dimension,luftkvalitet
 190,Furesø,_dim_forurening,63.16,,,,,ecological_dimension,forurening
 190,Furesø,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 190,Furesø,_dim_biodiversitet,89.98,,,,,ecological_dimension,biodiversitet
 190,Furesø,_dim_vand,328.69,,,,,ecological_dimension,vand
 190,Furesø,_dim_arealanvendelse,259.15,,,,,ecological_dimension,arealanvendelse
 230,Rudersdal,_dim_klimapaavirkning,552.67,,,,,ecological_dimension,klimapaavirkning
-230,Rudersdal,_dim_luftkvalitet,153.0,,,,,ecological_dimension,luftkvalitet
+230,Rudersdal,_dim_luftkvalitet,136.4,,,,,ecological_dimension,luftkvalitet
 230,Rudersdal,_dim_forurening,74.12,,,,,ecological_dimension,forurening
 230,Rudersdal,_dim_naeringsstoffer,110.99,,,,,ecological_dimension,naeringsstoffer
 230,Rudersdal,_dim_biodiversitet,112.32,,,,,ecological_dimension,biodiversitet
 230,Rudersdal,_dim_vand,86.06,,,,,ecological_dimension,vand
 230,Rudersdal,_dim_arealanvendelse,309.15,,,,,ecological_dimension,arealanvendelse
 151,Ballerup,_dim_klimapaavirkning,364.67,,,,,ecological_dimension,klimapaavirkning
-151,Ballerup,_dim_luftkvalitet,152.8,,,,,ecological_dimension,luftkvalitet
+151,Ballerup,_dim_luftkvalitet,138.8,,,,,ecological_dimension,luftkvalitet
 151,Ballerup,_dim_forurening,237.99,,,,,ecological_dimension,forurening
 151,Ballerup,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 151,Ballerup,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 151,Ballerup,_dim_vand,64.74,,,,,ecological_dimension,vand
 151,Ballerup,_dim_arealanvendelse,464.79,,,,,ecological_dimension,arealanvendelse
 167,Hvidovre,_dim_klimapaavirkning,352.67,,,,,ecological_dimension,klimapaavirkning
-167,Hvidovre,_dim_luftkvalitet,151.4,,,,,ecological_dimension,luftkvalitet
+167,Hvidovre,_dim_luftkvalitet,138.6,,,,,ecological_dimension,luftkvalitet
 167,Hvidovre,_dim_forurening,288.89,,,,,ecological_dimension,forurening
 167,Hvidovre,_dim_naeringsstoffer,302.94,,,,,ecological_dimension,naeringsstoffer
 167,Hvidovre,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 167,Hvidovre,_dim_arealanvendelse,560.56,,,,,ecological_dimension,arealanvendelse
 269,Solrød,_dim_klimapaavirkning,451.33,,,,,ecological_dimension,klimapaavirkning
-269,Solrød,_dim_luftkvalitet,156.0,,,,,ecological_dimension,luftkvalitet
+269,Solrød,_dim_luftkvalitet,141.4,,,,,ecological_dimension,luftkvalitet
 269,Solrød,_dim_forurening,91.14,,,,,ecological_dimension,forurening
 269,Solrød,_dim_naeringsstoffer,98.77,,,,,ecological_dimension,naeringsstoffer
 269,Solrød,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 269,Solrød,_dim_vand,110.86,,,,,ecological_dimension,vand
 269,Solrød,_dim_arealanvendelse,222.54,,,,,ecological_dimension,arealanvendelse
 746,Skanderborg,_dim_klimapaavirkning,386.0,,,,,ecological_dimension,klimapaavirkning
-746,Skanderborg,_dim_luftkvalitet,145.6,,,,,ecological_dimension,luftkvalitet
+746,Skanderborg,_dim_luftkvalitet,136.4,,,,,ecological_dimension,luftkvalitet
 746,Skanderborg,_dim_forurening,96.67,,,,,ecological_dimension,forurening
 746,Skanderborg,_dim_naeringsstoffer,105.94,,,,,ecological_dimension,naeringsstoffer
 746,Skanderborg,_dim_biodiversitet,277.01,,,,,ecological_dimension,biodiversitet
 746,Skanderborg,_dim_vand,68.79,,,,,ecological_dimension,vand
 746,Skanderborg,_dim_arealanvendelse,115.49,,,,,ecological_dimension,arealanvendelse
 157,Gentofte,_dim_klimapaavirkning,576.33,,,,,ecological_dimension,klimapaavirkning
-157,Gentofte,_dim_luftkvalitet,151.2,,,,,ecological_dimension,luftkvalitet
+157,Gentofte,_dim_luftkvalitet,137.6,,,,,ecological_dimension,luftkvalitet
 157,Gentofte,_dim_forurening,123.52,,,,,ecological_dimension,forurening
 157,Gentofte,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 157,Gentofte,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 157,Gentofte,_dim_vand,60.26,,,,,ecological_dimension,vand
 157,Gentofte,_dim_arealanvendelse,594.37,,,,,ecological_dimension,arealanvendelse
 240,Egedal,_dim_klimapaavirkning,410.67,,,,,ecological_dimension,klimapaavirkning
-240,Egedal,_dim_luftkvalitet,156.8,,,,,ecological_dimension,luftkvalitet
+240,Egedal,_dim_luftkvalitet,138.2,,,,,ecological_dimension,luftkvalitet
 240,Egedal,_dim_forurening,95.54,,,,,ecological_dimension,forurening
 240,Egedal,_dim_naeringsstoffer,250.57,,,,,ecological_dimension,naeringsstoffer
 240,Egedal,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 240,Egedal,_dim_vand,183.53,,,,,ecological_dimension,vand
 240,Egedal,_dim_arealanvendelse,167.61,,,,,ecological_dimension,arealanvendelse
 265,Roskilde,_dim_klimapaavirkning,426.67,,,,,ecological_dimension,klimapaavirkning
-265,Roskilde,_dim_luftkvalitet,158.0,,,,,ecological_dimension,luftkvalitet
+265,Roskilde,_dim_luftkvalitet,141.0,,,,,ecological_dimension,luftkvalitet
 265,Roskilde,_dim_forurening,90.81,,,,,ecological_dimension,forurening
 265,Roskilde,_dim_naeringsstoffer,124.79,,,,,ecological_dimension,naeringsstoffer
 265,Roskilde,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 265,Roskilde,_dim_vand,272.31,,,,,ecological_dimension,vand
 265,Roskilde,_dim_arealanvendelse,197.89,,,,,ecological_dimension,arealanvendelse
 223,Hørsholm,_dim_klimapaavirkning,555.33,,,,,ecological_dimension,klimapaavirkning
-223,Hørsholm,_dim_luftkvalitet,146.6,,,,,ecological_dimension,luftkvalitet
+223,Hørsholm,_dim_luftkvalitet,133.4,,,,,ecological_dimension,luftkvalitet
 223,Hørsholm,_dim_forurening,82.66,,,,,ecological_dimension,forurening
 223,Hørsholm,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 223,Hørsholm,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 223,Hørsholm,_dim_vand,108.94,,,,,ecological_dimension,vand
 223,Hørsholm,_dim_arealanvendelse,297.89,,,,,ecological_dimension,arealanvendelse
 185,Tårnby,_dim_klimapaavirkning,376.33,,,,,ecological_dimension,klimapaavirkning
-185,Tårnby,_dim_luftkvalitet,146.8,,,,,ecological_dimension,luftkvalitet
+185,Tårnby,_dim_luftkvalitet,134.6,,,,,ecological_dimension,luftkvalitet
 185,Tårnby,_dim_forurening,124.82,,,,,ecological_dimension,forurening
 185,Tårnby,_dim_naeringsstoffer,147.93,,,,,ecological_dimension,naeringsstoffer
 185,Tårnby,_dim_biodiversitet,60.98,,,,,ecological_dimension,biodiversitet
 185,Tårnby,_dim_arealanvendelse,290.14,,,,,ecological_dimension,arealanvendelse
 163,Herlev,_dim_klimapaavirkning,367.33,,,,,ecological_dimension,klimapaavirkning
-163,Herlev,_dim_luftkvalitet,154.4,,,,,ecological_dimension,luftkvalitet
+163,Herlev,_dim_luftkvalitet,140.4,,,,,ecological_dimension,luftkvalitet
 163,Herlev,_dim_forurening,94.51,,,,,ecological_dimension,forurening
 163,Herlev,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 163,Herlev,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 163,Herlev,_dim_arealanvendelse,569.72,,,,,ecological_dimension,arealanvendelse
 173,Lyngby-Taarbæk,_dim_klimapaavirkning,463.67,,,,,ecological_dimension,klimapaavirkning
-173,Lyngby-Taarbæk,_dim_luftkvalitet,155.0,,,,,ecological_dimension,luftkvalitet
+173,Lyngby-Taarbæk,_dim_luftkvalitet,138.0,,,,,ecological_dimension,luftkvalitet
 173,Lyngby-Taarbæk,_dim_forurening,173.74,,,,,ecological_dimension,forurening
 173,Lyngby-Taarbæk,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 173,Lyngby-Taarbæk,_dim_biodiversitet,68.04,,,,,ecological_dimension,biodiversitet
 173,Lyngby-Taarbæk,_dim_vand,42.03,,,,,ecological_dimension,vand
 173,Lyngby-Taarbæk,_dim_arealanvendelse,354.23,,,,,ecological_dimension,arealanvendelse
 350,Lejre,_dim_klimapaavirkning,428.67,,,,,ecological_dimension,klimapaavirkning
-350,Lejre,_dim_luftkvalitet,156.4,,,,,ecological_dimension,luftkvalitet
+350,Lejre,_dim_luftkvalitet,141.0,,,,,ecological_dimension,luftkvalitet
 350,Lejre,_dim_forurening,86.47,,,,,ecological_dimension,forurening
 350,Lejre,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 350,Lejre,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 350,Lejre,_dim_vand,259.4,,,,,ecological_dimension,vand
 350,Lejre,_dim_arealanvendelse,102.11,,,,,ecological_dimension,arealanvendelse
 210,Fredensborg,_dim_klimapaavirkning,422.33,,,,,ecological_dimension,klimapaavirkning
-210,Fredensborg,_dim_luftkvalitet,145.8,,,,,ecological_dimension,luftkvalitet
+210,Fredensborg,_dim_luftkvalitet,132.4,,,,,ecological_dimension,luftkvalitet
 210,Fredensborg,_dim_forurening,114.4,,,,,ecological_dimension,forurening
 210,Fredensborg,_dim_naeringsstoffer,128.31,,,,,ecological_dimension,naeringsstoffer
 210,Fredensborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 210,Fredensborg,_dim_vand,103.99,,,,,ecological_dimension,vand
 210,Fredensborg,_dim_arealanvendelse,169.01,,,,,ecological_dimension,arealanvendelse
 710,Favrskov,_dim_klimapaavirkning,369.67,,,,,ecological_dimension,klimapaavirkning
-710,Favrskov,_dim_luftkvalitet,141.8,,,,,ecological_dimension,luftkvalitet
+710,Favrskov,_dim_luftkvalitet,133.2,,,,,ecological_dimension,luftkvalitet
 710,Favrskov,_dim_forurening,87.67,,,,,ecological_dimension,forurening
 710,Favrskov,_dim_naeringsstoffer,253.84,,,,,ecological_dimension,naeringsstoffer
 710,Favrskov,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 710,Favrskov,_dim_vand,61.1,,,,,ecological_dimension,vand
 710,Favrskov,_dim_arealanvendelse,106.03,,,,,ecological_dimension,arealanvendelse
 530,Billund,_dim_klimapaavirkning,360.33,,,,,ecological_dimension,klimapaavirkning
-530,Billund,_dim_luftkvalitet,147.4,,,,,ecological_dimension,luftkvalitet
+530,Billund,_dim_luftkvalitet,138.6,,,,,ecological_dimension,luftkvalitet
 530,Billund,_dim_forurening,63.67,,,,,ecological_dimension,forurening
 530,Billund,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 530,Billund,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 530,Billund,_dim_vand,131.19,,,,,ecological_dimension,vand
 530,Billund,_dim_arealanvendelse,92.14,,,,,ecological_dimension,arealanvendelse
 183,Ishøj,_dim_klimapaavirkning,318.67,,,,,ecological_dimension,klimapaavirkning
-183,Ishøj,_dim_luftkvalitet,152.2,,,,,ecological_dimension,luftkvalitet
+183,Ishøj,_dim_luftkvalitet,138.8,,,,,ecological_dimension,luftkvalitet
 183,Ishøj,_dim_forurening,101.98,,,,,ecological_dimension,forurening
 183,Ishøj,_dim_naeringsstoffer,70.8,,,,,ecological_dimension,naeringsstoffer
 183,Ishøj,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 183,Ishøj,_dim_vand,315.07,,,,,ecological_dimension,vand
 183,Ishøj,_dim_arealanvendelse,250.0,,,,,ecological_dimension,arealanvendelse
 840,Rebild,_dim_klimapaavirkning,562.1,,,,,ecological_dimension,klimapaavirkning
-840,Rebild,_dim_luftkvalitet,137.6,,,,,ecological_dimension,luftkvalitet
+840,Rebild,_dim_luftkvalitet,128.6,,,,,ecological_dimension,luftkvalitet
 840,Rebild,_dim_forurening,113.43,,,,,ecological_dimension,forurening
 840,Rebild,_dim_naeringsstoffer,223.69,,,,,ecological_dimension,naeringsstoffer
 840,Rebild,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 840,Rebild,_dim_vand,70.89,,,,,ecological_dimension,vand
 840,Rebild,_dim_arealanvendelse,108.41,,,,,ecological_dimension,arealanvendelse
 147,Frederiksberg,_dim_klimapaavirkning,385.0,,,,,ecological_dimension,klimapaavirkning
-147,Frederiksberg,_dim_luftkvalitet,155.2,,,,,ecological_dimension,luftkvalitet
+147,Frederiksberg,_dim_luftkvalitet,141.6,,,,,ecological_dimension,luftkvalitet
 147,Frederiksberg,_dim_forurening,69.68,,,,,ecological_dimension,forurening
 147,Frederiksberg,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 147,Frederiksberg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 147,Frederiksberg,_dim_vand,31.09,,,,,ecological_dimension,vand
 147,Frederiksberg,_dim_arealanvendelse,637.32,,,,,ecological_dimension,arealanvendelse
 259,Køge,_dim_klimapaavirkning,408.0,,,,,ecological_dimension,klimapaavirkning
-259,Køge,_dim_luftkvalitet,156.6,,,,,ecological_dimension,luftkvalitet
+259,Køge,_dim_luftkvalitet,141.6,,,,,ecological_dimension,luftkvalitet
 259,Køge,_dim_forurening,94.55,,,,,ecological_dimension,forurening
 259,Køge,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 259,Køge,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 259,Køge,_dim_vand,264.06,,,,,ecological_dimension,vand
 259,Køge,_dim_arealanvendelse,135.92,,,,,ecological_dimension,arealanvendelse
 253,Greve,_dim_klimapaavirkning,438.33,,,,,ecological_dimension,klimapaavirkning
-253,Greve,_dim_luftkvalitet,155.0,,,,,ecological_dimension,luftkvalitet
+253,Greve,_dim_luftkvalitet,139.8,,,,,ecological_dimension,luftkvalitet
 253,Greve,_dim_forurening,86.76,,,,,ecological_dimension,forurening
 253,Greve,_dim_naeringsstoffer,98.52,,,,,ecological_dimension,naeringsstoffer
 253,Greve,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 253,Greve,_dim_vand,74.26,,,,,ecological_dimension,vand
 253,Greve,_dim_arealanvendelse,316.2,,,,,ecological_dimension,arealanvendelse
 187,Vallensbæk,_dim_klimapaavirkning,385.33,,,,,ecological_dimension,klimapaavirkning
-187,Vallensbæk,_dim_luftkvalitet,151.0,,,,,ecological_dimension,luftkvalitet
+187,Vallensbæk,_dim_luftkvalitet,138.8,,,,,ecological_dimension,luftkvalitet
 187,Vallensbæk,_dim_forurening,59.47,,,,,ecological_dimension,forurening
 187,Vallensbæk,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 187,Vallensbæk,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 187,Vallensbæk,_dim_vand,52.37,,,,,ecological_dimension,vand
 187,Vallensbæk,_dim_arealanvendelse,428.87,,,,,ecological_dimension,arealanvendelse
 159,Gladsaxe,_dim_klimapaavirkning,380.67,,,,,ecological_dimension,klimapaavirkning
-159,Gladsaxe,_dim_luftkvalitet,155.4,,,,,ecological_dimension,luftkvalitet
+159,Gladsaxe,_dim_luftkvalitet,141.2,,,,,ecological_dimension,luftkvalitet
 159,Gladsaxe,_dim_forurening,140.91,,,,,ecological_dimension,forurening
 159,Gladsaxe,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 159,Gladsaxe,_dim_biodiversitet,269.06,,,,,ecological_dimension,biodiversitet
 159,Gladsaxe,_dim_vand,42.5,,,,,ecological_dimension,vand
 159,Gladsaxe,_dim_arealanvendelse,565.49,,,,,ecological_dimension,arealanvendelse
 661,Holstebro,_dim_klimapaavirkning,360.0,,,,,ecological_dimension,klimapaavirkning
-661,Holstebro,_dim_luftkvalitet,136.6,,,,,ecological_dimension,luftkvalitet
+661,Holstebro,_dim_luftkvalitet,131.6,,,,,ecological_dimension,luftkvalitet
 661,Holstebro,_dim_forurening,105.97,,,,,ecological_dimension,forurening
 661,Holstebro,_dim_naeringsstoffer,286.19,,,,,ecological_dimension,naeringsstoffer
 661,Holstebro,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 661,Holstebro,_dim_vand,108.83,,,,,ecological_dimension,vand
 661,Holstebro,_dim_arealanvendelse,97.07,,,,,ecological_dimension,arealanvendelse
 217,Helsingør,_dim_klimapaavirkning,390.33,,,,,ecological_dimension,klimapaavirkning
-217,Helsingør,_dim_luftkvalitet,141.0,,,,,ecological_dimension,luftkvalitet
+217,Helsingør,_dim_luftkvalitet,130.8,,,,,ecological_dimension,luftkvalitet
 217,Helsingør,_dim_forurening,92.16,,,,,ecological_dimension,forurening
 217,Helsingør,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 217,Helsingør,_dim_biodiversitet,164.2,,,,,ecological_dimension,biodiversitet
 217,Helsingør,_dim_vand,75.02,,,,,ecological_dimension,vand
 217,Helsingør,_dim_arealanvendelse,219.72,,,,,ecological_dimension,arealanvendelse
 250,Frederikssund,_dim_klimapaavirkning,380.33,,,,,ecological_dimension,klimapaavirkning
-250,Frederikssund,_dim_luftkvalitet,153.4,,,,,ecological_dimension,luftkvalitet
+250,Frederikssund,_dim_luftkvalitet,137.4,,,,,ecological_dimension,luftkvalitet
 250,Frederikssund,_dim_forurening,118.81,,,,,ecological_dimension,forurening
 250,Frederikssund,_dim_naeringsstoffer,137.62,,,,,ecological_dimension,naeringsstoffer
 250,Frederikssund,_dim_biodiversitet,259.52,,,,,ecological_dimension,biodiversitet
 250,Frederikssund,_dim_vand,157.33,,,,,ecological_dimension,vand
 250,Frederikssund,_dim_arealanvendelse,141.55,,,,,ecological_dimension,arealanvendelse
 657,Herning,_dim_klimapaavirkning,362.67,,,,,ecological_dimension,klimapaavirkning
-657,Herning,_dim_luftkvalitet,140.0,,,,,ecological_dimension,luftkvalitet
+657,Herning,_dim_luftkvalitet,133.8,,,,,ecological_dimension,luftkvalitet
 657,Herning,_dim_forurening,63.82,,,,,ecological_dimension,forurening
 657,Herning,_dim_naeringsstoffer,176.77,,,,,ecological_dimension,naeringsstoffer
 657,Herning,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 657,Herning,_dim_vand,97.48,,,,,ecological_dimension,vand
 657,Herning,_dim_arealanvendelse,98.72,,,,,ecological_dimension,arealanvendelse
 492,Ærø,_dim_klimapaavirkning,354.0,,,,,ecological_dimension,klimapaavirkning
-492,Ærø,_dim_luftkvalitet,156.2,,,,,ecological_dimension,luftkvalitet
+492,Ærø,_dim_luftkvalitet,145.8,,,,,ecological_dimension,luftkvalitet
 492,Ærø,_dim_forurening,340.32,,,,,ecological_dimension,forurening
 492,Ærø,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 492,Ærø,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 492,Ærø,_dim_vand,46.62,,,,,ecological_dimension,vand
 492,Ærø,_dim_arealanvendelse,113.16,,,,,ecological_dimension,arealanvendelse
 561,Esbjerg,_dim_klimapaavirkning,356.67,,,,,ecological_dimension,klimapaavirkning
-561,Esbjerg,_dim_luftkvalitet,154.2,,,,,ecological_dimension,luftkvalitet
+561,Esbjerg,_dim_luftkvalitet,143.8,,,,,ecological_dimension,luftkvalitet
 561,Esbjerg,_dim_forurening,116.7,,,,,ecological_dimension,forurening
 561,Esbjerg,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 561,Esbjerg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 561,Esbjerg,_dim_vand,67.85,,,,,ecological_dimension,vand
 561,Esbjerg,_dim_arealanvendelse,108.59,,,,,ecological_dimension,arealanvendelse
 773,Morsø,_dim_klimapaavirkning,409.0,,,,,ecological_dimension,klimapaavirkning
-773,Morsø,_dim_luftkvalitet,132.6,,,,,ecological_dimension,luftkvalitet
+773,Morsø,_dim_luftkvalitet,127.8,,,,,ecological_dimension,luftkvalitet
 773,Morsø,_dim_forurening,150.51,,,,,ecological_dimension,forurening
 773,Morsø,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 773,Morsø,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 773,Morsø,_dim_vand,133.43,,,,,ecological_dimension,vand
 773,Morsø,_dim_arealanvendelse,127.97,,,,,ecological_dimension,arealanvendelse
 219,Hillerød,_dim_klimapaavirkning,387.67,,,,,ecological_dimension,klimapaavirkning
-219,Hillerød,_dim_luftkvalitet,150.2,,,,,ecological_dimension,luftkvalitet
+219,Hillerød,_dim_luftkvalitet,134.6,,,,,ecological_dimension,luftkvalitet
 219,Hillerød,_dim_forurening,88.13,,,,,ecological_dimension,forurening
 219,Hillerød,_dim_naeringsstoffer,136.35,,,,,ecological_dimension,naeringsstoffer
 219,Hillerød,_dim_biodiversitet,107.26,,,,,ecological_dimension,biodiversitet
 219,Hillerød,_dim_vand,192.43,,,,,ecological_dimension,vand
 219,Hillerød,_dim_arealanvendelse,133.1,,,,,ecological_dimension,arealanvendelse
 740,Silkeborg,_dim_klimapaavirkning,368.0,,,,,ecological_dimension,klimapaavirkning
-740,Silkeborg,_dim_luftkvalitet,141.0,,,,,ecological_dimension,luftkvalitet
+740,Silkeborg,_dim_luftkvalitet,133.8,,,,,ecological_dimension,luftkvalitet
 740,Silkeborg,_dim_forurening,91.89,,,,,ecological_dimension,forurening
 740,Silkeborg,_dim_naeringsstoffer,112.41,,,,,ecological_dimension,naeringsstoffer
 740,Silkeborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 740,Silkeborg,_dim_vand,71.53,,,,,ecological_dimension,vand
 740,Silkeborg,_dim_arealanvendelse,100.7,,,,,ecological_dimension,arealanvendelse
 607,Fredericia,_dim_klimapaavirkning,367.65,,,,,ecological_dimension,klimapaavirkning
-607,Fredericia,_dim_luftkvalitet,158.4,,,,,ecological_dimension,luftkvalitet
+607,Fredericia,_dim_luftkvalitet,145.0,,,,,ecological_dimension,luftkvalitet
 607,Fredericia,_dim_forurening,62.4,,,,,ecological_dimension,forurening
 607,Fredericia,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 607,Fredericia,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 607,Fredericia,_dim_vand,96.4,,,,,ecological_dimension,vand
 607,Fredericia,_dim_arealanvendelse,223.94,,,,,ecological_dimension,arealanvendelse
 316,Holbæk,_dim_klimapaavirkning,400.67,,,,,ecological_dimension,klimapaavirkning
-316,Holbæk,_dim_luftkvalitet,153.6,,,,,ecological_dimension,luftkvalitet
+316,Holbæk,_dim_luftkvalitet,140.2,,,,,ecological_dimension,luftkvalitet
 316,Holbæk,_dim_forurening,87.94,,,,,ecological_dimension,forurening
 316,Holbæk,_dim_naeringsstoffer,286.19,,,,,ecological_dimension,naeringsstoffer
 316,Holbæk,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 316,Holbæk,_dim_vand,99.38,,,,,ecological_dimension,vand
 316,Holbæk,_dim_arealanvendelse,105.3,,,,,ecological_dimension,arealanvendelse
 340,Sorø,_dim_klimapaavirkning,400.0,,,,,ecological_dimension,klimapaavirkning
-340,Sorø,_dim_luftkvalitet,155.2,,,,,ecological_dimension,luftkvalitet
+340,Sorø,_dim_luftkvalitet,142.0,,,,,ecological_dimension,luftkvalitet
 340,Sorø,_dim_forurening,94.69,,,,,ecological_dimension,forurening
 340,Sorø,_dim_naeringsstoffer,98.17,,,,,ecological_dimension,naeringsstoffer
 340,Sorø,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 340,Sorø,_dim_vand,35.79,,,,,ecological_dimension,vand
 340,Sorø,_dim_arealanvendelse,95.07,,,,,ecological_dimension,arealanvendelse
 260,Halsnæs,_dim_klimapaavirkning,349.0,,,,,ecological_dimension,klimapaavirkning
-260,Halsnæs,_dim_luftkvalitet,143.6,,,,,ecological_dimension,luftkvalitet
+260,Halsnæs,_dim_luftkvalitet,133.0,,,,,ecological_dimension,luftkvalitet
 260,Halsnæs,_dim_forurening,124.34,,,,,ecological_dimension,forurening
 260,Halsnæs,_dim_naeringsstoffer,147.26,,,,,ecological_dimension,naeringsstoffer
 260,Halsnæs,_dim_biodiversitet,112.11,,,,,ecological_dimension,biodiversitet
 260,Halsnæs,_dim_vand,69.34,,,,,ecological_dimension,vand
 260,Halsnæs,_dim_arealanvendelse,219.72,,,,,ecological_dimension,arealanvendelse
 766,Hedensted,_dim_klimapaavirkning,371.33,,,,,ecological_dimension,klimapaavirkning
-766,Hedensted,_dim_luftkvalitet,151.0,,,,,ecological_dimension,luftkvalitet
+766,Hedensted,_dim_luftkvalitet,139.8,,,,,ecological_dimension,luftkvalitet
 766,Hedensted,_dim_forurening,102.61,,,,,ecological_dimension,forurening
 766,Hedensted,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 766,Hedensted,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 766,Hedensted,_dim_vand,111.0,,,,,ecological_dimension,vand
 766,Hedensted,_dim_arealanvendelse,111.7,,,,,ecological_dimension,arealanvendelse
 825,Læsø,_dim_klimapaavirkning,438.67,,,,,ecological_dimension,klimapaavirkning
-825,Læsø,_dim_luftkvalitet,115.4,,,,,ecological_dimension,luftkvalitet
+825,Læsø,_dim_luftkvalitet,112.2,,,,,ecological_dimension,luftkvalitet
 825,Læsø,_dim_forurening,113.78,,,,,ecological_dimension,forurening
 825,Læsø,_dim_naeringsstoffer,473.71,,,,,ecological_dimension,naeringsstoffer
 825,Læsø,_dim_biodiversitet,53.95,,,,,ecological_dimension,biodiversitet
 825,Læsø,_dim_vand,159.49,,,,,ecological_dimension,vand
 825,Læsø,_dim_arealanvendelse,67.61,,,,,ecological_dimension,arealanvendelse
 615,Horsens,_dim_klimapaavirkning,365.33,,,,,ecological_dimension,klimapaavirkning
-615,Horsens,_dim_luftkvalitet,148.2,,,,,ecological_dimension,luftkvalitet
+615,Horsens,_dim_luftkvalitet,138.4,,,,,ecological_dimension,luftkvalitet
 615,Horsens,_dim_forurening,103.39,,,,,ecological_dimension,forurening
 615,Horsens,_dim_naeringsstoffer,107.49,,,,,ecological_dimension,naeringsstoffer
 615,Horsens,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 615,Horsens,_dim_vand,93.8,,,,,ecological_dimension,vand
 615,Horsens,_dim_arealanvendelse,120.42,,,,,ecological_dimension,arealanvendelse
 329,Ringsted,_dim_klimapaavirkning,391.33,,,,,ecological_dimension,klimapaavirkning
-329,Ringsted,_dim_luftkvalitet,157.4,,,,,ecological_dimension,luftkvalitet
+329,Ringsted,_dim_luftkvalitet,142.6,,,,,ecological_dimension,luftkvalitet
 329,Ringsted,_dim_forurening,93.56,,,,,ecological_dimension,forurening
 329,Ringsted,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 329,Ringsted,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 329,Ringsted,_dim_vand,313.57,,,,,ecological_dimension,vand
 329,Ringsted,_dim_arealanvendelse,103.29,,,,,ecological_dimension,arealanvendelse
 370,Næstved,_dim_klimapaavirkning,393.67,,,,,ecological_dimension,klimapaavirkning
-370,Næstved,_dim_luftkvalitet,152.6,,,,,ecological_dimension,luftkvalitet
+370,Næstved,_dim_luftkvalitet,142.6,,,,,ecological_dimension,luftkvalitet
 370,Næstved,_dim_forurening,93.16,,,,,ecological_dimension,forurening
 370,Næstved,_dim_naeringsstoffer,262.98,,,,,ecological_dimension,naeringsstoffer
 370,Næstved,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 370,Næstved,_dim_vand,40.37,,,,,ecological_dimension,vand
 370,Næstved,_dim_arealanvendelse,109.14,,,,,ecological_dimension,arealanvendelse
 851,Aalborg,_dim_klimapaavirkning,521.24,,,,,ecological_dimension,klimapaavirkning
-851,Aalborg,_dim_luftkvalitet,134.2,,,,,ecological_dimension,luftkvalitet
+851,Aalborg,_dim_luftkvalitet,125.0,,,,,ecological_dimension,luftkvalitet
 851,Aalborg,_dim_forurening,174.27,,,,,ecological_dimension,forurening
 851,Aalborg,_dim_naeringsstoffer,101.5,,,,,ecological_dimension,naeringsstoffer
 851,Aalborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 851,Aalborg,_dim_vand,72.63,,,,,ecological_dimension,vand
 851,Aalborg,_dim_arealanvendelse,112.68,,,,,ecological_dimension,arealanvendelse
 336,Stevns,_dim_klimapaavirkning,414.67,,,,,ecological_dimension,klimapaavirkning
-336,Stevns,_dim_luftkvalitet,151.8,,,,,ecological_dimension,luftkvalitet
+336,Stevns,_dim_luftkvalitet,140.0,,,,,ecological_dimension,luftkvalitet
 336,Stevns,_dim_forurening,109.07,,,,,ecological_dimension,forurening
 336,Stevns,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 336,Stevns,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 336,Stevns,_dim_vand,34.83,,,,,ecological_dimension,vand
 336,Stevns,_dim_arealanvendelse,126.51,,,,,ecological_dimension,arealanvendelse
 410,Middelfart,_dim_klimapaavirkning,375.67,,,,,ecological_dimension,klimapaavirkning
-410,Middelfart,_dim_luftkvalitet,157.8,,,,,ecological_dimension,luftkvalitet
+410,Middelfart,_dim_luftkvalitet,144.4,,,,,ecological_dimension,luftkvalitet
 410,Middelfart,_dim_forurening,119.11,,,,,ecological_dimension,forurening
 410,Middelfart,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 410,Middelfart,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 410,Middelfart,_dim_vand,71.4,,,,,ecological_dimension,vand
 410,Middelfart,_dim_arealanvendelse,123.94,,,,,ecological_dimension,arealanvendelse
 727,Odder,_dim_klimapaavirkning,375.33,,,,,ecological_dimension,klimapaavirkning
-727,Odder,_dim_luftkvalitet,145.2,,,,,ecological_dimension,luftkvalitet
+727,Odder,_dim_luftkvalitet,135.4,,,,,ecological_dimension,luftkvalitet
 727,Odder,_dim_forurening,74.54,,,,,ecological_dimension,forurening
 727,Odder,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 727,Odder,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 727,Odder,_dim_vand,79.69,,,,,ecological_dimension,vand
 727,Odder,_dim_arealanvendelse,117.73,,,,,ecological_dimension,arealanvendelse
 161,Glostrup,_dim_klimapaavirkning,372.33,,,,,ecological_dimension,klimapaavirkning
-161,Glostrup,_dim_luftkvalitet,150.4,,,,,ecological_dimension,luftkvalitet
+161,Glostrup,_dim_luftkvalitet,138.8,,,,,ecological_dimension,luftkvalitet
 161,Glostrup,_dim_forurening,71.67,,,,,ecological_dimension,forurening
 161,Glostrup,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 161,Glostrup,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 161,Glostrup,_dim_vand,88.2,,,,,ecological_dimension,vand
 161,Glostrup,_dim_arealanvendelse,531.69,,,,,ecological_dimension,arealanvendelse
 563,Fanø,_dim_klimapaavirkning,404.33,,,,,ecological_dimension,klimapaavirkning
-563,Fanø,_dim_luftkvalitet,149.0,,,,,ecological_dimension,luftkvalitet
+563,Fanø,_dim_luftkvalitet,140.6,,,,,ecological_dimension,luftkvalitet
 563,Fanø,_dim_forurening,96.79,,,,,ecological_dimension,forurening
 563,Fanø,_dim_naeringsstoffer,100.17,,,,,ecological_dimension,naeringsstoffer
 563,Fanø,_dim_biodiversitet,53.78,,,,,ecological_dimension,biodiversitet
 563,Fanø,_dim_vand,125.77,,,,,ecological_dimension,vand
 563,Fanø,_dim_arealanvendelse,80.28,,,,,ecological_dimension,arealanvendelse
 813,Frederikshavn,_dim_klimapaavirkning,418.33,,,,,ecological_dimension,klimapaavirkning
-813,Frederikshavn,_dim_luftkvalitet,123.2,,,,,ecological_dimension,luftkvalitet
+813,Frederikshavn,_dim_luftkvalitet,116.0,,,,,ecological_dimension,luftkvalitet
 813,Frederikshavn,_dim_forurening,118.12,,,,,ecological_dimension,forurening
 813,Frederikshavn,_dim_naeringsstoffer,267.31,,,,,ecological_dimension,naeringsstoffer
 813,Frederikshavn,_dim_biodiversitet,239.81,,,,,ecological_dimension,biodiversitet
 813,Frederikshavn,_dim_vand,66.31,,,,,ecological_dimension,vand
 813,Frederikshavn,_dim_arealanvendelse,98.59,,,,,ecological_dimension,arealanvendelse
 270,Gribskov,_dim_klimapaavirkning,390.33,,,,,ecological_dimension,klimapaavirkning
-270,Gribskov,_dim_luftkvalitet,143.8,,,,,ecological_dimension,luftkvalitet
+270,Gribskov,_dim_luftkvalitet,132.2,,,,,ecological_dimension,luftkvalitet
 270,Gribskov,_dim_forurening,108.12,,,,,ecological_dimension,forurening
 270,Gribskov,_dim_naeringsstoffer,147.26,,,,,ecological_dimension,naeringsstoffer
 270,Gribskov,_dim_biodiversitet,118.62,,,,,ecological_dimension,biodiversitet
 270,Gribskov,_dim_vand,78.71,,,,,ecological_dimension,vand
 270,Gribskov,_dim_arealanvendelse,165.49,,,,,ecological_dimension,arealanvendelse
 751,Aarhus,_dim_klimapaavirkning,356.67,,,,,ecological_dimension,klimapaavirkning
-751,Aarhus,_dim_luftkvalitet,143.6,,,,,ecological_dimension,luftkvalitet
+751,Aarhus,_dim_luftkvalitet,134.6,,,,,ecological_dimension,luftkvalitet
 751,Aarhus,_dim_forurening,68.27,,,,,ecological_dimension,forurening
 751,Aarhus,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 751,Aarhus,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 751,Aarhus,_dim_vand,67.55,,,,,ecological_dimension,vand
 751,Aarhus,_dim_arealanvendelse,231.69,,,,,ecological_dimension,arealanvendelse
 760,Ringkøbing-Skjern,_dim_klimapaavirkning,464.23,,,,,ecological_dimension,klimapaavirkning
-760,Ringkøbing-Skjern,_dim_luftkvalitet,140.6,,,,,ecological_dimension,luftkvalitet
+760,Ringkøbing-Skjern,_dim_luftkvalitet,135.6,,,,,ecological_dimension,luftkvalitet
 760,Ringkøbing-Skjern,_dim_forurening,70.81,,,,,ecological_dimension,forurening
 760,Ringkøbing-Skjern,_dim_naeringsstoffer,270.49,,,,,ecological_dimension,naeringsstoffer
 760,Ringkøbing-Skjern,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 760,Ringkøbing-Skjern,_dim_vand,150.45,,,,,ecological_dimension,vand
 760,Ringkøbing-Skjern,_dim_arealanvendelse,104.02,,,,,ecological_dimension,arealanvendelse
 479,Svendborg,_dim_klimapaavirkning,367.33,,,,,ecological_dimension,klimapaavirkning
-479,Svendborg,_dim_luftkvalitet,157.6,,,,,ecological_dimension,luftkvalitet
+479,Svendborg,_dim_luftkvalitet,145.6,,,,,ecological_dimension,luftkvalitet
 479,Svendborg,_dim_forurening,158.01,,,,,ecological_dimension,forurening
 479,Svendborg,_dim_naeringsstoffer,229.85,,,,,ecological_dimension,naeringsstoffer
 479,Svendborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 479,Svendborg,_dim_vand,73.11,,,,,ecological_dimension,vand
 479,Svendborg,_dim_arealanvendelse,106.34,,,,,ecological_dimension,arealanvendelse
 787,Thisted,_dim_klimapaavirkning,406.33,,,,,ecological_dimension,klimapaavirkning
-787,Thisted,_dim_luftkvalitet,126.2,,,,,ecological_dimension,luftkvalitet
+787,Thisted,_dim_luftkvalitet,123.4,,,,,ecological_dimension,luftkvalitet
 787,Thisted,_dim_forurening,142.67,,,,,ecological_dimension,forurening
 787,Thisted,_dim_naeringsstoffer,121.48,,,,,ecological_dimension,naeringsstoffer
 787,Thisted,_dim_biodiversitet,133.51,,,,,ecological_dimension,biodiversitet
 787,Thisted,_dim_vand,141.27,,,,,ecological_dimension,vand
 787,Thisted,_dim_arealanvendelse,85.92,,,,,ecological_dimension,arealanvendelse
 810,Brønderslev,_dim_klimapaavirkning,395.0,,,,,ecological_dimension,klimapaavirkning
-810,Brønderslev,_dim_luftkvalitet,132.4,,,,,ecological_dimension,luftkvalitet
+810,Brønderslev,_dim_luftkvalitet,123.0,,,,,ecological_dimension,luftkvalitet
 810,Brønderslev,_dim_forurening,72.81,,,,,ecological_dimension,forurening
 810,Brønderslev,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 810,Brønderslev,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 810,Brønderslev,_dim_vand,93.37,,,,,ecological_dimension,vand
 810,Brønderslev,_dim_arealanvendelse,115.9,,,,,ecological_dimension,arealanvendelse
 791,Viborg,_dim_klimapaavirkning,366.0,,,,,ecological_dimension,klimapaavirkning
-791,Viborg,_dim_luftkvalitet,138.0,,,,,ecological_dimension,luftkvalitet
+791,Viborg,_dim_luftkvalitet,131.6,,,,,ecological_dimension,luftkvalitet
 791,Viborg,_dim_forurening,89.77,,,,,ecological_dimension,forurening
 791,Viborg,_dim_naeringsstoffer,131.48,,,,,ecological_dimension,naeringsstoffer
 791,Viborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 791,Viborg,_dim_vand,71.62,,,,,ecological_dimension,vand
 791,Viborg,_dim_arealanvendelse,93.05,,,,,ecological_dimension,arealanvendelse
 165,Albertslund,_dim_klimapaavirkning,313.33,,,,,ecological_dimension,klimapaavirkning
-165,Albertslund,_dim_luftkvalitet,148.6,,,,,ecological_dimension,luftkvalitet
+165,Albertslund,_dim_luftkvalitet,137.4,,,,,ecological_dimension,luftkvalitet
 165,Albertslund,_dim_forurening,177.63,,,,,ecological_dimension,forurening
 165,Albertslund,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 165,Albertslund,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 165,Albertslund,_dim_arealanvendelse,347.18,,,,,ecological_dimension,arealanvendelse
 480,Nordfyns,_dim_klimapaavirkning,360.67,,,,,ecological_dimension,klimapaavirkning
-480,Nordfyns,_dim_luftkvalitet,154.8,,,,,ecological_dimension,luftkvalitet
+480,Nordfyns,_dim_luftkvalitet,142.2,,,,,ecological_dimension,luftkvalitet
 480,Nordfyns,_dim_forurening,95.53,,,,,ecological_dimension,forurening
 480,Nordfyns,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 480,Nordfyns,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 480,Nordfyns,_dim_vand,98.11,,,,,ecological_dimension,vand
 480,Nordfyns,_dim_arealanvendelse,122.67,,,,,ecological_dimension,arealanvendelse
 440,Kerteminde,_dim_klimapaavirkning,363.0,,,,,ecological_dimension,klimapaavirkning
-440,Kerteminde,_dim_luftkvalitet,153.0,,,,,ecological_dimension,luftkvalitet
+440,Kerteminde,_dim_luftkvalitet,141.6,,,,,ecological_dimension,luftkvalitet
 440,Kerteminde,_dim_forurening,212.52,,,,,ecological_dimension,forurening
 440,Kerteminde,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 440,Kerteminde,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 440,Kerteminde,_dim_vand,68.69,,,,,ecological_dimension,vand
 440,Kerteminde,_dim_arealanvendelse,117.37,,,,,ecological_dimension,arealanvendelse
 101,København,_dim_klimapaavirkning,324.67,,,,,ecological_dimension,klimapaavirkning
-101,København,_dim_luftkvalitet,153.4,,,,,ecological_dimension,luftkvalitet
+101,København,_dim_luftkvalitet,140.0,,,,,ecological_dimension,luftkvalitet
 101,København,_dim_forurening,235.14,,,,,ecological_dimension,forurening
 101,København,_dim_naeringsstoffer,104.37,,,,,ecological_dimension,naeringsstoffer
 101,København,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 101,København,_dim_arealanvendelse,546.48,,,,,ecological_dimension,arealanvendelse
 860,Hjørring,_dim_klimapaavirkning,407.33,,,,,ecological_dimension,klimapaavirkning
-860,Hjørring,_dim_luftkvalitet,126.0,,,,,ecological_dimension,luftkvalitet
+860,Hjørring,_dim_luftkvalitet,119.6,,,,,ecological_dimension,luftkvalitet
 860,Hjørring,_dim_forurening,152.95,,,,,ecological_dimension,forurening
 860,Hjørring,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 860,Hjørring,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 860,Hjørring,_dim_vand,151.57,,,,,ecological_dimension,vand
 860,Hjørring,_dim_arealanvendelse,104.39,,,,,ecological_dimension,arealanvendelse
 706,Syddjurs,_dim_klimapaavirkning,370.33,,,,,ecological_dimension,klimapaavirkning
-706,Syddjurs,_dim_luftkvalitet,136.0,,,,,ecological_dimension,luftkvalitet
+706,Syddjurs,_dim_luftkvalitet,128.4,,,,,ecological_dimension,luftkvalitet
 706,Syddjurs,_dim_forurening,78.64,,,,,ecological_dimension,forurening
 706,Syddjurs,_dim_naeringsstoffer,100.17,,,,,ecological_dimension,naeringsstoffer
 706,Syddjurs,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 706,Syddjurs,_dim_vand,93.25,,,,,ecological_dimension,vand
 706,Syddjurs,_dim_arealanvendelse,93.66,,,,,ecological_dimension,arealanvendelse
 430,Faaborg-Midtfyn,_dim_klimapaavirkning,364.67,,,,,ecological_dimension,klimapaavirkning
-430,Faaborg-Midtfyn,_dim_luftkvalitet,158.6,,,,,ecological_dimension,luftkvalitet
+430,Faaborg-Midtfyn,_dim_luftkvalitet,145.4,,,,,ecological_dimension,luftkvalitet
 430,Faaborg-Midtfyn,_dim_forurening,91.42,,,,,ecological_dimension,forurening
 430,Faaborg-Midtfyn,_dim_naeringsstoffer,163.54,,,,,ecological_dimension,naeringsstoffer
 430,Faaborg-Midtfyn,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 430,Faaborg-Midtfyn,_dim_vand,89.15,,,,,ecological_dimension,vand
 430,Faaborg-Midtfyn,_dim_arealanvendelse,104.94,,,,,ecological_dimension,arealanvendelse
 573,Varde,_dim_klimapaavirkning,502.52,,,,,ecological_dimension,klimapaavirkning
-573,Varde,_dim_luftkvalitet,146.0,,,,,ecological_dimension,luftkvalitet
+573,Varde,_dim_luftkvalitet,139.0,,,,,ecological_dimension,luftkvalitet
 573,Varde,_dim_forurening,125.83,,,,,ecological_dimension,forurening
 573,Varde,_dim_naeringsstoffer,164.0,,,,,ecological_dimension,naeringsstoffer
 573,Varde,_dim_biodiversitet,239.23,,,,,ecological_dimension,biodiversitet
 573,Varde,_dim_vand,149.82,,,,,ecological_dimension,vand
 573,Varde,_dim_arealanvendelse,92.5,,,,,ecological_dimension,arealanvendelse
 730,Randers,_dim_klimapaavirkning,352.33,,,,,ecological_dimension,klimapaavirkning
-730,Randers,_dim_luftkvalitet,138.4,,,,,ecological_dimension,luftkvalitet
+730,Randers,_dim_luftkvalitet,131.0,,,,,ecological_dimension,luftkvalitet
 730,Randers,_dim_forurening,93.59,,,,,ecological_dimension,forurening
 730,Randers,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 730,Randers,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 730,Randers,_dim_vand,69.67,,,,,ecological_dimension,vand
 730,Randers,_dim_arealanvendelse,112.61,,,,,ecological_dimension,arealanvendelse
 621,Kolding,_dim_klimapaavirkning,364.67,,,,,ecological_dimension,klimapaavirkning
-621,Kolding,_dim_luftkvalitet,157.8,,,,,ecological_dimension,luftkvalitet
+621,Kolding,_dim_luftkvalitet,143.8,,,,,ecological_dimension,luftkvalitet
 621,Kolding,_dim_forurening,90.25,,,,,ecological_dimension,forurening
 621,Kolding,_dim_naeringsstoffer,203.42,,,,,ecological_dimension,naeringsstoffer
 621,Kolding,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 621,Kolding,_dim_vand,78.62,,,,,ecological_dimension,vand
 621,Kolding,_dim_arealanvendelse,112.68,,,,,ecological_dimension,arealanvendelse
 320,Faxe,_dim_klimapaavirkning,391.0,,,,,ecological_dimension,klimapaavirkning
-320,Faxe,_dim_luftkvalitet,152.8,,,,,ecological_dimension,luftkvalitet
+320,Faxe,_dim_luftkvalitet,141.4,,,,,ecological_dimension,luftkvalitet
 320,Faxe,_dim_forurening,96.61,,,,,ecological_dimension,forurening
 320,Faxe,_dim_naeringsstoffer,107.64,,,,,ecological_dimension,naeringsstoffer
 320,Faxe,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 320,Faxe,_dim_vand,163.11,,,,,ecological_dimension,vand
 320,Faxe,_dim_arealanvendelse,102.74,,,,,ecological_dimension,arealanvendelse
 169,Høje-Taastrup,_dim_klimapaavirkning,348.33,,,,,ecological_dimension,klimapaavirkning
-169,Høje-Taastrup,_dim_luftkvalitet,154.8,,,,,ecological_dimension,luftkvalitet
+169,Høje-Taastrup,_dim_luftkvalitet,139.4,,,,,ecological_dimension,luftkvalitet
 169,Høje-Taastrup,_dim_forurening,115.83,,,,,ecological_dimension,forurening
 169,Høje-Taastrup,_dim_naeringsstoffer,105.94,,,,,ecological_dimension,naeringsstoffer
 169,Høje-Taastrup,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 169,Høje-Taastrup,_dim_vand,32.5,,,,,ecological_dimension,vand
 169,Høje-Taastrup,_dim_arealanvendelse,262.68,,,,,ecological_dimension,arealanvendelse
 461,Odense,_dim_klimapaavirkning,336.67,,,,,ecological_dimension,klimapaavirkning
-461,Odense,_dim_luftkvalitet,157.4,,,,,ecological_dimension,luftkvalitet
+461,Odense,_dim_luftkvalitet,144.2,,,,,ecological_dimension,luftkvalitet
 461,Odense,_dim_forurening,168.29,,,,,ecological_dimension,forurening
 461,Odense,_dim_naeringsstoffer,245.3,,,,,ecological_dimension,naeringsstoffer
 461,Odense,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 461,Odense,_dim_vand,73.48,,,,,ecological_dimension,vand
 461,Odense,_dim_arealanvendelse,250.0,,,,,ecological_dimension,arealanvendelse
 420,Assens,_dim_klimapaavirkning,359.33,,,,,ecological_dimension,klimapaavirkning
-420,Assens,_dim_luftkvalitet,158.6,,,,,ecological_dimension,luftkvalitet
+420,Assens,_dim_luftkvalitet,145.4,,,,,ecological_dimension,luftkvalitet
 420,Assens,_dim_forurening,110.29,,,,,ecological_dimension,forurening
 420,Assens,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 420,Assens,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 420,Assens,_dim_vand,121.95,,,,,ecological_dimension,vand
 420,Assens,_dim_arealanvendelse,109.51,,,,,ecological_dimension,arealanvendelse
 756,Ikast-Brande,_dim_klimapaavirkning,351.33,,,,,ecological_dimension,klimapaavirkning
-756,Ikast-Brande,_dim_luftkvalitet,143.0,,,,,ecological_dimension,luftkvalitet
+756,Ikast-Brande,_dim_luftkvalitet,135.2,,,,,ecological_dimension,luftkvalitet
 756,Ikast-Brande,_dim_forurening,94.13,,,,,ecological_dimension,forurening
 756,Ikast-Brande,_dim_naeringsstoffer,122.64,,,,,ecological_dimension,naeringsstoffer
 756,Ikast-Brande,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 756,Ikast-Brande,_dim_vand,111.56,,,,,ecological_dimension,vand
 756,Ikast-Brande,_dim_arealanvendelse,89.4,,,,,ecological_dimension,arealanvendelse
 846,Mariagerfjord,_dim_klimapaavirkning,414.0,,,,,ecological_dimension,klimapaavirkning
-846,Mariagerfjord,_dim_luftkvalitet,137.4,,,,,ecological_dimension,luftkvalitet
+846,Mariagerfjord,_dim_luftkvalitet,129.4,,,,,ecological_dimension,luftkvalitet
 846,Mariagerfjord,_dim_forurening,94.54,,,,,ecological_dimension,forurening
 846,Mariagerfjord,_dim_naeringsstoffer,91.46,,,,,ecological_dimension,naeringsstoffer
 846,Mariagerfjord,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 846,Mariagerfjord,_dim_vand,65.9,,,,,ecological_dimension,vand
 846,Mariagerfjord,_dim_arealanvendelse,99.82,,,,,ecological_dimension,arealanvendelse
 580,Aabenraa,_dim_klimapaavirkning,351.67,,,,,ecological_dimension,klimapaavirkning
-580,Aabenraa,_dim_luftkvalitet,163.2,,,,,ecological_dimension,luftkvalitet
+580,Aabenraa,_dim_luftkvalitet,150.6,,,,,ecological_dimension,luftkvalitet
 580,Aabenraa,_dim_forurening,75.19,,,,,ecological_dimension,forurening
 580,Aabenraa,_dim_naeringsstoffer,194.44,,,,,ecological_dimension,naeringsstoffer
 580,Aabenraa,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 580,Aabenraa,_dim_vand,119.26,,,,,ecological_dimension,vand
 580,Aabenraa,_dim_arealanvendelse,112.8,,,,,ecological_dimension,arealanvendelse
 450,Nyborg,_dim_klimapaavirkning,400.25,,,,,ecological_dimension,klimapaavirkning
-450,Nyborg,_dim_luftkvalitet,156.2,,,,,ecological_dimension,luftkvalitet
+450,Nyborg,_dim_luftkvalitet,143.8,,,,,ecological_dimension,luftkvalitet
 450,Nyborg,_dim_forurening,145.7,,,,,ecological_dimension,forurening
 450,Nyborg,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 450,Nyborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 450,Nyborg,_dim_vand,97.53,,,,,ecological_dimension,vand
 450,Nyborg,_dim_arealanvendelse,116.82,,,,,ecological_dimension,arealanvendelse
 630,Vejle,_dim_klimapaavirkning,373.67,,,,,ecological_dimension,klimapaavirkning
-630,Vejle,_dim_luftkvalitet,151.4,,,,,ecological_dimension,luftkvalitet
+630,Vejle,_dim_luftkvalitet,140.4,,,,,ecological_dimension,luftkvalitet
 630,Vejle,_dim_forurening,102.67,,,,,ecological_dimension,forurening
 630,Vejle,_dim_naeringsstoffer,134.26,,,,,ecological_dimension,naeringsstoffer
 630,Vejle,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 630,Vejle,_dim_vand,88.45,,,,,ecological_dimension,vand
 630,Vejle,_dim_arealanvendelse,97.18,,,,,ecological_dimension,arealanvendelse
 540,Sønderborg,_dim_klimapaavirkning,352.33,,,,,ecological_dimension,klimapaavirkning
-540,Sønderborg,_dim_luftkvalitet,162.4,,,,,ecological_dimension,luftkvalitet
+540,Sønderborg,_dim_luftkvalitet,149.6,,,,,ecological_dimension,luftkvalitet
 540,Sønderborg,_dim_forurening,98.58,,,,,ecological_dimension,forurening
 540,Sønderborg,_dim_naeringsstoffer,176.92,,,,,ecological_dimension,naeringsstoffer
 540,Sønderborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 540,Sønderborg,_dim_vand,85.1,,,,,ecological_dimension,vand
 540,Sønderborg,_dim_arealanvendelse,115.49,,,,,ecological_dimension,arealanvendelse
 400,Bornholm,_dim_klimapaavirkning,341.0,,,,,ecological_dimension,klimapaavirkning
-400,Bornholm,_dim_luftkvalitet,139.4,,,,,ecological_dimension,luftkvalitet
+400,Bornholm,_dim_luftkvalitet,135.2,,,,,ecological_dimension,luftkvalitet
 400,Bornholm,_dim_forurening,81.81,,,,,ecological_dimension,forurening
 400,Bornholm,_dim_naeringsstoffer,146.26,,,,,ecological_dimension,naeringsstoffer
 400,Bornholm,_dim_biodiversitet,223.71,,,,,ecological_dimension,biodiversitet
 400,Bornholm,_dim_vand,109.06,,,,,ecological_dimension,vand
 400,Bornholm,_dim_arealanvendelse,99.63,,,,,ecological_dimension,arealanvendelse
 779,Skive,_dim_klimapaavirkning,362.67,,,,,ecological_dimension,klimapaavirkning
-779,Skive,_dim_luftkvalitet,136.4,,,,,ecological_dimension,luftkvalitet
+779,Skive,_dim_luftkvalitet,130.2,,,,,ecological_dimension,luftkvalitet
 779,Skive,_dim_forurening,98.05,,,,,ecological_dimension,forurening
 779,Skive,_dim_naeringsstoffer,119.72,,,,,ecological_dimension,naeringsstoffer
 779,Skive,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 779,Skive,_dim_vand,108.24,,,,,ecological_dimension,vand
 779,Skive,_dim_arealanvendelse,113.71,,,,,ecological_dimension,arealanvendelse
 510,Haderslev,_dim_klimapaavirkning,356.67,,,,,ecological_dimension,klimapaavirkning
-510,Haderslev,_dim_luftkvalitet,160.2,,,,,ecological_dimension,luftkvalitet
+510,Haderslev,_dim_luftkvalitet,146.2,,,,,ecological_dimension,luftkvalitet
 510,Haderslev,_dim_forurening,85.32,,,,,ecological_dimension,forurening
 510,Haderslev,_dim_naeringsstoffer,181.06,,,,,ecological_dimension,naeringsstoffer
 510,Haderslev,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 510,Haderslev,_dim_vand,76.77,,,,,ecological_dimension,vand
 510,Haderslev,_dim_arealanvendelse,117.0,,,,,ecological_dimension,arealanvendelse
 575,Vejen,_dim_klimapaavirkning,380.48,,,,,ecological_dimension,klimapaavirkning
-575,Vejen,_dim_luftkvalitet,156.6,,,,,ecological_dimension,luftkvalitet
+575,Vejen,_dim_luftkvalitet,144.0,,,,,ecological_dimension,luftkvalitet
 575,Vejen,_dim_forurening,86.12,,,,,ecological_dimension,forurening
 575,Vejen,_dim_naeringsstoffer,199.26,,,,,ecological_dimension,naeringsstoffer
 575,Vejen,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 575,Vejen,_dim_vand,221.51,,,,,ecological_dimension,vand
 575,Vejen,_dim_arealanvendelse,116.64,,,,,ecological_dimension,arealanvendelse
 820,Vesthimmerlands,_dim_klimapaavirkning,574.29,,,,,ecological_dimension,klimapaavirkning
-820,Vesthimmerlands,_dim_luftkvalitet,136.2,,,,,ecological_dimension,luftkvalitet
+820,Vesthimmerlands,_dim_luftkvalitet,129.2,,,,,ecological_dimension,luftkvalitet
 820,Vesthimmerlands,_dim_forurening,91.72,,,,,ecological_dimension,forurening
 820,Vesthimmerlands,_dim_naeringsstoffer,191.42,,,,,ecological_dimension,naeringsstoffer
 820,Vesthimmerlands,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 820,Vesthimmerlands,_dim_vand,133.95,,,,,ecological_dimension,vand
 820,Vesthimmerlands,_dim_arealanvendelse,114.63,,,,,ecological_dimension,arealanvendelse
 707,Norddjurs,_dim_klimapaavirkning,351.67,,,,,ecological_dimension,klimapaavirkning
-707,Norddjurs,_dim_luftkvalitet,132.8,,,,,ecological_dimension,luftkvalitet
+707,Norddjurs,_dim_luftkvalitet,126.8,,,,,ecological_dimension,luftkvalitet
 707,Norddjurs,_dim_forurening,137.16,,,,,ecological_dimension,forurening
 707,Norddjurs,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 707,Norddjurs,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 707,Norddjurs,_dim_vand,130.88,,,,,ecological_dimension,vand
 707,Norddjurs,_dim_arealanvendelse,102.01,,,,,ecological_dimension,arealanvendelse
 671,Struer,_dim_klimapaavirkning,355.33,,,,,ecological_dimension,klimapaavirkning
-671,Struer,_dim_luftkvalitet,135.2,,,,,ecological_dimension,luftkvalitet
+671,Struer,_dim_luftkvalitet,130.8,,,,,ecological_dimension,luftkvalitet
 671,Struer,_dim_forurening,89.71,,,,,ecological_dimension,forurening
 671,Struer,_dim_naeringsstoffer,105.18,,,,,ecological_dimension,naeringsstoffer
 671,Struer,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 671,Struer,_dim_vand,94.87,,,,,ecological_dimension,vand
 671,Struer,_dim_arealanvendelse,125.41,,,,,ecological_dimension,arealanvendelse
 306,Odsherred,_dim_klimapaavirkning,383.67,,,,,ecological_dimension,klimapaavirkning
-306,Odsherred,_dim_luftkvalitet,145.8,,,,,ecological_dimension,luftkvalitet
+306,Odsherred,_dim_luftkvalitet,135.4,,,,,ecological_dimension,luftkvalitet
 306,Odsherred,_dim_forurening,83.03,,,,,ecological_dimension,forurening
 306,Odsherred,_dim_naeringsstoffer,198.58,,,,,ecological_dimension,naeringsstoffer
 306,Odsherred,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 306,Odsherred,_dim_vand,102.1,,,,,ecological_dimension,vand
 306,Odsherred,_dim_arealanvendelse,167.61,,,,,ecological_dimension,arealanvendelse
 330,Slagelse,_dim_klimapaavirkning,386.0,,,,,ecological_dimension,klimapaavirkning
-330,Slagelse,_dim_luftkvalitet,153.0,,,,,ecological_dimension,luftkvalitet
+330,Slagelse,_dim_luftkvalitet,142.6,,,,,ecological_dimension,luftkvalitet
 330,Slagelse,_dim_forurening,102.52,,,,,ecological_dimension,forurening
 330,Slagelse,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 330,Slagelse,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 330,Slagelse,_dim_vand,86.87,,,,,ecological_dimension,vand
 330,Slagelse,_dim_arealanvendelse,113.53,,,,,ecological_dimension,arealanvendelse
 665,Lemvig,_dim_klimapaavirkning,579.64,,,,,ecological_dimension,klimapaavirkning
-665,Lemvig,_dim_luftkvalitet,133.0,,,,,ecological_dimension,luftkvalitet
+665,Lemvig,_dim_luftkvalitet,130.2,,,,,ecological_dimension,luftkvalitet
 665,Lemvig,_dim_forurening,65.57,,,,,ecological_dimension,forurening
 665,Lemvig,_dim_naeringsstoffer,346.5,,,,,ecological_dimension,naeringsstoffer
 665,Lemvig,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 665,Lemvig,_dim_vand,182.29,,,,,ecological_dimension,vand
 665,Lemvig,_dim_arealanvendelse,106.58,,,,,ecological_dimension,arealanvendelse
 376,Guldborgsund,_dim_klimapaavirkning,363.67,,,,,ecological_dimension,klimapaavirkning
-376,Guldborgsund,_dim_luftkvalitet,151.0,,,,,ecological_dimension,luftkvalitet
+376,Guldborgsund,_dim_luftkvalitet,144.4,,,,,ecological_dimension,luftkvalitet
 376,Guldborgsund,_dim_forurening,174.75,,,,,ecological_dimension,forurening
 376,Guldborgsund,_dim_naeringsstoffer,300.0,,,,,ecological_dimension,naeringsstoffer
 376,Guldborgsund,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 376,Guldborgsund,_dim_vand,83.15,,,,,ecological_dimension,vand
 376,Guldborgsund,_dim_arealanvendelse,122.12,,,,,ecological_dimension,arealanvendelse
 326,Kalundborg,_dim_klimapaavirkning,513.46,,,,,ecological_dimension,klimapaavirkning
-326,Kalundborg,_dim_luftkvalitet,150.4,,,,,ecological_dimension,luftkvalitet
+326,Kalundborg,_dim_luftkvalitet,140.0,,,,,ecological_dimension,luftkvalitet
 326,Kalundborg,_dim_forurening,98.51,,,,,ecological_dimension,forurening
 326,Kalundborg,_dim_naeringsstoffer,361.79,,,,,ecological_dimension,naeringsstoffer
 326,Kalundborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 326,Kalundborg,_dim_vand,219.44,,,,,ecological_dimension,vand
 326,Kalundborg,_dim_arealanvendelse,106.76,,,,,ecological_dimension,arealanvendelse
 849,Jammerbugt,_dim_klimapaavirkning,415.0,,,,,ecological_dimension,klimapaavirkning
-849,Jammerbugt,_dim_luftkvalitet,128.8,,,,,ecological_dimension,luftkvalitet
+849,Jammerbugt,_dim_luftkvalitet,122.8,,,,,ecological_dimension,luftkvalitet
 849,Jammerbugt,_dim_forurening,131.44,,,,,ecological_dimension,forurening
 849,Jammerbugt,_dim_naeringsstoffer,91.46,,,,,ecological_dimension,naeringsstoffer
 849,Jammerbugt,_dim_biodiversitet,295.57,,,,,ecological_dimension,biodiversitet
 849,Jammerbugt,_dim_vand,122.8,,,,,ecological_dimension,vand
 849,Jammerbugt,_dim_arealanvendelse,96.53,,,,,ecological_dimension,arealanvendelse
 550,Tønder,_dim_klimapaavirkning,838.83,,,,,ecological_dimension,klimapaavirkning
-550,Tønder,_dim_luftkvalitet,160.2,,,,,ecological_dimension,luftkvalitet
+550,Tønder,_dim_luftkvalitet,149.0,,,,,ecological_dimension,luftkvalitet
 550,Tønder,_dim_forurening,126.84,,,,,ecological_dimension,forurening
 550,Tønder,_dim_naeringsstoffer,156.59,,,,,ecological_dimension,naeringsstoffer
 550,Tønder,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 550,Tønder,_dim_vand,207.14,,,,,ecological_dimension,vand
 550,Tønder,_dim_arealanvendelse,120.11,,,,,ecological_dimension,arealanvendelse
 390,Vordingborg,_dim_klimapaavirkning,381.67,,,,,ecological_dimension,klimapaavirkning
-390,Vordingborg,_dim_luftkvalitet,148.0,,,,,ecological_dimension,luftkvalitet
+390,Vordingborg,_dim_luftkvalitet,141.2,,,,,ecological_dimension,luftkvalitet
 390,Vordingborg,_dim_forurening,106.16,,,,,ecological_dimension,forurening
 390,Vordingborg,_dim_naeringsstoffer,286.19,,,,,ecological_dimension,naeringsstoffer
 390,Vordingborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 390,Vordingborg,_dim_vand,73.02,,,,,ecological_dimension,vand
 390,Vordingborg,_dim_arealanvendelse,110.05,,,,,ecological_dimension,arealanvendelse
 360,Lolland,_dim_klimapaavirkning,358.67,,,,,ecological_dimension,klimapaavirkning
-360,Lolland,_dim_luftkvalitet,151.8,,,,,ecological_dimension,luftkvalitet
+360,Lolland,_dim_luftkvalitet,145.0,,,,,ecological_dimension,luftkvalitet
 360,Lolland,_dim_forurening,119.07,,,,,ecological_dimension,forurening
 360,Lolland,_dim_naeringsstoffer,374.67,,,,,ecological_dimension,naeringsstoffer
 360,Lolland,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 360,Lolland,_dim_vand,98.11,,,,,ecological_dimension,vand
 360,Lolland,_dim_arealanvendelse,135.65,,,,,ecological_dimension,arealanvendelse
 741,Samsø,_dim_klimapaavirkning,365.33,,,,,ecological_dimension,klimapaavirkning
-741,Samsø,_dim_luftkvalitet,140.4,,,,,ecological_dimension,luftkvalitet
+741,Samsø,_dim_luftkvalitet,133.0,,,,,ecological_dimension,luftkvalitet
 741,Samsø,_dim_forurening,176.72,,,,,ecological_dimension,forurening
 741,Samsø,_dim_naeringsstoffer,384.76,,,,,ecological_dimension,naeringsstoffer
 741,Samsø,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
 741,Samsø,_dim_vand,149.98,,,,,ecological_dimension,vand
 741,Samsø,_dim_arealanvendelse,114.08,,,,,ecological_dimension,arealanvendelse
 482,Langeland,_dim_klimapaavirkning,342.67,,,,,ecological_dimension,klimapaavirkning
-482,Langeland,_dim_luftkvalitet,154.2,,,,,ecological_dimension,luftkvalitet
+482,Langeland,_dim_luftkvalitet,144.4,,,,,ecological_dimension,luftkvalitet
 482,Langeland,_dim_forurening,120.04,,,,,ecological_dimension,forurening
 482,Langeland,_dim_naeringsstoffer,227.63,,,,,ecological_dimension,naeringsstoffer
 482,Langeland,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet
