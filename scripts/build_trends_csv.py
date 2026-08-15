@@ -66,6 +66,16 @@ OUTPUT = DATA_DIR / "trend_indicators.csv"
 # pilen pege på noget andet end det tal den står ved siden af.
 AVERAGE_DIMENSIONS = {"forurening"}
 
+# Sociale indikatorer der HAR en dimension i master, men som platformen hverken
+# scorer eller viser - de står ikke i SOCIAL_CATEGORIES[].indicatorIds i
+# webapp/lib/shared.ts. De skal holdes ude af kategoriens pil: Bolig scorer på
+# 2 indikatorer, så en pil beregnet på 4 ville beskrive et andet datasæt end
+# det tal den står ved siden af (samme fælde som punkt 14 i CLAUDE.md).
+# De beholder deres EGEN indikator-række i trend_indicators.csv - det er kun
+# aggregeringen de holdes ude af, så data er klar hvis de senere tages i brug.
+# HOLD I SYNC med SOCIAL_CATEGORIES i webapp/lib/shared.ts.
+IKKE_SCORET = {"housing_no_wc", "housing_no_bath"}
+
 # ─── op_er_godt pr. indikator ────────────────────────────────────────────
 # Kilde: INDICATORS[].inverse i webapp/lib/shared.ts (sociale) og den faste
 # konvention "for økologiske indikatorer er lavere altid bedre" (CLAUDE.md),
@@ -187,6 +197,8 @@ def laes_master_struktur():
                     continue
                 eco[r["kommune_kode"]][dim].append((iid, ratio))
             elif kat == "social":
+                if iid in IKKE_SCORET:
+                    continue
                 social[dim].add(iid)
     return eco, {d: sorted(ids) for d, ids in social.items()}
 

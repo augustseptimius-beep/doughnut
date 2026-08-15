@@ -497,6 +497,11 @@ SIMPLE = [
     dict(id="housing_no_bath_taeller", navn="Boliger uden eget bad", tabel="BOL102",
          soeg=["ikke bad eller adgang til bad"],
          ekstra=[{"soeg": ["boliger med cpr tilmeldte personer"]}]),
+    # helhed=True lader DST summere ALLE toilet-/bad-kategorier, inkl. "Uoplyst".
+    # Master (fetch_udvidelse_data.py) udelader "Uoplyst" i sin nævner. Efterprøvet
+    # på alle 98 kommuner 2010-2026: forskellen flytter trend-procenten med højst
+    # 0,75 pp og vender retningen i NUL kommuner, fordi "Uoplyst" er promillestort.
+    # Én fælles nævner til både toilet og bad er derfor valgt frem for to ekstra kald.
     dict(id="housing_beboede_total", navn="Beboede boliger i alt (nævner: toilet/bad)",
          tabel="BOL102", helhed=True,
          ekstra=[{"soeg": ["boliger med cpr tilmeldte personer"]}]),
@@ -840,13 +845,17 @@ def _uvm_skoleaar_til_aar(periode: str) -> str | None:
     return m.group(1) if m else None
 
 
-def uvm_serie(navn: str, body: dict, kom_key: str, aar_key: str, val_key: str,
-              gennemsnit_over: str | None = None) -> dict[tuple[str, str], float]:
+def uvm_serie(navn: str, body: dict, kom_key: str, aar_key: str,
+              val_key: str) -> dict[tuple[str, str], float]:
     """
     Henter én UVM-indikators FULDE historik (ikke kun seneste år).
-    gennemsnit_over: hvis sat, er der flere rækker pr. (kommune, år) (fx
-    trivselsindikatorer) og der gennemsnittes over dem i stedet for at bruge
-    sidste række.
+
+    Flere rækker pr. (kommune, år) GENNEMSNITTES altid. Det er det rigtige
+    for wellbeing, hvor detaljeringen deler året op på trivselsindikatorer,
+    og en nul-operation for de øvrige tre, hvor der kun er én række pr.
+    kommune-år (verificeret: exam_grade 98×15, high_absence 98×6,
+    youth_education 98×14 rækker). Tilføjes en indikator hvor flere rækker
+    skal LÆGGES SAMMEN i stedet, skal den have sin egen sti her.
     """
     log(f"\n→ UVM: {navn}")
     rows = uvm_post(body)
@@ -905,8 +914,7 @@ def fetch_uvm_historik() -> list[dict]:
                               "[Trivselsindikator].[Trivselsindikator]"],
              "side_størrelse": 40000},
             "[Institution].[Administrerende Kommune].[Administrerende Kommune]",
-            "[Skoleår].[Skoleår].[Skoleår]", "Indikatorsvar - Kommunetal",
-            gennemsnit_over="Trivselsindikator"),
+            "[Skoleår].[Skoleår].[Skoleår]", "Indikatorsvar - Kommunetal"),
         "youth_education": uvm_serie(
             "Ungdomsuddannelsesandel (GS/PROFMOD/PROFMOD)",
             {"område": "GS", "emne": "PROFMOD", "underemne": "PROFMOD",
