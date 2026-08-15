@@ -1,7 +1,7 @@
 Kommuneliste: 98 kommuner (fra master_indicators.csv)
 ==================================================================
-DST-historik, startet 2026-08-12 08:37
-51 rå udtræk, 98 kommuner, fra 2010
+DST-historik, startet 2026-08-15 07:34
+59 rå udtræk, 98 kommuner, fra 2010
 ==================================================================
 
 → Folketal  [FOLK1A]
@@ -9,6 +9,14 @@ DST-historik, startet 2026-08-12 08:37
    OK: Thisted 2010 = 45.297.0  →  2026 = 42.572.0  (1666 kommune-år i alt)
 
 Folketal hentet for 1666 kommune-år.
+
+
+→ Børnetal 0-17 år  [FOLK1A]
+   Nøgle (kode): ALDER = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17']
+   Udeladt, lægges sammen af DST: KØN, CIVILSTAND
+   OK: Thisted 2010 = 10.194.0  →  2026 = 8.060.0  (1666 kommune-år i alt)
+
+Børnetal 0-17 år hentet for 1666 kommune-år.
 
 
 → Hjemmesygepleje-modtagere  [HJEMSYG]
@@ -40,6 +48,11 @@ Folketal hentet for 1666 kommune-år.
    Nøgle: OPHOLD_PÅ_SYGEHUS = ['Personer i alt']
    Udeladt, lægges sammen af DST: ALDER, KØN
    OK: Thisted 2017 = 43.716.0  →  2025 = 42.572.0  (882 kommune-år i alt)
+
+→ Sygehusophold 12+ timer  [SBR01]
+   Nøgle: OPHOLD_PÅ_SYGEHUS = ['Ophold på sygehus på 12 timer eller derover (antal patienter)']
+   Udeladt, lægges sammen af DST: ALDER, KØN
+   OK: Thisted 2017 = 4.219.0  →  2025 = 3.752.0  (882 kommune-år i alt)
 
 → Klassekvotient i folkeskolen  [KVOTIEN]
    Nøgle: KLASSE = ['I alt']
@@ -135,9 +148,30 @@ Folketal hentet for 1666 kommune-år.
    Udeladt, lægges sammen af DST: ANVENDELSE, UDLFORH, EJER, OPFØRELSESÅR
    OK: Thisted 2010 = 26.479.0  →  2026 = 27.040.0  (1470 kommune-år i alt)
 
+→ Boliger uden eget toilet  [BOL102]
+   Nøgle: TOILET = ['WC udenfor boligen', 'Andet/intet toilet']
+   Filter: BEBO = ['Boliger med CPR tilmeldte personer (beboede boliger)']
+   Udeladt, lægges sammen af DST: ANVENDELSE, OPFØRELSESÅR, OPVARMNING, BAD, KOEKKEN
+   OK: Thisted 2010 = 152.0  →  2026 = 192.0  (1666 kommune-år i alt)
+
+→ Boliger uden eget bad  [BOL102]
+   Nøgle: BAD = ['Ikke bad eller adgang til bad']
+   Filter: BEBO = ['Boliger med CPR tilmeldte personer (beboede boliger)']
+   Udeladt, lægges sammen af DST: ANVENDELSE, OPFØRELSESÅR, OPVARMNING, TOILET, KOEKKEN
+   OK: Thisted 2010 = 502.0  →  2026 = 296.0  (1666 kommune-år i alt)
+
+→ Beboede boliger i alt (nævner: toilet/bad)  [BOL102]
+   Filter: BEBO = ['Boliger med CPR tilmeldte personer (beboede boliger)']
+   Udeladt, lægges sammen af DST: ANVENDELSE, OPFØRELSESÅR, OPVARMNING, TOILET, BAD, KOEKKEN
+   OK: Thisted 2010 = 20.456.0  →  2026 = 20.515.0  (1666 kommune-år i alt)
+
 → Stemmedeltagelse folketingsvalg  [LABY09]
    Nøgle: VALRES = ['Stemmeprocent']
    OK: Thisted 2011 = 87.1  →  2026 = 84.0  (490 kommune-år i alt)
+
+→ Stemmedeltagelse kommunalvalg  [LABY08]
+   Nøgle: VALRES = ['Stemmeprocent']
+   OK: Thisted 2013 = 75.0  →  2025 = 72.2  (392 kommune-år i alt)
 
 → Musikskoleelever  [SKOLM02B]
    ADVARSEL: kunne ikke finde ét fast tidspunkt pr. år i tabellen.
@@ -149,6 +183,20 @@ Folketal hentet for 1666 kommune-år.
    Nøgle: BNØGLE = ['Udlån i alt']
    Tabellen kender ikke 1 af 98 kommuner. De udelades.
    OK: Thisted 2010 = 308.874.0  →  2024 = 137.227.0  (1261 kommune-år i alt)
+
+→ Kommunale kulturudgifter pr. indb.  [REGK31]
+   Nøgle (kode): FUNKTION = ['33561', '33562', '33563', '33564']
+   Filter: DRANST = ['1 Driftskonti']
+   Filter: ART = ['I alt (netto)']
+   Filter: PRISENHED = ['Pr. indbygger, løbende priser (kr.)']
+   OK: Thisted 2010 = 271.0  →  2025 = 462.0  (1568 kommune-år i alt)
+
+→ Kommunal støtte til frivillige foreninger pr. indb.  [REGK31]
+   Nøgle (kode): FUNKTION = ['33873']
+   Filter: DRANST = ['1 Driftskonti']
+   Filter: ART = ['I alt (netto)']
+   Filter: PRISENHED = ['Pr. indbygger, løbende priser (kr.)']
+   OK: Thisted 2010 = 98.0  →  2025 = 72.0  (1568 kommune-år i alt)
 
 → Trafikulykker  [UHELDK1]
    Nøgle: UHELD = ['Personskade i alt']
@@ -171,8 +219,12 @@ Folketal hentet for 1666 kommune-år.
 
 → Kommunale idrætsudgifter  [IDRFIN02]
    Nøgle: FUNKTION = ['I alt']
-   Filter: DRANST = ['I alt']
-   OK: Thisted 2011 = 490.0  →  2025 = 625.0  (1470 kommune-år i alt)
+   Filter: DRANST = ['12 Driftskonti inkl. statsrefusion']
+   OK: Thisted 2011 = 417.0  →  2025 = 580.0  (1470 kommune-år i alt)
+
+→ Andel i lavindkomstgruppe  [LABY07]
+   Nøgle: ALDER = ['Alder i alt']
+   OK: Thisted 2015 = 3.4  →  2024 = 3.3  (980 kommune-år i alt)
 
 → Kvinder i lederstillinger  [RAS301]
    Nøgle: KOEN = ['Kvinder']
@@ -384,7 +436,25 @@ Klimaregnskabet.dk - klimapåvirkning (territorial CO2e/indb.)
 
 Klimaregnskabet færdig: 686 kommune-år, 0 uden svar.
 
-Skrevet: trend_history_raw.csv (47928 rækker)
+==================================================================
+UVM-historik (api.uddannelsesstatistik.dk)
+==================================================================
+
+→ UVM: Karaktergennemsnit (GS/KARA/KARAGNS)
+   OK: 1470 kommune-år, 98 kommuner.
+
+→ UVM: Elevfravær >10% (GS/ELEVFRAV/FRAVAAR)
+   OK: 588 kommune-år, 98 kommuner.
+
+→ UVM: Elevtrivsel (GS/TRIV/TRIVIND)
+   OK: 1139 kommune-år, 95 kommuner.
+
+→ UVM: Ungdomsuddannelsesandel (GS/PROFMOD/PROFMOD)
+   OK: 1372 kommune-år, 98 kommuner.
+
+UVM-historik færdig: 4569 kommune-år i alt.
+
+Skrevet: trend_history_raw.csv (61219 rækker)
 
 Dækning pr. indikator (antal kommuner med mindst ét år):
   areal_bebygget               98/98 kommuner
@@ -394,6 +464,7 @@ Dækning pr. indikator (antal kommuner med mindst ét år):
   child_poverty                98/98 kommuner
   cirkularitet_recycling       98/98 kommuner
   cirkularitet_waste           98/98 kommuner
+  civil_society                98/98 kommuner
   class_size                   98/98 kommuner
   commute_distance             98/98 kommuner
   crime_rate                   98/98 kommuner
@@ -403,18 +474,25 @@ Dækning pr. indikator (antal kommuner med mindst ét år):
   education                    98/98 kommuner
   employment                   98/98 kommuner
   employment_origin_gap        98/98 kommuner
+  exam_grade                   98/98 kommuner
   gender_leadership            98/98 kommuner
   gini                         98/98 kommuner
+  high_absence                 98/98 kommuner
   hjemsyg                      98/98 kommuner
+  hospital_long                98/98 kommuner
   hospital_short               98/98 kommuner
   housing_area                 98/98 kommuner
+  housing_no_bath              98/98 kommuner
+  housing_no_wc                98/98 kommuner
   income_gender_gap            98/98 kommuner
   klimapaavirkning             98/98 kommuner
+  kultur_spending              98/98 kommuner
   laegekontakt                 98/98 kommuner
   le_gender_gap                94/98 kommuner
   library_use                  97/98 kommuner
   life_expectancy              94/98 kommuner
   low_education                98/98 kommuner
+  low_income                   98/98 kommuner
   medicin                      98/98 kommuner
   music_school                 96/98 kommuner
   naer_nitrogen                98/98 kommuner
@@ -427,5 +505,8 @@ Dækning pr. indikator (antal kommuner med mindst ét år):
   traffic_accidents            98/98 kommuner
   vacant_housing               98/98 kommuner
   vandindvinding               97/98 kommuner
+  voter_turnout                98/98 kommuner
   voter_turnout_national       98/98 kommuner
   vulnerable_children          98/98 kommuner
+  wellbeing                    95/98 kommuner
+  youth_education              98/98 kommuner

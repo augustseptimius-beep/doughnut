@@ -438,6 +438,8 @@ SIMPLE = [
          soeg=["alle varigheder"]),
     dict(id="hospital_short_naevner", navn="Sygehusophold, personer i alt", tabel="SBR01",
          soeg=["=personer i alt"]),
+    dict(id="hospital_long_taeller", navn="Sygehusophold 12+ timer", tabel="SBR01",
+         soeg=["12 timer eller derover"]),
 
     # --- Uddannelse ---
     dict(id="class_size", navn="Klassekvotient i folkeskolen", tabel="KVOTIEN",
@@ -487,15 +489,43 @@ SIMPLE = [
     # BOL101's BEBO-variabel har ingen "I alt"-værdi (kun beboet/ubeboet/
     # fritidshus-ubeboet) - helhed=True lader DST summere alle tre selv.
     dict(id="vacant_housing_naevner", navn="Boliger i alt", tabel="BOL101", helhed=True),
+    # BEBO har elimination=False i BOL102 - SKAL angives eksplicit (kan ikke
+    # udelades), derfor pin via ekstra på hver af de tre specs nedenfor.
+    dict(id="housing_no_wc_taeller", navn="Boliger uden eget toilet", tabel="BOL102",
+         soeg=["wc udenfor boligen", "andet/intet toilet"],
+         ekstra=[{"soeg": ["boliger med cpr tilmeldte personer"]}]),
+    dict(id="housing_no_bath_taeller", navn="Boliger uden eget bad", tabel="BOL102",
+         soeg=["ikke bad eller adgang til bad"],
+         ekstra=[{"soeg": ["boliger med cpr tilmeldte personer"]}]),
+    dict(id="housing_beboede_total", navn="Beboede boliger i alt (nævner: toilet/bad)",
+         tabel="BOL102", helhed=True,
+         ekstra=[{"soeg": ["boliger med cpr tilmeldte personer"]}]),
 
     # --- Demokrati ---
     dict(id="voter_turnout_national", navn="Stemmedeltagelse folketingsvalg", tabel="LABY09",
          soeg=["=stemmeprocent"], pin_ialt=True),
+    # LABY08 (kommunalvalg) - IKKE KVBPCT, som kun har landstal uden
+    # kommune-opdeling. VALRES har elimination=False, "stemmeprocent" er
+    # allerede den færdigberegnede andel, matcher direkte doughnut_scores.csv.
+    dict(id="voter_turnout", navn="Stemmedeltagelse kommunalvalg", tabel="LABY08",
+         soeg=["=stemmeprocent"]),
 
     # --- Kultur & fritid ---
     dict(id="music_school", navn="Musikskoleelever", tabel="SKOLM02B", helhed=True, pr=1000),
     dict(id="library_use", navn="Biblioteksudlån", tabel="BIB1",
          soeg=["udlån i alt"], pr=1),
+    # REGK31: FUNKTION-koder matcher fetch_doughnut_data.py's egen definition.
+    # PRISENHED har elimination=False - SKAL angives eksplicit (Pr. indbygger).
+    dict(id="kultur_spending", navn="Kommunale kulturudgifter pr. indb.", tabel="REGK31",
+         soeg_kode=["33561", "33562", "33563", "33564"], soeg_var="FUNKTION",
+         ekstra=[{"soeg": ["driftskonti"]}, {"soeg": ["=i alt (netto)"]},
+                 {"soeg": ["pr. indbygger"]}]),
+
+    # --- Lokalsamfund ---
+    dict(id="civil_society", navn="Kommunal støtte til frivillige foreninger pr. indb.",
+         tabel="REGK31", soeg_kode=["33873"], soeg_var="FUNKTION",
+         ekstra=[{"soeg": ["driftskonti"]}, {"soeg": ["=i alt (netto)"]},
+                 {"soeg": ["pr. indbygger"]}]),
 
     # --- Tryghed ---
     dict(id="traffic_accidents", navn="Trafikulykker", tabel="UHELDK1",
@@ -515,6 +545,8 @@ SIMPLE = [
          soeg=["=i alt"], ekstra=[{"soeg": ["driftskonti"]}]),
 
     # --- Lighed ---
+    dict(id="low_income", navn="Andel i lavindkomstgruppe", tabel="LABY07",
+         soeg=["=alder i alt"]),
     dict(id="gender_leadership_taeller", navn="Kvinder i lederstillinger", tabel="RAS301",
          soeg=["=kvinder"], ekstra=[{"soeg": ["ledelsesarbejde"]}]),
     dict(id="gender_leadership_naevner", navn="Ledere i alt", tabel="RAS301",
@@ -591,6 +623,9 @@ FORHOLD = {
     "income_gender_gap": ("income_gender_gap_taeller", "income_gender_gap_naevner"),
     "employment_origin_gap": ("employment_origin_gap_taeller", "employment_origin_gap_naevner"),
     "employment": ("employment_taeller", None),  # nævner er konstant 100 (allerede en frekvens)
+    "hospital_long": ("hospital_long_taeller", "hospital_short_naevner"),
+    "housing_no_wc": ("housing_no_wc_taeller", "housing_beboede_total"),
+    "housing_no_bath": ("housing_no_bath_taeller", "housing_beboede_total"),
 }
 
 # Forskel (ikke forhold): kvinder minus mænd, ikke divideret
@@ -602,11 +637,12 @@ FORSKEL = {
 DIREKTE = {
     "hjemsyg", "medicin", "laegekontakt", "boerneovervaeght", "class_size", "daycare_ratio",
     "vulnerable_children", "child_notifications", "poverty_relative", "child_poverty", "gini",
-    "housing_area", "voter_turnout_national", "music_school", "library_use", "traffic_accidents",
-    "crime_rate", "sports_facilities", "sports_membership", "sports_spending",
+    "housing_area", "voter_turnout_national", "voter_turnout", "music_school", "library_use",
+    "traffic_accidents", "crime_rate", "sports_facilities", "sports_membership", "sports_spending",
     "life_expectancy", "disposable_income", "commute_distance",
     "naer_nitrogen", "naer_phosphorus", "vandindvinding", "areal_intensiv", "areal_bebygget",
     "cirkularitet_waste", "cirkularitet_recycling",
+    "kultur_spending", "civil_society", "low_income",
 }
 
 
@@ -732,6 +768,165 @@ def fetch_klimapaavirkning() -> list[dict]:
 
 
 # ══════════════════════════════════════════════════════════════════════════
+# UVM (api.uddannelsesstatistik.dk) - fuld historik i stedet for kun seneste
+# år. fetch_udvidelse_data.py henter allerede disse fire nøgletal, men
+# beholder kun det seneste skoleår (uvm_get_latest) - historikken ligger
+# allerede i svaret, den bliver bare smidt væk. Her genbruges samme
+# statistik-kald, men ALLE år gemmes i stedet for kun det seneste.
+#
+# apprenticeship (EUD/PRAK/SØG) er bevidst UDELADT: nøgletalsnavnet UVM
+# forventer er ændret siden fetch_udvidelse_data.py blev skrevet - selv et
+# enkelt-års opslag fejler nu ("Nøgletal ... kunne ikke findes"). Det er et
+# fortilfælde for hele den indikator, ikke kun for historik, og løses ikke
+# her - se ADVARSEL i loggen.
+# ══════════════════════════════════════════════════════════════════════════
+
+UVM_BASE = "https://api.uddannelsesstatistik.dk/Api/v1"
+UVM_TOKEN = (
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+    ".eyJkb21haW51c2VyIjoiYW5vbnltb3VzIiwidXNlcmlkIjoiZTdjZTA4ODUtOTQ2Yi00YmE1LWI5YjktMjEwMjIxYWIxMTljIiwidG9rZW5pZCI6ImYyYjIyMjk5LTk5OTItNDUwZC1hODUyLTVlZThiMzlmZjlmYyIsImV4cCI6MTg3MjI0MjYxOCwiaXNzIjoiaHR0cHM6Ly9kb3RuZXRkZXRhaWwubmV0IiwiYXVkIjoiaHR0cHM6Ly9kb3RuZXRkZXRhaWwubmV0In0"
+    ".5bcAmQPPsADuWDuKnz37ulpz0UzEUq-WCxd4GASovqw"
+)
+
+# Alias-udvidet navn→kode-mapping, så "Aarhus"/"Århus"-stavevarianter fra UVM
+# også rammer, ligesom load_navn_to_kode() i fetch_udvidelse_data.py.
+NAVN2KODE: dict[str, str] = {}
+for _kode, _navn in KOMMUNER.items():
+    NAVN2KODE[_navn] = _kode
+    NAVN2KODE[_navn.replace("Å", "Aa").replace("å", "aa")] = _kode
+
+
+def uvm_post(body: dict) -> list[dict]:
+    payload = json.dumps(body, ensure_ascii=False).encode("utf-8")
+    anm = urllib.request.Request(
+        f"{UVM_BASE}/statistik", data=payload,
+        headers={"Authorization": f"Bearer {UVM_TOKEN}",
+                 "Content-Type": "application/json; charset=utf-8"})
+    for n in range(4):
+        time.sleep(PAUSE if n == 0 else PAUSE + 2 ** n)
+        try:
+            with urllib.request.urlopen(anm, timeout=60, context=_ctx) as sv:
+                data = json.loads(sv.read().decode("utf-8"))
+            return data if isinstance(data, list) else []
+        except urllib.error.HTTPError as ex:
+            if ex.code in (429, 500, 502, 503, 504):
+                log(f"   (UVM svarede {ex.code}, venter og prøver igen)")
+                continue
+            log(f"   FEJL: UVM svarede {ex.code}: "
+                f"{ex.read().decode('utf-8', 'ignore')[:200]}")
+            return []
+        except Exception as ex:
+            log(f"   (UVM netværksfejl: {ex}, venter og prøver igen)")
+            continue
+    log("   FEJL: UVM svarede ikke efter flere forsøg.")
+    return []
+
+
+def _uvm_parse(s) -> float | None:
+    if s is None:
+        return None
+    s = str(s).strip().rstrip("%").strip()
+    if s in ("", "..", ".", "x", "X", "-", "nan"):
+        return None
+    try:
+        return float(s.replace(".", "").replace(",", "."))
+    except ValueError:
+        return None
+
+
+def _uvm_skoleaar_til_aar(periode: str) -> str | None:
+    """'2019/2020' -> '2019'. Almindelige kalenderår ('2019') går igennem uændret."""
+    m = re.match(r"(\d{4})", periode.strip())
+    return m.group(1) if m else None
+
+
+def uvm_serie(navn: str, body: dict, kom_key: str, aar_key: str, val_key: str,
+              gennemsnit_over: str | None = None) -> dict[tuple[str, str], float]:
+    """
+    Henter én UVM-indikators FULDE historik (ikke kun seneste år).
+    gennemsnit_over: hvis sat, er der flere rækker pr. (kommune, år) (fx
+    trivselsindikatorer) og der gennemsnittes over dem i stedet for at bruge
+    sidste række.
+    """
+    log(f"\n→ UVM: {navn}")
+    rows = uvm_post(body)
+    if not rows:
+        log("   FEJL: intet svar fra UVM, springes over.")
+        return {}
+
+    grupper: dict[tuple[str, str], list[float]] = defaultdict(list)
+    for row in rows:
+        navn_kom = (row.get(kom_key) or "").strip()
+        periode = (row.get(aar_key) or "").strip()
+        val = _uvm_parse(row.get(val_key))
+        if not navn_kom or not periode or val is None:
+            continue
+        aar = _uvm_skoleaar_til_aar(periode)
+        if not aar or int(aar) < FRA_AAR:
+            continue
+        kode = NAVN2KODE.get(navn_kom)
+        if not kode:
+            continue
+        grupper[(kode, aar)].append(val)
+
+    ud = {k: round(sum(v) / len(v), 4) for k, v in grupper.items()}
+    kommuner_dækket = len({k for k, _ in ud})
+    log(f"   OK: {len(ud)} kommune-år, {kommuner_dækket} kommuner.")
+    return ud
+
+
+def fetch_uvm_historik() -> list[dict]:
+    log("\n" + "=" * 66)
+    log("UVM-historik (api.uddannelsesstatistik.dk)")
+    log("=" * 66)
+
+    serier = {
+        "exam_grade": uvm_serie(
+            "Karaktergennemsnit (GS/KARA/KARAGNS)",
+            {"område": "GS", "emne": "KARA", "underemne": "KARAGNS",
+             "nøgletal": ["Gennemsnit - Obl. prøver"],
+             "detaljering": ["[Bopælskommune].[Bopælskommune]", "[Skoleår].[Skoleår]"],
+             "side_størrelse": 20000},
+            "[Bopælskommune].[Bopælskommune].[Bopælskommune]",
+            "[Skoleår].[Skoleår].[Skoleår]", "Gennemsnit - Obl. prøver"),
+        "high_absence": uvm_serie(
+            "Elevfravær >10% (GS/ELEVFRAV/FRAVAAR)",
+            {"område": "GS", "emne": "ELEVFRAV", "underemne": "FRAVAAR",
+             "nøgletal": ["Over 10 procent"],
+             "detaljering": ["[Institution].[Beliggenhedskommune]", "[Tid].[Skoleår]"],
+             "side_størrelse": 20000},
+            "[Institution].[Beliggenhedskommune].[Beliggenhedskommune]",
+            "[Tid].[Skoleår].[Skoleår]", "Over 10 procent"),
+        "wellbeing": uvm_serie(
+            "Elevtrivsel (GS/TRIV/TRIVIND)",
+            {"område": "GS", "emne": "TRIV", "underemne": "TRIVIND",
+             "nøgletal": ["Indikatorsvar - Kommunetal"],
+             "detaljering": ["[Institution].[Administrerende Kommune]", "[Skoleår].[Skoleår]",
+                              "[Trivselsindikator].[Trivselsindikator]"],
+             "side_størrelse": 40000},
+            "[Institution].[Administrerende Kommune].[Administrerende Kommune]",
+            "[Skoleår].[Skoleår].[Skoleår]", "Indikatorsvar - Kommunetal",
+            gennemsnit_over="Trivselsindikator"),
+        "youth_education": uvm_serie(
+            "Ungdomsuddannelsesandel (GS/PROFMOD/PROFMOD)",
+            {"område": "GS", "emne": "PROFMOD", "underemne": "PROFMOD",
+             "nøgletal": ["Komp: Med mindst en ungdomsuddannelsekompetence"],
+             "detaljering": ["[Bopælskommune].[Kommune]", "[År].[År]"],
+             "side_størrelse": 5000},
+            "[Bopælskommune].[Kommune].[Kommune]",
+            "[År].[År].[År]", "Komp: Med mindst en ungdomsuddannelsekompetence"),
+    }
+
+    ud = []
+    for platform_id, serie_data in serier.items():
+        for (kode, aar), v in serie_data.items():
+            ud.append({"kommune_kode": kode, "indicator_id": platform_id, "aar": aar, "vaerdi": v})
+
+    log(f"\nUVM-historik færdig: {len(ud)} kommune-år i alt.")
+    return ud
+
+
+# ══════════════════════════════════════════════════════════════════════════
 # MAIN
 # ══════════════════════════════════════════════════════════════════════════
 
@@ -749,7 +944,7 @@ def auto_build_trends():
 
 
 def main():
-    alle = fetch_dst_indicators() + fetch_klimapaavirkning()
+    alle = fetch_dst_indicators() + fetch_klimapaavirkning() + fetch_uvm_historik()
 
     if not alle:
         log("\nFEJL: ingen data hentet overhovedet.")

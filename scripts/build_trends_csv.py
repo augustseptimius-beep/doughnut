@@ -85,6 +85,10 @@ OP_ER_GODT = {
     "sports_spending": True, "gender_leadership": True, "income_gender_gap": True,
     "employment_origin_gap": True, "le_gender_gap": False, "life_expectancy": True,
     "employment": True, "disposable_income": True, "commute_distance": False,
+    "hospital_long": False, "housing_no_wc": False, "housing_no_bath": False,
+    "voter_turnout": True, "kultur_spending": True, "civil_society": True,
+    "low_income": False, "exam_grade": True, "high_absence": False,
+    "wellbeing": True, "youth_education": True,
     # --- Økologiske (lavere raw = bedre, undtagen genanvendelse) ---
     "naer_nitrogen": False, "naer_phosphorus": False, "vandindvinding": False,
     "areal_intensiv": False, "areal_bebygget": False, "klimapaavirkning": False,
