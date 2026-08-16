@@ -12,3 +12,13 @@ biodiversitet_tmp/
 .fuse_hidden*
 .claude/
 doughnut_scores.csv
+
+# macOS/iCloud-konfliktkopier. Repoet ligger i ~/Documents, som synkroniseres
+# af "Skrivebord & Dokumenter". Når iCloud ser en konflikt, laver den en kopi
+# med mellemrum og tal i navnet ("CLAUDE 2.md", "data_years 2.json"). To af
+# dem nåede at blive committet, før det blev opdaget aug. 2026 - og en
+# tilsvarende kopi inde i .git ("refs/remotes/origin/HEAD 2") brød push helt.
+# Den varige løsning er at flytte repoet ud af ~/Documents; indtil da holder
+# disse regler dubletterne ude af historikken.
+* [0-9]
+* [0-9].*
