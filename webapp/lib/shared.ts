@@ -189,11 +189,13 @@ export const INDICATORS: Indicator[] = [
   {
     id: "library_use",
     name: "Biblioteksudlån pr. indbygger",
-    table: "BIB1",
-    source: "https://www.statistikbanken.dk/BIB1",
+    // BIB3A afløser BIB1, som DST har markeret inaktiv (stopper ved 2024).
+    // Samme tal - efterprøvet 0,0% afvigelse 2022-2024 - men aktiv og med 2025.
+    table: "BIB3A",
+    source: "https://www.statistikbanken.dk/BIB3A",
     category: "social",
     inverse: false,
-    dataYear: "2023",
+    dataYear: "2025",
     baselineLevel: 3,
     rawUnit: "udlån/indb.",
   },
@@ -485,17 +487,15 @@ export const INDICATORS: Indicator[] = [
     baselineLevel: 3,
     rawUnit: "%",
   },
-  {
-    id: "apprenticeship",
-    name: "Læreplads-søgende med afsluttet grundforløb",
-    table: "EUD/PRAK/SØG",
-    source: "https://api.uddannelsesstatistik.dk",
-    category: "social",
-    inverse: false,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
+  // apprenticeship (UVM EUD/PRAK/SØG) er PENSIONERET aug. 2026. Tre grunde:
+  // (1) kilden er brudt - UVM kender ikke længere nøgletallet "Lp-søgende med
+  //     afsluttet grundforløb", så tallet kunne ikke opdateres;
+  // (2) fortegnet var tvivlsomt - "lærepladssøgende" er per definition unge
+  //     UDEN plads, så en høj andel med afsluttet grundforløb lige så godt kan
+  //     betyde flaskehals som succes, men blev scoret som "højere er bedre";
+  // (3) tallene var ustabile (7,7-100%, med Herning og Fanø på præcis 100).
+  // Vil man have lærepladser med igen, er det rigtige måltal praktikpladsgraden
+  // (andel EUD-elever der FÅR en plads) - ikke hvor langt de søgende er nået.
   // --- UVM: Trivsel ---
   {
     id: "wellbeing",
@@ -621,7 +621,7 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
     id: "uddannelse",
     name: "Uddannelse",
     description: "Adgang til og gennemførelse af uddannelse for alle aldersgrupper - grundlag for personlig udvikling og samfundsdeltagelse.",
-    indicatorIds: ["education", "low_education", "exam_grade", "high_absence", "youth_education", "apprenticeship", "wellbeing", "class_size", "daycare_ratio", "educated_staff"],
+    indicatorIds: ["education", "low_education", "exam_grade", "high_absence", "youth_education", "wellbeing", "class_size", "daycare_ratio", "educated_staff"],
   },
   {
     id: "velfaerd",

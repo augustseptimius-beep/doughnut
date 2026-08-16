@@ -1361,101 +1361,6 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,youth_education,86.85,72.3,%,2024,UVM GS/PROFMOD/PROFMOD,social,uddannelse
 741,Samsø,youth_education,93.46,77.8,%,2024,UVM GS/PROFMOD/PROFMOD,social,uddannelse
 482,Langeland,youth_education,89.73,74.7,%,2024,UVM GS/PROFMOD/PROFMOD,social,uddannelse
-201,Allerød,apprenticeship,150.0,64.29,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-175,Rødovre,apprenticeship,41.38,15.38,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-153,Brøndby,apprenticeship,64.95,24.14,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-155,Dragør,apprenticeship,150.0,66.67,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-190,Furesø,apprenticeship,150.0,63.64,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-230,Rudersdal,apprenticeship,56.64,21.05,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-151,Ballerup,apprenticeship,114.36,42.5,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-167,Hvidovre,apprenticeship,64.58,24.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-269,Solrød,apprenticeship,97.84,36.36,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-746,Skanderborg,apprenticeship,150.0,60.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-157,Gentofte,apprenticeship,38.45,14.29,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-240,Egedal,apprenticeship,70.82,26.32,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-265,Roskilde,apprenticeship,32.42,12.05,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-223,Hørsholm,apprenticeship,150.0,77.78,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-185,Tårnby,apprenticeship,64.58,24.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-163,Herlev,apprenticeship,64.07,23.81,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-173,Lyngby-Taarbæk,apprenticeship,37.11,13.79,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-350,Lejre,apprenticeship,58.5,21.74,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-210,Fredensborg,apprenticeship,150.0,85.71,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-710,Favrskov,apprenticeship,58.5,21.74,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-530,Billund,apprenticeship,31.64,11.76,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-183,Ishøj,apprenticeship,134.54,50.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-840,Rebild,apprenticeship,76.87,28.57,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-147,Frederiksberg,apprenticeship,22.9,8.51,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-259,Køge,apprenticeship,85.62,31.82,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-253,Greve,apprenticeship,37.37,13.89,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-187,Vallensbæk,apprenticeship,150.0,66.67,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-159,Gladsaxe,apprenticeship,36.7,13.64,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-661,Holstebro,apprenticeship,30.76,11.43,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-217,Helsingør,apprenticeship,21.96,8.16,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-250,Frederikssund,apprenticeship,150.0,60.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-657,Herning,apprenticeship,150.0,100.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-561,Esbjerg,apprenticeship,49.48,18.39,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-773,Morsø,apprenticeship,99.13,36.84,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-219,Hillerød,apprenticeship,20.69,7.69,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-740,Silkeborg,apprenticeship,150.0,79.31,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-607,Fredericia,apprenticeship,115.33,42.86,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-316,Holbæk,apprenticeship,107.63,40.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-340,Sorø,apprenticeship,72.43,26.92,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-260,Halsnæs,apprenticeship,150.0,83.33,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-766,Hedensted,apprenticeship,34.5,12.82,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-615,Horsens,apprenticeship,39.37,14.63,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-329,Ringsted,apprenticeship,116.35,43.24,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-370,Næstved,apprenticeship,63.31,23.53,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-851,Aalborg,apprenticeship,73.24,27.22,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-336,Stevns,apprenticeship,149.5,55.56,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-410,Middelfart,apprenticeship,127.46,47.37,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-727,Odder,apprenticeship,97.84,36.36,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-161,Glostrup,apprenticeship,89.68,33.33,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-563,Fanø,apprenticeship,150.0,100.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-813,Frederikshavn,apprenticeship,43.64,16.22,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-270,Gribskov,apprenticeship,46.79,17.39,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-751,Aarhus,apprenticeship,82.79,30.77,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-760,Ringkøbing-Skjern,apprenticeship,38.45,14.29,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-479,Svendborg,apprenticeship,49.83,18.52,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-787,Thisted,apprenticeship,134.54,50.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-810,Brønderslev,apprenticeship,57.07,21.21,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-791,Viborg,apprenticeship,109.3,40.62,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-165,Albertslund,apprenticeship,48.92,18.18,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-480,Nordfyns,apprenticeship,56.64,21.05,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-440,Kerteminde,apprenticeship,22.06,8.2,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-101,København,apprenticeship,47.63,17.7,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-860,Hjørring,apprenticeship,150.0,62.5,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-706,Syddjurs,apprenticeship,56.64,21.05,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-430,Faaborg-Midtfyn,apprenticeship,56.64,21.05,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-573,Varde,apprenticeship,59.79,22.22,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-730,Randers,apprenticeship,64.58,24.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-621,Kolding,apprenticeship,150.0,81.82,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-320,Faxe,apprenticeship,46.79,17.39,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-169,Høje-Taastrup,apprenticeship,41.76,15.52,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-461,Odense,apprenticeship,150.0,61.54,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-420,Assens,apprenticeship,97.84,36.36,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-756,Ikast-Brande,apprenticeship,41.38,15.38,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-846,Mariagerfjord,apprenticeship,150.0,62.5,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-580,Aabenraa,apprenticeship,142.45,52.94,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-450,Nyborg,apprenticeship,48.92,18.18,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-630,Vejle,apprenticeship,134.54,50.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-540,Sønderborg,apprenticeship,68.48,25.45,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-400,Bornholm,apprenticeship,150.0,64.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-779,Skive,apprenticeship,150.0,71.43,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-510,Haderslev,apprenticeship,150.0,65.22,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-575,Vejen,apprenticeship,150.0,72.73,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-820,Vesthimmerlands,apprenticeship,150.0,66.67,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-707,Norddjurs,apprenticeship,134.54,50.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-671,Struer,apprenticeship,71.76,26.67,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-306,Odsherred,apprenticeship,107.63,40.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-330,Slagelse,apprenticeship,68.64,25.51,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-665,Lemvig,apprenticeship,134.54,50.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-376,Guldborgsund,apprenticeship,52.5,19.51,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-326,Kalundborg,apprenticeship,73.38,27.27,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-849,Jammerbugt,apprenticeship,71.76,26.67,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-550,Tønder,apprenticeship,150.0,57.14,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-390,Vordingborg,apprenticeship,35.54,13.21,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-360,Lolland,apprenticeship,150.0,75.0,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
-482,Langeland,apprenticeship,119.58,44.44,%,2024,UVM EUD/PRAK/SØG,social,uddannelse
 201,Allerød,disposable_income,126.38,363562.0,kr./indb.,2022,DST INDKP101,social,velfaerd
 175,Rødovre,disposable_income,98.07,282144.0,kr./indb.,2022,DST INDKP101,social,velfaerd
 153,Brøndby,disposable_income,87.31,251169.0,kr./indb.,2022,DST INDKP101,social,velfaerd
@@ -1946,202 +1851,202 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,low_income,82.61,4.6,%,2022,DST LABY07,social,lighed
 741,Samsø,low_income,105.56,3.6,%,2022,DST LABY07,social,lighed
 482,Langeland,low_income,95.0,4.0,%,2022,DST LABY07,social,lighed
-201,Allerød,vulnerable_children,144.0,2.5,%,2022,DST BU43,social,velfaerd
-175,Rødovre,vulnerable_children,150.0,2.3,%,2022,DST BU43,social,velfaerd
-153,Brøndby,vulnerable_children,116.13,3.1,%,2022,DST BU43,social,velfaerd
-155,Dragør,vulnerable_children,109.09,3.3,%,2022,DST BU43,social,velfaerd
-190,Furesø,vulnerable_children,75.0,4.8,%,2022,DST BU43,social,velfaerd
-230,Rudersdal,vulnerable_children,150.0,2.4,%,2022,DST BU43,social,velfaerd
-151,Ballerup,vulnerable_children,87.8,4.1,%,2022,DST BU43,social,velfaerd
-167,Hvidovre,vulnerable_children,112.5,3.2,%,2022,DST BU43,social,velfaerd
-269,Solrød,vulnerable_children,144.0,2.5,%,2022,DST BU43,social,velfaerd
-746,Skanderborg,vulnerable_children,150.0,2.0,%,2022,DST BU43,social,velfaerd
-157,Gentofte,vulnerable_children,138.46,2.6,%,2022,DST BU43,social,velfaerd
-240,Egedal,vulnerable_children,133.33,2.7,%,2022,DST BU43,social,velfaerd
-265,Roskilde,vulnerable_children,105.88,3.4,%,2022,DST BU43,social,velfaerd
-223,Hørsholm,vulnerable_children,150.0,2.3,%,2022,DST BU43,social,velfaerd
-185,Tårnby,vulnerable_children,150.0,1.8,%,2022,DST BU43,social,velfaerd
-163,Herlev,vulnerable_children,120.0,3.0,%,2022,DST BU43,social,velfaerd
-173,Lyngby-Taarbæk,vulnerable_children,150.0,2.3,%,2022,DST BU43,social,velfaerd
-350,Lejre,vulnerable_children,128.57,2.8,%,2022,DST BU43,social,velfaerd
-210,Fredensborg,vulnerable_children,75.0,4.8,%,2022,DST BU43,social,velfaerd
-710,Favrskov,vulnerable_children,144.0,2.5,%,2022,DST BU43,social,velfaerd
-530,Billund,vulnerable_children,85.71,4.2,%,2022,DST BU43,social,velfaerd
-183,Ishøj,vulnerable_children,81.82,4.4,%,2022,DST BU43,social,velfaerd
-840,Rebild,vulnerable_children,116.13,3.1,%,2022,DST BU43,social,velfaerd
-147,Frederiksberg,vulnerable_children,150.0,2.1,%,2022,DST BU43,social,velfaerd
-259,Køge,vulnerable_children,73.47,4.9,%,2022,DST BU43,social,velfaerd
-253,Greve,vulnerable_children,124.14,2.9,%,2022,DST BU43,social,velfaerd
-187,Vallensbæk,vulnerable_children,94.74,3.8,%,2022,DST BU43,social,velfaerd
-159,Gladsaxe,vulnerable_children,70.59,5.1,%,2022,DST BU43,social,velfaerd
-661,Holstebro,vulnerable_children,124.14,2.9,%,2022,DST BU43,social,velfaerd
-217,Helsingør,vulnerable_children,120.0,3.0,%,2022,DST BU43,social,velfaerd
-250,Frederikssund,vulnerable_children,81.82,4.4,%,2022,DST BU43,social,velfaerd
-657,Herning,vulnerable_children,120.0,3.0,%,2022,DST BU43,social,velfaerd
-492,Ærø,vulnerable_children,105.88,3.4,%,2022,DST BU43,social,velfaerd
-561,Esbjerg,vulnerable_children,83.72,4.3,%,2022,DST BU43,social,velfaerd
-773,Morsø,vulnerable_children,78.26,4.6,%,2022,DST BU43,social,velfaerd
-219,Hillerød,vulnerable_children,112.5,3.2,%,2022,DST BU43,social,velfaerd
-740,Silkeborg,vulnerable_children,120.0,3.0,%,2022,DST BU43,social,velfaerd
-607,Fredericia,vulnerable_children,65.45,5.5,%,2022,DST BU43,social,velfaerd
-316,Holbæk,vulnerable_children,105.88,3.4,%,2022,DST BU43,social,velfaerd
-340,Sorø,vulnerable_children,85.71,4.2,%,2022,DST BU43,social,velfaerd
-260,Halsnæs,vulnerable_children,50.7,7.1,%,2022,DST BU43,social,velfaerd
-766,Hedensted,vulnerable_children,105.88,3.4,%,2022,DST BU43,social,velfaerd
-825,Læsø,vulnerable_children,80.0,4.5,%,2022,DST BU43,social,velfaerd
-615,Horsens,vulnerable_children,112.5,3.2,%,2022,DST BU43,social,velfaerd
-329,Ringsted,vulnerable_children,112.5,3.2,%,2022,DST BU43,social,velfaerd
-370,Næstved,vulnerable_children,81.82,4.4,%,2022,DST BU43,social,velfaerd
-851,Aalborg,vulnerable_children,87.8,4.1,%,2022,DST BU43,social,velfaerd
-336,Stevns,vulnerable_children,90.0,4.0,%,2022,DST BU43,social,velfaerd
-410,Middelfart,vulnerable_children,90.0,4.0,%,2022,DST BU43,social,velfaerd
-727,Odder,vulnerable_children,100.0,3.6,%,2022,DST BU43,social,velfaerd
-161,Glostrup,vulnerable_children,133.33,2.7,%,2022,DST BU43,social,velfaerd
-563,Fanø,vulnerable_children,150.0,1.1,%,2022,DST BU43,social,velfaerd
-813,Frederikshavn,vulnerable_children,58.06,6.2,%,2022,DST BU43,social,velfaerd
-270,Gribskov,vulnerable_children,67.92,5.3,%,2022,DST BU43,social,velfaerd
-751,Aarhus,vulnerable_children,150.0,2.3,%,2022,DST BU43,social,velfaerd
-760,Ringkøbing-Skjern,vulnerable_children,102.86,3.5,%,2022,DST BU43,social,velfaerd
-479,Svendborg,vulnerable_children,92.31,3.9,%,2022,DST BU43,social,velfaerd
-787,Thisted,vulnerable_children,81.82,4.4,%,2022,DST BU43,social,velfaerd
-810,Brønderslev,vulnerable_children,62.07,5.8,%,2022,DST BU43,social,velfaerd
-791,Viborg,vulnerable_children,124.14,2.9,%,2022,DST BU43,social,velfaerd
-165,Albertslund,vulnerable_children,100.0,3.6,%,2022,DST BU43,social,velfaerd
-480,Nordfyns,vulnerable_children,81.82,4.4,%,2022,DST BU43,social,velfaerd
-440,Kerteminde,vulnerable_children,75.0,4.8,%,2022,DST BU43,social,velfaerd
-101,København,vulnerable_children,138.46,2.6,%,2022,DST BU43,social,velfaerd
-860,Hjørring,vulnerable_children,73.47,4.9,%,2022,DST BU43,social,velfaerd
-706,Syddjurs,vulnerable_children,109.09,3.3,%,2022,DST BU43,social,velfaerd
-430,Faaborg-Midtfyn,vulnerable_children,85.71,4.2,%,2022,DST BU43,social,velfaerd
-573,Varde,vulnerable_children,70.59,5.1,%,2022,DST BU43,social,velfaerd
-730,Randers,vulnerable_children,109.09,3.3,%,2022,DST BU43,social,velfaerd
-621,Kolding,vulnerable_children,92.31,3.9,%,2022,DST BU43,social,velfaerd
-320,Faxe,vulnerable_children,76.6,4.7,%,2022,DST BU43,social,velfaerd
-169,Høje-Taastrup,vulnerable_children,90.0,4.0,%,2022,DST BU43,social,velfaerd
-461,Odense,vulnerable_children,83.72,4.3,%,2022,DST BU43,social,velfaerd
-420,Assens,vulnerable_children,92.31,3.9,%,2022,DST BU43,social,velfaerd
-756,Ikast-Brande,vulnerable_children,133.33,2.7,%,2022,DST BU43,social,velfaerd
-846,Mariagerfjord,vulnerable_children,78.26,4.6,%,2022,DST BU43,social,velfaerd
-580,Aabenraa,vulnerable_children,65.45,5.5,%,2022,DST BU43,social,velfaerd
-450,Nyborg,vulnerable_children,90.0,4.0,%,2022,DST BU43,social,velfaerd
-630,Vejle,vulnerable_children,97.3,3.7,%,2022,DST BU43,social,velfaerd
-540,Sønderborg,vulnerable_children,73.47,4.9,%,2022,DST BU43,social,velfaerd
-400,Bornholm,vulnerable_children,58.06,6.2,%,2022,DST BU43,social,velfaerd
-779,Skive,vulnerable_children,90.0,4.0,%,2022,DST BU43,social,velfaerd
-510,Haderslev,vulnerable_children,83.72,4.3,%,2022,DST BU43,social,velfaerd
-575,Vejen,vulnerable_children,90.0,4.0,%,2022,DST BU43,social,velfaerd
-820,Vesthimmerlands,vulnerable_children,83.72,4.3,%,2022,DST BU43,social,velfaerd
-707,Norddjurs,vulnerable_children,63.16,5.7,%,2022,DST BU43,social,velfaerd
-671,Struer,vulnerable_children,80.0,4.5,%,2022,DST BU43,social,velfaerd
-306,Odsherred,vulnerable_children,90.0,4.0,%,2022,DST BU43,social,velfaerd
-330,Slagelse,vulnerable_children,54.55,6.6,%,2022,DST BU43,social,velfaerd
-665,Lemvig,vulnerable_children,72.0,5.0,%,2022,DST BU43,social,velfaerd
-376,Guldborgsund,vulnerable_children,42.35,8.5,%,2022,DST BU43,social,velfaerd
-326,Kalundborg,vulnerable_children,65.45,5.5,%,2022,DST BU43,social,velfaerd
-849,Jammerbugt,vulnerable_children,73.47,4.9,%,2022,DST BU43,social,velfaerd
-550,Tønder,vulnerable_children,75.0,4.8,%,2022,DST BU43,social,velfaerd
-390,Vordingborg,vulnerable_children,61.02,5.9,%,2022,DST BU43,social,velfaerd
-360,Lolland,vulnerable_children,48.65,7.4,%,2022,DST BU43,social,velfaerd
-741,Samsø,vulnerable_children,31.03,11.6,%,2022,DST BU43,social,velfaerd
-482,Langeland,vulnerable_children,59.02,6.1,%,2022,DST BU43,social,velfaerd
-201,Allerød,neet,126.84,7.6,%,2022,DST NEET1,social,velfaerd
-175,Rødovre,neet,95.07,10.14,%,2022,DST NEET1,social,velfaerd
-153,Brøndby,neet,96.4,10.0,%,2022,DST NEET1,social,velfaerd
-155,Dragør,neet,135.58,7.11,%,2022,DST NEET1,social,velfaerd
-190,Furesø,neet,103.88,9.28,%,2022,DST NEET1,social,velfaerd
-230,Rudersdal,neet,114.22,8.44,%,2022,DST NEET1,social,velfaerd
-151,Ballerup,neet,106.17,9.08,%,2022,DST NEET1,social,velfaerd
-167,Hvidovre,neet,114.08,8.45,%,2022,DST NEET1,social,velfaerd
-269,Solrød,neet,130.98,7.36,%,2022,DST NEET1,social,velfaerd
-746,Skanderborg,neet,100.1,9.63,%,2022,DST NEET1,social,velfaerd
-157,Gentofte,neet,99.18,9.72,%,2022,DST NEET1,social,velfaerd
-240,Egedal,neet,117.56,8.2,%,2022,DST NEET1,social,velfaerd
-265,Roskilde,neet,131.34,7.34,%,2022,DST NEET1,social,velfaerd
-223,Hørsholm,neet,107.59,8.96,%,2022,DST NEET1,social,velfaerd
-185,Tårnby,neet,94.7,10.18,%,2022,DST NEET1,social,velfaerd
-163,Herlev,neet,110.93,8.69,%,2022,DST NEET1,social,velfaerd
-173,Lyngby-Taarbæk,neet,131.69,7.32,%,2022,DST NEET1,social,velfaerd
-350,Lejre,neet,102.77,9.38,%,2022,DST NEET1,social,velfaerd
-210,Fredensborg,neet,102.88,9.37,%,2022,DST NEET1,social,velfaerd
-710,Favrskov,neet,97.97,9.84,%,2022,DST NEET1,social,velfaerd
-530,Billund,neet,94.51,10.2,%,2022,DST NEET1,social,velfaerd
-183,Ishøj,neet,92.34,10.44,%,2022,DST NEET1,social,velfaerd
-840,Rebild,neet,111.96,8.61,%,2022,DST NEET1,social,velfaerd
-147,Frederiksberg,neet,140.12,6.88,%,2022,DST NEET1,social,velfaerd
-259,Køge,neet,92.07,10.47,%,2022,DST NEET1,social,velfaerd
-253,Greve,neet,107.11,9.0,%,2022,DST NEET1,social,velfaerd
-187,Vallensbæk,neet,109.55,8.8,%,2022,DST NEET1,social,velfaerd
-159,Gladsaxe,neet,118.28,8.15,%,2022,DST NEET1,social,velfaerd
-661,Holstebro,neet,111.96,8.61,%,2022,DST NEET1,social,velfaerd
-217,Helsingør,neet,100.42,9.6,%,2022,DST NEET1,social,velfaerd
-250,Frederikssund,neet,95.73,10.07,%,2022,DST NEET1,social,velfaerd
-657,Herning,neet,97.47,9.89,%,2022,DST NEET1,social,velfaerd
-492,Ærø,neet,107.11,9.0,%,2022,DST NEET1,social,velfaerd
-561,Esbjerg,neet,101.37,9.51,%,2022,DST NEET1,social,velfaerd
-773,Morsø,neet,85.08,11.33,%,2022,DST NEET1,social,velfaerd
-219,Hillerød,neet,103.32,9.33,%,2022,DST NEET1,social,velfaerd
-740,Silkeborg,neet,101.05,9.54,%,2022,DST NEET1,social,velfaerd
-607,Fredericia,neet,83.18,11.59,%,2022,DST NEET1,social,velfaerd
-316,Holbæk,neet,90.26,10.68,%,2022,DST NEET1,social,velfaerd
-340,Sorø,neet,84.41,11.42,%,2022,DST NEET1,social,velfaerd
-260,Halsnæs,neet,80.2,12.02,%,2022,DST NEET1,social,velfaerd
-766,Hedensted,neet,78.12,12.34,%,2022,DST NEET1,social,velfaerd
-825,Læsø,neet,68.96,13.98,%,2022,DST NEET1,social,velfaerd
-615,Horsens,neet,89.42,10.78,%,2022,DST NEET1,social,velfaerd
-329,Ringsted,neet,99.79,9.66,%,2022,DST NEET1,social,velfaerd
-370,Næstved,neet,88.85,10.85,%,2022,DST NEET1,social,velfaerd
-851,Aalborg,neet,123.43,7.81,%,2022,DST NEET1,social,velfaerd
-336,Stevns,neet,88.04,10.95,%,2022,DST NEET1,social,velfaerd
-410,Middelfart,neet,90.86,10.61,%,2022,DST NEET1,social,velfaerd
-727,Odder,neet,91.29,10.56,%,2022,DST NEET1,social,velfaerd
-161,Glostrup,neet,109.3,8.82,%,2022,DST NEET1,social,velfaerd
-563,Fanø,neet,95.07,10.14,%,2022,DST NEET1,social,velfaerd
-813,Frederikshavn,neet,78.37,12.3,%,2022,DST NEET1,social,velfaerd
-270,Gribskov,neet,94.7,10.18,%,2022,DST NEET1,social,velfaerd
-751,Aarhus,neet,119.9,8.04,%,2022,DST NEET1,social,velfaerd
-760,Ringkøbing-Skjern,neet,105.59,9.13,%,2022,DST NEET1,social,velfaerd
-479,Svendborg,neet,79.15,12.18,%,2022,DST NEET1,social,velfaerd
-787,Thisted,neet,78.63,12.26,%,2022,DST NEET1,social,velfaerd
-810,Brønderslev,neet,80.2,12.02,%,2022,DST NEET1,social,velfaerd
-791,Viborg,neet,95.45,10.1,%,2022,DST NEET1,social,velfaerd
-165,Albertslund,neet,98.37,9.8,%,2022,DST NEET1,social,velfaerd
-480,Nordfyns,neet,71.41,13.5,%,2022,DST NEET1,social,velfaerd
-440,Kerteminde,neet,82.11,11.74,%,2022,DST NEET1,social,velfaerd
-101,København,neet,117.42,8.21,%,2022,DST NEET1,social,velfaerd
-860,Hjørring,neet,86.85,11.1,%,2022,DST NEET1,social,velfaerd
-706,Syddjurs,neet,73.48,13.12,%,2022,DST NEET1,social,velfaerd
-430,Faaborg-Midtfyn,neet,88.12,10.94,%,2022,DST NEET1,social,velfaerd
-573,Varde,neet,93.14,10.35,%,2022,DST NEET1,social,velfaerd
-730,Randers,neet,81.56,11.82,%,2022,DST NEET1,social,velfaerd
-621,Kolding,neet,97.67,9.87,%,2022,DST NEET1,social,velfaerd
-320,Faxe,neet,82.89,11.63,%,2022,DST NEET1,social,velfaerd
-169,Høje-Taastrup,neet,94.14,10.24,%,2022,DST NEET1,social,velfaerd
-461,Odense,neet,112.09,8.6,%,2022,DST NEET1,social,velfaerd
-420,Assens,neet,71.78,13.43,%,2022,DST NEET1,social,velfaerd
-756,Ikast-Brande,neet,69.2,13.93,%,2022,DST NEET1,social,velfaerd
-846,Mariagerfjord,neet,79.8,12.08,%,2022,DST NEET1,social,velfaerd
-580,Aabenraa,neet,79.21,12.17,%,2022,DST NEET1,social,velfaerd
-450,Nyborg,neet,90.69,10.63,%,2022,DST NEET1,social,velfaerd
-630,Vejle,neet,90.26,10.68,%,2022,DST NEET1,social,velfaerd
-540,Sønderborg,neet,84.34,11.43,%,2022,DST NEET1,social,velfaerd
-400,Bornholm,neet,80.33,12.0,%,2022,DST NEET1,social,velfaerd
-779,Skive,neet,83.03,11.61,%,2022,DST NEET1,social,velfaerd
-510,Haderslev,neet,82.53,11.68,%,2022,DST NEET1,social,velfaerd
-575,Vejen,neet,87.72,10.99,%,2022,DST NEET1,social,velfaerd
-820,Vesthimmerlands,neet,78.57,12.27,%,2022,DST NEET1,social,velfaerd
-707,Norddjurs,neet,76.33,12.63,%,2022,DST NEET1,social,velfaerd
-671,Struer,neet,79.6,12.11,%,2022,DST NEET1,social,velfaerd
-306,Odsherred,neet,70.36,13.7,%,2022,DST NEET1,social,velfaerd
-330,Slagelse,neet,91.55,10.53,%,2022,DST NEET1,social,velfaerd
-665,Lemvig,neet,102.77,9.38,%,2022,DST NEET1,social,velfaerd
-376,Guldborgsund,neet,76.15,12.66,%,2022,DST NEET1,social,velfaerd
-326,Kalundborg,neet,81.35,11.85,%,2022,DST NEET1,social,velfaerd
-849,Jammerbugt,neet,73.81,13.06,%,2022,DST NEET1,social,velfaerd
-550,Tønder,neet,83.54,11.54,%,2022,DST NEET1,social,velfaerd
-390,Vordingborg,neet,70.52,13.67,%,2022,DST NEET1,social,velfaerd
-360,Lolland,neet,58.25,16.55,%,2022,DST NEET1,social,velfaerd
-741,Samsø,neet,68.61,14.05,%,2022,DST NEET1,social,velfaerd
-482,Langeland,neet,68.61,14.05,%,2022,DST NEET1,social,velfaerd
+201,Allerød,vulnerable_children,138.46,2.6,%,2024,DST BU43,social,velfaerd
+175,Rødovre,vulnerable_children,116.13,3.1,%,2024,DST BU43,social,velfaerd
+153,Brøndby,vulnerable_children,116.13,3.1,%,2024,DST BU43,social,velfaerd
+155,Dragør,vulnerable_children,97.3,3.7,%,2024,DST BU43,social,velfaerd
+190,Furesø,vulnerable_children,72.0,5.0,%,2024,DST BU43,social,velfaerd
+230,Rudersdal,vulnerable_children,138.46,2.6,%,2024,DST BU43,social,velfaerd
+151,Ballerup,vulnerable_children,87.8,4.1,%,2024,DST BU43,social,velfaerd
+167,Hvidovre,vulnerable_children,109.09,3.3,%,2024,DST BU43,social,velfaerd
+269,Solrød,vulnerable_children,133.33,2.7,%,2024,DST BU43,social,velfaerd
+746,Skanderborg,vulnerable_children,150.0,1.9,%,2024,DST BU43,social,velfaerd
+157,Gentofte,vulnerable_children,144.0,2.5,%,2024,DST BU43,social,velfaerd
+240,Egedal,vulnerable_children,133.33,2.7,%,2024,DST BU43,social,velfaerd
+265,Roskilde,vulnerable_children,105.88,3.4,%,2024,DST BU43,social,velfaerd
+223,Hørsholm,vulnerable_children,150.0,2.4,%,2024,DST BU43,social,velfaerd
+185,Tårnby,vulnerable_children,150.0,2.0,%,2024,DST BU43,social,velfaerd
+163,Herlev,vulnerable_children,112.5,3.2,%,2024,DST BU43,social,velfaerd
+173,Lyngby-Taarbæk,vulnerable_children,150.0,2.3,%,2024,DST BU43,social,velfaerd
+350,Lejre,vulnerable_children,128.57,2.8,%,2024,DST BU43,social,velfaerd
+210,Fredensborg,vulnerable_children,76.6,4.7,%,2024,DST BU43,social,velfaerd
+710,Favrskov,vulnerable_children,144.0,2.5,%,2024,DST BU43,social,velfaerd
+530,Billund,vulnerable_children,83.72,4.3,%,2024,DST BU43,social,velfaerd
+183,Ishøj,vulnerable_children,90.0,4.0,%,2024,DST BU43,social,velfaerd
+840,Rebild,vulnerable_children,112.5,3.2,%,2024,DST BU43,social,velfaerd
+147,Frederiksberg,vulnerable_children,150.0,2.0,%,2024,DST BU43,social,velfaerd
+259,Køge,vulnerable_children,70.59,5.1,%,2024,DST BU43,social,velfaerd
+253,Greve,vulnerable_children,124.14,2.9,%,2024,DST BU43,social,velfaerd
+187,Vallensbæk,vulnerable_children,97.3,3.7,%,2024,DST BU43,social,velfaerd
+159,Gladsaxe,vulnerable_children,76.6,4.7,%,2024,DST BU43,social,velfaerd
+661,Holstebro,vulnerable_children,120.0,3.0,%,2024,DST BU43,social,velfaerd
+217,Helsingør,vulnerable_children,105.88,3.4,%,2024,DST BU43,social,velfaerd
+250,Frederikssund,vulnerable_children,80.0,4.5,%,2024,DST BU43,social,velfaerd
+657,Herning,vulnerable_children,112.5,3.2,%,2024,DST BU43,social,velfaerd
+492,Ærø,vulnerable_children,90.0,4.0,%,2024,DST BU43,social,velfaerd
+561,Esbjerg,vulnerable_children,87.8,4.1,%,2024,DST BU43,social,velfaerd
+773,Morsø,vulnerable_children,67.92,5.3,%,2024,DST BU43,social,velfaerd
+219,Hillerød,vulnerable_children,109.09,3.3,%,2024,DST BU43,social,velfaerd
+740,Silkeborg,vulnerable_children,128.57,2.8,%,2024,DST BU43,social,velfaerd
+607,Fredericia,vulnerable_children,67.92,5.3,%,2024,DST BU43,social,velfaerd
+316,Holbæk,vulnerable_children,97.3,3.7,%,2024,DST BU43,social,velfaerd
+340,Sorø,vulnerable_children,83.72,4.3,%,2024,DST BU43,social,velfaerd
+260,Halsnæs,vulnerable_children,52.94,6.8,%,2024,DST BU43,social,velfaerd
+766,Hedensted,vulnerable_children,102.86,3.5,%,2024,DST BU43,social,velfaerd
+825,Læsø,vulnerable_children,81.82,4.4,%,2024,DST BU43,social,velfaerd
+615,Horsens,vulnerable_children,109.09,3.3,%,2024,DST BU43,social,velfaerd
+329,Ringsted,vulnerable_children,109.09,3.3,%,2024,DST BU43,social,velfaerd
+370,Næstved,vulnerable_children,80.0,4.5,%,2024,DST BU43,social,velfaerd
+851,Aalborg,vulnerable_children,90.0,4.0,%,2024,DST BU43,social,velfaerd
+336,Stevns,vulnerable_children,92.31,3.9,%,2024,DST BU43,social,velfaerd
+410,Middelfart,vulnerable_children,87.8,4.1,%,2024,DST BU43,social,velfaerd
+727,Odder,vulnerable_children,92.31,3.9,%,2024,DST BU43,social,velfaerd
+161,Glostrup,vulnerable_children,138.46,2.6,%,2024,DST BU43,social,velfaerd
+563,Fanø,vulnerable_children,150.0,0.9,%,2024,DST BU43,social,velfaerd
+813,Frederikshavn,vulnerable_children,59.02,6.1,%,2024,DST BU43,social,velfaerd
+270,Gribskov,vulnerable_children,65.45,5.5,%,2024,DST BU43,social,velfaerd
+751,Aarhus,vulnerable_children,150.0,2.0,%,2024,DST BU43,social,velfaerd
+760,Ringkøbing-Skjern,vulnerable_children,97.3,3.7,%,2024,DST BU43,social,velfaerd
+479,Svendborg,vulnerable_children,94.74,3.8,%,2024,DST BU43,social,velfaerd
+787,Thisted,vulnerable_children,81.82,4.4,%,2024,DST BU43,social,velfaerd
+810,Brønderslev,vulnerable_children,63.16,5.7,%,2024,DST BU43,social,velfaerd
+791,Viborg,vulnerable_children,124.14,2.9,%,2024,DST BU43,social,velfaerd
+165,Albertslund,vulnerable_children,97.3,3.7,%,2024,DST BU43,social,velfaerd
+480,Nordfyns,vulnerable_children,81.82,4.4,%,2024,DST BU43,social,velfaerd
+440,Kerteminde,vulnerable_children,75.0,4.8,%,2024,DST BU43,social,velfaerd
+101,København,vulnerable_children,150.0,2.4,%,2024,DST BU43,social,velfaerd
+860,Hjørring,vulnerable_children,75.0,4.8,%,2024,DST BU43,social,velfaerd
+706,Syddjurs,vulnerable_children,100.0,3.6,%,2024,DST BU43,social,velfaerd
+430,Faaborg-Midtfyn,vulnerable_children,81.82,4.4,%,2024,DST BU43,social,velfaerd
+573,Varde,vulnerable_children,73.47,4.9,%,2024,DST BU43,social,velfaerd
+730,Randers,vulnerable_children,116.13,3.1,%,2024,DST BU43,social,velfaerd
+621,Kolding,vulnerable_children,92.31,3.9,%,2024,DST BU43,social,velfaerd
+320,Faxe,vulnerable_children,73.47,4.9,%,2024,DST BU43,social,velfaerd
+169,Høje-Taastrup,vulnerable_children,92.31,3.9,%,2024,DST BU43,social,velfaerd
+461,Odense,vulnerable_children,90.0,4.0,%,2024,DST BU43,social,velfaerd
+420,Assens,vulnerable_children,85.71,4.2,%,2024,DST BU43,social,velfaerd
+756,Ikast-Brande,vulnerable_children,133.33,2.7,%,2024,DST BU43,social,velfaerd
+846,Mariagerfjord,vulnerable_children,78.26,4.6,%,2024,DST BU43,social,velfaerd
+580,Aabenraa,vulnerable_children,63.16,5.7,%,2024,DST BU43,social,velfaerd
+450,Nyborg,vulnerable_children,83.72,4.3,%,2024,DST BU43,social,velfaerd
+630,Vejle,vulnerable_children,109.09,3.3,%,2024,DST BU43,social,velfaerd
+540,Sønderborg,vulnerable_children,73.47,4.9,%,2024,DST BU43,social,velfaerd
+400,Bornholm,vulnerable_children,59.02,6.1,%,2024,DST BU43,social,velfaerd
+779,Skive,vulnerable_children,94.74,3.8,%,2024,DST BU43,social,velfaerd
+510,Haderslev,vulnerable_children,83.72,4.3,%,2024,DST BU43,social,velfaerd
+575,Vejen,vulnerable_children,83.72,4.3,%,2024,DST BU43,social,velfaerd
+820,Vesthimmerlands,vulnerable_children,78.26,4.6,%,2024,DST BU43,social,velfaerd
+707,Norddjurs,vulnerable_children,60.0,6.0,%,2024,DST BU43,social,velfaerd
+671,Struer,vulnerable_children,83.72,4.3,%,2024,DST BU43,social,velfaerd
+306,Odsherred,vulnerable_children,81.82,4.4,%,2024,DST BU43,social,velfaerd
+330,Slagelse,vulnerable_children,56.25,6.4,%,2024,DST BU43,social,velfaerd
+665,Lemvig,vulnerable_children,75.0,4.8,%,2024,DST BU43,social,velfaerd
+376,Guldborgsund,vulnerable_children,40.0,9.0,%,2024,DST BU43,social,velfaerd
+326,Kalundborg,vulnerable_children,60.0,6.0,%,2024,DST BU43,social,velfaerd
+849,Jammerbugt,vulnerable_children,69.23,5.2,%,2024,DST BU43,social,velfaerd
+550,Tønder,vulnerable_children,72.0,5.0,%,2024,DST BU43,social,velfaerd
+390,Vordingborg,vulnerable_children,57.14,6.3,%,2024,DST BU43,social,velfaerd
+360,Lolland,vulnerable_children,46.75,7.7,%,2024,DST BU43,social,velfaerd
+741,Samsø,vulnerable_children,31.86,11.3,%,2024,DST BU43,social,velfaerd
+482,Langeland,vulnerable_children,55.38,6.5,%,2024,DST BU43,social,velfaerd
+201,Allerød,neet,126.84,7.6,%,2023,DST NEET1,social,velfaerd
+175,Rødovre,neet,95.07,10.14,%,2023,DST NEET1,social,velfaerd
+153,Brøndby,neet,96.4,10.0,%,2023,DST NEET1,social,velfaerd
+155,Dragør,neet,135.58,7.11,%,2023,DST NEET1,social,velfaerd
+190,Furesø,neet,103.88,9.28,%,2023,DST NEET1,social,velfaerd
+230,Rudersdal,neet,114.22,8.44,%,2023,DST NEET1,social,velfaerd
+151,Ballerup,neet,106.17,9.08,%,2023,DST NEET1,social,velfaerd
+167,Hvidovre,neet,114.08,8.45,%,2023,DST NEET1,social,velfaerd
+269,Solrød,neet,130.98,7.36,%,2023,DST NEET1,social,velfaerd
+746,Skanderborg,neet,100.1,9.63,%,2023,DST NEET1,social,velfaerd
+157,Gentofte,neet,99.18,9.72,%,2023,DST NEET1,social,velfaerd
+240,Egedal,neet,117.56,8.2,%,2023,DST NEET1,social,velfaerd
+265,Roskilde,neet,131.34,7.34,%,2023,DST NEET1,social,velfaerd
+223,Hørsholm,neet,107.59,8.96,%,2023,DST NEET1,social,velfaerd
+185,Tårnby,neet,94.7,10.18,%,2023,DST NEET1,social,velfaerd
+163,Herlev,neet,110.93,8.69,%,2023,DST NEET1,social,velfaerd
+173,Lyngby-Taarbæk,neet,131.69,7.32,%,2023,DST NEET1,social,velfaerd
+350,Lejre,neet,102.77,9.38,%,2023,DST NEET1,social,velfaerd
+210,Fredensborg,neet,102.88,9.37,%,2023,DST NEET1,social,velfaerd
+710,Favrskov,neet,97.97,9.84,%,2023,DST NEET1,social,velfaerd
+530,Billund,neet,94.51,10.2,%,2023,DST NEET1,social,velfaerd
+183,Ishøj,neet,92.34,10.44,%,2023,DST NEET1,social,velfaerd
+840,Rebild,neet,111.96,8.61,%,2023,DST NEET1,social,velfaerd
+147,Frederiksberg,neet,140.12,6.88,%,2023,DST NEET1,social,velfaerd
+259,Køge,neet,92.07,10.47,%,2023,DST NEET1,social,velfaerd
+253,Greve,neet,107.11,9.0,%,2023,DST NEET1,social,velfaerd
+187,Vallensbæk,neet,109.55,8.8,%,2023,DST NEET1,social,velfaerd
+159,Gladsaxe,neet,118.28,8.15,%,2023,DST NEET1,social,velfaerd
+661,Holstebro,neet,111.96,8.61,%,2023,DST NEET1,social,velfaerd
+217,Helsingør,neet,100.42,9.6,%,2023,DST NEET1,social,velfaerd
+250,Frederikssund,neet,95.73,10.07,%,2023,DST NEET1,social,velfaerd
+657,Herning,neet,97.47,9.89,%,2023,DST NEET1,social,velfaerd
+492,Ærø,neet,107.11,9.0,%,2023,DST NEET1,social,velfaerd
+561,Esbjerg,neet,101.37,9.51,%,2023,DST NEET1,social,velfaerd
+773,Morsø,neet,85.08,11.33,%,2023,DST NEET1,social,velfaerd
+219,Hillerød,neet,103.32,9.33,%,2023,DST NEET1,social,velfaerd
+740,Silkeborg,neet,101.05,9.54,%,2023,DST NEET1,social,velfaerd
+607,Fredericia,neet,83.18,11.59,%,2023,DST NEET1,social,velfaerd
+316,Holbæk,neet,90.26,10.68,%,2023,DST NEET1,social,velfaerd
+340,Sorø,neet,84.41,11.42,%,2023,DST NEET1,social,velfaerd
+260,Halsnæs,neet,80.2,12.02,%,2023,DST NEET1,social,velfaerd
+766,Hedensted,neet,78.12,12.34,%,2023,DST NEET1,social,velfaerd
+825,Læsø,neet,68.96,13.98,%,2023,DST NEET1,social,velfaerd
+615,Horsens,neet,89.42,10.78,%,2023,DST NEET1,social,velfaerd
+329,Ringsted,neet,99.79,9.66,%,2023,DST NEET1,social,velfaerd
+370,Næstved,neet,88.85,10.85,%,2023,DST NEET1,social,velfaerd
+851,Aalborg,neet,123.43,7.81,%,2023,DST NEET1,social,velfaerd
+336,Stevns,neet,88.04,10.95,%,2023,DST NEET1,social,velfaerd
+410,Middelfart,neet,90.86,10.61,%,2023,DST NEET1,social,velfaerd
+727,Odder,neet,91.29,10.56,%,2023,DST NEET1,social,velfaerd
+161,Glostrup,neet,109.3,8.82,%,2023,DST NEET1,social,velfaerd
+563,Fanø,neet,95.07,10.14,%,2023,DST NEET1,social,velfaerd
+813,Frederikshavn,neet,78.37,12.3,%,2023,DST NEET1,social,velfaerd
+270,Gribskov,neet,94.7,10.18,%,2023,DST NEET1,social,velfaerd
+751,Aarhus,neet,119.9,8.04,%,2023,DST NEET1,social,velfaerd
+760,Ringkøbing-Skjern,neet,105.59,9.13,%,2023,DST NEET1,social,velfaerd
+479,Svendborg,neet,79.15,12.18,%,2023,DST NEET1,social,velfaerd
+787,Thisted,neet,78.63,12.26,%,2023,DST NEET1,social,velfaerd
+810,Brønderslev,neet,80.2,12.02,%,2023,DST NEET1,social,velfaerd
+791,Viborg,neet,95.45,10.1,%,2023,DST NEET1,social,velfaerd
+165,Albertslund,neet,98.37,9.8,%,2023,DST NEET1,social,velfaerd
+480,Nordfyns,neet,71.41,13.5,%,2023,DST NEET1,social,velfaerd
+440,Kerteminde,neet,82.11,11.74,%,2023,DST NEET1,social,velfaerd
+101,København,neet,117.42,8.21,%,2023,DST NEET1,social,velfaerd
+860,Hjørring,neet,86.85,11.1,%,2023,DST NEET1,social,velfaerd
+706,Syddjurs,neet,73.48,13.12,%,2023,DST NEET1,social,velfaerd
+430,Faaborg-Midtfyn,neet,88.12,10.94,%,2023,DST NEET1,social,velfaerd
+573,Varde,neet,93.14,10.35,%,2023,DST NEET1,social,velfaerd
+730,Randers,neet,81.56,11.82,%,2023,DST NEET1,social,velfaerd
+621,Kolding,neet,97.67,9.87,%,2023,DST NEET1,social,velfaerd
+320,Faxe,neet,82.89,11.63,%,2023,DST NEET1,social,velfaerd
+169,Høje-Taastrup,neet,94.14,10.24,%,2023,DST NEET1,social,velfaerd
+461,Odense,neet,112.09,8.6,%,2023,DST NEET1,social,velfaerd
+420,Assens,neet,71.78,13.43,%,2023,DST NEET1,social,velfaerd
+756,Ikast-Brande,neet,69.2,13.93,%,2023,DST NEET1,social,velfaerd
+846,Mariagerfjord,neet,79.8,12.08,%,2023,DST NEET1,social,velfaerd
+580,Aabenraa,neet,79.21,12.17,%,2023,DST NEET1,social,velfaerd
+450,Nyborg,neet,90.69,10.63,%,2023,DST NEET1,social,velfaerd
+630,Vejle,neet,90.26,10.68,%,2023,DST NEET1,social,velfaerd
+540,Sønderborg,neet,84.34,11.43,%,2023,DST NEET1,social,velfaerd
+400,Bornholm,neet,80.33,12.0,%,2023,DST NEET1,social,velfaerd
+779,Skive,neet,83.03,11.61,%,2023,DST NEET1,social,velfaerd
+510,Haderslev,neet,82.53,11.68,%,2023,DST NEET1,social,velfaerd
+575,Vejen,neet,87.72,10.99,%,2023,DST NEET1,social,velfaerd
+820,Vesthimmerlands,neet,78.57,12.27,%,2023,DST NEET1,social,velfaerd
+707,Norddjurs,neet,76.33,12.63,%,2023,DST NEET1,social,velfaerd
+671,Struer,neet,79.6,12.11,%,2023,DST NEET1,social,velfaerd
+306,Odsherred,neet,70.36,13.7,%,2023,DST NEET1,social,velfaerd
+330,Slagelse,neet,91.55,10.53,%,2023,DST NEET1,social,velfaerd
+665,Lemvig,neet,102.77,9.38,%,2023,DST NEET1,social,velfaerd
+376,Guldborgsund,neet,76.15,12.66,%,2023,DST NEET1,social,velfaerd
+326,Kalundborg,neet,81.35,11.85,%,2023,DST NEET1,social,velfaerd
+849,Jammerbugt,neet,73.81,13.06,%,2023,DST NEET1,social,velfaerd
+550,Tønder,neet,83.54,11.54,%,2023,DST NEET1,social,velfaerd
+390,Vordingborg,neet,70.52,13.67,%,2023,DST NEET1,social,velfaerd
+360,Lolland,neet,58.25,16.55,%,2023,DST NEET1,social,velfaerd
+741,Samsø,neet,68.61,14.05,%,2023,DST NEET1,social,velfaerd
+482,Langeland,neet,68.61,14.05,%,2023,DST NEET1,social,velfaerd
 201,Allerød,poverty_relative,150.0,5.4,%,2023,DST IFOR12P,social,velfaerd
 175,Rødovre,poverty_relative,103.91,12.8,%,2023,DST IFOR12P,social,velfaerd
 153,Brøndby,poverty_relative,76.44,17.4,%,2023,DST IFOR12P,social,velfaerd
@@ -3507,103 +3412,103 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 390,Vordingborg,music_school,150.0,17.02,pr. 1.000 indb.,2022,DST SKOLM02B,social,kultur_fritid
 360,Lolland,music_school,93.49,10.05,pr. 1.000 indb.,2022,DST SKOLM02B,social,kultur_fritid
 482,Langeland,music_school,150.0,17.21,pr. 1.000 indb.,2022,DST SKOLM02B,social,kultur_fritid
-201,Allerød,library_use,150.0,8.67,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-175,Rødovre,library_use,113.25,4.7,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-153,Brøndby,library_use,66.27,2.75,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-155,Dragør,library_use,79.04,3.28,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-190,Furesø,library_use,146.02,6.06,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-230,Rudersdal,library_use,150.0,6.54,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-151,Ballerup,library_use,108.19,4.49,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-167,Hvidovre,library_use,139.52,5.79,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-269,Solrød,library_use,101.45,4.21,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-746,Skanderborg,library_use,108.67,4.51,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-157,Gentofte,library_use,150.0,8.87,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-240,Egedal,library_use,90.36,3.75,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-265,Roskilde,library_use,150.0,6.7,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-223,Hørsholm,library_use,150.0,6.32,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-185,Tårnby,library_use,121.2,5.03,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-163,Herlev,library_use,102.17,4.24,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-173,Lyngby-Taarbæk,library_use,150.0,6.63,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-350,Lejre,library_use,75.42,3.13,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-210,Fredensborg,library_use,101.69,4.22,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-710,Favrskov,library_use,111.33,4.62,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-530,Billund,library_use,78.31,3.25,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-183,Ishøj,library_use,66.75,2.77,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-840,Rebild,library_use,94.46,3.92,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-147,Frederiksberg,library_use,93.98,3.9,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-259,Køge,library_use,97.11,4.03,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-253,Greve,library_use,80.0,3.32,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-187,Vallensbæk,library_use,51.57,2.14,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-159,Gladsaxe,library_use,110.12,4.57,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-661,Holstebro,library_use,97.35,4.04,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-217,Helsingør,library_use,126.51,5.25,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-250,Frederikssund,library_use,101.69,4.22,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-657,Herning,library_use,138.8,5.76,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-492,Ærø,library_use,107.71,4.47,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-561,Esbjerg,library_use,78.07,3.24,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-773,Morsø,library_use,80.96,3.36,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-219,Hillerød,library_use,120.24,4.99,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-740,Silkeborg,library_use,116.14,4.82,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-607,Fredericia,library_use,74.22,3.08,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-316,Holbæk,library_use,80.24,3.33,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-340,Sorø,library_use,95.18,3.95,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-260,Halsnæs,library_use,96.39,4.0,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-766,Hedensted,library_use,76.87,3.19,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-825,Læsø,library_use,46.02,1.91,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-615,Horsens,library_use,79.52,3.3,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-329,Ringsted,library_use,85.06,3.53,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-370,Næstved,library_use,70.84,2.94,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-851,Aalborg,library_use,95.66,3.97,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-336,Stevns,library_use,77.59,3.22,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-410,Middelfart,library_use,103.86,4.31,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-727,Odder,library_use,148.43,6.16,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-161,Glostrup,library_use,90.12,3.74,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-813,Frederikshavn,library_use,78.8,3.27,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-270,Gribskov,library_use,131.57,5.46,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-751,Aarhus,library_use,94.94,3.94,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-760,Ringkøbing-Skjern,library_use,93.98,3.9,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-479,Svendborg,library_use,143.13,5.94,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-787,Thisted,library_use,73.01,3.03,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-810,Brønderslev,library_use,121.2,5.03,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-791,Viborg,library_use,104.58,4.34,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-165,Albertslund,library_use,91.33,3.79,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-480,Nordfyns,library_use,77.83,3.23,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-440,Kerteminde,library_use,84.82,3.52,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-101,København,library_use,87.71,3.64,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-860,Hjørring,library_use,94.94,3.94,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-706,Syddjurs,library_use,93.25,3.87,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-430,Faaborg-Midtfyn,library_use,101.93,4.23,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-573,Varde,library_use,99.28,4.12,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-730,Randers,library_use,99.76,4.14,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-621,Kolding,library_use,84.58,3.51,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-320,Faxe,library_use,76.14,3.16,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-169,Høje-Taastrup,library_use,80.96,3.36,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-461,Odense,library_use,90.12,3.74,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-420,Assens,library_use,77.35,3.21,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-756,Ikast-Brande,library_use,84.1,3.49,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-846,Mariagerfjord,library_use,107.47,4.46,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-580,Aabenraa,library_use,81.2,3.37,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-450,Nyborg,library_use,149.16,6.19,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-630,Vejle,library_use,118.31,4.91,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-540,Sønderborg,library_use,95.42,3.96,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-400,Bornholm,library_use,150.0,7.19,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-779,Skive,library_use,82.41,3.42,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-510,Haderslev,library_use,84.1,3.49,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-575,Vejen,library_use,80.24,3.33,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-820,Vesthimmerlands,library_use,75.9,3.15,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-707,Norddjurs,library_use,84.82,3.52,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-671,Struer,library_use,109.4,4.54,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-306,Odsherred,library_use,80.72,3.35,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-330,Slagelse,library_use,66.99,2.78,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-665,Lemvig,library_use,113.73,4.72,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-376,Guldborgsund,library_use,110.36,4.58,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-326,Kalundborg,library_use,65.3,2.71,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-849,Jammerbugt,library_use,98.8,4.1,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-550,Tønder,library_use,74.46,3.09,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-390,Vordingborg,library_use,106.99,4.44,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-360,Lolland,library_use,77.11,3.2,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-741,Samsø,library_use,126.75,5.26,udlån/indb.,2023,DST BIB1,social,kultur_fritid
-482,Langeland,library_use,93.98,3.9,udlån/indb.,2023,DST BIB1,social,kultur_fritid
+201,Allerød,library_use,150.0,9.04,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+175,Rødovre,library_use,105.86,4.7,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+153,Brøndby,library_use,64.64,2.87,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+155,Dragør,library_use,88.74,3.94,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+190,Furesø,library_use,144.37,6.41,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+230,Rudersdal,library_use,150.0,7.55,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+151,Ballerup,library_use,112.61,5.0,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+167,Hvidovre,library_use,143.24,6.36,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+269,Solrød,library_use,98.87,4.39,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+746,Skanderborg,library_use,110.14,4.89,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+157,Gentofte,library_use,150.0,10.27,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+240,Egedal,library_use,92.79,4.12,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+265,Roskilde,library_use,150.0,7.3,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+223,Hørsholm,library_use,150.0,7.5,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+185,Tårnby,library_use,113.96,5.06,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+163,Herlev,library_use,98.2,4.36,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+173,Lyngby-Taarbæk,library_use,150.0,7.12,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+350,Lejre,library_use,77.48,3.44,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+210,Fredensborg,library_use,98.65,4.38,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+710,Favrskov,library_use,117.79,5.23,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+530,Billund,library_use,78.15,3.47,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+183,Ishøj,library_use,62.39,2.77,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+840,Rebild,library_use,93.92,4.17,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+147,Frederiksberg,library_use,82.88,3.68,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+259,Køge,library_use,100.68,4.47,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+253,Greve,library_use,79.5,3.53,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+187,Vallensbæk,library_use,53.38,2.37,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+159,Gladsaxe,library_use,106.08,4.71,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+661,Holstebro,library_use,92.79,4.12,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+217,Helsingør,library_use,121.17,5.38,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+250,Frederikssund,library_use,97.52,4.33,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+657,Herning,library_use,145.27,6.45,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+492,Ærø,library_use,95.5,4.24,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+561,Esbjerg,library_use,75.0,3.33,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+773,Morsø,library_use,74.32,3.3,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+219,Hillerød,library_use,123.2,5.47,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+740,Silkeborg,library_use,112.16,4.98,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+607,Fredericia,library_use,70.27,3.12,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+316,Holbæk,library_use,78.38,3.48,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+340,Sorø,library_use,94.59,4.2,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+260,Halsnæs,library_use,91.22,4.05,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+766,Hedensted,library_use,73.2,3.25,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+825,Læsø,library_use,33.56,1.49,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+615,Horsens,library_use,76.13,3.38,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+329,Ringsted,library_use,79.73,3.54,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+370,Næstved,library_use,69.14,3.07,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+851,Aalborg,library_use,93.69,4.16,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+336,Stevns,library_use,78.83,3.5,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+410,Middelfart,library_use,105.63,4.69,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+727,Odder,library_use,150.0,6.78,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+161,Glostrup,library_use,95.5,4.24,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+813,Frederikshavn,library_use,74.1,3.29,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+270,Gribskov,library_use,119.37,5.3,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+751,Aarhus,library_use,101.13,4.49,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+760,Ringkøbing-Skjern,library_use,87.39,3.88,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+479,Svendborg,library_use,150.0,6.87,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+787,Thisted,library_use,70.72,3.14,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+810,Brønderslev,library_use,117.34,5.21,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+791,Viborg,library_use,105.86,4.7,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+165,Albertslund,library_use,78.83,3.5,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+480,Nordfyns,library_use,68.24,3.03,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+440,Kerteminde,library_use,89.19,3.96,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+101,København,library_use,98.42,4.37,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+860,Hjørring,library_use,86.94,3.86,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+706,Syddjurs,library_use,95.72,4.25,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+430,Faaborg-Midtfyn,library_use,96.62,4.29,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+573,Varde,library_use,86.04,3.82,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+730,Randers,library_use,97.3,4.32,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+621,Kolding,library_use,84.23,3.74,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+320,Faxe,library_use,66.44,2.95,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+169,Høje-Taastrup,library_use,79.95,3.55,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+461,Odense,library_use,95.05,4.22,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+420,Assens,library_use,75.23,3.34,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+756,Ikast-Brande,library_use,97.97,4.35,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+846,Mariagerfjord,library_use,93.69,4.16,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+580,Aabenraa,library_use,80.63,3.58,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+450,Nyborg,library_use,132.21,5.87,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+630,Vejle,library_use,105.41,4.68,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+540,Sønderborg,library_use,88.96,3.95,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+400,Bornholm,library_use,150.0,6.83,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+779,Skive,library_use,77.03,3.42,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+510,Haderslev,library_use,82.21,3.65,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+575,Vejen,library_use,77.03,3.42,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+820,Vesthimmerlands,library_use,74.77,3.32,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+707,Norddjurs,library_use,78.15,3.47,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+671,Struer,library_use,101.8,4.52,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+306,Odsherred,library_use,75.0,3.33,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+330,Slagelse,library_use,63.29,2.81,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+665,Lemvig,library_use,103.15,4.58,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+376,Guldborgsund,library_use,101.58,4.51,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+326,Kalundborg,library_use,62.84,2.79,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+849,Jammerbugt,library_use,92.34,4.1,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+550,Tønder,library_use,74.55,3.31,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+390,Vordingborg,library_use,104.5,4.64,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+360,Lolland,library_use,70.72,3.14,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+741,Samsø,library_use,142.34,6.32,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+482,Langeland,library_use,93.92,4.17,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
 201,Allerød,kultur_spending,109.15,513.0,kr./indb.,2023,DST REGK31,social,kultur_fritid
 175,Rødovre,kultur_spending,82.55,388.0,kr./indb.,2023,DST REGK31,social,kultur_fritid
 153,Brøndby,kultur_spending,127.02,597.0,kr./indb.,2023,DST REGK31,social,kultur_fritid
@@ -3898,202 +3803,202 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,traffic_accidents,58.73,71.57,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
 741,Samsø,traffic_accidents,19.21,218.82,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
 482,Langeland,traffic_accidents,100.65,41.76,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-201,Allerød,sports_membership,114.32,52.7,%,2022,DST IDRAKT02,social,lokalsamfund
-175,Rødovre,sports_membership,54.66,25.2,%,2022,DST IDRAKT02,social,lokalsamfund
-153,Brøndby,sports_membership,66.16,30.5,%,2022,DST IDRAKT02,social,lokalsamfund
-155,Dragør,sports_membership,123.21,56.8,%,2022,DST IDRAKT02,social,lokalsamfund
-190,Furesø,sports_membership,147.72,68.1,%,2022,DST IDRAKT02,social,lokalsamfund
-230,Rudersdal,sports_membership,110.85,51.1,%,2022,DST IDRAKT02,social,lokalsamfund
-151,Ballerup,sports_membership,73.97,34.1,%,2022,DST IDRAKT02,social,lokalsamfund
-167,Hvidovre,sports_membership,72.45,33.4,%,2022,DST IDRAKT02,social,lokalsamfund
-269,Solrød,sports_membership,96.75,44.6,%,2022,DST IDRAKT02,social,lokalsamfund
-746,Skanderborg,sports_membership,133.19,61.4,%,2022,DST IDRAKT02,social,lokalsamfund
-157,Gentofte,sports_membership,107.38,49.5,%,2022,DST IDRAKT02,social,lokalsamfund
-240,Egedal,sports_membership,103.04,47.5,%,2022,DST IDRAKT02,social,lokalsamfund
-265,Roskilde,sports_membership,131.89,60.8,%,2022,DST IDRAKT02,social,lokalsamfund
-223,Hørsholm,sports_membership,129.5,59.7,%,2022,DST IDRAKT02,social,lokalsamfund
-185,Tårnby,sports_membership,89.37,41.2,%,2022,DST IDRAKT02,social,lokalsamfund
-163,Herlev,sports_membership,110.2,50.8,%,2022,DST IDRAKT02,social,lokalsamfund
-173,Lyngby-Taarbæk,sports_membership,100.65,46.4,%,2022,DST IDRAKT02,social,lokalsamfund
-350,Lejre,sports_membership,96.75,44.6,%,2022,DST IDRAKT02,social,lokalsamfund
-210,Fredensborg,sports_membership,97.83,45.1,%,2022,DST IDRAKT02,social,lokalsamfund
-710,Favrskov,sports_membership,112.58,51.9,%,2022,DST IDRAKT02,social,lokalsamfund
-530,Billund,sports_membership,134.71,62.1,%,2022,DST IDRAKT02,social,lokalsamfund
-183,Ishøj,sports_membership,75.27,34.7,%,2022,DST IDRAKT02,social,lokalsamfund
-840,Rebild,sports_membership,112.36,51.8,%,2022,DST IDRAKT02,social,lokalsamfund
-147,Frederiksberg,sports_membership,58.35,26.9,%,2022,DST IDRAKT02,social,lokalsamfund
-259,Køge,sports_membership,108.68,50.1,%,2022,DST IDRAKT02,social,lokalsamfund
-253,Greve,sports_membership,116.92,53.9,%,2022,DST IDRAKT02,social,lokalsamfund
-187,Vallensbæk,sports_membership,92.84,42.8,%,2022,DST IDRAKT02,social,lokalsamfund
-159,Gladsaxe,sports_membership,66.59,30.7,%,2022,DST IDRAKT02,social,lokalsamfund
-661,Holstebro,sports_membership,107.81,49.7,%,2022,DST IDRAKT02,social,lokalsamfund
-217,Helsingør,sports_membership,91.54,42.2,%,2022,DST IDRAKT02,social,lokalsamfund
-250,Frederikssund,sports_membership,92.41,42.6,%,2022,DST IDRAKT02,social,lokalsamfund
-657,Herning,sports_membership,115.62,53.3,%,2022,DST IDRAKT02,social,lokalsamfund
-492,Ærø,sports_membership,133.62,61.6,%,2022,DST IDRAKT02,social,lokalsamfund
-561,Esbjerg,sports_membership,96.1,44.3,%,2022,DST IDRAKT02,social,lokalsamfund
-773,Morsø,sports_membership,99.13,45.7,%,2022,DST IDRAKT02,social,lokalsamfund
-219,Hillerød,sports_membership,150.0,73.3,%,2022,DST IDRAKT02,social,lokalsamfund
-740,Silkeborg,sports_membership,113.67,52.4,%,2022,DST IDRAKT02,social,lokalsamfund
-607,Fredericia,sports_membership,98.92,45.6,%,2022,DST IDRAKT02,social,lokalsamfund
-316,Holbæk,sports_membership,92.62,42.7,%,2022,DST IDRAKT02,social,lokalsamfund
-340,Sorø,sports_membership,83.08,38.3,%,2022,DST IDRAKT02,social,lokalsamfund
-260,Halsnæs,sports_membership,81.34,37.5,%,2022,DST IDRAKT02,social,lokalsamfund
-766,Hedensted,sports_membership,113.88,52.5,%,2022,DST IDRAKT02,social,lokalsamfund
-825,Læsø,sports_membership,150.0,112.5,%,2022,DST IDRAKT02,social,lokalsamfund
-615,Horsens,sports_membership,78.52,36.2,%,2022,DST IDRAKT02,social,lokalsamfund
-329,Ringsted,sports_membership,83.51,38.5,%,2022,DST IDRAKT02,social,lokalsamfund
-370,Næstved,sports_membership,69.41,32.0,%,2022,DST IDRAKT02,social,lokalsamfund
-851,Aalborg,sports_membership,125.6,57.9,%,2022,DST IDRAKT02,social,lokalsamfund
-336,Stevns,sports_membership,106.94,49.3,%,2022,DST IDRAKT02,social,lokalsamfund
-410,Middelfart,sports_membership,91.32,42.1,%,2022,DST IDRAKT02,social,lokalsamfund
-727,Odder,sports_membership,100.65,46.4,%,2022,DST IDRAKT02,social,lokalsamfund
-161,Glostrup,sports_membership,59.65,27.5,%,2022,DST IDRAKT02,social,lokalsamfund
-563,Fanø,sports_membership,126.68,58.4,%,2022,DST IDRAKT02,social,lokalsamfund
-813,Frederikshavn,sports_membership,119.31,55.0,%,2022,DST IDRAKT02,social,lokalsamfund
-270,Gribskov,sports_membership,104.99,48.4,%,2022,DST IDRAKT02,social,lokalsamfund
-751,Aarhus,sports_membership,99.57,45.9,%,2022,DST IDRAKT02,social,lokalsamfund
-760,Ringkøbing-Skjern,sports_membership,140.35,64.7,%,2022,DST IDRAKT02,social,lokalsamfund
-479,Svendborg,sports_membership,117.14,54.0,%,2022,DST IDRAKT02,social,lokalsamfund
-787,Thisted,sports_membership,105.64,48.7,%,2022,DST IDRAKT02,social,lokalsamfund
-810,Brønderslev,sports_membership,106.51,49.1,%,2022,DST IDRAKT02,social,lokalsamfund
-791,Viborg,sports_membership,108.03,49.8,%,2022,DST IDRAKT02,social,lokalsamfund
-165,Albertslund,sports_membership,150.0,112.7,%,2022,DST IDRAKT02,social,lokalsamfund
-480,Nordfyns,sports_membership,106.72,49.2,%,2022,DST IDRAKT02,social,lokalsamfund
-440,Kerteminde,sports_membership,99.13,45.7,%,2022,DST IDRAKT02,social,lokalsamfund
-101,København,sports_membership,91.11,42.0,%,2022,DST IDRAKT02,social,lokalsamfund
-860,Hjørring,sports_membership,120.39,55.5,%,2022,DST IDRAKT02,social,lokalsamfund
-706,Syddjurs,sports_membership,106.51,49.1,%,2022,DST IDRAKT02,social,lokalsamfund
-430,Faaborg-Midtfyn,sports_membership,90.46,41.7,%,2022,DST IDRAKT02,social,lokalsamfund
-573,Varde,sports_membership,126.68,58.4,%,2022,DST IDRAKT02,social,lokalsamfund
-730,Randers,sports_membership,79.18,36.5,%,2022,DST IDRAKT02,social,lokalsamfund
-621,Kolding,sports_membership,92.19,42.5,%,2022,DST IDRAKT02,social,lokalsamfund
-320,Faxe,sports_membership,67.46,31.1,%,2022,DST IDRAKT02,social,lokalsamfund
-169,Høje-Taastrup,sports_membership,69.85,32.2,%,2022,DST IDRAKT02,social,lokalsamfund
-461,Odense,sports_membership,98.7,45.5,%,2022,DST IDRAKT02,social,lokalsamfund
-420,Assens,sports_membership,86.12,39.7,%,2022,DST IDRAKT02,social,lokalsamfund
-756,Ikast-Brande,sports_membership,93.93,43.3,%,2022,DST IDRAKT02,social,lokalsamfund
-846,Mariagerfjord,sports_membership,89.59,41.3,%,2022,DST IDRAKT02,social,lokalsamfund
-580,Aabenraa,sports_membership,78.52,36.2,%,2022,DST IDRAKT02,social,lokalsamfund
-450,Nyborg,sports_membership,110.2,50.8,%,2022,DST IDRAKT02,social,lokalsamfund
-630,Vejle,sports_membership,101.74,46.9,%,2022,DST IDRAKT02,social,lokalsamfund
-540,Sønderborg,sports_membership,88.72,40.9,%,2022,DST IDRAKT02,social,lokalsamfund
-400,Bornholm,sports_membership,126.03,58.1,%,2022,DST IDRAKT02,social,lokalsamfund
-779,Skive,sports_membership,112.15,51.7,%,2022,DST IDRAKT02,social,lokalsamfund
-510,Haderslev,sports_membership,98.48,45.4,%,2022,DST IDRAKT02,social,lokalsamfund
-575,Vejen,sports_membership,86.33,39.8,%,2022,DST IDRAKT02,social,lokalsamfund
-820,Vesthimmerlands,sports_membership,119.31,55.0,%,2022,DST IDRAKT02,social,lokalsamfund
-707,Norddjurs,sports_membership,80.69,37.2,%,2022,DST IDRAKT02,social,lokalsamfund
-671,Struer,sports_membership,103.69,47.8,%,2022,DST IDRAKT02,social,lokalsamfund
-306,Odsherred,sports_membership,104.34,48.1,%,2022,DST IDRAKT02,social,lokalsamfund
-330,Slagelse,sports_membership,76.57,35.3,%,2022,DST IDRAKT02,social,lokalsamfund
-665,Lemvig,sports_membership,150.0,82.8,%,2022,DST IDRAKT02,social,lokalsamfund
-376,Guldborgsund,sports_membership,88.5,40.8,%,2022,DST IDRAKT02,social,lokalsamfund
-326,Kalundborg,sports_membership,91.32,42.1,%,2022,DST IDRAKT02,social,lokalsamfund
-849,Jammerbugt,sports_membership,116.49,53.7,%,2022,DST IDRAKT02,social,lokalsamfund
-550,Tønder,sports_membership,92.62,42.7,%,2022,DST IDRAKT02,social,lokalsamfund
-390,Vordingborg,sports_membership,74.84,34.5,%,2022,DST IDRAKT02,social,lokalsamfund
-360,Lolland,sports_membership,70.93,32.7,%,2022,DST IDRAKT02,social,lokalsamfund
-741,Samsø,sports_membership,150.0,101.8,%,2022,DST IDRAKT02,social,lokalsamfund
-482,Langeland,sports_membership,97.83,45.1,%,2022,DST IDRAKT02,social,lokalsamfund
-201,Allerød,sports_facilities,110.81,22.96,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-175,Rødovre,sports_facilities,61.49,12.74,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-153,Brøndby,sports_facilities,69.31,14.36,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-155,Dragør,sports_facilities,90.2,18.69,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-190,Furesø,sports_facilities,85.09,17.63,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-230,Rudersdal,sports_facilities,84.17,17.44,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-151,Ballerup,sports_facilities,72.01,14.92,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-167,Hvidovre,sports_facilities,63.75,13.21,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-269,Solrød,sports_facilities,80.02,16.58,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-746,Skanderborg,sports_facilities,122.59,25.4,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-157,Gentofte,sports_facilities,68.77,14.25,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-240,Egedal,sports_facilities,80.5,16.68,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-265,Roskilde,sports_facilities,84.27,17.46,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-223,Hørsholm,sports_facilities,80.55,16.69,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-185,Tårnby,sports_facilities,75.63,15.67,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-163,Herlev,sports_facilities,68.97,14.29,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-173,Lyngby-Taarbæk,sports_facilities,69.88,14.48,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-350,Lejre,sports_facilities,94.59,19.6,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-210,Fredensborg,sports_facilities,89.24,18.49,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-710,Favrskov,sports_facilities,137.89,28.57,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-530,Billund,sports_facilities,147.44,30.55,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-183,Ishøj,sports_facilities,53.47,11.08,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-840,Rebild,sports_facilities,150.0,32.32,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-147,Frederiksberg,sports_facilities,46.04,9.54,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-259,Køge,sports_facilities,91.46,18.95,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-253,Greve,sports_facilities,80.21,16.62,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-187,Vallensbæk,sports_facilities,65.83,13.64,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-159,Gladsaxe,sports_facilities,60.52,12.54,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-661,Holstebro,sports_facilities,150.0,32.43,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-217,Helsingør,sports_facilities,89.82,18.61,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-250,Frederikssund,sports_facilities,105.65,21.89,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-657,Herning,sports_facilities,141.02,29.22,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-492,Ærø,sports_facilities,150.0,37.41,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-561,Esbjerg,sports_facilities,113.56,23.53,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-773,Morsø,sports_facilities,150.0,34.84,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-219,Hillerød,sports_facilities,83.59,17.32,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-740,Silkeborg,sports_facilities,117.86,24.42,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-607,Fredericia,sports_facilities,93.58,19.39,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-316,Holbæk,sports_facilities,95.9,19.87,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-340,Sorø,sports_facilities,137.02,28.39,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-260,Halsnæs,sports_facilities,67.13,13.91,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-766,Hedensted,sports_facilities,150.0,32.18,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-825,Læsø,sports_facilities,150.0,98.89,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-615,Horsens,sports_facilities,79.34,16.44,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-329,Ringsted,sports_facilities,111.73,23.15,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-370,Næstved,sports_facilities,86.97,18.02,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-851,Aalborg,sports_facilities,82.96,17.19,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-336,Stevns,sports_facilities,89.91,18.63,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-410,Middelfart,sports_facilities,112.5,23.31,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-727,Odder,sports_facilities,136.29,28.24,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-161,Glostrup,sports_facilities,62.11,12.87,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-563,Fanø,sports_facilities,150.0,55.05,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-813,Frederikshavn,sports_facilities,139.24,28.85,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-270,Gribskov,sports_facilities,115.49,23.93,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-751,Aarhus,sports_facilities,64.77,13.42,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-760,Ringkøbing-Skjern,sports_facilities,150.0,41.56,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-479,Svendborg,sports_facilities,131.9,27.33,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-787,Thisted,sports_facilities,150.0,37.47,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-810,Brønderslev,sports_facilities,130.16,26.97,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-791,Viborg,sports_facilities,141.89,29.4,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-165,Albertslund,sports_facilities,87.55,18.14,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-480,Nordfyns,sports_facilities,149.66,31.01,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-440,Kerteminde,sports_facilities,112.84,23.38,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-101,København,sports_facilities,37.07,7.68,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-860,Hjørring,sports_facilities,135.71,28.12,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-706,Syddjurs,sports_facilities,133.49,27.66,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-430,Faaborg-Midtfyn,sports_facilities,150.0,35.0,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-573,Varde,sports_facilities,150.0,45.94,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-730,Randers,sports_facilities,101.5,21.03,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-621,Kolding,sports_facilities,97.64,20.23,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-320,Faxe,sports_facilities,125.05,25.91,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-169,Høje-Taastrup,sports_facilities,76.83,15.92,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-461,Odense,sports_facilities,76.45,15.84,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-420,Assens,sports_facilities,150.0,32.62,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-756,Ikast-Brande,sports_facilities,147.01,30.46,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-846,Mariagerfjord,sports_facilities,132.24,27.4,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-580,Aabenraa,sports_facilities,139.96,29.0,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-450,Nyborg,sports_facilities,101.5,21.03,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-630,Vejle,sports_facilities,108.78,22.54,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-540,Sønderborg,sports_facilities,116.6,24.16,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-400,Bornholm,sports_facilities,150.0,39.78,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-779,Skive,sports_facilities,150.0,37.0,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-510,Haderslev,sports_facilities,146.48,30.35,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-575,Vejen,sports_facilities,150.0,33.72,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-820,Vesthimmerlands,sports_facilities,150.0,37.97,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-707,Norddjurs,sports_facilities,150.0,31.64,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-671,Struer,sports_facilities,150.0,31.14,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-306,Odsherred,sports_facilities,124.32,25.76,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-330,Slagelse,sports_facilities,97.73,20.25,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-665,Lemvig,sports_facilities,150.0,48.94,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-376,Guldborgsund,sports_facilities,123.6,25.61,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-326,Kalundborg,sports_facilities,113.37,23.49,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-849,Jammerbugt,sports_facilities,148.79,30.83,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-550,Tønder,sports_facilities,150.0,36.81,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-390,Vordingborg,sports_facilities,112.45,23.3,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-360,Lolland,sports_facilities,141.89,29.4,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-741,Samsø,sports_facilities,150.0,46.5,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
-482,Langeland,sports_facilities,150.0,38.42,pr. 10.000 indb.,2022,DST IDRFAC01,social,lokalsamfund
+201,Allerød,sports_membership,114.32,52.7,%,2024,DST IDRAKT02,social,lokalsamfund
+175,Rødovre,sports_membership,54.66,25.2,%,2024,DST IDRAKT02,social,lokalsamfund
+153,Brøndby,sports_membership,66.16,30.5,%,2024,DST IDRAKT02,social,lokalsamfund
+155,Dragør,sports_membership,123.21,56.8,%,2024,DST IDRAKT02,social,lokalsamfund
+190,Furesø,sports_membership,147.72,68.1,%,2024,DST IDRAKT02,social,lokalsamfund
+230,Rudersdal,sports_membership,110.85,51.1,%,2024,DST IDRAKT02,social,lokalsamfund
+151,Ballerup,sports_membership,73.97,34.1,%,2024,DST IDRAKT02,social,lokalsamfund
+167,Hvidovre,sports_membership,72.45,33.4,%,2024,DST IDRAKT02,social,lokalsamfund
+269,Solrød,sports_membership,96.75,44.6,%,2024,DST IDRAKT02,social,lokalsamfund
+746,Skanderborg,sports_membership,133.19,61.4,%,2024,DST IDRAKT02,social,lokalsamfund
+157,Gentofte,sports_membership,107.38,49.5,%,2024,DST IDRAKT02,social,lokalsamfund
+240,Egedal,sports_membership,103.04,47.5,%,2024,DST IDRAKT02,social,lokalsamfund
+265,Roskilde,sports_membership,131.89,60.8,%,2024,DST IDRAKT02,social,lokalsamfund
+223,Hørsholm,sports_membership,129.5,59.7,%,2024,DST IDRAKT02,social,lokalsamfund
+185,Tårnby,sports_membership,89.37,41.2,%,2024,DST IDRAKT02,social,lokalsamfund
+163,Herlev,sports_membership,110.2,50.8,%,2024,DST IDRAKT02,social,lokalsamfund
+173,Lyngby-Taarbæk,sports_membership,100.65,46.4,%,2024,DST IDRAKT02,social,lokalsamfund
+350,Lejre,sports_membership,96.75,44.6,%,2024,DST IDRAKT02,social,lokalsamfund
+210,Fredensborg,sports_membership,97.83,45.1,%,2024,DST IDRAKT02,social,lokalsamfund
+710,Favrskov,sports_membership,112.58,51.9,%,2024,DST IDRAKT02,social,lokalsamfund
+530,Billund,sports_membership,134.71,62.1,%,2024,DST IDRAKT02,social,lokalsamfund
+183,Ishøj,sports_membership,75.27,34.7,%,2024,DST IDRAKT02,social,lokalsamfund
+840,Rebild,sports_membership,112.36,51.8,%,2024,DST IDRAKT02,social,lokalsamfund
+147,Frederiksberg,sports_membership,58.35,26.9,%,2024,DST IDRAKT02,social,lokalsamfund
+259,Køge,sports_membership,108.68,50.1,%,2024,DST IDRAKT02,social,lokalsamfund
+253,Greve,sports_membership,116.92,53.9,%,2024,DST IDRAKT02,social,lokalsamfund
+187,Vallensbæk,sports_membership,92.84,42.8,%,2024,DST IDRAKT02,social,lokalsamfund
+159,Gladsaxe,sports_membership,66.59,30.7,%,2024,DST IDRAKT02,social,lokalsamfund
+661,Holstebro,sports_membership,107.81,49.7,%,2024,DST IDRAKT02,social,lokalsamfund
+217,Helsingør,sports_membership,91.54,42.2,%,2024,DST IDRAKT02,social,lokalsamfund
+250,Frederikssund,sports_membership,92.41,42.6,%,2024,DST IDRAKT02,social,lokalsamfund
+657,Herning,sports_membership,115.62,53.3,%,2024,DST IDRAKT02,social,lokalsamfund
+492,Ærø,sports_membership,133.62,61.6,%,2024,DST IDRAKT02,social,lokalsamfund
+561,Esbjerg,sports_membership,96.1,44.3,%,2024,DST IDRAKT02,social,lokalsamfund
+773,Morsø,sports_membership,99.13,45.7,%,2024,DST IDRAKT02,social,lokalsamfund
+219,Hillerød,sports_membership,150.0,73.3,%,2024,DST IDRAKT02,social,lokalsamfund
+740,Silkeborg,sports_membership,113.67,52.4,%,2024,DST IDRAKT02,social,lokalsamfund
+607,Fredericia,sports_membership,98.92,45.6,%,2024,DST IDRAKT02,social,lokalsamfund
+316,Holbæk,sports_membership,92.62,42.7,%,2024,DST IDRAKT02,social,lokalsamfund
+340,Sorø,sports_membership,83.08,38.3,%,2024,DST IDRAKT02,social,lokalsamfund
+260,Halsnæs,sports_membership,81.34,37.5,%,2024,DST IDRAKT02,social,lokalsamfund
+766,Hedensted,sports_membership,113.88,52.5,%,2024,DST IDRAKT02,social,lokalsamfund
+825,Læsø,sports_membership,150.0,112.5,%,2024,DST IDRAKT02,social,lokalsamfund
+615,Horsens,sports_membership,78.52,36.2,%,2024,DST IDRAKT02,social,lokalsamfund
+329,Ringsted,sports_membership,83.51,38.5,%,2024,DST IDRAKT02,social,lokalsamfund
+370,Næstved,sports_membership,69.41,32.0,%,2024,DST IDRAKT02,social,lokalsamfund
+851,Aalborg,sports_membership,125.6,57.9,%,2024,DST IDRAKT02,social,lokalsamfund
+336,Stevns,sports_membership,106.94,49.3,%,2024,DST IDRAKT02,social,lokalsamfund
+410,Middelfart,sports_membership,91.32,42.1,%,2024,DST IDRAKT02,social,lokalsamfund
+727,Odder,sports_membership,100.65,46.4,%,2024,DST IDRAKT02,social,lokalsamfund
+161,Glostrup,sports_membership,59.65,27.5,%,2024,DST IDRAKT02,social,lokalsamfund
+563,Fanø,sports_membership,126.68,58.4,%,2024,DST IDRAKT02,social,lokalsamfund
+813,Frederikshavn,sports_membership,119.31,55.0,%,2024,DST IDRAKT02,social,lokalsamfund
+270,Gribskov,sports_membership,104.99,48.4,%,2024,DST IDRAKT02,social,lokalsamfund
+751,Aarhus,sports_membership,99.57,45.9,%,2024,DST IDRAKT02,social,lokalsamfund
+760,Ringkøbing-Skjern,sports_membership,140.35,64.7,%,2024,DST IDRAKT02,social,lokalsamfund
+479,Svendborg,sports_membership,117.14,54.0,%,2024,DST IDRAKT02,social,lokalsamfund
+787,Thisted,sports_membership,105.64,48.7,%,2024,DST IDRAKT02,social,lokalsamfund
+810,Brønderslev,sports_membership,106.51,49.1,%,2024,DST IDRAKT02,social,lokalsamfund
+791,Viborg,sports_membership,108.03,49.8,%,2024,DST IDRAKT02,social,lokalsamfund
+165,Albertslund,sports_membership,150.0,112.7,%,2024,DST IDRAKT02,social,lokalsamfund
+480,Nordfyns,sports_membership,106.72,49.2,%,2024,DST IDRAKT02,social,lokalsamfund
+440,Kerteminde,sports_membership,99.13,45.7,%,2024,DST IDRAKT02,social,lokalsamfund
+101,København,sports_membership,91.11,42.0,%,2024,DST IDRAKT02,social,lokalsamfund
+860,Hjørring,sports_membership,120.39,55.5,%,2024,DST IDRAKT02,social,lokalsamfund
+706,Syddjurs,sports_membership,106.51,49.1,%,2024,DST IDRAKT02,social,lokalsamfund
+430,Faaborg-Midtfyn,sports_membership,90.46,41.7,%,2024,DST IDRAKT02,social,lokalsamfund
+573,Varde,sports_membership,126.68,58.4,%,2024,DST IDRAKT02,social,lokalsamfund
+730,Randers,sports_membership,79.18,36.5,%,2024,DST IDRAKT02,social,lokalsamfund
+621,Kolding,sports_membership,92.19,42.5,%,2024,DST IDRAKT02,social,lokalsamfund
+320,Faxe,sports_membership,67.46,31.1,%,2024,DST IDRAKT02,social,lokalsamfund
+169,Høje-Taastrup,sports_membership,69.85,32.2,%,2024,DST IDRAKT02,social,lokalsamfund
+461,Odense,sports_membership,98.7,45.5,%,2024,DST IDRAKT02,social,lokalsamfund
+420,Assens,sports_membership,86.12,39.7,%,2024,DST IDRAKT02,social,lokalsamfund
+756,Ikast-Brande,sports_membership,93.93,43.3,%,2024,DST IDRAKT02,social,lokalsamfund
+846,Mariagerfjord,sports_membership,89.59,41.3,%,2024,DST IDRAKT02,social,lokalsamfund
+580,Aabenraa,sports_membership,78.52,36.2,%,2024,DST IDRAKT02,social,lokalsamfund
+450,Nyborg,sports_membership,110.2,50.8,%,2024,DST IDRAKT02,social,lokalsamfund
+630,Vejle,sports_membership,101.74,46.9,%,2024,DST IDRAKT02,social,lokalsamfund
+540,Sønderborg,sports_membership,88.72,40.9,%,2024,DST IDRAKT02,social,lokalsamfund
+400,Bornholm,sports_membership,126.03,58.1,%,2024,DST IDRAKT02,social,lokalsamfund
+779,Skive,sports_membership,112.15,51.7,%,2024,DST IDRAKT02,social,lokalsamfund
+510,Haderslev,sports_membership,98.48,45.4,%,2024,DST IDRAKT02,social,lokalsamfund
+575,Vejen,sports_membership,86.33,39.8,%,2024,DST IDRAKT02,social,lokalsamfund
+820,Vesthimmerlands,sports_membership,119.31,55.0,%,2024,DST IDRAKT02,social,lokalsamfund
+707,Norddjurs,sports_membership,80.69,37.2,%,2024,DST IDRAKT02,social,lokalsamfund
+671,Struer,sports_membership,103.69,47.8,%,2024,DST IDRAKT02,social,lokalsamfund
+306,Odsherred,sports_membership,104.34,48.1,%,2024,DST IDRAKT02,social,lokalsamfund
+330,Slagelse,sports_membership,76.57,35.3,%,2024,DST IDRAKT02,social,lokalsamfund
+665,Lemvig,sports_membership,150.0,82.8,%,2024,DST IDRAKT02,social,lokalsamfund
+376,Guldborgsund,sports_membership,88.5,40.8,%,2024,DST IDRAKT02,social,lokalsamfund
+326,Kalundborg,sports_membership,91.32,42.1,%,2024,DST IDRAKT02,social,lokalsamfund
+849,Jammerbugt,sports_membership,116.49,53.7,%,2024,DST IDRAKT02,social,lokalsamfund
+550,Tønder,sports_membership,92.62,42.7,%,2024,DST IDRAKT02,social,lokalsamfund
+390,Vordingborg,sports_membership,74.84,34.5,%,2024,DST IDRAKT02,social,lokalsamfund
+360,Lolland,sports_membership,70.93,32.7,%,2024,DST IDRAKT02,social,lokalsamfund
+741,Samsø,sports_membership,150.0,101.8,%,2024,DST IDRAKT02,social,lokalsamfund
+482,Langeland,sports_membership,97.83,45.1,%,2024,DST IDRAKT02,social,lokalsamfund
+201,Allerød,sports_facilities,110.81,22.96,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+175,Rødovre,sports_facilities,61.49,12.74,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+153,Brøndby,sports_facilities,69.31,14.36,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+155,Dragør,sports_facilities,90.2,18.69,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+190,Furesø,sports_facilities,85.09,17.63,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+230,Rudersdal,sports_facilities,84.17,17.44,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+151,Ballerup,sports_facilities,72.01,14.92,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+167,Hvidovre,sports_facilities,63.75,13.21,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+269,Solrød,sports_facilities,80.02,16.58,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+746,Skanderborg,sports_facilities,122.59,25.4,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+157,Gentofte,sports_facilities,68.77,14.25,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+240,Egedal,sports_facilities,80.5,16.68,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+265,Roskilde,sports_facilities,84.27,17.46,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+223,Hørsholm,sports_facilities,80.55,16.69,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+185,Tårnby,sports_facilities,75.63,15.67,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+163,Herlev,sports_facilities,68.97,14.29,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+173,Lyngby-Taarbæk,sports_facilities,69.88,14.48,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+350,Lejre,sports_facilities,94.59,19.6,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+210,Fredensborg,sports_facilities,89.24,18.49,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+710,Favrskov,sports_facilities,137.89,28.57,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+530,Billund,sports_facilities,147.44,30.55,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+183,Ishøj,sports_facilities,53.47,11.08,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+840,Rebild,sports_facilities,150.0,32.32,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+147,Frederiksberg,sports_facilities,46.04,9.54,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+259,Køge,sports_facilities,91.46,18.95,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+253,Greve,sports_facilities,80.21,16.62,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+187,Vallensbæk,sports_facilities,65.83,13.64,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+159,Gladsaxe,sports_facilities,60.52,12.54,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+661,Holstebro,sports_facilities,150.0,32.43,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+217,Helsingør,sports_facilities,89.82,18.61,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+250,Frederikssund,sports_facilities,105.65,21.89,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+657,Herning,sports_facilities,141.02,29.22,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+492,Ærø,sports_facilities,150.0,37.41,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+561,Esbjerg,sports_facilities,113.56,23.53,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+773,Morsø,sports_facilities,150.0,34.84,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+219,Hillerød,sports_facilities,83.59,17.32,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+740,Silkeborg,sports_facilities,117.86,24.42,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+607,Fredericia,sports_facilities,93.58,19.39,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+316,Holbæk,sports_facilities,95.9,19.87,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+340,Sorø,sports_facilities,137.02,28.39,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+260,Halsnæs,sports_facilities,67.13,13.91,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+766,Hedensted,sports_facilities,150.0,32.18,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+825,Læsø,sports_facilities,150.0,98.89,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+615,Horsens,sports_facilities,79.34,16.44,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+329,Ringsted,sports_facilities,111.73,23.15,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+370,Næstved,sports_facilities,86.97,18.02,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+851,Aalborg,sports_facilities,82.96,17.19,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+336,Stevns,sports_facilities,89.91,18.63,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+410,Middelfart,sports_facilities,112.5,23.31,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+727,Odder,sports_facilities,136.29,28.24,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+161,Glostrup,sports_facilities,62.11,12.87,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+563,Fanø,sports_facilities,150.0,55.05,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+813,Frederikshavn,sports_facilities,139.24,28.85,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+270,Gribskov,sports_facilities,115.49,23.93,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+751,Aarhus,sports_facilities,64.77,13.42,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+760,Ringkøbing-Skjern,sports_facilities,150.0,41.56,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+479,Svendborg,sports_facilities,131.9,27.33,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+787,Thisted,sports_facilities,150.0,37.47,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+810,Brønderslev,sports_facilities,130.16,26.97,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+791,Viborg,sports_facilities,141.89,29.4,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+165,Albertslund,sports_facilities,87.55,18.14,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+480,Nordfyns,sports_facilities,149.66,31.01,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+440,Kerteminde,sports_facilities,112.84,23.38,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+101,København,sports_facilities,37.07,7.68,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+860,Hjørring,sports_facilities,135.71,28.12,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+706,Syddjurs,sports_facilities,133.49,27.66,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+430,Faaborg-Midtfyn,sports_facilities,150.0,35.0,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+573,Varde,sports_facilities,150.0,45.94,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+730,Randers,sports_facilities,101.5,21.03,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+621,Kolding,sports_facilities,97.64,20.23,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+320,Faxe,sports_facilities,125.05,25.91,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+169,Høje-Taastrup,sports_facilities,76.83,15.92,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+461,Odense,sports_facilities,76.45,15.84,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+420,Assens,sports_facilities,150.0,32.62,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+756,Ikast-Brande,sports_facilities,147.01,30.46,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+846,Mariagerfjord,sports_facilities,132.24,27.4,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+580,Aabenraa,sports_facilities,139.96,29.0,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+450,Nyborg,sports_facilities,101.5,21.03,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+630,Vejle,sports_facilities,108.78,22.54,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+540,Sønderborg,sports_facilities,116.6,24.16,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+400,Bornholm,sports_facilities,150.0,39.78,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+779,Skive,sports_facilities,150.0,37.0,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+510,Haderslev,sports_facilities,146.48,30.35,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+575,Vejen,sports_facilities,150.0,33.72,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+820,Vesthimmerlands,sports_facilities,150.0,37.97,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+707,Norddjurs,sports_facilities,150.0,31.64,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+671,Struer,sports_facilities,150.0,31.14,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+306,Odsherred,sports_facilities,124.32,25.76,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+330,Slagelse,sports_facilities,97.73,20.25,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+665,Lemvig,sports_facilities,150.0,48.94,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+376,Guldborgsund,sports_facilities,123.6,25.61,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+326,Kalundborg,sports_facilities,113.37,23.49,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+849,Jammerbugt,sports_facilities,148.79,30.83,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+550,Tønder,sports_facilities,150.0,36.81,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+390,Vordingborg,sports_facilities,112.45,23.3,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+360,Lolland,sports_facilities,141.89,29.4,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+741,Samsø,sports_facilities,150.0,46.5,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
+482,Langeland,sports_facilities,150.0,38.42,pr. 10.000 indb.,2024,DST IDRFAC01,social,lokalsamfund
 201,Allerød,class_size,93.98,21.6,elever/klasse,2023,DST KVOTIEN,social,uddannelse
 175,Rødovre,class_size,97.13,20.9,elever/klasse,2023,DST KVOTIEN,social,uddannelse
 153,Brøndby,class_size,96.21,21.1,elever/klasse,2023,DST KVOTIEN,social,uddannelse

@@ -8,7 +8,6 @@ UVM (api.uddannelsesstatistik.dk):
   - exam_grade:        Karaktergennemsnit, folkeskolens afgangseksamen (GS/KARA/KARAGNS)
   - high_absence:      Andel elever med >10% fravær (GS/ELEVFRAV/FRAVAAR)
   - low_wellbeing:     Gennemsnitlig trivselsscore (GS/TRIV/TRIVIND)
-  - apprenticeship:    Andel læreplads-søgende med afsluttet grundforløb (EUD/PRAK/SØG)
   - youth_education:   Andel der forventes at få ungdomsuddannelse (GS/PROFMOD/PROFMOD)
 
 DST (api.statbank.dk):
@@ -301,65 +300,12 @@ def fetch_wellbeing(navn_til_kode: dict[str, str]) -> tuple[dict[str, float], fl
     return result, nat_avg
 
 
-# ─── UVM: EUD/PRAK/SØG - Læreplads ──────────────────────────────────────
-
-def fetch_apprenticeship(navn_til_kode: dict[str, str]) -> tuple[dict[str, float], float | None]:
-    """
-    EUD/PRAK/SØG: Andel læreplads-søgende med afsluttet grundforløb.
-    Returnerer {kommune_kode: pct}, national_avg.
-    Højere er bedre (inverse=False).
-    """
-    print("Henter læreplads-søgende (EUD/PRAK/SØG)...")
-    rows = uvm_post("statistik", {
-        "område": "EUD", "emne": "PRAK", "underemne": "SØG",
-        "nøgletal": ["Lp-søgende med afsluttet grundforløb", "Lp-søgende i alt"],
-        "detaljering": [
-            "[Bopælskommune].[Kommune]",
-            "[Dato].[År Desc]",
-        ],
-        "side_størrelse": 5000,
-    })
-
-    KOM_KEY   = "[Bopælskommune].[Kommune].[Kommune]"
-    ÅR_KEY    = "[Dato].[År Desc].[År Desc]"
-    MED_KEY   = "Lp-søgende med afsluttet grundforløb"
-    IALT_KEY  = "Lp-søgende i alt"
-
-    # Beregn andel per kommune per år
-    # {(navn, år): (med, ialt)}
-    data: dict[tuple[str, str], tuple[float, float]] = {}
-    for row in rows:
-        navn = row.get(KOM_KEY, "").strip()
-        år   = row.get(ÅR_KEY, "").strip()
-        med  = parse_float(row.get(MED_KEY))
-        ialt = parse_float(row.get(IALT_KEY))
-        if not navn or not år or med is None or ialt is None or ialt == 0:
-            continue
-        key = (navn, år)
-        data[key] = (med, ialt)
-
-    # Seneste år per kommune
-    latest_år: dict[str, str] = {}
-    for (navn, år) in data:
-        if navn not in latest_år or år > latest_år[navn]:
-            latest_år[navn] = år
-
-    result: dict[str, float] = {}
-    for navn, år in latest_år.items():
-        med, ialt = data.get((navn, år), (None, None))
-        if med is None or ialt is None or ialt == 0:
-            continue
-        pct = round((med / ialt) * 100, 2)
-        kode = navn_til_kode.get(navn)
-        if kode and kode in VALID_CODES:
-            result[kode] = pct
-
-    nat_avg = None
-    if result:
-        nat_avg = round(sum(result.values()) / len(result), 4)
-
-    print(f"  {len(result)} kommuner, nat.gns.: {nat_avg}%")
-    return result, nat_avg
+# ─── UVM: EUD/PRAK/SØG - Læreplads (PENSIONERET aug. 2026) ──────────────
+# fetch_apprenticeship() er fjernet. UVM kender ikke længere nøgletallene
+# "Lp-søgende med afsluttet grundforløb"/"Lp-søgende i alt" - et opslag
+# fejler med 400 "kunne ikke findes", også for enkelte år. Indikatoren var
+# desuden konceptuelt tvivlsom (se noten i webapp/lib/shared.ts).
+# Skal lærepladser med igen, så brug praktikpladsgraden i stedet.
 
 
 # ─── UVM: PROFMOD - Ungdomsuddannelse ─────────────────────────────────────
@@ -722,7 +668,6 @@ def main():
     exam, exam_nat         = fetch_exam_grade(navn_til_kode)
     absence, absence_nat   = fetch_high_absence(navn_til_kode)
     wellbeing, wb_nat      = fetch_wellbeing(navn_til_kode)
-    appr, appr_nat         = fetch_apprenticeship(navn_til_kode)
     youth_edu, ye_nat      = fetch_youth_education(navn_til_kode)
 
     uvm_rows = []
@@ -730,13 +675,11 @@ def main():
         eg  = exam.get(kode)
         ab  = absence.get(kode)
         wb  = wellbeing.get(kode)
-        ap  = appr.get(kode)
         ye  = youth_edu.get(kode)
 
         eg_ratio  = ratio_direct(eg, exam_nat)     if eg  is not None and exam_nat   else None
         ab_ratio  = ratio_inverse(ab, absence_nat) if ab  is not None and absence_nat else None
         wb_ratio  = ratio_direct(wb, wb_nat)       if wb  is not None and wb_nat      else None
-        ap_ratio  = ratio_direct(ap, appr_nat)     if ap  is not None and appr_nat    else None
         ye_ratio  = ratio_direct(ye, ye_nat)       if ye  is not None and ye_nat      else None
 
         uvm_rows.append([
@@ -744,7 +687,6 @@ def main():
             eg  if eg  is not None else "", eg_ratio  if eg_ratio  is not None else "",
             ab  if ab  is not None else "", ab_ratio  if ab_ratio  is not None else "",
             wb  if wb  is not None else "", wb_ratio  if wb_ratio  is not None else "",
-            ap  if ap  is not None else "", ap_ratio  if ap_ratio  is not None else "",
             ye  if ye  is not None else "", ye_ratio  if ye_ratio  is not None else "",
         ])
 
@@ -753,7 +695,6 @@ def main():
         "exam_grade_avg", "exam_grade_ratio",
         "high_absence_pct", "high_absence_ratio",
         "wellbeing_score", "wellbeing_ratio",
-        "apprenticeship_pct", "apprenticeship_ratio",
         "youth_education_pct", "youth_education_ratio",
     ], uvm_rows)
 

@@ -16,7 +16,7 @@ Indikatorer:
     - STRAF11:  Anmeldte forbrydelser pr. 1.000 indb. (inverteret)
 
   LOKALSAMFUND:
-    - BIB1:     Biblioteksudlån pr. indbygger
+    - BIB3A:    Biblioteksudlån pr. indbygger (afløser BIB1, som DST har gjort inaktiv)
     - IDRFAC01: Idrætsfaciliteter pr. 10.000 indb.
 
   MOBILITET:
@@ -275,46 +275,58 @@ def fetch_population() -> dict[str, float]:
 
 def fetch_library_loans() -> dict[str, float]:
     """
-    BIB1: Folkebibliotekernes udlån i alt.
-    Returnerer {kommune_kode: antal_udlån}.
+    BIB3A: Folkebibliotekernes udlån (alle materialetyper, børne- + voksensamling).
+
+    Skiftet fra BIB1 aug. 2026: DST har markeret BIB1 som INAKTIV (den stopper
+    ved 2024). BIB3A er den aktive afløser og indeholder samme tal - efterprøvet
+    på Thisted, København, Aalborg og Slagelse for 2022-2024: 0,0% afvigelse.
+    BIB3A splitter på SAMLING (børn/voksne), så begge SKAL summeres for at
+    ramme BIB1's "Udlån i alt".
+
+    Årstallet hårdkodes IKKE - vi henter alle år og bruger det nyeste med
+    fuld kommunedækning. Det var netop hårdkodede år der gjorde at flere
+    indikatorer stod stille i årevis selv om scriptet blev kørt.
+
+    Returnerer ({kommune_kode: antal_udlån}, landstal).
     """
-    print("Henter biblioteksudlån (BIB1)...")
-    rows = api_post("BIB1", [
+    print("Henter biblioteksudlån (BIB3A)...")
+    rows = api_post("BIB3A", [
         {"code": "OMRÅDE", "values": ["*"]},
-        {"code": "BNØGLE", "values": ["15110"]},   # Udlån i alt
-        {"code": "Tid", "values": ["2023"]},
+        {"code": "OPGOER1", "values": ["14"]},      # Udlån
+        {"code": "MATER", "values": ["MTOT"]},      # Materialetyper i alt
+        {"code": "SAMLING", "values": ["*"]},       # Børne- OG voksensamling
+        {"code": "Tid", "values": ["*"]},
     ])
-    result = {}
-    national = None
+
+    # {år: {kode: sum}} - summerer over SAMLING
+    pr_aar: dict[str, dict[str, float]] = {}
     for row in rows:
-        kode = row.get("OMRÅDE", "").strip()
+        kode = (row.get("OMRÅDE") or "").strip()
+        aar = (row.get("TID") or "").strip()
         val = parse_value(row.get("INDHOLD", ""))
-        if val is None:
+        if val is None or not aar:
             continue
-        if kode == "000":
-            national = val
-        elif kode in VALID_CODES:
-            result[kode] = val
-    # Prøv 2022 hvis 2023 er tom
-    if len(result) < 50:
-        print("  Få resultater for 2023, prøver 2022...")
-        rows = api_post("BIB1", [
-            {"code": "OMRÅDE", "values": ["*"]},
-            {"code": "BNØGLE", "values": ["15110"]},
-            {"code": "Tid", "values": ["2022"]},
-        ])
-        result = {}
-        national = None
-        for row in rows:
-            kode = row.get("OMRÅDE", "").strip()
-            val = parse_value(row.get("INDHOLD", ""))
-            if val is None:
-                continue
-            if kode == "000":
-                national = val
-            elif kode in VALID_CODES:
-                result[kode] = val
-    print(f"  {len(result)} kommuner, landssamlet: {national}")
+        if kode != "000" and kode not in VALID_CODES:
+            continue
+        pr_aar.setdefault(aar, {})
+        pr_aar[aar][kode] = pr_aar[aar].get(kode, 0.0) + val
+
+    if not pr_aar:
+        print("  FEJL: BIB3A returnerede ingen brugbare rækker.")
+        return {}, None
+
+    # Nyeste år hvor mindst 90 kommuner har tal (så et halvfærdigt år ikke vinder)
+    brugbare = [a for a, d in pr_aar.items()
+                if len([k for k in d if k != "000"]) >= 90]
+    if not brugbare:
+        brugbare = list(pr_aar)
+    valgt = max(brugbare)
+
+    data = pr_aar[valgt]
+    national = data.get("000")
+    result = {k: v for k, v in data.items() if k != "000"}
+
+    print(f"  {len(result)} kommuner (år {valgt}), landssamlet: {national}")
     return result, national
 
 

@@ -66,7 +66,6 @@ SOCIAL_INDICATORS = [
     {"id": "exam_grade", "csv": "uvm_scores.csv", "ratio_col": "exam_grade_ratio", "raw_col": "exam_grade_avg", "unit": "karakter", "data_year": "2024", "source": "UVM GS/KARA/KARAGNS", "category": "social", "dimension": "uddannelse"},
     {"id": "high_absence", "csv": "uvm_scores.csv", "ratio_col": "high_absence_ratio", "raw_col": "high_absence_pct", "unit": "%", "data_year": "2024", "source": "UVM GS/ELEVFRAV/FRAVAAR", "category": "social", "dimension": "uddannelse"},
     {"id": "youth_education", "csv": "uvm_scores.csv", "ratio_col": "youth_education_ratio", "raw_col": "youth_education_pct", "unit": "%", "data_year": "2024", "source": "UVM GS/PROFMOD/PROFMOD", "category": "social", "dimension": "uddannelse"},
-    {"id": "apprenticeship", "csv": "uvm_scores.csv", "ratio_col": "apprenticeship_ratio", "raw_col": "apprenticeship_pct", "unit": "%", "data_year": "2024", "source": "UVM EUD/PRAK/SØG", "category": "social", "dimension": "uddannelse"},
 
     # === Velfærd ===
     {"id": "disposable_income", "csv": "doughnut_scores.csv", "ratio_col": "disposable_income_ratio", "raw_col": "disposable_income_raw", "unit": "kr./indb.", "data_year": "2022", "source": "DST INDKP101", "category": "social", "dimension": "velfaerd"},
@@ -74,8 +73,8 @@ SOCIAL_INDICATORS = [
     {"id": "child_poverty", "csv": "doughnut_scores.csv", "ratio_col": "child_poverty_ratio", "raw_col": "child_poverty_raw", "unit": "%", "data_year": "2022", "source": "DST LABY07", "category": "social", "dimension": "velfaerd"},
     {"id": "gini", "csv": "doughnut_scores.csv", "ratio_col": "gini_ratio", "raw_col": "gini_raw", "unit": "point", "data_year": "2022", "source": "DST IFOR41", "category": "social", "dimension": "lighed"},
     {"id": "low_income", "csv": "doughnut_scores.csv", "ratio_col": "low_income_ratio", "raw_col": "low_income_raw", "unit": "%", "data_year": "2022", "source": "DST LABY07", "category": "social", "dimension": "lighed"},
-    {"id": "vulnerable_children", "csv": "velfaerd_extra_scores.csv", "ratio_col": "vulnerable_children_ratio", "raw_col": "vulnerable_children_pct", "unit": "%", "data_year": "2022", "source": "DST BU43", "category": "social", "dimension": "velfaerd"},
-    {"id": "neet", "csv": "velfaerd_extra_scores.csv", "ratio_col": "neet_ratio", "raw_col": "neet_pct", "unit": "%", "data_year": "2022", "source": "DST NEET1", "category": "social", "dimension": "velfaerd"},
+    {"id": "vulnerable_children", "csv": "velfaerd_extra_scores.csv", "ratio_col": "vulnerable_children_ratio", "raw_col": "vulnerable_children_pct", "unit": "%", "data_year": "2024", "source": "DST BU43", "category": "social", "dimension": "velfaerd"},
+    {"id": "neet", "csv": "velfaerd_extra_scores.csv", "ratio_col": "neet_ratio", "raw_col": "neet_pct", "unit": "%", "data_year": "2023", "source": "DST NEET1", "category": "social", "dimension": "velfaerd"},
     {"id": "poverty_relative", "csv": "lighed_scores.csv", "ratio_col": "poverty_relative_ratio", "raw_col": "poverty_relative_pct", "unit": "%", "data_year": "2023", "source": "DST IFOR12P", "category": "social", "dimension": "velfaerd"},
     {"id": "child_notifications", "csv": "underretning_scores.csv", "ratio_col": "child_notifications_ratio", "raw_col": "child_notifications_per_1k", "unit": "pr. 1.000 indb. 0-17 år", "data_year": "2023", "source": "DST UND2", "category": "social", "dimension": "velfaerd"},
 
@@ -101,16 +100,16 @@ SOCIAL_INDICATORS = [
 
     # === Kultur & fritid ===
     {"id": "music_school", "csv": "samskabelse_extra_scores.csv", "ratio_col": "music_school_ratio", "raw_col": "music_school_per_1k", "unit": "pr. 1.000 indb.", "data_year": "2022", "source": "DST SKOLM02B", "category": "social", "dimension": "kultur_fritid"},
-    {"id": "library_use", "csv": "lokalsamfund_scores.csv", "ratio_col": "library_ratio", "raw_col": "library_loans_per_cap", "unit": "udlån/indb.", "data_year": "2023", "source": "DST BIB1", "category": "social", "dimension": "kultur_fritid"},
+    {"id": "library_use", "csv": "lokalsamfund_scores.csv", "ratio_col": "library_ratio", "raw_col": "library_loans_per_cap", "unit": "udlån/indb.", "data_year": "2025", "source": "DST BIB3A", "category": "social", "dimension": "kultur_fritid"},
     {"id": "kultur_spending", "csv": "doughnut_scores.csv", "ratio_col": "kultur_spending_ratio", "raw_col": "kultur_spending_raw", "unit": "kr./indb.", "data_year": "2023", "source": "DST REGK31", "category": "social", "dimension": "kultur_fritid"},
 
     # === Tryghed ===
     {"id": "crime_rate", "csv": "faellesskaber_scores.csv", "ratio_col": "crime_ratio", "raw_col": "crime_per_1k", "unit": "pr. 1.000 indb.", "data_year": "2024", "source": "DST STRAF11", "category": "social", "dimension": "tryghed"},
     {"id": "traffic_accidents", "csv": "faellesskaber_scores.csv", "ratio_col": "traffic_accidents_ratio", "raw_col": "traffic_accidents_per_100k", "unit": "pr. 100.000 indb.", "data_year": "2024", "source": "DST UHELDK1", "category": "social", "dimension": "tryghed"},
-    {"id": "sports_membership", "csv": "faellesskaber_scores.csv", "ratio_col": "sports_membership_ratio", "raw_col": "sports_membership_pct", "unit": "%", "data_year": "2022", "source": "DST IDRAKT02", "category": "social", "dimension": "lokalsamfund"},
+    {"id": "sports_membership", "csv": "faellesskaber_scores.csv", "ratio_col": "sports_membership_ratio", "raw_col": "sports_membership_pct", "unit": "%", "data_year": "2024", "source": "DST IDRAKT02", "category": "social", "dimension": "lokalsamfund"},
 
     # === Lokalsamfund ===
-    {"id": "sports_facilities", "csv": "lokalsamfund_scores.csv", "ratio_col": "facilities_ratio", "raw_col": "facilities_per_10k", "unit": "pr. 10.000 indb.", "data_year": "2022", "source": "DST IDRFAC01", "category": "social", "dimension": "lokalsamfund"},
+    {"id": "sports_facilities", "csv": "lokalsamfund_scores.csv", "ratio_col": "facilities_ratio", "raw_col": "facilities_per_10k", "unit": "pr. 10.000 indb.", "data_year": "2024", "source": "DST IDRFAC01", "category": "social", "dimension": "lokalsamfund"},
     {"id": "class_size", "csv": "lokalsamfund_extra_scores.csv", "ratio_col": "class_size_ratio", "raw_col": "class_size", "unit": "elever/klasse", "data_year": "2023", "source": "DST KVOTIEN", "category": "social", "dimension": "uddannelse"},
     {"id": "daycare_ratio", "csv": "lokalsamfund_extra_scores.csv", "ratio_col": "daycare_ratio", "raw_col": "daycare_ratio_val", "unit": "børn/voksen", "data_year": "2022", "source": "DST BOERN8", "category": "social", "dimension": "uddannelse"},
     {"id": "sports_spending", "csv": "lokalsamfund_extra_scores.csv", "ratio_col": "sports_spending_ratio", "raw_col": "sports_spending_kr", "unit": "kr./indb.", "data_year": "2022", "source": "DST IDRFIN02", "category": "social", "dimension": "lokalsamfund"},

@@ -517,8 +517,11 @@ SIMPLE = [
 
     # --- Kultur & fritid ---
     dict(id="music_school", navn="Musikskoleelever", tabel="SKOLM02B", helhed=True, pr=1000),
-    dict(id="library_use", navn="Biblioteksudlån", tabel="BIB1",
-         soeg=["udlån i alt"], pr=1),
+    # BIB3A, ikke BIB1: DST har gjort BIB1 inaktiv (stopper 2024). Tallene er
+    # identiske, men BIB3A splitter på SAMLING (børn/voksne) - begge lægges
+    # sammen af DST, fordi SAMLING har elimination=True og ikke pinnes her.
+    dict(id="library_use", navn="Biblioteksudlån", tabel="BIB3A",
+         soeg=["=udlån"], ekstra=[{"soeg": ["materialetyper i alt"]}], pr=1),
     # REGK31: FUNKTION-koder matcher fetch_doughnut_data.py's egen definition.
     # PRISENHED har elimination=False - SKAL angives eksplicit (Pr. indbygger).
     dict(id="kultur_spending", navn="Kommunale kulturudgifter pr. indb.", tabel="REGK31",
