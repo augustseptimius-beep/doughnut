@@ -31,6 +31,9 @@ import time
 import urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from dst_aar import seneste_aar, seneste_periode  # noqa: E402
+
 API_URL = "https://api.statbank.dk/v1/data"
 REQUEST_DELAY = 0.7
 
@@ -100,11 +103,13 @@ def fetch_life_expectancy_by_gender() -> tuple[dict[str, float], float | None]:
     Beregner: gap = kvinder - maend pr. kommune.
     Inverteret: lavere gap = bedre score (mere lighed i sundhed).
     """
-    print("Henter middellevetid pr. koen (HISBK, 2021:2025)...")
+    print("Henter middellevetid pr. koen (HISBK)...")
     rows = api_post("HISBK", [
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "KØN", "values": ["M", "K"]},
-        {"code": "Tid", "values": ["2021:2025"]},
+        # HISBK's perioder ER 5-års-intervaller ("2021:2025"), så vi skal bruge
+        # hele periode-id'et - ikke bygge en streng af et enkelt årstal.
+        {"code": "Tid", "values": [seneste_periode("HISBK", fallback="2021:2025")]},
     ])
 
     male: dict[str, float] = {}
@@ -152,7 +157,7 @@ def fetch_income_by_gender() -> tuple[dict[str, float], float | None]:
         {"code": "KOEN", "values": ["M", "K"]},
         {"code": "INDKOMSTTYPE", "values": ["100"]},
         {"code": "ENHED", "values": ["116"]},
-        {"code": "Tid", "values": ["2024"]},
+        {"code": "Tid", "values": [seneste_aar("INDKP101", fallback="2024")]},
     ])
 
     # Prøv 2023 hvis 2024 er tom
@@ -212,7 +217,7 @@ def fetch_employment_by_origin() -> tuple[dict[str, float], float | None]:
         {"code": "ALDER", "values": ["1666"]},
         {"code": "KØN", "values": ["TOT"]},
         {"code": "BEREGNING", "values": ["BFK"]},
-        {"code": "Tid", "values": ["2024"]},
+        {"code": "Tid", "values": [seneste_aar("RAS200", fallback="2024")]},
     ])
 
     # Prøv 2023 hvis 2024 er tom

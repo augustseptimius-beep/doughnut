@@ -28,6 +28,9 @@ Brug:
   python3 scripts/fetch_dst_arealanvendelse.py
 """
 
+from __future__ import annotations  # kræves: maskinen kører Python 3.9,
+# hvor 'float | None' i en signatur ellers fejler ved import (TypeError).
+
 import csv
 import io
 import json

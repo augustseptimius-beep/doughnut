@@ -38,6 +38,9 @@ import time
 import urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from dst_aar import seneste_aar, seneste_periode, seneste_aar_liste  # noqa: E402
+
 # ─── Konstanter ────────────────────────────────────────────────────────────
 UVM_TOKEN = (
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
@@ -390,7 +393,7 @@ def fetch_relative_poverty() -> tuple[dict[str, float], float | None]:
     rows = dst_post("IFOR12P", [
         {"code": "KOMMUNEDK", "values": ["*"]},
         {"code": "INDKN", "values": ["60"]},
-        {"code": "Tid", "values": ["2024", "2023", "2022"]},
+        {"code": "Tid", "values": seneste_aar_liste("IFOR12P", 3, ["2024", "2023", "2022"])},
     ])
 
     # Brug seneste år per kommune
@@ -429,7 +432,7 @@ def fetch_gender_leadership() -> tuple[dict[str, float], float | None]:
     print("Henter kønsbalance ledere (RAS301)...")
 
     # Hent mænd og kvinder separat, summer alle brancher og aldre
-    gennemlopte_år = ["2024", "2023", "2022"]
+    gennemlopte_år = seneste_aar_liste("RAS301", 3, ["2024", "2023", "2022"])
     for år in gennemlopte_år:
         rows = dst_post("RAS301", [
             {"code": "OMRÅDE", "values": ["*"]},
@@ -489,13 +492,14 @@ def fetch_housing_facilities() -> tuple[
     Lavere er bedre (inverse=True).
     """
     print("Henter boligforhold (BOL102)...")
+    aar_bol102 = seneste_aar_liste("BOL102", 2, ["2024", "2023"])
 
     # Hent alle toilet- og bad-koder + totalen for beboede boliger
     rows = dst_post("BOL102", [
         {"code": "AMT", "values": ["*"]},
         {"code": "BEBO", "values": ["1000"]},          # Beboede boliger
         {"code": "TOILET", "values": ["1000616", "1000617", "1000618"]},
-        {"code": "Tid", "values": ["2024", "2023"]},
+        {"code": "Tid", "values": aar_bol102},
     ])
 
     # Sum per (kode, toilet_type, år)
@@ -513,7 +517,7 @@ def fetch_housing_facilities() -> tuple[
 
     # Brug seneste år per kommune
     def latest_yr(kode, typer):
-        for år in ["2024", "2023"]:
+        for år in aar_bol102:
             vals = [toilet_sums.get((kode, t, år), 0) for t in typer]
             if any(v > 0 for v in vals):
                 return år
@@ -530,7 +534,9 @@ def fetch_housing_facilities() -> tuple[
             no_wc[kode] = round((bad / total) * 100, 4)
 
     # National
-    nat_yr = "2024" if any((("000", t, "2024") in toilet_sums) for t in ["1000616","1000617","1000618"]) else "2023"
+    nat_yr = next((a for a in aar_bol102
+                   if any(("000", t, a) in toilet_sums
+                          for t in ["1000616", "1000617", "1000618"])), aar_bol102[-1])
     nat_total = sum(toilet_sums.get(("000", t, nat_yr), 0) for t in ["1000616","1000617","1000618"])
     nat_bad   = sum(toilet_sums.get(("000", t, nat_yr), 0) for t in ["1000616","1000617"])
     nat_no_wc = round((nat_bad / nat_total) * 100, 4) if nat_total > 0 else None
@@ -540,7 +546,7 @@ def fetch_housing_facilities() -> tuple[
         {"code": "AMT", "values": ["*"]},
         {"code": "BEBO", "values": ["1000"]},
         {"code": "BAD", "values": ["1000620", "1000621", "1000622"]},
-        {"code": "Tid", "values": ["2024", "2023"]},
+        {"code": "Tid", "values": aar_bol102},
     ])
 
     bad_sums: dict[tuple[str, str, str], float] = {}
@@ -556,7 +562,7 @@ def fetch_housing_facilities() -> tuple[
 
     no_bath: dict[str, float] = {}
     for kode in VALID_CODES:
-        for yr in ["2024", "2023"]:
+        for yr in aar_bol102:
             total = sum(bad_sums.get((kode, b, yr), 0) for b in ["1000620","1000621","1000622"])
             if total > 0:
                 no_b = bad_sums.get((kode, "1000621", yr), 0)
@@ -589,7 +595,7 @@ def fetch_child_notifications() -> tuple[dict[str, float], float | None]:
         {"code": "UNDERRET", "values": ["00"]},
         {"code": "ALDER1", "values": ["00"]},
         {"code": "KON", "values": ["0"]},
-        {"code": "Tid", "values": ["2024", "2023", "2022"]},
+        {"code": "Tid", "values": seneste_aar_liste("UND2", 3, ["2024", "2023", "2022"])},
     ])
 
     und_latest: dict[str, tuple[str, float]] = {}
@@ -608,7 +614,7 @@ def fetch_child_notifications() -> tuple[dict[str, float], float | None]:
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "KØN", "values": ["TOT"]},
         {"code": "ALDER", "values": [str(a) for a in range(18)]},
-        {"code": "Tid", "values": ["2025K1"]},
+        {"code": "Tid", "values": [seneste_periode("FOLK1A", fallback="2025K1")]},
     ])
 
     pop_0_17: dict[str, float] = {}

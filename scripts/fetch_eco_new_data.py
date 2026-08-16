@@ -25,6 +25,9 @@ Brug:
   python3 fetch_eco_new_data.py
 """
 
+from __future__ import annotations  # kræves: maskinen kører Python 3.9,
+# hvor 'float | None' i en signatur ellers fejler ved import (TypeError).
+
 import csv
 import io
 import json
@@ -32,6 +35,9 @@ import sys
 import time
 import urllib.request
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from dst_aar import seneste_kvartal  # noqa: E402
 
 API_URL = "https://api.statbank.dk/v1/data"
 REQUEST_DELAY = 0.7  # sekunder mellem kald
@@ -108,7 +114,7 @@ def fetch_population() -> dict[str, float]:
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "KØN", "values": ["TOT"]},
         {"code": "ALDER", "values": ["IALT"]},
-        {"code": "Tid", "values": ["2025K1"]},
+        {"code": "Tid", "values": [seneste_kvartal("FOLK1A", "K1", fallback="2025K1")]},
     ])
     result = {}
     for row in rows:

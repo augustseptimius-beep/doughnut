@@ -17,7 +17,11 @@ Brug:
   python3 fetch_democracy_data.py
 """
 
+from __future__ import annotations  # kræves: maskinen kører Python 3.9,
+# hvor 'float | None' i en signatur ellers fejler ved import (TypeError).
+
 import csv
+import json
 import io
 import sys
 import urllib.request
@@ -40,6 +44,23 @@ VALID_CODES = {
     "746", "751", "756", "760", "766", "773", "779", "787", "791", "810",
     "813", "820", "825", "840", "846", "849", "851", "860",
 }
+
+
+def seneste_valgaar(tabel: str) -> str:
+    """
+    Finder nyeste periode i en DST-valgtabel i stedet for at hårdkode årstallet.
+
+    Kommunalvalg holdes hvert 4. år, så et hårdkodet år gør indikatoren forkert
+    i op til fire år ad gangen - platformen viste KV2021 længe efter KV2025 var
+    offentliggjort, netop fordi årstallet stod fast i koden.
+    """
+    url = f"https://api.statbank.dk/v1/tableinfo/{tabel}?lang=da&format=JSON"
+    req = urllib.request.Request(url, headers={"User-Agent": "DoughnutDK/1.0"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        info = json.loads(resp.read().decode("utf-8"))
+    tid = next(v for v in info["variables"] if v.get("time"))
+    aar = sorted(str(x["id"]) for x in tid["values"])
+    return aar[-1]
 
 
 def fetch_national_voter_turnout(year: str = "2026") -> tuple[dict[str, float], float | None]:
@@ -124,7 +145,7 @@ def fetch_voter_turnout(year: str = "2021") -> dict[str, float]:
     return result
 
 
-def compute_scores(data: dict[str, float]) -> dict[str, float]:
+def compute_scores(data: dict[str, float], year: str) -> dict[str, float]:
     """
     Beregner ratio-score ift. landsgennemsnit (= 100).
     Henter landsgennemsnittet direkte fra DST (kode 000).
@@ -133,7 +154,7 @@ def compute_scores(data: dict[str, float]) -> dict[str, float]:
     params = urllib.parse.urlencode({
         "KOMGRP": "000",
         "VALRES": "STEMPCT",
-        "Tid": "2021",
+        "Tid": year,
         "lang": "da",
         "format": "CSV",
         "delimiter": "Semicolon",
@@ -156,7 +177,7 @@ def compute_scores(data: dict[str, float]) -> dict[str, float]:
         print("FEJL: Kunne ikke hente landsgennemsnit")
         sys.exit(1)
 
-    print(f"  Landsgennemsnit stemmeprocent 2021: {national_avg:.2f}%")
+    print(f"  Landsgennemsnit stemmeprocent {year}: {national_avg:.2f}%")
 
     scores = {}
     for kode, val in data.items():
@@ -196,12 +217,16 @@ def write_csv(
 
 
 def main():
-    # Kommunalvalg 2021
-    data = fetch_voter_turnout("2021")
-    scores, national_avg = compute_scores(data)
+    # Kommunalvalg - nyeste tilgængelige valg (IKKE hårdkodet, se seneste_valgaar)
+    kv_aar = seneste_valgaar("LABY08")
+    print(f"Nyeste kommunalvalg i LABY08: {kv_aar}")
+    data = fetch_voter_turnout(kv_aar)
+    scores, national_avg = compute_scores(data, kv_aar)
 
-    # Folketingsvalg 2026
-    nat_data, nat_national_avg = fetch_national_voter_turnout("2026")
+    # Folketingsvalg - nyeste tilgængelige valg
+    ft_aar = seneste_valgaar("LABY09")
+    print(f"Nyeste folketingsvalg i LABY09: {ft_aar}")
+    nat_data, nat_national_avg = fetch_national_voter_turnout(ft_aar)
     nat_scores = {}
     if nat_national_avg and nat_national_avg > 0:
         nat_scores = {k: round((v / nat_national_avg) * 100, 2) for k, v in nat_data.items()}

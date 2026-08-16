@@ -66,7 +66,14 @@ INDICATORS = [
     {
         "id": "education",
         "name": "Kompetencegivende uddannelse (30-34 år, %)",
-        "table": "HFUDD10",
+        # HFUDD11, ikke HFUDD10: DST holdt op med at opdatere HFUDD10 i juni 2019
+        # og har markeret den inaktiv. Indikatoren viste derfor 2019-tal i årevis.
+        # HFUDD11 er samme statistik, tilbageberegnet til 2008 med nuværende
+        # metode, og bruges allerede af low_education. De otte kompetencegivende
+        # HFUDD-koder er identiske; HFUDD11 har blot én ekstra underkode
+        # (H3091 Grundforløb) under H30, som følger med i H30-aggregatet.
+        # Revisionen løfter niveauet ca. 0,6-1,7 pp i overlapsåret 2019.
+        "table": "HFUDD11",
         # Niveau 2: Nationalt mål — 95% skal have erhvervskompetencegivende uddannelse
         # Kilde: Regeringens uddannelsesmål / Børne- og Undervisningsministeriet
         "absolute_baseline": 95.0,

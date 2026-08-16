@@ -10,6 +10,9 @@ Brug:
   python statbank_fetcher.py --test           # Test med Thisted uden at gemme
 """
 
+from __future__ import annotations  # kræves: maskinen kører Python 3.9,
+# hvor 'float | None' i en signatur ellers fejler ved import (TypeError).
+
 import requests
 import csv
 import json

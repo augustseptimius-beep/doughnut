@@ -458,11 +458,12 @@ SIMPLE = [
          soeg_kode=["H10"], soeg_var="HFUDD", ekstra=[{"soeg": ["25-29"]}], pin_ialt=True),
     dict(id="low_education_naevner", navn="25-29-årige i alt", tabel="HFUDD11",
          soeg=["=i alt"], ekstra=[{"soeg": ["25-29"]}], pin_ialt=True),
+    # HFUDD11, ikke HFUDD10: sidstnævnte er inaktiv hos DST og stopper ved 2019.
     dict(id="education_taeller", navn="30-34-årige med kompetencegivende uddannelse",
-         tabel="HFUDD10",
+         tabel="HFUDD11",
          soeg_kode=["H20", "H30", "H35", "H40", "H50", "H60", "H70", "H80"],
          soeg_var="HFUDD", ekstra=[{"soeg": ["30-34"]}], pin_ialt=True),
-    dict(id="education_naevner", navn="30-34-årige i alt", tabel="HFUDD10",
+    dict(id="education_naevner", navn="30-34-årige i alt", tabel="HFUDD11",
          soeg=["=i alt"], ekstra=[{"soeg": ["30-34"]}], pin_ialt=True),
 
     # --- Velfærd ---

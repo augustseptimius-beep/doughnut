@@ -43,6 +43,9 @@ import time
 import urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from dst_aar import seneste_aar, seneste_periode, seneste_kvartal  # noqa: E402
+
 API_URL = "https://api.statbank.dk/v1/data"
 REQUEST_DELAY = 0.7
 
@@ -129,7 +132,7 @@ def fetch_hospital_use() -> tuple[dict[str, float], float | None, dict[str, floa
         {"code": "OPHOLD_PÅ_SYGEHUS", "values": ["200100", "200220", "200230"]},
         {"code": "ALDER", "values": ["TOT"]},
         {"code": "KØN", "values": ["00"]},
-        {"code": "Tid", "values": ["2023"]},
+        {"code": "Tid", "values": [seneste_aar("SBR01", fallback="2023")]},
     ])
 
     total: dict[str, float] = {}
@@ -184,7 +187,7 @@ def fetch_gp_distance() -> tuple[dict[str, float], float | None]:
         {"code": "LIVSKONT", "values": ["2005"]},     # Alle borgere
         {"code": "KØN", "values": ["00"]},            # Begge køn
         {"code": "ALDER", "values": ["IALT"]},        # Alle aldre
-        {"code": "Tid", "values": ["2024"]},
+        {"code": "Tid", "values": [seneste_aar("SUNDAF01", fallback="2024")]},
     ])
     result = {}
     national = None
@@ -239,7 +242,7 @@ def fetch_low_education() -> tuple[dict[str, float], float | None]:
         {"code": "HFUDD", "values": ["TOT", "H10"]},  # Total + kun grundskole
         {"code": "ALDER", "values": ["25-29"]},
         {"code": "KØN", "values": ["TOT"]},
-        {"code": "Tid", "values": ["2024"]},
+        {"code": "Tid", "values": [seneste_aar("HFUDD11", fallback="2024")]},
     ])
 
     totals: dict[str, float] = {}
@@ -281,7 +284,7 @@ def fetch_housing_area() -> tuple[dict[str, float], float | None]:
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "ENHED", "values": ["GNSAP"]},
         {"code": "ANVENDELSE", "values": ["TOT"]},
-        {"code": "Tid", "values": ["2025"]},
+        {"code": "Tid", "values": [seneste_aar("BOL106", fallback="2025")]},
     ])
 
     result = {}
@@ -314,7 +317,7 @@ def fetch_music_school() -> tuple[dict[str, float], float | None]:
         {"code": "KOMK", "values": ["*"]},
         {"code": "ALDER", "values": ["TOT"]},
         {"code": "KØN", "values": ["TOT"]},
-        {"code": "Tid", "values": ["2023:2024"]},
+        {"code": "Tid", "values": [seneste_periode("SKOLM02B", fallback="2023:2024")]},
     ])
 
     result = {}
@@ -349,7 +352,7 @@ def fetch_educated_staff() -> tuple[dict[str, float], float | None]:
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "OVERENS", "values": ["TOT"]},      # Alle stillingskategorier
         {"code": "UDDANNELSE", "values": ["TOT", "460"]},  # Total + pædagoguddannelse
-        {"code": "Tid", "values": ["2024"]},
+        {"code": "Tid", "values": [seneste_aar("BOERN1", fallback="2024")]},
     ])
     totals: dict[str, float] = {}
     paed: dict[str, float] = {}
@@ -411,7 +414,7 @@ def fetch_class_size() -> tuple[dict[str, float], float | None]:
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "KLASSE", "values": ["0000"]},  # Alle klassetrin
         {"code": "SKTPE", "values": ["ANTALSUM"]},  # Alle skoletyper
-        {"code": "Tid", "values": ["2024"]},
+        {"code": "Tid", "values": [seneste_aar("KVOTIEN", fallback="2024")]},
     ])
 
     result = {}
@@ -464,7 +467,7 @@ def fetch_daycare_ratio() -> tuple[dict[str, float], float | None]:
     rows = api_post("BOERN8", [
         {"code": "KOMMUNEDK", "values": ["*"]},
         {"code": "PASKAT", "values": ["3"]},   # 3-5 år
-        {"code": "Tid", "values": ["2024"]},
+        {"code": "Tid", "values": [seneste_aar("BOERN8", fallback="2024")]},
     ])
 
     result = {}
@@ -517,7 +520,7 @@ def fetch_sports_spending() -> tuple[dict[str, float], float | None]:
         {"code": "AMT", "values": ["*"]},
         {"code": "FUNKTION", "values": ["TOT"]},
         {"code": "DRANST", "values": ["12"]},  # Drift
-        {"code": "Tid", "values": ["2024"]},
+        {"code": "Tid", "values": [seneste_aar("IDRFIN02", fallback="2024")]},
     ])
 
     result = {}
@@ -567,7 +570,7 @@ def fetch_population() -> dict[str, float]:
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "KØN", "values": ["TOT"]},
         {"code": "ALDER", "values": ["IALT"]},
-        {"code": "Tid", "values": ["2025K1"]},
+        {"code": "Tid", "values": [seneste_kvartal("FOLK1A", "K1", fallback="2025K1")]},
     ])
     result = {}
     for row in rows:

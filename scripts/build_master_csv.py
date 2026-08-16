@@ -19,10 +19,35 @@ Driftsregel:
   3. Commit + push via GitHub Desktop
 """
 
+import re
 import csv
 import os
 import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from dst_aar import hentede_aar  # noqa: E402
+
+# ─── data_year: kilden har forrang over den hårdkodede værdi ──────────────
+# Fetch-scripterne registrerer i data/data_years.json hvilket år de FAKTISK
+# hentede en DST-tabel på. Vi bruger det frem for "data_year" i tabellen
+# nedenfor, fordi de to ellers driver fra hinanden: aug. 2026 mærkede
+# masteren 2024-tal som 2022 for fire indikatorer, og 2019-tal som 2023 for
+# education. Hårdkodet data_year bruges nu kun som fallback for kilder der
+# ikke er DST-tabeller (Klimaregnskabet, VP3, manuelle filer).
+_HENTEDE_AAR = hentede_aar()
+
+
+def _data_year(ind: dict) -> str:
+    """Årstal for indikatoren: registreret hentning > hårdkodet værdi."""
+    kilde = ind.get("source") or ""
+    m = re.match(r"DST\s+([A-ZÆØÅ0-9_]+)", kilde)
+    if m:
+        registreret = _HENTEDE_AAR.get(m.group(1))
+        if registreret:
+            return registreret
+    return ind.get("data_year", "")
+
 
 # ─── Stier ─────────────────────────────────────────────────────────────
 ROOT = Path(__file__).resolve().parent.parent
@@ -61,7 +86,7 @@ SOCIAL_INDICATORS = [
     {"id": "wellbeing", "csv": "uvm_scores.csv", "ratio_col": "wellbeing_ratio", "raw_col": "wellbeing_score", "unit": "score (1-5)", "data_year": "2024", "source": "UVM GS/TRIV/TRIVIND", "category": "social", "dimension": "uddannelse"},
 
     # === Uddannelse ===
-    {"id": "education", "csv": "doughnut_scores.csv", "ratio_col": "education_ratio", "raw_col": "education_raw", "unit": "%", "data_year": "2023", "source": "DST HFUDD10", "category": "social", "dimension": "uddannelse", "abs_target": 95},
+    {"id": "education", "csv": "doughnut_scores.csv", "ratio_col": "education_ratio", "raw_col": "education_raw", "unit": "%", "data_year": "2025", "source": "DST HFUDD11", "category": "social", "dimension": "uddannelse", "abs_target": 95},
     {"id": "low_education", "csv": "uddannelse_extra_scores.csv", "ratio_col": "low_education_ratio", "raw_col": "low_education_pct", "unit": "%", "data_year": "2023", "source": "DST HFUDD11", "category": "social", "dimension": "uddannelse"},
     {"id": "exam_grade", "csv": "uvm_scores.csv", "ratio_col": "exam_grade_ratio", "raw_col": "exam_grade_avg", "unit": "karakter", "data_year": "2024", "source": "UVM GS/KARA/KARAGNS", "category": "social", "dimension": "uddannelse"},
     {"id": "high_absence", "csv": "uvm_scores.csv", "ratio_col": "high_absence_ratio", "raw_col": "high_absence_pct", "unit": "%", "data_year": "2024", "source": "UVM GS/ELEVFRAV/FRAVAAR", "category": "social", "dimension": "uddannelse"},
@@ -91,7 +116,7 @@ SOCIAL_INDICATORS = [
     {"id": "bolig_fossil", "csv": "bolig_fossil_scores.csv", "ratio_col": "bolig_fossil_ratio", "raw_col": "bolig_fossil_raw", "unit": "% fossil (mål 0)", "data_year": "2026", "source": "DST BYGB40 + Energistyrelsen EPT", "category": "social", "dimension": "energi"},
 
     # === Demokrati ===
-    {"id": "voter_turnout", "csv": "democracy_scores.csv", "ratio_col": "voter_turnout_ratio", "raw_col": "voter_turnout_pct", "unit": "%", "data_year": "2021", "source": "DST KVBPCT", "category": "social", "dimension": "demokrati"},
+    {"id": "voter_turnout", "csv": "democracy_scores.csv", "ratio_col": "voter_turnout_ratio", "raw_col": "voter_turnout_pct", "unit": "%", "data_year": "2025", "source": "DST LABY08", "category": "social", "dimension": "demokrati"},
     {"id": "voter_turnout_national", "csv": "democracy_scores.csv", "ratio_col": "voter_turnout_national_ratio", "raw_col": "voter_turnout_national_pct", "unit": "%", "data_year": "2026", "source": "DST LABY09", "category": "social", "dimension": "demokrati"},
     {"id": "gender_leadership", "csv": "lighed_scores.csv", "ratio_col": "gender_leadership_ratio", "raw_col": "gender_leadership_pct", "unit": "% kvinder", "data_year": "2023", "source": "DST RAS301", "category": "social", "dimension": "ligestilling"},
     {"id": "le_gender_gap", "csv": "ligestilling_scores.csv", "ratio_col": "le_gender_gap_ratio", "raw_col": "le_gender_gap_years", "unit": "år (kønsgab)", "data_year": "2025", "source": "DST HISBK", "category": "social", "dimension": "ligestilling"},
@@ -334,7 +359,7 @@ def build_master():
                     "ratio": ratio if ratio is not None else "",
                     "raw_value": raw if raw is not None else "",
                     "unit": ind["unit"],
-                    "data_year": ind["data_year"],
+                    "data_year": _data_year(ind),
                     "source": ind["source"],
                     "category": ind["category"],
                     "dimension": ind["dimension"],
@@ -376,7 +401,7 @@ def build_master():
                 "ratio": ratio if ratio is not None else "",
                 "raw_value": raw if raw is not None else "",
                 "unit": ind["unit"],
-                "data_year": ind["data_year"],
+                "data_year": _data_year(ind),
                 "source": ind["source"],
                 "category": ind["category"],
                 "dimension": ind["dimension"],
@@ -413,7 +438,7 @@ def build_master():
                     "ratio": ratio if ratio is not None else "",
                     "raw_value": raw,
                     "unit": ind["unit"],
-                    "data_year": ind["data_year"],
+                    "data_year": _data_year(ind),
                     "source": ind["source"],
                     "category": ind["category"],
                     "dimension": ind["dimension"],
@@ -465,7 +490,7 @@ def build_master():
                 "ratio": ratio if ratio is not None else "",
                 "raw_value": raw if raw is not None else "",
                 "unit": ind["unit"],
-                "data_year": ind["data_year"],
+                "data_year": _data_year(ind),
                 "source": ind["source"],
                 "category": ind["category"],
                 "dimension": ind["dimension"],
@@ -501,7 +526,7 @@ def build_master():
                 "ratio": "",
                 "raw_value": raw,
                 "unit": ind["unit"],
-                "data_year": ind["data_year"],
+                "data_year": _data_year(ind),
                 "source": ind["source"],
                 "category": "context",
                 "dimension": ind["dimension"],

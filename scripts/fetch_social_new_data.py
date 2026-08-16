@@ -41,6 +41,10 @@ import time
 import urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from dst_aar import (seneste_aar, seneste_periode, seneste_kvartal,  # noqa: E402
+                     hele_aar_kvartaler)
+
 API_URL = "https://api.statbank.dk/v1/data"
 REQUEST_DELAY = 0.7  # sekunder mellem kald
 
@@ -123,7 +127,7 @@ def fetch_sports_membership() -> dict[str, float]:
         {"code": "BLSTKOM", "values": ["*"]},
         {"code": "KON", "values": ["10"]},       # Køn i alt
         {"code": "ALDER1", "values": ["TOT"]},    # Alder i alt
-        {"code": "Tid", "values": ["2024"]},       # Seneste
+        {"code": "Tid", "values": [seneste_aar("IDRAKT02", fallback="2024")]},       # Seneste
     ])
     result = {}
     national = None
@@ -170,7 +174,9 @@ def fetch_crime_rate() -> dict[str, float]:
     rows = api_post("STRAF11", [
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "OVERTRÆD", "values": ["TOT"]},   # I alt
-        {"code": "Tid", "values": ["2024K1", "2024K2", "2024K3", "2024K4"]},
+        # Nyeste år med ALLE fire kvartaler - et halvfærdigt år ville give
+        # et kunstigt lavt antal forbrydelser.
+        {"code": "Tid", "values": hele_aar_kvartaler("STRAF11")[1]},
     ])
     # Sum kvartaler per kommune
     sums: dict[str, float] = {}
@@ -216,7 +222,7 @@ def fetch_traffic_accidents() -> tuple[dict[str, float], float | None]:
         {"code": "INDBLAND", "values": ["*"]},    # Alle transportmidler
         {"code": "ALDER", "values": ["*"]},        # Alle aldre
         {"code": "KØN", "values": ["*"]},          # Alle køn
-        {"code": "Tid", "values": ["2024"]},
+        {"code": "Tid", "values": [seneste_aar("UHELDK1", fallback="2024")]},
     ])
     sums: dict[str, float] = {}
     for row in rows:
@@ -257,7 +263,7 @@ def fetch_population() -> dict[str, float]:
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "KØN", "values": ["TOT"]},
         {"code": "ALDER", "values": ["IALT"]},
-        {"code": "Tid", "values": ["2025K1"]},
+        {"code": "Tid", "values": [seneste_kvartal("FOLK1A", "K1", fallback="2025K1")]},
     ])
     result = {}
     for row in rows:
@@ -339,7 +345,7 @@ def fetch_sports_facilities() -> dict[str, float]:
     rows = api_post("IDRFAC01", [
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "IDRFAC", "values": ["*"]},     # Alle typer
-        {"code": "Tid", "values": ["2024"]},
+        {"code": "Tid", "values": [seneste_aar("IDRFAC01", fallback="2024")]},
     ])
     # Summer alle facilitetstyper per kommune
     sums: dict[str, float] = {}
@@ -386,7 +392,7 @@ def fetch_commute_distance() -> tuple[dict[str, float], float | None]:
         {"code": "BOPOMR", "values": ["*"]},
         {"code": "SOCIO", "values": ["02"]},     # Beskæftigede i alt
         {"code": "KØN", "values": ["TOT"]},
-        {"code": "Tid", "values": ["2023"]},
+        {"code": "Tid", "values": [seneste_aar("AFSTB4", fallback="2023")]},
     ])
     result = {}
     national = None
@@ -432,7 +438,7 @@ def fetch_car_access() -> dict[str, tuple[float, float]]:
     rows = api_post("BIL800", [
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "RAADMOENS", "values": ["10000", "10210"]},  # I alt + med bil i alt
-        {"code": "Tid", "values": ["2024"]},
+        {"code": "Tid", "values": [seneste_aar("BIL800", fallback="2024")]},
     ])
     totals: dict[str, float] = {}
     with_car: dict[str, float] = {}
@@ -523,16 +529,19 @@ def fetch_public_transport() -> tuple[dict[str, float], float | None]:
 
     grp_scores: dict[int, float] = {}
     try:
+        # SDGSERVICE, ikke OFFENTRANSPORT: DST har omdøbt variablen. Med det
+        # gamle navn svarede API'et 400, og scriptet faldt tavst tilbage på
+        # FALLBACK_SCORES - så indikatoren så ud til at virke, men var frosset.
         rows = api_post("LABY49", [
             {"code": "KOMGRP", "values": ["*"]},
-            {"code": "OFFENTRANSPORT", "values": ["*"]},
-            {"code": "Tid", "values": ["2025"]},
+            {"code": "SDGSERVICE", "values": ["*"]},
+            {"code": "Tid", "values": [seneste_aar("LABY49", fallback="2025")]},
         ])
         group_totals: dict[str, float] = {}
         group_good: dict[str, float] = {}
         for row in rows:
             grp = row.get("KOMGRP", "").strip()
-            level = row.get("OFFENTRANSPORT", "").strip()
+            level = row.get("SDGSERVICE", "").strip()
             val = parse_value(row.get("INDHOLD", ""))
             if val is None or not grp:
                 continue
@@ -586,7 +595,7 @@ def fetch_vulnerable_children() -> tuple[dict[str, float], float | None]:
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "FORANSTALT", "values": ["IALT"]},   # Udsatte i alt
         {"code": "ALDER", "values": ["TOT22"]},        # 0-22 år
-        {"code": "Tid", "values": ["2024"]},
+        {"code": "Tid", "values": [seneste_aar("BU43", fallback="2024")]},
     ])
     result = {}
     national = None
@@ -636,7 +645,7 @@ def fetch_neet() -> tuple[dict[str, float], float | None]:
         {"code": "KØN", "values": ["TOT"]},
         {"code": "BOPOMR", "values": ["*"]},
         {"code": "SOCIO", "values": ["TOT"]},
-        {"code": "Tid", "values": ["2023"]},
+        {"code": "Tid", "values": [seneste_aar("NEET1", fallback="2023")]},
     ])
     neet: dict[str, float] = {}
     for row in neet_rows:

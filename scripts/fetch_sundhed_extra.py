@@ -26,6 +26,9 @@ import urllib.request
 import urllib.error
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from dst_aar import seneste_kvartal  # noqa: E402
+
 API_URL = "https://api.statbank.dk/v1/data"
 REQUEST_DELAY = 0.7
 
@@ -264,7 +267,7 @@ def fetch_population() -> dict[str, float]:
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "KØN", "values": ["TOT"]},
         {"code": "ALDER", "values": ["IALT"]},
-        {"code": "Tid", "values": ["2025K1"]},
+        {"code": "Tid", "values": [seneste_kvartal("FOLK1A", "K1", fallback="2025K1")]},
     ])
     result = {}
     for row in rows:

@@ -42,6 +42,9 @@ Kør fra projektets rodmappe:
   python3 scripts/fetch_vandindvinding_data.py
 """
 
+from __future__ import annotations  # kræves: maskinen kører Python 3.9,
+# hvor 'float | None' i en signatur ellers fejler ved import (TypeError).
+
 import csv
 import time
 import requests

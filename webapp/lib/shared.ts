@@ -40,11 +40,12 @@ export const INDICATORS: Indicator[] = [
   {
     id: "education",
     name: "Kompetencegivende uddannelse (30-34 år)",
-    table: "HFUDD10",
-    source: "https://www.statistikbanken.dk/HFUDD10",
+    // HFUDD11 afløser HFUDD10, som DST gjorde inaktiv i 2019 (samme tabel som low_education).
+    table: "HFUDD11",
+    source: "https://www.statistikbanken.dk/HFUDD11",
     category: "social",
     inverse: false,
-    dataYear: "2023",
+    dataYear: "2025",
     baselineLevel: 2,
     absoluteTarget: "95% (nationalt uddannelsesmål)",
     absoluteScore: true,
@@ -132,11 +133,13 @@ export const INDICATORS: Indicator[] = [
   {
     id: "voter_turnout",
     name: "Stemmedeltagelse kommunalvalg",
-    table: "KVBPCT",
-    source: "https://www.statistikbanken.dk/KVBPCT",
+    // LABY08, ikke KVBPCT: KVBPCT har slet ingen kommuneopdeling (kun landstal).
+    // fetch_democracy_data.py har altid brugt LABY08 - kildeangivelsen var forkert.
+    table: "LABY08",
+    source: "https://www.statistikbanken.dk/LABY08",
     category: "social",
     inverse: false,
-    dataYear: "2021",  // Kommunalvalg afholdes hvert 4. år — næste: 2025
+    dataYear: "2025",  // Kommunalvalg hvert 4. år; scriptet vælger nu nyeste automatisk
     baselineLevel: 3,
     rawUnit: "%",
   },
