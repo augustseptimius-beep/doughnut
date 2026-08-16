@@ -195,9 +195,9 @@ ECO_SUB_INDICATORS = [
 
     # === Forurening / Novel entities (4 indikatorer, gennemsnit - ikke worst-of) ===
     # Pesticider + nitrat = novel entities. Genanvendelse + affald = materialecyklusser (fra cirkularitet).
-    {"id": "pesticider", "csv": "pesticider_scores.csv", "ratio_col": "pesticid_ratio", "raw_col": "pesticid_pct_over_graense", "unit": "% boringer over 0.1 µg/l", "data_year": "2023", "source": "DN/GEUS Jupiter 2019-2023", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": False},
+    {"id": "pesticider", "csv": "pesticider_scores.csv", "ratio_col": "pesticid_ratio", "raw_col": "pesticid_pct_over_graense", "unit": "% vandværker over 0.1 µg/l", "data_year": "2026", "source": "GEUS Jupiter", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": False},
     # Nitrat: flyttet fra Vand til Forurening (kemisk forurening af drikkevand = novel entities)
-    {"id": "nitrat", "csv": "nitrat_scores.csv", "ratio_col": "nitrat_ratio", "raw_col": "nitrat_mg_l", "unit": "mg/L", "data_year": "2025", "source": "Greenpeace/GEUS Jupiter 2025", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": False},
+    {"id": "nitrat", "csv": "nitrat_scores.csv", "ratio_col": "nitrat_ratio", "raw_col": "nitrat_mg_l", "unit": "mg/L", "data_year": "2026", "source": "GEUS Jupiter", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": False},
     # === Vand (enkelt indikator: vandindvinding) ===
     {"id": "vandindvinding", "csv": "vandindvinding_scores.csv", "ratio_col": "vandindvinding_ratio", "raw_col": "vandindvinding_m3_per_person", "unit": "m³/person", "data_year": "2024", "source": "DST VANDIND", "category": "ecological", "dimension": "vand", "inverse_ratio": False, "is_dimension_score": False},
 
