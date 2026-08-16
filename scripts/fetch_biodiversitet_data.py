@@ -36,6 +36,14 @@ from rasterstats import zonal_stats
 # ── Konstanter ────────────────────────────────────────────────────────────────
 
 RASTER_NAVN          = "Bioscore_tiff.tif"
+
+# Officiel datapakke fra Danmarks Miljøportal (Arealdata). Stabil URL, så
+# ZIP-filen ikke længere skal skaffes manuelt. 567 MB - hentes KUN hvis den
+# hverken findes lokalt eller er udpakket i forvejen.
+# Datasæt: arealdata.miljoeportal.dk/datasets/urn:dmp:ds:biodiversitetskortet-datapakke
+# Bemærk: bioscore udstilles ellers kun som WMS (billedtjeneste), som man ikke
+# kan trække værdier ud af - derfor er raster-vejen den rigtige her.
+DATAPAKKE_URL        = "https://files-miljoegis.mim.dk/biodiversitet/biodiversitet_2021.zip"
 ARBEJDSMAPPE         = "biodiversitet_tmp"
 DAWA_URL             = "https://dawa.aws.dk/kommuner?format=geojson"
 
@@ -47,19 +55,19 @@ MÅL_UERSTATTELIG     = 10.0   # EU strengt beskyttet
 # ── Argument-parsing ──────────────────────────────────────────────────────────
 
 parser = argparse.ArgumentParser(description="Hent biodiversitetsdata pr. kommune")
-parser.add_argument("--zip",    default="../biodiversitet_2021.zip", help="Sti til ZIP-filen")
-parser.add_argument("--output", default="../data/biodiversitet_scores.csv", help="Output CSV")
+_ROD = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+parser.add_argument("--zip",    default=os.path.join(_ROD, "biodiversitet_2021.zip"),
+                    help="Sti til ZIP-filen (hentes automatisk hvis den mangler)")
+parser.add_argument("--output", default=os.path.join(_ROD, "data", "biodiversitet_scores.csv"),
+                    help="Output CSV")
+parser.add_argument("--ingen-download", action="store_true",
+                    help="Hent ikke datapakken automatisk, selv hvis den mangler")
 args = parser.parse_args()
 
 ZIP_FIL    = args.zip
 OUTPUT_FIL = args.output
 
 # ── Trin 1: Udpak raster ──────────────────────────────────────────────────────
-
-if not os.path.exists(ZIP_FIL):
-    print(f"FEJL: Kan ikke finde '{ZIP_FIL}'")
-    print(f"  Angiv stien med: --zip /sti/til/biodiversitet_2021.zip")
-    sys.exit(1)
 
 print("Trin 1/4: Finder Bioscore-raster...")
 
@@ -74,11 +82,32 @@ raster_sti = next((s for s in KENDTE_STEDER if os.path.exists(s)), None)
 if raster_sti:
     print(f"  OK: Bruger eksisterende raster ({raster_sti})")
 else:
-    # Udpak fra ZIP
+    # Udpak fra ZIP - hent den først hvis den mangler
     if not os.path.exists(ZIP_FIL):
-        print(f"FEJL: Kan ikke finde ZIP-filen '{ZIP_FIL}'")
-        print(f"  Angiv stien med: --zip /sti/til/biodiversitet_2021.zip")
-        sys.exit(1)
+        if args.ingen_download:
+            print(f"FEJL: Kan ikke finde ZIP-filen '{ZIP_FIL}' (--ingen-download er sat)")
+            sys.exit(1)
+        print(f"  ZIP-filen mangler. Henter datapakken fra Danmarks Miljøportal...")
+        print(f"  {DATAPAKKE_URL}")
+        print(f"  Ca. 567 MB - det tager typisk nogle minutter.")
+        try:
+            import urllib.request
+            delvis = ZIP_FIL + ".delvis"
+            with urllib.request.urlopen(
+                    urllib.request.Request(DATAPAKKE_URL,
+                                           headers={"User-Agent": "DoughnutDK/1.0"}),
+                    timeout=900) as svar, open(delvis, "wb") as ud:
+                hentet = 0
+                while chunk := svar.read(1 << 20):
+                    ud.write(chunk)
+                    hentet += len(chunk)
+                    print(f"\r    {hentet/1e6:6.0f} MB", end="", flush=True)
+            os.replace(delvis, ZIP_FIL)   # først gyldig når den er hel
+            print(f"\n  OK: gemt som {ZIP_FIL}")
+        except Exception as e:
+            print(f"\nFEJL: kunne ikke hente datapakken: {e}")
+            print(f"  Hent den manuelt fra {DATAPAKKE_URL} og brug --zip")
+            sys.exit(1)
     os.makedirs(ARBEJDSMAPPE, exist_ok=True)
     raster_sti = os.path.join(ARBEJDSMAPPE, RASTER_NAVN)
     resultat = subprocess.run(
