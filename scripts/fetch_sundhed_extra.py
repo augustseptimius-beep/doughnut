@@ -27,7 +27,7 @@ import urllib.error
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from dst_aar import seneste_kvartal  # noqa: E402
+from dst_aar import seneste_kvartal, seneste_aar_liste  # noqa: E402
 
 API_URL = "https://api.statbank.dk/v1/data"
 REQUEST_DELAY = 0.7
@@ -288,7 +288,9 @@ def fetch_laegekontakt(population: dict[str, float]) -> tuple[dict[str, float], 
     print("Henter lægekontaktrate (SYGP1)...")
     nat_pop = population.get("000", 5_900_000)
 
-    for year in ["2024", "2023"]:
+    # Nyeste to år hos DST, ikke en fast liste - ellers står indikatoren
+    # stille når DST lægger et nyt år op.
+    for year in seneste_aar_liste("SYGP1", 2, ["2024", "2023"]):
         rows = api_post("SYGP1", [
             {"code": "OMRÅDE", "values": ["*"]},
             {"code": "YDELSESART", "values": ["130"]},    # Almen læge i alt

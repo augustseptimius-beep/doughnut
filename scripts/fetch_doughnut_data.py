@@ -28,6 +28,11 @@ import io
 import json
 import os
 import sys
+
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(_Path(__file__).resolve().parent))
+from dst_aar import registrer_aar  # noqa: E402
 import time
 import urllib.request
 import urllib.error
@@ -805,6 +810,20 @@ def fetch_indicator(ind):
         print(f"  → Henter data: {tbl} [{area_var}=*, {resolved_vars}, Tid=(1)]")
         try:
             rows = fetch_csv_data(tbl, resolved_vars, area_var=area_var)
+            # Tid="(1)" betyder "seneste periode" hos DST, så data ER friske -
+            # men uden denne kvittering ved build_master_csv.py det ikke, og
+            # masteren kom til at mærke fx 2024-tal som 2022.
+            # Send HELE perioden videre - registrer_aar() kender formaterne.
+            # Afkorter man selv til de fire første tegn, bliver HISBK's
+            # 5-års-interval "2021:2025" til 2021, og indikatoren ser fire år
+            # ældre ud end den er.
+            _perioder = {(r.get("TID") or r.get("Tid") or "").strip()
+                         for r in rows if (r.get("TID") or r.get("Tid"))}
+            _perioder = {p for p in _perioder if p and p[:4].isdigit()}
+            if _perioder:
+                _seneste = max(_perioder)
+                registrer_aar(tbl, _seneste)
+                print(f"  ✓ seneste periode hos DST: {_seneste}")
             values = extract_municipal_values(rows, aggregate=ind.get("aggregate", "single"))
             print(f"  ✓ {len(values)} kommuner med data (tæller)")
 
