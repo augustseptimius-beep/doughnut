@@ -1,17 +1,22 @@
 {
-  "name": "webapp",
+  "name": "danmarks-98-doughnuts",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Doughnut Economics platform for all 98 Danish municipalities. Static Next.js export.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "doughnut-economics",
+    "planetary-boundaries",
+    "denmark",
+    "municipalities",
+    "open-data"
+  ],
+  "author": "Thisted Kommune (klimateamet)",
+  "license": "UNLICENSED",
   "devDependencies": {
     "@netlify/functions": "^3.0.0",
     "@types/react-dom": "^19.2.4"
@@ -26,5 +31,6 @@
     "react-dom": "^19.2.4",
     "tailwindcss": "^4.2.2",
     "typescript": "^5.9.3"
-  }
+  },
+  "private": true
 }

@@ -1,2 +1,0 @@
-:HL["/_next/static/chunks/0~8q3nt~xu1qi.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"kommune","param":null,"prefetchHints":0,"slots":{"children":{"name":"navn","param":{"type":"d","key":"Albertslund","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"WK6rgI8eYNLC4dvpUyL39"}

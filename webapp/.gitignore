@@ -2,3 +2,11 @@ node_modules/
 .next/
 next-env.d.ts
 tsconfig.tsbuildinfo
+
+# Build-output. Netlify bygger selv (netlify.toml: command = "npm run build",
+# publish = "out"), så det committede resultat blev alligevel aldrig serveret.
+out/
+
+# Lokale hemmeligheder. Nøglen sættes som miljøvariabel i Netlify, ikke i repoet.
+.env
+.env.local

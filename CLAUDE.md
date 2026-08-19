@@ -1,14 +1,16 @@
-# CLAUDE.md — Projekt-readme til Claude
+# CLAUDE.md - teknisk onboarding
 
-> **Formål:** Dette er min egen onboarding-fil. Den skal læses i starten af hver ny session, så jeg hurtigt har det fulde overblik over projektet "Danmarks 98 Doughnuts" uden at skulle grave i koden hver gang. Den er skrevet til mig selv, ikke til menneskelige læsere.
+> **Formål:** Hurtigt overblik over projektet "Danmarks 98 Doughnuts" uden at skulle grave i koden. Læses i starten af en ny arbejdssession, af mennesker og af AI-assistenter.
+>
+> **Se også:** [`README.md`](README.md) for projektets formål og opsætning, og [`docs/arkitektur-og-beregningsregler.md`](docs/arkitektur-og-beregningsregler.md) for de normative beregningsregler. Denne fil er den praktiske driftsvejledning; arkitekturdokumentet er den faglige kontrakt.
 
 ## TL;DR (30 sekunder)
 
-- **Projekt:** Doughnut Economics MVP for alle 98 danske kommuner - offentlig platform der viser hver kommunes status i forhold til socialt fundament og økologisk loft.
-- **Stack:** Next.js 16 (`output: "export"`) + Tailwind 4 i `webapp/`, Python-scripts i `scripts/`, CSV-data i `data/`, Netlify deploy via GitHub Desktop push til main.
-- **Bruger:** August, projektleder i klimateamet, Thisted Kommune. Noob til programmering - skal hjælpes til de enkleste/bedste beslutninger. Undgå terminal så meget som muligt.
-- **Deploy:** Bruger IKKE terminal-git. Kun GitHub Desktop + Netlify.
-- **Krav til mig:** Lav altid plan først, anbefal LLM-model (Opus/Sonnet/Haiku) til opgaven, skriv dansk uden em-dash.
+- **Projekt:** Doughnut Economics-platform for alle 98 danske kommuner - offentlig platform der viser hver kommunes status i forhold til socialt fundament og økologisk loft.
+- **Ejerskab:** Thisted Kommune. Udviklet i klimateamet under EU-projektet LIFE ACT. Licens er ikke afklaret, se README.
+- **Stack:** Next.js 16 (`output: "export"`) + Tailwind 4 i `webapp/`, Python-scripts i `scripts/`, CSV-data i `data/`, Netlify-deploy ved push til default-branchen.
+- **Omfang:** 13 sociale kategorier, 7 økologiske dimensioner, 66 scorede indikatorer og 16 kontekst-indikatorer.
+- **Sprog i repoet:** dansk i dokumentation, kommentarer og UI. README er på engelsk af hensyn til eksterne læsere. Undgå em-dash, brug enkelt dash.
 
 ## Projektstruktur
 
@@ -64,11 +66,11 @@ doughnut/
 
 - **Frontend:** Next.js 16 med `output: "export"` → ren static site i `webapp/out/`. Ingen SSR i prod. Dynamiske routes pre-genereres via `generateStaticParams` for alle 98 kommuner.
 - **Netlify:** `base = "webapp"`, `command = "npm run build"`, `publish = "out"`, functions i `webapp/netlify/functions/`.
-- **Deploy-flow:** Gem ændringer → preview lokalt → GitHub Desktop commit + push til main → Netlify deployer automatisk.
-- **Lokal preview:** Dobbeltklik på [`Start udviklerserver.command`](file:///Users/augustseptimiuskrogh/Documents/GitHub/doughnut/Start%20udviklerserver.command). Brug `http://127.0.0.1:3000` (ikke `localhost` - IPv6-problem på Mac).
-- **Nuværende git-branch:** `claude/doughnut-economics-dashboard-IKiZe` (default-branch, fungerer som main for Netlify).
+- **Deploy-flow:** Gem ændringer → preview lokalt → commit + push til default-branchen → Netlify deployer automatisk.
+- **Lokal preview:** `cd webapp && npm run dev`, eller dobbeltklik på `Start udviklerserver.command` i projektets rodmappe (macOS). Brug `http://127.0.0.1:3000`, ikke `localhost` - sidstnævnte kan resolve til IPv6 og fejle.
+- **Build-output:** `webapp/out/` genereres af `npm run build` og er git-ignoreret. Netlify kører det samme build selv, så outputtet skal ikke committes.
 
-## Datamodel — sådan hænger det sammen
+## Datamodel - sådan hænger det sammen
 
 ### Grundkoncept
 
@@ -83,9 +85,23 @@ Se `INDICATORS` og `SOCIAL_CATEGORIES` i `webapp/lib/shared.ts` for aktuel liste
 **Sociale:** ≥100 grøn (`emerald`), 85-100 amber, <85 rød (`scoreColor` i shared.ts).
 **Økologiske:** ≤85 grøn, 85-100 amber, >100 rød - overshoot (`ecoScoreColor` i ScoreBars.tsx).
 
-### ECOLOGICAL_DIMENSIONS (8 planetære grænser)
+### ECOLOGICAL_DIMENSIONS (7 planetære grænser)
 
-Se `ECOLOGICAL_DIMENSIONS` i `webapp/lib/shared.ts` for aktuel liste. De fleste dimensioner er multi-indikator og bruger **worst-of logic** (max ratio) - hvis bare én sub-grænse overskrides, er hele dimensionen overskredet. Dette er bevidst planetary-boundary-logik, IKKE gennemsnit. Eksempler: klimapaavirkning (territorial + forbrugsbaseret CO₂), naeringsstoffer (N/P-belastning + vandområdernes økologiske tilstand VP3), biodiversitet (bioscore ≥8 mod 30% og ≥12 mod 10%), luftkvalitet, cirkularitet, vand, arealanvendelse. Kun forurening (pesticider) er single-indikator. **Designprincip:** én planetær grænse = én dimension; flere opgørelsesmetoder/indikatorer for samme grænse er sub-indikatorer, ikke separate dimensioner.
+Se `ECOLOGICAL_DIMENSIONS` i `webapp/lib/shared.ts` for den autoritative liste. Aktuel sammensætning:
+
+| Dimension | Sub-indikatorer |
+|---|---|
+| `klimapaavirkning` | territorial CO₂e, forbrugsbaseret CO₂e |
+| `forurening` | nitrat, pesticider, affald, genanvendelse |
+| `luftkvalitet` | NO₂, PM2.5 |
+| `naeringsstoffer` | N-udledning, P-udledning, N-loft landbrug (VP3), overfladevandets tilstand (VP3) |
+| `vand` | vandindvinding |
+| `arealanvendelse` | bebygget areal, intensivt dyrket areal |
+| `biodiversitet` | bioscore ≥8 mod 30%, bioscore ≥12 mod 10% |
+
+Alle multi-indikator-dimensioner bruger **worst-of** (max ratio): overskrides bare én sub-grænse, er hele dimensionen overskredet. Det er bevidst planetary-boundary-logik, ikke gennemsnit. **Eneste undtagelse er `forurening`, som bruger gennemsnit**, fordi dens fire indikatorer måler vidt forskellige forureningstyper. Kun `vand` er single-indikator.
+
+**Designprincip:** én planetær grænse = én dimension. Flere opgørelsesmetoder for samme grænse er sub-indikatorer, ikke separate dimensioner. Derfor ligger cirkularitet (affald og genanvendelse) under `forurening` og ikke som egen dimension.
 
 ### KommuneData-type
 
@@ -114,8 +130,8 @@ Datapipelinen er manuel og script-baseret. Der er IKKE CI/CD der henter data aut
    python3 scripts/fetch_XXX_data.py
    ```
 2. Scriptet opdaterer rådata-CSV i `data/` og kalder `auto_build_master()` automatisk.
-3. **Preview lokalt** → dobbeltklik [`Start udviklerserver.command`](file:///Users/augustseptimiuskrogh/Documents/GitHub/doughnut/Start%20udviklerserver.command).
-4. **GitHub Desktop commit + push** → Netlify deployer.
+3. **Preview lokalt** → `cd webapp && npm run dev`, eller dobbeltklik `Start udviklerserver.command` (macOS).
+4. **Commit + push til default-branchen** → Netlify deployer automatisk.
 
 **Tjek altid:** Scriptet skal printe "✓ Master-CSV opdateret" til sidst. Hvis ikke: kør `python3 scripts/build_master_csv.py` manuelt.
 
@@ -156,8 +172,8 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
 4. **Inverse ratio-konvention** - kildedata for forurenings-indikatorer (N, P, affald, pesticider, nitrat, vandindvinding) er `(national_avg / kommune_val) × 100`. Konverteres via `10000/inverse` i `build_master_csv.py`.
 5. **cba_2023_estimate.csv** bruger `kommune`-navn som nøgle, ikke `kommune_kode`. Manglende match → `forbrug_co2 = null` (ingen fallback). Christiansø er filtreret fra.
 6. **Farvelogik er OMVENDT:** sociale vil op (≥100 = grøn), økologiske vil ned (≤85 = grøn).
-7. **GitHub Desktop** - aldrig terminal-git. Aldrig `git push` fra terminalen.
-8. **Klimaregnskabet.dk kræver API-nøgle** - i Python-scriptet OG som Netlify env var (`KLIMAREGNSKABET_API_KEY`).
+7. **`master_indicators.csv`, `trend_indicators.csv` og `data_years.json` skal committes.** Netlify har ingen adgang til kildernes API'er under build, så sitet bygges udelukkende fra de committede CSV'er.
+8. **Klimaregnskabet.dk kræver API-nøgle.** Netlify-funktionen læser miljøvariablen `KLIMAREGNSKABET_API_KEY` (bemærk ET). Python-scripterne har p.t. nøglen hårdkodet, hvilket skal lægges om til en miljøvariabel. Lokalt: kopiér `webapp/.env.example` til `webapp/.env`.
 9. **Kontekst-indikatorer (vises, scores IKKE)** - data der vises i UI men ikke indgår i nogen score. Defineres i `CONTEXT_INDICATORS` i `build_master_csv.py`, skrives til master med `category="context"`, rutes i `data.ts` til `kommune.rawValues[indicator_id]`, og renderes af en dedikeret komponent (fx `EnergiKontekst`, `KlimaKontekst` i `ScoreBars.tsx`). Bruges til:
     - **Energi:** lokal VE-kapacitet (`ctx_ve_*`, EDS CapacityPerMunicipality) og fjernvarmens brændselsmix (`ctx_fjv_*`, Energistyrelsen EPT `ens.dk/media/7199/download`). Begrundelse: VE er national net-produktion; fjernvarme er overvejende afbrænding - se metode-siden.
     - **Klimapåvirkning:** sektorfordeling af territorial udledning (`ctx_klima_landbrug/energi/transport`), samlet energiforbrug (`ctx_energiforbrug`) og VE-el selvforsyningsgrad (`ctx_ve_selvforsyning`) - alle fra Klimaregnskabet.dk, samme API-kald som `klimapaavirkning` selv genbruges til (ingen ekstra kald, se `fetch_climate_data.py`). Begrundelse: sektorerne er en opdeling af det allerede scorede territoriale tal, ikke et nyt måltal. **Fælde:** `ve_selvforsyning` leveres som forhold (1.71), ikke procent - ganges med 100 i `_extract_kontekst()`.
@@ -192,23 +208,12 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
     - **Tallet er beslægtet med Greenpeaces, ikke identisk.** Vi vægter efter tilladt indvindingsmængde; Greenpeace/Schullehner kobler til faktiske forsyningsområder. Aalborg rammer næsten præcist (20,5 mod 20,7), men Thisted lander på 5,2 mod 13,9 - forskellen er metodisk, ikke en fejl. Pesticider skifter samtidig tælleenhed fra boringer til vandværker.
     - **Fælde: Jupiter-WFS'en ignorerer `CQL_FILTER` TAVST** og returnerer alle stoffer. Brug OGC XML-`filter`, og verificér at det udtrukne stof er det forventede (scriptet gør det selv og afbryder ellers).
 
-## Brugerens arbejdsstil og præferencer
+## Arbejdsprincipper for ændringer
 
-- **August, projektleder klimateamet Thisted Kommune.** Noob til programmering, ønsker enkle løsninger og undgår terminal.
-- **Brug dansk. Ingen em-dash (-), brug enkelt dash (-).**
-- **"Brilliant basics" frem for innovation.** 80/20-mindset. Bedre-gjort-end-perfekt.
-- **Direkte, ærlig sparring.** Ingen smiger eller blød pakning. Udfordr antagelser, påpeg blinde vinkler.
-- **Lav altid plan for ændringer først** før jeg koder.
-- **Anbefal altid LLM-model** (Opus/Sonnet/Haiku) og begrund valget.
-- **Korte svar** som default, elaborer når bedt om det.
-
-## LLM-model anbefalinger til dette projekt
-
-- **Haiku:** smårettelser i tekster, simple CSV-tjek, formatering.
-- **Sonnet:** de fleste kode-ændringer, indikator-tilføjelser, debugging, script-ændringer.
-- **Opus:** arkitektur-beslutninger, komplekse dataflows, større refaktorering på tværs af filer, metodediskussioner.
-
-Default til Sonnet hvis i tvivl.
+- **"Brilliant basics" frem for innovation.** 80/20-mindset. Platformen er bevidst enkel, og enkelheden er en kvalitet, ikke en mangel.
+- **Lav en plan før større ændringer**, særligt når de rører beregningsreglerne. Se `docs/arkitektur-og-beregningsregler.md`.
+- **Ændrer du en beregning, ændrer du tal der er offentligt fremme.** Verificér mod master-CSV'en før commit, og noter ændringen i `data/CHANGELOG.md`.
+- **Dokumentation og kode skal følges ad.** Afviger de, så skriv afvigelsen ned i arkitekturdokumentets afsnit 7 frem for at lade den ligge uregistreret.
 
 ## Hvor finder jeg ting?
 
@@ -227,7 +232,14 @@ Default til Sonnet hvis i tvivl.
 - **`docs/statbank_doughnut_mapping.md`** - mapping mellem DST-tabeller og Doughnut-indikatorer.
 - **`docs/concito-analyse-og-roadmap.md`** - hvad vi kan/ikke kan bruge fra CONCITO-rapporten + bevidste fravalg. Læs før øko-ændringer.
 - **`docs/aabne-traade-juni-2026.md`** - prioriterede løse ender og uudnyttede indsigter (scoringsfilosofi, education-badge, REshare, energiforbrug m.m.). Læs før næste større runde.
+- **`docs/arkitektur-og-beregningsregler.md`** - de normative beregningsregler (R1-R15), retningspilenes regler (T1-T8), kendte fælder og registrerede afvigelser mellem dokumentation og kode. Læs før enhver ændring i scoringen.
 
 ## Vedligehold af denne fil
 
-Opdater CLAUDE.md når ny dimension/kategori tilføjes, ratio-konvention ændres, deploy-flow ændres, eller nye kritiske driftsregler opdages. Hold den kort og til mig selv. Intet fluff.
+Opdater CLAUDE.md når en ny dimension eller kategori tilføjes, når ratio-konventionen ændres, når deploy-flowet ændres, eller når en ny kritisk driftsregel opdages. Hold den kort og konkret, uden fluff.
+
+Arbejdsdeling mellem de tre dokumenter:
+
+- **README.md** - hvad projektet er, og hvordan man kommer i gang. Til nye læsere.
+- **CLAUDE.md** - praktisk drift: filoversigt, pipeline, faldgruber ved dataopdatering.
+- **docs/arkitektur-og-beregningsregler.md** - den faglige kontrakt. Reglerne der skal reproduceres præcist ved en port eller videreudvikling.
