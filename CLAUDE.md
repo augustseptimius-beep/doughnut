@@ -213,7 +213,7 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
 - **"Brilliant basics" frem for innovation.** 80/20-mindset. Platformen er bevidst enkel, og enkelheden er en kvalitet, ikke en mangel.
 - **Lav en plan før større ændringer**, særligt når de rører beregningsreglerne. Se `docs/arkitektur-og-beregningsregler.md`.
 - **Ændrer du en beregning, ændrer du tal der er offentligt fremme.** Verificér mod master-CSV'en før commit, og noter ændringen i `data/CHANGELOG.md`.
-- **Dokumentation og kode skal følges ad.** Afviger de, så skriv afvigelsen ned i arkitekturdokumentets afsnit 6 frem for at lade den ligge uregistreret.
+- **Dokumentation og kode skal følges ad.** Afviger de, så skriv afvigelsen ned i arkitekturdokumentets afsnit 7 frem for at lade den ligge uregistreret.
 
 ## Hvor finder jeg ting?
 

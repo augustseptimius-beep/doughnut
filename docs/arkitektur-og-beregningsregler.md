@@ -10,7 +10,7 @@ Reglerne er implementeret i `scripts/build_master_csv.py` (datapipelinen),
 (frontendberegninger). Dokumentet angiver bevidst funktions- og feltnavne
 frem for linjenumre, fordi linjenumre skrider ved hver ændring.
 
-**Læs afsnit 5 og 6 før du ændrer noget.** Fælderne dér er alle sammen fejl
+**Læs afsnit 6 og 7 før du ændrer noget.** Fælderne dér er alle sammen fejl
 projektet allerede har begået én gang.
 
 ---
@@ -280,7 +280,57 @@ serie har. Det er korrekt.
 
 ---
 
-## 5. Kendte fælder
+## 5. Designbeslutninger bag reglerne
+
+Reglerne ovenfor siger hvad koden gør. Dette afsnit siger hvorfor, for de valg der er
+lette at rulle tilbage ved en uheldig videreudvikling.
+
+### Hvorfor det økologiske loft aldrig er relativt
+
+Baseline-toggle (R15) giver brugeren tre referencer for sociale indikatorer:
+landsgennemsnit, top 10 og egen kommunegruppe. Det er fristende at lade
+økologiske dimensioner følge med, så en landkommune sammenlignes med andre
+landkommuner.
+
+Det er bevidst fravalgt. **Planeten har ét budget, ikke ét pr. kommunegruppe.** At
+give en landkommune grønt lys på kvælstof "fordi det er normalt for en
+landkommune" ville skjule netop den overskridelse modellen findes for at afsløre.
+Det sociale fundament kan meningsfuldt måles mod hvad sammenlignelige kommuner
+opnår; det økologiske loft kan ikke.
+
+For en regional eller europæisk tilpasning er det her den centrale
+designbeslutning: nedskaler grænsen til området, ikke referencen til
+nabolagsgennemsnittet.
+
+### Hvornår scores der mod mål, og hvornår mod gennemsnit
+
+Reglen bag R12: **scor mod målet, hvor der findes en meningsfuld grænse pr.
+kommune.** Det gælder både biofysiske og juridiske grænser (WHO's
+luftkvalitetsretningslinjer, drikkevandsnormen) og vedtagne politiske mål (EU's
+30/10-procentmål for natur, EU's 65 procent genanvendelse, det nationale
+95-procentmål for uddannelse, 0 procent fossil varme, 3 tons Paris-budget).
+Findes ingen sådan grænse, bruges landsgennemsnittet.
+
+Resultatet er at kun to dimensioner ender som `blandet` (Forurening og
+Uddannelse). Det er en lille, ærlig undtagelse, ikke reglen.
+
+Klassifikationen blev gjort maskinlæsbar (`baselineType`) frem for at leve i
+fritekst, fordi "grøn" ellers betyder to forskellige ting fra dimension til
+dimension uden at brugeren kan se hvilken. Før det havde `education` et badge med
+"Mål: 95 %", mens scoren reelt blev beregnet mod landsgennemsnittet og omskaleret
+af baseline-toggle. Badge og beregning sagde hver sit.
+
+### Hvorfor gruppe-baseline genbruger de færdige ratios
+
+R10 omskalerer de allerede beregnede ratios i frontenden i stedet for at beregne
+en ny ratio i pipelinen. Det holder `master_indicators.csv` uafhængig af
+baselinevalget: én værdi pr. kommune og indikator, tre måder at læse den på.
+Samme teknik som top10-baselinen (R9). Konsekvensen er at inverse indikatorer
+omskaleres på deres allerede vendte ratio, hvilket er en bevidst forenkling.
+
+---
+
+## 6. Kendte fælder
 
 1. **Farvelogikken er omvendt** mellem social og økologisk (R11). Den hyppigste
    fejlkilde i projektet.
@@ -313,7 +363,7 @@ serie har. Det er korrekt.
 
 ---
 
-## 6. Kendte afvigelser mellem dokumentation og kode
+## 7. Kendte afvigelser mellem dokumentation og kode
 
 Opdateret 19. august 2026.
 
@@ -327,10 +377,10 @@ branch, bortfalder afsnittet her, og R1 bliver retvisende som skrevet.
 
 ---
 
-## 7. Vedligehold
+## 8. Vedligehold
 
 Opdater dette dokument når en beregningsregel ændres, når en ny dimension eller
-kategori tilføjes, eller når en afvigelse i afsnit 6 lukkes. Reglerne skal kunne
+kategori tilføjes, eller når en afvigelse i afsnit 7 lukkes. Reglerne skal kunne
 læses uden adgang til koden, så undgå linjenumre og hold feltnavnene i
 overensstemmelse med den faktiske implementering.
 
