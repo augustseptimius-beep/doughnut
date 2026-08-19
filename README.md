@@ -171,7 +171,7 @@ governed by each publisher's own terms, not by this repository.
 ## Copyright and licence
 
 Copyright belongs to **Thisted Municipality** (Thisted Kommune). The code was
-developed by municipal staff during working hours under the EU-funded LIFE ACT
+developed by municipal staff as part of a EU-supportet LIFE ACT
 project.
 
 **No licence has been granted yet.** The terms of reuse are an open decision for
