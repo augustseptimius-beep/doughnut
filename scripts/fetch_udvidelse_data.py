@@ -40,13 +40,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dst_aar import seneste_aar, seneste_periode, seneste_aar_liste  # noqa: E402
+from api_noegler import hent_noegle, kraev_noegle, UVM_HJAELP  # noqa: E402
 
 # ─── Konstanter ────────────────────────────────────────────────────────────
-UVM_TOKEN = (
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
-    ".eyJkb21haW51c2VyIjoiYW5vbnltb3VzIiwidXNlcmlkIjoiZTdjZTA4ODUtOTQ2Yi00YmE1LWI5YjktMjEwMjIxYWIxMTljIiwidG9rZW5pZCI6ImYyYjIyMjk5LTk5OTItNDUwZC1hODUyLTVlZThiMzlmZjlmYyIsImV4cCI6MTg3MjI0MjYxOCwiaXNzIjoiaHR0cHM6Ly9kb3RuZXRkZXRhaWwubmV0IiwiYXVkIjoiaHR0cHM6Ly9kb3RuZXRkZXRhaWwubmV0In0"
-    ".5bcAmQPPsADuWDuKnz37ulpz0UzEUq-WCxd4GASovqw"
-)
+UVM_TOKEN = hent_noegle("UVM_API_TOKEN")
 UVM_BASE = "https://api.uddannelsesstatistik.dk/Api/v1"
 DST_API  = "https://api.statbank.dk/v1/data"
 DELAY    = 0.7  # sekunder mellem API-kald
@@ -659,6 +656,8 @@ def write_csv(filename: str, headers: list[str], rows: list[list]) -> None:
 # ─── MAIN ──────────────────────────────────────────────────────────────────
 
 def main():
+    kraev_noegle("UVM_API_TOKEN", UVM_TOKEN, UVM_HJAELP)
+
     print("=" * 65)
     print("Henter nye sociale indikatorer - UVM + DST")
     print("=" * 65)

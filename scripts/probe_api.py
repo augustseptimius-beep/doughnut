@@ -4,11 +4,18 @@ Probe-script: finder den korrekte URL og parametre til klimaregnskabet.dk API.
 Kør én gang, paste output til Claude.
 """
 import json
+import sys
+from pathlib import Path
 import requests
 import urllib3
 urllib3.disable_warnings()
 
-API_KEY = "72549c4a2b417163ccc0edd32e9d09221e86c178478adb6bedc69fd350b7b0f5"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from api_noegler import hent_noegle, kraev_noegle, KLIMA_HJAELP  # noqa: E402
+
+API_KEY = kraev_noegle(
+    "KLIMAREGNSKABET_API_KEY", hent_noegle("KLIMAREGNSKABET_API_KEY"), KLIMA_HJAELP
+)
 
 HEADERS_VARIANTS = [
     {"x-api-key": API_KEY, "Accept": "application/json"},
