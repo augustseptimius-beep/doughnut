@@ -49,6 +49,14 @@ from datetime import datetime
 from io import StringIO
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from api_noegler import (  # noqa: E402
+    hent_noegle,
+    kraev_noegle,
+    KLIMA_HJAELP,
+    UVM_HJAELP,
+)
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 RAW_OUTPUT = DATA_DIR / "trend_history_raw.csv"
@@ -61,7 +69,7 @@ CELLELOFT = 800_000
 PAUSE = 0.35
 
 KLIMAREGNSKABET_API = "https://klimaregnskabet.dk/api/municipality-data"
-KLIMAREGNSKABET_KEY = "72549c4a2b417163ccc0edd32e9d09221e86c178478adb6bedc69fd350b7b0f5"
+KLIMAREGNSKABET_KEY = hent_noegle("KLIMAREGNSKABET_API_KEY")
 KLIMA_AAR = list(range(2018, 2025))
 
 LOG: list[str] = []
@@ -791,11 +799,7 @@ def fetch_klimapaavirkning() -> list[dict]:
 # ══════════════════════════════════════════════════════════════════════════
 
 UVM_BASE = "https://api.uddannelsesstatistik.dk/Api/v1"
-UVM_TOKEN = (
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
-    ".eyJkb21haW51c2VyIjoiYW5vbnltb3VzIiwidXNlcmlkIjoiZTdjZTA4ODUtOTQ2Yi00YmE1LWI5YjktMjEwMjIxYWIxMTljIiwidG9rZW5pZCI6ImYyYjIyMjk5LTk5OTItNDUwZC1hODUyLTVlZThiMzlmZjlmYyIsImV4cCI6MTg3MjI0MjYxOCwiaXNzIjoiaHR0cHM6Ly9kb3RuZXRkZXRhaWwubmV0IiwiYXVkIjoiaHR0cHM6Ly9kb3RuZXRkZXRhaWwubmV0In0"
-    ".5bcAmQPPsADuWDuKnz37ulpz0UzEUq-WCxd4GASovqw"
-)
+UVM_TOKEN = hent_noegle("UVM_API_TOKEN")
 
 # Alias-udvidet navn→kode-mapping, så "Aarhus"/"Århus"-stavevarianter fra UVM
 # også rammer, ligesom load_navn_to_kode() i fetch_udvidelse_data.py.
@@ -956,6 +960,9 @@ def auto_build_trends():
 
 
 def main():
+    kraev_noegle("KLIMAREGNSKABET_API_KEY", KLIMAREGNSKABET_KEY, KLIMA_HJAELP)
+    kraev_noegle("UVM_API_TOKEN", UVM_TOKEN, UVM_HJAELP)
+
     alle = fetch_dst_indicators() + fetch_klimapaavirkning() + fetch_uvm_historik()
 
     if not alle:

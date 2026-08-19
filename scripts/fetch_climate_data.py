@@ -30,13 +30,17 @@ import json
 import os
 import sys
 import time
+from pathlib import Path
 
 import requests
 import urllib3
 from typing import Optional
 urllib3.disable_warnings()
 
-API_KEY = "72549c4a2b417163ccc0edd32e9d09221e86c178478adb6bedc69fd350b7b0f5"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from api_noegler import hent_noegle, kraev_noegle, KLIMA_HJAELP  # noqa: E402
+
+API_KEY = hent_noegle("KLIMAREGNSKABET_API_KEY")
 API_BASE = "https://klimaregnskabet.dk/api/municipality-data"
 PARIS_BUDGET = 3.0  # ton CO2e/person/år
 
@@ -221,6 +225,8 @@ def _extract_kontekst(data) -> dict:
 
 
 def main():
+    kraev_noegle("KLIMAREGNSKABET_API_KEY", API_KEY, KLIMA_HJAELP)
+
     parser = argparse.ArgumentParser(
         description="Hent territorial CO2e pr. capita fra klimaregnskabet.dk"
     )
