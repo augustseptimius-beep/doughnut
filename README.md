@@ -174,7 +174,7 @@ Two consequences a contributor should know about:
 
 Known gaps and open threads are tracked in
 [`docs/aabne-traade-juni-2026.md`](docs/aabne-traade-juni-2026.md), and known
-divergences between documentation and code are listed in section 6 of the
+divergences between documentation and code are listed in section 7 of the
 architecture document.
 
 ## Data sources and licensing
