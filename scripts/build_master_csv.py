@@ -349,6 +349,10 @@ def build_master():
                 if r is None:
                     continue
                 ratio = parse_float(r.get(ind["ratio_col"]))
+                # Samme 150-cap som kode-nøgle-grenen - ellers undslipper
+                # navn-nøgle-indikatorer (vejr_skader) den dokumenterede cap.
+                if ratio is not None and ratio > 150:
+                    ratio = 150.0
                 raw = parse_float(r.get(ind["raw_col"])) if ind["raw_col"] else None
                 if ratio is None and raw is None:
                     continue

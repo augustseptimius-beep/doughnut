@@ -164,8 +164,11 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   klimatilpasning: {
     id: "klimatilpasning",
-    scoring: "Ingen data endnu. Potentielle indikatorer: oversvømmelsesrisiko, klimatilpasningsplaner, grønne arealer til regnvandshåndtering.",
-    limitations: "Afventer tilgængelige kommunefordelte data.",
+    scoring: "1 indikator: Vejrrelaterede forsikringsskader pr. 1.000 indbyggere (F&P skadesstatistik, akkumuleret Q1 2023 - Q4 2025, inverteret - færre skader er bedre). Ratio = (landsgennemsnit / kommunens skader pr. 1.000 indb.) × 100. Score 100 = landsgennemsnit (uvægtet gennemsnit af kommunerne).",
+    boundary: "Socialt fundament: borgere og bygninger skal være robuste over for klimarelateret ekstremvejr (skybrud, storm, oversvømmelse). Ingen absolut grænse - relativ til landsgennemsnit.",
+    dataYear: "2023-2025",
+    limitations: "Skadesdata er en proxy for klimarobusthed: den fanger realiserede skader, ikke fremtidig risiko eller kommunens tilpasningsindsats. Skadestal påvirkes også af bygningsmasse, forsikringsdækning og tilfældige vejrhændelser i perioden. Mulige fremtidige indikatorer: oversvømmelsesrisiko, klimatilpasningsplaner, grønne arealer til regnvandshåndtering. Se data/klimatilpasning.md for metodediskussion.",
+    csvFile: "klimatilpasning_scores.csv",
   },
   energi: {
     id: "energi",
