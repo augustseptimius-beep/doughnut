@@ -76,14 +76,16 @@ OUTPUT = DATA_DIR / "master_indicators.csv"
 SOCIAL_INDICATORS = [
     # === Sundhed ===
     {"id": "life_expectancy", "csv": "doughnut_scores.csv", "ratio_col": "life_expectancy_ratio", "raw_col": "life_expectancy_raw", "unit": "år", "data_year": "2023", "source": "DST HISBK", "category": "social", "dimension": "sundhed"},
-    {"id": "hospital_short", "csv": "sundhed_extra_scores.csv", "ratio_col": "hospital_short_ratio", "raw_col": "hospital_short_pct", "unit": "%", "data_year": "2023", "source": "DST SBR01", "category": "social", "dimension": "sundhed"},
+    {"id": "selvvurderet_helbred", "csv": "sundhedsprofil_scores.csv", "ratio_col": "selvvurderet_helbred_ratio", "raw_col": "selvvurderet_helbred_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
+    {"id": "mentalt_helbred", "csv": "sundhedsprofil_scores.csv", "ratio_col": "mentalt_helbred_ratio", "raw_col": "mentalt_helbred_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
     {"id": "hospital_long", "csv": "sundhed_extra_scores.csv", "ratio_col": "hospital_long_ratio", "raw_col": "hospital_long_pct", "unit": "%", "data_year": "2023", "source": "DST SBR01", "category": "social", "dimension": "sundhed"},
-    {"id": "gp_distance", "csv": "sundhed_extra_scores.csv", "ratio_col": "gp_distance_ratio", "raw_col": "gp_distance_km", "unit": "km", "data_year": "2024", "source": "DST SUNDAF01", "category": "social", "dimension": "sundhed"},
-    {"id": "medicin", "csv": "medicin_scores.csv", "ratio_col": "medicin_ratio", "raw_col": "medicin_raw", "unit": "recepter/100 borgere", "data_year": "2024", "source": "DST MEDI1", "category": "social", "dimension": "sundhed"},
-    {"id": "laegekontakt", "csv": "laegekontakt_scores.csv", "ratio_col": "laegekontakt_ratio", "raw_col": "laegekontakt_raw", "unit": "%", "data_year": "2024", "source": "DST SYGP1", "category": "social", "dimension": "sundhed"},
-    {"id": "boerneovervaeght", "csv": "boerneovervaeght_scores.csv", "ratio_col": "boerneovervaeght_ratio", "raw_col": "boerneovervaeght_raw", "unit": "%", "data_year": "2018", "source": "DST LABY26", "category": "social", "dimension": "sundhed"},
     {"id": "hjemsyg", "csv": "hjemsyg_scores.csv", "ratio_col": "hjemsyg_ratio", "raw_col": "hjemsyg_raw", "unit": "pr. 1.000 indb.", "data_year": "2025", "source": "DST HJEMSYG", "category": "social", "dimension": "sundhed"},
     {"id": "wellbeing", "csv": "uvm_scores.csv", "ratio_col": "wellbeing_ratio", "raw_col": "wellbeing_score", "unit": "score (1-5)", "data_year": "2024", "source": "UVM GS/TRIV/TRIVIND", "category": "social", "dimension": "uddannelse"},
+
+    {"id": "rygning", "csv": "sundhedsprofil_scores.csv", "ratio_col": "rygning_ratio", "raw_col": "rygning_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
+    {"id": "alkohol", "csv": "sundhedsprofil_scores.csv", "ratio_col": "alkohol_ratio", "raw_col": "alkohol_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
+    {"id": "kost", "csv": "sundhedsprofil_scores.csv", "ratio_col": "kost_ratio", "raw_col": "kost_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
+    {"id": "svaer_overvaegt", "csv": "sundhedsprofil_scores.csv", "ratio_col": "svaer_overvaegt_ratio", "raw_col": "svaer_overvaegt_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
 
     # === Uddannelse ===
     {"id": "education", "csv": "doughnut_scores.csv", "ratio_col": "education_ratio", "raw_col": "education_raw", "unit": "%", "data_year": "2025", "source": "DST HFUDD11", "category": "social", "dimension": "uddannelse", "abs_target": 95},
@@ -134,10 +136,10 @@ SOCIAL_INDICATORS = [
     {"id": "sports_membership", "csv": "faellesskaber_scores.csv", "ratio_col": "sports_membership_ratio", "raw_col": "sports_membership_pct", "unit": "%", "data_year": "2024", "source": "DST IDRAKT02", "category": "social", "dimension": "lokalsamfund"},
 
     # === Lokalsamfund ===
-    {"id": "sports_facilities", "csv": "lokalsamfund_scores.csv", "ratio_col": "facilities_ratio", "raw_col": "facilities_per_10k", "unit": "pr. 10.000 indb.", "data_year": "2024", "source": "DST IDRFAC01", "category": "social", "dimension": "lokalsamfund"},
     {"id": "class_size", "csv": "lokalsamfund_extra_scores.csv", "ratio_col": "class_size_ratio", "raw_col": "class_size", "unit": "elever/klasse", "data_year": "2023", "source": "DST KVOTIEN", "category": "social", "dimension": "uddannelse"},
     {"id": "daycare_ratio", "csv": "lokalsamfund_extra_scores.csv", "ratio_col": "daycare_ratio", "raw_col": "daycare_ratio_val", "unit": "børn/voksen", "data_year": "2022", "source": "DST BOERN8", "category": "social", "dimension": "uddannelse"},
     {"id": "sports_spending", "csv": "lokalsamfund_extra_scores.csv", "ratio_col": "sports_spending_ratio", "raw_col": "sports_spending_kr", "unit": "kr./indb.", "data_year": "2022", "source": "DST IDRFIN02", "category": "social", "dimension": "lokalsamfund"},
+    {"id": "ensomhed", "csv": "sundhedsprofil_scores.csv", "ratio_col": "ensomhed_ratio", "raw_col": "ensomhed_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "lokalsamfund"},
     {"id": "civil_society", "csv": "doughnut_scores.csv", "ratio_col": "civil_society_ratio", "raw_col": "civil_society_raw", "unit": "kr./indb.", "data_year": "2023", "source": "DST REGK31", "category": "social", "dimension": "lokalsamfund"},
     {"id": "educated_staff", "csv": "lokalsamfund_extra_scores.csv", "ratio_col": "educated_staff_ratio", "raw_col": "educated_staff_pct", "unit": "%", "data_year": "2024", "source": "DST BOERN1", "category": "social", "dimension": "uddannelse"},
 

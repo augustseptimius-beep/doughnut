@@ -72,13 +72,13 @@ Baseret på Københavns Doughnut 2025. Tilgængelighed vurderet via `api.statban
 | # | Indikator | Status | Kilde | Platform |
 |---|-----------|--------|-------|----------|
 | 24 | Middellevetid | ✅ | DST: `HISBK` | 🟢 |
-| 25 | Andelen med lav score på mental helbredsskala | ❌ | Regional sundhedsprofil (kun regionsniveau) | |
-| 26 | Andelen med lav score på fysisk helbredsskala | ❌ | Regional sundhedsprofil (kun regionsniveau) | |
-| 27 | Andelen der ryger dagligt | ❌ | Regional sundhedsprofil (kun regionsniveau) | |
-| 28 | Andelen der rusdrikker ugentligt | ❌ | Regional sundhedsprofil (kun regionsniveau) | |
-| 29 | Andelen med lav fysisk aktivitet i fritiden | ❌ | Regional sundhedsprofil (kun regionsniveau) | |
+| 25 | Andelen med lav score på mental helbredsskala | ✅ | Sundhedsprofilen (`mentalt_helbred`) | 🟢 |
+| 26 | Andelen med lav score på fysisk helbredsskala | ✅ | Sundhedsprofilen (findes, ikke taget i brug) | |
+| 27 | Andelen der ryger dagligt | ✅ | Sundhedsprofilen (`rygning`) | 🟢 |
+| 28 | Andelen der rusdrikker ugentligt | ✅ | Sundhedsprofilen (`alkohol`, over 10 genstande/uge) | 🟢 |
+| 29 | Andelen med lav fysisk aktivitet i fritiden | ✅ | Sundhedsprofilen (hentet, ikke scoret - r=0,90 med svær overvægt) | |
 | 30 | Antal for tidlige dødsfald som følge af luftforurening | ❌ | DCE/Aarhus Universitet (ikke kommunalt API) | |
-| 31 | Andelen med tegn på ensomhed | ❌ | Regional sundhedsprofil (kun regionsniveau) | |
+| 31 | Andelen med tegn på ensomhed | ✅ | Sundhedsprofilen (`ensomhed`) | 🟢 |
 
 ---
 
@@ -122,9 +122,9 @@ Baseret på Københavns Doughnut 2025. Tilgængelighed vurderet via `api.statban
 | # | Indikator | Status | Kilde | Platform |
 |---|-----------|--------|-------|----------|
 | 44 | Andelen af elever (0., 5. og 8. klasse) med svær overvægt | ❌ | Sundhedsplejen/kommunalt system | |
-| 45 | Andelen af voksne med svær overvægt | ❌ | Regional sundhedsprofil (kun regionsniveau) | |
-| 46 | Andelen af voksne med undervægt | ❌ | Regional sundhedsprofil (kun regionsniveau) | |
-| 47 | Andelen af voksne med usundt kostmønster | ❌ | Regional sundhedsprofil (kun regionsniveau) | |
+| 45 | Andelen af voksne med svær overvægt | ✅ | Sundhedsprofilen (`svaer_overvaegt`) | 🟢 |
+| 46 | Andelen af voksne med undervægt | ✅ | Sundhedsprofilen (findes, ikke taget i brug) | |
+| 47 | Andelen af voksne med usundt kostmønster | ✅ | Sundhedsprofilen (`kost`) | 🟢 |
 
 ---
 
@@ -158,7 +158,7 @@ Baseret på Københavns Doughnut 2025. Tilgængelighed vurderet via `api.statban
 | 57 | Kønsbalance blandt ledere på arbejdspladser i kommunen | ✅ | DST: `RAS301` | 🟢 |
 | 58 | Karakterforskel mellem drenge og piger ved afgangseksamen | ✅ | UVM: `GS/KARA/KARAGNS` (Køn-dimension) | |
 | 59 | Karakterforskel mellem elever med vestlig og ikke-vestlig baggrund | ✅ | UVM: `GS/KARA/KARAGNS` (Herkomst-dimension) | |
-| 60 | Andelen af mænd og kvinder med lav mental helbredsskala | ❌ | Regional sundhedsprofil (kun regionsniveau) | |
+| 60 | Andelen af mænd og kvinder med lav mental helbredsskala | ⚠️ | Sundhedsprofilen har køn, men kan ikke krydses med kommune | |
 | 61 | Andelen af unge med lav trivsel i skolen, opdelt på køn | ❌ | Ungeprofilen (ikke kommunalt API) | |
 | 62 | Andelen der oplever forskelsbehandling, opdelt på køn | ❌ | Ungeprofilen (ikke kommunalt API) | |
 | 63 | Forskel i restlevetid mellem køn | ✅ | DST: `HISBK` | |
@@ -204,6 +204,14 @@ Disse indikatorer er implementeret i Danmarks 98 Doughnuts, men er ikke en del a
 | Pendlingsafstand (`commute_distance`) | DST: `AFSTB4` | mobilitet |
 | Brug af offentlig transport (`public_transport`) | DST: `LABY49` | mobilitet |
 
-### Største strukturelle mangel
+### Rettelse sep. 2026: sundhedsprofilen findes på kommuneniveau
 
-Den regionale sundhedsprofil (rygning, alkohol, mental sundhed, ensomhed, fysisk aktivitet, overvægt voksne) udgives kun på regionsniveau - ikke kommunalt. Det er 7-8 centrale sundhedsindikatorer der ikke kan hentes via nogen åben kilde på kommuneniveau.
+Dette dokument anførte tidligere at den regionale sundhedsprofil "udgives kun på regionsniveau - ikke kommunalt", og markerede 7-8 centrale sundhedsindikatorer som utilgængelige af den grund. **Det var forkert.**
+
+Den Nationale Sundhedsprofils internetdatabase på [danskernessundhed.dk](https://www.danskernessundhed.dk/) har kommune som baggrundsvariabel for samtlige ca. 70 indikatorer, med egne faneblade til kommunetabel og kommunekort. Bølger: 2010, 2013, 2017, 2021 og 2025.
+
+Otte af indikatorerne er hentet og otte er i drift fra sep. 2026 - se `scripts/fetch_sundhedsprofil.py` og `data/CHANGELOG.md`. Begrænsningen er en anden end antaget: kommune kan ikke krydses med alder, uddannelse, samlivsstatus eller erhverv, og tallene er selvrapporterede og opdateres kun hvert fjerde år.
+
+### Største resterende strukturelle mangel
+
+Kollektiv trafik på ægte kommuneniveau. `public_transport` (LABY49) findes kun på kommunegruppe-niveau, så alle kommuner i samme gruppe får identisk score og kan ikke påvirke den.

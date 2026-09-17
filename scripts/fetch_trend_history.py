@@ -436,12 +436,6 @@ BOERNETAL = {"id": "boernetal", "navn": "Børnetal 0-17 år", "tabel": "FOLK1A",
 SIMPLE = [
     # --- Sundhed ---
     dict(id="hjemsyg", navn="Hjemmesygepleje-modtagere", tabel="HJEMSYG", helhed=True, pr=1000),
-    dict(id="medicin", navn="Antidepressivt forbrug", tabel="MEDI1",
-         soeg=["recepter pr. 100 borgere"], ekstra=[{"soeg": ["antidepres"]}], pin_ialt=True),
-    dict(id="laegekontakt", navn="Andel med lægekontakt", tabel="SYGP1",
-         soeg=["almen læge i alt"], pr=100),
-    dict(id="boerneovervaeght", navn="Overvægt blandt 6-7-årige", tabel="LABY26",
-         soeg=["6-7 år"], pin_ialt=True),
     dict(id="hospital_short_taeller", navn="Sygehusophold, alle varigheder", tabel="SBR01",
          soeg=["alle varigheder"]),
     dict(id="hospital_short_naevner", navn="Sygehusophold, personer i alt", tabel="SBR01",
@@ -552,8 +546,6 @@ SIMPLE = [
          tid="alle_kvartaler", kraev_hele_aar=True),
 
     # --- Foreningsliv ---
-    dict(id="sports_facilities", navn="Idrætsfaciliteter", tabel="IDRFAC01",
-         helhed=True, pr=10000),
     dict(id="sports_membership", navn="Idrætsmedlemskaber", tabel="IDRAKT02",
          helhed=True, pin_ialt=True),
     # DRANST "I alt" summerer drift OG anlæg - platformen bruger kun drift
@@ -630,7 +622,9 @@ SIMPLE = [
 
 # Forhold: id_taeller / id_naevner slås sammen til platform-id, ratio = tæller/nævner*100
 FORHOLD = {
-    "hospital_short": ("hospital_short_taeller", "hospital_short_naevner"),
+    # hospital_short udgik som indikator sep. 2026 (r = 0,60 med hospital_long).
+    # Tælleren hentes stadig, fordi hospital_short_naevner er FÆLLES nævner for
+    # hospital_long - fjerner man hentningen, mister hospital_long sin pil.
     "educated_staff": ("educated_staff_taeller", "educated_staff_naevner"),
     "low_education": ("low_education_taeller", "low_education_naevner"),
     "education": ("education_taeller", "education_naevner"),
@@ -652,10 +646,10 @@ FORSKEL = {
 
 # Direkte platform-id'er der IKKE skal omregnes (allerede rå værdier fra SIMPLE)
 DIREKTE = {
-    "hjemsyg", "medicin", "laegekontakt", "boerneovervaeght", "class_size", "daycare_ratio",
+    "hjemsyg", "class_size", "daycare_ratio",
     "vulnerable_children", "child_notifications", "poverty_relative", "child_poverty", "gini",
     "housing_area", "voter_turnout_national", "voter_turnout", "music_school", "library_use",
-    "traffic_accidents", "crime_rate", "sports_facilities", "sports_membership", "sports_spending",
+    "traffic_accidents", "crime_rate", "sports_membership", "sports_spending",
     "life_expectancy", "disposable_income", "commute_distance",
     "naer_nitrogen", "naer_phosphorus", "vandindvinding", "areal_intensiv", "areal_bebygget",
     "cirkularitet_waste", "cirkularitet_recycling",

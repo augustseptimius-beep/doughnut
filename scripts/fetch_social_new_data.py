@@ -42,8 +42,8 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from dst_aar import (seneste_aar, seneste_periode, seneste_kvartal,  # noqa: E402
-                     hele_aar_kvartaler)
+from dst_aar import (seneste_aar, seneste_aar_liste, seneste_periode,  # noqa: E402
+                     seneste_kvartal, hele_aar_kvartaler)
 
 API_URL = "https://api.statbank.dk/v1/data"
 REQUEST_DELAY = 0.7  # sekunder mellem kald
@@ -212,17 +212,26 @@ def fetch_crime_rate() -> dict[str, float]:
 def fetch_traffic_accidents() -> tuple[dict[str, float], float | None]:
     """
     UHELDK1: Tilskadekomne og dræbte i færdselsuheld pr. kommune.
-    Henter UHELD='0' (personskade i alt) og summerer over alle transportmidler, aldre og køn.
-    Returnerer {kommune_kode: antal_tilskadekomne}, national_total.
+    Henter UHELD='0' (personskade i alt) og summerer over alle transportmidler,
+    aldre og køn.
+
+    TREÅRIGT GENNEMSNIT (indført sep. 2026). Ét års tal er ren støj i små
+    kommuner: Læsø lå på 118,8 pr. 100.000 i 2024, hvilket med kommunens
+    indbyggertal svarer til omkring to tilskadekomne. Én ulykke fra eller til
+    flyttede scoren med titalls point, og kommunen kunne ikke gøre noget ved
+    det. Samme greb som vejr_skader, der også bruger flere år.
+
+    Returnerer ({kommune_kode: gennemsnitligt antal pr. år}, national_total_pr_aar).
     """
-    print("Henter trafikulykker (UHELDK1)...")
+    aar = sorted(seneste_aar_liste("UHELDK1", 3, fallback=["2024", "2023", "2022"]))
+    print(f"Henter trafikulykker (UHELDK1, {aar[0]}-{aar[-1]}, treårigt gennemsnit)...")
     rows = api_post("UHELDK1", [
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "UHELD", "values": ["0"]},       # Personskade i alt
         {"code": "INDBLAND", "values": ["*"]},    # Alle transportmidler
         {"code": "ALDER", "values": ["*"]},        # Alle aldre
         {"code": "KØN", "values": ["*"]},          # Alle køn
-        {"code": "Tid", "values": [seneste_aar("UHELDK1", fallback="2024")]},
+        {"code": "Tid", "values": aar},
     ])
     sums: dict[str, float] = {}
     for row in rows:
@@ -232,28 +241,15 @@ def fetch_traffic_accidents() -> tuple[dict[str, float], float | None]:
             continue
         if kode in VALID_CODES or kode == "000":
             sums[kode] = sums.get(kode, 0) + val
-    # Prøv 2023 hvis 2024 er tom
-    if len(sums) < 50:
-        print("  Få resultater for 2024, prøver 2023...")
-        rows = api_post("UHELDK1", [
-            {"code": "OMRÅDE", "values": ["*"]},
-            {"code": "UHELD", "values": ["0"]},
-            {"code": "INDBLAND", "values": ["*"]},
-            {"code": "ALDER", "values": ["*"]},
-            {"code": "KØN", "values": ["*"]},
-            {"code": "Tid", "values": ["2023"]},
-        ])
-        sums = {}
-        for row in rows:
-            kode = row.get("OMRÅDE", "").strip()
-            val = parse_value(row.get("INDHOLD", ""))
-            if val is None or val == 0:
-                continue
-            if kode in VALID_CODES or kode == "000":
-                sums[kode] = sums.get(kode, 0) + val
-    national_total = sums.pop("000", None)
-    print(f"  {len(sums)} kommuner, landssamlet: {national_total:.0f}" if national_total else f"  {len(sums)} kommuner")
-    return sums, national_total
+
+    n = len(aar)
+    snit = {k: v / n for k, v in sums.items()}
+    national_total = snit.pop("000", None)
+    if national_total:
+        print(f"  {len(snit)} kommuner, landssamlet pr. år: {national_total:.0f}")
+    else:
+        print(f"  {len(snit)} kommuner")
+    return snit, national_total
 
 
 def fetch_population() -> dict[str, float]:

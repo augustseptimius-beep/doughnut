@@ -93,104 +93,202 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 550,Tønder,life_expectancy,98.77,80.6,år,2025,DST HISBK,social,sundhed
 360,Lolland,life_expectancy,96.32,78.6,år,2025,DST HISBK,social,sundhed
 482,Langeland,life_expectancy,99.26,81.0,år,2025,DST HISBK,social,sundhed
-201,Allerød,hospital_short,97.66,48.65,%,2025,DST SBR01,social,sundhed
-153,Brøndby,hospital_short,98.98,48.0,%,2025,DST SBR01,social,sundhed
-155,Dragør,hospital_short,95.21,49.9,%,2025,DST SBR01,social,sundhed
-175,Rødovre,hospital_short,101.69,46.72,%,2025,DST SBR01,social,sundhed
-190,Furesø,hospital_short,98.73,48.12,%,2025,DST SBR01,social,sundhed
-230,Rudersdal,hospital_short,98.0,48.48,%,2025,DST SBR01,social,sundhed
-167,Hvidovre,hospital_short,99.43,47.78,%,2025,DST SBR01,social,sundhed
-157,Gentofte,hospital_short,96.98,48.99,%,2025,DST SBR01,social,sundhed
-269,Solrød,hospital_short,92.97,51.1,%,2025,DST SBR01,social,sundhed
-746,Skanderborg,hospital_short,107.13,44.35,%,2025,DST SBR01,social,sundhed
-265,Roskilde,hospital_short,101.65,46.74,%,2025,DST SBR01,social,sundhed
-240,Egedal,hospital_short,98.77,48.1,%,2025,DST SBR01,social,sundhed
-151,Ballerup,hospital_short,98.24,48.36,%,2025,DST SBR01,social,sundhed
-223,Hørsholm,hospital_short,93.32,50.91,%,2025,DST SBR01,social,sundhed
-185,Tårnby,hospital_short,99.25,47.87,%,2025,DST SBR01,social,sundhed
-173,Lyngby-Taarbæk,hospital_short,102.52,46.34,%,2025,DST SBR01,social,sundhed
-350,Lejre,hospital_short,97.9,48.53,%,2025,DST SBR01,social,sundhed
-163,Herlev,hospital_short,99.46,47.77,%,2025,DST SBR01,social,sundhed
-210,Fredensborg,hospital_short,95.36,49.82,%,2025,DST SBR01,social,sundhed
-183,Ishøj,hospital_short,101.89,46.63,%,2025,DST SBR01,social,sundhed
-530,Billund,hospital_short,91.12,52.14,%,2025,DST SBR01,social,sundhed
-710,Favrskov,hospital_short,105.13,45.19,%,2025,DST SBR01,social,sundhed
-840,Rebild,hospital_short,100.44,47.3,%,2025,DST SBR01,social,sundhed
-147,Frederiksberg,hospital_short,104.1,45.64,%,2025,DST SBR01,social,sundhed
-187,Vallensbæk,hospital_short,101.73,46.7,%,2025,DST SBR01,social,sundhed
-253,Greve,hospital_short,101.15,46.97,%,2025,DST SBR01,social,sundhed
-259,Køge,hospital_short,98.73,48.12,%,2025,DST SBR01,social,sundhed
-159,Gladsaxe,hospital_short,102.35,46.42,%,2025,DST SBR01,social,sundhed
-217,Helsingør,hospital_short,89.95,52.82,%,2025,DST SBR01,social,sundhed
-825,Læsø,hospital_short,98.47,48.25,%,2025,DST SBR01,social,sundhed
-250,Frederikssund,hospital_short,90.93,52.25,%,2025,DST SBR01,social,sundhed
-661,Holstebro,hospital_short,101.15,46.97,%,2025,DST SBR01,social,sundhed
-657,Herning,hospital_short,101.19,46.95,%,2025,DST SBR01,social,sundhed
-773,Morsø,hospital_short,96.92,49.02,%,2025,DST SBR01,social,sundhed
-260,Halsnæs,hospital_short,91.31,52.03,%,2025,DST SBR01,social,sundhed
-492,Ærø,hospital_short,90.2,52.67,%,2025,DST SBR01,social,sundhed
-219,Hillerød,hospital_short,93.08,51.04,%,2025,DST SBR01,social,sundhed
-340,Sorø,hospital_short,94.66,50.19,%,2025,DST SBR01,social,sundhed
-561,Esbjerg,hospital_short,90.95,52.24,%,2025,DST SBR01,social,sundhed
-740,Silkeborg,hospital_short,100.61,47.22,%,2025,DST SBR01,social,sundhed
-563,Fanø,hospital_short,91.45,51.95,%,2025,DST SBR01,social,sundhed
-615,Horsens,hospital_short,106.24,44.72,%,2025,DST SBR01,social,sundhed
-316,Holbæk,hospital_short,96.27,49.35,%,2025,DST SBR01,social,sundhed
-607,Fredericia,hospital_short,88.57,53.64,%,2025,DST SBR01,social,sundhed
-766,Hedensted,hospital_short,102.11,46.53,%,2025,DST SBR01,social,sundhed
-410,Middelfart,hospital_short,88.62,53.61,%,2025,DST SBR01,social,sundhed
-851,Aalborg,hospital_short,105.34,45.1,%,2025,DST SBR01,social,sundhed
-370,Næstved,hospital_short,95.0,50.01,%,2025,DST SBR01,social,sundhed
-329,Ringsted,hospital_short,101.93,46.61,%,2025,DST SBR01,social,sundhed
-810,Brønderslev,hospital_short,99.21,47.89,%,2025,DST SBR01,social,sundhed
-751,Aarhus,hospital_short,120.4,39.46,%,2025,DST SBR01,social,sundhed
-727,Odder,hospital_short,107.63,44.14,%,2025,DST SBR01,social,sundhed
-813,Frederikshavn,hospital_short,93.84,50.63,%,2025,DST SBR01,social,sundhed
-336,Stevns,hospital_short,97.22,48.87,%,2025,DST SBR01,social,sundhed
-270,Gribskov,hospital_short,89.04,53.36,%,2025,DST SBR01,social,sundhed
-161,Glostrup,hospital_short,99.14,47.92,%,2025,DST SBR01,social,sundhed
-860,Hjørring,hospital_short,92.16,51.55,%,2025,DST SBR01,social,sundhed
-479,Svendborg,hospital_short,94.04,50.52,%,2025,DST SBR01,social,sundhed
-165,Albertslund,hospital_short,94.62,50.21,%,2025,DST SBR01,social,sundhed
-791,Viborg,hospital_short,96.43,49.27,%,2025,DST SBR01,social,sundhed
-706,Syddjurs,hospital_short,103.67,45.83,%,2025,DST SBR01,social,sundhed
-480,Nordfyns,hospital_short,91.45,51.95,%,2025,DST SBR01,social,sundhed
-440,Kerteminde,hospital_short,90.34,52.59,%,2025,DST SBR01,social,sundhed
-101,København,hospital_short,113.66,41.8,%,2025,DST SBR01,social,sundhed
-630,Vejle,hospital_short,96.02,49.48,%,2025,DST SBR01,social,sundhed
-760,Ringkøbing-Skjern,hospital_short,100.57,47.24,%,2025,DST SBR01,social,sundhed
-730,Randers,hospital_short,99.14,47.92,%,2025,DST SBR01,social,sundhed
-430,Faaborg-Midtfyn,hospital_short,95.84,49.57,%,2025,DST SBR01,social,sundhed
-320,Faxe,hospital_short,97.48,48.74,%,2025,DST SBR01,social,sundhed
-169,Høje-Taastrup,hospital_short,101.95,46.6,%,2025,DST SBR01,social,sundhed
-573,Varde,hospital_short,97.42,48.77,%,2025,DST SBR01,social,sundhed
-621,Kolding,hospital_short,95.04,49.99,%,2025,DST SBR01,social,sundhed
-580,Aabenraa,hospital_short,90.95,52.24,%,2025,DST SBR01,social,sundhed
-787,Thisted,hospital_short,93.97,50.56,%,2025,DST SBR01,social,sundhed
-420,Assens,hospital_short,92.11,51.58,%,2025,DST SBR01,social,sundhed
-756,Ikast-Brande,hospital_short,102.61,46.3,%,2025,DST SBR01,social,sundhed
-461,Odense,hospital_short,102.0,46.58,%,2025,DST SBR01,social,sundhed
-779,Skive,hospital_short,96.74,49.11,%,2025,DST SBR01,social,sundhed
-450,Nyborg,hospital_short,92.38,51.43,%,2025,DST SBR01,social,sundhed
-846,Mariagerfjord,hospital_short,96.25,49.36,%,2025,DST SBR01,social,sundhed
-540,Sønderborg,hospital_short,88.16,53.89,%,2025,DST SBR01,social,sundhed
-820,Vesthimmerlands,hospital_short,96.45,49.26,%,2025,DST SBR01,social,sundhed
-400,Bornholm,hospital_short,82.6,57.52,%,2025,DST SBR01,social,sundhed
-510,Haderslev,hospital_short,91.75,51.78,%,2025,DST SBR01,social,sundhed
-665,Lemvig,hospital_short,98.28,48.34,%,2025,DST SBR01,social,sundhed
-575,Vejen,hospital_short,92.4,51.42,%,2025,DST SBR01,social,sundhed
-671,Struer,hospital_short,94.14,50.47,%,2025,DST SBR01,social,sundhed
-707,Norddjurs,hospital_short,102.92,46.16,%,2025,DST SBR01,social,sundhed
-330,Slagelse,hospital_short,91.03,52.19,%,2025,DST SBR01,social,sundhed
-306,Odsherred,hospital_short,91.49,51.93,%,2025,DST SBR01,social,sundhed
-376,Guldborgsund,hospital_short,92.52,51.35,%,2025,DST SBR01,social,sundhed
-326,Kalundborg,hospital_short,95.67,49.66,%,2025,DST SBR01,social,sundhed
-849,Jammerbugt,hospital_short,94.68,50.18,%,2025,DST SBR01,social,sundhed
-390,Vordingborg,hospital_short,93.95,50.57,%,2025,DST SBR01,social,sundhed
-550,Tønder,hospital_short,92.65,51.28,%,2025,DST SBR01,social,sundhed
-360,Lolland,hospital_short,91.14,52.13,%,2025,DST SBR01,social,sundhed
-741,Samsø,hospital_short,97.2,48.88,%,2025,DST SBR01,social,sundhed
-482,Langeland,hospital_short,85.98,55.26,%,2025,DST SBR01,social,sundhed
+201,Allerød,selvvurderet_helbred,104.18,85.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+153,Brøndby,selvvurderet_helbred,92.0,75.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+155,Dragør,selvvurderet_helbred,102.48,84.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+175,Rødovre,selvvurderet_helbred,101.87,83.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+190,Furesø,selvvurderet_helbred,104.42,85.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+230,Rudersdal,selvvurderet_helbred,106.62,87.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+167,Hvidovre,selvvurderet_helbred,98.82,81.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+157,Gentofte,selvvurderet_helbred,105.77,86.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+269,Solrød,selvvurderet_helbred,100.28,82.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+746,Skanderborg,selvvurderet_helbred,102.72,84.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+265,Roskilde,selvvurderet_helbred,101.01,82.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+240,Egedal,selvvurderet_helbred,104.06,85.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+151,Ballerup,selvvurderet_helbred,97.48,80.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+223,Hørsholm,selvvurderet_helbred,103.69,85.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+185,Tårnby,selvvurderet_helbred,98.33,80.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+173,Lyngby-Taarbæk,selvvurderet_helbred,105.4,86.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+350,Lejre,selvvurderet_helbred,101.13,83.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+163,Herlev,selvvurderet_helbred,99.43,81.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+210,Fredensborg,selvvurderet_helbred,100.65,82.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+183,Ishøj,selvvurderet_helbred,95.16,78.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+530,Billund,selvvurderet_helbred,98.45,80.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+710,Favrskov,selvvurderet_helbred,102.48,84.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+840,Rebild,selvvurderet_helbred,102.48,84.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+147,Frederiksberg,selvvurderet_helbred,104.42,85.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+187,Vallensbæk,selvvurderet_helbred,105.89,86.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+253,Greve,selvvurderet_helbred,99.79,81.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+259,Køge,selvvurderet_helbred,97.72,80.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+159,Gladsaxe,selvvurderet_helbred,100.65,82.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+217,Helsingør,selvvurderet_helbred,99.06,81.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+825,Læsø,selvvurderet_helbred,97.85,80.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+250,Frederikssund,selvvurderet_helbred,96.14,78.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+661,Holstebro,selvvurderet_helbred,100.77,82.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+657,Herning,selvvurderet_helbred,100.77,82.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+773,Morsø,selvvurderet_helbred,97.72,80.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+260,Halsnæs,selvvurderet_helbred,92.85,76.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+492,Ærø,selvvurderet_helbred,99.31,81.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+219,Hillerød,selvvurderet_helbred,101.26,83.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+340,Sorø,selvvurderet_helbred,97.48,80.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+561,Esbjerg,selvvurderet_helbred,96.5,79.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+740,Silkeborg,selvvurderet_helbred,99.67,81.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+563,Fanø,selvvurderet_helbred,102.35,84.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+615,Horsens,selvvurderet_helbred,100.77,82.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+316,Holbæk,selvvurderet_helbred,98.21,80.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+607,Fredericia,selvvurderet_helbred,97.11,79.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+766,Hedensted,selvvurderet_helbred,100.16,82.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+410,Middelfart,selvvurderet_helbred,103.21,84.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+851,Aalborg,selvvurderet_helbred,100.53,82.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+370,Næstved,selvvurderet_helbred,97.85,80.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+329,Ringsted,selvvurderet_helbred,97.48,80.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+810,Brønderslev,selvvurderet_helbred,98.21,80.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+751,Aarhus,selvvurderet_helbred,102.35,84.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+727,Odder,selvvurderet_helbred,99.31,81.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+813,Frederikshavn,selvvurderet_helbred,96.5,79.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+336,Stevns,selvvurderet_helbred,101.38,83.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+270,Gribskov,selvvurderet_helbred,98.7,81.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+161,Glostrup,selvvurderet_helbred,98.45,80.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+860,Hjørring,selvvurderet_helbred,96.75,79.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+479,Svendborg,selvvurderet_helbred,101.5,83.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+165,Albertslund,selvvurderet_helbred,94.07,77.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+791,Viborg,selvvurderet_helbred,101.13,83.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+706,Syddjurs,selvvurderet_helbred,101.5,83.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+480,Nordfyns,selvvurderet_helbred,98.7,81.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+440,Kerteminde,selvvurderet_helbred,96.38,79.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+101,København,selvvurderet_helbred,104.06,85.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+630,Vejle,selvvurderet_helbred,99.31,81.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+760,Ringkøbing-Skjern,selvvurderet_helbred,99.55,81.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+730,Randers,selvvurderet_helbred,98.7,81.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+430,Faaborg-Midtfyn,selvvurderet_helbred,98.82,81.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+320,Faxe,selvvurderet_helbred,94.92,77.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+169,Høje-Taastrup,selvvurderet_helbred,100.53,82.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+573,Varde,selvvurderet_helbred,100.16,82.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+621,Kolding,selvvurderet_helbred,97.85,80.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+580,Aabenraa,selvvurderet_helbred,98.82,81.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+787,Thisted,selvvurderet_helbred,97.24,79.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+420,Assens,selvvurderet_helbred,97.36,79.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+756,Ikast-Brande,selvvurderet_helbred,99.31,81.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+461,Odense,selvvurderet_helbred,100.77,82.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+779,Skive,selvvurderet_helbred,97.72,80.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+450,Nyborg,selvvurderet_helbred,98.82,81.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+846,Mariagerfjord,selvvurderet_helbred,99.06,81.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+540,Sønderborg,selvvurderet_helbred,99.79,81.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+820,Vesthimmerlands,selvvurderet_helbred,95.41,78.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+400,Bornholm,selvvurderet_helbred,95.9,78.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+510,Haderslev,selvvurderet_helbred,98.94,81.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+665,Lemvig,selvvurderet_helbred,100.04,82.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+575,Vejen,selvvurderet_helbred,98.09,80.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+671,Struer,selvvurderet_helbred,95.77,78.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+707,Norddjurs,selvvurderet_helbred,94.8,77.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+330,Slagelse,selvvurderet_helbred,95.9,78.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+306,Odsherred,selvvurderet_helbred,94.68,77.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+376,Guldborgsund,selvvurderet_helbred,94.31,77.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+326,Kalundborg,selvvurderet_helbred,93.21,76.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+849,Jammerbugt,selvvurderet_helbred,95.9,78.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+390,Vordingborg,selvvurderet_helbred,90.53,74.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+550,Tønder,selvvurderet_helbred,96.99,79.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+360,Lolland,selvvurderet_helbred,93.95,77.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+741,Samsø,selvvurderet_helbred,99.31,81.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+482,Langeland,selvvurderet_helbred,90.78,74.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+201,Allerød,mentalt_helbred,143.51,11.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+153,Brøndby,mentalt_helbred,74.79,21.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+155,Dragør,mentalt_helbred,110.62,14.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+175,Rødovre,mentalt_helbred,109.86,14.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+190,Furesø,mentalt_helbred,116.27,13.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+230,Rudersdal,mentalt_helbred,127.43,12.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+167,Hvidovre,mentalt_helbred,95.39,16.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+157,Gentofte,mentalt_helbred,132.74,12.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+269,Solrød,mentalt_helbred,112.97,14.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+746,Skanderborg,mentalt_helbred,133.86,11.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+265,Roskilde,mentalt_helbred,92.08,17.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+240,Egedal,mentalt_helbred,115.43,13.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+151,Ballerup,mentalt_helbred,86.1,18.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+223,Hørsholm,mentalt_helbred,150.0,10.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+185,Tårnby,mentalt_helbred,103.44,15.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+173,Lyngby-Taarbæk,mentalt_helbred,123.48,12.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+350,Lejre,mentalt_helbred,113.78,14.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+163,Herlev,mentalt_helbred,98.94,16.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+210,Fredensborg,mentalt_helbred,107.63,14.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+183,Ishøj,mentalt_helbred,84.28,18.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+530,Billund,mentalt_helbred,106.91,14.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+710,Favrskov,mentalt_helbred,116.27,13.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+840,Rebild,mentalt_helbred,131.65,12.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+147,Frederiksberg,mentalt_helbred,104.11,15.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+187,Vallensbæk,mentalt_helbred,114.6,13.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+253,Greve,mentalt_helbred,96.54,16.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+259,Køge,mentalt_helbred,104.11,15.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+159,Gladsaxe,mentalt_helbred,93.7,17.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+217,Helsingør,mentalt_helbred,106.2,15.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+825,Læsø,mentalt_helbred,139.73,11.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+250,Frederikssund,mentalt_helbred,104.8,15.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+661,Holstebro,mentalt_helbred,117.13,13.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+657,Herning,mentalt_helbred,106.91,14.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+773,Morsø,mentalt_helbred,132.74,12.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+260,Halsnæs,mentalt_helbred,100.18,15.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+492,Ærø,mentalt_helbred,129.51,12.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+219,Hillerød,mentalt_helbred,93.7,17.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+340,Sorø,mentalt_helbred,109.86,14.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+561,Esbjerg,mentalt_helbred,85.64,18.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+740,Silkeborg,mentalt_helbred,121.6,13.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+563,Fanø,mentalt_helbred,148.87,10.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+615,Horsens,mentalt_helbred,104.8,15.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+316,Holbæk,mentalt_helbred,97.13,16.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+607,Fredericia,mentalt_helbred,89.49,17.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+766,Hedensted,mentalt_helbred,118.0,13.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+410,Middelfart,mentalt_helbred,118.0,13.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+851,Aalborg,mentalt_helbred,92.61,17.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+370,Næstved,mentalt_helbred,87.52,18.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+329,Ringsted,mentalt_helbred,110.62,14.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+810,Brønderslev,mentalt_helbred,108.36,14.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+751,Aarhus,mentalt_helbred,87.52,18.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+727,Odder,mentalt_helbred,102.11,15.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+813,Frederikshavn,mentalt_helbred,108.36,14.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+336,Stevns,mentalt_helbred,102.11,15.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+270,Gribskov,mentalt_helbred,109.11,14.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+161,Glostrup,mentalt_helbred,93.15,17.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+860,Hjørring,mentalt_helbred,107.63,14.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+479,Svendborg,mentalt_helbred,118.0,13.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+165,Albertslund,mentalt_helbred,77.33,20.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+791,Viborg,mentalt_helbred,112.18,14.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+706,Syddjurs,mentalt_helbred,106.91,14.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+480,Nordfyns,mentalt_helbred,104.8,15.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+440,Kerteminde,mentalt_helbred,101.46,15.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+101,København,mentalt_helbred,84.73,18.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+630,Vejle,mentalt_helbred,104.8,15.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+760,Ringkøbing-Skjern,mentalt_helbred,142.23,11.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+730,Randers,mentalt_helbred,92.08,17.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+430,Faaborg-Midtfyn,mentalt_helbred,105.49,15.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+320,Faxe,mentalt_helbred,93.15,17.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+169,Høje-Taastrup,mentalt_helbred,94.82,16.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+573,Varde,mentalt_helbred,132.74,12.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+621,Kolding,mentalt_helbred,101.46,15.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+580,Aabenraa,mentalt_helbred,111.39,14.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+787,Thisted,mentalt_helbred,132.74,12.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+420,Assens,mentalt_helbred,115.43,13.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+756,Ikast-Brande,mentalt_helbred,116.27,13.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+461,Odense,mentalt_helbred,93.7,17.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+779,Skive,mentalt_helbred,102.77,15.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+450,Nyborg,mentalt_helbred,115.43,13.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+846,Mariagerfjord,mentalt_helbred,112.18,14.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+540,Sønderborg,mentalt_helbred,112.97,14.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+820,Vesthimmerlands,mentalt_helbred,102.11,15.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+400,Bornholm,mentalt_helbred,114.6,13.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+510,Haderslev,mentalt_helbred,103.44,15.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+665,Lemvig,mentalt_helbred,123.48,12.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+575,Vejen,mentalt_helbred,102.77,15.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+671,Struer,mentalt_helbred,108.36,14.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+707,Norddjurs,mentalt_helbred,107.63,14.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+330,Slagelse,mentalt_helbred,87.05,18.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+306,Odsherred,mentalt_helbred,121.6,13.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+376,Guldborgsund,mentalt_helbred,98.33,16.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+326,Kalundborg,mentalt_helbred,89.49,17.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+849,Jammerbugt,mentalt_helbred,105.49,15.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+390,Vordingborg,mentalt_helbred,87.05,18.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+550,Tønder,mentalt_helbred,118.0,13.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+360,Lolland,mentalt_helbred,91.55,17.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+741,Samsø,mentalt_helbred,122.53,13.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+482,Langeland,mentalt_helbred,106.91,14.9,%,2025,Sundhedsprofilen 2025,social,sundhed
 201,Allerød,hospital_long,107.82,7.42,%,2025,DST SBR01,social,sundhed
 153,Brøndby,hospital_long,86.86,9.21,%,2025,DST SBR01,social,sundhed
 155,Dragør,hospital_long,91.43,8.75,%,2025,DST SBR01,social,sundhed
@@ -289,395 +387,6 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,hospital_long,74.14,10.79,%,2025,DST SBR01,social,sundhed
 741,Samsø,hospital_long,72.73,11.0,%,2025,DST SBR01,social,sundhed
 482,Langeland,hospital_long,85.84,9.32,%,2025,DST SBR01,social,sundhed
-201,Allerød,gp_distance,150.0,1.6,km,2024,DST SUNDAF01,social,sundhed
-153,Brøndby,gp_distance,150.0,0.8,km,2024,DST SUNDAF01,social,sundhed
-155,Dragør,gp_distance,150.0,1.3,km,2024,DST SUNDAF01,social,sundhed
-175,Rødovre,gp_distance,150.0,1.1,km,2024,DST SUNDAF01,social,sundhed
-190,Furesø,gp_distance,150.0,1.6,km,2024,DST SUNDAF01,social,sundhed
-230,Rudersdal,gp_distance,133.33,1.8,km,2024,DST SUNDAF01,social,sundhed
-167,Hvidovre,gp_distance,150.0,0.9,km,2024,DST SUNDAF01,social,sundhed
-157,Gentofte,gp_distance,150.0,0.8,km,2024,DST SUNDAF01,social,sundhed
-269,Solrød,gp_distance,150.0,1.5,km,2024,DST SUNDAF01,social,sundhed
-746,Skanderborg,gp_distance,82.76,2.9,km,2024,DST SUNDAF01,social,sundhed
-265,Roskilde,gp_distance,126.32,1.9,km,2024,DST SUNDAF01,social,sundhed
-240,Egedal,gp_distance,141.18,1.7,km,2024,DST SUNDAF01,social,sundhed
-151,Ballerup,gp_distance,150.0,1.2,km,2024,DST SUNDAF01,social,sundhed
-223,Hørsholm,gp_distance,150.0,1.3,km,2024,DST SUNDAF01,social,sundhed
-185,Tårnby,gp_distance,150.0,0.8,km,2024,DST SUNDAF01,social,sundhed
-173,Lyngby-Taarbæk,gp_distance,150.0,1.1,km,2024,DST SUNDAF01,social,sundhed
-350,Lejre,gp_distance,61.54,3.9,km,2024,DST SUNDAF01,social,sundhed
-163,Herlev,gp_distance,120.0,2.0,km,2024,DST SUNDAF01,social,sundhed
-210,Fredensborg,gp_distance,150.0,1.5,km,2024,DST SUNDAF01,social,sundhed
-183,Ishøj,gp_distance,150.0,1.2,km,2024,DST SUNDAF01,social,sundhed
-530,Billund,gp_distance,88.89,2.7,km,2024,DST SUNDAF01,social,sundhed
-710,Favrskov,gp_distance,85.71,2.8,km,2024,DST SUNDAF01,social,sundhed
-840,Rebild,gp_distance,88.89,2.7,km,2024,DST SUNDAF01,social,sundhed
-147,Frederiksberg,gp_distance,150.0,0.5,km,2024,DST SUNDAF01,social,sundhed
-187,Vallensbæk,gp_distance,150.0,1.0,km,2024,DST SUNDAF01,social,sundhed
-253,Greve,gp_distance,141.18,1.7,km,2024,DST SUNDAF01,social,sundhed
-259,Køge,gp_distance,100.0,2.4,km,2024,DST SUNDAF01,social,sundhed
-159,Gladsaxe,gp_distance,150.0,1.1,km,2024,DST SUNDAF01,social,sundhed
-217,Helsingør,gp_distance,150.0,1.3,km,2024,DST SUNDAF01,social,sundhed
-825,Læsø,gp_distance,45.28,5.3,km,2024,DST SUNDAF01,social,sundhed
-250,Frederikssund,gp_distance,92.31,2.6,km,2024,DST SUNDAF01,social,sundhed
-661,Holstebro,gp_distance,63.16,3.8,km,2024,DST SUNDAF01,social,sundhed
-657,Herning,gp_distance,64.86,3.7,km,2024,DST SUNDAF01,social,sundhed
-773,Morsø,gp_distance,45.28,5.3,km,2024,DST SUNDAF01,social,sundhed
-260,Halsnæs,gp_distance,85.71,2.8,km,2024,DST SUNDAF01,social,sundhed
-492,Ærø,gp_distance,58.54,4.1,km,2024,DST SUNDAF01,social,sundhed
-219,Hillerød,gp_distance,88.89,2.7,km,2024,DST SUNDAF01,social,sundhed
-340,Sorø,gp_distance,77.42,3.1,km,2024,DST SUNDAF01,social,sundhed
-561,Esbjerg,gp_distance,92.31,2.6,km,2024,DST SUNDAF01,social,sundhed
-740,Silkeborg,gp_distance,75.0,3.2,km,2024,DST SUNDAF01,social,sundhed
-563,Fanø,gp_distance,92.31,2.6,km,2024,DST SUNDAF01,social,sundhed
-615,Horsens,gp_distance,75.0,3.2,km,2024,DST SUNDAF01,social,sundhed
-316,Holbæk,gp_distance,75.0,3.2,km,2024,DST SUNDAF01,social,sundhed
-607,Fredericia,gp_distance,120.0,2.0,km,2024,DST SUNDAF01,social,sundhed
-766,Hedensted,gp_distance,58.54,4.1,km,2024,DST SUNDAF01,social,sundhed
-410,Middelfart,gp_distance,100.0,2.4,km,2024,DST SUNDAF01,social,sundhed
-851,Aalborg,gp_distance,114.29,2.1,km,2024,DST SUNDAF01,social,sundhed
-370,Næstved,gp_distance,77.42,3.1,km,2024,DST SUNDAF01,social,sundhed
-329,Ringsted,gp_distance,80.0,3.0,km,2024,DST SUNDAF01,social,sundhed
-810,Brønderslev,gp_distance,75.0,3.2,km,2024,DST SUNDAF01,social,sundhed
-751,Aarhus,gp_distance,150.0,1.3,km,2024,DST SUNDAF01,social,sundhed
-727,Odder,gp_distance,53.33,4.5,km,2024,DST SUNDAF01,social,sundhed
-813,Frederikshavn,gp_distance,80.0,3.0,km,2024,DST SUNDAF01,social,sundhed
-336,Stevns,gp_distance,66.67,3.6,km,2024,DST SUNDAF01,social,sundhed
-270,Gribskov,gp_distance,77.42,3.1,km,2024,DST SUNDAF01,social,sundhed
-161,Glostrup,gp_distance,150.0,1.4,km,2024,DST SUNDAF01,social,sundhed
-860,Hjørring,gp_distance,66.67,3.6,km,2024,DST SUNDAF01,social,sundhed
-479,Svendborg,gp_distance,75.0,3.2,km,2024,DST SUNDAF01,social,sundhed
-165,Albertslund,gp_distance,150.0,1.3,km,2024,DST SUNDAF01,social,sundhed
-791,Viborg,gp_distance,70.59,3.4,km,2024,DST SUNDAF01,social,sundhed
-706,Syddjurs,gp_distance,66.67,3.6,km,2024,DST SUNDAF01,social,sundhed
-480,Nordfyns,gp_distance,75.0,3.2,km,2024,DST SUNDAF01,social,sundhed
-440,Kerteminde,gp_distance,85.71,2.8,km,2024,DST SUNDAF01,social,sundhed
-101,København,gp_distance,150.0,0.6,km,2024,DST SUNDAF01,social,sundhed
-630,Vejle,gp_distance,80.0,3.0,km,2024,DST SUNDAF01,social,sundhed
-760,Ringkøbing-Skjern,gp_distance,61.54,3.9,km,2024,DST SUNDAF01,social,sundhed
-730,Randers,gp_distance,82.76,2.9,km,2024,DST SUNDAF01,social,sundhed
-430,Faaborg-Midtfyn,gp_distance,70.59,3.4,km,2024,DST SUNDAF01,social,sundhed
-320,Faxe,gp_distance,82.76,2.9,km,2024,DST SUNDAF01,social,sundhed
-169,Høje-Taastrup,gp_distance,150.0,1.5,km,2024,DST SUNDAF01,social,sundhed
-573,Varde,gp_distance,57.14,4.2,km,2024,DST SUNDAF01,social,sundhed
-621,Kolding,gp_distance,96.0,2.5,km,2024,DST SUNDAF01,social,sundhed
-580,Aabenraa,gp_distance,66.67,3.6,km,2024,DST SUNDAF01,social,sundhed
-787,Thisted,gp_distance,47.06,5.1,km,2024,DST SUNDAF01,social,sundhed
-420,Assens,gp_distance,75.0,3.2,km,2024,DST SUNDAF01,social,sundhed
-756,Ikast-Brande,gp_distance,82.76,2.9,km,2024,DST SUNDAF01,social,sundhed
-461,Odense,gp_distance,133.33,1.8,km,2024,DST SUNDAF01,social,sundhed
-779,Skive,gp_distance,60.0,4.0,km,2024,DST SUNDAF01,social,sundhed
-450,Nyborg,gp_distance,88.89,2.7,km,2024,DST SUNDAF01,social,sundhed
-846,Mariagerfjord,gp_distance,75.0,3.2,km,2024,DST SUNDAF01,social,sundhed
-540,Sønderborg,gp_distance,109.09,2.2,km,2024,DST SUNDAF01,social,sundhed
-820,Vesthimmerlands,gp_distance,63.16,3.8,km,2024,DST SUNDAF01,social,sundhed
-400,Bornholm,gp_distance,75.0,3.2,km,2024,DST SUNDAF01,social,sundhed
-510,Haderslev,gp_distance,61.54,3.9,km,2024,DST SUNDAF01,social,sundhed
-665,Lemvig,gp_distance,48.98,4.9,km,2024,DST SUNDAF01,social,sundhed
-575,Vejen,gp_distance,77.42,3.1,km,2024,DST SUNDAF01,social,sundhed
-671,Struer,gp_distance,70.59,3.4,km,2024,DST SUNDAF01,social,sundhed
-707,Norddjurs,gp_distance,70.59,3.4,km,2024,DST SUNDAF01,social,sundhed
-330,Slagelse,gp_distance,72.73,3.3,km,2024,DST SUNDAF01,social,sundhed
-306,Odsherred,gp_distance,55.81,4.3,km,2024,DST SUNDAF01,social,sundhed
-376,Guldborgsund,gp_distance,58.54,4.1,km,2024,DST SUNDAF01,social,sundhed
-326,Kalundborg,gp_distance,53.33,4.5,km,2024,DST SUNDAF01,social,sundhed
-849,Jammerbugt,gp_distance,61.54,3.9,km,2024,DST SUNDAF01,social,sundhed
-390,Vordingborg,gp_distance,68.57,3.5,km,2024,DST SUNDAF01,social,sundhed
-550,Tønder,gp_distance,66.67,3.6,km,2024,DST SUNDAF01,social,sundhed
-360,Lolland,gp_distance,52.17,4.6,km,2024,DST SUNDAF01,social,sundhed
-741,Samsø,gp_distance,52.17,4.6,km,2024,DST SUNDAF01,social,sundhed
-482,Langeland,gp_distance,27.59,8.7,km,2024,DST SUNDAF01,social,sundhed
-201,Allerød,medicin,115.75,56.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-153,Brøndby,medicin,130.28,50.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-155,Dragør,medicin,140.04,46.7,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-175,Rødovre,medicin,123.4,53.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-190,Furesø,medicin,120.66,54.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-230,Rudersdal,medicin,125.77,52.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-167,Hvidovre,medicin,128.49,50.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-157,Gentofte,medicin,134.85,48.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-269,Solrød,medicin,150.0,42.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-746,Skanderborg,medicin,96.6,67.7,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-265,Roskilde,medicin,134.02,48.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-240,Egedal,medicin,146.31,44.7,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-151,Ballerup,medicin,99.39,65.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-223,Hørsholm,medicin,131.06,49.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-185,Tårnby,medicin,137.68,47.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-173,Lyngby-Taarbæk,medicin,123.4,53.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-350,Lejre,medicin,129.76,50.4,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-163,Herlev,medicin,101.55,64.4,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-210,Fredensborg,medicin,114.34,57.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-183,Ishøj,medicin,138.56,47.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-530,Billund,medicin,92.37,70.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-710,Favrskov,medicin,91.85,71.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-840,Rebild,medicin,120.22,54.4,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-147,Frederiksberg,medicin,126.01,51.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-187,Vallensbæk,medicin,150.0,36.7,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-253,Greve,medicin,135.97,48.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-259,Køge,medicin,128.74,50.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-159,Gladsaxe,medicin,125.53,52.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-217,Helsingør,medicin,103.97,62.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-825,Læsø,medicin,115.96,56.4,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-250,Frederikssund,medicin,102.67,63.7,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-661,Holstebro,medicin,77.95,83.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-657,Herning,medicin,80.25,81.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-773,Morsø,medicin,53.13,123.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-260,Halsnæs,medicin,104.47,62.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-492,Ærø,medicin,84.28,77.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-219,Hillerød,medicin,101.87,64.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-340,Sorø,medicin,83.21,78.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-561,Esbjerg,medicin,104.64,62.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-740,Silkeborg,medicin,90.08,72.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-563,Fanø,medicin,150.0,39.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-615,Horsens,medicin,91.09,71.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-316,Holbæk,medicin,116.79,56.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-607,Fredericia,medicin,89.96,72.7,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-766,Hedensted,medicin,98.79,66.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-410,Middelfart,medicin,104.98,62.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-851,Aalborg,medicin,91.73,71.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-370,Næstved,medicin,100.46,65.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-329,Ringsted,medicin,131.85,49.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-810,Brønderslev,medicin,95.89,68.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-751,Aarhus,medicin,85.49,76.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-727,Odder,medicin,78.51,83.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-813,Frederikshavn,medicin,89.71,72.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-336,Stevns,medicin,127.98,51.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-270,Gribskov,medicin,109.0,60.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-161,Glostrup,medicin,106.34,61.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-860,Hjørring,medicin,83.85,78.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-479,Svendborg,medicin,89.1,73.4,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-165,Albertslund,medicin,108.1,60.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-791,Viborg,medicin,77.67,84.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-706,Syddjurs,medicin,79.95,81.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-480,Nordfyns,medicin,115.75,56.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-440,Kerteminde,medicin,98.79,66.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-101,København,medicin,128.24,51.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-630,Vejle,medicin,104.14,62.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-760,Ringkøbing-Skjern,medicin,78.42,83.4,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-730,Randers,medicin,78.04,83.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-430,Faaborg-Midtfyn,medicin,110.85,59.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-320,Faxe,medicin,109.0,60.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-169,Høje-Taastrup,medicin,150.0,43.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-573,Varde,medicin,102.51,63.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-621,Kolding,medicin,101.08,64.7,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-580,Aabenraa,medicin,82.68,79.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-787,Thisted,medicin,79.18,82.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-420,Assens,medicin,80.15,81.6,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-756,Ikast-Brande,medicin,84.61,77.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-461,Odense,medicin,118.48,55.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-779,Skive,medicin,73.48,89.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-450,Nyborg,medicin,98.35,66.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-846,Mariagerfjord,medicin,106.69,61.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-540,Sønderborg,medicin,81.65,80.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-820,Vesthimmerlands,medicin,87.2,75.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-400,Bornholm,medicin,75.87,86.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-510,Haderslev,medicin,64.43,101.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-665,Lemvig,medicin,98.64,66.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-575,Vejen,medicin,80.54,81.2,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-671,Struer,medicin,76.58,85.4,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-707,Norddjurs,medicin,62.88,104.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-330,Slagelse,medicin,90.71,72.1,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-306,Odsherred,medicin,104.64,62.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-376,Guldborgsund,medicin,98.35,66.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-326,Kalundborg,medicin,89.22,73.3,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-849,Jammerbugt,medicin,96.18,68.0,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-390,Vordingborg,medicin,97.76,66.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-550,Tønder,medicin,73.65,88.8,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-360,Lolland,medicin,84.39,77.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-741,Samsø,medicin,101.4,64.5,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-482,Langeland,medicin,83.95,77.9,recepter/100 borgere,2024,DST MEDI1,social,sundhed
-201,Allerød,laegekontakt,98.16,83.63,%,2025,DST SYGP1,social,sundhed
-153,Brøndby,laegekontakt,94.67,80.66,%,2025,DST SYGP1,social,sundhed
-155,Dragør,laegekontakt,99.2,84.52,%,2025,DST SYGP1,social,sundhed
-175,Rødovre,laegekontakt,96.67,82.36,%,2025,DST SYGP1,social,sundhed
-190,Furesø,laegekontakt,97.91,83.42,%,2025,DST SYGP1,social,sundhed
-230,Rudersdal,laegekontakt,97.55,83.11,%,2025,DST SYGP1,social,sundhed
-167,Hvidovre,laegekontakt,96.29,82.04,%,2025,DST SYGP1,social,sundhed
-157,Gentofte,laegekontakt,96.48,82.2,%,2025,DST SYGP1,social,sundhed
-269,Solrød,laegekontakt,98.39,83.83,%,2025,DST SYGP1,social,sundhed
-746,Skanderborg,laegekontakt,99.39,84.68,%,2025,DST SYGP1,social,sundhed
-265,Roskilde,laegekontakt,96.77,82.45,%,2025,DST SYGP1,social,sundhed
-240,Egedal,laegekontakt,95.81,81.63,%,2025,DST SYGP1,social,sundhed
-151,Ballerup,laegekontakt,96.7,82.39,%,2025,DST SYGP1,social,sundhed
-223,Hørsholm,laegekontakt,98.94,84.3,%,2025,DST SYGP1,social,sundhed
-185,Tårnby,laegekontakt,99.15,84.48,%,2025,DST SYGP1,social,sundhed
-173,Lyngby-Taarbæk,laegekontakt,95.23,81.14,%,2025,DST SYGP1,social,sundhed
-350,Lejre,laegekontakt,96.35,82.09,%,2025,DST SYGP1,social,sundhed
-163,Herlev,laegekontakt,94.33,80.37,%,2025,DST SYGP1,social,sundhed
-210,Fredensborg,laegekontakt,99.35,84.65,%,2025,DST SYGP1,social,sundhed
-183,Ishøj,laegekontakt,94.58,80.58,%,2025,DST SYGP1,social,sundhed
-530,Billund,laegekontakt,99.71,84.95,%,2025,DST SYGP1,social,sundhed
-710,Favrskov,laegekontakt,99.2,84.52,%,2025,DST SYGP1,social,sundhed
-840,Rebild,laegekontakt,99.52,84.79,%,2025,DST SYGP1,social,sundhed
-147,Frederiksberg,laegekontakt,97.41,82.99,%,2025,DST SYGP1,social,sundhed
-187,Vallensbæk,laegekontakt,94.07,80.15,%,2025,DST SYGP1,social,sundhed
-253,Greve,laegekontakt,98.67,84.07,%,2025,DST SYGP1,social,sundhed
-259,Køge,laegekontakt,97.71,83.25,%,2025,DST SYGP1,social,sundhed
-159,Gladsaxe,laegekontakt,96.26,82.01,%,2025,DST SYGP1,social,sundhed
-217,Helsingør,laegekontakt,100.54,85.66,%,2025,DST SYGP1,social,sundhed
-825,Læsø,laegekontakt,102.51,87.34,%,2025,DST SYGP1,social,sundhed
-250,Frederikssund,laegekontakt,99.23,84.54,%,2025,DST SYGP1,social,sundhed
-661,Holstebro,laegekontakt,100.16,85.34,%,2025,DST SYGP1,social,sundhed
-657,Herning,laegekontakt,99.88,85.1,%,2025,DST SYGP1,social,sundhed
-773,Morsø,laegekontakt,102.81,87.59,%,2025,DST SYGP1,social,sundhed
-260,Halsnæs,laegekontakt,97.7,83.24,%,2025,DST SYGP1,social,sundhed
-492,Ærø,laegekontakt,99.86,85.08,%,2025,DST SYGP1,social,sundhed
-219,Hillerød,laegekontakt,97.27,82.87,%,2025,DST SYGP1,social,sundhed
-340,Sorø,laegekontakt,97.61,83.16,%,2025,DST SYGP1,social,sundhed
-561,Esbjerg,laegekontakt,100.46,85.59,%,2025,DST SYGP1,social,sundhed
-740,Silkeborg,laegekontakt,100.06,85.25,%,2025,DST SYGP1,social,sundhed
-563,Fanø,laegekontakt,102.04,86.94,%,2025,DST SYGP1,social,sundhed
-615,Horsens,laegekontakt,98.87,84.24,%,2025,DST SYGP1,social,sundhed
-316,Holbæk,laegekontakt,97.75,83.28,%,2025,DST SYGP1,social,sundhed
-607,Fredericia,laegekontakt,99.5,84.77,%,2025,DST SYGP1,social,sundhed
-766,Hedensted,laegekontakt,98.77,84.15,%,2025,DST SYGP1,social,sundhed
-410,Middelfart,laegekontakt,99.86,85.08,%,2025,DST SYGP1,social,sundhed
-851,Aalborg,laegekontakt,99.53,84.8,%,2025,DST SYGP1,social,sundhed
-370,Næstved,laegekontakt,98.69,84.08,%,2025,DST SYGP1,social,sundhed
-329,Ringsted,laegekontakt,96.89,82.55,%,2025,DST SYGP1,social,sundhed
-810,Brønderslev,laegekontakt,100.81,85.89,%,2025,DST SYGP1,social,sundhed
-751,Aarhus,laegekontakt,97.64,83.19,%,2025,DST SYGP1,social,sundhed
-727,Odder,laegekontakt,100.95,86.01,%,2025,DST SYGP1,social,sundhed
-813,Frederikshavn,laegekontakt,101.23,86.25,%,2025,DST SYGP1,social,sundhed
-336,Stevns,laegekontakt,96.82,82.49,%,2025,DST SYGP1,social,sundhed
-270,Gribskov,laegekontakt,99.35,84.65,%,2025,DST SYGP1,social,sundhed
-161,Glostrup,laegekontakt,92.73,79.01,%,2025,DST SYGP1,social,sundhed
-860,Hjørring,laegekontakt,101.58,86.55,%,2025,DST SYGP1,social,sundhed
-479,Svendborg,laegekontakt,100.13,85.31,%,2025,DST SYGP1,social,sundhed
-165,Albertslund,laegekontakt,94.74,80.72,%,2025,DST SYGP1,social,sundhed
-791,Viborg,laegekontakt,100.85,85.92,%,2025,DST SYGP1,social,sundhed
-706,Syddjurs,laegekontakt,99.85,85.07,%,2025,DST SYGP1,social,sundhed
-480,Nordfyns,laegekontakt,102.42,87.26,%,2025,DST SYGP1,social,sundhed
-440,Kerteminde,laegekontakt,98.64,84.04,%,2025,DST SYGP1,social,sundhed
-101,København,laegekontakt,93.51,79.67,%,2025,DST SYGP1,social,sundhed
-630,Vejle,laegekontakt,98.16,83.63,%,2025,DST SYGP1,social,sundhed
-760,Ringkøbing-Skjern,laegekontakt,99.2,84.52,%,2025,DST SYGP1,social,sundhed
-730,Randers,laegekontakt,101.98,86.89,%,2025,DST SYGP1,social,sundhed
-430,Faaborg-Midtfyn,laegekontakt,100.23,85.4,%,2025,DST SYGP1,social,sundhed
-320,Faxe,laegekontakt,95.67,81.51,%,2025,DST SYGP1,social,sundhed
-169,Høje-Taastrup,laegekontakt,92.89,79.14,%,2025,DST SYGP1,social,sundhed
-573,Varde,laegekontakt,99.25,84.56,%,2025,DST SYGP1,social,sundhed
-621,Kolding,laegekontakt,99.1,84.43,%,2025,DST SYGP1,social,sundhed
-580,Aabenraa,laegekontakt,98.27,83.73,%,2025,DST SYGP1,social,sundhed
-787,Thisted,laegekontakt,101.3,86.31,%,2025,DST SYGP1,social,sundhed
-420,Assens,laegekontakt,100.99,86.04,%,2025,DST SYGP1,social,sundhed
-756,Ikast-Brande,laegekontakt,97.98,83.48,%,2025,DST SYGP1,social,sundhed
-461,Odense,laegekontakt,98.64,84.04,%,2025,DST SYGP1,social,sundhed
-779,Skive,laegekontakt,102.7,87.5,%,2025,DST SYGP1,social,sundhed
-450,Nyborg,laegekontakt,101.19,86.21,%,2025,DST SYGP1,social,sundhed
-846,Mariagerfjord,laegekontakt,101.51,86.49,%,2025,DST SYGP1,social,sundhed
-540,Sønderborg,laegekontakt,99.38,84.67,%,2025,DST SYGP1,social,sundhed
-820,Vesthimmerlands,laegekontakt,100.83,85.91,%,2025,DST SYGP1,social,sundhed
-400,Bornholm,laegekontakt,94.27,80.32,%,2025,DST SYGP1,social,sundhed
-510,Haderslev,laegekontakt,100.89,85.96,%,2025,DST SYGP1,social,sundhed
-665,Lemvig,laegekontakt,99.66,84.91,%,2025,DST SYGP1,social,sundhed
-575,Vejen,laegekontakt,99.69,84.94,%,2025,DST SYGP1,social,sundhed
-671,Struer,laegekontakt,102.34,87.19,%,2025,DST SYGP1,social,sundhed
-707,Norddjurs,laegekontakt,101.69,86.64,%,2025,DST SYGP1,social,sundhed
-330,Slagelse,laegekontakt,97.63,83.18,%,2025,DST SYGP1,social,sundhed
-306,Odsherred,laegekontakt,98.91,84.27,%,2025,DST SYGP1,social,sundhed
-376,Guldborgsund,laegekontakt,97.05,82.69,%,2025,DST SYGP1,social,sundhed
-326,Kalundborg,laegekontakt,97.12,82.75,%,2025,DST SYGP1,social,sundhed
-849,Jammerbugt,laegekontakt,100.67,85.77,%,2025,DST SYGP1,social,sundhed
-390,Vordingborg,laegekontakt,99.53,84.8,%,2025,DST SYGP1,social,sundhed
-550,Tønder,laegekontakt,98.83,84.2,%,2025,DST SYGP1,social,sundhed
-360,Lolland,laegekontakt,98.11,83.59,%,2025,DST SYGP1,social,sundhed
-741,Samsø,laegekontakt,103.36,88.06,%,2025,DST SYGP1,social,sundhed
-482,Langeland,laegekontakt,103.11,87.85,%,2025,DST SYGP1,social,sundhed
-201,Allerød,boerneovervaeght,147.37,9.5,%,2018,DST LABY26,social,sundhed
-153,Brøndby,boerneovervaeght,145.83,9.6,%,2018,DST LABY26,social,sundhed
-155,Dragør,boerneovervaeght,134.62,10.4,%,2018,DST LABY26,social,sundhed
-175,Rødovre,boerneovervaeght,90.91,15.4,%,2018,DST LABY26,social,sundhed
-190,Furesø,boerneovervaeght,133.33,10.5,%,2018,DST LABY26,social,sundhed
-230,Rudersdal,boerneovervaeght,150.0,8.4,%,2018,DST LABY26,social,sundhed
-167,Hvidovre,boerneovervaeght,102.94,13.6,%,2018,DST LABY26,social,sundhed
-157,Gentofte,boerneovervaeght,118.64,11.8,%,2018,DST LABY26,social,sundhed
-269,Solrød,boerneovervaeght,101.45,13.8,%,2018,DST LABY26,social,sundhed
-746,Skanderborg,boerneovervaeght,147.37,9.5,%,2018,DST LABY26,social,sundhed
-265,Roskilde,boerneovervaeght,113.82,12.3,%,2018,DST LABY26,social,sundhed
-240,Egedal,boerneovervaeght,130.84,10.7,%,2018,DST LABY26,social,sundhed
-151,Ballerup,boerneovervaeght,66.04,21.2,%,2018,DST LABY26,social,sundhed
-223,Hørsholm,boerneovervaeght,97.9,14.3,%,2018,DST LABY26,social,sundhed
-185,Tårnby,boerneovervaeght,96.55,14.5,%,2018,DST LABY26,social,sundhed
-173,Lyngby-Taarbæk,boerneovervaeght,134.62,10.4,%,2018,DST LABY26,social,sundhed
-350,Lejre,boerneovervaeght,126.13,11.1,%,2018,DST LABY26,social,sundhed
-163,Herlev,boerneovervaeght,88.05,15.9,%,2018,DST LABY26,social,sundhed
-210,Fredensborg,boerneovervaeght,95.89,14.6,%,2018,DST LABY26,social,sundhed
-183,Ishøj,boerneovervaeght,59.83,23.4,%,2018,DST LABY26,social,sundhed
-530,Billund,boerneovervaeght,95.89,14.6,%,2018,DST LABY26,social,sundhed
-710,Favrskov,boerneovervaeght,114.75,12.2,%,2018,DST LABY26,social,sundhed
-840,Rebild,boerneovervaeght,113.82,12.3,%,2018,DST LABY26,social,sundhed
-147,Frederiksberg,boerneovervaeght,147.37,9.5,%,2018,DST LABY26,social,sundhed
-187,Vallensbæk,boerneovervaeght,93.33,15.0,%,2018,DST LABY26,social,sundhed
-253,Greve,boerneovervaeght,92.72,15.1,%,2018,DST LABY26,social,sundhed
-259,Køge,boerneovervaeght,57.85,24.2,%,2018,DST LABY26,social,sundhed
-159,Gladsaxe,boerneovervaeght,75.68,18.5,%,2018,DST LABY26,social,sundhed
-217,Helsingør,boerneovervaeght,100.72,13.9,%,2018,DST LABY26,social,sundhed
-825,Læsø,boerneovervaeght,150.0,0.0,%,2018,DST LABY26,social,sundhed
-250,Frederikssund,boerneovervaeght,93.96,14.9,%,2018,DST LABY26,social,sundhed
-661,Holstebro,boerneovervaeght,109.38,12.8,%,2018,DST LABY26,social,sundhed
-657,Herning,boerneovervaeght,104.48,13.4,%,2018,DST LABY26,social,sundhed
-773,Morsø,boerneovervaeght,76.5,18.3,%,2018,DST LABY26,social,sundhed
-260,Halsnæs,boerneovervaeght,66.67,21.0,%,2018,DST LABY26,social,sundhed
-492,Ærø,boerneovervaeght,150.0,0.0,%,2018,DST LABY26,social,sundhed
-219,Hillerød,boerneovervaeght,93.96,14.9,%,2018,DST LABY26,social,sundhed
-340,Sorø,boerneovervaeght,130.84,10.7,%,2018,DST LABY26,social,sundhed
-561,Esbjerg,boerneovervaeght,85.89,16.3,%,2018,DST LABY26,social,sundhed
-740,Silkeborg,boerneovervaeght,112.0,12.5,%,2018,DST LABY26,social,sundhed
-563,Fanø,boerneovervaeght,89.74,15.6,%,2018,DST LABY26,social,sundhed
-615,Horsens,boerneovervaeght,95.89,14.6,%,2018,DST LABY26,social,sundhed
-316,Holbæk,boerneovervaeght,103.7,13.5,%,2018,DST LABY26,social,sundhed
-607,Fredericia,boerneovervaeght,99.29,14.1,%,2018,DST LABY26,social,sundhed
-766,Hedensted,boerneovervaeght,79.1,17.7,%,2018,DST LABY26,social,sundhed
-410,Middelfart,boerneovervaeght,107.69,13.0,%,2018,DST LABY26,social,sundhed
-851,Aalborg,boerneovervaeght,120.69,11.6,%,2018,DST LABY26,social,sundhed
-370,Næstved,boerneovervaeght,79.1,17.7,%,2018,DST LABY26,social,sundhed
-329,Ringsted,boerneovervaeght,76.92,18.2,%,2018,DST LABY26,social,sundhed
-810,Brønderslev,boerneovervaeght,79.55,17.6,%,2018,DST LABY26,social,sundhed
-751,Aarhus,boerneovervaeght,113.82,12.3,%,2018,DST LABY26,social,sundhed
-727,Odder,boerneovervaeght,150.0,7.7,%,2018,DST LABY26,social,sundhed
-813,Frederikshavn,boerneovervaeght,97.9,14.3,%,2018,DST LABY26,social,sundhed
-336,Stevns,boerneovervaeght,94.59,14.8,%,2018,DST LABY26,social,sundhed
-270,Gribskov,boerneovervaeght,82.84,16.9,%,2018,DST LABY26,social,sundhed
-161,Glostrup,boerneovervaeght,118.64,11.8,%,2018,DST LABY26,social,sundhed
-860,Hjørring,boerneovervaeght,95.24,14.7,%,2018,DST LABY26,social,sundhed
-479,Svendborg,boerneovervaeght,101.45,13.8,%,2018,DST LABY26,social,sundhed
-165,Albertslund,boerneovervaeght,76.92,18.2,%,2018,DST LABY26,social,sundhed
-791,Viborg,boerneovervaeght,63.06,22.2,%,2018,DST LABY26,social,sundhed
-706,Syddjurs,boerneovervaeght,102.94,13.6,%,2018,DST LABY26,social,sundhed
-480,Nordfyns,boerneovervaeght,83.83,16.7,%,2018,DST LABY26,social,sundhed
-440,Kerteminde,boerneovervaeght,81.87,17.1,%,2018,DST LABY26,social,sundhed
-101,København,boerneovervaeght,121.74,11.5,%,2018,DST LABY26,social,sundhed
-630,Vejle,boerneovervaeght,97.9,14.3,%,2018,DST LABY26,social,sundhed
-730,Randers,boerneovervaeght,81.87,17.1,%,2018,DST LABY26,social,sundhed
-430,Faaborg-Midtfyn,boerneovervaeght,89.74,15.6,%,2018,DST LABY26,social,sundhed
-320,Faxe,boerneovervaeght,150.0,0.0,%,2018,DST LABY26,social,sundhed
-169,Høje-Taastrup,boerneovervaeght,72.54,19.3,%,2018,DST LABY26,social,sundhed
-621,Kolding,boerneovervaeght,65.42,21.4,%,2018,DST LABY26,social,sundhed
-580,Aabenraa,boerneovervaeght,59.57,23.5,%,2018,DST LABY26,social,sundhed
-787,Thisted,boerneovervaeght,82.84,16.9,%,2018,DST LABY26,social,sundhed
-420,Assens,boerneovervaeght,83.33,16.8,%,2018,DST LABY26,social,sundhed
-756,Ikast-Brande,boerneovervaeght,101.45,13.8,%,2018,DST LABY26,social,sundhed
-461,Odense,boerneovervaeght,93.96,14.9,%,2018,DST LABY26,social,sundhed
-779,Skive,boerneovervaeght,86.42,16.2,%,2018,DST LABY26,social,sundhed
-450,Nyborg,boerneovervaeght,150.0,5.9,%,2018,DST LABY26,social,sundhed
-846,Mariagerfjord,boerneovervaeght,77.78,18.0,%,2018,DST LABY26,social,sundhed
-540,Sønderborg,boerneovervaeght,150.0,0.0,%,2018,DST LABY26,social,sundhed
-820,Vesthimmerlands,boerneovervaeght,101.45,13.8,%,2018,DST LABY26,social,sundhed
-400,Bornholm,boerneovervaeght,89.17,15.7,%,2018,DST LABY26,social,sundhed
-510,Haderslev,boerneovervaeght,150.0,7.4,%,2018,DST LABY26,social,sundhed
-665,Lemvig,boerneovervaeght,70.35,19.9,%,2018,DST LABY26,social,sundhed
-575,Vejen,boerneovervaeght,86.96,16.1,%,2018,DST LABY26,social,sundhed
-671,Struer,boerneovervaeght,134.62,10.4,%,2018,DST LABY26,social,sundhed
-707,Norddjurs,boerneovervaeght,66.35,21.1,%,2018,DST LABY26,social,sundhed
-330,Slagelse,boerneovervaeght,92.11,15.2,%,2018,DST LABY26,social,sundhed
-306,Odsherred,boerneovervaeght,56.0,25.0,%,2018,DST LABY26,social,sundhed
-376,Guldborgsund,boerneovervaeght,77.78,18.0,%,2018,DST LABY26,social,sundhed
-326,Kalundborg,boerneovervaeght,78.21,17.9,%,2018,DST LABY26,social,sundhed
-849,Jammerbugt,boerneovervaeght,76.92,18.2,%,2018,DST LABY26,social,sundhed
-390,Vordingborg,boerneovervaeght,80.46,17.4,%,2018,DST LABY26,social,sundhed
-550,Tønder,boerneovervaeght,80.92,17.3,%,2018,DST LABY26,social,sundhed
-360,Lolland,boerneovervaeght,64.22,21.8,%,2018,DST LABY26,social,sundhed
-482,Langeland,boerneovervaeght,81.87,17.1,%,2018,DST LABY26,social,sundhed
 201,Allerød,hjemsyg,150.0,15.74,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
 153,Brøndby,hjemsyg,121.45,20.79,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
 155,Dragør,hjemsyg,94.92,26.6,pr. 1.000 indb.,2025,DST HJEMSYG,social,sundhed
@@ -871,6 +580,398 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,wellbeing,97.82,3.5,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
 741,Samsø,wellbeing,98.38,3.52,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
 482,Langeland,wellbeing,97.82,3.5,score (1-5),2024,UVM GS/TRIV/TRIVIND,social,uddannelse
+201,Allerød,rygning,150.0,5.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+153,Brøndby,rygning,66.69,15.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+155,Dragør,rygning,129.26,8.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+175,Rødovre,rygning,111.38,9.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+190,Furesø,rygning,149.57,7.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+230,Rudersdal,rygning,150.0,5.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+167,Hvidovre,rygning,91.84,11.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+157,Gentofte,rygning,150.0,6.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+269,Solrød,rygning,118.98,8.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+746,Skanderborg,rygning,120.34,8.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+265,Roskilde,rygning,129.26,8.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+240,Egedal,rygning,141.49,7.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+151,Ballerup,rygning,123.18,8.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+223,Hørsholm,rygning,150.0,6.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+185,Tårnby,rygning,97.85,10.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+173,Lyngby-Taarbæk,rygning,150.0,5.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+350,Lejre,rygning,103.66,10.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+163,Herlev,rygning,94.32,11.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+210,Fredensborg,rygning,130.87,8.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+183,Ishøj,rygning,60.17,17.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+530,Billund,rygning,100.67,10.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+710,Favrskov,rygning,113.8,9.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+840,Rebild,rygning,130.87,8.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+147,Frederiksberg,rygning,116.33,9.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+187,Vallensbæk,rygning,112.58,9.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+253,Greve,rygning,105.76,9.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+259,Køge,rygning,97.85,10.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+159,Gladsaxe,rygning,111.38,9.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+217,Helsingør,rygning,98.77,10.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+825,Læsø,rygning,121.74,8.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+250,Frederikssund,rygning,93.48,11.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+661,Holstebro,rygning,106.84,9.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+657,Herning,rygning,117.64,8.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+773,Morsø,rygning,79.32,13.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+260,Halsnæs,rygning,74.79,14.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+492,Ærø,rygning,83.76,12.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+219,Hillerød,rygning,135.97,7.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+340,Sorø,rygning,80.54,13.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+561,Esbjerg,rygning,79.32,13.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+740,Silkeborg,rygning,118.98,8.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+563,Fanø,rygning,93.48,11.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+615,Horsens,rygning,96.94,10.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+316,Holbæk,rygning,81.16,12.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+607,Fredericia,rygning,83.76,12.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+766,Hedensted,rygning,99.71,10.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+410,Middelfart,rygning,104.7,10.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+851,Aalborg,rygning,116.33,9.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+370,Næstved,rygning,89.49,11.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+329,Ringsted,rygning,86.53,12.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+810,Brønderslev,rygning,115.05,9.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+751,Aarhus,rygning,126.14,8.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+727,Odder,rygning,93.48,11.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+813,Frederikshavn,rygning,83.76,12.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+336,Stevns,rygning,81.8,12.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+270,Gribskov,rygning,105.76,9.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+161,Glostrup,rygning,91.84,11.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+860,Hjørring,rygning,98.77,10.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+479,Svendborg,rygning,93.48,11.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+165,Albertslund,rygning,78.13,13.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+791,Viborg,rygning,96.94,10.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+706,Syddjurs,rygning,89.49,11.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+480,Nordfyns,rygning,81.16,12.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+440,Kerteminde,rygning,100.67,10.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+101,København,rygning,98.77,10.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+630,Vejle,rygning,113.8,9.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+760,Ringkøbing-Skjern,rygning,85.12,12.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+730,Randers,rygning,96.05,10.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+430,Faaborg-Midtfyn,rygning,79.92,13.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+320,Faxe,rygning,85.82,12.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+169,Høje-Taastrup,rygning,86.53,12.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+573,Varde,rygning,85.82,12.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+621,Kolding,rygning,112.58,9.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+580,Aabenraa,rygning,92.65,11.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+787,Thisted,rygning,87.98,11.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+420,Assens,rygning,86.53,12.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+756,Ikast-Brande,rygning,99.71,10.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+461,Odense,rygning,126.14,8.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+779,Skive,rygning,97.85,10.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+450,Nyborg,rygning,86.53,12.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+846,Mariagerfjord,rygning,100.67,10.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+540,Sønderborg,rygning,100.67,10.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+820,Vesthimmerlands,rygning,86.53,12.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+400,Bornholm,rygning,68.88,15.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+510,Haderslev,rygning,112.58,9.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+665,Lemvig,rygning,83.76,12.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+575,Vejen,rygning,81.8,12.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+671,Struer,rygning,73.73,14.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+707,Norddjurs,rygning,71.22,14.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+330,Slagelse,rygning,78.13,13.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+306,Odsherred,rygning,73.22,14.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+376,Guldborgsund,rygning,76.99,13.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+326,Kalundborg,rygning,73.73,14.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+849,Jammerbugt,rygning,87.25,12.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+390,Vordingborg,rygning,70.74,14.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+550,Tønder,rygning,72.71,14.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+360,Lolland,rygning,57.21,18.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+741,Samsø,rygning,100.67,10.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+482,Langeland,rygning,71.71,14.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+201,Allerød,alkohol,84.57,17.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+153,Brøndby,alkohol,130.7,11.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+155,Dragør,alkohol,70.47,20.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+175,Rødovre,alkohol,106.49,13.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+190,Furesø,alkohol,92.16,15.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+230,Rudersdal,alkohol,85.07,16.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+167,Hvidovre,alkohol,123.94,11.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+157,Gentofte,alkohol,71.88,20.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+269,Solrød,alkohol,87.66,16.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+746,Skanderborg,alkohol,109.74,13.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+265,Roskilde,alkohol,95.84,15.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+240,Egedal,alkohol,108.91,13.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+151,Ballerup,alkohol,114.1,12.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+223,Hørsholm,alkohol,69.12,20.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+185,Tårnby,alkohol,91.57,15.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+173,Lyngby-Taarbæk,alkohol,92.75,15.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+350,Lejre,alkohol,93.96,15.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+163,Herlev,alkohol,115.01,12.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+210,Fredensborg,alkohol,89.85,16.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+183,Ishøj,alkohol,135.63,10.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+530,Billund,alkohol,99.84,14.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+710,Favrskov,alkohol,109.74,13.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+840,Rebild,alkohol,135.63,10.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+147,Frederiksberg,alkohol,78.99,18.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+187,Vallensbæk,alkohol,125.01,11.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+253,Greve,alkohol,104.94,13.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+259,Køge,alkohol,109.74,13.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+159,Gladsaxe,alkohol,106.49,13.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+217,Helsingør,alkohol,78.56,18.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+825,Læsø,alkohol,72.61,19.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+250,Frederikssund,alkohol,84.07,17.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+661,Holstebro,alkohol,102.69,14.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+657,Herning,alkohol,113.2,12.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+773,Morsø,alkohol,127.23,11.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+260,Halsnæs,alkohol,80.77,17.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+492,Ærø,alkohol,70.47,20.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+219,Hillerød,alkohol,108.09,13.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+340,Sorø,alkohol,104.18,13.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+561,Esbjerg,alkohol,87.66,16.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+740,Silkeborg,alkohol,115.94,12.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+563,Fanø,alkohol,56.38,25.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+615,Horsens,alkohol,119.8,12.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+316,Holbæk,alkohol,103.43,13.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+607,Fredericia,alkohol,116.88,12.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+766,Hedensted,alkohol,101.24,14.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+410,Middelfart,alkohol,86.09,16.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+851,Aalborg,alkohol,113.2,12.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+370,Næstved,alkohol,128.36,11.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+329,Ringsted,alkohol,110.59,13.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+810,Brønderslev,alkohol,150.0,9.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+751,Aarhus,alkohol,98.47,14.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+727,Odder,alkohol,99.84,14.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+813,Frederikshavn,alkohol,115.01,12.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+336,Stevns,alkohol,88.2,16.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+270,Gribskov,alkohol,90.99,15.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+161,Glostrup,alkohol,115.94,12.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+860,Hjørring,alkohol,130.7,11.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+479,Svendborg,alkohol,83.1,17.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+165,Albertslund,alkohol,135.63,10.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+791,Viborg,alkohol,121.84,11.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+706,Syddjurs,alkohol,83.1,17.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+480,Nordfyns,alkohol,102.69,14.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+440,Kerteminde,alkohol,91.57,15.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+101,København,alkohol,81.22,17.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+630,Vejle,alkohol,98.47,14.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+760,Ringkøbing-Skjern,alkohol,98.47,14.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+730,Randers,alkohol,110.59,13.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+430,Faaborg-Midtfyn,alkohol,83.1,17.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+320,Faxe,alkohol,91.57,15.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+169,Høje-Taastrup,alkohol,128.36,11.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+573,Varde,alkohol,108.09,13.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+621,Kolding,alkohol,113.2,12.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+580,Aabenraa,alkohol,107.29,13.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+787,Thisted,alkohol,135.63,10.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+420,Assens,alkohol,95.84,15.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+756,Ikast-Brande,alkohol,116.88,12.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+461,Odense,alkohol,95.21,15.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+779,Skive,alkohol,101.24,14.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+450,Nyborg,alkohol,94.58,15.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+846,Mariagerfjord,alkohol,123.94,11.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+540,Sønderborg,alkohol,129.52,11.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+820,Vesthimmerlands,alkohol,129.52,11.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+400,Bornholm,alkohol,99.84,14.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+510,Haderslev,alkohol,123.94,11.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+665,Lemvig,alkohol,100.54,14.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+575,Vejen,alkohol,146.7,9.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+671,Struer,alkohol,117.84,12.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+707,Norddjurs,alkohol,106.49,13.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+330,Slagelse,alkohol,125.01,11.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+306,Odsherred,alkohol,93.96,15.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+376,Guldborgsund,alkohol,110.59,13.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+326,Kalundborg,alkohol,119.8,12.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+849,Jammerbugt,alkohol,130.7,11.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+390,Vordingborg,alkohol,100.54,14.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+550,Tønder,alkohol,108.09,13.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+360,Lolland,alkohol,90.42,15.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+741,Samsø,alkohol,82.62,17.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+482,Langeland,alkohol,74.49,19.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+201,Allerød,kost,150.0,11.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+153,Brøndby,kost,81.35,22.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+155,Dragør,kost,138.23,13.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+175,Rødovre,kost,117.85,15.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+190,Furesø,kost,150.0,10.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+230,Rudersdal,kost,150.0,8.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+167,Hvidovre,kost,98.32,18.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+157,Gentofte,kost,150.0,9.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+269,Solrød,kost,99.38,18.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+746,Skanderborg,kost,117.85,15.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+265,Roskilde,kost,124.22,14.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+240,Egedal,kost,104.46,17.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+151,Ballerup,kost,101.02,18.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+223,Hørsholm,kost,150.0,10.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+185,Tårnby,kost,87.55,21.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+173,Lyngby-Taarbæk,kost,150.0,9.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+350,Lejre,kost,110.09,16.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+163,Herlev,kost,102.71,17.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+210,Fredensborg,kost,149.47,12.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+183,Ishøj,kost,89.68,20.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+530,Billund,kost,94.77,19.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+710,Favrskov,kost,97.28,18.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+840,Rebild,kost,90.57,20.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+147,Frederiksberg,kost,150.0,11.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+187,Vallensbæk,kost,112.79,16.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+253,Greve,kost,95.76,19.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+259,Køge,kost,97.79,18.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+159,Gladsaxe,kost,136.19,13.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+217,Helsingør,kost,131.32,14.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+825,Læsø,kost,90.12,20.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+250,Frederikssund,kost,96.26,19.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+661,Holstebro,kost,77.25,23.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+657,Herning,kost,79.94,23.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+773,Morsø,kost,63.18,29.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+260,Halsnæs,kost,85.12,21.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+492,Ærø,kost,100.47,18.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+219,Hillerød,kost,121.76,15.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+340,Sorø,kost,117.85,15.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+561,Esbjerg,kost,80.28,22.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+740,Silkeborg,kost,102.14,18.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+563,Fanø,kost,111.43,16.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+615,Horsens,kost,83.95,21.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+316,Holbæk,kost,89.68,20.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+607,Fredericia,kost,81.71,22.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+766,Hedensted,kost,80.99,22.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+410,Middelfart,kost,93.33,19.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+851,Aalborg,kost,87.97,20.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+370,Næstved,kost,88.82,20.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+329,Ringsted,kost,81.35,22.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+810,Brønderslev,kost,73.84,24.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+751,Aarhus,kost,120.96,15.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+727,Odder,kost,112.79,16.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+813,Frederikshavn,kost,80.28,22.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+336,Stevns,kost,91.93,20.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+270,Gribskov,kost,98.32,18.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+161,Glostrup,kost,90.12,20.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+860,Hjørring,kost,82.45,22.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+479,Svendborg,kost,110.75,16.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+165,Albertslund,kost,91.93,20.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+791,Viborg,kost,75.97,24.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+706,Syddjurs,kost,113.49,16.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+480,Nordfyns,kost,75.04,24.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+440,Kerteminde,kost,84.72,21.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+101,København,kost,150.0,11.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+630,Vejle,kost,99.38,18.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+760,Ringkøbing-Skjern,kost,82.08,22.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+730,Randers,kost,77.25,23.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+430,Faaborg-Midtfyn,kost,96.26,19.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+320,Faxe,kost,83.95,21.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+169,Høje-Taastrup,kost,103.29,17.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+573,Varde,kost,87.13,21.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+621,Kolding,kost,96.26,19.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+580,Aabenraa,kost,92.39,19.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+787,Thisted,kost,73.84,24.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+420,Assens,kost,82.08,22.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+756,Ikast-Brande,kost,81.71,22.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+461,Odense,kost,101.58,18.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+779,Skive,kost,72.96,25.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+450,Nyborg,kost,79.59,23.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+846,Mariagerfjord,kost,84.72,21.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+540,Sønderborg,kost,84.72,21.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+820,Vesthimmerlands,kost,72.38,25.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+400,Bornholm,kost,96.76,19.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+510,Haderslev,kost,73.54,25.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+665,Lemvig,kost,82.82,22.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+575,Vejen,kost,77.57,23.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+671,Struer,kost,72.67,25.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+707,Norddjurs,kost,74.13,24.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+330,Slagelse,kost,88.82,20.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+306,Odsherred,kost,75.35,24.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+376,Guldborgsund,kost,93.33,19.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+326,Kalundborg,kost,84.72,21.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+849,Jammerbugt,kost,77.9,23.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+390,Vordingborg,kost,89.68,20.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+550,Tønder,kost,75.97,24.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+360,Lolland,kost,70.71,26.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+741,Samsø,kost,128.57,14.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+482,Langeland,kost,91.47,20.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+201,Allerød,svaer_overvaegt,141.77,13.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+153,Brøndby,svaer_overvaegt,66.78,27.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+155,Dragør,svaer_overvaegt,148.63,12.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+175,Rødovre,svaer_overvaegt,111.03,16.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+190,Furesø,svaer_overvaegt,141.77,13.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+230,Rudersdal,svaer_overvaegt,150.0,9.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+167,Hvidovre,svaer_overvaegt,95.99,19.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+157,Gentofte,svaer_overvaegt,150.0,7.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+269,Solrød,svaer_overvaegt,118.14,15.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+746,Skanderborg,svaer_overvaegt,102.96,17.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+265,Roskilde,svaer_overvaegt,116.65,15.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+240,Egedal,svaer_overvaegt,104.72,17.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+151,Ballerup,svaer_overvaegt,98.56,18.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+223,Hørsholm,svaer_overvaegt,150.0,10.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+185,Tårnby,svaer_overvaegt,107.78,17.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+173,Lyngby-Taarbæk,svaer_overvaegt,150.0,11.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+350,Lejre,svaer_overvaegt,105.92,17.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+163,Herlev,svaer_overvaegt,95.0,19.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+210,Fredensborg,svaer_overvaegt,118.14,15.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+183,Ishøj,svaer_overvaegt,83.02,22.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+530,Billund,svaer_overvaegt,75.85,24.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+710,Favrskov,svaer_overvaegt,85.33,21.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+840,Rebild,svaer_overvaegt,86.12,21.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+147,Frederiksberg,svaer_overvaegt,150.0,9.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+187,Vallensbæk,svaer_overvaegt,113.07,16.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+253,Greve,svaer_overvaegt,105.32,17.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+259,Køge,svaer_overvaegt,89.91,20.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+159,Gladsaxe,svaer_overvaegt,124.53,14.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+217,Helsingør,svaer_overvaegt,119.68,15.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+825,Læsø,svaer_overvaegt,73.14,25.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+250,Frederikssund,svaer_overvaegt,89.91,20.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+661,Holstebro,svaer_overvaegt,82.28,22.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+657,Herning,svaer_overvaegt,95.99,19.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+773,Morsø,svaer_overvaegt,78.1,23.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+260,Halsnæs,svaer_overvaegt,80.13,23.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+492,Ærø,svaer_overvaegt,98.56,18.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+219,Hillerød,svaer_overvaegt,101.27,18.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+340,Sorø,svaer_overvaegt,90.79,20.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+561,Esbjerg,svaer_overvaegt,91.24,20.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+740,Silkeborg,svaer_overvaegt,101.27,18.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+563,Fanø,svaer_overvaegt,108.42,17.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+615,Horsens,svaer_overvaegt,84.16,21.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+316,Holbæk,svaer_overvaegt,89.47,20.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+607,Fredericia,svaer_overvaegt,79.79,23.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+766,Hedensted,svaer_overvaegt,78.1,23.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+410,Middelfart,svaer_overvaegt,91.24,20.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+851,Aalborg,svaer_overvaegt,101.83,18.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+370,Næstved,svaer_overvaegt,85.72,21.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+329,Ringsted,svaer_overvaegt,74.32,24.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+810,Brønderslev,svaer_overvaegt,72.85,25.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+751,Aarhus,svaer_overvaegt,146.27,12.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+727,Odder,svaer_overvaegt,88.61,20.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+813,Frederikshavn,svaer_overvaegt,74.02,24.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+336,Stevns,svaer_overvaegt,91.24,20.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+270,Gribskov,svaer_overvaegt,110.36,16.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+161,Glostrup,svaer_overvaegt,82.65,22.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+860,Hjørring,svaer_overvaegt,77.12,23.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+479,Svendborg,svaer_overvaegt,103.54,17.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+165,Albertslund,svaer_overvaegt,81.55,22.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+791,Viborg,svaer_overvaegt,85.72,21.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+706,Syddjurs,svaer_overvaegt,85.33,21.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+480,Nordfyns,svaer_overvaegt,71.99,25.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+440,Kerteminde,svaer_overvaegt,81.91,22.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+101,København,svaer_overvaegt,150.0,11.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+630,Vejle,svaer_overvaegt,95.0,19.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+760,Ringkøbing-Skjern,svaer_overvaegt,85.33,21.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+730,Randers,svaer_overvaegt,77.12,23.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+430,Faaborg-Midtfyn,svaer_overvaegt,84.16,21.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+320,Faxe,svaer_overvaegt,72.85,25.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+169,Høje-Taastrup,svaer_overvaegt,86.53,21.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+573,Varde,svaer_overvaegt,84.54,21.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+621,Kolding,svaer_overvaegt,89.04,20.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+580,Aabenraa,svaer_overvaegt,89.47,20.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+787,Thisted,svaer_overvaegt,69.29,26.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+420,Assens,svaer_overvaegt,75.54,24.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+756,Ikast-Brande,svaer_overvaegt,83.02,22.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+461,Odense,svaer_overvaegt,115.92,15.9,%,2025,Sundhedsprofilen 2025,social,sundhed
+779,Skive,svaer_overvaegt,75.54,24.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+450,Nyborg,svaer_overvaegt,84.54,21.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+846,Mariagerfjord,svaer_overvaegt,83.4,22.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+540,Sønderborg,svaer_overvaegt,91.24,20.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+820,Vesthimmerlands,svaer_overvaegt,76.79,24.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+400,Bornholm,svaer_overvaegt,93.56,19.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+510,Haderslev,svaer_overvaegt,82.28,22.4,%,2025,Sundhedsprofilen 2025,social,sundhed
+665,Lemvig,svaer_overvaegt,78.43,23.5,%,2025,Sundhedsprofilen 2025,social,sundhed
+575,Vejen,svaer_overvaegt,75.85,24.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+671,Struer,svaer_overvaegt,83.02,22.2,%,2025,Sundhedsprofilen 2025,social,sundhed
+707,Norddjurs,svaer_overvaegt,74.32,24.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+330,Slagelse,svaer_overvaegt,79.1,23.3,%,2025,Sundhedsprofilen 2025,social,sundhed
+306,Odsherred,svaer_overvaegt,76.48,24.1,%,2025,Sundhedsprofilen 2025,social,sundhed
+376,Guldborgsund,svaer_overvaegt,76.79,24.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+326,Kalundborg,svaer_overvaegt,74.32,24.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+849,Jammerbugt,svaer_overvaegt,71.99,25.6,%,2025,Sundhedsprofilen 2025,social,sundhed
+390,Vordingborg,svaer_overvaegt,80.84,22.8,%,2025,Sundhedsprofilen 2025,social,sundhed
+550,Tønder,svaer_overvaegt,76.79,24.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+360,Lolland,svaer_overvaegt,71.71,25.7,%,2025,Sundhedsprofilen 2025,social,sundhed
+741,Samsø,svaer_overvaegt,97.0,19.0,%,2025,Sundhedsprofilen 2025,social,sundhed
+482,Langeland,svaer_overvaegt,74.32,24.8,%,2025,Sundhedsprofilen 2025,social,sundhed
 201,Allerød,education,95.71,90.92,%,2025,DST HFUDD11,social,uddannelse
 153,Brøndby,education,85.99,81.69,%,2025,DST HFUDD11,social,uddannelse
 155,Dragør,education,91.79,87.2,%,2025,DST HFUDD11,social,uddannelse
@@ -3507,7 +3608,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 390,Vordingborg,library_use,105.43,4.66,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
 550,Tønder,library_use,75.34,3.33,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
 360,Lolland,library_use,72.17,3.19,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
-741,Samsø,library_use,144.57,6.39,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
+741,Samsø,library_use,150.0,6.96,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
 482,Langeland,library_use,95.48,4.22,udlån/indb.,2025,DST BIB3A,social,kultur_fritid
 201,Allerød,kultur_spending,104.36,527.0,kr./indb.,2025,DST REGK31,social,kultur_fritid
 153,Brøndby,kultur_spending,121.78,615.0,kr./indb.,2025,DST REGK31,social,kultur_fritid
@@ -3705,104 +3806,104 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,crime_rate,89.22,77.18,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed
 741,Samsø,crime_rate,129.05,53.36,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed
 482,Langeland,crime_rate,150.0,37.67,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed
-201,Allerød,traffic_accidents,150.0,18.87,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-153,Brøndby,traffic_accidents,142.76,29.28,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-155,Dragør,traffic_accidents,121.02,34.54,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-175,Rødovre,traffic_accidents,150.0,19.94,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-190,Furesø,traffic_accidents,150.0,25.66,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-230,Rudersdal,traffic_accidents,142.42,29.35,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-167,Hvidovre,traffic_accidents,150.0,16.6,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-157,Gentofte,traffic_accidents,150.0,26.63,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-269,Solrød,traffic_accidents,150.0,11.98,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-746,Skanderborg,traffic_accidents,150.0,22.61,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-265,Roskilde,traffic_accidents,117.42,35.6,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-240,Egedal,traffic_accidents,120.81,34.6,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-151,Ballerup,traffic_accidents,150.0,14.83,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-223,Hørsholm,traffic_accidents,150.0,23.66,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-185,Tårnby,traffic_accidents,84.0,49.76,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-173,Lyngby-Taarbæk,traffic_accidents,150.0,20.47,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-350,Lejre,traffic_accidents,150.0,23.43,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-163,Herlev,traffic_accidents,133.89,31.22,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-210,Fredensborg,traffic_accidents,150.0,16.49,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-183,Ishøj,traffic_accidents,150.0,4.05,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-530,Billund,traffic_accidents,81.21,51.47,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-710,Favrskov,traffic_accidents,94.57,44.2,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-840,Rebild,traffic_accidents,52.3,79.92,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-147,Frederiksberg,traffic_accidents,88.75,47.1,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-187,Vallensbæk,traffic_accidents,150.0,21.4,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-253,Greve,traffic_accidents,141.41,29.56,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-259,Køge,traffic_accidents,150.0,26.58,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-159,Gladsaxe,traffic_accidents,150.0,12.64,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-217,Helsingør,traffic_accidents,141.36,29.57,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-825,Læsø,traffic_accidents,35.17,118.84,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-250,Frederikssund,traffic_accidents,150.0,18.97,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-661,Holstebro,traffic_accidents,75.14,55.63,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-657,Herning,traffic_accidents,86.03,48.59,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-773,Morsø,traffic_accidents,57.76,72.37,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-260,Halsnæs,traffic_accidents,110.55,37.81,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-492,Ærø,traffic_accidents,48.2,86.72,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-219,Hillerød,traffic_accidents,109.83,38.06,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-340,Sorø,traffic_accidents,56.07,74.55,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-561,Esbjerg,traffic_accidents,126.44,33.06,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-740,Silkeborg,traffic_accidents,104.76,39.9,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-563,Fanø,traffic_accidents,69.64,60.02,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-615,Horsens,traffic_accidents,150.0,21.25,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-316,Holbæk,traffic_accidents,76.47,54.66,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-607,Fredericia,traffic_accidents,138.32,30.22,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-766,Hedensted,traffic_accidents,70.02,59.7,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-410,Middelfart,traffic_accidents,150.0,17.23,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-851,Aalborg,traffic_accidents,84.36,49.55,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-370,Næstved,traffic_accidents,72.65,57.54,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-329,Ringsted,traffic_accidents,107.51,38.88,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-810,Brønderslev,traffic_accidents,127.25,32.85,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-751,Aarhus,traffic_accidents,89.35,46.78,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-727,Odder,traffic_accidents,92.38,45.25,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-813,Frederikshavn,traffic_accidents,64.99,64.32,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-336,Stevns,traffic_accidents,110.73,37.75,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-270,Gribskov,traffic_accidents,109.17,38.29,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-161,Glostrup,traffic_accidents,98.17,42.58,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-860,Hjørring,traffic_accidents,51.62,80.98,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-479,Svendborg,traffic_accidents,86.52,48.31,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-165,Albertslund,traffic_accidents,150.0,20.5,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-791,Viborg,traffic_accidents,61.06,68.46,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-706,Syddjurs,traffic_accidents,84.34,49.56,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-480,Nordfyns,traffic_accidents,64.19,65.12,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-440,Kerteminde,traffic_accidents,150.0,24.69,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-101,København,traffic_accidents,97.82,42.73,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-630,Vejle,traffic_accidents,132.11,31.64,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-760,Ringkøbing-Skjern,traffic_accidents,60.94,68.59,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-730,Randers,traffic_accidents,105.08,39.78,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-430,Faaborg-Midtfyn,traffic_accidents,145.8,28.67,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-320,Faxe,traffic_accidents,56.94,73.41,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-169,Høje-Taastrup,traffic_accidents,150.0,21.5,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-573,Varde,traffic_accidents,71.31,58.62,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-621,Kolding,traffic_accidents,121.87,34.3,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-580,Aabenraa,traffic_accidents,87.19,47.94,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-787,Thisted,traffic_accidents,93.66,44.63,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-420,Assens,traffic_accidents,88.8,47.07,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-756,Ikast-Brande,traffic_accidents,86.2,48.49,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-461,Odense,traffic_accidents,123.74,33.78,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-779,Skive,traffic_accidents,92.17,45.35,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-450,Nyborg,traffic_accidents,75.25,55.55,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-846,Mariagerfjord,traffic_accidents,96.47,43.33,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-540,Sønderborg,traffic_accidents,103.29,40.47,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-820,Vesthimmerlands,traffic_accidents,67.7,61.74,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-400,Bornholm,traffic_accidents,70.29,59.47,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-510,Haderslev,traffic_accidents,79.59,52.52,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-665,Lemvig,traffic_accidents,43.18,96.8,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-575,Vejen,traffic_accidents,81.02,51.59,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-671,Struer,traffic_accidents,120.15,34.79,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-707,Norddjurs,traffic_accidents,101.65,41.12,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-330,Slagelse,traffic_accidents,91.47,45.7,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-306,Odsherred,traffic_accidents,111.44,37.51,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-376,Guldborgsund,traffic_accidents,98.84,42.29,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-326,Kalundborg,traffic_accidents,83.52,50.05,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-849,Jammerbugt,traffic_accidents,72.19,57.9,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-390,Vordingborg,traffic_accidents,69.4,60.23,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-550,Tønder,traffic_accidents,84.0,49.76,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-360,Lolland,traffic_accidents,57.53,72.66,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-741,Samsø,traffic_accidents,18.9,221.18,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-482,Langeland,traffic_accidents,98.98,42.23,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+201,Allerød,traffic_accidents,150.0,30.19,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+153,Brøndby,traffic_accidents,150.0,26.84,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+155,Dragør,traffic_accidents,150.0,23.03,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+175,Rødovre,traffic_accidents,150.0,25.85,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+190,Furesø,traffic_accidents,150.0,29.54,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+230,Rudersdal,traffic_accidents,150.0,23.02,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+167,Hvidovre,traffic_accidents,150.0,21.51,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+157,Gentofte,traffic_accidents,131.25,34.62,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+269,Solrød,traffic_accidents,150.0,18.64,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+746,Skanderborg,traffic_accidents,150.0,27.63,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+265,Roskilde,traffic_accidents,123.88,36.68,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+240,Egedal,traffic_accidents,118.92,38.21,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+151,Ballerup,traffic_accidents,150.0,24.1,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+223,Hørsholm,traffic_accidents,150.0,28.92,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+185,Tårnby,traffic_accidents,100.46,45.23,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+173,Lyngby-Taarbæk,traffic_accidents,150.0,26.73,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+350,Lejre,traffic_accidents,119.8,37.93,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+163,Herlev,traffic_accidents,150.0,18.73,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+210,Fredensborg,traffic_accidents,150.0,18.85,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+183,Ishøj,traffic_accidents,150.0,13.5,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+530,Billund,traffic_accidents,88.28,51.47,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+710,Favrskov,traffic_accidents,111.24,40.85,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+840,Rebild,traffic_accidents,61.8,73.53,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+147,Frederiksberg,traffic_accidents,102.62,44.28,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+187,Vallensbæk,traffic_accidents,141.56,32.1,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+253,Greve,traffic_accidents,150.0,20.94,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+259,Køge,traffic_accidents,150.0,30.23,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+159,Gladsaxe,traffic_accidents,150.0,23.41,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+217,Helsingør,traffic_accidents,126.93,35.8,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+825,Læsø,traffic_accidents,76.47,59.42,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+250,Frederikssund,traffic_accidents,126.82,35.83,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+661,Holstebro,traffic_accidents,66.29,68.55,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+657,Herning,traffic_accidents,119.83,37.92,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+773,Morsø,traffic_accidents,50.71,89.61,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+260,Halsnæs,traffic_accidents,83.21,54.61,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+492,Ærø,traffic_accidents,71.46,63.59,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+219,Hillerød,traffic_accidents,86.47,52.55,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+340,Sorø,traffic_accidents,77.89,58.34,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+561,Esbjerg,traffic_accidents,118.7,38.28,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+740,Silkeborg,traffic_accidents,115.77,39.25,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+563,Fanø,traffic_accidents,64.89,70.03,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+615,Horsens,traffic_accidents,124.7,36.44,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+316,Holbæk,traffic_accidents,103.3,43.99,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+607,Fredericia,traffic_accidents,104.58,43.45,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+766,Hedensted,traffic_accidents,87.13,52.15,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+410,Middelfart,traffic_accidents,113.01,40.21,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+851,Aalborg,traffic_accidents,84.89,53.53,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+370,Næstved,traffic_accidents,73.48,61.84,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+329,Ringsted,traffic_accidents,136.37,33.32,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+810,Brønderslev,traffic_accidents,80.31,56.58,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+751,Aarhus,traffic_accidents,92.1,49.34,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+727,Odder,traffic_accidents,106.89,42.51,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+813,Frederikshavn,traffic_accidents,76.13,59.69,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+336,Stevns,traffic_accidents,112.09,40.54,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+270,Gribskov,traffic_accidents,101.72,44.67,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+161,Glostrup,traffic_accidents,135.44,33.55,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+860,Hjørring,traffic_accidents,59.21,76.75,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+479,Svendborg,traffic_accidents,95.14,47.76,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+165,Albertslund,traffic_accidents,150.0,26.2,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+791,Viborg,traffic_accidents,73.72,61.64,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+706,Syddjurs,traffic_accidents,81.79,55.56,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+480,Nordfyns,traffic_accidents,102.0,44.55,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+440,Kerteminde,traffic_accidents,150.0,28.81,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+101,København,traffic_accidents,94.02,48.33,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+630,Vejle,traffic_accidents,128.25,35.43,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+760,Ringkøbing-Skjern,traffic_accidents,54.33,83.63,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+730,Randers,traffic_accidents,90.79,50.05,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+430,Faaborg-Midtfyn,traffic_accidents,108.09,42.04,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+320,Faxe,traffic_accidents,78.78,57.68,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+169,Høje-Taastrup,traffic_accidents,150.0,24.81,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+573,Varde,traffic_accidents,77.52,58.62,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+621,Kolding,traffic_accidents,104.1,43.65,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+580,Aabenraa,traffic_accidents,91.52,49.65,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+787,Thisted,traffic_accidents,100.07,45.41,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+420,Assens,traffic_accidents,112.31,40.46,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+756,Ikast-Brande,traffic_accidents,107.32,42.34,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+461,Odense,traffic_accidents,141.07,32.21,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+779,Skive,traffic_accidents,87.13,52.15,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+450,Nyborg,traffic_accidents,76.15,59.67,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+846,Mariagerfjord,traffic_accidents,61.56,73.82,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+540,Sønderborg,traffic_accidents,91.03,49.92,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+820,Vesthimmerlands,traffic_accidents,54.58,83.26,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+400,Bornholm,traffic_accidents,70.3,64.64,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+510,Haderslev,traffic_accidents,91.8,49.5,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+665,Lemvig,traffic_accidents,48.75,93.21,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+575,Vejen,traffic_accidents,107.65,42.21,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+671,Struer,traffic_accidents,97.97,46.38,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+707,Norddjurs,traffic_accidents,68.12,66.71,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+330,Slagelse,traffic_accidents,82.36,55.17,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+306,Odsherred,traffic_accidents,88.99,51.06,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+376,Guldborgsund,traffic_accidents,97.09,46.8,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+326,Kalundborg,traffic_accidents,73.46,61.86,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+849,Jammerbugt,traffic_accidents,56.92,79.83,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+390,Vordingborg,traffic_accidents,82.59,55.02,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+550,Tønder,traffic_accidents,59.41,76.48,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+360,Lolland,traffic_accidents,80.81,56.23,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+741,Samsø,traffic_accidents,41.09,110.59,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+482,Langeland,traffic_accidents,150.0,25.34,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
 201,Allerød,sports_membership,110.71,51.7,%,2025,DST IDRAKT02,social,lokalsamfund
 153,Brøndby,sports_membership,65.31,30.5,%,2025,DST IDRAKT02,social,lokalsamfund
 155,Dragør,sports_membership,120.99,56.5,%,2025,DST IDRAKT02,social,lokalsamfund
@@ -3901,104 +4002,6 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,sports_membership,70.88,33.1,%,2025,DST IDRAKT02,social,lokalsamfund
 741,Samsø,sports_membership,150.0,98.4,%,2025,DST IDRAKT02,social,lokalsamfund
 482,Langeland,sports_membership,97.86,45.7,%,2025,DST IDRAKT02,social,lokalsamfund
-201,Allerød,sports_facilities,108.02,23.02,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-153,Brøndby,sports_facilities,69.83,14.88,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-155,Dragør,sports_facilities,81.04,17.27,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-175,Rødovre,sports_facilities,60.3,12.85,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-190,Furesø,sports_facilities,83.2,17.73,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-230,Rudersdal,sports_facilities,82.64,17.61,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-167,Hvidovre,sports_facilities,62.32,13.28,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-157,Gentofte,sports_facilities,66.21,14.11,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-269,Solrød,sports_facilities,78.7,16.77,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-746,Skanderborg,sports_facilities,128.72,27.43,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-265,Roskilde,sports_facilities,86.58,18.45,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-240,Egedal,sports_facilities,78.13,16.65,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-151,Ballerup,sports_facilities,74.8,15.94,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-223,Hørsholm,sports_facilities,81.42,17.35,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-185,Tårnby,sports_facilities,75.36,16.06,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-173,Lyngby-Taarbæk,sports_facilities,70.44,15.01,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-350,Lejre,sports_facilities,89.54,19.08,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-163,Herlev,sports_facilities,65.93,14.05,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-210,Fredensborg,sports_facilities,90.66,19.32,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-183,Ishøj,sports_facilities,55.14,11.75,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-530,Billund,sports_facilities,150.0,33.09,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-710,Favrskov,sports_facilities,135.76,28.93,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-840,Rebild,sports_facilities,150.0,33.57,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-147,Frederiksberg,sports_facilities,45.1,9.61,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-187,Vallensbæk,sports_facilities,62.79,13.38,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-253,Greve,sports_facilities,77.15,16.44,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-259,Køge,sports_facilities,90.99,19.39,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-159,Gladsaxe,sports_facilities,59.97,12.78,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-217,Helsingør,sports_facilities,89.86,19.15,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-825,Læsø,sports_facilities,150.0,95.07,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-250,Frederikssund,sports_facilities,106.8,22.76,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-661,Holstebro,sports_facilities,150.0,33.04,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-657,Herning,sports_facilities,138.39,29.49,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-773,Morsø,sports_facilities,150.0,35.67,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-260,Halsnæs,sports_facilities,70.95,15.12,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-492,Ærø,sports_facilities,150.0,38.15,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-219,Hillerød,sports_facilities,85.03,18.12,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-340,Sorø,sports_facilities,135.38,28.85,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-561,Esbjerg,sports_facilities,111.87,23.84,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-740,Silkeborg,sports_facilities,115.53,24.62,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-563,Fanø,sports_facilities,150.0,60.02,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-615,Horsens,sports_facilities,79.31,16.9,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-316,Holbæk,sports_facilities,96.34,20.53,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-607,Fredericia,sports_facilities,92.21,19.65,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-766,Hedensted,sports_facilities,150.0,32.53,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-410,Middelfart,sports_facilities,112.06,23.88,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-851,Aalborg,sports_facilities,82.82,17.65,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-370,Næstved,sports_facilities,87.61,18.67,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-329,Ringsted,sports_facilities,108.17,23.05,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-810,Brønderslev,sports_facilities,133.6,28.47,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-751,Aarhus,sports_facilities,65.74,14.01,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-727,Odder,sports_facilities,133.18,28.38,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-813,Frederikshavn,sports_facilities,139.51,29.73,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-336,Stevns,sports_facilities,82.68,17.62,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-270,Gribskov,sports_facilities,123.51,26.32,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-161,Glostrup,sports_facilities,56.31,12.0,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-860,Hjørring,sports_facilities,137.12,29.22,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-479,Svendborg,sports_facilities,132.1,28.15,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-165,Albertslund,sports_facilities,86.58,18.45,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-791,Viborg,sports_facilities,147.21,31.37,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-706,Syddjurs,sports_facilities,136.37,29.06,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-480,Nordfyns,sports_facilities,147.96,31.53,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-440,Kerteminde,sports_facilities,108.17,23.05,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-101,København,sports_facilities,38.85,8.28,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-630,Vejle,sports_facilities,109.67,23.37,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-760,Ringkøbing-Skjern,sports_facilities,150.0,41.69,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-730,Randers,sports_facilities,100.8,21.48,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-430,Faaborg-Midtfyn,sports_facilities,150.0,34.97,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-320,Faxe,sports_facilities,121.77,25.95,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-169,Høje-Taastrup,sports_facilities,73.72,15.71,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-573,Varde,sports_facilities,150.0,46.29,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-621,Kolding,sports_facilities,94.13,20.06,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-580,Aabenraa,sports_facilities,143.83,30.65,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-787,Thisted,sports_facilities,150.0,38.52,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-420,Assens,sports_facilities,150.0,33.69,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-756,Ikast-Brande,sports_facilities,147.4,31.41,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-461,Odense,sports_facilities,77.05,16.42,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-779,Skive,sports_facilities,150.0,37.18,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-450,Nyborg,sports_facilities,107.18,22.84,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-846,Mariagerfjord,sports_facilities,133.32,28.41,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-540,Sønderborg,sports_facilities,119.66,25.5,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-820,Vesthimmerlands,sports_facilities,150.0,38.73,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-400,Bornholm,sports_facilities,150.0,41.11,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-510,Haderslev,sports_facilities,147.02,31.33,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-665,Lemvig,sports_facilities,150.0,50.01,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-575,Vejen,sports_facilities,150.0,34.24,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-671,Struer,sports_facilities,149.27,31.81,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-707,Norddjurs,sports_facilities,150.0,33.45,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-330,Slagelse,sports_facilities,96.81,20.63,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-306,Odsherred,sports_facilities,126.18,26.89,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-376,Guldborgsund,sports_facilities,126.98,27.06,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-326,Kalundborg,sports_facilities,119.38,25.44,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-849,Jammerbugt,sports_facilities,150.0,32.37,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-390,Vordingborg,sports_facilities,112.01,23.87,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-550,Tønder,sports_facilities,150.0,38.15,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-360,Lolland,sports_facilities,146.13,31.14,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-741,Samsø,sports_facilities,150.0,49.76,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
-482,Langeland,sports_facilities,150.0,39.69,pr. 10.000 indb.,2025,DST IDRFAC01,social,lokalsamfund
 201,Allerød,class_size,93.09,21.7,elever/klasse,2025,DST KVOTIEN,social,uddannelse
 153,Brøndby,class_size,95.28,21.2,elever/klasse,2025,DST KVOTIEN,social,uddannelse
 155,Dragør,class_size,90.99,22.2,elever/klasse,2025,DST KVOTIEN,social,uddannelse
@@ -4293,6 +4296,104 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,sports_spending,83.14,429.0,kr./indb.,2025,DST IDRFIN02,social,lokalsamfund
 741,Samsø,sports_spending,82.36,425.0,kr./indb.,2025,DST IDRFIN02,social,lokalsamfund
 482,Langeland,sports_spending,23.64,122.0,kr./indb.,2025,DST IDRFIN02,social,lokalsamfund
+201,Allerød,ensomhed,145.94,7.4,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+153,Brøndby,ensomhed,78.83,13.7,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+155,Dragør,ensomhed,140.25,7.7,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+175,Rødovre,ensomhed,114.89,9.4,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+190,Furesø,ensomhed,111.33,9.7,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+230,Rudersdal,ensomhed,150.0,7.1,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+167,Hvidovre,ensomhed,93.1,11.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+157,Gentofte,ensomhed,124.13,8.7,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+269,Solrød,ensomhed,125.57,8.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+746,Skanderborg,ensomhed,117.38,9.2,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+265,Roskilde,ensomhed,93.1,11.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+240,Egedal,ensomhed,134.99,8.0,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+151,Ballerup,ensomhed,91.52,11.8,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+223,Hørsholm,ensomhed,138.45,7.8,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+185,Tårnby,ensomhed,113.68,9.5,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+173,Lyngby-Taarbæk,ensomhed,117.38,9.2,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+350,Lejre,ensomhed,101.88,10.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+163,Herlev,ensomhed,99.99,10.8,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+210,Fredensborg,ensomhed,125.57,8.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+183,Ishøj,ensomhed,77.14,14.0,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+530,Billund,ensomhed,114.89,9.4,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+710,Favrskov,ensomhed,119.99,9.0,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+840,Rebild,ensomhed,110.2,9.8,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+147,Frederiksberg,ensomhed,104.85,10.3,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+187,Vallensbæk,ensomhed,109.08,9.9,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+253,Greve,ensomhed,98.18,11.0,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+259,Køge,ensomhed,113.68,9.5,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+159,Gladsaxe,ensomhed,95.57,11.3,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+217,Helsingør,ensomhed,122.72,8.8,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+825,Læsø,ensomhed,103.84,10.4,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+250,Frederikssund,ensomhed,99.99,10.8,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+661,Holstebro,ensomhed,91.52,11.8,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+657,Herning,ensomhed,88.52,12.2,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+773,Morsø,ensomhed,93.1,11.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+260,Halsnæs,ensomhed,97.29,11.1,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+492,Ærø,ensomhed,143.99,7.5,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+219,Hillerød,ensomhed,92.3,11.7,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+340,Sorø,ensomhed,105.88,10.2,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+561,Esbjerg,ensomhed,119.99,9.0,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+740,Silkeborg,ensomhed,128.56,8.4,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+563,Fanø,ensomhed,150.0,7.0,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+615,Horsens,ensomhed,89.99,12.0,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+316,Holbæk,ensomhed,86.39,12.5,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+607,Fredericia,ensomhed,90.75,11.9,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+766,Hedensted,ensomhed,133.33,8.1,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+410,Middelfart,ensomhed,136.7,7.9,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+851,Aalborg,ensomhed,92.3,11.7,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+370,Næstved,ensomhed,109.08,9.9,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+329,Ringsted,ensomhed,93.1,11.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+810,Brønderslev,ensomhed,95.57,11.3,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+751,Aarhus,ensomhed,97.29,11.1,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+727,Odder,ensomhed,110.2,9.8,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+813,Frederikshavn,ensomhed,99.99,10.8,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+336,Stevns,ensomhed,116.12,9.3,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+270,Gribskov,ensomhed,112.49,9.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+161,Glostrup,ensomhed,89.25,12.1,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+860,Hjørring,ensomhed,101.88,10.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+479,Svendborg,ensomhed,117.38,9.2,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+165,Albertslund,ensomhed,71.52,15.1,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+791,Viborg,ensomhed,99.99,10.8,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+706,Syddjurs,ensomhed,125.57,8.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+480,Nordfyns,ensomhed,110.2,9.8,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+440,Kerteminde,ensomhed,124.13,8.7,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+101,København,ensomhed,83.72,12.9,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+630,Vejle,ensomhed,112.49,9.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+760,Ringkøbing-Skjern,ensomhed,119.99,9.0,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+730,Randers,ensomhed,102.85,10.5,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+430,Faaborg-Midtfyn,ensomhed,116.12,9.3,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+320,Faxe,ensomhed,87.8,12.3,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+169,Høje-Taastrup,ensomhed,74.48,14.5,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+573,Varde,ensomhed,136.7,7.9,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+621,Kolding,ensomhed,85.71,12.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+580,Aabenraa,ensomhed,119.99,9.0,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+787,Thisted,ensomhed,93.91,11.5,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+420,Assens,ensomhed,125.57,8.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+756,Ikast-Brande,ensomhed,118.67,9.1,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+461,Odense,ensomhed,95.57,11.3,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+779,Skive,ensomhed,89.25,12.1,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+450,Nyborg,ensomhed,113.68,9.5,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+846,Mariagerfjord,ensomhed,86.39,12.5,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+540,Sønderborg,ensomhed,113.68,9.5,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+820,Vesthimmerlands,ensomhed,101.88,10.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+400,Bornholm,ensomhed,101.88,10.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+510,Haderslev,ensomhed,114.89,9.4,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+665,Lemvig,ensomhed,125.57,8.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+575,Vejen,ensomhed,113.68,9.5,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+671,Struer,ensomhed,89.99,12.0,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+707,Norddjurs,ensomhed,112.49,9.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+330,Slagelse,ensomhed,99.08,10.9,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+306,Odsherred,ensomhed,99.99,10.8,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+376,Guldborgsund,ensomhed,92.3,11.7,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+326,Kalundborg,ensomhed,76.59,14.1,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+849,Jammerbugt,ensomhed,103.84,10.4,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+390,Vordingborg,ensomhed,85.71,12.6,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+550,Tønder,ensomhed,119.99,9.0,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+360,Lolland,ensomhed,81.2,13.3,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+741,Samsø,ensomhed,127.05,8.5,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
+482,Langeland,ensomhed,103.84,10.4,%,2025,Sundhedsprofilen 2025,social,lokalsamfund
 201,Allerød,civil_society,78.38,58.0,kr./indb.,2025,DST REGK31,social,lokalsamfund
 153,Brøndby,civil_society,150.0,350.0,kr./indb.,2025,DST REGK31,social,lokalsamfund
 155,Dragør,civil_society,144.59,107.0,kr./indb.,2025,DST REGK31,social,lokalsamfund

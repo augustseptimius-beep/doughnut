@@ -84,14 +84,13 @@ IKKE_SCORET = {"housing_no_wc", "housing_no_bath"}
 # indikator-liste allerede skal holdes i sync manuelt.
 OP_ER_GODT = {
     # --- Sociale (fra shared.ts INDICATORS[].inverse) ---
-    "hjemsyg": False, "medicin": False, "laegekontakt": True, "boerneovervaeght": False,
-    "hospital_short": False, "class_size": False, "daycare_ratio": False,
+    "hjemsyg": False, "class_size": False, "daycare_ratio": False,
     "educated_staff": True, "low_education": False, "education": True,
     "vulnerable_children": False, "child_notifications": False, "neet": False,
     "poverty_relative": False, "child_poverty": False, "gini": False,
     "housing_area": True, "vacant_housing": False, "voter_turnout_national": True,
     "music_school": True, "library_use": True, "traffic_accidents": False,
-    "crime_rate": False, "sports_facilities": True, "sports_membership": True,
+    "crime_rate": False, "sports_membership": True,
     "sports_spending": True, "gender_leadership": True, "income_gender_gap": True,
     "employment_origin_gap": True, "le_gender_gap": False, "life_expectancy": True,
     "employment": True, "disposable_income": True, "commute_distance": False,
@@ -99,6 +98,9 @@ OP_ER_GODT = {
     "voter_turnout": True, "kultur_spending": True, "civil_society": True,
     "low_income": False, "exam_grade": True, "high_absence": False,
     "wellbeing": True, "youth_education": True,
+    # Den Nationale Sundhedsprofil 2025 (survey, bølger hvert 4. år)
+    "selvvurderet_helbred": True, "mentalt_helbred": False, "rygning": False,
+    "alkohol": False, "kost": False, "svaer_overvaegt": False, "ensomhed": False,
     # --- Økologiske (lavere raw = bedre, undtagen genanvendelse) ---
     "naer_nitrogen": False, "naer_phosphorus": False, "vandindvinding": False,
     "areal_intensiv": False, "areal_bebygget": False, "klimapaavirkning": False,

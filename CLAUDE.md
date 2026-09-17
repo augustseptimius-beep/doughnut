@@ -9,7 +9,7 @@
 - **Projekt:** Doughnut Economics-platform for alle 98 danske kommuner - offentlig platform der viser hver kommunes status i forhold til socialt fundament og økologisk loft.
 - **Ejerskab:** Thisted Kommune. Udviklet i klimateamet under EU-projektet LIFE ACT. Licens er ikke afklaret, se README.
 - **Stack:** Next.js 16 (`output: "export"`) + Tailwind 4 i `webapp/`, Python-scripts i `scripts/`, CSV-data i `data/`, Netlify-deploy ved push til default-branchen.
-- **Omfang:** 13 sociale kategorier, 7 økologiske dimensioner, 66 scorede indikatorer og 16 kontekst-indikatorer.
+- **Omfang:** 13 sociale kategorier, 7 økologiske dimensioner, 65 scorede indikatorer (48 sociale + 17 økologiske sub-indikatorer) og 16 kontekst-indikatorer.
 - **Sprog i repoet:** dansk i dokumentation, kommentarer og UI. README er på engelsk af hensyn til eksterne læsere. Undgå em-dash, brug enkelt dash.
 
 ## Projektstruktur
@@ -25,7 +25,9 @@ doughnut/
 │   ├── CHANGELOG.md               ← log over data-ændringer
 │   ├── methodology_note.md        ← CBA 2023-nutidsjustering
 │   ├── klimatilpasning.md         ← metodenote for vejr_skader-indikatoren
-│   ├── *_scores.csv               ← rådata-spor (~25 CSV'er). Se data/README.md for fuld liste.
+│   ├── sundhedsprofil_scores.csv  ← seneste bølge (2025), 8 indikatorer
+│   ├── sundhedsprofil_historik.csv← alle fem bølger 2010-2025 (kun de scorede bruges)
+│   ├── *_scores.csv               ← rådata-spor (~27 CSV'er). Se data/README.md for fuld liste.
 │   └── sundhedsdatabank/
 │       └── psyk_tilstande_pr_1000_2025.xlsx  ← Borgere med psykiatriske tilstande pr. 1.000 (Sundhedsdatabank 2025).
 │                                               Ikke brugt som aktiv indikator (trækkes ikke automatisk).
@@ -33,6 +35,7 @@ doughnut/
 ├── scripts/
 │   ├── build_master_csv.py        ← ★ konsoliderer alle rådata-CSV'er til master_indicators.csv
 │   ├── fetch_doughnut_data.py     ← hoved-script: sociale indikatorer + klima-fallback
+│   ├── fetch_sundhedsprofil.py    ← Den Nationale Sundhedsprofil (survey, bølger hvert 4. år)
 │   └── fetch_*.py                 ← øvrige fetchers (~15). Se build_master_csv.py for fuld pipeline.
 ├── docs/                    ← API-guides og mappings (statbank, Energi Data Service m.fl.)
 └── webapp/
@@ -182,7 +185,8 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
     Mekanikken bor i `scripts/api_noegler.py`. `hent_noegle()` fejler bevidst ALDRIG ved import, kun `kraev_noegle()` i `main()` afbryder. Årsag: et script der fejler ved import fejler tavst i `tjek_robusthed.py` og andre sammenhænge - se punkt 19.
 
     **Historik:** begge nøgler stod hårdkodet i `scripts/` indtil aug. 2026 i et offentligt repo. De blev tilbagekaldt hos udbyderne da det blev opdaget, så de værdier der stadig ligger i git-historikken er inerte. Reglen for fremtiden: en nøgle der én gang er pushet, kan ikke fjernes igen. Historik-omskrivning rammer hverken eksisterende kloner eller GitHubs cache, så tilbagekaldelse hos udbyderen er den eneste virkningsfulde reaktion.
-9. **Kontekst-indikatorer (vises, scores IKKE)** - data der vises i UI men ikke indgår i nogen score. Defineres i `CONTEXT_INDICATORS` i `build_master_csv.py`, skrives til master med `category="context"`, rutes i `data.ts` til `kommune.rawValues[indicator_id]`, og renderes af en dedikeret komponent (fx `EnergiKontekst`, `KlimaKontekst` i `ScoreBars.tsx`). Bruges til:
+9. **Kontekst-indikatorer (vises, scores IKKE)** - data der vises i UI men ikke indgår i nogen score.
+    **Regel skærpet sep. 2026: en indikator der KUNNE scores, skal scores eller fjernes. Kontekst er kun til opdelinger af et tal der allerede er scoret.** Sektorfordelingen af CO2 er en opdeling af det territoriale tal; `ctx_fossil_direkte`/`ctx_fossil_via_fjv` er de to halvdele af `bolig_fossil`. De bliver stående, fordi der ikke findes et meningsfuldt mål at score dem imod. `medicin` var derimod en scorbar indikator vi var i tvivl om fortegnet på - den blev fjernet helt, ikke parkeret som kontekst. Resterende kandidater der stadig skal afgøres: `ctx_ve_*`, `ctx_energiforbrug`, `ctx_fritid_*`. Defineres i `CONTEXT_INDICATORS` i `build_master_csv.py`, skrives til master med `category="context"`, rutes i `data.ts` til `kommune.rawValues[indicator_id]`, og renderes af en dedikeret komponent (fx `EnergiKontekst`, `KlimaKontekst` i `ScoreBars.tsx`). Bruges til:
     - **Energi:** lokal VE-kapacitet (`ctx_ve_*`, EDS CapacityPerMunicipality) og fjernvarmens brændselsmix (`ctx_fjv_*`, Energistyrelsen EPT `ens.dk/media/7199/download`). Begrundelse: VE er national net-produktion; fjernvarme er overvejende afbrænding - se metode-siden.
     - **Klimapåvirkning:** sektorfordeling af territorial udledning (`ctx_klima_landbrug/energi/transport`), samlet energiforbrug (`ctx_energiforbrug`) og VE-el selvforsyningsgrad (`ctx_ve_selvforsyning`) - alle fra Klimaregnskabet.dk, samme API-kald som `klimapaavirkning` selv genbruges til (ingen ekstra kald, se `fetch_climate_data.py`). Begrundelse: sektorerne er en opdeling af det allerede scorede territoriale tal, ikke et nyt måltal. **Fælde:** `ve_selvforsyning` leveres som forhold (1.71), ikke procent - ganges med 100 i `_extract_kontekst()`.
     - **Fritidsboliger** (`ctx_fritid_fossil`, `ctx_fritid_andel`, fra `fetch_bolig_fossil.py`). Begrundelse: se punkt 10.
@@ -215,6 +219,20 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
     - **Vandværker uden registreret årsindvinding skal have MEDIANVÆGT, ikke vægten nul.** Manglende mængdedata er systematisk skævt: de 33% uden mængde har median 2,2 mg/L mod 1,5 for dem med. Med vægten nul forsvandt netop de mest belastede værker, og Thisted faldt kunstigt til 4,4 mg/L.
     - **Tallet er beslægtet med Greenpeaces, ikke identisk.** Vi vægter efter tilladt indvindingsmængde; Greenpeace/Schullehner kobler til faktiske forsyningsområder. Aalborg rammer næsten præcist (20,5 mod 20,7), men Thisted lander på 5,2 mod 13,9 - forskellen er metodisk, ikke en fejl. Pesticider skifter samtidig tælleenhed fra boringer til vandværker.
     - **Fælde: Jupiter-WFS'en ignorerer `CQL_FILTER` TAVST** og returnerer alle stoffer. Brug OGC XML-`filter`, og verificér at det udtrukne stof er det forventede (scriptet gør det selv og afbryder ellers).
+
+22. **Sundhed er kategorien med seks af ni indikatorer fra én kilde.** Selvvurderet helbred, dårligt mentalt helbred, rygning, alkohol, kostskala og svær overvægt kommer alle fra Sundhedsprofilen, samme bølge, samme spørgeskema. Middellevetid, sygehusophold 12+ timer og hjemmesygepleje er de tre registerbaserede. Konsekvensen er at en ændret definition eller en udeblevet bølge hos SIF slår igennem på to tredjedele af kategorien på én gang, og at middellevetid kun vejer en niendedel. Levevaner lå kortvarigt som sin egen kategori, men er lagt ind under Sundhed efter beslutning sep. 2026.
+
+23. **Sundhedsprofilen er survey, ikke register - fire ting man skal kende.** `scripts/fetch_sundhedsprofil.py` henter otte indikatorer fra internetdatabasen på danskernessundhed.dk (Sundhedsstyrelsen + SIF/SDU). Kilden opfører sig anderledes end DST på fire punkter:
+    - **Bølger hvert 4. år** (2010, 2013, 2017, 2021, 2025). Kommunetallene står fast mellem bølger. Det er IKKE den frosne-tal-fejl fra punkt 19: `data_year` er korrekt sat til 2025, og metodesiden siger det. Men et fetch-kald giver samme tal år efter år, så brug ikke "tallet ændrer sig ikke" som tegn på at scriptet er i stykker.
+    - **To API-fælder.** `/SASVisualAnalyticsTransport/onebi/services/*` svarer **401** indtil man har vekslet gæste-CAS-cookien (CASTGC) til en service ticket via `/SASLogon/rest/v1/tickets/<TGT>` og indløst den. Og `getData` svarer **400** hvis `reportDate` mangler - brug requery-URL'en fra `generateReport` som den kommer, frem for at bygge URL'en selv.
+    - **Landsgennemsnittet beregnes af os**, som befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+). Databasen udstiller ikke et landstal pr. kommunetabel. Tallet afviger derfor en anelse fra SIF's eget vægtede landsestimat, og det skal stå i enhver formidling.
+    - **DataDefinition-id'et varierer pr. rapport.** Hardkod det aldrig. Scriptet finder rapportens faneblad "Kommune", følger dets `<Visual ref>` til krydstabellen og læser `data="ddNNNN"` derfra, med validering på indholdet som fallback.
+
+24. **Pil-vinduet for Sundhedsprofilen er 2017 → 2025, ikke hele serien.** `build_trends_csv.py` bruger første og sidste punkt når serien er kortere end 6 år. En fuld 2010-2025-serie ville derfor give en pil der beskriver 15 års udvikling og ikke er sammenlignelig med de øvrige indikatorers vinduer. 2021 er fravalgt som basis hvor 2017 findes, fordi dataindsamlingen det år lå under coronarestriktioner - især mental sundhed og alkohol var atypiske. `ensomhed` har nødvendigvis 2021 som basis. Styres af `TREND_BASIS_PRIORITET` i fetch-scriptet.
+
+25. **`fysisk_aktivitet` hentes, men scores ikke - og det er ikke en kontekst-indikator.** Den korrelerer 0,90 med svær overvægt og 0,80 med kostskalaen. Med alle tre ville én underliggende konstruktion fylde tre af Sundheds ni pladser. Tallet står i `sundhedsprofil_scores.csv` og er markeret `kun_data=True` i INDIKATORER, så det hverken når master eller trend-historikken. Skal prioriteringen laves om, er det ét flag.
+
+26. **`traffic_accidents` er et treårigt gennemsnit (fra sep. 2026).** UHELDK1 summeres over de tre nyeste år og divideres med tre. Baggrund: ét års tal er ren støj i små kommuner - Læsøs gamle score på 35 hvilede på omkring to tilskadekomne. Samme greb som `vejr_skader` (2023-2025). Ændrer man det tilbage til ét år, genindfører man støjen.
 
 ## Arbejdsprincipper for ændringer
 
