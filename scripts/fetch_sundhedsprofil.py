@@ -73,15 +73,15 @@ INDIKATORER = [
          inverse=False, navn="Godt selvvurderet helbred"),
     dict(id="mentalt_helbred", rapport="Daarligt mentalt helbred",
          inverse=True, navn="Dårligt mentalt helbred"),
-    # Levevaner
+    # Levevaner (samme kategori: Sundhed)
     dict(id="rygning", rapport="Andel der ryger dagligt",
          inverse=True, navn="Daglig rygning"),
     dict(id="alkohol", rapport="Drikker mere end 10 genstande om ugen",
          inverse=True, navn="Drikker over 10 genstande om ugen"),
     # Hentes, men scores IKKE. Korrelationen med svær overvægt er 0,90 og med
     # kostskalaen 0,80: de tre måler reelt samme bagvedliggende forhold, og med
-    # alle tre i et gennemsnit ville den ene konstruktion få tre femtedele af
-    # Levevaner. Svær overvægt er beholdt som udfaldet, kostskalaen som den
+    # alle tre i et gennemsnit ville den ene konstruktion fylde tre af ni pladser i
+    # Sundhed. Svær overvægt er beholdt som udfaldet, kostskalaen som den
     # bredeste adfærdsmåling. Tallet står i sundhedsprofil_scores.csv hvis
     # prioriteringen skal laves om.
     dict(id="fysisk_aktivitet", rapport="Opfylder ikke WHOs anbefalinger for fysisk aktivitet",

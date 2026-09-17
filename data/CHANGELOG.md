@@ -10,15 +10,16 @@ Log over større ændringer i datapipeline og master-fil.
   - **Landsgennemsnit** beregnes som befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+, undersøgelsens målgruppe). Databasen udstiller ikke et landstal pr. kommunetabel. Tallet afviger derfor en anelse fra SIF's eget vægtede landsestimat.
   - **Kadence:** bølger hvert fjerde år. Kommunetallene står fast indtil næste bølge, og `data_year` er sat til 2025 for alle otte.
 
-- **Sundhed omlagt fra otte til fem indikatorer.** Ind: `selvvurderet_helbred`, `mentalt_helbred`. Ud: `hospital_short`, `gp_distance`, `medicin`, `laegekontakt`, `boerneovervaeght`. Tilbage: `life_expectancy`, `hospital_long`, `hjemsyg`.
+- **Sundhed omlagt fra otte til ni indikatorer.** Fem tilstandsmål og fire levevaner. Ind: `selvvurderet_helbred`, `mentalt_helbred`. Ud: `hospital_short`, `gp_distance`, `medicin`, `laegekontakt`, `boerneovervaeght`. Tilbage: `life_expectancy`, `hospital_long`, `hjemsyg`.
   - `laegekontakt` havde standardafvigelse 2,3 og et spænd fra p10 til p90 på 6,5 point, altså stort set ingen differentiering, og korrelerede -0,64 med hjemmesygepleje og -0,59 med lægeafstand. Den målte tilgængelighed, ikke sundhed.
   - `gp_distance` ramte 150-loftet for hele den øverste tiendedel og korrelerede 0,74 med pendlingsafstand. Den straffede landkommuner for geografi, og Mobilitet måler allerede afstand.
   - `hospital_short` korrelerede 0,60 med `hospital_long`, som har dobbelt så stor spredning.
   - `medicin` korrelerer **-0,01** med det direkte mål for dårligt mentalt helbred. Antidepressivt forbrug måler altså ikke mental sundhed, men behandlingsintensitet. Den er fjernet helt, ikke flyttet til kontekst.
   - `boerneovervaeght` byggede på 2018-tal og er afløst af voksenovervægt fra 2025.
 
-- **Ny kategori: Levevaner.** `rygning`, `alkohol`, `kost`, `svaer_overvaegt`. Adskilt fra Sundhed, fordi ti indikatorer i ét gennemsnit ville have fortyndet middellevetid til en tiendedel, og fordi levevaner er det kommunen kan handle på. Opdelingen følger Sundhedsprofilens egen taksonomi, som også placerer overvægt under sundhedsadfærd. Den sociale ring går fra 13 til 14 kategorier, så sundhedsområdet vejer ca. 14 % mod tidligere knap 8 %.
-  - **`fysisk_aktivitet` hentes, men scores ikke.** Korrelation 0,90 med svær overvægt og 0,80 med kostskalaen. Med alle tre i gennemsnittet ville én underliggende konstruktion få tre af fem pladser i kategorien. Tallet står i `sundhedsprofil_scores.csv`.
+- **Levevaner lagt ind under Sundhed.** `rygning`, `alkohol`, `kost` og `svaer_overvaegt` ligger i Sundhed sammen med de fem tilstandsmål, så kategorien har ni indikatorer i ét simpelt gennemsnit. Den sociale ring bliver på 13 kategorier. Levevaner var kortvarigt sin egen kategori i udviklingen af denne ændring; det blev fravalgt, fordi en fjortende kile ville have givet sundhedsområdet knap dobbelt vægt i den sociale score.
+  - **Konsekvens der skal kendes:** seks af Sundheds ni indikatorer kommer nu fra Sundhedsprofilen, samme bølge og samme spørgeskema. En ændret definition eller en udeblevet bølge hos SIF rammer to tredjedele af kategorien på én gang, og middellevetid vejer en niendedel.
+  - **`fysisk_aktivitet` hentes, men scores ikke.** Korrelation 0,90 med svær overvægt og 0,80 med kostskalaen. Med alle tre ville én underliggende konstruktion fylde tre af de ni pladser. Tallet står i `sundhedsprofil_scores.csv`.
 
 - **Foreningsliv omdøbt til Fællesskab og givet et udfaldsmål.** Ind: `ensomhed`. Ud: `sports_facilities`. Den gamle kategori bestod udelukkende af kommunale udgifter og faciliteter og havde ingen indbyrdes sammenhæng: idrætsfaciliteter korrelerede -0,35 med idrætsudgifter og -0,32 med foreningsstøtte. Gennemsnittet af de fire udlignede hinanden frem for at måle noget. `ensomhed` korrelerer 0,12 med Sundhed og 0,17 med den gamle Foreningsliv-score og tilfører dermed information ingen anden indikator har.
 

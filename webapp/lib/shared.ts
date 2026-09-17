@@ -632,14 +632,8 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
   {
     id: "sundhed",
     name: "Sundhed",
-    description: "Borgernes helbredstilstand: hvordan de selv vurderer deres fysiske og mentale helbred, hvor længe de lever, og hvor meget sygdom der er i kommunen. Levevaner ligger i sin egen kategori, fordi de er noget andet end tilstanden de fører til.",
-    indicatorIds: ["selvvurderet_helbred", "mentalt_helbred", "life_expectancy", "hospital_long", "hjemsyg"],
-  },
-  {
-    id: "levevaner",
-    name: "Levevaner",
-    description: "Rygning, alkohol, kost og vægt. De fire største påvirkelige risikofaktorer for folkesundheden og det område hvor kommunal forebyggelse kan flytte mest. Alle fire er selvrapporterede tal fra Den Nationale Sundhedsprofil.",
-    indicatorIds: ["rygning", "alkohol", "kost", "svaer_overvaegt"],
+    description: "Borgernes helbredstilstand og de levevaner der former den. De fem første indikatorer måler tilstanden: hvordan borgerne selv vurderer deres fysiske og mentale helbred, hvor længe de lever, og hvor meget sygdom og pleje der er i kommunen. De fire sidste måler de påvirkelige risikofaktorer, hvor kommunal forebyggelse kan flytte mest.",
+    indicatorIds: ["selvvurderet_helbred", "mentalt_helbred", "life_expectancy", "hospital_long", "hjemsyg", "rygning", "alkohol", "kost", "svaer_overvaegt"],
   },
   {
     id: "uddannelse",

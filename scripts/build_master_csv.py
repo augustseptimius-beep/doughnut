@@ -82,11 +82,10 @@ SOCIAL_INDICATORS = [
     {"id": "hjemsyg", "csv": "hjemsyg_scores.csv", "ratio_col": "hjemsyg_ratio", "raw_col": "hjemsyg_raw", "unit": "pr. 1.000 indb.", "data_year": "2025", "source": "DST HJEMSYG", "category": "social", "dimension": "sundhed"},
     {"id": "wellbeing", "csv": "uvm_scores.csv", "ratio_col": "wellbeing_ratio", "raw_col": "wellbeing_score", "unit": "score (1-5)", "data_year": "2024", "source": "UVM GS/TRIV/TRIVIND", "category": "social", "dimension": "uddannelse"},
 
-    # === Levevaner (Den Nationale Sundhedsprofil 2025) ===
-    {"id": "rygning", "csv": "sundhedsprofil_scores.csv", "ratio_col": "rygning_ratio", "raw_col": "rygning_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "levevaner"},
-    {"id": "alkohol", "csv": "sundhedsprofil_scores.csv", "ratio_col": "alkohol_ratio", "raw_col": "alkohol_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "levevaner"},
-    {"id": "kost", "csv": "sundhedsprofil_scores.csv", "ratio_col": "kost_ratio", "raw_col": "kost_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "levevaner"},
-    {"id": "svaer_overvaegt", "csv": "sundhedsprofil_scores.csv", "ratio_col": "svaer_overvaegt_ratio", "raw_col": "svaer_overvaegt_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "levevaner"},
+    {"id": "rygning", "csv": "sundhedsprofil_scores.csv", "ratio_col": "rygning_ratio", "raw_col": "rygning_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
+    {"id": "alkohol", "csv": "sundhedsprofil_scores.csv", "ratio_col": "alkohol_ratio", "raw_col": "alkohol_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
+    {"id": "kost", "csv": "sundhedsprofil_scores.csv", "ratio_col": "kost_ratio", "raw_col": "kost_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
+    {"id": "svaer_overvaegt", "csv": "sundhedsprofil_scores.csv", "ratio_col": "svaer_overvaegt_ratio", "raw_col": "svaer_overvaegt_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
 
     # === Uddannelse ===
     {"id": "education", "csv": "doughnut_scores.csv", "ratio_col": "education_ratio", "raw_col": "education_raw", "unit": "%", "data_year": "2025", "source": "DST HFUDD11", "category": "social", "dimension": "uddannelse", "abs_target": 95},
