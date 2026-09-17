@@ -96,7 +96,34 @@ Genereres af `scripts/fetch_trend_history.py` → `scripts/build_trends_csv.py`.
 
 ## Rådata-CSV'er (debug/transparens)
 
-De 21 individuelle CSV-filer (`luftforurening_scores.csv`, `naeringsstoffer_scores.csv` mv.) er bevaret som **rådata-spor**. De genereres af deres respektive `scripts/fetch_*.py`-scripts og gør det muligt at debugge data-pipelinen tilbage til kilden.
+De individuelle CSV-filer (`luftforurening_scores.csv`, `naeringsstoffer_scores.csv` mv.) er bevaret som **rådata-spor**. De genereres af deres respektive `scripts/fetch_*.py`-scripts og gør det muligt at debugge data-pipelinen tilbage til kilden.
+
+### `sundhedsprofil_scores.csv` og `sundhedsprofil_historik.csv`
+
+Fra Den Nationale Sundhedsprofil, hentet af `scripts/fetch_sundhedsprofil.py`.
+
+`sundhedsprofil_scores.csv` - seneste bølge (2025), én række pr. kommune:
+
+| Kolonne | Indhold |
+|---|---|
+| `kommune_kode` | 3-cifret kommunekode |
+| `<id>_pct` | Råandel i procent, som databasen viser den |
+| `<id>_ratio` | Ratio mod befolkningsvægtet landsgennemsnit, cappet ved 150 |
+
+`sundhedsprofil_historik.csv` - alle fem bølger 2010-2025 i long format
+(`kommune_kode, indicator_id, aar, raw_value`). Kun de scorede indikatorers
+2017- og 2025-tal skrives videre til `trend_history_raw.csv` - se punkt 23 i
+CLAUDE.md for hvorfor vinduet ikke er hele serien.
+
+Otte indikatorer hentes: `selvvurderet_helbred`, `mentalt_helbred`, `rygning`,
+`alkohol`, `fysisk_aktivitet`, `kost`, `svaer_overvaegt`, `ensomhed`.
+`fysisk_aktivitet` scores ikke (r = 0,90 med `svaer_overvaegt`), men bevares i
+filen.
+
+**Landsgennemsnittet er beregnet af os**, som et befolkningsvægtet gennemsnit af
+de 98 kommuneandele (DST FOLK1A, 16+). Databasen udstiller ikke et landstal pr.
+kommunetabel. Tallet afviger derfor en anelse fra SIF's eget vægtede
+landsestimat, og det skal fremgå ved formidling.
 
 Webapp'en læser **ikke** længere fra disse direkte - kun fra `master_indicators.csv`.
 

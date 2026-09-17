@@ -27,7 +27,6 @@ interface MethodInfo {
 const INDICATOR_RATIONALES: Record<string, string> = {
   // Sundhed
   life_expectancy: "Det mest direkte og internationalt sammenlignelige mål for befolkningens generelle sundhedstilstand. Langt tidsserie i DST (HISBK) giver høj datakvalitet.",
-  hospital_short: "Andel af befolkningen med kortvarigt sygehusophold (under 12 timer, SBR01). Akutte og ambulante besøg - høj andel kan signalere høj sygelighed eller lavt forebyggelsesniveau. Inverteret: lavere andel er bedre.",
   hospital_long: "Andel af befolkningen med indlæggelse på 12 timer eller derover (SBR01). Længere ophold indikerer alvorligere sygdomsforløb og er et stærkere signal om befolkningens helbredstilstand end kortere ophold. Inverteret: lavere andel er bedre.",
   // Uddannelse
   education: "Andel af 30-34-årige med erhvervskompetencegivende uddannelse er det primære politiske måleparameter for uddannelsesniveau. Absolut baseline: nationalt mål på 95% (Børne- og Undervisningsministeriet). Scoren beregnes nu mod dette mål (100 = 95% nået), ikke mod landsgennemsnittet.",
@@ -55,9 +54,8 @@ const INDICATOR_RATIONALES: Record<string, string> = {
   civil_society: "Kommunale udgifter til frivilligt folkeoplysende foreningsarbejde pr. indbygger (REGK31 funktion 33873). Proxy for kommunens investering i civilsamfund og det lokale foreningsliv - en central del af dansk demokratisk kultur.",
   // Tryghed
   crime_rate: "Anmeldte forbrydelser pr. 1.000 indb. er den bedst tilgængelige kvantitative indikator for tryghed på kommuneniveau. Lav kriminalitet er en forudsætning for social tillid og aktivt deltagelse i det offentlige rum.",
-  traffic_accidents: "Tilskadekomne og dræbte i færdselsuheld pr. 100.000 indb. (UHELDK1). Trafiksikkerhed er en direkte indikator for fysisk tryghed i det offentlige rum og for kvaliteten af infrastruktur og hastighedszoner. Inverteret: færre ulykker er bedre.",
+  traffic_accidents: "Tilskadekomne og dræbte i færdselsuheld pr. 100.000 indb., opgjort som treårigt gennemsnit (UHELDK1). Ét års tal er ren støj i små kommuner: Læsø lå i 2024 på et niveau der svarer til omkring to tilskadekomne, så én ulykke fra eller til flyttede scoren med titalls point. Trafiksikkerhed er en direkte indikator for fysisk tryghed i det offentlige rum og for kvaliteten af infrastruktur og hastighedszoner. Inverteret: færre ulykker er bedre.",
   // Lokalsamfund
-  sports_facilities: "Idrætsfaciliteter pr. 10.000 indb. (IDRFAC01) måler den fysiske kapacitet for idræt og aktivt foreningsliv - det grundlæggende anlægsgrundlag for et aktivt lokalmiljø.",
   class_size: "Klassekvotient i grundskolen er en anerkendt kvalitetsindikator. Mindre klasser muliggør mere individuel opmærksomhed og er et politisk prioriteret mål.",
   daycare_ratio: "Normering i daginstitutioner (børn pr. voksen) er et grundlæggende kvalitetsmål for det tidlige barndomsmiljø. Lav normering gavner børns trivsel og personalets arbejdsmiljø.",
   sports_spending: "Kommunale idrætsudgifter pr. indb. (IDRFIN02) afspejler den samlede kommunale prioritering af idræt og fritid - og dermed forudsætningerne for foreningsliv og aktivt medborgerskab.",
@@ -66,21 +64,34 @@ const INDICATOR_RATIONALES: Record<string, string> = {
   commute_distance: "Gennemsnitlig pendlingsafstand afspejler tilgængelighed til arbejdsmarkedet. Lang pendling belaster livskvalitet og er typisk forbundet med lavere kollektiv trafikdækning.",
   public_transport: "Andel af borgere med god adgang til offentlig transport (Meget højt + Højt serviceniveau), LABY49. Metodenote: data er kun tilgængeligt på kommunegruppe-niveau (5 grupper) - alle kommuner i samme gruppe tildeles identisk score. Landkommuner (G5) scorer konsekvent lavt uanset lokale forskelle.",
   // Sundhed
-  gp_distance: "Gennemsnitlig afstand (km) til nærmeste praktiserende læge (SUNDAF01). Stor afstand er en adgangsbarriere for primær sundhedsydelse, særligt for ældre og ikke-bilister. Inverteret: kortere afstand er bedre.",
-  medicin: "Recepter pr. 100 borgere på psykoanaleptika (DST MEDI1, ATC-gruppe N06: antidepressiva, ADHD-medicin og demens-medicin). Anvendes som proxy for mental sundhed. Inverteret: lavere forbrug er bedre. NB: Højt forbrug kan også afspejle bedre adgang til diagnose og behandling, ikke kun ringere mental sundhed.",
-  laegekontakt: "Andel af befolkningen med mindst én kontakt til almen praktiserende læge i løbet af året (DST SYGP1). Måler adgang til og brug af primær sundhedsydelse. Direkte: højere andel er bedre, da det signalerer at borgerne kommer til lægen.",
-  boerneovervaeght: "Andel af 6-7-årige børn med overvægt ved skolestart (DST LABY26, baseret på skolesundhedsplejens målinger). Tidlig indikator for folkesundhed og social ulighed. Inverteret: lavere andel er bedre. Begrænsning: data går kun til 2018 - DST opdaterer ikke længere tabellen.",
+  // Den Nationale Sundhedsprofil 2025
+  selvvurderet_helbred: "Andel der vurderer eget helbred som fremragende, vældig godt eller godt (Den Nationale Sundhedsprofil 2025). Selvvurderet helbred er det mest anvendte befolkningsmål for sundhed internationalt og forudsiger dødelighed og sygdomsforløb bedre end mange kliniske mål. Det er samtidig det eneste sted i modellen hvor borgeren selv svarer. Direkte: højere andel er bedre.",
+  mentalt_helbred: "Andel med lav score på den mentale helbredsskala (SF-12, Den Nationale Sundhedsprofil 2025). Mental sundhed havde ingen selvstændig dækning i modellen før 2026; den tidligere proxy var antidepressivt forbrug, som viser sig at korrelere -0,01 med dette mål og altså ikke måler det samme. Inverteret: lavere andel er bedre.",
+  rygning: "Andel der ryger dagligt (Den Nationale Sundhedsprofil 2025). Rygning er den største enkeltstående kilde til social ulighed i sundhed og det område hvor kommunal forebyggelse erfaringsmæssigt kan flytte mest. Inverteret: lavere andel er bedre.",
+  alkohol: "Andel der drikker mere end 10 genstande i løbet af en typisk uge, altså over Sundhedsstyrelsens højrisikogrænse (Den Nationale Sundhedsprofil 2025). Bemærk at indikatoren peger modsat de øvrige levevaner: forbruget er højest i velstillede kommuner, hvor rygning og overvægt er lavest. Inverteret: lavere andel er bedre.",
+  kost: "Andel med lav score på kostskalaen, et samlet mål for usundt kostmønster bygget på indtag af frugt, grønt, fisk og fedt (Den Nationale Sundhedsprofil 2025). Inverteret: lavere andel er bedre.",
+  svaer_overvaegt: "Andel med svær overvægt, BMI 30 eller derover (Den Nationale Sundhedsprofil 2025). Afløser overvægt blandt 6-7-årige, som byggede på 2018-tal. Spænder fra 7,5 % i Gentofte til 27,6 % i Brøndby og er dermed en af modellens skarpest differentierende indikatorer. Inverteret: lavere andel er bedre.",
+  ensomhed: "Andel med tegn på ensomhed, målt på T-3-skalaen (Den Nationale Sundhedsprofil 2025). Kategoriens eneste udfaldsmål: de øvrige tre indikatorer måler kommunale udgifter og faciliteter, altså forudsætninger for fællesskab frem for fællesskabet selv. Inverteret: lavere andel er bedre.",
+
   hjemsyg: "Antal modtagere af hjemmesygepleje pr. 1.000 indbyggere (DST HJEMSYG). Proxy for sygelighed og plejebyrde, særligt blandt ældre. Inverteret: lavere antal er bedre. Begrænsning: 2025-tallene er foreløbige (baseret på første halvår) og kan ændre sig.",
 };
 
 const SOCIAL_METHODS: Record<string, MethodInfo> = {
   sundhed: {
     id: "sundhed",
-    scoring: "Gennemsnit af otte indikatorer: (1) Middellevetid (0-årige) sammenholdt med landsgennemsnittet (HISBK). (2) Andel med kortvarigt sygehusophold under 12 timer (SBR01, inverteret). (3) Andel med indlæggelse 12 timer eller derover (SBR01, inverteret). (4) Afstand til nærmeste praktiserende læge i km (SUNDAF01, inverteret). (5) Antidepressivt forbrug, recepter pr. 100 borgere (MEDI1 N06, inverteret). (6) Andel med mindst én lægekontakt pr. år (SYGP1, direkte). (7) Overvægt blandt 6-7-årige (LABY26, inverteret). (8) Hjemmesygepleje-modtagere pr. 1.000 indb. (HJEMSYG, inverteret). Score 100 = landsgennemsnit.",
-    boundary: "Socialt fundament: alle borgere bør have en forventet levetid der som minimum matcher landsgennemsnittet, rimelig adgang til primær sundhedsydelse og en lav forekomst af kroniske helbredsproblemer.",
-    dataYear: "2018-2025",
-    limitations: "Middellevetid er en gennemsnitsbetragtning. Sygehusbenyttelse kan afspejle både dårligt helbred og god adgang til sundhedsvæsenet. Korte og lange ophold er begge inverterede - dvs. høj score = lavt ophold. Lægeafstand dækker ikke kapacitet eller ventetider. Antidepressivt forbrug er proxy for mental sundhed, men kan også afspejle bedre adgang til behandling. Børneovervægt-data går kun til 2018. Hjemmesygepleje 2025-tal er foreløbige.",
-    csvFile: "doughnut_scores.csv + sundhed_extra_scores.csv + medicin_scores.csv + laegekontakt_scores.csv + boerneovervaeght_scores.csv + hjemsyg_scores.csv",
+    scoring: "Gennemsnit af fem indikatorer: (1) Andel med godt selvvurderet helbred (Den Nationale Sundhedsprofil 2025, direkte). (2) Andel med lav score på den mentale helbredsskala (Sundhedsprofilen 2025, inverteret). (3) Middellevetid for 0-årige (HISBK, direkte). (4) Andel med indlæggelse 12 timer eller derover (SBR01, inverteret). (5) Hjemmesygepleje-modtagere pr. 1.000 indb. (HJEMSYG, inverteret). Score 100 = landsgennemsnit.",
+    boundary: "Socialt fundament: alle borgere bør opleve deres eget fysiske og mentale helbred som mindst på niveau med landsgennemsnittet, og have en forventet levetid der matcher det.",
+    dataYear: "2025",
+    limitations: "De to første indikatorer er selvrapporterede og kommer fra en spørgeskemaundersøgelse der gennemføres hvert fjerde år. Kommunetallene står derfor fast indtil næste bølge. Stikprøven er designet til kommuneniveau (314.500 udsendte skemaer i 2025), men er tyndest i de mindste ø-kommuner. Landsgennemsnittet er beregnet som et befolkningsvægtet gennemsnit af de 98 kommuneandele, ikke SIF's eget vægtede landsestimat, og afviger derfor en anelse fra den nationale rapport. Middellevetid varierer kun godt tre point mellem kommunerne og differentierer derfor svagt. Sygehusbenyttelse kan afspejle både dårligt helbred og god adgang. Hjemmesygepleje følger alderssammensætningen lige så meget som sundheden og er kategoriens svageste indikator.",
+    csvFile: "doughnut_scores.csv + sundhed_extra_scores.csv + sundhedsprofil_scores.csv + hjemsyg_scores.csv",
+  },
+  levevaner: {
+    id: "levevaner",
+    scoring: "Gennemsnit af fire indikatorer, alle fra Den Nationale Sundhedsprofil 2025: (1) Andel der ryger dagligt (inverteret). (2) Andel der drikker over 10 genstande om ugen (inverteret). (3) Andel med lav score på kostskalaen (inverteret). (4) Andel med svær overvægt, BMI 30+ (inverteret). Score 100 = landsgennemsnit.",
+    boundary: "Socialt fundament: forekomsten af de påvirkelige risikofaktorer bør ikke være højere end på landsplan. Kategorien er bevidst adskilt fra Sundhed, fordi levevaner er det kommunen kan handle på, mens helbredstilstanden er resultatet.",
+    dataYear: "2025",
+    limitations: "Alle fire tal er selvrapporterede og kommer fra samme spørgeskema, samme bølge. Der er en kendt underrapportering af både alkoholforbrug og vægt i surveydata, og den kan variere systematisk mellem befolkningsgrupper. Alkohol peger modsat de tre øvrige (korrelation mellem -0,23 og -0,51), så en kommune med lavt rygeniveau og højt alkoholforbrug lander midt i feltet. Det er tilsigtet, ikke en fejl. Fysisk aktivitet hentes fra samme kilde, men indgår ikke i scoren: den korrelerer 0,90 med svær overvægt og 0,80 med kostskalaen, og ville give den samme underliggende konstruktion tre af fire pladser i kategorien.",
+    csvFile: "sundhedsprofil_scores.csv",
   },
   uddannelse: {
     id: "uddannelse",
@@ -124,19 +135,19 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   tryghed: {
     id: "tryghed",
-    scoring: "Gennemsnit af to indikatorer: (1) Anmeldte forbrydelser pr. 1.000 indb. (STRAF11, inverteret). (2) Trafikulykker - tilskadekomne og dræbte pr. 100.000 indb. (UHELDK1, inverteret). Score 100 = landsgennemsnit.",
+    scoring: "Gennemsnit af to indikatorer: (1) Anmeldte forbrydelser pr. 1.000 indb. (STRAF11, inverteret). (2) Trafikulykker - tilskadekomne og dræbte pr. 100.000 indb., treårigt gennemsnit (UHELDK1, inverteret). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: borgere skal kunne leve trygt - i det offentlige rum og i trafikken.",
-    dataYear: "2024",
-    limitations: "Anmeldt kriminalitet afspejler ikke oplevet tryghed eller mørketallet. Politiets tilstedeværelse og anmeldelseskultur varierer. Trafikulykker varierer med vejnet og pendlingsforhold.",
+    dataYear: "2022-2024",
+    limitations: "Anmeldt kriminalitet afspejler ikke oplevet tryghed eller mørketallet. Politiets tilstedeværelse og anmeldelseskultur varierer, og kriminalitetsscoren rammer 150-loftet i en stor del af de tyndt befolkede kommuner, så den kan ikke skelne mellem dem. Trafikulykker varierer med vejnet og pendlingsforhold og opgøres fra sep. 2026 som et treårigt gennemsnit, fordi ét års tal i de mindste kommuner hviler på en håndfuld personer. Selv med tre år er grundlaget i ø-kommunerne tyndt.",
     csvFile: "faellesskaber_scores.csv",
   },
   lokalsamfund: {
     id: "lokalsamfund",
-    scoring: "Gennemsnit af fire indikatorer: (1) Idrætsfaciliteter pr. 10.000 indb. (IDRFAC01, direkte). (2) Kommunale idrætsudgifter pr. indb. (IDRFIN02, direkte). (3) Udgifter til frivillige foreninger pr. indb. (REGK31 funktion 33873, direkte). (4) Idrætsmedlemskab som andel af befolkningen (IDRAKT02, direkte - proxy for foreningsliv og social kapital). Score 100 = landsgennemsnit. NB: Klassekvotient, normering og pædagoguddannede er flyttet til dimensionen Uddannelse.",
-    boundary: "Socialt fundament: nærhed til velfungerende basale services og levende foreningsliv er en forudsætning for et godt hverdagsliv - uanset om man bor i by eller på land.",
-    dataYear: "2022-2024",
-    limitations: "Dækker ikke alle relevante services (indkøb). Idrætsudgifter og idrætsfaciliteter kan korrelere. Udgifter til frivillige foreninger er en proxy for kommunens investering i civilsamfund, ikke for faktisk foreningsaktivitet. Idrætsmedlemskab dækker kun foreningsidræt, ikke selvorganiseret motion.",
-    csvFile: "lokalsamfund_scores.csv + lokalsamfund_extra_scores.csv + faellesskaber_scores.csv",
+    scoring: "Gennemsnit af fire indikatorer: (1) Andel med tegn på ensomhed (Den Nationale Sundhedsprofil 2025, inverteret). (2) Idrætsmedlemskab som andel af befolkningen (IDRAKT02, direkte). (3) Kommunale idrætsudgifter pr. indb. (IDRFIN02, direkte). (4) Udgifter til frivillige foreninger pr. indb. (REGK31 funktion 33873, direkte). Score 100 = landsgennemsnit.",
+    boundary: "Socialt fundament: ingen bør stå uden for fællesskabet. Ensomhed er kategoriens grænse; de tre øvrige indikatorer beskriver de forudsætninger kommunen kan stille til rådighed.",
+    dataYear: "2022-2025",
+    limitations: "Kategorien hed indtil sep. 2026 Foreningsliv og bestod udelukkende af kommunale udgifter og faciliteter, altså input. Den havde ingen indbyrdes sammenhæng: idrætsfaciliteter pr. indbygger korrelerede -0,35 med idrætsudgifter og -0,32 med foreningsstøtte, så gennemsnittet af de fire udlignede hinanden frem for at måle noget. Idrætsfaciliteter er derfor taget ud, og ensomhed er kommet ind som udfaldsmål. Ensomhedstallet er selvrapporteret og opdateres hvert fjerde år. Idrætsmedlemskab dækker kun foreningsidræt, ikke selvorganiseret motion. De to udgiftsindikatorer måler kommunens prioritering, ikke resultatet af den.",
+    csvFile: "sundhedsprofil_scores.csv + lokalsamfund_extra_scores.csv + faellesskaber_scores.csv + doughnut_scores.csv",
   },
   lighed: {
     id: "lighed",

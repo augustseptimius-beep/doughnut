@@ -371,6 +371,8 @@ Opdateret 19. august 2026.
 |---|---|---|
 | R1 | `navn_key`-indikatorer omgår 150-cappet. `vejr_skader` har 27 kommuner over cap, højeste 431,29 | Rettelse ligger umerget på `claude/repo-audit-logic-review-4bj1i1` |
 | R12 | Sub-indikatoren `eco_naer_landbrug` har `lowerIsBetter: true`, men scoringen i `fetch_naeringsstoffer_landbrug.py` er `(landssnit / råværdi) x 100`, hvilket svarer til `false` | Samme branch |
+| R2 | Landsgennemsnittet for de otte Sundhedsprofil-indikatorer beregnes af os som et befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+), ikke hentet fra kilden. Databasen udstiller ikke et landstal pr. kommunetabel. Reglen forudsætter ellers et landstal fra kilden | Bevidst, dokumenteret i `data/README.md` og på metodesiden |
+| T1 | Retningen for Sundhedsprofilens indikatorer beregnes 2017 → 2025 (2021 → 2025 for `ensomhed` og `fysisk_aktivitet`), ikke over hele den tilgængelige serie 2010-2025. Reglen siger ellers hele serien | Bevidst, se punkt 23 i CLAUDE.md |
 
 Begge er registreret, ingen af dem er rettet på hovedbranchen. Merges den
 branch, bortfalder afsnittet her, og R1 bliver retvisende som skrevet.
