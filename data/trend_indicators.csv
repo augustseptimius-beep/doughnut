@@ -696,104 +696,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,_dim_lighed,2010-2012,2022-2024,,,15.34,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
 851,_dim_lighed,2010-2012,2022-2024,,,0.25,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
 860,_dim_lighed,2010-2012,2022-2024,,,13.23,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-101,_dim_lokalsamfund,2010-2012,2025,,,-11.79,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-147,_dim_lokalsamfund,2010-2012,2025,,,34.63,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-151,_dim_lokalsamfund,2010-2012,2025,,,27.12,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-153,_dim_lokalsamfund,2010-2012,2025,,,106.58,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-155,_dim_lokalsamfund,2010-2012,2025,,,39.6,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-157,_dim_lokalsamfund,2010-2012,2025,,,29.3,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-159,_dim_lokalsamfund,2010-2012,2025,,,11.7,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-161,_dim_lokalsamfund,2010-2012,2025,,,0.08,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-163,_dim_lokalsamfund,2010-2012,2025,,,1.13,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-165,_dim_lokalsamfund,2010-2012,2025,,,86.64,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-167,_dim_lokalsamfund,2010-2012,2025,,,16.32,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-169,_dim_lokalsamfund,2010-2012,2025,,,5.5,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-173,_dim_lokalsamfund,2010-2012,2025,,,6.48,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-175,_dim_lokalsamfund,2010-2012,2025,,,9.12,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-183,_dim_lokalsamfund,2010-2012,2025,,,8.23,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-185,_dim_lokalsamfund,2010-2012,2025,,,12.74,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-187,_dim_lokalsamfund,2010-2012,2025,,,14.92,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-190,_dim_lokalsamfund,2010-2012,2025,,,7.44,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-201,_dim_lokalsamfund,2010-2012,2025,,,-9.72,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-210,_dim_lokalsamfund,2010-2012,2025,,,24.99,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-217,_dim_lokalsamfund,2010-2012,2025,,,475.75,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-219,_dim_lokalsamfund,2010-2012,2025,,,49.53,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-223,_dim_lokalsamfund,2010-2012,2025,,,2.39,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-230,_dim_lokalsamfund,2010-2012,2025,,,7.51,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-240,_dim_lokalsamfund,2010-2012,2025,,,6.24,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-250,_dim_lokalsamfund,2010-2012,2025,,,0.23,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-253,_dim_lokalsamfund,2010-2012,2025,,,-3.3,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-259,_dim_lokalsamfund,2010-2012,2025,,,12.67,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-260,_dim_lokalsamfund,2010-2012,2025,,,8.45,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-265,_dim_lokalsamfund,2010-2012,2025,,,23.83,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-269,_dim_lokalsamfund,2010-2012,2025,,,17.84,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-270,_dim_lokalsamfund,2010-2012,2025,,,54.76,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-306,_dim_lokalsamfund,2010-2012,2025,,,22.25,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-316,_dim_lokalsamfund,2010-2012,2025,,,4.85,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-320,_dim_lokalsamfund,2010-2012,2025,,,9.62,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-326,_dim_lokalsamfund,2010-2012,2025,,,3.65,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-329,_dim_lokalsamfund,2010-2012,2025,,,-0.31,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-330,_dim_lokalsamfund,2010-2012,2025,,,4.37,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-336,_dim_lokalsamfund,2010-2012,2025,,,19.98,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-340,_dim_lokalsamfund,2010-2012,2025,,,37.33,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-350,_dim_lokalsamfund,2010-2012,2025,,,16.33,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-360,_dim_lokalsamfund,2010-2012,2025,,,-1.49,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-370,_dim_lokalsamfund,2010-2012,2025,,,18.71,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-376,_dim_lokalsamfund,2010-2012,2025,,,13.28,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-390,_dim_lokalsamfund,2010-2012,2025,,,-1.1,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-400,_dim_lokalsamfund,2010-2012,2025,,,15.97,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-410,_dim_lokalsamfund,2010-2012,2025,,,-3.28,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-420,_dim_lokalsamfund,2010-2012,2025,,,-2.21,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-430,_dim_lokalsamfund,2010-2012,2025,,,7.54,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-440,_dim_lokalsamfund,2010-2012,2025,,,7.28,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-450,_dim_lokalsamfund,2010-2012,2025,,,18.7,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-461,_dim_lokalsamfund,2010-2012,2025,,,-3.6,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-479,_dim_lokalsamfund,2010-2012,2025,,,44.76,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-480,_dim_lokalsamfund,2010-2012,2025,,,1.89,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-482,_dim_lokalsamfund,2010-2012,2025,,,-6.35,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-492,_dim_lokalsamfund,2010-2012,2025,,,14.43,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-510,_dim_lokalsamfund,2010-2012,2025,,,2.77,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-530,_dim_lokalsamfund,2010-2012,2025,,,34.9,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-540,_dim_lokalsamfund,2010-2012,2025,,,23.38,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-550,_dim_lokalsamfund,2010-2012,2025,,,20.43,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-561,_dim_lokalsamfund,2010-2012,2025,,,9.13,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-563,_dim_lokalsamfund,2010-2012,2025,,,36.31,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-573,_dim_lokalsamfund,2010-2012,2025,,,10.53,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-575,_dim_lokalsamfund,2010-2012,2025,,,-1.7,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-580,_dim_lokalsamfund,2010-2012,2025,,,30.23,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-607,_dim_lokalsamfund,2010-2012,2025,,,-2.96,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-615,_dim_lokalsamfund,2010-2012,2025,,,11.29,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-621,_dim_lokalsamfund,2010-2012,2025,,,14.91,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-630,_dim_lokalsamfund,2010-2012,2025,,,7.73,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-657,_dim_lokalsamfund,2010-2012,2025,,,8.36,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-661,_dim_lokalsamfund,2010-2012,2025,,,14.31,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-665,_dim_lokalsamfund,2010-2012,2025,,,76.4,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-671,_dim_lokalsamfund,2010-2012,2025,,,12.93,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-706,_dim_lokalsamfund,2010-2012,2025,,,6.41,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-707,_dim_lokalsamfund,2010-2012,2025,,,16.86,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-710,_dim_lokalsamfund,2010-2012,2025,,,25.51,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-727,_dim_lokalsamfund,2010-2012,2025,,,9.67,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-730,_dim_lokalsamfund,2010-2012,2025,,,15.13,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-740,_dim_lokalsamfund,2010-2012,2025,,,13.72,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-741,_dim_lokalsamfund,2010-2012,2025,,,455.33,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-746,_dim_lokalsamfund,2010-2012,2025,,,34.42,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-751,_dim_lokalsamfund,2010-2012,2025,,,19.15,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-756,_dim_lokalsamfund,2010-2012,2025,,,48.51,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-760,_dim_lokalsamfund,2010-2012,2025,,,3.9,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-766,_dim_lokalsamfund,2010-2012,2025,,,23.05,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-773,_dim_lokalsamfund,2010-2012,2025,,,2.43,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-779,_dim_lokalsamfund,2010-2012,2025,,,110.67,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-787,_dim_lokalsamfund,2010-2012,2025,,,5.2,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-791,_dim_lokalsamfund,2010-2012,2025,,,7.04,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-810,_dim_lokalsamfund,2010-2012,2025,,,54.55,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-813,_dim_lokalsamfund,2010-2012,2025,,,2.75,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-820,_dim_lokalsamfund,2010-2012,2025,,,25.67,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-825,_dim_lokalsamfund,2010-2012,2025,,,7.62,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-840,_dim_lokalsamfund,2010-2012,2025,,,4.39,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-846,_dim_lokalsamfund,2010-2012,2025,,,-5.79,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-849,_dim_lokalsamfund,2010-2012,2025,,,11.42,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-851,_dim_lokalsamfund,2010-2012,2025,,,7.91,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-860,_dim_lokalsamfund,2010-2012,2025,,,11.34,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+101,_dim_lokalsamfund,2010-2012,2025,,,-4.7,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+147,_dim_lokalsamfund,2010-2012,2025,,,30.46,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+151,_dim_lokalsamfund,2010-2012,2025,,,19.24,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+153,_dim_lokalsamfund,2010-2012,2025,,,117.78,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+155,_dim_lokalsamfund,2010-2012,2025,,,6.52,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+157,_dim_lokalsamfund,2010-2012,2025,,,23.57,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+159,_dim_lokalsamfund,2010-2012,2025,,,0.84,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+161,_dim_lokalsamfund,2010-2012,2025,,,-6.25,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+163,_dim_lokalsamfund,2010-2012,2025,,,-2.28,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+165,_dim_lokalsamfund,2010-2012,2025,,,77.31,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+167,_dim_lokalsamfund,2010-2012,2025,,,11.26,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+169,_dim_lokalsamfund,2010-2012,2025,,,3.5,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+173,_dim_lokalsamfund,2010-2012,2025,,,11.4,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+175,_dim_lokalsamfund,2010-2012,2025,,,-0.93,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+183,_dim_lokalsamfund,2010-2012,2025,,,-5.67,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+185,_dim_lokalsamfund,2010-2012,2025,,,6.82,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+187,_dim_lokalsamfund,2010-2012,2025,,,7.93,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+190,_dim_lokalsamfund,2010-2012,2025,,,-3.04,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+201,_dim_lokalsamfund,2010-2012,2025,,,-9.63,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+210,_dim_lokalsamfund,2010-2012,2025,,,18.98,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+217,_dim_lokalsamfund,2010-2012,2025,,,472.91,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+219,_dim_lokalsamfund,2010-2012,2025,,,2.47,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+223,_dim_lokalsamfund,2010-2012,2025,,,4.47,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+230,_dim_lokalsamfund,2010-2012,2025,,,-4.28,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+240,_dim_lokalsamfund,2010-2012,2025,,,-0.32,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+250,_dim_lokalsamfund,2010-2012,2025,,,-6.26,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+253,_dim_lokalsamfund,2010-2012,2025,,,-16.36,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+259,_dim_lokalsamfund,2010-2012,2025,,,10.82,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+260,_dim_lokalsamfund,2010-2012,2025,,,11.07,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+265,_dim_lokalsamfund,2010-2012,2025,,,11.34,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+269,_dim_lokalsamfund,2010-2012,2025,,,5.46,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+270,_dim_lokalsamfund,2010-2012,2025,,,12.05,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+306,_dim_lokalsamfund,2010-2012,2025,,,19.59,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+316,_dim_lokalsamfund,2010-2012,2025,,,-5.75,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+320,_dim_lokalsamfund,2010-2012,2025,,,11.61,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+326,_dim_lokalsamfund,2010-2012,2025,,,3.73,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+329,_dim_lokalsamfund,2010-2012,2025,,,-14.35,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+330,_dim_lokalsamfund,2010-2012,2025,,,4.9,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+336,_dim_lokalsamfund,2010-2012,2025,,,2.8,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+340,_dim_lokalsamfund,2010-2012,2025,,,21.54,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+350,_dim_lokalsamfund,2010-2012,2025,,,14.54,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+360,_dim_lokalsamfund,2010-2012,2025,,,0.03,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+370,_dim_lokalsamfund,2010-2012,2025,,,7.02,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+376,_dim_lokalsamfund,2010-2012,2025,,,4.38,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+390,_dim_lokalsamfund,2010-2012,2025,,,-11.29,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+400,_dim_lokalsamfund,2010-2012,2025,,,8.4,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+410,_dim_lokalsamfund,2010-2012,2025,,,-17.34,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+420,_dim_lokalsamfund,2010-2012,2025,,,-7.48,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+430,_dim_lokalsamfund,2010-2012,2025,,,8.32,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+440,_dim_lokalsamfund,2010-2012,2025,,,7.52,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+450,_dim_lokalsamfund,2010-2012,2025,,,21.33,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+461,_dim_lokalsamfund,2010-2012,2025,,,-9.94,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+479,_dim_lokalsamfund,2010-2012,2025,,,41.35,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+480,_dim_lokalsamfund,2010-2012,2025,,,3.07,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+482,_dim_lokalsamfund,2010-2012,2025,,,-2.58,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+492,_dim_lokalsamfund,2010-2012,2025,,,31.2,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+510,_dim_lokalsamfund,2010-2012,2025,,,-0.04,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+530,_dim_lokalsamfund,2010-2012,2025,,,16.53,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+540,_dim_lokalsamfund,2010-2012,2025,,,-3.82,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+550,_dim_lokalsamfund,2010-2012,2025,,,-3.11,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+561,_dim_lokalsamfund,2010-2012,2025,,,6.9,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+563,_dim_lokalsamfund,2010-2012,2025,,,-4.19,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+573,_dim_lokalsamfund,2010-2012,2025,,,14.58,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+575,_dim_lokalsamfund,2010-2012,2025,,,2.72,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+580,_dim_lokalsamfund,2010-2012,2025,,,-0.35,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+607,_dim_lokalsamfund,2010-2012,2025,,,-17.03,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+615,_dim_lokalsamfund,2010-2012,2025,,,-0.57,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+621,_dim_lokalsamfund,2010-2012,2025,,,-16.41,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+630,_dim_lokalsamfund,2010-2012,2025,,,4.26,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+657,_dim_lokalsamfund,2010-2012,2025,,,-0.56,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+661,_dim_lokalsamfund,2010-2012,2025,,,-0.75,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+665,_dim_lokalsamfund,2010-2012,2025,,,17.12,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+671,_dim_lokalsamfund,2010-2012,2025,,,-2.24,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+706,_dim_lokalsamfund,2010-2012,2025,,,13.34,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+707,_dim_lokalsamfund,2010-2012,2025,,,8.7,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+710,_dim_lokalsamfund,2010-2012,2025,,,15.14,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+727,_dim_lokalsamfund,2010-2012,2025,,,1.75,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+730,_dim_lokalsamfund,2010-2012,2025,,,25.41,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+740,_dim_lokalsamfund,2010-2012,2025,,,0.98,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+741,_dim_lokalsamfund,2010-2012,2025,,,27.59,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+746,_dim_lokalsamfund,2010-2012,2025,,,22.44,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+751,_dim_lokalsamfund,2010-2012,2025,,,1.59,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+756,_dim_lokalsamfund,2010-2012,2025,,,1.78,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+760,_dim_lokalsamfund,2010-2012,2025,,,-2.25,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+766,_dim_lokalsamfund,2010-2012,2025,,,7.9,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+773,_dim_lokalsamfund,2010-2012,2025,,,2.55,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+779,_dim_lokalsamfund,2010-2012,2025,,,-5.27,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+787,_dim_lokalsamfund,2010-2012,2025,,,-1.97,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+791,_dim_lokalsamfund,2010-2012,2025,,,-3.15,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+810,_dim_lokalsamfund,2010-2012,2025,,,-26.11,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+813,_dim_lokalsamfund,2010-2012,2025,,,-2.43,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+820,_dim_lokalsamfund,2010-2012,2025,,,4.15,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+825,_dim_lokalsamfund,2010-2012,2025,,,-18.5,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+840,_dim_lokalsamfund,2010-2012,2025,,,6.38,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+846,_dim_lokalsamfund,2010-2012,2025,,,-29.33,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+849,_dim_lokalsamfund,2010-2012,2025,,,11.6,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+851,_dim_lokalsamfund,2010-2012,2025,,,6.65,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+860,_dim_lokalsamfund,2010-2012,2025,,,9.42,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 101,_dim_mobilitet,2010-2012,2022-2024,,,-4.34,forkert,15,Danmarks Statistik,gennemsnit af 1 indikatorer
 147,_dim_mobilitet,2010-2012,2022-2024,,,-4.49,forkert,15,Danmarks Statistik,gennemsnit af 1 indikatorer
 151,_dim_mobilitet,2010-2012,2022-2024,,,-10.97,forkert,15,Danmarks Statistik,gennemsnit af 1 indikatorer
@@ -5700,6 +5700,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,selvvurderet_helbred,2017,2025,80.0,78.7,-1.62,forkert,2,Danmarks Statistik,
 851,selvvurderet_helbred,2017,2025,83.3,82.5,-0.96,stagneret,2,Danmarks Statistik,
 860,selvvurderet_helbred,2017,2025,81.2,79.4,-2.22,forkert,2,Danmarks Statistik,
+101,social_stoette,2017,2025,4.7,6.1,29.79,forkert,2,Danmarks Statistik,
+147,social_stoette,2017,2025,4.4,4.3,-2.27,rigtig,2,Danmarks Statistik,
+151,social_stoette,2017,2025,5.9,4.6,-22.03,rigtig,2,Danmarks Statistik,
+153,social_stoette,2017,2025,8.0,7.4,-7.5,rigtig,2,Danmarks Statistik,
+155,social_stoette,2017,2025,3.2,4.7,46.88,forkert,2,Danmarks Statistik,
+157,social_stoette,2017,2025,5.0,4.2,-16.0,rigtig,2,Danmarks Statistik,
+159,social_stoette,2017,2025,6.0,6.5,8.33,forkert,2,Danmarks Statistik,
+161,social_stoette,2017,2025,4.2,5.9,40.48,forkert,2,Danmarks Statistik,
+163,social_stoette,2017,2025,4.8,5.6,16.67,forkert,2,Danmarks Statistik,
+165,social_stoette,2017,2025,5.1,7.0,37.25,forkert,2,Danmarks Statistik,
+167,social_stoette,2017,2025,4.7,4.9,4.26,forkert,2,Danmarks Statistik,
+169,social_stoette,2017,2025,6.5,6.3,-3.08,rigtig,2,Danmarks Statistik,
+173,social_stoette,2017,2025,3.8,4.3,13.16,forkert,2,Danmarks Statistik,
+175,social_stoette,2017,2025,3.9,6.1,56.41,forkert,2,Danmarks Statistik,
+183,social_stoette,2017,2025,5.8,9.1,56.9,forkert,2,Danmarks Statistik,
+185,social_stoette,2017,2025,5.4,5.5,1.85,forkert,2,Danmarks Statistik,
+187,social_stoette,2017,2025,5.1,5.2,1.96,forkert,2,Danmarks Statistik,
+190,social_stoette,2017,2025,3.8,4.9,28.95,forkert,2,Danmarks Statistik,
+201,social_stoette,2017,2025,3.1,3.1,0.0,stagneret,2,Danmarks Statistik,
+210,social_stoette,2017,2025,5.7,5.0,-12.28,rigtig,2,Danmarks Statistik,
+217,social_stoette,2017,2025,6.4,3.3,-48.44,rigtig,2,Danmarks Statistik,
+219,social_stoette,2017,2025,3.7,5.3,43.24,forkert,2,Danmarks Statistik,
+223,social_stoette,2017,2025,4.1,4.2,2.44,forkert,2,Danmarks Statistik,
+230,social_stoette,2017,2025,3.3,5.0,51.52,forkert,2,Danmarks Statistik,
+240,social_stoette,2017,2025,2.9,3.4,17.24,forkert,2,Danmarks Statistik,
+250,social_stoette,2017,2025,4.6,6.0,30.43,forkert,2,Danmarks Statistik,
+253,social_stoette,2017,2025,4.6,6.3,36.96,forkert,2,Danmarks Statistik,
+259,social_stoette,2017,2025,4.5,4.2,-6.67,rigtig,2,Danmarks Statistik,
+260,social_stoette,2017,2025,6.1,5.2,-14.75,rigtig,2,Danmarks Statistik,
+265,social_stoette,2017,2025,4.2,3.4,-19.05,rigtig,2,Danmarks Statistik,
+269,social_stoette,2017,2025,4.0,4.2,5.0,forkert,2,Danmarks Statistik,
+270,social_stoette,2017,2025,4.6,5.3,15.22,forkert,2,Danmarks Statistik,
+306,social_stoette,2017,2025,5.9,5.2,-11.86,rigtig,2,Danmarks Statistik,
+316,social_stoette,2017,2025,5.8,5.6,-3.45,rigtig,2,Danmarks Statistik,
+320,social_stoette,2017,2025,5.0,4.2,-16.0,rigtig,2,Danmarks Statistik,
+326,social_stoette,2017,2025,6.2,6.0,-3.23,rigtig,2,Danmarks Statistik,
+329,social_stoette,2017,2025,5.2,6.9,32.69,forkert,2,Danmarks Statistik,
+330,social_stoette,2017,2025,6.0,4.8,-20.0,rigtig,2,Danmarks Statistik,
+336,social_stoette,2017,2025,4.2,6.3,50.0,forkert,2,Danmarks Statistik,
+340,social_stoette,2017,2025,4.7,4.4,-6.38,rigtig,2,Danmarks Statistik,
+350,social_stoette,2017,2025,3.5,3.4,-2.86,rigtig,2,Danmarks Statistik,
+360,social_stoette,2017,2025,6.8,5.5,-19.12,rigtig,2,Danmarks Statistik,
+370,social_stoette,2017,2025,4.1,4.5,9.76,forkert,2,Danmarks Statistik,
+376,social_stoette,2017,2025,5.6,5.6,0.0,stagneret,2,Danmarks Statistik,
+390,social_stoette,2017,2025,5.8,6.3,8.62,forkert,2,Danmarks Statistik,
+400,social_stoette,2017,2025,4.4,5.1,15.91,forkert,2,Danmarks Statistik,
+410,social_stoette,2017,2025,4.2,5.8,38.1,forkert,2,Danmarks Statistik,
+420,social_stoette,2017,2025,4.7,5.4,14.89,forkert,2,Danmarks Statistik,
+430,social_stoette,2017,2025,4.2,4.9,16.67,forkert,2,Danmarks Statistik,
+440,social_stoette,2017,2025,4.1,4.2,2.44,forkert,2,Danmarks Statistik,
+450,social_stoette,2017,2025,5.3,3.3,-37.74,rigtig,2,Danmarks Statistik,
+461,social_stoette,2017,2025,5.0,4.9,-2.0,rigtig,2,Danmarks Statistik,
+479,social_stoette,2017,2025,5.1,4.1,-19.61,rigtig,2,Danmarks Statistik,
+480,social_stoette,2017,2025,5.8,5.1,-12.07,rigtig,2,Danmarks Statistik,
+482,social_stoette,2017,2025,5.7,5.0,-12.28,rigtig,2,Danmarks Statistik,
+492,social_stoette,2017,2025,6.1,4.1,-32.79,rigtig,2,Danmarks Statistik,
+510,social_stoette,2017,2025,4.6,5.1,10.87,forkert,2,Danmarks Statistik,
+530,social_stoette,2017,2025,5.1,6.5,27.45,forkert,2,Danmarks Statistik,
+540,social_stoette,2017,2025,3.8,5.5,44.74,forkert,2,Danmarks Statistik,
+550,social_stoette,2017,2025,5.4,4.7,-12.96,rigtig,2,Danmarks Statistik,
+561,social_stoette,2017,2025,5.5,5.4,-1.82,rigtig,2,Danmarks Statistik,
+563,social_stoette,2017,2025,4.9,4.9,0.0,stagneret,2,Danmarks Statistik,
+573,social_stoette,2017,2025,5.3,4.0,-24.53,rigtig,2,Danmarks Statistik,
+575,social_stoette,2017,2025,5.8,3.2,-44.83,rigtig,2,Danmarks Statistik,
+580,social_stoette,2017,2025,4.9,4.6,-6.12,rigtig,2,Danmarks Statistik,
+607,social_stoette,2017,2025,5.2,6.7,28.85,forkert,2,Danmarks Statistik,
+615,social_stoette,2017,2025,6.3,5.9,-6.35,rigtig,2,Danmarks Statistik,
+621,social_stoette,2017,2025,5.0,6.4,28.0,forkert,2,Danmarks Statistik,
+630,social_stoette,2017,2025,5.1,4.5,-11.76,rigtig,2,Danmarks Statistik,
+657,social_stoette,2017,2025,4.7,5.4,14.89,forkert,2,Danmarks Statistik,
+661,social_stoette,2017,2025,4.6,5.8,26.09,forkert,2,Danmarks Statistik,
+665,social_stoette,2017,2025,6.0,5.3,-11.67,rigtig,2,Danmarks Statistik,
+671,social_stoette,2017,2025,6.2,4.6,-25.81,rigtig,2,Danmarks Statistik,
+706,social_stoette,2017,2025,5.8,4.6,-20.69,rigtig,2,Danmarks Statistik,
+707,social_stoette,2017,2025,4.5,4.7,4.44,forkert,2,Danmarks Statistik,
+710,social_stoette,2017,2025,4.3,4.6,6.98,forkert,2,Danmarks Statistik,
+727,social_stoette,2017,2025,4.1,5.0,21.95,forkert,2,Danmarks Statistik,
+730,social_stoette,2017,2025,5.4,4.2,-22.22,rigtig,2,Danmarks Statistik,
+740,social_stoette,2017,2025,4.5,6.0,33.33,forkert,2,Danmarks Statistik,
+741,social_stoette,2017,2025,4.3,3.9,-9.3,rigtig,2,Danmarks Statistik,
+746,social_stoette,2017,2025,4.2,4.1,-2.38,rigtig,2,Danmarks Statistik,
+751,social_stoette,2017,2025,4.5,5.4,20.0,forkert,2,Danmarks Statistik,
+756,social_stoette,2017,2025,5.5,5.9,7.27,forkert,2,Danmarks Statistik,
+760,social_stoette,2017,2025,5.1,4.8,-5.88,rigtig,2,Danmarks Statistik,
+766,social_stoette,2017,2025,4.8,5.9,22.92,forkert,2,Danmarks Statistik,
+773,social_stoette,2017,2025,4.0,4.3,7.5,forkert,2,Danmarks Statistik,
+779,social_stoette,2017,2025,4.6,6.2,34.78,forkert,2,Danmarks Statistik,
+787,social_stoette,2017,2025,3.6,3.9,8.33,forkert,2,Danmarks Statistik,
+791,social_stoette,2017,2025,4.2,5.6,33.33,forkert,2,Danmarks Statistik,
+810,social_stoette,2017,2025,4.0,6.6,65.0,forkert,2,Danmarks Statistik,
+813,social_stoette,2017,2025,5.1,5.5,7.84,forkert,2,Danmarks Statistik,
+820,social_stoette,2017,2025,3.7,4.9,32.43,forkert,2,Danmarks Statistik,
+825,social_stoette,2017,2025,4.8,7.0,45.83,forkert,2,Danmarks Statistik,
+840,social_stoette,2017,2025,4.2,4.6,9.52,forkert,2,Danmarks Statistik,
+846,social_stoette,2017,2025,2.8,5.4,92.86,forkert,2,Danmarks Statistik,
+849,social_stoette,2017,2025,4.2,3.4,-19.05,rigtig,2,Danmarks Statistik,
+851,social_stoette,2017,2025,4.8,4.5,-6.25,rigtig,2,Danmarks Statistik,
+860,social_stoette,2017,2025,4.7,4.8,2.13,forkert,2,Danmarks Statistik,
 101,sports_membership,2014-2016,2023-2025,45.9,42.1333,-8.21,forkert,12,Danmarks Statistik,
 147,sports_membership,2014-2016,2023-2025,20.9,26.7,27.75,rigtig,12,Danmarks Statistik,
 151,sports_membership,2014-2016,2023-2025,32.9667,33.6333,2.02,stagneret,12,Danmarks Statistik,
@@ -5798,104 +5896,6 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,sports_membership,2014-2016,2023-2025,48.7667,52.7667,8.2,rigtig,12,Danmarks Statistik,
 851,sports_membership,2014-2016,2023-2025,44.9,59.3667,32.22,rigtig,12,Danmarks Statistik,
 860,sports_membership,2014-2016,2023-2025,41.6333,51.2667,23.14,rigtig,12,Danmarks Statistik,
-101,sports_spending,2011-2013,2023-2025,536.6667,224.6667,-58.14,forkert,15,Danmarks Statistik,
-147,sports_spending,2011-2013,2023-2025,343.0,408.0,18.95,tempo,15,Danmarks Statistik,
-151,sports_spending,2011-2013,2023-2025,353.6667,543.0,53.53,rigtig,15,Danmarks Statistik,
-153,sports_spending,2011-2013,2023-2025,748.0,469.0,-37.3,forkert,15,Danmarks Statistik,
-155,sports_spending,2011-2013,2023-2025,407.0,754.6667,85.42,rigtig,15,Danmarks Statistik,
-157,sports_spending,2011-2013,2023-2025,709.6667,985.6667,38.89,rigtig,15,Danmarks Statistik,
-159,sports_spending,2011-2013,2023-2025,593.0,801.0,35.08,rigtig,15,Danmarks Statistik,
-161,sports_spending,2011-2013,2023-2025,839.6667,712.6667,-15.13,forkert,15,Danmarks Statistik,
-163,sports_spending,2011-2013,2023-2025,1049.6667,1017.6667,-3.05,forkert,15,Danmarks Statistik,
-165,sports_spending,2011-2013,2023-2025,1209.0,1209.6667,0.06,stagneret,15,Danmarks Statistik,
-167,sports_spending,2011-2013,2023-2025,822.3333,953.6667,15.97,tempo,15,Danmarks Statistik,
-169,sports_spending,2011-2013,2023-2025,622.3333,691.3333,11.09,tempo,15,Danmarks Statistik,
-173,sports_spending,2011-2013,2023-2025,625.6667,420.3333,-32.82,forkert,15,Danmarks Statistik,
-175,sports_spending,2011-2013,2023-2025,762.3333,638.6667,-16.22,forkert,15,Danmarks Statistik,
-183,sports_spending,2011-2013,2023-2025,980.6667,967.6667,-1.33,forkert,15,Danmarks Statistik,
-185,sports_spending,2011-2013,2023-2025,889.0,1083.0,21.82,rigtig,15,Danmarks Statistik,
-187,sports_spending,2011-2013,2023-2025,500.0,630.0,26.0,rigtig,15,Danmarks Statistik,
-190,sports_spending,2011-2013,2023-2025,799.6667,903.3333,12.96,tempo,15,Danmarks Statistik,
-201,sports_spending,2011-2013,2023-2025,863.6667,860.6667,-0.35,stagneret,15,Danmarks Statistik,
-210,sports_spending,2011-2013,2023-2025,384.3333,524.0,36.34,rigtig,15,Danmarks Statistik,
-217,sports_spending,2011-2013,2023-2025,402.0,642.3333,59.78,rigtig,15,Danmarks Statistik,
-219,sports_spending,2011-2013,2023-2025,380.3333,931.6667,144.96,rigtig,15,Danmarks Statistik,
-223,sports_spending,2011-2013,2023-2025,708.3333,632.0,-10.78,forkert,15,Danmarks Statistik,
-230,sports_spending,2011-2013,2023-2025,617.0,590.0,-4.38,forkert,15,Danmarks Statistik,
-240,sports_spending,2011-2013,2023-2025,559.3333,609.6667,9.0,tempo,15,Danmarks Statistik,
-250,sports_spending,2011-2013,2023-2025,563.0,537.6667,-4.5,forkert,15,Danmarks Statistik,
-253,sports_spending,2011-2013,2023-2025,741.6667,855.0,15.28,tempo,15,Danmarks Statistik,
-259,sports_spending,2011-2013,2023-2025,579.6667,661.3333,14.09,tempo,15,Danmarks Statistik,
-260,sports_spending,2011-2013,2023-2025,380.3333,396.6667,4.29,tempo,15,Danmarks Statistik,
-265,sports_spending,2011-2013,2023-2025,439.0,742.0,69.02,rigtig,15,Danmarks Statistik,
-269,sports_spending,2011-2013,2023-2025,505.0,729.6667,44.49,rigtig,15,Danmarks Statistik,
-270,sports_spending,2011-2013,2023-2025,335.6667,858.0,155.61,rigtig,15,Danmarks Statistik,
-306,sports_spending,2011-2013,2023-2025,453.0,555.0,22.52,rigtig,15,Danmarks Statistik,
-316,sports_spending,2011-2013,2023-2025,480.6667,701.0,45.84,rigtig,15,Danmarks Statistik,
-320,sports_spending,2011-2013,2023-2025,294.0,317.6667,8.05,tempo,15,Danmarks Statistik,
-326,sports_spending,2011-2013,2023-2025,616.6667,634.6667,2.92,tempo,15,Danmarks Statistik,
-329,sports_spending,2011-2013,2023-2025,430.6667,531.6667,23.45,rigtig,15,Danmarks Statistik,
-330,sports_spending,2011-2013,2023-2025,621.3333,732.3333,17.86,tempo,15,Danmarks Statistik,
-336,sports_spending,2011-2013,2023-2025,468.6667,556.3333,18.71,tempo,15,Danmarks Statistik,
-340,sports_spending,2011-2013,2023-2025,187.0,317.0,69.52,rigtig,15,Danmarks Statistik,
-350,sports_spending,2011-2013,2023-2025,355.6667,391.3333,10.03,tempo,15,Danmarks Statistik,
-360,sports_spending,2011-2013,2023-2025,340.3333,384.6667,13.03,tempo,15,Danmarks Statistik,
-370,sports_spending,2011-2013,2023-2025,315.0,431.6667,37.04,rigtig,15,Danmarks Statistik,
-376,sports_spending,2011-2013,2023-2025,504.6667,684.3333,35.6,rigtig,15,Danmarks Statistik,
-390,sports_spending,2011-2013,2023-2025,355.6667,470.0,32.15,rigtig,15,Danmarks Statistik,
-400,sports_spending,2011-2013,2023-2025,531.3333,607.6667,14.37,tempo,15,Danmarks Statistik,
-410,sports_spending,2011-2013,2023-2025,221.0,261.0,18.1,tempo,15,Danmarks Statistik,
-420,sports_spending,2011-2013,2023-2025,281.0,298.3333,6.17,tempo,15,Danmarks Statistik,
-430,sports_spending,2011-2013,2023-2025,166.6667,133.6667,-19.8,forkert,15,Danmarks Statistik,
-440,sports_spending,2011-2013,2023-2025,558.6667,539.6667,-3.4,forkert,15,Danmarks Statistik,
-450,sports_spending,2011-2013,2023-2025,499.0,634.6667,27.19,rigtig,15,Danmarks Statistik,
-461,sports_spending,2011-2013,2023-2025,240.0,305.6667,27.36,rigtig,15,Danmarks Statistik,
-479,sports_spending,2011-2013,2023-2025,387.0,515.6667,33.25,rigtig,15,Danmarks Statistik,
-480,sports_spending,2011-2013,2023-2025,285.3333,306.3333,7.36,tempo,15,Danmarks Statistik,
-482,sports_spending,2011-2013,2023-2025,119.6667,116.3333,-2.79,forkert,15,Danmarks Statistik,
-492,sports_spending,2011-2013,2023-2025,238.3333,156.6667,-34.27,forkert,15,Danmarks Statistik,
-510,sports_spending,2011-2013,2023-2025,362.0,363.3333,0.37,stagneret,15,Danmarks Statistik,
-530,sports_spending,2011-2013,2023-2025,672.6667,982.3333,46.04,rigtig,15,Danmarks Statistik,
-540,sports_spending,2011-2013,2023-2025,238.3333,391.0,64.06,rigtig,15,Danmarks Statistik,
-550,sports_spending,2011-2013,2023-2025,270.6667,560.6667,107.14,rigtig,15,Danmarks Statistik,
-561,sports_spending,2011-2013,2023-2025,360.3333,399.0,10.73,tempo,15,Danmarks Statistik,
-563,sports_spending,2011-2013,2023-2025,33.3333,87.3333,162.0,rigtig,15,Danmarks Statistik,
-573,sports_spending,2011-2013,2023-2025,348.3333,377.3333,8.33,tempo,15,Danmarks Statistik,
-575,sports_spending,2011-2013,2023-2025,278.6667,354.3333,27.15,rigtig,15,Danmarks Statistik,
-580,sports_spending,2011-2013,2023-2025,323.3333,738.6667,128.45,rigtig,15,Danmarks Statistik,
-607,sports_spending,2011-2013,2023-2025,369.3333,470.6667,27.44,rigtig,15,Danmarks Statistik,
-615,sports_spending,2011-2013,2023-2025,410.0,630.6667,53.82,rigtig,15,Danmarks Statistik,
-621,sports_spending,2011-2013,2023-2025,379.0,747.6667,97.27,rigtig,15,Danmarks Statistik,
-630,sports_spending,2011-2013,2023-2025,424.3333,533.0,25.61,rigtig,15,Danmarks Statistik,
-657,sports_spending,2011-2013,2023-2025,290.6667,351.0,20.76,rigtig,15,Danmarks Statistik,
-661,sports_spending,2011-2013,2023-2025,401.0,538.0,34.16,rigtig,15,Danmarks Statistik,
-665,sports_spending,2011-2013,2023-2025,177.6667,619.6667,248.78,rigtig,15,Danmarks Statistik,
-671,sports_spending,2011-2013,2023-2025,266.6667,497.3333,86.5,rigtig,15,Danmarks Statistik,
-706,sports_spending,2011-2013,2023-2025,166.3333,154.6667,-7.01,forkert,15,Danmarks Statistik,
-707,sports_spending,2011-2013,2023-2025,253.0,324.3333,28.19,rigtig,15,Danmarks Statistik,
-710,sports_spending,2011-2013,2023-2025,330.6667,444.6667,34.48,rigtig,15,Danmarks Statistik,
-727,sports_spending,2011-2013,2023-2025,288.0,316.0,9.72,tempo,15,Danmarks Statistik,
-730,sports_spending,2011-2013,2023-2025,226.0,183.3333,-18.88,forkert,15,Danmarks Statistik,
-740,sports_spending,2011-2013,2023-2025,511.3333,601.3333,17.6,tempo,15,Danmarks Statistik,
-741,sports_spending,2011-2013,2023-2025,-24.6667,399.6667,1720.27,rigtig,15,Danmarks Statistik,
-746,sports_spending,2011-2013,2023-2025,332.6667,500.0,50.3,rigtig,15,Danmarks Statistik,
-751,sports_spending,2011-2013,2023-2025,148.0,222.3333,50.23,rigtig,15,Danmarks Statistik,
-756,sports_spending,2011-2013,2023-2025,229.3333,641.3333,179.65,rigtig,15,Danmarks Statistik,
-760,sports_spending,2011-2013,2023-2025,381.6667,498.0,30.48,rigtig,15,Danmarks Statistik,
-766,sports_spending,2011-2013,2023-2025,320.0,440.6667,37.71,rigtig,15,Danmarks Statistik,
-773,sports_spending,2011-2013,2023-2025,268.0,246.6667,-7.96,forkert,15,Danmarks Statistik,
-779,sports_spending,2011-2013,2023-2025,203.6667,1077.3333,428.97,rigtig,15,Danmarks Statistik,
-787,sports_spending,2011-2013,2023-2025,459.0,552.3333,20.33,rigtig,15,Danmarks Statistik,
-791,sports_spending,2011-2013,2023-2025,519.0,557.6667,7.45,tempo,15,Danmarks Statistik,
-810,sports_spending,2011-2013,2023-2025,170.0,608.0,257.65,rigtig,15,Danmarks Statistik,
-813,sports_spending,2011-2013,2023-2025,497.6667,561.6667,12.86,tempo,15,Danmarks Statistik,
-820,sports_spending,2011-2013,2023-2025,476.6667,732.3333,53.64,rigtig,15,Danmarks Statistik,
-825,sports_spending,2011-2013,2023-2025,134.6667,213.6667,58.66,rigtig,15,Danmarks Statistik,
-840,sports_spending,2011-2013,2023-2025,345.0,284.6667,-17.49,forkert,15,Danmarks Statistik,
-846,sports_spending,2011-2013,2023-2025,255.0,258.3333,1.31,tempo,15,Danmarks Statistik,
-849,sports_spending,2011-2013,2023-2025,396.3333,469.0,18.33,tempo,15,Danmarks Statistik,
-851,sports_spending,2011-2013,2023-2025,451.6667,502.6667,11.29,tempo,15,Danmarks Statistik,
-860,sports_spending,2011-2013,2023-2025,478.0,504.6667,5.58,tempo,15,Danmarks Statistik,
 101,svaer_overvaegt,2017,2025,10.5,11.4,8.57,stagneret,2,Danmarks Statistik,
 147,svaer_overvaegt,2017,2025,9.4,9.3,-1.06,rigtig,2,Danmarks Statistik,
 151,svaer_overvaegt,2017,2025,18.5,18.7,1.08,stagneret,2,Danmarks Statistik,

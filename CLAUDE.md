@@ -9,7 +9,7 @@
 - **Projekt:** Doughnut Economics-platform for alle 98 danske kommuner - offentlig platform der viser hver kommunes status i forhold til socialt fundament og økologisk loft.
 - **Ejerskab:** Thisted Kommune. Udviklet i klimateamet under EU-projektet LIFE ACT. Licens er ikke afklaret, se README.
 - **Stack:** Next.js 16 (`output: "export"`) + Tailwind 4 i `webapp/`, Python-scripts i `scripts/`, CSV-data i `data/`, Netlify-deploy ved push til default-branchen.
-- **Omfang:** 13 sociale kategorier, 7 økologiske dimensioner, 65 scorede indikatorer (48 sociale + 17 økologiske sub-indikatorer) og 16 kontekst-indikatorer.
+- **Omfang:** 13 sociale kategorier, 7 økologiske dimensioner, 66 scorede indikatorer (49 sociale + 17 økologiske sub-indikatorer) og 16 kontekst-indikatorer.
 - **Sprog i repoet:** dansk i dokumentation, kommentarer og UI. README er på engelsk af hensyn til eksterne læsere. Undgå em-dash, brug enkelt dash.
 
 ## Projektstruktur
@@ -36,6 +36,7 @@ doughnut/
 │   ├── build_master_csv.py        ← ★ konsoliderer alle rådata-CSV'er til master_indicators.csv
 │   ├── fetch_doughnut_data.py     ← hoved-script: sociale indikatorer + klima-fallback
 │   ├── fetch_sundhedsprofil.py    ← Den Nationale Sundhedsprofil (survey, bølger hvert 4. år)
+│   ├── fetch_kulturvaner.py       ← DST KV2GEO, kun 76 af 98 kommuner (se punkt 27)
 │   └── fetch_*.py                 ← øvrige fetchers (~15). Se build_master_csv.py for fuld pipeline.
 ├── docs/                    ← API-guides og mappings (statbank, Energi Data Service m.fl.)
 └── webapp/
@@ -233,6 +234,12 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
 25. **`fysisk_aktivitet` hentes, men scores ikke - og det er ikke en kontekst-indikator.** Den korrelerer 0,90 med svær overvægt og 0,80 med kostskalaen. Med alle tre ville én underliggende konstruktion fylde tre af Sundheds ni pladser. Tallet står i `sundhedsprofil_scores.csv` og er markeret `kun_data=True` i INDIKATORER, så det hverken når master eller trend-historikken. Skal prioriteringen laves om, er det ét flag.
 
 26. **`traffic_accidents` er et treårigt gennemsnit (fra sep. 2026).** UHELDK1 summeres over de tre nyeste år og divideres med tre. Baggrund: ét års tal er ren støj i små kommuner - Læsøs gamle score på 35 hvilede på omkring to tilskadekomne. Samme greb som `vejr_skader` (2023-2025). Ændrer man det tilbage til ét år, genindfører man støjen.
+
+27. **`sport_tilskuer` dækker kun 76 af 98 kommuner, og hullet er systematisk.** DST's kulturvaneundersøgelse (KV2GEO) undertrykker tal hvor stikprøven er for lille. De 22 kommuner uden tal har median ca. 24.000 indbyggere mod ca. 53.000 for dem med tal, og Læsø, Fanø, Samsø, Ærø og Langeland er blandt dem. De får Fællesskab beregnet på fire indikatorer hvor de øvrige bruger fem. Det er en bevidst afvejning, ikke en fejl, men den skal stå på metodesiden hver gang kategorien ændres. Indikatoren får ingen retningspil, fordi tabellen kun har 2024 og 2025 og begge år indgår i det toårige gennemsnit.
+    - **Fælde: KV2GEO's regionskoder er trecifrede** (081-085). Et filter på "tre cifre og ikke 000" tager regionerne med som var de kommuner og overvurderer dækningen med fem. `fetch_kulturvaner.py` slår op i master-CSV'ens kommuneliste i stedet. Samme fælde kan findes i andre DST-tabeller der blander kommuner, landsdele og regioner i én områdedimension.
+    - **Fælde ved kørsel:** pipe aldrig et fetch-script gennem `head`. Scriptet dør på BrokenPipeError midt i `auto_build_master()`, og master-CSV'en står tilbage halvgammel uden at noget fejler synligt.
+
+28. **Fællesskab måler nu udfald, ikke budget.** Ensomhed og begrænset social støtte er udfaldsmål, idrætsmedlemskab og tilskuerdeltagelse er deltagelse, og `civil_society` er det eneste tilbageværende input. Den beholdes bevidst, selvom den korrelerer svagt med resten: den er det eneste sted i modellen hvor kommunens egen indsats på foreningsområdet er synlig. `sports_facilities` og `sports_spending` er begge fjernet, fordi de korrelerede negativt med de øvrige og dermed udlignede kategoriens gennemsnit i stedet for at måle noget.
 
 ## Arbejdsprincipper for ændringer
 

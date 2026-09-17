@@ -2,6 +2,21 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-17 (anden runde)
+
+- **Fællesskab: udgiftsmål erstattet af udfaldsmål og deltagelse.** Ud: `sports_spending` (kommunale idrætsudgifter pr. indb.). Ind: `social_stoette` (Sundhedsprofilen) og `sport_tilskuer` (DST KV2GEO). Kategorien er nu ensomhed, begrænset social støtte, idrætsmedlemskab, tilskuerdeltagelse og foreningsstøtte - to udfald, to deltagelsesmål og ét input, mod tidligere ét udfald og tre input.
+  - `sports_spending` var rent budget og korrelerede nær nul med alt andet i kategorien. Idrætsudgifter er desuden delvist fanget via medlemskabstallet.
+  - `civil_society` beholdes bevidst, selvom den også er et udgiftstal: den er det eneste sted i modellen hvor kommunens egen indsats på området er synlig.
+  - `social_stoette` = andel der aldrig eller næsten aldrig har nogen at tale med ved problemer. Korrelerer 0,50 med ensomhed, altså beslægtet men ikke overlappende, og har hele serien 2010-2025.
+
+- **`sport_tilskuer` fra kulturvaneundersøgelsen (KV2GEO), med ufuldstændig dækning.** Andel der har overværet en sportsbegivenhed som tilskuer, toårigt gennemsnit 2024-2025. Valgt blandt undersøgelsens 17 aktiviteter, fordi den som den eneste korrelerer positivt med idrætsmedlemskab (0,25) og nul med foreningsudgifterne (-0,04). Biblioteks-, museums- og kunstbesøg korrelerer 0,34-0,41 med foreningsudgifterne og måler dermed samme by- og uddannelsesgradient som vi har i forvejen; medieforbrug ligger på 90-99 procent overalt og skelner ikke.
+  - **Dækker kun 76 af 98 kommuner.** DST undertrykker tal hvor stikprøven er for lille. Toårigt gennemsnit blev valgt frem for ét år, fordi det både løfter dækningen og dæmper støjen (laveste værdi går fra 22 til 29 procent, så en del af yderpunkterne var stikprøvestøj).
+  - **Den manglende dækning er systematisk skæv.** De 22 kommuner uden tal har median ca. 24.000 indbyggere mod ca. 53.000 for dem med tal. Læsø, Fanø, Samsø, Ærø og Langeland er blandt dem. De får Fællesskab beregnet på fire indikatorer hvor de øvrige bruger fem, og det er netop de små kommuner hvor et lokalt idrætsfællesskab kan fylde mest, der ikke kan måles på det. Indikatoren er taget med alligevel efter beslutning, fordi alternativet var intet deltagelsesmål, men forskellen står eksplicit på metodesiden.
+  - **Ingen retningspil.** Tabellen findes kun for 2024 og 2025, og begge år indgår i gennemsnittet, så der er ingen uafhængig start- og slutværdi.
+  - **Fælde fundet under udviklingen:** KV2GEO's områdeliste blander kommuner, landsdele og regioner, og regionerne har OGSÅ trecifrede koder (081-085). Et filter på "tre cifre og ikke 000" tager dem med og overvurderer dækningen med fem. `fetch_kulturvaner.py` slår derfor op i master-CSV'ens kommuneliste.
+
+- **Fravalgte alternativer** (undersøgt, ikke brugt): `LABY58` frivilligt arbejde findes kun på kommunegruppeniveau med fem grupper, samme problem som `public_transport`. `FOHOJ04` højskolekursister er opgjort på landsdele. `KV2FR2` frivilligt arbejde har ingen geografi. `IDRFOR01` antal idrætsforeninger pr. indbygger findes for alle 98 med tolv års historik, men korrelerer -0,35 med idrætsudgifter, altså samme fortegnsproblem som det fjernede `sports_facilities`.
+
 ## 2026-09-17
 
 - **Den Nationale Sundhedsprofil taget i brug som kilde.** Nyt script `scripts/fetch_sundhedsprofil.py` henter kommunetal fra internetdatabasen på danskernessundhed.dk (Sundhedsstyrelsen + SIF/SDU). Otte indikatorer, alle 98 kommuner, bølge 2025. Nye rådata-filer: `sundhedsprofil_scores.csv` (seneste bølge) og `sundhedsprofil_historik.csv` (alle fem bølger 2010-2025).

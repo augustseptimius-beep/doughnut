@@ -369,17 +369,6 @@ export const INDICATORS: Indicator[] = [
     rawUnit: "børn/voksen",
   },
   {
-    id: "sports_spending",
-    name: "Kommunale idrætsudgifter pr. indb.",
-    table: "IDRFIN02",
-    source: "https://www.statistikbanken.dk/IDRFIN02",
-    category: "social",
-    inverse: false,
-    dataYear: "2022",
-    baselineLevel: 3,
-    rawUnit: "kr./indb.",
-  },
-  {
     id: "educated_staff",
     name: "Uddannede pædagoger i daginstitutioner",
     table: "BOERN1",
@@ -617,6 +606,28 @@ export const INDICATORS: Indicator[] = [
     baselineLevel: 3,
     rawUnit: "%",
   },
+  {
+    id: "social_stoette",
+    name: "Begrænset social støtte",
+    table: "Sundhedsprofilen",
+    source: "https://www.danskernessundhed.dk/",
+    category: "social",
+    inverse: true,
+    dataYear: "2025",
+    baselineLevel: 3,
+    rawUnit: "%",
+  },
+  {
+    id: "sport_tilskuer",
+    name: "Tilskuer til sportsbegivenhed",
+    table: "KV2GEO",
+    source: "https://www.statistikbanken.dk/KV2GEO",
+    category: "social",
+    inverse: false,
+    dataYear: "2024-2025",
+    baselineLevel: 3,
+    rawUnit: "%",
+  },
 ];
 
 // --- SOCIAL CATEGORIES (TORUS trivselsaspekter) ---
@@ -674,8 +685,8 @@ export const SOCIAL_CATEGORIES: SocialCategory[] = [
   {
     id: "lokalsamfund",
     name: "Fællesskab",
-    description: "Om borgerne er en del af et fællesskab. Ensomhed er kategoriens udfaldsmål; idrætsmedlemskab måler faktisk deltagelse, mens idrætsudgifter og foreningsstøtte er kommunens investering i at det kan lade sig gøre.",
-    indicatorIds: ["ensomhed", "sports_membership", "sports_spending", "civil_society"],
+    description: "Om borgerne er en del af et fællesskab. Ensomhed og begrænset social støtte er kategoriens udfaldsmål, idrætsmedlemskab og tilskuerdeltagelse måler faktisk deltagelse i det lokale liv, og foreningsstøtten er kommunens egen investering i at det kan lade sig gøre. Tilskuertallet mangler for 17 mindre kommuner, hvor DST's stikprøve er for lille.",
+    indicatorIds: ["ensomhed", "social_stoette", "sports_membership", "sport_tilskuer", "civil_society"],
   },
   {
     id: "lighed",

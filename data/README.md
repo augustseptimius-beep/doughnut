@@ -98,6 +98,16 @@ Genereres af `scripts/fetch_trend_history.py` → `scripts/build_trends_csv.py`.
 
 De individuelle CSV-filer (`luftforurening_scores.csv`, `naeringsstoffer_scores.csv` mv.) er bevaret som **rådata-spor**. De genereres af deres respektive `scripts/fetch_*.py`-scripts og gør det muligt at debugge data-pipelinen tilbage til kilden.
 
+### `kulturvaner_scores.csv`
+
+Fra DST's kulturvaneundersøgelse (KV2GEO), hentet af `scripts/fetch_kulturvaner.py`.
+Kolonner: `kommune_kode`, `sport_tilskuer_pct`, `sport_tilskuer_ratio`.
+
+**Dækker kun 76 af 98 kommuner.** DST undertrykker tal hvor stikprøven er for
+lille, og hullet er systematisk: de 22 kommuner uden tal har median ca. 24.000
+indbyggere mod ca. 53.000 for dem med tal. Værdien er et toårigt gennemsnit af
+2024 og 2025. Landsgennemsnittet kommer fra tabellens eget landstal (kode 000).
+
 ### `sundhedsprofil_scores.csv` og `sundhedsprofil_historik.csv`
 
 Fra Den Nationale Sundhedsprofil, hentet af `scripts/fetch_sundhedsprofil.py`.
@@ -115,8 +125,9 @@ Fra Den Nationale Sundhedsprofil, hentet af `scripts/fetch_sundhedsprofil.py`.
 2017- og 2025-tal skrives videre til `trend_history_raw.csv` - se punkt 23 i
 CLAUDE.md for hvorfor vinduet ikke er hele serien.
 
-Otte indikatorer hentes: `selvvurderet_helbred`, `mentalt_helbred`, `rygning`,
-`alkohol`, `fysisk_aktivitet`, `kost`, `svaer_overvaegt`, `ensomhed`.
+Ni indikatorer hentes: `selvvurderet_helbred`, `mentalt_helbred`, `rygning`,
+`alkohol`, `fysisk_aktivitet`, `kost`, `svaer_overvaegt`, `ensomhed`,
+`social_stoette`.
 `fysisk_aktivitet` scores ikke (r = 0,90 med `svaer_overvaegt`), men bevares i
 filen.
 

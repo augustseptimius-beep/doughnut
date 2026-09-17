@@ -94,6 +94,11 @@ INDIKATORER = [
     # Fællesskab
     dict(id="ensomhed", rapport="Ensomhed",
          inverse=True, navn="Ensomhed"),
+    # Begrænset social støtte. Erstatter sports_spending i Fællesskab sep. 2026:
+    # et udfaldsmål frem for et budgettal. Korrelerer 0,50 med ensomhed, altså
+    # beslægtet men ikke overlappende, og har hele serien 2010-2025.
+    dict(id="social_stoette", rapport=" Aldrig nogen at tale med",
+         inverse=True, navn="Begrænset social støtte"),
 ]
 
 
