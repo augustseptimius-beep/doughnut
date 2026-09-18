@@ -91,7 +91,7 @@ OP_ER_GODT = {
     "housing_area": True, "vacant_housing": False, "voter_turnout_national": True,
     "music_school": True, "library_use": True, "traffic_accidents": False,
     "crime_rate": False, "sports_membership": True,
-    "sports_spending": True, "gender_leadership": True, "income_gender_gap": True,
+    "gender_leadership": True, "income_gender_gap": True,
     "employment_origin_gap": True, "le_gender_gap": False, "life_expectancy": True,
     "employment": True, "disposable_income": True, "commute_distance": False,
     "hospital_long": False, "housing_no_wc": False, "housing_no_bath": False,
@@ -101,6 +101,10 @@ OP_ER_GODT = {
     # Den Nationale Sundhedsprofil 2025 (survey, bølger hvert 4. år)
     "selvvurderet_helbred": True, "mentalt_helbred": False, "rygning": False,
     "alkohol": False, "kost": False, "svaer_overvaegt": False, "ensomhed": False,
+    "social_stoette": False,
+    # sport_tilskuer (KV2GEO) får bevidst INGEN pil: tabellen har kun 2024 og
+    # 2025, og begge år indgår i det toårige gennemsnit indikatoren scores på.
+    # Der er dermed ingen uafhængig start- og slutværdi at beregne retning af.
     # --- Økologiske (lavere raw = bedre, undtagen genanvendelse) ---
     "naer_nitrogen": False, "naer_phosphorus": False, "vandindvinding": False,
     "areal_intensiv": False, "areal_bebygget": False, "klimapaavirkning": False,
