@@ -612,6 +612,10 @@ def _tjek_konsistens_efter_build():
     import her ville give en cirkulær import ved modul-indlæsning; et lazy
     import inde i funktionen virker fint, fordi dette modul er færdigt
     indlæst længe før funktionen rent faktisk kaldes.
+
+    Returnerer True (ingen fejl), False (fejl fundet) eller None (tjekket
+    kunne ikke køre). None er IKKE det samme som bestået: et tjek der
+    crasher er præcis den tavse fejl CLAUDE.md pkt. 19 advarer imod.
     """
     try:
         from tjek_konsistens import main as tjek_main
@@ -621,8 +625,10 @@ def _tjek_konsistens_efter_build():
         print("=" * 55)
         return tjek_main() == 0
     except Exception as e:
-        print(f"  ADVARSEL: kunne ikke køre konsistenstjek: {e}")
-        return True  # Ukendt tilstand skal ikke selv tælle som en fejl her
+        print()
+        print(f"  ✗ KONSISTENSTJEKKET KUNNE IKKE KØRE: {type(e).__name__}: {e}")
+        print("    Det tæller IKKE som bestået. Kør: python3 scripts/tjek_konsistens.py")
+        return None
 
 
 def auto_build_master():
@@ -663,5 +669,8 @@ if __name__ == "__main__":
     # fetch-script IKKE selv printede "✓ Master-CSV opdateret") afbryder MED
     # exit 1 hvis konsistenstjekket finder fejl. Det er her fejlen skal
     # stoppes - før commit, ikke efter deploy.
-    if not _tjek_konsistens_efter_build():
+    resultat = _tjek_konsistens_efter_build()
+    if resultat is None:
+        sys.exit(2)
+    if resultat is False:
         sys.exit(1)

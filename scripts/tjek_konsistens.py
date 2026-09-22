@@ -40,8 +40,8 @@ bedre end ingen kontrol.
 from __future__ import annotations
 
 import csv
+import math
 import re
-import statistics as st
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -65,6 +65,20 @@ def _f(fund: list[Fund], tekst: str) -> None:
 
 def _info(fund: list[Fund], tekst: str) -> None:
     fund.append(Fund("info", tekst))
+
+
+def _korrelation(xs, ys) -> float:
+    """Pearson-korrelation. statistics.correlation findes først fra Python
+    3.10, og CLAUDE.md pkt. 19 dokumenterer at maskinen kører 3.9 - der ville
+    tjekket crashe og (før rettelsen) blive tolket som bestået."""
+    n = len(xs)
+    mx, my = sum(xs) / n, sum(ys) / n
+    sxy = sum((x - mx) * (y - my) for x, y in zip(xs, ys))
+    sxx = sum((x - mx) ** 2 for x in xs)
+    syy = sum((y - my) ** 2 for y in ys)
+    if sxx == 0 or syy == 0:
+        return 0.0
+    return sxy / math.sqrt(sxx * syy)
 
 
 def _parse_float(s: str) -> float | None:
@@ -211,7 +225,7 @@ def kryds_tjek() -> list[Fund]:
                if _parse_float(r["raw_value"]) is not None and _parse_float(r["ratio"]) not in (None, 150.0)]
         if len(par) > 10:
             raa, ratio = zip(*par)
-            korr = st.correlation(raa, ratio)
+            korr = _korrelation(raa, ratio)
             if (korr < 0) != indicators[i]["inverse"]:
                 _f(fund, f"{i}: inverse={indicators[i]['inverse']} i shared.ts, men korrelation(rå, ratio)={korr:.2f} "
                          f"i master-CSV'en siger det modsatte")
@@ -223,7 +237,7 @@ def kryds_tjek() -> list[Fund]:
                if _parse_float(r["raw_value"]) is not None and _parse_float(r["ratio"]) is not None]
         if len(par) > 10:
             raa, ratio = zip(*par)
-            korr = st.correlation(raa, ratio)
+            korr = _korrelation(raa, ratio)
             # Øko-konvention: høj ratio = værre. lowerIsBetter=True skal derfor give korr > 0.
             if (korr > 0) != sub["lavere_er_bedre"]:
                 _f(fund, f"øko {indicator_id}: lowerIsBetter={sub['lavere_er_bedre']} i shared.ts, men "

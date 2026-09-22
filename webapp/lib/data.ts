@@ -198,7 +198,9 @@ export function getDoughnutEdition(): { edition: string; defaultYear: string } {
   let mode = new Date().getFullYear() - 1;
   let best = -1;
   for (const [year, n] of counts) {
-    if (n > best) {
+    // Står to år lige, vinder det seneste - ellers afhænger footeren af
+    // rækkefølgen i master-CSV'en, som ingen tænker over når de tilføjer rækker.
+    if (n > best || (n === best && year > mode)) {
       best = n;
       mode = year;
     }
