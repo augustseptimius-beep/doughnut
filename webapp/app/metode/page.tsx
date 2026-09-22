@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SOCIAL_CATEGORIES, INDICATORS, ECOLOGICAL_DIMENSIONS } from "@/lib/shared";
+import { getDimensionDataYears } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Metode & datakilder — Doughnut Economics Danmark",
@@ -18,7 +19,10 @@ interface MethodInfo {
   scoring: string;         // how the score/ratio is calculated
   boundary?: string;       // what the planetary boundary / social floor is
   boundarySources?: MethodSource[];  // clickable references for the boundary
-  dataYear?: string;
+  // Intet dataYear-felt: "Datatidspunkt" beregnes af getDimensionDataYears()
+  // fra master-CSV'ens egen data_year-kolonne. Et hårdkodet felt her drev
+  // gentagne gange fra den faktiske hentning (sep. 2026, ca. 20 forkerte
+  // dataYear-strenge på tværs af kategorier og dimensioner).
   limitations?: string;
   csvFile?: string;
 }
@@ -83,7 +87,6 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     id: "sundhed",
     scoring: "Gennemsnit af ni indikatorer. Helbredstilstand: (1) Andel med godt selvvurderet helbred (Den Nationale Sundhedsprofil 2025, direkte). (2) Andel med lav score på den mentale helbredsskala (Sundhedsprofilen 2025, inverteret). (3) Middellevetid for 0-årige (HISBK, direkte). (4) Andel med indlæggelse 12 timer eller derover (SBR01, inverteret). (5) Hjemmesygepleje-modtagere pr. 1.000 indb. (HJEMSYG, inverteret). Levevaner, alle fra Sundhedsprofilen 2025 og alle inverterede: (6) Andel der ryger dagligt. (7) Andel der drikker over 10 genstande om ugen. (8) Andel med lav score på kostskalaen. (9) Andel med svær overvægt, BMI 30+. Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: alle borgere bør opleve deres eget fysiske og mentale helbred som mindst på niveau med landsgennemsnittet, have en forventet levetid der matcher det, og ikke være mere udsat for de påvirkelige risikofaktorer end danskere i øvrigt.",
-    dataYear: "2025",
     limitations: "Seks af de ni indikatorer er selvrapporterede og kommer fra samme spørgeskemaundersøgelse, som gennemføres hvert fjerde år. Kommunetallene står derfor fast indtil næste bølge, og en fejl i kilden ville slå igennem på to tredjedele af kategorien på én gang. Stikprøven er designet til kommuneniveau (314.500 udsendte skemaer i 2025), men er tyndest i de mindste ø-kommuner. Landsgennemsnittet er beregnet som et befolkningsvægtet gennemsnit af de 98 kommuneandele, ikke SIF's eget vægtede landsestimat, og afviger derfor en anelse fra den nationale rapport. Der er en kendt underrapportering af både alkoholforbrug og vægt i surveydata. Alkohol peger modsat de øvrige levevaner: forbruget er højest i velstillede kommuner, hvor rygning og overvægt er lavest, så en kommune med lavt rygeniveau og højt alkoholforbrug lander midt i feltet. Middellevetid varierer kun godt tre point mellem kommunerne og differentierer derfor svagt. Sygehusbenyttelse kan afspejle både dårligt helbred og god adgang. Hjemmesygepleje følger alderssammensætningen lige så meget som sundheden og er kategoriens svageste indikator. Fysisk aktivitet hentes fra samme kilde, men indgår ikke: den korrelerer 0,90 med svær overvægt og 0,80 med kostskalaen og ville lade den samme underliggende konstruktion fylde tre af ni pladser.",
     csvFile: "doughnut_scores.csv + sundhed_extra_scores.csv + sundhedsprofil_scores.csv + hjemsyg_scores.csv",
   },
@@ -91,7 +94,6 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     id: "uddannelse",
     scoring: "Gennemsnit af ni indikatorer: (1) Andel af 30-34-årige med kompetencegivende uddannelse (HFUDD11, scoret absolut mod det nationale 95 %-mål: ratio = andel/95 × 100). (2) Andel af 25-29-årige med kun grundskole (HFUDD11, inverteret). (3) Karaktergennemsnit folkeskolens afgangseksamen (UVM GS/KARA/KARAGNS, direkte). (4) Andel elever med >10% fravær (UVM GS/ELEVFRAV/FRAVAAR, inverteret). (5) Forventet ungdomsuddannelseskompetence (UVM GS/PROFMOD/PROFMOD, direkte). (6) Elevtrivsel i folkeskolen, gennemsnit (UVM GS/TRIV/TRIVIND, direkte). (7) Klassekvotient grundskole (KVOTIEN, inverteret). (8) Normering daginstitution 3-5 år (BOERN8, inverteret). (9) Andel pædagoguddannede i daginstitutioner (BOERN1 kode 460, direkte). Score 100 = landsgennemsnit (undtagen indikator 1, der scores mod 95 %-målet - derfor er kategorien 'blandet').",
     boundary: "Socialt fundament: alle borgere bør have adgang til uddannelse og et kvalitetsfuldt læringsmiljø. EU-mål: 45% af 25-34-årige med videregående uddannelse i 2030.",
-    dataYear: "2024-2025",
     limitations: "Karaktergennemsnit afspejler ikke kun skolekvalitet men også socioøkonomisk baggrund. Klassekvotienter og normering fanger kvantitative mål, ikke undervisningskvalitet. UVM-data dækker skoleår 2023/2024 som seneste.",
     csvFile: "doughnut_scores.csv + uddannelse_extra_scores.csv + uvm_scores.csv + lokalsamfund_extra_scores.csv",
   },
@@ -99,7 +101,6 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     id: "velfaerd",
     scoring: "Gennemsnit af syv indikatorer: median disponibel indkomst (INDKP106), beskæftigelsesfrekvens (RAS200), børnefattigdom (inverteret, LABY07), udsatte børn og unge (inverteret, BU43), NEET (inverteret, NEET1), relativ fattigdom (inverteret, IFOR12P) og underretninger om børn (inverteret, UND2). Score 100 = landsgennemsnit. NB: Gini og lavindkomst er flyttet til dimensionen Lighed.",
     boundary: "Socialt fundament: materielle levevilkår der sikrer værdigt liv for alle. Ingen absolut grænse - relativ til landsgennemsnit.",
-    dataYear: "2023-2025",
     limitations: "Børnefattigdom (LABY07) og relativ fattigdom (IFOR12P) overlapper. Disponibel indkomst justerer ikke for købekraft mellem kommuner. DST udgiver ikke medianen pr. kommune; den er beregnet ud fra antal personer i DST's indkomstintervaller (INDKP106) med en usikkerhed på typisk under 1.000 kr. BU43 og NEET dækker forskellige aldersgrupper (0-22 og 16-24).",
     csvFile: "doughnut_scores.csv + velfaerd_extra_scores.csv + lighed_scores.csv + underretning_scores.csv",
   },
@@ -107,7 +108,6 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     id: "bolig",
     scoring: "Gennemsnit af to indikatorer: (1) Andel ubeboede boliger (BOL101, inverteret). (2) Gennemsnitligt boligareal pr. person i m² (BOL106, direkte). Score 100 = landsgennemsnit. NB: Fossil opvarmning er flyttet til dimensionen Energi, da opvarmningskilde er et energispørgsmål, ikke boligstandard.",
     boundary: "Socialt fundament: alle borgere bør have adgang til en god, rummelig og bæredygtig bolig.",
-    dataYear: "2026",
     limitations: "Ubeboede boliger fanger ikke boligkvalitet eller pris. Boligareal pr. person er et gennemsnit og skjuler ulighed.",
     csvFile: "doughnut_scores.csv + bolig_extra_scores.csv",
   },
@@ -115,7 +115,6 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     id: "demokrati",
     scoring: "Gennemsnit af 2 indikatorer: (1) Stemmedeltagelse ved kommunalvalget 2025 (LABY08, direkte ratio til landsgennemsnit). (2) Stemmedeltagelse ved folketingsvalget 2026 (LABY09, direkte ratio til landsgennemsnit). Score 100 = landsgennemsnit. NB: Kønsbalance i ledelse er flyttet til dimensionen Ligestilling.",
     boundary: "Socialt fundament: aktivt demokratisk medborgerskab. Alle borgere bør have mulighed for og lyst til at deltage i den demokratiske proces.",
-    dataYear: "2025, 2026",
     limitations: "Måler kun formel valgdeltagelse - ikke bredere politisk deltagelse som borgermøder, lokalt engagement eller civilsamfundsaktivitet. Valgdeltagelse varierer strukturelt: højere i kommuner med velstillet, ældre befolkning. Kommunalvalg opdateres hvert 4. år; folketingsvalg efter behov.",
     csvFile: "democracy_scores.csv",
   },
@@ -123,7 +122,6 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     id: "kultur_fritid",
     scoring: "Gennemsnit af tre indikatorer: (1) Musikskoleelever pr. 1.000 indb. (SKOLM02B, direkte). (2) Biblioteksudlån pr. indb. (BIB3A, direkte). (3) Kommunale kulturudgifter pr. indb. - nettodriftsudgifter til biografer, teatre, musikarrangementer og anden kultur (REGK31 funktion 33561-33564, direkte). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: adgang til kulturliv og fritidsaktiviteter er en forudsætning for trivsel, social deltagelse og levende lokalsamfund.",
-    dataYear: "2025",
     limitations: "Musikskoleelever dækker primært børn og unge. Biblioteksudlån afspejler ikke digitale udlån fuldt ud. Kulturudgifterne omfatter ikke biblioteker og idræt: biblioteker indgår via udlån, og idrætsmedlemskab indgår i Fællesskab.",
     csvFile: "lokalsamfund_scores.csv + samskabelse_extra_scores.csv + doughnut_scores.csv (kultur_spending)",
   },
@@ -131,7 +129,6 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     id: "tryghed",
     scoring: "Gennemsnit af to indikatorer: (1) Anmeldte forbrydelser pr. 1.000 indb. (STRAF11, inverteret). (2) Trafikulykker - tilskadekomne og dræbte pr. 100.000 indb., treårigt gennemsnit (UHELDK1, inverteret). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: borgere skal kunne leve trygt - i det offentlige rum og i trafikken.",
-    dataYear: "2022-2025",
     limitations: "Anmeldt kriminalitet afspejler ikke oplevet tryghed eller mørketallet. Politiets tilstedeværelse og anmeldelseskultur varierer, og kriminalitetsscoren rammer 150-loftet i en stor del af de tyndt befolkede kommuner, så den kan ikke skelne mellem dem. Trafikulykker varierer med vejnet og pendlingsforhold og opgøres fra sep. 2026 som et treårigt gennemsnit, fordi ét års tal i de mindste kommuner hviler på en håndfuld personer. Selv med tre år er grundlaget i ø-kommunerne tyndt.",
     csvFile: "faellesskaber_scores.csv",
   },
@@ -139,7 +136,6 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     id: "lokalsamfund",
     scoring: "Gennemsnit af op til fem indikatorer: (1) Andel med tegn på ensomhed (Den Nationale Sundhedsprofil 2025, inverteret). (2) Andel der aldrig eller næsten aldrig har nogen at tale med ved problemer (Sundhedsprofilen 2025, inverteret). (3) Idrætsmedlemskab som andel af befolkningen (IDRAKT02, direkte). (4) Andel der har overværet en sportsbegivenhed som tilskuer (KV2GEO, toårigt gennemsnit 2024-2025, direkte). (5) Udgifter til frivillige foreninger pr. indb. (REGK31 funktion 33873, direkte). Score 100 = landsgennemsnit. Indikator 4 findes kun for 76 af 98 kommuner; de øvrige 22 får kategoriscoren beregnet på fire indikatorer.",
     boundary: "Socialt fundament: ingen bør stå uden for fællesskabet. Ensomhed og manglende social støtte er kategoriens grænser; deltagelse og foreningsstøtte beskriver det der skal til for at holde folk inde i fællesskabet.",
-    dataYear: "2024-2025",
     limitations: "Kategorien hed indtil sep. 2026 Foreningsliv og bestod udelukkende af kommunale udgifter og faciliteter, altså input. Den havde ingen indbyrdes sammenhæng: idrætsfaciliteter pr. indbygger korrelerede -0,35 med idrætsudgifter og -0,32 med foreningsstøtte, så gennemsnittet af de fire udlignede hinanden frem for at måle noget. Idrætsfaciliteter og idrætsudgifter er derfor taget ud, og to udfaldsmål samt et deltagelsesmål er kommet ind. Tilskuerindikatoren mangler for 22 kommuner, fordi DST's stikprøve i kulturvaneundersøgelsen er for lille til at offentliggøre et tal. De manglende kommuner er ikke tilfældigt fordelt: deres median er ca. 24.000 indbyggere mod ca. 53.000 for dem med tal, og blandt dem er Læsø, Fanø, Samsø, Ærø og Langeland. Konsekvensen er dobbelt. Dels sammenlignes de 22 kommuner på et andet indikatorgrundlag end de øvrige 76. Dels er det netop de små kommuner, hvor et lokalt idrætsfællesskab kan fylde mest i hverdagen, der ikke kan måles på det. Vi viser indikatoren alligevel, fordi alternativet var intet deltagelsesmål overhovedet, men forskellen skal læses med. Tilskuerindikatoren har ingen retningspil: tabellen findes kun for 2024 og 2025, og begge år indgår i gennemsnittet. Ensomhed og social støtte er selvrapporterede og opdateres hvert fjerde år. Idrætsmedlemskab dækker kun foreningsidræt, ikke selvorganiseret motion. Foreningsstøtten måler kommunens prioritering, ikke resultatet af den.",
     csvFile: "sundhedsprofil_scores.csv + kulturvaner_scores.csv + faellesskaber_scores.csv + doughnut_scores.csv",
   },
@@ -147,7 +143,6 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     id: "lighed",
     scoring: "Gennemsnit af tre indikatorer: (1) Gini-koefficient (IFOR41, inverteret - lavere ulighed er bedre). (2) Andel i relativ fattigdom efter DST's mål med grænsen 50% af medianindkomsten (LABY07, inverteret). (3) Beskæftigelsesfrekvensen for personer med ikke-vestlig oprindelse i procent af frekvensen for personer med dansk oprindelse (RAS200, direkte). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: en rimelig fordeling af ressourcer og muligheder er grundlaget for et sammenhængende samfund.",
-    dataYear: "2024",
     limitations: "Gini og relativ fattigdom bygger på DST's indkomstregistre og er korrelerede mål - kommuner med høj ulighed har typisk også høj andel lavindkomst. Data er 2 år forsinket.",
     csvFile: "doughnut_scores.csv + ligestilling_scores.csv",
   },
@@ -155,7 +150,6 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     id: "ligestilling",
     scoring: "Gennemsnit af tre indikatorer: (1) Andel kvinder i lønmodtager-lederstillinger (RAS301 SOCIO=15, direkte). (2) Kønsgab i middellevetid, kvinder minus mænd i år (HISBK, inverteret - mindre gab er bedre). (3) Kvinders median disponible indkomst i procent af mænds (INDKP106, direkte). Score 100 = landsgennemsnit. For lederandelen er baseline den nationale andel (ca. 32%), ikke 50%.",
     boundary: "Socialt fundament: lige muligheder uanset køn på arbejdsmarkedet og i ledelse.",
-    dataYear: "2024-2025",
     limitations: "Indkomstindikatoren bruger medianen, så enkelte meget høje indkomster ikke flytter tallet. DST udgiver ikke medianen pr. kommune og køn; den er beregnet ud fra antal personer i DST's indkomstintervaller (INDKP106), og usikkerheden på kønsforholdet er typisk under 1 procentpoint. Andelen af kvinder i ledelse afhænger af kommunens erhvervsstruktur (fx industritunge kommuner har typisk færre kvinder i ledelse).",
     csvFile: "lighed_scores.csv + ligestilling_scores.csv",
   },
@@ -163,7 +157,6 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     id: "mobilitet",
     scoring: "Gennemsnit af to indikatorer: (1) Gennemsnitlig pendlingsafstand i km (AFSTB4, inverteret). (2) Andel med god adgang til offentlig transport (LABY49, direkte - % med Meget højt + Højt serviceniveau). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: adgang til mobilitet uanset geografi og økonomi - med vægt på bæredygtige transportformer.",
-    dataYear: "2024-2025",
     limitations: "Pendlingsafstand fanger kun beskæftigedes transport. METODENOTE for offentlig transport (LABY49): data er KUN tilgængeligt på kommunegruppe-niveau (5 grupper) - alle kommuner i samme gruppe tildeles identisk score uanset lokale forskelle. Landkommuner (G5, herunder Thisted) scorer lavt som gruppe. Indikatoren er medtaget da retningen er korrekt og dataene er officielle DST-nøgletal. NB: Familier med bilrådighed (BIL800) er bevidst fjernet som scoring-indikator i 2026, da 'flere biler = bedre' er konceptuelt skævt i en doughnut/bæredygtighedsramme. Rådata er fortsat tilgængelig.",
     csvFile: "mobilitet_scores.csv",
   },
@@ -171,7 +164,6 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     id: "klimatilpasning",
     scoring: "1 indikator: Vejrrelaterede forsikringsskader pr. 1.000 indbyggere (F&P skadesstatistik, akkumuleret Q1 2023 - Q4 2025, inverteret - færre skader er bedre). Ratio = (landsgennemsnit / kommunens skader pr. 1.000 indb.) × 100. Score 100 = landsgennemsnit (uvægtet gennemsnit af kommunerne).",
     boundary: "Socialt fundament: borgere og bygninger skal være robuste over for klimarelateret ekstremvejr (skybrud, storm, oversvømmelse). Ingen absolut grænse - relativ til landsgennemsnit.",
-    dataYear: "2023-2025",
     limitations: "Skadesdata er en proxy for klimarobusthed: den fanger realiserede skader, ikke fremtidig risiko eller kommunens tilpasningsindsats. Skadestal påvirkes også af bygningsmasse, forsikringsdækning og tilfældige vejrhændelser i perioden. Mulige fremtidige indikatorer: oversvømmelsesrisiko, klimatilpasningsplaner, grønne arealer til regnvandshåndtering. Se data/klimatilpasning.md for metodediskussion.",
     csvFile: "klimatilpasning_scores.csv",
   },
@@ -179,8 +171,7 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     id: "energi",
     scoring: "Scores på kommunens SAMLEDE fossile varmeafhængighed, mod et absolut mål på 0% (ikke landsgennemsnit). Samlet fossil% = direkte fossil opvarmning (andel af helårsboligernes opvarmede areal med oliefyr, oliekaminer eller naturgas, DST BYGB40) + fjernvarme-dækning% × fjernvarmens fossile brændselsandel (Energistyrelsens EPT). Score = 100 − samlet fossil%, så 100 = ingen fossil opvarmning og afstanden ned til 100 svarer til den fossile andel. Eksempel: 19% samlet fossil → score 81. Fritidsboliger, lokal VE-kapacitet og fjernvarmens fulde brændselsmix vises som kontekst, men indgår ikke i scoren - se Begrænsninger.",
     boundary: "Absolut mål: 0% fossil opvarmning (Niveau 2 - dansk politik om udfasning af olie- og gasfyr). Bemærk: fordi næsten alle kommuner har en vis fossil andel, når ingen kommune helt i grønt endnu - de bedste (fx Aarhus med biomasse-fjernvarme, ~4% fossil) ligger tæt på. Det er bevidst: målet er 0, ikke at være gennemsnitlig.",
-    dataYear: "2026 (opvarmet areal, BYGB40), 2024 (fjernvarmemix), 2024 (VE-kapacitet)",
-    limitations: "Kun fossil afhængighed indgår i scoren. (1) Lokal VE-kapacitet er bevidst holdt ude: en kommune kan have mange vindmøller OG mange oliefyr, og strømmen går til det nationale net - ikke til kommunens egne husstande. At gennemsnitte de to ville udvande scoren og antyde at vindmøller kompenserer for oliefyr. (2) Kun den FOSSILE del af fjernvarmen tælles med - biomasse og affald regnes hverken som grønt eller sort (det undgår det omdiskuterede værdivalg om biomasse). Fjernvarmens fulde mix vises som kontekst. (3) Fjernvarmens fossilandel stammer fra EPT, der opgøres ved produktionsstedet; for de 18 kommuner uden egen varmeproduktion (fx hovedstadskommuner på fælles net) bruges det TJ-vægtede landsgennemsnit (~13%). (4) Direkte fossil og fjernvarme-dækning er begge fra BYGB40 på arealbasis, så de er konsistente. (5) FRITIDSBOLIGER er bevidst holdt ude af scoren og vises kun som kontekst. Sommerhuse er typisk elopvarmede og har markant lavere fossilandel end helårsboliger (median ca. 7% mod ca. 20%). Hvis de indgik, ville sommerhuskommuner som Odsherred, Gribskov og Fanø fremstå kunstigt bedre på et mål der handler om HUSSTANDES varmeregninger - og sommerhusene ejes typisk af folk fra andre kommuner. (6) Erhvervs- og avlsbygninger, garager og udhuse indgår ikke: indikatoren måler boliger, ikke kommunens samlede bygningsmasse.",
+    limitations: "Datagrundlaget har forskellig alder: opvarmet areal (BYGB40) er fra 2026, fjernvarmemix og VE-kapacitet fra 2024. Kun fossil afhængighed indgår i scoren. (1) Lokal VE-kapacitet er bevidst holdt ude: en kommune kan have mange vindmøller OG mange oliefyr, og strømmen går til det nationale net - ikke til kommunens egne husstande. At gennemsnitte de to ville udvande scoren og antyde at vindmøller kompenserer for oliefyr. (2) Kun den FOSSILE del af fjernvarmen tælles med - biomasse og affald regnes hverken som grønt eller sort (det undgår det omdiskuterede værdivalg om biomasse). Fjernvarmens fulde mix vises som kontekst. (3) Fjernvarmens fossilandel stammer fra EPT, der opgøres ved produktionsstedet; for de 18 kommuner uden egen varmeproduktion (fx hovedstadskommuner på fælles net) bruges det TJ-vægtede landsgennemsnit (~13%). (4) Direkte fossil og fjernvarme-dækning er begge fra BYGB40 på arealbasis, så de er konsistente. (5) FRITIDSBOLIGER er bevidst holdt ude af scoren og vises kun som kontekst. Sommerhuse er typisk elopvarmede og har markant lavere fossilandel end helårsboliger (median ca. 7% mod ca. 20%). Hvis de indgik, ville sommerhuskommuner som Odsherred, Gribskov og Fanø fremstå kunstigt bedre på et mål der handler om HUSSTANDES varmeregninger - og sommerhusene ejes typisk af folk fra andre kommuner. (6) Erhvervs- og avlsbygninger, garager og udhuse indgår ikke: indikatoren måler boliger, ikke kommunens samlede bygningsmasse.",
     csvFile: "bolig_fossil_scores.csv + ve_kapacitet_scores.csv + fjernvarme_mix_scores.csv",
   },
 };
@@ -195,16 +186,14 @@ const ECO_METHODS: Record<string, MethodInfo> = {
       { label: "Hot or Cool Institute (2021), 1.5-Degree Lifestyles", url: "https://hotorcool.org/1-5-degree-lifestyles-report/" },
       { label: "Energistyrelsen, Global Afrapportering", url: "https://ens.dk/" },
     ],
-    dataYear: "2023 (territorial fra Klimaregnskabet.dk for alle 98 kommuner; forbrugsbaseret: estimat)",
-    limitations: "Territorialt regnskab (Klimaregnskabet.dk) fanger ikke importerede udledninger. Forbrugsbaseret er et Tier 1-estimat: alle kommuner skaleres med samme nationale faktor (Osei-Owusu et al. 2020 nutidsjusteret med ENS GA25), så lokale ændringer siden 2011 er ikke indregnet (usikkerhed ca. ±10%). De to tal er ikke additive - det er to måder at opgøre samme klimapåvirkning.",
+    limitations: "Territorialt regnskab (Klimaregnskabet.dk, 2023, alle 98 kommuner) fanger ikke importerede udledninger. Forbrugsbaseret er et Tier 1-estimat: alle kommuner skaleres med samme nationale faktor (Osei-Owusu et al. 2020 nutidsjusteret med ENS GA25), så lokale ændringer siden 2011 er ikke indregnet (usikkerhed ca. ±10%). De to tal er ikke additive - det er to måder at opgøre samme klimapåvirkning.",
     csvFile: "climate_scores.csv + cba_2023_estimate.csv",
   },
   forurening: {
     id: "forurening",
     scoring: "Gennemsnit af fire indikatorer (ikke worst-of): (1) Pesticider: andel af kommunens almene vandværker hvor seneste analyse viser pesticider over drikkevandsnormen (0,1 µg/l) - ratio = (kommunens % / nationalt gennemsnit %) × 100. (2) Nitrat i drikkevand: gennemsnit over kommunens almene vandværker, vægtet efter anlæggenes tilladte årsindvinding, så store værker tæller mere end små - ratio = (mg/L / 6 mg/L) × 100. (3) Genanvendelse: ratio = (65% EU-mål / faktisk %) × 100 - over 100 = genanvender for lidt. (4) Affald: husholdningsaffald kg/person, inverteret ratio mod landsgennemsnit. Dimensionens score er det uvægtede gennemsnit af de fire.",
     boundary: "Pesticider: landsgennemsnittet, hvor 9,2% af de almene vandværker har en analyse over drikkevandsnormen på 0,1 µg/l. Nitrat: 6 mg/L (ekspertgruppens anbefaling 2025). Genanvendelse: 65% (EU Affaldsdirektiv 2035). Affald: landsgennemsnit som reference.",
-    dataYear: "2023 (affald og genanvendelse); nitrat og pesticider: seneste analyse pr. vandværk, højst 10 år gammel (hentet 2026)",
-    limitations: "Nitrat og pesticider hentes direkte fra GEUS Jupiter og dækker 95/98 kommuner - de tre uden data har ingen almene vandværker med aktuel analyse. Tidligere byggede nitrat på en Greenpeace-rapport hvor kun de 20 mest belastede kommuner havde rigtige tal og de øvrige 78 stod med samme estimat (3,7 mg/L). Kun analyser fra de seneste 10 år indgår, da Jupiter gemmer seneste måling pr. værk og den for sjældent prøvetagne værker kan være 20 år gammel. Vandværker uden registreret årsindvinding vægtes med medianen frem for nul - de har systematisk højere nitrat, så nul ville underdrive niveauet. Tallene er beslægtede med Greenpeaces, men ikke identiske: vi vægter efter tilladt indvindingsmængde, mens Greenpeace kobler målinger til de faktiske forsyningsområder. Pesticider opgøres nu pr. vandværk frem for pr. boring. Reel genanvendelse kan afvige fra indsamlet til genanvendelse. Affald dækker kun husholdningsaffald. Dimensionen bruger gennemsnit, ikke worst-of, da de fire indikatorer adresserer vidt forskellig forureningskilder - en kommune kan excellere på affald men fejle på pesticider.",
+    limitations: "Affald og genanvendelse er fra 2023. Nitrat og pesticider hentes direkte fra GEUS Jupiter (seneste analyse pr. vandværk, højst 10 år gammel, hentet 2026) og dækker 95/98 kommuner - de tre uden data har ingen almene vandværker med aktuel analyse. Tidligere byggede nitrat på en Greenpeace-rapport hvor kun de 20 mest belastede kommuner havde rigtige tal og de øvrige 78 stod med samme estimat (3,7 mg/L). Kun analyser fra de seneste 10 år indgår, da Jupiter gemmer seneste måling pr. værk og den for sjældent prøvetagne værker kan være 20 år gammel. Vandværker uden registreret årsindvinding vægtes med medianen frem for nul - de har systematisk højere nitrat, så nul ville underdrive niveauet. Tallene er beslægtede med Greenpeaces, men ikke identiske: vi vægter efter tilladt indvindingsmængde, mens Greenpeace kobler målinger til de faktiske forsyningsområder. Pesticider opgøres nu pr. vandværk frem for pr. boring. Reel genanvendelse kan afvige fra indsamlet til genanvendelse. Affald dækker kun husholdningsaffald. Dimensionen bruger gennemsnit, ikke worst-of, da de fire indikatorer adresserer vidt forskellig forureningskilder - en kommune kan excellere på affald men fejle på pesticider.",
     csvFile: "pesticider_scores.csv + nitrat_scores.csv + consumption_scores.csv + forurening_scores.csv",
   },
   luftkvalitet: {
@@ -216,7 +205,6 @@ const ECO_METHODS: Record<string, MethodInfo> = {
       { label: "DCE/AU - Luftkvalitet 2022 (SR580)", url: "https://dce2.au.dk/pub/SR580.pdf" },
       { label: "Miljøportal WFS - luftkoncentrationer", url: "https://arld-extgeo.miljoeportal.dk/geoserver/wfs" },
     ],
-    dataYear: "2024",
     limitations: "Modelberegnet baggrundskoncentration (UBM, 1×1 km grid) - ikke målte værdier. Fanger ikke lokale hotspots ved travle gadestrækninger (OSPM-model dækker dette, men kun i store byer). Kommunegennemsnittet inkluderer landlige arealer med lav forurening, hvilket trækker byernes reelle eksponering ned. PM2.5 i Danmark er i høj grad påvirket af langtransport fra kontinentet og hav - ikke kun lokale kilder.",
     csvFile: "luftforurening_scores.csv",
   },
@@ -224,15 +212,13 @@ const ECO_METHODS: Record<string, MethodInfo> = {
     id: "naeringsstoffer",
     scoring: "Worst-of af fire indikatorer - tre presmål og ét effektmål. Presmål: (1) Kvælstof-udledning (ton total-N) pr. 1.000 indbyggere via spildevand. (2) Fosfor-udledning (ton total-P) pr. 1.000 indbyggere via spildevand. (3) Tålegrænse for kvælstof pr. ha landbrug fra Vandområdeplan 3 (VP3): den maksimale kvælstoftilførsel kystvandet kan tåle, divideret med landbrugsarealet i oplandet - jo lavere tålegrænse pr. ha, jo mere presset er vandmiljøet; ratio = (landsgennemsnit / kommunens tålegrænse) × 100. Effektmål: (4) Andel af kommunens vandområder (vandløb, søer, kystvande) i mindst god økologisk tilstand (VP3) - den synlige eutrofiering de tre presmål forårsager; her er højere andel bedre, ratio = (landsgennemsnit / andel) × 100, cappet ved 300. Eco-konvention: score over 100 = mere belastet end landsgennemsnittet. Dimensionens samlede score er den værste af de fire sub-indikatorer (planetary boundary-logik).",
     boundary: "Landsgennemsnittet som reference for alle fire indikatorer. For vandområdernes tilstand er EU's Vandrammedirektiv-mål (alle vandområder i mindst god tilstand i 2027) vist som kontekst - nationalt opfylder kun ca. 6% målet. Lavere næringsstofbelastning og flere vandområder i god tilstand er bedre.",
-    dataYear: "2024 (spildevand), 2025 (VP3 tålegrænse + økologisk tilstand), 2026 (markblokke)",
-    limitations: "Spildevand dækker kun punktkilder (renseanlæg, dambrug, havbrug, industri, spredt bebyggelse). Tålegrænsen for kvælstof viser hvor meget kystvandet kan tåle pr. ha landbrug - ikke den faktiske udvaskning. Den ændrer sig derfor ikke med landbrugets praksis og kan ikke vise fremskridt. Vandområdernes tilstand tælles pr. styk (ikke vægtet efter længde/areal); kystvande er næsten alle i dårlig tilstand pga. iltsvind, hvilket trækker kystkommuner ned. Grænseværdierne er landsgennemsnittet (relativ baseline), ikke absolutte planetære grænser.",
+    limitations: "Spildevand er fra 2024, VP3-tålegrænse og økologisk tilstand fra 2025, markblokke fra 2026. Spildevand dækker kun punktkilder (renseanlæg, dambrug, havbrug, industri, spredt bebyggelse). Tålegrænsen for kvælstof viser hvor meget kystvandet kan tåle pr. ha landbrug - ikke den faktiske udvaskning. Den ændrer sig derfor ikke med landbrugets praksis og kan ikke vise fremskridt. Vandområdernes tilstand tælles pr. styk (ikke vægtet efter længde/areal); kystvande er næsten alle i dårlig tilstand pga. iltsvind, hvilket trækker kystkommuner ned. Grænseværdierne er landsgennemsnittet (relativ baseline), ikke absolutte planetære grænser.",
     csvFile: "naeringsstoffer_scores.csv + n_landbrug_scores.csv + vp3_vandkvalitet_scores.csv",
   },
   vand: {
     id: "vand",
     scoring: "Enkelt indikator: Vandindvinding fra almene vandværker (INDKAT=100) pr. person. Ratio = (kommunens m³/person / nationalt gennemsnit) × 100. Over 100 = bruger mere end landsgennemsnittet. Nitrat er flyttet til Forurening-dimensionen (kemisk forurening af drikkevand).",
     boundary: "Landsgennemsnit (72,9 m³/person, 2024) som reference. Den egentlige planetære grænse (Rockström/Steffen: 4.000-6.000 km³/år globalt) dækker alt konsumtivt blåt vandforbrug inkl. landbrug og er ikke direkte operationaliserbar på kommuneniveau med tilgængeligt data.",
-    dataYear: "2024",
     limitations: "Data registreres ved vandværkets fysiske placering, ikke ved forbrugsstedet. Bykommuner der forsynes af vandværker beliggende i nabokommuner (fx HOFOR for storkøbenhavn) får kunstigt lave tal og er filtreret fra (6 kommuner uden data). Dækker kun almene vandværker - industri og markvanding er ikke inkluderet.",
     csvFile: "vandindvinding_scores.csv",
   },
@@ -240,7 +226,6 @@ const ECO_METHODS: Record<string, MethodInfo> = {
     id: "arealanvendelse",
     scoring: "To sub-indikatorer med worst-of logik (dimensionsscoren = den højeste ratio): (1) Andel intensivt landbrug (korn, rodfrugter, permanente afgrøder, ikke-klassificeret - DST kategorier D1+D2+D4): ratio = (andel / 54,7%) × 100 mod nationalt gennemsnit 2024. (2) Andel bebygget og befæstet areal (veje, jernbaner, lufthavne, bebyggelse, råstofgrave - A1+A2+B1+B2+C1): ratio = (andel / 14,2%) × 100 mod nationalt gennemsnit 2024. Naturkvalitet måles separat i biodiversitetsdimensionen (DCE bioscore).",
     boundary: "Nationalt gennemsnit 2024 som reference: intensivt landbrug ~54,7%, bebygget og befæstet ~14,2% (DST AREALDK2). Over gennemsnittet = over grænsen. Til kontekst: CONCITO-rapportens planetære grænse for arealsystemet er max 15% antropiseret areal (landbrug + bebygget tilsammen, Rockström 2009). Danmark ligger på 73-75% - en femdobbelt overskridelse. Vi scorer bevidst mod landsgennemsnittet i stedet for de 15%, så man kan se forskel mellem kommuner; ellers ville næsten alle lyse dybrødt.",
-    dataYear: "2024",
     limitations: "Begge indikatorer er målt mod nationalt gennemsnit (niveau 3 baseline), ikke absolutte planetære grænser. Bykommuner scorer typisk dårligt på bebygget men godt på landbrug - og omvendt for landkommuner. Det er bevidst: worst-of logikken fanger det dominerende pres for den enkelte kommunes arealtype. Dimensionen dækker ikke naturkvalitet (se biodiversitet) eller fragmentering af levesteder.",
     csvFile: "arealanvendelse_scores.csv",
   },
@@ -248,7 +233,6 @@ const ECO_METHODS: Record<string, MethodInfo> = {
     id: "biodiversitet",
     scoring: "Worst-of af to tærskler fra DCE's biodiversitetskort (bioscore-raster, 10x10 m). Bioscore vurderer hvor værdifuldt hvert areal er som levested for truede arter. (1) Andel af kommunen med væsentlig naturværdi (bioscore ≥8): ratio = (30% / faktisk andel) × 100 mod EU's 30%-mål. (2) Andel med uerstattelig naturværdi (bioscore ≥12): ratio = (10% / faktisk andel) × 100 mod 10%-målet for strengt beskyttet natur. Over 100 = under målet (for lidt). Dimensionsscoren er den dårligste (højeste ratio) af de to. I modsætning til rent arealdække vægter bioscore naturkvalitet - en biologisk fattig plantage tæller derfor lavt.",
     boundary: "30% væsentlig naturværdi + 10% uerstattelig naturværdi (EU Biodiversitetsstrategi 2030, 30x30-målet). VIGTIGT: Dette er EU's politiske mål, ikke den planetære grænse. CONCITO-rapporten (2025) vurderer Danmarks samlede biodiversitet til et Biodiversity Intactness Index på 44% mod en sikker planetær grænse på 90%. En kommune kan altså nå 30%-målet og lyse grønt uden at være inden for den biofysiske grænse.",
-    dataYear: "2021",
     limitations: "Grænserne er politiske mål (30%/10%), ikke den planetære grænse. Den planetære BII-grænse (44% for DK) er et groft globalt modelestimat (0,25° opløsning, usikkerhed 41-61%) og kan ikke beregnes meningsfuldt per kommune - derfor bruges det lokalt forankrede danske bioscore-kort i stedet. Bioscore måler habitatkvalitet, ikke fredningsstatus: et areal kan have høj naturværdi uden at være beskyttet, og omvendt.",
     csvFile: "biodiversitet_scores.csv (DCE Biodiversitetskort, bioscore-raster 2021)",
   },
@@ -289,6 +273,7 @@ function StatusBadge({ hasData }: { hasData: boolean }) {
 }
 
 export default function MetodePage() {
+  const dimensionDataYears = getDimensionDataYears();
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-8">
@@ -479,10 +464,10 @@ export default function MetodePage() {
                       </div>
                     )}
 
-                    {method.dataYear && (
+                    {dimensionDataYears[cat.id] && (
                       <div>
                         <p className="font-medium text-gray-800 mb-1">Datatidspunkt</p>
-                        <p className="text-gray-600">{method.dataYear}</p>
+                        <p className="text-gray-600">{dimensionDataYears[cat.id]}</p>
                       </div>
                     )}
 
@@ -575,10 +560,10 @@ export default function MetodePage() {
                       </div>
                     )}
 
-                    {method.dataYear && (
+                    {dimensionDataYears[dim.id] && (
                       <div>
                         <p className="font-medium text-gray-800 mb-1">Datatidspunkt</p>
-                        <p className="text-gray-600">{method.dataYear}</p>
+                        <p className="text-gray-600">{dimensionDataYears[dim.id]}</p>
                       </div>
                     )}
 

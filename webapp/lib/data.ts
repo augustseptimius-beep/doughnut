@@ -10,9 +10,11 @@ export {
   scoreBarColor,
   computeCategoryScores,
   computeTop10Ratios,
-  DOUGHNUT_EDITION_YEAR,
-  DOUGHNUT_DEFAULT_DATA_YEAR,
 } from "./shared";
+// DOUGHNUT_EDITION_YEAR og DOUGHNUT_DEFAULT_DATA_YEAR er IKKE re-eksporteret
+// herfra: shared.ts's versioner er hårdkodede og driver med jævne mellemrum
+// (footeren stod med "2023" mens de fleste indikatorer var 2024-2025).
+// Denne fil beregner dem i stedet fra master-CSV'en, se getDoughnutEdition().
 export type {
   Indicator,
   KommuneData,
@@ -116,6 +118,97 @@ function parseFloatOrNull(s: string): number | null {
   const n = parseFloat(s);
   return isNaN(n) ? null : n;
 }
+
+// ─── Dataår afledt af master-CSV'en ────────────────────────────────────
+// Metode-siden og footeren viste tidligere hårdkodede dataYear-strenge
+// (shared.ts INDICATORS[].dataYear, MethodInfo.dataYear i metode/page.tsx,
+// DOUGHNUT_EDITION_YEAR/DOUGHNUT_DEFAULT_DATA_YEAR). De tre levede hver sit
+// sted og drev fra hinanden og fra master-CSV'ens egen data_year-kolonne
+// hver gang en indikator blev opdateret uden at alle tre blev rettet med
+// (sep. 2026: ca. 25 forkerte dataYear-felter + en footer der stod ét år
+// forkert). Beregnes nu herfra i stedet, så der kun er ét sted at opdatere:
+// data_years.json → build_master_csv.py → master_indicators.csv.
+
+function extractYears(dataYear: string): number[] {
+  return Array.from(dataYear.matchAll(/\d{4}/g)).map((m) => Number(m[0]));
+}
+
+function yearRange(years: number[]): string {
+  if (years.length === 0) return "";
+  const min = Math.min(...years);
+  const max = Math.max(...years);
+  return min === max ? String(min) : `${min}-${max}`;
+}
+
+let cachedDimensionYears: Record<string, string> | null = null;
+
+/**
+ * Dataårs-interval pr. kategori/dimension, nøglet på master-CSV'ens
+ * `dimension`-kolonne (identisk med SOCIAL_CATEGORIES- og
+ * ECOLOGICAL_DIMENSIONS-id'er). Dækker sociale, økologiske OG
+ * kontekst-rækker - alt der vises under den pågældende overskrift på
+ * metode-siden, ikke kun det der indgår i scoren.
+ */
+export function getDimensionDataYears(): Record<string, string> {
+  if (cachedDimensionYears) return cachedDimensionYears;
+  const years: Record<string, number[]> = {};
+  for (const r of parseMasterCsv()) {
+    if (r.indicator_id.startsWith("_dim_") || !r.data_year || !r.dimension) continue;
+    (years[r.dimension] ??= []).push(...extractYears(r.data_year));
+  }
+  const result: Record<string, string> = {};
+  for (const [dim, ys] of Object.entries(years)) result[dim] = yearRange(ys);
+  cachedDimensionYears = result;
+  return result;
+}
+
+let cachedIndicatorYears: Record<string, string> | null = null;
+
+/** Dataår pr. social indikator, nøglet på indicator_id (samme id som INDICATORS[].id). */
+export function getIndicatorDataYears(): Record<string, string> {
+  if (cachedIndicatorYears) return cachedIndicatorYears;
+  const result: Record<string, string> = {};
+  for (const r of parseMasterCsv()) {
+    if (r.category !== "social" || !r.data_year) continue;
+    if (!(r.indicator_id in result)) result[r.indicator_id] = r.data_year;
+  }
+  cachedIndicatorYears = result;
+  return result;
+}
+
+let cachedEdition: { edition: string; defaultYear: string } | null = null;
+
+/**
+ * "Doughnut-udgave" udledt af de sociale indikatorers dataår - ikke et
+ * hårdkodet årstal. Seneste helårsdata = det år FLEST sociale indikatorer
+ * faktisk har (mode, ikke max): et par indikatorer registrerer et
+ * fremadrettet år (fx bolig_fossil på DST BYGB40, mærket 2026 fordi det er
+ * hentningsåret for et opvarmet-areal-udtræk, ikke et helårsregnskab for
+ * 2026) og ville ellers trække editionen et år frem uden grund. Udgaveåret
+ * er dette år + 1, ligesom "en 2026-Doughnut bruger 2025-tal".
+ */
+export function getDoughnutEdition(): { edition: string; defaultYear: string } {
+  if (cachedEdition) return cachedEdition;
+  const counts = new Map<number, number>();
+  for (const dataYear of Object.values(getIndicatorDataYears())) {
+    const years = extractYears(dataYear);
+    const last = years[years.length - 1]; // seneste år i en evt. periode/interval
+    if (last !== undefined) counts.set(last, (counts.get(last) ?? 0) + 1);
+  }
+  let mode = new Date().getFullYear() - 1;
+  let best = -1;
+  for (const [year, n] of counts) {
+    if (n > best) {
+      best = n;
+      mode = year;
+    }
+  }
+  cachedEdition = { edition: String(mode + 1), defaultYear: String(mode) };
+  return cachedEdition;
+}
+
+export const DOUGHNUT_EDITION_YEAR = getDoughnutEdition().edition;
+export const DOUGHNUT_DEFAULT_DATA_YEAR = getDoughnutEdition().defaultYear;
 
 // ─── Trend-CSV loader ─────────────────────────────────────────────────
 // data/trend_indicators.csv (scripts/build_trends_csv.py). Samme simple

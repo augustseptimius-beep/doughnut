@@ -599,6 +599,32 @@ def build_master():
     print(f"  Filstørrelse: {OUTPUT.stat().st_size / 1024:.1f} KB")
 
 
+def _tjek_konsistens_efter_build():
+    """
+    Kører scripts/tjek_konsistens.py efter en vellykket build og printer
+    resultatet. Isoleret i egen funktion så en fejl i selve tjekket (fx en
+    fremtidig omskrivning af shared.ts som regex'en ikke kan følge) aldrig
+    kan vælte en build der ellers lykkedes.
+
+    Lazy import (ikke i toppen af filen): tjek_konsistens.py importerer selv
+    dette modul (`import build_master_csv as bm`) for at læse
+    SOCIAL_INDICATORS/ECO_SUB_INDICATORS/AVERAGE_DIMENSIONS. Et top-level
+    import her ville give en cirkulær import ved modul-indlæsning; et lazy
+    import inde i funktionen virker fint, fordi dette modul er færdigt
+    indlæst længe før funktionen rent faktisk kaldes.
+    """
+    try:
+        from tjek_konsistens import main as tjek_main
+        print()
+        print("=" * 55)
+        print("KONSISTENSTJEK (scripts/tjek_konsistens.py)")
+        print("=" * 55)
+        return tjek_main() == 0
+    except Exception as e:
+        print(f"  ADVARSEL: kunne ikke køre konsistenstjek: {e}")
+        return True  # Ukendt tilstand skal ikke selv tælle som en fejl her
+
+
 def auto_build_master():
     """
     Helper-funktion til auto-rebuild fra fetch-scripts.
@@ -620,6 +646,10 @@ def auto_build_master():
         build_master()
         print()
         print("✓ Master-CSV opdateret. Klar til commit + push via GitHub Desktop.")
+        # Printer altid, men rejser aldrig - se _tjek_konsistens_efter_build().
+        # Et fetch-script skal ikke crashe fordi konsistenstjekket finder noget;
+        # det skal bare stå tydeligt i outputtet, så man ser det før commit.
+        _tjek_konsistens_efter_build()
     except Exception as e:
         print()
         print(f"✗ FEJL ved rebuild af master-CSV: {e}")
@@ -629,3 +659,9 @@ def auto_build_master():
 
 if __name__ == "__main__":
     build_master()
+    # Direkte kørsel (den vej CLAUDE.md instruerer at bruge når et
+    # fetch-script IKKE selv printede "✓ Master-CSV opdateret") afbryder MED
+    # exit 1 hvis konsistenstjekket finder fejl. Det er her fejlen skal
+    # stoppes - før commit, ikke efter deploy.
+    if not _tjek_konsistens_efter_build():
+        sys.exit(1)
