@@ -39,14 +39,12 @@ Reglerne herunder ligger i `scripts/build_master_csv.py` og udføres når
 rådata-CSV'erne konsolideres til `data/master_indicators.csv`.
 
 **R1 - Social ratio-cap.** Sociale ratios cappes ved 150,0. Formålet er at
-forhindre at en enkelt ekstremværdi dominerer kategorigennemsnittet.
+forhindre at en enkelt ekstremværdi dominerer kategorigennemsnittet. Cappet
+håndhæves i både `kommune_kode`- og `navn_key`-grenen.
 
-> **Kendt afvigelse (august 2026):** cappet håndhæves kun i den gren der slår
-> kommuner op på `kommune_kode`. Indikatorer med `navn_key: True` (i dag kun
-> `vejr_skader`) passerer uden cap. 27 kommuner har derfor `vejr_skader`-ratios
-> over 150, den højeste er 431,29. Rettelsen ligger på branchen
-> `claude/repo-audit-logic-review-4bj1i1` og er ikke merget. Indtil den er
-> merget, beskriver R1 den ønskede tilstand, ikke koden.
+Konsekvens for visningen: for en kappet kommune kan referenceværdien ikke
+udledes baglæns af ratio og råværdi. `ScoreBars` viser derfor ikke
+"Landsgns"/gruppe-værdien ved indikatorer hvor kommunens ratio er 150.
 
 **R2 - Absolut mål (`abs_target`).** Sætter en indikator feltet `abs_target`,
 beregnes `ratio = min(raw / abs_target * 100, 150)` afrundet til 2 decimaler.
@@ -275,8 +273,8 @@ at være synlig noget sted.
 
 Kontrol: kategoriens tooltip ("gennemsnit af N indikatorer") skal matche "N/N
 indikatorer" på bjælken, medmindre forskellen skyldes manglende tidsserie på en
-indikator der faktisk scores. Sundhed viser fx 7 af 8, fordi `gp_distance` ingen
-serie har. Det er korrekt.
+indikator der faktisk scores. Fællesskab viser fx 4 af 5, fordi `sport_tilskuer`
+ingen pil har. Det er korrekt.
 
 ---
 
@@ -306,10 +304,15 @@ nabolagsgennemsnittet.
 
 Reglen bag R12: **scor mod målet, hvor der findes en meningsfuld grænse pr.
 kommune.** Det gælder både biofysiske og juridiske grænser (WHO's
-luftkvalitetsretningslinjer, drikkevandsnormen) og vedtagne politiske mål (EU's
-30/10-procentmål for natur, EU's 65 procent genanvendelse, det nationale
-95-procentmål for uddannelse, 0 procent fossil varme, 3 tons Paris-budget).
-Findes ingen sådan grænse, bruges landsgennemsnittet.
+luftkvalitetsretningslinjer, ekspertgruppens 6 mg/L for nitrat) og vedtagne
+politiske mål (EU's 30/10-procentmål for natur, EU's 65 procent genanvendelse,
+det nationale 95-procentmål for uddannelse, 0 procent fossil varme, 3 tons
+Paris-budget). Findes ingen sådan grænse, bruges landsgennemsnittet.
+
+Pesticider er scoret mod landsgennemsnittet, selvom drikkevandsnormen på
+0,1 µg/l afgør hvornår en analyse tæller som overskridelse. Målet "0 procent
+af vandværkerne over normen" kan ikke bruges som nævner i en ratio, så
+`baselineType` er `relativ`.
 
 Resultatet er at kun to dimensioner ender som `blandet` (Forurening og
 Uddannelse). Det er en lille, ærlig undtagelse, ikke reglen.
@@ -365,17 +368,16 @@ omskaleres på deres allerede vendte ratio, hvilket er en bevidst forenkling.
 
 ## 7. Kendte afvigelser mellem dokumentation og kode
 
-Opdateret 19. august 2026.
+Opdateret 22. september 2026. R1 (`navn_key` omgik cappet) og R12
+(`eco_naer_landbrug` havde `lowerIsBetter: true`) er lukket og fjernet fra
+tabellen.
 
 | Regel | Afvigelse | Status |
 |---|---|---|
-| R1 | `navn_key`-indikatorer omgår 150-cappet. `vejr_skader` har 27 kommuner over cap, højeste 431,29 | Rettelse ligger umerget på `claude/repo-audit-logic-review-4bj1i1` |
-| R12 | Sub-indikatoren `eco_naer_landbrug` har `lowerIsBetter: true`, men scoringen i `fetch_naeringsstoffer_landbrug.py` er `(landssnit / råværdi) x 100`, hvilket svarer til `false` | Samme branch |
 | R2 | Landsgennemsnittet for de otte Sundhedsprofil-indikatorer beregnes af os som et befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+), ikke hentet fra kilden. Databasen udstiller ikke et landstal pr. kommunetabel. Reglen forudsætter ellers et landstal fra kilden | Bevidst, dokumenteret i `data/README.md` og på metodesiden |
 | T1 | Retningen for Sundhedsprofilens indikatorer beregnes 2017 → 2025 (2021 → 2025 for `ensomhed` og `fysisk_aktivitet`), ikke over hele den tilgængelige serie 2010-2025. Reglen siger ellers hele serien | Bevidst, se punkt 23 i CLAUDE.md |
 
-Begge er registreret, ingen af dem er rettet på hovedbranchen. Merges den
-branch, bortfalder afsnittet her, og R1 bliver retvisende som skrevet.
+Begge er bevidste og dokumenterede.
 
 ---
 

@@ -39,13 +39,13 @@ export default function OmPage() {
             Hvordan læses tallene?
           </h3>
           <p className="text-sm text-gray-700 leading-relaxed">
-            Hver indikator får en talværdi baseret på hvor kommunen ligger i forhold til landsgennemsnittet (sociale indikatorer) eller planetens grænser (økologiske indikatorer).
+            Hver indikator får en talværdi baseret på hvor kommunen ligger i forhold til andre kommuner eller et fast mål (sociale indikatorer), eller i forhold til en grænseværdi (økologiske indikatorer).
           </p>
           <p className="text-sm text-gray-700 leading-relaxed mt-3">
-            <strong>Sociale dimensioner:</strong> Tallet er relativt til landsgennemsnittet, sat til 100. En værdi på 100 betyder at kommunen er på niveau med resten af Danmark. Under 100 betyder underskud, over 100 betyder bedre end gennemsnit.
+            <strong>Sociale dimensioner:</strong> Tallet er relativt til et sammenligningsgrundlag, sat til 100. Som standard er det gennemsnittet i kommunens kommunegruppe; det kan skiftes til landsgennemsnittet eller top 10 %. Under 100 betyder underskud, over 100 betyder bedre end sammenligningsgrundlaget.
           </p>
           <p className="text-sm text-gray-700 leading-relaxed mt-2">
-            <strong>Økologiske dimensioner:</strong> Tallet viser hvor tæt kommunen er på planetens grænser. En værdi under 100 er godt (under grænsen), over 100 betyder overshoot (over grænsen).
+            <strong>Økologiske dimensioner:</strong> Tallet viser hvor tæt kommunen er på grænseværdien. Nogle grænser er absolutte (WHO, EU-mål, Paris-budgettet), andre er landsgennemsnittet, hvor der ikke findes en meningsfuld grænse pr. kommune. En værdi under 100 er under grænsen, over 100 betyder overshoot.
           </p>
           <p className="text-xs text-gray-400 mt-3">
             Bemærk: For indikatorer hvor lavere er bedre (f.eks. Gini-koefficient og børnefattigdom) er værdierne inverteret, så høj værdi fortsat betyder bedre end gennemsnit.
@@ -65,9 +65,9 @@ export default function OmPage() {
             </a>.
           </p>
           <p className="text-sm text-gray-700 leading-relaxed mt-2">
-            Kort fortalt: sociale dimensioner scores relativt til landsgennemsnittet (100 = gennemsnit),
-            mens økologiske dimensioner scores mod absolutte planetære grænser (over 100 = overshoot).
-            Platformen er under aktiv udvikling - flere dimensioner mangler stadig data.
+            Kort fortalt: sociale dimensioner scores relativt til andre kommuner (100 = sammenligningsgrundlaget),
+            mens økologiske dimensioner scores mod en grænseværdi (over 100 = overshoot).
+            Platformen er under aktiv udvikling.
           </p>
         </section>
 

@@ -32,7 +32,8 @@ import sys
 import sys as _sys
 from pathlib import Path as _Path
 _sys.path.insert(0, str(_Path(__file__).resolve().parent))
-from dst_aar import registrer_aar  # noqa: E402
+from dst_aar import registrer_aar, seneste_aar  # noqa: E402
+from indkomst_median import median_disponibel  # noqa: E402
 import time
 import urllib.request
 import urllib.error
@@ -112,31 +113,17 @@ INDICATORS = [
         },
     },
     {
+        # MEDIAN disponibel indkomst pr. person (15 år+), ikke gennemsnit.
+        # Indtil sep. 2026: INDKP101 ENHED 116 (gennemsnit). Gennemsnittet blev
+        # flyttet af få meget høje indkomster - i Vejen løftede det kommunens
+        # indkomst ca. 25 % over landsniveau. DST udgiver ikke medianen pr.
+        # kommune, så den beregnes af INDKP106's indkomstintervaller
+        # (indkomst_median.py) og hentes derfor uden om den generiske motor.
         "id": "disposable_income",
-        "name": "Disponibel indkomst",
-        "table": "INDKP101",
-        "want_variables": [
-            {"purpose": "køn", "candidates": [
-                {"code": "KOEN", "values": ["MOK"]},
-                {"code": "KØN", "values": ["MOK"]},
-                {"code": "KOEN", "values": ["TOT"]},
-                {"code": "KØN", "values": ["TOT"]},
-            ]},
-            {"purpose": "indkomsttype", "candidates": [
-                # Try known codes for disponibel indkomst
-                {"code": "INDKOMSTTYPE", "values": ["100"]},
-                {"code": "ENESSION", "values": ["DISPONIB"]},
-            ], "auto_discover": {
-                "search_vars": ["INDKOMSTTYPE", "ENESSION"],
-                "search_text": ["disponib", "disp"],
-            }},
-            {"purpose": "enhed", "candidates": [
-                {"code": "ENHED", "values": ["116"]},  # Gennemsnit for alle personer (kr.)
-                {"code": "ENHED", "values": ["121"]},  # Gennemsnit for personer med indkomsttypen (kr.)
-            ]},
-        ],
+        "name": "Disponibel indkomst (median)",
+        "table": "INDKP106",
+        "custom": "median_disponibel",
         "inverse": False,
-        "aggregate": "single",
         "category": "social",
     },
     {
@@ -929,7 +916,15 @@ def step2():
         if ind.get("note"):
             print(f"  ({ind['note']})")
 
-        values, nat_code = fetch_indicator(ind)
+        if ind.get("custom") == "median_disponibel":
+            aar = seneste_aar("INDKP106", fallback="2024")
+            med = median_disponibel([aar], ["MOK"])
+            values = {kode: v for (kode, _, _), v in med.items()}
+            nat_code = "000"
+            print(f"  ✓ Median beregnet for {len(values) - 1} kommuner ({aar}), "
+                  f"landsniveau {values.get('000')} kr.")
+        else:
+            values, nat_code = fetch_indicator(ind)
 
         all_data[ind["id"]] = {
             "values": values or {},

@@ -56,6 +56,8 @@ from api_noegler import (  # noqa: E402
     KLIMA_HJAELP,
     UVM_HJAELP,
 )
+from dst_aar import seneste_aar  # noqa: E402
+from indkomst_median import median_disponibel  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -558,14 +560,8 @@ SIMPLE = [
          soeg=["=kvinder"], ekstra=[{"soeg": ["ledelsesarbejde"]}]),
     dict(id="gender_leadership_naevner", navn="Ledere i alt", tabel="RAS301",
          soeg=["ledelsesarbejde"]),
-    dict(id="income_gender_gap_taeller", navn="Kvinders disponible indkomst", tabel="INDKP101",
-         soeg=["=kvinder"],
-         ekstra=[{"soeg": ["gennemsnit for alle personer"]},
-                 {"soeg": ["=1 disponibel indkomst (2+30-31-32-35)"]}], pin_ialt=True),
-    dict(id="income_gender_gap_naevner", navn="Mænds disponible indkomst", tabel="INDKP101",
-         soeg=["=mænd"],
-         ekstra=[{"soeg": ["gennemsnit for alle personer"]},
-                 {"soeg": ["=1 disponibel indkomst (2+30-31-32-35)"]}], pin_ialt=True),
+    # income_gender_gap_taeller/_naevner (median K/M) hentes af median_serier()
+    # nedenfor, ikke her - se indkomst_median.py.
     dict(id="employment_origin_gap_taeller", navn="Beskæftigelse, ikke-vestlige", tabel="RAS200",
          soeg=["ikke-vestlige lande"], undtag=["efterkommere"],
          ekstra=[{"soeg": ["beskæftigelsesfrekvens"]}, {"soeg": ["=16-64 år"]}], pin_ialt=True),
@@ -583,10 +579,7 @@ SIMPLE = [
     dict(id="employment_taeller", navn="Beskæftigelsesfrekvens, i alt", tabel="RAS200",
          soeg=["=i alt"],
          ekstra=[{"soeg": ["beskæftigelsesfrekvens"]}, {"soeg": ["=16-64 år"]}], pin_ialt=True),
-    dict(id="disposable_income", navn="Disponibel indkomst", tabel="INDKP101",
-         soeg=["=mænd og kvinder i alt"],
-         ekstra=[{"soeg": ["gennemsnit for alle personer"]},
-                 {"soeg": ["=1 disponibel indkomst (2+30-31-32-35)"]}], pin_ialt=True),
+    # disposable_income (median) hentes af median_serier() nedenfor.
     dict(id="commute_distance", navn="Pendlingsafstand", tabel="AFSTB4",
          soeg=["beskæftigede i alt"], pin_ialt=True),
 
@@ -655,6 +648,28 @@ DIREKTE = {
 }
 
 
+def median_serier() -> dict[str, dict]:
+    """Median disponibel indkomst som tidsserie, i samme form som serie().
+
+    Indkomstindikatorerne scores på medianen (INDKP106, beregnet af
+    indkomstintervaller), så pilen skal også være det - ellers peger den på
+    et gennemsnit platformen ikke længere viser. Med gennemsnittet fik Vejen
+    en indkomstlighed der steg fra 76 til 147 % på ét år.
+    """
+    sidste = int(seneste_aar("INDKP106", fallback="2024"))
+    aar = [str(a) for a in range(FRA_AAR, sidste + 1)]
+    log(f"Median disponibel indkomst (INDKP106) {aar[0]}-{aar[-1]}...")
+    med = median_disponibel(aar, ["MOK", "M", "K"])
+    ud = {"disposable_income": {}, "income_gender_gap_taeller": {}, "income_gender_gap_naevner": {}}
+    navn = {"MOK": "disposable_income", "K": "income_gender_gap_taeller", "M": "income_gender_gap_naevner"}
+    for (kode, koen, a), v in med.items():
+        if kode in KOMMUNER:
+            ud[navn[koen]][(kode, a)] = float(v)
+    for k, d in ud.items():
+        log(f"  {k:28} {len({kk for kk, _ in d})} kommuner")
+    return ud
+
+
 def fetch_dst_indicators() -> list[dict]:
     log("=" * 66)
     log(f"DST-historik, startet {datetime.now():%Y-%m-%d %H:%M}")
@@ -673,6 +688,7 @@ def fetch_dst_indicators() -> list[dict]:
         if not data:
             fejlet.append(spec["id"])
         raw[spec["id"]] = data
+    raw.update(median_serier())
 
     ud = []
 
@@ -686,7 +702,7 @@ def fetch_dst_indicators() -> list[dict]:
         data = raw.get(platform_id)
         if not data:
             continue
-        pr = spec_by_id[platform_id].get("pr")
+        pr = spec_by_id.get(platform_id, {}).get("pr")
         if pr:
             befolkning = boern if platform_id == "child_notifications" else folk
             normaliseret = {}

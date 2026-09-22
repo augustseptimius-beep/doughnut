@@ -2,6 +2,15 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-22
+
+- **Indkomst måles på median, ikke gennemsnit.** Gælder `disposable_income` (Velfærd) og `income_gender_gap` (Ligestilling), både i master og i retningspilene. Kilde skiftet fra INDKP101 (ENHED 116, gennemsnit for alle personer) til INDKP106.
+  - **Anledning: Vejen.** Kvindernes gennemsnitlige disponible indkomst steg fra 217.000 kr. (2022) til 438.000 kr. (2023), formentlig pga. meget få personer med ekstreme indkomster. Vejen fik dermed topscore på ligestilling (kvinder "tjente" 142 % af mænd, score 150) og en disponibel indkomst 25 % over landsniveau. Med median: 80,1 % (score 93,7) og 97,0.
+  - **DST udgiver ikke medianen pr. kommune og køn.** Den beregnes af `scripts/indkomst_median.py` ud fra antal personer (15 år+) i INDKP106's indkomstintervaller, ved lineær interpolation i intervallet hvor den kumulerede andel passerer 50 %. Kontrolleret mod en tæthedsmodel der bruger DST's gennemsnit inden for intervallet: afvigelsen er typisk under 1.000 kr. og under 0,6 procentpoint på kønsforholdet (højst 0,8 for Læsø).
+  - **Konsekvens for scoren:** alle 98 kommuner har nye tal på de to indikatorer. Ingen kommune rammer længere 150-loftet på nogen af dem (før: Gentofte, Rudersdal og Hørsholm på indkomst, Vejen på kønsforhold). Landsniveauet er 246.098 kr. og 85,5 %.
+  - **Retningspilene** er genberegnet på medianserier 2010-2024. Kun rækkerne for de to indikatorer i `trend_history_raw.csv` er udskiftet; de øvrige er uændrede. Kvinders indkomst i forhold til mænds falder på landsplan over perioden, både målt på median (90,3 til 85,5 %) og på gennemsnit (85,3 til 80,0 %), så de mange røde pile på indikatoren er ikke et produkt af omlægningen.
+  - Gini (IFOR41) er uændret. Den er et fordelingsmål, og få meget høje indkomster øger den målte ulighed reelt; Vejen ligger fortsat højt.
+
 ## 2026-09-17 (anden runde)
 
 - **Fællesskab: udgiftsmål erstattet af udfaldsmål og deltagelse.** Ud: `sports_spending` (kommunale idrætsudgifter pr. indb.). Ind: `social_stoette` (Sundhedsprofilen) og `sport_tilskuer` (DST KV2GEO). Kategorien er nu ensomhed, begrænset social støtte, idrætsmedlemskab, tilskuerdeltagelse og foreningsstøtte - to udfald, to deltagelsesmål og ét input, mod tidligere ét udfald og tre input.

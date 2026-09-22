@@ -54,6 +54,7 @@
 | Tabel-ID | Titel | Kommuneniveau |
 |---|---|---|
 | INDKP101 | Personindkomster (efter region) | Ja |
+| INDKP106 | Disponibel indkomst efter indkomstinterval og køn (grundlag for median) | Ja |
 | INDKF201 | Familieindkomster | Ja |
 | IFOR10 | Lavindkomstgrænse og berørte | Ja (delvis) |
 | LABY07 | Relativ fattigdomsandel efter kommunegruppe | Kommunegruppe |
