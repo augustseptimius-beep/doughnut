@@ -4,6 +4,7 @@
 // ikke her. Denne fil oversætter kun registrets felter til de typer UI'et
 // bruger. Doughnut-udgave og dataår beregnes i data.ts fra master-CSV'en.
 import registerJson from "../../data/indikatorer.json";
+import noegletalJson from "../../data/noegletal.json";
 
 interface RegisterIndikator {
   id: string;
@@ -50,6 +51,45 @@ interface Register {
 
 const REGISTER = registerJson as unknown as Register;
 
+// ─── Tal i tekster udfyldes fra data ─────────────────────────────────
+// Registrets og metodesidens tekster skriver ikke landstal og dækning i
+// hånden - de drev ved hver dataopdatering. I stedet står en pladsholder,
+// som udfyldes fra data/noegletal.json (skrevet af build_master_csv.py
+// sammen med master, og kontrolleret mod master i data.ts):
+//   {ref:ID:D}     indikatorens reference (landstal/mål) med D decimaler
+//   {daekning:ID}  antal kommuner med en værdi
+//   {mangler:ID}   antal kommuner uden værdi
+//   {aar:ID}       indikatorens dataår
+//   {kommuner}     antal kommuner i alt
+// En ukendt pladsholder stopper buildet i stedet for at stå rå på siden.
+interface Noegletal {
+  kommuner: number;
+  indikatorer: Record<string, { reference: number | null; daekning: number; data_year: string }>;
+}
+export const NOEGLETAL = noegletalJson as unknown as Noegletal;
+
+function formatTal(x: number, decimaler: number): string {
+  const [hel, brok] = Math.abs(x).toFixed(decimaler).split(".");
+  const tusinder = hel.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  return (x < 0 ? "-" : "") + tusinder + (brok ? "," + brok : "");
+}
+
+export function udfyldTal(tekst: string): string;
+export function udfyldTal(tekst: string | undefined): string | undefined;
+export function udfyldTal(tekst: string | undefined): string | undefined {
+  if (!tekst || !tekst.includes("{")) return tekst;
+  return tekst.replace(/\{(ref|daekning|mangler|aar|kommuner)(?::(\w+))?(?::(\d))?\}/g, (hele, type, id, dec) => {
+    if (type === "kommuner") return String(NOEGLETAL.kommuner);
+    const tal = id ? NOEGLETAL.indikatorer[id] : undefined;
+    if (!tal) throw new Error(`Ukendt indikator i pladsholderen ${hele} (data/noegletal.json)`);
+    if (type === "daekning") return String(tal.daekning);
+    if (type === "mangler") return String(NOEGLETAL.kommuner - tal.daekning);
+    if (type === "aar") return tal.data_year;
+    if (tal.reference === null) throw new Error(`${hele}: ${id} har ingen reference i data/noegletal.json`);
+    return formatTal(tal.reference, dec === undefined ? 1 : Number(dec));
+  });
+}
+
 /** Hele registret. Bruges af data.ts til at validere master-CSV'en ved build. */
 export const INDIKATORREGISTER: Register = REGISTER;
 export type { RegisterIndikator };
@@ -82,7 +122,7 @@ export const INDICATORS: Indicator[] = REGISTER.indikatorer
   .filter((i) => i.category === "social")
   .map((i) => ({
     id: i.id,
-    name: i.name!,
+    name: udfyldTal(i.name!),
     table: i.table!,
     source: i.source_url!,
     category: "social" as const,
@@ -113,7 +153,7 @@ export function dimensionCsvFiles(dimensionId: string): string[] {
 
 /** Metodesidens begrundelse pr. indikator (registrets "rationale"). */
 export const INDICATOR_RATIONALES: Record<string, string> = Object.fromEntries(
-  REGISTER.indikatorer.filter((i) => i.rationale).map((i) => [i.id, i.rationale!])
+  REGISTER.indikatorer.filter((i) => i.rationale).map((i) => [i.id, udfyldTal(i.rationale!)])
 );
 
 // --- SOCIAL CATEGORIES (TORUS trivselsaspekter) ---
@@ -128,7 +168,7 @@ export interface SocialCategory {
 export const SOCIAL_CATEGORIES: SocialCategory[] = REGISTER.sociale_kategorier.map((k) => ({
   id: k.id,
   name: k.name,
-  description: k.description,
+  description: udfyldTal(k.description),
   indicatorIds: k.indicators,
 }));
 
@@ -159,19 +199,19 @@ export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = REGISTER.oekologiske
   id: d.id,
   name: d.name,
   shortName: d.short_name,
-  description: d.description,
+  description: udfyldTal(d.description),
   source: d.source,
-  sourceLabel: d.source_label,
+  sourceLabel: udfyldTal(d.source_label),
   unit: d.unit,
-  boundary: d.boundary,
+  boundary: udfyldTal(d.boundary),
   subIndicators: d.indicators.map((id) => {
     const i = REGISTER_BY_ID.get(id)!;
     return {
       rawKey: i.raw_key!,
       ratioKey: i.ratio_key,
-      label: i.name!,
+      label: udfyldTal(i.name!),
       unit: i.raw_unit ?? i.unit,
-      boundary: i.boundary,
+      boundary: udfyldTal(i.boundary),
       lowerIsBetter: i.lower_is_better,
       baselineType: i.baseline_type,
     };

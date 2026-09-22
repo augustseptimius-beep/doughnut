@@ -223,6 +223,18 @@ def kryds_tjek() -> list[Fund]:
     metode_tsx = (ROOT / "webapp" / "app" / "metode" / "page.tsx").read_text(encoding="utf-8")
     _tjek_metodeside(fund, metode_tsx)
 
+    # 7. Pladsholdere i teksterne ({ref:pesticider:1} osv., udfyldes af
+    #    udfyldTal() i shared.ts) skal pege på en indikator der findes i master.
+    #    Webappens build fejler ellers - her fanges det før commit.
+    register_tekst = ir.REGISTER.read_text(encoding="utf-8")
+    for kilde, tekst in (("indikatorer.json", register_tekst), ("metodesiden", metode_tsx)):
+        for m in re.finditer(r"\{(ref|daekning|mangler|aar)(?::(\w+))?(?::\d)?\}", tekst):
+            iid = m.group(2)
+            if iid not in master_ids:
+                _f(fund, f"{kilde}: pladsholderen {m.group(0)} peger på en indikator der ikke er i master")
+            elif m.group(1) == "ref" and not any(r.get("reference") for r in by_indicator[iid]):
+                _f(fund, f"{kilde}: pladsholderen {m.group(0)} - {iid} har ingen reference i master")
+
     return fund
 
 

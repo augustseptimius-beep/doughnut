@@ -21,7 +21,7 @@ export type {
   CategoryScore,
 } from "./shared";
 
-import { INDICATORS, ECOLOGICAL_DIMENSIONS, ECO_INDICATOR_KEYS, INDIKATORREGISTER, computeTop10Ratios, computeGroupRatios, type KommuneData, type RegisterIndikator, type TrendPost, type TrendDirection } from "./shared";
+import { INDICATORS, ECOLOGICAL_DIMENSIONS, ECO_INDICATOR_KEYS, INDIKATORREGISTER, NOEGLETAL, computeTop10Ratios, computeGroupRatios, type KommuneData, type RegisterIndikator, type TrendPost, type TrendDirection } from "./shared";
 
 let cachedData: KommuneData[] | null = null;
 
@@ -117,6 +117,24 @@ function validerMaster(rows: MasterRow[]): void {
   for (const id of scorede) {
     if (!iMaster.has(id)) fejl.push(`${id} scores, men har ingen rækker i master_indicators.csv`);
   }
+  // noegletal.json (tal i metodeteksterne) skal være bygget sammen med master.
+  const iMasterTal = new Map<string, { reference: number | null; daekning: number; data_year: string }>();
+  for (const r of rows) {
+    if (r.indicator_id.startsWith("_dim_")) continue;
+    const t = iMasterTal.get(r.indicator_id) ?? { reference: null, daekning: 0, data_year: r.data_year };
+    if (r.reference !== "") t.reference = parseFloatOrNull(r.reference);
+    if (r.ratio !== "" || (r.category === "context" && r.raw_value !== "")) t.daekning += 1;
+    iMasterTal.set(r.indicator_id, t);
+  }
+  for (const [id, t] of iMasterTal) {
+    const n = NOEGLETAL.indikatorer[id];
+    const refPasser = n && (n.reference === null ? t.reference === null
+      : t.reference !== null && Math.abs(n.reference - t.reference) < 1e-9);
+    if (!n || !refPasser || n.daekning !== t.daekning || n.data_year !== t.data_year) {
+      fejl.push(`data/noegletal.json passer ikke med master for ${id} - er den committet sammen med master?`);
+    }
+  }
+
   if (fejl.length > 0) {
     throw new Error(
       `master_indicators.csv passer ikke med data/indikatorer.json (${fejl.length} fejl). ` +

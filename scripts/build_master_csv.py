@@ -25,6 +25,7 @@ Driftsregel:
 
 import re
 import csv
+import json
 import math
 import os
 import statistics
@@ -67,6 +68,7 @@ def _data_year(ind: dict) -> str:
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 OUTPUT = DATA_DIR / "master_indicators.csv"
+NOEGLETAL = DATA_DIR / "noegletal.json"
 
 # ─── INDIKATORER ───────────────────────────────────────────────────────
 # Kommer fra data/indikatorer.json via scripts/indikatorregister.py. Det er
@@ -449,6 +451,45 @@ def build_master():
     print()
     print(f"✓ Skrev {len(output_rows)} rækker til {OUTPUT.relative_to(ROOT)}")
     print(f"  Filstørrelse: {OUTPUT.stat().st_size / 1024:.1f} KB")
+    _skriv_noegletal(output_rows, len(kommuner))
+
+
+def _skriv_noegletal(output_rows, antal_kommuner):
+    """data/noegletal.json: reference, dækning og dataår pr. indikator.
+
+    Metodesiden og registrets tekster henviser til tal som landstallet for
+    pesticider eller antal kommuner med tilskuertal. De stod før som
+    håndskrevne tal i teksten og drev ved hver dataopdatering. Nu skriver
+    teksterne en pladsholder ({ref:pesticider:1}, {mangler:sport_tilskuer}),
+    og webappen udfylder den herfra (udfyldTal() i webapp/lib/shared.ts).
+    Filen skrives sammen med master og skal committes sammen med den;
+    webappen stopper buildet hvis de to ikke passer sammen."""
+    pr_ind = {}
+    for r in output_rows:
+        iid = r["indicator_id"]
+        if iid.startswith("_dim_"):
+            continue
+        d = pr_ind.setdefault(iid, {"reference": None, "daekning": 0, "data_year": r["data_year"]})
+        if r["reference"] != "":
+            d["reference"] = r["reference"]
+        if r["ratio"] != "" or (r["category"] == "context" and r["raw_value"] != ""):
+            d["daekning"] += 1
+    ud = {
+        "_om": "Genereres af scripts/build_master_csv.py sammen med master_indicators.csv. "
+               "Ret den ikke i hånden. daekning = antal kommuner med en værdi.",
+        "kommuner": antal_kommuner,
+        "indikatorer": pr_ind,
+    }
+    # Én linje pr. indikator, så en dataopdatering giver en læsbar diff.
+    linjer = [f' "_om": {json.dumps(ud["_om"], ensure_ascii=False)},',
+              f' "kommuner": {antal_kommuner},',
+              ' "indikatorer": {']
+    poster = [f'  {json.dumps(iid)}: {json.dumps(d, ensure_ascii=False)}' for iid, d in pr_ind.items()]
+    linjer.append(",\n".join(poster))
+    linjer.append(" }")
+    with open(NOEGLETAL, "w", encoding="utf-8") as f:
+        f.write("{\n" + "\n".join(linjer) + "\n}\n")
+    print(f"✓ Skrev {NOEGLETAL.relative_to(ROOT)} ({len(pr_ind)} indikatorer)")
 
 
 def _tjek_konsistens_efter_build():

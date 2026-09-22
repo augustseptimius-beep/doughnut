@@ -65,7 +65,7 @@
     {
       "id": "lokalsamfund",
       "name": "Fællesskab",
-      "description": "Om borgerne er en del af et fællesskab. Ensomhed og begrænset social støtte er kategoriens udfaldsmål, idrætsmedlemskab og tilskuerdeltagelse måler faktisk deltagelse i det lokale liv, og foreningsstøtten er kommunens egen investering i at det kan lade sig gøre. Tilskuertallet mangler for 22 mindre kommuner, hvor DST's stikprøve er for lille.",
+      "description": "Om borgerne er en del af et fællesskab. Ensomhed og begrænset social støtte er kategoriens udfaldsmål, idrætsmedlemskab og tilskuerdeltagelse måler faktisk deltagelse i det lokale liv, og foreningsstøtten er kommunens egen investering i at det kan lade sig gøre. Tilskuertallet mangler for {mangler:sport_tilskuer} mindre kommuner, hvor DST's stikprøve er for lille.",
       "indicators": ["ensomhed", "social_stoette", "sports_membership", "sport_tilskuer", "civil_society"]
     },
     {
@@ -128,7 +128,7 @@
       "id": "luftkvalitet",
       "name": "Luftkvalitet",
       "short_name": "LUFT",
-      "description": "Modelberegnet årsgennemsnit af NO2 og PM2.5 pr. kommune (DCE/AU UBM-model 2024) sammenholdt med WHO's retningslinjer fra 2021.",
+      "description": "Modelberegnet årsgennemsnit af NO2 og PM2.5 pr. kommune (DCE/AU UBM-model {aar:luftkvalitet_no2}) sammenholdt med WHO's retningslinjer fra 2021.",
       "source": "https://arld-extgeo.miljoeportal.dk/geoserver/wfs",
       "source_label": "Miljøportal WFS (DCE/AU)",
       "unit": "µg/m³ (årsgennemsnit, WHO 2021)",
@@ -154,9 +154,9 @@
       "short_name": "VAND",
       "description": "Vandindvinding fra almene vandværker pr. person - et indirekte mål for pres på grundvandsressourcerne. Nitrat i drikkevand er flyttet til Forurening-dimensionen, da det er et forureningsspørgsmål (novel entities).",
       "source": "https://www.statistikbanken.dk/VANDIND",
-      "source_label": "DST VANDIND (2024)",
+      "source_label": "DST VANDIND ({aar:vandindvinding})",
       "unit": "m³/person",
-      "boundary": "Landsgennemsnit (72,9 m³/person, 2024) som reference. Jo lavere vandindvinding pr. person, jo mindre pres på grundvandet.",
+      "boundary": "Landsgennemsnit ({ref:vandindvinding:1} m³/person, {aar:vandindvinding}) som reference. Jo lavere vandindvinding pr. person, jo mindre pres på grundvandet.",
       "aggregation": "worst-of",
       "indicators": ["vandindvinding"]
     },
@@ -166,9 +166,9 @@
       "short_name": "AREAL",
       "description": "Pres på det fysiske landskab fra to menneskeskabte arealanvendelser: intensivt landbrug og kunstigt befæstet areal (veje, bebyggelse). Worst-of logik - den dårligste afgør dimensionsscoren. Naturkvalitet måles separat i biodiversitetsdimensionen.",
       "source": "https://www.statistikbanken.dk/AREALDK2",
-      "source_label": "DST AREALDK2 (2024)",
+      "source_label": "DST AREALDK2 ({aar:areal_intensiv})",
       "unit": "% af kommunens areal",
-      "boundary": "Nationalt gennemsnit 2024 som reference (intensivt landbrug ~55%, bebygget ~14%). Til kontekst: den planetære grænse er max 15% antropiseret areal (landbrug + bebygget tilsammen, Rockström 2009) - Danmark ligger på 73-75%, en femdobbelt overskridelse. Vi scorer mod landsgennemsnittet for at vise forskel mellem kommuner.",
+      "boundary": "Nationalt gennemsnit {aar:areal_intensiv} som reference (intensivt landbrug ~{ref:areal_intensiv:0}%, bebygget ~{ref:areal_bebygget:0}%). Til kontekst: den planetære grænse er max 15% antropiseret areal (landbrug + bebygget tilsammen, Rockström 2009) - Danmark ligger på 73-75%, en femdobbelt overskridelse. Vi scorer mod landsgennemsnittet for at vise forskel mellem kommuner.",
       "aggregation": "worst-of",
       "indicators": ["areal_intensiv", "areal_bebygget"]
     },
@@ -1004,7 +1004,7 @@
       "reference": {"type": "landstal", "col": "sport_tilskuer_ref", "definition": "DST's landstal (hele landet), toårigt gennemsnit; fetch_kulturvaner.py"},
       "inverse": false,
       "baseline_level": 3,
-      "rationale": "Andel der inden for et år har overværet en sportsbegivenhed som tilskuer (DST KV2GEO, toårigt gennemsnit 2024-2025). Måler deltagelse i det lokale liv som publikum og supplerer idrætsmedlemskab, der kun tæller de aktive. Blandt kulturvaneundersøgelsens 17 aktiviteter er det den eneste der korrelerer positivt med idrætsmedlemskab (0,25) og nul med kommunens foreningsudgifter; biblioteks-, museums- og kunstbesøg korrelerer 0,34-0,41 med foreningsudgifterne og måler dermed samme by- og uddannelsesgradient som vi har i forvejen. Direkte: højere andel er bedre. VIGTIG BEGRÆNSNING: mangler for 22 kommuner, se kategoriens forbehold.",
+      "rationale": "Andel der inden for et år har overværet en sportsbegivenhed som tilskuer (DST KV2GEO, toårigt gennemsnit 2024-2025). Måler deltagelse i det lokale liv som publikum og supplerer idrætsmedlemskab, der kun tæller de aktive. Blandt kulturvaneundersøgelsens 17 aktiviteter er det den eneste der korrelerer positivt med idrætsmedlemskab (0,25) og nul med kommunens foreningsudgifter; biblioteks-, museums- og kunstbesøg korrelerer 0,34-0,41 med foreningsudgifterne og måler dermed samme by- og uddannelsesgradient som vi har i forvejen. Direkte: højere andel er bedre. VIGTIG BEGRÆNSNING: mangler for {mangler:sport_tilskuer} kommuner, se kategoriens forbehold.",
       "note": "Dækker kun 76 af 98 kommuner (KV2GEO undertrykker små stikprøver). Ingen retningspil: tabellen har kun 2024 og 2025, og begge år indgår i gennemsnittet. CLAUDE.md pkt. 27."
     },
     {
@@ -1363,7 +1363,7 @@
       "reference": {"type": "landstal", "col": "pesticider_ref", "definition": "andel af alle landets almene vandværker over kravværdien (samlet opgørelse); fetch_grundvand_jupiter.py"},
       "lower_is_better": true,
       "baseline_type": "relativ",
-      "boundary": "Landsgns.: 9,2% af vandværkerne over drikkevandsnormen",
+      "boundary": "Landsgns.: {ref:pesticider:1}% af vandværkerne over drikkevandsnormen",
       "raw_key": "eco_pesticid_raw",
       "ratio_key": "pesticider_self",
       "note": "GEUS Jupiter, andel almene vandværker over 0,1 µg/l. CLAUDE.md pkt. 21."
@@ -1419,7 +1419,7 @@
       "reference": {"type": "landstal", "col": "areal_intensiv_ref", "definition": "DST AREALDK2 hele landet (OMRÅDE=95); fetch_dst_arealanvendelse.py"},
       "lower_is_better": true,
       "baseline_type": "relativ",
-      "boundary": "Nationalt snit: ~55%",
+      "boundary": "Nationalt snit: ~{ref:areal_intensiv:0}%",
       "raw_key": "eco_areal_intensiv_raw",
       "ratio_key": "areal_intensiv_ratio"
     },
@@ -1437,7 +1437,7 @@
       "reference": {"type": "landstal", "col": "areal_bebygget_ref", "definition": "DST AREALDK2 hele landet (OMRÅDE=95); fetch_dst_arealanvendelse.py"},
       "lower_is_better": true,
       "baseline_type": "relativ",
-      "boundary": "Nationalt snit: ~14%",
+      "boundary": "Nationalt snit: ~{ref:areal_bebygget:0}%",
       "raw_key": "eco_areal_bebygget_raw",
       "ratio_key": "areal_bebygget_ratio"
     },

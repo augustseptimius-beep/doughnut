@@ -6,6 +6,10 @@ Datasæt over alle 98 danske kommuners performance på Doughnut Economics-rammen
 
 Den ene liste over indikatorer, sociale kategorier og økologiske dimensioner. `scripts/build_master_csv.py` bestemmer ud fra den hvilke CSV-kolonner der læses, og webappen (`webapp/lib/shared.ts`) viser indikatorerne ud fra samme fil. Felterne er forklaret i filens `_om`-nøgle. En ny indikator er én post her plus et fetch-script, se CLAUDE.md "Tilføj en ny indikator".
 
+## `noegletal.json`
+
+Reference, dækning (antal kommuner med værdi) og dataår pr. indikator, skrevet af `build_master_csv.py` sammen med master. Webappen udfylder tal i tekster herfra (pladsholdere som `{ref:pesticider:1}`), og buildet stopper hvis filen ikke passer med master. Ret den ikke i hånden.
+
 ## Hovedfilen: `master_indicators.csv`
 
 Dette er den **konsoliderede master-fil** som webapp'en læser fra. Genereres af `scripts/build_master_csv.py` ved at samle alle rådata-CSV'er.

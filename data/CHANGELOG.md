@@ -16,6 +16,7 @@ Log over større ændringer i datapipeline og master-fil.
   - **534 ratios flyttet med højst 0,45 point**, fordi de nu regnes fra den råværdi der står i CSV'en i stedet for scriptets uafrundede tal. Størst for fosfor (råværdi med 3 decimaler, fx 0,025 ton pr. 1.000 indb.), derefter kvælstof (0,08), pesticider (0,06), nitrat (0,03, scriptet afrundede ratioen til 1 decimal) og klimapåvirkning (0,02). Resten er 0,01. Ingen kategori eller dimension skifter farve under nogen af de tre baselines; største ændring i en kategoriscore er 0,0025.
   - **Landstallene rekonstrueres** ved hvert build fra scriptets egen ratio, indtil scripterne selv skriver dem. Rekonstruktionen genskaber de publicerede tal (fx middellevetid 81,6 år, lederandel 32,11%, disponibel indkomst 246.098 kr.).
   - Retningspilene er uændrede.
+- **Ny genereret fil `data/noegletal.json`** (reference, dækning og dataår pr. indikator). Metodesidens og registrets tekster henter landstal og dækning derfra via pladsholdere i stedet for håndskrevne tal. Ingen tal på siden er ændret af det; eneste synlige forskel er "de 3 uden data" i stedet for "de tre".
 
 ## 2026-09-22 (indikatorregister)
 
