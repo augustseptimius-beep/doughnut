@@ -53,14 +53,17 @@ export const INDICATORS: Indicator[] = [
   },
   {
     id: "disposable_income",
-    name: "Disponibel indkomst",
-    table: "INDKP101",
-    source: "https://www.statistikbanken.dk/INDKP101",
+    name: "Disponibel indkomst (median)",
+    // Median, ikke gennemsnit (sep. 2026): gennemsnittet blev flyttet af få
+    // meget høje indkomster. Beregnet af INDKP106's intervaller, se
+    // scripts/indkomst_median.py.
+    table: "INDKP106",
+    source: "https://www.statistikbanken.dk/INDKP106",
     category: "social",
     inverse: false,
     dataYear: "2024",
     baselineLevel: 3,
-    rawUnit: "kr./indb.",
+    rawUnit: "kr.",
   },
   {
     id: "employment",
@@ -506,13 +509,13 @@ export const INDICATORS: Indicator[] = [
   {
     id: "income_gender_gap",
     name: "Indkomstlighed mænd/kvinder (%)",
-    table: "INDKP101",
-    source: "https://www.statistikbanken.dk/INDKP101",
+    table: "INDKP106",
+    source: "https://www.statistikbanken.dk/INDKP106",
     category: "social",
     inverse: false,
     dataYear: "2024",
     baselineLevel: 3,
-    rawUnit: "% (kvinders andel af mænds indkomst)",
+    rawUnit: "% (kvinders medianindkomst af mænds)",
   },
   {
     id: "employment_origin_gap",

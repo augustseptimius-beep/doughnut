@@ -241,6 +241,8 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
 
 28. **Fællesskab måler nu udfald, ikke budget.** Ensomhed og begrænset social støtte er udfaldsmål, idrætsmedlemskab og tilskuerdeltagelse er deltagelse, og `civil_society` er det eneste tilbageværende input. Den beholdes bevidst, selvom den korrelerer svagt med resten: den er det eneste sted i modellen hvor kommunens egen indsats på foreningsområdet er synlig. `sports_facilities` og `sports_spending` er begge fjernet, fordi de korrelerede negativt med de øvrige og dermed udlignede kategoriens gennemsnit i stedet for at måle noget.
 
+29. **Indkomst er median, beregnet af os (fra sep. 2026).** `disposable_income` og `income_gender_gap` bruger median disponibel indkomst fra INDKP106's indkomstintervaller (`scripts/indkomst_median.py`), fordi DST ikke udgiver medianen pr. kommune og køn, og gennemsnittet (INDKP101) blev flyttet af få ekstreme indkomster (Vejen). Hjælperen bruges både af `fetch_doughnut_data.py`, `fetch_ligestilling_data.py` og `fetch_trend_history.py` - skift aldrig kun ét af stederne tilbage, ellers peger pilen på et andet tal end scoren. Intervaltekster læses fra DST; ændrer DST inddelingen, fejler hjælperen i stedet for at gætte.
+
 ## Arbejdsprincipper for ændringer
 
 - **"Brilliant basics" frem for innovation.** 80/20-mindset. Platformen er bevidst enkel, og enkelheden er en kvalitet, ikke en mangel.

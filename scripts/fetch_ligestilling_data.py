@@ -9,8 +9,8 @@ Output: data/ligestilling_scores.csv
 Indikatorer:
   life_expectancy_gender_gap  - kønsgab i middellevetid i år (HISBK, 2021:2025)
                                 inverteret: lavere gap = bedre score
-  income_gender_gap           - kvinders andel af mænds disponible indkomst i %
-                                (INDKP101, 2024), direkte: højere = bedre
+  income_gender_gap           - kvinders median disponible indkomst i % af mænds
+                                (INDKP106, median beregnet af intervaller), direkte: højere = bedre
   employment_origin_gap       - beskæftigelsesfrekvens ikke-vestlige / dansk oprindelse i %
                                 (RAS200, 2024), direkte: højere = bedre
 
@@ -33,6 +33,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dst_aar import seneste_aar, seneste_periode  # noqa: E402
+from indkomst_median import median_disponibel  # noqa: E402
 
 API_URL = "https://api.statbank.dk/v1/data"
 REQUEST_DELAY = 0.7
@@ -139,62 +140,33 @@ def fetch_life_expectancy_by_gender() -> tuple[dict[str, float], float | None]:
 
 
 # ---------------------------------------------------------------------------
-# 2. Indkomstgab mænd/kvinder (INDKP101)
+# 2. Indkomstgab mænd/kvinder (INDKP106, median)
 # ---------------------------------------------------------------------------
 
 def fetch_income_by_gender() -> tuple[dict[str, float], float | None]:
     """
-    INDKP101: Gennemsnitlig disponibel indkomst opdelt paa koen.
-    Beregner: kvinders andel = (K / M) * 100 pr. kommune.
+    Kvinders MEDIAN disponible indkomst i procent af mænds, pr. kommune.
     Direkte: hoejere andel = bedre (mere lighed i indkomst).
-    KOEN: M = maend, K = kvinder
-    INDKOMSTTYPE: 100 = Disponibel indkomst
-    ENHED: 116 = Gennemsnit for alle personer (kr.)
+
+    Median, ikke gennemsnit (INDKP101 ENHED 116, brugt indtil sep. 2026):
+    gennemsnittet blev flyttet af enkelte meget høje indkomster, så Vejen
+    fik kvinder der "tjente" 142 % af mændene. DST udgiver ikke medianen pr.
+    kommune og køn, så den beregnes ud fra INDKP106's indkomstintervaller -
+    se indkomst_median.py.
     """
-    print("Henter disponibel indkomst pr. koen (INDKP101, 2024)...")
-    rows = api_post("INDKP101", [
-        {"code": "OMRÅDE", "values": ["*"]},
-        {"code": "KOEN", "values": ["M", "K"]},
-        {"code": "INDKOMSTTYPE", "values": ["100"]},
-        {"code": "ENHED", "values": ["116"]},
-        {"code": "Tid", "values": [seneste_aar("INDKP101", fallback="2024")]},
-    ])
+    aar = seneste_aar("INDKP106", fallback="2024")
+    print(f"Henter median disponibel indkomst pr. koen (INDKP106, {aar})...")
+    med = median_disponibel([aar], ["M", "K"])
 
-    # Prøv 2023 hvis 2024 er tom
-    if len(rows) < 50:
-        print("  Faa resultater for 2024, proever 2023...")
-        rows = api_post("INDKP101", [
-            {"code": "OMRÅDE", "values": ["*"]},
-            {"code": "KOEN", "values": ["M", "K"]},
-            {"code": "INDKOMSTTYPE", "values": ["100"]},
-            {"code": "ENHED", "values": ["116"]},
-            {"code": "Tid", "values": ["2023"]},
-        ])
-
-    male: dict[str, float] = {}
-    female: dict[str, float] = {}
-
-    for row in rows:
-        kode = row.get("OMRÅDE", "").strip()
-        kon = row.get("KOEN", "").strip()
-        val = parse_value(row.get("INDHOLD", ""))
-        if val is None:
-            continue
-        if kode not in VALID_CODES and kode != "000":
-            continue
-        if kon == "M":
-            male[kode] = val
-        elif kon == "K":
-            female[kode] = val
-
-    # Kvinders andel af maends indkomst (%)
+    # Kvinders andel af maends medianindkomst (%)
     ratio: dict[str, float] = {}
-    for kode in set(male) & set(female):
-        if male[kode] > 0:
-            ratio[kode] = round((female[kode] / male[kode]) * 100, 2)
+    for kode in VALID_CODES | {"000"}:
+        m, k = med.get((kode, "M", aar)), med.get((kode, "K", aar))
+        if m and k is not None:
+            ratio[kode] = round((k / m) * 100, 2)
 
     national = ratio.pop("000", None)
-    print(f"  {len(ratio)} kommuner, nationalt: kvinder tjener {national}% af maend")
+    print(f"  {len(ratio)} kommuner, nationalt: kvinders median er {national}% af maends")
     return ratio, national
 
 

@@ -32,7 +32,7 @@ const INDICATOR_RATIONALES: Record<string, string> = {
   education: "Andel af 30-34-årige med erhvervskompetencegivende uddannelse er det primære politiske måleparameter for uddannelsesniveau. Absolut baseline: nationalt mål på 95% (Børne- og Undervisningsministeriet). Scoren beregnes nu mod dette mål (100 = 95% nået), ikke mod landsgennemsnittet.",
   low_education: "Andel af 25-29-årige med kun grundskole som højeste uddannelse. Fanger den sårbare ende af uddannelsesspektret og er særligt vigtig som indikator i landdistrikter og socialt belastede områder.",
   // Velfærd
-  disposable_income: "Disponibel indkomst pr. person er det bredeste mål for materiel levestandard - inkluderer løn, overførsler og kapitalindkomst minus skat og bidrag.",
+  disposable_income: "Median disponibel indkomst for personer på 15 år og derover er det bredeste mål for materiel levestandard - inkluderer løn, overførsler og kapitalindkomst minus skat og bidrag. Medianen bruges frem for gennemsnittet, fordi få meget høje indkomster ellers kan løfte en hel kommune: i Vejen steg kvindernes gennemsnitsindkomst fra 217.000 til 438.000 kr. fra 2022 til 2023, mens medianen stod stille.",
   employment: "Beskæftigelsesfrekvens afspejler adgang til arbejde, som er centralt for både indkomst, selvforsørgelse og social deltagelse.",
   child_poverty: "Andel af børn 0-17 år i relativ fattigdom (LABY07). Relativ fattigdom defineres som disponibel indkomst under 50% af medianen. Børnefattigdom er en direkte indikator for social ulighed og risiko for negativ social arv.",
   gini: "Gini-koefficient måler den samlede indkomstulighed i kommunen. Høj ulighed underminerer social sammenhæng, tillid og fælles institutioner.",
@@ -97,10 +97,10 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   velfaerd: {
     id: "velfaerd",
-    scoring: "Gennemsnit af syv indikatorer: disponibel indkomst, beskæftigelsesfrekvens, børnefattigdom (inverteret, LABY07), udsatte børn og unge (inverteret, BU43), NEET (inverteret, NEET1), relativ fattigdom (inverteret, IFOR12P) og underretninger om børn (inverteret, UND2). Score 100 = landsgennemsnit. NB: Gini og lavindkomst er flyttet til dimensionen Lighed.",
+    scoring: "Gennemsnit af syv indikatorer: median disponibel indkomst (INDKP106), beskæftigelsesfrekvens, børnefattigdom (inverteret, LABY07), udsatte børn og unge (inverteret, BU43), NEET (inverteret, NEET1), relativ fattigdom (inverteret, IFOR12P) og underretninger om børn (inverteret, UND2). Score 100 = landsgennemsnit. NB: Gini og lavindkomst er flyttet til dimensionen Lighed.",
     boundary: "Socialt fundament: materielle levevilkår der sikrer værdigt liv for alle. Ingen absolut grænse - relativ til landsgennemsnit.",
     dataYear: "2023-2025",
-    limitations: "Børnefattigdom (LABY07) og relativ fattigdom (IFOR12P) overlapper. Disponibel indkomst justerer ikke for købekraft mellem kommuner. BU43 og NEET dækker forskellige aldersgrupper (0-22 og 16-24).",
+    limitations: "Børnefattigdom (LABY07) og relativ fattigdom (IFOR12P) overlapper. Disponibel indkomst justerer ikke for købekraft mellem kommuner. DST udgiver ikke medianen pr. kommune; den er beregnet ud fra antal personer i DST's indkomstintervaller (INDKP106) med en usikkerhed på typisk under 1.000 kr. BU43 og NEET dækker forskellige aldersgrupper (0-22 og 16-24).",
     csvFile: "doughnut_scores.csv + velfaerd_extra_scores.csv + lighed_scores.csv + underretning_scores.csv",
   },
   bolig: {
@@ -149,15 +149,15 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     boundary: "Socialt fundament: en rimelig fordeling af ressourcer og muligheder er grundlaget for et sammenhængende samfund.",
     dataYear: "2024",
     limitations: "Gini og relativ fattigdom bygger på DST's indkomstregistre og er korrelerede mål - kommuner med høj ulighed har typisk også høj andel lavindkomst. Data er 2 år forsinket.",
-    csvFile: "doughnut_scores.csv",
+    csvFile: "doughnut_scores.csv + ligestilling_scores.csv",
   },
   ligestilling: {
     id: "ligestilling",
-    scoring: "Gennemsnit af tre indikatorer: (1) Andel kvinder i lønmodtager-lederstillinger (RAS301 SOCIO=15, direkte). (2) Kønsgab i middellevetid, kvinder minus mænd i år (HISBK, inverteret - mindre gab er bedre). (3) Kvinders gennemsnitlige disponible indkomst i procent af mænds (INDKP101, direkte). Score 100 = landsgennemsnit. For lederandelen er baseline den nationale andel (ca. 32%), ikke 50%.",
+    scoring: "Gennemsnit af tre indikatorer: (1) Andel kvinder i lønmodtager-lederstillinger (RAS301 SOCIO=15, direkte). (2) Kønsgab i middellevetid, kvinder minus mænd i år (HISBK, inverteret - mindre gab er bedre). (3) Kvinders median disponible indkomst i procent af mænds (INDKP106, direkte). Score 100 = landsgennemsnit. For lederandelen er baseline den nationale andel (ca. 32%), ikke 50%.",
     boundary: "Socialt fundament: lige muligheder uanset køn på arbejdsmarkedet og i ledelse.",
     dataYear: "2024-2025",
-    limitations: "Indkomstindikatoren bygger på gennemsnit, ikke median, og er derfor følsom over for enkelte meget høje indkomster i små befolkninger. Den scorer en højere kvindeandel som bedre, også når kvinderne i kommunen i gennemsnit har højere indkomst end mændene. Andelen af kvinder i ledelse afhænger af kommunens erhvervsstruktur (fx industritunge kommuner har typisk færre kvinder i ledelse).",
-    csvFile: "lighed_scores.csv",
+    limitations: "Indkomstindikatoren bruger medianen, så enkelte meget høje indkomster ikke flytter tallet. DST udgiver ikke medianen pr. kommune og køn; den er beregnet ud fra antal personer i DST's indkomstintervaller (INDKP106), og usikkerheden på kønsforholdet er typisk under 1 procentpoint. Andelen af kvinder i ledelse afhænger af kommunens erhvervsstruktur (fx industritunge kommuner har typisk færre kvinder i ledelse).",
+    csvFile: "lighed_scores.csv + ligestilling_scores.csv",
   },
   mobilitet: {
     id: "mobilitet",

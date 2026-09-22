@@ -500,104 +500,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,_dim_kultur_fritid,2010-2012,2024,,,0.38,stagneret,16,Danmarks Statistik,gennemsnit af 3 indikatorer
 851,_dim_kultur_fritid,2010-2012,2024,,,-10.03,forkert,16,Danmarks Statistik,gennemsnit af 3 indikatorer
 860,_dim_kultur_fritid,2010-2012,2024,,,-13.0,forkert,16,Danmarks Statistik,gennemsnit af 3 indikatorer
-101,_dim_ligestilling,2010-2012,2022-2024,,,7.78,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-147,_dim_ligestilling,2010-2012,2022-2024,,,6.7,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-151,_dim_ligestilling,2010-2012,2022-2024,,,7.85,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-153,_dim_ligestilling,2010-2012,2022-2024,,,15.88,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-155,_dim_ligestilling,2010-2012,2022-2024,,,-14.98,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-157,_dim_ligestilling,2010-2012,2022-2024,,,1.04,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-159,_dim_ligestilling,2010-2012,2022-2024,,,9.29,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-161,_dim_ligestilling,2010-2012,2022-2024,,,1.19,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-163,_dim_ligestilling,2010-2012,2022-2024,,,11.96,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-165,_dim_ligestilling,2010-2012,2022-2024,,,18.26,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-167,_dim_ligestilling,2010-2012,2022-2024,,,6.61,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-169,_dim_ligestilling,2010-2012,2022-2024,,,-2.95,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-173,_dim_ligestilling,2010-2012,2022-2024,,,14.11,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-175,_dim_ligestilling,2010-2012,2022-2024,,,4.31,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-183,_dim_ligestilling,2010-2012,2022-2024,,,-5.24,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-185,_dim_ligestilling,2010-2012,2022-2024,,,5.29,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-187,_dim_ligestilling,2010-2012,2022-2024,,,-7.51,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-190,_dim_ligestilling,2010-2012,2022-2024,,,-7.57,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-201,_dim_ligestilling,2010-2012,2022-2024,,,17.95,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-210,_dim_ligestilling,2010-2012,2022-2024,,,7.25,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-217,_dim_ligestilling,2010-2012,2022-2024,,,-5.81,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-219,_dim_ligestilling,2010-2012,2022-2024,,,-11.51,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-223,_dim_ligestilling,2010-2012,2022-2024,,,-3.16,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-230,_dim_ligestilling,2010-2012,2022-2024,,,1.8,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-240,_dim_ligestilling,2010-2012,2022-2024,,,4.4,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-250,_dim_ligestilling,2010-2012,2022-2024,,,-0.19,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-253,_dim_ligestilling,2010-2012,2022-2024,,,-7.3,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-259,_dim_ligestilling,2010-2012,2022-2024,,,-4.37,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-260,_dim_ligestilling,2010-2012,2022-2024,,,6.55,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-265,_dim_ligestilling,2010-2012,2022-2024,,,7.49,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-269,_dim_ligestilling,2010-2012,2022-2024,,,-38.22,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-270,_dim_ligestilling,2010-2012,2022-2024,,,1.39,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-306,_dim_ligestilling,2010-2012,2022-2024,,,8.06,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-316,_dim_ligestilling,2010-2012,2022-2024,,,-0.04,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-320,_dim_ligestilling,2010-2012,2022-2024,,,6.37,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-326,_dim_ligestilling,2010-2012,2022-2024,,,2.25,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-329,_dim_ligestilling,2010-2012,2022-2024,,,8.66,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-330,_dim_ligestilling,2010-2012,2022-2024,,,6.89,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-336,_dim_ligestilling,2010-2012,2022-2024,,,-13.51,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-340,_dim_ligestilling,2010-2012,2022-2024,,,-7.6,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-350,_dim_ligestilling,2010-2012,2022-2024,,,22.16,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-360,_dim_ligestilling,2010-2012,2022-2024,,,-2.84,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-370,_dim_ligestilling,2010-2012,2022-2024,,,10.76,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-376,_dim_ligestilling,2010-2012,2022-2024,,,5.76,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-390,_dim_ligestilling,2010-2012,2022-2024,,,6.53,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-400,_dim_ligestilling,2010-2012,2022-2024,,,2.49,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-410,_dim_ligestilling,2010-2012,2022-2024,,,0.06,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-420,_dim_ligestilling,2010-2012,2022-2024,,,9.75,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-430,_dim_ligestilling,2010-2012,2022-2024,,,1.22,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-440,_dim_ligestilling,2010-2012,2022-2024,,,10.04,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-450,_dim_ligestilling,2010-2012,2022-2024,,,18.33,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-461,_dim_ligestilling,2010-2012,2022-2024,,,0.58,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-479,_dim_ligestilling,2010-2012,2022-2024,,,-1.32,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-480,_dim_ligestilling,2010-2012,2022-2024,,,-2.12,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-482,_dim_ligestilling,2010-2012,2022-2024,,,21.2,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-492,_dim_ligestilling,2010-2012,2022-2024,,,24.31,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
-510,_dim_ligestilling,2010-2012,2022-2024,,,-7.35,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-530,_dim_ligestilling,2010-2012,2022-2024,,,-11.35,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-540,_dim_ligestilling,2010-2012,2022-2024,,,6.9,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-550,_dim_ligestilling,2010-2012,2022-2024,,,1.38,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-561,_dim_ligestilling,2010-2012,2022-2024,,,4.17,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-563,_dim_ligestilling,2010-2012,2022-2024,,,-10.52,forkert,15,Danmarks Statistik,gennemsnit af 2 indikatorer
-573,_dim_ligestilling,2010-2012,2022-2024,,,5.89,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-575,_dim_ligestilling,2010-2012,2022-2024,,,13.97,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-580,_dim_ligestilling,2010-2012,2022-2024,,,8.5,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-607,_dim_ligestilling,2010-2012,2022-2024,,,-15.2,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-615,_dim_ligestilling,2010-2012,2022-2024,,,2.47,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-621,_dim_ligestilling,2010-2012,2022-2024,,,2.6,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-630,_dim_ligestilling,2010-2012,2022-2024,,,10.17,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-657,_dim_ligestilling,2010-2012,2022-2024,,,0.13,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-661,_dim_ligestilling,2010-2012,2022-2024,,,-0.02,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-665,_dim_ligestilling,2010-2012,2022-2024,,,-2.21,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-671,_dim_ligestilling,2010-2012,2022-2024,,,-11.64,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-706,_dim_ligestilling,2010-2012,2022-2024,,,10.43,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-707,_dim_ligestilling,2010-2012,2022-2024,,,4.36,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-710,_dim_ligestilling,2010-2012,2022-2024,,,3.39,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-727,_dim_ligestilling,2010-2012,2022-2024,,,20.42,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-730,_dim_ligestilling,2010-2012,2022-2024,,,-3.64,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-740,_dim_ligestilling,2010-2012,2022-2024,,,2.39,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-741,_dim_ligestilling,2010-2012,2022-2024,,,20.64,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
-746,_dim_ligestilling,2010-2012,2022-2024,,,3.4,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-751,_dim_ligestilling,2010-2012,2022-2024,,,3.53,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-756,_dim_ligestilling,2010-2012,2022-2024,,,-4.39,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-760,_dim_ligestilling,2010-2012,2022-2024,,,6.52,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-766,_dim_ligestilling,2010-2012,2022-2024,,,4.0,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-773,_dim_ligestilling,2010-2012,2022-2024,,,17.38,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-779,_dim_ligestilling,2010-2012,2022-2024,,,10.85,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-787,_dim_ligestilling,2010-2012,2022-2024,,,-1.94,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-791,_dim_ligestilling,2010-2012,2022-2024,,,0.88,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-810,_dim_ligestilling,2010-2012,2022-2024,,,18.7,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-813,_dim_ligestilling,2010-2012,2022-2024,,,0.01,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-820,_dim_ligestilling,2010-2012,2022-2024,,,4.3,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-825,_dim_ligestilling,2010-2012,2022-2024,,,22.97,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
-840,_dim_ligestilling,2010-2012,2022-2024,,,4.85,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-846,_dim_ligestilling,2010-2012,2022-2024,,,5.9,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-849,_dim_ligestilling,2010-2012,2022-2024,,,10.97,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-851,_dim_ligestilling,2010-2012,2022-2024,,,2.41,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-860,_dim_ligestilling,2010-2012,2022-2024,,,3.74,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+101,_dim_ligestilling,2010-2012,2022-2024,,,8.03,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+147,_dim_ligestilling,2010-2012,2022-2024,,,8.36,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+151,_dim_ligestilling,2010-2012,2022-2024,,,7.45,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+153,_dim_ligestilling,2010-2012,2022-2024,,,15.45,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+155,_dim_ligestilling,2010-2012,2022-2024,,,-14.58,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+157,_dim_ligestilling,2010-2012,2022-2024,,,-1.84,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+159,_dim_ligestilling,2010-2012,2022-2024,,,8.78,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+161,_dim_ligestilling,2010-2012,2022-2024,,,1.46,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+163,_dim_ligestilling,2010-2012,2022-2024,,,11.9,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+165,_dim_ligestilling,2010-2012,2022-2024,,,18.22,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+167,_dim_ligestilling,2010-2012,2022-2024,,,6.53,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+169,_dim_ligestilling,2010-2012,2022-2024,,,-3.61,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+173,_dim_ligestilling,2010-2012,2022-2024,,,13.24,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+175,_dim_ligestilling,2010-2012,2022-2024,,,4.65,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+183,_dim_ligestilling,2010-2012,2022-2024,,,-5.92,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+185,_dim_ligestilling,2010-2012,2022-2024,,,5.2,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+187,_dim_ligestilling,2010-2012,2022-2024,,,-7.82,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+190,_dim_ligestilling,2010-2012,2022-2024,,,-8.07,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+201,_dim_ligestilling,2010-2012,2022-2024,,,18.23,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+210,_dim_ligestilling,2010-2012,2022-2024,,,5.96,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+217,_dim_ligestilling,2010-2012,2022-2024,,,-5.85,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+219,_dim_ligestilling,2010-2012,2022-2024,,,-11.41,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+223,_dim_ligestilling,2010-2012,2022-2024,,,-3.35,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+230,_dim_ligestilling,2010-2012,2022-2024,,,3.24,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+240,_dim_ligestilling,2010-2012,2022-2024,,,4.05,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+250,_dim_ligestilling,2010-2012,2022-2024,,,-0.18,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+253,_dim_ligestilling,2010-2012,2022-2024,,,-7.61,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+259,_dim_ligestilling,2010-2012,2022-2024,,,-4.34,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+260,_dim_ligestilling,2010-2012,2022-2024,,,6.53,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+265,_dim_ligestilling,2010-2012,2022-2024,,,7.89,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+269,_dim_ligestilling,2010-2012,2022-2024,,,-38.6,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+270,_dim_ligestilling,2010-2012,2022-2024,,,1.19,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+306,_dim_ligestilling,2010-2012,2022-2024,,,9.21,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+316,_dim_ligestilling,2010-2012,2022-2024,,,0.43,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+320,_dim_ligestilling,2010-2012,2022-2024,,,6.69,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+326,_dim_ligestilling,2010-2012,2022-2024,,,3.16,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+329,_dim_ligestilling,2010-2012,2022-2024,,,9.05,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+330,_dim_ligestilling,2010-2012,2022-2024,,,7.46,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+336,_dim_ligestilling,2010-2012,2022-2024,,,-13.41,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+340,_dim_ligestilling,2010-2012,2022-2024,,,-7.68,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+350,_dim_ligestilling,2010-2012,2022-2024,,,21.55,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+360,_dim_ligestilling,2010-2012,2022-2024,,,-1.08,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+370,_dim_ligestilling,2010-2012,2022-2024,,,11.22,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+376,_dim_ligestilling,2010-2012,2022-2024,,,6.74,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+390,_dim_ligestilling,2010-2012,2022-2024,,,6.73,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+400,_dim_ligestilling,2010-2012,2022-2024,,,2.48,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+410,_dim_ligestilling,2010-2012,2022-2024,,,1.34,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+420,_dim_ligestilling,2010-2012,2022-2024,,,9.84,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+430,_dim_ligestilling,2010-2012,2022-2024,,,1.45,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+440,_dim_ligestilling,2010-2012,2022-2024,,,10.15,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+450,_dim_ligestilling,2010-2012,2022-2024,,,18.65,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+461,_dim_ligestilling,2010-2012,2022-2024,,,0.21,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+479,_dim_ligestilling,2010-2012,2022-2024,,,-1.4,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+480,_dim_ligestilling,2010-2012,2022-2024,,,-2.19,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+482,_dim_ligestilling,2010-2012,2022-2024,,,23.0,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+492,_dim_ligestilling,2010-2012,2022-2024,,,26.32,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+510,_dim_ligestilling,2010-2012,2022-2024,,,-6.36,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+530,_dim_ligestilling,2010-2012,2022-2024,,,-6.19,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+540,_dim_ligestilling,2010-2012,2022-2024,,,6.44,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+550,_dim_ligestilling,2010-2012,2022-2024,,,4.68,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+561,_dim_ligestilling,2010-2012,2022-2024,,,4.53,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+563,_dim_ligestilling,2010-2012,2022-2024,,,-10.47,forkert,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+573,_dim_ligestilling,2010-2012,2022-2024,,,7.34,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+575,_dim_ligestilling,2010-2012,2022-2024,,,-2.71,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+580,_dim_ligestilling,2010-2012,2022-2024,,,9.65,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+607,_dim_ligestilling,2010-2012,2022-2024,,,-14.92,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+615,_dim_ligestilling,2010-2012,2022-2024,,,3.12,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+621,_dim_ligestilling,2010-2012,2022-2024,,,3.21,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+630,_dim_ligestilling,2010-2012,2022-2024,,,10.22,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+657,_dim_ligestilling,2010-2012,2022-2024,,,0.79,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+661,_dim_ligestilling,2010-2012,2022-2024,,,0.87,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+665,_dim_ligestilling,2010-2012,2022-2024,,,0.34,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+671,_dim_ligestilling,2010-2012,2022-2024,,,-10.97,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+706,_dim_ligestilling,2010-2012,2022-2024,,,10.18,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+707,_dim_ligestilling,2010-2012,2022-2024,,,5.19,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+710,_dim_ligestilling,2010-2012,2022-2024,,,3.77,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+727,_dim_ligestilling,2010-2012,2022-2024,,,20.91,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+730,_dim_ligestilling,2010-2012,2022-2024,,,-3.07,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+740,_dim_ligestilling,2010-2012,2022-2024,,,4.02,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+741,_dim_ligestilling,2010-2012,2022-2024,,,24.15,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+746,_dim_ligestilling,2010-2012,2022-2024,,,3.59,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+751,_dim_ligestilling,2010-2012,2022-2024,,,4.71,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+756,_dim_ligestilling,2010-2012,2022-2024,,,-3.37,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+760,_dim_ligestilling,2010-2012,2022-2024,,,7.88,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+766,_dim_ligestilling,2010-2012,2022-2024,,,4.86,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+773,_dim_ligestilling,2010-2012,2022-2024,,,19.29,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+779,_dim_ligestilling,2010-2012,2022-2024,,,12.43,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+787,_dim_ligestilling,2010-2012,2022-2024,,,-0.48,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+791,_dim_ligestilling,2010-2012,2022-2024,,,1.8,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+810,_dim_ligestilling,2010-2012,2022-2024,,,19.92,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+813,_dim_ligestilling,2010-2012,2022-2024,,,0.44,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+820,_dim_ligestilling,2010-2012,2022-2024,,,5.67,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+825,_dim_ligestilling,2010-2012,2022-2024,,,23.8,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+840,_dim_ligestilling,2010-2012,2022-2024,,,6.21,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+846,_dim_ligestilling,2010-2012,2022-2024,,,6.82,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+849,_dim_ligestilling,2010-2012,2022-2024,,,11.25,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+851,_dim_ligestilling,2010-2012,2022-2024,,,3.13,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+860,_dim_ligestilling,2010-2012,2022-2024,,,4.64,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
 101,_dim_lighed,2010-2012,2022-2024,,,5.77,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
 147,_dim_lighed,2010-2012,2022-2024,,,6.69,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
 151,_dim_lighed,2010-2012,2022-2024,,,3.01,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
@@ -1301,104 +1301,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,_dim_vand,2010-2012,2022-2024,,,6.76,tempo,15,Danmarks Statistik,vandindvinding
 851,_dim_vand,2010-2012,2022-2024,,,12.77,rigtig,15,Danmarks Statistik,vandindvinding
 860,_dim_vand,2010-2012,2022-2024,,,5.99,tempo,15,Danmarks Statistik,vandindvinding
-101,_dim_velfaerd,2010-2012,2023-2025,,,9.15,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-147,_dim_velfaerd,2010-2012,2023-2025,,,-3.79,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-151,_dim_velfaerd,2010-2012,2023-2025,,,-16.96,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-153,_dim_velfaerd,2010-2012,2023-2025,,,-12.19,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-155,_dim_velfaerd,2010-2012,2023-2025,,,-4.06,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-157,_dim_velfaerd,2010-2012,2023-2025,,,-8.41,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-159,_dim_velfaerd,2010-2012,2023-2025,,,-10.15,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-161,_dim_velfaerd,2010-2012,2023-2025,,,-9.9,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-163,_dim_velfaerd,2010-2012,2023-2025,,,-2.39,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-165,_dim_velfaerd,2010-2012,2023-2025,,,2.78,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-167,_dim_velfaerd,2010-2012,2023-2025,,,2.76,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-169,_dim_velfaerd,2010-2012,2023-2025,,,-16.03,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-173,_dim_velfaerd,2010-2012,2023-2025,,,-5.51,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-175,_dim_velfaerd,2010-2012,2023-2025,,,-5.45,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-183,_dim_velfaerd,2010-2012,2023-2025,,,7.72,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-185,_dim_velfaerd,2010-2012,2023-2025,,,-4.69,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-187,_dim_velfaerd,2010-2012,2023-2025,,,-27.89,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-190,_dim_velfaerd,2010-2012,2023-2025,,,-11.02,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-201,_dim_velfaerd,2010-2012,2023-2025,,,-13.69,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-210,_dim_velfaerd,2010-2012,2023-2025,,,-12.85,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-217,_dim_velfaerd,2010-2012,2023-2025,,,-0.4,stagneret,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-219,_dim_velfaerd,2010-2012,2023-2025,,,-7.85,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-223,_dim_velfaerd,2010-2012,2023-2025,,,-19.44,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-230,_dim_velfaerd,2010-2012,2023-2025,,,-1.64,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-240,_dim_velfaerd,2010-2012,2023-2025,,,-9.86,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-250,_dim_velfaerd,2010-2012,2023-2025,,,-14.66,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-253,_dim_velfaerd,2010-2012,2023-2025,,,-11.75,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-259,_dim_velfaerd,2010-2012,2023-2025,,,-13.27,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-260,_dim_velfaerd,2010-2012,2023-2025,,,-3.97,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-265,_dim_velfaerd,2010-2012,2023-2025,,,-5.49,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-269,_dim_velfaerd,2010-2012,2023-2025,,,-12.09,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-270,_dim_velfaerd,2010-2012,2023-2025,,,-8.4,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-306,_dim_velfaerd,2010-2012,2023-2025,,,6.96,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-316,_dim_velfaerd,2010-2012,2023-2025,,,2.34,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-320,_dim_velfaerd,2010-2012,2023-2025,,,-6.49,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-326,_dim_velfaerd,2010-2012,2023-2025,,,-5.37,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-329,_dim_velfaerd,2010-2012,2023-2025,,,3.18,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-330,_dim_velfaerd,2010-2012,2023-2025,,,-16.26,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-336,_dim_velfaerd,2010-2012,2023-2025,,,4.74,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-340,_dim_velfaerd,2010-2012,2023-2025,,,-14.18,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-350,_dim_velfaerd,2010-2012,2023-2025,,,-8.96,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-360,_dim_velfaerd,2010-2012,2023-2025,,,-5.44,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-370,_dim_velfaerd,2010-2012,2023-2025,,,-14.52,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-376,_dim_velfaerd,2010-2012,2023-2025,,,-20.84,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-390,_dim_velfaerd,2010-2012,2023-2025,,,-15.4,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-400,_dim_velfaerd,2010-2012,2023-2025,,,-18.12,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-410,_dim_velfaerd,2010-2012,2023-2025,,,-17.87,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-420,_dim_velfaerd,2010-2012,2023-2025,,,-9.94,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-430,_dim_velfaerd,2010-2012,2023-2025,,,-6.03,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-440,_dim_velfaerd,2010-2012,2023-2025,,,-25.53,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-450,_dim_velfaerd,2010-2012,2023-2025,,,-18.38,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-461,_dim_velfaerd,2010-2012,2023-2025,,,-7.98,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-479,_dim_velfaerd,2010-2012,2023-2025,,,3.59,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-480,_dim_velfaerd,2010-2012,2023-2025,,,-25.07,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-482,_dim_velfaerd,2010-2012,2023-2025,,,-11.71,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-492,_dim_velfaerd,2010-2012,2023-2025,,,-13.56,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-510,_dim_velfaerd,2010-2012,2023-2025,,,-15.57,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-530,_dim_velfaerd,2010-2012,2023-2025,,,10.92,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-540,_dim_velfaerd,2010-2012,2023-2025,,,-12.5,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-550,_dim_velfaerd,2010-2012,2023-2025,,,-4.77,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-561,_dim_velfaerd,2010-2012,2023-2025,,,10.38,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-563,_dim_velfaerd,2010-2012,2022-2025,,,10.68,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-573,_dim_velfaerd,2010-2012,2023-2025,,,5.75,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-575,_dim_velfaerd,2010-2012,2023-2025,,,0.27,stagneret,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-580,_dim_velfaerd,2010-2012,2023-2025,,,-8.06,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-607,_dim_velfaerd,2010-2012,2023-2025,,,-11.94,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-615,_dim_velfaerd,2010-2012,2023-2025,,,-2.23,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-621,_dim_velfaerd,2010-2012,2023-2025,,,-2.45,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-630,_dim_velfaerd,2010-2012,2023-2025,,,-3.4,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-657,_dim_velfaerd,2010-2012,2023-2025,,,4.66,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-661,_dim_velfaerd,2010-2012,2023-2025,,,-0.9,stagneret,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-665,_dim_velfaerd,2010-2012,2023-2025,,,-5.91,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-671,_dim_velfaerd,2010-2012,2023-2025,,,-4.15,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-706,_dim_velfaerd,2010-2012,2023-2025,,,2.87,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-707,_dim_velfaerd,2010-2012,2023-2025,,,3.33,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-710,_dim_velfaerd,2010-2012,2023-2025,,,3.11,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-727,_dim_velfaerd,2010-2012,2023-2025,,,1.34,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-730,_dim_velfaerd,2010-2012,2023-2025,,,-3.92,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-740,_dim_velfaerd,2010-2012,2023-2025,,,1.82,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-741,_dim_velfaerd,2010-2012,2023-2025,,,-19.48,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-746,_dim_velfaerd,2010-2012,2023-2025,,,-1.21,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-751,_dim_velfaerd,2010-2012,2023-2025,,,3.85,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-756,_dim_velfaerd,2010-2012,2023-2025,,,-17.02,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-760,_dim_velfaerd,2010-2012,2023-2025,,,3.19,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-766,_dim_velfaerd,2010-2012,2023-2025,,,-9.48,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-773,_dim_velfaerd,2010-2012,2023-2025,,,1.6,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-779,_dim_velfaerd,2010-2012,2023-2025,,,-13.48,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-787,_dim_velfaerd,2010-2012,2023-2025,,,-0.01,stagneret,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-791,_dim_velfaerd,2010-2012,2023-2025,,,-0.29,stagneret,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-810,_dim_velfaerd,2010-2012,2023-2025,,,-4.54,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-813,_dim_velfaerd,2010-2012,2023-2025,,,-11.77,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-820,_dim_velfaerd,2010-2012,2023-2025,,,7.41,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-825,_dim_velfaerd,2010-2012,2023-2025,,,-82.78,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-840,_dim_velfaerd,2010-2012,2023-2025,,,-1.55,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-846,_dim_velfaerd,2010-2012,2023-2025,,,-1.3,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-849,_dim_velfaerd,2010-2012,2023-2025,,,-6.22,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-851,_dim_velfaerd,2010-2012,2023-2025,,,-5.83,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
-860,_dim_velfaerd,2010-2012,2023-2025,,,-10.68,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+101,_dim_velfaerd,2010-2012,2023-2025,,,8.05,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+147,_dim_velfaerd,2010-2012,2023-2025,,,-5.45,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+151,_dim_velfaerd,2010-2012,2023-2025,,,-17.84,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+153,_dim_velfaerd,2010-2012,2023-2025,,,-12.68,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+155,_dim_velfaerd,2010-2012,2023-2025,,,-5.31,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+157,_dim_velfaerd,2010-2012,2023-2025,,,-13.28,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+159,_dim_velfaerd,2010-2012,2023-2025,,,-11.22,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+161,_dim_velfaerd,2010-2012,2023-2025,,,-10.4,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+163,_dim_velfaerd,2010-2012,2023-2025,,,-3.29,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+165,_dim_velfaerd,2010-2012,2023-2025,,,2.39,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+167,_dim_velfaerd,2010-2012,2023-2025,,,1.87,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+169,_dim_velfaerd,2010-2012,2023-2025,,,-16.49,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+173,_dim_velfaerd,2010-2012,2023-2025,,,-8.15,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+175,_dim_velfaerd,2010-2012,2023-2025,,,-6.25,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+183,_dim_velfaerd,2010-2012,2023-2025,,,7.17,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+185,_dim_velfaerd,2010-2012,2023-2025,,,-5.66,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+187,_dim_velfaerd,2010-2012,2023-2025,,,-28.55,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+190,_dim_velfaerd,2010-2012,2023-2025,,,-12.03,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+201,_dim_velfaerd,2010-2012,2023-2025,,,-14.23,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+210,_dim_velfaerd,2010-2012,2023-2025,,,-13.98,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+217,_dim_velfaerd,2010-2012,2023-2025,,,-1.62,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+219,_dim_velfaerd,2010-2012,2023-2025,,,-8.85,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+223,_dim_velfaerd,2010-2012,2023-2025,,,-20.82,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+230,_dim_velfaerd,2010-2012,2023-2025,,,-4.89,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+240,_dim_velfaerd,2010-2012,2023-2025,,,-10.57,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+250,_dim_velfaerd,2010-2012,2023-2025,,,-15.46,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+253,_dim_velfaerd,2010-2012,2023-2025,,,-12.53,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+259,_dim_velfaerd,2010-2012,2023-2025,,,-14.12,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+260,_dim_velfaerd,2010-2012,2023-2025,,,-4.84,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+265,_dim_velfaerd,2010-2012,2023-2025,,,-6.54,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+269,_dim_velfaerd,2010-2012,2023-2025,,,-13.19,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+270,_dim_velfaerd,2010-2012,2023-2025,,,-9.35,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+306,_dim_velfaerd,2010-2012,2023-2025,,,5.87,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+316,_dim_velfaerd,2010-2012,2023-2025,,,1.49,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+320,_dim_velfaerd,2010-2012,2023-2025,,,-7.09,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+326,_dim_velfaerd,2010-2012,2023-2025,,,-6.77,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+329,_dim_velfaerd,2010-2012,2023-2025,,,2.62,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+330,_dim_velfaerd,2010-2012,2023-2025,,,-17.15,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+336,_dim_velfaerd,2010-2012,2023-2025,,,3.97,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+340,_dim_velfaerd,2010-2012,2023-2025,,,-15.03,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+350,_dim_velfaerd,2010-2012,2023-2025,,,-9.8,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+360,_dim_velfaerd,2010-2012,2023-2025,,,-6.82,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+370,_dim_velfaerd,2010-2012,2023-2025,,,-15.32,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+376,_dim_velfaerd,2010-2012,2023-2025,,,-21.94,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+390,_dim_velfaerd,2010-2012,2023-2025,,,-16.55,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+400,_dim_velfaerd,2010-2012,2023-2025,,,-18.97,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+410,_dim_velfaerd,2010-2012,2023-2025,,,-19.13,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+420,_dim_velfaerd,2010-2012,2023-2025,,,-10.67,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+430,_dim_velfaerd,2010-2012,2023-2025,,,-6.65,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+440,_dim_velfaerd,2010-2012,2023-2025,,,-26.57,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+450,_dim_velfaerd,2010-2012,2023-2025,,,-19.31,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+461,_dim_velfaerd,2010-2012,2023-2025,,,-8.79,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+479,_dim_velfaerd,2010-2012,2023-2025,,,2.59,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+480,_dim_velfaerd,2010-2012,2023-2025,,,-25.83,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+482,_dim_velfaerd,2010-2012,2023-2025,,,-12.98,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+492,_dim_velfaerd,2010-2012,2023-2025,,,-14.11,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+510,_dim_velfaerd,2010-2012,2023-2025,,,-16.37,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+530,_dim_velfaerd,2010-2012,2023-2025,,,6.39,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+540,_dim_velfaerd,2010-2012,2023-2025,,,-13.23,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+550,_dim_velfaerd,2010-2012,2023-2025,,,-6.77,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+561,_dim_velfaerd,2010-2012,2023-2025,,,9.47,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+563,_dim_velfaerd,2010-2012,2022-2025,,,10.18,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+573,_dim_velfaerd,2010-2012,2023-2025,,,4.39,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+575,_dim_velfaerd,2010-2012,2023-2025,,,-6.22,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+580,_dim_velfaerd,2010-2012,2023-2025,,,-9.23,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+607,_dim_velfaerd,2010-2012,2023-2025,,,-12.9,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+615,_dim_velfaerd,2010-2012,2023-2025,,,-2.95,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+621,_dim_velfaerd,2010-2012,2023-2025,,,-3.29,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+630,_dim_velfaerd,2010-2012,2023-2025,,,-4.41,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+657,_dim_velfaerd,2010-2012,2023-2025,,,3.77,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+661,_dim_velfaerd,2010-2012,2023-2025,,,-1.8,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+665,_dim_velfaerd,2010-2012,2023-2025,,,-7.88,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+671,_dim_velfaerd,2010-2012,2023-2025,,,-5.26,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+706,_dim_velfaerd,2010-2012,2023-2025,,,2.0,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+707,_dim_velfaerd,2010-2012,2023-2025,,,2.22,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+710,_dim_velfaerd,2010-2012,2023-2025,,,2.28,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+727,_dim_velfaerd,2010-2012,2023-2025,,,0.41,stagneret,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+730,_dim_velfaerd,2010-2012,2023-2025,,,-4.7,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+740,_dim_velfaerd,2010-2012,2023-2025,,,0.57,stagneret,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+741,_dim_velfaerd,2010-2012,2023-2025,,,-20.8,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+746,_dim_velfaerd,2010-2012,2023-2025,,,-2.19,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+751,_dim_velfaerd,2010-2012,2023-2025,,,2.44,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+756,_dim_velfaerd,2010-2012,2023-2025,,,-18.07,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+760,_dim_velfaerd,2010-2012,2023-2025,,,1.98,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+766,_dim_velfaerd,2010-2012,2023-2025,,,-10.39,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+773,_dim_velfaerd,2010-2012,2023-2025,,,0.24,stagneret,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+779,_dim_velfaerd,2010-2012,2023-2025,,,-14.79,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+787,_dim_velfaerd,2010-2012,2023-2025,,,-1.23,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+791,_dim_velfaerd,2010-2012,2023-2025,,,-1.36,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+810,_dim_velfaerd,2010-2012,2023-2025,,,-5.46,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+813,_dim_velfaerd,2010-2012,2023-2025,,,-12.78,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+820,_dim_velfaerd,2010-2012,2023-2025,,,5.98,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+825,_dim_velfaerd,2010-2012,2023-2025,,,-83.36,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+840,_dim_velfaerd,2010-2012,2023-2025,,,-2.78,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+846,_dim_velfaerd,2010-2012,2023-2025,,,-2.47,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+849,_dim_velfaerd,2010-2012,2023-2025,,,-7.08,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+851,_dim_velfaerd,2010-2012,2023-2025,,,-6.81,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
+860,_dim_velfaerd,2010-2012,2023-2025,,,-11.89,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
 101,alkohol,2017,2025,23.5,17.7,-24.68,rigtig,2,Danmarks Statistik,
 147,alkohol,2017,2025,24.1,18.2,-24.48,rigtig,2,Danmarks Statistik,
 151,alkohol,2017,2025,18.2,12.6,-30.77,rigtig,2,Danmarks Statistik,
@@ -2575,104 +2575,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,daycare_ratio,2023,2024,5.9,5.7,-3.39,rigtig,2,Danmarks Statistik,
 851,daycare_ratio,2023,2024,5.8,5.9,1.72,forkert,2,Danmarks Statistik,
 860,daycare_ratio,2023,2024,6.5,6.0,-7.69,rigtig,2,Danmarks Statistik,
-101,disposable_income,2010-2012,2022-2024,188817.6667,279130.6667,47.83,rigtig,15,Danmarks Statistik,
-147,disposable_income,2010-2012,2022-2024,225045.6667,328873.6667,46.14,rigtig,15,Danmarks Statistik,
-151,disposable_income,2010-2012,2022-2024,202112.3333,275744.6667,36.43,rigtig,15,Danmarks Statistik,
-153,disposable_income,2010-2012,2022-2024,185164.3333,242323.0,30.87,tempo,15,Danmarks Statistik,
-155,disposable_income,2010-2012,2022-2024,256503.3333,365195.6667,42.37,rigtig,15,Danmarks Statistik,
-157,disposable_income,2010-2012,2022-2024,337383.6667,558562.0,65.56,rigtig,15,Danmarks Statistik,
-159,disposable_income,2010-2012,2022-2024,212890.3333,299272.0,40.58,rigtig,15,Danmarks Statistik,
-161,disposable_income,2010-2012,2022-2024,203071.3333,270442.0,33.18,tempo,15,Danmarks Statistik,
-163,disposable_income,2010-2012,2022-2024,203191.3333,277971.6667,36.8,rigtig,15,Danmarks Statistik,
-165,disposable_income,2010-2012,2022-2024,184428.3333,240691.6667,30.51,tempo,15,Danmarks Statistik,
-167,disposable_income,2010-2012,2022-2024,196968.0,271853.0,38.02,rigtig,15,Danmarks Statistik,
-169,disposable_income,2010-2012,2022-2024,198724.6667,260155.0,30.91,tempo,15,Danmarks Statistik,
-173,disposable_income,2010-2012,2022-2024,263159.6667,389412.0,47.98,rigtig,15,Danmarks Statistik,
-175,disposable_income,2010-2012,2022-2024,196381.0,271624.3333,38.31,rigtig,15,Danmarks Statistik,
-183,disposable_income,2010-2012,2022-2024,181945.0,240315.0,32.08,tempo,15,Danmarks Statistik,
-185,disposable_income,2010-2012,2022-2024,208543.3333,289139.3333,38.65,rigtig,15,Danmarks Statistik,
-187,disposable_income,2010-2012,2022-2024,226087.6667,290707.0,28.58,tempo,15,Danmarks Statistik,
-190,disposable_income,2010-2012,2022-2024,255618.6667,360045.0,40.85,rigtig,15,Danmarks Statistik,
-201,disposable_income,2010-2012,2022-2024,260052.3333,353945.0,36.11,tempo,15,Danmarks Statistik,
-210,disposable_income,2010-2012,2022-2024,236483.6667,327643.0,38.55,rigtig,15,Danmarks Statistik,
-217,disposable_income,2010-2012,2022-2024,213908.3333,299175.3333,39.86,rigtig,15,Danmarks Statistik,
-219,disposable_income,2010-2012,2022-2024,224305.0,306228.3333,36.52,rigtig,15,Danmarks Statistik,
-223,disposable_income,2010-2012,2022-2024,314220.0,438249.0,39.47,rigtig,15,Danmarks Statistik,
-230,disposable_income,2010-2012,2022-2024,319465.0,501849.0,57.09,rigtig,15,Danmarks Statistik,
-240,disposable_income,2010-2012,2022-2024,232814.0,311644.0,33.86,tempo,15,Danmarks Statistik,
-250,disposable_income,2010-2012,2022-2024,206807.0,279010.6667,34.91,tempo,15,Danmarks Statistik,
-253,disposable_income,2010-2012,2022-2024,222258.6667,297455.6667,33.83,tempo,15,Danmarks Statistik,
-259,disposable_income,2010-2012,2022-2024,202829.0,279033.3333,37.57,rigtig,15,Danmarks Statistik,
-260,disposable_income,2010-2012,2022-2024,192231.6667,259759.6667,35.13,tempo,15,Danmarks Statistik,
-265,disposable_income,2010-2012,2022-2024,219573.6667,309763.6667,41.08,rigtig,15,Danmarks Statistik,
-269,disposable_income,2010-2012,2022-2024,233196.6667,327867.3333,40.6,rigtig,15,Danmarks Statistik,
-270,disposable_income,2010-2012,2022-2024,212051.6667,285225.6667,34.51,tempo,15,Danmarks Statistik,
-306,disposable_income,2010-2012,2022-2024,181291.6667,245319.6667,35.32,tempo,15,Danmarks Statistik,
-316,disposable_income,2010-2012,2022-2024,196990.6667,270426.0,37.28,rigtig,15,Danmarks Statistik,
-320,disposable_income,2010-2012,2022-2024,192713.6667,257375.0,33.55,tempo,15,Danmarks Statistik,
-326,disposable_income,2010-2012,2022-2024,190568.0,265377.3333,39.26,rigtig,15,Danmarks Statistik,
-329,disposable_income,2010-2012,2022-2024,198444.6667,268275.3333,35.19,tempo,15,Danmarks Statistik,
-330,disposable_income,2010-2012,2022-2024,187143.6667,251392.3333,34.33,tempo,15,Danmarks Statistik,
-336,disposable_income,2010-2012,2022-2024,198094.3333,269639.3333,36.12,tempo,15,Danmarks Statistik,
-340,disposable_income,2010-2012,2022-2024,195390.3333,268279.0,37.3,rigtig,15,Danmarks Statistik,
-350,disposable_income,2010-2012,2022-2024,219188.0,295744.3333,34.93,tempo,15,Danmarks Statistik,
-360,disposable_income,2010-2012,2022-2024,169258.0,229716.0,35.72,tempo,15,Danmarks Statistik,
-370,disposable_income,2010-2012,2022-2024,193401.6667,259200.6667,34.02,tempo,15,Danmarks Statistik,
-376,disposable_income,2010-2012,2022-2024,176786.0,240680.3333,36.14,tempo,15,Danmarks Statistik,
-390,disposable_income,2010-2012,2022-2024,182750.0,249346.3333,36.44,rigtig,15,Danmarks Statistik,
-400,disposable_income,2010-2012,2022-2024,175829.6667,235065.0,33.69,tempo,15,Danmarks Statistik,
-410,disposable_income,2010-2012,2022-2024,199892.6667,279788.6667,39.97,rigtig,15,Danmarks Statistik,
-420,disposable_income,2010-2012,2022-2024,185227.0,247724.0,33.74,tempo,15,Danmarks Statistik,
-430,disposable_income,2010-2012,2022-2024,184000.6667,248925.0,35.28,tempo,15,Danmarks Statistik,
-440,disposable_income,2010-2012,2022-2024,189448.0,261547.3333,38.06,rigtig,15,Danmarks Statistik,
-450,disposable_income,2010-2012,2022-2024,185918.6667,250594.0,34.79,tempo,15,Danmarks Statistik,
-461,disposable_income,2010-2012,2022-2024,186268.3333,248844.6667,33.59,tempo,15,Danmarks Statistik,
-479,disposable_income,2010-2012,2022-2024,190046.6667,258984.0,36.27,tempo,15,Danmarks Statistik,
-480,disposable_income,2010-2012,2022-2024,183767.3333,246849.0,34.33,tempo,15,Danmarks Statistik,
-482,disposable_income,2010-2012,2022-2024,167089.0,226197.0,35.38,tempo,15,Danmarks Statistik,
-492,disposable_income,2010-2012,2022-2024,176216.0,229232.3333,30.09,tempo,15,Danmarks Statistik,
-510,disposable_income,2010-2012,2022-2024,183157.0,246228.0,34.44,tempo,15,Danmarks Statistik,
-530,disposable_income,2010-2012,2022-2024,195977.6667,316794.3333,61.65,rigtig,15,Danmarks Statistik,
-540,disposable_income,2010-2012,2022-2024,186053.0,249381.6667,34.04,tempo,15,Danmarks Statistik,
-550,disposable_income,2010-2012,2022-2024,173239.3333,245112.3333,41.49,rigtig,15,Danmarks Statistik,
-561,disposable_income,2010-2012,2022-2024,193505.3333,264378.3333,36.63,rigtig,15,Danmarks Statistik,
-563,disposable_income,2010-2012,2022-2024,215272.6667,272627.3333,26.64,tempo,15,Danmarks Statistik,
-573,disposable_income,2010-2012,2022-2024,187936.6667,260815.6667,38.78,rigtig,15,Danmarks Statistik,
-575,disposable_income,2010-2012,2022-2024,184118.6667,326765.0,77.48,rigtig,15,Danmarks Statistik,
-580,disposable_income,2010-2012,2022-2024,184495.6667,251343.6667,36.23,tempo,15,Danmarks Statistik,
-607,disposable_income,2010-2012,2022-2024,192886.0,260275.0,34.94,tempo,15,Danmarks Statistik,
-615,disposable_income,2010-2012,2022-2024,193661.0,264240.6667,36.44,rigtig,15,Danmarks Statistik,
-621,disposable_income,2010-2012,2022-2024,198830.3333,269184.3333,35.38,tempo,15,Danmarks Statistik,
-630,disposable_income,2010-2012,2022-2024,203182.6667,282270.6667,38.92,rigtig,15,Danmarks Statistik,
-657,disposable_income,2010-2012,2022-2024,196325.6667,267327.6667,36.17,tempo,15,Danmarks Statistik,
-661,disposable_income,2010-2012,2022-2024,195257.0,262954.6667,34.67,tempo,15,Danmarks Statistik,
-665,disposable_income,2010-2012,2022-2024,188613.3333,266336.0,41.21,rigtig,15,Danmarks Statistik,
-671,disposable_income,2010-2012,2022-2024,188490.3333,249090.6667,32.15,tempo,15,Danmarks Statistik,
-706,disposable_income,2010-2012,2022-2024,196626.3333,265981.3333,35.27,tempo,15,Danmarks Statistik,
-707,disposable_income,2010-2012,2022-2024,180065.0,244004.0,35.51,tempo,15,Danmarks Statistik,
-710,disposable_income,2010-2012,2022-2024,205102.6667,281432.6667,37.22,rigtig,15,Danmarks Statistik,
-727,disposable_income,2010-2012,2022-2024,205124.3333,274958.0,34.04,tempo,15,Danmarks Statistik,
-730,disposable_income,2010-2012,2022-2024,185864.3333,251367.6667,35.24,tempo,15,Danmarks Statistik,
-740,disposable_income,2010-2012,2022-2024,200224.6667,283304.3333,41.49,rigtig,15,Danmarks Statistik,
-741,disposable_income,2010-2012,2022-2024,177609.3333,244608.0,37.72,rigtig,15,Danmarks Statistik,
-746,disposable_income,2010-2012,2022-2024,218229.0,301605.6667,38.21,rigtig,15,Danmarks Statistik,
-751,disposable_income,2010-2012,2022-2024,196463.3333,271439.6667,38.16,rigtig,15,Danmarks Statistik,
-756,disposable_income,2010-2012,2022-2024,189468.6667,258336.3333,36.35,tempo,15,Danmarks Statistik,
-760,disposable_income,2010-2012,2022-2024,191675.6667,261285.3333,36.32,tempo,15,Danmarks Statistik,
-766,disposable_income,2010-2012,2022-2024,196609.0,270616.0,37.64,rigtig,15,Danmarks Statistik,
-773,disposable_income,2010-2012,2022-2024,173083.3333,241708.3333,39.65,rigtig,15,Danmarks Statistik,
-779,disposable_income,2010-2012,2022-2024,183362.3333,252959.3333,37.96,rigtig,15,Danmarks Statistik,
-787,disposable_income,2010-2012,2022-2024,180649.3333,247758.0,37.15,rigtig,15,Danmarks Statistik,
-791,disposable_income,2010-2012,2022-2024,194712.3333,262907.0,35.02,tempo,15,Danmarks Statistik,
-810,disposable_income,2010-2012,2022-2024,181742.3333,250202.6667,37.67,rigtig,15,Danmarks Statistik,
-813,disposable_income,2010-2012,2022-2024,186845.0,251132.0,34.41,tempo,15,Danmarks Statistik,
-820,disposable_income,2010-2012,2022-2024,176763.3333,249182.0,40.97,rigtig,15,Danmarks Statistik,
-825,disposable_income,2010-2012,2022-2024,176301.0,232874.3333,32.09,tempo,15,Danmarks Statistik,
-840,disposable_income,2010-2012,2022-2024,197475.0,284032.3333,43.83,rigtig,15,Danmarks Statistik,
-846,disposable_income,2010-2012,2022-2024,185347.6667,256103.0,38.17,rigtig,15,Danmarks Statistik,
-849,disposable_income,2010-2012,2022-2024,185076.6667,248940.0,34.51,tempo,15,Danmarks Statistik,
-851,disposable_income,2010-2012,2022-2024,188078.3333,256767.0,36.52,rigtig,15,Danmarks Statistik,
-860,disposable_income,2010-2012,2022-2024,183225.3333,250450.3333,36.69,rigtig,15,Danmarks Statistik,
+101,disposable_income,2010-2012,2022-2024,168702.3333,236498.6667,40.19,rigtig,15,Danmarks Statistik,
+147,disposable_income,2010-2012,2022-2024,195882.3333,263547.0,34.54,rigtig,15,Danmarks Statistik,
+151,disposable_income,2010-2012,2022-2024,189243.3333,246485.0,30.25,rigtig,15,Danmarks Statistik,
+153,disposable_income,2010-2012,2022-2024,176319.6667,224642.0,27.41,tempo,15,Danmarks Statistik,
+155,disposable_income,2010-2012,2022-2024,237351.0,317175.3333,33.63,rigtig,15,Danmarks Statistik,
+157,disposable_income,2010-2012,2022-2024,248657.3333,326914.3333,31.47,rigtig,15,Danmarks Statistik,
+159,disposable_income,2010-2012,2022-2024,196805.0,261885.0,33.07,rigtig,15,Danmarks Statistik,
+161,disposable_income,2010-2012,2022-2024,191118.3333,247946.0,29.73,rigtig,15,Danmarks Statistik,
+163,disposable_income,2010-2012,2022-2024,193288.0,252252.0,30.51,rigtig,15,Danmarks Statistik,
+165,disposable_income,2010-2012,2022-2024,176249.3333,225224.6667,27.79,tempo,15,Danmarks Statistik,
+167,disposable_income,2010-2012,2022-2024,188920.6667,248952.3333,31.78,rigtig,15,Danmarks Statistik,
+169,disposable_income,2010-2012,2022-2024,190637.3333,243405.3333,27.68,tempo,15,Danmarks Statistik,
+173,disposable_income,2010-2012,2022-2024,222042.6667,287490.6667,29.48,rigtig,15,Danmarks Statistik,
+175,disposable_income,2010-2012,2022-2024,187707.6667,249060.6667,32.69,rigtig,15,Danmarks Statistik,
+183,disposable_income,2010-2012,2022-2024,175304.3333,224863.3333,28.27,tempo,15,Danmarks Statistik,
+185,disposable_income,2010-2012,2022-2024,204553.6667,269777.6667,31.89,rigtig,15,Danmarks Statistik,
+187,disposable_income,2010-2012,2022-2024,219258.6667,271797.3333,23.96,tempo,15,Danmarks Statistik,
+190,disposable_income,2010-2012,2022-2024,231321.3333,309370.3333,33.74,rigtig,15,Danmarks Statistik,
+201,disposable_income,2010-2012,2022-2024,241930.3333,320066.0,32.3,rigtig,15,Danmarks Statistik,
+210,disposable_income,2010-2012,2022-2024,209103.3333,273143.0,30.63,rigtig,15,Danmarks Statistik,
+217,disposable_income,2010-2012,2022-2024,193562.0,254304.0,31.38,rigtig,15,Danmarks Statistik,
+219,disposable_income,2010-2012,2022-2024,211592.6667,274063.3333,29.52,rigtig,15,Danmarks Statistik,
+223,disposable_income,2010-2012,2022-2024,242938.0,315291.0,29.78,rigtig,15,Danmarks Statistik,
+230,disposable_income,2010-2012,2022-2024,250221.6667,336080.3333,34.31,rigtig,15,Danmarks Statistik,
+240,disposable_income,2010-2012,2022-2024,229861.3333,296149.6667,28.84,tempo,15,Danmarks Statistik,
+250,disposable_income,2010-2012,2022-2024,197135.0,254983.0,29.34,tempo,15,Danmarks Statistik,
+253,disposable_income,2010-2012,2022-2024,211554.6667,271626.3333,28.4,tempo,15,Danmarks Statistik,
+259,disposable_income,2010-2012,2022-2024,192386.0,253252.0,31.64,rigtig,15,Danmarks Statistik,
+260,disposable_income,2010-2012,2022-2024,185969.3333,239934.6667,29.02,tempo,15,Danmarks Statistik,
+265,disposable_income,2010-2012,2022-2024,202357.3333,270570.0,33.71,rigtig,15,Danmarks Statistik,
+269,disposable_income,2010-2012,2022-2024,220401.0,292772.6667,32.84,rigtig,15,Danmarks Statistik,
+270,disposable_income,2010-2012,2022-2024,200733.6667,256623.0,27.84,tempo,15,Danmarks Statistik,
+306,disposable_income,2010-2012,2022-2024,171541.6667,219058.0,27.7,tempo,15,Danmarks Statistik,
+316,disposable_income,2010-2012,2022-2024,186783.3333,245295.3333,31.33,rigtig,15,Danmarks Statistik,
+320,disposable_income,2010-2012,2022-2024,185111.6667,239472.6667,29.37,rigtig,15,Danmarks Statistik,
+326,disposable_income,2010-2012,2022-2024,180964.0,234300.3333,29.47,rigtig,15,Danmarks Statistik,
+329,disposable_income,2010-2012,2022-2024,189265.3333,248371.3333,31.23,rigtig,15,Danmarks Statistik,
+330,disposable_income,2010-2012,2022-2024,178771.6667,228975.3333,28.08,tempo,15,Danmarks Statistik,
+336,disposable_income,2010-2012,2022-2024,188541.6667,246535.0,30.76,rigtig,15,Danmarks Statistik,
+340,disposable_income,2010-2012,2022-2024,186962.3333,245652.0,31.39,rigtig,15,Danmarks Statistik,
+350,disposable_income,2010-2012,2022-2024,210448.0,271558.6667,29.04,tempo,15,Danmarks Statistik,
+360,disposable_income,2010-2012,2022-2024,158792.0,200122.3333,26.03,tempo,15,Danmarks Statistik,
+370,disposable_income,2010-2012,2022-2024,184815.6667,237442.6667,28.48,tempo,15,Danmarks Statistik,
+376,disposable_income,2010-2012,2022-2024,168616.0,216637.6667,28.48,tempo,15,Danmarks Statistik,
+390,disposable_income,2010-2012,2022-2024,172805.3333,221863.0,28.39,tempo,15,Danmarks Statistik,
+400,disposable_income,2010-2012,2022-2024,166375.3333,212456.6667,27.7,tempo,15,Danmarks Statistik,
+410,disposable_income,2010-2012,2022-2024,185790.3333,243693.6667,31.17,rigtig,15,Danmarks Statistik,
+420,disposable_income,2010-2012,2022-2024,175471.3333,225671.3333,28.61,tempo,15,Danmarks Statistik,
+430,disposable_income,2010-2012,2022-2024,174968.3333,229081.3333,30.93,rigtig,15,Danmarks Statistik,
+440,disposable_income,2010-2012,2022-2024,176899.3333,231334.3333,30.77,rigtig,15,Danmarks Statistik,
+450,disposable_income,2010-2012,2022-2024,176067.3333,225841.6667,28.27,tempo,15,Danmarks Statistik,
+461,disposable_income,2010-2012,2022-2024,170855.6667,218560.0,27.92,tempo,15,Danmarks Statistik,
+479,disposable_income,2010-2012,2022-2024,175077.6667,226298.6667,29.26,tempo,15,Danmarks Statistik,
+480,disposable_income,2010-2012,2022-2024,173948.0,224298.0,28.95,tempo,15,Danmarks Statistik,
+482,disposable_income,2010-2012,2022-2024,157422.0,199114.0,26.48,tempo,15,Danmarks Statistik,
+492,disposable_income,2010-2012,2022-2024,161570.3333,203908.3333,26.2,tempo,15,Danmarks Statistik,
+510,disposable_income,2010-2012,2022-2024,172209.3333,221835.6667,28.82,tempo,15,Danmarks Statistik,
+530,disposable_income,2010-2012,2022-2024,183675.0,238760.3333,29.99,rigtig,15,Danmarks Statistik,
+540,disposable_income,2010-2012,2022-2024,171065.3333,220483.0,28.89,tempo,15,Danmarks Statistik,
+550,disposable_income,2010-2012,2022-2024,167557.3333,213638.0,27.5,tempo,15,Danmarks Statistik,
+561,disposable_income,2010-2012,2022-2024,178047.3333,231923.0,30.26,rigtig,15,Danmarks Statistik,
+563,disposable_income,2010-2012,2022-2024,195411.6667,240619.0,23.13,tempo,15,Danmarks Statistik,
+573,disposable_income,2010-2012,2022-2024,181159.3333,234072.6667,29.21,tempo,15,Danmarks Statistik,
+575,disposable_income,2010-2012,2022-2024,175980.6667,232419.3333,32.07,rigtig,15,Danmarks Statistik,
+580,disposable_income,2010-2012,2022-2024,172836.6667,221315.6667,28.05,tempo,15,Danmarks Statistik,
+607,disposable_income,2010-2012,2022-2024,180971.0,231987.6667,28.19,tempo,15,Danmarks Statistik,
+615,disposable_income,2010-2012,2022-2024,182662.6667,239993.6667,31.39,rigtig,15,Danmarks Statistik,
+621,disposable_income,2010-2012,2022-2024,183641.0,237781.6667,29.48,rigtig,15,Danmarks Statistik,
+630,disposable_income,2010-2012,2022-2024,188901.6667,249090.0,31.86,rigtig,15,Danmarks Statistik,
+657,disposable_income,2010-2012,2022-2024,183241.0,238171.0,29.98,rigtig,15,Danmarks Statistik,
+661,disposable_income,2010-2012,2022-2024,183236.0,235202.6667,28.36,tempo,15,Danmarks Statistik,
+665,disposable_income,2010-2012,2022-2024,174832.6667,222814.3333,27.44,tempo,15,Danmarks Statistik,
+671,disposable_income,2010-2012,2022-2024,176742.0,219796.6667,24.36,tempo,15,Danmarks Statistik,
+706,disposable_income,2010-2012,2022-2024,185248.6667,239313.0,29.18,tempo,15,Danmarks Statistik,
+707,disposable_income,2010-2012,2022-2024,171281.6667,218754.6667,27.72,tempo,15,Danmarks Statistik,
+710,disposable_income,2010-2012,2022-2024,199173.3333,261800.3333,31.44,rigtig,15,Danmarks Statistik,
+727,disposable_income,2010-2012,2022-2024,196368.6667,250348.3333,27.49,tempo,15,Danmarks Statistik,
+730,disposable_income,2010-2012,2022-2024,175639.6667,227951.6667,29.78,rigtig,15,Danmarks Statistik,
+740,disposable_income,2010-2012,2022-2024,189606.0,251660.0,32.73,rigtig,15,Danmarks Statistik,
+741,disposable_income,2010-2012,2022-2024,166590.6667,214066.0,28.5,tempo,15,Danmarks Statistik,
+746,disposable_income,2010-2012,2022-2024,209447.6667,275037.6667,31.32,rigtig,15,Danmarks Statistik,
+751,disposable_income,2010-2012,2022-2024,175947.0,225645.6667,28.25,tempo,15,Danmarks Statistik,
+756,disposable_income,2010-2012,2022-2024,180229.6667,232567.3333,29.04,tempo,15,Danmarks Statistik,
+760,disposable_income,2010-2012,2022-2024,180566.6667,230852.3333,27.85,tempo,15,Danmarks Statistik,
+766,disposable_income,2010-2012,2022-2024,188274.0,247141.3333,31.27,rigtig,15,Danmarks Statistik,
+773,disposable_income,2010-2012,2022-2024,164348.6667,213873.3333,30.13,rigtig,15,Danmarks Statistik,
+779,disposable_income,2010-2012,2022-2024,174678.3333,224951.6667,28.78,tempo,15,Danmarks Statistik,
+787,disposable_income,2010-2012,2022-2024,171583.3333,220651.6667,28.6,tempo,15,Danmarks Statistik,
+791,disposable_income,2010-2012,2022-2024,186779.3333,238234.3333,27.55,tempo,15,Danmarks Statistik,
+810,disposable_income,2010-2012,2022-2024,174190.6667,228666.6667,31.27,rigtig,15,Danmarks Statistik,
+813,disposable_income,2010-2012,2022-2024,174990.3333,222906.0,27.38,tempo,15,Danmarks Statistik,
+820,disposable_income,2010-2012,2022-2024,170542.6667,223278.0,30.92,rigtig,15,Danmarks Statistik,
+825,disposable_income,2010-2012,2022-2024,162393.0,207963.0,28.06,tempo,15,Danmarks Statistik,
+840,disposable_income,2010-2012,2022-2024,189468.3333,256207.6667,35.22,rigtig,15,Danmarks Statistik,
+846,disposable_income,2010-2012,2022-2024,175437.0,228074.3333,30.0,rigtig,15,Danmarks Statistik,
+849,disposable_income,2010-2012,2022-2024,176036.0,226154.3333,28.47,tempo,15,Danmarks Statistik,
+851,disposable_income,2010-2012,2022-2024,174489.0,226242.3333,29.66,rigtig,15,Danmarks Statistik,
+860,disposable_income,2010-2012,2022-2024,174020.6667,223138.6667,28.23,tempo,15,Danmarks Statistik,
 101,educated_staff,2015-2017,2022-2024,58.7294,48.156,-18.0,forkert,10,Danmarks Statistik,
 147,educated_staff,2015-2017,2022-2024,55.859,49.4685,-11.44,forkert,10,Danmarks Statistik,
 151,educated_staff,2015-2017,2022-2024,57.477,51.0015,-11.27,forkert,10,Danmarks Statistik,
@@ -4045,104 +4045,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,housing_no_wc,2010-2012,2024-2026,0.2506,0.1421,-43.29,rigtig,17,Danmarks Statistik,
 851,housing_no_wc,2010-2012,2024-2026,1.2188,0.6839,-43.88,rigtig,17,Danmarks Statistik,
 860,housing_no_wc,2010-2012,2024-2026,0.6216,0.4321,-30.49,rigtig,17,Danmarks Statistik,
-101,income_gender_gap,2010-2012,2022-2024,88.9269,83.6309,-5.96,forkert,15,Danmarks Statistik,
-147,income_gender_gap,2010-2012,2022-2024,82.2838,76.3712,-7.19,forkert,15,Danmarks Statistik,
-151,income_gender_gap,2010-2012,2022-2024,87.381,84.5806,-3.2,forkert,15,Danmarks Statistik,
-153,income_gender_gap,2010-2012,2022-2024,88.1292,85.1761,-3.35,forkert,15,Danmarks Statistik,
-155,income_gender_gap,2010-2012,2022-2024,78.1975,74.7436,-4.42,forkert,15,Danmarks Statistik,
-157,income_gender_gap,2010-2012,2022-2024,63.2541,68.6774,8.57,rigtig,15,Danmarks Statistik,
-159,income_gender_gap,2010-2012,2022-2024,87.6162,85.4192,-2.51,forkert,15,Danmarks Statistik,
-161,income_gender_gap,2010-2012,2022-2024,86.8023,85.4701,-1.53,forkert,15,Danmarks Statistik,
-163,income_gender_gap,2010-2012,2022-2024,88.0433,85.592,-2.78,forkert,15,Danmarks Statistik,
-165,income_gender_gap,2010-2012,2022-2024,91.2368,89.2583,-2.17,forkert,15,Danmarks Statistik,
-167,income_gender_gap,2010-2012,2022-2024,88.9014,85.4229,-3.91,forkert,15,Danmarks Statistik,
-169,income_gender_gap,2010-2012,2022-2024,86.5183,84.4649,-2.37,forkert,15,Danmarks Statistik,
-173,income_gender_gap,2010-2012,2022-2024,78.7601,81.9855,4.1,rigtig,15,Danmarks Statistik,
-175,income_gender_gap,2010-2012,2022-2024,89.9699,85.6196,-4.84,forkert,15,Danmarks Statistik,
-183,income_gender_gap,2010-2012,2022-2024,90.3794,87.4154,-3.28,forkert,15,Danmarks Statistik,
-185,income_gender_gap,2010-2012,2022-2024,86.0072,85.514,-0.57,stagneret,15,Danmarks Statistik,
-187,income_gender_gap,2010-2012,2022-2024,82.1012,81.4822,-0.75,stagneret,15,Danmarks Statistik,
-190,income_gender_gap,2010-2012,2022-2024,78.3055,78.0025,-0.39,stagneret,15,Danmarks Statistik,
-201,income_gender_gap,2010-2012,2022-2024,79.3008,78.4962,-1.01,stagneret,15,Danmarks Statistik,
-210,income_gender_gap,2010-2012,2022-2024,78.0057,78.283,0.36,stagneret,15,Danmarks Statistik,
-217,income_gender_gap,2010-2012,2022-2024,83.4871,80.3629,-3.74,forkert,15,Danmarks Statistik,
-219,income_gender_gap,2010-2012,2022-2024,82.6114,80.4218,-2.65,forkert,15,Danmarks Statistik,
-223,income_gender_gap,2010-2012,2022-2024,62.749,63.7135,1.54,stagneret,15,Danmarks Statistik,
-230,income_gender_gap,2010-2012,2022-2024,66.0819,64.6218,-2.21,forkert,15,Danmarks Statistik,
-240,income_gender_gap,2010-2012,2022-2024,82.2838,81.3961,-1.08,stagneret,15,Danmarks Statistik,
-250,income_gender_gap,2010-2012,2022-2024,85.843,82.0114,-4.46,forkert,15,Danmarks Statistik,
-253,income_gender_gap,2010-2012,2022-2024,82.2146,80.2203,-2.43,forkert,15,Danmarks Statistik,
-259,income_gender_gap,2010-2012,2022-2024,85.1838,81.1536,-4.73,forkert,15,Danmarks Statistik,
-260,income_gender_gap,2010-2012,2022-2024,88.6158,83.5197,-5.75,forkert,15,Danmarks Statistik,
-265,income_gender_gap,2010-2012,2022-2024,83.1565,79.2038,-4.75,forkert,15,Danmarks Statistik,
-269,income_gender_gap,2010-2012,2022-2024,78.3179,75.94,-3.04,forkert,15,Danmarks Statistik,
-270,income_gender_gap,2010-2012,2022-2024,84.9961,81.2223,-4.44,forkert,15,Danmarks Statistik,
-306,income_gender_gap,2010-2012,2022-2024,90.017,83.4018,-7.35,forkert,15,Danmarks Statistik,
-316,income_gender_gap,2010-2012,2022-2024,86.3252,81.0162,-6.15,forkert,15,Danmarks Statistik,
-320,income_gender_gap,2010-2012,2022-2024,86.1526,81.7734,-5.08,forkert,15,Danmarks Statistik,
-326,income_gender_gap,2010-2012,2022-2024,86.18,80.0495,-7.11,forkert,15,Danmarks Statistik,
-329,income_gender_gap,2010-2012,2022-2024,85.2863,81.0689,-4.95,forkert,15,Danmarks Statistik,
-330,income_gender_gap,2010-2012,2022-2024,87.1451,82.5095,-5.32,forkert,15,Danmarks Statistik,
-336,income_gender_gap,2010-2012,2022-2024,85.5362,81.0524,-5.24,forkert,15,Danmarks Statistik,
-340,income_gender_gap,2010-2012,2022-2024,85.9432,80.6056,-6.21,forkert,15,Danmarks Statistik,
-350,income_gender_gap,2010-2012,2022-2024,82.2588,81.197,-1.29,forkert,15,Danmarks Statistik,
-360,income_gender_gap,2010-2012,2022-2024,90.2375,82.1351,-8.98,forkert,15,Danmarks Statistik,
-370,income_gender_gap,2010-2012,2022-2024,86.2397,81.3843,-5.63,forkert,15,Danmarks Statistik,
-376,income_gender_gap,2010-2012,2022-2024,91.8125,84.7794,-7.66,forkert,15,Danmarks Statistik,
-390,income_gender_gap,2010-2012,2022-2024,90.1575,84.9055,-5.83,forkert,15,Danmarks Statistik,
-400,income_gender_gap,2010-2012,2022-2024,88.414,85.2395,-3.59,forkert,15,Danmarks Statistik,
-410,income_gender_gap,2010-2012,2022-2024,84.2067,76.5425,-9.1,forkert,15,Danmarks Statistik,
-420,income_gender_gap,2010-2012,2022-2024,86.8477,80.9622,-6.78,forkert,15,Danmarks Statistik,
-430,income_gender_gap,2010-2012,2022-2024,87.6885,81.4149,-7.15,forkert,15,Danmarks Statistik,
-440,income_gender_gap,2010-2012,2022-2024,84.7665,77.0554,-9.1,forkert,15,Danmarks Statistik,
-450,income_gender_gap,2010-2012,2022-2024,86.2258,80.8669,-6.21,forkert,15,Danmarks Statistik,
-461,income_gender_gap,2010-2012,2022-2024,86.9093,84.0177,-3.33,forkert,15,Danmarks Statistik,
-479,income_gender_gap,2010-2012,2022-2024,84.5497,81.573,-3.52,forkert,15,Danmarks Statistik,
-480,income_gender_gap,2010-2012,2022-2024,88.1017,80.1598,-9.01,forkert,15,Danmarks Statistik,
-482,income_gender_gap,2010-2012,2022-2024,89.6412,82.7594,-7.68,forkert,15,Danmarks Statistik,
-492,income_gender_gap,2010-2012,2022-2024,83.2108,80.3661,-3.42,forkert,15,Danmarks Statistik,
-510,income_gender_gap,2010-2012,2022-2024,87.0694,79.6465,-8.53,forkert,15,Danmarks Statistik,
-530,income_gender_gap,2010-2012,2022-2024,81.5168,62.8309,-22.92,forkert,15,Danmarks Statistik,
-540,income_gender_gap,2010-2012,2022-2024,83.4036,79.8115,-4.31,forkert,15,Danmarks Statistik,
-550,income_gender_gap,2010-2012,2022-2024,90.264,75.9639,-15.84,forkert,15,Danmarks Statistik,
-561,income_gender_gap,2010-2012,2022-2024,80.9411,77.0253,-4.84,forkert,15,Danmarks Statistik,
-563,income_gender_gap,2010-2012,2022-2024,75.5525,76.1821,0.83,stagneret,15,Danmarks Statistik,
-573,income_gender_gap,2010-2012,2022-2024,84.5386,75.2353,-11.0,forkert,15,Danmarks Statistik,
-575,income_gender_gap,2010-2012,2022-2024,85.5319,121.5692,42.13,rigtig,15,Danmarks Statistik,
-580,income_gender_gap,2010-2012,2022-2024,83.9032,77.6191,-7.49,forkert,15,Danmarks Statistik,
-607,income_gender_gap,2010-2012,2022-2024,82.6073,77.2125,-6.53,forkert,15,Danmarks Statistik,
-615,income_gender_gap,2010-2012,2022-2024,84.9701,79.1559,-6.84,forkert,15,Danmarks Statistik,
-621,income_gender_gap,2010-2012,2022-2024,82.5499,77.1356,-6.56,forkert,15,Danmarks Statistik,
-630,income_gender_gap,2010-2012,2022-2024,83.1146,77.1405,-7.19,forkert,15,Danmarks Statistik,
-657,income_gender_gap,2010-2012,2022-2024,81.4967,75.4716,-7.39,forkert,15,Danmarks Statistik,
-661,income_gender_gap,2010-2012,2022-2024,82.0985,76.5423,-6.77,forkert,15,Danmarks Statistik,
-665,income_gender_gap,2010-2012,2022-2024,81.2031,69.454,-14.47,forkert,15,Danmarks Statistik,
-671,income_gender_gap,2010-2012,2022-2024,82.7479,76.6641,-7.35,forkert,15,Danmarks Statistik,
-706,income_gender_gap,2010-2012,2022-2024,83.5569,81.167,-2.86,forkert,15,Danmarks Statistik,
-707,income_gender_gap,2010-2012,2022-2024,85.7739,79.0487,-7.84,forkert,15,Danmarks Statistik,
-710,income_gender_gap,2010-2012,2022-2024,83.797,77.3719,-7.67,forkert,15,Danmarks Statistik,
-727,income_gender_gap,2010-2012,2022-2024,84.1046,79.1436,-5.9,forkert,15,Danmarks Statistik,
-730,income_gender_gap,2010-2012,2022-2024,85.6383,79.5196,-7.14,forkert,15,Danmarks Statistik,
-740,income_gender_gap,2010-2012,2022-2024,84.9869,76.4091,-10.09,forkert,15,Danmarks Statistik,
-741,income_gender_gap,2010-2012,2022-2024,92.8395,80.6376,-13.14,forkert,15,Danmarks Statistik,
-746,income_gender_gap,2010-2012,2022-2024,81.96,76.3017,-6.9,forkert,15,Danmarks Statistik,
-751,income_gender_gap,2010-2012,2022-2024,85.9337,79.123,-7.93,forkert,15,Danmarks Statistik,
-756,income_gender_gap,2010-2012,2022-2024,84.0169,76.6114,-8.81,forkert,15,Danmarks Statistik,
-760,income_gender_gap,2010-2012,2022-2024,82.1234,73.4892,-10.51,forkert,15,Danmarks Statistik,
-766,income_gender_gap,2010-2012,2022-2024,83.0657,75.024,-9.68,forkert,15,Danmarks Statistik,
-773,income_gender_gap,2010-2012,2022-2024,89.1421,77.7625,-12.77,forkert,15,Danmarks Statistik,
-779,income_gender_gap,2010-2012,2022-2024,86.9955,76.1277,-12.49,forkert,15,Danmarks Statistik,
-787,income_gender_gap,2010-2012,2022-2024,87.403,77.0798,-11.81,forkert,15,Danmarks Statistik,
-791,income_gender_gap,2010-2012,2022-2024,86.4554,78.612,-9.07,forkert,15,Danmarks Statistik,
-810,income_gender_gap,2010-2012,2022-2024,89.1647,79.4412,-10.91,forkert,15,Danmarks Statistik,
-813,income_gender_gap,2010-2012,2022-2024,84.6381,80.064,-5.4,forkert,15,Danmarks Statistik,
-820,income_gender_gap,2010-2012,2022-2024,88.6077,77.9575,-12.02,forkert,15,Danmarks Statistik,
-825,income_gender_gap,2010-2012,2022-2024,84.9585,80.8964,-4.78,forkert,15,Danmarks Statistik,
-840,income_gender_gap,2010-2012,2022-2024,85.1615,74.61,-12.39,forkert,15,Danmarks Statistik,
-846,income_gender_gap,2010-2012,2022-2024,86.675,77.7281,-10.32,forkert,15,Danmarks Statistik,
-849,income_gender_gap,2010-2012,2022-2024,87.2367,80.4606,-7.77,forkert,15,Danmarks Statistik,
-851,income_gender_gap,2010-2012,2022-2024,86.0501,80.8124,-6.09,forkert,15,Danmarks Statistik,
-860,income_gender_gap,2010-2012,2022-2024,87.2657,80.1977,-8.1,forkert,15,Danmarks Statistik,
+101,income_gender_gap,2010-2012,2022-2024,95.8007,90.8282,-5.19,forkert,15,Danmarks Statistik,
+147,income_gender_gap,2010-2012,2022-2024,89.3086,87.3204,-2.23,forkert,15,Danmarks Statistik,
+151,income_gender_gap,2010-2012,2022-2024,91.8707,87.8411,-4.39,forkert,15,Danmarks Statistik,
+153,income_gender_gap,2010-2012,2022-2024,92.0183,87.7284,-4.66,forkert,15,Danmarks Statistik,
+155,income_gender_gap,2010-2012,2022-2024,83.8394,81.1522,-3.21,forkert,15,Danmarks Statistik,
+157,income_gender_gap,2010-2012,2022-2024,80.2532,80.212,-0.05,stagneret,15,Danmarks Statistik,
+159,income_gender_gap,2010-2012,2022-2024,92.8308,89.0656,-4.06,forkert,15,Danmarks Statistik,
+161,income_gender_gap,2010-2012,2022-2024,88.8998,88.2513,-0.73,stagneret,15,Danmarks Statistik,
+163,income_gender_gap,2010-2012,2022-2024,92.7264,89.9713,-2.97,forkert,15,Danmarks Statistik,
+165,income_gender_gap,2010-2012,2022-2024,95.2062,93.0261,-2.29,forkert,15,Danmarks Statistik,
+167,income_gender_gap,2010-2012,2022-2024,92.275,88.4309,-4.17,forkert,15,Danmarks Statistik,
+169,income_gender_gap,2010-2012,2022-2024,89.7524,85.8566,-4.34,forkert,15,Danmarks Statistik,
+173,income_gender_gap,2010-2012,2022-2024,87.5911,88.9085,1.5,rigtig,15,Danmarks Statistik,
+175,income_gender_gap,2010-2012,2022-2024,92.6395,89.1133,-3.81,forkert,15,Danmarks Statistik,
+183,income_gender_gap,2010-2012,2022-2024,94.2964,89.2758,-5.32,forkert,15,Danmarks Statistik,
+185,income_gender_gap,2010-2012,2022-2024,87.8869,87.1507,-0.84,stagneret,15,Danmarks Statistik,
+187,income_gender_gap,2010-2012,2022-2024,86.8283,85.3481,-1.7,forkert,15,Danmarks Statistik,
+190,income_gender_gap,2010-2012,2022-2024,85.0088,83.4045,-1.89,forkert,15,Danmarks Statistik,
+201,income_gender_gap,2010-2012,2022-2024,82.2178,82.0605,-0.19,stagneret,15,Danmarks Statistik,
+210,income_gender_gap,2010-2012,2022-2024,86.7938,83.7373,-3.52,forkert,15,Danmarks Statistik,
+217,income_gender_gap,2010-2012,2022-2024,91.2131,87.7,-3.85,forkert,15,Danmarks Statistik,
+219,income_gender_gap,2010-2012,2022-2024,88.2629,86.1875,-2.35,forkert,15,Danmarks Statistik,
+223,income_gender_gap,2010-2012,2022-2024,76.24,76.9671,0.95,stagneret,15,Danmarks Statistik,
+230,income_gender_gap,2010-2012,2022-2024,78.4526,80.1016,2.1,rigtig,15,Danmarks Statistik,
+240,income_gender_gap,2010-2012,2022-2024,86.4584,84.6009,-2.15,forkert,15,Danmarks Statistik,
+250,income_gender_gap,2010-2012,2022-2024,88.7201,84.7948,-4.42,forkert,15,Danmarks Statistik,
+253,income_gender_gap,2010-2012,2022-2024,86.5703,83.6425,-3.38,forkert,15,Danmarks Statistik,
+259,income_gender_gap,2010-2012,2022-2024,88.9431,84.7967,-4.66,forkert,15,Danmarks Statistik,
+260,income_gender_gap,2010-2012,2022-2024,91.2974,85.9839,-5.82,forkert,15,Danmarks Statistik,
+265,income_gender_gap,2010-2012,2022-2024,88.6908,85.542,-3.55,forkert,15,Danmarks Statistik,
+269,income_gender_gap,2010-2012,2022-2024,85.6042,82.0328,-4.17,forkert,15,Danmarks Statistik,
+270,income_gender_gap,2010-2012,2022-2024,91.0911,86.4882,-5.05,forkert,15,Danmarks Statistik,
+306,income_gender_gap,2010-2012,2022-2024,91.9708,88.3629,-3.92,forkert,15,Danmarks Statistik,
+316,income_gender_gap,2010-2012,2022-2024,89.0948,84.872,-4.74,forkert,15,Danmarks Statistik,
+320,income_gender_gap,2010-2012,2022-2024,87.7437,84.1449,-4.1,forkert,15,Danmarks Statistik,
+326,income_gender_gap,2010-2012,2022-2024,87.9315,84.0609,-4.4,forkert,15,Danmarks Statistik,
+329,income_gender_gap,2010-2012,2022-2024,87.5408,84.2252,-3.79,forkert,15,Danmarks Statistik,
+330,income_gender_gap,2010-2012,2022-2024,89.6339,86.3998,-3.61,forkert,15,Danmarks Statistik,
+336,income_gender_gap,2010-2012,2022-2024,87.7209,83.3932,-4.93,forkert,15,Danmarks Statistik,
+340,income_gender_gap,2010-2012,2022-2024,89.5752,83.7889,-6.46,forkert,15,Danmarks Statistik,
+350,income_gender_gap,2010-2012,2022-2024,86.3637,83.6897,-3.1,forkert,15,Danmarks Statistik,
+360,income_gender_gap,2010-2012,2022-2024,95.3456,91.8175,-3.7,forkert,15,Danmarks Statistik,
+370,income_gender_gap,2010-2012,2022-2024,88.7018,84.9242,-4.26,forkert,15,Danmarks Statistik,
+376,income_gender_gap,2010-2012,2022-2024,93.9553,89.5265,-4.71,forkert,15,Danmarks Statistik,
+390,income_gender_gap,2010-2012,2022-2024,93.0631,88.1898,-5.24,forkert,15,Danmarks Statistik,
+400,income_gender_gap,2010-2012,2022-2024,92.8361,89.4691,-3.63,forkert,15,Danmarks Statistik,
+410,income_gender_gap,2010-2012,2022-2024,88.3814,83.7198,-5.27,forkert,15,Danmarks Statistik,
+420,income_gender_gap,2010-2012,2022-2024,90.5289,84.6271,-6.52,forkert,15,Danmarks Statistik,
+430,income_gender_gap,2010-2012,2022-2024,90.4277,84.573,-6.47,forkert,15,Danmarks Statistik,
+440,income_gender_gap,2010-2012,2022-2024,91.6851,83.6525,-8.76,forkert,15,Danmarks Statistik,
+450,income_gender_gap,2010-2012,2022-2024,90.3898,85.6418,-5.25,forkert,15,Danmarks Statistik,
+461,income_gender_gap,2010-2012,2022-2024,93.7433,89.5903,-4.43,forkert,15,Danmarks Statistik,
+479,income_gender_gap,2010-2012,2022-2024,91.3099,87.8652,-3.77,forkert,15,Danmarks Statistik,
+480,income_gender_gap,2010-2012,2022-2024,91.258,82.8578,-9.2,forkert,15,Danmarks Statistik,
+482,income_gender_gap,2010-2012,2022-2024,92.8819,90.771,-2.27,forkert,15,Danmarks Statistik,
+492,income_gender_gap,2010-2012,2022-2024,89.44,89.9752,0.6,stagneret,15,Danmarks Statistik,
+510,income_gender_gap,2010-2012,2022-2024,89.4403,84.4582,-5.57,forkert,15,Danmarks Statistik,
+530,income_gender_gap,2010-2012,2022-2024,85.333,78.9842,-7.44,forkert,15,Danmarks Statistik,
+540,income_gender_gap,2010-2012,2022-2024,91.5313,86.3382,-5.67,forkert,15,Danmarks Statistik,
+550,income_gender_gap,2010-2012,2022-2024,89.9579,84.6183,-5.94,forkert,15,Danmarks Statistik,
+561,income_gender_gap,2010-2012,2022-2024,87.5773,84.2653,-3.78,forkert,15,Danmarks Statistik,
+563,income_gender_gap,2010-2012,2022-2024,82.8486,83.6162,0.93,stagneret,15,Danmarks Statistik,
+573,income_gender_gap,2010-2012,2022-2024,86.0144,80.2879,-6.66,forkert,15,Danmarks Statistik,
+575,income_gender_gap,2010-2012,2022-2024,86.5717,79.7276,-7.91,forkert,15,Danmarks Statistik,
+580,income_gender_gap,2010-2012,2022-2024,87.5343,84.0043,-4.03,forkert,15,Danmarks Statistik,
+607,income_gender_gap,2010-2012,2022-2024,87.8261,82.814,-5.71,forkert,15,Danmarks Statistik,
+615,income_gender_gap,2010-2012,2022-2024,87.5574,83.2675,-4.9,forkert,15,Danmarks Statistik,
+621,income_gender_gap,2010-2012,2022-2024,87.3452,83.2295,-4.71,forkert,15,Danmarks Statistik,
+630,income_gender_gap,2010-2012,2022-2024,88.4182,82.1906,-7.04,forkert,15,Danmarks Statistik,
+657,income_gender_gap,2010-2012,2022-2024,85.8201,81.1947,-5.39,forkert,15,Danmarks Statistik,
+661,income_gender_gap,2010-2012,2022-2024,86.3259,82.7654,-4.12,forkert,15,Danmarks Statistik,
+665,income_gender_gap,2010-2012,2022-2024,85.3926,79.5627,-6.83,forkert,15,Danmarks Statistik,
+671,income_gender_gap,2010-2012,2022-2024,87.0783,82.4114,-5.36,forkert,15,Danmarks Statistik,
+706,income_gender_gap,2010-2012,2022-2024,86.9533,83.8107,-3.61,forkert,15,Danmarks Statistik,
+707,income_gender_gap,2010-2012,2022-2024,88.5715,83.8451,-5.34,forkert,15,Danmarks Statistik,
+710,income_gender_gap,2010-2012,2022-2024,86.8626,81.1923,-6.53,forkert,15,Danmarks Statistik,
+727,income_gender_gap,2010-2012,2022-2024,86.5283,82.6768,-4.45,forkert,15,Danmarks Statistik,
+730,income_gender_gap,2010-2012,2022-2024,89.1113,84.2531,-5.45,forkert,15,Danmarks Statistik,
+740,income_gender_gap,2010-2012,2022-2024,88.0579,83.473,-5.21,forkert,15,Danmarks Statistik,
+741,income_gender_gap,2010-2012,2022-2024,98.5471,92.5067,-6.13,forkert,15,Danmarks Statistik,
+746,income_gender_gap,2010-2012,2022-2024,87.3845,81.8572,-6.33,forkert,15,Danmarks Statistik,
+751,income_gender_gap,2010-2012,2022-2024,92.6546,88.6059,-4.37,forkert,15,Danmarks Statistik,
+756,income_gender_gap,2010-2012,2022-2024,86.188,81.2331,-5.75,forkert,15,Danmarks Statistik,
+760,income_gender_gap,2010-2012,2022-2024,85.2843,79.7984,-6.43,forkert,15,Danmarks Statistik,
+766,income_gender_gap,2010-2012,2022-2024,85.8,79.6964,-7.11,forkert,15,Danmarks Statistik,
+773,income_gender_gap,2010-2012,2022-2024,89.8107,83.5059,-7.02,forkert,15,Danmarks Statistik,
+779,income_gender_gap,2010-2012,2022-2024,90.0584,83.0828,-7.75,forkert,15,Danmarks Statistik,
+787,income_gender_gap,2010-2012,2022-2024,90.5717,83.8525,-7.42,forkert,15,Danmarks Statistik,
+791,income_gender_gap,2010-2012,2022-2024,89.0922,83.4585,-6.32,forkert,15,Danmarks Statistik,
+810,income_gender_gap,2010-2012,2022-2024,90.298,83.7477,-7.25,forkert,15,Danmarks Statistik,
+813,income_gender_gap,2010-2012,2022-2024,87.4362,83.862,-4.09,forkert,15,Danmarks Statistik,
+820,income_gender_gap,2010-2012,2022-2024,90.6289,83.4811,-7.89,forkert,15,Danmarks Statistik,
+825,income_gender_gap,2010-2012,2022-2024,93.1154,90.2139,-3.12,forkert,15,Danmarks Statistik,
+840,income_gender_gap,2010-2012,2022-2024,87.8193,80.5316,-8.3,forkert,15,Danmarks Statistik,
+846,income_gender_gap,2010-2012,2022-2024,89.8418,83.0291,-7.58,forkert,15,Danmarks Statistik,
+849,income_gender_gap,2010-2012,2022-2024,91.0641,84.7578,-6.93,forkert,15,Danmarks Statistik,
+851,income_gender_gap,2010-2012,2022-2024,90.9757,87.399,-3.93,forkert,15,Danmarks Statistik,
+860,income_gender_gap,2010-2012,2022-2024,91.1808,86.2429,-5.42,forkert,15,Danmarks Statistik,
 101,klimapaavirkning,2018-2020,2022-2024,2.3404,1.3907,-40.58,rigtig,7,Klimaregnskabet.dk,
 147,klimapaavirkning,2018-2020,2022-2024,1.885,1.0607,-43.73,rigtig,7,Klimaregnskabet.dk,
 151,klimapaavirkning,2018-2020,2022-2024,4.7331,2.8985,-38.76,rigtig,7,Klimaregnskabet.dk,

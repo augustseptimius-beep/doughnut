@@ -95,7 +95,7 @@ SOCIAL_INDICATORS = [
     {"id": "youth_education", "csv": "uvm_scores.csv", "ratio_col": "youth_education_ratio", "raw_col": "youth_education_pct", "unit": "%", "data_year": "2024", "source": "UVM GS/PROFMOD/PROFMOD", "category": "social", "dimension": "uddannelse"},
 
     # === Velfærd ===
-    {"id": "disposable_income", "csv": "doughnut_scores.csv", "ratio_col": "disposable_income_ratio", "raw_col": "disposable_income_raw", "unit": "kr./indb.", "data_year": "2022", "source": "DST INDKP101", "category": "social", "dimension": "velfaerd"},
+    {"id": "disposable_income", "csv": "doughnut_scores.csv", "ratio_col": "disposable_income_ratio", "raw_col": "disposable_income_raw", "unit": "kr. (median)", "data_year": "2024", "source": "DST INDKP106 (median)", "category": "social", "dimension": "velfaerd"},
     {"id": "employment", "csv": "doughnut_scores.csv", "ratio_col": "employment_ratio", "raw_col": "employment_raw", "unit": "%", "data_year": "2023", "source": "DST RAS200", "category": "social", "dimension": "velfaerd"},
     {"id": "child_poverty", "csv": "doughnut_scores.csv", "ratio_col": "child_poverty_ratio", "raw_col": "child_poverty_raw", "unit": "%", "data_year": "2022", "source": "DST LABY07", "category": "social", "dimension": "velfaerd"},
     {"id": "gini", "csv": "doughnut_scores.csv", "ratio_col": "gini_ratio", "raw_col": "gini_raw", "unit": "point", "data_year": "2022", "source": "DST IFOR41", "category": "social", "dimension": "lighed"},
@@ -122,7 +122,7 @@ SOCIAL_INDICATORS = [
     {"id": "voter_turnout_national", "csv": "democracy_scores.csv", "ratio_col": "voter_turnout_national_ratio", "raw_col": "voter_turnout_national_pct", "unit": "%", "data_year": "2026", "source": "DST LABY09", "category": "social", "dimension": "demokrati"},
     {"id": "gender_leadership", "csv": "lighed_scores.csv", "ratio_col": "gender_leadership_ratio", "raw_col": "gender_leadership_pct", "unit": "% kvinder", "data_year": "2023", "source": "DST RAS301", "category": "social", "dimension": "ligestilling"},
     {"id": "le_gender_gap", "csv": "ligestilling_scores.csv", "ratio_col": "le_gender_gap_ratio", "raw_col": "le_gender_gap_years", "unit": "år (kønsgab)", "data_year": "2025", "source": "DST HISBK", "category": "social", "dimension": "ligestilling"},
-    {"id": "income_gender_gap", "csv": "ligestilling_scores.csv", "ratio_col": "income_gender_gap_ratio", "raw_col": "income_gender_gap_pct", "unit": "% (kvinder/mænd)", "data_year": "2024", "source": "DST INDKP101", "category": "social", "dimension": "ligestilling"},
+    {"id": "income_gender_gap", "csv": "ligestilling_scores.csv", "ratio_col": "income_gender_gap_ratio", "raw_col": "income_gender_gap_pct", "unit": "% (kvinder/mænd, median)", "data_year": "2024", "source": "DST INDKP106 (median)", "category": "social", "dimension": "ligestilling"},
     {"id": "employment_origin_gap", "csv": "ligestilling_scores.csv", "ratio_col": "employment_origin_gap_ratio", "raw_col": "employment_origin_gap_pct", "unit": "% (ikkevestlig/dansk BFK)", "data_year": "2024", "source": "DST RAS200", "category": "social", "dimension": "lighed"},
 
     # === Kultur & fritid ===

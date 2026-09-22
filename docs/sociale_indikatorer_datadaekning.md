@@ -146,7 +146,7 @@ Baseret på Københavns Doughnut 2025. Tilgængelighed vurderet via `api.statban
 | 52 | Beskæftigelsesfrekvens fordelt på herkomst | ✅ | DST: `RAS200` | |
 | 53 | Gini-koefficient | ✅ | DST: `IFOR41` | 🟢 |
 | 54 | Forskel i restlevetid fordelt på uddannelsesniveau | ❌ | DST: `LIGEHI4` (kun nationalt niveau) | |
-| 55 | Forskel i gennemsnitlig disponibel indkomst, mænd vs. kvinder | ✅ | DST: `INDKP101` | 🟢 |
+| 55 | Forskel i median disponibel indkomst, mænd vs. kvinder | ✅ | DST: `INDKP106` (median beregnet af indkomstintervaller) | 🟢 |
 
 ---
 

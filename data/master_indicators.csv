@@ -1462,104 +1462,104 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,youth_education,86.85,72.3,%,2024,UVM GS/PROFMOD/PROFMOD,social,uddannelse
 741,Samsø,youth_education,93.46,77.8,%,2024,UVM GS/PROFMOD/PROFMOD,social,uddannelse
 482,Langeland,youth_education,89.73,74.7,%,2024,UVM GS/PROFMOD/PROFMOD,social,uddannelse
-201,Allerød,disposable_income,126.38,363562.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-153,Brøndby,disposable_income,87.31,251169.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-155,Dragør,disposable_income,130.65,375847.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-175,Rødovre,disposable_income,98.07,282144.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-190,Furesø,disposable_income,129.17,371605.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-230,Rudersdal,disposable_income,150.0,538360.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-167,Hvidovre,disposable_income,98.85,284383.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-157,Gentofte,disposable_income,150.0,570329.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-269,Solrød,disposable_income,117.06,336771.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-746,Skanderborg,disposable_income,107.0,307806.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-265,Roskilde,disposable_income,112.46,323534.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-240,Egedal,disposable_income,111.09,319596.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-151,Ballerup,disposable_income,99.08,285035.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-223,Hørsholm,disposable_income,150.0,452520.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-185,Tårnby,disposable_income,104.24,299878.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-173,Lyngby-Taarbæk,disposable_income,139.41,401048.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-350,Lejre,disposable_income,106.12,305283.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-163,Herlev,disposable_income,101.25,291266.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-210,Fredensborg,disposable_income,119.78,344577.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-183,Ishøj,disposable_income,86.3,248266.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-530,Billund,disposable_income,99.69,286776.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-710,Favrskov,disposable_income,99.12,285147.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-840,Rebild,disposable_income,101.46,291879.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-147,Frederiksberg,disposable_income,119.86,344810.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-187,Vallensbæk,disposable_income,103.78,298557.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-253,Greve,disposable_income,106.56,306548.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-259,Køge,disposable_income,101.45,291848.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-159,Gladsaxe,disposable_income,107.9,310421.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-217,Helsingør,disposable_income,107.82,310173.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-825,Læsø,disposable_income,83.62,240554.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-250,Frederikssund,disposable_income,98.9,284504.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-661,Holstebro,disposable_income,93.6,269279.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-657,Herning,disposable_income,94.96,273181.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-773,Morsø,disposable_income,85.73,246623.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-260,Halsnæs,disposable_income,93.2,268127.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-492,Ærø,disposable_income,81.73,235120.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-219,Hillerød,disposable_income,111.31,320229.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-340,Sorø,disposable_income,96.09,276440.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-561,Esbjerg,disposable_income,95.47,274660.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-740,Silkeborg,disposable_income,100.65,289539.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-563,Fanø,disposable_income,96.53,277700.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-615,Horsens,disposable_income,94.21,271024.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-316,Holbæk,disposable_income,96.59,277859.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-607,Fredericia,disposable_income,93.43,268774.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-766,Hedensted,disposable_income,96.13,276539.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-410,Middelfart,disposable_income,99.37,285877.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-851,Aalborg,disposable_income,92.79,266935.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-370,Næstved,disposable_income,92.09,264921.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-329,Ringsted,disposable_income,95.88,275838.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-810,Brønderslev,disposable_income,88.85,255600.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-751,Aarhus,disposable_income,97.88,281588.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-727,Odder,disposable_income,96.57,277813.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-813,Frederikshavn,disposable_income,89.99,258890.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-336,Stevns,disposable_income,96.39,277295.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-270,Gribskov,disposable_income,101.79,292834.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-161,Glostrup,disposable_income,97.48,280422.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-860,Hjørring,disposable_income,88.96,255917.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-479,Svendborg,disposable_income,91.76,263984.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-165,Albertslund,disposable_income,86.49,248808.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-791,Viborg,disposable_income,93.16,268000.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-706,Syddjurs,disposable_income,94.54,271971.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-480,Nordfyns,disposable_income,87.62,252071.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-440,Kerteminde,disposable_income,93.09,267813.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-101,København,disposable_income,102.83,295836.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-630,Vejle,disposable_income,101.25,291272.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-760,Ringkøbing-Skjern,disposable_income,93.9,270125.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-730,Randers,disposable_income,89.32,256955.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-430,Faaborg-Midtfyn,disposable_income,88.38,254250.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-320,Faxe,disposable_income,91.27,262570.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-169,Høje-Taastrup,disposable_income,93.77,269751.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-573,Varde,disposable_income,93.3,268401.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-621,Kolding,disposable_income,95.66,275204.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-580,Aabenraa,disposable_income,90.25,259641.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-787,Thisted,disposable_income,87.92,252934.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-420,Assens,disposable_income,87.87,252783.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-756,Ikast-Brande,disposable_income,92.39,265794.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-461,Odense,disposable_income,89.66,257928.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-779,Skive,disposable_income,89.99,258877.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-450,Nyborg,disposable_income,89.14,256450.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-846,Mariagerfjord,disposable_income,91.15,262216.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-540,Sønderborg,disposable_income,88.89,255717.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-820,Vesthimmerlands,disposable_income,88.02,253230.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-400,Bornholm,disposable_income,84.44,242923.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-510,Haderslev,disposable_income,87.26,251031.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-665,Lemvig,disposable_income,94.96,273175.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-575,Vejen,disposable_income,125.5,361047.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-671,Struer,disposable_income,88.53,254689.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-707,Norddjurs,disposable_income,86.73,249494.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-330,Slagelse,disposable_income,89.38,257137.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-306,Odsherred,disposable_income,86.99,250261.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-376,Guldborgsund,disposable_income,85.55,246113.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-326,Kalundborg,disposable_income,94.87,272926.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-849,Jammerbugt,disposable_income,88.48,254538.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-390,Vordingborg,disposable_income,88.27,253932.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-550,Tønder,disposable_income,86.61,249158.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-360,Lolland,disposable_income,81.84,235450.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-741,Samsø,disposable_income,86.5,248849.0,kr./indb.,2024,DST INDKP101,social,velfaerd
-482,Langeland,disposable_income,79.65,229128.0,kr./indb.,2024,DST INDKP101,social,velfaerd
+201,Allerød,disposable_income,132.04,324951.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+153,Brøndby,disposable_income,94.57,232739.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+155,Dragør,disposable_income,131.62,323923.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+175,Rødovre,disposable_income,105.6,259874.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+190,Furesø,disposable_income,128.62,316529.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+230,Rudersdal,disposable_income,138.89,341797.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+167,Hvidovre,disposable_income,105.62,259940.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+157,Gentofte,disposable_income,138.94,341925.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+269,Solrød,disposable_income,122.1,300487.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+746,Skanderborg,disposable_income,113.65,279681.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+265,Roskilde,disposable_income,114.21,281072.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+240,Egedal,disposable_income,123.0,302699.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+151,Ballerup,disposable_income,103.98,255902.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+223,Hørsholm,disposable_income,130.8,321889.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+185,Tårnby,disposable_income,113.14,278443.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+173,Lyngby-Taarbæk,disposable_income,121.07,297955.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+350,Lejre,disposable_income,113.78,280018.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+163,Herlev,disposable_income,106.66,262488.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+210,Fredensborg,disposable_income,114.51,281809.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+183,Ishøj,disposable_income,94.09,231557.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+530,Billund,disposable_income,99.54,244971.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+710,Favrskov,disposable_income,107.81,265316.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+840,Rebild,disposable_income,106.78,262794.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+147,Frederiksberg,disposable_income,112.02,275691.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+187,Vallensbæk,disposable_income,112.36,276505.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+253,Greve,disposable_income,113.74,279910.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+259,Køge,disposable_income,107.59,264784.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+159,Gladsaxe,disposable_income,110.78,272619.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+217,Helsingør,disposable_income,106.28,261547.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+825,Læsø,disposable_income,85.44,210265.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+250,Frederikssund,disposable_income,106.38,261808.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+661,Holstebro,disposable_income,97.44,239803.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+657,Herning,disposable_income,98.65,242768.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+773,Morsø,disposable_income,88.36,217462.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+260,Halsnæs,disposable_income,100.01,246121.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+492,Ærø,disposable_income,84.54,208059.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+219,Hillerød,disposable_income,115.93,285298.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+340,Sorø,disposable_income,102.3,251770.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+561,Esbjerg,disposable_income,97.51,239975.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+740,Silkeborg,disposable_income,104.05,256059.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+563,Fanø,disposable_income,98.87,243305.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+615,Horsens,disposable_income,100.08,246288.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+316,Holbæk,disposable_income,102.55,252367.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+607,Fredericia,disposable_income,97.09,238937.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+766,Hedensted,disposable_income,102.94,253343.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+410,Middelfart,disposable_income,101.64,250145.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+851,Aalborg,disposable_income,95.45,234901.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+370,Næstved,disposable_income,98.46,242309.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+329,Ringsted,disposable_income,103.64,255054.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+810,Brønderslev,disposable_income,95.13,234115.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+751,Aarhus,disposable_income,95.03,233860.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+727,Odder,disposable_income,102.63,252573.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+813,Frederikshavn,disposable_income,92.11,226682.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+336,Stevns,disposable_income,103.1,253736.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+270,Gribskov,disposable_income,106.58,262293.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+161,Glostrup,disposable_income,104.25,256553.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+860,Hjørring,disposable_income,92.45,227509.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+479,Svendborg,disposable_income,94.06,231484.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+165,Albertslund,disposable_income,94.47,232487.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+791,Viborg,disposable_income,98.0,241176.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+706,Syddjurs,disposable_income,98.25,241790.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+480,Nordfyns,disposable_income,92.74,228228.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+440,Kerteminde,disposable_income,96.42,237276.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+101,København,disposable_income,101.26,249198.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+630,Vejle,disposable_income,104.26,256584.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+760,Ringkøbing-Skjern,disposable_income,95.96,236150.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+730,Randers,disposable_income,94.63,232890.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+430,Faaborg-Midtfyn,disposable_income,94.84,233406.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+320,Faxe,disposable_income,99.6,245114.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+169,Høje-Taastrup,disposable_income,102.43,252070.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+573,Varde,disposable_income,96.86,238380.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+621,Kolding,disposable_income,99.1,243879.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+580,Aabenraa,disposable_income,92.39,227379.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+787,Thisted,disposable_income,91.23,224515.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+420,Assens,disposable_income,93.66,230507.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+756,Ikast-Brande,disposable_income,96.29,236964.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+461,Odense,disposable_income,91.96,226300.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+779,Skive,disposable_income,92.81,228399.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+450,Nyborg,disposable_income,94.2,231818.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+846,Mariagerfjord,disposable_income,94.83,233380.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+540,Sønderborg,disposable_income,91.43,225003.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+820,Vesthimmerlands,disposable_income,92.5,227639.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+400,Bornholm,disposable_income,88.89,218761.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+510,Haderslev,disposable_income,91.92,226211.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+665,Lemvig,disposable_income,92.12,226717.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+575,Vejen,disposable_income,96.96,238614.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+671,Struer,disposable_income,90.3,222224.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+707,Norddjurs,disposable_income,90.38,222418.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+330,Slagelse,disposable_income,94.88,233490.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+306,Odsherred,disposable_income,90.14,221834.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+376,Guldborgsund,disposable_income,90.16,221890.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+326,Kalundborg,disposable_income,97.44,239797.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+849,Jammerbugt,disposable_income,93.18,229322.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+390,Vordingborg,disposable_income,91.65,225540.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+550,Tønder,disposable_income,88.01,216579.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+360,Lolland,disposable_income,83.06,204412.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+741,Samsø,disposable_income,89.13,219354.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
+482,Langeland,disposable_income,82.17,202217.0,kr. (median),2024,DST INDKP106 (median),social,velfaerd
 201,Allerød,employment,108.91,84.3,%,2024,DST RAS200,social,velfaerd
 153,Brøndby,employment,95.35,73.8,%,2024,DST RAS200,social,velfaerd
 155,Dragør,employment,108.53,84.0,%,2024,DST RAS200,social,velfaerd
@@ -3222,104 +3222,104 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 550,Tønder,le_gender_gap,95.0,4.0,år (kønsgab),2025,DST HISBK,social,ligestilling
 360,Lolland,le_gender_gap,69.09,5.5,år (kønsgab),2025,DST HISBK,social,ligestilling
 482,Langeland,le_gender_gap,115.15,3.3,år (kønsgab),2025,DST HISBK,social,ligestilling
-201,Allerød,income_gender_gap,96.44,77.17,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-153,Brøndby,income_gender_gap,106.12,84.92,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-155,Dragør,income_gender_gap,91.54,73.25,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-175,Rødovre,income_gender_gap,106.81,85.47,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-190,Furesø,income_gender_gap,97.28,77.84,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-230,Rudersdal,income_gender_gap,87.57,70.07,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-167,Hvidovre,income_gender_gap,106.71,85.39,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-157,Gentofte,income_gender_gap,79.09,63.29,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-269,Solrød,income_gender_gap,94.3,75.46,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-746,Skanderborg,income_gender_gap,95.33,76.28,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-265,Roskilde,income_gender_gap,98.38,78.72,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-240,Egedal,income_gender_gap,102.76,82.23,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-151,Ballerup,income_gender_gap,105.52,84.44,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-223,Hørsholm,income_gender_gap,79.72,63.79,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-185,Tårnby,income_gender_gap,107.91,86.35,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-173,Lyngby-Taarbæk,income_gender_gap,98.14,78.53,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-350,Lejre,income_gender_gap,101.47,81.2,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-163,Herlev,income_gender_gap,104.29,83.45,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-210,Fredensborg,income_gender_gap,97.21,77.79,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-183,Ishøj,income_gender_gap,108.85,87.1,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-530,Billund,income_gender_gap,90.69,72.57,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-710,Favrskov,income_gender_gap,97.75,78.22,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-840,Rebild,income_gender_gap,94.18,75.36,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-147,Frederiksberg,income_gender_gap,95.21,76.19,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-187,Vallensbæk,income_gender_gap,101.14,80.93,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-253,Greve,income_gender_gap,100.67,80.56,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-259,Køge,income_gender_gap,101.67,81.36,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-159,Gladsaxe,income_gender_gap,106.52,85.24,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-217,Helsingør,income_gender_gap,102.21,81.79,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-825,Læsø,income_gender_gap,101.1,80.9,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-250,Frederikssund,income_gender_gap,103.45,82.78,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-661,Holstebro,income_gender_gap,94.99,76.01,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-657,Herning,income_gender_gap,93.71,74.99,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-773,Morsø,income_gender_gap,97.28,77.84,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-260,Halsnæs,income_gender_gap,104.49,83.61,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-492,Ærø,income_gender_gap,100.12,80.12,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-219,Hillerød,income_gender_gap,98.01,78.43,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-340,Sorø,income_gender_gap,100.07,80.08,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-561,Esbjerg,income_gender_gap,95.8,76.66,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-740,Silkeborg,income_gender_gap,94.74,75.81,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-563,Fanø,income_gender_gap,94.09,75.29,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-615,Horsens,income_gender_gap,98.83,79.08,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-316,Holbæk,income_gender_gap,101.57,81.28,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-607,Fredericia,income_gender_gap,97.04,77.65,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-766,Hedensted,income_gender_gap,94.58,75.68,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-410,Middelfart,income_gender_gap,98.01,78.43,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-851,Aalborg,income_gender_gap,100.1,80.1,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-370,Næstved,income_gender_gap,102.12,81.72,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-329,Ringsted,income_gender_gap,101.77,81.44,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-810,Brønderslev,income_gender_gap,99.73,79.8,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-751,Aarhus,income_gender_gap,99.29,79.45,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-727,Odder,income_gender_gap,99.78,79.84,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-813,Frederikshavn,income_gender_gap,102.64,82.13,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-336,Stevns,income_gender_gap,101.44,81.17,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-270,Gribskov,income_gender_gap,100.55,80.46,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-161,Glostrup,income_gender_gap,106.65,85.34,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-860,Hjørring,income_gender_gap,99.64,79.73,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-479,Svendborg,income_gender_gap,101.01,80.83,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-165,Albertslund,income_gender_gap,110.66,88.55,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-791,Viborg,income_gender_gap,97.84,78.29,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-706,Syddjurs,income_gender_gap,100.64,80.53,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-480,Nordfyns,income_gender_gap,101.07,80.88,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-440,Kerteminde,income_gender_gap,96.76,77.43,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-101,København,income_gender_gap,103.55,82.86,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-630,Vejle,income_gender_gap,95.88,76.72,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-760,Ringkøbing-Skjern,income_gender_gap,91.36,73.11,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-730,Randers,income_gender_gap,99.73,79.8,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-430,Faaborg-Midtfyn,income_gender_gap,102.2,81.78,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-320,Faxe,income_gender_gap,102.94,82.37,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-169,Høje-Taastrup,income_gender_gap,104.52,83.64,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-573,Varde,income_gender_gap,93.09,74.49,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-621,Kolding,income_gender_gap,97.01,77.63,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-580,Aabenraa,income_gender_gap,98.4,78.74,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-787,Thisted,income_gender_gap,96.4,77.14,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-420,Assens,income_gender_gap,102.19,81.77,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-756,Ikast-Brande,income_gender_gap,95.93,76.76,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-461,Odense,income_gender_gap,104.74,83.81,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-779,Skive,income_gender_gap,94.18,75.36,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-450,Nyborg,income_gender_gap,102.21,81.79,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-846,Mariagerfjord,income_gender_gap,97.18,77.76,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-540,Sønderborg,income_gender_gap,99.65,79.74,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-820,Vesthimmerlands,income_gender_gap,98.41,78.75,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-400,Bornholm,income_gender_gap,106.05,84.86,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-510,Haderslev,income_gender_gap,99.99,80.01,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-665,Lemvig,income_gender_gap,90.95,72.78,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-575,Vejen,income_gender_gap,150.0,141.67,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-671,Struer,income_gender_gap,94.26,75.43,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-707,Norddjurs,income_gender_gap,99.49,79.61,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-330,Slagelse,income_gender_gap,102.99,82.41,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-306,Odsherred,income_gender_gap,103.01,82.43,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-376,Guldborgsund,income_gender_gap,106.56,85.27,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-326,Kalundborg,income_gender_gap,99.76,79.83,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-849,Jammerbugt,income_gender_gap,100.79,80.65,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-390,Vordingborg,income_gender_gap,105.34,84.29,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-550,Tønder,income_gender_gap,93.75,75.02,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-360,Lolland,income_gender_gap,102.67,82.16,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-741,Samsø,income_gender_gap,102.42,81.96,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
-482,Langeland,income_gender_gap,105.9,84.74,% (kvinder/mænd),2024,DST INDKP101,social,ligestilling
+201,Allerød,income_gender_gap,95.47,81.61,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+153,Brøndby,income_gender_gap,102.01,87.2,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+155,Dragør,income_gender_gap,94.82,81.05,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+175,Rødovre,income_gender_gap,104.64,89.45,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+190,Furesø,income_gender_gap,97.94,83.72,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+230,Rudersdal,income_gender_gap,93.74,80.13,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+167,Hvidovre,income_gender_gap,103.63,88.58,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+157,Gentofte,income_gender_gap,94.13,80.46,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+269,Solrød,income_gender_gap,97.12,83.02,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+746,Skanderborg,income_gender_gap,95.94,82.01,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+265,Roskilde,income_gender_gap,99.98,85.46,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+240,Egedal,income_gender_gap,99.65,85.18,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+151,Ballerup,income_gender_gap,102.41,87.54,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+223,Hørsholm,income_gender_gap,90.24,77.14,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+185,Tårnby,income_gender_gap,102.42,87.55,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+173,Lyngby-Taarbæk,income_gender_gap,103.65,88.6,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+350,Lejre,income_gender_gap,98.0,83.77,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+163,Herlev,income_gender_gap,104.82,89.6,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+210,Fredensborg,income_gender_gap,98.4,84.11,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+183,Ishøj,income_gender_gap,103.18,88.2,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+530,Billund,income_gender_gap,92.43,79.01,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+710,Favrskov,income_gender_gap,95.72,81.82,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+840,Rebild,income_gender_gap,94.6,80.86,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+147,Frederiksberg,income_gender_gap,101.67,86.91,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+187,Vallensbæk,income_gender_gap,99.38,84.95,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+253,Greve,income_gender_gap,98.23,83.97,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+259,Køge,income_gender_gap,99.17,84.77,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+159,Gladsaxe,income_gender_gap,104.73,89.52,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+217,Helsingør,income_gender_gap,102.55,87.66,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+825,Læsø,income_gender_gap,105.03,89.78,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+250,Frederikssund,income_gender_gap,99.24,84.83,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+661,Holstebro,income_gender_gap,96.57,82.55,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+657,Herning,income_gender_gap,95.24,81.41,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+773,Morsø,income_gender_gap,98.2,83.94,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+260,Halsnæs,income_gender_gap,100.53,85.93,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+492,Ærø,income_gender_gap,105.16,89.89,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+219,Hillerød,income_gender_gap,100.73,86.1,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+340,Sorø,income_gender_gap,97.81,83.61,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+561,Esbjerg,income_gender_gap,98.01,83.78,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+740,Silkeborg,income_gender_gap,97.99,83.76,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+563,Fanø,income_gender_gap,95.62,81.74,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+615,Horsens,income_gender_gap,97.02,82.93,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+316,Holbæk,income_gender_gap,99.4,84.97,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+607,Fredericia,income_gender_gap,97.11,83.01,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+766,Hedensted,income_gender_gap,93.88,80.25,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+410,Middelfart,income_gender_gap,98.03,83.8,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+851,Aalborg,income_gender_gap,101.61,86.86,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+370,Næstved,income_gender_gap,99.63,85.16,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+329,Ringsted,income_gender_gap,98.84,84.49,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+810,Brønderslev,income_gender_gap,98.54,84.23,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+751,Aarhus,income_gender_gap,102.87,87.93,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+727,Odder,income_gender_gap,96.86,82.8,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+813,Frederikshavn,income_gender_gap,98.81,84.46,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+336,Stevns,income_gender_gap,97.57,83.4,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+270,Gribskov,income_gender_gap,101.52,86.78,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+161,Glostrup,income_gender_gap,103.38,88.37,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+860,Hjørring,income_gender_gap,101.02,86.35,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+479,Svendborg,income_gender_gap,103.31,88.31,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+165,Albertslund,income_gender_gap,107.86,92.2,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+791,Viborg,income_gender_gap,97.55,83.39,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+706,Syddjurs,income_gender_gap,98.06,83.82,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+480,Nordfyns,income_gender_gap,97.78,83.58,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+440,Kerteminde,income_gender_gap,97.94,83.72,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+101,København,income_gender_gap,105.69,90.34,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+630,Vejle,income_gender_gap,96.29,82.31,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+760,Ringkøbing-Skjern,income_gender_gap,93.55,79.97,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+730,Randers,income_gender_gap,98.71,84.38,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+430,Faaborg-Midtfyn,income_gender_gap,98.96,84.59,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+320,Faxe,income_gender_gap,98.87,84.51,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+169,Høje-Taastrup,income_gender_gap,100.51,85.92,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+573,Varde,income_gender_gap,94.71,80.96,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+621,Kolding,income_gender_gap,97.52,83.36,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+580,Aabenraa,income_gender_gap,98.62,84.3,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+787,Thisted,income_gender_gap,98.65,84.33,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+420,Assens,income_gender_gap,99.61,85.15,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+756,Ikast-Brande,income_gender_gap,95.46,81.6,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+461,Odense,income_gender_gap,104.42,89.26,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+779,Skive,income_gender_gap,97.48,83.33,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+450,Nyborg,income_gender_gap,100.63,86.02,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+846,Mariagerfjord,income_gender_gap,97.29,83.16,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+540,Sønderborg,income_gender_gap,101.09,86.41,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+820,Vesthimmerlands,income_gender_gap,98.0,83.77,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+400,Bornholm,income_gender_gap,104.71,89.51,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+510,Haderslev,income_gender_gap,99.2,84.8,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+665,Lemvig,income_gender_gap,93.28,79.74,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+575,Vejen,income_gender_gap,93.69,80.09,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+671,Struer,income_gender_gap,96.29,82.31,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+707,Norddjurs,income_gender_gap,98.34,84.06,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+330,Slagelse,income_gender_gap,100.88,86.23,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+306,Odsherred,income_gender_gap,103.24,88.25,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+376,Guldborgsund,income_gender_gap,104.98,89.74,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+326,Kalundborg,income_gender_gap,97.94,83.72,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+849,Jammerbugt,income_gender_gap,99.65,85.18,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+390,Vordingborg,income_gender_gap,102.89,87.95,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+550,Tønder,income_gender_gap,98.49,84.19,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+360,Lolland,income_gender_gap,106.47,91.01,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+741,Samsø,income_gender_gap,109.56,93.65,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
+482,Langeland,income_gender_gap,106.45,90.99,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
 201,Allerød,employment_origin_gap,99.85,82.41,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed
 153,Brøndby,employment_origin_gap,105.94,87.43,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed
 155,Dragør,employment_origin_gap,91.7,75.68,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed

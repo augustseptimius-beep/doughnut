@@ -563,7 +563,7 @@ export default function ScoreBars({
                           : (rawVal * 100) / score
                         : null;
                       const formatRaw = (val: number, unit: string) => {
-                        const num = unit === "kr./indb."
+                        const num = unit.startsWith("kr.")
                           ? Math.round(val).toLocaleString("da-DK")
                           : val % 1 === 0
                             ? val.toFixed(0)
