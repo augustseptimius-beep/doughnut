@@ -7,8 +7,10 @@
     "Felter: category (social/ecological/context), dimension (kategori- eller dimensions-id), name (visningsnavn), table og source_url (kildelink på metodesiden), source (kort kildetekst i master), unit (enhed i master), raw_unit (enhed i UI, hvis den afviger fra unit), data_year (bruges kun hvis data/data_years.json ikke kender DST-tabellen), csv/ratio_col/raw_col (hvor build_master_csv.py læser tallet).",
     "Retning: sociale har 'inverse' (true = lavere råværdi er bedre), økologiske har 'lower_is_better'. Retningspilene (build_trends_csv.py) udleder deres op_er_godt af de to felter.",
     "period_years: tallet dækker en periode, ikke ét år (HISBK er femårige intervaller, trafikulykker et treårigt gennemsnit). data_year i master skrives så som 'start-slut' ud fra slutåret, fx 2021-2025.",
-    "Scoring: absolute_score (social ratio omskaleres ikke af baseline-toggle), abs_target (ratio = rå / mål × 100), target_label (tekst for målet), baseline_level (1 WHO/EU, 2 nationalt mål, 3 landsgennemsnit), baseline_type (økologisk: absolut/relativ), inverse_ratio/special/cap/navn_key (særregler i build_master_csv.py).",
-    "En social indikator der ikke står i nogen kategoris 'indicators', skrives stadig til master, men scores ikke og holdes ude af kategoriens pil. En økologisk indikator skal stå i sin dimensions liste."
+    "En social indikator der ikke står i nogen kategoris 'indicators', skrives stadig til master, men scores ikke og holdes ude af kategoriens pil. En økologisk indikator skal stå i sin dimensions liste.",
+    "Scoring: build_master_csv.py beregner ALLE ratios selv ud fra raw_col og 'reference' (type maal: fast mål; kommunegennemsnit: uvægtet gennemsnit af kommunernes råværdi, beregnet ved build; landstal: fetch-scriptets referenceværdi i kolonnen 'col'). Retningen følger inverse/lower_is_better: sociale raw/ref×100 (inverse: ref/raw×100), økologiske raw/ref×100 (højere-er-bedre: ref/raw×100). Sociale cappes ved 150, økologiske ved 'cap' hvis sat. formula '100_minus_raw' (kun bolig_fossil) giver 100 minus råværdien.",
+    "ratio_col er fetch-scriptets egen ratio. Den indgår ikke i scoren, men bruges til krydstjek og - så længe en CSV mangler landstal-kolonnen - til at rekonstruere landstallet (ratio_col_invers: kolonnen er på den inverterede skala). navn_col: CSV'en er nøglet på kommunenavn i den kolonne, ikke på kommune_kode.",
+    "Øvrige felter: absolute_score (social ratio omskaleres ikke af baseline-toggle), target_label (tekst for målet i UI), baseline_level (1 WHO/EU, 2 nationalt mål, 3 landsgennemsnit), baseline_type (økologisk: absolut/relativ), cap (økologisk loft for ratio)."
   ],
   "_fjernet": {
     "car_access": "Fjernet 2026: 'flere biler = bedre' er skævt i en bæredygtighedsramme og gav landdistrikter en kunstigt høj mobilitets-score. Rådata ligger stadig i mobilitet_scores.csv.",
@@ -198,6 +200,7 @@
       "csv": "doughnut_scores.csv",
       "ratio_col": "life_expectancy_ratio",
       "raw_col": "life_expectancy_raw",
+      "reference": {"type": "landstal", "col": "life_expectancy_ref", "definition": "DST's landstal (hele landet); fetch_doughnut_data.py"},
       "inverse": false,
       "baseline_level": 3,
       "rationale": "Det mest direkte og internationalt sammenlignelige mål for befolkningens generelle sundhedstilstand. Langt tidsserie i DST (HISBK) giver høj datakvalitet."
@@ -215,6 +218,7 @@
       "csv": "sundhedsprofil_scores.csv",
       "ratio_col": "selvvurderet_helbred_ratio",
       "raw_col": "selvvurderet_helbred_pct",
+      "reference": {"type": "landstal", "col": "selvvurderet_helbred_ref", "definition": "befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+); fetch_sundhedsprofil.py"},
       "inverse": false,
       "baseline_level": 3,
       "rationale": "Andel der vurderer eget helbred som fremragende, vældig godt eller godt (Den Nationale Sundhedsprofil 2025). Selvvurderet helbred er det mest anvendte befolkningsmål for sundhed internationalt og forudsiger dødelighed og sygdomsforløb bedre end mange kliniske mål. Det er samtidig det eneste sted i modellen hvor borgeren selv svarer. Direkte: højere andel er bedre."
@@ -232,6 +236,7 @@
       "csv": "sundhedsprofil_scores.csv",
       "ratio_col": "mentalt_helbred_ratio",
       "raw_col": "mentalt_helbred_pct",
+      "reference": {"type": "landstal", "col": "mentalt_helbred_ref", "definition": "befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+); fetch_sundhedsprofil.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Andel med lav score på den mentale helbredsskala (SF-12, Den Nationale Sundhedsprofil 2025). Mental sundhed havde ingen selvstændig dækning i modellen før 2026; den tidligere proxy var antidepressivt forbrug, som viser sig at korrelere -0,01 med dette mål og altså ikke måler det samme. Inverteret: lavere andel er bedre."
@@ -249,6 +254,7 @@
       "csv": "sundhed_extra_scores.csv",
       "ratio_col": "hospital_long_ratio",
       "raw_col": "hospital_long_pct",
+      "reference": {"type": "landstal", "col": "hospital_long_ref", "definition": "DST's landstal (hele landet); fetch_social_extra_data.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Andel af befolkningen med indlæggelse på 12 timer eller derover (SBR01). Længere ophold indikerer alvorligere sygdomsforløb og er et stærkere signal om befolkningens helbredstilstand end kortere ophold. Inverteret: lavere andel er bedre."
@@ -266,6 +272,7 @@
       "csv": "hjemsyg_scores.csv",
       "ratio_col": "hjemsyg_ratio",
       "raw_col": "hjemsyg_raw",
+      "reference": {"type": "landstal", "col": "hjemsyg_ref", "definition": "DST's landstal (hele landet) pr. 1.000 indb.; fetch_sundhed_extra.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Antal modtagere af hjemmesygepleje pr. 1.000 indbyggere (DST HJEMSYG). Proxy for sygelighed og plejebyrde, særligt blandt ældre. Inverteret: lavere antal er bedre. Begrænsning: 2025-tallene er foreløbige (baseret på første halvår) og kan ændre sig."
@@ -283,6 +290,7 @@
       "csv": "uvm_scores.csv",
       "ratio_col": "wellbeing_ratio",
       "raw_col": "wellbeing_score",
+      "reference": {"type": "kommunegennemsnit", "definition": "uvægtet gennemsnit af kommunerne (UVM udstiller intet landstal pr. kommunetabel)"},
       "inverse": false,
       "baseline_level": 3
     },
@@ -299,6 +307,7 @@
       "csv": "sundhedsprofil_scores.csv",
       "ratio_col": "rygning_ratio",
       "raw_col": "rygning_pct",
+      "reference": {"type": "landstal", "col": "rygning_ref", "definition": "befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+); fetch_sundhedsprofil.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Andel der ryger dagligt (Den Nationale Sundhedsprofil 2025). Rygning er den største enkeltstående kilde til social ulighed i sundhed og det område hvor kommunal forebyggelse erfaringsmæssigt kan flytte mest. Inverteret: lavere andel er bedre."
@@ -316,6 +325,7 @@
       "csv": "sundhedsprofil_scores.csv",
       "ratio_col": "alkohol_ratio",
       "raw_col": "alkohol_pct",
+      "reference": {"type": "landstal", "col": "alkohol_ref", "definition": "befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+); fetch_sundhedsprofil.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Andel der drikker mere end 10 genstande i løbet af en typisk uge, altså over Sundhedsstyrelsens højrisikogrænse (Den Nationale Sundhedsprofil 2025). Bemærk at indikatoren peger modsat de øvrige levevaner: forbruget er højest i velstillede kommuner, hvor rygning og overvægt er lavest. Inverteret: lavere andel er bedre."
@@ -333,6 +343,7 @@
       "csv": "sundhedsprofil_scores.csv",
       "ratio_col": "kost_ratio",
       "raw_col": "kost_pct",
+      "reference": {"type": "landstal", "col": "kost_ref", "definition": "befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+); fetch_sundhedsprofil.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Andel med lav score på kostskalaen, et samlet mål for usundt kostmønster bygget på indtag af frugt, grønt, fisk og fedt (Den Nationale Sundhedsprofil 2025). Inverteret: lavere andel er bedre."
@@ -350,6 +361,7 @@
       "csv": "sundhedsprofil_scores.csv",
       "ratio_col": "svaer_overvaegt_ratio",
       "raw_col": "svaer_overvaegt_pct",
+      "reference": {"type": "landstal", "col": "svaer_overvaegt_ref", "definition": "befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+); fetch_sundhedsprofil.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Andel med svær overvægt, BMI 30 eller derover (Den Nationale Sundhedsprofil 2025). Afløser overvægt blandt 6-7-årige, som byggede på 2018-tal. Spænder fra 7,5 % i Gentofte til 27,6 % i Brøndby og er dermed en af modellens skarpest differentierende indikatorer. Inverteret: lavere andel er bedre."
@@ -367,11 +379,11 @@
       "csv": "doughnut_scores.csv",
       "ratio_col": "education_ratio",
       "raw_col": "education_raw",
+      "reference": {"type": "maal", "value": 95, "label": "95% med kompetencegivende uddannelse (nationalt mål)"},
       "inverse": false,
       "baseline_level": 2,
       "absolute_score": true,
       "target_label": "95% (nationalt uddannelsesmål)",
-      "abs_target": 95,
       "rationale": "Andel af 30-34-årige med erhvervskompetencegivende uddannelse er det primære politiske måleparameter for uddannelsesniveau. Absolut baseline: nationalt mål på 95% (Børne- og Undervisningsministeriet). Scoren beregnes nu mod dette mål (100 = 95% nået), ikke mod landsgennemsnittet.",
       "note": "HFUDD11 afløser HFUDD10, som DST gjorde inaktiv i 2019. Scores absolut mod 95%-målet (abs_target), ikke mod landsgennemsnittet."
     },
@@ -388,6 +400,7 @@
       "csv": "uddannelse_extra_scores.csv",
       "ratio_col": "low_education_ratio",
       "raw_col": "low_education_pct",
+      "reference": {"type": "landstal", "col": "low_education_ref", "definition": "DST's landstal (hele landet); fetch_social_extra_data.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Andel af 25-29-årige med kun grundskole som højeste uddannelse. Fanger den sårbare ende af uddannelsesspektret og er særligt vigtig som indikator i landdistrikter og socialt belastede områder."
@@ -405,6 +418,7 @@
       "csv": "uvm_scores.csv",
       "ratio_col": "exam_grade_ratio",
       "raw_col": "exam_grade_avg",
+      "reference": {"type": "kommunegennemsnit", "definition": "uvægtet gennemsnit af kommunerne"},
       "inverse": false,
       "baseline_level": 3
     },
@@ -421,6 +435,7 @@
       "csv": "uvm_scores.csv",
       "ratio_col": "high_absence_ratio",
       "raw_col": "high_absence_pct",
+      "reference": {"type": "kommunegennemsnit", "definition": "uvægtet gennemsnit af kommunerne"},
       "inverse": true,
       "baseline_level": 3
     },
@@ -437,6 +452,7 @@
       "csv": "uvm_scores.csv",
       "ratio_col": "youth_education_ratio",
       "raw_col": "youth_education_pct",
+      "reference": {"type": "kommunegennemsnit", "definition": "uvægtet gennemsnit af kommunerne"},
       "inverse": false,
       "baseline_level": 3
     },
@@ -454,6 +470,7 @@
       "csv": "doughnut_scores.csv",
       "ratio_col": "disposable_income_ratio",
       "raw_col": "disposable_income_raw",
+      "reference": {"type": "landstal", "col": "disposable_income_ref", "definition": "DST's landstal (hele landet); fetch_doughnut_data.py"},
       "inverse": false,
       "baseline_level": 3,
       "rationale": "Median disponibel indkomst for personer på 15 år og derover er det bredeste mål for materiel levestandard - inkluderer løn, overførsler og kapitalindkomst minus skat og bidrag. Medianen bruges frem for gennemsnittet, fordi få meget høje indkomster ellers kan løfte en hel kommune: i Vejen steg kvindernes gennemsnitsindkomst fra 217.000 til 438.000 kr. fra 2022 til 2023, mens medianen stod stille.",
@@ -472,6 +489,7 @@
       "csv": "doughnut_scores.csv",
       "ratio_col": "employment_ratio",
       "raw_col": "employment_raw",
+      "reference": {"type": "landstal", "col": "employment_ref", "definition": "DST's landstal (hele landet); fetch_doughnut_data.py"},
       "inverse": false,
       "baseline_level": 3,
       "rationale": "Beskæftigelsesfrekvens afspejler adgang til arbejde, som er centralt for både indkomst, selvforsørgelse og social deltagelse."
@@ -489,6 +507,7 @@
       "csv": "doughnut_scores.csv",
       "ratio_col": "child_poverty_ratio",
       "raw_col": "child_poverty_raw",
+      "reference": {"type": "landstal", "col": "child_poverty_ref", "definition": "DST's landstal (hele landet); fetch_doughnut_data.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Andel af børn 0-17 år i relativ fattigdom (LABY07). Relativ fattigdom defineres som disponibel indkomst under 50% af medianen. Børnefattigdom er en direkte indikator for social ulighed og risiko for negativ social arv."
@@ -506,6 +525,7 @@
       "csv": "doughnut_scores.csv",
       "ratio_col": "gini_ratio",
       "raw_col": "gini_raw",
+      "reference": {"type": "landstal", "col": "gini_ref", "definition": "DST's landstal (hele landet); fetch_doughnut_data.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Gini-koefficient måler den samlede indkomstulighed i kommunen. Høj ulighed underminerer social sammenhæng, tillid og fælles institutioner."
@@ -523,6 +543,7 @@
       "csv": "doughnut_scores.csv",
       "ratio_col": "low_income_ratio",
       "raw_col": "low_income_raw",
+      "reference": {"type": "landstal", "col": "low_income_ref", "definition": "DST's landstal (hele landet); fetch_doughnut_data.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Andel af befolkningen i relativ fattigdom efter DST's officielle mål (LABY07), hvor grænsen er 50% af medianindkomsten. Samme tabel som børnefattigdom, men for alle aldre. Adskiller sig fra relativ fattigdom under Velfærd (IFOR12P), der bruger 60%-grænsen."
@@ -540,6 +561,7 @@
       "csv": "velfaerd_extra_scores.csv",
       "ratio_col": "vulnerable_children_ratio",
       "raw_col": "vulnerable_children_pct",
+      "reference": {"type": "landstal", "col": "vulnerable_children_ref", "definition": "DST's landstal (hele landet); fetch_social_new_data.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Andel udsatte børn og unge med anbringelse eller forebyggende foranstaltninger (BU43) er en stærk indikator for social belastning og kommunens udfordringer med social arv."
@@ -557,6 +579,7 @@
       "csv": "velfaerd_extra_scores.csv",
       "ratio_col": "neet_ratio",
       "raw_col": "neet_pct",
+      "reference": {"type": "landstal", "col": "neet_ref", "definition": "DST's landstal (hele landet); fetch_social_new_data.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Andel unge (16-24 år) uden for uddannelse og beskæftigelse (NEET) signalerer risiko for langsigtet social eksklusion og er et anerkendt EU-måleparameter."
@@ -574,6 +597,7 @@
       "csv": "lighed_scores.csv",
       "ratio_col": "poverty_relative_ratio",
       "raw_col": "poverty_relative_pct",
+      "reference": {"type": "landstal", "col": "poverty_relative_ref", "definition": "DST's landstal (hele landet), ellers uvægtet gennemsnit af kommunerne; fetch_udvidelse_data.py"},
       "inverse": true,
       "baseline_level": 3
     },
@@ -591,6 +615,7 @@
       "csv": "underretning_scores.csv",
       "ratio_col": "child_notifications_ratio",
       "raw_col": "child_notifications_per_1k",
+      "reference": {"type": "landstal", "col": "child_notifications_ref", "definition": "DST's landstal (hele landet), ellers uvægtet gennemsnit af kommunerne; fetch_udvidelse_data.py"},
       "inverse": true,
       "baseline_level": 3
     },
@@ -607,6 +632,7 @@
       "csv": "doughnut_scores.csv",
       "ratio_col": "vacant_housing_ratio",
       "raw_col": "vacant_housing_raw",
+      "reference": {"type": "landstal", "col": "vacant_housing_ref", "definition": "DST's landstal (hele landet); fetch_doughnut_data.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Høj andel tomme boliger signalerer fraflytning og lavt boligmarked. Inverteret: kommuner med færre tomme boliger scorer bedre."
@@ -624,6 +650,7 @@
       "csv": "bolig_extra_scores.csv",
       "ratio_col": "housing_area_ratio",
       "raw_col": "housing_area_m2",
+      "reference": {"type": "landstal", "col": "housing_area_ref", "definition": "DST's landstal (hele landet); fetch_social_extra_data.py"},
       "inverse": false,
       "baseline_level": 3,
       "rationale": "Boligareal pr. person afspejler boligstandard og -træthed. Mere plads er generelt forbundet med bedre livskvalitet."
@@ -641,6 +668,7 @@
       "csv": "bolig_wc_scores.csv",
       "ratio_col": "housing_no_wc_ratio",
       "raw_col": "housing_no_wc_pct",
+      "reference": {"type": "landstal", "col": "housing_no_wc_ref", "definition": "DST's landstal (hele landet), ellers uvægtet gennemsnit af kommunerne; fetch_udvidelse_data.py"},
       "inverse": true,
       "baseline_level": 3,
       "note": "Står i master, men scores og vises ikke: indgår ikke i nogen social kategori. Holdes derfor ude af Bolig-pilen (CLAUDE.md pkt. 18)."
@@ -658,6 +686,7 @@
       "csv": "bolig_wc_scores.csv",
       "ratio_col": "housing_no_bath_ratio",
       "raw_col": "housing_no_bath_pct",
+      "reference": {"type": "landstal", "col": "housing_no_bath_ref", "definition": "DST's landstal (hele landet), ellers uvægtet gennemsnit af kommunerne; fetch_udvidelse_data.py"},
       "inverse": true,
       "baseline_level": 3,
       "note": "Som housing_no_wc: i master, men ikke scoret."
@@ -676,6 +705,8 @@
       "csv": "bolig_fossil_scores.csv",
       "ratio_col": "bolig_fossil_ratio",
       "raw_col": "bolig_fossil_raw",
+      "reference": {"type": "maal", "value": 0, "label": "0% fossil opvarmning (udfasningsmål)"},
+      "formula": "100_minus_raw",
       "inverse": true,
       "baseline_level": 2,
       "absolute_score": true,
@@ -696,6 +727,7 @@
       "csv": "democracy_scores.csv",
       "ratio_col": "voter_turnout_ratio",
       "raw_col": "voter_turnout_pct",
+      "reference": {"type": "landstal", "col": "voter_turnout_ref", "definition": "DST's landstal (hele landet); fetch_democracy_data.py"},
       "inverse": false,
       "baseline_level": 3,
       "rationale": "Stemmedeltagelse ved kommunalvalg er det mest direkte og sammenlignelige mål for demokratisk engagement på lokalt plan. God datadækning for alle 98 kommuner (valg 2025).",
@@ -714,6 +746,7 @@
       "csv": "democracy_scores.csv",
       "ratio_col": "voter_turnout_national_ratio",
       "raw_col": "voter_turnout_national_pct",
+      "reference": {"type": "landstal", "col": "voter_turnout_national_ref", "definition": "DST's landstal (hele landet); fetch_democracy_data.py"},
       "inverse": false,
       "baseline_level": 3,
       "rationale": "Stemmedeltagelse ved folketingsvalg 2026 (DST LABY09). Supplerer kommunalvalget med et nationalpolitisk mål for demokratisk engagement - de to valg trækker ikke altid i samme retning kommunerne imellem."
@@ -731,6 +764,7 @@
       "csv": "lighed_scores.csv",
       "ratio_col": "gender_leadership_ratio",
       "raw_col": "gender_leadership_pct",
+      "reference": {"type": "landstal", "col": "gender_leadership_ref", "definition": "national andel kvinder i ledelse (DST RAS301, hele landet), ikke 50%; fetch_udvidelse_data.py"},
       "inverse": false,
       "baseline_level": 3
     },
@@ -749,6 +783,7 @@
       "csv": "ligestilling_scores.csv",
       "ratio_col": "le_gender_gap_ratio",
       "raw_col": "le_gender_gap_years",
+      "reference": {"type": "landstal", "col": "le_gender_gap_ref", "definition": "DST's landstal (hele landet); fetch_ligestilling_data.py"},
       "inverse": true,
       "baseline_level": 3
     },
@@ -760,12 +795,12 @@
       "table": "INDKP106",
       "source": "DST INDKP106 (median)",
       "source_url": "https://www.statistikbanken.dk/INDKP106",
-      "unit": "% (kvinder/mænd, median)",
-      "raw_unit": "% (kvinders medianindkomst af mænds)",
+      "unit": "% (kvinders medianindkomst af mænds)",
       "data_year": "2024",
       "csv": "ligestilling_scores.csv",
       "ratio_col": "income_gender_gap_ratio",
       "raw_col": "income_gender_gap_pct",
+      "reference": {"type": "landstal", "col": "income_gender_gap_ref", "definition": "DST's landstal (hele landet); fetch_ligestilling_data.py"},
       "inverse": false,
       "baseline_level": 3,
       "note": "Median som disposable_income, se scripts/indkomst_median.py."
@@ -784,6 +819,7 @@
       "csv": "ligestilling_scores.csv",
       "ratio_col": "employment_origin_gap_ratio",
       "raw_col": "employment_origin_gap_pct",
+      "reference": {"type": "landstal", "col": "employment_origin_gap_ref", "definition": "DST's landstal (hele landet); fetch_ligestilling_data.py"},
       "inverse": false,
       "baseline_level": 3
     },
@@ -800,6 +836,7 @@
       "csv": "samskabelse_extra_scores.csv",
       "ratio_col": "music_school_ratio",
       "raw_col": "music_school_per_1k",
+      "reference": {"type": "landstal", "col": "music_school_ref", "definition": "DST's landstal (hele landet); fetch_social_extra_data.py"},
       "inverse": false,
       "baseline_level": 3,
       "rationale": "Musikskoleelever pr. 1.000 indb. måler kulturel deltagelse og adgang til musikuddannelse for børn og unge. Et unikt dansk måleparameter for kommunal kultursatsning."
@@ -817,6 +854,7 @@
       "csv": "lokalsamfund_scores.csv",
       "ratio_col": "library_ratio",
       "raw_col": "library_loans_per_cap",
+      "reference": {"type": "landstal", "col": "library_use_ref", "definition": "DST's landstal (hele landet); fetch_social_new_data.py"},
       "inverse": false,
       "baseline_level": 3,
       "rationale": "Biblioteksudlån pr. indbygger er en anerkendt proxy for kulturel aktivitet, læring og brug af offentlige kulturinstitutioner. God datakvalitet (BIB3A) og lang tidsserie.",
@@ -835,6 +873,7 @@
       "csv": "doughnut_scores.csv",
       "ratio_col": "kultur_spending_ratio",
       "raw_col": "kultur_spending_raw",
+      "reference": {"type": "landstal", "col": "kultur_spending_ref", "definition": "DST's landstal (hele landet); fetch_doughnut_data.py"},
       "inverse": false,
       "baseline_level": 3,
       "rationale": "Kommunale nettodriftsudgifter til biografer, teatre, musikarrangementer og kulturinstitutioner pr. indbygger (REGK31). Måler kommunens prioritering og investering i kulturlivet - uafhængigt af borgernes faktiske brug."
@@ -852,6 +891,7 @@
       "csv": "faellesskaber_scores.csv",
       "ratio_col": "crime_ratio",
       "raw_col": "crime_per_1k",
+      "reference": {"type": "landstal", "col": "crime_rate_ref", "definition": "DST's landstal (hele landet); fetch_social_new_data.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Anmeldte forbrydelser pr. 1.000 indb. er den bedst tilgængelige kvantitative indikator for tryghed på kommuneniveau. Lav kriminalitet er en forudsætning for social tillid og aktivt deltagelse i det offentlige rum."
@@ -870,6 +910,7 @@
       "csv": "faellesskaber_scores.csv",
       "ratio_col": "traffic_accidents_ratio",
       "raw_col": "traffic_accidents_per_100k",
+      "reference": {"type": "landstal", "col": "traffic_accidents_ref", "definition": "DST's landstal (hele landet); fetch_social_new_data.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Tilskadekomne og dræbte i færdselsuheld pr. 100.000 indb., opgjort som treårigt gennemsnit (UHELDK1). Ét års tal er ren støj i små kommuner: Læsø lå i 2024 på et niveau der svarer til omkring to tilskadekomne, så én ulykke fra eller til flyttede scoren med titalls point. Trafiksikkerhed er en direkte indikator for fysisk tryghed i det offentlige rum og for kvaliteten af infrastruktur og hastighedszoner. Inverteret: færre ulykker er bedre.",
@@ -888,6 +929,7 @@
       "csv": "faellesskaber_scores.csv",
       "ratio_col": "sports_membership_ratio",
       "raw_col": "sports_membership_pct",
+      "reference": {"type": "landstal", "col": "sports_membership_ref", "definition": "DST's landstal (hele landet); fetch_social_new_data.py"},
       "inverse": false,
       "baseline_level": 3,
       "rationale": "Andel af befolkningen med aktivt idrætsforeningsmedlemskab (DIF/DGI). Foreningsidræt er en central del af dansk civilsamfund og en proxy for frivilligt foreningsliv generelt."
@@ -905,6 +947,7 @@
       "csv": "lokalsamfund_extra_scores.csv",
       "ratio_col": "class_size_ratio",
       "raw_col": "class_size",
+      "reference": {"type": "landstal", "col": "class_size_ref", "definition": "DST's landstal (hele landet); fetch_social_extra_data.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Klassekvotient i grundskolen er en anerkendt kvalitetsindikator. Mindre klasser muliggør mere individuel opmærksomhed og er et politisk prioriteret mål."
@@ -922,6 +965,7 @@
       "csv": "lokalsamfund_extra_scores.csv",
       "ratio_col": "daycare_ratio",
       "raw_col": "daycare_ratio_val",
+      "reference": {"type": "landstal", "col": "daycare_ratio_ref", "definition": "DST's landstal (hele landet); fetch_social_extra_data.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Normering i daginstitutioner (børn pr. voksen) er et grundlæggende kvalitetsmål for det tidlige barndomsmiljø. Lav normering gavner børns trivsel og personalets arbejdsmiljø."
@@ -939,6 +983,7 @@
       "csv": "sundhedsprofil_scores.csv",
       "ratio_col": "social_stoette_ratio",
       "raw_col": "social_stoette_pct",
+      "reference": {"type": "landstal", "col": "social_stoette_ref", "definition": "befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+); fetch_sundhedsprofil.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Andel der aldrig eller næsten aldrig har nogen at tale med, hvis de har problemer eller brug for støtte (Den Nationale Sundhedsprofil 2025). Et mål for det bærende netværk omkring den enkelte. Korrelerer 0,50 med ensomhed, altså beslægtet men ikke overlappende: man kan være ensom og alligevel have nogen at ringe til, og omvendt. Inverteret: lavere andel er bedre."
@@ -956,6 +1001,7 @@
       "csv": "kulturvaner_scores.csv",
       "ratio_col": "sport_tilskuer_ratio",
       "raw_col": "sport_tilskuer_pct",
+      "reference": {"type": "landstal", "col": "sport_tilskuer_ref", "definition": "DST's landstal (hele landet), toårigt gennemsnit; fetch_kulturvaner.py"},
       "inverse": false,
       "baseline_level": 3,
       "rationale": "Andel der inden for et år har overværet en sportsbegivenhed som tilskuer (DST KV2GEO, toårigt gennemsnit 2024-2025). Måler deltagelse i det lokale liv som publikum og supplerer idrætsmedlemskab, der kun tæller de aktive. Blandt kulturvaneundersøgelsens 17 aktiviteter er det den eneste der korrelerer positivt med idrætsmedlemskab (0,25) og nul med kommunens foreningsudgifter; biblioteks-, museums- og kunstbesøg korrelerer 0,34-0,41 med foreningsudgifterne og måler dermed samme by- og uddannelsesgradient som vi har i forvejen. Direkte: højere andel er bedre. VIGTIG BEGRÆNSNING: mangler for 22 kommuner, se kategoriens forbehold.",
@@ -974,6 +1020,7 @@
       "csv": "sundhedsprofil_scores.csv",
       "ratio_col": "ensomhed_ratio",
       "raw_col": "ensomhed_pct",
+      "reference": {"type": "landstal", "col": "ensomhed_ref", "definition": "befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+); fetch_sundhedsprofil.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Andel med tegn på ensomhed, målt på T-3-skalaen (Den Nationale Sundhedsprofil 2025). Et af kategoriens to udfaldsmål sammen med begrænset social støtte; de øvrige tre måler deltagelse og kommunens foreningsstøtte. Inverteret: lavere andel er bedre."
@@ -991,6 +1038,7 @@
       "csv": "doughnut_scores.csv",
       "ratio_col": "civil_society_ratio",
       "raw_col": "civil_society_raw",
+      "reference": {"type": "landstal", "col": "civil_society_ref", "definition": "DST's landstal (hele landet); fetch_doughnut_data.py"},
       "inverse": false,
       "baseline_level": 3,
       "rationale": "Kommunale udgifter til frivilligt folkeoplysende foreningsarbejde pr. indbygger (REGK31 funktion 33873). Proxy for kommunens investering i civilsamfund og det lokale foreningsliv - en central del af dansk demokratisk kultur."
@@ -1008,6 +1056,7 @@
       "csv": "lokalsamfund_extra_scores.csv",
       "ratio_col": "educated_staff_ratio",
       "raw_col": "educated_staff_pct",
+      "reference": {"type": "landstal", "col": "educated_staff_ref", "definition": "DST's landstal (hele landet); fetch_social_extra_data.py"},
       "inverse": false,
       "baseline_level": 3,
       "rationale": "Andel af pædagogisk personale i kommunale og selvejende daginstitutioner med pædagoguddannelse (professionsbachelor, BOERN1 kode 460). Nationalt har 42% af personalet INGEN pædagogisk uddannelse - stor variation kommunerne imellem (18%-58%). Et rent kvalitetsmål: komplement til normering (BOERN8), der kun måler kvantitet."
@@ -1025,6 +1074,7 @@
       "csv": "mobilitet_scores.csv",
       "ratio_col": "commute_ratio",
       "raw_col": "commute_distance_km",
+      "reference": {"type": "landstal", "col": "commute_distance_ref", "definition": "DST's landstal (hele landet); fetch_social_new_data.py"},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Gennemsnitlig pendlingsafstand afspejler tilgængelighed til arbejdsmarkedet. Lang pendling belaster livskvalitet og er typisk forbundet med lavere kollektiv trafikdækning."
@@ -1042,6 +1092,7 @@
       "csv": "mobilitet_scores.csv",
       "ratio_col": "public_transport_ratio",
       "raw_col": "public_transport_pct",
+      "reference": {"type": "kommunegennemsnit", "definition": "uvægtet gennemsnit af kommunerne (LABY49 findes kun pr. kommunegruppe)"},
       "inverse": false,
       "baseline_level": 3,
       "rationale": "Andel af borgere med god adgang til offentlig transport (Meget højt + Højt serviceniveau), LABY49. Metodenote: data er kun tilgængeligt på kommunegruppe-niveau (5 grupper) - alle kommuner i samme gruppe tildeles identisk score. Landkommuner (G5) scorer konsekvent lavt uanset lokale forskelle.",
@@ -1060,9 +1111,10 @@
       "csv": "klimatilpasning_scores.csv",
       "ratio_col": "vejr_skader_ratio",
       "raw_col": "vejr_skader_raw",
+      "navn_col": "kommune_navn",
+      "reference": {"type": "kommunegennemsnit", "definition": "uvægtet gennemsnit af kommunerne"},
       "inverse": true,
       "baseline_level": 3,
-      "navn_key": true,
       "note": "Proxy: vejrrelaterede forsikringsskader pr. 1.000 indb. (F&P, 2023-2025). Kilde-CSV'en er nøglet på kommunenavn (navn_key). Se data/klimatilpasning.md."
     },
     {
@@ -1076,6 +1128,7 @@
       "csv": "climate_scores.csv",
       "ratio_col": "climate_territorial_ratio",
       "raw_col": "co2e_per_capita",
+      "reference": {"type": "maal", "value": 3, "label": "3 ton CO₂e pr. person (Paris-budget)"},
       "lower_is_better": true,
       "baseline_type": "absolut",
       "boundary": "Mål: 3 ton CO₂e/person/år (territorial)",
@@ -1093,6 +1146,7 @@
       "csv": "luftforurening_scores.csv",
       "ratio_col": "no2_ratio",
       "raw_col": "no2_ug_m3",
+      "reference": {"type": "maal", "value": 10, "label": "WHO 2021: 10 µg/m³"},
       "lower_is_better": true,
       "baseline_type": "absolut",
       "boundary": "WHO 2021: 10 µg/m³",
@@ -1110,6 +1164,7 @@
       "csv": "luftforurening_scores.csv",
       "ratio_col": "pm25_ratio",
       "raw_col": "pm25_ug_m3",
+      "reference": {"type": "maal", "value": 5, "label": "WHO 2021: 5 µg/m³"},
       "lower_is_better": true,
       "baseline_type": "absolut",
       "boundary": "WHO 2021: 5 µg/m³",
@@ -1127,12 +1182,12 @@
       "csv": "consumption_scores.csv",
       "ratio_col": null,
       "raw_col": "recycling_pct",
+      "reference": {"type": "maal", "value": 65, "label": "EU-mål: 65% genanvendelse (2035)"},
       "lower_is_better": false,
       "baseline_type": "absolut",
       "boundary": "Mål: 65% (EU Affaldsdirektiv 2035)",
       "raw_key": "eco_cirkularitet_raw",
       "ratio_key": "eco_cirkularitet_ratio",
-      "special": "recycling_eu_target",
       "note": "Ratio = 65% EU-mål / faktisk andel × 100 (special: recycling_eu_target), så over 100 = genanvender for lidt."
     },
     {
@@ -1146,12 +1201,13 @@
       "csv": "forurening_scores.csv",
       "ratio_col": "waste_ratio",
       "raw_col": "waste_kg_per_capita",
+      "ratio_col_invers": true,
+      "reference": {"type": "landstal", "col": "cirkularitet_waste_ref", "definition": "landsgennemsnit af husholdningsaffald pr. person; fetch_eco_new_data.py"},
       "lower_is_better": true,
       "baseline_type": "relativ",
       "boundary": "Lavere end landsgennemsnittet er bedre",
       "raw_key": "eco_affald_raw",
       "ratio_key": "eco_affald_ratio",
-      "inverse_ratio": true,
       "note": "Kilde-CSV'en har inverteret ratio (landsgns./kommune); konverteres med 10000/x (inverse_ratio)."
     },
     {
@@ -1165,12 +1221,13 @@
       "csv": "naeringsstoffer_scores.csv",
       "ratio_col": "nitrogen_ratio",
       "raw_col": "nitrogen_per_1000",
+      "ratio_col_invers": true,
+      "reference": {"type": "landstal", "col": "naer_nitrogen_ref", "definition": "DST VANDUD hele landet pr. 1.000 indb.; fetch_eco_new_data.py"},
       "lower_is_better": true,
       "baseline_type": "relativ",
       "boundary": "Lavere end landsgennemsnittet er bedre",
       "raw_key": "eco_naer_n_raw",
       "ratio_key": "eco_naer_n_ratio",
-      "inverse_ratio": true,
       "note": "Kilde-CSV'en har inverteret ratio; konverteres med 10000/x (inverse_ratio)."
     },
     {
@@ -1184,12 +1241,13 @@
       "csv": "naeringsstoffer_scores.csv",
       "ratio_col": "phosphorus_ratio",
       "raw_col": "phosphorus_per_1000",
+      "ratio_col_invers": true,
+      "reference": {"type": "landstal", "col": "naer_phosphorus_ref", "definition": "DST VANDUD hele landet pr. 1.000 indb.; fetch_eco_new_data.py"},
       "lower_is_better": true,
       "baseline_type": "relativ",
       "boundary": "Lavere end landsgennemsnittet er bedre",
       "raw_key": "eco_naer_p_raw",
       "ratio_key": "eco_naer_p_ratio",
-      "inverse_ratio": true,
       "note": "Kilde-CSV'en har inverteret ratio; konverteres med 10000/x (inverse_ratio)."
     },
     {
@@ -1203,6 +1261,7 @@
       "csv": "n_landbrug_scores.csv",
       "ratio_col": "n_ratio",
       "raw_col": "n_ceiling_kg_per_ha",
+      "reference": {"type": "landstal", "col": "naer_landbrug_ref", "definition": "markblok-vægtet landsgennemsnit af tålegrænsen; fetch_naeringsstoffer_landbrug.py"},
       "lower_is_better": false,
       "baseline_type": "relativ",
       "boundary": "Lavere tålegrænse = mere presset vandmiljø end landsgennemsnit",
@@ -1220,6 +1279,7 @@
       "csv": "vp3_vandkvalitet_scores.csv",
       "ratio_col": "vandkvalitet_ratio",
       "raw_col": "pct_god_tilstand",
+      "reference": {"type": "landstal", "col": "overfladevand_ref", "definition": "andel af alle landets vandområder i god tilstand (samlet opgørelse); fetch_vp3_vandkvalitet.py"},
       "lower_is_better": false,
       "baseline_type": "relativ",
       "boundary": "EU-mål: 100% i god tilstand (2027) - nationalt langtfra opfyldt. Scoret mod landsgennemsnit.",
@@ -1239,6 +1299,7 @@
       "csv": "biodiversitet_scores.csv",
       "ratio_col": "biodiversitet_ratio",
       "raw_col": "pct_vasentlig_natur",
+      "reference": {"type": "maal", "value": 30, "label": "EU-mål: 30% (Biodiversitetsstrategi 2030)"},
       "lower_is_better": false,
       "baseline_type": "absolut",
       "boundary": "Mål: 30% (EU Biodiversitetsstrategi 2030)",
@@ -1258,6 +1319,7 @@
       "csv": "biodiversitet_scores.csv",
       "ratio_col": "uerstattelig_ratio",
       "raw_col": "pct_uerstattelig_natur",
+      "reference": {"type": "maal", "value": 10, "label": "EU-mål: 10% strengt beskyttet (2030)"},
       "lower_is_better": false,
       "baseline_type": "absolut",
       "boundary": "Mål: 10% strengt beskyttet (EU 2030)",
@@ -1277,12 +1339,13 @@
       "csv": "cba_2023_estimate.csv",
       "ratio_col": null,
       "raw_col": "cba_2023_estimate",
+      "navn_col": "kommune",
+      "reference": {"type": "maal", "value": 3, "label": "3 ton CO₂e pr. person (Paris-budget)"},
       "lower_is_better": true,
       "baseline_type": "absolut",
       "boundary": "Mål: 3 ton CO₂e/person/år (forbrugsbaseret)",
       "raw_key": "forbrug_co2",
       "ratio_key": "forbrug_co2_self",
-      "special": "cba_navn_key",
       "note": "Tier 1-estimat (Osei-Owusu et al. 2020 nutidsjusteret med ENS GA25). Kilde-CSV'en er nøglet på kommunenavn; manglende match giver ingen værdi (ingen fallback). Ratio = estimat / 3 ton × 100 (special: cba_navn_key). Se data/methodology_note.md."
     },
     {
@@ -1297,6 +1360,7 @@
       "csv": "pesticider_scores.csv",
       "ratio_col": "pesticid_ratio",
       "raw_col": "pesticid_pct_over_graense",
+      "reference": {"type": "landstal", "col": "pesticider_ref", "definition": "andel af alle landets almene vandværker over kravværdien (samlet opgørelse); fetch_grundvand_jupiter.py"},
       "lower_is_better": true,
       "baseline_type": "relativ",
       "boundary": "Landsgns.: 9,2% af vandværkerne over drikkevandsnormen",
@@ -1315,6 +1379,7 @@
       "csv": "nitrat_scores.csv",
       "ratio_col": "nitrat_ratio",
       "raw_col": "nitrat_mg_l",
+      "reference": {"type": "maal", "value": 6, "label": "6 mg/L (ekspertgruppens anbefaling 2025)"},
       "lower_is_better": true,
       "baseline_type": "absolut",
       "boundary": "Grænse: 6 mg/L (ekspertgruppe 2025)",
@@ -1333,6 +1398,7 @@
       "csv": "vandindvinding_scores.csv",
       "ratio_col": "vandindvinding_ratio",
       "raw_col": "vandindvinding_m3_per_person",
+      "reference": {"type": "landstal", "col": "vandindvinding_ref", "definition": "befolkningsvægtet landsgennemsnit; fetch_vandindvinding_data.py"},
       "lower_is_better": true,
       "baseline_type": "relativ",
       "boundary": "Lavere end landsgennemsnittet er bedre. OBS: bykommuner kan mangle data pga. vandværkets registreringssted.",
@@ -1350,6 +1416,7 @@
       "csv": "arealanvendelse_scores.csv",
       "ratio_col": "intensiv_ratio",
       "raw_col": "intensiv_pct",
+      "reference": {"type": "landstal", "col": "areal_intensiv_ref", "definition": "DST AREALDK2 hele landet (OMRÅDE=95); fetch_dst_arealanvendelse.py"},
       "lower_is_better": true,
       "baseline_type": "relativ",
       "boundary": "Nationalt snit: ~55%",
@@ -1367,6 +1434,7 @@
       "csv": "arealanvendelse_scores.csv",
       "ratio_col": "bebygget_ratio",
       "raw_col": "bebygget_pct",
+      "reference": {"type": "landstal", "col": "areal_bebygget_ref", "definition": "DST AREALDK2 hele landet (OMRÅDE=95); fetch_dst_arealanvendelse.py"},
       "lower_is_better": true,
       "baseline_type": "relativ",
       "boundary": "Nationalt snit: ~14%",

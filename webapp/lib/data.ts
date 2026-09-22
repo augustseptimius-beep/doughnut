@@ -21,7 +21,7 @@ export type {
   CategoryScore,
 } from "./shared";
 
-import { INDICATORS, ECOLOGICAL_DIMENSIONS, ECO_INDICATOR_KEYS, computeTop10Ratios, computeGroupRatios, type KommuneData, type TrendPost, type TrendDirection } from "./shared";
+import { INDICATORS, ECOLOGICAL_DIMENSIONS, ECO_INDICATOR_KEYS, INDIKATORREGISTER, computeTop10Ratios, computeGroupRatios, type KommuneData, type RegisterIndikator, type TrendPost, type TrendDirection } from "./shared";
 
 let cachedData: KommuneData[] | null = null;
 
@@ -51,9 +51,82 @@ interface MasterRow {
   source: string;
   category: string;
   dimension: string;
+  reference: string;
 }
 
+let cachedMasterRows: MasterRow[] | null = null;
+
 function parseMasterCsv(): MasterRow[] {
+  if (cachedMasterRows) return cachedMasterRows;
+  const rows = laesMasterCsv();
+  validerMaster(rows);
+  cachedMasterRows = rows;
+  return rows;
+}
+
+// ─── Gate: master skal passe med registret ────────────────────────────
+// Kører ved hvert build (også på Netlify) og i dev. Et master der ikke er
+// bygget med det aktuelle register - fx fordi indikatorer.json er rettet uden
+// at build_master_csv.py er kørt bagefter - stopper buildet med en fejl i
+// stedet for at deploye tal der modsiger metoden. Netlify beholder så den
+// forrige version online. Formlen er en kontrol-kopi af beregn_ratio() i
+// scripts/build_master_csv.py (arkitekturdokumentet R2-R4).
+function kontrolRatio(ind: RegisterIndikator, raw: number | null, ref: number | null): number | null {
+  if (raw === null) return null;
+  let x: number;
+  if (ind.formula === "100_minus_raw") {
+    x = 100 - raw;
+  } else {
+    if (!ref) return null;
+    const rawOverRef = ind.category === "social" ? !ind.inverse : !!ind.lower_is_better;
+    if (rawOverRef) x = (raw / ref) * 100;
+    else if (raw === 0) x = Infinity;
+    else x = (ref / raw) * 100;
+  }
+  const cap = ind.category === "social" ? 150 : ind.cap;
+  if (cap !== undefined && x > cap) x = cap;
+  if (!Number.isFinite(x)) return null;
+  return Math.round(x * 100) / 100;
+}
+
+function validerMaster(rows: MasterRow[]): void {
+  const fejl: string[] = [];
+  const register = new Map(INDIKATORREGISTER.indikatorer.map((i) => [i.id, i]));
+  const iMaster = new Set<string>();
+  for (const r of rows) {
+    if (r.indicator_id.startsWith("_dim_")) continue;
+    iMaster.add(r.indicator_id);
+    const ind = register.get(r.indicator_id);
+    if (!ind) {
+      fejl.push(`${r.indicator_id} står i master_indicators.csv, men ikke i data/indikatorer.json`);
+      continue;
+    }
+    if (ind.category === "context") continue;
+    const ratio = parseFloatOrNull(r.ratio);
+    const forventet = kontrolRatio(ind, parseFloatOrNull(r.raw_value), parseFloatOrNull(r.reference));
+    const passer =
+      ratio === null ? forventet === null : forventet !== null && Math.abs(forventet - ratio) <= 0.011;
+    if (!passer) {
+      fejl.push(`${r.indicator_id} (${r.kommune_navn}): ratio ${r.ratio || "tom"} passer ikke med råværdi ${r.raw_value || "tom"} og reference ${r.reference || "tom"}`);
+    }
+  }
+  const scorede = [
+    ...INDIKATORREGISTER.sociale_kategorier.flatMap((k) => k.indicators),
+    ...INDIKATORREGISTER.oekologiske_dimensioner.flatMap((d) => d.indicators),
+  ];
+  for (const id of scorede) {
+    if (!iMaster.has(id)) fejl.push(`${id} scores, men har ingen rækker i master_indicators.csv`);
+  }
+  if (fejl.length > 0) {
+    throw new Error(
+      `master_indicators.csv passer ikke med data/indikatorer.json (${fejl.length} fejl). ` +
+      `Kør 'python3 scripts/build_master_csv.py' i projektets rodmappe og commit master-filen.\n  ` +
+      fejl.slice(0, 15).join("\n  ") + (fejl.length > 15 ? "\n  ..." : "")
+    );
+  }
+}
+
+function laesMasterCsv(): MasterRow[] {
   const csvPath = path.join(process.cwd(), "..", "data", "master_indicators.csv");
   if (!fs.existsSync(csvPath)) {
     throw new Error(

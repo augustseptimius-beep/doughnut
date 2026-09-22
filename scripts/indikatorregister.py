@@ -30,9 +30,9 @@ AGGREGERINGER = ("worst-of", "gennemsnit")
 # Felter hver indikatortype skal have. Resten er valgfrie.
 _KRAEVEDE = {
     "social": ("id", "category", "dimension", "name", "table", "source", "source_url",
-               "unit", "data_year", "csv", "ratio_col", "raw_col", "inverse", "baseline_level"),
+               "unit", "data_year", "csv", "raw_col", "reference", "inverse", "baseline_level"),
     "ecological": ("id", "category", "dimension", "name", "source", "unit", "data_year",
-                   "csv", "raw_col", "lower_is_better", "baseline_type", "boundary",
+                   "csv", "raw_col", "reference", "lower_is_better", "baseline_type", "boundary",
                    "raw_key", "ratio_key"),
     "context": ("id", "category", "dimension", "source", "unit", "data_year", "csv", "raw_col"),
 }
@@ -62,6 +62,30 @@ def valider(reg: dict) -> list[str]:
         for felt in _KRAEVEDE[kat]:
             if felt not in ind:
                 fejl.append(f"{iid}: mangler feltet {felt!r}")
+        # Felter der skrives til master_indicators.csv. Webappen parser den med
+        # split(","), så et komma forskyder kolonnerne og rækken forsvinder
+        # tavst (sep. 2026: income_gender_gap manglede i alle 98 kommuner).
+        for felt in ("id", "unit", "source", "data_year", "dimension"):
+            if "," in str(ind.get(felt, "")):
+                fejl.append(f"{iid}: feltet {felt!r} indeholder komma ({ind.get(felt)!r})")
+
+    for ind in indikatorer:
+        ref = ind.get("reference")
+        if ref is None:
+            continue
+        iid, typ = ind.get("id"), ref.get("type")
+        if typ == "maal":
+            if not isinstance(ref.get("value"), (int, float)):
+                fejl.append(f"{iid}: reference type maal kræver et tal i 'value'")
+        elif typ == "landstal":
+            if not ref.get("col"):
+                fejl.append(f"{iid}: reference type landstal kræver 'col'")
+            if not ind.get("ratio_col"):
+                fejl.append(f"{iid}: reference type landstal kræver ratio_col (til rekonstruktion)")
+        elif typ != "kommunegennemsnit":
+            fejl.append(f"{iid}: ukendt reference-type {typ!r}")
+        if ind.get("formula") not in (None, "100_minus_raw"):
+            fejl.append(f"{iid}: ukendt formula {ind.get('formula')!r}")
 
     by_id = {i.get("id"): i for i in indikatorer}
     kat_ids = [k["id"] for k in reg.get("sociale_kategorier", [])]

@@ -26,6 +26,7 @@ Dette er den **konsoliderede master-fil** som webapp'en læser fra. Genereres af
 | `source` | Kort kildebeskrivelse | `DST HISBK` |
 | `category` | `social`, `ecological`, `context` (vises, scores ikke) eller `ecological_dimension` (kun for `_dim_*` rækker) | `social` |
 | `dimension` | Hvilken kategori/dimension indikatoren hører til | `sundhed`, `luftkvalitet` |
+| `reference` | Værdien `ratio` er målt mod, i råværdiens enhed: målet, kommunegennemsnittet eller landstallet (se `reference` i `indikatorer.json`). Tom for kontekst- og `_dim_*`-rækker | `81.6`, `95.0` |
 
 ### Scoringskonventioner
 
@@ -33,7 +34,7 @@ Dette er den **konsoliderede master-fil** som webapp'en læser fra. Genereres af
 - `ratio = 100` = landsgennemsnit (undtagen `education` og `bolig_fossil`, der scores mod et fast mål). Masteren gemmer altid ratio mod landsgennemsnittet; webappens baseline-toggle (kommunegruppe/top 10) omskalerer ved visning
 - `ratio > 100` = bedre end gennemsnit
 - `ratio < 100` = dårligere end gennemsnit
-- Inverterede indikatorer (kriminalitet, fattigdom mv.) er allerede vendt - høj ratio = god performance
+- Inverterede indikatorer (kriminalitet, fattigdom mv.) vendes af `build_master_csv.py` (`ratio = reference / raw × 100`) - høj ratio = god performance. Alle ratios beregnes dér ud fra `raw_value` og `reference`, ikke i fetch-scripterne
 
 **Økologiske indikatorer:**
 - `ratio = 100` = på grænsen: en absolut grænse (WHO, EU-mål, Paris-budget, 6 mg/L nitrat) eller landsgennemsnittet for de relative sub-indikatorer (fx næringsstoffer, vandindvinding, arealanvendelse, affald, pesticider)

@@ -7,7 +7,11 @@ fjerner behovet for 25+ separate CSV-loads i webapp/lib/data.ts.
 
 Output-skema (én række pr. kommune × indikator):
   kommune_kode, kommune_navn, indicator_id, ratio, raw_value,
-  unit, data_year, source, category, dimension
+  unit, data_year, source, category, dimension, reference
+
+Alle ratios beregnes her ud fra råværdien og indikatorens reference i
+data/indikatorer.json (se "RATIO: ÉN FORMEL" nedenfor). reference er den
+værdi ratio er målt mod: målet, kommunegennemsnittet eller landstallet.
 
 Kør:
   cd /sti/til/doughnut
@@ -21,7 +25,9 @@ Driftsregel:
 
 import re
 import csv
+import math
 import os
+import statistics
 import sys
 from pathlib import Path
 
@@ -94,27 +100,166 @@ def parse_float(s):
         return None
 
 
-def invert_to_direct_ratio(inverted):
-    """Konverter inverse-eco-ratio til direct: 10000 / inverse.
-    Lav inverse = høj forurening = værre → høj direct = overshoot."""
-    if inverted is None or inverted == 0:
+# ─── RATIO: ÉN FORMEL FOR ALLE INDIKATORER ─────────────────────────────
+# Indtil sep. 2026 regnede hvert fetch-script sin egen ratio, med sin egen
+# regel for værdien 0 (fem scripts gav topscore 150, ét gav 0), og
+# build_master havde tre særregler oveni (10000/x for inverterede
+# øko-ratios, 65/pct for genanvendelse, raw/3 for forbrugs-CO2). Nu regnes
+# alle ratios her, ud fra råværdien og indikatorens reference i registret.
+# Fetch-scriptets egen ratio bruges kun til krydstjek og til at
+# rekonstruere landstallet, hvis CSV'en endnu ikke har en landstal-kolonne.
+
+SOCIAL_CAP = 150.0
+
+
+def _raw_over_ref(ind):
+    """True: ratio = raw/ref×100. False: ratio = ref/raw×100.
+
+    Sociale: højere ratio er bedre, så inverse indikatorer (lavere råværdi
+    er bedre) vendes. Økologiske: højere ratio er værre, så indikatorer hvor
+    lavere råværdi er bedre, skal IKKE vendes."""
+    if ind["category"] == "social":
+        return not ind["inverse"]
+    return ind["lower_is_better"]
+
+
+def beregn_ratio(ind, raw, ref):
+    """Indikatorens ratio for én kommune, afrundet til 2 decimaler.
+
+    raw = 0 i nævneren (ref/raw) er grænsetilfældet: for en social indikator
+    er det bedst mulige (fx ingen kriminalitet) og giver loftet 150; for en
+    økologisk er det værst mulige (fx ingen natur) og giver 'cap', eller
+    ingen værdi hvis indikatoren ikke har et loft."""
+    if raw is None:
         return None
-    return round(10000 / inverted, 2)
-
-
-def recycling_eu_target_ratio(pct):
-    """Speciel logik for genanvendelse: ratio = (65% EU-mål / faktisk) * 100.
-    Over 100 = genanvender for lidt."""
-    if pct is None or pct == 0:
+    if ind.get("formula") == "100_minus_raw":
+        x = 100 - raw
+    else:
+        if not ref:
+            return None
+        if _raw_over_ref(ind):
+            x = raw / ref * 100
+        elif raw == 0:
+            x = math.inf
+        else:
+            x = ref / raw * 100
+    cap = SOCIAL_CAP if ind["category"] == "social" else ind.get("cap")
+    if cap is not None and x > cap:
+        x = float(cap)
+    if math.isinf(x):
         return None
-    return round((65 / pct) * 100, 2)
+    return round(x, 2)
 
 
-def cba_ratio(estimate):
-    """Forbrugs-CO2 ratio = (estimat / 3 ton grænse) * 100."""
-    if estimate is None:
+def _script_ratio(ind, r):
+    """Fetch-scriptets egen ratio for en CSV-række (til krydstjek/rekonstruktion)."""
+    col = ind.get("ratio_col")
+    if not col or r is None:
         return None
-    return round((estimate / 3) * 100, 2)
+    v = parse_float(r.get(col))
+    if v is not None and ind.get("ratio_col_invers"):
+        v = round(10000 / v, 2) if v else None
+    return v
+
+
+def _rekonstruer_landstal(ind, raekker, raws):
+    """Landstallet fetch-scriptet brugte, udledt af dets egen ratio.
+
+    Overgangsløsning, indtil scriptet skriver landstallet i sin egen kolonne
+    (reference.col). Hver kommune giver et bud (raw×100/ratio eller
+    raw×ratio/100); medianen er robust over for afrunding. Derefter vælges
+    den kortest afrundede værdi der reproducerer mindst lige så mange af
+    scriptets ratios som medianen - landstal som 81,6 år er typisk
+    publiceret med få decimaler, og så genskabes de eksakt. Klippede ratios
+    (150/cap) udelades, fordi de ikke siger noget om referencen.
+    Beregnes ved hvert build fra den aktuelle CSV, så værdien aldrig er
+    ældre end dataen."""
+    cap = SOCIAL_CAP if ind["category"] == "social" else ind.get("cap")
+    par = []
+    for kode, r in raekker.items():
+        raw, sr = raws.get(kode), _script_ratio(ind, r)
+        if raw in (None, 0) or not sr or (cap is not None and sr >= cap):
+            continue
+        par.append((raw, sr))
+    if not par:
+        return None
+    bud = [raw * 100 / sr if _raw_over_ref(ind) else raw * sr / 100 for raw, sr in par]
+    median = statistics.median(bud)
+
+    def traeffere(ref):
+        return sum(1 for raw, sr in par if beregn_ratio(ind, raw, ref) == round(sr, 2))
+
+    bedst, bedst_n = median, traeffere(median)
+    for d in range(0, 7):
+        kandidat = round(median, d)
+        n = traeffere(kandidat)
+        if n >= bedst_n:
+            return kandidat
+    return bedst
+
+
+def _csv_raekker(ind, kommuner, get_csv):
+    """{kommune_kode: CSV-række eller None} for platformens kommuner."""
+    rows = get_csv(ind["csv"])
+    navn_col = ind.get("navn_col")
+    if navn_col:
+        # forbrug_co2 og vejr_skader er nøglet på kommunenavn. Manglende match
+        # giver ingen værdi - bevidst intet fallback (Christiansø er filtreret fra).
+        by_navn = {r.get(navn_col): r for r in rows if r.get(navn_col)}
+        return {kode: by_navn.get(navn) for kode, navn in kommuner}
+    by_kode = {}
+    for r in rows:
+        kode = r.get("kommune_kode")
+        if kode and kode not in by_kode:
+            by_kode[kode] = r
+    return {kode: by_kode.get(kode) for kode, _ in kommuner}
+
+
+def beregn_indikator(ind, kommuner, get_csv):
+    """Råværdi, ratio og reference for én indikator i alle kommuner.
+
+    Returnerer (poster, reference, kilde) hvor poster er
+    [(kode, navn, raw, ratio)] for kommuner med data."""
+    raekker = _csv_raekker(ind, kommuner, get_csv)
+    raws = {kode: parse_float(r.get(ind["raw_col"])) if r else None
+            for kode, r in raekker.items()}
+
+    spec = ind["reference"]
+    if spec["type"] == "maal":
+        ref, kilde = float(spec["value"]), "mål"
+    elif spec["type"] == "kommunegennemsnit":
+        vals = [v for v in raws.values() if v is not None]
+        ref, kilde = (sum(vals) / len(vals) if vals else None), "kommunegennemsnit"
+    else:
+        vals = {parse_float(r.get(spec["col"])) for r in raekker.values() if r} - {None}
+        if vals:
+            if max(vals) - min(vals) > 1e-9:
+                print(f"  ⚠ {ind['id']}: {spec['col']} har forskellige værdier i CSV'en - bruger medianen")
+            ref, kilde = statistics.median(sorted(vals)), "landstal"
+        else:
+            ref, kilde = _rekonstruer_landstal(ind, raekker, raws), "landstal, rekonstrueret"
+
+    navne = dict(kommuner)
+    cap = SOCIAL_CAP if ind["category"] == "social" else ind.get("cap")
+    poster = []
+    afvigelser = []
+    for kode, _ in kommuner:
+        raw = raws.get(kode)
+        ratio = beregn_ratio(ind, raw, ref)
+        if ratio is None and raw is None:
+            continue
+        poster.append((kode, navne[kode], raw, ratio))
+        # Krydstjek mod scriptets egen ratio. Scripterne klipper ikke selv ved
+        # 150, så loftet lægges på her før sammenligningen.
+        sr = _script_ratio(ind, raekker.get(kode))
+        if sr is not None and cap is not None:
+            sr = min(sr, float(cap))
+        if sr is not None and ratio is not None and abs(sr - ratio) > 0.5:
+            afvigelser.append(abs(sr - ratio))
+    if afvigelser:
+        print(f"  ⚠ {ind['id']}: {len(afvigelser)} kommuner afviger mere end 0,5 fra fetch-scriptets "
+              f"egen ratio (max {max(afvigelser):.2f}) - tjek retning og reference")
+    return poster, ref, kilde
 
 
 def worst_of(ratios):
@@ -164,69 +309,8 @@ def build_master():
     # Tæller for diagnostik
     indicator_coverage = {}
 
-    # ─── Sociale indikatorer ────────────────────────────────────
-    print("Sociale indikatorer:")
-    for ind in SOCIAL_INDICATORS:
-        rows = get_csv(ind["csv"])
-
-        # Specialcase: indikatorer der bruger kommunenavn som nøgle (ikke kode)
-        if ind.get("navn_key"):
-            by_navn = {r.get("kommune_navn"): r for r in rows if r.get("kommune_navn")}
-            n = 0
-            for kode, navn in kommuner:
-                r = by_navn.get(navn)
-                if r is None:
-                    continue
-                ratio = parse_float(r.get(ind["ratio_col"]))
-                # Samme 150-cap som kode-nøgle-grenen - ellers undslipper
-                # navn-nøgle-indikatorer (vejr_skader) den dokumenterede cap.
-                if ratio is not None and ratio > 150:
-                    ratio = 150.0
-                raw = parse_float(r.get(ind["raw_col"])) if ind["raw_col"] else None
-                if ratio is None and raw is None:
-                    continue
-                output_rows.append({
-                    "kommune_kode": kode,
-                    "kommune_navn": navn,
-                    "indicator_id": ind["id"],
-                    "ratio": ratio if ratio is not None else "",
-                    "raw_value": raw if raw is not None else "",
-                    "unit": ind["unit"],
-                    "data_year": _data_year(ind),
-                    "source": ind["source"],
-                    "category": ind["category"],
-                    "dimension": ind["dimension"],
-                })
-                n += 1
-            indicator_coverage[ind["id"]] = n
-            print(f"  {ind['id']:25s}: {n}/98 kommuner (navn-nøgle)")
-            continue
-
-        # Standard: kommune_kode-nøgle
-        by_kode = {}
-        for r in rows:
-            kode = r.get("kommune_kode")
-            if kode and kode not in by_kode:
-                by_kode[kode] = r
-
-        n = 0
-        for kode, navn in kommuner:
-            r = by_kode.get(kode)
-            if r is None:
-                continue
-            raw = parse_float(r.get(ind["raw_col"])) if ind["raw_col"] else None
-            abs_target = ind.get("abs_target")
-            if abs_target:
-                # Absolut score mod fast mål: ratio = raw / mål * 100 (100 = mål nået).
-                # Klippet ved 150 som øvrige sociale ratios.
-                ratio = round(min((raw / abs_target) * 100, 150.0), 2) if raw is not None else None
-            else:
-                ratio = parse_float(r.get(ind["ratio_col"]))
-                # Cap alle sociale ratios ved 150 for at undgå ekstreme inverse-værdier
-                if ratio is not None and ratio > 150:
-                    ratio = 150.0
-            if ratio is None and raw is None:
-                continue
+    def skriv(ind, poster, ref):
+        for kode, navn, raw, ratio in poster:
             output_rows.append({
                 "kommune_kode": kode,
                 "kommune_navn": navn,
@@ -238,101 +322,30 @@ def build_master():
                 "source": ind["source"],
                 "category": ind["category"],
                 "dimension": ind["dimension"],
+                "reference": round(ref, 6) if ref is not None else "",
             })
-            n += 1
-        indicator_coverage[ind["id"]] = n
-        print(f"  {ind['id']:25s}: {n}/98 kommuner")
+
+    # ─── Sociale indikatorer ────────────────────────────────────
+    print("Sociale indikatorer:")
+    for ind in SOCIAL_INDICATORS:
+        poster, ref, kilde = beregn_indikator(ind, kommuner, get_csv)
+        skriv(ind, poster, ref)
+        indicator_coverage[ind["id"]] = len(poster)
+        print(f"  {ind['id']:25s}: {len(poster)}/98 kommuner  ref={ref if ref is None else f'{ref:.6g}'} ({kilde})")
 
     # ─── Økologiske sub-indikatorer ──────────────────────────────
     print()
     print("Økologiske sub-indikatorer:")
     # Saml sub-ratios pr. dimension for at beregne worst-of dimension-scores
     eco_sub_ratios = {}  # {kommune_kode: {dimension: [ratios]}}
-
     for ind in ECO_SUB_INDICATORS:
-        rows = get_csv(ind["csv"])
-
-        # Specialcase: cba bruger navn-nøgle, ikke kommune_kode
-        if ind.get("special") == "cba_navn_key":
-            by_navn = {r.get("kommune"): r for r in rows if r.get("kommune")}
-            n = 0
-            for kode, navn in kommuner:
-                r = by_navn.get(navn)
-                if r is None:
-                    continue
-                raw = parse_float(r.get(ind["raw_col"]))
-                if raw is None:
-                    continue
-                ratio = cba_ratio(raw)
-                output_rows.append({
-                    "kommune_kode": kode,
-                    "kommune_navn": navn,
-                    "indicator_id": ind["id"],
-                    "ratio": ratio if ratio is not None else "",
-                    "raw_value": raw,
-                    "unit": ind["unit"],
-                    "data_year": _data_year(ind),
-                    "source": ind["source"],
-                    "category": ind["category"],
-                    "dimension": ind["dimension"],
-                })
-                eco_sub_ratios.setdefault(kode, {}).setdefault(ind["dimension"], []).append(ratio)
-                n += 1
-            indicator_coverage[ind["id"]] = n
-            print(f"  {ind['id']:25s}: {n}/98 kommuner (navn-nøgle)")
-            continue
-
-        # Standard: kommune_kode-nøgle
-        by_kode = {}
-        for r in rows:
-            kode = r.get("kommune_kode")
-            if kode and kode not in by_kode:
-                by_kode[kode] = r
-
-        n = 0
-        for kode, navn in kommuner:
-            r = by_kode.get(kode)
-            if r is None:
-                continue
-
-            raw = parse_float(r.get(ind["raw_col"])) if ind["raw_col"] else None
-
-            # Beregn ratio efter speciallogik
-            if ind.get("special") == "recycling_eu_target":
-                ratio = recycling_eu_target_ratio(raw)
-            else:
-                csv_ratio = parse_float(r.get(ind["ratio_col"])) if ind["ratio_col"] else None
-                if ind.get("inverse_ratio") and csv_ratio is not None:
-                    ratio = invert_to_direct_ratio(csv_ratio)
-                else:
-                    ratio = csv_ratio
-
-            # Cap ekstreme eco-ratioer (fx bioscore med pct nær 0 giver ratio i tusinder).
-            # Baren klipper alligevel ved 200; cap holder det viste tal og validering pæn.
-            cap = ind.get("cap")
-            if cap is not None and ratio is not None and ratio > cap:
-                ratio = float(cap)
-
-            if ratio is None and raw is None:
-                continue
-
-            output_rows.append({
-                "kommune_kode": kode,
-                "kommune_navn": navn,
-                "indicator_id": ind["id"],
-                "ratio": ratio if ratio is not None else "",
-                "raw_value": raw if raw is not None else "",
-                "unit": ind["unit"],
-                "data_year": _data_year(ind),
-                "source": ind["source"],
-                "category": ind["category"],
-                "dimension": ind["dimension"],
-            })
+        poster, ref, kilde = beregn_indikator(ind, kommuner, get_csv)
+        skriv(ind, poster, ref)
+        for kode, _, _, ratio in poster:
             if ratio is not None:
                 eco_sub_ratios.setdefault(kode, {}).setdefault(ind["dimension"], []).append(ratio)
-            n += 1
-        indicator_coverage[ind["id"]] = n
-        print(f"  {ind['id']:25s}: {n}/98 kommuner")
+        indicator_coverage[ind["id"]] = len(poster)
+        print(f"  {ind['id']:25s}: {len(poster)}/98 kommuner  ref={ref if ref is None else f'{ref:.6g}'} ({kilde})")
 
     # ─── Kontekst-indikatorer (råværdier, ingen score) ───────────
     print()
@@ -363,6 +376,7 @@ def build_master():
                 "source": ind["source"],
                 "category": "context",
                 "dimension": ind["dimension"],
+                "reference": "",
             })
             n += 1
         indicator_coverage[ind["id"]] = n
@@ -394,6 +408,7 @@ def build_master():
                 "source": "",
                 "category": "ecological_dimension",
                 "dimension": dim,
+                "reference": "",
             })
             dim_count += 1
     print(f"  {dim_count} dimension-aggregat-rækker")
@@ -409,12 +424,23 @@ def build_master():
     else:
         print("  ✓ Alle ratios inden for forventet interval")
 
+    # Webappen parser master med split(","). Et komma i et felt forskyder
+    # kolonnerne, og rækken forsvinder tavst fra siden - derfor en hård fejl.
+    med_komma = [(r["indicator_id"], k, v) for r in output_rows for k, v in r.items()
+                 if isinstance(v, str) and "," in v]
+    if med_komma:
+        raise ValueError(f"{len(med_komma)} felter indeholder komma, som webappens CSV-parser ikke "
+                         f"kan håndtere, fx {med_komma[0]}")
+
     kommuner_med_data = len({r["kommune_kode"] for r in output_rows})
     print(f"  Kommuner med mindst én indikator: {kommuner_med_data}/{len(kommuner)}")
 
     # ─── Skriv output ────────────────────────────────────────────
+    # reference er tilføjet sidst (sep. 2026), så eksisterende læsere der
+    # bruger kolonneposition, ikke påvirkes.
     fieldnames = ["kommune_kode", "kommune_navn", "indicator_id", "ratio",
-                  "raw_value", "unit", "data_year", "source", "category", "dimension"]
+                  "raw_value", "unit", "data_year", "source", "category", "dimension",
+                  "reference"]
     with open(OUTPUT, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=fieldnames)
         w.writeheader()
@@ -454,6 +480,21 @@ def _tjek_konsistens_efter_build():
         return None
 
 
+def _rapport_efter_build():
+    """Kort rapport over hvad buildet ændrede i forhold til den committede
+    master (scripts/rapport_dataaendringer.py). Ren information: en fejl
+    her må aldrig vælte et build der ellers lykkedes."""
+    try:
+        from rapport_dataaendringer import main as rapport_main
+        print()
+        print("=" * 55)
+        print("DATAÆNDRINGER (scripts/rapport_dataaendringer.py)")
+        print("=" * 55)
+        rapport_main([], kort=True)
+    except Exception as e:
+        print(f"  (rapporten over dataændringer kunne ikke køre: {type(e).__name__}: {e})")
+
+
 def auto_build_master():
     """
     Helper-funktion til auto-rebuild fra fetch-scripts.
@@ -475,6 +516,7 @@ def auto_build_master():
         build_master()
         print()
         print("✓ Master-CSV opdateret. Klar til commit + push via GitHub Desktop.")
+        _rapport_efter_build()
         # Printer altid, men rejser aldrig - se _tjek_konsistens_efter_build().
         # Et fetch-script skal ikke crashe fordi konsistenstjekket finder noget;
         # det skal bare stå tydeligt i outputtet, så man ser det før commit.
@@ -488,6 +530,7 @@ def auto_build_master():
 
 if __name__ == "__main__":
     build_master()
+    _rapport_efter_build()
     # Direkte kørsel (den vej CLAUDE.md instruerer at bruge når et
     # fetch-script IKKE selv printede "✓ Master-CSV opdateret") afbryder MED
     # exit 1 hvis konsistenstjekket finder fejl. Det er her fejlen skal

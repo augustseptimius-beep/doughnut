@@ -27,6 +27,8 @@ interface RegisterIndikator {
   raw_key?: string;
   ratio_key?: string;
   rationale?: string;
+  cap?: number;
+  formula?: "100_minus_raw";
 }
 
 interface Register {
@@ -47,6 +49,10 @@ interface Register {
 }
 
 const REGISTER = registerJson as unknown as Register;
+
+/** Hele registret. Bruges af data.ts til at validere master-CSV'en ved build. */
+export const INDIKATORREGISTER: Register = REGISTER;
+export type { RegisterIndikator };
 const REGISTER_BY_ID = new Map(REGISTER.indikatorer.map((i) => [i.id, i]));
 
 export type BaselineLevel = 1 | 2 | 3;
