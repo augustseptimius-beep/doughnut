@@ -2,6 +2,10 @@
 
 Datasæt over alle 98 danske kommuners performance på Doughnut Economics-rammen: socialt fundament og økologisk loft.
 
+## Indikatorregistret: `indikatorer.json`
+
+Den ene liste over indikatorer, sociale kategorier og økologiske dimensioner. `scripts/build_master_csv.py` bestemmer ud fra den hvilke CSV-kolonner der læses, og webappen (`webapp/lib/shared.ts`) viser indikatorerne ud fra samme fil. Felterne er forklaret i filens `_om`-nøgle. En ny indikator er én post her plus et fetch-script, se CLAUDE.md "Tilføj en ny indikator".
+
 ## Hovedfilen: `master_indicators.csv`
 
 Dette er den **konsoliderede master-fil** som webapp'en læser fra. Genereres af `scripts/build_master_csv.py` ved at samle alle rådata-CSV'er.
@@ -14,13 +18,13 @@ Dette er den **konsoliderede master-fil** som webapp'en læser fra. Genereres af
 |---|---|---|
 | `kommune_kode` | DST-kommunekode (3 cifre, zero-padded) | `787` |
 | `kommune_navn` | Kommunenavn | `Thisted` |
-| `indicator_id` | Indikator-id (matcher `INDICATORS` i webapp). Specielle id'er der starter med `_dim_` er worst-of dimension-aggregater. | `life_expectancy`, `_dim_luftkvalitet` |
+| `indicator_id` | Indikator-id (matcher `id` i `indikatorer.json`). Specielle id'er der starter med `_dim_` er økologiske dimensionsscorer (worst-of eller gennemsnit). | `life_expectancy`, `_dim_luftkvalitet` |
 | `ratio` | Score 100 = grænseværdi (sociale: gennemsnit; økologiske: planetær grænse) | `98.9` |
 | `raw_value` | Faktisk måleværdi i sin enhed | `80.4` |
 | `unit` | Enhed for `raw_value` | `år`, `µg/m³`, `%` |
 | `data_year` | År for senest data | `2023` |
 | `source` | Kort kildebeskrivelse | `DST HISBK` |
-| `category` | `social`, `ecological`, eller `ecological_dimension` (kun for `_dim_*` rækker) | `social` |
+| `category` | `social`, `ecological`, `context` (vises, scores ikke) eller `ecological_dimension` (kun for `_dim_*` rækker) | `social` |
 | `dimension` | Hvilken kategori/dimension indikatoren hører til | `sundhed`, `luftkvalitet` |
 
 ### Scoringskonventioner

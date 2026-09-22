@@ -54,199 +54,15 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 OUTPUT = DATA_DIR / "master_indicators.csv"
 
-# ─── INDIKATOR-MAPPING (single source of truth for build) ──────────────
-# Hver entry beskriver en indikator: hvor data kommer fra, hvilke kolonner
-# der skal læses, og metadata til output. Dette er den ENESTE liste der
-# skal opdateres når en indikator tilføjes eller fjernes.
-#
-# Felter:
-#   id          - matcher INDICATORS-id i webapp/lib/shared.ts
-#   csv         - filnavn i data/
-#   ratio_col   - kolonne med ratio (allerede beregnet af fetch-script)
-#   raw_col     - kolonne med råværdi (kan være None hvis ikke gemt)
-#   unit        - enhed for råværdi (vises i UI)
-#   data_year   - årstal for senest data
-#   source      - kort kildetekst
-#   category    - "social" eller "ecological"
-#   dimension   - hvilken kategori/dimension den hører til
-#   inverse_ratio - hvis True: ratio i CSV er "inverteret eco" (lav=værre).
-#                   Konverteres til direct via 10000/inverse, så høj=overshoot.
-#                   Bruges for spildevand (N, P) og affald.
+# ─── INDIKATORER ───────────────────────────────────────────────────────
+# Kommer fra data/indikatorer.json via scripts/indikatorregister.py. Det er
+# den ENESTE liste der skal opdateres når en indikator tilføjes eller fjernes;
+# webappen (shared.ts, data.ts) og build_trends_csv.py læser samme fil.
+# Felterne build_master bruger: id, csv, ratio_col, raw_col, unit, data_year,
+# source, category, dimension og særreglerne abs_target, navn_key,
+# inverse_ratio, special og cap (se registrets "_om" og funktionerne nedenfor).
+import indikatorregister as ir  # noqa: E402
 
-SOCIAL_INDICATORS = [
-    # === Sundhed ===
-    {"id": "life_expectancy", "csv": "doughnut_scores.csv", "ratio_col": "life_expectancy_ratio", "raw_col": "life_expectancy_raw", "unit": "år", "data_year": "2023", "source": "DST HISBK", "category": "social", "dimension": "sundhed"},
-    {"id": "selvvurderet_helbred", "csv": "sundhedsprofil_scores.csv", "ratio_col": "selvvurderet_helbred_ratio", "raw_col": "selvvurderet_helbred_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
-    {"id": "mentalt_helbred", "csv": "sundhedsprofil_scores.csv", "ratio_col": "mentalt_helbred_ratio", "raw_col": "mentalt_helbred_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
-    {"id": "hospital_long", "csv": "sundhed_extra_scores.csv", "ratio_col": "hospital_long_ratio", "raw_col": "hospital_long_pct", "unit": "%", "data_year": "2023", "source": "DST SBR01", "category": "social", "dimension": "sundhed"},
-    {"id": "hjemsyg", "csv": "hjemsyg_scores.csv", "ratio_col": "hjemsyg_ratio", "raw_col": "hjemsyg_raw", "unit": "pr. 1.000 indb.", "data_year": "2025", "source": "DST HJEMSYG", "category": "social", "dimension": "sundhed"},
-    {"id": "wellbeing", "csv": "uvm_scores.csv", "ratio_col": "wellbeing_ratio", "raw_col": "wellbeing_score", "unit": "score (1-5)", "data_year": "2024", "source": "UVM GS/TRIV/TRIVIND", "category": "social", "dimension": "uddannelse"},
-
-    {"id": "rygning", "csv": "sundhedsprofil_scores.csv", "ratio_col": "rygning_ratio", "raw_col": "rygning_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
-    {"id": "alkohol", "csv": "sundhedsprofil_scores.csv", "ratio_col": "alkohol_ratio", "raw_col": "alkohol_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
-    {"id": "kost", "csv": "sundhedsprofil_scores.csv", "ratio_col": "kost_ratio", "raw_col": "kost_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
-    {"id": "svaer_overvaegt", "csv": "sundhedsprofil_scores.csv", "ratio_col": "svaer_overvaegt_ratio", "raw_col": "svaer_overvaegt_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
-
-    # === Uddannelse ===
-    {"id": "education", "csv": "doughnut_scores.csv", "ratio_col": "education_ratio", "raw_col": "education_raw", "unit": "%", "data_year": "2025", "source": "DST HFUDD11", "category": "social", "dimension": "uddannelse", "abs_target": 95},
-    {"id": "low_education", "csv": "uddannelse_extra_scores.csv", "ratio_col": "low_education_ratio", "raw_col": "low_education_pct", "unit": "%", "data_year": "2023", "source": "DST HFUDD11", "category": "social", "dimension": "uddannelse"},
-    {"id": "exam_grade", "csv": "uvm_scores.csv", "ratio_col": "exam_grade_ratio", "raw_col": "exam_grade_avg", "unit": "karakter", "data_year": "2024", "source": "UVM GS/KARA/KARAGNS", "category": "social", "dimension": "uddannelse"},
-    {"id": "high_absence", "csv": "uvm_scores.csv", "ratio_col": "high_absence_ratio", "raw_col": "high_absence_pct", "unit": "%", "data_year": "2024", "source": "UVM GS/ELEVFRAV/FRAVAAR", "category": "social", "dimension": "uddannelse"},
-    {"id": "youth_education", "csv": "uvm_scores.csv", "ratio_col": "youth_education_ratio", "raw_col": "youth_education_pct", "unit": "%", "data_year": "2024", "source": "UVM GS/PROFMOD/PROFMOD", "category": "social", "dimension": "uddannelse"},
-
-    # === Velfærd ===
-    {"id": "disposable_income", "csv": "doughnut_scores.csv", "ratio_col": "disposable_income_ratio", "raw_col": "disposable_income_raw", "unit": "kr. (median)", "data_year": "2024", "source": "DST INDKP106 (median)", "category": "social", "dimension": "velfaerd"},
-    {"id": "employment", "csv": "doughnut_scores.csv", "ratio_col": "employment_ratio", "raw_col": "employment_raw", "unit": "%", "data_year": "2023", "source": "DST RAS200", "category": "social", "dimension": "velfaerd"},
-    {"id": "child_poverty", "csv": "doughnut_scores.csv", "ratio_col": "child_poverty_ratio", "raw_col": "child_poverty_raw", "unit": "%", "data_year": "2022", "source": "DST LABY07", "category": "social", "dimension": "velfaerd"},
-    {"id": "gini", "csv": "doughnut_scores.csv", "ratio_col": "gini_ratio", "raw_col": "gini_raw", "unit": "point", "data_year": "2022", "source": "DST IFOR41", "category": "social", "dimension": "lighed"},
-    {"id": "low_income", "csv": "doughnut_scores.csv", "ratio_col": "low_income_ratio", "raw_col": "low_income_raw", "unit": "%", "data_year": "2022", "source": "DST LABY07", "category": "social", "dimension": "lighed"},
-    {"id": "vulnerable_children", "csv": "velfaerd_extra_scores.csv", "ratio_col": "vulnerable_children_ratio", "raw_col": "vulnerable_children_pct", "unit": "%", "data_year": "2024", "source": "DST BU43", "category": "social", "dimension": "velfaerd"},
-    {"id": "neet", "csv": "velfaerd_extra_scores.csv", "ratio_col": "neet_ratio", "raw_col": "neet_pct", "unit": "%", "data_year": "2023", "source": "DST NEET1", "category": "social", "dimension": "velfaerd"},
-    {"id": "poverty_relative", "csv": "lighed_scores.csv", "ratio_col": "poverty_relative_ratio", "raw_col": "poverty_relative_pct", "unit": "%", "data_year": "2023", "source": "DST IFOR12P", "category": "social", "dimension": "velfaerd"},
-    {"id": "child_notifications", "csv": "underretning_scores.csv", "ratio_col": "child_notifications_ratio", "raw_col": "child_notifications_per_1k", "unit": "pr. 1.000 indb. 0-17 år", "data_year": "2023", "source": "DST UND2", "category": "social", "dimension": "velfaerd"},
-
-    # === Bolig ===
-    {"id": "vacant_housing", "csv": "doughnut_scores.csv", "ratio_col": "vacant_housing_ratio", "raw_col": "vacant_housing_raw", "unit": "%", "data_year": "2023", "source": "DST BOL101", "category": "social", "dimension": "bolig"},
-    {"id": "housing_area", "csv": "bolig_extra_scores.csv", "ratio_col": "housing_area_ratio", "raw_col": "housing_area_m2", "unit": "m²", "data_year": "2023", "source": "DST BOL106", "category": "social", "dimension": "bolig"},
-    {"id": "housing_no_wc", "csv": "bolig_wc_scores.csv", "ratio_col": "housing_no_wc_ratio", "raw_col": "housing_no_wc_pct", "unit": "%", "data_year": "2023", "source": "DST BOL102", "category": "social", "dimension": "bolig"},
-    {"id": "housing_no_bath", "csv": "bolig_wc_scores.csv", "ratio_col": "housing_no_bath_ratio", "raw_col": "housing_no_bath_pct", "unit": "%", "data_year": "2023", "source": "DST BOL102", "category": "social", "dimension": "bolig"},
-    # bolig_fossil: SAMLET fossil varmeafhængighed (direkte olie/gas + fjernvarmens fossile andel),
-    # scoret mod absolut mål 0% (ratio = 100 - samlet_fossil%, beregnet i fetch_bolig_fossil.py).
-    # Flyttet fra Bolig til Energi (2026) - opvarmningskilde er et energispørgsmål, ikke boligstandard.
-    # Grundlag skiftet fra BOL202 (personer) til BYGB40 (opvarmet areal i m²) august 2026 - varmebehov
-    # skalerer med areal, ikke med hoveder. Kun helårsbeboelse; fritidsboliger er kontekst (se nedenfor).
-    {"id": "bolig_fossil", "csv": "bolig_fossil_scores.csv", "ratio_col": "bolig_fossil_ratio", "raw_col": "bolig_fossil_raw", "unit": "% fossil (mål 0)", "data_year": "2026", "source": "DST BYGB40 + Energistyrelsen EPT", "category": "social", "dimension": "energi"},
-
-    # === Demokrati ===
-    {"id": "voter_turnout", "csv": "democracy_scores.csv", "ratio_col": "voter_turnout_ratio", "raw_col": "voter_turnout_pct", "unit": "%", "data_year": "2025", "source": "DST LABY08", "category": "social", "dimension": "demokrati"},
-    {"id": "voter_turnout_national", "csv": "democracy_scores.csv", "ratio_col": "voter_turnout_national_ratio", "raw_col": "voter_turnout_national_pct", "unit": "%", "data_year": "2026", "source": "DST LABY09", "category": "social", "dimension": "demokrati"},
-    {"id": "gender_leadership", "csv": "lighed_scores.csv", "ratio_col": "gender_leadership_ratio", "raw_col": "gender_leadership_pct", "unit": "% kvinder", "data_year": "2023", "source": "DST RAS301", "category": "social", "dimension": "ligestilling"},
-    {"id": "le_gender_gap", "csv": "ligestilling_scores.csv", "ratio_col": "le_gender_gap_ratio", "raw_col": "le_gender_gap_years", "unit": "år (kønsgab)", "data_year": "2025", "source": "DST HISBK", "category": "social", "dimension": "ligestilling"},
-    {"id": "income_gender_gap", "csv": "ligestilling_scores.csv", "ratio_col": "income_gender_gap_ratio", "raw_col": "income_gender_gap_pct", "unit": "% (kvinder/mænd, median)", "data_year": "2024", "source": "DST INDKP106 (median)", "category": "social", "dimension": "ligestilling"},
-    {"id": "employment_origin_gap", "csv": "ligestilling_scores.csv", "ratio_col": "employment_origin_gap_ratio", "raw_col": "employment_origin_gap_pct", "unit": "% (ikkevestlig/dansk BFK)", "data_year": "2024", "source": "DST RAS200", "category": "social", "dimension": "lighed"},
-
-    # === Kultur & fritid ===
-    {"id": "music_school", "csv": "samskabelse_extra_scores.csv", "ratio_col": "music_school_ratio", "raw_col": "music_school_per_1k", "unit": "pr. 1.000 indb.", "data_year": "2022", "source": "DST SKOLM02B", "category": "social", "dimension": "kultur_fritid"},
-    {"id": "library_use", "csv": "lokalsamfund_scores.csv", "ratio_col": "library_ratio", "raw_col": "library_loans_per_cap", "unit": "udlån/indb.", "data_year": "2025", "source": "DST BIB3A", "category": "social", "dimension": "kultur_fritid"},
-    {"id": "kultur_spending", "csv": "doughnut_scores.csv", "ratio_col": "kultur_spending_ratio", "raw_col": "kultur_spending_raw", "unit": "kr./indb.", "data_year": "2023", "source": "DST REGK31", "category": "social", "dimension": "kultur_fritid"},
-
-    # === Tryghed ===
-    {"id": "crime_rate", "csv": "faellesskaber_scores.csv", "ratio_col": "crime_ratio", "raw_col": "crime_per_1k", "unit": "pr. 1.000 indb.", "data_year": "2024", "source": "DST STRAF11", "category": "social", "dimension": "tryghed"},
-    {"id": "traffic_accidents", "csv": "faellesskaber_scores.csv", "ratio_col": "traffic_accidents_ratio", "raw_col": "traffic_accidents_per_100k", "unit": "pr. 100.000 indb.", "data_year": "2024", "source": "DST UHELDK1", "category": "social", "dimension": "tryghed"},
-    {"id": "sports_membership", "csv": "faellesskaber_scores.csv", "ratio_col": "sports_membership_ratio", "raw_col": "sports_membership_pct", "unit": "%", "data_year": "2024", "source": "DST IDRAKT02", "category": "social", "dimension": "lokalsamfund"},
-
-    # === Lokalsamfund ===
-    {"id": "class_size", "csv": "lokalsamfund_extra_scores.csv", "ratio_col": "class_size_ratio", "raw_col": "class_size", "unit": "elever/klasse", "data_year": "2023", "source": "DST KVOTIEN", "category": "social", "dimension": "uddannelse"},
-    {"id": "daycare_ratio", "csv": "lokalsamfund_extra_scores.csv", "ratio_col": "daycare_ratio", "raw_col": "daycare_ratio_val", "unit": "børn/voksen", "data_year": "2022", "source": "DST BOERN8", "category": "social", "dimension": "uddannelse"},
-    {"id": "social_stoette", "csv": "sundhedsprofil_scores.csv", "ratio_col": "social_stoette_ratio", "raw_col": "social_stoette_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "lokalsamfund"},
-    {"id": "sport_tilskuer", "csv": "kulturvaner_scores.csv", "ratio_col": "sport_tilskuer_ratio", "raw_col": "sport_tilskuer_pct", "unit": "%", "data_year": "2024-2025", "source": "DST KV2GEO", "category": "social", "dimension": "lokalsamfund"},
-    {"id": "ensomhed", "csv": "sundhedsprofil_scores.csv", "ratio_col": "ensomhed_ratio", "raw_col": "ensomhed_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "lokalsamfund"},
-    {"id": "civil_society", "csv": "doughnut_scores.csv", "ratio_col": "civil_society_ratio", "raw_col": "civil_society_raw", "unit": "kr./indb.", "data_year": "2023", "source": "DST REGK31", "category": "social", "dimension": "lokalsamfund"},
-    {"id": "educated_staff", "csv": "lokalsamfund_extra_scores.csv", "ratio_col": "educated_staff_ratio", "raw_col": "educated_staff_pct", "unit": "%", "data_year": "2024", "source": "DST BOERN1", "category": "social", "dimension": "uddannelse"},
-
-    # === Mobilitet ===
-    # NB: car_access er bevidst fjernet i 2026 - se shared.ts for begrundelse.
-    {"id": "commute_distance", "csv": "mobilitet_scores.csv", "ratio_col": "commute_ratio", "raw_col": "commute_distance_km", "unit": "km", "data_year": "2023", "source": "DST AFSTB4", "category": "social", "dimension": "mobilitet"},
-    {"id": "public_transport", "csv": "mobilitet_scores.csv", "ratio_col": "public_transport_ratio", "raw_col": "public_transport_pct", "unit": "%", "data_year": "2025", "source": "DST LABY49", "category": "social", "dimension": "mobilitet"},
-
-    # === Klimatilpasning ===
-    # Proxy: vejrrelaterede forsikringsskader pr. 1.000 indb. (F&P, 2023-2025).
-    # Invers indikator: lavere skader = bedre score. Navn-nøgle som cba_2023_estimate.csv.
-    # Se data/klimatilpasning.md for metodediskussion og fremtidige forbedringer.
-    {"id": "vejr_skader", "csv": "klimatilpasning_scores.csv", "ratio_col": "vejr_skader_ratio", "raw_col": "vejr_skader_raw", "unit": "skader pr. 1.000 indb.", "data_year": "2023-2025", "source": "F&P skadesstatistik", "category": "social", "dimension": "klimatilpasning", "navn_key": True},
-]
-
-# ─── ØKOLOGISKE INDIKATORER (sub-indikatorer pr. dimension) ────────────
-# Multi-indikator dimensioner (luftkvalitet, naeringsstoffer, cirkularitet)
-# bruger worst-of-logik (max ratio) - planetary boundary-konvention.
-#
-# inverse_ratio=True betyder at ratio i CSV er "inverteret eco" hvor lav=værre.
-# Vi konverterer: direct = 10000 / inverse, så høj=overshoot.
-ECO_SUB_INDICATORS = [
-    # === Klimapåvirkning (worst-of: territorial + forbrugsbaseret) ===
-    {"id": "klimapaavirkning", "csv": "climate_scores.csv", "ratio_col": "climate_territorial_ratio", "raw_col": "co2e_per_capita", "unit": "ton CO₂e/person", "data_year": "2023", "source": "Klimaregnskabet.dk", "category": "ecological", "dimension": "klimapaavirkning", "inverse_ratio": False, "is_dimension_score": False},
-
-    # === Luftkvalitet (worst-of NO2 + PM2.5) ===
-    {"id": "luftkvalitet_no2", "csv": "luftforurening_scores.csv", "ratio_col": "no2_ratio", "raw_col": "no2_ug_m3", "unit": "µg/m³", "data_year": "2024", "source": "DCE/AU UBM via Miljøportal WFS", "category": "ecological", "dimension": "luftkvalitet", "inverse_ratio": False, "is_dimension_score": False},
-    {"id": "luftkvalitet_pm25", "csv": "luftforurening_scores.csv", "ratio_col": "pm25_ratio", "raw_col": "pm25_ug_m3", "unit": "µg/m³", "data_year": "2024", "source": "DCE/AU UBM via Miljøportal WFS", "category": "ecological", "dimension": "luftkvalitet", "inverse_ratio": False, "is_dimension_score": False},
-
-    # === Cirkularitet-indikatorer (flyttet til Forurening) ===
-    # Genanvendelse: speciel logik - ratio = (65% EU-mål / faktisk) * 100 (high=undershoot)
-    # Affald: inverse_ratio - lav score = mere affald = værre
-    {"id": "cirkularitet_recycling", "csv": "consumption_scores.csv", "ratio_col": None, "raw_col": "recycling_pct", "unit": "%", "data_year": "2023", "source": "DST LABY25", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": False, "special": "recycling_eu_target"},
-    {"id": "cirkularitet_waste", "csv": "forurening_scores.csv", "ratio_col": "waste_ratio", "raw_col": "waste_kg_per_capita", "unit": "kg/person", "data_year": "2023", "source": "DST + MST", "category": "ecological", "dimension": "forurening", "inverse_ratio": True, "is_dimension_score": False},
-
-    # === Næringsstoffer (worst-of N + P + landbrug) ===
-    {"id": "naer_nitrogen", "csv": "naeringsstoffer_scores.csv", "ratio_col": "nitrogen_ratio", "raw_col": "nitrogen_per_1000", "unit": "ton N/1.000 indb.", "data_year": "2024", "source": "DST VANDUD", "category": "ecological", "dimension": "naeringsstoffer", "inverse_ratio": True, "is_dimension_score": False},
-    {"id": "naer_phosphorus", "csv": "naeringsstoffer_scores.csv", "ratio_col": "phosphorus_ratio", "raw_col": "phosphorus_per_1000", "unit": "ton P/1.000 indb.", "data_year": "2024", "source": "DST VANDUD", "category": "ecological", "dimension": "naeringsstoffer", "inverse_ratio": True, "is_dimension_score": False},
-    {"id": "naer_landbrug", "csv": "n_landbrug_scores.csv", "ratio_col": "n_ratio", "raw_col": "n_ceiling_kg_per_ha", "unit": "kg N/ha", "data_year": "2025", "source": "Vandområdeplan 3", "category": "ecological", "dimension": "naeringsstoffer", "inverse_ratio": False, "is_dimension_score": False},
-    # Effektmål: vandområdernes økologiske tilstand (VP3) = den synlige eutrofiering som N/P forårsager.
-    # Andel af kommunens vandområder (vandløb+søer+kyst) i god tilstand, scoret mod landsgennemsnit
-    # (ratio beregnet i fetch-scriptet, høj = værre). EU's 2027-mål vises som kontekst på metodesiden.
-    {"id": "overfladevand", "csv": "vp3_vandkvalitet_scores.csv", "ratio_col": "vandkvalitet_ratio", "raw_col": "pct_god_tilstand", "unit": "%", "data_year": "2025", "source": "Vandområdeplan 3 (VP3 2e2025)", "category": "ecological", "dimension": "naeringsstoffer", "inverse_ratio": False, "is_dimension_score": False, "cap": 300},
-
-    # === Biodiversitet (worst-of: væsentlig + uerstattelig naturværdi, DCE bioscore) ===
-    # Kilde: DCE Biodiversitetskort (Bioscore-raster, AU/DCE SR456). Måler habitatkvalitet,
-    # ikke rent arealdække. To tærskler matcher CONCITO/EU's biodiversitetsmål:
-    #   ≥8  = "væsentlige naturværdier"   → mod 30%-målet (biodiversitet_ratio)
-    #   ≥12 = "uerstattelige levesteder"  → mod 10%-målet (uerstattelig_ratio)
-    {"id": "bio_vasentlig",    "csv": "biodiversitet_scores.csv", "ratio_col": "biodiversitet_ratio", "raw_col": "pct_vasentlig_natur",    "unit": "%", "data_year": "2021", "source": "DCE Biodiversitetskort (bioscore)", "category": "ecological", "dimension": "biodiversitet", "inverse_ratio": False, "is_dimension_score": False, "cap": 300},
-    {"id": "bio_uerstattelig", "csv": "biodiversitet_scores.csv", "ratio_col": "uerstattelig_ratio", "raw_col": "pct_uerstattelig_natur", "unit": "%", "data_year": "2021", "source": "DCE Biodiversitetskort (bioscore)", "category": "ecological", "dimension": "biodiversitet", "inverse_ratio": False, "is_dimension_score": False, "cap": 300},
-
-    # === Forbrugsbaseret CO2 (2. indikator under klimapaavirkning; navn-nøgle, ingen fallback) ===
-    {"id": "forbrug_co2", "csv": "cba_2023_estimate.csv", "ratio_col": None, "raw_col": "cba_2023_estimate", "unit": "ton CO₂e/person", "data_year": "2023", "source": "Osei-Owusu et al. 2020 + ENS GA25", "category": "ecological", "dimension": "klimapaavirkning", "inverse_ratio": False, "is_dimension_score": False, "special": "cba_navn_key"},
-
-    # === Forurening / Novel entities (4 indikatorer, gennemsnit - ikke worst-of) ===
-    # Pesticider + nitrat = novel entities. Genanvendelse + affald = materialecyklusser (fra cirkularitet).
-    {"id": "pesticider", "csv": "pesticider_scores.csv", "ratio_col": "pesticid_ratio", "raw_col": "pesticid_pct_over_graense", "unit": "% vandværker over 0.1 µg/l", "data_year": "2026", "source": "GEUS Jupiter", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": False},
-    # Nitrat: flyttet fra Vand til Forurening (kemisk forurening af drikkevand = novel entities)
-    {"id": "nitrat", "csv": "nitrat_scores.csv", "ratio_col": "nitrat_ratio", "raw_col": "nitrat_mg_l", "unit": "mg/L", "data_year": "2026", "source": "GEUS Jupiter", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": False},
-    # === Vand (enkelt indikator: vandindvinding) ===
-    {"id": "vandindvinding", "csv": "vandindvinding_scores.csv", "ratio_col": "vandindvinding_ratio", "raw_col": "vandindvinding_m3_per_person", "unit": "m³/person", "data_year": "2024", "source": "DST VANDIND", "category": "ecological", "dimension": "vand", "inverse_ratio": False, "is_dimension_score": False},
-
-    # === Arealanvendelse (worst-of: natur + intensivt landbrug + bebygget) ===
-    # Kilde: DST AREALDK2 2024 (pct af kommunens matrikulerede areal)
-    # natur_ratio    = (30% EU-maal / natur_pct) * 100  [lav natur = overshoot]
-    # intensiv_ratio = (intensiv_pct / 54.7% nationalt snit) * 100  [meget landbrug = overshoot]
-    # bebygget_ratio = (bebygget_pct / 14.2% nationalt snit) * 100  [meget by = overshoot]
-    {"id": "areal_intensiv", "csv": "arealanvendelse_scores.csv", "ratio_col": "intensiv_ratio", "raw_col": "intensiv_pct", "unit": "%", "data_year": "2024", "source": "DST AREALDK2", "category": "ecological", "dimension": "arealanvendelse", "inverse_ratio": False, "is_dimension_score": False},
-    {"id": "areal_bebygget", "csv": "arealanvendelse_scores.csv", "ratio_col": "bebygget_ratio", "raw_col": "bebygget_pct", "unit": "%", "data_year": "2024", "source": "DST AREALDK2", "category": "ecological", "dimension": "arealanvendelse", "inverse_ratio": False, "is_dimension_score": False},
-]
-
-# ─── KONTEKST-INDIKATORER (vises, men scores IKKE) ─────────────────────
-# Råværdier der vises i UI som kontekst under en dimension, men som ikke
-# indgår i nogen score. Skrives til master med category="context".
-# data.ts router dem til kommune.rawValues[indicator_id].
-# Bruges pt. til Energi-dimensionen (lokal VE + fjernvarmens brændselsmix).
-CONTEXT_INDICATORS = [
-    # Lokal VE-kapacitet (sol + landvind)
-    {"id": "ctx_ve_kw_per_indb", "csv": "ve_kapacitet_scores.csv", "raw_col": "ve_kw_per_indb", "unit": "kW/indb.", "data_year": "2024", "source": "Energi Data Service", "dimension": "energi"},
-    {"id": "ctx_ve_sol_mw",      "csv": "ve_kapacitet_scores.csv", "raw_col": "ve_sol_mw",      "unit": "MW",       "data_year": "2024", "source": "Energi Data Service", "dimension": "energi"},
-    {"id": "ctx_ve_vind_mw",     "csv": "ve_kapacitet_scores.csv", "raw_col": "ve_vind_mw",     "unit": "MW",       "data_year": "2024", "source": "Energi Data Service", "dimension": "energi"},
-    # Fjernvarmens brændselsmix (firdeling der summer til 100%)
-    {"id": "ctx_fjv_biomasse", "csv": "fjernvarme_mix_scores.csv", "raw_col": "fjv_biomasse_pct", "unit": "%", "data_year": "2024", "source": "Energistyrelsen EPT", "dimension": "energi"},
-    {"id": "ctx_fjv_affald",   "csv": "fjernvarme_mix_scores.csv", "raw_col": "fjv_affald_pct",   "unit": "%", "data_year": "2024", "source": "Energistyrelsen EPT", "dimension": "energi"},
-    {"id": "ctx_fjv_fossil",   "csv": "fjernvarme_mix_scores.csv", "raw_col": "fjv_fossil_pct",   "unit": "%", "data_year": "2024", "source": "Energistyrelsen EPT", "dimension": "energi"},
-    {"id": "ctx_fjv_ren",      "csv": "fjernvarme_mix_scores.csv", "raw_col": "fjv_ren_pct",      "unit": "%", "data_year": "2024", "source": "Energistyrelsen EPT", "dimension": "energi"},
-    # Opdeling af den samlede fossile varmeafhængighed (til breakdown-visning)
-    {"id": "ctx_fossil_direkte", "csv": "bolig_fossil_scores.csv", "raw_col": "fossil_direkte_pct", "unit": "%", "data_year": "2026", "source": "DST BYGB40",       "dimension": "energi"},
-    {"id": "ctx_fossil_via_fjv", "csv": "bolig_fossil_scores.csv", "raw_col": "fossil_via_fjv_pct", "unit": "%", "data_year": "2026", "source": "DST BYGB40 + EPT", "dimension": "energi"},
-    # Fritidsboliger: vises, scores IKKE. De har markant lavere fossilandel end helårsboliger
-    # (median ~7% mod ~20%), fordi sommerhuse typisk er elopvarmede. Hvis de indgik i scoren,
-    # ville sommerhuskommuner fremstå kunstigt bedre på et mål der handler om HUSSTANDES
-    # varmeregninger - og sommerhusene ejes typisk af folk fra andre kommuner.
-    {"id": "ctx_fritid_fossil", "csv": "bolig_fossil_scores.csv", "raw_col": "fritid_fossil_pct", "unit": "%", "data_year": "2026", "source": "DST BYGB40", "dimension": "energi"},
-    {"id": "ctx_fritid_andel",  "csv": "bolig_fossil_scores.csv", "raw_col": "fritid_andel_pct",  "unit": "%", "data_year": "2026", "source": "DST BYGB40", "dimension": "energi"},
-    # Klimaregnskabet.dk: sektorfordeling af den territoriale udledning (indgår
-    # allerede samlet i klimapaavirkning-scoren), samlet energiforbrug og
-    # VE-el selvforsyningsgrad. Vises under Klimapåvirkning som kontekst -
-    # scores ikke, da sektorerne blot er en opdeling af et allerede scoret tal.
-    {"id": "ctx_klima_landbrug",  "csv": "klimaregnskab_kontekst.csv", "raw_col": "klima_landbrug",  "unit": "ton CO₂e/indb.", "data_year": "2023", "source": "Klimaregnskabet.dk", "dimension": "klimapaavirkning"},
-    {"id": "ctx_klima_energi",    "csv": "klimaregnskab_kontekst.csv", "raw_col": "klima_energi",    "unit": "ton CO₂e/indb.", "data_year": "2023", "source": "Klimaregnskabet.dk", "dimension": "klimapaavirkning"},
-    {"id": "ctx_klima_transport", "csv": "klimaregnskab_kontekst.csv", "raw_col": "klima_transport", "unit": "ton CO₂e/indb.", "data_year": "2023", "source": "Klimaregnskabet.dk", "dimension": "klimapaavirkning"},
-    {"id": "ctx_energiforbrug",   "csv": "klimaregnskab_kontekst.csv", "raw_col": "energiforbrug",   "unit": "GJ/indb.",       "data_year": "2023", "source": "Klimaregnskabet.dk", "dimension": "klimapaavirkning"},
-    {"id": "ctx_ve_selvforsyning", "csv": "klimaregnskab_kontekst.csv", "raw_col": "ve_selvforsyning", "unit": "%",            "data_year": "2023", "source": "Klimaregnskabet.dk", "dimension": "klimapaavirkning"},
-]
 
 # ─── HJÆLPEFUNKTIONER ──────────────────────────────────────────────────
 
@@ -305,15 +121,17 @@ def average_of(ratios):
     return round(sum(valid) / len(valid), 2) if valid else None
 
 
-# Dimensioner der bruger gennemsnit i stedet for worst-of
-AVERAGE_DIMENSIONS = {"forurening"}
-
-
 # ─── HOVEDLOGIK ────────────────────────────────────────────────────────
 
 def build_master():
     print(f"Læser fra {DATA_DIR}")
     print()
+
+    SOCIAL_INDICATORS = ir.sociale()
+    ECO_SUB_INDICATORS = ir.oekologiske()
+    CONTEXT_INDICATORS = ir.kontekst()
+    # Dimensioner der bruger gennemsnit i stedet for worst-of (i dag kun forurening)
+    AVERAGE_DIMENSIONS = ir.gennemsnits_dimensioner()
 
     # Få liste af alle 98 kommuner fra hoved-CSV
     main_rows = load_csv("doughnut_scores.csv")
@@ -606,12 +424,9 @@ def _tjek_konsistens_efter_build():
     fremtidig omskrivning af shared.ts som regex'en ikke kan følge) aldrig
     kan vælte en build der ellers lykkedes.
 
-    Lazy import (ikke i toppen af filen): tjek_konsistens.py importerer selv
-    dette modul (`import build_master_csv as bm`) for at læse
-    SOCIAL_INDICATORS/ECO_SUB_INDICATORS/AVERAGE_DIMENSIONS. Et top-level
-    import her ville give en cirkulær import ved modul-indlæsning; et lazy
-    import inde i funktionen virker fint, fordi dette modul er færdigt
-    indlæst længe før funktionen rent faktisk kaldes.
+    Lazy import (ikke i toppen af filen): fetch-scripts importerer
+    auto_build_master fra dette modul, og en fejl i tjek-modulet må ikke
+    vælte selve hentningen ved import.
 
     Returnerer True (ingen fejl), False (fejl fundet) eller None (tjekket
     kunne ikke køre). None er IKKE det samme som bestået: et tjek der

@@ -7,8 +7,11 @@ ellers ændrer man tallene uden at opdage det.
 
 Reglerne er implementeret i `scripts/build_master_csv.py` (datapipelinen),
 `scripts/build_trends_csv.py` (retningspile) og `webapp/lib/shared.ts`
-(frontendberegninger). Dokumentet angiver bevidst funktions- og feltnavne
-frem for linjenumre, fordi linjenumre skrider ved hver ændring.
+(frontendberegninger). Hvilke indikatorer der findes, og deres egenskaber
+(retning, kategori, mål, særregler), står ét sted: `data/indikatorer.json`.
+Alle tre læser derfra, Python via `scripts/indikatorregister.py`. Dokumentet
+angiver bevidst funktions- og feltnavne frem for linjenumre, fordi linjenumre
+skrider ved hver ændring.
 
 **Læs afsnit 6 og 7 før du ændrer noget.** Fælderne dér er alle sammen fejl
 projektet allerede har begået én gang.
@@ -27,7 +30,8 @@ Alle indikatorer udtrykkes som en **ratio** hvor 100 er referencepunktet:
 
 Indikatorer hvor en høj råværdi er dårlig (Gini, kriminalitet, luftforurening)
 er allerede vendt i kildedataene, så ratio-retningen er ensartet. Feltet
-`inverse` i `INDICATORS` registrerer hvilke det gælder.
+`inverse` (sociale) og `lower_is_better` (økologiske) i registret registrerer
+hvilke det gælder.
 
 De to retninger er modsatrettede med vilje. Det er den hyppigste fejlkilde i
 projektet, se R11.
@@ -82,10 +86,10 @@ ratios i tusindvis, som ville forstyrre valideringen i R14.
 ikke-`None` sub-ratios:
 
 - **worst-of (standard):** `score = round(max(ratios), 2)`
-- **gennemsnit:** `score = round(sum / len, 2)`, kun for dimensioner i
-  `AVERAGE_DIMENSIONS`
+- **gennemsnit:** `score = round(sum / len, 2)`, kun for dimensioner med
+  `"aggregation": "gennemsnit"` i registret
 
-`AVERAGE_DIMENSIONS` indeholder i dag **udelukkende `forurening`**. Begrundelsen
+Det gælder i dag **udelukkende `forurening`**. Begrundelsen
 er at dens fire indikatorer måler vidt forskellige forureningstyper, hvor
 worst-of ville lade den værste enkeltkilde definere hele dimensionen.
 
@@ -204,7 +208,7 @@ og sidste `N_ENDEPUNKT` år, så et enkelt afvigende år ikke definerer retninge
 |---|---|
 | `ingen` | ingen procentændring kunne beregnes |
 | `stagneret` | ændringen er ubetydelig, se T4 |
-| `kontekst` | indikatoren mangler i `OP_ER_GODT`, så retning kan ikke vurderes |
+| `kontekst` | indikatoren har ingen retning i registret (kontekst-indikator eller ukendt id), så retning kan ikke vurderes |
 | `forkert` | den målrettede ændring er nul eller negativ |
 | `rigtig` | målrettet ændring mindst lige så god som medianen af alle 98 kommuner |
 | `tempo` | rigtig vej, men langsommere end medianen |
@@ -218,10 +222,14 @@ den rigtige vej og de fleste andre den forkerte.
 den absolutte ændring er under 1 i indikatorens egen enhed. Derudover
 klassificeres alt under 1 procents relativ ændring som `stagneret`.
 
-**T5 - `OP_ER_GODT` skal holdes i sync med `INDICATORS[].inverse`.** Konstanten i
-`build_trends_csv.py` afgør hvilken vej pilen peger. En manglende mapping bliver
-til `kontekst` (pil uden vurdering), ikke til en fejl. Tjek scriptets
-ADVARSEL-linjer efter hver kørsel.
+**T5 - Pilens retning udledes af scoringens retning.** `op_er_godt` (om en
+stigende råværdi er fremgang) er `not inverse` for sociale og
+`not lower_is_better` for økologiske indikatorer, udledt af registret i
+`indikatorregister.op_er_godt()`. Indtil sep. 2026 var det en separat,
+håndvedligeholdt konstant (`OP_ER_GODT`) der skulle holdes i sync med
+`inverse`, og den skred. Et id i tidsserien som registret ikke kender, bliver
+til `kontekst` (pil uden vurdering); `tjek_konsistens.py` melder det som fejl,
+og `build_trends_csv.py` skriver en ADVARSEL-linje.
 
 **T6 - Dimensionspilen følger worst-of, ikke gennemsnittet.** En øko-dimensions
 pil er retningen for den sub-indikator der bestemmer dimensionens score, altså
@@ -230,8 +238,8 @@ dimensionen vise grøn pil samtidig med at netop den overskredne grænse bliver
 værre.
 
 Undtagelsen er `forurening`, som bruger gennemsnit i scoren (R7) og derfor også
-i retningen. `AVERAGE_DIMENSIONS` findes i **både** `build_master_csv.py` og
-`build_trends_csv.py` og skal holdes ens.
+i retningen. Begge scripts læser `aggregation` fra registret, så score og pil
+ikke kan komme ud af trit.
 
 Har den afgørende sub-indikator ingen tidsserie, får dimensionen **ingen pil**.
 Der falles bevidst ikke tilbage på de øvrige. Derfor har `klimapaavirkning` kun
@@ -260,17 +268,18 @@ for at **begge** grene målretter `pct`.
 
 **T8 - Masteren kan indeholde indikatorer platformen ikke scorer.**
 `housing_no_wc` og `housing_no_bath` står i masteren med `dimension=bolig`, men
-er ikke med i `SOCIAL_CATEGORIES.bolig.indicatorIds`. Bolig scorer og viser kun
-2 indikatorer. Konstanten `IKKE_SCORET` i `build_trends_csv.py` holder dem ude af
-dimensionsaggregatet, men de beholder deres egen indikatorrække.
+står ikke i kategoriens `indicators`-liste i registret. Bolig scorer og viser
+kun 2 indikatorer. `indikatorregister.ikke_scoret()` (sociale indikatorer der
+ikke står i nogen kategori) holder dem ude af dimensionsaggregatet i
+`build_trends_csv.py`, men de beholder deres egen indikatorrække.
 
 Uden det gennemsnitter Bolig-pilen 4 indikatorer ved siden af et tal beregnet på
 2, og de to usynlige dominerer (`housing_no_bath` er faldet omkring 39 procent
 på landsplan).
 
 **Regel: tilføjer du tidsserie til en indikator, så tjek at den faktisk står i
-`SOCIAL_CATEGORIES[].indicatorIds`.** Ellers forgifter den en dimensionspil uden
-at være synlig noget sted.
+sin kategoris `indicators` i registret.** Ellers holdes den ude af pilen, og den
+er ikke synlig noget sted.
 
 Kontrol: kategoriens tooltip ("gennemsnit af N indikatorer") skal matche "N/N
 indikatorer" på bjælken, medmindre forskellen skyldes manglende tidsserie på en

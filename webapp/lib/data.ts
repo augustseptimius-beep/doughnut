@@ -11,10 +11,8 @@ export {
   computeCategoryScores,
   computeTop10Ratios,
 } from "./shared";
-// DOUGHNUT_EDITION_YEAR og DOUGHNUT_DEFAULT_DATA_YEAR er IKKE re-eksporteret
-// herfra: shared.ts's versioner er hårdkodede og driver med jævne mellemrum
-// (footeren stod med "2023" mens de fleste indikatorer var 2024-2025).
-// Denne fil beregner dem i stedet fra master-CSV'en, se getDoughnutEdition().
+// DOUGHNUT_EDITION_YEAR og DOUGHNUT_DEFAULT_DATA_YEAR beregnes her fra
+// master-CSV'en (getDoughnutEdition()), ikke hårdkodet - se nedenfor.
 export type {
   Indicator,
   KommuneData,
@@ -23,48 +21,16 @@ export type {
   CategoryScore,
 } from "./shared";
 
-import { INDICATORS, ECOLOGICAL_DIMENSIONS, computeTop10Ratios, computeGroupRatios, type KommuneData, type TrendPost, type TrendDirection } from "./shared";
+import { INDICATORS, ECOLOGICAL_DIMENSIONS, ECO_INDICATOR_KEYS, computeTop10Ratios, computeGroupRatios, type KommuneData, type TrendPost, type TrendDirection } from "./shared";
 
 let cachedData: KommuneData[] | null = null;
 
 // ─── Mapping fra master-CSV indicator_id til rawValues-nøgler ───────
-// ScoreBars og DoughnutRing forventer specifikke nøgler i kommune.rawValues
-// for at vise sub-indikatorer korrekt. Disse nøgler er defineret af
-// EcologicalDimension.subIndicators.rawKey/ratioKey i shared.ts.
-//
-// Master-CSV bruger korte indicator_ids (f.eks. "luftkvalitet_no2"). Her
-// mapper vi dem til de rawValues-nøgler som UI-komponenterne læser fra.
-//
-// Format: master_id → { rawKey: nøgle for råværdi, ratioKey: nøgle for ratio (kan være null) }
-const ECO_RAW_KEY_MAP: Record<string, { rawKey: string; ratioKey: string | null }> = {
-  // Klimapåvirkning
-  klimapaavirkning: { rawKey: "eco_klima_raw", ratioKey: "klimapaavirkning_self" },
-  // Luftkvalitet
-  luftkvalitet_no2: { rawKey: "luftkvalitet_no2", ratioKey: "luftkvalitet_no2_ratio" },
-  luftkvalitet_pm25: { rawKey: "luftkvalitet_pm25", ratioKey: "luftkvalitet_pm25_ratio" },
-  // Cirkularitet
-  cirkularitet_recycling: { rawKey: "eco_cirkularitet_raw", ratioKey: "eco_cirkularitet_ratio" },
-  cirkularitet_waste: { rawKey: "eco_affald_raw", ratioKey: "eco_affald_ratio" },
-  // Næringsstoffer
-  naer_nitrogen: { rawKey: "eco_naer_n_raw", ratioKey: "eco_naer_n_ratio" },
-  naer_phosphorus: { rawKey: "eco_naer_p_raw", ratioKey: "eco_naer_p_ratio" },
-  naer_landbrug: { rawKey: "eco_naer_landbrug_raw", ratioKey: "eco_naer_landbrug_ratio" },
-  // Biodiversitet (worst-of: væsentlig + uerstattelig naturværdi, DCE bioscore)
-  bio_vasentlig:    { rawKey: "eco_bio_vasentlig_raw",    ratioKey: "bio_vasentlig_ratio" },
-  bio_uerstattelig: { rawKey: "eco_bio_uerstattelig_raw", ratioKey: "bio_uerstattelig_ratio" },
-  // Forbrugsbaseret CO2 - 2. indikator under Klimapåvirkning (samme planetære grænse)
-  forbrug_co2: { rawKey: "forbrug_co2", ratioKey: "forbrug_co2_self" },
-  // Forurening - pesticider (worst-of)
-  pesticider: { rawKey: "eco_pesticid_raw", ratioKey: "pesticider_self" },
-  // Vand (worst-of: nitrat + vandindvinding)
-  nitrat:          { rawKey: "eco_nitrat_raw",         ratioKey: "nitrat_self" },
-  vandindvinding:  { rawKey: "eco_vandindvinding_raw", ratioKey: "vandindvinding_self" },
-  // Arealanvendelse (worst-of: intensivt landbrug + bebygget)
-  areal_intensiv: { rawKey: "eco_areal_intensiv_raw", ratioKey: "areal_intensiv_ratio" },
-  areal_bebygget: { rawKey: "eco_areal_bebygget_raw", ratioKey: "areal_bebygget_ratio" },
-  // Overfladevand (VP3 økologisk tilstand) - sub-indikator under Næringsstoffer (eutrofieringens effekt)
-  overfladevand: { rawKey: "eco_overfladevand_raw", ratioKey: "overfladevand_ratio" },
-};
+// Master-CSV'en bruger korte indicator_ids (fx "luftkvalitet_no2"), mens
+// ScoreBars og DoughnutRing læser økologiske sub-indikatorer fra bestemte
+// nøgler i kommune.rawValues (subIndicators[].rawKey/ratioKey). Mappingen
+// står i data/indikatorer.json (raw_key/ratio_key) og kommer via shared.ts.
+const ECO_RAW_KEY_MAP = ECO_INDICATOR_KEYS;
 
 // ─── Master-CSV loader ───────────────────────────────────────────────
 // Long format: én række pr. (kommune × indikator). Genereret af
