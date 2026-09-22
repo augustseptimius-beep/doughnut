@@ -98,7 +98,7 @@ Se `ECOLOGICAL_DIMENSIONS` i `webapp/lib/shared.ts` for den autoritative liste. 
 | `klimapaavirkning` | territorial CO₂e, forbrugsbaseret CO₂e |
 | `forurening` | nitrat, pesticider, affald, genanvendelse |
 | `luftkvalitet` | NO₂, PM2.5 |
-| `naeringsstoffer` | N-udledning, P-udledning, N-loft landbrug (VP3), overfladevandets tilstand (VP3) |
+| `naeringsstoffer` | N-udledning, P-udledning, tålegrænse for kvælstof pr. ha landbrug (VP3, id `naer_landbrug`), overfladevandets tilstand (VP3) |
 | `vand` | vandindvinding |
 | `arealanvendelse` | bebygget areal, intensivt dyrket areal |
 | `biodiversitet` | bioscore ≥8 mod 30%, bioscore ≥12 mod 10% |
