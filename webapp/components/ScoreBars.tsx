@@ -553,7 +553,11 @@ export default function ScoreBars({
                       // avg-ratioen. Ellers ville tallet vise landsgennemsnittet,
                       // mens scoren måler mod kommunegruppen eller top 10% - og så
                       // ser en grøn score forkert ud ved siden af en dårligere råværdi.
-                      const baselineAvg = (rawVal !== null && score !== null && score !== 0)
+                      // Er ratioen klippet ved 150 i pipelinen, kan referencen ikke
+                      // udledes baglæns (den ville variere fra kommune til kommune),
+                      // så den vises ikke.
+                      const erKlippet = (kommune.ratios[ind.id] ?? 0) >= 150;
+                      const baselineAvg = (rawVal !== null && score !== null && score !== 0 && !erKlippet)
                         ? ind.inverse
                           ? (score * rawVal) / 100
                           : (rawVal * 100) / score

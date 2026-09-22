@@ -16,7 +16,7 @@ export default function BaselineToggle() {
       value: "avg",
       label: "Landsgennemsnit",
       short: "Gns",
-      title: "Scorer sammenlignes med det nationale gennemsnit (100 = gennemsnittet af alle 98 kommuner)",
+      title: "Scorer sammenlignes med landsgennemsnittet (100 = niveau med landet som helhed)",
     },
     {
       value: "top10",
