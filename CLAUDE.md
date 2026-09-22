@@ -54,7 +54,7 @@ doughnut/
     │   ├── DoughnutRing.tsx     ← SVG doughnut-visualisering
     │   ├── ScoreBars.tsx        ← bar-visning af alle kategorier + sub-indikatorer
     │   ├── KommuneSearch.tsx    ← autocomplete-søgefelt på forsiden
-    │   ├── BaselineToggle.tsx   ← skift mellem avg og top10 baseline
+    │   ├── BaselineToggle.tsx   ← skift mellem kommunegruppe (standard), landsgennemsnit og top10
     │   ├── VurderingBoks.tsx    ← vurderingsboks pr. kommune
     │   ├── VurderingsBjaelke.tsx
     │   └── VurderingPrintView.tsx
@@ -82,7 +82,7 @@ Alle kommuner har et sæt **ratios** hvor `100 = niveau med landsgennemsnit` (so
 
 ### Sociale indikatorer og kategorier
 
-Se `INDICATORS` og `SOCIAL_CATEGORIES` i `webapp/lib/shared.ts` for aktuel liste. Indikatorer har felter: id, navn, DST-tabel, kilde, inverse-flag, dataYear, baselineLevel (1=WHO/EU, 2=nationalt mål, 3=landsgennemsnit), rawUnit. Kategoriscorer beregnes som simpelt gennemsnit via `computeCategoryScores()`. Baseline-toggle (avg/top10) påvirker KUN sociale indikatorer - økologiske har absolutte grænser.
+Se `INDICATORS` og `SOCIAL_CATEGORIES` i `webapp/lib/shared.ts` for aktuel liste. Indikatorer har felter: id, navn, DST-tabel, kilde, inverse-flag, dataYear, baselineLevel (1=WHO/EU, 2=nationalt mål, 3=landsgennemsnit), rawUnit. Kategoriscorer beregnes som simpelt gennemsnit via `computeCategoryScores()`. Baseline-toggle (kommunegruppe/avg/top10, standard kommunegruppe) påvirker KUN sociale indikatorer - økologiske har faste referencer (absolutte grænser eller landsgennemsnit) der aldrig omskaleres.
 
 ### Farvelogik (konsistent på tværs af UI)
 
@@ -115,8 +115,10 @@ interface KommuneData {
   kommune_navn: string;
   ratios: Record<string, number | null>;       // social indikator-ratios (avg-baseline)
   top10_ratios: Record<string, number | null>; // samme, men top10-baseline
+  group_ratios: Record<string, number | null>; // samme, men kommunegruppe-baseline (standardvisning)
   eco_ratios: Record<string, number | null>;   // økologiske dimensions-ratios
   rawValues: Record<string, number | null>;    // faktiske råværdier til UI-visning
+  trends: Record<string, TrendPost>;           // retningspile, nøglet på indicator_id og eco rawKey
   social_avg: number | null;
   overall_avg: number | null;
 }
@@ -203,7 +205,7 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
     - **Enkelt-indikator:** pilen følger råværdiens FAKTISKE ændring, og `pct` i CSV'en er den rå ændring. Det giver det nuancerede billede: inden for Forurening peger genanvendelse op i grønt og affald op i rødt - samme retning, modsat vurdering.
     - **Dimension/kategori (`_dim_*`):** pilen følger doughnut-geometrien - sociale kategorier skal fyldes OP mod fundamentet, økologiske skal ned UNDER loftet. Så fremgang = pil op på social, pil ned på øko. `pct` er her MÅLRETTET (fortegn vendt for inverse indikatorer, positiv = fremgang), og `vaerdi_start`/`vaerdi_slut` er tomme, fordi der ikke er nogen fælles enhed.
     - **Fælden der allerede er ramt én gang:** worst-of-dimensioner kopierede oprindeligt sub-indikatorens rå `pct`, mens gennemsnits-dimensioner brugte den målrettede. Resultatet var at Forurening og Vand begge stod som "positiv retning", men med pile der pegede modsat. Hvis du ændrer i `aggreger_dimensioner()`, så sørg for at BEGGE grene målretter `pct`.
-17. **11 indikatorer fik pil aug. 2026** (hospital_long, housing_no_wc/no_bath, voter_turnout, kultur_spending, civil_society, low_income, exam_grade, high_absence, wellbeing, youth_education) - se `fetch_trend_history.py`. **16 mangler stadig** og har det bevidst: ingen tidsserie hos kilden (bolig_fossil, vejr_skader, gp_distance - SUNDAF01 har kun ét år) eller kun kommunegruppe-niveau, ikke enkeltkommune (public_transport). **apprenticeship (EUD/PRAK/SØG) er i stykker hos UVM** - selv et enkelt-års opslag fejler nu ("Nøgletal ... kunne ikke findes"), formentlig omdøbt siden scriptet blev skrevet; gælder hele indikatoren, ikke kun historik. `voter_turnout`s kilde stod forkert som KVBPCT i `build_master_csv.py` (den tabel har slet ingen kommune-opdeling) - den rigtige er LABY08, som `fetch_democracy_data.py` allerede brugte korrekt.
+17. **11 indikatorer fik pil aug. 2026** (hospital_long, housing_no_wc/no_bath, voter_turnout, kultur_spending, civil_society, low_income, exam_grade, high_absence, wellbeing, youth_education) - se `fetch_trend_history.py`. **13 af de 66 scorede mangler stadig** og har det bevidst (sep. 2026): ingen tidsserie hos kilden (bolig_fossil, vejr_skader, forbrug_co2, luftkvalitet_no2/pm25, bio_*, naer_landbrug, overfladevand, nitrat, pesticider), kun kommunegruppe-niveau (public_transport), eller begge år indgår i målet (sport_tilskuer). **apprenticeship (EUD/PRAK/SØG) er i stykker hos UVM** - selv et enkelt-års opslag fejler nu ("Nøgletal ... kunne ikke findes"), formentlig omdøbt siden scriptet blev skrevet; gælder hele indikatoren, ikke kun historik. `voter_turnout`s kilde stod forkert som KVBPCT i `build_master_csv.py` (den tabel har slet ingen kommune-opdeling) - den rigtige er LABY08, som `fetch_democracy_data.py` allerede brugte korrekt.
 18. **`IKKE_SCORET` i `build_trends_csv.py`: master kan indeholde indikatorer platformen ikke scorer.** `housing_no_wc`/`housing_no_bath` står i master med `dimension=bolig`, men er IKKE med i `SOCIAL_CATEGORIES.bolig.indicatorIds` i `shared.ts` - Bolig scorer og viser kun 2 indikatorer. Så længe de to manglede tidsserie, ramte Bolig-pilen rigtigt ved et TILFÆLDE (de blev sprunget over). Da de fik pil aug. 2026, begyndte pilen at gennemsnitte 4 indikatorer ved siden af et tal beregnet på 2 - og de to usynlige dominerede (`housing_no_bath` er faldet ~39% på landsplan). Derfor holdes de ude af aggregeringen via `IKKE_SCORET`, men beholder deres egen indikator-række. **Regel: tilføjer du tidsserie til en indikator, så tjek at den faktisk står i `SOCIAL_CATEGORIES[].indicatorIds`** - ellers forgifter den en dimensionspil uden at være synlig noget sted. Kontrol: kategoriens tooltip ("gennemsnit af N indikatorer") skal matche "N/N indikatorer" på bjælken, MEDMINDRE forskellen skyldes manglende tidsserie på en indikator der faktisk scores (fx Fællesskab 4 af 5, hvor `sport_tilskuer` ingen pil har - det er korrekt).
 
 19. **Datapipelinens robusthed - kør `python3 scripts/tjek_robusthed.py` før en dataopdatering.** Ren diagnose, skriver ingen filer. Den tjekker fem fejlklasser vi alle er faldet i (aug. 2026), og som har samme signatur: platformen ser levende ud, men tallet er frosset, og INTET fejler højlydt.

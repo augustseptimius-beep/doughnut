@@ -18,14 +18,15 @@ For each municipality the platform computes and displays:
 
 - **13 social categories** (health, education, welfare, housing, democracy,
   culture, safety, civil society, equality, mobility, gender equality, climate
-  adaptation, energy) built from **66 scored indicators**.
+  adaptation, energy) built from **49 scored indicators**.
 - **7 ecological dimensions** (climate impact, pollution, air quality,
-  nutrients, water, land use, biodiversity), each downscaled from a planetary
-  boundary to the municipal level.
+  nutrients, water, land use, biodiversity) built from **17 scored
+  sub-indicators**, measured against an absolute boundary where a meaningful
+  one exists at municipal level and against the national average otherwise.
 - **16 context indicators** that are shown but deliberately not scored, because
   they describe a scored number rather than adding a new one.
 
-Data comes from roughly 60 distinct public sources, chiefly Statistics Denmark
+Data comes from around 50 distinct public sources, chiefly Statistics Denmark
 (Statistikbanken), the Danish Environmental Portal, GEUS Jupiter (groundwater),
 the Danish Energy Agency, Energi Data Service, and Klimaregnskabet.dk.
 
@@ -36,7 +37,7 @@ Everything is expressed as a **ratio where 100 is the reference point**:
 | | Meaning of 100 | Direction |
 |---|---|---|
 | Social indicators | national average, or an absolute target where a meaningful one exists | higher is better |
-| Ecological indicators | the planetary boundary | lower is better, above 100 is overshoot |
+| Ecological indicators | an absolute boundary (WHO, EU targets, Paris budget), or the national average where none exists | lower is better, above 100 is overshoot |
 
 Three properties are worth knowing before reading any number:
 
@@ -49,9 +50,9 @@ Three properties are worth knowing before reading any number:
    exception and uses an average, because its four sub-indicators measure
    unrelated pollution types.
 3. **Social baselines are switchable, ecological ones are not.** The user can
-   compare a municipality against the national average, the top ten
-   municipalities, or its own DST municipality group. Ecological boundaries are
-   absolute and never rescale.
+   compare a municipality against its own DST municipality group (the
+   default), the national average, or the top ten municipalities. Ecological
+   references are fixed and never rescale.
 
 Indicators scored against a fixed target rather than the national average are
 flagged, and the interface labels them, so a reader can tell "better than

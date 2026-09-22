@@ -761,7 +761,7 @@ export default function DoughnutRing({
           </div>
         </div>
         <p className="text-center text-[11px] text-gray-400 mt-2 max-w-md mx-auto px-2">
-          Dimensioner mærket &quot;mod mål&quot; måles mod en fast grænse (fx WHO, EU-mål, 0 % fossil); umærkede måles mod {baselineTekst}.
+          Dimensioner mærket &quot;mod mål&quot; måles mod en fast grænse (fx WHO, EU-mål, 0 % fossil). Umærkede sociale kategorier måles mod {baselineTekst}, umærkede økologiske dimensioner mod landsgennemsnittet.
         </p>
         </>
       )}

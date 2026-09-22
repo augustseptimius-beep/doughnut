@@ -127,8 +127,8 @@ export default function KommuneClient({ kommune }: Props) {
           <p>
             <span className="font-medium">Socialt fundament:</span>{" "}
             {categoriesAboveThreshold} af {categoriesWithData} kategorier
-            {categoriesWithData < 6 &&
-              ` (${6 - categoriesWithData} mangler data)`}
+            {categoriesWithData < SOCIAL_CATEGORIES.length &&
+              ` (${SOCIAL_CATEGORIES.length - categoriesWithData} mangler data)`}
             {" "}over {baselineLabel}.
           </p>
           <p>

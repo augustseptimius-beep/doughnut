@@ -1,9 +1,9 @@
 // --- DOUGHNUT-ÅR KONFIGURATION ---
 // "Doughnut-år" = den edition af modellen. Data-år = det seneste helårsdata.
-// Regel: en 2024-Doughnut bruger seneste tilgængelige helårsdata (typisk 2023-tal).
-// Indikatorer med særlige år (f.eks. kommunalvalg 2021) er markeret eksplicit.
-export const DOUGHNUT_EDITION_YEAR = "2024";
-export const DOUGHNUT_DEFAULT_DATA_YEAR = "2023";
+// Regel: en 2026-Doughnut bruger seneste tilgængelige helårsdata (typisk 2025-tal).
+// Hver indikator har sit eget dataYear; de fleste sociale er fra 2024-2025 (sep. 2026).
+export const DOUGHNUT_EDITION_YEAR = "2026";
+export const DOUGHNUT_DEFAULT_DATA_YEAR = "2025";
 
 export type BaselineLevel = 1 | 2 | 3;
 // Niveau 1: Absolutte biofysiske/juridiske grænser (WHO, EU-direktiver)

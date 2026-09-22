@@ -26,19 +26,20 @@ Dette er den **konsoliderede master-fil** som webapp'en læser fra. Genereres af
 ### Scoringskonventioner
 
 **Sociale indikatorer:**
-- `ratio = 100` = landsgennemsnit
+- `ratio = 100` = landsgennemsnit (undtagen `education` og `bolig_fossil`, der scores mod et fast mål). Masteren gemmer altid ratio mod landsgennemsnittet; webappens baseline-toggle (kommunegruppe/top 10) omskalerer ved visning
 - `ratio > 100` = bedre end gennemsnit
 - `ratio < 100` = dårligere end gennemsnit
 - Inverterede indikatorer (kriminalitet, fattigdom mv.) er allerede vendt - høj ratio = god performance
 
 **Økologiske indikatorer:**
-- `ratio = 100` = på den planetære grænse
+- `ratio = 100` = på grænsen: en absolut grænse (WHO, EU-mål, Paris-budget, 6 mg/L nitrat) eller landsgennemsnittet for de relative sub-indikatorer (fx næringsstoffer, vandindvinding, arealanvendelse, affald, pesticider)
 - `ratio < 100` = inden for grænsen (godt)
 - `ratio > 100` = overshoot (rødt)
 
 **Dimension-aggregater (`_dim_*` rækker):**
-- Multi-indikator dimensioner (luftkvalitet, næringsstoffer, cirkularitet) bruger **worst-of** (max ratio) - planetary boundary-logik: hvis bare én sub-grænse er overskredet, er dimensionen overskredet.
-- Single-indikator dimensioner (klimapåvirkning, biodiversitet, forbrug_co2) får dimension-score = sub-indikatorens ratio.
+- Multi-indikator dimensioner (klimapåvirkning, luftkvalitet, næringsstoffer, arealanvendelse, biodiversitet) bruger **worst-of** (max ratio) - planetary boundary-logik: hvis bare én sub-grænse er overskredet, er dimensionen overskredet.
+- Forurening er eneste undtagelse og bruger gennemsnit af sine fire sub-indikatorer.
+- Vand er single-indikator og får dimension-score = sub-indikatorens ratio.
 
 ### Eksempel: Pandas-import
 
@@ -90,7 +91,7 @@ Viser hvilken **vej** en kommune bevæger sig, ikke kun hvor den ligger. Én ræ
 - **Retningen beregnes på råværdier, aldrig på ratio.** Ratio er relativ til en baseline, og platformen har en baseline-toggle (avg/top10/gruppe). En ratio-baseret pil ville skifte retning når brugeren skifter baseline.
 - **Øko-dimensioner bruger worst-of:** pilen følger den sub-indikator der bestemmer dimensionens score (højeste ratio). Undtagelse: Forurening bruger gennemsnit, ligesom i scoren.
 - **Ingen fallback.** Har den score-afgørende sub-indikator ingen tidsserie, får dimensionen ingen pil. Ellers ville pilen beskrive noget andet end tallet ved siden af.
-- **Kun 42 af platformens indikatorer har historik.** Resten vises med et skraveret felt (`ingen`). DCE-luftkort, VP3-vandplaner og UVM-data (kræver MitID) findes ikke som årlige tidsserier.
+- **53 af de 66 scorede indikatorer har historik** (sep. 2026). De 13 uden vises med et skraveret felt (`ingen`): DCE-luftkort, bioscore, VP3-vandplaner, Jupiter-analyser, forbrugsbaseret CO₂, forsikringsskader og fossil opvarmning findes ikke som årlige tidsserier pr. kommune, `public_transport` findes kun på kommunegruppe-niveau, og `sport_tilskuer` bruger begge tilgængelige år i selve målet.
 
 Genereres af `scripts/fetch_trend_history.py` → `scripts/build_trends_csv.py`. **Skal genberegnes sammen med `master_indicators.csv`**, ellers kan pil og tal komme til at høre til forskellige årgange.
 
@@ -140,12 +141,7 @@ Webapp'en læser **ikke** længere fra disse direkte - kun fra `master_indicator
 
 ## Inaktive dimensioner
 
-Følgende doughnut-dimensioner har endnu ingen kommunefordelt data og indgår ikke i master-filen:
-
-- **Forurening (novel entities)** - PFAS, mikroplast, pesticider på kommuneniveau er ikke tilgængeligt
-- **Vand** - tidligere metode er fravalgt som ikke fyldestgørende
-- **Arealanvendelse** - ingen valideret kommunal datakilde endnu
-- **Klimatilpasning** (social) - oversvømmelsesrisiko mv. afventer data
+Ingen (sep. 2026). Alle 13 sociale kategorier og 7 økologiske dimensioner har data. Kendte huller inden for dimensionerne: PFAS og mikroplast findes ikke på kommuneniveau (Forurening), og Klimatilpasning måles kun på realiserede forsikringsskader, ikke på fremtidig oversvømmelsesrisiko.
 
 ## Driftsregel ved opdatering
 
