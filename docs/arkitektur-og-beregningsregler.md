@@ -21,8 +21,9 @@ Alle indikatorer udtrykkes som en **ratio** hvor 100 er referencepunktet:
 
 - **Sociale indikatorer:** 100 = niveau med landsgennemsnittet (eller med et
   absolut mål, se R2). Højere er bedre.
-- **Økologiske indikatorer:** 100 = på den planetære grænse. Lavere er bedre,
-  og over 100 er overshoot.
+- **Økologiske indikatorer:** 100 = på grænsen, enten en absolut grænse eller
+  landsgennemsnittet hvor der ikke findes en meningsfuld grænse pr. kommune
+  (se R12). Lavere er bedre, og over 100 er overshoot.
 
 Indikatorer hvor en høj råværdi er dårlig (Gini, kriminalitet, luftforurening)
 er allerede vendt i kildedataene, så ratio-retningen er ensartet. Feltet
@@ -172,8 +173,8 @@ man initialiseringen, forsvinder tællingen lydløst.
 
 **R15 - Baseline-toggle rammer kun den sociale halvdel.** Skift mellem
 gennemsnit, top 10 og kommunegruppe påvirker udelukkende sociale indikatorer.
-Økologiske dimensioner har absolutte planetære grænser og ændres aldrig af
-toggle. `absoluteScore`-indikatorer omskaleres heller ikke, selvom de er
+Økologiske dimensioner har faste referencer, enten en absolut grænse eller
+landsgennemsnittet, og ændres aldrig af toggle. `absoluteScore`-indikatorer omskaleres heller ikke, selvom de er
 sociale.
 
 ---
@@ -283,7 +284,7 @@ ingen pil har. Det er korrekt.
 Reglerne ovenfor siger hvad koden gør. Dette afsnit siger hvorfor, for de valg der er
 lette at rulle tilbage ved en uheldig videreudvikling.
 
-### Hvorfor det økologiske loft aldrig er relativt
+### Hvorfor det økologiske loft aldrig følger baseline-toggle
 
 Baseline-toggle (R15) giver brugeren tre referencer for sociale indikatorer:
 landsgennemsnit, top 10 og egen kommunegruppe. Det er fristende at lade
