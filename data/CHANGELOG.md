@@ -2,6 +2,11 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-22 (indikatorregister)
+
+- **Indikatorerne står nu ét sted, `data/indikatorer.json`.** Build-scripts, retningspile og webappen læser alle derfra. Ingen tal i master eller trend-CSV er ændret af omlægningen; begge filer er byte-identiske før og efter.
+- **Dataår for periodetal skrives som perioden.** `life_expectancy` og `le_gender_gap` (HISBK, femårige intervaller) står nu som 2021-2025, og `traffic_accidents` (treårigt gennemsnit af UHELDK1) som 2022-2024. Siden 22. sep. stod de som 2025 og 2024, fordi `data_years.json` kun gemmer slutåret. Styres af `period_years` i registret. Kun `data_year`-kolonnen er ændret, ingen ratios eller råværdier.
+
 ## 2026-09-22
 
 - **Indkomst måles på median, ikke gennemsnit.** Gælder `disposable_income` (Velfærd) og `income_gender_gap` (Ligestilling), både i master og i retningspilene. Kilde skiftet fra INDKP101 (ENHED 116, gennemsnit for alle personer) til INDKP106.

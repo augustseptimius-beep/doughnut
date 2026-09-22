@@ -39,14 +39,22 @@ _HENTEDE_AAR = hentede_aar()
 
 
 def _data_year(ind: dict) -> str:
-    """Årstal for indikatoren: registreret hentning > hårdkodet værdi."""
+    """Årstal for indikatoren: registreret hentning > registrets data_year.
+
+    data_years.json gemmer kun slutåret (dst_aar._aarstal). For indikatorer
+    der dækker en periode (period_years i registret: HISBK's femårige
+    intervaller, trafikulykkernes treårige gennemsnit) skrives perioden ud,
+    så UI'et viser "2021-2025" og ikke et enkelt år tallet ikke dækker.
+    """
+    aar = ind.get("data_year", "")
     kilde = ind.get("source") or ""
     m = re.match(r"DST\s+([A-ZÆØÅ0-9_]+)", kilde)
-    if m:
-        registreret = _HENTEDE_AAR.get(m.group(1))
-        if registreret:
-            return registreret
-    return ind.get("data_year", "")
+    if m and _HENTEDE_AAR.get(m.group(1)):
+        aar = _HENTEDE_AAR[m.group(1)]
+    n = ind.get("period_years")
+    if n and re.fullmatch(r"\d{4}", aar):
+        aar = f"{int(aar) - n + 1}-{aar}"
+    return aar
 
 
 # ─── Stier ─────────────────────────────────────────────────────────────

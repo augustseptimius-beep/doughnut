@@ -1,98 +1,98 @@
 kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,category,dimension
-201,Allerød,life_expectancy,102.82,83.9,år,2025,DST HISBK,social,sundhed
-153,Brøndby,life_expectancy,98.53,80.4,år,2025,DST HISBK,social,sundhed
-155,Dragør,life_expectancy,102.33,83.5,år,2025,DST HISBK,social,sundhed
-175,Rødovre,life_expectancy,99.63,81.3,år,2025,DST HISBK,social,sundhed
-190,Furesø,life_expectancy,101.96,83.2,år,2025,DST HISBK,social,sundhed
-230,Rudersdal,life_expectancy,102.82,83.9,år,2025,DST HISBK,social,sundhed
-167,Hvidovre,life_expectancy,99.51,81.2,år,2025,DST HISBK,social,sundhed
-157,Gentofte,life_expectancy,103.06,84.1,år,2025,DST HISBK,social,sundhed
-269,Solrød,life_expectancy,102.08,83.3,år,2025,DST HISBK,social,sundhed
-746,Skanderborg,life_expectancy,101.72,83.0,år,2025,DST HISBK,social,sundhed
-265,Roskilde,life_expectancy,100.74,82.2,år,2025,DST HISBK,social,sundhed
-240,Egedal,life_expectancy,101.72,83.0,år,2025,DST HISBK,social,sundhed
-151,Ballerup,life_expectancy,99.51,81.2,år,2025,DST HISBK,social,sundhed
-223,Hørsholm,life_expectancy,102.45,83.6,år,2025,DST HISBK,social,sundhed
-185,Tårnby,life_expectancy,99.51,81.2,år,2025,DST HISBK,social,sundhed
-173,Lyngby-Taarbæk,life_expectancy,103.06,84.1,år,2025,DST HISBK,social,sundhed
-350,Lejre,life_expectancy,101.84,83.1,år,2025,DST HISBK,social,sundhed
-163,Herlev,life_expectancy,98.65,80.5,år,2025,DST HISBK,social,sundhed
-210,Fredensborg,life_expectancy,100.61,82.1,år,2025,DST HISBK,social,sundhed
-183,Ishøj,life_expectancy,97.67,79.7,år,2025,DST HISBK,social,sundhed
-530,Billund,life_expectancy,100.74,82.2,år,2025,DST HISBK,social,sundhed
-710,Favrskov,life_expectancy,101.23,82.6,år,2025,DST HISBK,social,sundhed
-840,Rebild,life_expectancy,100.37,81.9,år,2025,DST HISBK,social,sundhed
-147,Frederiksberg,life_expectancy,101.23,82.6,år,2025,DST HISBK,social,sundhed
-187,Vallensbæk,life_expectancy,101.84,83.1,år,2025,DST HISBK,social,sundhed
-253,Greve,life_expectancy,100.74,82.2,år,2025,DST HISBK,social,sundhed
-259,Køge,life_expectancy,99.39,81.1,år,2025,DST HISBK,social,sundhed
-159,Gladsaxe,life_expectancy,100.0,81.6,år,2025,DST HISBK,social,sundhed
-217,Helsingør,life_expectancy,99.75,81.4,år,2025,DST HISBK,social,sundhed
-250,Frederikssund,life_expectancy,99.75,81.4,år,2025,DST HISBK,social,sundhed
-661,Holstebro,life_expectancy,100.12,81.7,år,2025,DST HISBK,social,sundhed
-657,Herning,life_expectancy,100.25,81.8,år,2025,DST HISBK,social,sundhed
-773,Morsø,life_expectancy,98.77,80.6,år,2025,DST HISBK,social,sundhed
-260,Halsnæs,life_expectancy,98.77,80.6,år,2025,DST HISBK,social,sundhed
-219,Hillerød,life_expectancy,101.1,82.5,år,2025,DST HISBK,social,sundhed
-340,Sorø,life_expectancy,99.02,80.8,år,2025,DST HISBK,social,sundhed
-561,Esbjerg,life_expectancy,99.02,80.8,år,2025,DST HISBK,social,sundhed
-740,Silkeborg,life_expectancy,101.23,82.6,år,2025,DST HISBK,social,sundhed
-615,Horsens,life_expectancy,99.88,81.5,år,2025,DST HISBK,social,sundhed
-316,Holbæk,life_expectancy,99.51,81.2,år,2025,DST HISBK,social,sundhed
-607,Fredericia,life_expectancy,99.51,81.2,år,2025,DST HISBK,social,sundhed
-766,Hedensted,life_expectancy,100.74,82.2,år,2025,DST HISBK,social,sundhed
-410,Middelfart,life_expectancy,100.25,81.8,år,2025,DST HISBK,social,sundhed
-851,Aalborg,life_expectancy,99.39,81.1,år,2025,DST HISBK,social,sundhed
-370,Næstved,life_expectancy,98.9,80.7,år,2025,DST HISBK,social,sundhed
-329,Ringsted,life_expectancy,99.75,81.4,år,2025,DST HISBK,social,sundhed
-810,Brønderslev,life_expectancy,99.14,80.9,år,2025,DST HISBK,social,sundhed
-751,Aarhus,life_expectancy,100.98,82.4,år,2025,DST HISBK,social,sundhed
-727,Odder,life_expectancy,102.33,83.5,år,2025,DST HISBK,social,sundhed
-813,Frederikshavn,life_expectancy,98.9,80.7,år,2025,DST HISBK,social,sundhed
-336,Stevns,life_expectancy,99.51,81.2,år,2025,DST HISBK,social,sundhed
-270,Gribskov,life_expectancy,100.25,81.8,år,2025,DST HISBK,social,sundhed
-161,Glostrup,life_expectancy,99.39,81.1,år,2025,DST HISBK,social,sundhed
-860,Hjørring,life_expectancy,99.63,81.3,år,2025,DST HISBK,social,sundhed
-479,Svendborg,life_expectancy,99.63,81.3,år,2025,DST HISBK,social,sundhed
-165,Albertslund,life_expectancy,99.88,81.5,år,2025,DST HISBK,social,sundhed
-791,Viborg,life_expectancy,100.49,82.0,år,2025,DST HISBK,social,sundhed
-706,Syddjurs,life_expectancy,100.74,82.2,år,2025,DST HISBK,social,sundhed
-480,Nordfyns,life_expectancy,99.51,81.2,år,2025,DST HISBK,social,sundhed
-440,Kerteminde,life_expectancy,101.23,82.6,år,2025,DST HISBK,social,sundhed
-101,København,life_expectancy,99.14,80.9,år,2025,DST HISBK,social,sundhed
-630,Vejle,life_expectancy,100.49,82.0,år,2025,DST HISBK,social,sundhed
-760,Ringkøbing-Skjern,life_expectancy,100.49,82.0,år,2025,DST HISBK,social,sundhed
-730,Randers,life_expectancy,99.02,80.8,år,2025,DST HISBK,social,sundhed
-430,Faaborg-Midtfyn,life_expectancy,100.0,81.6,år,2025,DST HISBK,social,sundhed
-320,Faxe,life_expectancy,99.39,81.1,år,2025,DST HISBK,social,sundhed
-169,Høje-Taastrup,life_expectancy,100.12,81.7,år,2025,DST HISBK,social,sundhed
-573,Varde,life_expectancy,100.74,82.2,år,2025,DST HISBK,social,sundhed
-621,Kolding,life_expectancy,100.49,82.0,år,2025,DST HISBK,social,sundhed
-580,Aabenraa,life_expectancy,99.88,81.5,år,2025,DST HISBK,social,sundhed
-787,Thisted,life_expectancy,98.9,80.7,år,2025,DST HISBK,social,sundhed
-420,Assens,life_expectancy,99.02,80.8,år,2025,DST HISBK,social,sundhed
-756,Ikast-Brande,life_expectancy,100.12,81.7,år,2025,DST HISBK,social,sundhed
-461,Odense,life_expectancy,99.88,81.5,år,2025,DST HISBK,social,sundhed
-779,Skive,life_expectancy,99.88,81.5,år,2025,DST HISBK,social,sundhed
-450,Nyborg,life_expectancy,99.63,81.3,år,2025,DST HISBK,social,sundhed
-846,Mariagerfjord,life_expectancy,99.75,81.4,år,2025,DST HISBK,social,sundhed
-540,Sønderborg,life_expectancy,100.12,81.7,år,2025,DST HISBK,social,sundhed
-820,Vesthimmerlands,life_expectancy,99.14,80.9,år,2025,DST HISBK,social,sundhed
-400,Bornholm,life_expectancy,99.14,80.9,år,2025,DST HISBK,social,sundhed
-510,Haderslev,life_expectancy,100.0,81.6,år,2025,DST HISBK,social,sundhed
-665,Lemvig,life_expectancy,99.75,81.4,år,2025,DST HISBK,social,sundhed
-575,Vejen,life_expectancy,100.25,81.8,år,2025,DST HISBK,social,sundhed
-671,Struer,life_expectancy,99.26,81.0,år,2025,DST HISBK,social,sundhed
-707,Norddjurs,life_expectancy,99.14,80.9,år,2025,DST HISBK,social,sundhed
-330,Slagelse,life_expectancy,98.65,80.5,år,2025,DST HISBK,social,sundhed
-306,Odsherred,life_expectancy,98.53,80.4,år,2025,DST HISBK,social,sundhed
-376,Guldborgsund,life_expectancy,97.3,79.4,år,2025,DST HISBK,social,sundhed
-326,Kalundborg,life_expectancy,98.41,80.3,år,2025,DST HISBK,social,sundhed
-849,Jammerbugt,life_expectancy,99.63,81.3,år,2025,DST HISBK,social,sundhed
-390,Vordingborg,life_expectancy,97.92,79.9,år,2025,DST HISBK,social,sundhed
-550,Tønder,life_expectancy,98.77,80.6,år,2025,DST HISBK,social,sundhed
-360,Lolland,life_expectancy,96.32,78.6,år,2025,DST HISBK,social,sundhed
-482,Langeland,life_expectancy,99.26,81.0,år,2025,DST HISBK,social,sundhed
+201,Allerød,life_expectancy,102.82,83.9,år,2021-2025,DST HISBK,social,sundhed
+153,Brøndby,life_expectancy,98.53,80.4,år,2021-2025,DST HISBK,social,sundhed
+155,Dragør,life_expectancy,102.33,83.5,år,2021-2025,DST HISBK,social,sundhed
+175,Rødovre,life_expectancy,99.63,81.3,år,2021-2025,DST HISBK,social,sundhed
+190,Furesø,life_expectancy,101.96,83.2,år,2021-2025,DST HISBK,social,sundhed
+230,Rudersdal,life_expectancy,102.82,83.9,år,2021-2025,DST HISBK,social,sundhed
+167,Hvidovre,life_expectancy,99.51,81.2,år,2021-2025,DST HISBK,social,sundhed
+157,Gentofte,life_expectancy,103.06,84.1,år,2021-2025,DST HISBK,social,sundhed
+269,Solrød,life_expectancy,102.08,83.3,år,2021-2025,DST HISBK,social,sundhed
+746,Skanderborg,life_expectancy,101.72,83.0,år,2021-2025,DST HISBK,social,sundhed
+265,Roskilde,life_expectancy,100.74,82.2,år,2021-2025,DST HISBK,social,sundhed
+240,Egedal,life_expectancy,101.72,83.0,år,2021-2025,DST HISBK,social,sundhed
+151,Ballerup,life_expectancy,99.51,81.2,år,2021-2025,DST HISBK,social,sundhed
+223,Hørsholm,life_expectancy,102.45,83.6,år,2021-2025,DST HISBK,social,sundhed
+185,Tårnby,life_expectancy,99.51,81.2,år,2021-2025,DST HISBK,social,sundhed
+173,Lyngby-Taarbæk,life_expectancy,103.06,84.1,år,2021-2025,DST HISBK,social,sundhed
+350,Lejre,life_expectancy,101.84,83.1,år,2021-2025,DST HISBK,social,sundhed
+163,Herlev,life_expectancy,98.65,80.5,år,2021-2025,DST HISBK,social,sundhed
+210,Fredensborg,life_expectancy,100.61,82.1,år,2021-2025,DST HISBK,social,sundhed
+183,Ishøj,life_expectancy,97.67,79.7,år,2021-2025,DST HISBK,social,sundhed
+530,Billund,life_expectancy,100.74,82.2,år,2021-2025,DST HISBK,social,sundhed
+710,Favrskov,life_expectancy,101.23,82.6,år,2021-2025,DST HISBK,social,sundhed
+840,Rebild,life_expectancy,100.37,81.9,år,2021-2025,DST HISBK,social,sundhed
+147,Frederiksberg,life_expectancy,101.23,82.6,år,2021-2025,DST HISBK,social,sundhed
+187,Vallensbæk,life_expectancy,101.84,83.1,år,2021-2025,DST HISBK,social,sundhed
+253,Greve,life_expectancy,100.74,82.2,år,2021-2025,DST HISBK,social,sundhed
+259,Køge,life_expectancy,99.39,81.1,år,2021-2025,DST HISBK,social,sundhed
+159,Gladsaxe,life_expectancy,100.0,81.6,år,2021-2025,DST HISBK,social,sundhed
+217,Helsingør,life_expectancy,99.75,81.4,år,2021-2025,DST HISBK,social,sundhed
+250,Frederikssund,life_expectancy,99.75,81.4,år,2021-2025,DST HISBK,social,sundhed
+661,Holstebro,life_expectancy,100.12,81.7,år,2021-2025,DST HISBK,social,sundhed
+657,Herning,life_expectancy,100.25,81.8,år,2021-2025,DST HISBK,social,sundhed
+773,Morsø,life_expectancy,98.77,80.6,år,2021-2025,DST HISBK,social,sundhed
+260,Halsnæs,life_expectancy,98.77,80.6,år,2021-2025,DST HISBK,social,sundhed
+219,Hillerød,life_expectancy,101.1,82.5,år,2021-2025,DST HISBK,social,sundhed
+340,Sorø,life_expectancy,99.02,80.8,år,2021-2025,DST HISBK,social,sundhed
+561,Esbjerg,life_expectancy,99.02,80.8,år,2021-2025,DST HISBK,social,sundhed
+740,Silkeborg,life_expectancy,101.23,82.6,år,2021-2025,DST HISBK,social,sundhed
+615,Horsens,life_expectancy,99.88,81.5,år,2021-2025,DST HISBK,social,sundhed
+316,Holbæk,life_expectancy,99.51,81.2,år,2021-2025,DST HISBK,social,sundhed
+607,Fredericia,life_expectancy,99.51,81.2,år,2021-2025,DST HISBK,social,sundhed
+766,Hedensted,life_expectancy,100.74,82.2,år,2021-2025,DST HISBK,social,sundhed
+410,Middelfart,life_expectancy,100.25,81.8,år,2021-2025,DST HISBK,social,sundhed
+851,Aalborg,life_expectancy,99.39,81.1,år,2021-2025,DST HISBK,social,sundhed
+370,Næstved,life_expectancy,98.9,80.7,år,2021-2025,DST HISBK,social,sundhed
+329,Ringsted,life_expectancy,99.75,81.4,år,2021-2025,DST HISBK,social,sundhed
+810,Brønderslev,life_expectancy,99.14,80.9,år,2021-2025,DST HISBK,social,sundhed
+751,Aarhus,life_expectancy,100.98,82.4,år,2021-2025,DST HISBK,social,sundhed
+727,Odder,life_expectancy,102.33,83.5,år,2021-2025,DST HISBK,social,sundhed
+813,Frederikshavn,life_expectancy,98.9,80.7,år,2021-2025,DST HISBK,social,sundhed
+336,Stevns,life_expectancy,99.51,81.2,år,2021-2025,DST HISBK,social,sundhed
+270,Gribskov,life_expectancy,100.25,81.8,år,2021-2025,DST HISBK,social,sundhed
+161,Glostrup,life_expectancy,99.39,81.1,år,2021-2025,DST HISBK,social,sundhed
+860,Hjørring,life_expectancy,99.63,81.3,år,2021-2025,DST HISBK,social,sundhed
+479,Svendborg,life_expectancy,99.63,81.3,år,2021-2025,DST HISBK,social,sundhed
+165,Albertslund,life_expectancy,99.88,81.5,år,2021-2025,DST HISBK,social,sundhed
+791,Viborg,life_expectancy,100.49,82.0,år,2021-2025,DST HISBK,social,sundhed
+706,Syddjurs,life_expectancy,100.74,82.2,år,2021-2025,DST HISBK,social,sundhed
+480,Nordfyns,life_expectancy,99.51,81.2,år,2021-2025,DST HISBK,social,sundhed
+440,Kerteminde,life_expectancy,101.23,82.6,år,2021-2025,DST HISBK,social,sundhed
+101,København,life_expectancy,99.14,80.9,år,2021-2025,DST HISBK,social,sundhed
+630,Vejle,life_expectancy,100.49,82.0,år,2021-2025,DST HISBK,social,sundhed
+760,Ringkøbing-Skjern,life_expectancy,100.49,82.0,år,2021-2025,DST HISBK,social,sundhed
+730,Randers,life_expectancy,99.02,80.8,år,2021-2025,DST HISBK,social,sundhed
+430,Faaborg-Midtfyn,life_expectancy,100.0,81.6,år,2021-2025,DST HISBK,social,sundhed
+320,Faxe,life_expectancy,99.39,81.1,år,2021-2025,DST HISBK,social,sundhed
+169,Høje-Taastrup,life_expectancy,100.12,81.7,år,2021-2025,DST HISBK,social,sundhed
+573,Varde,life_expectancy,100.74,82.2,år,2021-2025,DST HISBK,social,sundhed
+621,Kolding,life_expectancy,100.49,82.0,år,2021-2025,DST HISBK,social,sundhed
+580,Aabenraa,life_expectancy,99.88,81.5,år,2021-2025,DST HISBK,social,sundhed
+787,Thisted,life_expectancy,98.9,80.7,år,2021-2025,DST HISBK,social,sundhed
+420,Assens,life_expectancy,99.02,80.8,år,2021-2025,DST HISBK,social,sundhed
+756,Ikast-Brande,life_expectancy,100.12,81.7,år,2021-2025,DST HISBK,social,sundhed
+461,Odense,life_expectancy,99.88,81.5,år,2021-2025,DST HISBK,social,sundhed
+779,Skive,life_expectancy,99.88,81.5,år,2021-2025,DST HISBK,social,sundhed
+450,Nyborg,life_expectancy,99.63,81.3,år,2021-2025,DST HISBK,social,sundhed
+846,Mariagerfjord,life_expectancy,99.75,81.4,år,2021-2025,DST HISBK,social,sundhed
+540,Sønderborg,life_expectancy,100.12,81.7,år,2021-2025,DST HISBK,social,sundhed
+820,Vesthimmerlands,life_expectancy,99.14,80.9,år,2021-2025,DST HISBK,social,sundhed
+400,Bornholm,life_expectancy,99.14,80.9,år,2021-2025,DST HISBK,social,sundhed
+510,Haderslev,life_expectancy,100.0,81.6,år,2021-2025,DST HISBK,social,sundhed
+665,Lemvig,life_expectancy,99.75,81.4,år,2021-2025,DST HISBK,social,sundhed
+575,Vejen,life_expectancy,100.25,81.8,år,2021-2025,DST HISBK,social,sundhed
+671,Struer,life_expectancy,99.26,81.0,år,2021-2025,DST HISBK,social,sundhed
+707,Norddjurs,life_expectancy,99.14,80.9,år,2021-2025,DST HISBK,social,sundhed
+330,Slagelse,life_expectancy,98.65,80.5,år,2021-2025,DST HISBK,social,sundhed
+306,Odsherred,life_expectancy,98.53,80.4,år,2021-2025,DST HISBK,social,sundhed
+376,Guldborgsund,life_expectancy,97.3,79.4,år,2021-2025,DST HISBK,social,sundhed
+326,Kalundborg,life_expectancy,98.41,80.3,år,2021-2025,DST HISBK,social,sundhed
+849,Jammerbugt,life_expectancy,99.63,81.3,år,2021-2025,DST HISBK,social,sundhed
+390,Vordingborg,life_expectancy,97.92,79.9,år,2021-2025,DST HISBK,social,sundhed
+550,Tønder,life_expectancy,98.77,80.6,år,2021-2025,DST HISBK,social,sundhed
+360,Lolland,life_expectancy,96.32,78.6,år,2021-2025,DST HISBK,social,sundhed
+482,Langeland,life_expectancy,99.26,81.0,år,2021-2025,DST HISBK,social,sundhed
 201,Allerød,selvvurderet_helbred,104.18,85.5,%,2025,Sundhedsprofilen 2025,social,sundhed
 153,Brøndby,selvvurderet_helbred,92.0,75.5,%,2025,Sundhedsprofilen 2025,social,sundhed
 155,Dragør,selvvurderet_helbred,102.48,84.1,%,2025,Sundhedsprofilen 2025,social,sundhed
@@ -3128,100 +3128,100 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,gender_leadership,100.93,32.41,% kvinder,2024,DST RAS301,social,ligestilling
 741,Samsø,gender_leadership,107.6,34.55,% kvinder,2024,DST RAS301,social,ligestilling
 482,Langeland,gender_leadership,89.63,28.78,% kvinder,2024,DST RAS301,social,ligestilling
-201,Allerød,le_gender_gap,150.0,2.1,år (kønsgab),2025,DST HISBK,social,ligestilling
-153,Brøndby,le_gender_gap,150.0,2.0,år (kønsgab),2025,DST HISBK,social,ligestilling
-155,Dragør,le_gender_gap,115.15,3.3,år (kønsgab),2025,DST HISBK,social,ligestilling
-175,Rødovre,le_gender_gap,100.0,3.8,år (kønsgab),2025,DST HISBK,social,ligestilling
-190,Furesø,le_gender_gap,118.75,3.2,år (kønsgab),2025,DST HISBK,social,ligestilling
-230,Rudersdal,le_gender_gap,115.15,3.3,år (kønsgab),2025,DST HISBK,social,ligestilling
-167,Hvidovre,le_gender_gap,115.15,3.3,år (kønsgab),2025,DST HISBK,social,ligestilling
-157,Gentofte,le_gender_gap,105.56,3.6,år (kønsgab),2025,DST HISBK,social,ligestilling
-269,Solrød,le_gender_gap,102.7,3.7,år (kønsgab),2025,DST HISBK,social,ligestilling
-746,Skanderborg,le_gender_gap,122.58,3.1,år (kønsgab),2025,DST HISBK,social,ligestilling
-265,Roskilde,le_gender_gap,122.58,3.1,år (kønsgab),2025,DST HISBK,social,ligestilling
-240,Egedal,le_gender_gap,126.67,3.0,år (kønsgab),2025,DST HISBK,social,ligestilling
-151,Ballerup,le_gender_gap,102.7,3.7,år (kønsgab),2025,DST HISBK,social,ligestilling
-223,Hørsholm,le_gender_gap,90.48,4.2,år (kønsgab),2025,DST HISBK,social,ligestilling
-185,Tårnby,le_gender_gap,100.0,3.8,år (kønsgab),2025,DST HISBK,social,ligestilling
-173,Lyngby-Taarbæk,le_gender_gap,102.7,3.7,år (kønsgab),2025,DST HISBK,social,ligestilling
-350,Lejre,le_gender_gap,150.0,2.1,år (kønsgab),2025,DST HISBK,social,ligestilling
-163,Herlev,le_gender_gap,115.15,3.3,år (kønsgab),2025,DST HISBK,social,ligestilling
-210,Fredensborg,le_gender_gap,122.58,3.1,år (kønsgab),2025,DST HISBK,social,ligestilling
-183,Ishøj,le_gender_gap,111.76,3.4,år (kønsgab),2025,DST HISBK,social,ligestilling
-530,Billund,le_gender_gap,82.61,4.6,år (kønsgab),2025,DST HISBK,social,ligestilling
-710,Favrskov,le_gender_gap,131.03,2.9,år (kønsgab),2025,DST HISBK,social,ligestilling
-840,Rebild,le_gender_gap,118.75,3.2,år (kønsgab),2025,DST HISBK,social,ligestilling
-147,Frederiksberg,le_gender_gap,111.76,3.4,år (kønsgab),2025,DST HISBK,social,ligestilling
-187,Vallensbæk,le_gender_gap,100.0,3.8,år (kønsgab),2025,DST HISBK,social,ligestilling
-253,Greve,le_gender_gap,122.58,3.1,år (kønsgab),2025,DST HISBK,social,ligestilling
-259,Køge,le_gender_gap,88.37,4.3,år (kønsgab),2025,DST HISBK,social,ligestilling
-159,Gladsaxe,le_gender_gap,102.7,3.7,år (kønsgab),2025,DST HISBK,social,ligestilling
-217,Helsingør,le_gender_gap,76.0,5.0,år (kønsgab),2025,DST HISBK,social,ligestilling
-250,Frederikssund,le_gender_gap,111.76,3.4,år (kønsgab),2025,DST HISBK,social,ligestilling
-661,Holstebro,le_gender_gap,100.0,3.8,år (kønsgab),2025,DST HISBK,social,ligestilling
-657,Herning,le_gender_gap,92.68,4.1,år (kønsgab),2025,DST HISBK,social,ligestilling
-773,Morsø,le_gender_gap,111.76,3.4,år (kønsgab),2025,DST HISBK,social,ligestilling
-260,Halsnæs,le_gender_gap,95.0,4.0,år (kønsgab),2025,DST HISBK,social,ligestilling
-219,Hillerød,le_gender_gap,102.7,3.7,år (kønsgab),2025,DST HISBK,social,ligestilling
-340,Sorø,le_gender_gap,90.48,4.2,år (kønsgab),2025,DST HISBK,social,ligestilling
-561,Esbjerg,le_gender_gap,108.57,3.5,år (kønsgab),2025,DST HISBK,social,ligestilling
-740,Silkeborg,le_gender_gap,115.15,3.3,år (kønsgab),2025,DST HISBK,social,ligestilling
-615,Horsens,le_gender_gap,88.37,4.3,år (kønsgab),2025,DST HISBK,social,ligestilling
-316,Holbæk,le_gender_gap,86.36,4.4,år (kønsgab),2025,DST HISBK,social,ligestilling
-607,Fredericia,le_gender_gap,97.44,3.9,år (kønsgab),2025,DST HISBK,social,ligestilling
-766,Hedensted,le_gender_gap,102.7,3.7,år (kønsgab),2025,DST HISBK,social,ligestilling
-410,Middelfart,le_gender_gap,86.36,4.4,år (kønsgab),2025,DST HISBK,social,ligestilling
-851,Aalborg,le_gender_gap,105.56,3.6,år (kønsgab),2025,DST HISBK,social,ligestilling
-370,Næstved,le_gender_gap,105.56,3.6,år (kønsgab),2025,DST HISBK,social,ligestilling
-329,Ringsted,le_gender_gap,90.48,4.2,år (kønsgab),2025,DST HISBK,social,ligestilling
-810,Brønderslev,le_gender_gap,150.0,2.1,år (kønsgab),2025,DST HISBK,social,ligestilling
-751,Aarhus,le_gender_gap,102.7,3.7,år (kønsgab),2025,DST HISBK,social,ligestilling
-727,Odder,le_gender_gap,122.58,3.1,år (kønsgab),2025,DST HISBK,social,ligestilling
-813,Frederikshavn,le_gender_gap,97.44,3.9,år (kønsgab),2025,DST HISBK,social,ligestilling
-336,Stevns,le_gender_gap,95.0,4.0,år (kønsgab),2025,DST HISBK,social,ligestilling
-270,Gribskov,le_gender_gap,122.58,3.1,år (kønsgab),2025,DST HISBK,social,ligestilling
-161,Glostrup,le_gender_gap,95.0,4.0,år (kønsgab),2025,DST HISBK,social,ligestilling
-860,Hjørring,le_gender_gap,95.0,4.0,år (kønsgab),2025,DST HISBK,social,ligestilling
-479,Svendborg,le_gender_gap,80.85,4.7,år (kønsgab),2025,DST HISBK,social,ligestilling
-165,Albertslund,le_gender_gap,111.76,3.4,år (kønsgab),2025,DST HISBK,social,ligestilling
-791,Viborg,le_gender_gap,108.57,3.5,år (kønsgab),2025,DST HISBK,social,ligestilling
-706,Syddjurs,le_gender_gap,115.15,3.3,år (kønsgab),2025,DST HISBK,social,ligestilling
-480,Nordfyns,le_gender_gap,111.76,3.4,år (kønsgab),2025,DST HISBK,social,ligestilling
-440,Kerteminde,le_gender_gap,100.0,3.8,år (kønsgab),2025,DST HISBK,social,ligestilling
-101,København,le_gender_gap,86.36,4.4,år (kønsgab),2025,DST HISBK,social,ligestilling
-630,Vejle,le_gender_gap,111.76,3.4,år (kønsgab),2025,DST HISBK,social,ligestilling
-760,Ringkøbing-Skjern,le_gender_gap,105.56,3.6,år (kønsgab),2025,DST HISBK,social,ligestilling
-730,Randers,le_gender_gap,82.61,4.6,år (kønsgab),2025,DST HISBK,social,ligestilling
-430,Faaborg-Midtfyn,le_gender_gap,84.44,4.5,år (kønsgab),2025,DST HISBK,social,ligestilling
-320,Faxe,le_gender_gap,95.0,4.0,år (kønsgab),2025,DST HISBK,social,ligestilling
-169,Høje-Taastrup,le_gender_gap,97.44,3.9,år (kønsgab),2025,DST HISBK,social,ligestilling
-573,Varde,le_gender_gap,111.76,3.4,år (kønsgab),2025,DST HISBK,social,ligestilling
-621,Kolding,le_gender_gap,88.37,4.3,år (kønsgab),2025,DST HISBK,social,ligestilling
-580,Aabenraa,le_gender_gap,102.7,3.7,år (kønsgab),2025,DST HISBK,social,ligestilling
-787,Thisted,le_gender_gap,92.68,4.1,år (kønsgab),2025,DST HISBK,social,ligestilling
-420,Assens,le_gender_gap,135.71,2.8,år (kønsgab),2025,DST HISBK,social,ligestilling
-756,Ikast-Brande,le_gender_gap,105.56,3.6,år (kønsgab),2025,DST HISBK,social,ligestilling
-461,Odense,le_gender_gap,88.37,4.3,år (kønsgab),2025,DST HISBK,social,ligestilling
-779,Skive,le_gender_gap,135.71,2.8,år (kønsgab),2025,DST HISBK,social,ligestilling
-450,Nyborg,le_gender_gap,126.67,3.0,år (kønsgab),2025,DST HISBK,social,ligestilling
-846,Mariagerfjord,le_gender_gap,84.44,4.5,år (kønsgab),2025,DST HISBK,social,ligestilling
-540,Sønderborg,le_gender_gap,108.57,3.5,år (kønsgab),2025,DST HISBK,social,ligestilling
-820,Vesthimmerlands,le_gender_gap,105.56,3.6,år (kønsgab),2025,DST HISBK,social,ligestilling
-400,Bornholm,le_gender_gap,82.61,4.6,år (kønsgab),2025,DST HISBK,social,ligestilling
-510,Haderslev,le_gender_gap,86.36,4.4,år (kønsgab),2025,DST HISBK,social,ligestilling
-665,Lemvig,le_gender_gap,80.85,4.7,år (kønsgab),2025,DST HISBK,social,ligestilling
-575,Vejen,le_gender_gap,105.56,3.6,år (kønsgab),2025,DST HISBK,social,ligestilling
-671,Struer,le_gender_gap,80.85,4.7,år (kønsgab),2025,DST HISBK,social,ligestilling
-707,Norddjurs,le_gender_gap,97.44,3.9,år (kønsgab),2025,DST HISBK,social,ligestilling
-330,Slagelse,le_gender_gap,92.68,4.1,år (kønsgab),2025,DST HISBK,social,ligestilling
-306,Odsherred,le_gender_gap,88.37,4.3,år (kønsgab),2025,DST HISBK,social,ligestilling
-376,Guldborgsund,le_gender_gap,84.44,4.5,år (kønsgab),2025,DST HISBK,social,ligestilling
-326,Kalundborg,le_gender_gap,108.57,3.5,år (kønsgab),2025,DST HISBK,social,ligestilling
-849,Jammerbugt,le_gender_gap,102.7,3.7,år (kønsgab),2025,DST HISBK,social,ligestilling
-390,Vordingborg,le_gender_gap,88.37,4.3,år (kønsgab),2025,DST HISBK,social,ligestilling
-550,Tønder,le_gender_gap,95.0,4.0,år (kønsgab),2025,DST HISBK,social,ligestilling
-360,Lolland,le_gender_gap,69.09,5.5,år (kønsgab),2025,DST HISBK,social,ligestilling
-482,Langeland,le_gender_gap,115.15,3.3,år (kønsgab),2025,DST HISBK,social,ligestilling
+201,Allerød,le_gender_gap,150.0,2.1,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+153,Brøndby,le_gender_gap,150.0,2.0,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+155,Dragør,le_gender_gap,115.15,3.3,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+175,Rødovre,le_gender_gap,100.0,3.8,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+190,Furesø,le_gender_gap,118.75,3.2,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+230,Rudersdal,le_gender_gap,115.15,3.3,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+167,Hvidovre,le_gender_gap,115.15,3.3,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+157,Gentofte,le_gender_gap,105.56,3.6,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+269,Solrød,le_gender_gap,102.7,3.7,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+746,Skanderborg,le_gender_gap,122.58,3.1,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+265,Roskilde,le_gender_gap,122.58,3.1,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+240,Egedal,le_gender_gap,126.67,3.0,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+151,Ballerup,le_gender_gap,102.7,3.7,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+223,Hørsholm,le_gender_gap,90.48,4.2,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+185,Tårnby,le_gender_gap,100.0,3.8,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+173,Lyngby-Taarbæk,le_gender_gap,102.7,3.7,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+350,Lejre,le_gender_gap,150.0,2.1,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+163,Herlev,le_gender_gap,115.15,3.3,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+210,Fredensborg,le_gender_gap,122.58,3.1,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+183,Ishøj,le_gender_gap,111.76,3.4,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+530,Billund,le_gender_gap,82.61,4.6,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+710,Favrskov,le_gender_gap,131.03,2.9,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+840,Rebild,le_gender_gap,118.75,3.2,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+147,Frederiksberg,le_gender_gap,111.76,3.4,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+187,Vallensbæk,le_gender_gap,100.0,3.8,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+253,Greve,le_gender_gap,122.58,3.1,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+259,Køge,le_gender_gap,88.37,4.3,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+159,Gladsaxe,le_gender_gap,102.7,3.7,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+217,Helsingør,le_gender_gap,76.0,5.0,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+250,Frederikssund,le_gender_gap,111.76,3.4,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+661,Holstebro,le_gender_gap,100.0,3.8,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+657,Herning,le_gender_gap,92.68,4.1,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+773,Morsø,le_gender_gap,111.76,3.4,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+260,Halsnæs,le_gender_gap,95.0,4.0,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+219,Hillerød,le_gender_gap,102.7,3.7,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+340,Sorø,le_gender_gap,90.48,4.2,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+561,Esbjerg,le_gender_gap,108.57,3.5,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+740,Silkeborg,le_gender_gap,115.15,3.3,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+615,Horsens,le_gender_gap,88.37,4.3,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+316,Holbæk,le_gender_gap,86.36,4.4,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+607,Fredericia,le_gender_gap,97.44,3.9,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+766,Hedensted,le_gender_gap,102.7,3.7,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+410,Middelfart,le_gender_gap,86.36,4.4,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+851,Aalborg,le_gender_gap,105.56,3.6,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+370,Næstved,le_gender_gap,105.56,3.6,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+329,Ringsted,le_gender_gap,90.48,4.2,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+810,Brønderslev,le_gender_gap,150.0,2.1,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+751,Aarhus,le_gender_gap,102.7,3.7,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+727,Odder,le_gender_gap,122.58,3.1,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+813,Frederikshavn,le_gender_gap,97.44,3.9,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+336,Stevns,le_gender_gap,95.0,4.0,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+270,Gribskov,le_gender_gap,122.58,3.1,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+161,Glostrup,le_gender_gap,95.0,4.0,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+860,Hjørring,le_gender_gap,95.0,4.0,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+479,Svendborg,le_gender_gap,80.85,4.7,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+165,Albertslund,le_gender_gap,111.76,3.4,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+791,Viborg,le_gender_gap,108.57,3.5,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+706,Syddjurs,le_gender_gap,115.15,3.3,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+480,Nordfyns,le_gender_gap,111.76,3.4,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+440,Kerteminde,le_gender_gap,100.0,3.8,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+101,København,le_gender_gap,86.36,4.4,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+630,Vejle,le_gender_gap,111.76,3.4,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+760,Ringkøbing-Skjern,le_gender_gap,105.56,3.6,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+730,Randers,le_gender_gap,82.61,4.6,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+430,Faaborg-Midtfyn,le_gender_gap,84.44,4.5,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+320,Faxe,le_gender_gap,95.0,4.0,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+169,Høje-Taastrup,le_gender_gap,97.44,3.9,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+573,Varde,le_gender_gap,111.76,3.4,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+621,Kolding,le_gender_gap,88.37,4.3,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+580,Aabenraa,le_gender_gap,102.7,3.7,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+787,Thisted,le_gender_gap,92.68,4.1,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+420,Assens,le_gender_gap,135.71,2.8,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+756,Ikast-Brande,le_gender_gap,105.56,3.6,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+461,Odense,le_gender_gap,88.37,4.3,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+779,Skive,le_gender_gap,135.71,2.8,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+450,Nyborg,le_gender_gap,126.67,3.0,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+846,Mariagerfjord,le_gender_gap,84.44,4.5,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+540,Sønderborg,le_gender_gap,108.57,3.5,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+820,Vesthimmerlands,le_gender_gap,105.56,3.6,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+400,Bornholm,le_gender_gap,82.61,4.6,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+510,Haderslev,le_gender_gap,86.36,4.4,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+665,Lemvig,le_gender_gap,80.85,4.7,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+575,Vejen,le_gender_gap,105.56,3.6,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+671,Struer,le_gender_gap,80.85,4.7,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+707,Norddjurs,le_gender_gap,97.44,3.9,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+330,Slagelse,le_gender_gap,92.68,4.1,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+306,Odsherred,le_gender_gap,88.37,4.3,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+376,Guldborgsund,le_gender_gap,84.44,4.5,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+326,Kalundborg,le_gender_gap,108.57,3.5,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+849,Jammerbugt,le_gender_gap,102.7,3.7,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+390,Vordingborg,le_gender_gap,88.37,4.3,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+550,Tønder,le_gender_gap,95.0,4.0,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+360,Lolland,le_gender_gap,69.09,5.5,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
+482,Langeland,le_gender_gap,115.15,3.3,år (kønsgab),2021-2025,DST HISBK,social,ligestilling
 201,Allerød,income_gender_gap,95.47,81.61,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
 153,Brøndby,income_gender_gap,102.01,87.2,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
 155,Dragør,income_gender_gap,94.82,81.05,"% (kvinder/mænd, median)",2024,DST INDKP106 (median),social,ligestilling
@@ -3806,104 +3806,104 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,crime_rate,89.22,77.18,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed
 741,Samsø,crime_rate,129.05,53.36,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed
 482,Langeland,crime_rate,150.0,37.67,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed
-201,Allerød,traffic_accidents,150.0,30.19,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-153,Brøndby,traffic_accidents,150.0,26.84,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-155,Dragør,traffic_accidents,150.0,23.03,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-175,Rødovre,traffic_accidents,150.0,25.85,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-190,Furesø,traffic_accidents,150.0,29.54,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-230,Rudersdal,traffic_accidents,150.0,23.02,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-167,Hvidovre,traffic_accidents,150.0,21.51,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-157,Gentofte,traffic_accidents,131.25,34.62,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-269,Solrød,traffic_accidents,150.0,18.64,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-746,Skanderborg,traffic_accidents,150.0,27.63,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-265,Roskilde,traffic_accidents,123.88,36.68,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-240,Egedal,traffic_accidents,118.92,38.21,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-151,Ballerup,traffic_accidents,150.0,24.1,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-223,Hørsholm,traffic_accidents,150.0,28.92,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-185,Tårnby,traffic_accidents,100.46,45.23,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-173,Lyngby-Taarbæk,traffic_accidents,150.0,26.73,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-350,Lejre,traffic_accidents,119.8,37.93,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-163,Herlev,traffic_accidents,150.0,18.73,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-210,Fredensborg,traffic_accidents,150.0,18.85,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-183,Ishøj,traffic_accidents,150.0,13.5,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-530,Billund,traffic_accidents,88.28,51.47,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-710,Favrskov,traffic_accidents,111.24,40.85,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-840,Rebild,traffic_accidents,61.8,73.53,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-147,Frederiksberg,traffic_accidents,102.62,44.28,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-187,Vallensbæk,traffic_accidents,141.56,32.1,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-253,Greve,traffic_accidents,150.0,20.94,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-259,Køge,traffic_accidents,150.0,30.23,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-159,Gladsaxe,traffic_accidents,150.0,23.41,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-217,Helsingør,traffic_accidents,126.93,35.8,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-825,Læsø,traffic_accidents,76.47,59.42,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-250,Frederikssund,traffic_accidents,126.82,35.83,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-661,Holstebro,traffic_accidents,66.29,68.55,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-657,Herning,traffic_accidents,119.83,37.92,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-773,Morsø,traffic_accidents,50.71,89.61,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-260,Halsnæs,traffic_accidents,83.21,54.61,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-492,Ærø,traffic_accidents,71.46,63.59,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-219,Hillerød,traffic_accidents,86.47,52.55,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-340,Sorø,traffic_accidents,77.89,58.34,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-561,Esbjerg,traffic_accidents,118.7,38.28,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-740,Silkeborg,traffic_accidents,115.77,39.25,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-563,Fanø,traffic_accidents,64.89,70.03,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-615,Horsens,traffic_accidents,124.7,36.44,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-316,Holbæk,traffic_accidents,103.3,43.99,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-607,Fredericia,traffic_accidents,104.58,43.45,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-766,Hedensted,traffic_accidents,87.13,52.15,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-410,Middelfart,traffic_accidents,113.01,40.21,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-851,Aalborg,traffic_accidents,84.89,53.53,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-370,Næstved,traffic_accidents,73.48,61.84,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-329,Ringsted,traffic_accidents,136.37,33.32,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-810,Brønderslev,traffic_accidents,80.31,56.58,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-751,Aarhus,traffic_accidents,92.1,49.34,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-727,Odder,traffic_accidents,106.89,42.51,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-813,Frederikshavn,traffic_accidents,76.13,59.69,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-336,Stevns,traffic_accidents,112.09,40.54,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-270,Gribskov,traffic_accidents,101.72,44.67,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-161,Glostrup,traffic_accidents,135.44,33.55,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-860,Hjørring,traffic_accidents,59.21,76.75,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-479,Svendborg,traffic_accidents,95.14,47.76,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-165,Albertslund,traffic_accidents,150.0,26.2,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-791,Viborg,traffic_accidents,73.72,61.64,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-706,Syddjurs,traffic_accidents,81.79,55.56,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-480,Nordfyns,traffic_accidents,102.0,44.55,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-440,Kerteminde,traffic_accidents,150.0,28.81,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-101,København,traffic_accidents,94.02,48.33,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-630,Vejle,traffic_accidents,128.25,35.43,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-760,Ringkøbing-Skjern,traffic_accidents,54.33,83.63,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-730,Randers,traffic_accidents,90.79,50.05,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-430,Faaborg-Midtfyn,traffic_accidents,108.09,42.04,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-320,Faxe,traffic_accidents,78.78,57.68,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-169,Høje-Taastrup,traffic_accidents,150.0,24.81,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-573,Varde,traffic_accidents,77.52,58.62,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-621,Kolding,traffic_accidents,104.1,43.65,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-580,Aabenraa,traffic_accidents,91.52,49.65,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-787,Thisted,traffic_accidents,100.07,45.41,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-420,Assens,traffic_accidents,112.31,40.46,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-756,Ikast-Brande,traffic_accidents,107.32,42.34,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-461,Odense,traffic_accidents,141.07,32.21,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-779,Skive,traffic_accidents,87.13,52.15,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-450,Nyborg,traffic_accidents,76.15,59.67,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-846,Mariagerfjord,traffic_accidents,61.56,73.82,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-540,Sønderborg,traffic_accidents,91.03,49.92,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-820,Vesthimmerlands,traffic_accidents,54.58,83.26,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-400,Bornholm,traffic_accidents,70.3,64.64,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-510,Haderslev,traffic_accidents,91.8,49.5,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-665,Lemvig,traffic_accidents,48.75,93.21,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-575,Vejen,traffic_accidents,107.65,42.21,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-671,Struer,traffic_accidents,97.97,46.38,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-707,Norddjurs,traffic_accidents,68.12,66.71,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-330,Slagelse,traffic_accidents,82.36,55.17,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-306,Odsherred,traffic_accidents,88.99,51.06,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-376,Guldborgsund,traffic_accidents,97.09,46.8,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-326,Kalundborg,traffic_accidents,73.46,61.86,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-849,Jammerbugt,traffic_accidents,56.92,79.83,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-390,Vordingborg,traffic_accidents,82.59,55.02,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-550,Tønder,traffic_accidents,59.41,76.48,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-360,Lolland,traffic_accidents,80.81,56.23,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-741,Samsø,traffic_accidents,41.09,110.59,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
-482,Langeland,traffic_accidents,150.0,25.34,pr. 100.000 indb.,2024,DST UHELDK1,social,tryghed
+201,Allerød,traffic_accidents,150.0,30.19,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+153,Brøndby,traffic_accidents,150.0,26.84,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+155,Dragør,traffic_accidents,150.0,23.03,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+175,Rødovre,traffic_accidents,150.0,25.85,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+190,Furesø,traffic_accidents,150.0,29.54,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+230,Rudersdal,traffic_accidents,150.0,23.02,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+167,Hvidovre,traffic_accidents,150.0,21.51,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+157,Gentofte,traffic_accidents,131.25,34.62,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+269,Solrød,traffic_accidents,150.0,18.64,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+746,Skanderborg,traffic_accidents,150.0,27.63,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+265,Roskilde,traffic_accidents,123.88,36.68,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+240,Egedal,traffic_accidents,118.92,38.21,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+151,Ballerup,traffic_accidents,150.0,24.1,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+223,Hørsholm,traffic_accidents,150.0,28.92,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+185,Tårnby,traffic_accidents,100.46,45.23,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+173,Lyngby-Taarbæk,traffic_accidents,150.0,26.73,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+350,Lejre,traffic_accidents,119.8,37.93,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+163,Herlev,traffic_accidents,150.0,18.73,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+210,Fredensborg,traffic_accidents,150.0,18.85,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+183,Ishøj,traffic_accidents,150.0,13.5,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+530,Billund,traffic_accidents,88.28,51.47,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+710,Favrskov,traffic_accidents,111.24,40.85,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+840,Rebild,traffic_accidents,61.8,73.53,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+147,Frederiksberg,traffic_accidents,102.62,44.28,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+187,Vallensbæk,traffic_accidents,141.56,32.1,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+253,Greve,traffic_accidents,150.0,20.94,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+259,Køge,traffic_accidents,150.0,30.23,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+159,Gladsaxe,traffic_accidents,150.0,23.41,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+217,Helsingør,traffic_accidents,126.93,35.8,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+825,Læsø,traffic_accidents,76.47,59.42,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+250,Frederikssund,traffic_accidents,126.82,35.83,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+661,Holstebro,traffic_accidents,66.29,68.55,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+657,Herning,traffic_accidents,119.83,37.92,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+773,Morsø,traffic_accidents,50.71,89.61,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+260,Halsnæs,traffic_accidents,83.21,54.61,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+492,Ærø,traffic_accidents,71.46,63.59,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+219,Hillerød,traffic_accidents,86.47,52.55,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+340,Sorø,traffic_accidents,77.89,58.34,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+561,Esbjerg,traffic_accidents,118.7,38.28,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+740,Silkeborg,traffic_accidents,115.77,39.25,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+563,Fanø,traffic_accidents,64.89,70.03,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+615,Horsens,traffic_accidents,124.7,36.44,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+316,Holbæk,traffic_accidents,103.3,43.99,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+607,Fredericia,traffic_accidents,104.58,43.45,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+766,Hedensted,traffic_accidents,87.13,52.15,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+410,Middelfart,traffic_accidents,113.01,40.21,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+851,Aalborg,traffic_accidents,84.89,53.53,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+370,Næstved,traffic_accidents,73.48,61.84,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+329,Ringsted,traffic_accidents,136.37,33.32,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+810,Brønderslev,traffic_accidents,80.31,56.58,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+751,Aarhus,traffic_accidents,92.1,49.34,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+727,Odder,traffic_accidents,106.89,42.51,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+813,Frederikshavn,traffic_accidents,76.13,59.69,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+336,Stevns,traffic_accidents,112.09,40.54,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+270,Gribskov,traffic_accidents,101.72,44.67,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+161,Glostrup,traffic_accidents,135.44,33.55,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+860,Hjørring,traffic_accidents,59.21,76.75,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+479,Svendborg,traffic_accidents,95.14,47.76,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+165,Albertslund,traffic_accidents,150.0,26.2,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+791,Viborg,traffic_accidents,73.72,61.64,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+706,Syddjurs,traffic_accidents,81.79,55.56,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+480,Nordfyns,traffic_accidents,102.0,44.55,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+440,Kerteminde,traffic_accidents,150.0,28.81,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+101,København,traffic_accidents,94.02,48.33,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+630,Vejle,traffic_accidents,128.25,35.43,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+760,Ringkøbing-Skjern,traffic_accidents,54.33,83.63,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+730,Randers,traffic_accidents,90.79,50.05,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+430,Faaborg-Midtfyn,traffic_accidents,108.09,42.04,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+320,Faxe,traffic_accidents,78.78,57.68,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+169,Høje-Taastrup,traffic_accidents,150.0,24.81,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+573,Varde,traffic_accidents,77.52,58.62,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+621,Kolding,traffic_accidents,104.1,43.65,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+580,Aabenraa,traffic_accidents,91.52,49.65,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+787,Thisted,traffic_accidents,100.07,45.41,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+420,Assens,traffic_accidents,112.31,40.46,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+756,Ikast-Brande,traffic_accidents,107.32,42.34,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+461,Odense,traffic_accidents,141.07,32.21,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+779,Skive,traffic_accidents,87.13,52.15,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+450,Nyborg,traffic_accidents,76.15,59.67,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+846,Mariagerfjord,traffic_accidents,61.56,73.82,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+540,Sønderborg,traffic_accidents,91.03,49.92,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+820,Vesthimmerlands,traffic_accidents,54.58,83.26,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+400,Bornholm,traffic_accidents,70.3,64.64,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+510,Haderslev,traffic_accidents,91.8,49.5,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+665,Lemvig,traffic_accidents,48.75,93.21,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+575,Vejen,traffic_accidents,107.65,42.21,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+671,Struer,traffic_accidents,97.97,46.38,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+707,Norddjurs,traffic_accidents,68.12,66.71,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+330,Slagelse,traffic_accidents,82.36,55.17,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+306,Odsherred,traffic_accidents,88.99,51.06,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+376,Guldborgsund,traffic_accidents,97.09,46.8,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+326,Kalundborg,traffic_accidents,73.46,61.86,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+849,Jammerbugt,traffic_accidents,56.92,79.83,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+390,Vordingborg,traffic_accidents,82.59,55.02,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+550,Tønder,traffic_accidents,59.41,76.48,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+360,Lolland,traffic_accidents,80.81,56.23,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+741,Samsø,traffic_accidents,41.09,110.59,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
+482,Langeland,traffic_accidents,150.0,25.34,pr. 100.000 indb.,2022-2024,DST UHELDK1,social,tryghed
 201,Allerød,sports_membership,110.71,51.7,%,2025,DST IDRAKT02,social,lokalsamfund
 153,Brøndby,sports_membership,65.31,30.5,%,2025,DST IDRAKT02,social,lokalsamfund
 155,Dragør,sports_membership,120.99,56.5,%,2025,DST IDRAKT02,social,lokalsamfund
