@@ -40,12 +40,17 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from dst_aar import seneste_aar, seneste_periode, seneste_kvartal  # noqa: E402
-from dst import api_post, parse_value  # noqa: E402  (fælles DST-kald, scripts/dst.py)
+from dst_aar import seneste_aar, seneste_aar_liste, seneste_periode  # noqa: E402
+from dst import api_post, parse_value, pr_indbygger, pr_kommune_aar, seneste  # noqa: E402  (fælles DST-kald, scripts/dst.py)
 from kommuner import KODER as VALID_CODES  # noqa: E402  (de 98 kommuner, data/kommuner.json)
 
 
 OUTPUT_DIR = Path(__file__).parent.parent / "data"
+
+
+def _tom(v):
+    """Tom celle for manglende værdi (men 0 bevares, modsat `v or ""`)."""
+    return "" if v is None else v
 
 
 def ratio_direct(val: float, nat: float) -> float:
@@ -261,32 +266,26 @@ def fetch_housing_area() -> tuple[dict[str, float], float | None]:
 # SAMSKABELSE: Musikskoleelever
 # ---------------------------------------------------------------------------
 
-def fetch_music_school() -> tuple[dict[str, float], float | None]:
-    """
-    SKOLM02B: Musikskoleelever.
-    Normaliseres pr. 1.000 indb. med FOLK1A.
-    """
-    print("Henter musikskoleelever (SKOLM02B)...")
+def serie_music_school(perioder: list[str]) -> dict[tuple[str, str], float]:
+    """SKOLM02B: musikskoleelever pr. 1.000 indb., {(kommune_kode, år): værdi}
+    inkl. hele landet (000). Perioderne er skoleår ('2024:2025') og mærkes med
+    slutåret; folketallet er 1. januar samme år. Bruges af både scoren og
+    retningspilen (fetch_trend_history.py)."""
     rows = api_post("SKOLM02B", [
         {"code": "KOMK", "values": ["*"]},
         {"code": "ALDER", "values": ["TOT"]},
         {"code": "KØN", "values": ["TOT"]},
-        {"code": "Tid", "values": [seneste_periode("SKOLM02B", fallback="2023:2024")]},
+        {"code": "Tid", "values": perioder},
     ])
+    return pr_indbygger(pr_kommune_aar(rows, "KOMK"), 1000, 2)
 
-    result = {}
-    national = None
-    for row in rows:
-        kode = row.get("KOMK", "").strip()
-        val = parse_value(row.get("INDHOLD", ""))
-        if val is None:
-            continue
-        if kode == "000":
-            national = val
-        elif kode in VALID_CODES:
-            result[kode] = val
 
-    print(f"  {len(result)} kommuner, landssamlet: {national}")
+def fetch_music_school() -> tuple[dict[str, float], float | None]:
+    """Musikskoleelever pr. 1.000 indb. i nyeste skoleår, og landstallet."""
+    print("Henter musikskoleelever (SKOLM02B)...")
+    aar, result, national = seneste(serie_music_school(
+        [seneste_periode("SKOLM02B", fallback="2023:2024")]), tabel="SKOLM02B")
+    print(f"  {len(result)} kommuner ({aar}), landstal: {national} pr. 1.000")
     return result, national
 
 
@@ -294,63 +293,29 @@ def fetch_music_school() -> tuple[dict[str, float], float | None]:
 # LOKALSAMFUND: Uddannet pædagogisk personale
 # ---------------------------------------------------------------------------
 
-def fetch_educated_staff() -> tuple[dict[str, float], float | None]:
-    """
-    BOERN1: Andel af pædagogisk personale med pædagoguddannelse (kode 460).
-    UDDANNELSE='460' = Pædagoguddannelse (professionsbachelor, 2019-)
-    UDDANNELSE='TOT' = I alt pædagogisk personale
-    Direkte: højere andel uddannede er bedre.
-    """
-    print("Henter pædagogisk personale (BOERN1)...")
+def serie_educated_staff(perioder: list[str]) -> dict[tuple[str, str], float]:
+    """BOERN1: andel af det pædagogiske personale (alle stillingskategorier,
+    OVERENS=TOT) med pædagoguddannelse (UDDANNELSE=460), i procent.
+    {(kommune_kode, år): pct} inkl. hele landet (000). Bruges af både scoren og
+    retningspilen - tidligere talte pilen 'pædagog' og 'pædagogisk leder' ud
+    fra stillingsbetegnelser, som gav op til 12% andre tal."""
     rows = api_post("BOERN1", [
         {"code": "OMRÅDE", "values": ["*"]},
-        {"code": "OVERENS", "values": ["TOT"]},      # Alle stillingskategorier
-        {"code": "UDDANNELSE", "values": ["TOT", "460"]},  # Total + pædagoguddannelse
-        {"code": "Tid", "values": [seneste_aar("BOERN1", fallback="2024")]},
+        {"code": "OVERENS", "values": ["TOT"]},
+        {"code": "UDDANNELSE", "values": ["TOT", "460"]},
+        {"code": "Tid", "values": perioder},
     ])
-    totals: dict[str, float] = {}
-    paed: dict[str, float] = {}
-    for row in rows:
-        kode = row.get("OMRÅDE", "").strip()
-        udd = row.get("UDDANNELSE", "").strip()
-        val = parse_value(row.get("INDHOLD", ""))
-        if val is None:
-            continue
-        if kode not in VALID_CODES and kode != "000":
-            continue
-        if udd == "TOT":
-            totals[kode] = val
-        elif udd == "460":
-            paed[kode] = val
-    # Prøv 2023 hvis 2024 er tom
-    if len(totals) < 50:
-        print("  Prøver 2023...")
-        rows = api_post("BOERN1", [
-            {"code": "OMRÅDE", "values": ["*"]},
-            {"code": "OVERENS", "values": ["TOT"]},
-            {"code": "UDDANNELSE", "values": ["TOT", "460"]},
-            {"code": "Tid", "values": ["2023"]},
-        ])
-        totals = {}
-        paed = {}
-        for row in rows:
-            kode = row.get("OMRÅDE", "").strip()
-            udd = row.get("UDDANNELSE", "").strip()
-            val = parse_value(row.get("INDHOLD", ""))
-            if val is None:
-                continue
-            if kode not in VALID_CODES and kode != "000":
-                continue
-            if udd == "TOT":
-                totals[kode] = val
-            elif udd == "460":
-                paed[kode] = val
-    result: dict[str, float] = {}
-    for kode in totals:
-        if kode in paed and totals[kode] > 0:
-            result[kode] = round(paed[kode] / totals[kode] * 100, 2)
-    national = result.pop("000", None)
-    print(f"  {len(result)} kommuner, landsgennemsnit: {national}% pædagoguddannede")
+    total = pr_kommune_aar([r for r in rows if r.get("UDDANNELSE") == "TOT"])
+    paed = pr_kommune_aar([r for r in rows if r.get("UDDANNELSE") == "460"])
+    return {k: round(paed[k] / total[k] * 100, 2) for k in paed if total.get(k)}
+
+
+def fetch_educated_staff() -> tuple[dict[str, float], float | None]:
+    """Andel pædagoguddannede i nyeste år med data, og landstallet."""
+    print("Henter pædagogisk personale (BOERN1)...")
+    aar, result, national = seneste(serie_educated_staff(
+        seneste_aar_liste("BOERN1", 2, fallback=["2024", "2023"])), tabel="BOERN1")
+    print(f"  {len(result)} kommuner ({aar}), landsgennemsnit: {national}% pædagoguddannede")
     return result, national
 
 
@@ -358,53 +323,27 @@ def fetch_educated_staff() -> tuple[dict[str, float], float | None]:
 # LOKALSAMFUND: Klassekvotienter
 # ---------------------------------------------------------------------------
 
-def fetch_class_size() -> tuple[dict[str, float], float | None]:
-    """
-    KVOTIEN: Gennemsnitlig klassekvotient i grundskolen.
-    Inverteret: færre elever pr. klasse er bedre.
-    """
-    print("Henter klassekvotienter (KVOTIEN)...")
+def serie_class_size(perioder: list[str]) -> dict[tuple[str, str], float]:
+    """KVOTIEN: gennemsnitlig klassekvotient, alle klassetrin (KLASSE=0000) og
+    ALLE skoletyper (SKTPE=ANTALSUM). {(kommune_kode, år): elever pr. klasse}
+    inkl. hele landet (000). Bruges af både scoren og retningspilen - tidligere
+    målte pilen kun folkeskolerne, fx Thisted 18,6 mod scorens 15,9."""
     rows = api_post("KVOTIEN", [
         {"code": "OMRÅDE", "values": ["*"]},
-        {"code": "KLASSE", "values": ["0000"]},  # Alle klassetrin
-        {"code": "SKTPE", "values": ["ANTALSUM"]},  # Alle skoletyper
-        {"code": "Tid", "values": [seneste_aar("KVOTIEN", fallback="2024")]},
+        {"code": "KLASSE", "values": ["0000"]},
+        {"code": "SKTPE", "values": ["ANTALSUM"]},
+        {"code": "Tid", "values": perioder},
     ])
+    return pr_kommune_aar(rows)
 
-    result = {}
-    national = None
-    for row in rows:
-        kode = row.get("OMRÅDE", "").strip()
-        val = parse_value(row.get("INDHOLD", ""))
-        if val is None:
-            continue
-        if kode == "000":
-            national = val
-        elif kode in VALID_CODES:
-            result[kode] = val
 
-    # Prøv 2023 hvis 2024 er tom
-    if len(result) < 50:
-        print("  Prøver 2023...")
-        rows = api_post("KVOTIEN", [
-            {"code": "OMRÅDE", "values": ["*"]},
-            {"code": "KLASSE", "values": ["0000"]},
-            {"code": "SKTPE", "values": ["ANTALSUM"]},
-            {"code": "Tid", "values": ["2023"]},
-        ])
-        result = {}
-        national = None
-        for row in rows:
-            kode = row.get("OMRÅDE", "").strip()
-            val = parse_value(row.get("INDHOLD", ""))
-            if val is None:
-                continue
-            if kode == "000":
-                national = val
-            elif kode in VALID_CODES:
-                result[kode] = val
-
-    print(f"  {len(result)} kommuner, landsgennemsnit: {national}")
+def fetch_class_size() -> tuple[dict[str, float], float | None]:
+    """Klassekvotient i nyeste år med data, og landstallet. Inverteret: færre
+    elever pr. klasse er bedre."""
+    print("Henter klassekvotienter (KVOTIEN)...")
+    aar, result, national = seneste(serie_class_size(
+        seneste_aar_liste("KVOTIEN", 2, fallback=["2024", "2023"])), tabel="KVOTIEN")
+    print(f"  {len(result)} kommuner ({aar}), landsgennemsnit: {national}")
     return result, national
 
 
@@ -518,31 +457,10 @@ def fetch_sports_spending() -> tuple[dict[str, float], float | None]:
 # Hovedprogram
 # ---------------------------------------------------------------------------
 
-def fetch_population() -> dict[str, float]:
-    print("Henter befolkningstal (FOLK1A)...")
-    rows = api_post("FOLK1A", [
-        {"code": "OMRÅDE", "values": ["*"]},
-        {"code": "KØN", "values": ["TOT"]},
-        {"code": "ALDER", "values": ["IALT"]},
-        {"code": "Tid", "values": [seneste_kvartal("FOLK1A", "K1", fallback="2025K1")]},
-    ])
-    result = {}
-    for row in rows:
-        kode = row.get("OMRÅDE", "").strip()
-        val = parse_value(row.get("INDHOLD", ""))
-        if val is not None and (kode in VALID_CODES or kode == "000"):
-            result[kode] = val
-    print(f"  {len(result)} kommuner")
-    return result
-
-
 def main():
     print("=" * 60)
     print("Henter supplerende sociale indikatorer fra DST")
     print("=" * 60)
-
-    population = fetch_population()
-    nat_pop = population.get("000", 5_900_000)
 
     # === SUNDHED ===
     print("\n--- SUNDHED ---")
@@ -564,12 +482,14 @@ def main():
             l_r if l_r is not None else "",
             g_val if g_val is not None else "",
             g_r if g_r is not None else "",
+            _tom(long_nat),
         ])
     write_csv("sundhed_extra_scores.csv", [
         "kommune_kode",
         "hospital_short_pct", "hospital_short_ratio",
         "hospital_long_pct", "hospital_long_ratio",
         "gp_distance_km", "gp_distance_ratio",
+        "hospital_long_ref",
     ], sundhed_rows)
 
     # === UDDANNELSE ===
@@ -579,9 +499,9 @@ def main():
     for kode in sorted(VALID_CODES, key=int):
         val = low_edu.get(kode)
         r = ratio_inverse(val, low_edu_nat) if val is not None and low_edu_nat else None
-        udd_rows.append([kode, val or "", r or ""])
+        udd_rows.append([kode, val or "", r or "", _tom(low_edu_nat)])
     write_csv("uddannelse_extra_scores.csv", [
-        "kommune_kode", "low_education_pct", "low_education_ratio",
+        "kommune_kode", "low_education_pct", "low_education_ratio", "low_education_ref",
     ], udd_rows)
 
     # === BOLIG ===
@@ -591,30 +511,23 @@ def main():
     for kode in sorted(VALID_CODES, key=int):
         val = area.get(kode)
         r = ratio_direct(val, area_nat) if val is not None and area_nat else None
-        bolig_rows.append([kode, val or "", r or ""])
+        bolig_rows.append([kode, val or "", r or "", _tom(area_nat)])
     write_csv("bolig_extra_scores.csv", [
-        "kommune_kode", "housing_area_m2", "housing_area_ratio",
+        "kommune_kode", "housing_area_m2", "housing_area_ratio", "housing_area_ref",
     ], bolig_rows)
 
     # === SAMSKABELSE ===
     print("\n--- SAMSKABELSE ---")
-    music, music_nat_total = fetch_music_school()
-    # Normalisér pr. 1.000 indb.
-    music_per_1k = {}
-    music_nat_per_1k = None
-    if music_nat_total and nat_pop:
-        music_nat_per_1k = round(music_nat_total / nat_pop * 1000, 2)
-    for kode, count in music.items():
-        if kode in population and population[kode] > 0:
-            music_per_1k[kode] = round(count / population[kode] * 1000, 2)
+    # Allerede pr. 1.000 indb. (folketal 1. januar samme år, se serie_music_school)
+    music_per_1k, music_nat_per_1k = fetch_music_school()
 
     samsk_rows = []
     for kode in sorted(VALID_CODES, key=int):
         val = music_per_1k.get(kode)
         r = ratio_direct(val, music_nat_per_1k) if val is not None and music_nat_per_1k else None
-        samsk_rows.append([kode, val or "", r or ""])
+        samsk_rows.append([kode, val or "", r or "", _tom(music_nat_per_1k)])
     write_csv("samskabelse_extra_scores.csv", [
-        "kommune_kode", "music_school_per_1k", "music_school_ratio",
+        "kommune_kode", "music_school_per_1k", "music_school_ratio", "music_school_ref",
     ], samsk_rows)
 
     # === LOKALSAMFUND (ekstra) ===
@@ -641,6 +554,7 @@ def main():
             sp_val or "", sp_ratio or "",
             es_val if es_val is not None else "",
             es_ratio if es_ratio is not None else "",
+            _tom(class_nat), _tom(daycare_nat), _tom(edu_staff_nat),
         ])
     write_csv("lokalsamfund_extra_scores.csv", [
         "kommune_kode",
@@ -648,6 +562,7 @@ def main():
         "daycare_ratio_val", "daycare_ratio",
         "sports_spending_kr", "sports_spending_ratio",
         "educated_staff_pct", "educated_staff_ratio",
+        "class_size_ref", "daycare_ratio_ref", "educated_staff_ref",
     ], lokal_rows)
 
     print("\n" + "=" * 60)

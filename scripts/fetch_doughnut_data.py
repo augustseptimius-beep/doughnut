@@ -32,9 +32,12 @@ import sys
 import sys as _sys
 from pathlib import Path as _Path
 _sys.path.insert(0, str(_Path(__file__).resolve().parent))
-from dst_aar import registrer_aar, seneste_aar  # noqa: E402
+from dst_aar import registrer_aar, seneste_aar, seneste_aar_liste  # noqa: E402
 from indkomst_median import median_disponibel  # noqa: E402
-from kommuner import KODER  # noqa: E402  (de 98 kommuner, data/kommuner.json)
+from kommuner import KODER, KOMMUNER  # noqa: E402  (de 98 kommuner, data/kommuner.json)
+# dst.api_post hedder dst_post her, fordi scriptet har sit eget api_post(endpoint, payload)
+# til den generiske tabelopslag-maskine.
+from dst import api_post as dst_post, pr_kommune_aar, seneste  # noqa: E402  (fælles DST-kald)
 import time
 import urllib.request
 import urllib.error
@@ -209,32 +212,11 @@ INDICATORS = [
         "id": "vacant_housing",
         "name": "Ubeboede boliger %",
         "table": "BOL101",
-        "want_variables": [
-            {"purpose": "beboelse", "candidates": [
-                {"code": "BEBO", "values": ["2000"]},  # Ubeboede boliger
-            ]},
-            {"purpose": "anvendelse", "candidates": [
-                {"code": "ANVENDELSE", "values": ["125", "130", "140"]},  # Parcelhuse + rækkehuse + etageboliger
-            ]},
-            {"purpose": "udlejningsforhold", "candidates": [
-                {"code": "UDLFORH", "values": ["*"]},  # Alle udlejningsforhold
-            ]},
-            {"purpose": "ejer", "candidates": [
-                {"code": "EJER", "values": ["*"]},  # Alle ejertyper
-            ]},
-            {"purpose": "opførelsesår", "candidates": [
-                {"code": "OPFØRELSESÅR", "values": ["*"]},  # Alle årgange
-            ]},
-        ],
+        # Hentes af serie_vacant_housing(), som retningspilen også bruger.
+        "custom": "vacant_housing",
         "inverse": True,
-        "aggregate": "sum",
         "category": "social",
-        # Rate: compute ubeboede/(beboede+ubeboede) * 100 per municipality
-        "rate_denominator": {
-            "change_var": "BEBO",
-            "change_to": ["1000", "2000"],  # Beboede + ubeboede
-            "aggregate": "sum",
-        },
+        "note": "Ubeboede boliger i pct. af alle parcel-, række- og etageboliger (DST BOL101)",
     },
     # NOTE: Voter turnout removed — no DST table has kommune-level
     # valgdeltagelse as percentage. KVPCT/FVPCT only have national data.
@@ -658,6 +640,30 @@ def fetch_csv_data(table, variables_dict, area_var="OMRÅDE"):
         return list(reader)
 
 
+def serie_vacant_housing(aar: list[str]) -> dict[tuple[str, str], float]:
+    """
+    BOL101: ubeboede boliger (BEBO=2000) i pct. af beboede + ubeboede
+    (BEBO=1000+2000), for parcel-/stuehuse, række-/kædehuse og etageboliger
+    (ANVENDELSE 125, 130, 140). Kollegier, institutioner, fritidshuse og
+    ubeboede fritidshuse (BEBO=5000) er ikke med. {(kommune_kode, år): pct}
+    inkl. hele landet (000).
+
+    Bruges af både scoren og retningspilen (fetch_trend_history.py). Indtil
+    sep. 2026 talte pilen alle boligtyper og ubeboede fritidshuse med og viste
+    fx 24% for Thisted mod scorens 11,5%.
+    """
+    rows = dst_post("BOL101", [
+        {"code": "OMRÅDE", "values": ["*"]},
+        {"code": "BEBO", "values": ["1000", "2000"]},
+        {"code": "ANVENDELSE", "values": ["125", "130", "140"]},
+        {"code": "Tid", "values": aar},
+    ])
+    ubeboet = pr_kommune_aar([r for r in rows if r.get("BEBO") == "2000"])
+    beboet = pr_kommune_aar([r for r in rows if r.get("BEBO") == "1000"])
+    return {k: round(u / (u + beboet.get(k, 0.0)) * 100, 2)
+            for k, u in ubeboet.items() if u + beboet.get(k, 0.0) > 0}
+
+
 def is_municipality_code(code):
     """Hele landet (000) eller en af platformens 98 kommuner (data/kommuner.json).
     Christiansø (411) er ikke med. Et talinterval som 101-860 ville også tage
@@ -913,7 +919,14 @@ def step2():
         if ind.get("note"):
             print(f"  ({ind['note']})")
 
-        if ind.get("custom") == "median_disponibel":
+        if ind.get("custom") == "vacant_housing":
+            aar, vaerdier, landstal = seneste(
+                serie_vacant_housing(seneste_aar_liste("BOL101", 2, fallback=["2025", "2024"])),
+                tabel="BOL101")
+            values = {**vaerdier, "000": landstal} if landstal is not None else vaerdier
+            nat_code = "000"
+            print(f"  ✓ {len(vaerdier)} kommuner ({aar}), landsniveau {landstal}%")
+        elif ind.get("custom") == "median_disponibel":
             aar = seneste_aar("INDKP106", fallback="2024")
             med = median_disponibel([aar], ["MOK"])
             # INDKP106's OMRÅDE har også landsdelene (01-11). Uden filteret
@@ -985,50 +998,6 @@ def step3(all_data, output_file="doughnut_scores.csv"):
         all_codes.update(ratios.keys())
     all_codes -= nat_codes
 
-    # Get municipality names from HISBK data (already fetched)
-    municipality_names = {}
-    hisbk_data = all_data.get("life_expectancy", {}).get("values", {})
-    if not hisbk_data:
-        # Fetch names separately
-        try:
-            info = get_tableinfo("HISBK")
-            area_var, _ = resolve_area_variable(info)
-            sex_vars = resolve_wanted_variables(
-                [{"purpose": "køn", "candidates": [
-                    {"code": "KØN", "values": ["TOT"]},
-                    {"code": "KOEN", "values": ["TOT"]},
-                ]}], info)
-            rows = fetch_csv_data("HISBK", sex_vars, area_var=area_var)
-            fieldnames = list(rows[0].keys()) if rows else []
-            area_col = fieldnames[0] if fieldnames else "OMRÅDE"
-            for row in rows:
-                area = row[area_col].strip()
-                parts = area.split(maxsplit=1)
-                if len(parts) == 2:
-                    municipality_names[parts[0]] = parts[1]
-        except Exception:
-            pass
-    else:
-        # Re-fetch just to get names
-        try:
-            info = get_tableinfo("HISBK")
-            area_var, _ = resolve_area_variable(info)
-            sex_vars = resolve_wanted_variables(
-                [{"purpose": "køn", "candidates": [
-                    {"code": "KØN", "values": ["TOT"]},
-                    {"code": "KOEN", "values": ["TOT"]},
-                ]}], info)
-            rows = fetch_csv_data("HISBK", sex_vars, area_var=area_var)
-            fieldnames = list(rows[0].keys()) if rows else []
-            area_col = fieldnames[0] if fieldnames else "OMRÅDE"
-            for row in rows:
-                area = row[area_col].strip()
-                parts = area.split(maxsplit=1)
-                if len(parts) == 2:
-                    municipality_names[parts[0]] = parts[1]
-        except Exception:
-            pass
-
     # Build CSV — merge DST INDICATORS + ECOLOGICAL_INDICATORS for column order
     all_indicator_defs = list(INDICATORS) + list(ECOLOGICAL_INDICATORS)
     all_indicator_ids = [ind["id"] for ind in all_indicator_defs]
@@ -1037,11 +1006,12 @@ def step3(all_data, output_file="doughnut_scores.csv"):
     header = (["kommune_kode", "kommune_navn"]
               + [f"{iid}_ratio" for iid in active_ids]
               + [f"{iid}_raw" for iid in active_ids]
-              + ["social_avg", "ecological_avg", "overall_avg"])
+              + ["social_avg", "ecological_avg", "overall_avg"]
+              + [f"{iid}_ref" for iid in active_ids])
 
     output_rows = []
     for code in sorted(all_codes):
-        name = municipality_names.get(code, code)
+        name = KOMMUNER.get(code, code)
         row = {"kommune_kode": code, "kommune_navn": name}
 
         social_scores = []
@@ -1069,6 +1039,12 @@ def step3(all_data, output_file="doughnut_scores.csv"):
                                  if ecological_scores else "")
         row["overall_avg"] = (round(sum(all_scores) / len(all_scores), 2)
                               if all_scores else "")
+        # Landstallet ratioen er målt mod (samme værdi i alle rækker).
+        # build_master_csv.py bruger det direkte (reference.col i registret).
+        for iid in active_ids:
+            d = all_data.get(iid, {})
+            nat = d.get("values", {}).get(d.get("nat_code", "000"))
+            row[f"{iid}_ref"] = round(nat, 4) if nat is not None else ""
         output_rows.append(row)
 
     # Sort by overall score descending

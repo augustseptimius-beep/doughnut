@@ -350,15 +350,16 @@ def main() -> int:
     for kode in sorted(navne, key=int):
         d = pesticid.get(kode)
         if not d:
-            raekker.append([kode, navne[kode], "", "", "", ""])
+            raekker.append([kode, navne[kode], "", "", "", "", round(nat_pct, 4)])
             continue
         ratio = round(d["pct"] / nat_pct * 100, 1) if nat_pct else ""
-        raekker.append([kode, navne[kode], d["pct"], ratio, d["total"], d["over"]])
+        raekker.append([kode, navne[kode], d["pct"], ratio, d["total"], d["over"], round(nat_pct, 4)])
     sti = DATA / "pesticider_scores.csv"
     with open(sti, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["kommune_kode", "kommune_navn", "pesticid_pct_over_graense",
-                    "pesticid_ratio", "pesticid_total_anlaeg", "pesticid_over_graense_antal"])
+                    "pesticid_ratio", "pesticid_total_anlaeg", "pesticid_over_graense_antal",
+                    "pesticider_ref"])
         w.writerows(raekker)
     med = sum(1 for r in raekker if r[2] != "")
     print(f"✓ {sti.name}: {med}/{len(raekker)} kommuner med data")

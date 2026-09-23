@@ -635,7 +635,8 @@
       "reference": {"type": "landstal", "col": "vacant_housing_ref", "definition": "DST's landstal (hele landet); fetch_doughnut_data.py"},
       "inverse": true,
       "baseline_level": 3,
-      "rationale": "Høj andel tomme boliger signalerer fraflytning og lavt boligmarked. Inverteret: kommuner med færre tomme boliger scorer bedre."
+      "rationale": "Høj andel tomme boliger signalerer fraflytning og lavt boligmarked. Inverteret: kommuner med færre tomme boliger scorer bedre.",
+      "note": "Ubeboede i pct. af beboede + ubeboede parcel-, række- og etageboliger (BOL101, ANVENDELSE 125/130/140). Fritidshuse, kollegier og institutioner er ikke med. Retningspilen bruger samme funktion (serie_vacant_housing)."
     },
     {
       "id": "housing_area",
@@ -821,7 +822,8 @@
       "raw_col": "employment_origin_gap_pct",
       "reference": {"type": "landstal", "col": "employment_origin_gap_ref", "definition": "DST's landstal (hele landet); fetch_ligestilling_data.py"},
       "inverse": false,
-      "baseline_level": 3
+      "baseline_level": 3,
+      "note": "Indvandrere fra ikke-vestlige lande (HERKOMST 25) mod personer med dansk oprindelse (10), 16-64 år. Indtil sep. 2026 16-66 år, som DST kun har fra 2022; 16-64 giver en retningspil fra 2008 og er samme aldersgruppe som employment."
     },
     {
       "id": "music_school",
@@ -1227,7 +1229,7 @@
       "boundary": "Lavere end landsgennemsnittet er bedre",
       "raw_key": "eco_naer_n_raw",
       "ratio_key": "eco_naer_n_ratio",
-      "note": "Kilde-CSV'en har inverteret ratio; konverteres med 10000/x (inverse_ratio)."
+      "note": "Scriptets egen ratio er på den inverterede skala (ratio_col_invers) og bruges kun til krydstjek. Pr. 1.000 indb. med folketallet 1. januar i udledningsåret."
     },
     {
       "id": "naer_phosphorus",

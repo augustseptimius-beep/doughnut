@@ -58,6 +58,10 @@ def _data_year(ind: dict) -> str:
     m = re.match(r"DST\s+([A-ZÆØÅ0-9_]+)", kilde)
     if m and _HENTEDE_AAR.get(m.group(1)):
         aar = _HENTEDE_AAR[m.group(1)]
+    elif _HENTEDE_AAR.get(ind.get("table") or ""):
+        # Ikke-DST-kilder der registrerer året under registrets table-navn,
+        # fx UVM's "GS/TRIV/TRIVIND" (fetch_udvidelse_data.py).
+        aar = _HENTEDE_AAR[ind["table"]]
     n = ind.get("period_years")
     if n and re.fullmatch(r"\d{4}", aar):
         aar = f"{int(aar) - n + 1}-{aar}"

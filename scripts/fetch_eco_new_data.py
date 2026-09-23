@@ -33,8 +33,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from dst_aar import seneste_kvartal  # noqa: E402
-from dst import api_post, parse_value  # noqa: E402  (fælles DST-kald, scripts/dst.py)
+from dst_aar import seneste_aar_liste, seneste_kvartal  # noqa: E402
+from dst import api_post, parse_value, pr_indbygger, pr_kommune_aar, seneste  # noqa: E402  (fælles DST-kald, scripts/dst.py)
 from kommuner import KODER as VALID_CODES  # noqa: E402  (de 98 kommuner, data/kommuner.json)
 
 
@@ -122,6 +122,34 @@ def fetch_vandud() -> dict[str, dict]:
     valid = {k: v for k, v in result.items() if k in VALID_CODES}
     print(f"  VANDUD: {len(valid)} kommuner med data")
     return result
+
+
+def _serie_vandud(udl: str, aar: list[str]) -> dict[tuple[str, str], float]:
+    """VANDUD: udledning (UDL=KV kvælstof, FO fosfor) summeret over alle
+    anlægstyper, i ton pr. 1.000 indb. med folketallet 1. januar samme år.
+    {(kommune_kode, år): værdi} inkl. hele landet (000). Ingen registreret
+    udledning (0) udelades: det behandles som manglende data, ikke som
+    topscore (se data/CHANGELOG.md 22. sep. 2026)."""
+    rows = api_post("VANDUD", [
+        {"code": "OMRÅDE", "values": ["*"]},
+        {"code": "UDL", "values": [udl]},
+        {"code": "ANLAEG", "values": ["*"]},
+        {"code": "Tid", "values": aar},
+    ])
+    antal = {k: v for k, v in pr_kommune_aar(rows).items() if v}
+    return pr_indbygger(antal, 1000, 3)
+
+
+def serie_naer_nitrogen(aar: list[str]) -> dict[tuple[str, str], float]:
+    """Kvælstof fra spildevand, ton pr. 1.000 indb. Bruges af både scoren og
+    retningspilen (fetch_trend_history.py)."""
+    return _serie_vandud("KV", aar)
+
+
+def serie_naer_phosphorus(aar: list[str]) -> dict[tuple[str, str], float]:
+    """Fosfor fra spildevand, ton pr. 1.000 indb. Bruges af både scoren og
+    retningspilen (fetch_trend_history.py)."""
+    return _serie_vandud("FO", aar)
 
 
 # ---------------------------------------------------------------------------
@@ -219,47 +247,40 @@ def main():
     print(f"  National befolkning: {national_pop:,.0f}")
 
     # ─── NÆRINGSSTOFFER ───
-    vandud = fetch_vandud()
-    national_kv = vandud.get("000", {}).get("kv", 0)
-    national_fo = vandud.get("000", {}).get("fo", 0)
-
-    # Per capita pr. 1.000 indb.
-    nat_kv_pc = (national_kv / national_pop) * 1000 if national_pop else 0
-    nat_fo_pc = (national_fo / national_pop) * 1000 if national_pop else 0
-    print(f"  National kvælstof: {national_kv:.0f} ton = {nat_kv_pc:.3f} ton/1.000 indb.")
-    print(f"  National fosfor: {national_fo:.0f} ton = {nat_fo_pc:.3f} ton/1.000 indb.")
+    # Samme funktioner som retningspilen bruger (serie_naer_*), med folketallet
+    # 1. januar i udledningsåret.
+    naer_aar = seneste_aar_liste("VANDUD", 2, fallback=["2024", "2023"])
+    aar_kv, kv_pc, nat_kv_pc = seneste(serie_naer_nitrogen(naer_aar), tabel="VANDUD")
+    aar_fo, fo_pc, nat_fo_pc = seneste(serie_naer_phosphorus(naer_aar), tabel="VANDUD")
+    print(f"  Kvælstof {aar_kv}: landstal {nat_kv_pc} ton/1.000 indb.")
+    print(f"  Fosfor {aar_fo}: landstal {nat_fo_pc} ton/1.000 indb.")
 
     naer_rows = []
     for kode in sorted(VALID_CODES):
-        kommune_pop = pop.get(kode)
-        kommune_data = vandud.get(kode, {})
-        kv = kommune_data.get("kv", 0)
-        fo = kommune_data.get("fo", 0)
-
-        if kommune_pop and kommune_pop > 0:
-            kv_pc = (kv / kommune_pop) * 1000
-            fo_pc = (fo / kommune_pop) * 1000
-            kv_ratio = ratio_inverse(kv_pc, nat_kv_pc)
-            fo_ratio = ratio_inverse(fo_pc, nat_fo_pc)
-        else:
-            kv_pc = fo_pc = 0
-            kv_ratio = fo_ratio = None
-
+        kv, fo = kv_pc.get(kode), fo_pc.get(kode)
         naer_rows.append({
             "kommune_kode": kode,
-            "nitrogen_per_1000": round(kv_pc, 3) if kv_pc else "",
-            "phosphorus_per_1000": round(fo_pc, 3) if fo_pc else "",
-            "nitrogen_ratio": kv_ratio if kv_ratio else "",
-            "phosphorus_ratio": fo_ratio if fo_ratio else "",
+            "nitrogen_per_1000": kv if kv is not None else "",
+            "phosphorus_per_1000": fo if fo is not None else "",
+            "nitrogen_ratio": ratio_inverse(kv, nat_kv_pc) if kv and nat_kv_pc else "",
+            "phosphorus_ratio": ratio_inverse(fo, nat_fo_pc) if fo and nat_fo_pc else "",
+            "naer_nitrogen_ref": nat_kv_pc if nat_kv_pc is not None else "",
+            "naer_phosphorus_ref": nat_fo_pc if nat_fo_pc is not None else "",
         })
 
     outfile = OUTPUT_DIR / "naeringsstoffer_scores.csv"
     with open(outfile, "w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=["kommune_kode", "nitrogen_per_1000", "phosphorus_per_1000", "nitrogen_ratio", "phosphorus_ratio"])
+        w = csv.DictWriter(f, fieldnames=["kommune_kode", "nitrogen_per_1000", "phosphorus_per_1000",
+                                          "nitrogen_ratio", "phosphorus_ratio",
+                                          "naer_nitrogen_ref", "naer_phosphorus_ref"])
         w.writeheader()
         w.writerows(naer_rows)
     valid_naer = [r for r in naer_rows if r["nitrogen_ratio"] != ""]
     print(f"  => Skrev {outfile.name}: {len(valid_naer)} kommuner")
+
+    # vand_scores.csv (spildevand og vandindvinding pr. indb.) bruges ikke af
+    # platformen, men skrives stadig som kildespor. Den har sin egen hentning.
+    vandud = fetch_vandud()
 
     # ─── VAND ───
     vandind = fetch_vandind()
@@ -326,11 +347,13 @@ def main():
             "kommune_kode": kode,
             "waste_kg_per_capita": affald if affald is not None else "",
             "waste_ratio": affald_ratio if affald_ratio is not None else "",
+            "cirkularitet_waste_ref": national_affald,
         })
 
     outfile = OUTPUT_DIR / "forurening_scores.csv"
     with open(outfile, "w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=["kommune_kode", "waste_kg_per_capita", "waste_ratio"])
+        w = csv.DictWriter(f, fieldnames=["kommune_kode", "waste_kg_per_capita", "waste_ratio",
+                                          "cirkularitet_waste_ref"])
         w.writeheader()
         w.writerows(foru_rows)
     valid_foru = [r for r in foru_rows if r["waste_ratio"] != ""]

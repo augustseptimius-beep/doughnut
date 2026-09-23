@@ -81,7 +81,7 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   lighed: {
     id: "lighed",
-    scoring: "Gennemsnit af tre indikatorer: (1) Gini-koefficient (IFOR41, inverteret - lavere ulighed er bedre). (2) Andel i relativ fattigdom efter DST's mål med grænsen 50% af medianindkomsten (LABY07, inverteret). (3) Beskæftigelsesfrekvensen for personer med ikke-vestlig oprindelse i procent af frekvensen for personer med dansk oprindelse (RAS200, direkte). Score 100 = landsgennemsnit.",
+    scoring: "Gennemsnit af tre indikatorer: (1) Gini-koefficient (IFOR41, inverteret - lavere ulighed er bedre). (2) Andel i relativ fattigdom efter DST's mål med grænsen 50% af medianindkomsten (LABY07, inverteret). (3) Beskæftigelsesfrekvensen for indvandrere fra ikke-vestlige lande i procent af frekvensen for personer med dansk oprindelse, 16-64 år (RAS200, direkte). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: en rimelig fordeling af ressourcer og muligheder er grundlaget for et sammenhængende samfund.",
     limitations: "Gini og relativ fattigdom bygger på DST's indkomstregistre og er korrelerede mål - kommuner med høj ulighed har typisk også høj andel lavindkomst. Data er 2 år forsinket.",
   },

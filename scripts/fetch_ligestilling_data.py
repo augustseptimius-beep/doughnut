@@ -28,9 +28,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from dst_aar import seneste_aar, seneste_periode  # noqa: E402
+from dst_aar import seneste_aar, seneste_aar_liste, seneste_periode  # noqa: E402
 from indkomst_median import median_disponibel  # noqa: E402
-from dst import api_post, parse_value  # noqa: E402  (fælles DST-kald, scripts/dst.py)
+from dst import api_post, parse_value, pr_kommune_aar, seneste  # noqa: E402  (fælles DST-kald, scripts/dst.py)
 from kommuner import KODER as VALID_CODES  # noqa: E402  (de 98 kommuner, data/kommuner.json)
 
 
@@ -128,60 +128,38 @@ def fetch_income_by_gender() -> tuple[dict[str, float], float | None]:
 # 3. Beskæftigelse fordelt på herkomst (RAS200)
 # ---------------------------------------------------------------------------
 
-def fetch_employment_by_origin() -> tuple[dict[str, float], float | None]:
+def serie_employment_origin_gap(aar: list[str]) -> dict[tuple[str, str], float]:
     """
-    RAS200: Beskaeftigelsesfrekvens opdelt paa herkomst.
-    HERKOMST: '10' = dansk oprindelse, '25' = ikke-vestlige indvandrere
-    Beregner: BFK_ikkevestlig / BFK_dansk * 100 pr. kommune.
-    Direkte: hoejere ratio = bedre integration / mere lighed.
-    Alder: '1666' (16-66 aar, gaelder fra 2022).
+    RAS200: beskæftigelsesfrekvens for indvandrere fra ikke-vestlige lande
+    (HERKOMST=25) i procent af frekvensen for personer med dansk oprindelse
+    (HERKOMST=10), 16-64 år. {(kommune_kode, år): pct} inkl. hele landet (000).
+    Højere = mere lighed. Bruges af både scoren og retningspilen.
+
+    16-64 år, ikke 16-66 (sep. 2026): DST har kun 16-66 fra 2022, så en
+    retningspil på den aldersgruppe ville have tre år. 16-64 findes fra 2008 og
+    er også den aldersgruppe `employment` bruger. Scoren flyttede sig med
+    median 0,7% ved skiftet.
     """
-    print("Henter beskaeftigelse pr. herkomst (RAS200, 2024)...")
     rows = api_post("RAS200", [
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "HERKOMST", "values": ["10", "25"]},
-        {"code": "ALDER", "values": ["1666"]},
+        {"code": "ALDER", "values": ["16-64"]},
         {"code": "KØN", "values": ["TOT"]},
         {"code": "BEREGNING", "values": ["BFK"]},
-        {"code": "Tid", "values": [seneste_aar("RAS200", fallback="2024")]},
+        {"code": "Tid", "values": aar},
     ])
+    dansk = pr_kommune_aar([r for r in rows if r.get("HERKOMST") == "10"])
+    ikkevestlig = pr_kommune_aar([r for r in rows if r.get("HERKOMST") == "25"])
+    return {k: round(ikkevestlig[k] / dansk[k] * 100, 2)
+            for k in ikkevestlig if dansk.get(k)}
 
-    # Prøv 2023 hvis 2024 er tom
-    if len(rows) < 50:
-        print("  Faa resultater for 2024, proever 2023 med 16-65...")
-        rows = api_post("RAS200", [
-            {"code": "OMRÅDE", "values": ["*"]},
-            {"code": "HERKOMST", "values": ["10", "25"]},
-            {"code": "ALDER", "values": ["16-65"]},
-            {"code": "KØN", "values": ["TOT"]},
-            {"code": "BEREGNING", "values": ["BFK"]},
-            {"code": "Tid", "values": ["2023"]},
-        ])
 
-    dansk: dict[str, float] = {}
-    ikkevestlig: dict[str, float] = {}
-
-    for row in rows:
-        kode = row.get("OMRÅDE", "").strip()
-        herkomst = row.get("HERKOMST", "").strip()
-        val = parse_value(row.get("INDHOLD", ""))
-        if val is None:
-            continue
-        if kode not in VALID_CODES and kode != "000":
-            continue
-        if herkomst == "10":
-            dansk[kode] = val
-        elif herkomst == "25":
-            ikkevestlig[kode] = val
-
-    # Ratio: ikke-vestlig BFK / dansk BFK * 100
-    ratio: dict[str, float] = {}
-    for kode in set(dansk) & set(ikkevestlig):
-        if dansk[kode] > 0:
-            ratio[kode] = round((ikkevestlig[kode] / dansk[kode]) * 100, 2)
-
-    national = ratio.pop("000", None)
-    print(f"  {len(ratio)} kommuner, national ratio: {national}% (ikkevestlig vs. dansk BFK)")
+def fetch_employment_by_origin() -> tuple[dict[str, float], float | None]:
+    """Beskæftigelsesgab efter herkomst i nyeste år med data, og landstallet."""
+    print("Henter beskaeftigelse pr. herkomst (RAS200)...")
+    aar, ratio, national = seneste(serie_employment_origin_gap(
+        seneste_aar_liste("RAS200", 2, fallback=["2024", "2023"])), tabel="RAS200")
+    print(f"  {len(ratio)} kommuner ({aar}), national ratio: {national}% (ikkevestlig vs. dansk BFK)")
     return ratio, national
 
 
@@ -243,6 +221,9 @@ def main():
             inc_ratio,
             emp_val if emp_val is not None else "",
             emp_ratio,
+            nat_le_gap if nat_le_gap is not None else "",
+            nat_income if nat_income is not None else "",
+            nat_emp_origin if nat_emp_origin is not None else "",
         ])
 
     write_csv("ligestilling_scores.csv", [
@@ -250,6 +231,7 @@ def main():
         "le_gender_gap_years",       "le_gender_gap_ratio",
         "income_gender_gap_pct",     "income_gender_gap_ratio",
         "employment_origin_gap_pct", "employment_origin_gap_ratio",
+        "le_gender_gap_ref", "income_gender_gap_ref", "employment_origin_gap_ref",
     ], rows)
 
     # Vis eksempel

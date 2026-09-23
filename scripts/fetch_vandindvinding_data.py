@@ -9,11 +9,11 @@ Datakilde:
   Danmarks Statistik - Statistikbanken VANDIND (Indvinding af vand)
   VANDTYP = TOTVAND (vand i alt)
   INDKAT  = 100 (alment vandværk)
-  Tid     = 2024
+  Tid     = nyeste år med data
 
 Metode:
   1. Hent vandindvinding (mio. m³) pr. kommune fra VANDIND
-  2. Hent befolkningstal fra FOLK1A (seneste kvartal)
+  2. Hent befolkningstal fra FOLK1A (1. januar samme år)
   3. Beregn vandindvinding_m3_per_person = (mio_m3 * 1_000_000) / befolkning
   4. Sæt None for kommuner < 10 m³/person (data-artefakt: KBH's vandværk
      er fysisk registreret i andre kommuner, fx via HOFOR)
@@ -36,7 +36,8 @@ Begrænsninger:
 
 Output:
   data/vandindvinding_scores.csv
-  Kolonner: kommune_kode, kommune_navn, vandindvinding_m3_per_person, vandindvinding_ratio
+  Kolonner: kommune_kode, kommune_navn, vandindvinding_m3_per_person, vandindvinding_ratio,
+            vandindvinding_ref (landstallet)
 
 Kør fra projektets rodmappe:
   python3 scripts/fetch_vandindvinding_data.py
@@ -46,227 +47,87 @@ from __future__ import annotations  # kræves: maskinen kører Python 3.9,
 # hvor 'float | None' i en signatur ellers fejler ved import (TypeError).
 
 import csv
-import time
-import requests
-from io import StringIO
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from kommuner import KOMMUNER  # noqa: E402  (de 98 kommuner, data/kommuner.json)
+from dst import api_post, folketal, pr_kommune_aar, seneste  # noqa: E402  (fælles DST-kald)
+from dst_aar import seneste_aar_liste  # noqa: E402
 
 # ── Konstanter ────────────────────────────────────────────────────────────────
 
-BASE_URL   = "https://api.statbank.dk/v1/data"
-OUTPUT_FIL = Path("data/vandindvinding_scores.csv")
-DELAY      = 0.6   # sekunder mellem API-kald
+OUTPUT_FIL = Path(__file__).resolve().parent.parent / "data" / "vandindvinding_scores.csv"
 
 # Minimumsgrænse for m³/person - under dette er data et registreringsartefakt
 MIN_M3_PER_PERSON = 10.0
 
 
-# ── API-hjælper ───────────────────────────────────────────────────────────────
+# ── Vandindvinding pr. person (samme funktion til score og retningspil) ──────
 
-def fetch_csv_raw_url(url: str) -> list[dict]:
-    """Henter data fra en URL med bogstavelige kommaer (ingen URL-encoding).
-    Statistikbanken kræver literal kommaer i OMRÅDE-parameteren."""
-    time.sleep(DELAY)
-    resp = requests.get(url, timeout=30)
-    resp.raise_for_status()
-    resp.encoding = "utf-8"
-    reader = csv.DictReader(StringIO(resp.text), delimiter=";")
-    return list(reader)
-
-
-def fetch_csv(table_id: str, params: dict) -> list[dict]:
-    """Henter data fra Statistikbanken som CSV og returnerer liste af dicts."""
-    time.sleep(DELAY)
-    url = f"{BASE_URL}/{table_id}/CSV"
-    resp = requests.get(url, params={"lang": "da", **params}, timeout=30)
-    resp.raise_for_status()
-    resp.encoding = "utf-8"
-    reader = csv.DictReader(StringIO(resp.text), delimiter=";")
-    return list(reader)
-
-
-def parse_float(s: str) -> float | None:
-    """Konverterer Statistikbank-tal (dansk format, '..' = mangler) til float."""
-    if not s or s.strip() in ("..", "x", "X", ""):
-        return None
-    try:
-        return float(s.strip().replace(".", "").replace(",", "."))
-    except ValueError:
-        return None
-
-
-# ── Trin 1: Vandindvinding (VANDIND) ─────────────────────────────────────────
-
-def hent_vandindvinding() -> dict[str, float | None]:
+def serie_vandindvinding(aar: list[str]) -> dict[tuple[str, str], float]:
     """
-    Henter vandindvinding fra almene vandværker (mio. m³) pr. kommune.
-    Returnerer {kommune_kode: mio_m3} - None hvis data mangler.
+    VANDIND (VANDTYP=TOTVAND, INDKAT=100 alment vandværk) i m³ pr. person med
+    folketallet 1. januar samme år. {(kommune_kode, år): m³/person}; landstallet
+    (000) er det befolkningsvægtede gennemsnit af kommunerne med gyldige data.
+    Under MIN_M3_PER_PERSON udelades kommunen som registreringsartefakt (fx
+    København, hvis vandværker ligger i nabokommunerne).
+
+    Bruges af både scoren og retningspilen (fetch_trend_history.py). Indtil
+    sep. 2026 var året (2024) og folketallet (2025K1) hårdkodet, og kommunerne
+    blev fundet ved at matche navne, også på delstrenge.
     """
-    print("Henter vandindvinding (VANDIND, INDKAT=100, 2024)...")
-
-    # Alle kommunekoder kommasepareret.
-    # OBS: requests.get(params=...) URL-encoder kommaerne (101%2C147) hvilket
-    # Statistikbanken ikke accepterer - vi bygger URL'en manuelt.
-    koder = ",".join(KOMMUNER.keys())
-    url = (
-        f"{BASE_URL}/VANDIND/CSV?lang=da"
-        f"&VANDTYP=TOTVAND&INDKAT=100&Tid=2024&OMRÅDE={koder}"
-    )
-    rows = fetch_csv_raw_url(url)
-
-    # VANDIND returnerer kommunenavn i OMRÅDE-kolonnen, ikke kode.
-    # Byg omvendt opslag: navn (lowercase) -> kode
-    navn_til_kode = {v.lower(): k for k, v in KOMMUNER.items()}
-
-    result = {}
-    for row in rows:
-        # Kolonnenavne kan variere - find den relevante
-        omraade = (row.get("OMRÅDE") or row.get("område") or "").strip().lower()
-        indhold = row.get("INDHOLD") or row.get("indhold") or ""
-
-        # Match navn til kode (fuzzy: kommunenavn kan have æ/ø/å-varianter)
-        kode = navn_til_kode.get(omraade)
-        if not kode:
-            # Prøv delvis match
-            for navn, k in navn_til_kode.items():
-                if navn in omraade or omraade in navn:
-                    kode = k
-                    break
-
-        if kode:
-            result[kode] = parse_float(indhold)
-
-    print(f"  Modtaget data for {len(result)} kommuner")
-    mangler = [k for k in KOMMUNER if k not in result]
-    if mangler:
-        print(f"  Ingen data for: {[KOMMUNER[k] for k in mangler[:5]]}")
-
-    return result
+    rows = api_post("VANDIND", [
+        {"code": "OMRÅDE", "values": ["*"]},
+        {"code": "VANDTYP", "values": ["TOTVAND"]},
+        {"code": "INDKAT", "values": ["100"]},
+        {"code": "Tid", "values": aar},
+    ])
+    mio_m3 = {k: v for k, v in pr_kommune_aar(rows).items() if k[0] != "000"}
+    folk = folketal(sorted({a for _, a in mio_m3}))
+    ud: dict[tuple[str, str], float] = {}
+    sum_m3: dict[str, float] = {}
+    sum_bef: dict[str, float] = {}
+    for (kode, a), mio in mio_m3.items():
+        bef = folk.get((kode, a))
+        if not bef:
+            continue
+        m3 = mio * 1_000_000 / bef
+        if m3 < MIN_M3_PER_PERSON:
+            continue
+        ud[(kode, a)] = round(m3, 2)
+        sum_m3[a] = sum_m3.get(a, 0.0) + mio * 1_000_000
+        sum_bef[a] = sum_bef.get(a, 0.0) + bef
+    for a in sum_m3:
+        ud[("000", a)] = round(sum_m3[a] / sum_bef[a], 2)
+    return ud
 
 
-# ── Trin 2: Befolkningstal (FOLK1A) ──────────────────────────────────────────
-
-def hent_befolkning() -> dict[str, int | None]:
-    """
-    Henter befolkningstal pr. kommune fra FOLK1A (seneste kvartal).
-    Returnerer {kommune_kode: befolkning}.
-    """
-    print("Henter befolkningstal (FOLK1A, 2025K1)...")
-
-    koder = ",".join(KOMMUNER.keys())
-    url = (
-        f"{BASE_URL}/FOLK1A/CSV?lang=da"
-        f"&KØN=TOT&ALDER=IALT&CIVILSTAND=TOT&Tid=2025K1&OMRÅDE={koder}"
-    )
-    rows = fetch_csv_raw_url(url)
-
-    navn_til_kode = {v.lower(): k for k, v in KOMMUNER.items()}
-
-    result = {}
-    for row in rows:
-        omraade = (row.get("OMRÅDE") or row.get("område") or "").strip().lower()
-        indhold = row.get("INDHOLD") or row.get("indhold") or ""
-
-        kode = navn_til_kode.get(omraade)
-        if not kode:
-            for navn, k in navn_til_kode.items():
-                if navn in omraade or omraade in navn:
-                    kode = k
-                    break
-
-        if kode:
-            val = parse_float(indhold)
-            result[kode] = int(val) if val is not None else None
-
-    print(f"  Modtaget befolkningstal for {len(result)} kommuner")
-    return result
-
-
-# ── Trin 3: Beregn og gem ─────────────────────────────────────────────────────
-
-def beregn_og_gem(
-    vandind: dict[str, float | None],
-    befolkning: dict[str, int | None],
-) -> None:
-    """Beregner m³/person og ratio, skriver CSV."""
-
-    print("\nBeregner vandindvinding pr. person og ratio...")
-
-    resultater = []
-
-    for kode, navn in KOMMUNER.items():
-        mio_m3 = vandind.get(kode)
-        bef = befolkning.get(kode)
-
-        # Beregn m³/person
-        if mio_m3 is not None and bef and bef > 0:
-            m3_per_person = (mio_m3 * 1_000_000) / bef
-        else:
-            m3_per_person = None
-
-        # Filtrer data-artefakter (bykommuner med vandværk registreret andetsteds)
-        if m3_per_person is not None and m3_per_person < MIN_M3_PER_PERSON:
-            print(f"  ⚠ {navn}: {m3_per_person:.1f} m³/person - sætter til None (data-artefakt)")
-            m3_per_person = None
-
-        resultater.append({
-            "kommune_kode": kode,
-            "kommune_navn": navn,
-            "vandindvinding_m3_per_person": m3_per_person,
-            "vandindvinding_mio_m3": mio_m3,
-            "befolkning": bef,
-        })
-
-    # Nationalt befolkningsvægtet gennemsnit (kun kommuner med gyldige data)
-    valide = [r for r in resultater if r["vandindvinding_m3_per_person"] is not None]
-    if not valide:
+def beregn_og_gem() -> None:
+    """Henter nyeste år, beregner ratio (til krydstjek) og skriver CSV'en."""
+    aar, vaerdier, landssnit = seneste(
+        serie_vandindvinding(seneste_aar_liste("VANDIND", 2, fallback=["2024", "2023"])),
+        tabel="VANDIND")
+    if not vaerdier:
         print("FEJL: Ingen gyldige data til rådighed.")
         return
-
-    total_m3 = sum(r["vandindvinding_m3_per_person"] * r["befolkning"] for r in valide)
-    total_bef = sum(r["befolkning"] for r in valide)
-    landssnit = total_m3 / total_bef
+    print(f"  År {aar}: {len(vaerdier)}/98 kommuner med gyldige data")
     print(f"  Nationalt gennemsnit (befolkningsvægtet): {landssnit:.1f} m³/person")
-    print(f"  Kommuner med gyldige data: {len(valide)}/98")
+    for kode in KOMMUNER:
+        if kode not in vaerdier:
+            print(f"  ⚠ {KOMMUNER[kode]}: ingen gyldig værdi (under {MIN_M3_PER_PERSON} m³/person eller ingen data)")
 
-    # Beregn ratio
-    for r in resultater:
-        if r["vandindvinding_m3_per_person"] is not None:
-            r["vandindvinding_ratio"] = round(
-                (r["vandindvinding_m3_per_person"] / landssnit) * 100, 2
-            )
-        else:
-            r["vandindvinding_ratio"] = ""
-
-    # Statistik
-    ratios = [r["vandindvinding_ratio"] for r in resultater if r["vandindvinding_ratio"] != ""]
-    print(f"  Ratio-range: {min(ratios):.0f} - {max(ratios):.0f}")
-    over_100 = sum(1 for r in ratios if r > 100)
-    print(f"  Kommuner over landsgennemsnit (>100): {over_100}/{len(ratios)}")
-
-    # Thisted
-    thisted = next((r for r in resultater if r["kommune_kode"] == "787"), None)
-    if thisted:
-        print(f"\n  Thisted Kommune:")
-        print(f"    Vandindvinding: {thisted.get('vandindvinding_mio_m3')} mio. m³")
-        print(f"    m³/person: {thisted['vandindvinding_m3_per_person']:.1f}" if thisted['vandindvinding_m3_per_person'] else "    m³/person: None")
-        print(f"    Ratio: {thisted['vandindvinding_ratio']}")
-
-    # Gem CSV
     OUTPUT_FIL.parent.mkdir(parents=True, exist_ok=True)
-    fieldnames = [
-        "kommune_kode", "kommune_navn",
-        "vandindvinding_m3_per_person", "vandindvinding_ratio",
-    ]
     with open(OUTPUT_FIL, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
-        writer.writeheader()
-        writer.writerows(sorted(resultater, key=lambda r: r["kommune_kode"]))
-
-    print(f"\n✓ Gemt: {OUTPUT_FIL} ({len(resultater)} kommuner)")
+        writer = csv.writer(f)
+        writer.writerow(["kommune_kode", "kommune_navn", "vandindvinding_m3_per_person",
+                         "vandindvinding_ratio", "vandindvinding_ref"])
+        for kode in sorted(KOMMUNER):
+            v = vaerdier.get(kode)
+            writer.writerow([kode, KOMMUNER[kode], "" if v is None else v,
+                             "" if v is None else round(v / landssnit * 100, 2), landssnit])
+    t = vaerdier.get("787")
+    print(f"\n  Thisted: {t} m³/person" if t else "\n  Thisted: ingen værdi")
+    print(f"\n✓ Gemt: {OUTPUT_FIL} ({len(KOMMUNER)} kommuner)")
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -275,13 +136,11 @@ def main():
     print("=" * 65)
     print("Doughnut Economics - Vandindvinding pr. capita (DST VANDIND)")
     print("=" * 65)
-    print(f"Kilde: Statistikbanken VANDIND, INDKAT=100 (alment vandværk), 2024")
+    print("Kilde: Statistikbanken VANDIND, INDKAT=100 (alment vandværk), nyeste år")
     print(f"Min. grænse for gyldige data: {MIN_M3_PER_PERSON} m³/person")
     print()
 
-    vandind    = hent_vandindvinding()
-    befolkning = hent_befolkning()
-    beregn_og_gem(vandind, befolkning)
+    beregn_og_gem()
 
     print("\nFærdig!")
 

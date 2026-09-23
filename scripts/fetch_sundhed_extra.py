@@ -25,7 +25,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dst_aar import seneste_kvartal, seneste_aar_liste  # noqa: E402
-from dst import api_post, parse_value  # noqa: E402  (fælles DST-kald, scripts/dst.py)
+from dst import api_post, parse_value, pr_indbygger, pr_kommune_aar, seneste  # noqa: E402  (fælles DST-kald, scripts/dst.py)
 from kommuner import KODER as VALID_CODES  # noqa: E402  (de 98 kommuner, data/kommuner.json)
 
 
@@ -319,45 +319,36 @@ def fetch_boerneovervaeght() -> tuple[dict[str, float], float | None]:
 # DEL 5: DST HJEMSYG - Hjemmesygepleje-modtagere pr. kommune
 # ---------------------------------------------------------------------------
 
-def fetch_hjemsyg(population: dict[str, float]) -> tuple[dict[str, float], float | None]:
+def serie_hjemsyg(aar: list[str]) -> dict[tuple[str, str], float]:
     """
-    HJEMSYG: Modtagere af hjemmesygepleje (eget hjem), alle aldre.
-    Normaliseres til pr. 1.000 indbyggere vha. FOLK1A-befolkningstal.
-    Returnerer {kommune_kode: modtagere_pr_1000}, national_avg.
+    HJEMSYG: modtagere af hjemmesygepleje (eget hjem), alle aldre, pr. 1.000
+    indb. med folketallet 1. januar samme år. {(kommune_kode, år): værdi};
+    landstallet (000) er summen af de 98 kommuner delt med hele landets
+    folketal. Bruges af både scoren og retningspilen (fetch_trend_history.py).
     """
+    rows = api_post("HJEMSYG", [
+        {"code": "OMRÅDE", "values": ["*"]},
+        {"code": "ALDER1", "values": ["050"]},   # Alder i alt
+        {"code": "KOEN", "values": ["100"]},      # Mænd og kvinder i alt
+        {"code": "Tid", "values": aar},
+    ])
+    antal = {k: v for k, v in pr_kommune_aar(rows).items() if k[0] != "000"}
+    for a in {a for _, a in antal}:
+        antal[("000", a)] = sum(v for (k, aa), v in antal.items() if aa == a and k != "000")
+    return pr_indbygger(antal, 1000, 2)
+
+
+def fetch_hjemsyg() -> tuple[dict[str, float], float | None]:
+    """Hjemmesygepleje-modtagere pr. 1.000 indb. i nyeste år med mindst 50
+    kommuner, og landstallet."""
     print("Henter hjemmesygepleje-modtagere (HJEMSYG)...")
-    nat_pop = population.get("000", 5_900_000)
-
-    for year in ["2025", "2024", "2023"]:
-        rows = api_post("HJEMSYG", [
-            {"code": "OMRÅDE", "values": ["*"]},
-            {"code": "ALDER1", "values": ["050"]},   # Alder i alt
-            {"code": "KOEN", "values": ["100"]},      # Mænd og kvinder i alt
-            {"code": "Tid", "values": [year]},
-        ])
-        counts: dict[str, float] = {}
-        for row in rows:
-            kode = row.get("OMRÅDE", "").strip()
-            val = parse_value(row.get("INDHOLD", ""))
-            if val is not None and kode in VALID_CODES:
-                counts[kode] = val
-
-        if len(counts) < 50:
-            print(f"  Kun {len(counts)} kommuner for {year}, prøver ældre...")
-            continue
-
-        result: dict[str, float] = {}
-        nat_count = sum(counts.values())
-        national = round(nat_count / nat_pop * 1000, 2) if nat_pop else None
-        for kode, count in counts.items():
-            if kode in population and population[kode] > 0:
-                result[kode] = round(count / population[kode] * 1000, 2)
-
-        print(f"  {len(result)} kommuner (år: {year}), landsgennemsnit: {national} pr. 1.000 indb.")
-        return result, national
-
-    print("  ⚠  Ikke nok data")
-    return {}, None
+    aar, result, national = seneste(serie_hjemsyg(
+        seneste_aar_liste("HJEMSYG", 3, fallback=["2025", "2024", "2023"])), tabel="HJEMSYG")
+    if not result:
+        print("  ⚠  Ikke nok data")
+        return {}, None
+    print(f"  {len(result)} kommuner (år: {aar}), landsgennemsnit: {national} pr. 1.000 indb.")
+    return result, national
 
 
 # ---------------------------------------------------------------------------
@@ -395,7 +386,7 @@ def main():
     print("\n" + "=" * 60)
     print("DEL 5: Hjemmesygepleje (DST HJEMSYG)")
     print("=" * 60)
-    hjemsyg_data, hjemsyg_nat = fetch_hjemsyg(population)
+    hjemsyg_data, hjemsyg_nat = fetch_hjemsyg()
 
     # Skriv CSV'er
     print("\n--- Gemmer CSV'er ---")
@@ -431,9 +422,10 @@ def main():
     for kode in sorted(VALID_CODES, key=int):
         val = hjemsyg_data.get(kode)
         ratio = ratio_inverse(val, hjemsyg_nat) if val is not None and hjemsyg_nat else ""
-        hjemsyg_rows.append([kode, val if val is not None else "", ratio])
+        hjemsyg_rows.append([kode, val if val is not None else "", ratio,
+                             hjemsyg_nat if hjemsyg_nat is not None else ""])
     write_csv("hjemsyg_scores.csv", [
-        "kommune_kode", "hjemsyg_raw", "hjemsyg_ratio",
+        "kommune_kode", "hjemsyg_raw", "hjemsyg_ratio", "hjemsyg_ref",
     ], hjemsyg_rows)
 
     print("\n" + "=" * 60)

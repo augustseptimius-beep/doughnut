@@ -53,15 +53,22 @@ def _aarstal(periode: str) -> str:
     DST bruger flere formater: "2025", "2025K3" og 5-års-intervaller som
     "2021:2025" (fx HISBK middellevetid). For et interval er det SLUTåret der
     beskriver hvor nyt tallet er - tager man startåret, kommer indikatoren til
-    at se fire år ældre ud end den er.
+    at se fire år ældre ud end den er. Samme regel gælder UVM's skoleår
+    ("2024/2025" giver 2025, året for prøverne og trivselsmålingen), så et
+    skoleår mærkes ens i scoren og i retningspilen.
     """
     p = str(periode)
-    if ":" in p:
-        dele = [d for d in p.split(":") if re.match(r"^\d{4}$", d)]
+    if ":" in p or "/" in p:
+        dele = [d for d in re.split(r"[:/]", p) if re.match(r"^\d{4}$", d)]
         if dele:
             return dele[-1]
     m = re.match(r"\d{4}", p)
     return m.group(0) if m else p
+
+
+def aarstal(periode: str) -> str:
+    """Offentlig udgave af _aarstal(): '2025K3' -> '2025', '2021:2025' -> '2025'."""
+    return _aarstal(periode)
 
 
 def registrer_aar(tabel: str, aar: str) -> None:
@@ -106,6 +113,19 @@ def _perioder(tabel: str) -> list[str]:
     perioder = sorted(str(x["id"]) for x in tid["values"]) if tid else []
     _cache[tabel] = perioder
     return perioder
+
+
+def perioder(tabel: str) -> list[str]:
+    """Alle perioder i tabellen, sorteret stigende (fx '2024K4', '2021:2025')."""
+    return list(_perioder(tabel))
+
+
+def perioder_fra(tabel: str, fra_aar: int) -> list[str]:
+    """Alle perioder i tabellen fra og med `fra_aar` (slutåret for intervaller),
+    stigende. Til tidsserier: en periode tabellen ikke kender, får DST til at
+    afvise hele kaldet, så man kan ikke bare bede om range(2010, 2026)."""
+    return [p for p in _perioder(tabel) if re.match(r"\d{4}", _aarstal(p))
+            and int(_aarstal(p)) >= fra_aar]
 
 
 def seneste_aar(tabel: str, fallback: str | None = None) -> str:

@@ -440,7 +440,7 @@ def main() -> None:
                                      "aar": a, "raw_value": pct})
 
     if umatchede:
-        print(f"\n⚠ Kommunenavne uden match i master: {sorted(umatchede)}")
+        print(f"\n⚠ Kommunenavne uden match i data/kommuner.json: {sorted(umatchede)}")
 
     # --- skriv scores-CSV ---
     ids = [i["id"] for i in INDIKATORER if i["id"] in seneste]
@@ -453,6 +453,7 @@ def main() -> None:
         header = ["kommune_kode"]
         for i in ids:
             header += [f"{i}_pct", f"{i}_ratio"]
+        header += [f"{i}_ref" for i in ids]   # landstallet (vægtet), se vaegtet_landsgennemsnit()
         w.writerow(header)
         for kode in alle_koder:
             row = [kode]
@@ -464,6 +465,7 @@ def main() -> None:
                 r = (ratio_inverse(pct, landstal[i]) if inverse[i]
                      else ratio_direct(pct, landstal[i]))
                 row += [pct, min(r, 150)]
+            row += [round(landstal[i], 4) for i in ids]
             w.writerow(row)
     print(f"\n✓ Skrev {ud.relative_to(ROOT)} ({len(alle_koder)} kommuner, {len(ids)} indikatorer)")
 

@@ -184,6 +184,7 @@ def main():
             rows_out.append({
                 "kommune_kode": kode, "kommune_navn": navn,
                 "pct_god_tilstand": "", "antal_vandomraader": 0, "vandkvalitet_ratio": "",
+                "overfladevand_ref": round(national_pct, 4),
             })
             continue
         pct = round(god / total * 100, 2)
@@ -194,10 +195,12 @@ def main():
         rows_out.append({
             "kommune_kode": kode, "kommune_navn": navn,
             "pct_god_tilstand": pct, "antal_vandomraader": total, "vandkvalitet_ratio": ratio,
+            "overfladevand_ref": round(national_pct, 4),
         })
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    fieldnames = ["kommune_kode", "kommune_navn", "pct_god_tilstand", "antal_vandomraader", "vandkvalitet_ratio"]
+    fieldnames = ["kommune_kode", "kommune_navn", "pct_god_tilstand", "antal_vandomraader", "vandkvalitet_ratio",
+                  "overfladevand_ref"]
     with open(OUTPUT, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=fieldnames)
         w.writeheader()

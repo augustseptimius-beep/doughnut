@@ -133,10 +133,10 @@ def main() -> None:
     ud = DATA / "kulturvaner_scores.csv"
     with open(ud, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["kommune_kode", "sport_tilskuer_pct", "sport_tilskuer_ratio"])
+        w.writerow(["kommune_kode", "sport_tilskuer_pct", "sport_tilskuer_ratio", "sport_tilskuer_ref"])
         for kode in sorted(pr_kommune, key=int):
             pct = pr_kommune[kode]
-            w.writerow([kode, pct, ratio_direct(pct, nat)])
+            w.writerow([kode, pct, ratio_direct(pct, nat), nat])
     print(f"✓ Skrev {ud.relative_to(ROOT)} ({len(pr_kommune)} kommuner, {aar[0]}-{aar[-1]})")
 
     sys.path.insert(0, str(ROOT / "scripts"))

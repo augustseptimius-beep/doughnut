@@ -34,17 +34,23 @@ Brug:
 from __future__ import annotations
 
 import csv
+import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dst_aar import (seneste_aar, seneste_aar_liste, seneste_periode,  # noqa: E402
-                     seneste_kvartal, hele_aar_kvartaler)
-from dst import api_post, parse_value  # noqa: E402  (fælles DST-kald, scripts/dst.py)
+                     seneste_kvartal, hele_aar_kvartaler, perioder)
+from dst import api_post, parse_value, pr_indbygger, pr_kommune_aar, seneste  # noqa: E402  (fælles DST-kald, scripts/dst.py)
 from kommuner import KODER as VALID_CODES  # noqa: E402  (de 98 kommuner, data/kommuner.json)
 
 
 OUTPUT_DIR = Path(__file__).parent.parent / "data"
+
+
+def _tom(v):
+    """Tom celle for manglende værdi (men 0 bevares, modsat `v or ""`)."""
+    return "" if v is None else v
 
 
 def ratio_direct(kommune_val: float, national_avg: float) -> float:
@@ -112,56 +118,37 @@ def fetch_sports_membership() -> dict[str, float]:
     return result, national
 
 
-def fetch_crime_rate() -> dict[str, float]:
-    """
-    STRAF11: Anmeldte forbrydelser pr. kommune (årligt).
-    Vi henter alle 4 kvartaler og summerer.
-    Returnerer {kommune_kode: antal_forbrydelser}.
-    """
-    print("Henter kriminalitetsdata (STRAF11)...")
+def serie_crime_rate(aar: list[str]) -> dict[tuple[str, str], float]:
+    """STRAF11: anmeldte forbrydelser i alt pr. 1.000 indb., {(kommune_kode, år): værdi}
+    inkl. hele landet (000). Årstallet er summen af fire kvartaler, og kun år
+    med alle fire kvartaler tages med - et halvfærdigt år ville give et
+    kunstigt lavt tal. Folketallet er 1. januar samme år. Bruges af både scoren
+    og retningspilen (fetch_trend_history.py)."""
+    findes = set(perioder("STRAF11"))
+    hele = [a for a in aar if all(f"{a}K{k}" in findes for k in range(1, 5))]
+    if not hele:
+        return {}
     rows = api_post("STRAF11", [
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "OVERTRÆD", "values": ["TOT"]},   # I alt
-        # Nyeste år med ALLE fire kvartaler - et halvfærdigt år ville give
-        # et kunstigt lavt antal forbrydelser.
-        {"code": "Tid", "values": hele_aar_kvartaler("STRAF11")[1]},
+        {"code": "Tid", "values": [f"{a}K{k}" for a in hele for k in range(1, 5)]},
     ])
-    # Sum kvartaler per kommune
-    sums: dict[str, float] = {}
-    for row in rows:
-        kode = row.get("OMRÅDE", "").strip()
-        val = parse_value(row.get("INDHOLD", ""))
-        if val is None:
-            continue
-        if kode in VALID_CODES or kode == "000":
-            sums[kode] = sums.get(kode, 0) + val
-    # Prøv 2023 hvis 2024 er tom
-    if len(sums) < 50:
-        print("  Få resultater for 2024, prøver 2023...")
-        rows = api_post("STRAF11", [
-            {"code": "OMRÅDE", "values": ["*"]},
-            {"code": "OVERTRÆD", "values": ["TOT"]},
-            {"code": "Tid", "values": ["2023K1", "2023K2", "2023K3", "2023K4"]},
-        ])
-        sums = {}
-        for row in rows:
-            kode = row.get("OMRÅDE", "").strip()
-            val = parse_value(row.get("INDHOLD", ""))
-            if val is None:
-                continue
-            if kode in VALID_CODES or kode == "000":
-                sums[kode] = sums.get(kode, 0) + val
-
-    national = sums.pop("000", None)
-    print(f"  {len(sums)} kommuner, landssamlet: {national}")
-    return sums, national
+    return pr_indbygger(pr_kommune_aar(rows), 1000, 2)
 
 
-def fetch_traffic_accidents() -> tuple[dict[str, float], float | None]:
+def fetch_crime_rate() -> tuple[dict[str, float], float | None]:
+    """Anmeldte forbrydelser pr. 1.000 indb. i nyeste hele år, og landstallet."""
+    print("Henter kriminalitetsdata (STRAF11)...")
+    aar, _ = hele_aar_kvartaler("STRAF11")
+    aar, result, national = seneste(serie_crime_rate([aar]), tabel="STRAF11")
+    print(f"  {len(result)} kommuner ({aar}), landstal: {national} pr. 1.000")
+    return result, national
+
+
+def serie_traffic_accidents(aar: list[str]) -> dict[tuple[str, str], float]:
     """
-    UHELDK1: Tilskadekomne og dræbte i færdselsuheld pr. kommune.
-    Henter UHELD='0' (personskade i alt) og summerer over alle transportmidler,
-    aldre og køn.
+    UHELDK1: tilskadekomne og dræbte i færdselsuheld (UHELD=0, personskade i
+    alt, summeret over transportmidler, alder og køn) pr. 100.000 indb.
 
     TREÅRIGT GENNEMSNIT (indført sep. 2026). Ét års tal er ren støj i små
     kommuner: Læsø lå på 118,8 pr. 100.000 i 2024, hvilket med kommunens
@@ -169,35 +156,42 @@ def fetch_traffic_accidents() -> tuple[dict[str, float], float | None]:
     flyttede scoren med titalls point, og kommunen kunne ikke gøre noget ved
     det. Samme greb som vejr_skader, der også bruger flere år.
 
-    Returnerer ({kommune_kode: gennemsnitligt antal pr. år}, national_total_pr_aar).
+    Værdien for år Y er gennemsnittet af raterne for Y-2, Y-1 og Y, hver med
+    folketallet 1. januar samme år, så retningspilen (fetch_trend_history.py)
+    følger præcis samme tal som scoren. Returnerer {(kommune_kode, Y): værdi}
+    inkl. hele landet (000); år uden tre forudgående år med data udelades.
     """
-    aar = sorted(seneste_aar_liste("UHELDK1", 3, fallback=["2024", "2023", "2022"]))
-    print(f"Henter trafikulykker (UHELDK1, {aar[0]}-{aar[-1]}, treårigt gennemsnit)...")
+    findes = {p for p in perioder("UHELDK1") if re.fullmatch(r"\d{4}", p)}
+    alle = sorted({str(int(a) - d) for a in aar for d in range(3)} & findes)
+    if not alle:
+        return {}
+    # INDBLAND, ALDER og KØN udelades, så DST lægger alle kategorier sammen
+    # (ingen af dem har en "i alt"-værdi). Samme tal som at bede om "*" og
+    # summere selv - efterprøvet 2023-2025 - men med "*" på alle tre bliver en
+    # tidsserie fra 2010 for stor til DST's CSV-grænse (HTTP 400).
     rows = api_post("UHELDK1", [
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "UHELD", "values": ["0"]},       # Personskade i alt
-        {"code": "INDBLAND", "values": ["*"]},    # Alle transportmidler
-        {"code": "ALDER", "values": ["*"]},        # Alle aldre
-        {"code": "KØN", "values": ["*"]},          # Alle køn
-        {"code": "Tid", "values": aar},
+        {"code": "Tid", "values": alle},
     ])
-    sums: dict[str, float] = {}
-    for row in rows:
-        kode = row.get("OMRÅDE", "").strip()
-        val = parse_value(row.get("INDHOLD", ""))
-        if val is None or val == 0:
-            continue
-        if kode in VALID_CODES or kode == "000":
-            sums[kode] = sums.get(kode, 0) + val
+    rate = pr_indbygger(pr_kommune_aar(rows), 100_000, 4)
+    ud: dict[tuple[str, str], float] = {}
+    for kode in {k for k, _ in rate}:
+        for a in aar:
+            tre = [rate.get((kode, str(int(a) - d))) for d in range(3)]
+            if all(v is not None for v in tre):
+                ud[(kode, a)] = round(sum(tre) / 3, 2)
+    return ud
 
-    n = len(aar)
-    snit = {k: v / n for k, v in sums.items()}
-    national_total = snit.pop("000", None)
-    if national_total:
-        print(f"  {len(snit)} kommuner, landssamlet pr. år: {national_total:.0f}")
-    else:
-        print(f"  {len(snit)} kommuner")
-    return snit, national_total
+
+def fetch_traffic_accidents() -> tuple[dict[str, float], float | None]:
+    """Treårigt gennemsnit af tilskadekomne pr. 100.000 indb. og landstallet,
+    se serie_traffic_accidents()."""
+    aar = seneste_aar_liste("UHELDK1", 1, fallback=["2024"])
+    print(f"Henter trafikulykker (UHELDK1, {int(aar[0]) - 2}-{aar[0]}, treårigt gennemsnit)...")
+    aar, result, national = seneste(serie_traffic_accidents(aar), tabel="UHELDK1")
+    print(f"  {len(result)} kommuner, landstal: {national} pr. 100.000")
+    return result, national
 
 
 def fetch_population() -> dict[str, float]:
@@ -223,60 +217,36 @@ def fetch_population() -> dict[str, float]:
 # LOKALSAMFUND
 # ---------------------------------------------------------------------------
 
-def fetch_library_loans() -> dict[str, float]:
+def serie_library_use(aar: list[str]) -> dict[tuple[str, str], float]:
     """
-    BIB3A: Folkebibliotekernes udlån (alle materialetyper, børne- + voksensamling).
+    BIB3A: folkebibliotekernes udlån (alle materialetyper, børne- + voksensamling)
+    pr. indbygger, {(kommune_kode, år): udlån pr. indb.} inkl. hele landet (000).
+    Folketallet er 1. januar samme år. Bruges af både scoren og retningspilen.
 
     Skiftet fra BIB1 aug. 2026: DST har markeret BIB1 som INAKTIV (den stopper
     ved 2024). BIB3A er den aktive afløser og indeholder samme tal - efterprøvet
     på Thisted, København, Aalborg og Slagelse for 2022-2024: 0,0% afvigelse.
     BIB3A splitter på SAMLING (børn/voksne), så begge SKAL summeres for at
     ramme BIB1's "Udlån i alt".
-
-    Årstallet hårdkodes IKKE - vi henter alle år og bruger det nyeste med
-    fuld kommunedækning. Det var netop hårdkodede år der gjorde at flere
-    indikatorer stod stille i årevis selv om scriptet blev kørt.
-
-    Returnerer ({kommune_kode: antal_udlån}, landstal).
     """
-    print("Henter biblioteksudlån (BIB3A)...")
     rows = api_post("BIB3A", [
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "OPGOER1", "values": ["14"]},      # Udlån
         {"code": "MATER", "values": ["MTOT"]},      # Materialetyper i alt
         {"code": "SAMLING", "values": ["*"]},       # Børne- OG voksensamling
-        {"code": "Tid", "values": ["*"]},
+        {"code": "Tid", "values": aar},
     ])
+    return pr_indbygger(pr_kommune_aar(rows), 1, 2)
 
-    # {år: {kode: sum}} - summerer over SAMLING
-    pr_aar: dict[str, dict[str, float]] = {}
-    for row in rows:
-        kode = (row.get("OMRÅDE") or "").strip()
-        aar = (row.get("TID") or "").strip()
-        val = parse_value(row.get("INDHOLD", ""))
-        if val is None or not aar:
-            continue
-        if kode != "000" and kode not in VALID_CODES:
-            continue
-        pr_aar.setdefault(aar, {})
-        pr_aar[aar][kode] = pr_aar[aar].get(kode, 0.0) + val
 
-    if not pr_aar:
-        print("  FEJL: BIB3A returnerede ingen brugbare rækker.")
-        return {}, None
-
-    # Nyeste år hvor mindst 90 kommuner har tal (så et halvfærdigt år ikke vinder)
-    brugbare = [a for a, d in pr_aar.items()
-                if len([k for k in d if k != "000"]) >= 90]
-    if not brugbare:
-        brugbare = list(pr_aar)
-    valgt = max(brugbare)
-
-    data = pr_aar[valgt]
-    national = data.get("000")
-    result = {k: v for k, v in data.items() if k != "000"}
-
-    print(f"  {len(result)} kommuner (år {valgt}), landssamlet: {national}")
+def fetch_library_loans() -> tuple[dict[str, float], float | None]:
+    """Udlån pr. indbygger i nyeste år hvor mindst 90 kommuner har tal (så et
+    halvfærdigt år ikke vinder), og landstallet."""
+    print("Henter biblioteksudlån (BIB3A)...")
+    aar, result, national = seneste(
+        serie_library_use(seneste_aar_liste("BIB3A", 2, fallback=["2024", "2023"])),
+        min_kommuner=90, tabel="BIB3A")
+    print(f"  {len(result)} kommuner (år {aar}), landstal: {national} udlån pr. indb.")
     return result, national
 
 
@@ -652,26 +622,10 @@ def main():
     print("\n--- FÆLLESSKABER ---")
 
     sports, sports_nat = fetch_sports_membership()
-    crime_raw, crime_nat_total = fetch_crime_rate()
-    accidents_raw, accidents_nat_total = fetch_traffic_accidents()
-
-    # Kriminalitet pr. 1.000 indb.
-    crime_per_1k = {}
-    crime_nat_per_1k = None
-    if crime_nat_total and nat_pop:
-        crime_nat_per_1k = round(crime_nat_total / nat_pop * 1000, 2)
-    for kode, count in crime_raw.items():
-        if kode in population and population[kode] > 0:
-            crime_per_1k[kode] = round(count / population[kode] * 1000, 2)
-
-    # Trafikulykker pr. 100.000 indb.
-    accidents_per_100k = {}
-    accidents_nat_per_100k = None
-    if accidents_nat_total and nat_pop:
-        accidents_nat_per_100k = round(accidents_nat_total / nat_pop * 100_000, 2)
-    for kode, count in accidents_raw.items():
-        if kode in population and population[kode] > 0:
-            accidents_per_100k[kode] = round(count / population[kode] * 100_000, 2)
+    # Begge er allerede pr. indbygger med folketallet 1. januar samme år
+    # (serie_crime_rate, serie_traffic_accidents).
+    crime_per_1k, crime_nat_per_1k = fetch_crime_rate()
+    accidents_per_100k, accidents_nat_per_100k = fetch_traffic_accidents()
 
     faellesskab_rows = []
     for kode in sorted(VALID_CODES, key=int):
@@ -689,6 +643,7 @@ def main():
             c_ratio if c_ratio is not None else "",
             a_val if a_val is not None else "",
             a_ratio if a_ratio is not None else "",
+            _tom(sports_nat), _tom(crime_nat_per_1k), _tom(accidents_nat_per_100k),
         ])
 
     write_csv("faellesskaber_scores.csv", [
@@ -696,22 +651,14 @@ def main():
         "sports_membership_pct", "sports_membership_ratio",
         "crime_per_1k", "crime_ratio",
         "traffic_accidents_per_100k", "traffic_accidents_ratio",
+        "sports_membership_ref", "crime_rate_ref", "traffic_accidents_ref",
     ], faellesskab_rows)
 
     # === LOKALSAMFUND ===
     print("\n--- LOKALSAMFUND ---")
 
-    library_raw, library_nat_total = fetch_library_loans()
+    lib_per_cap, lib_nat_per_cap = fetch_library_loans()   # allerede pr. indb.
     facilities_raw, facilities_nat_total = fetch_sports_facilities()
-
-    # Bibliotek pr. indbygger
-    lib_per_cap = {}
-    lib_nat_per_cap = None
-    if library_nat_total and nat_pop:
-        lib_nat_per_cap = round(library_nat_total / nat_pop, 2)
-    for kode, count in library_raw.items():
-        if kode in population and population[kode] > 0:
-            lib_per_cap[kode] = round(count / population[kode], 2)
 
     # Faciliteter pr. 10.000 indb.
     fac_per_10k = {}
@@ -734,12 +681,14 @@ def main():
             l_ratio if l_ratio is not None else "",
             f_val if f_val is not None else "",
             f_ratio if f_ratio is not None else "",
+            _tom(lib_nat_per_cap),
         ])
 
     write_csv("lokalsamfund_scores.csv", [
         "kommune_kode",
         "library_loans_per_cap", "library_ratio",
         "facilities_per_10k", "facilities_ratio",
+        "library_use_ref",
     ], lokal_rows)
 
     # === MOBILITET ===
@@ -771,6 +720,7 @@ def main():
             c_ratio if c_ratio is not None else "",
             t_val if t_val is not None else "",
             t_ratio if t_ratio is not None else "",
+            _tom(commute_nat),
         ])
 
     write_csv("mobilitet_scores.csv", [
@@ -778,6 +728,7 @@ def main():
         "commute_distance_km", "commute_ratio",
         "car_access_pct", "car_access_ratio",
         "public_transport_pct", "public_transport_ratio",
+        "commute_distance_ref",
     ], mobil_rows)
 
     # === VELFÆRD (ekstra) ===
@@ -798,12 +749,14 @@ def main():
             v_ratio if v_ratio is not None else "",
             n_val if n_val is not None else "",
             n_ratio if n_ratio is not None else "",
+            _tom(vuln_nat), _tom(neet_nat),
         ])
 
     write_csv("velfaerd_extra_scores.csv", [
         "kommune_kode",
         "vulnerable_children_pct", "vulnerable_children_ratio",
         "neet_pct", "neet_ratio",
+        "vulnerable_children_ref", "neet_ref",
     ], velfaerd_rows)
 
     print("\n" + "=" * 60)

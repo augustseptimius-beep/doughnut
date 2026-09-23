@@ -190,6 +190,8 @@ def write_csv(
             "voter_turnout_ratio",
             "voter_turnout_national_pct",
             "voter_turnout_national_ratio",
+            "voter_turnout_ref",
+            "voter_turnout_national_ref",
         ])
         all_kodes = sorted(data.keys(), key=int)
         for kode in all_kodes:
@@ -199,6 +201,8 @@ def write_csv(
                 scores.get(kode, ""),
                 round(nat_data[kode], 2) if kode in nat_data else "",
                 nat_scores.get(kode, "") if kode in nat_data else "",
+                national_avg,
+                nat_national_avg or "",
             ])
     print(f"  Gemt: {OUTPUT_FILE}")
     print(f"  Rækker: {len(data)}")

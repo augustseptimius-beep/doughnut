@@ -68,11 +68,16 @@ def _gammel_master(mod: str | None) -> tuple[str | None, str]:
         return None, "git HEAD"
 
 
+# Farven følger den VISTE score (én decimal), ligesom visningsscore() i
+# webapp/lib/shared.ts - ellers melder rapporten skift sitet ikke viser (84,97
+# vises som 85,0 i gult).
 def _farve_social(x):
+    x = None if x is None else round(x, 1)
     return None if x is None else ("grøn" if x >= 100 else "gul" if x >= 85 else "rød")
 
 
 def _farve_eco(x):
+    x = None if x is None else round(x, 1)
     return None if x is None else ("grøn" if x <= 85 else "gul" if x <= 100 else "rød")
 
 

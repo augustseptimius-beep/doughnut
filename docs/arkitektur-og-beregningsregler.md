@@ -318,6 +318,26 @@ indikatorer" på bjælken, medmindre forskellen skyldes manglende tidsserie på 
 indikator der faktisk scores. Fællesskab viser fx 4 af 5, fordi `sport_tilskuer`
 ingen pil har. Det er korrekt.
 
+**T9 - Pilen og scoren er samme tal (fra sep. 2026).** Tidsseriens værdi for
+scorens år skal være scorens råværdi. Indikatorer med en defineret
+beregning (tal pr. indbygger, andele, treårsgennemsnit) hentes af én funktion,
+`serie_<id>(perioder)` i fetch-scriptet, som scoren kalder med det nyeste år
+og `fetch_trend_history.py` med alle år (`SAMME_SOM_SCOREN`). Tre konventioner
+gælder begge steder:
+
+- Et tal pr. indbygger for år Y deles med folketallet 1. januar Y
+  (`dst.folketal()`), ikke med det nyeste kvartal.
+- En periode mærkes med slutåret (`dst_aar.aarstal()`): HISBK's "2021:2025"
+  er 2025, skoleåret "2024/2025" er 2025.
+- Et treårsgennemsnit for Y er gennemsnittet af raterne for Y-2, Y-1 og Y.
+
+`tjek_konsistens.py` sammenligner serie og score for alle indikatorer med pil
+og melder fejl, når mere end 10 procent af kommunerne afviger over 1 procent.
+Første kørsel fandt 14 indikatorer, hvor pilen beskrev et andet tal end
+scoren: andre kategorier (klassekvotient kun i folkeskolen, ubeboede boliger
+inkl. fritidshuse, sportsanlæg talt med i bebygget areal), en anden
+aldersgruppe, et andet folketal og en anden udtræksregel for Klimaregnskabet.
+
 ---
 
 ## 5. Designbeslutninger bag reglerne
@@ -381,8 +401,9 @@ omskaleres på deres allerede vendte ratio, hvilket er en bevidst forenkling.
    fejlkilde i projektet.
 2. **Forurening er den eneste gennemsnitsdimension.** Alle andre økologiske
    dimensioner er worst-of (R7), og reglen skal spejles i retningspilene (T6).
-3. **`forbrug_co2` og `vejr_skader` matcher på kommunenavn, ikke kode.**
-   Manglende match giver `null` uden fallback. Christiansø filtreres fra.
+3. **Kilder med kun kommunenavne får koden slået op i fetch-scriptet**
+   (`kommuner.kode_for_navn()`), ikke i build-trinnet. Et ukendt navn stopper
+   scriptet (R5). Christiansø er ikke blandt de 98.
 4. **`absoluteScore`-indikatorer må aldrig omskaleres af baseline-toggle**
    (R9, R10, R15). I dag `education` og `bolig_fossil`.
 5. **`bolig_fossil` afhænger af fjernvarmedata, og rækkefølgen er bindende:**
@@ -410,14 +431,14 @@ omskaleres på deres allerede vendte ratio, hvilket er en bevidst forenkling.
 
 ## 7. Kendte afvigelser mellem dokumentation og kode
 
-Opdateret 22. september 2026. R1 (`navn_key` omgik cappet) og R12
+Opdateret 23. september 2026. R1 (`navn_key` omgik cappet) og R12
 (`eco_naer_landbrug` havde `lowerIsBetter: true`) er lukket og fjernet fra
 tabellen.
 
 | Regel | Afvigelse | Status |
 |---|---|---|
 | R3 | Landsgennemsnittet for de otte Sundhedsprofil-indikatorer beregnes af os som et befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+), ikke hentet fra kilden. Databasen udstiller ikke et landstal pr. kommunetabel. Reglen forudsætter ellers et landstal fra kilden | Bevidst, dokumenteret i `data/README.md` og på metodesiden |
-| R3 | Landstallet for indikatorer med `reference.type = "landstal"` rekonstrueres ved hvert build fra fetch-scriptets egen ratio, fordi ingen af scripterne endnu skriver landstallet i sin egen kolonne. Reglen forudsætter at scriptet leverer det | Overgang. Lukkes script for script (planens opgave 6). Rekonstruktionen genskaber de publicerede landstal og kan ikke blive ældre end dataen |
+| R3 | Landstallet rekonstrueres stadig fra scriptets ratio for 11 af 52 landstal-indikatorer (Sundhedsprofilen, `overfladevand`, `naer_landbrug`, `pesticider`), fordi deres CSV'er ikke er hentet siden scripterne begyndte at skrive `<id>_ref` (sep. 2026) | Overgang. Lukkes ved næste kørsel af de fire scripts |
 | T1 | Retningen for Sundhedsprofilens indikatorer beregnes 2017 → 2025 (2021 → 2025 for `ensomhed` og `fysisk_aktivitet`), ikke over hele den tilgængelige serie 2010-2025. Reglen siger ellers hele serien | Bevidst, se punkt 23 i CLAUDE.md |
 
 Alle tre er bevidste og dokumenterede.
