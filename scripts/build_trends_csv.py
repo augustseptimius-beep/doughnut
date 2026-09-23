@@ -61,55 +61,27 @@ RAW_INPUT = DATA_DIR / "trend_history_raw.csv"
 MASTER_INPUT = DATA_DIR / "master_indicators.csv"
 OUTPUT = DATA_DIR / "trend_indicators.csv"
 
-# Dimensioner hvis score er et GENNEMSNIT af sub-indikatorerne i stedet for
-# worst-of. SKAL matche AVERAGE_DIMENSIONS i build_master_csv.py, ellers vil
-# pilen pege på noget andet end det tal den står ved siden af.
-AVERAGE_DIMENSIONS = {"forurening"}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import indikatorregister as ir  # noqa: E402
 
-# Sociale indikatorer der HAR en dimension i master, men som platformen hverken
-# scorer eller viser - de står ikke i SOCIAL_CATEGORIES[].indicatorIds i
-# webapp/lib/shared.ts. De skal holdes ude af kategoriens pil: Bolig scorer på
-# 2 indikatorer, så en pil beregnet på 4 ville beskrive et andet datasæt end
-# det tal den står ved siden af (samme fælde som punkt 14 i CLAUDE.md).
-# De beholder deres EGEN indikator-række i trend_indicators.csv - det er kun
-# aggregeringen de holdes ude af, så data er klar hvis de senere tages i brug.
-# HOLD I SYNC med SOCIAL_CATEGORIES i webapp/lib/shared.ts.
-IKKE_SCORET = {"housing_no_wc", "housing_no_bath"}
-
-# ─── op_er_godt pr. indikator ────────────────────────────────────────────
-# Kilde: INDICATORS[].inverse i webapp/lib/shared.ts (sociale) og den faste
-# konvention "for økologiske indikatorer er lavere altid bedre" (CLAUDE.md),
-# undtagen cirkularitet_recycling hvor højere genanvendelse er bedre.
-# HOLD DENNE I SYNC med shared.ts, ligesom build_master_csv.py's egen
-# indikator-liste allerede skal holdes i sync manuelt.
-OP_ER_GODT = {
-    # --- Sociale (fra shared.ts INDICATORS[].inverse) ---
-    "hjemsyg": False, "class_size": False, "daycare_ratio": False,
-    "educated_staff": True, "low_education": False, "education": True,
-    "vulnerable_children": False, "child_notifications": False, "neet": False,
-    "poverty_relative": False, "child_poverty": False, "gini": False,
-    "housing_area": True, "vacant_housing": False, "voter_turnout_national": True,
-    "music_school": True, "library_use": True, "traffic_accidents": False,
-    "crime_rate": False, "sports_membership": True,
-    "gender_leadership": True, "income_gender_gap": True,
-    "employment_origin_gap": True, "le_gender_gap": False, "life_expectancy": True,
-    "employment": True, "disposable_income": True, "commute_distance": False,
-    "hospital_long": False, "housing_no_wc": False, "housing_no_bath": False,
-    "voter_turnout": True, "kultur_spending": True, "civil_society": True,
-    "low_income": False, "exam_grade": True, "high_absence": False,
-    "wellbeing": True, "youth_education": True,
-    # Den Nationale Sundhedsprofil 2025 (survey, bølger hvert 4. år)
-    "selvvurderet_helbred": True, "mentalt_helbred": False, "rygning": False,
-    "alkohol": False, "kost": False, "svaer_overvaegt": False, "ensomhed": False,
-    "social_stoette": False,
-    # sport_tilskuer (KV2GEO) får bevidst INGEN pil: tabellen har kun 2024 og
-    # 2025, og begge år indgår i det toårige gennemsnit indikatoren scores på.
-    # Der er dermed ingen uafhængig start- og slutværdi at beregne retning af.
-    # --- Økologiske (lavere raw = bedre, undtagen genanvendelse) ---
-    "naer_nitrogen": False, "naer_phosphorus": False, "vandindvinding": False,
-    "areal_intensiv": False, "areal_bebygget": False, "klimapaavirkning": False,
-    "cirkularitet_waste": False, "cirkularitet_recycling": True,
-}
+# Tre ting kommer fra data/indikatorer.json via indikatorregister.py, så de
+# ikke længere skal holdes i sync i hånden med shared.ts og build_master_csv.py:
+#
+#   ir.op_er_godt()              - om en stigende råværdi er fremgang. Udledt af
+#                                  'inverse' (sociale) og 'lower_is_better'
+#                                  (økologiske). Kontekst-indikatorer har ingen
+#                                  retning og klassificeres som "kontekst".
+#   ir.gennemsnits_dimensioner() - dimensioner hvis score er et GENNEMSNIT af
+#                                  sub-indikatorerne i stedet for worst-of. Samme
+#                                  mængde som build_master_csv.py bruger, så pilen
+#                                  beskriver det tal den står ved siden af.
+#   ir.ikke_scoret()             - sociale indikatorer der står i master, men ikke
+#                                  i nogen kategori (housing_no_wc/no_bath). De
+#                                  beholder deres egen række her, men holdes ude af
+#                                  kategoriens pil (CLAUDE.md pkt. 18).
+#
+# sport_tilskuer har ingen pil, fordi den ikke står i trend_history_raw.csv:
+# KV2GEO har kun 2024 og 2025, og begge år indgår i indikatorens gennemsnit.
 
 KILDE = {
     "klimapaavirkning": "Klimaregnskabet.dk",
@@ -188,6 +160,7 @@ def laes_master_struktur():
     """
     eco = defaultdict(lambda: defaultdict(list))
     social = defaultdict(set)
+    ikke_scoret = ir.ikke_scoret()
     if not MASTER_INPUT.exists():
         print(f"  ADVARSEL: {MASTER_INPUT.name} mangler - springer dimensions-pile over.")
         return eco, social
@@ -203,7 +176,7 @@ def laes_master_struktur():
                     continue
                 eco[r["kommune_kode"]][dim].append((iid, ratio))
             elif kat == "social":
-                if iid in IKKE_SCORET:
+                if iid in ikke_scoret:
                     continue
                 social[dim].add(iid)
     return eco, {d: sorted(ids) for d, ids in social.items()}
@@ -225,6 +198,8 @@ def aggreger_dimensioner(poster, eco_struktur, social_struktur):
     retning. Vi falder bevidst IKKE tilbage på de øvrige - så ville pilen
     beskrive noget andet end det tal den står ved siden af.
     """
+    op_er_godt = ir.op_er_godt()
+    gennemsnit = ir.gennemsnits_dimensioner()
     # {(kommune, indicator_id): post} til hurtigt opslag
     per_indikator = {(p["kommune_kode"], p["indicator_id"]): p for p in poster}
     ud = []
@@ -234,7 +209,7 @@ def aggreger_dimensioner(poster, eco_struktur, social_struktur):
     eco_kandidater = defaultdict(dict)   # {dimension: {kommune: dict}}
     for kode, dims in eco_struktur.items():
         for dim, subs in dims.items():
-            if dim in AVERAGE_DIMENSIONS:
+            if dim in gennemsnit:
                 # Gennemsnit af sub-indikatorernes målrettede ændring.
                 # Økologiske indikatorer vil ned, undtagen genanvendelse.
                 maal = []
@@ -243,7 +218,7 @@ def aggreger_dimensioner(poster, eco_struktur, social_struktur):
                     p = per_indikator.get((kode, iid))
                     if not p or p["pct"] == "":
                         continue
-                    m = maalrettet(float(p["pct"]), OP_ER_GODT.get(iid))
+                    m = maalrettet(float(p["pct"]), op_er_godt.get(iid))
                     if m is not None:
                         maal.append(m)
                         perioder.append((p["periode_start"], p["periode_slut"], p["n_aar"]))
@@ -268,7 +243,7 @@ def aggreger_dimensioner(poster, eco_struktur, social_struktur):
                 # gennemsnits-dimensioner bar det målrettede - og så ville to
                 # dimensioner med samme vurdering kunne få pile der peger
                 # modsat. Se skema-noten øverst i filen.
-                m = maalrettet(float(p["pct"]), OP_ER_GODT.get(afgorende_id))
+                m = maalrettet(float(p["pct"]), op_er_godt.get(afgorende_id))
                 if m is None:
                     continue
                 ud.append({
@@ -311,7 +286,7 @@ def aggreger_dimensioner(poster, eco_struktur, social_struktur):
                 p = per_indikator.get((kode, iid))
                 if not p or p["pct"] == "":
                     continue
-                m = maalrettet(float(p["pct"]), OP_ER_GODT.get(iid))
+                m = maalrettet(float(p["pct"]), op_er_godt.get(iid))
                 if m is not None:
                     maal.append(m)
                     perioder.append((p["periode_start"], p["periode_slut"], p["n_aar"]))
@@ -365,10 +340,11 @@ def build_trends():
 
     print(f"Læste {len(per_indikator)} indikatorer fra {RAW_INPUT.name}")
 
+    retninger = ir.op_er_godt()
     output_rows = []
     for iid, per_kommune in sorted(per_indikator.items()):
-        op_er_godt = OP_ER_GODT.get(iid)
-        if iid not in OP_ER_GODT:
+        op_er_godt = retninger.get(iid)
+        if iid not in retninger:
             print(f"  ADVARSEL: {iid} har ingen op_er_godt-mapping - klassificeres som kontekst.")
 
         # Beregn endepunkter og pct-ændring for alle kommuner med mindst 2 år,
@@ -429,7 +405,7 @@ def build_trends():
     for dim_id in sorted(pr_dim):
         retninger = pr_dim[dim_id]
         t = {k: retninger.count(k) for k in ("rigtig", "tempo", "stagneret", "forkert")}
-        metode = "gennemsnit" if (dim_id[5:] in AVERAGE_DIMENSIONS
+        metode = "gennemsnit" if (dim_id[5:] in ir.gennemsnits_dimensioner()
                                    or dim_id[5:] in social_struktur) else "worst-of"
         print(f"  {dim_id:28} {len(retninger):3}/98 kommuner  "
               f"(rigtig={t['rigtig']} tempo={t['tempo']} stagneret={t['stagneret']} "

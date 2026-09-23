@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import {
   getKommune,
   getAllKommuner,
+  getIndicatorDataYears,
+  DOUGHNUT_DEFAULT_DATA_YEAR,
 } from "@/lib/data";
 import KommuneClient from "./client";
 
@@ -38,7 +40,12 @@ export default async function KommunePage({ params }: Props) {
         </div>
       </div>
 
-      <KommuneClient kommune={kommune} allKommuner={allKommuner} />
+      <KommuneClient
+        kommune={kommune}
+        allKommuner={allKommuner}
+        indicatorDataYears={getIndicatorDataYears()}
+        defaultDataYear={DOUGHNUT_DEFAULT_DATA_YEAR}
+      />
     </div>
   );
 }

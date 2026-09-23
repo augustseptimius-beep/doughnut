@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
 import BaselineToggle from "@/components/BaselineToggle";
-import { DOUGHNUT_EDITION_YEAR, DOUGHNUT_DEFAULT_DATA_YEAR } from "@/lib/shared";
+import { DOUGHNUT_EDITION_YEAR, DOUGHNUT_DEFAULT_DATA_YEAR } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Doughnut Economics — Danmark",

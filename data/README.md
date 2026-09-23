@@ -2,6 +2,14 @@
 
 Datasæt over alle 98 danske kommuners performance på Doughnut Economics-rammen: socialt fundament og økologisk loft.
 
+## Indikatorregistret: `indikatorer.json`
+
+Den ene liste over indikatorer, sociale kategorier og økologiske dimensioner. `scripts/build_master_csv.py` bestemmer ud fra den hvilke CSV-kolonner der læses, og webappen (`webapp/lib/shared.ts`) viser indikatorerne ud fra samme fil. Felterne er forklaret i filens `_om`-nøgle. En ny indikator er én post her plus et fetch-script, se CLAUDE.md "Tilføj en ny indikator".
+
+## `noegletal.json`
+
+Reference, dækning (antal kommuner med værdi) og dataår pr. indikator, skrevet af `build_master_csv.py` sammen med master. Webappen udfylder tal i tekster herfra (pladsholdere som `{ref:pesticider:1}`), og buildet stopper hvis filen ikke passer med master. Ret den ikke i hånden.
+
 ## Hovedfilen: `master_indicators.csv`
 
 Dette er den **konsoliderede master-fil** som webapp'en læser fra. Genereres af `scripts/build_master_csv.py` ved at samle alle rådata-CSV'er.
@@ -14,14 +22,15 @@ Dette er den **konsoliderede master-fil** som webapp'en læser fra. Genereres af
 |---|---|---|
 | `kommune_kode` | DST-kommunekode (3 cifre, zero-padded) | `787` |
 | `kommune_navn` | Kommunenavn | `Thisted` |
-| `indicator_id` | Indikator-id (matcher `INDICATORS` i webapp). Specielle id'er der starter med `_dim_` er worst-of dimension-aggregater. | `life_expectancy`, `_dim_luftkvalitet` |
+| `indicator_id` | Indikator-id (matcher `id` i `indikatorer.json`). Specielle id'er der starter med `_dim_` er økologiske dimensionsscorer (worst-of eller gennemsnit). | `life_expectancy`, `_dim_luftkvalitet` |
 | `ratio` | Score 100 = grænseværdi (sociale: gennemsnit; økologiske: planetær grænse) | `98.9` |
 | `raw_value` | Faktisk måleværdi i sin enhed | `80.4` |
 | `unit` | Enhed for `raw_value` | `år`, `µg/m³`, `%` |
 | `data_year` | År for senest data | `2023` |
 | `source` | Kort kildebeskrivelse | `DST HISBK` |
-| `category` | `social`, `ecological`, eller `ecological_dimension` (kun for `_dim_*` rækker) | `social` |
+| `category` | `social`, `ecological`, `context` (vises, scores ikke) eller `ecological_dimension` (kun for `_dim_*` rækker) | `social` |
 | `dimension` | Hvilken kategori/dimension indikatoren hører til | `sundhed`, `luftkvalitet` |
+| `reference` | Værdien `ratio` er målt mod, i råværdiens enhed: målet, kommunegennemsnittet eller landstallet (se `reference` i `indikatorer.json`). Tom for kontekst- og `_dim_*`-rækker | `81.6`, `95.0` |
 
 ### Scoringskonventioner
 
@@ -29,7 +38,7 @@ Dette er den **konsoliderede master-fil** som webapp'en læser fra. Genereres af
 - `ratio = 100` = landsgennemsnit (undtagen `education` og `bolig_fossil`, der scores mod et fast mål). Masteren gemmer altid ratio mod landsgennemsnittet; webappens baseline-toggle (kommunegruppe/top 10) omskalerer ved visning
 - `ratio > 100` = bedre end gennemsnit
 - `ratio < 100` = dårligere end gennemsnit
-- Inverterede indikatorer (kriminalitet, fattigdom mv.) er allerede vendt - høj ratio = god performance
+- Inverterede indikatorer (kriminalitet, fattigdom mv.) vendes af `build_master_csv.py` (`ratio = reference / raw × 100`) - høj ratio = god performance. Alle ratios beregnes dér ud fra `raw_value` og `reference`, ikke i fetch-scripterne
 
 **Økologiske indikatorer:**
 - `ratio = 100` = på grænsen: en absolut grænse (WHO, EU-mål, Paris-budget, 6 mg/L nitrat) eller landsgennemsnittet for de relative sub-indikatorer (fx næringsstoffer, vandindvinding, arealanvendelse, affald, pesticider)

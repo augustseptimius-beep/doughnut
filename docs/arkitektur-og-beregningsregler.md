@@ -7,8 +7,11 @@ ellers ændrer man tallene uden at opdage det.
 
 Reglerne er implementeret i `scripts/build_master_csv.py` (datapipelinen),
 `scripts/build_trends_csv.py` (retningspile) og `webapp/lib/shared.ts`
-(frontendberegninger). Dokumentet angiver bevidst funktions- og feltnavne
-frem for linjenumre, fordi linjenumre skrider ved hver ændring.
+(frontendberegninger). Hvilke indikatorer der findes, og deres egenskaber
+(retning, kategori, mål, særregler), står ét sted: `data/indikatorer.json`.
+Alle tre læser derfra, Python via `scripts/indikatorregister.py`. Dokumentet
+angiver bevidst funktions- og feltnavne frem for linjenumre, fordi linjenumre
+skrider ved hver ændring.
 
 **Læs afsnit 6 og 7 før du ændrer noget.** Fælderne dér er alle sammen fejl
 projektet allerede har begået én gang.
@@ -20,14 +23,15 @@ projektet allerede har begået én gang.
 Alle indikatorer udtrykkes som en **ratio** hvor 100 er referencepunktet:
 
 - **Sociale indikatorer:** 100 = niveau med landsgennemsnittet (eller med et
-  absolut mål, se R2). Højere er bedre.
+  absolut mål, se R3). Højere er bedre.
 - **Økologiske indikatorer:** 100 = på grænsen, enten en absolut grænse eller
   landsgennemsnittet hvor der ikke findes en meningsfuld grænse pr. kommune
   (se R12). Lavere er bedre, og over 100 er overshoot.
 
 Indikatorer hvor en høj råværdi er dårlig (Gini, kriminalitet, luftforurening)
-er allerede vendt i kildedataene, så ratio-retningen er ensartet. Feltet
-`inverse` i `INDICATORS` registrerer hvilke det gælder.
+vendes af formlen i R2, så ratio-retningen er ensartet. Feltet
+`inverse` (sociale) og `lower_is_better` (økologiske) i registret registrerer
+hvilke det gælder.
 
 De to retninger er modsatrettede med vilje. Det er den hyppigste fejlkilde i
 projektet, se R11.
@@ -41,37 +45,65 @@ rådata-CSV'erne konsolideres til `data/master_indicators.csv`.
 
 **R1 - Social ratio-cap.** Sociale ratios cappes ved 150,0. Formålet er at
 forhindre at en enkelt ekstremværdi dominerer kategorigennemsnittet. Cappet
-håndhæves i både `kommune_kode`- og `navn_key`-grenen.
+gælder alle sociale indikatorer, også dem der slås op på kommunenavn (R5).
 
 Konsekvens for visningen: for en kappet kommune kan referenceværdien ikke
 udledes baglæns af ratio og råværdi. `ScoreBars` viser derfor ikke
 "Landsgns"/gruppe-værdien ved indikatorer hvor kommunens ratio er 150.
+Referencen står i masterfilens `reference`-kolonne (R3).
 
-**R2 - Absolut mål (`abs_target`).** Sætter en indikator feltet `abs_target`,
-beregnes `ratio = min(raw / abs_target * 100, 150)` afrundet til 2 decimaler.
-I dag bruges det kun af `education` med `abs_target: 95`.
+**R2 - Ratio beregnes ét sted, med én formel.** `beregn_ratio()` i
+`build_master_csv.py` beregner alle sociale og økologiske ratios ud fra
+råværdien og indikatorens reference i `data/indikatorer.json`. Retningen
+følger registret:
 
-`bolig_fossil` er også absolut scoret, men dens ratio (`100 - samlet fossil%`)
-beregnes færdig i `fetch_bolig_fossil.py` og gemmes direkte. Den har derfor
-ingen `abs_target` i pipelinen.
+| Indikator | Formel |
+|---|---|
+| social, `inverse: false` | `raw / ref × 100` |
+| social, `inverse: true` | `ref / raw × 100` |
+| økologisk, `lower_is_better: true` | `raw / ref × 100` |
+| økologisk, `lower_is_better: false` | `ref / raw × 100` |
+| `formula: "100_minus_raw"` (kun `bolig_fossil`) | `100 - raw` (mål 0 procent fossil) |
 
-**R3 - Inverse økologisk ratio (`inverse_ratio: True`).** Kildedataene for
-forureningsindikatorer leverer en inverteret ratio, hvor lav værdi betyder høj
-forurening. `invert_to_direct_ratio()` konverterer:
-`direct = round(10000 / inverse, 2)`. Er inputtet `None` eller `0`, bliver
-resultatet `None`. Gælder `naer_nitrogen`, `naer_phosphorus` og
-`cirkularitet_waste`.
+Resultatet klippes (R1, R6) og afrundes til 2 decimaler. Indtil sep. 2026
+regnede hvert fetch-script sin egen ratio, og `build_master_csv.py` havde tre
+særregler oveni: `10000/x` for økologiske ratios leveret på inverteret skala
+(N, P, affald), `65/pct` for genanvendelse og `raw/3` for forbrugs-CO2. De er
+alle erstattet af tabellen ovenfor. Fetch-scriptets egen ratio (`ratio_col`)
+indgår ikke længere i scoren; den bruges til krydstjek (build advarer ved
+afvigelser over 0,5 point) og til R3's rekonstruktion.
 
-**R4 - Genanvendelse (`special: "recycling_eu_target"`).** `recycling_eu_target_ratio()`
-beregner `ratio = round((65 / pct) * 100, 2)` målt mod EU-målet på 65 procent.
-`None` eller `0` giver `None`. Over 100 betyder at kommunen genanvender for
-lidt. Gælder kun `cirkularitet_recycling`.
+**R3 - Referencen.** Feltet `reference` i registret har tre typer:
 
-**R5 - Forbrugsbaseret CO2 (`special: "cba_navn_key"`).** `cba_ratio()` beregner
-`ratio = round((raw / 3) * 100, 2)` mod en grænse på 3 ton CO2e pr. person.
-Kildedataene slås op på kommunenavn, ikke kommunekode. Ved manglende match
-bliver værdien `None`, og der er bevidst intet fallback. Christiansø filtreres
-fra. Gælder kun `forbrug_co2`.
+- `maal`: et fast mål (`value`). Uddannelse 95 procent, WHO's
+  luftkvalitetsgrænser, 3 ton CO2e, EU's 65 procent genanvendelse og 30/10
+  procent natur, 6 mg/L nitrat, 0 procent fossil varme.
+- `kommunegennemsnit`: uvægtet gennemsnit af kommunernes råværdier, beregnet
+  ved build. Bruges hvor kilden ikke har et landstal pr. kommunetabel (UVM,
+  LABY49, forsikringsskader).
+- `landstal`: fetch-scriptets referenceværdi, fx DST's tal for hele landet
+  eller et befolkningsvægtet gennemsnit. Feltet `definition` siger hvilken.
+  Scriptet skal skrive den i kolonnen `col`. Mangler kolonnen (ingen af
+  scripterne skriver den endnu, sep. 2026), rekonstrueres landstallet ved
+  hvert build fra scriptets egen ratio: medianen af `raw × 100 / ratio`
+  (eller `raw × ratio / 100` for omvendt retning) over kommunerne, afrundet
+  til færrest mulige decimaler uden at ramme færre af scriptets ratios. Det
+  genskaber publicerede landstal som 81,6 år eksakt.
+
+Referencen skrives til masterfilens `reference`-kolonne for hver række.
+Bemærk at "landsgennemsnit" dermed ikke betyder det samme for alle
+indikatorer: DST's landstal er befolkningsvægtet, kommunegennemsnittet er
+det ikke. Det er et bevidst, dokumenteret valg pr. indikator.
+
+**R4 - Nul i nævneren.** Er råværdien 0 for en indikator med `ref / raw`,
+er det for en social indikator det bedst mulige og giver loftet 150. For en
+økologisk er det det værst mulige og giver indikatorens `cap`, eller ingen
+værdi hvis den ikke har et. Mangler råværdien, er der ingen ratio.
+
+**R5 - Navnenøgle (`navn_col`).** `forbrug_co2` (`cba_2023_estimate.csv`,
+kolonnen `kommune`) og `vejr_skader` (`klimatilpasning_scores.csv`, kolonnen
+`kommune_navn`) slås op på kommunenavn, ikke kode. Ved manglende match er der
+ingen værdi, og der er bevidst intet fallback. Christiansø filtreres fra.
 
 **R6 - Økologisk ratio-cap (`cap`).** Sætter en økologisk indikator feltet `cap`,
 klippes ratio til den værdi. I dag har `overfladevand`, `bio_vasentlig` og
@@ -82,10 +114,10 @@ ratios i tusindvis, som ville forstyrre valideringen i R14.
 ikke-`None` sub-ratios:
 
 - **worst-of (standard):** `score = round(max(ratios), 2)`
-- **gennemsnit:** `score = round(sum / len, 2)`, kun for dimensioner i
-  `AVERAGE_DIMENSIONS`
+- **gennemsnit:** `score = round(sum / len, 2)`, kun for dimensioner med
+  `"aggregation": "gennemsnit"` i registret
 
-`AVERAGE_DIMENSIONS` indeholder i dag **udelukkende `forurening`**. Begrundelsen
+Det gælder i dag **udelukkende `forurening`**. Begrundelsen
 er at dens fire indikatorer måler vidt forskellige forureningstyper, hvor
 worst-of ville lade den værste enkeltkilde definere hele dimensionen.
 
@@ -204,7 +236,7 @@ og sidste `N_ENDEPUNKT` år, så et enkelt afvigende år ikke definerer retninge
 |---|---|
 | `ingen` | ingen procentændring kunne beregnes |
 | `stagneret` | ændringen er ubetydelig, se T4 |
-| `kontekst` | indikatoren mangler i `OP_ER_GODT`, så retning kan ikke vurderes |
+| `kontekst` | indikatoren har ingen retning i registret (kontekst-indikator eller ukendt id), så retning kan ikke vurderes |
 | `forkert` | den målrettede ændring er nul eller negativ |
 | `rigtig` | målrettet ændring mindst lige så god som medianen af alle 98 kommuner |
 | `tempo` | rigtig vej, men langsommere end medianen |
@@ -218,10 +250,14 @@ den rigtige vej og de fleste andre den forkerte.
 den absolutte ændring er under 1 i indikatorens egen enhed. Derudover
 klassificeres alt under 1 procents relativ ændring som `stagneret`.
 
-**T5 - `OP_ER_GODT` skal holdes i sync med `INDICATORS[].inverse`.** Konstanten i
-`build_trends_csv.py` afgør hvilken vej pilen peger. En manglende mapping bliver
-til `kontekst` (pil uden vurdering), ikke til en fejl. Tjek scriptets
-ADVARSEL-linjer efter hver kørsel.
+**T5 - Pilens retning udledes af scoringens retning.** `op_er_godt` (om en
+stigende råværdi er fremgang) er `not inverse` for sociale og
+`not lower_is_better` for økologiske indikatorer, udledt af registret i
+`indikatorregister.op_er_godt()`. Indtil sep. 2026 var det en separat,
+håndvedligeholdt konstant (`OP_ER_GODT`) der skulle holdes i sync med
+`inverse`, og den skred. Et id i tidsserien som registret ikke kender, bliver
+til `kontekst` (pil uden vurdering); `tjek_konsistens.py` melder det som fejl,
+og `build_trends_csv.py` skriver en ADVARSEL-linje.
 
 **T6 - Dimensionspilen følger worst-of, ikke gennemsnittet.** En øko-dimensions
 pil er retningen for den sub-indikator der bestemmer dimensionens score, altså
@@ -230,8 +266,8 @@ dimensionen vise grøn pil samtidig med at netop den overskredne grænse bliver
 værre.
 
 Undtagelsen er `forurening`, som bruger gennemsnit i scoren (R7) og derfor også
-i retningen. `AVERAGE_DIMENSIONS` findes i **både** `build_master_csv.py` og
-`build_trends_csv.py` og skal holdes ens.
+i retningen. Begge scripts læser `aggregation` fra registret, så score og pil
+ikke kan komme ud af trit.
 
 Har den afgørende sub-indikator ingen tidsserie, får dimensionen **ingen pil**.
 Der falles bevidst ikke tilbage på de øvrige. Derfor har `klimapaavirkning` kun
@@ -260,17 +296,18 @@ for at **begge** grene målretter `pct`.
 
 **T8 - Masteren kan indeholde indikatorer platformen ikke scorer.**
 `housing_no_wc` og `housing_no_bath` står i masteren med `dimension=bolig`, men
-er ikke med i `SOCIAL_CATEGORIES.bolig.indicatorIds`. Bolig scorer og viser kun
-2 indikatorer. Konstanten `IKKE_SCORET` i `build_trends_csv.py` holder dem ude af
-dimensionsaggregatet, men de beholder deres egen indikatorrække.
+står ikke i kategoriens `indicators`-liste i registret. Bolig scorer og viser
+kun 2 indikatorer. `indikatorregister.ikke_scoret()` (sociale indikatorer der
+ikke står i nogen kategori) holder dem ude af dimensionsaggregatet i
+`build_trends_csv.py`, men de beholder deres egen indikatorrække.
 
 Uden det gennemsnitter Bolig-pilen 4 indikatorer ved siden af et tal beregnet på
 2, og de to usynlige dominerer (`housing_no_bath` er faldet omkring 39 procent
 på landsplan).
 
 **Regel: tilføjer du tidsserie til en indikator, så tjek at den faktisk står i
-`SOCIAL_CATEGORIES[].indicatorIds`.** Ellers forgifter den en dimensionspil uden
-at være synlig noget sted.
+sin kategoris `indicators` i registret.** Ellers holdes den ude af pilen, og den
+er ikke synlig noget sted.
 
 Kontrol: kategoriens tooltip ("gennemsnit af N indikatorer") skal matche "N/N
 indikatorer" på bjælken, medmindre forskellen skyldes manglende tidsserie på en
@@ -375,10 +412,11 @@ tabellen.
 
 | Regel | Afvigelse | Status |
 |---|---|---|
-| R2 | Landsgennemsnittet for de otte Sundhedsprofil-indikatorer beregnes af os som et befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+), ikke hentet fra kilden. Databasen udstiller ikke et landstal pr. kommunetabel. Reglen forudsætter ellers et landstal fra kilden | Bevidst, dokumenteret i `data/README.md` og på metodesiden |
+| R3 | Landsgennemsnittet for de otte Sundhedsprofil-indikatorer beregnes af os som et befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+), ikke hentet fra kilden. Databasen udstiller ikke et landstal pr. kommunetabel. Reglen forudsætter ellers et landstal fra kilden | Bevidst, dokumenteret i `data/README.md` og på metodesiden |
+| R3 | Landstallet for indikatorer med `reference.type = "landstal"` rekonstrueres ved hvert build fra fetch-scriptets egen ratio, fordi ingen af scripterne endnu skriver landstallet i sin egen kolonne. Reglen forudsætter at scriptet leverer det | Overgang. Lukkes script for script (planens opgave 6). Rekonstruktionen genskaber de publicerede landstal og kan ikke blive ældre end dataen |
 | T1 | Retningen for Sundhedsprofilens indikatorer beregnes 2017 → 2025 (2021 → 2025 for `ensomhed` og `fysisk_aktivitet`), ikke over hele den tilgængelige serie 2010-2025. Reglen siger ellers hele serien | Bevidst, se punkt 23 i CLAUDE.md |
 
-Begge er bevidste og dokumenterede.
+Alle tre er bevidste og dokumenterede.
 
 ---
 

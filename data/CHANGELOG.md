@@ -2,6 +2,27 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-22 (rettelse: indkomstlighed manglede på sitet)
+
+- **`income_gender_gap` (Indkomstlighed mænd/kvinder) blev ikke vist i nogen kommune** fra median-omlægningen samme dag (PR #9) til denne rettelse. Enheden blev ændret til `% (kvinder/mænd, median)`, og kommaet forskød kolonnerne i webappens `split(",")`-parsing af master, så rækkerne ikke blev genkendt som sociale. Tallene i master var korrekte; kun visningen manglede. Ligestilling blev i perioden regnet på 2 af 3 indikatorer.
+  - Enheden hedder nu `% (kvinders medianindkomst af mænds)`.
+  - **Konsekvens:** Ligestilling regnes igen på alle tre indikatorer. Med kommunegruppe som baseline (standardvisningen) skifter 8 kommuner farve: København, Tårnby, Helsingør og Svendborg går fra gul til grøn; Furesø, Rudersdal, Skanderborg og Aalborg fra grøn til gul. Alle otte lå i forvejen inden for 1,1 point af grænsen på 100. Med landsgennemsnit skifter 11, med top 10% 14.
+  - **Så det ikke sker igen:** registret afviser komma i felter der skrives til master, `build_master_csv.py` fejler hvis et felt indeholder komma, og webappen stopper buildet hvis en række i master ikke passer med registret (se CLAUDE.md pkt. 34).
+
+## 2026-09-22 (ratio beregnes ét sted)
+
+- **Alle ratios beregnes nu i `build_master_csv.py`** ud fra råværdi og reference (fast mål, kommunegennemsnit eller landstal) i `data/indikatorer.json`, med én formel for retning, loft og værdien 0. Fetch-scripternes egne ratios indgår ikke længere i scoren. Master har fået en ny sidste kolonne, `reference`.
+  - **7 rækker fjernet:** kvælstof fra spildevand for Frederiksberg og Fanø, fosfor for Frederiksberg, Herlev, Rødovre, Ærø og Fanø. De stod med ratio 66,67 uden råværdi. VANDUD har ingen udledning registreret for dem, og `fetch_eco_new_data.py` gjorde "ingen udledning" til topscore 150 på sin inverterede skala, som build_master derefter vendte til 10000/150 = 66,67. Tallet svarede hverken til 0 eller til manglende data. Nu har de ingen værdi, ligesom vandindvinding for kommuner hvor vandværket ligger i nabokommunen. Næringsstoffer-dimensionens score er uændret for alle fem kommuner, fordi den afgøres af en anden sub-indikator.
+  - **534 ratios flyttet med højst 0,45 point**, fordi de nu regnes fra den råværdi der står i CSV'en i stedet for scriptets uafrundede tal. Størst for fosfor (råværdi med 3 decimaler, fx 0,025 ton pr. 1.000 indb.), derefter kvælstof (0,08), pesticider (0,06), nitrat (0,03, scriptet afrundede ratioen til 1 decimal) og klimapåvirkning (0,02). Resten er 0,01. Ingen kategori eller dimension skifter farve under nogen af de tre baselines; største ændring i en kategoriscore er 0,0025.
+  - **Landstallene rekonstrueres** ved hvert build fra scriptets egen ratio, indtil scripterne selv skriver dem. Rekonstruktionen genskaber de publicerede tal (fx middellevetid 81,6 år, lederandel 32,11%, disponibel indkomst 246.098 kr.).
+  - Retningspilene er uændrede.
+- **Ny genereret fil `data/noegletal.json`** (reference, dækning og dataår pr. indikator). Metodesidens og registrets tekster henter landstal og dækning derfra via pladsholdere i stedet for håndskrevne tal. Ingen tal på siden er ændret af det; eneste synlige forskel er "de 3 uden data" i stedet for "de tre".
+
+## 2026-09-22 (indikatorregister)
+
+- **Indikatorerne står nu ét sted, `data/indikatorer.json`.** Build-scripts, retningspile og webappen læser alle derfra. Ingen tal i master eller trend-CSV er ændret af omlægningen; begge filer er byte-identiske før og efter.
+- **Dataår for periodetal skrives som perioden.** `life_expectancy` og `le_gender_gap` (HISBK, femårige intervaller) står nu som 2021-2025, og `traffic_accidents` (treårigt gennemsnit af UHELDK1) som 2022-2024. Siden 22. sep. stod de som 2025 og 2024, fordi `data_years.json` kun gemmer slutåret. Styres af `period_years` i registret. Kun `data_year`-kolonnen er ændret, ingen ratios eller råværdier.
+
 ## 2026-09-22
 
 - **Indkomst måles på median, ikke gennemsnit.** Gælder `disposable_income` (Velfærd) og `income_gender_gap` (Ligestilling), både i master og i retningspilene. Kilde skiftet fra INDKP101 (ENHED 116, gennemsnit for alle personer) til INDKP106.

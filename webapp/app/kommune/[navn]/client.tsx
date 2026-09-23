@@ -14,6 +14,9 @@ import type { VurderingScore, VurderingEntry } from "@/lib/vurdering";
 interface Props {
   kommune: KommuneData;
   allKommuner: KommuneData[];
+  // Beregnet server-side i data.ts fra master-CSV'en, se getIndicatorDataYears().
+  indicatorDataYears: Record<string, string>;
+  defaultDataYear: string;
 }
 
 interface AktivDimension {
@@ -22,7 +25,7 @@ interface AktivDimension {
   gruppe: "social" | "ecological";
 }
 
-export default function KommuneClient({ kommune }: Props) {
+export default function KommuneClient({ kommune, indicatorDataYears, defaultDataYear }: Props) {
   const { mode } = useBaseline();
 
   const activeRatios =
@@ -210,6 +213,8 @@ export default function KommuneClient({ kommune }: Props) {
             vurderingsMode={vurderingsMode}
             vurderinger={vurderinger}
             onVurderingKlik={handleVurderingKlik}
+            indicatorDataYears={indicatorDataYears}
+            defaultDataYear={defaultDataYear}
           />
         </div>
       </div>

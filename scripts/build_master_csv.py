@@ -7,7 +7,11 @@ fjerner behovet for 25+ separate CSV-loads i webapp/lib/data.ts.
 
 Output-skema (én række pr. kommune × indikator):
   kommune_kode, kommune_navn, indicator_id, ratio, raw_value,
-  unit, data_year, source, category, dimension
+  unit, data_year, source, category, dimension, reference
+
+Alle ratios beregnes her ud fra råværdien og indikatorens reference i
+data/indikatorer.json (se "RATIO: ÉN FORMEL" nedenfor). reference er den
+værdi ratio er målt mod: målet, kommunegennemsnittet eller landstallet.
 
 Kør:
   cd /sti/til/doughnut
@@ -21,7 +25,10 @@ Driftsregel:
 
 import re
 import csv
+import json
+import math
 import os
+import statistics
 import sys
 from pathlib import Path
 
@@ -39,214 +46,39 @@ _HENTEDE_AAR = hentede_aar()
 
 
 def _data_year(ind: dict) -> str:
-    """Årstal for indikatoren: registreret hentning > hårdkodet værdi."""
+    """Årstal for indikatoren: registreret hentning > registrets data_year.
+
+    data_years.json gemmer kun slutåret (dst_aar._aarstal). For indikatorer
+    der dækker en periode (period_years i registret: HISBK's femårige
+    intervaller, trafikulykkernes treårige gennemsnit) skrives perioden ud,
+    så UI'et viser "2021-2025" og ikke et enkelt år tallet ikke dækker.
+    """
+    aar = ind.get("data_year", "")
     kilde = ind.get("source") or ""
     m = re.match(r"DST\s+([A-ZÆØÅ0-9_]+)", kilde)
-    if m:
-        registreret = _HENTEDE_AAR.get(m.group(1))
-        if registreret:
-            return registreret
-    return ind.get("data_year", "")
+    if m and _HENTEDE_AAR.get(m.group(1)):
+        aar = _HENTEDE_AAR[m.group(1)]
+    n = ind.get("period_years")
+    if n and re.fullmatch(r"\d{4}", aar):
+        aar = f"{int(aar) - n + 1}-{aar}"
+    return aar
 
 
 # ─── Stier ─────────────────────────────────────────────────────────────
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 OUTPUT = DATA_DIR / "master_indicators.csv"
+NOEGLETAL = DATA_DIR / "noegletal.json"
 
-# ─── INDIKATOR-MAPPING (single source of truth for build) ──────────────
-# Hver entry beskriver en indikator: hvor data kommer fra, hvilke kolonner
-# der skal læses, og metadata til output. Dette er den ENESTE liste der
-# skal opdateres når en indikator tilføjes eller fjernes.
-#
-# Felter:
-#   id          - matcher INDICATORS-id i webapp/lib/shared.ts
-#   csv         - filnavn i data/
-#   ratio_col   - kolonne med ratio (allerede beregnet af fetch-script)
-#   raw_col     - kolonne med råværdi (kan være None hvis ikke gemt)
-#   unit        - enhed for råværdi (vises i UI)
-#   data_year   - årstal for senest data
-#   source      - kort kildetekst
-#   category    - "social" eller "ecological"
-#   dimension   - hvilken kategori/dimension den hører til
-#   inverse_ratio - hvis True: ratio i CSV er "inverteret eco" (lav=værre).
-#                   Konverteres til direct via 10000/inverse, så høj=overshoot.
-#                   Bruges for spildevand (N, P) og affald.
+# ─── INDIKATORER ───────────────────────────────────────────────────────
+# Kommer fra data/indikatorer.json via scripts/indikatorregister.py. Det er
+# den ENESTE liste der skal opdateres når en indikator tilføjes eller fjernes;
+# webappen (shared.ts, data.ts) og build_trends_csv.py læser samme fil.
+# Felterne build_master bruger: id, csv, ratio_col, raw_col, unit, data_year,
+# source, category, dimension og særreglerne abs_target, navn_key,
+# inverse_ratio, special og cap (se registrets "_om" og funktionerne nedenfor).
+import indikatorregister as ir  # noqa: E402
 
-SOCIAL_INDICATORS = [
-    # === Sundhed ===
-    {"id": "life_expectancy", "csv": "doughnut_scores.csv", "ratio_col": "life_expectancy_ratio", "raw_col": "life_expectancy_raw", "unit": "år", "data_year": "2023", "source": "DST HISBK", "category": "social", "dimension": "sundhed"},
-    {"id": "selvvurderet_helbred", "csv": "sundhedsprofil_scores.csv", "ratio_col": "selvvurderet_helbred_ratio", "raw_col": "selvvurderet_helbred_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
-    {"id": "mentalt_helbred", "csv": "sundhedsprofil_scores.csv", "ratio_col": "mentalt_helbred_ratio", "raw_col": "mentalt_helbred_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
-    {"id": "hospital_long", "csv": "sundhed_extra_scores.csv", "ratio_col": "hospital_long_ratio", "raw_col": "hospital_long_pct", "unit": "%", "data_year": "2023", "source": "DST SBR01", "category": "social", "dimension": "sundhed"},
-    {"id": "hjemsyg", "csv": "hjemsyg_scores.csv", "ratio_col": "hjemsyg_ratio", "raw_col": "hjemsyg_raw", "unit": "pr. 1.000 indb.", "data_year": "2025", "source": "DST HJEMSYG", "category": "social", "dimension": "sundhed"},
-    {"id": "wellbeing", "csv": "uvm_scores.csv", "ratio_col": "wellbeing_ratio", "raw_col": "wellbeing_score", "unit": "score (1-5)", "data_year": "2024", "source": "UVM GS/TRIV/TRIVIND", "category": "social", "dimension": "uddannelse"},
-
-    {"id": "rygning", "csv": "sundhedsprofil_scores.csv", "ratio_col": "rygning_ratio", "raw_col": "rygning_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
-    {"id": "alkohol", "csv": "sundhedsprofil_scores.csv", "ratio_col": "alkohol_ratio", "raw_col": "alkohol_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
-    {"id": "kost", "csv": "sundhedsprofil_scores.csv", "ratio_col": "kost_ratio", "raw_col": "kost_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
-    {"id": "svaer_overvaegt", "csv": "sundhedsprofil_scores.csv", "ratio_col": "svaer_overvaegt_ratio", "raw_col": "svaer_overvaegt_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "sundhed"},
-
-    # === Uddannelse ===
-    {"id": "education", "csv": "doughnut_scores.csv", "ratio_col": "education_ratio", "raw_col": "education_raw", "unit": "%", "data_year": "2025", "source": "DST HFUDD11", "category": "social", "dimension": "uddannelse", "abs_target": 95},
-    {"id": "low_education", "csv": "uddannelse_extra_scores.csv", "ratio_col": "low_education_ratio", "raw_col": "low_education_pct", "unit": "%", "data_year": "2023", "source": "DST HFUDD11", "category": "social", "dimension": "uddannelse"},
-    {"id": "exam_grade", "csv": "uvm_scores.csv", "ratio_col": "exam_grade_ratio", "raw_col": "exam_grade_avg", "unit": "karakter", "data_year": "2024", "source": "UVM GS/KARA/KARAGNS", "category": "social", "dimension": "uddannelse"},
-    {"id": "high_absence", "csv": "uvm_scores.csv", "ratio_col": "high_absence_ratio", "raw_col": "high_absence_pct", "unit": "%", "data_year": "2024", "source": "UVM GS/ELEVFRAV/FRAVAAR", "category": "social", "dimension": "uddannelse"},
-    {"id": "youth_education", "csv": "uvm_scores.csv", "ratio_col": "youth_education_ratio", "raw_col": "youth_education_pct", "unit": "%", "data_year": "2024", "source": "UVM GS/PROFMOD/PROFMOD", "category": "social", "dimension": "uddannelse"},
-
-    # === Velfærd ===
-    {"id": "disposable_income", "csv": "doughnut_scores.csv", "ratio_col": "disposable_income_ratio", "raw_col": "disposable_income_raw", "unit": "kr. (median)", "data_year": "2024", "source": "DST INDKP106 (median)", "category": "social", "dimension": "velfaerd"},
-    {"id": "employment", "csv": "doughnut_scores.csv", "ratio_col": "employment_ratio", "raw_col": "employment_raw", "unit": "%", "data_year": "2023", "source": "DST RAS200", "category": "social", "dimension": "velfaerd"},
-    {"id": "child_poverty", "csv": "doughnut_scores.csv", "ratio_col": "child_poverty_ratio", "raw_col": "child_poverty_raw", "unit": "%", "data_year": "2022", "source": "DST LABY07", "category": "social", "dimension": "velfaerd"},
-    {"id": "gini", "csv": "doughnut_scores.csv", "ratio_col": "gini_ratio", "raw_col": "gini_raw", "unit": "point", "data_year": "2022", "source": "DST IFOR41", "category": "social", "dimension": "lighed"},
-    {"id": "low_income", "csv": "doughnut_scores.csv", "ratio_col": "low_income_ratio", "raw_col": "low_income_raw", "unit": "%", "data_year": "2022", "source": "DST LABY07", "category": "social", "dimension": "lighed"},
-    {"id": "vulnerable_children", "csv": "velfaerd_extra_scores.csv", "ratio_col": "vulnerable_children_ratio", "raw_col": "vulnerable_children_pct", "unit": "%", "data_year": "2024", "source": "DST BU43", "category": "social", "dimension": "velfaerd"},
-    {"id": "neet", "csv": "velfaerd_extra_scores.csv", "ratio_col": "neet_ratio", "raw_col": "neet_pct", "unit": "%", "data_year": "2023", "source": "DST NEET1", "category": "social", "dimension": "velfaerd"},
-    {"id": "poverty_relative", "csv": "lighed_scores.csv", "ratio_col": "poverty_relative_ratio", "raw_col": "poverty_relative_pct", "unit": "%", "data_year": "2023", "source": "DST IFOR12P", "category": "social", "dimension": "velfaerd"},
-    {"id": "child_notifications", "csv": "underretning_scores.csv", "ratio_col": "child_notifications_ratio", "raw_col": "child_notifications_per_1k", "unit": "pr. 1.000 indb. 0-17 år", "data_year": "2023", "source": "DST UND2", "category": "social", "dimension": "velfaerd"},
-
-    # === Bolig ===
-    {"id": "vacant_housing", "csv": "doughnut_scores.csv", "ratio_col": "vacant_housing_ratio", "raw_col": "vacant_housing_raw", "unit": "%", "data_year": "2023", "source": "DST BOL101", "category": "social", "dimension": "bolig"},
-    {"id": "housing_area", "csv": "bolig_extra_scores.csv", "ratio_col": "housing_area_ratio", "raw_col": "housing_area_m2", "unit": "m²", "data_year": "2023", "source": "DST BOL106", "category": "social", "dimension": "bolig"},
-    {"id": "housing_no_wc", "csv": "bolig_wc_scores.csv", "ratio_col": "housing_no_wc_ratio", "raw_col": "housing_no_wc_pct", "unit": "%", "data_year": "2023", "source": "DST BOL102", "category": "social", "dimension": "bolig"},
-    {"id": "housing_no_bath", "csv": "bolig_wc_scores.csv", "ratio_col": "housing_no_bath_ratio", "raw_col": "housing_no_bath_pct", "unit": "%", "data_year": "2023", "source": "DST BOL102", "category": "social", "dimension": "bolig"},
-    # bolig_fossil: SAMLET fossil varmeafhængighed (direkte olie/gas + fjernvarmens fossile andel),
-    # scoret mod absolut mål 0% (ratio = 100 - samlet_fossil%, beregnet i fetch_bolig_fossil.py).
-    # Flyttet fra Bolig til Energi (2026) - opvarmningskilde er et energispørgsmål, ikke boligstandard.
-    # Grundlag skiftet fra BOL202 (personer) til BYGB40 (opvarmet areal i m²) august 2026 - varmebehov
-    # skalerer med areal, ikke med hoveder. Kun helårsbeboelse; fritidsboliger er kontekst (se nedenfor).
-    {"id": "bolig_fossil", "csv": "bolig_fossil_scores.csv", "ratio_col": "bolig_fossil_ratio", "raw_col": "bolig_fossil_raw", "unit": "% fossil (mål 0)", "data_year": "2026", "source": "DST BYGB40 + Energistyrelsen EPT", "category": "social", "dimension": "energi"},
-
-    # === Demokrati ===
-    {"id": "voter_turnout", "csv": "democracy_scores.csv", "ratio_col": "voter_turnout_ratio", "raw_col": "voter_turnout_pct", "unit": "%", "data_year": "2025", "source": "DST LABY08", "category": "social", "dimension": "demokrati"},
-    {"id": "voter_turnout_national", "csv": "democracy_scores.csv", "ratio_col": "voter_turnout_national_ratio", "raw_col": "voter_turnout_national_pct", "unit": "%", "data_year": "2026", "source": "DST LABY09", "category": "social", "dimension": "demokrati"},
-    {"id": "gender_leadership", "csv": "lighed_scores.csv", "ratio_col": "gender_leadership_ratio", "raw_col": "gender_leadership_pct", "unit": "% kvinder", "data_year": "2023", "source": "DST RAS301", "category": "social", "dimension": "ligestilling"},
-    {"id": "le_gender_gap", "csv": "ligestilling_scores.csv", "ratio_col": "le_gender_gap_ratio", "raw_col": "le_gender_gap_years", "unit": "år (kønsgab)", "data_year": "2025", "source": "DST HISBK", "category": "social", "dimension": "ligestilling"},
-    {"id": "income_gender_gap", "csv": "ligestilling_scores.csv", "ratio_col": "income_gender_gap_ratio", "raw_col": "income_gender_gap_pct", "unit": "% (kvinder/mænd, median)", "data_year": "2024", "source": "DST INDKP106 (median)", "category": "social", "dimension": "ligestilling"},
-    {"id": "employment_origin_gap", "csv": "ligestilling_scores.csv", "ratio_col": "employment_origin_gap_ratio", "raw_col": "employment_origin_gap_pct", "unit": "% (ikkevestlig/dansk BFK)", "data_year": "2024", "source": "DST RAS200", "category": "social", "dimension": "lighed"},
-
-    # === Kultur & fritid ===
-    {"id": "music_school", "csv": "samskabelse_extra_scores.csv", "ratio_col": "music_school_ratio", "raw_col": "music_school_per_1k", "unit": "pr. 1.000 indb.", "data_year": "2022", "source": "DST SKOLM02B", "category": "social", "dimension": "kultur_fritid"},
-    {"id": "library_use", "csv": "lokalsamfund_scores.csv", "ratio_col": "library_ratio", "raw_col": "library_loans_per_cap", "unit": "udlån/indb.", "data_year": "2025", "source": "DST BIB3A", "category": "social", "dimension": "kultur_fritid"},
-    {"id": "kultur_spending", "csv": "doughnut_scores.csv", "ratio_col": "kultur_spending_ratio", "raw_col": "kultur_spending_raw", "unit": "kr./indb.", "data_year": "2023", "source": "DST REGK31", "category": "social", "dimension": "kultur_fritid"},
-
-    # === Tryghed ===
-    {"id": "crime_rate", "csv": "faellesskaber_scores.csv", "ratio_col": "crime_ratio", "raw_col": "crime_per_1k", "unit": "pr. 1.000 indb.", "data_year": "2024", "source": "DST STRAF11", "category": "social", "dimension": "tryghed"},
-    {"id": "traffic_accidents", "csv": "faellesskaber_scores.csv", "ratio_col": "traffic_accidents_ratio", "raw_col": "traffic_accidents_per_100k", "unit": "pr. 100.000 indb.", "data_year": "2024", "source": "DST UHELDK1", "category": "social", "dimension": "tryghed"},
-    {"id": "sports_membership", "csv": "faellesskaber_scores.csv", "ratio_col": "sports_membership_ratio", "raw_col": "sports_membership_pct", "unit": "%", "data_year": "2024", "source": "DST IDRAKT02", "category": "social", "dimension": "lokalsamfund"},
-
-    # === Lokalsamfund ===
-    {"id": "class_size", "csv": "lokalsamfund_extra_scores.csv", "ratio_col": "class_size_ratio", "raw_col": "class_size", "unit": "elever/klasse", "data_year": "2023", "source": "DST KVOTIEN", "category": "social", "dimension": "uddannelse"},
-    {"id": "daycare_ratio", "csv": "lokalsamfund_extra_scores.csv", "ratio_col": "daycare_ratio", "raw_col": "daycare_ratio_val", "unit": "børn/voksen", "data_year": "2022", "source": "DST BOERN8", "category": "social", "dimension": "uddannelse"},
-    {"id": "social_stoette", "csv": "sundhedsprofil_scores.csv", "ratio_col": "social_stoette_ratio", "raw_col": "social_stoette_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "lokalsamfund"},
-    {"id": "sport_tilskuer", "csv": "kulturvaner_scores.csv", "ratio_col": "sport_tilskuer_ratio", "raw_col": "sport_tilskuer_pct", "unit": "%", "data_year": "2024-2025", "source": "DST KV2GEO", "category": "social", "dimension": "lokalsamfund"},
-    {"id": "ensomhed", "csv": "sundhedsprofil_scores.csv", "ratio_col": "ensomhed_ratio", "raw_col": "ensomhed_pct", "unit": "%", "data_year": "2025", "source": "Sundhedsprofilen 2025", "category": "social", "dimension": "lokalsamfund"},
-    {"id": "civil_society", "csv": "doughnut_scores.csv", "ratio_col": "civil_society_ratio", "raw_col": "civil_society_raw", "unit": "kr./indb.", "data_year": "2023", "source": "DST REGK31", "category": "social", "dimension": "lokalsamfund"},
-    {"id": "educated_staff", "csv": "lokalsamfund_extra_scores.csv", "ratio_col": "educated_staff_ratio", "raw_col": "educated_staff_pct", "unit": "%", "data_year": "2024", "source": "DST BOERN1", "category": "social", "dimension": "uddannelse"},
-
-    # === Mobilitet ===
-    # NB: car_access er bevidst fjernet i 2026 - se shared.ts for begrundelse.
-    {"id": "commute_distance", "csv": "mobilitet_scores.csv", "ratio_col": "commute_ratio", "raw_col": "commute_distance_km", "unit": "km", "data_year": "2023", "source": "DST AFSTB4", "category": "social", "dimension": "mobilitet"},
-    {"id": "public_transport", "csv": "mobilitet_scores.csv", "ratio_col": "public_transport_ratio", "raw_col": "public_transport_pct", "unit": "%", "data_year": "2025", "source": "DST LABY49", "category": "social", "dimension": "mobilitet"},
-
-    # === Klimatilpasning ===
-    # Proxy: vejrrelaterede forsikringsskader pr. 1.000 indb. (F&P, 2023-2025).
-    # Invers indikator: lavere skader = bedre score. Navn-nøgle som cba_2023_estimate.csv.
-    # Se data/klimatilpasning.md for metodediskussion og fremtidige forbedringer.
-    {"id": "vejr_skader", "csv": "klimatilpasning_scores.csv", "ratio_col": "vejr_skader_ratio", "raw_col": "vejr_skader_raw", "unit": "skader pr. 1.000 indb.", "data_year": "2023-2025", "source": "F&P skadesstatistik", "category": "social", "dimension": "klimatilpasning", "navn_key": True},
-]
-
-# ─── ØKOLOGISKE INDIKATORER (sub-indikatorer pr. dimension) ────────────
-# Multi-indikator dimensioner (luftkvalitet, naeringsstoffer, cirkularitet)
-# bruger worst-of-logik (max ratio) - planetary boundary-konvention.
-#
-# inverse_ratio=True betyder at ratio i CSV er "inverteret eco" hvor lav=værre.
-# Vi konverterer: direct = 10000 / inverse, så høj=overshoot.
-ECO_SUB_INDICATORS = [
-    # === Klimapåvirkning (worst-of: territorial + forbrugsbaseret) ===
-    {"id": "klimapaavirkning", "csv": "climate_scores.csv", "ratio_col": "climate_territorial_ratio", "raw_col": "co2e_per_capita", "unit": "ton CO₂e/person", "data_year": "2023", "source": "Klimaregnskabet.dk", "category": "ecological", "dimension": "klimapaavirkning", "inverse_ratio": False, "is_dimension_score": False},
-
-    # === Luftkvalitet (worst-of NO2 + PM2.5) ===
-    {"id": "luftkvalitet_no2", "csv": "luftforurening_scores.csv", "ratio_col": "no2_ratio", "raw_col": "no2_ug_m3", "unit": "µg/m³", "data_year": "2024", "source": "DCE/AU UBM via Miljøportal WFS", "category": "ecological", "dimension": "luftkvalitet", "inverse_ratio": False, "is_dimension_score": False},
-    {"id": "luftkvalitet_pm25", "csv": "luftforurening_scores.csv", "ratio_col": "pm25_ratio", "raw_col": "pm25_ug_m3", "unit": "µg/m³", "data_year": "2024", "source": "DCE/AU UBM via Miljøportal WFS", "category": "ecological", "dimension": "luftkvalitet", "inverse_ratio": False, "is_dimension_score": False},
-
-    # === Cirkularitet-indikatorer (flyttet til Forurening) ===
-    # Genanvendelse: speciel logik - ratio = (65% EU-mål / faktisk) * 100 (high=undershoot)
-    # Affald: inverse_ratio - lav score = mere affald = værre
-    {"id": "cirkularitet_recycling", "csv": "consumption_scores.csv", "ratio_col": None, "raw_col": "recycling_pct", "unit": "%", "data_year": "2023", "source": "DST LABY25", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": False, "special": "recycling_eu_target"},
-    {"id": "cirkularitet_waste", "csv": "forurening_scores.csv", "ratio_col": "waste_ratio", "raw_col": "waste_kg_per_capita", "unit": "kg/person", "data_year": "2023", "source": "DST + MST", "category": "ecological", "dimension": "forurening", "inverse_ratio": True, "is_dimension_score": False},
-
-    # === Næringsstoffer (worst-of N + P + landbrug) ===
-    {"id": "naer_nitrogen", "csv": "naeringsstoffer_scores.csv", "ratio_col": "nitrogen_ratio", "raw_col": "nitrogen_per_1000", "unit": "ton N/1.000 indb.", "data_year": "2024", "source": "DST VANDUD", "category": "ecological", "dimension": "naeringsstoffer", "inverse_ratio": True, "is_dimension_score": False},
-    {"id": "naer_phosphorus", "csv": "naeringsstoffer_scores.csv", "ratio_col": "phosphorus_ratio", "raw_col": "phosphorus_per_1000", "unit": "ton P/1.000 indb.", "data_year": "2024", "source": "DST VANDUD", "category": "ecological", "dimension": "naeringsstoffer", "inverse_ratio": True, "is_dimension_score": False},
-    {"id": "naer_landbrug", "csv": "n_landbrug_scores.csv", "ratio_col": "n_ratio", "raw_col": "n_ceiling_kg_per_ha", "unit": "kg N/ha", "data_year": "2025", "source": "Vandområdeplan 3", "category": "ecological", "dimension": "naeringsstoffer", "inverse_ratio": False, "is_dimension_score": False},
-    # Effektmål: vandområdernes økologiske tilstand (VP3) = den synlige eutrofiering som N/P forårsager.
-    # Andel af kommunens vandområder (vandløb+søer+kyst) i god tilstand, scoret mod landsgennemsnit
-    # (ratio beregnet i fetch-scriptet, høj = værre). EU's 2027-mål vises som kontekst på metodesiden.
-    {"id": "overfladevand", "csv": "vp3_vandkvalitet_scores.csv", "ratio_col": "vandkvalitet_ratio", "raw_col": "pct_god_tilstand", "unit": "%", "data_year": "2025", "source": "Vandområdeplan 3 (VP3 2e2025)", "category": "ecological", "dimension": "naeringsstoffer", "inverse_ratio": False, "is_dimension_score": False, "cap": 300},
-
-    # === Biodiversitet (worst-of: væsentlig + uerstattelig naturværdi, DCE bioscore) ===
-    # Kilde: DCE Biodiversitetskort (Bioscore-raster, AU/DCE SR456). Måler habitatkvalitet,
-    # ikke rent arealdække. To tærskler matcher CONCITO/EU's biodiversitetsmål:
-    #   ≥8  = "væsentlige naturværdier"   → mod 30%-målet (biodiversitet_ratio)
-    #   ≥12 = "uerstattelige levesteder"  → mod 10%-målet (uerstattelig_ratio)
-    {"id": "bio_vasentlig",    "csv": "biodiversitet_scores.csv", "ratio_col": "biodiversitet_ratio", "raw_col": "pct_vasentlig_natur",    "unit": "%", "data_year": "2021", "source": "DCE Biodiversitetskort (bioscore)", "category": "ecological", "dimension": "biodiversitet", "inverse_ratio": False, "is_dimension_score": False, "cap": 300},
-    {"id": "bio_uerstattelig", "csv": "biodiversitet_scores.csv", "ratio_col": "uerstattelig_ratio", "raw_col": "pct_uerstattelig_natur", "unit": "%", "data_year": "2021", "source": "DCE Biodiversitetskort (bioscore)", "category": "ecological", "dimension": "biodiversitet", "inverse_ratio": False, "is_dimension_score": False, "cap": 300},
-
-    # === Forbrugsbaseret CO2 (2. indikator under klimapaavirkning; navn-nøgle, ingen fallback) ===
-    {"id": "forbrug_co2", "csv": "cba_2023_estimate.csv", "ratio_col": None, "raw_col": "cba_2023_estimate", "unit": "ton CO₂e/person", "data_year": "2023", "source": "Osei-Owusu et al. 2020 + ENS GA25", "category": "ecological", "dimension": "klimapaavirkning", "inverse_ratio": False, "is_dimension_score": False, "special": "cba_navn_key"},
-
-    # === Forurening / Novel entities (4 indikatorer, gennemsnit - ikke worst-of) ===
-    # Pesticider + nitrat = novel entities. Genanvendelse + affald = materialecyklusser (fra cirkularitet).
-    {"id": "pesticider", "csv": "pesticider_scores.csv", "ratio_col": "pesticid_ratio", "raw_col": "pesticid_pct_over_graense", "unit": "% vandværker over 0.1 µg/l", "data_year": "2026", "source": "GEUS Jupiter", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": False},
-    # Nitrat: flyttet fra Vand til Forurening (kemisk forurening af drikkevand = novel entities)
-    {"id": "nitrat", "csv": "nitrat_scores.csv", "ratio_col": "nitrat_ratio", "raw_col": "nitrat_mg_l", "unit": "mg/L", "data_year": "2026", "source": "GEUS Jupiter", "category": "ecological", "dimension": "forurening", "inverse_ratio": False, "is_dimension_score": False},
-    # === Vand (enkelt indikator: vandindvinding) ===
-    {"id": "vandindvinding", "csv": "vandindvinding_scores.csv", "ratio_col": "vandindvinding_ratio", "raw_col": "vandindvinding_m3_per_person", "unit": "m³/person", "data_year": "2024", "source": "DST VANDIND", "category": "ecological", "dimension": "vand", "inverse_ratio": False, "is_dimension_score": False},
-
-    # === Arealanvendelse (worst-of: natur + intensivt landbrug + bebygget) ===
-    # Kilde: DST AREALDK2 2024 (pct af kommunens matrikulerede areal)
-    # natur_ratio    = (30% EU-maal / natur_pct) * 100  [lav natur = overshoot]
-    # intensiv_ratio = (intensiv_pct / 54.7% nationalt snit) * 100  [meget landbrug = overshoot]
-    # bebygget_ratio = (bebygget_pct / 14.2% nationalt snit) * 100  [meget by = overshoot]
-    {"id": "areal_intensiv", "csv": "arealanvendelse_scores.csv", "ratio_col": "intensiv_ratio", "raw_col": "intensiv_pct", "unit": "%", "data_year": "2024", "source": "DST AREALDK2", "category": "ecological", "dimension": "arealanvendelse", "inverse_ratio": False, "is_dimension_score": False},
-    {"id": "areal_bebygget", "csv": "arealanvendelse_scores.csv", "ratio_col": "bebygget_ratio", "raw_col": "bebygget_pct", "unit": "%", "data_year": "2024", "source": "DST AREALDK2", "category": "ecological", "dimension": "arealanvendelse", "inverse_ratio": False, "is_dimension_score": False},
-]
-
-# ─── KONTEKST-INDIKATORER (vises, men scores IKKE) ─────────────────────
-# Råværdier der vises i UI som kontekst under en dimension, men som ikke
-# indgår i nogen score. Skrives til master med category="context".
-# data.ts router dem til kommune.rawValues[indicator_id].
-# Bruges pt. til Energi-dimensionen (lokal VE + fjernvarmens brændselsmix).
-CONTEXT_INDICATORS = [
-    # Lokal VE-kapacitet (sol + landvind)
-    {"id": "ctx_ve_kw_per_indb", "csv": "ve_kapacitet_scores.csv", "raw_col": "ve_kw_per_indb", "unit": "kW/indb.", "data_year": "2024", "source": "Energi Data Service", "dimension": "energi"},
-    {"id": "ctx_ve_sol_mw",      "csv": "ve_kapacitet_scores.csv", "raw_col": "ve_sol_mw",      "unit": "MW",       "data_year": "2024", "source": "Energi Data Service", "dimension": "energi"},
-    {"id": "ctx_ve_vind_mw",     "csv": "ve_kapacitet_scores.csv", "raw_col": "ve_vind_mw",     "unit": "MW",       "data_year": "2024", "source": "Energi Data Service", "dimension": "energi"},
-    # Fjernvarmens brændselsmix (firdeling der summer til 100%)
-    {"id": "ctx_fjv_biomasse", "csv": "fjernvarme_mix_scores.csv", "raw_col": "fjv_biomasse_pct", "unit": "%", "data_year": "2024", "source": "Energistyrelsen EPT", "dimension": "energi"},
-    {"id": "ctx_fjv_affald",   "csv": "fjernvarme_mix_scores.csv", "raw_col": "fjv_affald_pct",   "unit": "%", "data_year": "2024", "source": "Energistyrelsen EPT", "dimension": "energi"},
-    {"id": "ctx_fjv_fossil",   "csv": "fjernvarme_mix_scores.csv", "raw_col": "fjv_fossil_pct",   "unit": "%", "data_year": "2024", "source": "Energistyrelsen EPT", "dimension": "energi"},
-    {"id": "ctx_fjv_ren",      "csv": "fjernvarme_mix_scores.csv", "raw_col": "fjv_ren_pct",      "unit": "%", "data_year": "2024", "source": "Energistyrelsen EPT", "dimension": "energi"},
-    # Opdeling af den samlede fossile varmeafhængighed (til breakdown-visning)
-    {"id": "ctx_fossil_direkte", "csv": "bolig_fossil_scores.csv", "raw_col": "fossil_direkte_pct", "unit": "%", "data_year": "2026", "source": "DST BYGB40",       "dimension": "energi"},
-    {"id": "ctx_fossil_via_fjv", "csv": "bolig_fossil_scores.csv", "raw_col": "fossil_via_fjv_pct", "unit": "%", "data_year": "2026", "source": "DST BYGB40 + EPT", "dimension": "energi"},
-    # Fritidsboliger: vises, scores IKKE. De har markant lavere fossilandel end helårsboliger
-    # (median ~7% mod ~20%), fordi sommerhuse typisk er elopvarmede. Hvis de indgik i scoren,
-    # ville sommerhuskommuner fremstå kunstigt bedre på et mål der handler om HUSSTANDES
-    # varmeregninger - og sommerhusene ejes typisk af folk fra andre kommuner.
-    {"id": "ctx_fritid_fossil", "csv": "bolig_fossil_scores.csv", "raw_col": "fritid_fossil_pct", "unit": "%", "data_year": "2026", "source": "DST BYGB40", "dimension": "energi"},
-    {"id": "ctx_fritid_andel",  "csv": "bolig_fossil_scores.csv", "raw_col": "fritid_andel_pct",  "unit": "%", "data_year": "2026", "source": "DST BYGB40", "dimension": "energi"},
-    # Klimaregnskabet.dk: sektorfordeling af den territoriale udledning (indgår
-    # allerede samlet i klimapaavirkning-scoren), samlet energiforbrug og
-    # VE-el selvforsyningsgrad. Vises under Klimapåvirkning som kontekst -
-    # scores ikke, da sektorerne blot er en opdeling af et allerede scoret tal.
-    {"id": "ctx_klima_landbrug",  "csv": "klimaregnskab_kontekst.csv", "raw_col": "klima_landbrug",  "unit": "ton CO₂e/indb.", "data_year": "2023", "source": "Klimaregnskabet.dk", "dimension": "klimapaavirkning"},
-    {"id": "ctx_klima_energi",    "csv": "klimaregnskab_kontekst.csv", "raw_col": "klima_energi",    "unit": "ton CO₂e/indb.", "data_year": "2023", "source": "Klimaregnskabet.dk", "dimension": "klimapaavirkning"},
-    {"id": "ctx_klima_transport", "csv": "klimaregnskab_kontekst.csv", "raw_col": "klima_transport", "unit": "ton CO₂e/indb.", "data_year": "2023", "source": "Klimaregnskabet.dk", "dimension": "klimapaavirkning"},
-    {"id": "ctx_energiforbrug",   "csv": "klimaregnskab_kontekst.csv", "raw_col": "energiforbrug",   "unit": "GJ/indb.",       "data_year": "2023", "source": "Klimaregnskabet.dk", "dimension": "klimapaavirkning"},
-    {"id": "ctx_ve_selvforsyning", "csv": "klimaregnskab_kontekst.csv", "raw_col": "ve_selvforsyning", "unit": "%",            "data_year": "2023", "source": "Klimaregnskabet.dk", "dimension": "klimapaavirkning"},
-]
 
 # ─── HJÆLPEFUNKTIONER ──────────────────────────────────────────────────
 
@@ -270,27 +102,166 @@ def parse_float(s):
         return None
 
 
-def invert_to_direct_ratio(inverted):
-    """Konverter inverse-eco-ratio til direct: 10000 / inverse.
-    Lav inverse = høj forurening = værre → høj direct = overshoot."""
-    if inverted is None or inverted == 0:
+# ─── RATIO: ÉN FORMEL FOR ALLE INDIKATORER ─────────────────────────────
+# Indtil sep. 2026 regnede hvert fetch-script sin egen ratio, med sin egen
+# regel for værdien 0 (fem scripts gav topscore 150, ét gav 0), og
+# build_master havde tre særregler oveni (10000/x for inverterede
+# øko-ratios, 65/pct for genanvendelse, raw/3 for forbrugs-CO2). Nu regnes
+# alle ratios her, ud fra råværdien og indikatorens reference i registret.
+# Fetch-scriptets egen ratio bruges kun til krydstjek og til at
+# rekonstruere landstallet, hvis CSV'en endnu ikke har en landstal-kolonne.
+
+SOCIAL_CAP = 150.0
+
+
+def _raw_over_ref(ind):
+    """True: ratio = raw/ref×100. False: ratio = ref/raw×100.
+
+    Sociale: højere ratio er bedre, så inverse indikatorer (lavere råværdi
+    er bedre) vendes. Økologiske: højere ratio er værre, så indikatorer hvor
+    lavere råværdi er bedre, skal IKKE vendes."""
+    if ind["category"] == "social":
+        return not ind["inverse"]
+    return ind["lower_is_better"]
+
+
+def beregn_ratio(ind, raw, ref):
+    """Indikatorens ratio for én kommune, afrundet til 2 decimaler.
+
+    raw = 0 i nævneren (ref/raw) er grænsetilfældet: for en social indikator
+    er det bedst mulige (fx ingen kriminalitet) og giver loftet 150; for en
+    økologisk er det værst mulige (fx ingen natur) og giver 'cap', eller
+    ingen værdi hvis indikatoren ikke har et loft."""
+    if raw is None:
         return None
-    return round(10000 / inverted, 2)
-
-
-def recycling_eu_target_ratio(pct):
-    """Speciel logik for genanvendelse: ratio = (65% EU-mål / faktisk) * 100.
-    Over 100 = genanvender for lidt."""
-    if pct is None or pct == 0:
+    if ind.get("formula") == "100_minus_raw":
+        x = 100 - raw
+    else:
+        if not ref:
+            return None
+        if _raw_over_ref(ind):
+            x = raw / ref * 100
+        elif raw == 0:
+            x = math.inf
+        else:
+            x = ref / raw * 100
+    cap = SOCIAL_CAP if ind["category"] == "social" else ind.get("cap")
+    if cap is not None and x > cap:
+        x = float(cap)
+    if math.isinf(x):
         return None
-    return round((65 / pct) * 100, 2)
+    return round(x, 2)
 
 
-def cba_ratio(estimate):
-    """Forbrugs-CO2 ratio = (estimat / 3 ton grænse) * 100."""
-    if estimate is None:
+def _script_ratio(ind, r):
+    """Fetch-scriptets egen ratio for en CSV-række (til krydstjek/rekonstruktion)."""
+    col = ind.get("ratio_col")
+    if not col or r is None:
         return None
-    return round((estimate / 3) * 100, 2)
+    v = parse_float(r.get(col))
+    if v is not None and ind.get("ratio_col_invers"):
+        v = round(10000 / v, 2) if v else None
+    return v
+
+
+def _rekonstruer_landstal(ind, raekker, raws):
+    """Landstallet fetch-scriptet brugte, udledt af dets egen ratio.
+
+    Overgangsløsning, indtil scriptet skriver landstallet i sin egen kolonne
+    (reference.col). Hver kommune giver et bud (raw×100/ratio eller
+    raw×ratio/100); medianen er robust over for afrunding. Derefter vælges
+    den kortest afrundede værdi der reproducerer mindst lige så mange af
+    scriptets ratios som medianen - landstal som 81,6 år er typisk
+    publiceret med få decimaler, og så genskabes de eksakt. Klippede ratios
+    (150/cap) udelades, fordi de ikke siger noget om referencen.
+    Beregnes ved hvert build fra den aktuelle CSV, så værdien aldrig er
+    ældre end dataen."""
+    cap = SOCIAL_CAP if ind["category"] == "social" else ind.get("cap")
+    par = []
+    for kode, r in raekker.items():
+        raw, sr = raws.get(kode), _script_ratio(ind, r)
+        if raw in (None, 0) or not sr or (cap is not None and sr >= cap):
+            continue
+        par.append((raw, sr))
+    if not par:
+        return None
+    bud = [raw * 100 / sr if _raw_over_ref(ind) else raw * sr / 100 for raw, sr in par]
+    median = statistics.median(bud)
+
+    def traeffere(ref):
+        return sum(1 for raw, sr in par if beregn_ratio(ind, raw, ref) == round(sr, 2))
+
+    bedst, bedst_n = median, traeffere(median)
+    for d in range(0, 7):
+        kandidat = round(median, d)
+        n = traeffere(kandidat)
+        if n >= bedst_n:
+            return kandidat
+    return bedst
+
+
+def _csv_raekker(ind, kommuner, get_csv):
+    """{kommune_kode: CSV-række eller None} for platformens kommuner."""
+    rows = get_csv(ind["csv"])
+    navn_col = ind.get("navn_col")
+    if navn_col:
+        # forbrug_co2 og vejr_skader er nøglet på kommunenavn. Manglende match
+        # giver ingen værdi - bevidst intet fallback (Christiansø er filtreret fra).
+        by_navn = {r.get(navn_col): r for r in rows if r.get(navn_col)}
+        return {kode: by_navn.get(navn) for kode, navn in kommuner}
+    by_kode = {}
+    for r in rows:
+        kode = r.get("kommune_kode")
+        if kode and kode not in by_kode:
+            by_kode[kode] = r
+    return {kode: by_kode.get(kode) for kode, _ in kommuner}
+
+
+def beregn_indikator(ind, kommuner, get_csv):
+    """Råværdi, ratio og reference for én indikator i alle kommuner.
+
+    Returnerer (poster, reference, kilde) hvor poster er
+    [(kode, navn, raw, ratio)] for kommuner med data."""
+    raekker = _csv_raekker(ind, kommuner, get_csv)
+    raws = {kode: parse_float(r.get(ind["raw_col"])) if r else None
+            for kode, r in raekker.items()}
+
+    spec = ind["reference"]
+    if spec["type"] == "maal":
+        ref, kilde = float(spec["value"]), "mål"
+    elif spec["type"] == "kommunegennemsnit":
+        vals = [v for v in raws.values() if v is not None]
+        ref, kilde = (sum(vals) / len(vals) if vals else None), "kommunegennemsnit"
+    else:
+        vals = {parse_float(r.get(spec["col"])) for r in raekker.values() if r} - {None}
+        if vals:
+            if max(vals) - min(vals) > 1e-9:
+                print(f"  ⚠ {ind['id']}: {spec['col']} har forskellige værdier i CSV'en - bruger medianen")
+            ref, kilde = statistics.median(sorted(vals)), "landstal"
+        else:
+            ref, kilde = _rekonstruer_landstal(ind, raekker, raws), "landstal, rekonstrueret"
+
+    navne = dict(kommuner)
+    cap = SOCIAL_CAP if ind["category"] == "social" else ind.get("cap")
+    poster = []
+    afvigelser = []
+    for kode, _ in kommuner:
+        raw = raws.get(kode)
+        ratio = beregn_ratio(ind, raw, ref)
+        if ratio is None and raw is None:
+            continue
+        poster.append((kode, navne[kode], raw, ratio))
+        # Krydstjek mod scriptets egen ratio. Scripterne klipper ikke selv ved
+        # 150, så loftet lægges på her før sammenligningen.
+        sr = _script_ratio(ind, raekker.get(kode))
+        if sr is not None and cap is not None:
+            sr = min(sr, float(cap))
+        if sr is not None and ratio is not None and abs(sr - ratio) > 0.5:
+            afvigelser.append(abs(sr - ratio))
+    if afvigelser:
+        print(f"  ⚠ {ind['id']}: {len(afvigelser)} kommuner afviger mere end 0,5 fra fetch-scriptets "
+              f"egen ratio (max {max(afvigelser):.2f}) - tjek retning og reference")
+    return poster, ref, kilde
 
 
 def worst_of(ratios):
@@ -305,15 +276,17 @@ def average_of(ratios):
     return round(sum(valid) / len(valid), 2) if valid else None
 
 
-# Dimensioner der bruger gennemsnit i stedet for worst-of
-AVERAGE_DIMENSIONS = {"forurening"}
-
-
 # ─── HOVEDLOGIK ────────────────────────────────────────────────────────
 
 def build_master():
     print(f"Læser fra {DATA_DIR}")
     print()
+
+    SOCIAL_INDICATORS = ir.sociale()
+    ECO_SUB_INDICATORS = ir.oekologiske()
+    CONTEXT_INDICATORS = ir.kontekst()
+    # Dimensioner der bruger gennemsnit i stedet for worst-of (i dag kun forurening)
+    AVERAGE_DIMENSIONS = ir.gennemsnits_dimensioner()
 
     # Få liste af alle 98 kommuner fra hoved-CSV
     main_rows = load_csv("doughnut_scores.csv")
@@ -338,69 +311,8 @@ def build_master():
     # Tæller for diagnostik
     indicator_coverage = {}
 
-    # ─── Sociale indikatorer ────────────────────────────────────
-    print("Sociale indikatorer:")
-    for ind in SOCIAL_INDICATORS:
-        rows = get_csv(ind["csv"])
-
-        # Specialcase: indikatorer der bruger kommunenavn som nøgle (ikke kode)
-        if ind.get("navn_key"):
-            by_navn = {r.get("kommune_navn"): r for r in rows if r.get("kommune_navn")}
-            n = 0
-            for kode, navn in kommuner:
-                r = by_navn.get(navn)
-                if r is None:
-                    continue
-                ratio = parse_float(r.get(ind["ratio_col"]))
-                # Samme 150-cap som kode-nøgle-grenen - ellers undslipper
-                # navn-nøgle-indikatorer (vejr_skader) den dokumenterede cap.
-                if ratio is not None and ratio > 150:
-                    ratio = 150.0
-                raw = parse_float(r.get(ind["raw_col"])) if ind["raw_col"] else None
-                if ratio is None and raw is None:
-                    continue
-                output_rows.append({
-                    "kommune_kode": kode,
-                    "kommune_navn": navn,
-                    "indicator_id": ind["id"],
-                    "ratio": ratio if ratio is not None else "",
-                    "raw_value": raw if raw is not None else "",
-                    "unit": ind["unit"],
-                    "data_year": _data_year(ind),
-                    "source": ind["source"],
-                    "category": ind["category"],
-                    "dimension": ind["dimension"],
-                })
-                n += 1
-            indicator_coverage[ind["id"]] = n
-            print(f"  {ind['id']:25s}: {n}/98 kommuner (navn-nøgle)")
-            continue
-
-        # Standard: kommune_kode-nøgle
-        by_kode = {}
-        for r in rows:
-            kode = r.get("kommune_kode")
-            if kode and kode not in by_kode:
-                by_kode[kode] = r
-
-        n = 0
-        for kode, navn in kommuner:
-            r = by_kode.get(kode)
-            if r is None:
-                continue
-            raw = parse_float(r.get(ind["raw_col"])) if ind["raw_col"] else None
-            abs_target = ind.get("abs_target")
-            if abs_target:
-                # Absolut score mod fast mål: ratio = raw / mål * 100 (100 = mål nået).
-                # Klippet ved 150 som øvrige sociale ratios.
-                ratio = round(min((raw / abs_target) * 100, 150.0), 2) if raw is not None else None
-            else:
-                ratio = parse_float(r.get(ind["ratio_col"]))
-                # Cap alle sociale ratios ved 150 for at undgå ekstreme inverse-værdier
-                if ratio is not None and ratio > 150:
-                    ratio = 150.0
-            if ratio is None and raw is None:
-                continue
+    def skriv(ind, poster, ref):
+        for kode, navn, raw, ratio in poster:
             output_rows.append({
                 "kommune_kode": kode,
                 "kommune_navn": navn,
@@ -412,101 +324,30 @@ def build_master():
                 "source": ind["source"],
                 "category": ind["category"],
                 "dimension": ind["dimension"],
+                "reference": round(ref, 6) if ref is not None else "",
             })
-            n += 1
-        indicator_coverage[ind["id"]] = n
-        print(f"  {ind['id']:25s}: {n}/98 kommuner")
+
+    # ─── Sociale indikatorer ────────────────────────────────────
+    print("Sociale indikatorer:")
+    for ind in SOCIAL_INDICATORS:
+        poster, ref, kilde = beregn_indikator(ind, kommuner, get_csv)
+        skriv(ind, poster, ref)
+        indicator_coverage[ind["id"]] = len(poster)
+        print(f"  {ind['id']:25s}: {len(poster)}/98 kommuner  ref={ref if ref is None else f'{ref:.6g}'} ({kilde})")
 
     # ─── Økologiske sub-indikatorer ──────────────────────────────
     print()
     print("Økologiske sub-indikatorer:")
     # Saml sub-ratios pr. dimension for at beregne worst-of dimension-scores
     eco_sub_ratios = {}  # {kommune_kode: {dimension: [ratios]}}
-
     for ind in ECO_SUB_INDICATORS:
-        rows = get_csv(ind["csv"])
-
-        # Specialcase: cba bruger navn-nøgle, ikke kommune_kode
-        if ind.get("special") == "cba_navn_key":
-            by_navn = {r.get("kommune"): r for r in rows if r.get("kommune")}
-            n = 0
-            for kode, navn in kommuner:
-                r = by_navn.get(navn)
-                if r is None:
-                    continue
-                raw = parse_float(r.get(ind["raw_col"]))
-                if raw is None:
-                    continue
-                ratio = cba_ratio(raw)
-                output_rows.append({
-                    "kommune_kode": kode,
-                    "kommune_navn": navn,
-                    "indicator_id": ind["id"],
-                    "ratio": ratio if ratio is not None else "",
-                    "raw_value": raw,
-                    "unit": ind["unit"],
-                    "data_year": _data_year(ind),
-                    "source": ind["source"],
-                    "category": ind["category"],
-                    "dimension": ind["dimension"],
-                })
-                eco_sub_ratios.setdefault(kode, {}).setdefault(ind["dimension"], []).append(ratio)
-                n += 1
-            indicator_coverage[ind["id"]] = n
-            print(f"  {ind['id']:25s}: {n}/98 kommuner (navn-nøgle)")
-            continue
-
-        # Standard: kommune_kode-nøgle
-        by_kode = {}
-        for r in rows:
-            kode = r.get("kommune_kode")
-            if kode and kode not in by_kode:
-                by_kode[kode] = r
-
-        n = 0
-        for kode, navn in kommuner:
-            r = by_kode.get(kode)
-            if r is None:
-                continue
-
-            raw = parse_float(r.get(ind["raw_col"])) if ind["raw_col"] else None
-
-            # Beregn ratio efter speciallogik
-            if ind.get("special") == "recycling_eu_target":
-                ratio = recycling_eu_target_ratio(raw)
-            else:
-                csv_ratio = parse_float(r.get(ind["ratio_col"])) if ind["ratio_col"] else None
-                if ind.get("inverse_ratio") and csv_ratio is not None:
-                    ratio = invert_to_direct_ratio(csv_ratio)
-                else:
-                    ratio = csv_ratio
-
-            # Cap ekstreme eco-ratioer (fx bioscore med pct nær 0 giver ratio i tusinder).
-            # Baren klipper alligevel ved 200; cap holder det viste tal og validering pæn.
-            cap = ind.get("cap")
-            if cap is not None and ratio is not None and ratio > cap:
-                ratio = float(cap)
-
-            if ratio is None and raw is None:
-                continue
-
-            output_rows.append({
-                "kommune_kode": kode,
-                "kommune_navn": navn,
-                "indicator_id": ind["id"],
-                "ratio": ratio if ratio is not None else "",
-                "raw_value": raw if raw is not None else "",
-                "unit": ind["unit"],
-                "data_year": _data_year(ind),
-                "source": ind["source"],
-                "category": ind["category"],
-                "dimension": ind["dimension"],
-            })
+        poster, ref, kilde = beregn_indikator(ind, kommuner, get_csv)
+        skriv(ind, poster, ref)
+        for kode, _, _, ratio in poster:
             if ratio is not None:
                 eco_sub_ratios.setdefault(kode, {}).setdefault(ind["dimension"], []).append(ratio)
-            n += 1
-        indicator_coverage[ind["id"]] = n
-        print(f"  {ind['id']:25s}: {n}/98 kommuner")
+        indicator_coverage[ind["id"]] = len(poster)
+        print(f"  {ind['id']:25s}: {len(poster)}/98 kommuner  ref={ref if ref is None else f'{ref:.6g}'} ({kilde})")
 
     # ─── Kontekst-indikatorer (råværdier, ingen score) ───────────
     print()
@@ -537,6 +378,7 @@ def build_master():
                 "source": ind["source"],
                 "category": "context",
                 "dimension": ind["dimension"],
+                "reference": "",
             })
             n += 1
         indicator_coverage[ind["id"]] = n
@@ -568,6 +410,7 @@ def build_master():
                 "source": "",
                 "category": "ecological_dimension",
                 "dimension": dim,
+                "reference": "",
             })
             dim_count += 1
     print(f"  {dim_count} dimension-aggregat-rækker")
@@ -583,12 +426,23 @@ def build_master():
     else:
         print("  ✓ Alle ratios inden for forventet interval")
 
+    # Webappen parser master med split(","). Et komma i et felt forskyder
+    # kolonnerne, og rækken forsvinder tavst fra siden - derfor en hård fejl.
+    med_komma = [(r["indicator_id"], k, v) for r in output_rows for k, v in r.items()
+                 if isinstance(v, str) and "," in v]
+    if med_komma:
+        raise ValueError(f"{len(med_komma)} felter indeholder komma, som webappens CSV-parser ikke "
+                         f"kan håndtere, fx {med_komma[0]}")
+
     kommuner_med_data = len({r["kommune_kode"] for r in output_rows})
     print(f"  Kommuner med mindst én indikator: {kommuner_med_data}/{len(kommuner)}")
 
     # ─── Skriv output ────────────────────────────────────────────
+    # reference er tilføjet sidst (sep. 2026), så eksisterende læsere der
+    # bruger kolonneposition, ikke påvirkes.
     fieldnames = ["kommune_kode", "kommune_navn", "indicator_id", "ratio",
-                  "raw_value", "unit", "data_year", "source", "category", "dimension"]
+                  "raw_value", "unit", "data_year", "source", "category", "dimension",
+                  "reference"]
     with open(OUTPUT, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=fieldnames)
         w.writeheader()
@@ -597,6 +451,89 @@ def build_master():
     print()
     print(f"✓ Skrev {len(output_rows)} rækker til {OUTPUT.relative_to(ROOT)}")
     print(f"  Filstørrelse: {OUTPUT.stat().st_size / 1024:.1f} KB")
+    _skriv_noegletal(output_rows, len(kommuner))
+
+
+def _skriv_noegletal(output_rows, antal_kommuner):
+    """data/noegletal.json: reference, dækning og dataår pr. indikator.
+
+    Metodesiden og registrets tekster henviser til tal som landstallet for
+    pesticider eller antal kommuner med tilskuertal. De stod før som
+    håndskrevne tal i teksten og drev ved hver dataopdatering. Nu skriver
+    teksterne en pladsholder ({ref:pesticider:1}, {mangler:sport_tilskuer}),
+    og webappen udfylder den herfra (udfyldTal() i webapp/lib/shared.ts).
+    Filen skrives sammen med master og skal committes sammen med den;
+    webappen stopper buildet hvis de to ikke passer sammen."""
+    pr_ind = {}
+    for r in output_rows:
+        iid = r["indicator_id"]
+        if iid.startswith("_dim_"):
+            continue
+        d = pr_ind.setdefault(iid, {"reference": None, "daekning": 0, "data_year": r["data_year"]})
+        if r["reference"] != "":
+            d["reference"] = r["reference"]
+        if r["ratio"] != "" or (r["category"] == "context" and r["raw_value"] != ""):
+            d["daekning"] += 1
+    ud = {
+        "_om": "Genereres af scripts/build_master_csv.py sammen med master_indicators.csv. "
+               "Ret den ikke i hånden. daekning = antal kommuner med en værdi.",
+        "kommuner": antal_kommuner,
+        "indikatorer": pr_ind,
+    }
+    # Én linje pr. indikator, så en dataopdatering giver en læsbar diff.
+    linjer = [f' "_om": {json.dumps(ud["_om"], ensure_ascii=False)},',
+              f' "kommuner": {antal_kommuner},',
+              ' "indikatorer": {']
+    poster = [f'  {json.dumps(iid)}: {json.dumps(d, ensure_ascii=False)}' for iid, d in pr_ind.items()]
+    linjer.append(",\n".join(poster))
+    linjer.append(" }")
+    with open(NOEGLETAL, "w", encoding="utf-8") as f:
+        f.write("{\n" + "\n".join(linjer) + "\n}\n")
+    print(f"✓ Skrev {NOEGLETAL.relative_to(ROOT)} ({len(pr_ind)} indikatorer)")
+
+
+def _tjek_konsistens_efter_build():
+    """
+    Kører scripts/tjek_konsistens.py efter en vellykket build og printer
+    resultatet. Isoleret i egen funktion så en fejl i selve tjekket (fx en
+    fremtidig omskrivning af shared.ts som regex'en ikke kan følge) aldrig
+    kan vælte en build der ellers lykkedes.
+
+    Lazy import (ikke i toppen af filen): fetch-scripts importerer
+    auto_build_master fra dette modul, og en fejl i tjek-modulet må ikke
+    vælte selve hentningen ved import.
+
+    Returnerer True (ingen fejl), False (fejl fundet) eller None (tjekket
+    kunne ikke køre). None er IKKE det samme som bestået: et tjek der
+    crasher er præcis den tavse fejl CLAUDE.md pkt. 19 advarer imod.
+    """
+    try:
+        from tjek_konsistens import main as tjek_main
+        print()
+        print("=" * 55)
+        print("KONSISTENSTJEK (scripts/tjek_konsistens.py)")
+        print("=" * 55)
+        return tjek_main() == 0
+    except Exception as e:
+        print()
+        print(f"  ✗ KONSISTENSTJEKKET KUNNE IKKE KØRE: {type(e).__name__}: {e}")
+        print("    Det tæller IKKE som bestået. Kør: python3 scripts/tjek_konsistens.py")
+        return None
+
+
+def _rapport_efter_build():
+    """Kort rapport over hvad buildet ændrede i forhold til den committede
+    master (scripts/rapport_dataaendringer.py). Ren information: en fejl
+    her må aldrig vælte et build der ellers lykkedes."""
+    try:
+        from rapport_dataaendringer import main as rapport_main
+        print()
+        print("=" * 55)
+        print("DATAÆNDRINGER (scripts/rapport_dataaendringer.py)")
+        print("=" * 55)
+        rapport_main([], kort=True)
+    except Exception as e:
+        print(f"  (rapporten over dataændringer kunne ikke køre: {type(e).__name__}: {e})")
 
 
 def auto_build_master():
@@ -620,6 +557,11 @@ def auto_build_master():
         build_master()
         print()
         print("✓ Master-CSV opdateret. Klar til commit + push via GitHub Desktop.")
+        _rapport_efter_build()
+        # Printer altid, men rejser aldrig - se _tjek_konsistens_efter_build().
+        # Et fetch-script skal ikke crashe fordi konsistenstjekket finder noget;
+        # det skal bare stå tydeligt i outputtet, så man ser det før commit.
+        _tjek_konsistens_efter_build()
     except Exception as e:
         print()
         print(f"✗ FEJL ved rebuild af master-CSV: {e}")
@@ -629,3 +571,13 @@ def auto_build_master():
 
 if __name__ == "__main__":
     build_master()
+    _rapport_efter_build()
+    # Direkte kørsel (den vej CLAUDE.md instruerer at bruge når et
+    # fetch-script IKKE selv printede "✓ Master-CSV opdateret") afbryder MED
+    # exit 1 hvis konsistenstjekket finder fejl. Det er her fejlen skal
+    # stoppes - før commit, ikke efter deploy.
+    resultat = _tjek_konsistens_efter_build()
+    if resultat is None:
+        sys.exit(2)
+    if resultat is False:
+        sys.exit(1)

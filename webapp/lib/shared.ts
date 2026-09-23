@@ -1,9 +1,99 @@
-// --- DOUGHNUT-ÅR KONFIGURATION ---
-// "Doughnut-år" = den edition af modellen. Data-år = det seneste helårsdata.
-// Regel: en 2026-Doughnut bruger seneste tilgængelige helårsdata (typisk 2025-tal).
-// Hver indikator har sit eget dataYear; de fleste sociale er fra 2024-2025 (sep. 2026).
-export const DOUGHNUT_EDITION_YEAR = "2026";
-export const DOUGHNUT_DEFAULT_DATA_YEAR = "2025";
+// Indikatorer, sociale kategorier og økologiske dimensioner kommer fra
+// data/indikatorer.json - samme fil som build_master_csv.py og
+// build_trends_csv.py læser (via scripts/indikatorregister.py). Ret dem dér,
+// ikke her. Denne fil oversætter kun registrets felter til de typer UI'et
+// bruger. Doughnut-udgave og dataår beregnes i data.ts fra master-CSV'en.
+import registerJson from "../../data/indikatorer.json";
+import noegletalJson from "../../data/noegletal.json";
+
+interface RegisterIndikator {
+  id: string;
+  category: "social" | "ecological" | "context";
+  dimension: string;
+  name?: string;
+  table?: string;
+  source: string;
+  source_url?: string;
+  unit: string;
+  raw_unit?: string;
+  data_year: string;
+  csv?: string;
+  inverse?: boolean;
+  baseline_level?: BaselineLevel;
+  absolute_score?: boolean;
+  target_label?: string;
+  lower_is_better?: boolean;
+  baseline_type?: "absolut" | "relativ";
+  boundary?: string;
+  raw_key?: string;
+  ratio_key?: string;
+  rationale?: string;
+  cap?: number;
+  formula?: "100_minus_raw";
+}
+
+interface Register {
+  sociale_kategorier: { id: string; name: string; description: string; indicators: string[] }[];
+  oekologiske_dimensioner: {
+    id: string;
+    name: string;
+    short_name: string;
+    description: string;
+    source: string;
+    source_label: string;
+    unit: string;
+    boundary: string;
+    aggregation: "worst-of" | "gennemsnit";
+    indicators: string[];
+  }[];
+  indikatorer: RegisterIndikator[];
+}
+
+const REGISTER = registerJson as unknown as Register;
+
+// ─── Tal i tekster udfyldes fra data ─────────────────────────────────
+// Registrets og metodesidens tekster skriver ikke landstal og dækning i
+// hånden - de drev ved hver dataopdatering. I stedet står en pladsholder,
+// som udfyldes fra data/noegletal.json (skrevet af build_master_csv.py
+// sammen med master, og kontrolleret mod master i data.ts):
+//   {ref:ID:D}     indikatorens reference (landstal/mål) med D decimaler
+//   {daekning:ID}  antal kommuner med en værdi
+//   {mangler:ID}   antal kommuner uden værdi
+//   {aar:ID}       indikatorens dataår
+//   {kommuner}     antal kommuner i alt
+// En ukendt pladsholder stopper buildet i stedet for at stå rå på siden.
+interface Noegletal {
+  kommuner: number;
+  indikatorer: Record<string, { reference: number | null; daekning: number; data_year: string }>;
+}
+export const NOEGLETAL = noegletalJson as unknown as Noegletal;
+
+function formatTal(x: number, decimaler: number): string {
+  const [hel, brok] = Math.abs(x).toFixed(decimaler).split(".");
+  const tusinder = hel.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  return (x < 0 ? "-" : "") + tusinder + (brok ? "," + brok : "");
+}
+
+export function udfyldTal(tekst: string): string;
+export function udfyldTal(tekst: string | undefined): string | undefined;
+export function udfyldTal(tekst: string | undefined): string | undefined {
+  if (!tekst || !tekst.includes("{")) return tekst;
+  return tekst.replace(/\{(ref|daekning|mangler|aar|kommuner)(?::(\w+))?(?::(\d))?\}/g, (hele, type, id, dec) => {
+    if (type === "kommuner") return String(NOEGLETAL.kommuner);
+    const tal = id ? NOEGLETAL.indikatorer[id] : undefined;
+    if (!tal) throw new Error(`Ukendt indikator i pladsholderen ${hele} (data/noegletal.json)`);
+    if (type === "daekning") return String(tal.daekning);
+    if (type === "mangler") return String(NOEGLETAL.kommuner - tal.daekning);
+    if (type === "aar") return tal.data_year;
+    if (tal.reference === null) throw new Error(`${hele}: ${id} har ingen reference i data/noegletal.json`);
+    return formatTal(tal.reference, dec === undefined ? 1 : Number(dec));
+  });
+}
+
+/** Hele registret. Bruges af data.ts til at validere master-CSV'en ved build. */
+export const INDIKATORREGISTER: Register = REGISTER;
+export type { RegisterIndikator };
+const REGISTER_BY_ID = new Map(REGISTER.indikatorer.map((i) => [i.id, i]));
 
 export type BaselineLevel = 1 | 2 | 3;
 // Niveau 1: Absolutte biofysiske/juridiske grænser (WHO, EU-direktiver)
@@ -25,613 +115,46 @@ export interface Indicator {
   rawUnit?: string;           // Enhed for råværdi, f.eks. "pr. 1.000 indb.", "%", "km"
 }
 
-export const INDICATORS: Indicator[] = [
-  {
-    id: "life_expectancy",
-    name: "Middellevetid",
-    table: "HISBK",
-    source: "https://www.statistikbanken.dk/HISBK",
-    category: "social",
-    inverse: false,
-    dataYear: "2021-2025",
-    baselineLevel: 3,
-    rawUnit: "år",
-  },
-  {
-    id: "education",
-    name: "Kompetencegivende uddannelse (30-34 år)",
-    // HFUDD11 afløser HFUDD10, som DST gjorde inaktiv i 2019 (samme tabel som low_education).
-    table: "HFUDD11",
-    source: "https://www.statistikbanken.dk/HFUDD11",
-    category: "social",
-    inverse: false,
-    dataYear: "2025",
-    baselineLevel: 2,
-    absoluteTarget: "95% (nationalt uddannelsesmål)",
-    absoluteScore: true,
-    rawUnit: "%",
-  },
-  {
-    id: "disposable_income",
-    name: "Disponibel indkomst (median)",
-    // Median, ikke gennemsnit (sep. 2026): gennemsnittet blev flyttet af få
-    // meget høje indkomster. Beregnet af INDKP106's intervaller, se
-    // scripts/indkomst_median.py.
-    table: "INDKP106",
-    source: "https://www.statistikbanken.dk/INDKP106",
-    category: "social",
-    inverse: false,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "kr.",
-  },
-  {
-    id: "employment",
-    name: "Beskæftigelsesfrekvens",
-    table: "RAS200",
-    source: "https://www.statistikbanken.dk/RAS200",
-    category: "social",
-    inverse: false,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "child_poverty",
-    name: "Børnefattigdom (0-17 år)",
-    table: "LABY07",
-    source: "https://www.statistikbanken.dk/LABY07",
-    category: "social",
-    inverse: true,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "gini",
-    name: "Gini-koefficient",
-    table: "IFOR41",
-    source: "https://www.statistikbanken.dk/IFOR41",
-    category: "social",
-    inverse: true,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "point",
-  },
-  {
-    id: "low_income",
-    name: "Andel i lavindkomstgruppe",
-    table: "LABY07",
-    source: "https://www.statistikbanken.dk/LABY07",
-    category: "social",
-    inverse: true,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "vacant_housing",
-    name: "Ubeboede boliger",
-    table: "BOL101",
-    source: "https://www.statistikbanken.dk/BOL101",
-    category: "social",
-    inverse: true,
-    dataYear: "2026",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "bolig_fossil",
-    name: "Fossil opvarmning (inkl. fjernvarme)",
-    table: "BYGB40",
-    source: "https://www.statistikbanken.dk/BYGB40",
-    category: "social",
-    inverse: true,
-    dataYear: "2026",
-    baselineLevel: 2,
-    absoluteTarget: "0% fossil (udfasningsmål)",
-    absoluteScore: true,
-    rawUnit: "%",
-  },
-  {
-    id: "voter_turnout",
-    name: "Stemmedeltagelse kommunalvalg",
-    // LABY08, ikke KVBPCT: KVBPCT har slet ingen kommuneopdeling (kun landstal).
-    // fetch_democracy_data.py har altid brugt LABY08 - kildeangivelsen var forkert.
-    table: "LABY08",
-    source: "https://www.statistikbanken.dk/LABY08",
-    category: "social",
-    inverse: false,
-    dataYear: "2025",  // Kommunalvalg hvert 4. år; scriptet vælger nu nyeste automatisk
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "voter_turnout_national",
-    name: "Stemmedeltagelse folketingsvalg",
-    table: "LABY09",
-    source: "https://www.statistikbanken.dk/LABY09",
-    category: "social",
-    inverse: false,
-    dataYear: "2026",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  // --- Fællesskaber ---
-  {
-    id: "sports_membership",
-    name: "Idrætsmedlemskab (andel af befolkningen)",
-    table: "IDRAKT02",
-    source: "https://www.statistikbanken.dk/IDRAKT02",
-    category: "social",
-    inverse: false,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "crime_rate",
-    name: "Anmeldte forbrydelser pr. 1.000 indb.",
-    table: "STRAF11",
-    source: "https://www.statistikbanken.dk/STRAF11",
-    category: "social",
-    inverse: true,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "pr. 1.000 indb.",
-  },
-  {
-    id: "traffic_accidents",
-    name: "Trafikulykker (tilskadekomne pr. 100.000 indb.)",
-    table: "UHELDK1",
-    source: "https://www.statistikbanken.dk/UHELDK1",
-    category: "social",
-    inverse: true,
-    dataYear: "2022-2024",
-    baselineLevel: 3,
-    rawUnit: "pr. 100.000 indb.",
-  },
-  // --- Lokalsamfund ---
-  {
-    id: "library_use",
-    name: "Biblioteksudlån pr. indbygger",
-    // BIB3A afløser BIB1, som DST har markeret inaktiv (stopper ved 2024).
-    // Samme tal - efterprøvet 0,0% afvigelse 2022-2024 - men aktiv og med 2025.
-    table: "BIB3A",
-    source: "https://www.statistikbanken.dk/BIB3A",
-    category: "social",
-    inverse: false,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "udlån/indb.",
-  },
-  // --- Mobilitet ---
-  {
-    id: "commute_distance",
-    name: "Gennemsnitlig pendlingsafstand",
-    table: "AFSTB4",
-    source: "https://www.statistikbanken.dk/AFSTB4",
-    category: "social",
-    inverse: true,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "km",
-  },
-  // car_access (familier med bilrådighed) er fjernet 2026 - i en doughnut/bæredygtighedsramme
-  // er "flere biler = bedre" konceptuelt skævt. Indikatoren gav landdistrikter en kunstig høj
-  // mobilitets-score som kompenserede for dårlig kollektiv transport. Råværdier og CSV-data
-  // er bevaret i mobilitet_scores.csv så indikatoren kan genaktiveres hvis logikken revurderes.
-  {
-    id: "public_transport",
-    name: "God adgang til offentlig transport",
-    table: "LABY49",
-    source: "https://www.statistikbanken.dk/LABY49",
-    category: "social",
-    inverse: false,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  // --- Klimatilpasning ---
-  {
-    id: "vejr_skader",
-    name: "Vejrrelaterede forsikringsskader pr. 1.000 indb.",
-    table: "F&P skadesstatistik",
-    source: "https://fogp.dk/tal-og-analyser/saadan-er-danmark-blevet-ramt-af-vejrrelaterede-skader-de-seneste-aar/",
-    category: "social",
-    inverse: true,
-    dataYear: "2023-2025",
-    baselineLevel: 3,
-    rawUnit: "skader pr. 1.000 indb.",
-  },
-  // --- Velfærd (ekstra) ---
-  {
-    id: "vulnerable_children",
-    name: "Udsatte børn og unge (andel 0-22 år)",
-    table: "BU43",
-    source: "https://www.statistikbanken.dk/BU43",
-    category: "social",
-    inverse: true,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "neet",
-    name: "Unge uden for uddannelse/beskæftigelse (NEET)",
-    table: "NEET1",
-    source: "https://www.statistikbanken.dk/NEET1",
-    category: "social",
-    inverse: true,
-    dataYear: "2023",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  // --- Sundhed (ekstra) ---
-  {
-    id: "hospital_long",
-    name: "Sygehusophold 12+ timer (andel)",
-    table: "SBR01",
-    source: "https://www.statistikbanken.dk/SBR01",
-    category: "social",
-    inverse: true,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "hjemsyg",
-    name: "Hjemmesygepleje-modtagere",
-    table: "HJEMSYG",
-    source: "https://www.statistikbanken.dk/HJEMSYG",
-    category: "social",
-    inverse: true,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "pr. 1.000 indb.",
-  },
-  // --- Uddannelse (ekstra) ---
-  {
-    id: "low_education",
-    name: "Unge 25-29 med kun grundskole",
-    table: "HFUDD11",
-    source: "https://www.statistikbanken.dk/HFUDD11",
-    category: "social",
-    inverse: true,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  // --- Bolig (ekstra) ---
-  {
-    id: "housing_area",
-    name: "Boligareal pr. person (m²)",
-    table: "BOL106",
-    source: "https://www.statistikbanken.dk/BOL106",
-    category: "social",
-    inverse: false,
-    dataYear: "2026",
-    baselineLevel: 3,
-    rawUnit: "m²",
-  },
-  // --- Kultur & fritid ---
-  {
-    id: "music_school",
-    name: "Musikskoleelever pr. 1.000 indb.",
-    table: "SKOLM02B",
-    source: "https://www.statistikbanken.dk/SKOLM02B",
-    category: "social",
-    inverse: false,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "pr. 1.000 indb.",
-  },
-  {
-    id: "kultur_spending",
-    name: "Kommunale kulturudgifter pr. indb. (kr.)",
-    table: "REGK31",
-    source: "https://www.statistikbanken.dk/REGK31",
-    category: "social",
-    inverse: false,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "kr./indb.",
-  },
-  {
-    id: "civil_society",
-    name: "Udgifter til frivillige foreninger pr. indb. (kr.)",
-    table: "REGK31",
-    source: "https://www.statistikbanken.dk/REGK31",
-    category: "social",
-    inverse: false,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "kr./indb.",
-  },
-  // --- Lokalsamfund (ekstra) ---
-  {
-    id: "class_size",
-    name: "Klassekvotient grundskole",
-    table: "KVOTIEN",
-    source: "https://www.statistikbanken.dk/KVOTIEN",
-    category: "social",
-    inverse: true,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "elever/klasse",
-  },
-  {
-    id: "daycare_ratio",
-    name: "Normering daginstitution (3-5 år)",
-    table: "BOERN8",
-    source: "https://www.statistikbanken.dk/BOERN8",
-    category: "social",
-    inverse: true,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "børn/voksen",
-  },
-  {
-    id: "educated_staff",
-    name: "Uddannede pædagoger i daginstitutioner",
-    table: "BOERN1",
-    source: "https://www.statistikbanken.dk/BOERN1",
-    category: "social",
-    inverse: false,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  // --- UVM: Uddannelse ---
-  {
-    id: "exam_grade",
-    name: "Karaktergennemsnit, folkeskolens afgangseksamen",
-    table: "GS/KARA/KARAGNS",
-    source: "https://api.uddannelsesstatistik.dk",
-    category: "social",
-    inverse: false,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "karakter",
-  },
-  {
-    id: "high_absence",
-    name: "Elever med højt fravær (>10%)",
-    table: "GS/ELEVFRAV/FRAVAAR",
-    source: "https://api.uddannelsesstatistik.dk",
-    category: "social",
-    inverse: true,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "youth_education",
-    name: "Forventet ungdomsuddannelseskompetence",
-    table: "GS/PROFMOD/PROFMOD",
-    source: "https://api.uddannelsesstatistik.dk",
-    category: "social",
-    inverse: false,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  // apprenticeship (UVM EUD/PRAK/SØG) er PENSIONERET aug. 2026. Tre grunde:
-  // (1) kilden er brudt - UVM kender ikke længere nøgletallet "Lp-søgende med
-  //     afsluttet grundforløb", så tallet kunne ikke opdateres;
-  // (2) fortegnet var tvivlsomt - "lærepladssøgende" er per definition unge
-  //     UDEN plads, så en høj andel med afsluttet grundforløb lige så godt kan
-  //     betyde flaskehals som succes, men blev scoret som "højere er bedre";
-  // (3) tallene var ustabile (7,7-100%, med Herning og Fanø på præcis 100).
-  // Vil man have lærepladser med igen, er det rigtige måltal praktikpladsgraden
-  // (andel EUD-elever der FÅR en plads) - ikke hvor langt de søgende er nået.
-  // --- UVM: Trivsel ---
-  {
-    id: "wellbeing",
-    name: "Elevtrivsel i folkeskolen (gennemsnit)",
-    table: "GS/TRIV/TRIVIND",
-    source: "https://api.uddannelsesstatistik.dk",
-    category: "social",
-    inverse: false,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "score (1-5)",
-  },
-  // --- DST: Lighed & velfærd ---
-  {
-    id: "poverty_relative",
-    name: "Relativ fattigdom (indkomst <60% af median)",
-    table: "IFOR12P",
-    source: "https://www.statistikbanken.dk/IFOR12P",
-    category: "social",
-    inverse: true,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "child_notifications",
-    name: "Underretninger om børn pr. 1.000 indb. 0-17 år",
-    table: "UND2",
-    source: "https://www.statistikbanken.dk/UND2",
-    category: "social",
-    inverse: true,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "pr. 1.000 indb.",
-  },
-  // --- DST: Boligforhold ---
-  {
-    id: "housing_no_wc",
-    name: "Boliger uden eget toilet (%)",
-    table: "BOL102",
-    source: "https://www.statistikbanken.dk/BOL102",
-    category: "social",
-    inverse: true,
-    dataYear: "2026",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "housing_no_bath",
-    name: "Boliger uden eget bad (%)",
-    table: "BOL102",
-    source: "https://www.statistikbanken.dk/BOL102",
-    category: "social",
-    inverse: true,
-    dataYear: "2026",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  // --- DST: Ligestilling ---
-  {
-    id: "gender_leadership",
-    name: "Kvinder i lederstillinger (%)",
-    table: "RAS301",
-    source: "https://www.statistikbanken.dk/RAS301",
-    category: "social",
-    inverse: false,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "% kvinder",
-  },
-  {
-    id: "le_gender_gap",
-    name: "Kønsgab i middellevetid (år)",
-    table: "HISBK",
-    source: "https://www.statistikbanken.dk/HISBK",
-    category: "social",
-    inverse: true,
-    dataYear: "2021-2025",
-    baselineLevel: 3,
-    rawUnit: "år (kvinder - mænd)",
-  },
-  {
-    id: "income_gender_gap",
-    name: "Indkomstlighed mænd/kvinder (%)",
-    table: "INDKP106",
-    source: "https://www.statistikbanken.dk/INDKP106",
-    category: "social",
-    inverse: false,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "% (kvinders medianindkomst af mænds)",
-  },
-  {
-    id: "employment_origin_gap",
-    name: "Beskæftigelse ikke-vestlige vs. dansk (%)",
-    table: "RAS200",
-    source: "https://www.statistikbanken.dk/RAS200",
-    category: "social",
-    inverse: false,
-    dataYear: "2024",
-    baselineLevel: 3,
-    rawUnit: "% (ikke-vestlig BFK / dansk BFK)",
-  },
-  // --- Den Nationale Sundhedsprofil 2025 ('Hvordan har du det?') ---
-  // Spørgeskemaundersøgelse, ikke register. Bølger hvert 4. år:
-  // 2010, 2013, 2017, 2021, 2025. Samme kommunetal står derfor fast
-  // i flere Doughnut-editioner - se metodesiden.
-  {
-    id: "selvvurderet_helbred",
-    name: "Godt selvvurderet helbred",
-    table: "Sundhedsprofilen",
-    source: "https://www.danskernessundhed.dk/",
-    category: "social",
-    inverse: false,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "mentalt_helbred",
-    name: "Dårligt mentalt helbred",
-    table: "Sundhedsprofilen",
-    source: "https://www.danskernessundhed.dk/",
-    category: "social",
-    inverse: true,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "rygning",
-    name: "Daglig rygning",
-    table: "Sundhedsprofilen",
-    source: "https://www.danskernessundhed.dk/",
-    category: "social",
-    inverse: true,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "alkohol",
-    name: "Drikker over 10 genstande om ugen",
-    table: "Sundhedsprofilen",
-    source: "https://www.danskernessundhed.dk/",
-    category: "social",
-    inverse: true,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "kost",
-    name: "Lav score på kostskalaen",
-    table: "Sundhedsprofilen",
-    source: "https://www.danskernessundhed.dk/",
-    category: "social",
-    inverse: true,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "svaer_overvaegt",
-    name: "Svær overvægt (BMI over 30)",
-    table: "Sundhedsprofilen",
-    source: "https://www.danskernessundhed.dk/",
-    category: "social",
-    inverse: true,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "ensomhed",
-    name: "Tegn på ensomhed",
-    table: "Sundhedsprofilen",
-    source: "https://www.danskernessundhed.dk/",
-    category: "social",
-    inverse: true,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "social_stoette",
-    name: "Begrænset social støtte",
-    table: "Sundhedsprofilen",
-    source: "https://www.danskernessundhed.dk/",
-    category: "social",
-    inverse: true,
-    dataYear: "2025",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-  {
-    id: "sport_tilskuer",
-    name: "Tilskuer til sportsbegivenhed",
-    table: "KV2GEO",
-    source: "https://www.statistikbanken.dk/KV2GEO",
-    category: "social",
-    inverse: false,
-    dataYear: "2024-2025",
-    baselineLevel: 3,
-    rawUnit: "%",
-  },
-];
+// Sociale indikatorer i registrets rækkefølge (= master-CSV'ens), inkl. de to
+// der står i master uden at blive scoret (housing_no_wc/no_bath). Hvad der
+// scores, afgøres af SOCIAL_CATEGORIES[].indicatorIds.
+export const INDICATORS: Indicator[] = REGISTER.indikatorer
+  .filter((i) => i.category === "social")
+  .map((i) => ({
+    id: i.id,
+    name: udfyldTal(i.name!),
+    table: i.table!,
+    source: i.source_url!,
+    category: "social" as const,
+    inverse: i.inverse!,
+    dataYear: i.data_year,
+    baselineLevel: i.baseline_level,
+    absoluteTarget: i.target_label,
+    absoluteScore: i.absolute_score,
+    rawUnit: i.raw_unit ?? i.unit,
+  }));
+
+/**
+ * Datafilerne bag en kategori eller dimension: først de scorede indikatorers
+ * filer i visningsrækkefølge, derefter kontekst-indikatorernes. Vises på
+ * metodesiden i stedet for en håndskrevet liste, der kunne glemme en fil.
+ */
+export function dimensionCsvFiles(dimensionId: string): string[] {
+  const scorede =
+    REGISTER.oekologiske_dimensioner.find((d) => d.id === dimensionId)?.indicators ??
+    REGISTER.sociale_kategorier.find((k) => k.id === dimensionId)?.indicators ??
+    [];
+  const kontekst = REGISTER.indikatorer
+    .filter((i) => i.category === "context" && i.dimension === dimensionId)
+    .map((i) => i.id);
+  const filer = [...scorede, ...kontekst].map((id) => REGISTER_BY_ID.get(id)?.csv).filter((f): f is string => !!f);
+  return Array.from(new Set(filer));
+}
+
+/** Metodesidens begrundelse pr. indikator (registrets "rationale"). */
+export const INDICATOR_RATIONALES: Record<string, string> = Object.fromEntries(
+  REGISTER.indikatorer.filter((i) => i.rationale).map((i) => [i.id, udfyldTal(i.rationale!)])
+);
 
 // --- SOCIAL CATEGORIES (TORUS trivselsaspekter) ---
 
@@ -642,86 +165,12 @@ export interface SocialCategory {
   indicatorIds: string[];
 }
 
-export const SOCIAL_CATEGORIES: SocialCategory[] = [
-  {
-    id: "sundhed",
-    name: "Sundhed",
-    description: "Borgernes helbredstilstand og de levevaner der former den. De fem første indikatorer måler tilstanden: hvordan borgerne selv vurderer deres fysiske og mentale helbred, hvor længe de lever, og hvor meget sygdom og pleje der er i kommunen. De fire sidste måler de påvirkelige risikofaktorer, hvor kommunal forebyggelse kan flytte mest.",
-    indicatorIds: ["selvvurderet_helbred", "mentalt_helbred", "life_expectancy", "hospital_long", "hjemsyg", "rygning", "alkohol", "kost", "svaer_overvaegt"],
-  },
-  {
-    id: "uddannelse",
-    name: "Uddannelse",
-    description: "Adgang til og gennemførelse af uddannelse for alle aldersgrupper - grundlag for personlig udvikling og samfundsdeltagelse.",
-    indicatorIds: ["education", "low_education", "exam_grade", "high_absence", "youth_education", "wellbeing", "class_size", "daycare_ratio", "educated_staff"],
-  },
-  {
-    id: "velfaerd",
-    name: "Velfærd",
-    description: "Materiel levevilkår, indkomst, beskæftigelse og social sikring - de grundlæggende betingelser for et godt liv.",
-    indicatorIds: ["disposable_income", "employment", "child_poverty", "vulnerable_children", "neet", "poverty_relative", "child_notifications"],
-  },
-  {
-    id: "bolig",
-    name: "Bolig",
-    description: "Adgang til gode, sunde og bæredygtige boliger i trygge nærmiljøer.",
-    indicatorIds: ["vacant_housing", "housing_area"],
-  },
-  {
-    id: "demokrati",
-    name: "Demokrati",
-    description: "Borgernes deltagelse i det formelle demokrati og kommunalpolitik. Valgdeltagelse er det mest direkte mål for demokratisk engagement på lokalt niveau.",
-    indicatorIds: ["voter_turnout", "voter_turnout_national"],
-  },
-  {
-    id: "kultur_fritid",
-    name: "Kultur",
-    description: "Adgang til og investering i kulturlivet - biblioteker, musikskoler og kommunens samlede kulturudgifter.",
-    indicatorIds: ["music_school", "library_use", "kultur_spending"],
-  },
-  {
-    id: "tryghed",
-    name: "Tryghed",
-    description: "Tryghed i lokalsamfundet målt via kriminalitetsniveau og trafiksikkerhed.",
-    indicatorIds: ["crime_rate", "traffic_accidents"],
-  },
-  {
-    id: "lokalsamfund",
-    name: "Fællesskab",
-    description: "Om borgerne er en del af et fællesskab. Ensomhed og begrænset social støtte er kategoriens udfaldsmål, idrætsmedlemskab og tilskuerdeltagelse måler faktisk deltagelse i det lokale liv, og foreningsstøtten er kommunens egen investering i at det kan lade sig gøre. Tilskuertallet mangler for 22 mindre kommuner, hvor DST's stikprøve er for lille.",
-    indicatorIds: ["ensomhed", "social_stoette", "sports_membership", "sport_tilskuer", "civil_society"],
-  },
-  {
-    id: "lighed",
-    name: "Lighed",
-    description: "Fordelingen af indkomst og materielle ressourcer i kommunen - et mål for strukturel ulighed og sociale skel.",
-    indicatorIds: ["gini", "low_income", "employment_origin_gap"],
-  },
-  {
-    id: "mobilitet",
-    name: "Mobilitet",
-    description: "Adgang til bæredygtig og effektiv transport for alle borgere uanset geografi og økonomi.",
-    indicatorIds: ["commute_distance", "public_transport"],
-  },
-  {
-    id: "ligestilling",
-    name: "Ligestilling",
-    description: "Kønsbalance og lige muligheder i kommunen - herunder repræsentation på arbejdsmarkedet og i ledelse.",
-    indicatorIds: ["gender_leadership", "le_gender_gap", "income_gender_gap"],
-  },
-  {
-    id: "klimatilpasning",
-    name: "Klimatilpasning",
-    description: "Kommunens robusthed over for klimaforandringer: oversvømmelse, hedebølger, tørke og ekstremvejr.",
-    indicatorIds: ["vejr_skader"],
-  },
-  {
-    id: "energi",
-    name: "Energi",
-    description: "Husstandenes fossile energiafhængighed - andel af det opvarmede boligareal (m²) der varmes med olie eller naturgas, direkte eller via fjernvarme. Fossil opvarmning belaster klimaet og udsætter husstande for høje, svingende varmeregninger. Måles på areal frem for antal beboere, fordi varmebehov skalerer med kvadratmeter. Omfatter kun helårsboliger. Fritidsboliger, lokal VE-produktion og fjernvarmens brændselsmix vises som kontekst, men indgår ikke i scoren.",
-    indicatorIds: ["bolig_fossil"],
-  },
-];
+export const SOCIAL_CATEGORIES: SocialCategory[] = REGISTER.sociale_kategorier.map((k) => ({
+  id: k.id,
+  name: k.name,
+  description: udfyldTal(k.description),
+  indicatorIds: k.indicators,
+}));
 
 // --- ECOLOGICAL CEILING (TORUS miljøaspekter) ---
 
@@ -746,109 +195,40 @@ export interface EcologicalDimension {
   }[];
 }
 
-export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = [
-  {
-    id: "klimapaavirkning",
-    name: "Klimapåvirkning",
-    shortName: "KLIMA",
-    description: "Drivhusgasudledninger målt på to måder: territorialt (udledninger inden for kommunens grænser) og forbrugsbaseret (borgernes samlede aftryk, inkl. importerede varer). Worst-of logik. Begge holdes op mod et Paris-budget på 3 ton CO₂e/person/år.",
-    source: "https://klimaregnskabet.dk",
-    sourceLabel: "Klimaregnskabet.dk + CONCITO/ENS",
-    unit: "ton CO₂e/person",
-    boundary: "3 ton CO₂e/person/år (Paris-budget) - gælder både territorialt og forbrugsbaseret",
-    subIndicators: [
-      { rawKey: "eco_klima_raw", ratioKey: "klimapaavirkning_self", label: "Territoriale udledninger",        unit: "ton CO₂e/person", boundary: "Mål: 3 ton CO₂e/person/år (territorial)",     lowerIsBetter: true, baselineType: "absolut" },
-      { rawKey: "forbrug_co2",   ratioKey: "forbrug_co2_self",      label: "Forbrugsbaseret CO₂ (inkl. import)", unit: "ton CO₂e/person", boundary: "Mål: 3 ton CO₂e/person/år (forbrugsbaseret)", lowerIsBetter: true, baselineType: "absolut" },
-    ],
-  },
-  {
-    id: "forurening",
-    name: "Forurening",
-    shortName: "FORUR",
-    description: "Kemisk forurening og materialecyklusser - fire indikatorer vægtet ens (gennemsnit, ikke worst-of): pesticider og nitrat ved almene vandværker, husholdningsaffald og genanvendelse. Pesticider og nitrat dækker CONCITO-rapportens 'novel entities'-grænse; affald og genanvendelse dækker materialecyklusser.",
-    source: "https://www.geus.dk/",
-    sourceLabel: "GEUS Jupiter + DST",
-    unit: "% vandværker, mg/L, kg/person, %",
-    boundary: "Pesticider: mod landsgennemsnittet. Nitrat: 6 mg/L. Genanvendelse: EU's 65%-mål. Affald: mod landsgennemsnittet.",
-    subIndicators: [
-      { rawKey: "eco_pesticid_raw",     ratioKey: "pesticider_self",       label: "Pesticider i grundvand",      unit: "% vandværker > 0,1 µg/l", boundary: "Landsgns.: 9,2% af vandværkerne over drikkevandsnormen", lowerIsBetter: true,  baselineType: "relativ" },
-      { rawKey: "eco_nitrat_raw",       ratioKey: "nitrat_self",           label: "Nitrat i drikkevand",         unit: "mg/L",                  boundary: "Grænse: 6 mg/L (ekspertgruppe 2025)", lowerIsBetter: true, baselineType: "absolut" },
-      { rawKey: "eco_cirkularitet_raw", ratioKey: "eco_cirkularitet_ratio", label: "Genanvendelse (husholdning)", unit: "%",                     boundary: "Mål: 65% (EU Affaldsdirektiv 2035)", lowerIsBetter: false, baselineType: "absolut" },
-      { rawKey: "eco_affald_raw",       ratioKey: "eco_affald_ratio",      label: "Affald pr. person",           unit: "kg/person",             boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true, baselineType: "relativ" },
-    ],
-  },
-  {
-    id: "luftkvalitet",
-    name: "Luftkvalitet",
-    shortName: "LUFT",
-    description: "Modelberegnet årsgennemsnit af NO2 og PM2.5 pr. kommune (DCE/AU UBM-model 2024) sammenholdt med WHO's retningslinjer fra 2021.",
-    unit: "µg/m³ (årsgennemsnit, WHO 2021)",
-    boundary: "WHO 2021: NO2 = 10 µg/m³, PM2.5 = 5 µg/m³",
-    source: "https://arld-extgeo.miljoeportal.dk/geoserver/wfs",
-    sourceLabel: "Miljøportal WFS (DCE/AU)",
-    subIndicators: [
-      { rawKey: "luftkvalitet_no2",  ratioKey: "luftkvalitet_no2_ratio",  label: "NO₂ (kvælstofdioxid)",  unit: "µg/m³", boundary: "WHO 2021: 10 µg/m³", lowerIsBetter: true, baselineType: "absolut" },
-      { rawKey: "luftkvalitet_pm25", ratioKey: "luftkvalitet_pm25_ratio", label: "PM2.5 (fine partikler)", unit: "µg/m³", boundary: "WHO 2021: 5 µg/m³",  lowerIsBetter: true, baselineType: "absolut" },
-    ],
-  },
-  {
-    id: "naeringsstoffer",
-    name: "Næringsstoffer",
-    shortName: "NÆR",
-    description: "Næringsstofbelastning af vandmiljøet og den eutrofiering det forårsager. Tre presmål: kvælstof og fosfor fra spildevand (punktkilder) samt tålegrænsen for kvælstof pr. ha landbrug (VP3). Plus ét effektmål: andelen af kommunens vandområder i god økologisk tilstand (VP3) - den synlige skade (iltsvind, algeopblomstring). Worst-of logik.",
-    source: "https://statbank.dk/VANDUD",
-    sourceLabel: "DST VANDUD + VP3",
-    unit: "ton N/P pr. 1.000 indb., kg N/ha, % vandområder i god tilstand",
-    boundary: "Landsgennemsnittet som reference - lavere udledning, højere tålegrænse og flere vandområder i god tilstand er bedre",
-    subIndicators: [
-      { rawKey: "eco_naer_n_raw",        ratioKey: "eco_naer_n_ratio",        label: "Kvælstofudledning (spildevand)", unit: "ton N/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true, baselineType: "relativ" },
-      { rawKey: "eco_naer_p_raw",        ratioKey: "eco_naer_p_ratio",        label: "Fosforudledning (spildevand)",   unit: "ton P/1.000 indb.", boundary: "Lavere end landsgennemsnittet er bedre", lowerIsBetter: true, baselineType: "relativ" },
-      { rawKey: "eco_naer_landbrug_raw", ratioKey: "eco_naer_landbrug_ratio", label: "Tålegrænse for kvælstof pr. ha landbrug (VP3)", unit: "kg N/ha", boundary: "Lavere tålegrænse = mere presset vandmiljø end landsgennemsnit", lowerIsBetter: false, baselineType: "relativ" },
-      { rawKey: "eco_overfladevand_raw", ratioKey: "overfladevand_ratio",     label: "Vandområder i god økologisk tilstand (VP3)", unit: "%",  boundary: "EU-mål: 100% i god tilstand (2027) - nationalt langtfra opfyldt. Scoret mod landsgennemsnit.", lowerIsBetter: false, baselineType: "relativ" },
-    ],
-  },
-  {
-    id: "vand",
-    name: "Vand",
-    shortName: "VAND",
-    description: "Vandindvinding fra almene vandværker pr. person - et indirekte mål for pres på grundvandsressourcerne. Nitrat i drikkevand er flyttet til Forurening-dimensionen, da det er et forureningsspørgsmål (novel entities).",
-    source: "https://www.statistikbanken.dk/VANDIND",
-    sourceLabel: "DST VANDIND (2024)",
-    unit: "m³/person",
-    boundary: "Landsgennemsnit (72,9 m³/person, 2024) som reference. Jo lavere vandindvinding pr. person, jo mindre pres på grundvandet.",
-    subIndicators: [
-      { rawKey: "eco_vandindvinding_raw", ratioKey: "vandindvinding_self", label: "Vandindvinding (alment vandværk)", unit: "m³/person", boundary: "Lavere end landsgennemsnittet er bedre. OBS: bykommuner kan mangle data pga. vandværkets registreringssted.", lowerIsBetter: true, baselineType: "relativ" },
-    ],
-  },
-  {
-    id: "arealanvendelse",
-    name: "Arealanvendelse",
-    shortName: "AREAL",
-    description: "Pres på det fysiske landskab fra to menneskeskabte arealanvendelser: intensivt landbrug og kunstigt befæstet areal (veje, bebyggelse). Worst-of logik - den dårligste afgør dimensionsscoren. Naturkvalitet måles separat i biodiversitetsdimensionen.",
-    source: "https://www.statistikbanken.dk/AREALDK2",
-    sourceLabel: "DST AREALDK2 (2024)",
-    unit: "% af kommunens areal",
-    boundary: "Nationalt gennemsnit 2024 som reference (intensivt landbrug ~55%, bebygget ~14%). Til kontekst: den planetære grænse er max 15% antropiseret areal (landbrug + bebygget tilsammen, Rockström 2009) - Danmark ligger på 73-75%, en femdobbelt overskridelse. Vi scorer mod landsgennemsnittet for at vise forskel mellem kommuner.",
-    subIndicators: [
-      { rawKey: "eco_areal_intensiv_raw", ratioKey: "areal_intensiv_ratio", label: "Intensivt landbrug", unit: "%", boundary: "Nationalt snit: ~55%", lowerIsBetter: true, baselineType: "relativ" },
-      { rawKey: "eco_areal_bebygget_raw", ratioKey: "areal_bebygget_ratio", label: "Bebygget + veje",    unit: "%", boundary: "Nationalt snit: ~14%", lowerIsBetter: true, baselineType: "relativ" },
-    ],
-  },
-  {
-    id: "biodiversitet",
-    name: "Biodiversitet",
-    shortName: "BIO",
-    description: "Andel af kommunens areal med væsentlig og uerstattelig naturværdi for truede arter, målt med DCE's biodiversitetskort (bioscore). Worst-of logik. Måler habitatkvalitet, ikke rent arealdække - en biologisk fattig plantage tæller derfor ikke som høj natur. Grænserne er EU's politiske mål (30%/10%), ikke den planetære grænse - se metodesiden.",
-    source: "https://dce.au.dk/udgivelser/vr/nr-101-150/abstracts/nr-112-biodiversitetskort-for-danmark",
-    sourceLabel: "DCE Biodiversitetskort (bioscore)",
-    unit: "% af areal med naturværdi",
-    boundary: "30% væsentlig naturværdi + 10% uerstattelig (EU Biodiversitetsstrategi 2030)",
-    subIndicators: [
-      { rawKey: "eco_bio_vasentlig_raw",    ratioKey: "bio_vasentlig_ratio",    label: "Væsentlig naturværdi (bioscore ≥8)",    unit: "%", boundary: "Mål: 30% (EU Biodiversitetsstrategi 2030)", lowerIsBetter: false, baselineType: "absolut" },
-      { rawKey: "eco_bio_uerstattelig_raw", ratioKey: "bio_uerstattelig_ratio", label: "Uerstattelig naturværdi (bioscore ≥12)", unit: "%", boundary: "Mål: 10% strengt beskyttet (EU 2030)",     lowerIsBetter: false, baselineType: "absolut" },
-    ],
-  },
-];
+export const ECOLOGICAL_DIMENSIONS: EcologicalDimension[] = REGISTER.oekologiske_dimensioner.map((d) => ({
+  id: d.id,
+  name: d.name,
+  shortName: d.short_name,
+  description: udfyldTal(d.description),
+  source: d.source,
+  sourceLabel: udfyldTal(d.source_label),
+  unit: d.unit,
+  boundary: udfyldTal(d.boundary),
+  subIndicators: d.indicators.map((id) => {
+    const i = REGISTER_BY_ID.get(id)!;
+    return {
+      rawKey: i.raw_key!,
+      ratioKey: i.ratio_key,
+      label: udfyldTal(i.name!),
+      unit: i.raw_unit ?? i.unit,
+      boundary: udfyldTal(i.boundary),
+      lowerIsBetter: i.lower_is_better,
+      baselineType: i.baseline_type,
+    };
+  }),
+}));
+
+/**
+ * Master-CSV'ens indicator_id for en økologisk sub-indikator → de nøgler i
+ * kommune.rawValues, som ScoreBars og DoughnutRing læser råværdi og ratio fra.
+ * Bruges af data.ts (tidligere den håndskrevne ECO_RAW_KEY_MAP).
+ */
+export const ECO_INDICATOR_KEYS: Record<string, { rawKey: string; ratioKey: string | null }> =
+  Object.fromEntries(
+    REGISTER.indikatorer
+      .filter((i) => i.category === "ecological")
+      .map((i) => [i.id, { rawKey: i.raw_key!, ratioKey: i.ratio_key ?? null }])
+  );
 
 // --- CATEGORY SCORE COMPUTATION ---
 

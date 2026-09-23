@@ -17,7 +17,6 @@ import {
   trendBeskrivelse,
   trendPilOpad,
   type TrendKontekst,
-  DOUGHNUT_DEFAULT_DATA_YEAR,
 } from "@/lib/shared";
 import { useBaseline } from "@/lib/baseline-context";
 import type { VurderingScore, VurderingEntry } from "@/lib/vurdering";
@@ -39,6 +38,11 @@ interface ScoreBarsProps {
   vurderingsMode?: boolean;
   vurderinger?: Record<string, VurderingEntry>;
   onVurderingKlik?: (id: string, navn: string, gruppe: "social" | "ecological") => void;
+  // Beregnet server-side fra master-CSV'en (data.ts::getIndicatorDataYears()),
+  // ikke fra INDICATORS[].dataYear - den kan drive fra den faktiske hentning.
+  // ind.dataYear er kun sidste udvej hvis en indikator mangler helt i master.
+  indicatorDataYears?: Record<string, string>;
+  defaultDataYear?: string;
 }
 
 function ecoScoreColor(score: number | null): string {
@@ -382,6 +386,8 @@ export default function ScoreBars({
   vurderingsMode = false,
   vurderinger = {},
   onVurderingKlik,
+  indicatorDataYears = {},
+  defaultDataYear = "",
 }: ScoreBarsProps) {
   const [expanded, setExpanded] = useState<string | null>(null);
   const { mode: baselineMode } = useBaseline();
@@ -624,7 +630,7 @@ export default function ScoreBars({
                               )}
                             </div>
                             <div className="flex items-center gap-2 shrink-0">
-                              <span className="text-gray-400 text-[10px]">Data: {ind.dataYear ?? DOUGHNUT_DEFAULT_DATA_YEAR}</span>
+                              <span className="text-gray-400 text-[10px]">Data: {indicatorDataYears[ind.id] ?? ind.dataYear ?? defaultDataYear}</span>
                               <a href={`/metode#${cat.categoryId}`} className="text-blue-600 hover:underline">
                                 {ind.table} ↗
                               </a>
