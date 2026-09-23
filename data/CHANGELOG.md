@@ -2,6 +2,10 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-23
+
+- **Farven følger nu den viste score.** Scores vises med én decimal, men farven blev afgjort af den uafrundede værdi, så fx Aalborgs Ligestilling stod som "100.0" i gult (99,963). Nu afrundes scoren én gang (`visningsscore()` i `shared.ts`), og tekst, farve, ringens tænder og tællingen "N af 13 kategorier over gennemsnittet" bruger samme tal. Ingen tal i master er ændret. I standardvisningen (kommunegruppe) skifter 9 kategorier farve: Herlev, Ærø og Syddjurs (Lighed), Ringsted (Velfærd og Fællesskab), Vejen (Mobilitet), Randers (Uddannelse), Skive (Demokrati) og Aalborg (Ligestilling). Alle lå under 0,05 fra grænsen på 85 eller 100.
+
 ## 2026-09-22 (rettelse: indkomstlighed manglede på sitet)
 
 - **`income_gender_gap` (Indkomstlighed mænd/kvinder) blev ikke vist i nogen kommune** fra median-omlægningen samme dag (PR #9) til denne rettelse. Enheden blev ændret til `% (kvinder/mænd, median)`, og kommaet forskød kolonnerne i webappens `split(",")`-parsing af master, så rækkerne ikke blev genkendt som sociale. Tallene i master var korrekte; kun visningen manglede. Ligestilling blev i perioden regnet på 2 af 3 indikatorer.

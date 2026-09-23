@@ -244,22 +244,34 @@ export interface CategoryScore {
   }[];
 }
 
+/**
+ * Scoren som den vises: én decimal. Farver, tællinger ("N af 13 over
+ * gennemsnittet") og ringens tænder skal bruge samme tal som teksten, ellers
+ * kan en score på 99,96 stå som "100.0" og samtidig være farvet gul.
+ */
+export function visningsscore(score: number): number;
+export function visningsscore(score: number | null): number | null;
+export function visningsscore(score: number | null): number | null {
+  return score === null ? null : Number(score.toFixed(1));
+}
+
 export function computeCategoryScores(
   ratios: Record<string, number | null>
 ): CategoryScore[] {
   return SOCIAL_CATEGORIES.map((cat) => {
     const indicators = cat.indicatorIds.map((id) => ({
       indicator: INDICATORS.find((ind) => ind.id === id)!,
-      score: ratios[id] ?? null,
+      score: visningsscore(ratios[id] ?? null),
     }));
 
-    const validScores = indicators
-      .map((i) => i.score)
+    // Gennemsnittet regnes på de uafrundede ratios og afrundes bagefter.
+    const validScores = cat.indicatorIds
+      .map((id) => ratios[id] ?? null)
       .filter((s): s is number => s !== null);
 
     const score =
       validScores.length > 0
-        ? validScores.reduce((a, b) => a + b, 0) / validScores.length
+        ? visningsscore(validScores.reduce((a, b) => a + b, 0) / validScores.length)
         : null;
 
     return {
@@ -540,15 +552,17 @@ export function computeGroupRatios(allData: KommuneData[]): void {
 }
 
 export function scoreColor(score: number | null): string {
-  if (score === null) return "text-gray-400";
-  if (score >= 100) return "text-emerald-600";
-  if (score >= 85) return "text-amber-500";
+  const s = visningsscore(score);
+  if (s === null) return "text-gray-400";
+  if (s >= 100) return "text-emerald-600";
+  if (s >= 85) return "text-amber-500";
   return "text-red-500";
 }
 
 export function scoreBarColor(score: number | null): string {
-  if (score === null) return "bg-gray-300";
-  if (score >= 100) return "bg-emerald-500";
-  if (score >= 85) return "bg-amber-400";
+  const s = visningsscore(score);
+  if (s === null) return "bg-gray-300";
+  if (s >= 100) return "bg-emerald-500";
+  if (s >= 85) return "bg-amber-400";
   return "bg-red-400";
 }

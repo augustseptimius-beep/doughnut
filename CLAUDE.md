@@ -93,6 +93,7 @@ Se `data/indikatorer.json` for aktuel liste (felterne er forklaret i filens `_om
 
 **Sociale:** ≥100 grøn (`emerald`), 85-100 amber, <85 rød (`scoreColor` i shared.ts).
 **Økologiske:** ≤85 grøn, 85-100 amber, >100 rød - overshoot (`ecoScoreColor` i ScoreBars.tsx).
+**Grænserne gælder den viste score (én decimal),** ikke den uafrundede: `visningsscore()` i shared.ts afrunder én gang, og farver, ringens tænder og tællinger bruger samme tal som teksten. Ellers kan 99,96 stå som "100.0" i gult.
 
 ### ECOLOGICAL_DIMENSIONS (7 planetære grænser)
 

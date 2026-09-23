@@ -21,7 +21,7 @@ export type {
   CategoryScore,
 } from "./shared";
 
-import { INDICATORS, ECOLOGICAL_DIMENSIONS, ECO_INDICATOR_KEYS, INDIKATORREGISTER, NOEGLETAL, computeTop10Ratios, computeGroupRatios, type KommuneData, type RegisterIndikator, type TrendPost, type TrendDirection } from "./shared";
+import { INDICATORS, ECOLOGICAL_DIMENSIONS, ECO_INDICATOR_KEYS, INDIKATORREGISTER, NOEGLETAL, visningsscore, computeTop10Ratios, computeGroupRatios, type KommuneData, type RegisterIndikator, type TrendPost, type TrendDirection } from "./shared";
 
 let cachedData: KommuneData[] | null = null;
 
@@ -391,7 +391,9 @@ export function loadData(): KommuneData[] {
       // Dimension-aggregat-rækker (worst-of scores)
       if (r.indicator_id.startsWith("_dim_")) {
         const dimId = r.indicator_id.substring(5);
-        eco_ratios[dimId] = ratio;
+        // Én decimal, som den vises - så ringen, farven og tællingen af
+        // overskredne grænser bruger samme tal som teksten (visningsscore()).
+        eco_ratios[dimId] = visningsscore(ratio);
         continue;
       }
 
