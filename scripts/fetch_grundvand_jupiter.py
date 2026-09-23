@@ -69,6 +69,9 @@ import urllib.request
 from collections import defaultdict
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from kommuner import KOMMUNER  # noqa: E402  (de 98 kommuner, data/kommuner.json)
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 
@@ -304,14 +307,7 @@ def beregn_pesticider() -> dict[str, dict]:
 # ── Skrivning ─────────────────────────────────────────────────────────────
 
 def kommunenavne() -> dict[str, str]:
-    p = DATA / "master_indicators.csv"
-    ud: dict[str, str] = {}
-    if p.exists():
-        with open(p, encoding="utf-8") as f:
-            for r in csv.DictReader(f):
-                if r.get("kommune_kode") and r.get("kommune_navn"):
-                    ud[r["kommune_kode"]] = r["kommune_navn"]
-    return ud
+    return dict(KOMMUNER)
 
 
 def main() -> int:
@@ -320,9 +316,6 @@ def main() -> int:
     print("=" * 66)
 
     navne = kommunenavne()
-    if not navne:
-        print("FEJL: kan ikke læse kommunenavne fra master_indicators.csv", file=sys.stderr)
-        return 1
 
     maengder = hent_maengder()
     nitrat = beregn_nitrat(maengder)

@@ -36,62 +36,16 @@ Brug:
 from __future__ import annotations
 
 import csv
-import io
-import json
 import sys
-import time
-import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dst_aar import seneste_aar, seneste_periode, seneste_kvartal  # noqa: E402
+from dst import api_post, parse_value  # noqa: E402  (fælles DST-kald, scripts/dst.py)
+from kommuner import KODER as VALID_CODES  # noqa: E402  (de 98 kommuner, data/kommuner.json)
 
-API_URL = "https://api.statbank.dk/v1/data"
-REQUEST_DELAY = 0.7
 
 OUTPUT_DIR = Path(__file__).parent.parent / "data"
-
-VALID_CODES = {
-    "101", "147", "151", "153", "155", "157", "159", "161", "163", "165",
-    "167", "169", "173", "175", "183", "185", "187", "190", "201", "210",
-    "217", "219", "223", "230", "240", "250", "253", "259", "260", "265",
-    "269", "270", "306", "316", "320", "326", "329", "330", "336", "340",
-    "350", "360", "370", "376", "390", "400", "410", "420", "430", "440",
-    "450", "461", "479", "480", "482", "492", "510", "530", "540", "550",
-    "561", "563", "573", "575", "580", "607", "615", "621", "630", "657",
-    "661", "665", "671", "706", "707", "710", "727", "730", "740", "741",
-    "746", "751", "756", "760", "766", "773", "779", "787", "791", "810",
-    "813", "820", "825", "840", "846", "849", "851", "860",
-}
-
-
-def api_post(table: str, variables: list[dict]) -> list[dict]:
-    payload = json.dumps({
-        "table": table,
-        "format": "CSV",
-        "lang": "da",
-        "valuePresentation": "Code",
-        "variables": variables,
-    }).encode("utf-8")
-    req = urllib.request.Request(
-        API_URL, data=payload,
-        headers={"Content-Type": "application/json"},
-    )
-    time.sleep(REQUEST_DELAY)
-    resp = urllib.request.urlopen(req, timeout=60)
-    content = resp.read().decode("utf-8-sig")
-    reader = csv.DictReader(io.StringIO(content), delimiter=";")
-    return list(reader)
-
-
-def parse_value(raw: str) -> float | None:
-    raw = raw.strip()
-    if raw in ("", "..", ".", "x", "X", "-"):
-        return None
-    try:
-        return float(raw.replace(".", "").replace(",", "."))
-    except ValueError:
-        return None
 
 
 def ratio_direct(val: float, nat: float) -> float:

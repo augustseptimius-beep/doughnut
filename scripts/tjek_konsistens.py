@@ -15,7 +15,8 @@ Nu står indikatorerne ét sted, data/indikatorer.json, og både Python og
 webappen læser derfra. Det fjerner selve sync-problemet, men tre ting kan
 stadig skride, og dem tjekker dette script:
 
-  1. Registret selv (dubletter, manglende felter, kategorier der peger forkert).
+  1. Registret selv (dubletter, manglende felter, kategorier der peger forkert)
+     og at master har præcis kommunerne i data/kommuner.json.
   2. Registret mod dataen: at master-CSV'en indeholder præcis registrets
      indikatorer, og at fortegnet i dataen passer med 'inverse' og
      'lower_is_better' (en fejl her vender en pil og en farve).
@@ -171,6 +172,14 @@ def kryds_tjek() -> list[Fund]:
 
     by_id = {i["id"]: i for i in reg["indikatorer"]}
     scoret = ir.scorede_sociale()
+
+    # 1b. Master har præcis de 98 kommuner i data/kommuner.json.
+    from kommuner import KOMMUNER
+    master_kommuner = {(r["kommune_kode"], r["kommune_navn"]) for rs in by_indicator.values() for r in rs}
+    for kode, navn in sorted(master_kommuner - set(KOMMUNER.items())):
+        _f(fund, f"master har kommunen {kode} {navn!r}, som ikke står i data/kommuner.json")
+    for kode, navn in sorted(set(KOMMUNER.items()) - master_kommuner):
+        _f(fund, f"kommunen {kode} {navn} fra data/kommuner.json mangler i master")
 
     # 2. Master indeholder præcis registrets indikatorer.
     master_ids = {i for i in by_indicator if not i.startswith("_dim_")}

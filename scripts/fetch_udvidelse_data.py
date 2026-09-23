@@ -41,6 +41,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dst_aar import seneste_aar, seneste_periode, seneste_aar_liste  # noqa: E402
 from api_noegler import hent_noegle, kraev_noegle, UVM_HJAELP  # noqa: E402
+from kommuner import KODER as VALID_CODES  # noqa: E402  (de 98 kommuner, data/kommuner.json)
 
 # ─── Konstanter ────────────────────────────────────────────────────────────
 UVM_TOKEN = hent_noegle("UVM_API_TOKEN")
@@ -50,19 +51,6 @@ DELAY    = 0.7  # sekunder mellem API-kald
 
 ROOT       = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = ROOT / "data"
-
-VALID_CODES = {
-    "101","147","151","153","155","157","159","161","163","165",
-    "167","169","173","175","183","185","187","190","201","210",
-    "217","219","223","230","240","250","253","259","260","265",
-    "269","270","306","316","320","326","329","330","336","340",
-    "350","360","370","376","390","400","410","420","430","440",
-    "450","461","479","480","482","492","510","530","540","550",
-    "561","563","573","575","580","607","615","621","630","657",
-    "661","665","671","706","707","710","727","730","740","741",
-    "746","751","756","760","766","773","779","787","791","810",
-    "813","820","825","840","846","849","851","860",
-}
 
 
 # ─── HJÆLPEFUNKTIONER ──────────────────────────────────────────────────────

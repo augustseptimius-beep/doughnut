@@ -9,7 +9,7 @@
     "period_years: tallet dækker en periode, ikke ét år (HISBK er femårige intervaller, trafikulykker et treårigt gennemsnit). data_year i master skrives så som 'start-slut' ud fra slutåret, fx 2021-2025.",
     "En social indikator der ikke står i nogen kategoris 'indicators', skrives stadig til master, men scores ikke og holdes ude af kategoriens pil. En økologisk indikator skal stå i sin dimensions liste.",
     "Scoring: build_master_csv.py beregner ALLE ratios selv ud fra raw_col og 'reference' (type maal: fast mål; kommunegennemsnit: uvægtet gennemsnit af kommunernes råværdi, beregnet ved build; landstal: fetch-scriptets referenceværdi i kolonnen 'col'). Retningen følger inverse/lower_is_better: sociale raw/ref×100 (inverse: ref/raw×100), økologiske raw/ref×100 (højere-er-bedre: ref/raw×100). Sociale cappes ved 150, økologiske ved 'cap' hvis sat. formula '100_minus_raw' (kun bolig_fossil) giver 100 minus råværdien.",
-    "ratio_col er fetch-scriptets egen ratio. Den indgår ikke i scoren, men bruges til krydstjek og - så længe en CSV mangler landstal-kolonnen - til at rekonstruere landstallet (ratio_col_invers: kolonnen er på den inverterede skala). navn_col: CSV'en er nøglet på kommunenavn i den kolonne, ikke på kommune_kode.",
+    "ratio_col er fetch-scriptets egen ratio. Den indgår ikke i scoren, men bruges til krydstjek og - så længe en CSV mangler landstal-kolonnen - til at rekonstruere landstallet (ratio_col_invers: kolonnen er på den inverterede skala).",
     "Øvrige felter: absolute_score (social ratio omskaleres ikke af baseline-toggle), target_label (tekst for målet i UI), baseline_level (1 WHO/EU, 2 nationalt mål, 3 landsgennemsnit), baseline_type (økologisk: absolut/relativ), cap (økologisk loft for ratio)."
   ],
   "_fjernet": {
@@ -1111,11 +1111,10 @@
       "csv": "klimatilpasning_scores.csv",
       "ratio_col": "vejr_skader_ratio",
       "raw_col": "vejr_skader_raw",
-      "navn_col": "kommune_navn",
       "reference": {"type": "kommunegennemsnit", "definition": "uvægtet gennemsnit af kommunerne"},
       "inverse": true,
       "baseline_level": 3,
-      "note": "Proxy: vejrrelaterede forsikringsskader pr. 1.000 indb. (F&P, 2023-2025). Kilde-CSV'en er nøglet på kommunenavn (navn_key). Se data/klimatilpasning.md."
+      "note": "Proxy: vejrrelaterede forsikringsskader pr. 1.000 indb. (F&P, 2023-2025). Kilden har kun kommunenavne; fetch-scriptet slår koden op i data/kommuner.json. Se data/klimatilpasning.md."
     },
     {
       "id": "klimapaavirkning",
@@ -1339,14 +1338,13 @@
       "csv": "cba_2023_estimate.csv",
       "ratio_col": null,
       "raw_col": "cba_2023_estimate",
-      "navn_col": "kommune",
       "reference": {"type": "maal", "value": 3, "label": "3 ton CO₂e pr. person (Paris-budget)"},
       "lower_is_better": true,
       "baseline_type": "absolut",
       "boundary": "Mål: 3 ton CO₂e/person/år (forbrugsbaseret)",
       "raw_key": "forbrug_co2",
       "ratio_key": "forbrug_co2_self",
-      "note": "Tier 1-estimat (Osei-Owusu et al. 2020 nutidsjusteret med ENS GA25). Kilde-CSV'en er nøglet på kommunenavn; manglende match giver ingen værdi (ingen fallback). Ratio = estimat / 3 ton × 100 (special: cba_navn_key). Se data/methodology_note.md."
+      "note": "Tier 1-estimat (Osei-Owusu et al. 2020 nutidsjusteret med ENS GA25). Håndlavet CSV; kommune_kode er tilføjet ud fra navnet (sep. 2026). Ratio = estimat / 3 ton × 100. Se data/methodology_note.md."
     },
     {
       "id": "pesticider",

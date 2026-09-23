@@ -17,7 +17,10 @@ målestok for klimatilpasningskapacitet. Se data/klimatilpasning.md for fuld
 metodediskussion og fremtidige forbedringer.
 
 Output: data/klimatilpasning_scores.csv
-Kolonner: kommune_navn, vejr_skader_raw, vejr_skader_ratio
+Kolonner: kommune_kode, kommune_navn, vejr_skader_raw, vejr_skader_ratio
+
+Kilden har kun kommunenavne. Koden slås op i data/kommuner.json, og et navn
+der ikke kan slås op, stopper scriptet (build_master_csv.py nøgler på kode).
 
 Ratio-konvention: INVERS social indikator.
   ratio = (landsgennemsnit / kommune_val) * 100
@@ -32,6 +35,9 @@ import statistics
 import sys
 import urllib.request
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from kommuner import kode_for_navn  # noqa: E402  (de 98 kommuner, data/kommuner.json)
 
 DATA_URL = "https://datawrapper.dwcdn.net/NDLlA/4/dataset.csv"
 OUTPUT_FILE = Path(__file__).parent.parent / "data" / "klimatilpasning_scores.csv"
@@ -94,10 +100,17 @@ def compute_scores(rows: list[dict]) -> tuple[list[dict], float]:
             ratio = None
 
         results.append({
+            "kommune_kode": kode_for_navn(navn),
             "kommune_navn": navn,
             "vejr_skader_raw": raw,
             "vejr_skader_ratio": ratio,
         })
+
+    ukendte = [r["kommune_navn"] for r in results if r["kommune_kode"] is None]
+    if ukendte:
+        print(f"FEJL: kommunenavne der ikke findes i data/kommuner.json: {ukendte}\n"
+              "  Tilføj en rettelse i NAME_CORRECTIONS.", file=sys.stderr)
+        sys.exit(1)
 
     return results, national_avg
 
@@ -105,7 +118,7 @@ def compute_scores(rows: list[dict]) -> tuple[list[dict], float]:
 def write_csv(results: list[dict]) -> None:
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_FILE, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["kommune_navn", "vejr_skader_raw", "vejr_skader_ratio"])
+        writer = csv.DictWriter(f, fieldnames=["kommune_kode", "kommune_navn", "vejr_skader_raw", "vejr_skader_ratio"])
         writer.writeheader()
         writer.writerows(results)
     print(f"  Gemt: {OUTPUT_FILE}")

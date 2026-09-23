@@ -34,6 +34,7 @@ from pathlib import Path as _Path
 _sys.path.insert(0, str(_Path(__file__).resolve().parent))
 from dst_aar import registrer_aar, seneste_aar  # noqa: E402
 from indkomst_median import median_disponibel  # noqa: E402
+from kommuner import KODER  # noqa: E402  (de 98 kommuner, data/kommuner.json)
 import time
 import urllib.request
 import urllib.error
@@ -658,14 +659,10 @@ def fetch_csv_data(table, variables_dict, area_var="OMRÅDE"):
 
 
 def is_municipality_code(code):
-    """Check if a code is a valid Danish municipality (3-digit, 101-860) or national (000).
-    Excludes Christiansø (411) — too few inhabitants for meaningful ratios."""
-    if code == "000":
-        return True
-    if len(code) == 3 and code.isdigit():
-        num = int(code)
-        return 101 <= num <= 860 and num != 411
-    return False
+    """Hele landet (000) eller en af platformens 98 kommuner (data/kommuner.json).
+    Christiansø (411) er ikke med. Et talinterval som 101-860 ville også tage
+    fremtidige ikke-kommunekoder med - slå op i listen i stedet."""
+    return code == "000" or code in KODER
 
 
 def extract_municipal_values(rows, aggregate="single"):
@@ -919,7 +916,9 @@ def step2():
         if ind.get("custom") == "median_disponibel":
             aar = seneste_aar("INDKP106", fallback="2024")
             med = median_disponibel([aar], ["MOK"])
-            values = {kode: v for (kode, _, _), v in med.items()}
+            # INDKP106's OMRÅDE har også landsdelene (01-11). Uden filteret
+            # kom de med i doughnut_scores.csv som 11 ekstra "kommuner".
+            values = {kode: v for (kode, _, _), v in med.items() if is_municipality_code(kode)}
             nat_code = "000"
             print(f"  ✓ Median beregnet for {len(values) - 1} kommuner ({aar}), "
                   f"landsniveau {values.get('000')} kr.")

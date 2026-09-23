@@ -58,6 +58,7 @@ from api_noegler import (  # noqa: E402
 )
 from dst_aar import seneste_aar  # noqa: E402
 from indkomst_median import median_disponibel  # noqa: E402
+from kommuner import KOMMUNER  # noqa: E402  (de 98 kommuner, data/kommuner.json)
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -82,25 +83,9 @@ def log(s: str) -> None:
     LOG.append(s)
 
 
-# ─── Kommuneliste: læses fra master_indicators.csv, så den altid matcher platformen ──
+# ─── Kommuneliste: data/kommuner.json, samme liste som resten af pipelinen ──
 
-def load_kommuner() -> dict[str, str]:
-    path = DATA_DIR / "master_indicators.csv"
-    if not path.exists():
-        log(f"FEJL: {path} findes ikke - kan ikke hente kommuneliste.")
-        sys.exit(1)
-    ud: dict[str, str] = {}
-    with open(path, encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            kode = (row.get("kommune_kode") or "").strip()
-            navn = (row.get("kommune_navn") or "").strip()
-            if kode and navn:
-                ud[kode] = navn
-    return ud
-
-
-KOMMUNER = load_kommuner()
-log(f"Kommuneliste: {len(KOMMUNER)} kommuner (fra master_indicators.csv)")
+log(f"Kommuneliste: {len(KOMMUNER)} kommuner (fra data/kommuner.json)")
 
 
 # ══════════════════════════════════════════════════════════════════════════

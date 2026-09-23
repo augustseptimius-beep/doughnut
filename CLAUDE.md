@@ -21,6 +21,8 @@ doughnut/
 ├── data/
 │   ├── indikatorer.json           ← ★ INDIKATORREGISTER: alle indikatorer, kategorier og dimensioner.
 │   │                                Læses af både Python-pipelinen og webappen (punkt 32).
+│   ├── kommuner.json              ← de 98 kommuner: kode, navn og kommunegruppe. Læses af scripts/kommuner.py
+│   │                                og shared.ts (kommunegruppe-baselinen). Ret kun her (punkt 36).
 │   ├── noegletal.json             ← reference, dækning og dataår pr. indikator. Genereres af build_master_csv.py
 │   │                                sammen med master; udfylder tal i tekster (punkt 35)
 │   ├── master_indicators.csv      ← ★ KONSOLIDERET MASTER-FIL (webapp læser KUN herfra)
@@ -39,6 +41,8 @@ doughnut/
 ├── scripts/
 │   ├── build_master_csv.py        ← ★ konsoliderer alle rådata-CSV'er til master_indicators.csv
 │   ├── indikatorregister.py       ← læser og validerer data/indikatorer.json
+│   ├── dst.py                     ← fælles DST-kald: api_post(), parse_value() (punkt 36)
+│   ├── kommuner.py                ← KOMMUNER, KODER, GRUPPE, kode_for_navn() fra data/kommuner.json
 │   ├── fetch_doughnut_data.py     ← hoved-script: sociale indikatorer + klima-fallback
 │   ├── fetch_sundhedsprofil.py    ← Den Nationale Sundhedsprofil (survey, bølger hvert 4. år)
 │   ├── fetch_kulturvaner.py       ← DST KV2GEO, kun 76 af 98 kommuner (se punkt 27)
@@ -181,7 +185,7 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
 2. **Scripts fra rodmappen** - ikke fra `scripts/` (se kritisk driftsregel ovenfor).
 3. **Worst-of (med én undtagelse)** - øko-dimensioner med sub-indikatorer bruger max-ratio (worst-of). UNDTAGELSE: Forurening bruger gennemsnit (`"aggregation": "gennemsnit"` i `data/indikatorer.json`), fordi dens 4 indikatorer er vidt forskellige forureningstyper. Logikken bor i `build_master_csv.py`.
 4. **Ratio regnes KUN i `build_master_csv.py` (fra sep. 2026)** - ud fra råværdien og indikatorens `reference` i registret, med én formel hvor retningen følger `inverse`/`lower_is_better` (arkitekturdokumentet R2-R5). Fetch-scriptets egen ratio-kolonne bruges kun til krydstjek og til at rekonstruere landstallet, så længe scriptet ikke selv skriver det (se punkt 33). De gamle særregler (`10000/inverse` for N, P og affald, `65/pct` for genanvendelse, `raw/3` for forbrugs-CO2, `abs_target`) er væk. Ændrer du en ratio i et fetch-script, ændrer du derfor ikke scoren - kun krydstjekket, som så advarer.
-5. **cba_2023_estimate.csv** bruger `kommune`-navn som nøgle, ikke `kommune_kode`. Manglende match → `forbrug_co2 = null` (ingen fallback). Christiansø er filtreret fra.
+5. **Alle kilde-CSV'er er nøglet på `kommune_kode` (fra sep. 2026).** `cba_2023_estimate.csv` (håndlavet) og `klimatilpasning_scores.csv` har kun navne fra kilden; de har fået en `kommune_kode`-kolonne, og `fetch_klimatilpasning_data.py` slår koden op med `kode_for_navn()` og stopper ved et ukendt navn. Tidligere blev de slået op på navn i build-trinnet, hvor en stavevariant gav et tavst hul. Christiansø er ikke med.
 6. **Farvelogik er OMVENDT:** sociale vil op (≥100 = grøn), økologiske vil ned (≤85 = grøn).
 7. **`master_indicators.csv`, `noegletal.json`, `trend_indicators.csv` og `data_years.json` skal committes.** Netlify har ingen adgang til kildernes API'er under build, så sitet bygges udelukkende fra de committede CSV'er.
 8. **API-nøgler læses KUN fra miljøvariabler. Skriv aldrig en nøgle ind i en fil der ligger i git.** To kilder kræver adgang:
@@ -262,6 +266,8 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
 
 35. **Skriv aldrig et landstal eller en dækning som tal i en tekst - brug en pladsholder (fra sep. 2026).** Registrets tekster (beskrivelser, grænser, begrundelser) og metodesidens `SOCIAL_METHODS`/`ECO_METHODS` skriver fx `{ref:pesticider:1}%`, `{daekning:sport_tilskuer} af {kommuner}`, `{mangler:vandindvinding}` og `{aar:areal_intensiv}`. `udfyldTal()` i `shared.ts` udfylder dem fra `data/noegletal.json`, som `build_master_csv.py` skriver sammen med master. Håndskrevne tal som "9,2%", "72,9 m³" og "76 af 98" drev tidligere ved hver dataopdatering. En pladsholder der peger på en ukendt indikator, fanges af `tjek_konsistens.py` og stopper webappens build. Tal der ikke findes i master (fx fjernvarmens landsgennemsnit ~13%, som er kontekst uden reference), står stadig som tekst og skal rettes i hånden.
 
+36. **Én kommuneliste og ét DST-kald (fra sep. 2026).** Indtil da havde 15 scripts hver sin afskrevne liste over de 98 kommuner, fire læste listen fra master-CSV'en, `shared.ts` havde kommunegrupperne som konstant, og seks scripts havde hver sin kopi af `api_post()`/`parse_value()`. Nu: `data/kommuner.json` er listen (kode, navn, gruppe), `scripts/kommuner.py` og `shared.ts` læser den, og `scripts/dst.py` har DST-kaldet. `build_master_csv.py` stopper hvis kommunerne i `doughnut_scores.csv` ikke er præcis de 98 - før ville en manglende kommune forsvinde fra sitet uden fejl. `fetch_doughnut_data.py` genkender kommuner ved opslag i listen, ikke ved talintervallet 101-860 (samme fælde som regionskoderne i punkt 27). Scripts med særlige DST-behov (`fetch_doughnut_data.py`'s BULK-fallback, `fetch_kulturvaner.py`'s JSON-stat, `fetch_trend_history.py`) har stadig egne kald; de bruger andre formater og er ikke kopier. `statbank_fetcher.py` er ikke en del af pipelinen (skriver en fil ingen læser).
+
 ## Arbejdsprincipper for ændringer
 
 - **"Brilliant basics" frem for innovation.** 80/20-mindset. Platformen er bevidst enkel, og enkelheden er en kvalitet, ikke en mangel.
@@ -273,6 +279,7 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
 
 - **Ny indikator (social, økologisk eller kontekst):** én post i `data/indikatorer.json` + nyt fetch-script + ny CSV i `data/` + metodesidens beregningstekst. Se "Tilføj en ny indikator".
 - **Ny øko-dimension:** `oekologiske_dimensioner` i `data/indikatorer.json` + metode-siden (`ECO_METHODS`). UI-komponenterne der tegner dimensionen (fx `DoughnutRing`) skal tjekkes, fordi ringens geometri afhænger af antallet.
+- **Kommuneliste, kommunegrupper, DST-kald:** `data/kommuner.json`, `scripts/kommuner.py`, `scripts/dst.py` (punkt 36).
 - **Farver/thresholds:** `shared.ts scoreColor/scoreBarColor` (sociale) og `ScoreBars.tsx ecoScoreColor/ecoBarColor` (økologiske).
 - **Tekster:** `app/om/page.tsx`, `app/metode/page.tsx`, `app/layout.tsx` (header/footer).
 - **Baseline-logik:** `lib/baseline-context.tsx` + `computeTop10Ratios()` i shared.ts.

@@ -2,7 +2,13 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
-## 2026-09-23
+## 2026-09-23 (én kommuneliste og ét DST-kald)
+
+- **Ny fil `data/kommuner.json`** med de 98 kommuner (kode, navn, kommunegruppe). Fetch-scripterne, `build_master_csv.py` og webappens kommunegruppe-baseline læser den i stedet for hver sin kopi. Master, noegletal og alle 104 sider på sitet er uændrede.
+- **`cba_2023_estimate.csv` og `klimatilpasning_scores.csv` har fået kolonnen `kommune_kode`** og slås nu op på kode i stedet for navn. Værdierne er uændrede. `fetch_klimatilpasning_data.py` skriver koden selv og stopper ved et ukendt kommunenavn.
+- **Rettet før den nåede sitet: `fetch_doughnut_data.py` ville have tilføjet 11 landsdele som kommuner.** Median-indkomsten fra PR #9 hentede alle områder i INDKP106 uden filter, så en fuld kørsel skrev 109 rækker (landsdelene 01-11 med kun indkomst). Den committede fil havde 98, fordi scriptet ikke var kørt fuldt siden. Fundet ved at køre scriptet i en kopi; `build_master_csv.py` stopper nu, hvis kommunerne ikke er præcis de 98.
+
+## 2026-09-23 (farve følger viste score)
 
 - **Farven følger nu den viste score.** Scores vises med én decimal, men farven blev afgjort af den uafrundede værdi, så fx Aalborgs Ligestilling stod som "100.0" i gult (99,963). Nu afrundes scoren én gang (`visningsscore()` i `shared.ts`), og tekst, farve, ringens tænder og tællingen "N af 13 kategorier over gennemsnittet" bruger samme tal. Ingen tal i master er ændret. I standardvisningen (kommunegruppe) skifter 9 kategorier farve: Herlev, Ærø og Syddjurs (Lighed), Ringsted (Velfærd og Fællesskab), Vejen (Mobilitet), Randers (Uddannelse), Skive (Demokrati) og Aalborg (Ligestilling). Alle lå under 0,05 fra grænsen på 85 eller 100.
 

@@ -100,10 +100,14 @@ er det for en social indikator det bedst mulige og giver loftet 150. For en
 økologisk er det det værst mulige og giver indikatorens `cap`, eller ingen
 værdi hvis den ikke har et. Mangler råværdien, er der ingen ratio.
 
-**R5 - Navnenøgle (`navn_col`).** `forbrug_co2` (`cba_2023_estimate.csv`,
-kolonnen `kommune`) og `vejr_skader` (`klimatilpasning_scores.csv`, kolonnen
-`kommune_navn`) slås op på kommunenavn, ikke kode. Ved manglende match er der
-ingen værdi, og der er bevidst intet fallback. Christiansø filtreres fra.
+**R5 - Kommunenøgle.** Alle kilde-CSV'er slås op på `kommune_kode`, og
+platformens kommuner er de 98 i `data/kommuner.json` (Christiansø er ikke
+med). To kilder har kun navne: `forbrug_co2` (`cba_2023_estimate.csv`,
+håndlavet) og `vejr_skader` (`klimatilpasning_scores.csv`). Indtil sep. 2026
+blev de slået op på navn i build-trinnet, så en stavevariant gav et tavst hul.
+Nu har begge CSV'er en `kommune_kode`-kolonne; fetch-scriptet slår koden op
+med `kommuner.kode_for_navn()` og stopper ved et ukendt navn. En kommune uden
+række i CSV'en får ingen værdi, og der er bevidst intet fallback.
 
 **R6 - Økologisk ratio-cap (`cap`).** Sætter en økologisk indikator feltet `cap`,
 klippes ratio til den værdi. I dag har `overfladevand`, `bio_vasentlig` og
