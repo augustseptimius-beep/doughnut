@@ -152,6 +152,24 @@ landsestimat, og det skal fremgå ved formidling.
 
 Webapp'en læser **ikke** længere fra disse direkte - kun fra `master_indicators.csv`.
 
+### `offentlig_transport_scores.csv` og `befolkning_1km_2021_dk.csv`
+
+Adgang til offentlig transport pr. kommune (verdensmål 11.2.1), genskabt fra
+åbne data af `scripts/fetch_offentlig_transport.py`. **Ikke koblet på master
+endnu**: `public_transport` scores stadig fra DST LABY49. Metode, validering og
+plan: `docs/offentlig-transport-genskabt.md`.
+
+`offentlig_transport_scores.csv`: `public_transport_raw` er andelen af
+befolkningen med mindst 10 afgange i timen inden for gåafstand,
+`public_transport_ref` landstallet for Danmark som helhed. `andel_middel`,
+`andel_lavt` og `andel_intet` er de øvrige serviceniveauer. `gtfs_dato` er den
+hverdag køreplanen er talt på.
+
+`befolkning_1km_2021_dk.csv`: de danske celler fra Eurostats Census 2021
+population grid (`n_km`, `e_km` er cellens nederste venstre hjørne i
+ETRS89-LAEA, km). Bruges til at vægte adresser med registrerede beboere.
+© European Union.
+
 ## Inaktive dimensioner
 
 Ingen (sep. 2026). Alle 13 sociale kategorier og 7 økologiske dimensioner har data. Kendte huller inden for dimensionerne: PFAS og mikroplast findes ikke på kommuneniveau (Forurening), og Klimatilpasning måles kun på realiserede forsikringsskader, ikke på fremtidig oversvømmelsesrisiko.
