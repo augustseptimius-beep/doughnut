@@ -45,14 +45,15 @@ Dette er den **konsoliderede master-fil** som webapp'en læser fra. Genereres af
 - Inverterede indikatorer (kriminalitet, fattigdom mv.) vendes af `build_master_csv.py` (`ratio = reference / raw × 100`) - høj ratio = god performance. Alle ratios beregnes dér ud fra `raw_value` og `reference`, ikke i fetch-scripterne
 
 **Økologiske indikatorer:**
-- `ratio = 100` = på grænsen: en absolut grænse (WHO, EU-mål, Paris-budget, 6 mg/L nitrat) eller landsgennemsnittet for de relative sub-indikatorer (fx næringsstoffer, vandindvinding, arealanvendelse, affald, pesticider)
+- `ratio = 100` = på grænsen: en absolut grænse (WHO, EU-mål, 2,5 ton CO₂e pr. person, 6 mg/L nitrat, kystvandenes målbelastning for kvælstof, tålegrænsen for kvælstofnedfald) eller landsgennemsnittet for de relative sub-indikatorer (vandindvinding, arealanvendelse, vandområdernes tilstand, affald, pesticider)
+- Andele hvor højere er bedre (natur, genanvendelse, vandområder i god tilstand) regnes som den manglende andel mod det målet tillader: `ratio = (100 - raw) / (100 - reference) × 100` (`formula: "komplement"` i registret, arkitekturdokumentet R2a). Ingen økologisk ratio har et loft
 - `ratio < 100` = inden for grænsen (godt)
 - `ratio > 100` = overshoot (rødt)
 
 **Dimension-aggregater (`_dim_*` rækker):**
-- Multi-indikator dimensioner (klimapåvirkning, luftkvalitet, næringsstoffer, arealanvendelse, biodiversitet) bruger **worst-of** (max ratio) - planetary boundary-logik: hvis bare én sub-grænse er overskredet, er dimensionen overskredet.
+- Multi-indikator dimensioner (klimapåvirkning, luftkvalitet, næringsstoffer, biodiversitet) bruger **worst-of** (max ratio) - planetary boundary-logik: hvis bare én sub-grænse er overskredet, er dimensionen overskredet.
 - Forurening er eneste undtagelse og bruger gennemsnit af sine fire sub-indikatorer.
-- Vand er single-indikator og får dimension-score = sub-indikatorens ratio.
+- Vand og arealanvendelse er single-indikator og får dimension-score = sub-indikatorens ratio.
 
 ### Eksempel: Pandas-import
 
@@ -86,7 +87,7 @@ Viser hvilken **vej** en kommune bevæger sig, ikke kun hvor den ligger. Én ræ
 | `pct` | Procentvis ændring. For `_dim_*`: gennemsnitlig **målrettet** ændring (positiv = mod målet) | `+29.54` |
 | `retning` | Se klasser nedenfor | `forkert` |
 | `n_aar` | Antal år i serien | `15` |
-| `noegle_indikator` | Kun på `_dim_*`: hvilken sub-indikator retningen kommer fra | `naer_nitrogen` |
+| `noegle_indikator` | Kun på `_dim_*`: hvilken sub-indikator retningen kommer fra | `n_deposition` |
 
 ### Retningsklasser
 
@@ -104,13 +105,26 @@ Viser hvilken **vej** en kommune bevæger sig, ikke kun hvor den ligger. Én ræ
 - **Retningen beregnes på råværdier, aldrig på ratio.** Ratio er relativ til en baseline, og platformen har en baseline-toggle (avg/top10/gruppe). En ratio-baseret pil ville skifte retning når brugeren skifter baseline.
 - **Øko-dimensioner bruger worst-of:** pilen følger den sub-indikator der bestemmer dimensionens score (højeste ratio). Undtagelse: Forurening bruger gennemsnit, ligesom i scoren.
 - **Ingen fallback.** Har den score-afgørende sub-indikator ingen tidsserie, får dimensionen ingen pil. Ellers ville pilen beskrive noget andet end tallet ved siden af.
-- **53 af de 66 scorede indikatorer har historik** (sep. 2026). De 13 uden vises med et skraveret felt (`ingen`): DCE-luftkort, bioscore, VP3-vandplaner, Jupiter-analyser, forbrugsbaseret CO₂, forsikringsskader og fossil opvarmning findes ikke som årlige tidsserier pr. kommune, `public_transport` beregnes fra køreplaner, og Rejseplanens arkiv går kun tilbage til december 2025, og `sport_tilskuer` bruger begge tilgængelige år i selve målet.
+- **51 af de 64 scorede indikatorer har historik** (sep. 2026). De 13 uden vises med et skraveret felt (`ingen`): DCE-luftkort, bioscore, vandområdeplanerne (kystvandenes kvælstof og vandområdernes tilstand), Jupiter-analyser, forbrugsbaseret CO₂, forsikringsskader og fossil opvarmning findes ikke som årlige tidsserier pr. kommune, `public_transport` beregnes fra køreplaner, og Rejseplanens arkiv går kun tilbage til december 2025, og `sport_tilskuer` bruger begge tilgængelige år i selve målet.
 
 Genereres af `scripts/fetch_trend_history.py` → `scripts/build_trends_csv.py`. **Skal genberegnes sammen med `master_indicators.csv`**, ellers kan pil og tal komme til at høre til forskellige årgange.
 
 ## Rådata-CSV'er (debug/transparens)
 
 De individuelle CSV-filer (`luftforurening_scores.csv`, `naeringsstoffer_scores.csv` mv.) er bevaret som **rådata-spor**. De genereres af deres respektive `scripts/fetch_*.py`-scripts og gør det muligt at debugge data-pipelinen tilbage til kilden.
+
+### Økologiske rådata (ændret sep. 2026)
+
+- **`n_kystvand_scores.csv`** (`fetch_kvaelstof_kystvand.py`): `n_belastning_pct_af_maal` er kvælstofbelastningen af de kystvande kommunens areal afvander til, i procent af målbelastningen (højeste i kæden nedstrøms, arealvægtet over deloplandene). `areal_andel_med_maal_pct` er den del af kommunens areal, der afvander til et kystvand med målbelastning.
+- **`vp3_kvaelstof_kystvande.csv`**: bilag 1.1 fra "Vandområdeplanerne 2021-2027 efter genbesøget" (april 2026) pr. kystvand: status-, baseline- og målbelastning (ton N/år), status i procent af målet og den højeste procent i kæden nedstrøms. Kildespor for tallene ovenfor, udtrukket af PDF'en.
+- **`n_deposition_scores.csv`** (`fetch_kvaelstofdeposition.py`): DCE's beregnede kvælstofnedfald pr. kommune (kg N/ha), treårsgennemsnit.
+- **`pesticider_scores.csv`**: `pesticid_pct_fund` er den empirisk Bayes-udglattede andel af aktive almene vandværker med fund; `pesticid_pct_fund_observeret` den rå andel.
+- **`forurening_scores.csv`**: husholdningsaffald og genanvendelse, begge treårsmedian af LABY25. Genanvendelsen lå før i `consumption_scores.csv`, som intet script skrev; den fil bruges ikke længere.
+- **`vandindvinding_scores.csv`**: `vandindvinding_mm_aar` er al indvinding (almene vandværker, virksomheder, markvanding) i mm/år over landarealet, treårsgennemsnit. Det gamle mål (almene vandværker pr. indbygger) står i `almen_m3_pr_person_seneste_aar` som kildespor.
+- **`arealanvendelse_scores.csv`**: `antropiseret_pct` er intensivt landbrug plus befæstet areal i pct. af landarealet uden søer og vandløb. De to andele hver for sig står stadig i filen.
+- **`luftforurening_scores.csv`**: `no2_ug_m3` og `pm25_ug_m3` er befolkningsvægtede; arealgennemsnittene står i `*_arealgns`.
+- **`cba_2023_estimate.csv`**: `cba_estimate` er estimatet for `estimat_aar` med Energistyrelsens seneste tidsserie (`fetch_forbrug_co2.py`). Kolonnen `cba_2023_estimate` er det gamle, håndberegnede tal.
+- **`naeringsstoffer_scores.csv`** og **`n_landbrug_scores.csv`** bruges ikke længere af platformen (indikatorerne er fjernet), men bevares som kildespor.
 
 ### `kulturvaner_scores.csv`
 

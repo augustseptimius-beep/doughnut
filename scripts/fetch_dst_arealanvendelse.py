@@ -5,7 +5,11 @@ fetch_dst_arealanvendelse.py - Arealanvendelse pr. danske kommune (DST AREALDK2)
 Henter arealdækningsdata fra Danmarks Statistiks Statistikbank (AREALDK2, nyeste år).
 Ingen GIS eller spatial join - ren API.
 
-Tre sub-indikatorer pr. kommune:
+Platformen scorer ÉT tal: antropiseret areal (intensivt landbrug + befæstet,
+pct. af landarealet uden søer og vandløb), se serie_areal_antropiseret(). De
+øvrige andele skrives stadig til CSV'en som kildespor.
+
+Andele pr. kommune:
   1. natur_pct       = skov + lysåben natur + søer (E + F1 + F2 + G1)
   2. intensiv_pct    = intensivt landbrug (D1 + D2 + D4)
   3. bebygget_pct    = veje + lufthavne + bebyggelse + råstof (A1 + A2 + B1 + B2 + C1)
@@ -18,10 +22,10 @@ Ratio-logik (eco-konvention: >100 = overshoot):
 De nationale gennemsnit hentes fra DST (OMRÅDE=95, hele landet) for samme år.
 Scriptet skriver dem i areal_intensiv_ref og areal_bebygget_ref.
 
-serie_areal_intensiv() og serie_areal_bebygget() bruges også af
-fetch_trend_history.py, så retningspilen følger samme kategorier som scoren
-(indtil sep. 2026 talte pilen fx sportsanlæg med i bebygget og ikke
-ikke-klassificeret landbrug med i intensivt).
+serie_areal_antropiseret() bruges også af fetch_trend_history.py, så
+retningspilen følger samme kategorier som scoren. Indtil sep. 2026 scorede
+platformen intensiv og bebygget hver for sig (worst-of); de to serier findes
+stadig.
 
 Output:
   data/arealanvendelse_scores.csv
@@ -89,6 +93,51 @@ def serie_areal_bebygget(aar: list[str]) -> dict[tuple[str, str], float]:
     return _serie_andel(BEBYGGET_KODER, aar)
 
 
+# Antropiseret areal (Dao m.fl. 2015; EEA 2020; CONCITO 2025): intensivt
+# landbrug og befæstet/bebygget areal tilsammen, i pct. af landarealet uden søer
+# og vandløb. Ét tal i stedet for worst-of af de to andele hver for sig: de to
+# er hinandens spejlbillede (by mod land), så worst-of af to relative andele
+# gjorde 82 af 98 kommuner røde af konstruktionsmæssige grunde, og Frederiksberg
+# fik 637. Arealgrænsen handler om hvor meget land der er omlagt fra natur,
+# uanset om det er til mark eller by.
+ANTROPISERET_KODER = INTENSIV_KODER + BEBYGGET_KODER
+VAND_KODER = ["G1", "G2"]                           # søer og vandløb
+
+
+def serie_areal_antropiseret(aar: list[str]) -> dict[tuple[str, str], float]:
+    """Antropiseret areal i pct. af landarealet (samlet areal minus søer og
+    vandløb). {(kommune_kode, år): pct} inkl. landstallet '000' = de 98
+    kommuner samlet. Bruges af både scoren og retningspilen."""
+    rows = api_post("AREALDK2", [
+        {"code": "ARE1", "values": ANTROPISERET_KODER + VAND_KODER + ["TOT"]},
+        {"code": "OMRÅDE", "values": ["*"]},
+        {"code": "ENHED", "values": ["8120"]},   # km²
+        {"code": "Tid", "values": aar},
+    ])
+    km2: dict[tuple[str, str, str], float] = {}
+    for r in rows:
+        kode = (r.get("OMRÅDE") or "").strip()
+        if kode not in KOMMUNER:
+            continue
+        v = parse_value(r.get("INDHOLD", ""))
+        if v is not None:
+            km2[(kode, aarstal(r.get("TID", "")), r["ARE1"])] = v
+    ud: dict[tuple[str, str], float] = {}
+    sum_ant: dict[str, float] = {}
+    sum_land: dict[str, float] = {}
+    for kode, a in {(k, a) for k, a, _ in km2}:
+        land = km2.get((kode, a, "TOT"), 0) - sum(km2.get((kode, a, c), 0) for c in VAND_KODER)
+        if land <= 0:
+            continue
+        ant = sum(km2.get((kode, a, c), 0) for c in ANTROPISERET_KODER)
+        ud[(kode, a)] = round(ant / land * 100, 2)
+        sum_ant[a] = sum_ant.get(a, 0) + ant
+        sum_land[a] = sum_land.get(a, 0) + land
+    for a in sum_ant:
+        ud[("000", a)] = round(sum_ant[a] / sum_land[a] * 100, 2)
+    return ud
+
+
 def _tom(v):
     return "" if v is None else v
 
@@ -116,6 +165,8 @@ def main():
     aar, intensiv, nat_intensiv = seneste(serie_areal_intensiv(perioder), tabel="AREALDK2")
     _, bebygget, nat_bebygget = seneste(serie_areal_bebygget(perioder))
     _, natur, _ = seneste(_serie_andel(NATUR_KODER, perioder))
+    _, antro, nat_antro = seneste(serie_areal_antropiseret(perioder))
+    print(f"  Antropiseret areal (Dao m.fl. 2015): hele landet {nat_antro}% af landarealet")
     print(f"  År {aar}: {len(intensiv)} kommuner")
     print(f"  Hele landet: intensivt landbrug {nat_intensiv}%, bebygget {nat_bebygget}%")
 
@@ -132,6 +183,9 @@ def main():
             "bebygget_ratio": _tom(ratio_mod_snit(b, nat_bebygget)),
             "areal_intensiv_ref": "" if nat_intensiv is None else nat_intensiv,
             "areal_bebygget_ref": "" if nat_bebygget is None else nat_bebygget,
+            "antropiseret_pct": _tom(antro.get(kode)),
+            "antropiseret_ratio": _tom(ratio_mod_snit(antro.get(kode), nat_antro)),
+            "areal_antropiseret_ref": "" if nat_antro is None else nat_antro,
         })
     mangler = [r["kommune_navn"] for r in rows if r["intensiv_pct"] == ""]
     if mangler:
@@ -143,7 +197,8 @@ def main():
         writer.writeheader()
         writer.writerows(rows)
     t = next(r for r in rows if r["kommune_kode"] == "787")
-    print(f"  Thisted: natur {t['natur_pct']}%, intensiv {t['intensiv_pct']}%, bebygget {t['bebygget_pct']}%")
+    print(f"  Thisted: natur {t['natur_pct']}%, intensiv {t['intensiv_pct']}%, bebygget {t['bebygget_pct']}%, "
+          f"antropiseret {t['antropiseret_pct']}%")
     print(f"\nFærdig! Data gemt i {OUTPUT.relative_to(ROOT)}")
 
 

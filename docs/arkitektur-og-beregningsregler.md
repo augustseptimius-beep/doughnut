@@ -65,7 +65,8 @@ følger registret:
 | social, `inverse: false` | `raw / ref × 100` |
 | social, `inverse: true` | `ref / raw × 100` |
 | økologisk, `lower_is_better: true` | `raw / ref × 100` |
-| økologisk, `lower_is_better: false` | `ref / raw × 100` |
+| økologisk, `lower_is_better: false` | `ref / raw × 100` (bruges ikke længere, se R2a) |
+| økologisk, `formula: "komplement"` | `(100 - raw) / (100 - ref) × 100` |
 | `formula: "100_minus_raw"` (kun `bolig_fossil`) | `100 - raw` (mål 0 procent fossil) |
 
 Resultatet klippes (R1, R6) og afrundes til 2 decimaler. Indtil sep. 2026
@@ -76,11 +77,33 @@ alle erstattet af tabellen ovenfor. Fetch-scriptets egen ratio (`ratio_col`)
 indgår ikke længere i scoren; den bruges til krydstjek (build advarer ved
 afvigelser over 0,5 point) og til R3's rekonstruktion.
 
+**R2a - Økologiske andele hvor højere er bedre regnes om til det der mangler
+(fra sep. 2026).** Alle økologiske ratios skal have nul ved ingen belastning og
+100 ved grænsen. Det er Fanning m.fl.s (2022) og O'Neills m.fl.s (2018)
+normalisering, værdi/grænse, for størrelser med et naturligt nulpunkt, og
+Richardson m.fl. (2023) tegner de planetære grænser på samme måde (Holocæn i
+centrum, grænsen i samme afstand for alle). For en andel hvor højere er bedre
+(natur, genanvendelse, vandområder i god tilstand) er belastningen den
+manglende andel. Målet "mindst 30 procent natur" er det samme som "højst 70
+procent uden", og ratioen er den manglende andel målt mod det målet tillader:
+`(100 - raw) / (100 - ref) × 100`. Med en landstal-reference (vandområder) er
+det den manglende andel mod landets manglende andel.
+
+Indtil sep. 2026 brugte de fire indikatorer `ref / raw × 100`. Den eksploderer,
+når andelen nærmer sig nul, og måtte cappes ved 300 (R6): over halvdelen af
+kommunerne stod på loftet på biodiversitet, 28 kommuner på vandområder, og en
+kommune med 10 procent vandområder i god tilstand blev grøn, selv om 90
+procent ikke var det. Formlen gælder `bio_vasentlig`, `bio_uerstattelig`,
+`cirkularitet_recycling` og `overfladevand`. Registret afviser `komplement` på
+andet end økologiske indikatorer med `lower_is_better: false`.
+
 **R3 - Referencen.** Feltet `reference` i registret har tre typer:
 
 - `maal`: et fast mål (`value`). Uddannelse 95 procent, WHO's
-  luftkvalitetsgrænser, 3 ton CO2e, EU's 65 procent genanvendelse og 30/10
-  procent natur, 6 mg/L nitrat, 0 procent fossil varme.
+  luftkvalitetsgrænser, 2,5 ton CO2e (indtil sep. 2026 3 ton, uden kilde), EU's
+  65 procent genanvendelse og 30/10 procent natur, 6 mg/L nitrat, 0 procent
+  fossil varme, kystvandenes målbelastning for kvælstof (100 procent) og
+  tålegrænsen for kvælstofnedfald (10 kg N/ha/år).
 - `kommunegennemsnit`: uvægtet gennemsnit af kommunernes råværdier, beregnet
   ved build. Bruges kun hvor indikatorens nævner ikke findes (UVM), se
   afsnit 7.
@@ -128,9 +151,11 @@ med `kommuner.kode_for_navn()` og stopper ved et ukendt navn. En kommune uden
 række i CSV'en får ingen værdi, og der er bevidst intet fallback.
 
 **R6 - Økologisk ratio-cap (`cap`).** Sætter en økologisk indikator feltet `cap`,
-klippes ratio til den værdi. I dag har `overfladevand`, `bio_vasentlig` og
-`bio_uerstattelig` alle `cap: 300`. Uden cappet giver bioscore-andele nær nul
-ratios i tusindvis, som ville forstyrre valideringen i R14.
+klippes ratio til den værdi. Fra sep. 2026 har ingen indikator et cap: de tre
+der havde (`overfladevand`, `bio_vasentlig`, `bio_uerstattelig`, alle 300), bruger
+nu komplement-formlen (R2a), som ikke kan eksplodere. Mekanismen er bevaret i
+koden til en fremtidig indikator, men et loft som over halvdelen af kommunerne
+rammer, er et tegn på en forkert formel, ikke på et manglende loft.
 
 **R7 - Økologisk dimensionsscore.** Pr. kommune og dimension samles alle
 ikke-`None` sub-ratios:
@@ -152,7 +177,8 @@ rækker med `indicator_id = "_dim_<dimension>"`.
 
 **R14 - Ratiovalidering.** Gyldigt interval er 0 til 2000. Værdier udenfor
 rapporteres som en advarsel ved build, men klippes ikke. Intervallet er sat
-bevidst bredt, så R6-cappet fanger de reelle udfald først.
+bevidst bredt. Enkelte kommuner ligger højt over 100 af reelle grunde
+(vandindvinding pr. areal på Frederiksberg er ca. 12 gange landsgennemsnittet).
 
 ---
 
@@ -217,7 +243,9 @@ mål eller mod landsgennemsnittet:
   Ellers `blandet`. En tom liste giver `relativ`
   (`categoryBaselineType`, `dimensionBaselineType`).
 
-I dag er kun Uddannelse og Forurening `blandet`. UI'et viser mærket "mod mål"
+I dag er Uddannelse, Forurening og Næringsstoffer `blandet` (Næringsstoffer:
+kvælstof til kystvande og kvælstofnedfald mod faste grænser, vandområdernes
+tilstand mod landsgennemsnittet). UI'et viser mærket "mod mål"
 eller "blandet" på dimensionsbjælken. Relativ vises uden mærke og forklares i
 ringens legende.
 
@@ -304,6 +332,10 @@ Har den afgørende sub-indikator ingen tidsserie, får dimensionen **ingen pil**
 Der falles bevidst ikke tilbage på de øvrige. Derfor har `klimapaavirkning` kun
 pil i 11 af 98 kommuner: i de øvrige 87 afgøres scoren af forbrugsbaseret CO2,
 som ikke findes som tidsserie. Det er korrekt opførsel, ikke manglende data.
+Tilsvarende har `naeringsstoffer` kun pil, hvor kvælstofnedfaldet afgør scoren
+(8 kommuner, sep. 2026): statusbelastningen af kystvandene kommer fra
+vandområdeplanen og har ingen tidsserie, og det samme gælder vandområdernes
+tilstand.
 
 **T7 - Pilens retning betyder to forskellige ting, og `pct` gør det samme.**
 Reglen bor i `trendPilOpad()` i `shared.ts`. Alle visninger skal bruge den. Lav
@@ -395,16 +427,26 @@ Reglen bag R12: **scor mod målet, hvor der findes en meningsfuld grænse pr.
 kommune.** Det gælder både biofysiske og juridiske grænser (WHO's
 luftkvalitetsretningslinjer, ekspertgruppens 6 mg/L for nitrat) og vedtagne
 politiske mål (EU's 30/10-procentmål for natur, EU's 65 procent genanvendelse,
-det nationale 95-procentmål for uddannelse, 0 procent fossil varme, 3 tons
-Paris-budget). Findes ingen sådan grænse, bruges landsgennemsnittet.
+det nationale 95-procentmål for uddannelse, 0 procent fossil varme, 2,5 ton
+CO2e pr. person). Fra sep. 2026 også to nedskalerede biofysiske grænser for
+kvælstof: kystvandenes målbelastning fra vandområdeplanerne og tålegrænsen for
+kvælstofnedfald på følsom natur. Findes ingen sådan grænse, bruges
+landsgennemsnittet.
 
-Pesticider er scoret mod landsgennemsnittet, selvom drikkevandsnormen på
-0,1 µg/l afgør hvornår en analyse tæller som overskridelse. Målet "0 procent
-af vandværkerne over normen" kan ikke bruges som nævner i en ratio, så
-`baselineType` er `relativ`.
+Pesticider er scoret mod landsgennemsnittet. Indikatoren er andelen af aktive
+vandværker med fund, og målet ville være nul fund, som ikke kan bruges som
+nævner i en ratio, så `baselineType` er `relativ`. Det samme gælder
+vandområdernes tilstand (målet er 100 procent i god tilstand, altså nul der
+mangler).
 
-Resultatet er at kun to dimensioner ender som `blandet` (Forurening og
-Uddannelse). Det er en lille, ærlig undtagelse, ikke reglen.
+For vand og areal findes grænser (GEUS' bæredygtige grundvandsressource, 15
+procent antropiseret areal), men ikke pr. kommune: GEUS' tal pr. delopland
+findes kun som kort og er ikke autoritative på den skala, og en bykommune kan
+ikke være 85 procent natur. De to måles derfor mod landsgennemsnittet, og
+grænsen står som kontekst.
+
+Resultatet er at tre dimensioner ender som `blandet` (Forurening, Næringsstoffer
+og Uddannelse).
 
 Klassifikationen blev gjort maskinlæsbar (`baselineType`) frem for at leve i
 fritekst, fordi "grøn" ellers betyder to forskellige ting fra dimension til
@@ -453,6 +495,24 @@ omskaleres på deres allerede vendte ratio, hvilket er en bevidst forenkling.
 10. **Python-scripts og CSV-filer i `data/` er kildesporet.** De må ikke slettes
     eller ryddes op ved en migrering. Masterfilen kan altid genskabes fra dem,
     men ikke omvendt.
+11. **En økologisk andel hvor højere er bedre, skal have `formula: "komplement"`**
+    (R2a). Uden den falder den tilbage på `ref / raw × 100`, som eksploderer ved
+    andele nær nul. Registret afviser formlen på andre indikatortyper.
+12. **Jupiter har nedlagte vandværker med.** `aktiv_num = 1` er et aktivt anlæg.
+    Uden filteret talte 844 nedlagte værker med i pesticidandelen og 935 analyser
+    i nitraten, og Thisted stod med 5,2 mg/L nitrat mod 14,5 for de aktive værker.
+    Stof-status "Aktuelt fund og tidl. over kravværdi" betyder at seneste analyse
+    er UNDER kravværdien.
+13. **Kystvandstabellen udtrækkes af en PDF.** `fetch_kvaelstof_kystvand.py`
+    læser bilag 1.1 i vandområdeplanen og tjekker en kendt række (Roskilde Fjord,
+    ydre). Rækker med manglende felter tolkes efter antallet af tal (se
+    scriptets docstring); fejler kontrolrækken, er udtrækket forskudt. Resultatet
+    ligger i `data/vp3_kvaelstof_kystvande.csv`, så en ny plan kan sammenlignes
+    med den gamle række for række.
+14. **Treårs-værdier: median eller gennemsnit er et valg.** Affald og
+    genanvendelse bruger medianen (enkeltår med fejlindberetninger), vandindvinding
+    og kvælstofnedfald gennemsnittet (reel, men vejrbestemt variation).
+    `dst.rullende()` tager valget som parameter, og pilen bruger samme funktion.
 
 ---
 
@@ -467,7 +527,7 @@ og måles mod Danmark som helhed.
 | Regel | Afvigelse | Status |
 |---|---|---|
 | R3 | Landsgennemsnittet for de otte Sundhedsprofil-indikatorer beregnes af os som et befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+), ikke hentet fra kilden. Databasen udstiller ikke et landstal pr. kommunetabel. Reglen forudsætter ellers et landstal fra kilden | Bevidst, dokumenteret i `data/README.md` og på metodesiden |
-| R3 | Landstallet rekonstrueres stadig fra scriptets ratio for 11 af 52 landstal-indikatorer (Sundhedsprofilen, `overfladevand`, `naer_landbrug`, `pesticider`), fordi deres CSV'er ikke er hentet siden scripterne begyndte at skrive `<id>_ref` (sep. 2026) | Overgang. Lukkes ved næste kørsel af de fire scripts |
+| R3 | Landstallet rekonstrueres stadig fra scriptets ratio for de 8 Sundhedsprofil-indikatorer, fordi `sundhedsprofil_scores.csv` ikke er hentet siden scripterne begyndte at skrive `<id>_ref` (sep. 2026). `overfladevand` og `pesticider` skriver det nu selv | Overgang. Lukkes ved næste kørsel af `fetch_sundhedsprofil.py` |
 | R3 | Fire UVM-indikatorer (`wellbeing`, `exam_grade`, `high_absence`, `youth_education`) måles mod et uvægtet kommunegennemsnit, ikke Danmark som helhed, fordi elevtallet pr. kommune ikke hentes. Effekten på referencen er 0,4-4 procent | Overgang. Lukkes når `fetch_udvidelse_data.py` henter elevtal (kræver UVM-nøglen) |
 | T1 | Retningen for Sundhedsprofilens indikatorer beregnes 2017 → 2025 (2021 → 2025 for `ensomhed` og `fysisk_aktivitet`), ikke over hele den tilgængelige serie 2010-2025. Reglen siger ellers hele serien | Bevidst, se punkt 23 i CLAUDE.md |
 

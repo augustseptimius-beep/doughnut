@@ -14,6 +14,16 @@ Grænseværdier (doughnut-kontekst):
     NO2:  40 µg/m³
     PM2.5: 25 µg/m³
 
+Befolkningsvægtet (fra sep. 2026):
+  Kommunens tal er den befolkningsvægtede middelkoncentration: hver beboet
+  1 km-celle i Eurostats befolkningsgrid 2021 (data/befolkning_1km_2021_dk.csv)
+  får koncentrationen i den modelcelle den ligger i, og kommunens tal er
+  gennemsnittet vægtet med antal beboere. Det er den metode WHO, EEA og FN's
+  verdensmålsindikator 11.6.2 bruger for eksponering, og det er det metodesiden
+  altid har lovet. Indtil sep. 2026 tog scriptet et simpelt gennemsnit af alle
+  modelceller i kommunen, så ubeboede marker og skove trak tallet ned.
+  Arealgennemsnittet skrives stadig til CSV'en til sammenligning.
+
 Ratio-konvention (samme som resten af platformen):
   ratio = (faktisk konc. / WHO-grænse) × 100
   ratio > 100 = over grænsen (dårligt)
@@ -146,13 +156,50 @@ except Exception as e:
 
 # ── Trin 3: Spatial join og aggregering ──────────────────────────────────────
 
-print("\nTrin 3/4: Spatial join og kommuneaggregering...")
+BEFOLKNING = _Path(__file__).resolve().parent.parent / "data" / "befolkning_1km_2021_dk.csv"
+
+
+def befolkningspunkter(kommuner: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+    """Beboede 1 km-celler (Eurostat 2021, ETRS89-LAEA) som punkter i EPSG:25832
+    med antal beboere og kommunekode."""
+    bef = pd.read_csv(BEFOLKNING)
+    pkt = gpd.GeoDataFrame(
+        {"befolkning": bef["befolkning"]},
+        geometry=gpd.points_from_xy(bef["e_km"] * 1000 + 500, bef["n_km"] * 1000 + 500),
+        crs="EPSG:3035",
+    ).to_crs(epsg=25832)
+    return gpd.sjoin(pkt, kommuner[["kode", "navn", "geometry"]], how="inner", predicate="within")
+
+
+def befolkningsvaegtet(grid_gdf: gpd.GeoDataFrame, pkt: gpd.GeoDataFrame,
+                       value_key: str) -> pd.DataFrame:
+    """Befolkningsvægtet middelkoncentration pr. kommune. Modelcellerne er 1x1 km
+    med hjørner på hele kilometer i UTM, så cellen for et punkt findes ved at
+    runde koordinaterne ned."""
+    celle = {(int(g.x // 1000), int(g.y // 1000)): v
+             for g, v in zip(grid_gdf.geometry, grid_gdf[value_key])}
+    p = pkt.copy()
+    p["konc"] = [celle.get((int(g.x // 1000), int(g.y // 1000))) for g in p.geometry]
+    p = p[p["konc"].notna()]
+    p["vaegtet"] = p["konc"] * p["befolkning"]
+    agg = p.groupby(["kode", "navn"])[["vaegtet", "befolkning"]].sum().reset_index()
+    agg[value_key] = agg["vaegtet"] / agg["befolkning"]
+    return agg[["kode", "navn", value_key]]
+
+
+print("\nTrin 3/4: Befolkningsvægtning og kommuneaggregering...")
 try:
-    no2_agg  = aggreger_per_kommune(no2_gdf,  kommuner, "NO2")
-    pm25_agg = aggreger_per_kommune(pm25_gdf, kommuner, "PM2_5")
+    pkt = befolkningspunkter(kommuner)
+    print(f"  {len(pkt)} beboede km-celler, {int(pkt['befolkning'].sum()):,} beboere")
+    no2_agg  = befolkningsvaegtet(no2_gdf,  pkt, "NO2")
+    pm25_agg = befolkningsvaegtet(pm25_gdf, pkt, "PM2_5")
     result   = no2_agg.merge(pm25_agg, on=["kode", "navn"])
-    result["NO2"]   = result["NO2"].round(2)
-    result["PM2_5"] = result["PM2_5"].round(2)
+    areal = (aggreger_per_kommune(no2_gdf, kommuner, "NO2")
+             .merge(aggreger_per_kommune(pm25_gdf, kommuner, "PM2_5"), on=["kode", "navn"])
+             .rename(columns={"NO2": "NO2_areal", "PM2_5": "PM2_5_areal"}))
+    result   = result.merge(areal, on=["kode", "navn"], how="left")
+    for k in ("NO2", "PM2_5", "NO2_areal", "PM2_5_areal"):
+        result[k] = result[k].round(2)
     print(f"  OK: {len(result)} kommuner aggregeret")
 except Exception as e:
     print(f"  FEJL: {e}")
@@ -171,11 +218,14 @@ result["kommune_kode"] = result["kode"].astype(str).str.lstrip("0").astype(int)
 output = result[[
     "kommune_kode", "navn",
     "NO2", "PM2_5",
-    "no2_ratio", "pm25_ratio"
+    "no2_ratio", "pm25_ratio",
+    "NO2_areal", "PM2_5_areal",
 ]].rename(columns={
     "navn":  "kommune_navn",
     "NO2":   "no2_ug_m3",
     "PM2_5": "pm25_ug_m3",
+    "NO2_areal": "no2_ug_m3_arealgns",
+    "PM2_5_areal": "pm25_ug_m3_arealgns",
 })
 
 output = output.sort_values("kommune_kode").reset_index(drop=True)

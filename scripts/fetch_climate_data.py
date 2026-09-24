@@ -13,7 +13,8 @@ Output CSV-kolonner (climate_scores.csv, scores klimapaavirkning-dimensionen):
   kommune_kode, kommune_navn, co2e_per_capita, climate_territorial_ratio, year
 
 Ratio = (co2e_per_capita / Paris-budget) * 100
-Paris-budget = 3 ton CO2e/person/år
+Grænse = 2,5 ton CO2e/person/år (1,5-graders-niveau for 2030, Hot or Cool Institute 2021;
+  indtil sep. 2026 3 ton, som ingen kilde kunne underbygge)
 > 100 = overshoot (overskrider planetær grænse)
 < 100 = inden for sikker zone
 
@@ -46,7 +47,7 @@ KOMMUNER = [(int(kode), navn) for kode, navn in _KOMMUNER.items()]
 
 API_KEY = hent_noegle("KLIMAREGNSKABET_API_KEY")
 API_BASE = "https://klimaregnskabet.dk/api/municipality-data"
-PARIS_BUDGET = 3.0  # ton CO2e/person/år
+PARIS_BUDGET = 2.5  # ton CO2e/person/år (se docstring)
 
 
 def fetch_kommune(kode: int, navn: str, year: int, debug: bool = False):

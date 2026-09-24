@@ -205,6 +205,11 @@ def beregn_nitrat(maengder: dict[str, float]) -> dict[str, dict]:
         print(f"  FEJL: filteret ramte forkert - fik {sorted(stoffer)[:5]}", file=sys.stderr)
         sys.exit(1)
 
+    # Kun aktive vandværker (fra sep. 2026): et nedlagt værk leverer ikke det
+    # drikkevand borgerne får, og dets seneste analyse kan være fra lukningen.
+    ialt = len(blokke)
+    blokke = [b for b in blokke if er_aktiv(b)]
+    print(f"    {ialt - len(blokke)} analyser fra nedlagte eller inaktive vandværker udeladt.")
     ialt = len(blokke)
     blokke = [b for b in blokke if aktuel(b)]
     if ialt != len(blokke):
@@ -264,7 +269,59 @@ def beregn_nitrat(maengder: dict[str, float]) -> dict[str, dict]:
 
 # ── Pesticider ────────────────────────────────────────────────────────────
 
-def beregn_pesticider() -> dict[str, dict]:
+# stof_status for "fund i seneste analyse", uanset niveau. Jupiter har fem
+# værdier: "Intet nu og intet tidligere", "Tidligere fund", "Aktuelt fund under
+# kravværdi", "Aktuelt fund og tidl. over kravværdi" og "Aktuelt over kravværdi".
+AKTUELT_FUND = {
+    "Aktuelt fund under kravværdi",
+    "Aktuelt fund og tidl. over kravværdi",
+    "Aktuelt over kravværdi",
+}
+
+# aktiv_num: 1 = aktivt anlæg. Nedlagte vandværker (2) leverer ikke drikkevand.
+AKTIV = "1"
+
+
+def er_aktiv(blok: str) -> bool:
+    return felt(blok, "aktiv_num") == AKTIV
+
+
+def eb_beta_binomial(tal: dict[str, tuple[int, int]]) -> tuple[float, float, float]:
+    """Empirisk Bayes for andele: (alfa, beta, landsandel) for en Beta-prior
+    estimeret med momentmetoden (Kleinman 1973, Journal of the American
+    Statistical Association 68:46-54), ud fra
+    {kommune: (fund, antal)}.
+
+    Kommunens andel skønnes så som (fund + alfa) / (antal + alfa + beta): med
+    mange vandværker er det næsten den observerede andel, med få trækkes den
+    mod landsandelen. Det er standardgrebet for rater i små områder
+    (Clayton & Kaldor 1987, Biometrics 43:671; Marshall 1991, Applied
+    Statistics 40:283) og fjerner, at én ud af ét
+    vandværk gav en kommune 100 procent."""
+    N = sum(n for _, n in tal.values())
+    p = sum(x for x, _ in tal.values()) / N
+    k = len(tal)
+    S = sum(n * (x / n - p) ** 2 for x, n in tal.values())
+    naevner = N - sum(n * n for _, n in tal.values()) / N
+    tau2 = (S - p * (1 - p) * (k - 1)) / naevner
+    if tau2 <= 0:                       # ingen variation ud over tilfældigheden
+        return 1e6 * p, 1e6 * (1 - p), p
+    ab = p * (1 - p) / tau2 - 1
+    return p * ab, (1 - p) * ab, p
+
+
+def beregn_pesticider() -> tuple[dict[str, dict], float]:
+    """Andel af kommunens AKTIVE almene vandværker, hvor seneste analyse (højst
+    10 år gammel) har fund af pesticider eller nedbrydningsprodukter.
+
+    Til og med sep. 2026 talte indikatoren "over kravværdien", men medregnede
+    både nedlagte vandværker og "Aktuelt fund og tidl. over kravværdi", hvor
+    den seneste analyse er UNDER kravværdien. Gentofte stod derfor med 100%
+    over normen, selv om det eneste aktive værks seneste analyse var 0,064 µg/l.
+    Kun 33 aktive værker er aktuelt over kravværdien; det er for få til at
+    skelne kommuner. Fund er GEUS' egen primære overvågningsindikator, og for
+    stoffer der ikke hører hjemme i grundvandet (novel entities) er
+    tilstedeværelsen selv signalet."""
     print("  Henter pesticidstatus (stofgruppe 50, almene vandværker)...")
     blokke = hent("jupiter_grp_anlaegsanalyser",
                   _filter(("stofgruppe_num", STOFGRUPPE_PESTICID),
@@ -274,34 +331,43 @@ def beregn_pesticider() -> dict[str, dict]:
     if not all("Pesticider" in g for g in grupper if g):
         print(f"  FEJL: filteret ramte forkert - fik {sorted(grupper)[:5]}", file=sys.stderr)
         sys.exit(1)
+    kendte = {felt(b, "stof_status") for b in blokke} - {""}
+    ukendte_status = kendte - AKTUELT_FUND - {"Intet nu og intet tidligere", "Tidligere fund"}
+    if ukendte_status:
+        print(f"  FEJL: ukendte stof_status-værdier {sorted(ukendte_status)} - "
+              f"GEUS har ændret klassifikationen, tjek AKTUELT_FUND", file=sys.stderr)
+        sys.exit(1)
 
     ialt = len(blokke)
+    blokke = [b for b in blokke if er_aktiv(b)]
+    print(f"    {ialt - len(blokke)} nedlagte eller inaktive vandværker udeladt.")
+    n0 = len(blokke)
     blokke = [b for b in blokke if aktuel(b)]
-    if ialt != len(blokke):
-        print(f"    {ialt - len(blokke)} analyser uden for aktualitetsvinduet "
+    if n0 != len(blokke):
+        print(f"    {n0 - len(blokke)} analyser uden for aktualitetsvinduet "
               f"({AKTUALITET_AAR} år) udeladt.")
 
     total: dict[str, int] = defaultdict(int)
-    over: dict[str, int] = defaultdict(int)
-    ukendt = 0
+    fund: dict[str, int] = defaultdict(int)
     for b in blokke:
         kode = kommunekode(felt(b, "kommune"))
-        if not kode:
-            continue
         status = felt(b, "stof_status")
-        if not status:
-            ukendt += 1
+        if not kode or not status:
             continue
         total[kode] += 1
-        if status in OVER_KRAVVAERDI:
-            over[kode] += 1
+        if status in AKTUELT_FUND:
+            fund[kode] += 1
 
-    ud = {k: {"pct": round(over[k] / n * 100, 2), "over": over[k], "total": n}
-          for k, n in total.items() if n}
-    if ukendt:
-        print(f"    {ukendt} anlæg uden status - udeladt.")
+    tal = {k: (fund[k], n) for k, n in total.items() if n}
+    alfa, beta, p = eb_beta_binomial(tal)
+    print(f"    {sum(x for x, _ in tal.values())}/{sum(n for _, n in tal.values())} aktive "
+          f"vandværker med fund = {p * 100:.2f}%; Beta-prior alfa={alfa:.2f}, beta={beta:.2f} "
+          f"(svarer til {alfa + beta:.0f} vandværkers vægt)")
+    ud = {k: {"pct": round((x + alfa) / (n + alfa + beta) * 100, 2),
+              "pct_observeret": round(x / n * 100, 2), "fund": x, "total": n}
+          for k, (x, n) in tal.items()}
     print(f"    {len(ud)} kommuner.")
-    return ud
+    return ud, p * 100
 
 
 # ── Skrivning ─────────────────────────────────────────────────────────────
@@ -319,7 +385,7 @@ def main() -> int:
 
     maengder = hent_maengder()
     nitrat = beregn_nitrat(maengder)
-    pesticid = beregn_pesticider()
+    pesticid, nat_pct = beregn_pesticider()
 
     # ── nitrat_scores.csv ──
     raekker = []
@@ -340,25 +406,22 @@ def main() -> int:
     print(f"\n✓ {sti.name}: {med}/{len(raekker)} kommuner med data")
 
     # ── pesticider_scores.csv ──
-    # Ratio-konventionen bevares: kommunens andel ift. landsgennemsnittet.
-    alle_over = sum(d["over"] for d in pesticid.values())
-    alle_tot = sum(d["total"] for d in pesticid.values())
-    nat_pct = (alle_over / alle_tot * 100) if alle_tot else 0.0
-    print(f"  Landsplan: {alle_over}/{alle_tot} vandværker over kravværdi = {nat_pct:.2f}%")
-
+    # Råværdien er den empirisk Bayes-udglattede andel (se eb_beta_binomial),
+    # referencen landsandelen: alle aktive vandværker med fund / alle aktive.
     raekker = []
     for kode in sorted(navne, key=int):
         d = pesticid.get(kode)
         if not d:
-            raekker.append([kode, navne[kode], "", "", "", "", round(nat_pct, 4)])
+            raekker.append([kode, navne[kode], "", "", "", "", "", round(nat_pct, 4)])
             continue
         ratio = round(d["pct"] / nat_pct * 100, 1) if nat_pct else ""
-        raekker.append([kode, navne[kode], d["pct"], ratio, d["total"], d["over"], round(nat_pct, 4)])
+        raekker.append([kode, navne[kode], d["pct"], d["pct_observeret"], ratio,
+                        d["total"], d["fund"], round(nat_pct, 4)])
     sti = DATA / "pesticider_scores.csv"
     with open(sti, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["kommune_kode", "kommune_navn", "pesticid_pct_over_graense",
-                    "pesticid_ratio", "pesticid_total_anlaeg", "pesticid_over_graense_antal",
+        w.writerow(["kommune_kode", "kommune_navn", "pesticid_pct_fund", "pesticid_pct_fund_observeret",
+                    "pesticid_ratio", "pesticid_aktive_anlaeg", "pesticid_anlaeg_med_fund",
                     "pesticider_ref"])
         w.writerows(raekker)
     med = sum(1 for r in raekker if r[2] != "")

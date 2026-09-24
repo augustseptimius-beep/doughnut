@@ -85,6 +85,7 @@ import indikatorregister as ir  # noqa: E402
 
 KILDE = {
     "klimapaavirkning": "Klimaregnskabet.dk",
+    "n_deposition": "DCE (DEHM-modellen)",
 }
 KILDE_DEFAULT = "Danmarks Statistik"
 
@@ -272,7 +273,7 @@ def aggreger_dimensioner(poster, eco_struktur, social_struktur):
                 "pct": round(m, 2),
                 "retning": klassificer(m, True, ref, False),
                 "n_aar": v["n_aar"],
-                "kilde": KILDE_DEFAULT,
+                "kilde": KILDE.get(v["noegle"], KILDE_DEFAULT),
                 "noegle_indikator": v["noegle"],
             })
 

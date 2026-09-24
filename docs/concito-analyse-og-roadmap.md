@@ -53,8 +53,9 @@ separate dimensioner. Det er begrundelsen bag begge ovenstående sammenlægninge
   (Rockström 2009 / Dao et al. 2015) kan anvendes per kommune (intensiv + bebygget vs 15%). DK ligger
   på 73-75% = 5,2x overskridelse. Valgt løsning (juni 2026): vises som kontekst i metode + dimensionens
   boundary-tekst, men scoringen er fortsat mod landsgennemsnit, så man kan se forskel mellem kommuner.
-  Hvis det senere ønskes som faktisk score: tilføj en tredje sub-indikator (intensiv+bebygget vs 15%)
-  i build_master_csv.py - men det gør stort set alle kommuner dybrøde.
+  **Sep. 2026:** dimensionen scorer nu netop antropiseret areal (intensiv + bebygget, Dao-definitionen)
+  som ét tal mod Danmark samlet (70,4% af landarealet), i stedet for worst-of af de to andele hver for
+  sig. 15%-grænsen er stadig kontekst; mod den ville alle kommuner være dybrøde.
 - **§3 beskyttet natur via WFS**: laget dai:bes_naturtyper findes på
   https://arealeditering-dist-geo.miljoeportal.dk/geoserver/wfs (GetCapabilities verificeret).
   Pt. fravalgt som redundant (se nedenfor), men datakilden er kortlagt hvis det ønskes senere.
@@ -70,10 +71,12 @@ separate dimensioner. Det er begrundelsen bag begge ovenstående sammenlægninge
 - **§3 beskyttet natur som egen indikator**: REDUNDANT. Bioscore (gennemført) dækker reelt det samme
   (kvalitet/beskyttelsesværdi) bedre, og rammer CONCITO's to mål (30%/10%) direkte. §3-data findes
   via WFS hvis vi alligevel vil vise fredningsstatus separat senere.
-- **Absolut N-grænse per kommune**: IKKE MULIGT rent. Rapportens N-grænse (37.900 ton N/år til kyst)
-  er et nationalt budget; per-kommune kræver NOVANA-oplandsdata vi ikke har. Vores spildevands-N/P +
-  VP3 N-loft (mod landsgennemsnit) er det vi kan gøre. Derfor frafalder "absolutte grænser" for
-  næringsstoffer, selvom det indgik i den oprindelige ønskeliste.
+- ~~**Absolut N-grænse per kommune**: IKKE MULIGT rent.~~ **GENNEMFØRT sep. 2026.** Rapportens
+  N-grænse (37.900 ton N/år til kyst) er summen af målbelastningerne for de enkelte kystvande, og de
+  står sammen med statusbelastningen i bilag 1.1 til "Vandområdeplanerne 2021-2027 efter genbesøget"
+  (april 2026). Med kystvandenes deloplande fra MiljøGIS kan overskridelsen regnes ned på kommunerne
+  (`naer_kystvand`, `scripts/fetch_kvaelstof_kystvand.py`). Afløser spildevands-N/P og N-loftet pr. ha,
+  se registrets `_fjernet` og `docs/oekologisk-gennemgang-sep-2026.md`.
 - **Forbrugsbaseret areal/biodiversitet/N/vand**: IKKE PER KOMMUNE. Kræver EXIOBASE input-output på
   nationalt niveau. Vi har forbrugsbaseret CO2 som estimat; resten er uden for MVP. Vigtig pointe:
   DK's forbrugsbaserede aftryk er 2-5x det territoriale (sojaimport alene ~18% af DK's areal i

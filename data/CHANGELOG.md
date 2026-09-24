@@ -2,6 +2,22 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-24 (gennemgang af de økologiske dimensioner)
+
+Samlet begrundelse, kilder og det der ikke kunne løses: `docs/oekologisk-gennemgang-sep-2026.md`.
+
+- **Ny formel for økologiske andele hvor højere er bedre** (`formula: "komplement"`, arkitekturdokumentet R2a): ratio = (100 − andel)/(100 − mål) × 100, altså den manglende andel mod det målet tillader. Gælder biodiversitet, genanvendelse og vandområder. Den gamle formel (mål/andel) eksploderede ved andele nær nul og var cappet ved 300; over halvdelen af kommunerne stod på loftet på biodiversitet og 28 på vandområder. Ingen økologisk indikator har længere et loft.
+- **Næringsstoffer:** ny `naer_kystvand` (kvælstofbelastningen af de kystvande kommunens areal afvander til, i procent af målbelastningen; bilag 1.1 i "Vandområdeplanerne 2021-2027 efter genbesøget", april 2026) og ny `n_deposition` (DCE's kvælstofnedfald pr. kommune mod en tålegrænse på 10 kg N/ha/år). Fjernet: `naer_nitrogen`, `naer_phosphorus` (spildevand pr. indbygger) og `naer_landbrug` (tålegrænse pr. ha landbrug), se registrets `_fjernet`. Alle 98 kommuner er nu røde (før 91); kystvandene ligger på 84-256% af målbelastningen.
+- **Arealanvendelse:** ét tal, antropiseret areal (intensivt landbrug + befæstet, pct. af landarealet uden søer og vandløb; Dao m.fl. 2015), i stedet for worst-of af de to andele hver for sig. Danmark samlet 70,4%. Farver fra 2/14/82 til 16/26/56 (grøn/gul/rød), 28 skift; Frederiksberg går fra 637 til 127.
+- **Vand:** al indvinding (almene vandværker, virksomheder, markvanding) i mm/år over landarealet, treårsgennemsnit 2022-2024, i stedet for almene vandværker pr. indbygger. Nu 98 kommuner (før 92). Farver fra 38/15/39 til 49/5/44, 51 skift.
+- **Forurening:** pesticider er nu andelen af AKTIVE almene vandværker med fund i seneste analyse, empirisk Bayes-udglattet (landsandel 30,5%). Før talte nedlagte værker og værker under kravværdien som "over". Nitrat bruger kun aktive værker (Thisted 5,2 → 14,5 mg/L; korrelation med Greenpeaces top 20 fra 0,80 til 0,93). Affald og genanvendelse er treårsmedianer 2021-2023 (fejlindberetninger i 2023). Dragør har ingen aktive almene vandværker med analyse og mister nitrat og pesticider. Farver fra 38/17/43 til 24/35/39, 49 skift.
+- **Luftkvalitet:** befolkningsvægtet med Eurostats 1 km-grid, som metodesiden altid har sagt. Ingen farveskift.
+- **Klimapåvirkning:** grænsen er 2,5 ton CO₂e pr. person (Hot or Cool Institute 2021) i stedet for 3 ton, som ingen kilde underbyggede. Forbrugs-CO₂ er nutidsjusteret til 2024 med Energistyrelsens reviderede tidsserie (`fetch_forbrug_co2.py`, faktor 0,7226). Alle kommuner var og er røde; ratioerne stiger ca. 20%.
+- **Biodiversitet:** samme farver som før (4/1/93), men ingen kommuner på et loft; median 300 → 136.
+- **Data hentet 24. sep.:** GEUS Jupiter, DST (LABY25, VANDIND, AREALDK2, VANDUD), Miljøportalens luftkort 2024, VP3-pakken, DCE's depositionstabeller 2014-2024 og Energistyrelsens datafil. Klimaregnskabet og UVM er ikke hentet (kræver nøgler); `climate_scores.csv`'s egen krydstjek-ratio er genberegnet med 2,5 ton, og `biodiversitet_scores.csv`'s med komplement-formlen, uden at råværdierne er rørt.
+- **Retningspile:** nye serier for `areal_antropiseret` og `n_deposition`; `vandindvinding`, `cirkularitet_waste` og `cirkularitet_recycling` er genberegnet med scorens nye definition. Serierne for de fjernede indikatorer er slettet. Hentet med den nye `fetch_trend_history.py --kun ... --fjern ...`, der ikke kræver API-nøgler. Næringsstoffer har kun pil i 8 kommuner (hvor kvælstofnedfaldet afgør scoren).
+- **Ingen sociale tal er ændret.**
+
 ## 2026-09-24 (loft på 150 i standardvisningen)
 
 - **Kommunegruppe-baselinen har fået samme loft på 150 som landsgennemsnit-visningen** (arkitekturdokumentet R10). Loftet lægges på efter omskaleringen til gruppesnittet. Før kunne én indikator løfte en hel kategori: Svendborg fik 338 på `public_transport` og 214,7 på Mobilitet. Nu får Svendborg 150 og 120,5.

@@ -84,8 +84,12 @@ def valider(reg: dict) -> list[str]:
                 fejl.append(f"{iid}: reference type landstal kræver ratio_col (til rekonstruktion)")
         elif typ != "kommunegennemsnit":
             fejl.append(f"{iid}: ukendt reference-type {typ!r}")
-        if ind.get("formula") not in (None, "100_minus_raw"):
+        if ind.get("formula") not in (None, "100_minus_raw", "komplement"):
             fejl.append(f"{iid}: ukendt formula {ind.get('formula')!r}")
+        if ind.get("formula") == "komplement" and not (
+                ind.get("category") == "ecological" and ind.get("lower_is_better") is False):
+            fejl.append(f"{iid}: formula 'komplement' gælder kun økologiske andele hvor "
+                        f"højere er bedre (lower_is_better: false)")
 
     by_id = {i.get("id"): i for i in indikatorer}
     kat_ids = [k["id"] for k in reg.get("sociale_kategorier", [])]

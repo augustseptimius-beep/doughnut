@@ -1,102 +1,102 @@
 kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pct,retning,n_aar,kilde,noegle_indikator
-101,_dim_arealanvendelse,2011,2024,,,-1.17,stagneret,4,Danmarks Statistik,areal_bebygget
-147,_dim_arealanvendelse,2011,2024,,,-0.0,stagneret,4,Danmarks Statistik,areal_bebygget
-151,_dim_arealanvendelse,2011,2024,,,-2.17,forkert,4,Danmarks Statistik,areal_bebygget
-153,_dim_arealanvendelse,2011,2024,,,-1.88,forkert,4,Danmarks Statistik,areal_bebygget
-155,_dim_arealanvendelse,2011,2024,,,-2.25,forkert,4,Danmarks Statistik,areal_bebygget
-157,_dim_arealanvendelse,2011,2024,,,-0.24,stagneret,4,Danmarks Statistik,areal_bebygget
-159,_dim_arealanvendelse,2011,2024,,,-0.12,stagneret,4,Danmarks Statistik,areal_bebygget
-161,_dim_arealanvendelse,2011,2024,,,-4.28,forkert,4,Danmarks Statistik,areal_bebygget
-163,_dim_arealanvendelse,2011,2024,,,-1.0,stagneret,4,Danmarks Statistik,areal_bebygget
-165,_dim_arealanvendelse,2011,2024,,,-2.28,forkert,4,Danmarks Statistik,areal_bebygget
-167,_dim_arealanvendelse,2011,2024,,,-1.79,forkert,4,Danmarks Statistik,areal_bebygget
-169,_dim_arealanvendelse,2011,2024,,,-0.0,stagneret,4,Danmarks Statistik,areal_bebygget
-173,_dim_arealanvendelse,2011,2024,,,-1.21,stagneret,4,Danmarks Statistik,areal_bebygget
-175,_dim_arealanvendelse,2011,2024,,,-0.46,stagneret,4,Danmarks Statistik,areal_bebygget
-183,_dim_arealanvendelse,2011,2024,,,-5.65,forkert,4,Danmarks Statistik,areal_bebygget
-185,_dim_arealanvendelse,2011,2024,,,-2.23,stagneret,4,Danmarks Statistik,areal_bebygget
-187,_dim_arealanvendelse,2011,2024,,,-2.7,forkert,4,Danmarks Statistik,areal_bebygget
-190,_dim_arealanvendelse,2011,2024,,,-2.22,stagneret,4,Danmarks Statistik,areal_bebygget
-201,_dim_arealanvendelse,2011,2024,,,-3.23,stagneret,4,Danmarks Statistik,areal_bebygget
-210,_dim_arealanvendelse,2011,2024,,,-3.9,stagneret,4,Danmarks Statistik,areal_bebygget
-217,_dim_arealanvendelse,2011,2024,,,-1.96,stagneret,4,Danmarks Statistik,areal_bebygget
-219,_dim_arealanvendelse,2011,2024,,,-5.0,stagneret,4,Danmarks Statistik,areal_bebygget
-223,_dim_arealanvendelse,2011,2024,,,-1.68,stagneret,4,Danmarks Statistik,areal_bebygget
-230,_dim_arealanvendelse,2011,2024,,,-1.15,stagneret,4,Danmarks Statistik,areal_bebygget
-240,_dim_arealanvendelse,2011,2024,,,-6.25,forkert,4,Danmarks Statistik,areal_bebygget
-250,_dim_arealanvendelse,2011,2024,,,-5.24,forkert,4,Danmarks Statistik,areal_bebygget
-253,_dim_arealanvendelse,2011,2024,,,-6.15,forkert,4,Danmarks Statistik,areal_bebygget
-259,_dim_arealanvendelse,2011,2024,,,-10.29,forkert,4,Danmarks Statistik,areal_bebygget
-260,_dim_arealanvendelse,2011,2024,,,-1.96,stagneret,4,Danmarks Statistik,areal_bebygget
-265,_dim_arealanvendelse,2011,2024,,,-5.64,forkert,4,Danmarks Statistik,areal_bebygget
-269,_dim_arealanvendelse,2011,2024,,,-8.97,forkert,4,Danmarks Statistik,areal_bebygget
-270,_dim_arealanvendelse,2011,2024,,,-2.17,stagneret,4,Danmarks Statistik,areal_bebygget
-306,_dim_arealanvendelse,2011,2024,,,-5.31,forkert,4,Danmarks Statistik,areal_bebygget
-316,_dim_arealanvendelse,2011,2024,,,6.04,rigtig,4,Danmarks Statistik,areal_intensiv
-320,_dim_arealanvendelse,2011,2024,,,5.39,tempo,4,Danmarks Statistik,areal_intensiv
-326,_dim_arealanvendelse,2011,2024,,,4.26,tempo,4,Danmarks Statistik,areal_intensiv
-329,_dim_arealanvendelse,2011,2024,,,5.52,tempo,4,Danmarks Statistik,areal_intensiv
-330,_dim_arealanvendelse,2011,2024,,,4.46,tempo,4,Danmarks Statistik,areal_intensiv
-336,_dim_arealanvendelse,2011,2024,,,2.81,tempo,4,Danmarks Statistik,areal_intensiv
-340,_dim_arealanvendelse,2011,2024,,,-4.65,stagneret,4,Danmarks Statistik,areal_bebygget
-350,_dim_arealanvendelse,2011,2024,,,-5.07,stagneret,4,Danmarks Statistik,areal_bebygget
-360,_dim_arealanvendelse,2011,2024,,,1.72,tempo,4,Danmarks Statistik,areal_intensiv
-370,_dim_arealanvendelse,2011,2024,,,4.94,tempo,4,Danmarks Statistik,areal_intensiv
-376,_dim_arealanvendelse,2011,2024,,,1.76,tempo,4,Danmarks Statistik,areal_intensiv
-390,_dim_arealanvendelse,2011,2024,,,3.68,tempo,4,Danmarks Statistik,areal_intensiv
-400,_dim_arealanvendelse,2011,2024,,,3.88,tempo,4,Danmarks Statistik,areal_intensiv
-410,_dim_arealanvendelse,2011,2024,,,-8.64,forkert,4,Danmarks Statistik,areal_bebygget
-420,_dim_arealanvendelse,2011,2024,,,5.22,tempo,4,Danmarks Statistik,areal_intensiv
-430,_dim_arealanvendelse,2011,2024,,,5.44,tempo,4,Danmarks Statistik,areal_intensiv
-440,_dim_arealanvendelse,2011,2024,,,5.45,tempo,4,Danmarks Statistik,areal_intensiv
-450,_dim_arealanvendelse,2011,2024,,,2.44,tempo,4,Danmarks Statistik,areal_intensiv
-461,_dim_arealanvendelse,2011,2024,,,-8.23,forkert,4,Danmarks Statistik,areal_bebygget
-479,_dim_arealanvendelse,2011,2024,,,-5.59,stagneret,4,Danmarks Statistik,areal_bebygget
-480,_dim_arealanvendelse,2011,2024,,,3.87,tempo,4,Danmarks Statistik,areal_intensiv
-482,_dim_arealanvendelse,2011,2024,,,2.87,tempo,4,Danmarks Statistik,areal_intensiv
-492,_dim_arealanvendelse,2011,2024,,,5.06,tempo,4,Danmarks Statistik,areal_intensiv
-510,_dim_arealanvendelse,2011,2024,,,3.47,tempo,4,Danmarks Statistik,areal_intensiv
-530,_dim_arealanvendelse,2011,2024,,,6.49,rigtig,4,Danmarks Statistik,areal_intensiv
-540,_dim_arealanvendelse,2011,2024,,,-6.49,stagneret,4,Danmarks Statistik,areal_bebygget
-550,_dim_arealanvendelse,2011,2024,,,2.67,tempo,4,Danmarks Statistik,areal_intensiv
-561,_dim_arealanvendelse,2011,2024,,,5.86,rigtig,4,Danmarks Statistik,areal_intensiv
-563,_dim_arealanvendelse,2011,2024,,,-0.88,stagneret,4,Danmarks Statistik,areal_bebygget
-573,_dim_arealanvendelse,2011,2024,,,6.64,rigtig,4,Danmarks Statistik,areal_intensiv
-575,_dim_arealanvendelse,2011,2024,,,4.35,tempo,4,Danmarks Statistik,areal_intensiv
-580,_dim_arealanvendelse,2011,2024,,,4.04,tempo,4,Danmarks Statistik,areal_intensiv
-607,_dim_arealanvendelse,2011,2024,,,-14.39,forkert,4,Danmarks Statistik,areal_bebygget
-615,_dim_arealanvendelse,2011,2024,,,-14.0,forkert,4,Danmarks Statistik,areal_bebygget
-621,_dim_arealanvendelse,2011,2024,,,-8.11,forkert,4,Danmarks Statistik,areal_bebygget
-630,_dim_arealanvendelse,2011,2024,,,-10.4,forkert,4,Danmarks Statistik,areal_bebygget
-657,_dim_arealanvendelse,2011,2024,,,5.26,tempo,4,Danmarks Statistik,areal_intensiv
-661,_dim_arealanvendelse,2011,2024,,,7.33,rigtig,4,Danmarks Statistik,areal_intensiv
-665,_dim_arealanvendelse,2011,2024,,,4.11,tempo,4,Danmarks Statistik,areal_intensiv
-671,_dim_arealanvendelse,2011,2024,,,2.7,tempo,4,Danmarks Statistik,areal_intensiv
-706,_dim_arealanvendelse,2011,2024,,,-3.1,stagneret,4,Danmarks Statistik,areal_bebygget
-707,_dim_arealanvendelse,2011,2024,,,4.29,tempo,4,Danmarks Statistik,areal_intensiv
-710,_dim_arealanvendelse,2011,2024,,,5.54,tempo,4,Danmarks Statistik,areal_intensiv
-727,_dim_arealanvendelse,2011,2024,,,3.74,tempo,4,Danmarks Statistik,areal_intensiv
-730,_dim_arealanvendelse,2011,2024,,,4.64,tempo,4,Danmarks Statistik,areal_intensiv
-740,_dim_arealanvendelse,2011,2024,,,-9.16,forkert,4,Danmarks Statistik,areal_bebygget
-741,_dim_arealanvendelse,2011,2024,,,3.7,tempo,4,Danmarks Statistik,areal_intensiv
-746,_dim_arealanvendelse,2011,2024,,,-7.89,forkert,4,Danmarks Statistik,areal_bebygget
-751,_dim_arealanvendelse,2011,2024,,,-10.77,forkert,4,Danmarks Statistik,areal_bebygget
-756,_dim_arealanvendelse,2011,2024,,,6.14,rigtig,4,Danmarks Statistik,areal_intensiv
-760,_dim_arealanvendelse,2011,2024,,,4.53,tempo,4,Danmarks Statistik,areal_intensiv
-766,_dim_arealanvendelse,2011,2024,,,5.27,tempo,4,Danmarks Statistik,areal_intensiv
-773,_dim_arealanvendelse,2011,2024,,,3.98,tempo,4,Danmarks Statistik,areal_intensiv
-779,_dim_arealanvendelse,2011,2024,,,4.16,tempo,4,Danmarks Statistik,areal_intensiv
-787,_dim_arealanvendelse,2011,2024,,,3.09,tempo,4,Danmarks Statistik,areal_intensiv
-791,_dim_arealanvendelse,2011,2024,,,6.78,rigtig,4,Danmarks Statistik,areal_intensiv
-810,_dim_arealanvendelse,2011,2024,,,5.09,tempo,4,Danmarks Statistik,areal_intensiv
-813,_dim_arealanvendelse,2011,2024,,,-2.19,stagneret,4,Danmarks Statistik,areal_bebygget
-820,_dim_arealanvendelse,2011,2024,,,2.94,tempo,4,Danmarks Statistik,areal_intensiv
-825,_dim_arealanvendelse,2011,2024,,,-2.13,forkert,4,Danmarks Statistik,areal_bebygget
-840,_dim_arealanvendelse,2011,2024,,,4.51,tempo,4,Danmarks Statistik,areal_intensiv
-846,_dim_arealanvendelse,2011,2024,,,4.88,tempo,4,Danmarks Statistik,areal_intensiv
-849,_dim_arealanvendelse,2011,2024,,,3.65,tempo,4,Danmarks Statistik,areal_intensiv
-851,_dim_arealanvendelse,2011,2024,,,-3.9,stagneret,4,Danmarks Statistik,areal_bebygget
-860,_dim_arealanvendelse,2011,2024,,,5.15,tempo,4,Danmarks Statistik,areal_intensiv
+101,_dim_arealanvendelse,2011,2024,,,-1.16,stagneret,4,Danmarks Statistik,areal_antropiseret
+147,_dim_arealanvendelse,2011,2024,,,-0.0,stagneret,4,Danmarks Statistik,areal_antropiseret
+151,_dim_arealanvendelse,2011,2024,,,2.15,tempo,4,Danmarks Statistik,areal_antropiseret
+153,_dim_arealanvendelse,2011,2024,,,1.33,stagneret,4,Danmarks Statistik,areal_antropiseret
+155,_dim_arealanvendelse,2011,2024,,,2.69,tempo,4,Danmarks Statistik,areal_antropiseret
+157,_dim_arealanvendelse,2011,2024,,,-0.0,stagneret,4,Danmarks Statistik,areal_antropiseret
+159,_dim_arealanvendelse,2011,2024,,,-0.0,stagneret,4,Danmarks Statistik,areal_antropiseret
+161,_dim_arealanvendelse,2011,2024,,,-4.12,forkert,4,Danmarks Statistik,areal_antropiseret
+163,_dim_arealanvendelse,2011,2024,,,-2.04,forkert,4,Danmarks Statistik,areal_antropiseret
+165,_dim_arealanvendelse,2011,2024,,,-1.29,stagneret,4,Danmarks Statistik,areal_antropiseret
+167,_dim_arealanvendelse,2011,2024,,,-1.64,forkert,4,Danmarks Statistik,areal_antropiseret
+169,_dim_arealanvendelse,2011,2024,,,6.26,rigtig,4,Danmarks Statistik,areal_antropiseret
+173,_dim_arealanvendelse,2011,2024,,,1.46,stagneret,4,Danmarks Statistik,areal_antropiseret
+175,_dim_arealanvendelse,2011,2024,,,-0.0,stagneret,4,Danmarks Statistik,areal_antropiseret
+183,_dim_arealanvendelse,2011,2024,,,4.97,rigtig,4,Danmarks Statistik,areal_antropiseret
+185,_dim_arealanvendelse,2011,2024,,,-0.7,stagneret,4,Danmarks Statistik,areal_antropiseret
+187,_dim_arealanvendelse,2011,2024,,,-3.57,forkert,4,Danmarks Statistik,areal_antropiseret
+190,_dim_arealanvendelse,2011,2024,,,2.99,rigtig,4,Danmarks Statistik,areal_antropiseret
+201,_dim_arealanvendelse,2011,2024,,,4.9,rigtig,4,Danmarks Statistik,areal_antropiseret
+210,_dim_arealanvendelse,2011,2024,,,13.39,rigtig,4,Danmarks Statistik,areal_antropiseret
+217,_dim_arealanvendelse,2011,2024,,,8.15,rigtig,4,Danmarks Statistik,areal_antropiseret
+219,_dim_arealanvendelse,2011,2024,,,4.7,rigtig,4,Danmarks Statistik,areal_antropiseret
+223,_dim_arealanvendelse,2011,2024,,,6.78,rigtig,4,Danmarks Statistik,areal_antropiseret
+230,_dim_arealanvendelse,2011,2024,,,4.03,rigtig,4,Danmarks Statistik,areal_antropiseret
+240,_dim_arealanvendelse,2011,2024,,,5.99,rigtig,4,Danmarks Statistik,areal_antropiseret
+250,_dim_arealanvendelse,2011,2024,,,3.43,rigtig,4,Danmarks Statistik,areal_antropiseret
+253,_dim_arealanvendelse,2011,2024,,,4.78,rigtig,4,Danmarks Statistik,areal_antropiseret
+259,_dim_arealanvendelse,2011,2024,,,2.23,tempo,4,Danmarks Statistik,areal_antropiseret
+260,_dim_arealanvendelse,2011,2024,,,5.55,rigtig,4,Danmarks Statistik,areal_antropiseret
+265,_dim_arealanvendelse,2011,2024,,,5.48,rigtig,4,Danmarks Statistik,areal_antropiseret
+269,_dim_arealanvendelse,2011,2024,,,3.71,rigtig,4,Danmarks Statistik,areal_antropiseret
+270,_dim_arealanvendelse,2011,2024,,,7.4,rigtig,4,Danmarks Statistik,areal_antropiseret
+306,_dim_arealanvendelse,2011,2024,,,2.53,tempo,4,Danmarks Statistik,areal_antropiseret
+316,_dim_arealanvendelse,2011,2024,,,3.82,rigtig,4,Danmarks Statistik,areal_antropiseret
+320,_dim_arealanvendelse,2011,2024,,,3.49,rigtig,4,Danmarks Statistik,areal_antropiseret
+326,_dim_arealanvendelse,2011,2024,,,2.1,tempo,4,Danmarks Statistik,areal_antropiseret
+329,_dim_arealanvendelse,2011,2024,,,3.09,rigtig,4,Danmarks Statistik,areal_antropiseret
+330,_dim_arealanvendelse,2011,2024,,,2.48,tempo,4,Danmarks Statistik,areal_antropiseret
+336,_dim_arealanvendelse,2011,2024,,,1.7,tempo,4,Danmarks Statistik,areal_antropiseret
+340,_dim_arealanvendelse,2011,2024,,,4.58,rigtig,4,Danmarks Statistik,areal_antropiseret
+350,_dim_arealanvendelse,2011,2024,,,3.49,rigtig,4,Danmarks Statistik,areal_antropiseret
+360,_dim_arealanvendelse,2011,2024,,,1.35,tempo,4,Danmarks Statistik,areal_antropiseret
+370,_dim_arealanvendelse,2011,2024,,,2.85,tempo,4,Danmarks Statistik,areal_antropiseret
+376,_dim_arealanvendelse,2011,2024,,,0.97,stagneret,4,Danmarks Statistik,areal_antropiseret
+390,_dim_arealanvendelse,2011,2024,,,2.18,tempo,4,Danmarks Statistik,areal_antropiseret
+400,_dim_arealanvendelse,2011,2024,,,2.69,tempo,4,Danmarks Statistik,areal_antropiseret
+410,_dim_arealanvendelse,2011,2024,,,2.62,tempo,4,Danmarks Statistik,areal_antropiseret
+420,_dim_arealanvendelse,2011,2024,,,3.19,rigtig,4,Danmarks Statistik,areal_antropiseret
+430,_dim_arealanvendelse,2011,2024,,,3.39,rigtig,4,Danmarks Statistik,areal_antropiseret
+440,_dim_arealanvendelse,2011,2024,,,2.22,tempo,4,Danmarks Statistik,areal_antropiseret
+450,_dim_arealanvendelse,2011,2024,,,1.3,tempo,4,Danmarks Statistik,areal_antropiseret
+461,_dim_arealanvendelse,2011,2024,,,4.02,rigtig,4,Danmarks Statistik,areal_antropiseret
+479,_dim_arealanvendelse,2011,2024,,,2.47,tempo,4,Danmarks Statistik,areal_antropiseret
+480,_dim_arealanvendelse,2011,2024,,,2.09,tempo,4,Danmarks Statistik,areal_antropiseret
+482,_dim_arealanvendelse,2011,2024,,,1.67,tempo,4,Danmarks Statistik,areal_antropiseret
+492,_dim_arealanvendelse,2011,2024,,,3.66,rigtig,4,Danmarks Statistik,areal_antropiseret
+510,_dim_arealanvendelse,2011,2024,,,2.26,tempo,4,Danmarks Statistik,areal_antropiseret
+530,_dim_arealanvendelse,2011,2024,,,4.3,rigtig,4,Danmarks Statistik,areal_antropiseret
+540,_dim_arealanvendelse,2011,2024,,,2.06,tempo,4,Danmarks Statistik,areal_antropiseret
+550,_dim_arealanvendelse,2011,2024,,,1.73,tempo,4,Danmarks Statistik,areal_antropiseret
+561,_dim_arealanvendelse,2011,2024,,,3.5,rigtig,4,Danmarks Statistik,areal_antropiseret
+563,_dim_arealanvendelse,2011,2024,,,4.22,stagneret,4,Danmarks Statistik,areal_antropiseret
+573,_dim_arealanvendelse,2011,2024,,,3.89,rigtig,4,Danmarks Statistik,areal_antropiseret
+575,_dim_arealanvendelse,2011,2024,,,2.74,tempo,4,Danmarks Statistik,areal_antropiseret
+580,_dim_arealanvendelse,2011,2024,,,2.34,tempo,4,Danmarks Statistik,areal_antropiseret
+607,_dim_arealanvendelse,2011,2024,,,0.74,stagneret,4,Danmarks Statistik,areal_antropiseret
+615,_dim_arealanvendelse,2011,2024,,,3.09,rigtig,4,Danmarks Statistik,areal_antropiseret
+621,_dim_arealanvendelse,2011,2024,,,2.32,tempo,4,Danmarks Statistik,areal_antropiseret
+630,_dim_arealanvendelse,2011,2024,,,5.49,rigtig,4,Danmarks Statistik,areal_antropiseret
+657,_dim_arealanvendelse,2011,2024,,,3.24,rigtig,4,Danmarks Statistik,areal_antropiseret
+661,_dim_arealanvendelse,2011,2024,,,4.57,rigtig,4,Danmarks Statistik,areal_antropiseret
+665,_dim_arealanvendelse,2011,2024,,,3.08,rigtig,4,Danmarks Statistik,areal_antropiseret
+671,_dim_arealanvendelse,2011,2024,,,1.58,tempo,4,Danmarks Statistik,areal_antropiseret
+706,_dim_arealanvendelse,2011,2024,,,3.95,rigtig,4,Danmarks Statistik,areal_antropiseret
+707,_dim_arealanvendelse,2011,2024,,,2.68,tempo,4,Danmarks Statistik,areal_antropiseret
+710,_dim_arealanvendelse,2011,2024,,,3.4,rigtig,4,Danmarks Statistik,areal_antropiseret
+727,_dim_arealanvendelse,2011,2024,,,2.05,tempo,4,Danmarks Statistik,areal_antropiseret
+730,_dim_arealanvendelse,2011,2024,,,2.62,tempo,4,Danmarks Statistik,areal_antropiseret
+740,_dim_arealanvendelse,2011,2024,,,5.08,rigtig,4,Danmarks Statistik,areal_antropiseret
+741,_dim_arealanvendelse,2011,2024,,,2.41,tempo,4,Danmarks Statistik,areal_antropiseret
+746,_dim_arealanvendelse,2011,2024,,,5.14,rigtig,4,Danmarks Statistik,areal_antropiseret
+751,_dim_arealanvendelse,2011,2024,,,2.8,tempo,4,Danmarks Statistik,areal_antropiseret
+756,_dim_arealanvendelse,2011,2024,,,3.89,rigtig,4,Danmarks Statistik,areal_antropiseret
+760,_dim_arealanvendelse,2011,2024,,,3.04,rigtig,4,Danmarks Statistik,areal_antropiseret
+766,_dim_arealanvendelse,2011,2024,,,3.18,rigtig,4,Danmarks Statistik,areal_antropiseret
+773,_dim_arealanvendelse,2011,2024,,,2.57,tempo,4,Danmarks Statistik,areal_antropiseret
+779,_dim_arealanvendelse,2011,2024,,,2.41,tempo,4,Danmarks Statistik,areal_antropiseret
+787,_dim_arealanvendelse,2011,2024,,,2.02,tempo,4,Danmarks Statistik,areal_antropiseret
+791,_dim_arealanvendelse,2011,2024,,,4.55,rigtig,4,Danmarks Statistik,areal_antropiseret
+810,_dim_arealanvendelse,2011,2024,,,3.95,rigtig,4,Danmarks Statistik,areal_antropiseret
+813,_dim_arealanvendelse,2011,2024,,,4.9,rigtig,4,Danmarks Statistik,areal_antropiseret
+820,_dim_arealanvendelse,2011,2024,,,2.14,tempo,4,Danmarks Statistik,areal_antropiseret
+825,_dim_arealanvendelse,2011,2024,,,19.07,rigtig,4,Danmarks Statistik,areal_antropiseret
+840,_dim_arealanvendelse,2011,2024,,,3.15,rigtig,4,Danmarks Statistik,areal_antropiseret
+846,_dim_arealanvendelse,2011,2024,,,3.57,rigtig,4,Danmarks Statistik,areal_antropiseret
+849,_dim_arealanvendelse,2011,2024,,,2.58,tempo,4,Danmarks Statistik,areal_antropiseret
+851,_dim_arealanvendelse,2011,2024,,,4.23,rigtig,4,Danmarks Statistik,areal_antropiseret
+860,_dim_arealanvendelse,2011,2024,,,4.01,rigtig,4,Danmarks Statistik,areal_antropiseret
 101,_dim_bolig,2010-2012,2024-2026,,,3.69,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
 147,_dim_bolig,2010-2012,2024-2026,,,11.78,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
 151,_dim_bolig,2010-2012,2024-2026,,,-4.97,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
@@ -293,104 +293,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,_dim_demokrati,2011,2026,,,-4.39,forkert,5,Danmarks Statistik,gennemsnit af 2 indikatorer
 851,_dim_demokrati,2011,2026,,,-3.21,forkert,5,Danmarks Statistik,gennemsnit af 2 indikatorer
 860,_dim_demokrati,2011,2026,,,-5.13,forkert,5,Danmarks Statistik,gennemsnit af 2 indikatorer
-101,_dim_forurening,2013-2015,2021-2023,,,43.09,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-147,_dim_forurening,2013-2015,2021-2023,,,30.48,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-151,_dim_forurening,2013-2015,2021-2023,,,27.71,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-153,_dim_forurening,2013-2015,2021-2023,,,26.39,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-155,_dim_forurening,2013-2015,2021-2023,,,38.23,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-157,_dim_forurening,2013-2015,2021-2023,,,22.21,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-159,_dim_forurening,2013-2015,2021-2023,,,24.72,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-161,_dim_forurening,2013-2015,2021-2023,,,26.68,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-163,_dim_forurening,2013-2015,2021-2023,,,33.94,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-165,_dim_forurening,2013-2015,2021-2023,,,38.33,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-167,_dim_forurening,2013-2015,2021-2023,,,23.66,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-169,_dim_forurening,2013-2015,2021-2023,,,41.45,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-173,_dim_forurening,2013-2015,2021-2023,,,40.05,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-175,_dim_forurening,2013-2015,2021-2023,,,20.43,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-183,_dim_forurening,2013-2015,2021-2023,,,50.56,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-185,_dim_forurening,2013-2015,2021-2023,,,18.43,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-187,_dim_forurening,2013-2015,2021-2023,,,59.38,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-190,_dim_forurening,2013-2015,2021-2023,,,21.45,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-201,_dim_forurening,2013-2015,2021-2023,,,69.67,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-210,_dim_forurening,2013-2015,2021-2023,,,11.52,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-217,_dim_forurening,2013-2015,2021-2023,,,35.05,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-219,_dim_forurening,2013-2015,2021-2023,,,20.86,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-223,_dim_forurening,2013-2015,2021-2023,,,45.26,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-230,_dim_forurening,2013-2015,2021-2023,,,42.77,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-240,_dim_forurening,2013-2015,2021-2023,,,11.12,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-250,_dim_forurening,2013-2015,2021-2023,,,6.26,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-253,_dim_forurening,2013-2015,2021-2023,,,31.71,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-259,_dim_forurening,2013-2015,2021-2023,,,43.05,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-260,_dim_forurening,2013-2015,2021-2023,,,9.84,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-265,_dim_forurening,2013-2015,2021-2023,,,40.27,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-269,_dim_forurening,2013-2015,2021-2023,,,77.55,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-270,_dim_forurening,2013-2015,2021-2023,,,-0.09,stagneret,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-306,_dim_forurening,2013-2015,2021-2023,,,8.46,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-316,_dim_forurening,2013-2015,2021-2023,,,12.71,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-320,_dim_forurening,2013-2015,2021-2023,,,24.42,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-326,_dim_forurening,2013-2015,2021-2023,,,16.71,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-329,_dim_forurening,2013-2015,2021-2023,,,25.6,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-330,_dim_forurening,2013-2015,2021-2023,,,10.98,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-336,_dim_forurening,2013-2015,2021-2023,,,26.0,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-340,_dim_forurening,2013-2015,2021-2023,,,35.65,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-350,_dim_forurening,2013-2015,2021-2023,,,38.84,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-360,_dim_forurening,2013-2015,2021-2023,,,-13.09,forkert,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-370,_dim_forurening,2013-2015,2021-2023,,,30.71,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-376,_dim_forurening,2013-2015,2021-2023,,,-27.94,forkert,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-390,_dim_forurening,2013-2015,2021-2023,,,29.51,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-400,_dim_forurening,2013-2015,2021-2023,,,-2.3,forkert,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-410,_dim_forurening,2013-2015,2021-2023,,,4.96,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-420,_dim_forurening,2013-2015,2021-2023,,,-2.79,forkert,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-430,_dim_forurening,2013-2015,2021-2023,,,-3.89,forkert,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-440,_dim_forurening,2013-2015,2021-2023,,,13.8,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-450,_dim_forurening,2013-2015,2021-2023,,,-19.02,forkert,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-461,_dim_forurening,2013-2015,2021-2023,,,26.38,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-479,_dim_forurening,2013-2015,2021-2023,,,22.82,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-480,_dim_forurening,2013-2015,2021-2023,,,34.46,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-482,_dim_forurening,2013-2015,2021-2023,,,-2.43,forkert,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-492,_dim_forurening,2013-2015,2021-2023,,,-10.8,forkert,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-510,_dim_forurening,2013-2015,2021-2023,,,18.0,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-530,_dim_forurening,2013-2015,2021-2023,,,37.69,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-540,_dim_forurening,2013-2015,2021-2023,,,-5.08,forkert,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-550,_dim_forurening,2013-2015,2021-2023,,,34.16,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-561,_dim_forurening,2013-2015,2021-2023,,,27.02,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-563,_dim_forurening,2013-2015,2021-2023,,,6.57,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-573,_dim_forurening,2013-2015,2021-2023,,,14.21,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-575,_dim_forurening,2013-2015,2021-2023,,,23.55,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-580,_dim_forurening,2013-2015,2021-2023,,,-9.52,forkert,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-607,_dim_forurening,2013-2015,2021-2023,,,39.89,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-615,_dim_forurening,2013-2015,2021-2023,,,38.59,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-621,_dim_forurening,2013-2015,2021-2023,,,56.7,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-630,_dim_forurening,2013-2015,2021-2023,,,9.27,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-657,_dim_forurening,2013-2015,2021-2023,,,28.21,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-661,_dim_forurening,2013-2015,2021-2023,,,17.47,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-665,_dim_forurening,2013-2015,2021-2023,,,-22.54,forkert,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-671,_dim_forurening,2013-2015,2021-2023,,,83.55,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-706,_dim_forurening,2013-2015,2021-2023,,,22.63,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-707,_dim_forurening,2013-2015,2021-2023,,,1.63,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-710,_dim_forurening,2013-2015,2021-2023,,,17.35,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-727,_dim_forurening,2013-2015,2021-2023,,,5.8,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-730,_dim_forurening,2013-2015,2021-2023,,,20.24,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-740,_dim_forurening,2013-2015,2021-2023,,,19.73,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-741,_dim_forurening,2013-2015,2021-2023,,,446.82,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-746,_dim_forurening,2013-2015,2021-2023,,,11.72,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-751,_dim_forurening,2013-2015,2021-2023,,,9.87,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-756,_dim_forurening,2013-2015,2021-2023,,,7.41,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-760,_dim_forurening,2013-2015,2021-2023,,,29.52,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-766,_dim_forurening,2013-2015,2021-2023,,,-4.22,forkert,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-773,_dim_forurening,2013-2015,2021-2023,,,8.78,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-779,_dim_forurening,2013-2015,2021-2023,,,25.77,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-787,_dim_forurening,2013-2015,2021-2023,,,59.12,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-791,_dim_forurening,2013-2015,2021-2023,,,33.26,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-810,_dim_forurening,2013-2015,2021-2023,,,8.38,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-813,_dim_forurening,2013-2015,2021-2023,,,40.12,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-820,_dim_forurening,2013-2015,2021-2023,,,23.27,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-825,_dim_forurening,2013-2015,2021-2023,,,100.0,rigtig,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-840,_dim_forurening,2013-2015,2021-2023,,,4.33,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-846,_dim_forurening,2013-2015,2021-2023,,,16.38,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-849,_dim_forurening,2013-2015,2021-2023,,,5.36,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-851,_dim_forurening,2013-2015,2021-2023,,,-57.44,forkert,11,Danmarks Statistik,gennemsnit af 2 indikatorer
-860,_dim_forurening,2013-2015,2021-2023,,,13.23,tempo,11,Danmarks Statistik,gennemsnit af 2 indikatorer
+101,_dim_forurening,2015-2017,2021-2023,,,32.49,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+147,_dim_forurening,2015-2017,2021-2023,,,20.88,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+151,_dim_forurening,2015-2017,2021-2023,,,18.24,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+153,_dim_forurening,2015-2017,2021-2023,,,14.64,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+155,_dim_forurening,2015-2017,2021-2023,,,7.14,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+157,_dim_forurening,2015-2017,2021-2023,,,9.22,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+159,_dim_forurening,2015-2017,2021-2023,,,14.86,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+161,_dim_forurening,2015-2017,2021-2023,,,15.41,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+163,_dim_forurening,2015-2017,2021-2023,,,20.43,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+165,_dim_forurening,2015-2017,2021-2023,,,19.91,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+167,_dim_forurening,2015-2017,2021-2023,,,16.09,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+169,_dim_forurening,2015-2017,2021-2023,,,16.34,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+173,_dim_forurening,2015-2017,2021-2023,,,25.68,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+175,_dim_forurening,2015-2017,2021-2023,,,9.59,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+183,_dim_forurening,2015-2017,2021-2023,,,26.97,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+185,_dim_forurening,2015-2017,2021-2023,,,1.07,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+187,_dim_forurening,2015-2017,2021-2023,,,36.59,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+190,_dim_forurening,2015-2017,2021-2023,,,12.8,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+201,_dim_forurening,2015-2017,2021-2023,,,56.78,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+210,_dim_forurening,2015-2017,2021-2023,,,6.59,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+217,_dim_forurening,2015-2017,2021-2023,,,20.17,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+219,_dim_forurening,2015-2017,2021-2023,,,12.49,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+223,_dim_forurening,2015-2017,2021-2023,,,10.13,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+230,_dim_forurening,2015-2017,2021-2023,,,8.19,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+240,_dim_forurening,2015-2017,2021-2023,,,6.9,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+250,_dim_forurening,2015-2017,2021-2023,,,6.09,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+253,_dim_forurening,2015-2017,2021-2023,,,25.78,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+259,_dim_forurening,2015-2017,2021-2023,,,34.04,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+260,_dim_forurening,2015-2017,2021-2023,,,4.62,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+265,_dim_forurening,2015-2017,2021-2023,,,33.33,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+269,_dim_forurening,2015-2017,2021-2023,,,59.51,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+270,_dim_forurening,2015-2017,2021-2023,,,-0.78,stagneret,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+306,_dim_forurening,2015-2017,2021-2023,,,1.79,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+316,_dim_forurening,2015-2017,2021-2023,,,8.57,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+320,_dim_forurening,2015-2017,2021-2023,,,15.92,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+326,_dim_forurening,2015-2017,2021-2023,,,9.91,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+329,_dim_forurening,2015-2017,2021-2023,,,14.13,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+330,_dim_forurening,2015-2017,2021-2023,,,5.54,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+336,_dim_forurening,2015-2017,2021-2023,,,20.7,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+340,_dim_forurening,2015-2017,2021-2023,,,23.88,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+350,_dim_forurening,2015-2017,2021-2023,,,32.77,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+360,_dim_forurening,2015-2017,2021-2023,,,-19.49,forkert,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+370,_dim_forurening,2015-2017,2021-2023,,,18.67,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+376,_dim_forurening,2015-2017,2021-2023,,,-24.9,forkert,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+390,_dim_forurening,2015-2017,2021-2023,,,19.79,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+400,_dim_forurening,2015-2017,2021-2023,,,-2.16,forkert,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+410,_dim_forurening,2015-2017,2021-2023,,,-2.41,forkert,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+420,_dim_forurening,2015-2017,2021-2023,,,-5.98,forkert,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+430,_dim_forurening,2015-2017,2021-2023,,,5.39,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+440,_dim_forurening,2015-2017,2021-2023,,,9.88,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+450,_dim_forurening,2015-2017,2021-2023,,,-8.67,forkert,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+461,_dim_forurening,2015-2017,2021-2023,,,22.23,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+479,_dim_forurening,2015-2017,2021-2023,,,9.01,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+480,_dim_forurening,2015-2017,2021-2023,,,5.49,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+482,_dim_forurening,2015-2017,2021-2023,,,-3.99,forkert,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+492,_dim_forurening,2015-2017,2021-2023,,,-18.5,forkert,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+510,_dim_forurening,2015-2017,2021-2023,,,7.64,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+530,_dim_forurening,2015-2017,2021-2023,,,12.05,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+540,_dim_forurening,2015-2017,2021-2023,,,-15.21,forkert,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+550,_dim_forurening,2015-2017,2021-2023,,,8.74,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+561,_dim_forurening,2015-2017,2021-2023,,,14.71,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+563,_dim_forurening,2015-2017,2021-2023,,,11.1,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+573,_dim_forurening,2015-2017,2021-2023,,,15.25,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+575,_dim_forurening,2015-2017,2021-2023,,,8.16,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+580,_dim_forurening,2015-2017,2021-2023,,,0.48,stagneret,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+607,_dim_forurening,2015-2017,2021-2023,,,21.54,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+615,_dim_forurening,2015-2017,2021-2023,,,41.78,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+621,_dim_forurening,2015-2017,2021-2023,,,34.52,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+630,_dim_forurening,2015-2017,2021-2023,,,-1.77,forkert,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+657,_dim_forurening,2015-2017,2021-2023,,,20.71,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+661,_dim_forurening,2015-2017,2021-2023,,,11.1,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+665,_dim_forurening,2015-2017,2021-2023,,,-6.77,forkert,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+671,_dim_forurening,2015-2017,2021-2023,,,58.35,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+706,_dim_forurening,2015-2017,2021-2023,,,4.12,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+707,_dim_forurening,2015-2017,2021-2023,,,5.42,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+710,_dim_forurening,2015-2017,2021-2023,,,5.98,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+727,_dim_forurening,2015-2017,2021-2023,,,-1.33,forkert,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+730,_dim_forurening,2015-2017,2021-2023,,,17.14,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+740,_dim_forurening,2015-2017,2021-2023,,,15.0,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+741,_dim_forurening,2015-2017,2021-2023,,,519.8,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+746,_dim_forurening,2015-2017,2021-2023,,,6.67,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+751,_dim_forurening,2015-2017,2021-2023,,,3.35,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+756,_dim_forurening,2015-2017,2021-2023,,,0.93,stagneret,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+760,_dim_forurening,2015-2017,2021-2023,,,21.8,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+766,_dim_forurening,2015-2017,2021-2023,,,21.02,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+773,_dim_forurening,2015-2017,2021-2023,,,8.99,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+779,_dim_forurening,2015-2017,2021-2023,,,20.04,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+787,_dim_forurening,2015-2017,2021-2023,,,58.85,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+791,_dim_forurening,2015-2017,2021-2023,,,27.81,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+810,_dim_forurening,2015-2017,2021-2023,,,4.68,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+813,_dim_forurening,2015-2017,2021-2023,,,37.04,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+820,_dim_forurening,2015-2017,2021-2023,,,10.02,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+825,_dim_forurening,2015-2017,2021-2023,,,45.34,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+840,_dim_forurening,2015-2017,2021-2023,,,0.72,stagneret,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+846,_dim_forurening,2015-2017,2021-2023,,,9.18,tempo,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+849,_dim_forurening,2015-2017,2021-2023,,,-1.05,forkert,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+851,_dim_forurening,2015-2017,2021-2023,,,-70.52,forkert,9,Danmarks Statistik,gennemsnit af 2 indikatorer
+860,_dim_forurening,2015-2017,2021-2023,,,14.02,rigtig,9,Danmarks Statistik,gennemsnit af 2 indikatorer
 326,_dim_klimapaavirkning,2018-2020,2022-2024,,,29.28,rigtig,7,Klimaregnskabet.dk,klimapaavirkning
 450,_dim_klimapaavirkning,2018-2020,2022-2024,,,7.13,stagneret,7,Klimaregnskabet.dk,klimapaavirkning
 550,_dim_klimapaavirkning,2018-2020,2022-2024,,,8.0,tempo,7,Klimaregnskabet.dk,klimapaavirkning
@@ -892,29 +892,14 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,_dim_mobilitet,2010-2012,2022-2024,,,-17.88,forkert,15,Danmarks Statistik,gennemsnit af 1 indikatorer
 851,_dim_mobilitet,2010-2012,2022-2024,,,-21.37,forkert,15,Danmarks Statistik,gennemsnit af 1 indikatorer
 860,_dim_mobilitet,2010-2012,2022-2024,,,-17.43,forkert,15,Danmarks Statistik,gennemsnit af 1 indikatorer
-101,_dim_naeringsstoffer,2010-2012,2022-2024,,,-25.57,forkert,15,Danmarks Statistik,naer_nitrogen
-167,_dim_naeringsstoffer,2010-2012,2022-2024,,,-26.83,forkert,15,Danmarks Statistik,naer_phosphorus
-185,_dim_naeringsstoffer,2010-2012,2022-2024,,,29.59,rigtig,15,Danmarks Statistik,naer_phosphorus
-253,_dim_naeringsstoffer,2010-2012,2022-2024,,,-38.92,forkert,15,Danmarks Statistik,naer_nitrogen
-269,_dim_naeringsstoffer,2010-2012,2022-2024,,,-7.89,forkert,14,Danmarks Statistik,naer_phosphorus
-320,_dim_naeringsstoffer,2010-2012,2022-2024,,,-9.68,forkert,15,Danmarks Statistik,naer_phosphorus
-326,_dim_naeringsstoffer,2010-2012,2022-2024,,,-24.98,forkert,15,Danmarks Statistik,naer_nitrogen
-360,_dim_naeringsstoffer,2010-2012,2022-2024,,,-12.95,forkert,15,Danmarks Statistik,naer_phosphorus
-400,_dim_naeringsstoffer,2010-2012,2022-2024,,,-51.8,forkert,15,Danmarks Statistik,naer_phosphorus
-482,_dim_naeringsstoffer,2010-2012,2022-2024,,,-23.17,forkert,15,Danmarks Statistik,naer_nitrogen
-510,_dim_naeringsstoffer,2010-2012,2022-2024,,,-8.74,forkert,15,Danmarks Statistik,naer_nitrogen
-550,_dim_naeringsstoffer,2010-2012,2022-2024,,,-30.42,forkert,15,Danmarks Statistik,naer_phosphorus
-580,_dim_naeringsstoffer,2010-2012,2022-2024,,,-56.55,forkert,15,Danmarks Statistik,naer_phosphorus
-630,_dim_naeringsstoffer,2010-2012,2022-2024,,,-7.54,forkert,15,Danmarks Statistik,naer_nitrogen
-657,_dim_naeringsstoffer,2010-2012,2022-2024,,,-9.66,forkert,15,Danmarks Statistik,naer_nitrogen
-665,_dim_naeringsstoffer,2010-2012,2022-2024,,,11.57,rigtig,15,Danmarks Statistik,naer_phosphorus
-741,_dim_naeringsstoffer,2010-2012,2022-2024,,,-21.55,forkert,15,Danmarks Statistik,naer_nitrogen
-756,_dim_naeringsstoffer,2010-2012,2022-2024,,,-2.1,forkert,15,Danmarks Statistik,naer_nitrogen
-760,_dim_naeringsstoffer,2010-2012,2022-2024,,,-80.45,forkert,15,Danmarks Statistik,naer_nitrogen
-787,_dim_naeringsstoffer,2010-2012,2022-2024,,,-29.56,forkert,15,Danmarks Statistik,naer_nitrogen
-813,_dim_naeringsstoffer,2010-2012,2022-2024,,,-183.08,forkert,15,Danmarks Statistik,naer_phosphorus
-825,_dim_naeringsstoffer,2010-2012,2022-2024,,,-9.37,forkert,15,Danmarks Statistik,naer_phosphorus
-851,_dim_naeringsstoffer,2010-2012,2022-2024,,,-107.6,forkert,15,Danmarks Statistik,naer_phosphorus
+161,_dim_naeringsstoffer,2016-2018,2022-2024,,,14.25,rigtig,9,DCE (DEHM-modellen),n_deposition
+400,_dim_naeringsstoffer,2016-2018,2022-2024,,,7.51,stagneret,9,DCE (DEHM-modellen),n_deposition
+550,_dim_naeringsstoffer,2016-2018,2022-2024,,,10.12,rigtig,9,DCE (DEHM-modellen),n_deposition
+580,_dim_naeringsstoffer,2016-2018,2022-2024,,,13.92,rigtig,9,DCE (DEHM-modellen),n_deposition
+746,_dim_naeringsstoffer,2016-2018,2022-2024,,,4.38,stagneret,9,DCE (DEHM-modellen),n_deposition
+751,_dim_naeringsstoffer,2016-2018,2022-2024,,,6.83,stagneret,9,DCE (DEHM-modellen),n_deposition
+810,_dim_naeringsstoffer,2016-2018,2022-2024,,,7.85,tempo,9,DCE (DEHM-modellen),n_deposition
+860,_dim_naeringsstoffer,2016-2018,2022-2024,,,8.16,stagneret,9,DCE (DEHM-modellen),n_deposition
 101,_dim_sundhed,2014-2016,2025,,,2.25,rigtig,12,Danmarks Statistik,gennemsnit af 9 indikatorer
 147,_dim_sundhed,2014-2016,2025,,,0.91,stagneret,12,Danmarks Statistik,gennemsnit af 9 indikatorer
 151,_dim_sundhed,2014-2016,2025,,,2.49,rigtig,12,Danmarks Statistik,gennemsnit af 9 indikatorer
@@ -1209,98 +1194,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,_dim_uddannelse,2010-2012,2024-2026,,,-0.73,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 851,_dim_uddannelse,2010-2012,2024-2026,,,-0.98,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 860,_dim_uddannelse,2010-2012,2024-2026,,,0.89,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-147,_dim_vand,2010-2012,2022-2024,,,2.93,stagneret,15,Danmarks Statistik,vandindvinding
-151,_dim_vand,2010-2012,2022-2024,,,17.96,rigtig,15,Danmarks Statistik,vandindvinding
-153,_dim_vand,2010-2012,2022-2024,,,36.08,rigtig,13,Danmarks Statistik,vandindvinding
-157,_dim_vand,2010-2012,2022-2024,,,2.77,tempo,15,Danmarks Statistik,vandindvinding
-159,_dim_vand,2010-2012,2022-2024,,,-21.64,forkert,15,Danmarks Statistik,vandindvinding
-161,_dim_vand,2010-2012,2022-2024,,,-46.61,forkert,15,Danmarks Statistik,vandindvinding
-169,_dim_vand,2010-2012,2022-2024,,,44.81,rigtig,15,Danmarks Statistik,vandindvinding
-173,_dim_vand,2010-2012,2022-2024,,,-10.72,forkert,15,Danmarks Statistik,vandindvinding
-175,_dim_vand,2010-2012,2022-2024,,,37.35,rigtig,15,Danmarks Statistik,vandindvinding
-183,_dim_vand,2010-2012,2022-2024,,,11.68,rigtig,15,Danmarks Statistik,vandindvinding
-187,_dim_vand,2010-2015,2022-2024,,,-127.76,forkert,12,Danmarks Statistik,vandindvinding
-190,_dim_vand,2010-2012,2022-2024,,,-3.75,forkert,15,Danmarks Statistik,vandindvinding
-201,_dim_vand,2010-2012,2022-2024,,,27.59,rigtig,15,Danmarks Statistik,vandindvinding
-210,_dim_vand,2010-2012,2022-2024,,,-12.35,forkert,15,Danmarks Statistik,vandindvinding
-217,_dim_vand,2010-2012,2022-2024,,,5.02,tempo,15,Danmarks Statistik,vandindvinding
-219,_dim_vand,2010-2012,2022-2024,,,19.1,rigtig,15,Danmarks Statistik,vandindvinding
-223,_dim_vand,2010-2012,2022-2024,,,9.46,rigtig,15,Danmarks Statistik,vandindvinding
-230,_dim_vand,2010-2012,2022-2024,,,30.59,rigtig,15,Danmarks Statistik,vandindvinding
-240,_dim_vand,2010-2012,2022-2024,,,13.36,rigtig,15,Danmarks Statistik,vandindvinding
-250,_dim_vand,2010-2012,2022-2024,,,2.11,tempo,15,Danmarks Statistik,vandindvinding
-253,_dim_vand,2010-2012,2022-2024,,,22.01,rigtig,15,Danmarks Statistik,vandindvinding
-259,_dim_vand,2010-2012,2022-2024,,,-0.51,stagneret,15,Danmarks Statistik,vandindvinding
-260,_dim_vand,2010-2012,2022-2024,,,38.59,rigtig,15,Danmarks Statistik,vandindvinding
-265,_dim_vand,2010-2012,2022-2024,,,-4.63,forkert,15,Danmarks Statistik,vandindvinding
-269,_dim_vand,2010-2012,2022-2024,,,10.79,rigtig,15,Danmarks Statistik,vandindvinding
-270,_dim_vand,2010-2012,2022-2024,,,8.45,rigtig,15,Danmarks Statistik,vandindvinding
-306,_dim_vand,2010-2012,2022-2024,,,6.28,tempo,15,Danmarks Statistik,vandindvinding
-316,_dim_vand,2010-2012,2022-2024,,,10.72,rigtig,15,Danmarks Statistik,vandindvinding
-320,_dim_vand,2010-2012,2022-2024,,,7.35,tempo,15,Danmarks Statistik,vandindvinding
-326,_dim_vand,2010-2012,2022-2024,,,-6.06,forkert,15,Danmarks Statistik,vandindvinding
-329,_dim_vand,2010-2012,2022-2024,,,-2.72,forkert,15,Danmarks Statistik,vandindvinding
-330,_dim_vand,2010-2012,2022-2024,,,9.9,rigtig,15,Danmarks Statistik,vandindvinding
-336,_dim_vand,2010-2012,2022-2024,,,56.09,rigtig,14,Danmarks Statistik,vandindvinding
-340,_dim_vand,2010-2012,2022-2024,,,20.68,rigtig,15,Danmarks Statistik,vandindvinding
-350,_dim_vand,2010-2012,2022-2024,,,44.4,rigtig,15,Danmarks Statistik,vandindvinding
-360,_dim_vand,2010-2012,2022-2024,,,-3.59,forkert,15,Danmarks Statistik,vandindvinding
-370,_dim_vand,2010-2012,2022-2024,,,23.7,rigtig,15,Danmarks Statistik,vandindvinding
-376,_dim_vand,2010-2012,2022-2024,,,17.3,rigtig,15,Danmarks Statistik,vandindvinding
-390,_dim_vand,2010-2012,2022-2024,,,9.68,rigtig,15,Danmarks Statistik,vandindvinding
-400,_dim_vand,2010-2012,2022-2024,,,-1.61,forkert,15,Danmarks Statistik,vandindvinding
-410,_dim_vand,2010-2012,2022-2024,,,9.63,rigtig,15,Danmarks Statistik,vandindvinding
-420,_dim_vand,2010-2012,2022-2024,,,-6.96,forkert,15,Danmarks Statistik,vandindvinding
-430,_dim_vand,2010-2012,2022-2024,,,12.12,rigtig,15,Danmarks Statistik,vandindvinding
-440,_dim_vand,2010-2012,2022-2024,,,0.84,stagneret,15,Danmarks Statistik,vandindvinding
-450,_dim_vand,2010-2012,2022-2024,,,13.11,rigtig,15,Danmarks Statistik,vandindvinding
-461,_dim_vand,2010-2012,2022-2024,,,4.24,tempo,15,Danmarks Statistik,vandindvinding
-479,_dim_vand,2010-2012,2022-2024,,,16.04,rigtig,15,Danmarks Statistik,vandindvinding
-480,_dim_vand,2010-2012,2022-2024,,,15.21,rigtig,15,Danmarks Statistik,vandindvinding
-482,_dim_vand,2010-2012,2022-2024,,,3.06,tempo,15,Danmarks Statistik,vandindvinding
-492,_dim_vand,2010-2012,2022-2024,,,40.27,rigtig,15,Danmarks Statistik,vandindvinding
-510,_dim_vand,2010-2012,2022-2024,,,44.01,rigtig,15,Danmarks Statistik,vandindvinding
-530,_dim_vand,2010-2012,2022-2024,,,-17.02,forkert,15,Danmarks Statistik,vandindvinding
-540,_dim_vand,2010-2012,2022-2024,,,9.88,rigtig,15,Danmarks Statistik,vandindvinding
-550,_dim_vand,2010-2012,2022-2024,,,-11.18,forkert,15,Danmarks Statistik,vandindvinding
-561,_dim_vand,2010-2012,2022-2024,,,-4.66,forkert,15,Danmarks Statistik,vandindvinding
-563,_dim_vand,2010-2012,2022-2024,,,5.15,tempo,15,Danmarks Statistik,vandindvinding
-573,_dim_vand,2010-2012,2022-2024,,,4.17,tempo,15,Danmarks Statistik,vandindvinding
-575,_dim_vand,2010-2012,2022-2024,,,-1.38,forkert,15,Danmarks Statistik,vandindvinding
-580,_dim_vand,2010-2012,2022-2024,,,-8.12,forkert,15,Danmarks Statistik,vandindvinding
-607,_dim_vand,2010-2012,2022-2024,,,-0.62,stagneret,15,Danmarks Statistik,vandindvinding
-615,_dim_vand,2010-2012,2022-2024,,,12.01,rigtig,15,Danmarks Statistik,vandindvinding
-621,_dim_vand,2010-2012,2022-2024,,,7.64,tempo,15,Danmarks Statistik,vandindvinding
-630,_dim_vand,2010-2012,2022-2024,,,14.45,rigtig,15,Danmarks Statistik,vandindvinding
-657,_dim_vand,2010-2012,2022-2024,,,5.65,tempo,15,Danmarks Statistik,vandindvinding
-661,_dim_vand,2010-2012,2022-2024,,,7.51,tempo,15,Danmarks Statistik,vandindvinding
-665,_dim_vand,2010-2012,2022-2024,,,-4.94,forkert,15,Danmarks Statistik,vandindvinding
-671,_dim_vand,2010-2012,2022-2024,,,12.66,rigtig,15,Danmarks Statistik,vandindvinding
-706,_dim_vand,2010-2012,2022-2024,,,-28.14,forkert,15,Danmarks Statistik,vandindvinding
-707,_dim_vand,2010-2012,2022-2024,,,-13.57,forkert,15,Danmarks Statistik,vandindvinding
-710,_dim_vand,2010-2012,2022-2024,,,18.25,rigtig,15,Danmarks Statistik,vandindvinding
-727,_dim_vand,2010-2012,2022-2024,,,7.73,tempo,15,Danmarks Statistik,vandindvinding
-730,_dim_vand,2010-2012,2022-2024,,,10.71,rigtig,15,Danmarks Statistik,vandindvinding
-740,_dim_vand,2010-2012,2022-2024,,,9.2,rigtig,15,Danmarks Statistik,vandindvinding
-741,_dim_vand,2010-2012,2022-2024,,,-5.34,forkert,15,Danmarks Statistik,vandindvinding
-746,_dim_vand,2010-2012,2022-2024,,,10.19,rigtig,15,Danmarks Statistik,vandindvinding
-751,_dim_vand,2010-2012,2022-2024,,,12.89,rigtig,15,Danmarks Statistik,vandindvinding
-756,_dim_vand,2010-2012,2022-2024,,,-4.44,forkert,15,Danmarks Statistik,vandindvinding
-760,_dim_vand,2010-2012,2022-2024,,,-8.63,forkert,15,Danmarks Statistik,vandindvinding
-766,_dim_vand,2010-2012,2022-2024,,,5.47,tempo,15,Danmarks Statistik,vandindvinding
-773,_dim_vand,2010-2012,2022-2024,,,0.08,stagneret,15,Danmarks Statistik,vandindvinding
-779,_dim_vand,2010-2012,2022-2024,,,3.91,tempo,15,Danmarks Statistik,vandindvinding
-787,_dim_vand,2010-2012,2022-2024,,,10.75,rigtig,15,Danmarks Statistik,vandindvinding
-791,_dim_vand,2010-2012,2022-2024,,,14.54,rigtig,15,Danmarks Statistik,vandindvinding
-810,_dim_vand,2010-2012,2022-2024,,,19.76,rigtig,15,Danmarks Statistik,vandindvinding
-813,_dim_vand,2010-2012,2022-2024,,,21.74,rigtig,15,Danmarks Statistik,vandindvinding
-820,_dim_vand,2010-2012,2022-2024,,,-26.71,forkert,15,Danmarks Statistik,vandindvinding
-825,_dim_vand,2010-2012,2022-2024,,,-9.34,forkert,15,Danmarks Statistik,vandindvinding
-840,_dim_vand,2010-2012,2022-2024,,,17.54,rigtig,15,Danmarks Statistik,vandindvinding
-846,_dim_vand,2010-2012,2022-2024,,,12.38,rigtig,15,Danmarks Statistik,vandindvinding
-849,_dim_vand,2010-2012,2022-2024,,,6.76,tempo,15,Danmarks Statistik,vandindvinding
-851,_dim_vand,2010-2012,2022-2024,,,12.78,rigtig,15,Danmarks Statistik,vandindvinding
-860,_dim_vand,2010-2012,2022-2024,,,5.99,tempo,15,Danmarks Statistik,vandindvinding
+101,_dim_vand,2010-2012,2022-2024,,,-333.73,forkert,15,Danmarks Statistik,vandindvinding
+147,_dim_vand,2010-2012,2022-2024,,,2.24,tempo,15,Danmarks Statistik,vandindvinding
+151,_dim_vand,2010-2012,2022-2024,,,23.04,rigtig,15,Danmarks Statistik,vandindvinding
+153,_dim_vand,2010-2012,2022-2024,,,17.81,rigtig,15,Danmarks Statistik,vandindvinding
+155,_dim_vand,2010-2012,2022-2024,,,82.61,rigtig,15,Danmarks Statistik,vandindvinding
+157,_dim_vand,2010-2012,2022-2024,,,-0.97,stagneret,15,Danmarks Statistik,vandindvinding
+159,_dim_vand,2010-2012,2022-2024,,,-16.9,forkert,15,Danmarks Statistik,vandindvinding
+161,_dim_vand,2010-2012,2022-2024,,,-62.64,forkert,15,Danmarks Statistik,vandindvinding
+163,_dim_vand,2010-2012,2022-2024,,,100.0,rigtig,15,Danmarks Statistik,vandindvinding
+165,_dim_vand,2010-2012,2022-2024,,,94.59,rigtig,15,Danmarks Statistik,vandindvinding
+167,_dim_vand,2010-2012,2022-2024,,,70.83,rigtig,15,Danmarks Statistik,vandindvinding
+169,_dim_vand,2010-2012,2022-2024,,,8.68,rigtig,15,Danmarks Statistik,vandindvinding
+173,_dim_vand,2010-2012,2022-2024,,,-5.55,forkert,15,Danmarks Statistik,vandindvinding
+175,_dim_vand,2010-2012,2022-2024,,,16.27,rigtig,15,Danmarks Statistik,vandindvinding
+183,_dim_vand,2010-2012,2022-2024,,,-14.16,forkert,15,Danmarks Statistik,vandindvinding
+185,_dim_vand,2010-2012,2022-2024,,,39.79,rigtig,15,Danmarks Statistik,vandindvinding
+187,_dim_vand,2010-2012,2022-2024,,,-175.05,forkert,15,Danmarks Statistik,vandindvinding
+190,_dim_vand,2010-2012,2022-2024,,,-1.61,forkert,15,Danmarks Statistik,vandindvinding
+201,_dim_vand,2010-2012,2022-2024,,,21.31,rigtig,15,Danmarks Statistik,vandindvinding
+210,_dim_vand,2010-2012,2022-2024,,,-31.38,forkert,15,Danmarks Statistik,vandindvinding
+217,_dim_vand,2010-2012,2022-2024,,,9.8,rigtig,15,Danmarks Statistik,vandindvinding
+219,_dim_vand,2010-2012,2022-2024,,,1.78,stagneret,15,Danmarks Statistik,vandindvinding
+223,_dim_vand,2010-2012,2022-2024,,,6.95,rigtig,15,Danmarks Statistik,vandindvinding
+230,_dim_vand,2010-2012,2022-2024,,,17.37,rigtig,15,Danmarks Statistik,vandindvinding
+240,_dim_vand,2010-2012,2022-2024,,,-0.77,stagneret,15,Danmarks Statistik,vandindvinding
+250,_dim_vand,2010-2012,2022-2024,,,-3.36,stagneret,15,Danmarks Statistik,vandindvinding
+253,_dim_vand,2010-2012,2022-2024,,,15.9,rigtig,15,Danmarks Statistik,vandindvinding
+259,_dim_vand,2010-2012,2022-2024,,,-1.04,stagneret,15,Danmarks Statistik,vandindvinding
+260,_dim_vand,2010-2012,2022-2024,,,23.68,rigtig,15,Danmarks Statistik,vandindvinding
+265,_dim_vand,2010-2012,2022-2024,,,8.5,rigtig,15,Danmarks Statistik,vandindvinding
+269,_dim_vand,2010-2012,2022-2024,,,-14.72,forkert,15,Danmarks Statistik,vandindvinding
+270,_dim_vand,2010-2012,2022-2024,,,8.19,stagneret,15,Danmarks Statistik,vandindvinding
+306,_dim_vand,2010-2012,2022-2024,,,0.41,stagneret,15,Danmarks Statistik,vandindvinding
+316,_dim_vand,2010-2012,2022-2024,,,9.19,rigtig,15,Danmarks Statistik,vandindvinding
+320,_dim_vand,2010-2012,2022-2024,,,21.41,rigtig,15,Danmarks Statistik,vandindvinding
+326,_dim_vand,2010-2012,2022-2024,,,-38.55,forkert,15,Danmarks Statistik,vandindvinding
+329,_dim_vand,2010-2012,2022-2024,,,7.38,rigtig,15,Danmarks Statistik,vandindvinding
+330,_dim_vand,2010-2012,2022-2024,,,4.34,stagneret,15,Danmarks Statistik,vandindvinding
+336,_dim_vand,2010-2012,2022-2024,,,36.0,rigtig,15,Danmarks Statistik,vandindvinding
+340,_dim_vand,2010-2012,2022-2024,,,-1.44,forkert,15,Danmarks Statistik,vandindvinding
+350,_dim_vand,2010-2012,2022-2024,,,39.24,rigtig,15,Danmarks Statistik,vandindvinding
+360,_dim_vand,2010-2012,2022-2024,,,3.25,rigtig,15,Danmarks Statistik,vandindvinding
+370,_dim_vand,2010-2012,2022-2024,,,29.73,rigtig,15,Danmarks Statistik,vandindvinding
+376,_dim_vand,2010-2012,2022-2024,,,16.5,rigtig,15,Danmarks Statistik,vandindvinding
+390,_dim_vand,2010-2012,2022-2024,,,17.25,rigtig,15,Danmarks Statistik,vandindvinding
+400,_dim_vand,2010-2012,2022-2024,,,0.93,stagneret,15,Danmarks Statistik,vandindvinding
+410,_dim_vand,2010-2012,2022-2024,,,4.15,rigtig,15,Danmarks Statistik,vandindvinding
+420,_dim_vand,2010-2012,2022-2024,,,-16.56,forkert,15,Danmarks Statistik,vandindvinding
+430,_dim_vand,2010-2012,2022-2024,,,3.04,rigtig,15,Danmarks Statistik,vandindvinding
+440,_dim_vand,2010-2012,2022-2024,,,-18.1,forkert,15,Danmarks Statistik,vandindvinding
+450,_dim_vand,2010-2012,2022-2024,,,9.14,rigtig,15,Danmarks Statistik,vandindvinding
+461,_dim_vand,2010-2012,2022-2024,,,11.21,rigtig,15,Danmarks Statistik,vandindvinding
+479,_dim_vand,2010-2012,2022-2024,,,9.9,rigtig,15,Danmarks Statistik,vandindvinding
+480,_dim_vand,2010-2012,2022-2024,,,-0.0,stagneret,15,Danmarks Statistik,vandindvinding
+482,_dim_vand,2010-2012,2022-2024,,,12.83,rigtig,15,Danmarks Statistik,vandindvinding
+492,_dim_vand,2010-2012,2022-2024,,,28.51,rigtig,15,Danmarks Statistik,vandindvinding
+510,_dim_vand,2010-2012,2022-2024,,,-18.93,forkert,15,Danmarks Statistik,vandindvinding
+530,_dim_vand,2010-2012,2022-2024,,,-8.64,forkert,15,Danmarks Statistik,vandindvinding
+540,_dim_vand,2010-2012,2022-2024,,,-5.88,stagneret,15,Danmarks Statistik,vandindvinding
+550,_dim_vand,2010-2012,2022-2024,,,-62.36,forkert,15,Danmarks Statistik,vandindvinding
+561,_dim_vand,2010-2012,2022-2024,,,-11.16,forkert,15,Danmarks Statistik,vandindvinding
+563,_dim_vand,2010-2012,2022-2024,,,-11.2,forkert,15,Danmarks Statistik,vandindvinding
+573,_dim_vand,2010-2012,2022-2024,,,6.5,rigtig,15,Danmarks Statistik,vandindvinding
+575,_dim_vand,2010-2012,2022-2024,,,-6.62,forkert,15,Danmarks Statistik,vandindvinding
+580,_dim_vand,2010-2012,2022-2024,,,-72.64,forkert,15,Danmarks Statistik,vandindvinding
+607,_dim_vand,2010-2012,2022-2024,,,-13.58,forkert,15,Danmarks Statistik,vandindvinding
+615,_dim_vand,2010-2012,2022-2024,,,7.54,rigtig,15,Danmarks Statistik,vandindvinding
+621,_dim_vand,2010-2012,2022-2024,,,-42.69,forkert,15,Danmarks Statistik,vandindvinding
+630,_dim_vand,2010-2012,2022-2024,,,43.99,rigtig,15,Danmarks Statistik,vandindvinding
+657,_dim_vand,2010-2012,2022-2024,,,-15.28,forkert,15,Danmarks Statistik,vandindvinding
+661,_dim_vand,2010-2012,2022-2024,,,-16.02,forkert,15,Danmarks Statistik,vandindvinding
+665,_dim_vand,2010-2012,2022-2024,,,-70.99,forkert,15,Danmarks Statistik,vandindvinding
+671,_dim_vand,2010-2012,2022-2024,,,11.59,rigtig,15,Danmarks Statistik,vandindvinding
+706,_dim_vand,2010-2012,2022-2024,,,-83.57,forkert,15,Danmarks Statistik,vandindvinding
+707,_dim_vand,2010-2012,2022-2024,,,-39.69,forkert,15,Danmarks Statistik,vandindvinding
+710,_dim_vand,2010-2012,2022-2024,,,42.16,rigtig,15,Danmarks Statistik,vandindvinding
+727,_dim_vand,2010-2012,2022-2024,,,2.17,tempo,15,Danmarks Statistik,vandindvinding
+730,_dim_vand,2010-2012,2022-2024,,,4.92,rigtig,15,Danmarks Statistik,vandindvinding
+740,_dim_vand,2010-2012,2022-2024,,,-208.86,forkert,15,Danmarks Statistik,vandindvinding
+741,_dim_vand,2010-2012,2022-2024,,,-12.32,forkert,15,Danmarks Statistik,vandindvinding
+746,_dim_vand,2010-2012,2022-2024,,,-18.79,forkert,15,Danmarks Statistik,vandindvinding
+751,_dim_vand,2010-2012,2022-2024,,,-2.02,stagneret,15,Danmarks Statistik,vandindvinding
+756,_dim_vand,2010-2012,2022-2024,,,-9.04,forkert,15,Danmarks Statistik,vandindvinding
+760,_dim_vand,2010-2012,2022-2024,,,-58.0,forkert,15,Danmarks Statistik,vandindvinding
+766,_dim_vand,2010-2012,2022-2024,,,-120.57,forkert,15,Danmarks Statistik,vandindvinding
+773,_dim_vand,2010-2012,2022-2024,,,15.4,rigtig,15,Danmarks Statistik,vandindvinding
+779,_dim_vand,2010-2012,2022-2024,,,5.27,rigtig,15,Danmarks Statistik,vandindvinding
+787,_dim_vand,2010-2012,2022-2024,,,1.44,tempo,15,Danmarks Statistik,vandindvinding
+791,_dim_vand,2010-2012,2022-2024,,,-28.15,forkert,15,Danmarks Statistik,vandindvinding
+810,_dim_vand,2010-2012,2022-2024,,,4.66,rigtig,15,Danmarks Statistik,vandindvinding
+813,_dim_vand,2010-2012,2022-2024,,,9.17,rigtig,15,Danmarks Statistik,vandindvinding
+820,_dim_vand,2010-2012,2022-2024,,,-60.06,forkert,15,Danmarks Statistik,vandindvinding
+825,_dim_vand,2010-2012,2022-2024,,,5.26,rigtig,15,Danmarks Statistik,vandindvinding
+840,_dim_vand,2010-2012,2022-2024,,,13.06,rigtig,15,Danmarks Statistik,vandindvinding
+846,_dim_vand,2010-2012,2022-2024,,,9.47,rigtig,15,Danmarks Statistik,vandindvinding
+849,_dim_vand,2010-2012,2022-2024,,,14.41,rigtig,15,Danmarks Statistik,vandindvinding
+851,_dim_vand,2010-2012,2022-2024,,,-25.59,forkert,15,Danmarks Statistik,vandindvinding
+860,_dim_vand,2010-2012,2022-2024,,,21.05,rigtig,15,Danmarks Statistik,vandindvinding
 101,_dim_velfaerd,2010-2012,2023-2025,,,6.43,rigtig,15,Danmarks Statistik,gennemsnit af 7 indikatorer
 147,_dim_velfaerd,2010-2012,2023-2025,,,-8.36,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
 151,_dim_velfaerd,2010-2012,2023-2025,,,-24.21,forkert,15,Danmarks Statistik,gennemsnit af 7 indikatorer
@@ -1497,202 +1488,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,alkohol,2017,2025,13.8,11.0,-20.29,rigtig,2,Danmarks Statistik,
 851,alkohol,2017,2025,16.2,12.7,-21.6,rigtig,2,Danmarks Statistik,
 860,alkohol,2017,2025,14.3,11.0,-23.08,rigtig,2,Danmarks Statistik,
-101,areal_bebygget,2011,2024,76.7,77.6,1.17,stagneret,4,Danmarks Statistik,
-147,areal_bebygget,2011,2024,90.5,90.5,0.0,stagneret,4,Danmarks Statistik,
-151,areal_bebygget,2011,2024,64.6,66.0,2.17,forkert,4,Danmarks Statistik,
-153,areal_bebygget,2011,2024,69.3,70.6,1.88,forkert,4,Danmarks Statistik,
-155,areal_bebygget,2011,2024,44.4,45.4,2.25,forkert,4,Danmarks Statistik,
-157,areal_bebygget,2011,2024,84.2,84.4,0.24,stagneret,4,Danmarks Statistik,
-159,areal_bebygget,2011,2024,80.2,80.3,0.12,stagneret,4,Danmarks Statistik,
-161,areal_bebygget,2011,2024,72.4,75.5,4.28,forkert,4,Danmarks Statistik,
-163,areal_bebygget,2011,2024,80.1,80.9,1.0,stagneret,4,Danmarks Statistik,
-165,areal_bebygget,2011,2024,48.2,49.3,2.28,forkert,4,Danmarks Statistik,
-167,areal_bebygget,2011,2024,78.2,79.6,1.79,forkert,4,Danmarks Statistik,
-169,areal_bebygget,2011,2024,37.3,37.3,0.0,stagneret,4,Danmarks Statistik,
-173,areal_bebygget,2011,2024,49.7,50.3,1.21,stagneret,4,Danmarks Statistik,
-175,areal_bebygget,2011,2024,87.6,88.0,0.46,stagneret,4,Danmarks Statistik,
-183,areal_bebygget,2011,2024,33.6,35.5,5.65,forkert,4,Danmarks Statistik,
-185,areal_bebygget,2011,2024,40.3,41.2,2.23,stagneret,4,Danmarks Statistik,
-187,areal_bebygget,2011,2024,59.3,60.9,2.7,forkert,4,Danmarks Statistik,
-190,areal_bebygget,2011,2024,36.0,36.8,2.22,stagneret,4,Danmarks Statistik,
-201,areal_bebygget,2011,2024,27.9,28.8,3.23,stagneret,4,Danmarks Statistik,
-210,areal_bebygget,2011,2024,23.1,24.0,3.9,stagneret,4,Danmarks Statistik,
-217,areal_bebygget,2011,2024,30.6,31.2,1.96,stagneret,4,Danmarks Statistik,
-219,areal_bebygget,2011,2024,18.0,18.9,5.0,stagneret,4,Danmarks Statistik,
-223,areal_bebygget,2011,2024,41.6,42.3,1.68,stagneret,4,Danmarks Statistik,
-230,areal_bebygget,2011,2024,43.4,43.9,1.15,stagneret,4,Danmarks Statistik,
-240,areal_bebygget,2011,2024,22.4,23.8,6.25,forkert,4,Danmarks Statistik,
-250,areal_bebygget,2011,2024,19.1,20.1,5.24,forkert,4,Danmarks Statistik,
-253,areal_bebygget,2011,2024,42.3,44.9,6.15,forkert,4,Danmarks Statistik,
-259,areal_bebygget,2011,2024,17.5,19.3,10.29,forkert,4,Danmarks Statistik,
-260,areal_bebygget,2011,2024,30.6,31.2,1.96,stagneret,4,Danmarks Statistik,
-265,areal_bebygget,2011,2024,26.6,28.1,5.64,forkert,4,Danmarks Statistik,
-269,areal_bebygget,2011,2024,29.0,31.6,8.97,forkert,4,Danmarks Statistik,
-270,areal_bebygget,2011,2024,23.0,23.5,2.17,stagneret,4,Danmarks Statistik,
-306,areal_bebygget,2011,2024,22.6,23.8,5.31,forkert,4,Danmarks Statistik,
-316,areal_bebygget,2011,2024,13.2,14.0,6.06,stagneret,4,Danmarks Statistik,
-320,areal_bebygget,2011,2024,11.7,12.5,6.84,stagneret,4,Danmarks Statistik,
-326,areal_bebygget,2011,2024,14.2,15.1,6.34,stagneret,4,Danmarks Statistik,
-329,areal_bebygget,2011,2024,11.9,13.0,9.24,forkert,4,Danmarks Statistik,
-330,areal_bebygget,2011,2024,14.3,15.0,4.9,stagneret,4,Danmarks Statistik,
-336,areal_bebygget,2011,2024,12.1,12.6,4.13,stagneret,4,Danmarks Statistik,
-340,areal_bebygget,2011,2024,12.9,13.5,4.65,stagneret,4,Danmarks Statistik,
-350,areal_bebygget,2011,2024,13.8,14.5,5.07,stagneret,4,Danmarks Statistik,
-360,areal_bebygget,2011,2024,9.4,9.5,1.06,forkert,4,Danmarks Statistik,
-370,areal_bebygget,2011,2024,12.7,13.4,5.51,stagneret,4,Danmarks Statistik,
-376,areal_bebygget,2011,2024,11.3,11.8,4.42,stagneret,4,Danmarks Statistik,
-390,areal_bebygget,2011,2024,11.9,12.5,5.04,stagneret,4,Danmarks Statistik,
-400,areal_bebygget,2011,2024,12.2,12.5,2.46,stagneret,4,Danmarks Statistik,
-410,areal_bebygget,2011,2024,16.2,17.6,8.64,forkert,4,Danmarks Statistik,
-420,areal_bebygget,2011,2024,12.5,13.2,5.6,stagneret,4,Danmarks Statistik,
-430,areal_bebygget,2011,2024,12.3,13.1,6.5,stagneret,4,Danmarks Statistik,
-440,areal_bebygget,2011,2024,14.3,15.8,10.49,forkert,4,Danmarks Statistik,
-450,areal_bebygget,2011,2024,13.5,14.0,3.7,stagneret,4,Danmarks Statistik,
-461,areal_bebygget,2011,2024,32.8,35.5,8.23,forkert,4,Danmarks Statistik,
-479,areal_bebygget,2011,2024,14.3,15.1,5.59,stagneret,4,Danmarks Statistik,
-480,areal_bebygget,2011,2024,11.3,12.1,7.08,stagneret,4,Danmarks Statistik,
-482,areal_bebygget,2011,2024,10.6,11.0,3.77,stagneret,4,Danmarks Statistik,
-492,areal_bebygget,2011,2024,11.9,12.4,4.2,stagneret,4,Danmarks Statistik,
-510,areal_bebygget,2011,2024,10.5,10.9,3.81,stagneret,4,Danmarks Statistik,
-530,areal_bebygget,2011,2024,10.0,10.6,6.0,stagneret,4,Danmarks Statistik,
-540,areal_bebygget,2011,2024,15.4,16.4,6.49,stagneret,4,Danmarks Statistik,
-550,areal_bebygget,2011,2024,7.8,8.0,2.56,forkert,4,Danmarks Statistik,
-561,areal_bebygget,2011,2024,14.0,15.0,7.14,forkert,4,Danmarks Statistik,
-563,areal_bebygget,2011,2024,11.3,11.4,0.88,stagneret,4,Danmarks Statistik,
-573,areal_bebygget,2011,2024,9.6,10.2,6.25,stagneret,4,Danmarks Statistik,
-575,areal_bebygget,2011,2024,10.0,10.7,7.0,stagneret,4,Danmarks Statistik,
-580,areal_bebygget,2011,2024,10.8,11.5,6.48,stagneret,4,Danmarks Statistik,
-607,areal_bebygget,2011,2024,27.8,31.8,14.39,forkert,4,Danmarks Statistik,
-615,areal_bebygget,2011,2024,15.0,17.1,14.0,forkert,4,Danmarks Statistik,
-621,areal_bebygget,2011,2024,14.8,16.0,8.11,forkert,4,Danmarks Statistik,
-630,areal_bebygget,2011,2024,12.5,13.8,10.4,forkert,4,Danmarks Statistik,
-657,areal_bebygget,2011,2024,10.4,11.1,6.73,stagneret,4,Danmarks Statistik,
-661,areal_bebygget,2011,2024,11.8,12.7,7.63,stagneret,4,Danmarks Statistik,
-665,areal_bebygget,2011,2024,9.9,10.3,4.04,stagneret,4,Danmarks Statistik,
-671,areal_bebygget,2011,2024,13.5,13.8,2.22,stagneret,4,Danmarks Statistik,
-706,areal_bebygget,2011,2024,12.9,13.3,3.1,stagneret,4,Danmarks Statistik,
-707,areal_bebygget,2011,2024,10.4,11.1,6.73,stagneret,4,Danmarks Statistik,
-710,areal_bebygget,2011,2024,11.9,12.9,8.4,forkert,4,Danmarks Statistik,
-727,areal_bebygget,2011,2024,12.6,13.4,6.35,stagneret,4,Danmarks Statistik,
-730,areal_bebygget,2011,2024,12.9,13.5,4.65,stagneret,4,Danmarks Statistik,
-740,areal_bebygget,2011,2024,13.1,14.3,9.16,forkert,4,Danmarks Statistik,
-741,areal_bebygget,2011,2024,10.9,11.2,2.75,stagneret,4,Danmarks Statistik,
-746,areal_bebygget,2011,2024,15.2,16.4,7.89,forkert,4,Danmarks Statistik,
-751,areal_bebygget,2011,2024,29.7,32.9,10.77,forkert,4,Danmarks Statistik,
-756,areal_bebygget,2011,2024,10.7,11.4,6.54,stagneret,4,Danmarks Statistik,
-760,areal_bebygget,2011,2024,9.4,9.9,5.32,forkert,4,Danmarks Statistik,
-766,areal_bebygget,2011,2024,13.4,14.2,5.97,stagneret,4,Danmarks Statistik,
-773,areal_bebygget,2011,2024,11.4,11.4,0.0,stagneret,4,Danmarks Statistik,
-779,areal_bebygget,2011,2024,12.5,13.0,4.0,stagneret,4,Danmarks Statistik,
-787,areal_bebygget,2011,2024,9.4,9.7,3.19,forkert,4,Danmarks Statistik,
-791,areal_bebygget,2011,2024,10.9,11.5,5.5,stagneret,4,Danmarks Statistik,
-810,areal_bebygget,2011,2024,10.6,10.9,2.83,stagneret,4,Danmarks Statistik,
-813,areal_bebygget,2011,2024,13.7,14.0,2.19,stagneret,4,Danmarks Statistik,
-820,areal_bebygget,2011,2024,10.6,10.8,1.89,stagneret,4,Danmarks Statistik,
-825,areal_bebygget,2011,2024,9.4,9.6,2.13,forkert,4,Danmarks Statistik,
-840,areal_bebygget,2011,2024,9.5,10.1,6.32,stagneret,4,Danmarks Statistik,
-846,areal_bebygget,2011,2024,11.0,11.5,4.55,stagneret,4,Danmarks Statistik,
-849,areal_bebygget,2011,2024,10.7,11.0,2.8,stagneret,4,Danmarks Statistik,
-851,areal_bebygget,2011,2024,15.4,16.0,3.9,stagneret,4,Danmarks Statistik,
-860,areal_bebygget,2011,2024,12.5,12.6,0.8,stagneret,4,Danmarks Statistik,
-101,areal_intensiv,2011,2024,0.0,0.0,,ingen,4,Danmarks Statistik,
-147,areal_intensiv,2011,2024,0.0,0.0,,ingen,4,Danmarks Statistik,
-151,areal_intensiv,2011,2024,7.4,4.4,-40.54,rigtig,4,Danmarks Statistik,
-153,areal_intensiv,2011,2024,2.6,0.4,-84.62,rigtig,4,Danmarks Statistik,
-155,areal_intensiv,2011,2024,19.7,16.4,-16.75,rigtig,4,Danmarks Statistik,
-157,areal_intensiv,2011,2024,0.0,0.0,,ingen,4,Danmarks Statistik,
-159,areal_intensiv,2011,2024,0.0,0.0,,ingen,4,Danmarks Statistik,
-161,areal_intensiv,2011,2024,0.4,0.4,0.0,stagneret,4,Danmarks Statistik,
-163,areal_intensiv,2011,2024,1.9,1.8,-5.26,tempo,4,Danmarks Statistik,
-165,areal_intensiv,2011,2024,1.3,1.0,-23.08,rigtig,4,Danmarks Statistik,
-167,areal_intensiv,2011,2024,1.4,1.3,-7.14,rigtig,4,Danmarks Statistik,
-169,areal_intensiv,2011,2024,36.1,31.7,-12.19,rigtig,4,Danmarks Statistik,
-173,areal_intensiv,2011,2024,2.8,1.3,-53.57,rigtig,4,Danmarks Statistik,
-175,areal_intensiv,2011,2024,0.0,0.0,,ingen,4,Danmarks Statistik,
-183,areal_intensiv,2011,2024,37.8,31.9,-15.61,rigtig,4,Danmarks Statistik,
-185,areal_intensiv,2011,2024,3.6,3.0,-16.67,rigtig,4,Danmarks Statistik,
-187,areal_intensiv,2011,2024,1.1,1.0,-9.09,rigtig,4,Danmarks Statistik,
-190,areal_intensiv,2011,2024,10.9,8.7,-20.18,rigtig,4,Danmarks Statistik,
-201,areal_intensiv,2011,2024,28.0,24.0,-14.29,rigtig,4,Danmarks Statistik,
-210,areal_intensiv,2011,2024,31.5,23.3,-26.03,rigtig,4,Danmarks Statistik,
-217,areal_intensiv,2011,2024,25.3,19.9,-21.34,rigtig,4,Danmarks Statistik,
-219,areal_intensiv,2011,2024,34.2,30.5,-10.82,rigtig,4,Danmarks Statistik,
-223,areal_intensiv,2011,2024,12.2,7.7,-36.89,rigtig,4,Danmarks Statistik,
-230,areal_intensiv,2011,2024,7.2,4.7,-34.72,rigtig,4,Danmarks Statistik,
-240,areal_intensiv,2011,2024,42.1,36.6,-13.06,rigtig,4,Danmarks Statistik,
-250,areal_intensiv,2011,2024,52.9,49.2,-6.99,rigtig,4,Danmarks Statistik,
-253,areal_intensiv,2011,2024,38.8,31.9,-17.78,rigtig,4,Danmarks Statistik,
-259,areal_intensiv,2011,2024,51.4,47.9,-6.81,rigtig,4,Danmarks Statistik,
-260,areal_intensiv,2011,2024,27.1,23.2,-14.39,rigtig,4,Danmarks Statistik,
-265,areal_intensiv,2011,2024,51.4,45.5,-11.48,rigtig,4,Danmarks Statistik,
-269,areal_intensiv,2011,2024,53.0,47.5,-10.38,rigtig,4,Danmarks Statistik,
-270,areal_intensiv,2011,2024,34.6,29.5,-14.74,rigtig,4,Danmarks Statistik,
-306,areal_intensiv,2011,2024,49.4,46.1,-6.68,rigtig,4,Danmarks Statistik,
-316,areal_intensiv,2011,2024,61.3,57.6,-6.04,rigtig,4,Danmarks Statistik,
-320,areal_intensiv,2011,2024,59.4,56.2,-5.39,tempo,4,Danmarks Statistik,
-326,areal_intensiv,2011,2024,61.0,58.4,-4.26,tempo,4,Danmarks Statistik,
-329,areal_intensiv,2011,2024,59.8,56.5,-5.52,tempo,4,Danmarks Statistik,
-330,areal_intensiv,2011,2024,65.0,62.1,-4.46,tempo,4,Danmarks Statistik,
-336,areal_intensiv,2011,2024,71.2,69.2,-2.81,tempo,4,Danmarks Statistik,
-340,areal_intensiv,2011,2024,53.2,49.6,-6.77,rigtig,4,Danmarks Statistik,
-350,areal_intensiv,2011,2024,56.2,52.8,-6.05,rigtig,4,Danmarks Statistik,
-360,areal_intensiv,2011,2024,75.5,74.2,-1.72,tempo,4,Danmarks Statistik,
-370,areal_intensiv,2011,2024,62.8,59.7,-4.94,tempo,4,Danmarks Statistik,
-376,areal_intensiv,2011,2024,68.0,66.8,-1.76,tempo,4,Danmarks Statistik,
-390,areal_intensiv,2011,2024,62.5,60.2,-3.68,tempo,4,Danmarks Statistik,
-400,areal_intensiv,2011,2024,56.7,54.5,-3.88,tempo,4,Danmarks Statistik,
-410,areal_intensiv,2011,2024,60.9,57.4,-5.75,tempo,4,Danmarks Statistik,
-420,areal_intensiv,2011,2024,63.2,59.9,-5.22,tempo,4,Danmarks Statistik,
-430,areal_intensiv,2011,2024,60.7,57.4,-5.44,tempo,4,Danmarks Statistik,
-440,areal_intensiv,2011,2024,67.9,64.2,-5.45,tempo,4,Danmarks Statistik,
-450,areal_intensiv,2011,2024,65.5,63.9,-2.44,tempo,4,Danmarks Statistik,
-461,areal_intensiv,2011,2024,41.6,35.7,-14.18,rigtig,4,Danmarks Statistik,
-479,areal_intensiv,2011,2024,60.2,57.4,-4.65,tempo,4,Danmarks Statistik,
-480,areal_intensiv,2011,2024,69.8,67.1,-3.87,tempo,4,Danmarks Statistik,
-482,areal_intensiv,2011,2024,66.2,64.3,-2.87,tempo,4,Danmarks Statistik,
-492,areal_intensiv,2011,2024,65.2,61.9,-5.06,tempo,4,Danmarks Statistik,
-510,areal_intensiv,2011,2024,66.3,64.0,-3.47,tempo,4,Danmarks Statistik,
-530,areal_intensiv,2011,2024,53.9,50.4,-6.49,rigtig,4,Danmarks Statistik,
-540,areal_intensiv,2011,2024,65.2,62.2,-4.6,tempo,4,Danmarks Statistik,
-550,areal_intensiv,2011,2024,67.5,65.7,-2.67,tempo,4,Danmarks Statistik,
-561,areal_intensiv,2011,2024,63.1,59.4,-5.86,rigtig,4,Danmarks Statistik,
-563,areal_intensiv,2011,2024,5.2,4.3,-17.31,rigtig,4,Danmarks Statistik,
-573,areal_intensiv,2011,2024,54.2,50.6,-6.64,rigtig,4,Danmarks Statistik,
-575,areal_intensiv,2011,2024,66.7,63.8,-4.35,tempo,4,Danmarks Statistik,
-580,areal_intensiv,2011,2024,64.3,61.7,-4.04,tempo,4,Danmarks Statistik,
-607,areal_intensiv,2011,2024,41.9,37.4,-10.74,rigtig,4,Danmarks Statistik,
-615,areal_intensiv,2011,2024,55.2,50.9,-7.79,rigtig,4,Danmarks Statistik,
-621,areal_intensiv,2011,2024,61.1,58.0,-5.07,tempo,4,Danmarks Statistik,
-630,areal_intensiv,2011,2024,55.2,50.1,-9.24,rigtig,4,Danmarks Statistik,
-657,areal_intensiv,2011,2024,57.0,54.0,-5.26,tempo,4,Danmarks Statistik,
-661,areal_intensiv,2011,2024,57.3,53.1,-7.33,rigtig,4,Danmarks Statistik,
-665,areal_intensiv,2011,2024,60.8,58.3,-4.11,tempo,4,Danmarks Statistik,
-671,areal_intensiv,2011,2024,70.5,68.6,-2.7,tempo,4,Danmarks Statistik,
-706,areal_intensiv,2011,2024,49.9,46.7,-6.41,rigtig,4,Danmarks Statistik,
-707,areal_intensiv,2011,2024,58.3,55.8,-4.29,tempo,4,Danmarks Statistik,
-710,areal_intensiv,2011,2024,61.4,58.0,-5.54,tempo,4,Danmarks Statistik,
-727,areal_intensiv,2011,2024,66.9,64.4,-3.74,tempo,4,Danmarks Statistik,
-730,areal_intensiv,2011,2024,64.6,61.6,-4.64,tempo,4,Danmarks Statistik,
-740,areal_intensiv,2011,2024,44.0,40.0,-9.09,rigtig,4,Danmarks Statistik,
-741,areal_intensiv,2011,2024,64.8,62.4,-3.7,tempo,4,Danmarks Statistik,
-746,areal_intensiv,2011,2024,51.8,47.0,-9.27,rigtig,4,Danmarks Statistik,
-751,areal_intensiv,2011,2024,47.4,41.9,-11.6,rigtig,4,Danmarks Statistik,
-756,areal_intensiv,2011,2024,52.1,48.9,-6.14,rigtig,4,Danmarks Statistik,
-760,areal_intensiv,2011,2024,59.6,56.9,-4.53,tempo,4,Danmarks Statistik,
-766,areal_intensiv,2011,2024,64.5,61.1,-5.27,tempo,4,Danmarks Statistik,
-773,areal_intensiv,2011,2024,72.9,70.0,-3.98,tempo,4,Danmarks Statistik,
-779,areal_intensiv,2011,2024,64.9,62.2,-4.16,tempo,4,Danmarks Statistik,
-787,areal_intensiv,2011,2024,48.5,47.0,-3.09,tempo,4,Danmarks Statistik,
-791,areal_intensiv,2011,2024,54.6,50.9,-6.78,rigtig,4,Danmarks Statistik,
-810,areal_intensiv,2011,2024,66.8,63.4,-5.09,tempo,4,Danmarks Statistik,
-813,areal_intensiv,2011,2024,44.8,41.7,-6.92,rigtig,4,Danmarks Statistik,
-820,areal_intensiv,2011,2024,64.6,62.7,-2.94,tempo,4,Danmarks Statistik,
-825,areal_intensiv,2011,2024,19.0,13.4,-29.47,rigtig,4,Danmarks Statistik,
-840,areal_intensiv,2011,2024,62.1,59.3,-4.51,tempo,4,Danmarks Statistik,
-846,areal_intensiv,2011,2024,57.4,54.6,-4.88,tempo,4,Danmarks Statistik,
-849,areal_intensiv,2011,2024,54.8,52.8,-3.65,tempo,4,Danmarks Statistik,
-851,areal_intensiv,2011,2024,56.2,52.4,-6.76,rigtig,4,Danmarks Statistik,
-860,areal_intensiv,2011,2024,60.2,57.1,-5.15,tempo,4,Danmarks Statistik,
+101,areal_antropiseret,2011,2024,79.45,80.37,1.16,stagneret,4,Danmarks Statistik,
+147,areal_antropiseret,2011,2024,89.66,89.66,0.0,stagneret,4,Danmarks Statistik,
+151,areal_antropiseret,2011,2024,74.47,72.87,-2.15,tempo,4,Danmarks Statistik,
+153,areal_antropiseret,2011,2024,74.26,73.27,-1.33,stagneret,4,Danmarks Statistik,
+155,areal_antropiseret,2011,2024,64.37,62.64,-2.69,tempo,4,Danmarks Statistik,
+157,areal_antropiseret,2011,2024,85.71,85.71,0.0,stagneret,4,Danmarks Statistik,
+159,areal_antropiseret,2011,2024,84.03,84.03,0.0,stagneret,4,Danmarks Statistik,
+161,areal_antropiseret,2011,2024,74.05,77.1,4.12,forkert,4,Danmarks Statistik,
+163,areal_antropiseret,2011,2024,82.35,84.03,2.04,forkert,4,Danmarks Statistik,
+165,areal_antropiseret,2011,2024,50.22,50.87,1.29,stagneret,4,Danmarks Statistik,
+167,areal_antropiseret,2011,2024,80.89,82.22,1.64,forkert,4,Danmarks Statistik,
+169,areal_antropiseret,2011,2024,75.36,70.64,-6.26,rigtig,4,Danmarks Statistik,
+173,areal_antropiseret,2011,2024,58.79,57.93,-1.46,stagneret,4,Danmarks Statistik,
+175,areal_antropiseret,2011,2024,88.43,88.43,0.0,stagneret,4,Danmarks Statistik,
+183,areal_antropiseret,2011,2024,74.8,71.08,-4.97,rigtig,4,Danmarks Statistik,
+185,areal_antropiseret,2011,2024,45.51,45.83,0.7,stagneret,4,Danmarks Statistik,
+187,areal_antropiseret,2011,2024,63.64,65.91,3.57,forkert,4,Danmarks Statistik,
+190,areal_antropiseret,2011,2024,54.16,52.54,-2.99,rigtig,4,Danmarks Statistik,
+201,areal_antropiseret,2011,2024,58.11,55.26,-4.9,rigtig,4,Danmarks Statistik,
+210,areal_antropiseret,2011,2024,59.13,51.21,-13.39,rigtig,4,Danmarks Statistik,
+217,areal_antropiseret,2011,2024,58.9,54.1,-8.15,rigtig,4,Danmarks Statistik,
+219,areal_antropiseret,2011,2024,57.21,54.52,-4.7,rigtig,4,Danmarks Statistik,
+223,areal_antropiseret,2011,2024,57.68,53.77,-6.78,rigtig,4,Danmarks Statistik,
+230,areal_antropiseret,2011,2024,56.11,53.85,-4.03,rigtig,4,Danmarks Statistik,
+240,areal_antropiseret,2011,2024,66.07,62.11,-5.99,rigtig,4,Danmarks Statistik,
+250,areal_antropiseret,2011,2024,72.65,70.16,-3.43,rigtig,4,Danmarks Statistik,
+253,areal_antropiseret,2011,2024,82.09,78.17,-4.78,rigtig,4,Danmarks Statistik,
+259,areal_antropiseret,2011,2024,70.1,68.54,-2.23,tempo,4,Danmarks Statistik,
+260,areal_antropiseret,2011,2024,67.89,64.12,-5.55,rigtig,4,Danmarks Statistik,
+265,areal_antropiseret,2011,2024,80.17,75.78,-5.48,rigtig,4,Danmarks Statistik,
+269,areal_antropiseret,2011,2024,83.29,80.2,-3.71,rigtig,4,Danmarks Statistik,
+270,areal_antropiseret,2011,2024,62.98,58.32,-7.4,rigtig,4,Danmarks Statistik,
+306,areal_antropiseret,2011,2024,73.14,71.29,-2.53,tempo,4,Danmarks Statistik,
+316,areal_antropiseret,2011,2024,75.99,73.09,-3.82,rigtig,4,Danmarks Statistik,
+320,areal_antropiseret,2011,2024,72.58,70.05,-3.49,rigtig,4,Danmarks Statistik,
+326,areal_antropiseret,2011,2024,76.52,74.91,-2.1,tempo,4,Danmarks Statistik,
+329,areal_antropiseret,2011,2024,74.34,72.04,-3.09,rigtig,4,Danmarks Statistik,
+330,areal_antropiseret,2011,2024,80.38,78.39,-2.48,tempo,4,Danmarks Statistik,
+336,areal_antropiseret,2011,2024,84.18,82.75,-1.7,tempo,4,Danmarks Statistik,
+340,areal_antropiseret,2011,2024,69.04,65.88,-4.58,rigtig,4,Danmarks Statistik,
+350,areal_antropiseret,2011,2024,71.4,68.91,-3.49,rigtig,4,Danmarks Statistik,
+360,areal_antropiseret,2011,2024,86.68,85.51,-1.35,tempo,4,Danmarks Statistik,
+370,areal_antropiseret,2011,2024,76.8,74.61,-2.85,tempo,4,Danmarks Statistik,
+376,areal_antropiseret,2011,2024,80.78,80.0,-0.97,stagneret,4,Danmarks Statistik,
+390,areal_antropiseret,2011,2024,75.56,73.91,-2.18,tempo,4,Danmarks Statistik,
+400,areal_antropiseret,2011,2024,69.77,67.89,-2.69,tempo,4,Danmarks Statistik,
+410,areal_antropiseret,2011,2024,78.18,76.13,-2.62,tempo,4,Danmarks Statistik,
+420,areal_antropiseret,2011,2024,77.02,74.56,-3.19,rigtig,4,Danmarks Statistik,
+430,areal_antropiseret,2011,2024,74.74,72.21,-3.39,rigtig,4,Danmarks Statistik,
+440,areal_antropiseret,2011,2024,83.41,81.56,-2.22,tempo,4,Danmarks Statistik,
+450,areal_antropiseret,2011,2024,80.25,79.21,-1.3,tempo,4,Danmarks Statistik,
+461,areal_antropiseret,2011,2024,75.96,72.91,-4.02,rigtig,4,Danmarks Statistik,
+479,areal_antropiseret,2011,2024,75.8,73.93,-2.47,tempo,4,Danmarks Statistik,
+480,areal_antropiseret,2011,2024,82.47,80.75,-2.09,tempo,4,Danmarks Statistik,
+482,areal_antropiseret,2011,2024,78.22,76.91,-1.67,tempo,4,Danmarks Statistik,
+492,areal_antropiseret,2011,2024,78.65,75.77,-3.66,rigtig,4,Danmarks Statistik,
+510,areal_antropiseret,2011,2024,78.32,76.55,-2.26,tempo,4,Danmarks Statistik,
+530,areal_antropiseret,2011,2024,64.62,61.84,-4.3,rigtig,4,Danmarks Statistik,
+540,areal_antropiseret,2011,2024,82.05,80.36,-2.06,tempo,4,Danmarks Statistik,
+550,areal_antropiseret,2011,2024,78.43,77.07,-1.73,tempo,4,Danmarks Statistik,
+561,areal_antropiseret,2011,2024,78.24,75.5,-3.5,rigtig,4,Danmarks Statistik,
+563,areal_antropiseret,2011,2024,16.84,16.13,-4.22,stagneret,4,Danmarks Statistik,
+573,areal_antropiseret,2011,2024,65.06,62.53,-3.89,rigtig,4,Danmarks Statistik,
+575,areal_antropiseret,2011,2024,77.84,75.71,-2.74,tempo,4,Danmarks Statistik,
+580,areal_antropiseret,2011,2024,77.21,75.4,-2.34,tempo,4,Danmarks Statistik,
+607,areal_antropiseret,2011,2024,70.74,70.22,-0.74,stagneret,4,Danmarks Statistik,
+615,areal_antropiseret,2011,2024,71.46,69.25,-3.09,rigtig,4,Danmarks Statistik,
+621,areal_antropiseret,2011,2024,77.23,75.44,-2.32,tempo,4,Danmarks Statistik,
+630,areal_antropiseret,2011,2024,68.71,64.94,-5.49,rigtig,4,Danmarks Statistik,
+657,areal_antropiseret,2011,2024,68.58,66.36,-3.24,rigtig,4,Danmarks Statistik,
+661,areal_antropiseret,2011,2024,70.51,67.29,-4.57,rigtig,4,Danmarks Statistik,
+665,areal_antropiseret,2011,2024,72.77,70.53,-3.08,rigtig,4,Danmarks Statistik,
+671,areal_antropiseret,2011,2024,85.02,83.68,-1.58,tempo,4,Danmarks Statistik,
+706,areal_antropiseret,2011,2024,63.74,61.22,-3.95,rigtig,4,Danmarks Statistik,
+707,areal_antropiseret,2011,2024,69.8,67.93,-2.68,tempo,4,Danmarks Statistik,
+710,areal_antropiseret,2011,2024,74.36,71.83,-3.4,rigtig,4,Danmarks Statistik,
+727,areal_antropiseret,2011,2024,80.08,78.44,-2.05,tempo,4,Danmarks Statistik,
+730,areal_antropiseret,2011,2024,78.76,76.7,-2.62,tempo,4,Danmarks Statistik,
+740,areal_antropiseret,2011,2024,58.25,55.29,-5.08,rigtig,4,Danmarks Statistik,
+741,areal_antropiseret,2011,2024,76.41,74.57,-2.41,tempo,4,Danmarks Statistik,
+746,areal_antropiseret,2011,2024,67.72,64.24,-5.14,rigtig,4,Danmarks Statistik,
+751,areal_antropiseret,2011,2024,78.21,76.02,-2.8,tempo,4,Danmarks Statistik,
+756,areal_antropiseret,2011,2024,64.0,61.51,-3.89,rigtig,4,Danmarks Statistik,
+760,areal_antropiseret,2011,2024,70.51,68.37,-3.04,rigtig,4,Danmarks Statistik,
+766,areal_antropiseret,2011,2024,78.5,76.0,-3.18,rigtig,4,Danmarks Statistik,
+773,areal_antropiseret,2011,2024,85.63,83.43,-2.57,tempo,4,Danmarks Statistik,
+779,areal_antropiseret,2011,2024,78.76,76.86,-2.41,tempo,4,Danmarks Statistik,
+787,areal_antropiseret,2011,2024,59.33,58.13,-2.02,tempo,4,Danmarks Statistik,
+791,areal_antropiseret,2011,2024,66.78,63.74,-4.55,rigtig,4,Danmarks Statistik,
+810,areal_antropiseret,2011,2024,78.55,75.45,-3.95,rigtig,4,Danmarks Statistik,
+813,areal_antropiseret,2011,2024,59.43,56.52,-4.9,rigtig,4,Danmarks Statistik,
+820,areal_antropiseret,2011,2024,76.76,75.12,-2.14,tempo,4,Danmarks Statistik,
+825,areal_antropiseret,2011,2024,28.95,23.43,-19.07,rigtig,4,Danmarks Statistik,
+840,areal_antropiseret,2011,2024,72.81,70.52,-3.15,rigtig,4,Danmarks Statistik,
+846,areal_antropiseret,2011,2024,69.54,67.06,-3.57,rigtig,4,Danmarks Statistik,
+849,areal_antropiseret,2011,2024,66.78,65.06,-2.58,tempo,4,Danmarks Statistik,
+851,areal_antropiseret,2011,2024,73.28,70.18,-4.23,rigtig,4,Danmarks Statistik,
+860,areal_antropiseret,2011,2024,73.82,70.86,-4.01,rigtig,4,Danmarks Statistik,
 101,child_notifications,2015-2017,2023-2025,64.6467,86.34,33.56,forkert,11,Danmarks Statistik,
 147,child_notifications,2015-2017,2023-2025,37.1767,70.0533,88.43,forkert,11,Danmarks Statistik,
 151,child_notifications,2015-2017,2023-2025,33.4533,102.9933,207.87,forkert,11,Danmarks Statistik,
@@ -1889,202 +1782,202 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,child_poverty,2015-2017,2022-2024,5.0,4.3667,-12.67,rigtig,10,Danmarks Statistik,
 851,child_poverty,2015-2017,2022-2024,3.9667,4.5333,14.29,forkert,10,Danmarks Statistik,
 860,child_poverty,2015-2017,2022-2024,5.3333,4.3333,-18.75,rigtig,10,Danmarks Statistik,
-101,cirkularitet_recycling,2013-2015,2021-2023,22.0,38.3333,74.24,rigtig,11,Danmarks Statistik,
-147,cirkularitet_recycling,2013-2015,2021-2023,22.3333,30.6667,37.31,tempo,11,Danmarks Statistik,
-151,cirkularitet_recycling,2013-2015,2021-2023,36.3333,58.3333,60.55,rigtig,11,Danmarks Statistik,
-153,cirkularitet_recycling,2013-2015,2021-2023,36.0,57.3333,59.26,rigtig,11,Danmarks Statistik,
-155,cirkularitet_recycling,2013-2015,2021-2023,25.6667,52.0,102.6,rigtig,11,Danmarks Statistik,
-157,cirkularitet_recycling,2013-2015,2021-2023,41.6667,60.6667,45.6,rigtig,11,Danmarks Statistik,
-159,cirkularitet_recycling,2013-2015,2021-2023,44.3333,64.3333,45.11,rigtig,11,Danmarks Statistik,
-161,cirkularitet_recycling,2013-2015,2021-2023,34.6667,62.3333,79.81,rigtig,11,Danmarks Statistik,
-163,cirkularitet_recycling,2013-2015,2021-2023,36.6667,60.0,63.64,rigtig,11,Danmarks Statistik,
-165,cirkularitet_recycling,2013-2015,2021-2023,30.3333,54.6667,80.22,rigtig,11,Danmarks Statistik,
-167,cirkularitet_recycling,2013-2015,2021-2023,32.0,39.0,21.88,tempo,11,Danmarks Statistik,
-169,cirkularitet_recycling,2013-2015,2021-2023,29.6667,56.6667,91.01,rigtig,11,Danmarks Statistik,
-173,cirkularitet_recycling,2013-2015,2021-2023,36.3333,57.3333,57.8,rigtig,11,Danmarks Statistik,
-175,cirkularitet_recycling,2013-2015,2021-2023,44.3333,59.3333,33.83,tempo,11,Danmarks Statistik,
-183,cirkularitet_recycling,2013-2015,2021-2023,21.0,37.3333,77.78,rigtig,11,Danmarks Statistik,
-185,cirkularitet_recycling,2013-2015,2021-2023,33.0,47.3333,43.43,rigtig,11,Danmarks Statistik,
-187,cirkularitet_recycling,2013-2015,2021-2023,29.6667,57.0,92.13,rigtig,11,Danmarks Statistik,
-190,cirkularitet_recycling,2013-2015,2021-2023,50.3333,64.3333,27.81,tempo,11,Danmarks Statistik,
-201,cirkularitet_recycling,2013-2015,2021-2023,22.6667,56.0,147.06,rigtig,11,Danmarks Statistik,
-210,cirkularitet_recycling,2013-2015,2021-2023,23.6667,43.3333,83.1,rigtig,11,Danmarks Statistik,
-217,cirkularitet_recycling,2013-2015,2021-2023,36.0,58.3333,62.04,rigtig,11,Danmarks Statistik,
-219,cirkularitet_recycling,2013-2015,2021-2023,50.6667,66.6667,31.58,tempo,11,Danmarks Statistik,
-223,cirkularitet_recycling,2013-2015,2021-2023,31.6667,50.3333,58.95,rigtig,11,Danmarks Statistik,
-230,cirkularitet_recycling,2013-2015,2021-2023,34.3333,61.0,77.67,rigtig,11,Danmarks Statistik,
-240,cirkularitet_recycling,2013-2015,2021-2023,63.3333,69.0,8.95,tempo,11,Danmarks Statistik,
-250,cirkularitet_recycling,2013-2015,2021-2023,66.3333,70.0,5.53,tempo,11,Danmarks Statistik,
-253,cirkularitet_recycling,2013-2015,2021-2023,46.3333,64.3333,38.85,rigtig,11,Danmarks Statistik,
-259,cirkularitet_recycling,2013-2015,2021-2023,34.3333,63.3333,84.47,rigtig,11,Danmarks Statistik,
-260,cirkularitet_recycling,2013-2015,2021-2023,52.6667,68.3333,29.75,tempo,11,Danmarks Statistik,
-265,cirkularitet_recycling,2013-2015,2021-2023,39.0,68.0,74.36,rigtig,11,Danmarks Statistik,
-269,cirkularitet_recycling,2013-2015,2021-2023,23.3333,68.6667,194.29,rigtig,11,Danmarks Statistik,
-270,cirkularitet_recycling,2013-2015,2021-2023,62.3333,64.3333,3.21,tempo,11,Danmarks Statistik,
-306,cirkularitet_recycling,2013-2015,2021-2023,52.6667,65.0,23.42,tempo,11,Danmarks Statistik,
-316,cirkularitet_recycling,2013-2015,2021-2023,54.3333,65.0,19.63,tempo,11,Danmarks Statistik,
-320,cirkularitet_recycling,2013-2015,2021-2023,45.6667,63.3333,38.69,tempo,11,Danmarks Statistik,
-326,cirkularitet_recycling,2013-2015,2021-2023,50.6667,67.6667,33.55,tempo,11,Danmarks Statistik,
-329,cirkularitet_recycling,2013-2015,2021-2023,37.3333,56.3333,50.89,rigtig,11,Danmarks Statistik,
-330,cirkularitet_recycling,2013-2015,2021-2023,55.3333,54.3333,-1.81,forkert,11,Danmarks Statistik,
-336,cirkularitet_recycling,2013-2015,2021-2023,47.3333,72.0,52.11,rigtig,11,Danmarks Statistik,
-340,cirkularitet_recycling,2013-2015,2021-2023,35.3333,59.3333,67.92,rigtig,11,Danmarks Statistik,
-350,cirkularitet_recycling,2013-2015,2021-2023,42.3333,68.0,60.63,rigtig,11,Danmarks Statistik,
-360,cirkularitet_recycling,2013-2015,2021-2023,37.6667,35.6667,-5.31,forkert,11,Danmarks Statistik,
-370,cirkularitet_recycling,2013-2015,2021-2023,41.0,61.0,48.78,rigtig,11,Danmarks Statistik,
-376,cirkularitet_recycling,2013-2015,2021-2023,40.0,25.6667,-35.83,forkert,11,Danmarks Statistik,
-390,cirkularitet_recycling,2013-2015,2021-2023,43.3333,61.6667,42.31,rigtig,11,Danmarks Statistik,
-400,cirkularitet_recycling,2013-2015,2021-2023,45.3333,53.3333,17.65,tempo,11,Danmarks Statistik,
-410,cirkularitet_recycling,2013-2015,2021-2023,57.3333,60.3333,5.23,tempo,11,Danmarks Statistik,
-420,cirkularitet_recycling,2013-2015,2021-2023,63.0,64.3333,2.12,tempo,11,Danmarks Statistik,
-430,cirkularitet_recycling,2013-2015,2021-2023,46.6667,51.3333,10.0,tempo,11,Danmarks Statistik,
-440,cirkularitet_recycling,2013-2015,2021-2023,52.0,68.3333,31.41,tempo,11,Danmarks Statistik,
-450,cirkularitet_recycling,2013-2015,2021-2023,31.3333,25.3333,-19.15,forkert,11,Danmarks Statistik,
-461,cirkularitet_recycling,2013-2015,2021-2023,45.6667,62.0,35.77,tempo,11,Danmarks Statistik,
-479,cirkularitet_recycling,2013-2015,2021-2023,39.0,57.6667,47.86,rigtig,11,Danmarks Statistik,
-480,cirkularitet_recycling,2013-2015,2021-2023,25.3333,49.6667,96.05,rigtig,11,Danmarks Statistik,
-482,cirkularitet_recycling,2013-2015,2021-2023,32.3333,41.0,26.8,tempo,11,Danmarks Statistik,
-492,cirkularitet_recycling,2013-2015,2021-2023,30.0,24.6667,-17.78,forkert,11,Danmarks Statistik,
-510,cirkularitet_recycling,2013-2015,2021-2023,51.6667,58.3333,12.9,tempo,11,Danmarks Statistik,
-530,cirkularitet_recycling,2013-2015,2021-2023,43.3333,66.3333,53.08,rigtig,11,Danmarks Statistik,
-540,cirkularitet_recycling,2013-2015,2021-2023,69.6667,66.0,-5.26,forkert,11,Danmarks Statistik,
-550,cirkularitet_recycling,2013-2015,2021-2023,34.0,50.6667,49.02,rigtig,11,Danmarks Statistik,
-561,cirkularitet_recycling,2013-2015,2021-2023,45.0,70.0,55.56,rigtig,11,Danmarks Statistik,
-563,cirkularitet_recycling,2013-2015,2021-2023,58.3333,56.0,-4.0,forkert,11,Danmarks Statistik,
-573,cirkularitet_recycling,2013-2015,2021-2023,52.0,58.0,11.54,tempo,11,Danmarks Statistik,
-575,cirkularitet_recycling,2013-2015,2021-2023,49.6667,52.0,4.7,tempo,11,Danmarks Statistik,
-580,cirkularitet_recycling,2013-2015,2021-2023,36.6667,33.0,-10.0,forkert,11,Danmarks Statistik,
-607,cirkularitet_recycling,2013-2015,2021-2023,43.3333,64.3333,48.46,rigtig,11,Danmarks Statistik,
-615,cirkularitet_recycling,2013-2015,2021-2023,25.3333,38.3333,51.32,rigtig,11,Danmarks Statistik,
-621,cirkularitet_recycling,2013-2015,2021-2023,28.3333,68.0,140.0,rigtig,11,Danmarks Statistik,
-630,cirkularitet_recycling,2013-2015,2021-2023,45.6667,47.6667,4.38,tempo,11,Danmarks Statistik,
-657,cirkularitet_recycling,2013-2015,2021-2023,52.0,77.0,48.08,rigtig,11,Danmarks Statistik,
-661,cirkularitet_recycling,2013-2015,2021-2023,36.0,60.0,66.67,rigtig,11,Danmarks Statistik,
-665,cirkularitet_recycling,2013-2015,2021-2023,64.6667,66.0,2.06,tempo,11,Danmarks Statistik,
-671,cirkularitet_recycling,2013-2015,2021-2023,19.3333,64.6667,234.48,rigtig,11,Danmarks Statistik,
-706,cirkularitet_recycling,2013-2015,2021-2023,49.3333,58.0,17.57,tempo,11,Danmarks Statistik,
-707,cirkularitet_recycling,2013-2015,2021-2023,34.0,52.0,52.94,rigtig,11,Danmarks Statistik,
-710,cirkularitet_recycling,2013-2015,2021-2023,48.3333,64.3333,33.1,tempo,11,Danmarks Statistik,
-727,cirkularitet_recycling,2013-2015,2021-2023,52.0,52.6667,1.28,stagneret,11,Danmarks Statistik,
-730,cirkularitet_recycling,2013-2015,2021-2023,44.0,52.3333,18.94,tempo,11,Danmarks Statistik,
-740,cirkularitet_recycling,2013-2015,2021-2023,53.0,65.3333,23.27,tempo,11,Danmarks Statistik,
-741,cirkularitet_recycling,2013-2015,2021-2023,8.0,75.3333,841.67,rigtig,11,Danmarks Statistik,
-746,cirkularitet_recycling,2013-2015,2021-2023,49.3333,53.0,7.43,tempo,11,Danmarks Statistik,
-751,cirkularitet_recycling,2013-2015,2021-2023,37.0,53.3333,44.14,rigtig,11,Danmarks Statistik,
-756,cirkularitet_recycling,2013-2015,2021-2023,56.6667,66.6667,17.65,tempo,11,Danmarks Statistik,
-760,cirkularitet_recycling,2013-2015,2021-2023,48.3333,65.6667,35.86,tempo,11,Danmarks Statistik,
-766,cirkularitet_recycling,2013-2015,2021-2023,52.6667,55.6667,5.7,tempo,11,Danmarks Statistik,
-773,cirkularitet_recycling,2013-2015,2021-2023,54.6667,48.3333,-11.59,forkert,11,Danmarks Statistik,
-779,cirkularitet_recycling,2013-2015,2021-2023,47.6667,63.6667,33.57,tempo,11,Danmarks Statistik,
-787,cirkularitet_recycling,2013-2015,2021-2023,21.0,47.3333,125.4,rigtig,11,Danmarks Statistik,
-791,cirkularitet_recycling,2013-2015,2021-2023,44.3333,71.6667,61.65,rigtig,11,Danmarks Statistik,
-810,cirkularitet_recycling,2013-2015,2021-2023,40.6667,51.3333,26.23,tempo,11,Danmarks Statistik,
-813,cirkularitet_recycling,2013-2015,2021-2023,31.6667,52.3333,65.26,rigtig,11,Danmarks Statistik,
-820,cirkularitet_recycling,2013-2015,2021-2023,42.6667,56.0,31.25,tempo,11,Danmarks Statistik,
-825,cirkularitet_recycling,2013-2015,2021-2023,10.3333,36.3333,251.61,rigtig,11,Danmarks Statistik,
-840,cirkularitet_recycling,2013-2015,2021-2023,48.3333,48.3333,0.0,stagneret,11,Danmarks Statistik,
-846,cirkularitet_recycling,2013-2015,2021-2023,37.6667,41.0,8.85,tempo,11,Danmarks Statistik,
-849,cirkularitet_recycling,2013-2015,2021-2023,45.0,63.3333,40.74,rigtig,11,Danmarks Statistik,
-851,cirkularitet_recycling,2013-2015,2021-2023,67.0,37.3333,-44.28,forkert,11,Danmarks Statistik,
-860,cirkularitet_recycling,2013-2015,2021-2023,39.0,55.0,41.03,rigtig,11,Danmarks Statistik,
-101,cirkularitet_waste,2013-2015,2021-2023,385.3333,339.3333,-11.94,rigtig,11,Danmarks Statistik,
-147,cirkularitet_waste,2013-2015,2021-2023,403.0,307.6667,-23.66,rigtig,11,Danmarks Statistik,
-151,cirkularitet_waste,2013-2015,2021-2023,500.0,525.6667,5.13,forkert,11,Danmarks Statistik,
-153,cirkularitet_waste,2013-2015,2021-2023,525.6667,559.6667,6.47,forkert,11,Danmarks Statistik,
-155,cirkularitet_waste,2013-2015,2021-2023,474.3333,598.3333,26.14,forkert,11,Danmarks Statistik,
-157,cirkularitet_waste,2013-2015,2021-2023,586.0,593.0,1.19,forkert,11,Danmarks Statistik,
-159,cirkularitet_waste,2013-2015,2021-2023,585.0,559.6667,-4.33,rigtig,11,Danmarks Statistik,
-161,cirkularitet_waste,2013-2015,2021-2023,546.6667,691.3333,26.46,forkert,11,Danmarks Statistik,
-163,cirkularitet_waste,2013-2015,2021-2023,589.6667,564.6667,-4.24,tempo,11,Danmarks Statistik,
-165,cirkularitet_waste,2013-2015,2021-2023,487.3333,504.6667,3.56,forkert,11,Danmarks Statistik,
-167,cirkularitet_waste,2013-2015,2021-2023,495.0,369.0,-25.45,rigtig,11,Danmarks Statistik,
-169,cirkularitet_waste,2013-2015,2021-2023,452.3333,489.0,8.11,forkert,11,Danmarks Statistik,
-173,cirkularitet_waste,2013-2015,2021-2023,579.6667,450.3333,-22.31,rigtig,11,Danmarks Statistik,
-175,cirkularitet_waste,2013-2015,2021-2023,587.6667,546.3333,-7.03,rigtig,11,Danmarks Statistik,
-183,cirkularitet_waste,2013-2015,2021-2023,471.3333,361.3333,-23.34,rigtig,11,Danmarks Statistik,
-185,cirkularitet_waste,2013-2015,2021-2023,579.6667,617.6667,6.56,forkert,11,Danmarks Statistik,
-187,cirkularitet_waste,2013-2015,2021-2023,505.6667,371.0,-26.63,rigtig,11,Danmarks Statistik,
-190,cirkularitet_waste,2013-2015,2021-2023,654.0,555.3333,-15.09,rigtig,11,Danmarks Statistik,
-201,cirkularitet_waste,2013-2015,2021-2023,470.6667,507.0,7.72,forkert,11,Danmarks Statistik,
-210,cirkularitet_waste,2013-2015,2021-2023,573.3333,917.6667,60.06,forkert,11,Danmarks Statistik,
-217,cirkularitet_waste,2013-2015,2021-2023,596.3333,548.3333,-8.05,rigtig,11,Danmarks Statistik,
-219,cirkularitet_waste,2013-2015,2021-2023,602.3333,541.3333,-10.13,rigtig,11,Danmarks Statistik,
-223,cirkularitet_waste,2013-2015,2021-2023,611.3333,418.3333,-31.57,rigtig,11,Danmarks Statistik,
-230,cirkularitet_waste,2013-2015,2021-2023,600.6667,553.3333,-7.88,rigtig,11,Danmarks Statistik,
-240,cirkularitet_waste,2013-2015,2021-2023,667.0,578.3333,-13.29,rigtig,11,Danmarks Statistik,
-250,cirkularitet_waste,2013-2015,2021-2023,748.3333,696.0,-6.99,rigtig,11,Danmarks Statistik,
-253,cirkularitet_waste,2013-2015,2021-2023,621.0,468.3333,-24.58,rigtig,11,Danmarks Statistik,
-259,cirkularitet_waste,2013-2015,2021-2023,658.6667,648.0,-1.62,tempo,11,Danmarks Statistik,
-260,cirkularitet_waste,2013-2015,2021-2023,714.3333,786.3333,10.08,forkert,11,Danmarks Statistik,
-265,cirkularitet_waste,2013-2015,2021-2023,641.0,601.3333,-6.19,rigtig,11,Danmarks Statistik,
-269,cirkularitet_waste,2013-2015,2021-2023,317.3333,441.6667,39.18,forkert,11,Danmarks Statistik,
-270,cirkularitet_waste,2013-2015,2021-2023,882.6667,912.6667,3.4,forkert,11,Danmarks Statistik,
-306,cirkularitet_waste,2013-2015,2021-2023,954.0,1016.0,6.5,forkert,11,Danmarks Statistik,
-316,cirkularitet_waste,2013-2015,2021-2023,530.3333,499.6667,-5.78,rigtig,11,Danmarks Statistik,
-320,cirkularitet_waste,2013-2015,2021-2023,702.3333,631.0,-10.16,rigtig,11,Danmarks Statistik,
-326,cirkularitet_waste,2013-2015,2021-2023,791.6667,792.6667,0.13,stagneret,11,Danmarks Statistik,
-329,cirkularitet_waste,2013-2015,2021-2023,536.0,534.3333,-0.31,stagneret,11,Danmarks Statistik,
-330,cirkularitet_waste,2013-2015,2021-2023,788.3333,601.0,-23.76,rigtig,11,Danmarks Statistik,
-336,cirkularitet_waste,2013-2015,2021-2023,672.0,672.6667,0.1,stagneret,11,Danmarks Statistik,
-340,cirkularitet_waste,2013-2015,2021-2023,583.6667,564.0,-3.37,tempo,11,Danmarks Statistik,
-350,cirkularitet_waste,2013-2015,2021-2023,594.3333,493.0,-17.05,rigtig,11,Danmarks Statistik,
-360,cirkularitet_waste,2013-2015,2021-2023,715.3333,864.6667,20.88,forkert,11,Danmarks Statistik,
-370,cirkularitet_waste,2013-2015,2021-2023,646.0,564.3333,-12.64,rigtig,11,Danmarks Statistik,
-376,cirkularitet_waste,2013-2015,2021-2023,670.0,804.3333,20.05,forkert,11,Danmarks Statistik,
-390,cirkularitet_waste,2013-2015,2021-2023,778.6667,648.6667,-16.7,rigtig,11,Danmarks Statistik,
-400,cirkularitet_waste,2013-2015,2021-2023,627.6667,767.3333,22.25,forkert,11,Danmarks Statistik,
-410,cirkularitet_waste,2013-2015,2021-2023,713.0,679.6667,-4.68,rigtig,11,Danmarks Statistik,
-420,cirkularitet_waste,2013-2015,2021-2023,566.3333,610.0,7.71,forkert,11,Danmarks Statistik,
-430,cirkularitet_waste,2013-2015,2021-2023,436.6667,514.3333,17.79,forkert,11,Danmarks Statistik,
-440,cirkularitet_waste,2013-2015,2021-2023,569.3333,591.0,3.81,forkert,11,Danmarks Statistik,
-450,cirkularitet_waste,2013-2015,2021-2023,573.3333,681.6667,18.9,forkert,11,Danmarks Statistik,
-461,cirkularitet_waste,2013-2015,2021-2023,628.3333,521.6667,-16.98,rigtig,11,Danmarks Statistik,
-479,cirkularitet_waste,2013-2015,2021-2023,539.0,551.0,2.23,forkert,11,Danmarks Statistik,
-480,cirkularitet_waste,2013-2015,2021-2023,427.6667,543.6667,27.12,forkert,11,Danmarks Statistik,
-482,cirkularitet_waste,2013-2015,2021-2023,649.6667,855.3333,31.66,forkert,11,Danmarks Statistik,
-492,cirkularitet_waste,2013-2015,2021-2023,821.0,852.3333,3.82,forkert,11,Danmarks Statistik,
-510,cirkularitet_waste,2013-2015,2021-2023,620.3333,477.0,-23.11,rigtig,11,Danmarks Statistik,
-530,cirkularitet_waste,2013-2015,2021-2023,675.6667,525.0,-22.3,rigtig,11,Danmarks Statistik,
-540,cirkularitet_waste,2013-2015,2021-2023,652.6667,684.6667,4.9,forkert,11,Danmarks Statistik,
-550,cirkularitet_waste,2013-2015,2021-2023,799.6667,645.3333,-19.3,rigtig,11,Danmarks Statistik,
-561,cirkularitet_waste,2013-2015,2021-2023,679.0,689.3333,1.52,forkert,11,Danmarks Statistik,
-563,cirkularitet_waste,2013-2015,2021-2023,1503.0,1245.3333,-17.14,rigtig,11,Danmarks Statistik,
-573,cirkularitet_waste,2013-2015,2021-2023,980.6667,815.0,-16.89,rigtig,11,Danmarks Statistik,
-575,cirkularitet_waste,2013-2015,2021-2023,784.3333,451.6667,-42.41,rigtig,11,Danmarks Statistik,
-580,cirkularitet_waste,2013-2015,2021-2023,491.0,535.3333,9.03,forkert,11,Danmarks Statistik,
-607,cirkularitet_waste,2013-2015,2021-2023,615.0,422.3333,-31.33,rigtig,11,Danmarks Statistik,
-615,cirkularitet_waste,2013-2015,2021-2023,507.6667,376.3333,-25.87,rigtig,11,Danmarks Statistik,
-621,cirkularitet_waste,2013-2015,2021-2023,432.3333,547.3333,26.6,forkert,11,Danmarks Statistik,
-630,cirkularitet_waste,2013-2015,2021-2023,937.6667,805.0,-14.15,rigtig,11,Danmarks Statistik,
-657,cirkularitet_waste,2013-2015,2021-2023,551.3333,505.3333,-8.34,rigtig,11,Danmarks Statistik,
-661,cirkularitet_waste,2013-2015,2021-2023,494.6667,651.6667,31.74,forkert,11,Danmarks Statistik,
-665,cirkularitet_waste,2013-2015,2021-2023,400.3333,589.0,47.13,forkert,11,Danmarks Statistik,
-671,cirkularitet_waste,2013-2015,2021-2023,329.0,550.6667,67.38,forkert,11,Danmarks Statistik,
-706,cirkularitet_waste,2013-2015,2021-2023,800.3333,578.6667,-27.7,rigtig,11,Danmarks Statistik,
-707,cirkularitet_waste,2013-2015,2021-2023,561.0,839.6667,49.67,forkert,11,Danmarks Statistik,
-710,cirkularitet_waste,2013-2015,2021-2023,562.0,553.0,-1.6,tempo,11,Danmarks Statistik,
-727,cirkularitet_waste,2013-2015,2021-2023,735.6667,659.6667,-10.33,rigtig,11,Danmarks Statistik,
-730,cirkularitet_waste,2013-2015,2021-2023,540.0,423.6667,-21.54,rigtig,11,Danmarks Statistik,
-740,cirkularitet_waste,2013-2015,2021-2023,725.0,607.6667,-16.18,rigtig,11,Danmarks Statistik,
-741,cirkularitet_waste,2013-2015,2021-2023,725.3333,348.3333,-51.98,rigtig,11,Danmarks Statistik,
-746,cirkularitet_waste,2013-2015,2021-2023,666.3333,559.6667,-16.01,rigtig,11,Danmarks Statistik,
-751,cirkularitet_waste,2013-2015,2021-2023,426.0,530.0,24.41,forkert,11,Danmarks Statistik,
-756,cirkularitet_waste,2013-2015,2021-2023,625.6667,643.3333,2.82,forkert,11,Danmarks Statistik,
-760,cirkularitet_waste,2013-2015,2021-2023,898.6667,690.3333,-23.18,rigtig,11,Danmarks Statistik,
-766,cirkularitet_waste,2013-2015,2021-2023,615.0,702.0,14.15,forkert,11,Danmarks Statistik,
-773,cirkularitet_waste,2013-2015,2021-2023,738.6667,523.3333,-29.15,rigtig,11,Danmarks Statistik,
-779,cirkularitet_waste,2013-2015,2021-2023,738.0,605.3333,-17.98,rigtig,11,Danmarks Statistik,
-787,cirkularitet_waste,2013-2015,2021-2023,475.6667,509.6667,7.15,forkert,11,Danmarks Statistik,
-791,cirkularitet_waste,2013-2015,2021-2023,643.6667,612.3333,-4.87,rigtig,11,Danmarks Statistik,
-810,cirkularitet_waste,2013-2015,2021-2023,638.0,698.3333,9.46,forkert,11,Danmarks Statistik,
-813,cirkularitet_waste,2013-2015,2021-2023,770.0,654.6667,-14.98,rigtig,11,Danmarks Statistik,
-820,cirkularitet_waste,2013-2015,2021-2023,717.0,607.3333,-15.3,rigtig,11,Danmarks Statistik,
-825,cirkularitet_waste,2013-2015,2021-2023,1082.3333,1641.0,51.62,forkert,11,Danmarks Statistik,
-840,cirkularitet_waste,2013-2015,2021-2023,677.3333,618.6667,-8.66,rigtig,11,Danmarks Statistik,
-846,cirkularitet_waste,2013-2015,2021-2023,652.6667,496.6667,-23.9,rigtig,11,Danmarks Statistik,
-849,cirkularitet_waste,2013-2015,2021-2023,741.6667,964.3333,30.02,forkert,11,Danmarks Statistik,
-851,cirkularitet_waste,2013-2015,2021-2023,308.3333,526.0,70.59,forkert,11,Danmarks Statistik,
-860,cirkularitet_waste,2013-2015,2021-2023,739.3333,847.0,14.56,forkert,11,Danmarks Statistik,
+101,cirkularitet_recycling,2015-2017,2021-2023,23.3333,36.3333,55.71,rigtig,9,Danmarks Statistik,
+147,cirkularitet_recycling,2015-2017,2021-2023,24.3333,30.6667,26.03,rigtig,9,Danmarks Statistik,
+151,cirkularitet_recycling,2015-2017,2021-2023,40.6667,56.0,37.7,rigtig,9,Danmarks Statistik,
+153,cirkularitet_recycling,2015-2017,2021-2023,43.0,55.6667,29.46,rigtig,9,Danmarks Statistik,
+155,cirkularitet_recycling,2015-2017,2021-2023,34.6667,46.0,32.69,rigtig,9,Danmarks Statistik,
+157,cirkularitet_recycling,2015-2017,2021-2023,50.0,58.3333,16.67,tempo,9,Danmarks Statistik,
+159,cirkularitet_recycling,2015-2017,2021-2023,52.0,63.0,21.15,rigtig,9,Danmarks Statistik,
+161,cirkularitet_recycling,2015-2017,2021-2023,42.0,60.0,42.86,rigtig,9,Danmarks Statistik,
+163,cirkularitet_recycling,2015-2017,2021-2023,41.3333,55.6667,34.68,rigtig,9,Danmarks Statistik,
+165,cirkularitet_recycling,2015-2017,2021-2023,38.3333,55.6667,45.22,rigtig,9,Danmarks Statistik,
+167,cirkularitet_recycling,2015-2017,2021-2023,38.3333,44.0,14.78,tempo,9,Danmarks Statistik,
+169,cirkularitet_recycling,2015-2017,2021-2023,37.3333,52.3333,40.18,rigtig,9,Danmarks Statistik,
+173,cirkularitet_recycling,2015-2017,2021-2023,39.3333,52.3333,33.05,rigtig,9,Danmarks Statistik,
+175,cirkularitet_recycling,2015-2017,2021-2023,54.3333,59.0,8.59,tempo,9,Danmarks Statistik,
+183,cirkularitet_recycling,2015-2017,2021-2023,27.0,36.0,33.33,rigtig,9,Danmarks Statistik,
+185,cirkularitet_recycling,2015-2017,2021-2023,41.0,45.6667,11.38,tempo,9,Danmarks Statistik,
+187,cirkularitet_recycling,2015-2017,2021-2023,39.3333,59.6667,51.69,rigtig,9,Danmarks Statistik,
+190,cirkularitet_recycling,2015-2017,2021-2023,52.6667,61.6667,17.09,tempo,9,Danmarks Statistik,
+201,cirkularitet_recycling,2015-2017,2021-2023,19.6667,48.0,144.07,rigtig,9,Danmarks Statistik,
+210,cirkularitet_recycling,2015-2017,2021-2023,29.3333,38.0,29.55,rigtig,9,Danmarks Statistik,
+217,cirkularitet_recycling,2015-2017,2021-2023,38.3333,54.3333,41.74,rigtig,9,Danmarks Statistik,
+219,cirkularitet_recycling,2015-2017,2021-2023,54.0,65.0,20.37,tempo,9,Danmarks Statistik,
+223,cirkularitet_recycling,2015-2017,2021-2023,35.0,41.6667,19.05,tempo,9,Danmarks Statistik,
+230,cirkularitet_recycling,2015-2017,2021-2023,42.6667,53.0,24.22,rigtig,9,Danmarks Statistik,
+240,cirkularitet_recycling,2015-2017,2021-2023,66.0,69.0,4.55,tempo,9,Danmarks Statistik,
+250,cirkularitet_recycling,2015-2017,2021-2023,65.0,70.6667,8.72,tempo,9,Danmarks Statistik,
+253,cirkularitet_recycling,2015-2017,2021-2023,45.6667,63.0,37.96,rigtig,9,Danmarks Statistik,
+259,cirkularitet_recycling,2015-2017,2021-2023,37.3333,64.6667,73.21,rigtig,9,Danmarks Statistik,
+260,cirkularitet_recycling,2015-2017,2021-2023,60.0,63.6667,6.11,tempo,9,Danmarks Statistik,
+265,cirkularitet_recycling,2015-2017,2021-2023,40.3333,68.3333,69.42,rigtig,9,Danmarks Statistik,
+269,cirkularitet_recycling,2015-2017,2021-2023,27.3333,68.3333,150.0,rigtig,9,Danmarks Statistik,
+270,cirkularitet_recycling,2015-2017,2021-2023,62.3333,65.0,4.28,tempo,9,Danmarks Statistik,
+306,cirkularitet_recycling,2015-2017,2021-2023,59.3333,63.3333,6.74,tempo,9,Danmarks Statistik,
+316,cirkularitet_recycling,2015-2017,2021-2023,57.0,64.0,12.28,tempo,9,Danmarks Statistik,
+320,cirkularitet_recycling,2015-2017,2021-2023,48.6667,62.3333,28.08,rigtig,9,Danmarks Statistik,
+326,cirkularitet_recycling,2015-2017,2021-2023,53.3333,67.6667,26.88,rigtig,9,Danmarks Statistik,
+329,cirkularitet_recycling,2015-2017,2021-2023,45.6667,57.0,24.82,rigtig,9,Danmarks Statistik,
+330,cirkularitet_recycling,2015-2017,2021-2023,55.6667,56.0,0.6,stagneret,9,Danmarks Statistik,
+336,cirkularitet_recycling,2015-2017,2021-2023,49.3333,72.6667,47.3,rigtig,9,Danmarks Statistik,
+340,cirkularitet_recycling,2015-2017,2021-2023,42.3333,60.6667,43.31,rigtig,9,Danmarks Statistik,
+350,cirkularitet_recycling,2015-2017,2021-2023,45.3333,69.0,52.21,rigtig,9,Danmarks Statistik,
+360,cirkularitet_recycling,2015-2017,2021-2023,40.3333,33.3333,-17.36,forkert,9,Danmarks Statistik,
+370,cirkularitet_recycling,2015-2017,2021-2023,46.0,57.3333,24.64,rigtig,9,Danmarks Statistik,
+376,cirkularitet_recycling,2015-2017,2021-2023,35.3333,26.0,-26.42,forkert,9,Danmarks Statistik,
+390,cirkularitet_recycling,2015-2017,2021-2023,47.3333,63.3333,33.8,rigtig,9,Danmarks Statistik,
+400,cirkularitet_recycling,2015-2017,2021-2023,47.6667,53.0,11.19,tempo,9,Danmarks Statistik,
+410,cirkularitet_recycling,2015-2017,2021-2023,59.6667,56.0,-6.15,forkert,9,Danmarks Statistik,
+420,cirkularitet_recycling,2015-2017,2021-2023,63.3333,62.0,-2.11,forkert,9,Danmarks Statistik,
+430,cirkularitet_recycling,2015-2017,2021-2023,38.0,44.3333,16.67,tempo,9,Danmarks Statistik,
+440,cirkularitet_recycling,2015-2017,2021-2023,55.3333,65.3333,18.07,tempo,9,Danmarks Statistik,
+450,cirkularitet_recycling,2015-2017,2021-2023,28.3333,23.6667,-16.47,forkert,9,Danmarks Statistik,
+461,cirkularitet_recycling,2015-2017,2021-2023,43.6667,59.6667,36.64,rigtig,9,Danmarks Statistik,
+479,cirkularitet_recycling,2015-2017,2021-2023,42.3333,50.6667,19.69,tempo,9,Danmarks Statistik,
+480,cirkularitet_recycling,2015-2017,2021-2023,32.6667,38.0,16.33,tempo,9,Danmarks Statistik,
+482,cirkularitet_recycling,2015-2017,2021-2023,38.0,41.0,7.89,tempo,9,Danmarks Statistik,
+492,cirkularitet_recycling,2015-2017,2021-2023,30.6667,20.6667,-32.61,forkert,9,Danmarks Statistik,
+510,cirkularitet_recycling,2015-2017,2021-2023,51.6667,55.0,6.45,tempo,9,Danmarks Statistik,
+530,cirkularitet_recycling,2015-2017,2021-2023,61.0,67.6667,10.93,tempo,9,Danmarks Statistik,
+540,cirkularitet_recycling,2015-2017,2021-2023,82.0,70.0,-14.63,forkert,9,Danmarks Statistik,
+550,cirkularitet_recycling,2015-2017,2021-2023,45.6667,46.0,0.73,stagneret,9,Danmarks Statistik,
+561,cirkularitet_recycling,2015-2017,2021-2023,51.6667,63.0,21.94,rigtig,9,Danmarks Statistik,
+563,cirkularitet_recycling,2015-2017,2021-2023,56.6667,57.3333,1.18,stagneret,9,Danmarks Statistik,
+573,cirkularitet_recycling,2015-2017,2021-2023,51.0,58.6667,15.03,tempo,9,Danmarks Statistik,
+575,cirkularitet_recycling,2015-2017,2021-2023,63.0,48.3333,-23.28,forkert,9,Danmarks Statistik,
+580,cirkularitet_recycling,2015-2017,2021-2023,36.3333,39.3333,8.26,tempo,9,Danmarks Statistik,
+607,cirkularitet_recycling,2015-2017,2021-2023,50.0,58.3333,16.67,tempo,9,Danmarks Statistik,
+615,cirkularitet_recycling,2015-2017,2021-2023,25.6667,43.3333,68.83,rigtig,9,Danmarks Statistik,
+621,cirkularitet_recycling,2015-2017,2021-2023,37.0,69.3333,87.39,rigtig,9,Danmarks Statistik,
+630,cirkularitet_recycling,2015-2017,2021-2023,50.0,47.0,-6.0,forkert,9,Danmarks Statistik,
+657,cirkularitet_recycling,2015-2017,2021-2023,49.6667,65.0,30.87,rigtig,9,Danmarks Statistik,
+661,cirkularitet_recycling,2015-2017,2021-2023,49.0,64.0,30.61,rigtig,9,Danmarks Statistik,
+665,cirkularitet_recycling,2015-2017,2021-2023,56.0,65.3333,16.67,tempo,9,Danmarks Statistik,
+671,cirkularitet_recycling,2015-2017,2021-2023,22.0,62.3333,183.33,rigtig,9,Danmarks Statistik,
+706,cirkularitet_recycling,2015-2017,2021-2023,50.6667,50.0,-1.32,stagneret,9,Danmarks Statistik,
+707,cirkularitet_recycling,2015-2017,2021-2023,40.0,51.0,27.5,rigtig,9,Danmarks Statistik,
+710,cirkularitet_recycling,2015-2017,2021-2023,52.3333,57.3333,9.55,tempo,9,Danmarks Statistik,
+727,cirkularitet_recycling,2015-2017,2021-2023,55.3333,55.3333,0.0,stagneret,9,Danmarks Statistik,
+730,cirkularitet_recycling,2015-2017,2021-2023,47.0,54.3333,15.6,tempo,9,Danmarks Statistik,
+740,cirkularitet_recycling,2015-2017,2021-2023,53.6667,67.6667,26.09,rigtig,9,Danmarks Statistik,
+741,cirkularitet_recycling,2015-2017,2021-2023,7.6667,82.0,969.57,rigtig,9,Danmarks Statistik,
+746,cirkularitet_recycling,2015-2017,2021-2023,53.3333,55.3333,3.75,tempo,9,Danmarks Statistik,
+751,cirkularitet_recycling,2015-2017,2021-2023,39.3333,52.3333,33.05,rigtig,9,Danmarks Statistik,
+756,cirkularitet_recycling,2015-2017,2021-2023,61.6667,65.3333,5.95,tempo,9,Danmarks Statistik,
+760,cirkularitet_recycling,2015-2017,2021-2023,45.0,59.0,31.11,rigtig,9,Danmarks Statistik,
+766,cirkularitet_recycling,2015-2017,2021-2023,38.0,56.6667,49.12,rigtig,9,Danmarks Statistik,
+773,cirkularitet_recycling,2015-2017,2021-2023,61.6667,61.3333,-0.54,stagneret,9,Danmarks Statistik,
+779,cirkularitet_recycling,2015-2017,2021-2023,48.6667,62.3333,28.08,rigtig,9,Danmarks Statistik,
+787,cirkularitet_recycling,2015-2017,2021-2023,20.6667,48.0,132.26,rigtig,9,Danmarks Statistik,
+791,cirkularitet_recycling,2015-2017,2021-2023,47.0,70.3333,49.65,rigtig,9,Danmarks Statistik,
+810,cirkularitet_recycling,2015-2017,2021-2023,41.0,47.3333,15.45,tempo,9,Danmarks Statistik,
+813,cirkularitet_recycling,2015-2017,2021-2023,32.3333,52.3333,61.86,rigtig,9,Danmarks Statistik,
+820,cirkularitet_recycling,2015-2017,2021-2023,45.6667,52.0,13.87,tempo,9,Danmarks Statistik,
+825,cirkularitet_recycling,2015-2017,2021-2023,14.3333,30.0,109.3,rigtig,9,Danmarks Statistik,
+840,cirkularitet_recycling,2015-2017,2021-2023,45.3333,46.6667,2.94,tempo,9,Danmarks Statistik,
+846,cirkularitet_recycling,2015-2017,2021-2023,38.0,38.6667,1.75,stagneret,9,Danmarks Statistik,
+849,cirkularitet_recycling,2015-2017,2021-2023,44.3333,61.0,37.59,rigtig,9,Danmarks Statistik,
+851,cirkularitet_recycling,2015-2017,2021-2023,61.3333,33.6667,-45.11,forkert,9,Danmarks Statistik,
+860,cirkularitet_recycling,2015-2017,2021-2023,42.6667,57.3333,34.38,rigtig,9,Danmarks Statistik,
+101,cirkularitet_waste,2015-2017,2021-2023,388.0,352.0,-9.28,rigtig,9,Danmarks Statistik,
+147,cirkularitet_waste,2015-2017,2021-2023,411.3333,346.6667,-15.72,rigtig,9,Danmarks Statistik,
+151,cirkularitet_waste,2015-2017,2021-2023,544.6667,551.3333,1.22,forkert,9,Danmarks Statistik,
+153,cirkularitet_waste,2015-2017,2021-2023,585.6667,586.6667,0.17,stagneret,9,Danmarks Statistik,
+155,cirkularitet_waste,2015-2017,2021-2023,538.0,637.0,18.4,forkert,9,Danmarks Statistik,
+157,cirkularitet_waste,2015-2017,2021-2023,645.0,633.6667,-1.76,rigtig,9,Danmarks Statistik,
+159,cirkularitet_waste,2015-2017,2021-2023,650.6667,595.0,-8.56,rigtig,9,Danmarks Statistik,
+161,cirkularitet_waste,2015-2017,2021-2023,637.3333,714.0,12.03,forkert,9,Danmarks Statistik,
+163,cirkularitet_waste,2015-2017,2021-2023,625.3333,586.6667,-6.18,rigtig,9,Danmarks Statistik,
+165,cirkularitet_waste,2015-2017,2021-2023,506.6667,534.0,5.39,forkert,9,Danmarks Statistik,
+167,cirkularitet_waste,2015-2017,2021-2023,522.6667,431.6667,-17.41,rigtig,9,Danmarks Statistik,
+169,cirkularitet_waste,2015-2017,2021-2023,493.3333,530.3333,7.5,forkert,9,Danmarks Statistik,
+173,cirkularitet_waste,2015-2017,2021-2023,569.6667,465.3333,-18.31,rigtig,9,Danmarks Statistik,
+175,cirkularitet_waste,2015-2017,2021-2023,652.3333,583.3333,-10.58,rigtig,9,Danmarks Statistik,
+183,cirkularitet_waste,2015-2017,2021-2023,490.0,389.0,-20.61,rigtig,9,Danmarks Statistik,
+185,cirkularitet_waste,2015-2017,2021-2023,624.3333,682.0,9.24,forkert,9,Danmarks Statistik,
+187,cirkularitet_waste,2015-2017,2021-2023,559.6667,439.3333,-21.5,rigtig,9,Danmarks Statistik,
+190,cirkularitet_waste,2015-2017,2021-2023,658.0,602.0,-8.51,rigtig,9,Danmarks Statistik,
+201,cirkularitet_waste,2015-2017,2021-2023,475.3333,620.3333,30.5,forkert,9,Danmarks Statistik,
+210,cirkularitet_waste,2015-2017,2021-2023,612.6667,713.0,16.38,forkert,9,Danmarks Statistik,
+217,cirkularitet_waste,2015-2017,2021-2023,566.0,574.0,1.41,forkert,9,Danmarks Statistik,
+219,cirkularitet_waste,2015-2017,2021-2023,600.3333,572.6667,-4.61,rigtig,9,Danmarks Statistik,
+223,cirkularitet_waste,2015-2017,2021-2023,599.6667,592.3333,-1.22,tempo,9,Danmarks Statistik,
+230,cirkularitet_waste,2015-2017,2021-2023,638.0,688.0,7.84,forkert,9,Danmarks Statistik,
+240,cirkularitet_waste,2015-2017,2021-2023,685.0,621.6667,-9.25,rigtig,9,Danmarks Statistik,
+250,cirkularitet_waste,2015-2017,2021-2023,752.0,726.0,-3.46,rigtig,9,Danmarks Statistik,
+253,cirkularitet_waste,2015-2017,2021-2023,590.6667,510.3333,-13.6,rigtig,9,Danmarks Statistik,
+259,cirkularitet_waste,2015-2017,2021-2023,664.3333,698.3333,5.12,forkert,9,Danmarks Statistik,
+260,cirkularitet_waste,2015-2017,2021-2023,820.3333,794.6667,-3.13,rigtig,9,Danmarks Statistik,
+265,cirkularitet_waste,2015-2017,2021-2023,626.3333,643.6667,2.77,forkert,9,Danmarks Statistik,
+269,cirkularitet_waste,2015-2017,2021-2023,356.0,466.3333,30.99,forkert,9,Danmarks Statistik,
+270,cirkularitet_waste,2015-2017,2021-2023,906.6667,959.6667,5.85,forkert,9,Danmarks Statistik,
+306,cirkularitet_waste,2015-2017,2021-2023,1042.0,1075.0,3.17,forkert,9,Danmarks Statistik,
+316,cirkularitet_waste,2015-2017,2021-2023,540.3333,514.0,-4.87,rigtig,9,Danmarks Statistik,
+320,cirkularitet_waste,2015-2017,2021-2023,699.3333,673.0,-3.77,rigtig,9,Danmarks Statistik,
+326,cirkularitet_waste,2015-2017,2021-2023,794.6667,850.6667,7.05,forkert,9,Danmarks Statistik,
+329,cirkularitet_waste,2015-2017,2021-2023,589.3333,569.0,-3.45,rigtig,9,Danmarks Statistik,
+330,cirkularitet_waste,2015-2017,2021-2023,683.6667,612.0,-10.48,rigtig,9,Danmarks Statistik,
+336,cirkularitet_waste,2015-2017,2021-2023,673.0,712.6667,5.89,forkert,9,Danmarks Statistik,
+340,cirkularitet_waste,2015-2017,2021-2023,645.3333,616.6667,-4.44,rigtig,9,Danmarks Statistik,
+350,cirkularitet_waste,2015-2017,2021-2023,609.6667,528.3333,-13.34,rigtig,9,Danmarks Statistik,
+360,cirkularitet_waste,2015-2017,2021-2023,746.3333,907.6667,21.62,forkert,9,Danmarks Statistik,
+370,cirkularitet_waste,2015-2017,2021-2023,666.6667,582.0,-12.7,rigtig,9,Danmarks Statistik,
+376,cirkularitet_waste,2015-2017,2021-2023,669.0,825.3333,23.37,forkert,9,Danmarks Statistik,
+390,cirkularitet_waste,2015-2017,2021-2023,731.6667,689.3333,-5.79,rigtig,9,Danmarks Statistik,
+400,cirkularitet_waste,2015-2017,2021-2023,679.3333,784.6667,15.51,forkert,9,Danmarks Statistik,
+410,cirkularitet_waste,2015-2017,2021-2023,727.0,717.3333,-1.33,tempo,9,Danmarks Statistik,
+420,cirkularitet_waste,2015-2017,2021-2023,581.3333,638.6667,9.86,forkert,9,Danmarks Statistik,
+430,cirkularitet_waste,2015-2017,2021-2023,424.3333,449.3333,5.89,forkert,9,Danmarks Statistik,
+440,cirkularitet_waste,2015-2017,2021-2023,596.3333,586.3333,-1.68,tempo,9,Danmarks Statistik,
+450,cirkularitet_waste,2015-2017,2021-2023,609.6667,615.0,0.87,stagneret,9,Danmarks Statistik,
+461,cirkularitet_waste,2015-2017,2021-2023,593.0,546.6667,-7.81,rigtig,9,Danmarks Statistik,
+479,cirkularitet_waste,2015-2017,2021-2023,558.6667,568.0,1.67,forkert,9,Danmarks Statistik,
+480,cirkularitet_waste,2015-2017,2021-2023,442.3333,466.0,5.35,forkert,9,Danmarks Statistik,
+482,cirkularitet_waste,2015-2017,2021-2023,724.6667,839.6667,15.87,forkert,9,Danmarks Statistik,
+492,cirkularitet_waste,2015-2017,2021-2023,799.0,834.0,4.38,forkert,9,Danmarks Statistik,
+510,cirkularitet_waste,2015-2017,2021-2023,584.3333,532.6667,-8.84,rigtig,9,Danmarks Statistik,
+530,cirkularitet_waste,2015-2017,2021-2023,638.0,554.0,-13.17,rigtig,9,Danmarks Statistik,
+540,cirkularitet_waste,2015-2017,2021-2023,538.0,623.0,15.8,forkert,9,Danmarks Statistik,
+550,cirkularitet_waste,2015-2017,2021-2023,822.0,684.3333,-16.75,rigtig,9,Danmarks Statistik,
+561,cirkularitet_waste,2015-2017,2021-2023,717.0,663.3333,-7.48,rigtig,9,Danmarks Statistik,
+563,cirkularitet_waste,2015-2017,2021-2023,1567.0,1237.6667,-21.02,rigtig,9,Danmarks Statistik,
+573,cirkularitet_waste,2015-2017,2021-2023,979.6667,828.0,-15.48,rigtig,9,Danmarks Statistik,
+575,cirkularitet_waste,2015-2017,2021-2023,865.3333,522.6667,-39.6,rigtig,9,Danmarks Statistik,
+580,cirkularitet_waste,2015-2017,2021-2023,510.6667,548.0,7.31,forkert,9,Danmarks Statistik,
+607,cirkularitet_waste,2015-2017,2021-2023,632.3333,465.3333,-26.41,rigtig,9,Danmarks Statistik,
+615,cirkularitet_waste,2015-2017,2021-2023,504.6667,430.3333,-14.73,rigtig,9,Danmarks Statistik,
+621,cirkularitet_waste,2015-2017,2021-2023,472.0,558.6667,18.36,forkert,9,Danmarks Statistik,
+630,cirkularitet_waste,2015-2017,2021-2023,913.3333,891.0,-2.45,rigtig,9,Danmarks Statistik,
+657,cirkularitet_waste,2015-2017,2021-2023,612.3333,547.6667,-10.56,rigtig,9,Danmarks Statistik,
+661,cirkularitet_waste,2015-2017,2021-2023,618.0,670.0,8.41,forkert,9,Danmarks Statistik,
+665,cirkularitet_waste,2015-2017,2021-2023,471.0,613.3333,30.22,forkert,9,Danmarks Statistik,
+671,cirkularitet_waste,2015-2017,2021-2023,347.6667,579.3333,66.63,forkert,9,Danmarks Statistik,
+706,cirkularitet_waste,2015-2017,2021-2023,777.3333,703.0,-9.56,rigtig,9,Danmarks Statistik,
+707,cirkularitet_waste,2015-2017,2021-2023,608.3333,709.6667,16.66,forkert,9,Danmarks Statistik,
+710,cirkularitet_waste,2015-2017,2021-2023,595.6667,581.3333,-2.41,rigtig,9,Danmarks Statistik,
+727,cirkularitet_waste,2015-2017,2021-2023,713.0,732.0,2.66,forkert,9,Danmarks Statistik,
+730,cirkularitet_waste,2015-2017,2021-2023,576.6667,469.0,-18.67,rigtig,9,Danmarks Statistik,
+740,cirkularitet_waste,2015-2017,2021-2023,699.6667,672.3333,-3.91,rigtig,9,Danmarks Statistik,
+741,cirkularitet_waste,2015-2017,2021-2023,680.6667,204.0,-70.03,rigtig,9,Danmarks Statistik,
+746,cirkularitet_waste,2015-2017,2021-2023,671.6667,607.3333,-9.58,rigtig,9,Danmarks Statistik,
+751,cirkularitet_waste,2015-2017,2021-2023,436.6667,551.6667,26.34,forkert,9,Danmarks Statistik,
+756,cirkularitet_waste,2015-2017,2021-2023,618.6667,644.0,4.09,forkert,9,Danmarks Statistik,
+760,cirkularitet_waste,2015-2017,2021-2023,797.3333,697.6667,-12.5,rigtig,9,Danmarks Statistik,
+766,cirkularitet_waste,2015-2017,2021-2023,650.0,696.0,7.08,forkert,9,Danmarks Statistik,
+773,cirkularitet_waste,2015-2017,2021-2023,700.3333,570.6667,-18.51,rigtig,9,Danmarks Statistik,
+779,cirkularitet_waste,2015-2017,2021-2023,730.6667,643.0,-12.0,rigtig,9,Danmarks Statistik,
+787,cirkularitet_waste,2015-2017,2021-2023,456.0,522.3333,14.55,forkert,9,Danmarks Statistik,
+791,cirkularitet_waste,2015-2017,2021-2023,658.6667,619.3333,-5.97,rigtig,9,Danmarks Statistik,
+810,cirkularitet_waste,2015-2017,2021-2023,619.6667,657.3333,6.08,forkert,9,Danmarks Statistik,
+813,cirkularitet_waste,2015-2017,2021-2023,793.6667,696.6667,-12.22,rigtig,9,Danmarks Statistik,
+820,cirkularitet_waste,2015-2017,2021-2023,674.3333,632.6667,-6.18,rigtig,9,Danmarks Statistik,
+825,cirkularitet_waste,2015-2017,2021-2023,1118.0,1326.3333,18.63,forkert,9,Danmarks Statistik,
+840,cirkularitet_waste,2015-2017,2021-2023,620.3333,629.6667,1.5,forkert,9,Danmarks Statistik,
+846,cirkularitet_waste,2015-2017,2021-2023,628.0,523.6667,-16.61,rigtig,9,Danmarks Statistik,
+849,cirkularitet_waste,2015-2017,2021-2023,708.0,989.0,39.69,forkert,9,Danmarks Statistik,
+851,cirkularitet_waste,2015-2017,2021-2023,269.6667,528.3333,95.92,forkert,9,Danmarks Statistik,
+860,cirkularitet_waste,2015-2017,2021-2023,741.0,788.0,6.34,forkert,9,Danmarks Statistik,
 101,civil_society,2010-2012,2023-2025,49.6667,54.3333,9.4,rigtig,16,Danmarks Statistik,
 147,civil_society,2010-2012,2023-2025,40.3333,69.0,71.07,rigtig,16,Danmarks Statistik,
 151,civil_society,2010-2012,2023-2025,72.0,105.0,45.83,rigtig,16,Danmarks Statistik,
@@ -5103,198 +4996,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,music_school,2022,2025,21.71,24.29,11.88,rigtig,4,Danmarks Statistik,
 851,music_school,2022,2025,18.33,17.67,-3.6,stagneret,4,Danmarks Statistik,
 860,music_school,2022,2025,14.21,12.87,-9.43,forkert,4,Danmarks Statistik,
-101,naer_nitrogen,2010-2012,2022-2024,0.9463,1.1883,25.57,forkert,15,Danmarks Statistik,
-151,naer_nitrogen,2010-2012,2022-2024,0.536,0.5503,2.67,forkert,15,Danmarks Statistik,
-153,naer_nitrogen,2014-2016,2022-2024,0.105,0.1423,35.56,forkert,11,Danmarks Statistik,
-155,naer_nitrogen,2010-2012,2022-2024,0.5613,0.617,9.92,forkert,15,Danmarks Statistik,
-157,naer_nitrogen,2014-2016,2022-2024,0.3927,0.3747,-4.58,rigtig,11,Danmarks Statistik,
-159,naer_nitrogen,2014-2016,2022-2024,0.139,0.0523,-62.35,rigtig,11,Danmarks Statistik,
-161,naer_nitrogen,2014-2016,2022-2024,0.045,0.099,120.0,forkert,11,Danmarks Statistik,
-163,naer_nitrogen,2014-2016,2022-2024,0.095,0.1133,19.3,forkert,11,Danmarks Statistik,
-165,naer_nitrogen,2014-2016,2022-2024,0.1797,0.1933,7.61,forkert,11,Danmarks Statistik,
-167,naer_nitrogen,2010-2012,2022-2024,2.5583,3.1713,23.96,forkert,15,Danmarks Statistik,
-169,naer_nitrogen,2010-2012,2022-2024,0.07,0.1683,140.48,forkert,15,Danmarks Statistik,
-173,naer_nitrogen,2010-2012,2022-2024,1.402,1.4467,3.19,forkert,15,Danmarks Statistik,
-175,naer_nitrogen,2014-2016,2022-2024,0.0793,0.062,-21.85,rigtig,11,Danmarks Statistik,
-183,naer_nitrogen,2014-2016,2022-2024,0.0763,0.241,215.72,forkert,10,Danmarks Statistik,
-185,naer_nitrogen,2010-2012,2022-2024,0.6777,1.1497,69.65,forkert,15,Danmarks Statistik,
-187,naer_nitrogen,2014-2016,2022-2024,0.5033,0.35,-30.46,rigtig,11,Danmarks Statistik,
-190,naer_nitrogen,2010-2012,2022-2024,0.078,0.2613,235.04,forkert,14,Danmarks Statistik,
-201,naer_nitrogen,2010-2012,2022-2024,0.3737,0.4107,9.9,forkert,15,Danmarks Statistik,
-210,naer_nitrogen,2010-2012,2022-2024,0.322,0.4083,26.81,forkert,15,Danmarks Statistik,
-217,naer_nitrogen,2010-2012,2022-2024,0.5433,0.915,68.4,forkert,15,Danmarks Statistik,
-219,naer_nitrogen,2010-2012,2022-2024,0.8087,0.494,-38.91,rigtig,15,Danmarks Statistik,
-223,naer_nitrogen,2010-2012,2022-2024,0.8063,0.8483,5.21,forkert,15,Danmarks Statistik,
-230,naer_nitrogen,2010-2012,2022-2024,0.476,0.5417,13.8,forkert,15,Danmarks Statistik,
-240,naer_nitrogen,2010-2012,2022-2024,0.168,0.288,71.43,forkert,15,Danmarks Statistik,
-250,naer_nitrogen,2010-2012,2022-2024,0.3917,0.513,30.98,forkert,15,Danmarks Statistik,
-253,naer_nitrogen,2010-2012,2022-2024,0.5567,0.7733,38.92,forkert,15,Danmarks Statistik,
-259,naer_nitrogen,2010-2012,2022-2024,0.8447,0.8017,-5.09,rigtig,15,Danmarks Statistik,
-260,naer_nitrogen,2010-2012,2022-2024,0.881,0.8053,-8.59,rigtig,15,Danmarks Statistik,
-265,naer_nitrogen,2010-2012,2022-2024,0.6583,0.491,-25.42,rigtig,15,Danmarks Statistik,
-269,naer_nitrogen,2010-2012,2022-2024,0.3017,0.425,40.88,forkert,15,Danmarks Statistik,
-270,naer_nitrogen,2010-2012,2022-2024,0.8933,0.7863,-11.98,rigtig,15,Danmarks Statistik,
-306,naer_nitrogen,2010-2012,2022-2024,0.8223,0.8127,-1.18,rigtig,15,Danmarks Statistik,
-316,naer_nitrogen,2010-2012,2022-2024,0.5417,0.6617,22.15,forkert,15,Danmarks Statistik,
-320,naer_nitrogen,2010-2012,2022-2024,1.012,0.953,-5.83,rigtig,15,Danmarks Statistik,
-326,naer_nitrogen,2010-2012,2022-2024,3.277,4.0957,24.98,forkert,15,Danmarks Statistik,
-329,naer_nitrogen,2010-2012,2022-2024,0.6697,0.801,19.61,forkert,15,Danmarks Statistik,
-330,naer_nitrogen,2010-2012,2022-2024,1.0983,0.9233,-15.93,rigtig,15,Danmarks Statistik,
-336,naer_nitrogen,2010-2012,2022-2024,0.7313,0.5223,-28.58,rigtig,15,Danmarks Statistik,
-340,naer_nitrogen,2010-2012,2022-2024,0.7123,0.758,6.41,forkert,15,Danmarks Statistik,
-350,naer_nitrogen,2010-2012,2022-2024,0.448,0.5513,23.07,forkert,15,Danmarks Statistik,
-360,naer_nitrogen,2010-2012,2022-2024,2.9537,3.2277,9.28,forkert,15,Danmarks Statistik,
-370,naer_nitrogen,2010-2012,2022-2024,0.9133,0.7657,-16.17,rigtig,15,Danmarks Statistik,
-376,naer_nitrogen,2010-2012,2022-2024,1.6557,1.8307,10.57,forkert,15,Danmarks Statistik,
-390,naer_nitrogen,2010-2012,2022-2024,1.511,1.4273,-5.54,rigtig,15,Danmarks Statistik,
-400,naer_nitrogen,2010-2012,2022-2024,0.8697,1.3593,56.31,forkert,15,Danmarks Statistik,
-410,naer_nitrogen,2010-2012,2022-2024,0.8053,1.1517,43.0,forkert,15,Danmarks Statistik,
-420,naer_nitrogen,2010-2012,2022-2024,0.5357,0.596,11.26,forkert,15,Danmarks Statistik,
-430,naer_nitrogen,2010-2012,2022-2024,0.822,0.888,8.03,forkert,15,Danmarks Statistik,
-440,naer_nitrogen,2010-2012,2022-2024,0.3363,0.932,177.11,forkert,15,Danmarks Statistik,
-450,naer_nitrogen,2010-2012,2022-2024,0.9613,1.284,33.56,forkert,15,Danmarks Statistik,
-461,naer_nitrogen,2010-2012,2022-2024,0.7317,0.9173,25.38,forkert,15,Danmarks Statistik,
-479,naer_nitrogen,2010-2012,2022-2024,0.698,0.8723,24.98,forkert,15,Danmarks Statistik,
-480,naer_nitrogen,2010-2012,2022-2024,0.7233,1.0447,44.42,forkert,15,Danmarks Statistik,
-482,naer_nitrogen,2010-2012,2022-2024,1.2763,1.572,23.17,forkert,15,Danmarks Statistik,
-492,naer_nitrogen,2010-2012,2022-2024,0.7503,0.668,-10.97,rigtig,15,Danmarks Statistik,
-510,naer_nitrogen,2010-2012,2022-2024,1.7437,1.896,8.74,forkert,15,Danmarks Statistik,
-530,naer_nitrogen,2010-2012,2022-2024,2.6987,2.4617,-8.78,rigtig,15,Danmarks Statistik,
-540,naer_nitrogen,2010-2012,2022-2024,1.062,0.9217,-13.21,rigtig,15,Danmarks Statistik,
-550,naer_nitrogen,2010-2012,2022-2024,1.1917,1.4677,23.16,forkert,15,Danmarks Statistik,
-561,naer_nitrogen,2010-2012,2022-2024,0.9523,1.056,10.89,forkert,15,Danmarks Statistik,
-563,naer_nitrogen,2014-2017,2019-2023,0.3037,0.291,-4.17,rigtig,6,Danmarks Statistik,
-573,naer_nitrogen,2010-2012,2022-2024,1.3387,1.4513,8.42,forkert,15,Danmarks Statistik,
-575,naer_nitrogen,2010-2012,2022-2024,1.7553,1.7533,-0.11,stagneret,15,Danmarks Statistik,
-580,naer_nitrogen,2010-2012,2022-2024,0.753,1.0607,40.86,forkert,15,Danmarks Statistik,
-607,naer_nitrogen,2010-2012,2022-2024,1.1123,1.304,17.23,forkert,15,Danmarks Statistik,
-615,naer_nitrogen,2010-2012,2022-2024,0.9923,1.009,1.68,forkert,15,Danmarks Statistik,
-621,naer_nitrogen,2010-2012,2022-2024,1.0533,1.1363,7.88,forkert,15,Danmarks Statistik,
-630,naer_nitrogen,2010-2012,2022-2024,1.2297,1.3223,7.54,forkert,15,Danmarks Statistik,
-657,naer_nitrogen,2010-2012,2022-2024,1.535,1.6833,9.66,forkert,15,Danmarks Statistik,
-661,naer_nitrogen,2010-2012,2022-2024,1.4407,1.852,28.55,forkert,15,Danmarks Statistik,
-665,naer_nitrogen,2010-2012,2022-2024,2.384,2.2997,-3.54,rigtig,15,Danmarks Statistik,
-671,naer_nitrogen,2010-2012,2022-2024,0.8697,0.7397,-14.95,rigtig,15,Danmarks Statistik,
-706,naer_nitrogen,2010-2012,2022-2024,0.528,0.561,6.25,forkert,15,Danmarks Statistik,
-707,naer_nitrogen,2010-2012,2022-2024,0.772,1.1567,49.83,forkert,15,Danmarks Statistik,
-710,naer_nitrogen,2010-2012,2022-2024,0.5833,0.948,62.51,forkert,15,Danmarks Statistik,
-727,naer_nitrogen,2010-2012,2022-2024,0.7037,1.2253,74.14,forkert,15,Danmarks Statistik,
-730,naer_nitrogen,2010-2012,2022-2024,0.906,1.0363,14.39,forkert,15,Danmarks Statistik,
-740,naer_nitrogen,2010-2012,2022-2024,0.6597,0.641,-2.83,rigtig,15,Danmarks Statistik,
-741,naer_nitrogen,2010-2012,2022-2024,3.383,4.112,21.55,forkert,15,Danmarks Statistik,
-746,naer_nitrogen,2010-2012,2022-2024,0.4217,0.539,27.83,forkert,15,Danmarks Statistik,
-751,naer_nitrogen,2010-2012,2022-2024,0.513,0.731,42.5,forkert,15,Danmarks Statistik,
-756,naer_nitrogen,2010-2012,2022-2024,1.3477,1.376,2.1,forkert,15,Danmarks Statistik,
-760,naer_nitrogen,2010-2012,2022-2024,1.54,2.779,80.45,forkert,15,Danmarks Statistik,
-766,naer_nitrogen,2010-2012,2022-2024,1.362,1.908,40.09,forkert,15,Danmarks Statistik,
-773,naer_nitrogen,2010-2012,2022-2024,1.2483,0.8703,-30.28,rigtig,15,Danmarks Statistik,
-779,naer_nitrogen,2010-2012,2022-2024,0.7373,1.1567,56.87,forkert,15,Danmarks Statistik,
-787,naer_nitrogen,2010-2012,2022-2024,1.0793,1.3983,29.56,forkert,15,Danmarks Statistik,
-791,naer_nitrogen,2010-2012,2022-2024,1.1257,1.14,1.27,forkert,15,Danmarks Statistik,
-810,naer_nitrogen,2010-2012,2022-2024,0.9037,0.8593,-4.91,rigtig,15,Danmarks Statistik,
-813,naer_nitrogen,2010-2012,2022-2024,1.8477,3.5813,93.83,forkert,15,Danmarks Statistik,
-820,naer_nitrogen,2010-2012,2022-2024,1.0133,1.6903,66.81,forkert,15,Danmarks Statistik,
-825,naer_nitrogen,2010-2012,2022-2024,2.7557,3.0077,9.14,forkert,15,Danmarks Statistik,
-840,naer_nitrogen,2010-2012,2022-2024,1.0027,0.9947,-0.8,stagneret,15,Danmarks Statistik,
-846,naer_nitrogen,2010-2012,2022-2024,0.8777,0.83,-5.43,rigtig,15,Danmarks Statistik,
-849,naer_nitrogen,2010-2012,2022-2024,0.9033,0.967,7.05,forkert,15,Danmarks Statistik,
-851,naer_nitrogen,2010-2012,2022-2024,0.8463,0.9967,17.76,forkert,15,Danmarks Statistik,
-860,naer_nitrogen,2010-2012,2022-2024,0.8477,1.2747,50.37,forkert,15,Danmarks Statistik,
-101,naer_phosphorus,2010-2012,2022-2024,0.2367,0.1,-57.75,rigtig,15,Danmarks Statistik,
-151,naer_phosphorus,2010-2012,2022-2024,0.1113,0.093,-16.47,rigtig,15,Danmarks Statistik,
-153,naer_phosphorus,2014-2016,2021-2024,0.0287,0.027,-5.81,rigtig,7,Danmarks Statistik,
-155,naer_phosphorus,2010-2012,2022-2024,0.0977,0.0683,-30.03,rigtig,15,Danmarks Statistik,
-157,naer_phosphorus,2014-2016,2022-2024,0.1023,0.0623,-39.09,rigtig,11,Danmarks Statistik,
-159,naer_phosphorus,2014-2016,2017-2024,0.035,0.0143,-59.05,rigtig,6,Danmarks Statistik,
-163,naer_phosphorus,2014,2017,0.036,0.035,-2.78,rigtig,4,Danmarks Statistik,
-165,naer_phosphorus,2014-2016,2022-2024,0.036,0.036,0.0,stagneret,10,Danmarks Statistik,
-167,naer_phosphorus,2010-2012,2022-2024,0.3193,0.405,26.83,forkert,15,Danmarks Statistik,
-169,naer_phosphorus,2014-2016,2022-2024,0.034,0.018,-47.06,rigtig,11,Danmarks Statistik,
-173,naer_phosphorus,2010-2012,2022-2024,0.183,0.2113,15.48,forkert,15,Danmarks Statistik,
-175,naer_phosphorus,2014,2023,0.027,0.023,-14.81,rigtig,4,Danmarks Statistik,
-183,naer_phosphorus,2023,2024,0.043,0.042,-2.33,rigtig,2,Danmarks Statistik,
-185,naer_phosphorus,2010-2012,2022-2024,0.1633,0.115,-29.59,rigtig,15,Danmarks Statistik,
-187,naer_phosphorus,2014-2016,2022-2024,0.1313,0.0587,-55.33,rigtig,11,Danmarks Statistik,
-190,naer_phosphorus,2015-2017,2022-2024,0.0253,0.032,26.32,forkert,10,Danmarks Statistik,
-201,naer_phosphorus,2010-2012,2022-2024,0.097,0.0513,-47.08,rigtig,15,Danmarks Statistik,
-210,naer_phosphorus,2010-2012,2022-2024,0.0593,0.04,-32.58,rigtig,15,Danmarks Statistik,
-217,naer_phosphorus,2010-2012,2022-2024,0.0927,0.1313,41.73,forkert,15,Danmarks Statistik,
-219,naer_phosphorus,2010-2012,2022-2024,0.0487,0.0553,13.7,forkert,15,Danmarks Statistik,
-223,naer_phosphorus,2010-2012,2022-2024,0.0547,0.0803,46.95,forkert,14,Danmarks Statistik,
-230,naer_phosphorus,2010-2012,2022-2024,0.043,0.0813,89.15,forkert,15,Danmarks Statistik,
-240,naer_phosphorus,2010-2012,2022-2024,0.024,0.0517,115.28,forkert,15,Danmarks Statistik,
-250,naer_phosphorus,2010-2012,2022-2024,0.0603,0.058,-3.87,rigtig,15,Danmarks Statistik,
-253,naer_phosphorus,2010-2012,2022-2024,0.0767,0.084,9.57,forkert,15,Danmarks Statistik,
-259,naer_phosphorus,2010-2012,2022-2024,0.204,0.112,-45.1,rigtig,15,Danmarks Statistik,
-260,naer_phosphorus,2010-2012,2022-2024,0.0537,0.0637,18.63,forkert,15,Danmarks Statistik,
-265,naer_phosphorus,2010-2012,2022-2024,0.0887,0.059,-33.46,rigtig,15,Danmarks Statistik,
-269,naer_phosphorus,2010-2012,2022-2024,0.0633,0.0683,7.89,forkert,14,Danmarks Statistik,
-270,naer_phosphorus,2010-2012,2022-2024,0.082,0.088,7.32,forkert,15,Danmarks Statistik,
-306,naer_phosphorus,2010-2012,2022-2024,0.1523,0.0913,-40.04,rigtig,15,Danmarks Statistik,
-316,naer_phosphorus,2010-2012,2022-2024,0.0623,0.1083,73.8,forkert,15,Danmarks Statistik,
-320,naer_phosphorus,2010-2012,2022-2024,0.1137,0.1247,9.68,forkert,15,Danmarks Statistik,
-326,naer_phosphorus,2010-2012,2022-2024,0.3677,0.427,16.14,forkert,15,Danmarks Statistik,
-329,naer_phosphorus,2010-2012,2022-2024,0.071,0.0463,-34.74,rigtig,15,Danmarks Statistik,
-330,naer_phosphorus,2010-2012,2022-2024,0.1463,0.113,-22.78,rigtig,15,Danmarks Statistik,
-336,naer_phosphorus,2010-2012,2022-2024,0.122,0.0847,-30.6,rigtig,15,Danmarks Statistik,
-340,naer_phosphorus,2010-2012,2022-2024,0.068,0.099,45.59,forkert,15,Danmarks Statistik,
-350,naer_phosphorus,2010-2012,2022-2024,0.062,0.092,48.39,forkert,15,Danmarks Statistik,
-360,naer_phosphorus,2010-2012,2022-2024,0.3553,0.4013,12.95,forkert,15,Danmarks Statistik,
-370,naer_phosphorus,2010-2012,2022-2024,0.1483,0.095,-35.96,rigtig,15,Danmarks Statistik,
-376,naer_phosphorus,2010-2012,2022-2024,0.2133,0.2107,-1.25,rigtig,15,Danmarks Statistik,
-390,naer_phosphorus,2010-2012,2022-2024,0.2027,0.1977,-2.47,rigtig,15,Danmarks Statistik,
-400,naer_phosphorus,2010-2012,2022-2024,0.1113,0.169,51.8,forkert,15,Danmarks Statistik,
-410,naer_phosphorus,2010-2012,2022-2024,0.062,0.15,141.94,forkert,15,Danmarks Statistik,
-420,naer_phosphorus,2010-2012,2022-2024,0.064,0.049,-23.44,rigtig,15,Danmarks Statistik,
-430,naer_phosphorus,2010-2012,2022-2024,0.0773,0.096,24.14,forkert,15,Danmarks Statistik,
-440,naer_phosphorus,2010-2012,2022-2024,0.056,0.0833,48.81,forkert,15,Danmarks Statistik,
-450,naer_phosphorus,2010-2012,2022-2024,0.1163,0.1863,60.17,forkert,15,Danmarks Statistik,
-461,naer_phosphorus,2010-2012,2022-2024,0.021,0.0867,312.7,forkert,15,Danmarks Statistik,
-479,naer_phosphorus,2010-2012,2022-2024,0.085,0.1007,18.43,forkert,15,Danmarks Statistik,
-480,naer_phosphorus,2010-2012,2022-2024,0.079,0.1237,56.54,forkert,15,Danmarks Statistik,
-482,naer_phosphorus,2010-2012,2022-2024,0.15,0.1893,26.22,forkert,15,Danmarks Statistik,
-492,naer_phosphorus,2011-2014,2015-2017,0.2053,0.2133,3.9,forkert,6,Danmarks Statistik,
-510,naer_phosphorus,2010-2012,2022-2024,0.2667,0.1747,-34.5,rigtig,15,Danmarks Statistik,
-530,naer_phosphorus,2010-2012,2022-2024,0.369,0.2227,-39.66,rigtig,15,Danmarks Statistik,
-540,naer_phosphorus,2010-2012,2022-2024,0.1357,0.0943,-30.47,rigtig,15,Danmarks Statistik,
-550,naer_phosphorus,2010-2012,2022-2024,0.1183,0.1543,30.42,forkert,15,Danmarks Statistik,
-561,naer_phosphorus,2010-2012,2022-2024,0.0957,0.121,26.48,forkert,15,Danmarks Statistik,
-573,naer_phosphorus,2010-2012,2022-2024,0.1653,0.1473,-10.89,rigtig,15,Danmarks Statistik,
-575,naer_phosphorus,2010-2012,2022-2024,0.1873,0.2027,8.19,forkert,15,Danmarks Statistik,
-580,naer_phosphorus,2010-2012,2022-2024,0.145,0.227,56.55,forkert,15,Danmarks Statistik,
-607,naer_phosphorus,2010-2012,2022-2024,0.1663,0.211,26.85,forkert,15,Danmarks Statistik,
-615,naer_phosphorus,2010-2012,2022-2024,0.032,0.083,159.38,forkert,15,Danmarks Statistik,
-621,naer_phosphorus,2010-2012,2022-2024,0.1307,0.1553,18.88,forkert,15,Danmarks Statistik,
-630,naer_phosphorus,2010-2012,2022-2024,0.0903,0.116,28.41,forkert,15,Danmarks Statistik,
-657,naer_phosphorus,2010-2012,2022-2024,0.1087,0.1747,60.74,forkert,15,Danmarks Statistik,
-661,naer_phosphorus,2010-2012,2022-2024,0.134,0.1533,14.43,forkert,15,Danmarks Statistik,
-665,naer_phosphorus,2010-2012,2022-2024,0.3717,0.3287,-11.57,rigtig,15,Danmarks Statistik,
-671,naer_phosphorus,2010-2012,2022-2024,0.0747,0.0803,7.59,forkert,15,Danmarks Statistik,
-706,naer_phosphorus,2010-2012,2022-2024,0.072,0.0833,15.74,forkert,15,Danmarks Statistik,
-707,naer_phosphorus,2010-2012,2022-2024,0.07,0.1627,132.38,forkert,15,Danmarks Statistik,
-710,naer_phosphorus,2010-2012,2022-2024,0.0497,0.1013,104.03,forkert,15,Danmarks Statistik,
-727,naer_phosphorus,2010-2012,2022-2024,0.0763,0.113,48.03,forkert,15,Danmarks Statistik,
-730,naer_phosphorus,2010-2012,2022-2024,0.0557,0.0937,68.26,forkert,15,Danmarks Statistik,
-740,naer_phosphorus,2010-2012,2022-2024,0.049,0.057,16.33,forkert,15,Danmarks Statistik,
-741,naer_phosphorus,2010-2012,2022-2024,0.4237,0.2683,-36.66,rigtig,14,Danmarks Statistik,
-746,naer_phosphorus,2010-2012,2022-2024,0.023,0.046,100.0,forkert,15,Danmarks Statistik,
-751,naer_phosphorus,2010-2012,2022-2024,0.0267,0.0423,58.75,forkert,15,Danmarks Statistik,
-756,naer_phosphorus,2010-2012,2022-2024,0.1313,0.126,-4.06,rigtig,15,Danmarks Statistik,
-760,naer_phosphorus,2010-2012,2022-2024,0.1493,0.2427,62.5,forkert,15,Danmarks Statistik,
-766,naer_phosphorus,2010-2012,2022-2024,0.152,0.1967,29.39,forkert,15,Danmarks Statistik,
-773,naer_phosphorus,2010-2012,2022-2024,0.17,0.1003,-40.98,rigtig,15,Danmarks Statistik,
-779,naer_phosphorus,2010-2012,2022-2024,0.0903,0.104,15.13,forkert,15,Danmarks Statistik,
-787,naer_phosphorus,2010-2012,2022-2024,0.096,0.1313,36.81,forkert,15,Danmarks Statistik,
-791,naer_phosphorus,2010-2012,2022-2024,0.0713,0.082,14.95,forkert,15,Danmarks Statistik,
-810,naer_phosphorus,2010-2012,2022-2024,0.0653,0.1097,67.86,forkert,15,Danmarks Statistik,
-813,naer_phosphorus,2010-2012,2022-2024,0.1083,0.3067,183.08,forkert,15,Danmarks Statistik,
-820,naer_phosphorus,2010-2012,2022-2024,0.053,0.101,90.57,forkert,15,Danmarks Statistik,
-825,naer_phosphorus,2010-2012,2022-2024,0.516,0.5643,9.37,forkert,15,Danmarks Statistik,
-840,naer_phosphorus,2010-2012,2022-2024,0.104,0.1513,45.51,forkert,15,Danmarks Statistik,
-846,naer_phosphorus,2010-2012,2022-2024,0.039,0.096,146.15,forkert,15,Danmarks Statistik,
-849,naer_phosphorus,2010-2012,2022-2024,0.0773,0.096,24.14,forkert,15,Danmarks Statistik,
-851,naer_phosphorus,2010-2012,2022-2024,0.057,0.1183,107.6,forkert,15,Danmarks Statistik,
-860,naer_phosphorus,2010-2012,2022-2024,0.08,0.1463,82.92,forkert,15,Danmarks Statistik,
+101,n_deposition,2016-2018,2022-2024,11.9,9.1433,-23.17,rigtig,9,DCE (DEHM-modellen),
+147,n_deposition,2016-2018,2022-2024,12.73,10.0433,-21.11,rigtig,9,DCE (DEHM-modellen),
+151,n_deposition,2016-2018,2022-2024,12.1567,10.4467,-14.07,rigtig,9,DCE (DEHM-modellen),
+153,n_deposition,2016-2018,2022-2024,12.1433,10.3167,-15.04,rigtig,9,DCE (DEHM-modellen),
+155,n_deposition,2016-2018,2022-2024,9.1567,7.65,-16.45,rigtig,9,DCE (DEHM-modellen),
+157,n_deposition,2016-2018,2022-2024,11.8133,9.53,-19.33,rigtig,9,DCE (DEHM-modellen),
+159,n_deposition,2016-2018,2022-2024,12.9033,10.41,-19.32,rigtig,9,DCE (DEHM-modellen),
+161,n_deposition,2016-2018,2022-2024,13.0333,11.1767,-14.25,rigtig,9,DCE (DEHM-modellen),
+163,n_deposition,2016-2018,2022-2024,13.0667,10.7167,-17.98,rigtig,9,DCE (DEHM-modellen),
+165,n_deposition,2016-2018,2022-2024,12.7233,10.9633,-13.83,rigtig,9,DCE (DEHM-modellen),
+167,n_deposition,2016-2018,2022-2024,11.5767,9.54,-17.59,rigtig,9,DCE (DEHM-modellen),
+169,n_deposition,2016-2018,2022-2024,11.2433,9.7833,-12.99,rigtig,9,DCE (DEHM-modellen),
+173,n_deposition,2016-2018,2022-2024,11.7867,9.6467,-18.16,rigtig,9,DCE (DEHM-modellen),
+175,n_deposition,2016-2018,2022-2024,13.0333,10.6967,-17.93,rigtig,9,DCE (DEHM-modellen),
+183,n_deposition,2016-2018,2022-2024,11.1667,9.6333,-13.73,rigtig,9,DCE (DEHM-modellen),
+185,n_deposition,2016-2018,2022-2024,9.8867,8.3033,-16.01,rigtig,9,DCE (DEHM-modellen),
+187,n_deposition,2016-2018,2022-2024,11.6467,10.21,-12.34,rigtig,9,DCE (DEHM-modellen),
+190,n_deposition,2016-2018,2022-2024,12.02,10.29,-14.39,rigtig,9,DCE (DEHM-modellen),
+201,n_deposition,2016-2018,2022-2024,11.4333,10.1033,-11.63,rigtig,9,DCE (DEHM-modellen),
+210,n_deposition,2016-2018,2022-2024,10.7533,9.45,-12.12,rigtig,9,DCE (DEHM-modellen),
+217,n_deposition,2016-2018,2022-2024,10.6233,9.01,-15.19,rigtig,9,DCE (DEHM-modellen),
+219,n_deposition,2016-2018,2022-2024,10.9367,9.67,-11.58,rigtig,9,DCE (DEHM-modellen),
+223,n_deposition,2016-2018,2022-2024,10.4767,9.25,-11.71,rigtig,9,DCE (DEHM-modellen),
+230,n_deposition,2016-2018,2022-2024,11.4433,9.3933,-17.91,rigtig,9,DCE (DEHM-modellen),
+240,n_deposition,2016-2018,2022-2024,10.7767,9.6067,-10.86,rigtig,9,DCE (DEHM-modellen),
+250,n_deposition,2016-2018,2022-2024,9.8867,8.8267,-10.72,rigtig,9,DCE (DEHM-modellen),
+253,n_deposition,2016-2018,2022-2024,10.7033,9.21,-13.95,rigtig,9,DCE (DEHM-modellen),
+259,n_deposition,2016-2018,2022-2024,11.6233,10.7733,-7.31,stagneret,9,DCE (DEHM-modellen),
+260,n_deposition,2016-2018,2022-2024,9.8333,8.7667,-10.85,rigtig,9,DCE (DEHM-modellen),
+265,n_deposition,2016-2018,2022-2024,10.6333,9.5667,-10.03,rigtig,9,DCE (DEHM-modellen),
+269,n_deposition,2016-2018,2022-2024,10.4767,9.66,-7.8,stagneret,9,DCE (DEHM-modellen),
+270,n_deposition,2016-2018,2022-2024,10.2333,9.13,-10.78,rigtig,9,DCE (DEHM-modellen),
+306,n_deposition,2016-2018,2022-2024,9.83,9.0767,-7.66,tempo,9,DCE (DEHM-modellen),
+316,n_deposition,2016-2018,2022-2024,11.0,10.33,-6.09,stagneret,9,DCE (DEHM-modellen),
+320,n_deposition,2016-2018,2022-2024,11.7967,10.8933,-7.66,stagneret,9,DCE (DEHM-modellen),
+326,n_deposition,2016-2018,2022-2024,10.7967,9.9067,-8.24,stagneret,9,DCE (DEHM-modellen),
+329,n_deposition,2016-2018,2022-2024,11.89,11.4167,-3.98,stagneret,9,DCE (DEHM-modellen),
+330,n_deposition,2016-2018,2022-2024,11.7767,10.87,-7.7,stagneret,9,DCE (DEHM-modellen),
+336,n_deposition,2016-2018,2022-2024,10.88,9.86,-9.37,rigtig,9,DCE (DEHM-modellen),
+340,n_deposition,2016-2018,2022-2024,12.1567,11.2067,-7.81,stagneret,9,DCE (DEHM-modellen),
+350,n_deposition,2016-2018,2022-2024,11.1467,10.2533,-8.01,stagneret,9,DCE (DEHM-modellen),
+360,n_deposition,2016-2018,2022-2024,11.5967,10.5267,-9.23,rigtig,9,DCE (DEHM-modellen),
+370,n_deposition,2016-2018,2022-2024,12.2767,11.44,-6.82,stagneret,9,DCE (DEHM-modellen),
+376,n_deposition,2016-2018,2022-2024,11.9567,10.5067,-12.13,rigtig,9,DCE (DEHM-modellen),
+390,n_deposition,2016-2018,2022-2024,10.89,9.74,-10.56,rigtig,9,DCE (DEHM-modellen),
+400,n_deposition,2016-2018,2022-2024,12.39,11.46,-7.51,stagneret,9,DCE (DEHM-modellen),
+410,n_deposition,2016-2018,2022-2024,13.4433,12.4,-7.76,tempo,9,DCE (DEHM-modellen),
+420,n_deposition,2016-2018,2022-2024,14.4233,13.53,-6.19,stagneret,9,DCE (DEHM-modellen),
+430,n_deposition,2016-2018,2022-2024,14.0767,13.0333,-7.41,tempo,9,DCE (DEHM-modellen),
+440,n_deposition,2016-2018,2022-2024,10.9667,10.16,-7.36,stagneret,9,DCE (DEHM-modellen),
+450,n_deposition,2016-2018,2022-2024,13.12,12.03,-8.31,tempo,9,DCE (DEHM-modellen),
+461,n_deposition,2016-2018,2022-2024,13.0133,12.06,-7.33,stagneret,9,DCE (DEHM-modellen),
+479,n_deposition,2016-2018,2022-2024,14.0,12.7333,-9.05,tempo,9,DCE (DEHM-modellen),
+480,n_deposition,2016-2018,2022-2024,12.4333,11.6767,-6.09,stagneret,9,DCE (DEHM-modellen),
+482,n_deposition,2016-2018,2022-2024,12.0533,10.1267,-15.98,rigtig,9,DCE (DEHM-modellen),
+492,n_deposition,2016-2018,2022-2024,12.9233,9.1633,-29.09,rigtig,9,DCE (DEHM-modellen),
+510,n_deposition,2016-2018,2022-2024,16.22,14.8533,-8.43,tempo,9,DCE (DEHM-modellen),
+530,n_deposition,2016-2018,2022-2024,14.7,14.2533,-3.04,stagneret,9,DCE (DEHM-modellen),
+540,n_deposition,2016-2018,2022-2024,16.3,13.74,-15.71,rigtig,9,DCE (DEHM-modellen),
+550,n_deposition,2016-2018,2022-2024,16.89,15.18,-10.12,rigtig,9,DCE (DEHM-modellen),
+561,n_deposition,2016-2018,2022-2024,14.9867,14.71,-1.85,stagneret,9,DCE (DEHM-modellen),
+563,n_deposition,2016-2018,2022-2024,11.2667,10.0533,-10.77,rigtig,9,DCE (DEHM-modellen),
+573,n_deposition,2016-2018,2022-2024,14.43,13.8967,-3.7,stagneret,9,DCE (DEHM-modellen),
+575,n_deposition,2016-2018,2022-2024,16.1767,15.8967,-1.73,stagneret,9,DCE (DEHM-modellen),
+580,n_deposition,2016-2018,2022-2024,19.2467,16.5667,-13.92,rigtig,9,DCE (DEHM-modellen),
+607,n_deposition,2016-2018,2022-2024,13.9633,13.12,-6.04,stagneret,9,DCE (DEHM-modellen),
+615,n_deposition,2016-2018,2022-2024,13.71,13.37,-2.48,stagneret,9,DCE (DEHM-modellen),
+621,n_deposition,2016-2018,2022-2024,14.9767,13.98,-6.65,stagneret,9,DCE (DEHM-modellen),
+630,n_deposition,2016-2018,2022-2024,15.0567,14.1867,-5.78,stagneret,9,DCE (DEHM-modellen),
+657,n_deposition,2016-2018,2022-2024,14.3,13.3867,-6.39,stagneret,9,DCE (DEHM-modellen),
+661,n_deposition,2016-2018,2022-2024,14.0333,12.8467,-8.46,tempo,9,DCE (DEHM-modellen),
+665,n_deposition,2016-2018,2022-2024,12.7667,12.4367,-2.58,stagneret,9,DCE (DEHM-modellen),
+671,n_deposition,2016-2018,2022-2024,12.8667,11.6333,-9.59,rigtig,9,DCE (DEHM-modellen),
+706,n_deposition,2016-2018,2022-2024,11.8233,10.7533,-9.05,tempo,9,DCE (DEHM-modellen),
+707,n_deposition,2016-2018,2022-2024,11.3767,11.0667,-2.72,stagneret,9,DCE (DEHM-modellen),
+710,n_deposition,2016-2018,2022-2024,13.01,12.5333,-3.66,stagneret,9,DCE (DEHM-modellen),
+727,n_deposition,2016-2018,2022-2024,13.3767,11.8467,-11.44,rigtig,9,DCE (DEHM-modellen),
+730,n_deposition,2016-2018,2022-2024,12.1133,11.9033,-1.73,stagneret,9,DCE (DEHM-modellen),
+740,n_deposition,2016-2018,2022-2024,13.49,12.3767,-8.25,tempo,9,DCE (DEHM-modellen),
+741,n_deposition,2016-2018,2022-2024,9.11,8.1333,-10.72,rigtig,9,DCE (DEHM-modellen),
+746,n_deposition,2016-2018,2022-2024,12.71,12.1533,-4.38,stagneret,9,DCE (DEHM-modellen),
+751,n_deposition,2016-2018,2022-2024,12.7433,11.8733,-6.83,stagneret,9,DCE (DEHM-modellen),
+756,n_deposition,2016-2018,2022-2024,14.12,13.7167,-2.86,stagneret,9,DCE (DEHM-modellen),
+760,n_deposition,2016-2018,2022-2024,13.7333,13.57,-1.19,stagneret,9,DCE (DEHM-modellen),
+766,n_deposition,2016-2018,2022-2024,14.2567,12.9467,-9.19,rigtig,9,DCE (DEHM-modellen),
+773,n_deposition,2016-2018,2022-2024,12.9533,11.4667,-11.48,rigtig,9,DCE (DEHM-modellen),
+779,n_deposition,2016-2018,2022-2024,12.82,11.8933,-7.23,stagneret,9,DCE (DEHM-modellen),
+787,n_deposition,2016-2018,2022-2024,11.8533,10.3933,-12.32,rigtig,9,DCE (DEHM-modellen),
+791,n_deposition,2016-2018,2022-2024,13.3667,12.5767,-5.91,stagneret,9,DCE (DEHM-modellen),
+810,n_deposition,2016-2018,2022-2024,13.1133,12.0833,-7.85,tempo,9,DCE (DEHM-modellen),
+813,n_deposition,2016-2018,2022-2024,11.89,10.11,-14.97,rigtig,9,DCE (DEHM-modellen),
+820,n_deposition,2016-2018,2022-2024,13.21,12.94,-2.04,stagneret,9,DCE (DEHM-modellen),
+825,n_deposition,2016-2018,2022-2024,9.2567,7.8567,-15.12,rigtig,9,DCE (DEHM-modellen),
+840,n_deposition,2016-2018,2022-2024,13.6433,13.3833,-1.91,stagneret,9,DCE (DEHM-modellen),
+846,n_deposition,2016-2018,2022-2024,13.3567,13.1933,-1.22,stagneret,9,DCE (DEHM-modellen),
+849,n_deposition,2016-2018,2022-2024,11.5667,10.2567,-11.33,rigtig,9,DCE (DEHM-modellen),
+851,n_deposition,2016-2018,2022-2024,11.89,10.8567,-8.69,tempo,9,DCE (DEHM-modellen),
+860,n_deposition,2016-2018,2022-2024,12.21,11.2133,-8.16,stagneret,9,DCE (DEHM-modellen),
 101,neet,2010-2012,2022-2024,10.6467,8.13,-23.64,rigtig,15,Danmarks Statistik,
 147,neet,2010-2012,2022-2024,10.2867,6.5967,-35.87,rigtig,15,Danmarks Statistik,
 151,neet,2010-2012,2022-2024,11.98,8.8867,-25.82,rigtig,15,Danmarks Statistik,
@@ -6177,102 +5976,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,vacant_housing,2010-2012,2024-2026,9.63,12.3433,28.18,forkert,15,Danmarks Statistik,
 851,vacant_housing,2010-2012,2024-2026,4.81,6.5833,36.87,forkert,15,Danmarks Statistik,
 860,vacant_housing,2010-2012,2024-2026,9.3,11.2367,20.82,forkert,15,Danmarks Statistik,
-147,vandindvinding,2010-2012,2022-2024,24.0133,23.31,-2.93,stagneret,15,Danmarks Statistik,
-151,vandindvinding,2010-2012,2022-2024,59.9167,49.1533,-17.96,rigtig,15,Danmarks Statistik,
-153,vandindvinding,2010-2012,2022-2024,29.41,18.8,-36.08,rigtig,13,Danmarks Statistik,
-155,vandindvinding,2010-2012,2020-2022,48.8233,13.73,-71.88,rigtig,13,Danmarks Statistik,
-157,vandindvinding,2010-2012,2022-2024,46.8267,45.53,-2.77,tempo,15,Danmarks Statistik,
-159,vandindvinding,2010-2012,2022-2024,26.2533,31.9333,21.64,forkert,15,Danmarks Statistik,
-161,vandindvinding,2010-2012,2022-2024,48.17,70.6233,46.61,forkert,15,Danmarks Statistik,
-165,vandindvinding,2010-2012,2018-2020,16.7867,13.1967,-21.39,rigtig,8,Danmarks Statistik,
-167,vandindvinding,2010,2014,12.07,11.57,-4.14,stagneret,4,Danmarks Statistik,
-169,vandindvinding,2010-2012,2022-2024,62.7367,34.6233,-44.81,rigtig,15,Danmarks Statistik,
-173,vandindvinding,2010-2012,2022-2024,25.29,28.0,10.72,forkert,15,Danmarks Statistik,
-175,vandindvinding,2010-2012,2022-2024,23.7067,14.8533,-37.35,rigtig,15,Danmarks Statistik,
-183,vandindvinding,2010-2012,2022-2024,267.1667,235.9533,-11.68,rigtig,15,Danmarks Statistik,
-185,vandindvinding,2010-2012,2020-2022,19.6133,16.3533,-16.62,rigtig,13,Danmarks Statistik,
-187,vandindvinding,2010-2015,2022-2024,13.5467,30.8533,127.76,forkert,12,Danmarks Statistik,
-190,vandindvinding,2010-2012,2022-2024,231.7833,240.4733,3.75,forkert,15,Danmarks Statistik,
-201,vandindvinding,2010-2012,2022-2024,120.4567,87.2233,-27.59,rigtig,15,Danmarks Statistik,
-210,vandindvinding,2010-2012,2022-2024,77.0267,86.54,12.35,forkert,15,Danmarks Statistik,
-217,vandindvinding,2010-2012,2022-2024,58.1467,55.23,-5.02,tempo,15,Danmarks Statistik,
-219,vandindvinding,2010-2012,2022-2024,172.6967,139.7133,-19.1,rigtig,15,Danmarks Statistik,
-223,vandindvinding,2010-2012,2022-2024,84.7467,76.73,-9.46,rigtig,15,Danmarks Statistik,
-230,vandindvinding,2010-2012,2022-2024,93.9933,65.2367,-30.59,rigtig,15,Danmarks Statistik,
-240,vandindvinding,2010-2012,2022-2024,164.1267,142.1933,-13.36,rigtig,15,Danmarks Statistik,
-250,vandindvinding,2010-2012,2022-2024,118.94,116.43,-2.11,tempo,15,Danmarks Statistik,
-253,vandindvinding,2010-2012,2022-2024,68.8733,53.7167,-22.01,rigtig,15,Danmarks Statistik,
-259,vandindvinding,2010-2012,2022-2024,190.44,191.42,0.51,stagneret,15,Danmarks Statistik,
-260,vandindvinding,2010-2012,2022-2024,88.06,54.0767,-38.59,rigtig,15,Danmarks Statistik,
-265,vandindvinding,2010-2012,2022-2024,149.05,155.9533,4.63,forkert,15,Danmarks Statistik,
-269,vandindvinding,2010-2012,2022-2024,123.8033,110.4467,-10.79,rigtig,15,Danmarks Statistik,
-270,vandindvinding,2010-2012,2022-2024,63.1167,57.7833,-8.45,rigtig,15,Danmarks Statistik,
-306,vandindvinding,2010-2012,2022-2024,80.1867,75.1533,-6.28,tempo,15,Danmarks Statistik,
-316,vandindvinding,2010-2012,2022-2024,84.9,75.8,-10.72,rigtig,15,Danmarks Statistik,
-320,vandindvinding,2010-2012,2022-2024,123.0467,114.0033,-7.35,tempo,15,Danmarks Statistik,
-326,vandindvinding,2010-2012,2022-2024,155.1067,164.51,6.06,forkert,15,Danmarks Statistik,
-329,vandindvinding,2010-2012,2022-2024,232.18,238.5033,2.72,forkert,15,Danmarks Statistik,
-330,vandindvinding,2010-2012,2022-2024,72.3433,65.18,-9.9,rigtig,15,Danmarks Statistik,
-336,vandindvinding,2010-2012,2022-2024,57.89,25.42,-56.09,rigtig,14,Danmarks Statistik,
-340,vandindvinding,2010-2012,2022-2024,61.0767,48.4433,-20.68,rigtig,15,Danmarks Statistik,
-350,vandindvinding,2010-2012,2022-2024,333.1567,185.22,-44.4,rigtig,15,Danmarks Statistik,
-360,vandindvinding,2010-2012,2022-2024,69.3733,71.8667,3.59,forkert,15,Danmarks Statistik,
-370,vandindvinding,2010-2012,2022-2024,44.0167,33.5867,-23.7,rigtig,15,Danmarks Statistik,
-376,vandindvinding,2010-2012,2022-2024,73.0967,60.4533,-17.3,rigtig,15,Danmarks Statistik,
-390,vandindvinding,2010-2012,2022-2024,66.5133,60.0733,-9.68,rigtig,15,Danmarks Statistik,
-400,vandindvinding,2010-2012,2022-2024,82.23,83.55,1.61,forkert,15,Danmarks Statistik,
-410,vandindvinding,2010-2012,2022-2024,62.85,56.8,-9.63,rigtig,15,Danmarks Statistik,
-420,vandindvinding,2010-2012,2022-2024,83.9033,89.7467,6.96,forkert,15,Danmarks Statistik,
-430,vandindvinding,2010-2012,2022-2024,82.2367,72.27,-12.12,rigtig,15,Danmarks Statistik,
-440,vandindvinding,2010-2012,2022-2024,53.2833,52.8333,-0.84,stagneret,15,Danmarks Statistik,
-450,vandindvinding,2010-2012,2022-2024,83.44,72.5,-13.11,rigtig,15,Danmarks Statistik,
-461,vandindvinding,2010-2012,2022-2024,58.0167,55.5567,-4.24,tempo,15,Danmarks Statistik,
-479,vandindvinding,2010-2012,2022-2024,64.6733,54.3,-16.04,rigtig,15,Danmarks Statistik,
-480,vandindvinding,2010-2012,2022-2024,84.7633,71.8667,-15.21,rigtig,15,Danmarks Statistik,
-482,vandindvinding,2010-2012,2022-2024,97.6967,94.71,-3.06,tempo,15,Danmarks Statistik,
-492,vandindvinding,2010-2012,2022-2024,65.09,38.88,-40.27,rigtig,15,Danmarks Statistik,
-510,vandindvinding,2010-2012,2022-2024,97.83,54.7767,-44.01,rigtig,15,Danmarks Statistik,
-530,vandindvinding,2010-2012,2022-2024,81.4733,95.34,17.02,forkert,15,Danmarks Statistik,
-540,vandindvinding,2010-2012,2022-2024,70.3867,63.43,-9.88,rigtig,15,Danmarks Statistik,
-550,vandindvinding,2010-2012,2022-2024,134.46,149.4867,11.18,forkert,15,Danmarks Statistik,
-561,vandindvinding,2010-2012,2022-2024,46.03,48.1733,4.66,forkert,15,Danmarks Statistik,
-563,vandindvinding,2010-2012,2022-2024,92.95,88.16,-5.15,tempo,15,Danmarks Statistik,
-573,vandindvinding,2010-2012,2022-2024,116.6167,111.75,-4.17,tempo,15,Danmarks Statistik,
-575,vandindvinding,2010-2012,2022-2024,162.9767,165.2233,1.38,forkert,15,Danmarks Statistik,
-580,vandindvinding,2010-2012,2022-2024,79.7167,86.1933,8.12,forkert,15,Danmarks Statistik,
-607,vandindvinding,2010-2012,2022-2024,70.6033,71.04,0.62,stagneret,15,Danmarks Statistik,
-615,vandindvinding,2010-2012,2022-2024,74.8867,65.89,-12.01,rigtig,15,Danmarks Statistik,
-621,vandindvinding,2010-2012,2022-2024,63.13,58.3067,-7.64,tempo,15,Danmarks Statistik,
-630,vandindvinding,2010-2012,2022-2024,73.67,63.0267,-14.45,rigtig,15,Danmarks Statistik,
-657,vandindvinding,2010-2012,2022-2024,76.04,71.7433,-5.65,tempo,15,Danmarks Statistik,
-661,vandindvinding,2010-2012,2022-2024,86.3633,79.8733,-7.51,tempo,15,Danmarks Statistik,
-665,vandindvinding,2010-2012,2022-2024,125.12,131.3033,4.94,forkert,15,Danmarks Statistik,
-671,vandindvinding,2010-2012,2022-2024,88.33,77.15,-12.66,rigtig,15,Danmarks Statistik,
-706,vandindvinding,2010-2012,2022-2024,54.4367,69.7533,28.14,forkert,15,Danmarks Statistik,
-707,vandindvinding,2010-2012,2022-2024,85.9267,97.5833,13.57,forkert,15,Danmarks Statistik,
-710,vandindvinding,2010-2012,2022-2024,60.49,49.45,-18.25,rigtig,15,Danmarks Statistik,
-727,vandindvinding,2010-2012,2022-2024,67.3567,62.15,-7.73,tempo,15,Danmarks Statistik,
-730,vandindvinding,2010-2012,2022-2024,58.08,51.86,-10.71,rigtig,15,Danmarks Statistik,
-740,vandindvinding,2010-2012,2022-2024,59.2433,53.7933,-9.2,rigtig,15,Danmarks Statistik,
-741,vandindvinding,2010-2012,2022-2024,101.8533,107.2933,5.34,forkert,15,Danmarks Statistik,
-746,vandindvinding,2010-2012,2022-2024,56.0633,50.35,-10.19,rigtig,15,Danmarks Statistik,
-751,vandindvinding,2010-2012,2022-2024,58.7933,51.2167,-12.89,rigtig,15,Danmarks Statistik,
-756,vandindvinding,2010-2012,2022-2024,79.8033,83.35,4.44,forkert,15,Danmarks Statistik,
-760,vandindvinding,2010-2012,2022-2024,100.9067,109.6167,8.63,forkert,15,Danmarks Statistik,
-766,vandindvinding,2010-2012,2022-2024,89.1367,84.2633,-5.47,tempo,15,Danmarks Statistik,
-773,vandindvinding,2010-2012,2022-2024,95.5133,95.4367,-0.08,stagneret,15,Danmarks Statistik,
-779,vandindvinding,2010-2012,2022-2024,84.8633,81.5433,-3.91,tempo,15,Danmarks Statistik,
-787,vandindvinding,2010-2012,2022-2024,115.98,103.51,-10.75,rigtig,15,Danmarks Statistik,
-791,vandindvinding,2010-2012,2022-2024,67.7067,57.86,-14.54,rigtig,15,Danmarks Statistik,
-810,vandindvinding,2010-2012,2022-2024,86.6333,69.5133,-19.76,rigtig,15,Danmarks Statistik,
-813,vandindvinding,2010-2012,2022-2024,72.5167,56.7533,-21.74,rigtig,15,Danmarks Statistik,
-820,vandindvinding,2010-2012,2022-2024,74.0133,93.7833,26.71,forkert,15,Danmarks Statistik,
-825,vandindvinding,2010-2012,2022-2024,103.2067,112.85,9.34,forkert,15,Danmarks Statistik,
-840,vandindvinding,2010-2012,2022-2024,66.8933,55.1633,-17.54,rigtig,15,Danmarks Statistik,
-846,vandindvinding,2010-2012,2022-2024,67.3967,59.0533,-12.38,rigtig,15,Danmarks Statistik,
-849,vandindvinding,2010-2012,2022-2024,97.18,90.6067,-6.76,tempo,15,Danmarks Statistik,
-851,vandindvinding,2010-2012,2022-2024,62.4133,54.44,-12.78,rigtig,15,Danmarks Statistik,
-860,vandindvinding,2010-2012,2022-2024,122.8267,115.4733,-5.99,tempo,15,Danmarks Statistik,
+101,vandindvinding,2010-2012,2022-2024,8.6267,37.4167,333.73,forkert,15,Danmarks Statistik,
+147,vandindvinding,2010-2012,2022-2024,284.8,278.4133,-2.24,tempo,15,Danmarks Statistik,
+151,vandindvinding,2010-2012,2022-2024,95.5267,73.5133,-23.04,rigtig,15,Danmarks Statistik,
+153,vandindvinding,2010-2012,2022-2024,40.15,33.0,-17.81,rigtig,15,Danmarks Statistik,
+155,vandindvinding,2010-2012,2022-2024,44.06,7.66,-82.61,rigtig,15,Danmarks Statistik,
+157,vandindvinding,2010-2012,2022-2024,136.2467,137.5667,0.97,stagneret,15,Danmarks Statistik,
+159,vandindvinding,2010-2012,2022-2024,102.24,119.5167,16.9,forkert,15,Danmarks Statistik,
+161,vandindvinding,2010-2012,2022-2024,77.1833,125.5333,62.64,forkert,15,Danmarks Statistik,
+163,vandindvinding,2010-2012,2022-2024,43.8833,0.0,-100.0,rigtig,15,Danmarks Statistik,
+165,vandindvinding,2010-2012,2022-2024,71.4933,3.8667,-94.59,rigtig,15,Danmarks Statistik,
+167,vandindvinding,2010-2012,2022-2024,47.4067,13.8267,-70.83,rigtig,15,Danmarks Statistik,
+169,vandindvinding,2010-2012,2022-2024,41.94,38.3,-8.68,rigtig,15,Danmarks Statistik,
+173,vandindvinding,2010-2012,2022-2024,40.3467,42.5867,5.55,forkert,15,Danmarks Statistik,
+175,vandindvinding,2010-2012,2022-2024,78.97,66.12,-16.27,rigtig,15,Danmarks Statistik,
+183,vandindvinding,2010-2012,2022-2024,201.6967,230.2533,14.16,forkert,15,Danmarks Statistik,
+185,vandindvinding,2010-2012,2022-2024,17.82,10.73,-39.79,rigtig,15,Danmarks Statistik,
+187,vandindvinding,2010-2012,2022-2024,15.15,41.67,175.05,forkert,15,Danmarks Statistik,
+190,vandindvinding,2010-2012,2022-2024,196.53,199.6867,1.61,forkert,15,Danmarks Statistik,
+201,vandindvinding,2010-2012,2022-2024,50.0533,39.3867,-21.31,rigtig,15,Danmarks Statistik,
+210,vandindvinding,2010-2012,2022-2024,29.4167,38.6467,31.38,forkert,15,Danmarks Statistik,
+217,vandindvinding,2010-2012,2022-2024,34.3633,30.9967,-9.8,rigtig,15,Danmarks Statistik,
+219,vandindvinding,2010-2012,2022-2024,45.2467,44.4433,-1.78,stagneret,15,Danmarks Statistik,
+223,vandindvinding,2010-2012,2022-2024,71.1567,66.21,-6.95,rigtig,15,Danmarks Statistik,
+230,vandindvinding,2010-2012,2022-2024,79.1,65.36,-17.37,rigtig,15,Danmarks Statistik,
+240,vandindvinding,2010-2012,2022-2024,59.01,59.4633,0.77,stagneret,15,Danmarks Statistik,
+250,vandindvinding,2010-2012,2022-2024,25.5633,26.4233,3.36,stagneret,15,Danmarks Statistik,
+253,vandindvinding,2010-2012,2022-2024,56.78,47.75,-15.9,rigtig,15,Danmarks Statistik,
+259,vandindvinding,2010-2012,2022-2024,50.8267,51.3567,1.04,stagneret,15,Danmarks Statistik,
+260,vandindvinding,2010-2012,2022-2024,36.75,28.0467,-23.68,rigtig,15,Danmarks Statistik,
+265,vandindvinding,2010-2012,2022-2024,61.2433,56.04,-8.5,rigtig,15,Danmarks Statistik,
+269,vandindvinding,2010-2012,2022-2024,74.73,85.73,14.72,forkert,15,Danmarks Statistik,
+270,vandindvinding,2010-2012,2022-2024,10.7067,9.83,-8.19,stagneret,15,Danmarks Statistik,
+306,vandindvinding,2010-2012,2022-2024,8.85,8.8133,-0.41,stagneret,15,Danmarks Statistik,
+316,vandindvinding,2010-2012,2022-2024,12.8067,11.63,-9.19,rigtig,15,Danmarks Statistik,
+320,vandindvinding,2010-2012,2022-2024,13.7133,10.7767,-21.41,rigtig,15,Danmarks Statistik,
+326,vandindvinding,2010-2012,2022-2024,14.8133,20.5233,38.55,forkert,15,Danmarks Statistik,
+329,vandindvinding,2010-2012,2022-2024,28.5267,26.42,-7.38,rigtig,15,Danmarks Statistik,
+330,vandindvinding,2010-2012,2022-2024,11.5267,11.0267,-4.34,stagneret,15,Danmarks Statistik,
+336,vandindvinding,2010-2012,2022-2024,9.36,5.99,-36.0,rigtig,15,Danmarks Statistik,
+340,vandindvinding,2010-2012,2022-2024,7.6533,7.7633,1.44,forkert,15,Danmarks Statistik,
+350,vandindvinding,2010-2012,2022-2024,40.02,24.3167,-39.24,rigtig,15,Danmarks Statistik,
+360,vandindvinding,2010-2012,2022-2024,4.3067,4.1667,-3.25,rigtig,15,Danmarks Statistik,
+370,vandindvinding,2010-2012,2022-2024,7.2767,5.1133,-29.73,rigtig,15,Danmarks Statistik,
+376,vandindvinding,2010-2012,2022-2024,5.7367,4.79,-16.5,rigtig,15,Danmarks Statistik,
+390,vandindvinding,2010-2012,2022-2024,5.74,4.75,-17.25,rigtig,15,Danmarks Statistik,
+400,vandindvinding,2010-2012,2022-2024,6.1033,6.0467,-0.93,stagneret,15,Danmarks Statistik,
+410,vandindvinding,2010-2012,2022-2024,9.1467,8.7667,-4.15,rigtig,15,Danmarks Statistik,
+420,vandindvinding,2010-2012,2022-2024,7.3467,8.5633,16.56,forkert,15,Danmarks Statistik,
+430,vandindvinding,2010-2012,2022-2024,7.6867,7.4533,-3.04,rigtig,15,Danmarks Statistik,
+440,vandindvinding,2010-2012,2022-2024,6.9967,8.2633,18.1,forkert,15,Danmarks Statistik,
+450,vandindvinding,2010-2012,2022-2024,11.1633,10.1433,-9.14,rigtig,15,Danmarks Statistik,
+461,vandindvinding,2010-2012,2022-2024,49.9333,44.3333,-11.21,rigtig,15,Danmarks Statistik,
+479,vandindvinding,2010-2012,2022-2024,10.1633,9.1567,-9.9,rigtig,15,Danmarks Statistik,
+480,vandindvinding,2010-2012,2022-2024,7.9333,7.9333,0.0,stagneret,15,Danmarks Statistik,
+482,vandindvinding,2010-2012,2022-2024,4.6,4.01,-12.83,rigtig,15,Danmarks Statistik,
+492,vandindvinding,2010-2012,2022-2024,4.4433,3.1767,-28.51,rigtig,15,Danmarks Statistik,
+510,vandindvinding,2010-2012,2022-2024,13.65,16.2333,18.93,forkert,15,Danmarks Statistik,
+530,vandindvinding,2010-2012,2022-2024,34.96,37.98,8.64,forkert,15,Danmarks Statistik,
+540,vandindvinding,2010-2012,2022-2024,13.3267,14.11,5.88,stagneret,15,Danmarks Statistik,
+550,vandindvinding,2010-2012,2022-2024,13.7367,22.3033,62.36,forkert,15,Danmarks Statistik,
+561,vandindvinding,2010-2012,2022-2024,21.6167,24.03,11.16,forkert,15,Danmarks Statistik,
+563,vandindvinding,2010-2012,2022-2024,5.09,5.66,11.2,forkert,15,Danmarks Statistik,
+573,vandindvinding,2010-2012,2022-2024,15.9567,14.92,-6.5,rigtig,15,Danmarks Statistik,
+575,vandindvinding,2010-2012,2022-2024,27.4233,29.24,6.62,forkert,15,Danmarks Statistik,
+580,vandindvinding,2010-2012,2022-2024,14.7533,25.47,72.64,forkert,15,Danmarks Statistik,
+607,vandindvinding,2010-2012,2022-2024,25.5567,29.0267,13.58,forkert,15,Danmarks Statistik,
+615,vandindvinding,2010-2012,2022-2024,18.22,16.8467,-7.54,rigtig,15,Danmarks Statistik,
+621,vandindvinding,2010-2012,2022-2024,14.75,21.0467,42.69,forkert,15,Danmarks Statistik,
+630,vandindvinding,2010-2012,2022-2024,163.4433,91.5367,-43.99,rigtig,15,Danmarks Statistik,
+657,vandindvinding,2010-2012,2022-2024,37.02,42.6767,15.28,forkert,15,Danmarks Statistik,
+661,vandindvinding,2010-2012,2022-2024,38.63,44.8167,16.02,forkert,15,Danmarks Statistik,
+665,vandindvinding,2010-2012,2022-2024,15.5367,26.5667,70.99,forkert,15,Danmarks Statistik,
+671,vandindvinding,2010-2012,2022-2024,13.4867,11.9233,-11.59,rigtig,15,Danmarks Statistik,
+706,vandindvinding,2010-2012,2022-2024,3.8133,7.0,83.57,forkert,15,Danmarks Statistik,
+707,vandindvinding,2010-2012,2022-2024,8.3733,11.6967,39.69,forkert,15,Danmarks Statistik,
+710,vandindvinding,2010-2012,2022-2024,27.75,16.05,-42.16,rigtig,15,Danmarks Statistik,
+727,vandindvinding,2010-2012,2022-2024,6.92,6.77,-2.17,tempo,15,Danmarks Statistik,
+730,vandindvinding,2010-2012,2022-2024,9.83,9.3467,-4.92,rigtig,15,Danmarks Statistik,
+740,vandindvinding,2010-2012,2022-2024,8.4267,26.0267,208.86,forkert,15,Danmarks Statistik,
+741,vandindvinding,2010-2012,2022-2024,4.87,5.47,12.32,forkert,15,Danmarks Statistik,
+746,vandindvinding,2010-2012,2022-2024,8.6233,10.2433,18.79,forkert,15,Danmarks Statistik,
+751,vandindvinding,2010-2012,2022-2024,40.71,41.5333,2.02,stagneret,15,Danmarks Statistik,
+756,vandindvinding,2010-2012,2022-2024,35.33,38.5233,9.04,forkert,15,Danmarks Statistik,
+760,vandindvinding,2010-2012,2022-2024,54.48,86.08,58.0,forkert,15,Danmarks Statistik,
+766,vandindvinding,2010-2012,2022-2024,9.43,20.8,120.57,forkert,15,Danmarks Statistik,
+773,vandindvinding,2010-2012,2022-2024,7.34,6.21,-15.4,rigtig,15,Danmarks Statistik,
+779,vandindvinding,2010-2012,2022-2024,7.9733,7.5533,-5.27,rigtig,15,Danmarks Statistik,
+787,vandindvinding,2010-2012,2022-2024,6.2533,6.1633,-1.44,tempo,15,Danmarks Statistik,
+791,vandindvinding,2010-2012,2022-2024,11.7367,15.04,28.15,forkert,15,Danmarks Statistik,
+810,vandindvinding,2010-2012,2022-2024,5.7233,5.4567,-4.66,rigtig,15,Danmarks Statistik,
+813,vandindvinding,2010-2012,2022-2024,7.9567,7.2267,-9.17,rigtig,15,Danmarks Statistik,
+820,vandindvinding,2010-2012,2022-2024,15.29,24.4733,60.06,forkert,15,Danmarks Statistik,
+825,vandindvinding,2010-2012,2022-2024,1.8367,1.74,-5.26,rigtig,15,Danmarks Statistik,
+840,vandindvinding,2010-2012,2022-2024,9.0333,7.8533,-13.06,rigtig,15,Danmarks Statistik,
+846,vandindvinding,2010-2012,2022-2024,9.7833,8.8567,-9.47,rigtig,15,Danmarks Statistik,
+849,vandindvinding,2010-2012,2022-2024,5.69,4.87,-14.41,rigtig,15,Danmarks Statistik,
+851,vandindvinding,2010-2012,2022-2024,21.57,27.09,25.59,forkert,15,Danmarks Statistik,
+860,vandindvinding,2010-2012,2022-2024,25.3567,20.02,-21.05,rigtig,15,Danmarks Statistik,
 101,voter_turnout,2013,2025,61.21,65.58,7.14,rigtig,4,Danmarks Statistik,
 147,voter_turnout,2013,2025,70.34,73.24,4.12,rigtig,4,Danmarks Statistik,
 151,voter_turnout,2013,2025,70.96,65.05,-8.33,forkert,4,Danmarks Statistik,

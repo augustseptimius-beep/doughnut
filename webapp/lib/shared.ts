@@ -30,7 +30,7 @@ interface RegisterIndikator {
   ratio_key?: string;
   rationale?: string;
   cap?: number;
-  formula?: "100_minus_raw";
+  formula?: "100_minus_raw" | "komplement";
 }
 
 interface Register {

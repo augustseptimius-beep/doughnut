@@ -1,43 +1,41 @@
 #!/usr/bin/env python3
 """
-Vandindvinding pr. capita - Doughnut Economics indikator (vand-dimensionen)
-===========================================================================
-Henter vandindvinding fra almene vandværker (INDKAT=100) fra DST VANDIND
-og beregner m³ pr. person pr. kommune.
+Vandindvinding - Doughnut Economics indikator (vand-dimensionen)
+================================================================
+Al indvinding af grund- og overfladevand i kommunen (almene vandværker,
+virksomheder med egen indvinding og markvanding) i mm pr. år over
+kommunens landareal, som treårsgennemsnit, målt mod Danmark som helhed.
+
+HVORFOR PR. AREAL OG ALLE KATEGORIER (fra sep. 2026)
+----------------------------------------------------
+Indtil sep. 2026 målte indikatoren indvinding fra almene vandværker pr.
+indbygger. Men indvindingen registreres hvor vandet pumpes op, ikke hvor det
+bruges, så tallet viste i praksis hvor HOFOR har kildepladser: Furesø, Ishøj,
+Ringsted, Roskilde, Køge og Lejre lå i top, Rødovre, Brøndby og Frederiksberg i
+bund, og København var filtreret fra. Og 53 procent af indvindingen (industri
+og markvanding) indgik slet ikke.
+
+Presset på grundvandet sker hvor vandet tages. GEUS' opgørelse af den
+bæredygtige grundvandsressource (Henriksen m.fl. 2023), som CONCITO (2025)
+bruger som Danmarks sikre råderum for vand, regner netop med al indvinding
+(ALT-scenariet) og udtrykker både ressource og indvinding i mm pr. år. Denne
+indikator bruger samme enhed og afgrænsning. Den ideelle nævner ville være
+den bæredygtige ressource pr. område, men GEUS' tal pr. delopland findes kun
+som kort, og Miljøstyrelsen vurderer dem ikke-autoritative på den skala.
+Derfor måles der mod landsgennemsnittet.
+
+Markvandingen svinger med sommerens nedbør (286 mio. m³ i 2023, 92 mio. m³ i
+2024), så scoren er gennemsnittet af de tre seneste år.
 
 Datakilde:
-  Danmarks Statistik - Statistikbanken VANDIND (Indvinding af vand)
-  VANDTYP = TOTVAND (vand i alt)
-  INDKAT  = 100 (alment vandværk)
-  Tid     = nyeste år med data
-
-Metode:
-  1. Hent vandindvinding (mio. m³) pr. kommune fra VANDIND
-  2. Hent befolkningstal fra FOLK1A (1. januar samme år)
-  3. Beregn vandindvinding_m3_per_person = (mio_m3 * 1_000_000) / befolkning
-  4. Sæt None for kommuner < 10 m³/person (data-artefakt: KBH's vandværk
-     er fysisk registreret i andre kommuner, fx via HOFOR)
-  5. Beregn nationalt vægtet gennemsnit (befolkningsvægtet)
-  6. Ratio = (kommune / landsgennemsnit) * 100
-     Høj ratio = mere pres på grundvand = overshoot
-
-Scoring:
-  ratio > 100 = bruger mere end landsgennemsnit = øget grundvandspres
-  ratio < 100 = bruger mindre = under landsgennemsnit
-  Baseline: Niveau 3 (landsgennemsnit). Ingen global planetær grænse der
-  er direkte operationaliserbar på kommuneniveau.
-
-Begrænsninger:
-  - Data registreres ved indvindingspunktet (vandværkets placering),
-    ikke ved forbrugsstedet. Store vandforsyningsselskaber der dækker
-    flere kommuner kan give kunstigt lave tal i bykommuner.
-  - Kun alment vandværk (INDKAT=100) - industri og markvanding er udeladt
-    for at sikre sammenlignelighed på tværs af kommuner.
+  Danmarks Statistik VANDIND (VANDTYP=TOTVAND, INDKAT 100, 105, 110) og
+  AREALDK2 (samlet areal minus søer og vandløb).
 
 Output:
   data/vandindvinding_scores.csv
-  Kolonner: kommune_kode, kommune_navn, vandindvinding_m3_per_person, vandindvinding_ratio,
-            vandindvinding_ref (landstallet)
+  Kolonner: kommune_kode, kommune_navn, vandindvinding_mm_aar, vandindvinding_ratio,
+            vandindvinding_ref (landstallet), plus det gamle mål pr. indbygger
+            (almene vandværker, seneste år) som kildespor.
 
 Kør fra projektets rodmappe:
   python3 scripts/fetch_vandindvinding_data.py
@@ -51,31 +49,80 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from kommuner import KOMMUNER  # noqa: E402  (de 98 kommuner, data/kommuner.json)
-from dst import api_post, folketal, pr_kommune_aar, seneste  # noqa: E402  (fælles DST-kald)
-from dst_aar import seneste_aar_liste  # noqa: E402
+from dst import api_post, folketal, parse_value, pr_kommune_aar, rullende, seneste  # noqa: E402  (fælles DST-kald)
+from dst_aar import perioder_fra, seneste_aar_liste  # noqa: E402
 
 # ── Konstanter ────────────────────────────────────────────────────────────────
 
 OUTPUT_FIL = Path(__file__).resolve().parent.parent / "data" / "vandindvinding_scores.csv"
 
-# Minimumsgrænse for m³/person - under dette er data et registreringsartefakt
-MIN_M3_PER_PERSON = 10.0
+INDKAT_ALLE = ["100", "105", "110"]   # alment vandværk, virksomheder, markvanding
+AAR_I_SNIT = 3
 
 
-# ── Vandindvinding pr. person (samme funktion til score og retningspil) ──────
+# ── Vandindvinding pr. areal (samme funktion til score og retningspil) ───────
+
+def landareal_km2() -> dict[str, float]:
+    """Landareal (samlet areal minus søer og vandløb) i km² pr. kommune fra
+    AREALDK2's nyeste år. Arealet ændrer sig så lidt, at samme nævner bruges
+    for alle år."""
+    aar = seneste_aar_liste("AREALDK2", 1, fallback=["2024"])
+    rows = api_post("AREALDK2", [
+        {"code": "ARE1", "values": ["TOT", "G1", "G2"]},
+        {"code": "OMRÅDE", "values": ["*"]},
+        {"code": "ENHED", "values": ["8120"]},
+        {"code": "Tid", "values": aar},
+    ])
+    km2: dict[str, float] = {}
+    for r in rows:
+        kode = (r.get("OMRÅDE") or "").strip()
+        v = parse_value(r.get("INDHOLD", ""))
+        if kode in KOMMUNER and v is not None:
+            km2[kode] = km2.get(kode, 0.0) + (v if r["ARE1"] == "TOT" else -v)
+    return km2
+
 
 def serie_vandindvinding(aar: list[str]) -> dict[tuple[str, str], float]:
     """
-    VANDIND (VANDTYP=TOTVAND, INDKAT=100 alment vandværk) i m³ pr. person med
-    folketallet 1. januar samme år. {(kommune_kode, år): m³/person}; landstallet
-    (000) er det befolkningsvægtede gennemsnit af kommunerne med gyldige data.
-    Under MIN_M3_PER_PERSON udelades kommunen som registreringsartefakt (fx
-    København, hvis vandværker ligger i nabokommunerne).
+    Al vandindvinding (VANDIND, TOTVAND, alle tre kategorier) i mm pr. år over
+    kommunens landareal, treårsgennemsnit: værdien for år Y er gennemsnittet af
+    Y-2, Y-1 og Y. En kommune uden række i VANDIND et år har ingen registreret
+    indvinding og tæller 0. Landstallet (000) er de 98 kommuner samlet.
 
-    Bruges af både scoren og retningspilen (fetch_trend_history.py). Indtil
-    sep. 2026 var året (2024) og folketallet (2025K1) hårdkodet, og kommunerne
-    blev fundet ved at matche navne, også på delstrenge.
+    mio. m³ / km² = m, så mm = mio. m³ / km² × 1000.
+
+    Bruges af både scoren og retningspilen (fetch_trend_history.py).
     """
+    alle = sorted({str(y) for a in aar for y in range(int(a) - AAR_I_SNIT + 1, int(a) + 1)})
+    findes = set(perioder_fra("VANDIND", int(alle[0])))
+    hent = [a for a in alle if a in findes]
+    rows = api_post("VANDIND", [
+        {"code": "OMRÅDE", "values": ["*"]},
+        {"code": "VANDTYP", "values": ["TOTVAND"]},
+        {"code": "INDKAT", "values": INDKAT_ALLE},
+        {"code": "Tid", "values": hent},
+    ])
+    mio_m3 = {k: v for k, v in pr_kommune_aar(rows).items() if k[0] != "000"}
+    land = landareal_km2()
+    enkelt: dict[tuple[str, str], float] = {}
+    for a in hent:
+        for kode, km2 in land.items():
+            enkelt[(kode, a)] = mio_m3.get((kode, a), 0.0)
+    snit = rullende(enkelt, AAR_I_SNIT, "gennemsnit", 6)
+    ud: dict[tuple[str, str], float] = {}
+    for a in aar:
+        med = [k for k in land if (k, a) in snit]
+        for kode in med:
+            ud[(kode, a)] = round(snit[(kode, a)] / land[kode] * 1000, 2)
+        if med:
+            ud[("000", a)] = round(sum(snit[(k, a)] for k in med) / sum(land[k] for k in med) * 1000, 2)
+    return ud
+
+
+def serie_vandindvinding_pr_person(aar: list[str]) -> dict[tuple[str, str], float]:
+    """Det tidligere mål: almene vandværker (INDKAT=100) i m³ pr. indbygger,
+    folketallet 1. januar. Skrives stadig til CSV'en som kildespor, men scores
+    ikke (registreringsstedet gør det misvisende, se docstring)."""
     rows = api_post("VANDIND", [
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "VANDTYP", "values": ["TOTVAND"]},
@@ -84,49 +131,34 @@ def serie_vandindvinding(aar: list[str]) -> dict[tuple[str, str], float]:
     ])
     mio_m3 = {k: v for k, v in pr_kommune_aar(rows).items() if k[0] != "000"}
     folk = folketal(sorted({a for _, a in mio_m3}))
-    ud: dict[tuple[str, str], float] = {}
-    sum_m3: dict[str, float] = {}
-    sum_bef: dict[str, float] = {}
-    for (kode, a), mio in mio_m3.items():
-        bef = folk.get((kode, a))
-        if not bef:
-            continue
-        m3 = mio * 1_000_000 / bef
-        if m3 < MIN_M3_PER_PERSON:
-            continue
-        ud[(kode, a)] = round(m3, 2)
-        sum_m3[a] = sum_m3.get(a, 0.0) + mio * 1_000_000
-        sum_bef[a] = sum_bef.get(a, 0.0) + bef
-    for a in sum_m3:
-        ud[("000", a)] = round(sum_m3[a] / sum_bef[a], 2)
-    return ud
+    return {(k, a): round(mio * 1_000_000 / folk[(k, a)], 2)
+            for (k, a), mio in mio_m3.items() if folk.get((k, a))}
 
 
 def beregn_og_gem() -> None:
     """Henter nyeste år, beregner ratio (til krydstjek) og skriver CSV'en."""
-    aar, vaerdier, landssnit = seneste(
-        serie_vandindvinding(seneste_aar_liste("VANDIND", 2, fallback=["2024", "2023"])),
-        tabel="VANDIND")
+    sidste = seneste_aar_liste("VANDIND", 1, fallback=["2024"])
+    aar, vaerdier, landssnit = seneste(serie_vandindvinding(sidste), tabel="VANDIND")
     if not vaerdier:
         print("FEJL: Ingen gyldige data til rådighed.")
         return
-    print(f"  År {aar}: {len(vaerdier)}/98 kommuner med gyldige data")
-    print(f"  Nationalt gennemsnit (befolkningsvægtet): {landssnit:.1f} m³/person")
-    for kode in KOMMUNER:
-        if kode not in vaerdier:
-            print(f"  ⚠ {KOMMUNER[kode]}: ingen gyldig værdi (under {MIN_M3_PER_PERSON} m³/person eller ingen data)")
+    print(f"  {int(aar) - AAR_I_SNIT + 1}-{aar}: {len(vaerdier)}/98 kommuner")
+    print(f"  Danmark samlet: {landssnit:.1f} mm/år (al indvinding over landarealet)")
+    pr_person = {k: v for (k, a), v in serie_vandindvinding_pr_person([aar]).items()}
 
     OUTPUT_FIL.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_FIL, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["kommune_kode", "kommune_navn", "vandindvinding_m3_per_person",
-                         "vandindvinding_ratio", "vandindvinding_ref"])
+        writer.writerow(["kommune_kode", "kommune_navn", "vandindvinding_mm_aar",
+                         "vandindvinding_ratio", "vandindvinding_ref",
+                         "almen_m3_pr_person_seneste_aar"])
         for kode in sorted(KOMMUNER):
             v = vaerdier.get(kode)
             writer.writerow([kode, KOMMUNER[kode], "" if v is None else v,
-                             "" if v is None else round(v / landssnit * 100, 2), landssnit])
+                             "" if v is None else round(v / landssnit * 100, 2), landssnit,
+                             pr_person.get(kode, "")])
     t = vaerdier.get("787")
-    print(f"\n  Thisted: {t} m³/person" if t else "\n  Thisted: ingen værdi")
+    print(f"\n  Thisted: {t} mm/år" if t is not None else "\n  Thisted: ingen værdi")
     print(f"\n✓ Gemt: {OUTPUT_FIL} ({len(KOMMUNER)} kommuner)")
 
 
@@ -134,10 +166,9 @@ def beregn_og_gem() -> None:
 
 def main():
     print("=" * 65)
-    print("Doughnut Economics - Vandindvinding pr. capita (DST VANDIND)")
+    print("Doughnut Economics - Vandindvinding pr. areal (DST VANDIND)")
     print("=" * 65)
-    print("Kilde: Statistikbanken VANDIND, INDKAT=100 (alment vandværk), nyeste år")
-    print(f"Min. grænse for gyldige data: {MIN_M3_PER_PERSON} m³/person")
+    print("Kilde: Statistikbanken VANDIND, alle indvindingskategorier, treårsgennemsnit")
     print()
 
     beregn_og_gem()

@@ -174,3 +174,27 @@ def seneste(serie: dict[tuple[str, str], float], min_kommuner: int = 50,
                 registrer_aar(tabel, aar)
             return aar, vaerdier, serie.get(("000", aar))
     return None, {}, None
+
+
+def rullende(serie: dict[tuple[str, str], float], n: int, statistik: str,
+             decimaler: int) -> dict[tuple[str, str], float]:
+    """Rullende n-års-værdi pr. (kommune, år): for år Y bruges årene Y-n+1..Y,
+    og kun hvis alle n år har en værdi. statistik er "median" eller "gennemsnit".
+
+    Median bruges hvor enkeltår kan være fejlindberetninger (LABY25 2023:
+    Hørsholm 57 kg husholdningsaffald pr. indbygger mod ca. 600 de foregående
+    år) - den ignorerer ét afvigende år ud af tre. Gennemsnit bruges hvor
+    variationen er reel, men vejrbestemt (markvanding). Samme greb som
+    trafikulykkernes treårsgennemsnit (CLAUDE.md pkt. 26)."""
+    import statistics
+    f = statistics.median if statistik == "median" else statistics.fmean
+    ud: dict[tuple[str, str], float] = {}
+    for (k, a) in serie:
+        try:
+            aar = [str(int(a) - i) for i in range(n)]
+        except ValueError:
+            continue
+        vaerdier = [serie.get((k, x)) for x in aar]
+        if all(v is not None for v in vaerdier):
+            ud[(k, a)] = round(f(vaerdier), decimaler)
+    return ud

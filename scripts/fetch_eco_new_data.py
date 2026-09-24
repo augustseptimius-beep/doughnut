@@ -9,7 +9,9 @@ Opretter/opdaterer:
   ../data/vand_scores.csv             (Vand)
   ../data/forurening_scores.csv       (Forurening)
 
-Indikatorer:
+Indikatorer (platformen scorer fra sep. 2026 kun affald og genanvendelse herfra;
+kvælstof og fosfor fra spildevand er fjernet, se data/indikatorer.json's
+_fjernet, men skrives stadig til naeringsstoffer_scores.csv som kildespor):
   NÆRINGSSTOFFER:
     - VANDUD (KV): Kvælstof-udledning (ton total-N) pr. 1.000 indb. (inverteret - lavere er bedre)
     - VANDUD (FO): Fosfor-udledning (ton total-P) pr. 1.000 indb. (inverteret - lavere er bedre)
@@ -19,7 +21,8 @@ Indikatorer:
     - VANDIND:     Vandindvinding (mio. m³) pr. 1.000 indb. (inverteret - lavere er bedre)
 
   FORURENING:
-    - LABY25 (AFFALDIND): Husholdningsaffald kg pr. indbygger (inverteret - lavere er bedre)
+    - LABY25 (AFFALDIND): Husholdningsaffald kg pr. indbygger, treårsmedian (inverteret - lavere er bedre)
+    - LABY25 (GENPCT): Husholdningsaffald indsamlet til genanvendelse, pct., treårsmedian
 
 Brug:
   python3 fetch_eco_new_data.py
@@ -33,8 +36,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from dst_aar import seneste_aar_liste, seneste_kvartal  # noqa: E402
-from dst import api_post, parse_value, pr_indbygger, pr_kommune_aar, seneste  # noqa: E402  (fælles DST-kald, scripts/dst.py)
+from dst_aar import perioder_fra, seneste_aar_liste, seneste_kvartal  # noqa: E402
+from dst import api_post, parse_value, pr_indbygger, pr_kommune_aar, rullende, seneste  # noqa: E402  (fælles DST-kald, scripts/dst.py)
 from kommuner import KODER as VALID_CODES  # noqa: E402  (de 98 kommuner, data/kommuner.json)
 
 
@@ -193,44 +196,48 @@ def fetch_vandind() -> dict[str, float]:
 
 
 # ---------------------------------------------------------------------------
-# FORURENING - LABY25 (husholdningsaffald)
+# FORURENING - LABY25 (husholdningsaffald og genanvendelse)
 # ---------------------------------------------------------------------------
 
-def fetch_laby25() -> dict[str, dict]:
-    """
-    LABY25: Husholdningsaffald nøgletal pr. kommune.
-    Returnerer {kommune_kode: {affald_kg: float, genanvendelse_pct: float}}.
-    """
-    print("Henter husholdningsaffald (LABY25)...")
+# Treårsmedian (fra sep. 2026). LABY25's enkeltår indeholder tydelige
+# fejlindberetninger: i 2023 faldt Hørsholm fra 589 til 57 kg husholdningsaffald
+# pr. indbygger og Allerød fra 623 til 258, mens Fredensborg, Norddjurs og Ærø
+# næsten fordoblede deres tal. Med ét år gav det Hørsholm en affaldsratio på 10
+# og Fredensborg 254. Medianen af de tre seneste år ignorerer ét afvigende år.
+LABY25_AAR = 3
 
-    for year in ["2023", "2022"]:
-        rows = api_post("LABY25", [
-            {"code": "KOMGRP", "values": ["*"]},
-            {"code": "BNØGLE", "values": ["AFFALDIND", "GENPCT"]},
-            {"code": "Tid", "values": [year]},
-        ])
-        if len(rows) > 10:
-            print(f"  Bruger data fra {year}")
-            break
 
-    result: dict[str, dict] = {}
-    for row in rows:
-        kode = row.get("KOMGRP", "").strip()
-        noegle = row.get("BNØGLE", "").strip()
-        val = parse_value(row.get("INDHOLD", ""))
+def _laby25(noegle: str, aar: list[str]) -> dict[tuple[str, str], float]:
+    """LABY25-nøgletal (AFFALDIND kg pr. indbygger, GENPCT pct. til genanvendelse)
+    pr. (kommune_kode, år) inkl. hele landet (000)."""
+    rows = api_post("LABY25", [
+        {"code": "KOMGRP", "values": ["*"]},
+        {"code": "BNØGLE", "values": [noegle]},
+        {"code": "Tid", "values": aar},
+    ])
+    return pr_kommune_aar(rows, omraade="KOMGRP")
 
-        if kode not in result:
-            result[kode] = {"affald_kg": None, "genanvendelse_pct": None}
 
-        if val is not None:
-            if noegle == "AFFALDIND":
-                result[kode]["affald_kg"] = val
-            elif noegle == "GENPCT":
-                result[kode]["genanvendelse_pct"] = val
+def _laby25_median(noegle: str, perioder: list[str]) -> dict[tuple[str, str], float]:
+    """Treårsmedian for år Y = medianen af Y-2, Y-1 og Y. Henter selv de to
+    foregående år, så funktionen kan kaldes med de år man vil have tal for."""
+    alle = [str(a) for a in range(int(min(perioder)) - (LABY25_AAR - 1), int(max(perioder)) + 1)]
+    findes = set(perioder_fra("LABY25", int(alle[0])))
+    return {k: v for k, v in rullende(_laby25(noegle, [a for a in alle if a in findes]),
+                                       LABY25_AAR, "median", 1).items()
+            if k[1] in perioder}
 
-    valid = {k: v for k, v in result.items() if k in VALID_CODES}
-    print(f"  LABY25: {len(valid)} kommuner med data")
-    return result
+
+def serie_cirkularitet_waste(perioder: list[str]) -> dict[tuple[str, str], float]:
+    """Husholdningsaffald, kg pr. indbygger, treårsmedian. Bruges af både scoren
+    og retningspilen (fetch_trend_history.py, SAMME_SOM_SCOREN)."""
+    return _laby25_median("AFFALDIND", perioder)
+
+
+def serie_cirkularitet_recycling(perioder: list[str]) -> dict[tuple[str, str], float]:
+    """Husholdningsaffald indsamlet til genanvendelse, pct., treårsmedian. Bruges
+    af både scoren og retningspilen."""
+    return _laby25_median("GENPCT", perioder)
 
 
 # ---------------------------------------------------------------------------
@@ -328,36 +335,31 @@ def main():
     print(f"  => Skrev {outfile.name}: {len(valid_vand)} kommuner")
 
     # ─── FORURENING ───
-    laby25 = fetch_laby25()
-    national_affald = laby25.get("000", {}).get("affald_kg")
-
-    if not national_affald:
-        print("  ADVARSEL: Ingen national affaldsdata!")
-        national_affald = 543  # Fallback fra vores test
-
-    print(f"  National affald: {national_affald:.0f} kg/indb.")
+    # Samme funktioner som retningspilen (serie_cirkularitet_*): treårsmedian.
+    affald_aar = seneste_aar_liste("LABY25", 1, fallback=["2023"])
+    aar_af, affald, nat_affald = seneste(serie_cirkularitet_waste(affald_aar), tabel="LABY25")
+    _, genanv, nat_genanv = seneste(serie_cirkularitet_recycling(affald_aar))
+    print(f"  Husholdningsaffald {aar_af} (treårsmedian): landstal {nat_affald} kg/indb., "
+          f"genanvendelse {nat_genanv}%")
 
     foru_rows = []
     for kode in sorted(VALID_CODES):
-        data = laby25.get(kode, {})
-        affald = data.get("affald_kg")
-
-        if affald is not None and national_affald:
-            affald_ratio = ratio_inverse(affald, national_affald)
-        else:
-            affald_ratio = None
-
+        af, ge = affald.get(kode), genanv.get(kode)
         foru_rows.append({
             "kommune_kode": kode,
-            "waste_kg_per_capita": affald if affald is not None else "",
-            "waste_ratio": affald_ratio if affald_ratio is not None else "",
-            "cirkularitet_waste_ref": national_affald,
+            "waste_kg_per_capita": af if af is not None else "",
+            "waste_ratio": ratio_inverse(af, nat_affald) if af is not None and nat_affald else "",
+            "cirkularitet_waste_ref": nat_affald if nat_affald is not None else "",
+            "recycling_pct": ge if ge is not None else "",
+            # Krydstjek-ratio med komplement-formlen (R2a): andel IKKE genanvendt
+            # målt mod de 35%, EU's 65%-mål tillader.
+            "recycling_ratio": round((100 - ge) / 35 * 100, 2) if ge is not None else "",
         })
 
     outfile = OUTPUT_DIR / "forurening_scores.csv"
     with open(outfile, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["kommune_kode", "waste_kg_per_capita", "waste_ratio",
-                                          "cirkularitet_waste_ref"])
+                                          "cirkularitet_waste_ref", "recycling_pct", "recycling_ratio"])
         w.writeheader()
         w.writerows(foru_rows)
     valid_foru = [r for r in foru_rows if r["waste_ratio"] != ""]
