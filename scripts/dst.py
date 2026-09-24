@@ -142,6 +142,21 @@ def pr_indbygger(taeller: dict[tuple[str, str], float], faktor: float, decimaler
     return ud
 
 
+def andel(taeller: dict[tuple[str, str], float], naevner: dict[tuple[str, str], float],
+          decimaler: int) -> dict[tuple[str, str], float]:
+    """Tæller i procent af nævner pr. (kommune, år). Landstallet ('000') er de
+    98 kommuner samlet: summen af tællerne delt med summen af nævnerne for de
+    kommuner der har begge - samme regel som pr_indbygger()."""
+    ud = {k: round(v / naevner[k] * 100, decimaler)
+          for k, v in taeller.items() if k[0] != "000" and naevner.get(k)}
+    for a in {a for _, a in ud}:
+        med = [k for (k, aa) in ud if aa == a]
+        n = sum(naevner[(k, a)] for k in med)
+        if n:
+            ud[("000", a)] = round(sum(taeller[(k, a)] for k in med) / n * 100, decimaler)
+    return ud
+
+
 def seneste(serie: dict[tuple[str, str], float], min_kommuner: int = 50,
             tabel: str | None = None) -> tuple[str | None, dict[str, float], float | None]:
     """Nyeste år i serien hvor mindst `min_kommuner` kommuner har en værdi.

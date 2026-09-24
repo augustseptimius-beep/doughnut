@@ -446,10 +446,6 @@ SIMPLE = [
     # --- Velfærd ---
     dict(id="vulnerable_children", navn="Udsatte børn og unge", tabel="BU43",
          soeg=["udsatte børn og unge i alt"], pin_ialt=True),
-    dict(id="neet_taeller", navn="NEET - ikke-aktive", tabel="NEET1",
-         soeg=["=ikke-aktive (neet)"]),
-    dict(id="neet_naevner", navn="NEET - aktive og ikke-aktive i alt", tabel="NEET1",
-         soeg=["aktive og ikke-aktive i alt"]),
     dict(id="poverty_relative", navn="Relativ fattigdom", tabel="IFOR12P",
          soeg=["60"], pin_ialt=True),
     dict(id="child_poverty", navn="Børnefattigdom 0-17 år", tabel="LABY07",
@@ -546,7 +542,6 @@ FORHOLD = {
     # hospital_long - fjerner man hentningen, mister hospital_long sin pil.
     "low_education": ("low_education_taeller", "low_education_naevner"),
     "education": ("education_taeller", "education_naevner"),
-    "neet": ("neet_taeller", "neet_naevner"),
     "gender_leadership": ("gender_leadership_taeller", "gender_leadership_naevner"),
     "income_gender_gap": ("income_gender_gap_taeller", "income_gender_gap_naevner"),
     "employment": ("employment_taeller", None),  # nævner er konstant 100 (allerede en frekvens)
@@ -586,6 +581,7 @@ SAMME_SOM_SCOREN = {
     "crime_rate": ("fetch_social_new_data", "serie_crime_rate", "STRAF11", "aar"),
     "traffic_accidents": ("fetch_social_new_data", "serie_traffic_accidents", "UHELDK1", "aar"),
     "library_use": ("fetch_social_new_data", "serie_library_use", "BIB3A", "perioder"),
+    "neet": ("fetch_social_new_data", "serie_neet", "NEET3", "perioder"),
     "hjemsyg": ("fetch_sundhed_extra", "serie_hjemsyg", "HJEMSYG", "perioder"),
     "child_notifications": ("fetch_udvidelse_data", "serie_child_notifications", "UND2", "perioder"),
     "vacant_housing": ("fetch_doughnut_data", "serie_vacant_housing", "BOL101", "perioder"),

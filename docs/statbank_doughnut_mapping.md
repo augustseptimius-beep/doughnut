@@ -43,7 +43,7 @@
 | HFUDD11 | Befolkningens højest fuldførte uddannelse (15-69 år) | Ja |
 | HFUDD21 | Befolkningens højest fuldførte uddannelse (15-29 år) | Ja |
 | LABY19A | Uddannelsesniveau, andel i procent | Ja |
-| NEET1 | Unge (16-24 år) uden for uddannelse og beskæftigelse | Ja |
+| NEET3 | Unge (16-24 år) uden for uddannelse og beskæftigelse (afløser NEET1, inaktiv maj 2025) | Ja |
 | GENMF10 | Gennemførelse af uddannelsesgrupper | Nej |
 
 ---
