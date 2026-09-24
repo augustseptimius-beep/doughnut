@@ -202,7 +202,7 @@ Disse indikatorer er implementeret i Danmarks 98 Doughnuts, men er ikke en del a
 | Musikskoleelever (`music_school`) | DST: `SKOLM02B` | kultur_fritid |
 | Kommunale kulturudgifter (`kultur_spending`) | DST: `REGK31` | kultur_fritid |
 | Pendlingsafstand (`commute_distance`) | DST: `AFSTB4` | mobilitet |
-| Brug af offentlig transport (`public_transport`) | DST: `LABY49` | mobilitet |
+| God adgang til offentlig transport (`public_transport`) | Rejseplanen GTFS + DAR + Eurostat, beregnet efter DST's LABY49-metode | mobilitet |
 
 ### Rettelse sep. 2026: sundhedsprofilen findes på kommuneniveau
 
@@ -214,4 +214,4 @@ Otte af indikatorerne er hentet og otte er i drift fra sep. 2026 - se `scripts/f
 
 ### Største resterende strukturelle mangel
 
-Kollektiv trafik på ægte kommuneniveau. `public_transport` (LABY49) findes kun på kommunegruppe-niveau, så alle kommuner i samme gruppe får identisk score og kan ikke påvirke den.
+Kollektiv trafik på ægte kommuneniveau var den største mangel indtil sep. 2026: `public_transport` (LABY49) fandtes kun på kommunegruppe-niveau. Den beregnes nu pr. kommune med DST's metode ud fra åbne data, se `docs/offentlig-transport-genskabt.md`.

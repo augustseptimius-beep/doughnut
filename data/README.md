@@ -104,7 +104,7 @@ Viser hvilken **vej** en kommune bevæger sig, ikke kun hvor den ligger. Én ræ
 - **Retningen beregnes på råværdier, aldrig på ratio.** Ratio er relativ til en baseline, og platformen har en baseline-toggle (avg/top10/gruppe). En ratio-baseret pil ville skifte retning når brugeren skifter baseline.
 - **Øko-dimensioner bruger worst-of:** pilen følger den sub-indikator der bestemmer dimensionens score (højeste ratio). Undtagelse: Forurening bruger gennemsnit, ligesom i scoren.
 - **Ingen fallback.** Har den score-afgørende sub-indikator ingen tidsserie, får dimensionen ingen pil. Ellers ville pilen beskrive noget andet end tallet ved siden af.
-- **53 af de 66 scorede indikatorer har historik** (sep. 2026). De 13 uden vises med et skraveret felt (`ingen`): DCE-luftkort, bioscore, VP3-vandplaner, Jupiter-analyser, forbrugsbaseret CO₂, forsikringsskader og fossil opvarmning findes ikke som årlige tidsserier pr. kommune, `public_transport` findes kun på kommunegruppe-niveau, og `sport_tilskuer` bruger begge tilgængelige år i selve målet.
+- **53 af de 66 scorede indikatorer har historik** (sep. 2026). De 13 uden vises med et skraveret felt (`ingen`): DCE-luftkort, bioscore, VP3-vandplaner, Jupiter-analyser, forbrugsbaseret CO₂, forsikringsskader og fossil opvarmning findes ikke som årlige tidsserier pr. kommune, `public_transport` beregnes fra køreplaner, og Rejseplanens arkiv går kun tilbage til december 2025, og `sport_tilskuer` bruger begge tilgængelige år i selve målet.
 
 Genereres af `scripts/fetch_trend_history.py` → `scripts/build_trends_csv.py`. **Skal genberegnes sammen med `master_indicators.csv`**, ellers kan pil og tal komme til at høre til forskellige årgange.
 
@@ -151,6 +151,26 @@ kommunetabel. Tallet afviger derfor en anelse fra SIF's eget vægtede
 landsestimat, og det skal fremgå ved formidling.
 
 Webapp'en læser **ikke** længere fra disse direkte - kun fra `master_indicators.csv`.
+
+### `offentlig_transport_scores.csv` og `befolkning_1km_2021_dk.csv`
+
+Adgang til offentlig transport pr. kommune (verdensmål 11.2.1), genskabt fra
+åbne data af `scripts/fetch_offentlig_transport.py` med DST's metode. Kilden til
+`public_transport` fra sep. 2026; DST's LABY49 findes kun pr. kommunegruppe og
+bruges kun til validering. Metode og validering:
+`docs/offentlig-transport-genskabt.md`.
+
+`offentlig_transport_scores.csv`: `public_transport_raw` er andelen af
+befolkningen med mindst 10 afgange i timen inden for gåafstand,
+`public_transport_ref` landstallet for Danmark som helhed og
+`public_transport_ratio` scriptets egen ratio (kun krydstjek). `andel_middel`,
+`andel_lavt` og `andel_intet` er de øvrige serviceniveauer. `gtfs_dato` er den
+hverdag køreplanen er talt på.
+
+`befolkning_1km_2021_dk.csv`: de danske celler fra Eurostats Census 2021
+population grid (`n_km`, `e_km` er cellens nederste venstre hjørne i
+ETRS89-LAEA, km). Bruges til at vægte adresser med registrerede beboere.
+© European Union.
 
 ## Inaktive dimensioner
 
