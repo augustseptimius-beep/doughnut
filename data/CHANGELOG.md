@@ -2,6 +2,12 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-24 (NEET: NEET3 afløser NEET1)
+
+- **`neet` hentes nu fra DST NEET3.** DST satte NEET1 inaktiv i maj 2025 med 2023 som sidste år, så indikatoren stod stille. NEET3 dækker 16-29 år med alder som variabel; 16-24 år giver præcis NEET1's tal (alle 3.168 kommune-år 2008-2023 er ens), og tabellen har 2024. Nævneren var desuden hårdkodet til 2023 i det gamle script.
+- **Scoren og pilen hentes af samme funktion** (`serie_neet()`), og landstallet er de 98 kommuner samlet (9,14% i 2024 mod 9,64% i 2023).
+- **Konsekvens:** alle 98 NEET-tal er nu fra 2024. Små kommuner svinger mest (Samsø 14,1% til 9,6%, Kerteminde 11,7% til 8,1%). Velfærd skifter farve i 3 kommuner i standardvisningen (Kolding og Ikast-Brande gul til grøn, Hjørring grøn til gul), 5 med landsgennemsnit og 1 med top 10%. 4 NEET-pile vender retning; pilen går nu til 2024.
+
 ## 2026-09-24 (landsgennemsnit betyder Danmark som helhed)
 
 - **Beslutning:** et landsgennemsnit er de 98 kommuner samlet, vægtet med indikatorens egen nævner. Det er ikke et uvægtet gennemsnit af kommunerne og ikke en hele-landet-række med tal uden kommune (arkitekturdokumentet R3).

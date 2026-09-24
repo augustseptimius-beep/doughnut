@@ -25,7 +25,7 @@ Indikatorer:
 
   VELFÆRD (ekstra):
     - BU43:     Udsatte børn og unge (andel, inverteret)
-    - NEET1:    Unge uden for uddannelse/beskæftigelse (inverteret)
+    - NEET3:    Unge 16-24 år uden for uddannelse/beskæftigelse (inverteret)
 
 Brug:
   python3 fetch_social_new_data.py
@@ -41,7 +41,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dst_aar import (seneste_aar, seneste_aar_liste, seneste_periode,  # noqa: E402
                      seneste_kvartal, hele_aar_kvartaler, perioder)
-from dst import api_post, parse_value, pr_indbygger, pr_kommune_aar, seneste  # noqa: E402  (fælles DST-kald, scripts/dst.py)
+from dst import andel, api_post, parse_value, pr_indbygger, pr_kommune_aar, seneste  # noqa: E402  (fælles DST-kald, scripts/dst.py)
 from kommuner import KODER as VALID_CODES  # noqa: E402  (de 98 kommuner, data/kommuner.json)
 
 
@@ -546,51 +546,36 @@ def fetch_vulnerable_children() -> tuple[dict[str, float], float | None]:
     return result, national
 
 
+def serie_neet(aar: list[str]) -> dict[tuple[str, str], float]:
+    """
+    NEET3: andel af de 16-24-årige der hverken er i beskæftigelse eller
+    uddannelse (NEET), i procent. {(kommune_kode, år): pct} inkl. landstallet
+    (000, de 98 kommuner samlet). Bruges af både scoren og retningspilen
+    (fetch_trend_history.py).
+
+    NEET3 afløser NEET1, som DST satte inaktiv i maj 2025 (sidste år 2023).
+    NEET3 dækker 16-29 år med aldersgrupperne som variabel; 16-24 år giver
+    præcis NEET1's tal (efterprøvet: alle 3.168 kommune-år 2008-2023 ens).
+    """
+    rows = api_post("NEET3", [
+        {"code": "STATUSNEET", "values": ["00", "10"]},   # alle / ikke-aktive (NEET)
+        {"code": "KØN", "values": ["00"]},
+        {"code": "BOPOMR", "values": ["*"]},
+        {"code": "SOCIO", "values": ["TOT"]},
+        {"code": "ALDER", "values": ["1624"]},
+        {"code": "Tid", "values": aar},
+    ])
+    neet = pr_kommune_aar([r for r in rows if r.get("STATUSNEET") == "10"], "BOPOMR")
+    alle = pr_kommune_aar([r for r in rows if r.get("STATUSNEET") == "00"], "BOPOMR")
+    return andel(neet, alle, 2)
+
+
 def fetch_neet() -> tuple[dict[str, float], float | None]:
-    """
-    NEET1: Unge 16-24 år uden for uddannelse og beskæftigelse.
-    Returnerer antal NEET pr. kommune og nationalt.
-    Skal normaliseres mod ungdomsbefolkningen.
-    """
-    print("Henter NEET-unge (NEET1)...")
-    # Hent NEET-antal
-    neet_rows = api_post("NEET1", [
-        {"code": "STATUSNEET", "values": ["10"]},   # Ikke-aktive (NEET)
-        {"code": "KØN", "values": ["TOT"]},
-        {"code": "BOPOMR", "values": ["*"]},
-        {"code": "SOCIO", "values": ["TOT"]},
-        {"code": "Tid", "values": [seneste_aar("NEET1", fallback="2023")]},
-    ])
-    neet: dict[str, float] = {}
-    for row in neet_rows:
-        kode = row.get("BOPOMR", "").strip()
-        val = parse_value(row.get("INDHOLD", ""))
-        if val is not None and (kode in VALID_CODES or kode == "000"):
-            neet[kode] = val
-
-    # Hent total 16-24 årige
-    total_rows = api_post("NEET1", [
-        {"code": "STATUSNEET", "values": ["00"]},   # Alle
-        {"code": "KØN", "values": ["TOT"]},
-        {"code": "BOPOMR", "values": ["*"]},
-        {"code": "SOCIO", "values": ["TOT"]},
-        {"code": "Tid", "values": ["2023"]},
-    ])
-    total: dict[str, float] = {}
-    for row in total_rows:
-        kode = row.get("BOPOMR", "").strip()
-        val = parse_value(row.get("INDHOLD", ""))
-        if val is not None and (kode in VALID_CODES or kode == "000"):
-            total[kode] = val
-
-    # Beregn NEET-andel
-    result = {}
-    for kode in neet:
-        if kode in total and total[kode] > 0:
-            result[kode] = round((neet[kode] / total[kode]) * 100, 2)
-
-    national = result.pop("000", None)
-    print(f"  {len(result)} kommuner, landsgennemsnit NEET-andel: {national}%")
+    """NEET-andel af de 16-24-årige i nyeste år med data, og landstallet."""
+    print("Henter NEET-unge (NEET3, 16-24 år)...")
+    aar, result, national = seneste(serie_neet(
+        seneste_aar_liste("NEET3", 2, fallback=["2024", "2023"])), tabel="NEET3")
+    print(f"  {len(result)} kommuner ({aar}), landsgennemsnit NEET-andel: {national}%")
     return result, national
 
 

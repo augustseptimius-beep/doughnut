@@ -48,7 +48,7 @@ Baseret på Københavns Doughnut 2025. Tilgængelighed vurderet via `api.statban
 | 14 | Andelen af elever med lav elevtrivsel | ✅ | UVM: `GS/TRIV/TRIVIND` | 🟢 |
 | 15 | Antal bogudlån pr. borger | ✅ | DST: `BIB1` | 🟢 |
 | 16 | Andelen af unge lærepladssøgende med fuldførte grundforløb | ✅ | UVM: `EUD/PRAK/SØG` | 🟢 |
-| 17 | Antal unge uden for uddannelse og beskæftigelse (NEET) | ✅ | DST: `NEET1` | 🟢 |
+| 17 | Antal unge uden for uddannelse og beskæftigelse (NEET) | ✅ | DST: `NEET3` (afløser NEET1 fra 2025) | 🟢 |
 | 18 | Andelen af 25-årige der har gennemført en ungdomsuddannelse | ✅ | UVM: `GS/PROFMOD/PROFMOD` | 🟢 |
 
 > *Rettelse: Kilde for #15 er `BIB1`, ikke `IBIB1A`.*

@@ -23,7 +23,7 @@
   "gini": {"reference": 30.43, "daekning": 98, "data_year": "2024"},
   "low_income": {"reference": 3.8, "daekning": 98, "data_year": "2024"},
   "vulnerable_children": {"reference": 3.5, "daekning": 98, "data_year": "2025"},
-  "neet": {"reference": 9.64, "daekning": 98, "data_year": "2023"},
+  "neet": {"reference": 9.14, "daekning": 98, "data_year": "2024"},
   "poverty_relative": {"reference": 13.3, "daekning": 98, "data_year": "2024"},
   "child_notifications": {"reference": 92.33, "daekning": 98, "data_year": "2025"},
   "vacant_housing": {"reference": 6.14, "daekning": 98, "data_year": "2026"},
