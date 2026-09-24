@@ -2,6 +2,17 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-24 (offentlig transport pr. kommune)
+
+- **`public_transport` beregnes nu pr. kommune af `fetch_offentlig_transport.py`.** DST's LABY49 findes kun for fem kommunegrupper, så indikatoren havde fem værdier, og i standardvisningen fik alle 98 kommuner præcis 100. Scriptet genskaber DST's metode (verdensmål 11.2.1) med Rejseplanens GTFS, DAR-adresser og Eurostats befolkningsgrid 2021: andelen af befolkningen, der bor højst 500 m gang fra stoppesteder med tilsammen mindst 10 afgange i timen en typisk hverdag kl. 6-20. Lagt sammen til kommunegrupper rammer tallene LABY49 2025 med 1,2 procentpoint i gennemsnit. Metode og validering: `docs/offentlig-transport-genskabt.md`.
+- **Referencen er nu Danmark som helhed:** 37,01 % mod før et uvægtet gennemsnit af gruppetallene på 30,02 %. Det lukker afvigelsen for `public_transport` i arkitekturdokumentets afsnit 7.
+- **Dataår 2025 til 2026** (køreplanen for 30. september 2026).
+- **Konsekvens:** 85 ratios ændret; de 13 øvrige lå på loftet 150 både før og efter. 87 forskellige værdier mellem 0 % og 95,7 %. Seks kommuner får 0 %: Ærø, Fanø, Lemvig, Norddjurs, Samsø og Læsø. Thisted går fra 9,91 % til 7,35 %.
+- **Farveskift på Mobilitet:** 56 i standardvisningen (grøn/gul/rød fra 51/46/1 til 46/15/37), 16 med landsgennemsnit og 9 med top 10%. Standardvisningen flytter mest, fordi indikatoren før var 100 for alle.
+- **Standardvisningen får høje toppe.** Landkommunernes gruppesnit er ca. 6 %, og kommunegruppe-baselinen har intet loft (R10). Svendborg får derfor 338 på indikatoren og 214,7 på Mobilitet. Ingen anden kategori kommer over 177.
+- **`mobilitet_scores.csv`** har mistet kolonnerne `public_transport_pct` og `public_transport_ratio`, og `fetch_social_new_data.py` henter ikke længere LABY49. Tabellen bruges kun til valideringen i det nye script.
+- **Ingen retningspile ændret.** Indikatoren har stadig ingen pil, fordi Rejseplanens køreplanarkiv kun går tilbage til december 2025.
+
 ## 2026-09-24 (NEET: NEET3 afløser NEET1)
 
 - **`neet` hentes nu fra DST NEET3.** DST satte NEET1 inaktiv i maj 2025 med 2023 som sidste år, så indikatoren stod stille. NEET3 dækker 16-29 år med alder som variabel; 16-24 år giver præcis NEET1's tal (alle 3.168 kommune-år 2008-2023 er ens), og tabellen har 2024. Nævneren var desuden hårdkodet til 2023 i det gamle script.

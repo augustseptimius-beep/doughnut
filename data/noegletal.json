@@ -51,7 +51,7 @@
   "civil_society": {"reference": 74.0, "daekning": 98, "data_year": "2025"},
   "educated_staff": {"reference": 46.94, "daekning": 98, "data_year": "2024"},
   "commute_distance": {"reference": 22.6, "daekning": 98, "data_year": "2024"},
-  "public_transport": {"reference": 30.01898, "daekning": 98, "data_year": "2025"},
+  "public_transport": {"reference": 37.01, "daekning": 98, "data_year": "2026"},
   "vejr_skader": {"reference": 21.9196, "daekning": 98, "data_year": "2023-2025"},
   "klimapaavirkning": {"reference": 3.0, "daekning": 98, "data_year": "2023"},
   "luftkvalitet_no2": {"reference": 10.0, "daekning": 98, "data_year": "2024"},

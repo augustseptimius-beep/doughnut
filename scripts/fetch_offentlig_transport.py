@@ -6,16 +6,15 @@ Andel af befolkningen med god adgang til offentlig transport PR. KOMMUNE,
 genskabt ud fra åbne data med DST's egen metode (FN's verdensmål 11.2.1).
 
 HVORFOR: DST udgiver indikatoren (LABY49) kun for de fem kommunegrupper.
-Platformens public_transport stempler derfor gruppetallet på alle kommuner i
+Indtil sep. 2026 stemplede platformen gruppetallet på alle kommuner i
 gruppen: fem forskellige værdier fordelt på 98 kommuner. I kommunegruppe-
-baselinen, som er standardvisningen, er hver kommune dermed lig med sit eget
-gruppegennemsnit, og alle 98 får præcis 100. Indikatoren bærer ingen
-information i den visning.
+baselinen, som er standardvisningen, var hver kommune dermed lig med sit eget
+gruppegennemsnit, og alle 98 fik præcis 100.
 
-STATUS: IKKE koblet på master-pipelinen. Scriptet skriver
-data/offentlig_transport_scores.csv, men registret (data/indikatorer.json)
-peger stadig på LABY49, og scriptet kalder bevidst ikke auto_build_master().
-Se docs/offentlig-transport-genskabt.md for validering og plan.
+Scriptet er kilden til public_transport. Det skriver
+data/offentlig_transport_scores.csv, kvitterer køreplanens år i
+data/data_years.json under "Rejseplanen GTFS" og bygger master til sidst.
+Validering og begrundelser: docs/offentlig-transport-genskabt.md.
 
 DST'S METODE (Boks 1 i DST's analyse "Har adgang til offentlig transport
 betydning for om man har bil?", og verdensmålssiden for 11.2.1):
@@ -47,8 +46,9 @@ GENSKABELSEN (valideret mod LABY49, se docs):
 
 VALIDERING: scriptet summerer kommunetallene op på de fem kommunegrupper og
 sammenligner med nyeste LABY49 ved hver kørsel. Afviger det i gennemsnit mere
-end 3 procentpoint, så er noget ændret hos en af kilderne - se efter før tallene
-bruges.
+end 3 procentpoint, er noget ændret hos en af kilderne, og scriptet STOPPER uden
+at røre data/ eller master. --tving skriver alligevel, når man har sikret sig at
+tallene er rigtige. Kan LABY49 ikke hentes, fortsætter scriptet med en advarsel.
 
 KILDER OG KREDITERING:
   - Rejseplanen GTFS, CC BY 4.0. "Indeholder kollektivtrafikdata fra Rejseplanen."
@@ -58,12 +58,13 @@ KILDER OG KREDITERING:
   - DST LABY49, kun til validering.
 
 Kører med standardbiblioteket alene (Python 3.9+). Første kørsel henter ca.
-60 MB køreplaner og 4 mio. adresser (4-5 minutter). Det cachen genbruges.
+60 MB køreplaner og 4 mio. adresser (4-5 minutter). Derefter genbruges cachen.
 
 Kør fra projektets rodmappe:
   python3 scripts/fetch_offentlig_transport.py
   python3 scripts/fetch_offentlig_transport.py --genhent        # hent alt forfra
   python3 scripts/fetch_offentlig_transport.py --dato 20260929  # bestemt hverdag
+  python3 scripts/fetch_offentlig_transport.py --tving          # skriv trods afvigelse
 """
 
 from __future__ import annotations
@@ -89,6 +90,7 @@ DATA_DIR = ROOT / "data"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from dst import api_post  # noqa: E402
+from dst_aar import registrer_aar  # noqa: E402
 from kommuner import GRUPPE, KOMMUNER  # noqa: E402
 
 GTFS_URL = "https://www.rejseplanen.info/labs/GTFS.zip"
@@ -105,7 +107,7 @@ FRA_SEK, TIL_SEK = 6 * 3600, 20 * 3600
 TIMER = 14
 HOEJ, MIDDEL = 10.0, 4.0  # afgange i timen
 BEHOVSSTYRET = {"715"}    # GTFS-rutetype "Demand and Response Bus Service" (flextrafik, telebus)
-MAKS_AFVIGELSE = 3.0      # procentpoint, gennemsnit mod LABY49 før scriptet advarer
+MAKS_AFVIGELSE = 3.0      # procentpoint, gennemsnit mod LABY49 før scriptet stopper
 
 UGEDAGE = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 USER_AGENT = "doughnut-dk/1.0 (+https://github.com/augustseptimius-beep/doughnut)"
@@ -423,7 +425,8 @@ DST_NIVEAU = {"1345": 3, "1350": 3, "1355": 2, "1360": 1, "1365": 0}
 NIVEAUNAVN = ["Intet", "Lavt", "Middel", "Højt+"]
 
 
-def valider(grupper: dict[int, list[float]]) -> None:
+def valider(grupper: dict[int, list[float]]) -> float | None:
+    """Gennemsnitlig afvigelse fra LABY49 i procentpoint, eller None hvis DST ikke svarer."""
     try:
         rows = api_post("LABY49", [
             {"code": "KOMGRP", "values": ["*"]},
@@ -431,8 +434,8 @@ def valider(grupper: dict[int, list[float]]) -> None:
             {"code": "Tid", "values": ["*"]},
         ])
     except Exception as e:  # noqa: BLE001 - validering må ikke vælte kørslen
-        print(f"  ADVARSEL: kunne ikke hente LABY49 til validering ({e}).")
-        return
+        print(f"  ADVARSEL: kunne ikke hente LABY49 til validering ({e}). Fortsætter uden.")
+        return None
     aar = max(r["TID"] for r in rows)
     dst: dict[int, list[float]] = defaultdict(lambda: [0.0] * 4)
     for r in rows:
@@ -449,8 +452,7 @@ def valider(grupper: dict[int, list[float]]) -> None:
         print(linje)
     gns = sum(fejl) / len(fejl)
     print(f"  Gennemsnitlig afvigelse: {gns:.1f} procentpoint")
-    if gns > MAKS_AFVIGELSE:
-        print(f"  ADVARSEL: over {MAKS_AFVIGELSE} procentpoint. Tjek kilderne før tallene bruges.")
+    return gns
 
 
 # ─── Hovedprogram ──────────────────────────────────────────────────────
@@ -461,6 +463,8 @@ def main() -> int:
     ap.add_argument("--genhent", action="store_true", help="hent køreplaner og adresser forfra")
     ap.add_argument("--cache", type=Path, default=STANDARD_CACHE, help="mappe til downloads")
     ap.add_argument("--radius", type=float, default=RADIUS_M, help="rækkevidde i meter, fugleflugt")
+    ap.add_argument("--tving", action="store_true",
+                    help="skriv resultatet selvom det afviger mere end 3 procentpoint fra LABY49")
     args = ap.parse_args()
     t0 = time.time()
 
@@ -496,20 +500,40 @@ def main() -> int:
     for kode, niv in zip(koder, pr_kommune):
         for n in range(4):
             grupper[GRUPPE[kode]][n] += niv[n]
-    valider({g: [100 * v / sum(niv) for v in niv] for g, niv in grupper.items()})
+    afvigelse = valider({g: [100 * v / sum(niv) for v in niv] for g, niv in grupper.items()})
+    if afvigelse is not None and afvigelse > MAKS_AFVIGELSE and not args.tving:
+        print(f"\n✗ STOP: afvigelsen fra DST er {afvigelse:.1f} procentpoint "
+              f"(grænse {MAKS_AFVIGELSE:.0f}). Noget er ændret hos en af kilderne.")
+        print(f"  {UD_FIL.relative_to(ROOT)} og master er IKKE ændret. Find årsagen, eller kør")
+        print("  med --tving, hvis du har sikret dig, at tallene er rigtige.")
+        return 1
 
+    # public_transport_ratio er scriptets egen ratio mod landstallet. Scoren
+    # beregnes af build_master_csv.py ud fra raw og ref; ratioen bruges kun
+    # til krydstjek (CLAUDE.md punkt 4 og 33).
     with open(UD_FIL, "w", newline="", encoding="utf-8") as fh:
         wr = csv.writer(fh)
         wr.writerow(["kommune_kode", "kommune_navn", "kommunegruppe", "public_transport_raw",
-                     "public_transport_ref", "andel_middel", "andel_lavt", "andel_intet",
-                     "befolkning_2021", "gtfs_dato"])
+                     "public_transport_ratio", "public_transport_ref", "andel_middel",
+                     "andel_lavt", "andel_intet", "befolkning_2021", "gtfs_dato"])
         for kode, niv in zip(koder, pr_kommune):
             b = sum(niv)
-            wr.writerow([kode, KOMMUNER[kode], GRUPPE[kode], round(100 * niv[3] / b, 2),
-                         round(landstal, 2), round(100 * niv[2] / b, 2), round(100 * niv[1] / b, 2),
+            andel = 100 * niv[3] / b
+            wr.writerow([kode, KOMMUNER[kode], GRUPPE[kode], round(andel, 2),
+                         round(100 * andel / landstal, 2), round(landstal, 2),
+                         round(100 * niv[2] / b, 2), round(100 * niv[1] / b, 2),
                          round(100 * niv[0] / b, 2), round(b), dato.isoformat()])
     print(f"\n✓ Skrev {UD_FIL.relative_to(ROOT)} ({len(koder)} kommuner, {time.time() - t0:.0f}s)")
-    print("BEMÆRK: master-CSV'en er IKKE opdateret. Se docs/offentlig-transport-genskabt.md.")
+
+    # Kvittering: master mærker tallet med køreplanens år (punkt 19 og 31).
+    registrer_aar("Rejseplanen GTFS", str(dato.year))
+
+    try:
+        from build_master_csv import auto_build_master
+        auto_build_master()
+    except Exception as e:  # noqa: BLE001 - rådata er gemt; build kan køres manuelt
+        print(f"✗ FEJL ved rebuild: {e}")
+        print("  Kør manuelt: python3 scripts/build_master_csv.py")
     return 0
 
 

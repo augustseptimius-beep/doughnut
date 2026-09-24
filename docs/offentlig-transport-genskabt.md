@@ -1,20 +1,20 @@
 # Offentlig transport pr. kommune, genskabt fra åbne data
 
-Undersøgt september 2026. Script: `scripts/fetch_offentlig_transport.py`. Resultat: `data/offentlig_transport_scores.csv`.
+Undersøgt og koblet på september 2026. Script: `scripts/fetch_offentlig_transport.py`. Resultat: `data/offentlig_transport_scores.csv`.
 
-Intet er koblet på platformen endnu. Planen står nederst og kræver en beslutning.
+Scriptet er kilden til `public_transport` på platformen. Hvad der blev ændret ved påkoblingen, og hvad der stadig står åbent, står nederst.
 
 ## Kort version
 
-Platformens `public_transport` er DST's tal for fem kommunegrupper, stemplet på hver kommune i gruppen. Det giver fem forskellige værdier fordelt på 98 kommuner, og i standardvisningen (kommunegruppe-baselinen) får alle 98 kommuner præcis 100.
+Indtil september 2026 var platformens `public_transport` DST's tal for fem kommunegrupper, stemplet på hver kommune i gruppen. Det gav fem forskellige værdier fordelt på 98 kommuner, og i standardvisningen (kommunegruppe-baselinen) fik alle 98 kommuner præcis 100.
 
-Vi har genskabt DST's metode pr. kommune med tre åbne kilder: Rejseplanens køreplaner, DAR-adresser og Eurostats befolkningsgrid. Lægger man kommunetallene sammen til de fem grupper, rammer de DST's egne tal med 1,2 procentpoint i gennemsnit.
+Vi har genskabt DST's metode pr. kommune med tre åbne kilder: Rejseplanens køreplaner, DAR-adresser og Eurostats befolkningsgrid. Lægger man kommunetallene sammen til de fem grupper, rammer de DST's egne tal med 1,2 procentpoint i gennemsnit. Fra september 2026 er det de tal, platformen scorer på.
 
-## Problemet med den nuværende indikator
+## Problemet med den tidligere indikator
 
-LABY49 findes kun for fem kommunegrupper. Alle 31 landkommuner står derfor til 9,91 %, og indikatoren kan ikke skelne Thisted fra Fanø eller Svendborg.
+LABY49 findes kun for fem kommunegrupper. Alle 31 landkommuner stod derfor til 9,91 %, og indikatoren kunne ikke skelne Thisted fra Fanø eller Svendborg.
 
-Det er værre i standardvisningen. `computeGroupRatios()` i `shared.ts` dividerer hver kommunes ratio med gruppens gennemsnit. Når alle i gruppen har samme tal, bliver resultatet 100,0 for hver eneste kommune (kontrolleret mod `master_indicators.csv`). Mobilitet er dermed reelt pendlingsafstand plus en konstant på 100.
+Det var værre i standardvisningen. `computeGroupRatios()` i `shared.ts` dividerer hver kommunes ratio med gruppens gennemsnit. Når alle i gruppen har samme tal, bliver resultatet 100,0 for hver eneste kommune (kontrolleret mod `master_indicators.csv`). Mobilitet var dermed reelt pendlingsafstand plus en konstant på 100.
 
 ## DST's metode
 
@@ -59,7 +59,7 @@ Resultatet pr. kommune passer med DST's folketal: København 634.000, Aarhus 351
 
 ## Validering
 
-Scriptet gentager denne sammenligning ved hver kørsel og advarer, hvis den gennemsnitlige afvigelse overstiger 3 procentpoint.
+Scriptet gentager denne sammenligning ved hver kørsel. Overstiger den gennemsnitlige afvigelse 3 procentpoint, stopper scriptet uden at røre data eller master, fordi noget så er ændret hos en af kilderne. `--tving` skriver alligevel, når man har undersøgt sagen.
 
 | Kommunegruppe | Intet | Lavt | Middel | Højt+ |
 |---|---|---|---|---|
@@ -87,7 +87,7 @@ Landstallet for Danmark som helhed er 37,0 %. Kommunerne får 87 forskellige væ
 
 Seks kommuner får 0 %: Ærø, Fanø, Lemvig, Norddjurs, Samsø og Læsø. Ingen bolig har mindst 10 afgange i timen inden for rækkevidde.
 
-Thisted får 7,35 % mod 9,91 % i dag. Fordelingen er middel 13,7 %, lavt 40,3 % og intet 38,6 %. Thisted ligger over landkommunernes median.
+Thisted får 7,35 % mod 9,91 % med gruppetallet. Fordelingen er middel 13,7 %, lavt 40,3 % og intet 38,6 %. Thisted ligger over landkommunernes median.
 
 Holstebro på 2,0 % er efterprøvet, fordi tallet virker lavt for en by med 37.000 indbyggere. Trafikterminalen har ca. 7 busafgange i timen fordelt på fire perroner, og stationen 4,9. Kun boliger tæt på centrum når over 10.
 
@@ -123,21 +123,23 @@ At genskabe atlassets egen rejsetidsmodel ville kræve en ruteplanlægger (fx R5
 
 Alle fire kilder kræver kun kreditering.
 
-## Plan for at koble det på
+## Koblet på (24. september 2026)
 
-Kræver din beslutning. Intet af dette er gjort.
+1. **Registret.** `public_transport` i `data/indikatorer.json` peger på `offentlig_transport_scores.csv` med `raw_col: public_transport_raw`, `ratio_col: public_transport_ratio` og `reference: {type: landstal, col: public_transport_ref}`. `table` er `Rejseplanen GTFS`, og begrundelsen på metodesiden er skrevet om.
+2. **Dataår.** Scriptet kvitterer køreplanens år i `data/data_years.json` under `Rejseplanen GTFS` og kalder `auto_build_master()`.
+3. **`fetch_social_new_data.py`** henter ikke længere LABY49, og `mobilitet_scores.csv` har mistet de to gamle kolonner. LABY49 bruges kun til valideringen i det nye script.
+4. **Metodesiden** har ny beregningstekst og nye begrænsninger for Mobilitet, med landstallet som pladsholder. Arkitekturdokumentets afsnit 7 har mistet afvigelsen for `public_transport`, og `data/CHANGELOG.md` har en note med alle ændringer.
+5. **Ændringer i tallene.** 85 ratios ændret; de 13 øvrige lå på loftet 150 både før og efter. Mobilitet skifter farve i 56 kommuner i standardvisningen (grøn/gul/rød fra 51/46/1 til 46/15/37), 16 med landsgennemsnit og 9 med top 10%. Referencen gik fra 30,02 % (uvægtet gennemsnit af gruppetal) til 37,01 % (Danmark som helhed).
 
-1. **Registret.** `public_transport` i `data/indikatorer.json` peger på `offentlig_transport_scores.csv` med `raw_col: public_transport_raw` og `reference: {type: landstal, col: public_transport_ref}`. Kilde og `rationale` opdateres, og `note` om kommunegrupperne fjernes. Scriptets kolonner er lavet til netop det.
-2. **Dataår.** Scriptet skal kvittere i `data/data_years.json` (køreplanens år) og kalde `auto_build_master()`. Det er udeladt nu, så en kørsel ikke kan ændre sitet.
-3. **`fetch_social_new_data.py`** holder op med at hente LABY49 til scoren. Tabellen bruges fortsat til validering i det nye script.
-4. **Metodesiden** får ny beregningstekst for Mobilitet, og `data/CHANGELOG.md` en note.
-5. **Forventede ændringer.** Med landsgennemsnits-baselinen skifter 16 kommuner farve. I kommunegruppe-baselinen går indikatoren fra 98 grønne til 47 grønne, 9 gule og 42 røde. De seks kommuner med 0 % får ratio 0.
-6. **Retningspil senere.** Rejseplanen har et GTFS-arkiv siden december 2025. Fra 2027 kan scriptet køres på to årgange og give en pil.
+## Åbent
 
-Et åbent valg: tærsklen. DST udgiver fem niveauer. At "god adgang" betyder mindst 10 afgange i timen, er platformens eget valg (se `rationale` i registret).
+- **Loft i standardvisningen.** Kommunegruppe-baselinen har intet loft (arkitekturdokumentet R10), og landkommunernes gruppesnit er ca. 6 %. Svendborg får derfor 338 på indikatoren og 214,7 på Mobilitet, hvor ingen anden kategori kommer over 177. Landsgennemsnits-visningen har et loft på 150. Et tilsvarende loft i gruppe-baselinen ville rette det, men ændrer regel R10 for alle sociale indikatorer og hører til en separat beslutning.
+- **Retningspil.** Rejseplanen har et GTFS-arkiv siden december 2025. Fra 2027 kan scriptet køres på to årgange og give en pil.
+- **Tærsklen.** DST udgiver fem niveauer. At "god adgang" betyder mindst 10 afgange i timen, er platformens eget valg (se `rationale` i registret).
 
-Valget har støtte i DST's analyse: andelen af familier med bil stiger mest, når serviceniveauet falder fra mindst 10 til 4-9 afgange i timen. Det tyder på, at det er omkring 10 afgange, at bussen og toget bliver et reelt alternativ til bilen. Det passer til doughnut-logikken.
+  Valget har støtte i DST's analyse: andelen af familier med bil stiger mest, når serviceniveauet falder fra mindst 10 til 4-9 afgange i timen. Det tyder på, at det er omkring 10 afgange, at bussen og toget bliver et reelt alternativ til bilen. Det passer til doughnut-logikken.
 
-Prisen betales i landkommunerne. 12 kommuner ligger under 2 %, og i kommunegruppe-baselinen flytter ét procentpoint en landkommunes score 17 point. Med 4 afgange i timen ville ét procentpoint flytte 5 point, og kun 4 kommuner ville ligge under 2 %. Svingene skyldes reelle ændringer i køreplanen (beregningen er deterministisk, der er ingen stikprøve), men én buslinje i en bymidte kan flytte en landkommune fra rød til grøn.
+  Prisen betales i landkommunerne. 12 kommuner ligger under 2 %, og i kommunegruppe-baselinen flytter ét procentpoint en landkommunes score 17 point. Med 4 afgange i timen ville ét procentpoint flytte 5 point, og kun 4 kommuner ville ligge under 2 %. Svingene skyldes reelle ændringer i køreplanen (beregningen er deterministisk, der er ingen stikprøve), men én buslinje i en bymidte kan flytte en landkommune fra rød til grøn.
 
-Anbefaling: behold 10 ved skiftet, så indikatoren betyder det samme som i dag. Tag tærsklen op igen, hvis landkommunernes scorer svinger for meget fra år til år.
+  Tærsklen er beholdt på 10 ved skiftet, så indikatoren betyder det samme som før. Tag den op igen, hvis landkommunernes scorer svinger for meget fra år til år.
+- **Vejnet i stedet for fugleflugt.** Med GeoDanmarks eller OpenStreetMaps vejnet kunne man regne DST's 500 m direkte og droppe kalibreringen på 340 m.

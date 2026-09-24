@@ -28,7 +28,8 @@ For each municipality the platform computes and displays:
 
 Data comes from around 50 distinct public sources, chiefly Statistics Denmark
 (Statistikbanken), the Danish Environmental Portal, GEUS Jupiter (groundwater),
-the Danish Energy Agency, Energi Data Service, and Klimaregnskabet.dk.
+the Danish Energy Agency, Energi Data Service, Klimaregnskabet.dk, and
+Rejseplanen's public transport timetables (GTFS).
 
 ## How the scoring works
 
@@ -180,7 +181,9 @@ architecture document.
 
 ## Data sources and licensing
 
-All indicator data comes from public Danish sources. Each row in
+All indicator data comes from public sources, almost all of them Danish. The
+one exception is Eurostat's 2021 census population grid, used to weight
+addresses in the public transport indicator. Each row in
 `data/master_indicators.csv` carries its own `source` and `data_year`, and
 [`docs/statbank_doughnut_mapping.md`](docs/statbank_doughnut_mapping.md) maps
 Statistics Denmark tables to indicators. Reuse of the underlying data is
