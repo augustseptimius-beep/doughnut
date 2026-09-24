@@ -2,6 +2,14 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-24 (loft på 150 i standardvisningen)
+
+- **Kommunegruppe-baselinen har fået samme loft på 150 som landsgennemsnit-visningen** (arkitekturdokumentet R10). Loftet lægges på efter omskaleringen til gruppesnittet. Før kunne én indikator løfte en hel kategori: Svendborg fik 338 på `public_transport` og 214,7 på Mobilitet. Nu får Svendborg 150 og 120,5.
+- **Top 10%-baselinen har fået samme loft** (R9). Det ændrer ingen tal i dag, fordi den højeste top 10-ratio er 124,2, men reglen er nu den samme i alle tre visninger.
+- **Konsekvens i standardvisningen:** 68 indikatorværdier i 44 kommuner lå over 150 og står nu på 150. Flest for `public_transport` (16) og `civil_society` (11), og 16 indikatorer er ramt i alt. 63 kategoriscorer ændres. Tre skifter farve: Kultur går fra grøn til gul i Odder (102,4 til 99,3), Læsø (100,6 til 93,6) og Samsø (106,7 til 98,5), fordi én indikator over 150 trak gennemsnittet op over 100. Den højeste kategoriscore er nu 150 mod før 214,7.
+- **Masterfilen og retningspilene er uændrede.** Loftet ligger i webappen (`computeGroupRatios()` og `computeTop10Ratios()` i `shared.ts`), ikke i pipelinen.
+- **Sammenligningsværdien vises ikke ved en indikator på loftet.** Kommunesiden udleder gruppesnittet baglæns af råværdi og score, og det kan ikke lade sig gøre, når scoren er klippet. Samme regel gjaldt allerede for ratios klippet i pipelinen (R1).
+
 ## 2026-09-24 (offentlig transport pr. kommune)
 
 - **`public_transport` beregnes nu pr. kommune af `fetch_offentlig_transport.py`.** DST's LABY49 findes kun for fem kommunegrupper, så indikatoren havde fem værdier, og i standardvisningen fik alle 98 kommuner præcis 100. Scriptet genskaber DST's metode (verdensmål 11.2.1) med Rejseplanens GTFS, DAR-adresser og Eurostats befolkningsgrid 2021: andelen af befolkningen, der bor højst 500 m gang fra stoppesteder med tilsammen mindst 10 afgange i timen en typisk hverdag kl. 6-20. Lagt sammen til kommunegrupper rammer tallene LABY49 2025 med 1,2 procentpoint i gennemsnit. Metode og validering: `docs/offentlig-transport-genskabt.md`.
@@ -9,7 +17,7 @@ Log over større ændringer i datapipeline og master-fil.
 - **Dataår 2025 til 2026** (køreplanen for 30. september 2026).
 - **Konsekvens:** 85 ratios ændret; de 13 øvrige lå på loftet 150 både før og efter. 87 forskellige værdier mellem 0 % og 95,7 %. Seks kommuner får 0 %: Ærø, Fanø, Lemvig, Norddjurs, Samsø og Læsø. Thisted går fra 9,91 % til 7,35 %.
 - **Farveskift på Mobilitet:** 56 i standardvisningen (grøn/gul/rød fra 51/46/1 til 46/15/37), 16 med landsgennemsnit og 9 med top 10%. Standardvisningen flytter mest, fordi indikatoren før var 100 for alle.
-- **Standardvisningen får høje toppe.** Landkommunernes gruppesnit er ca. 6 %, og kommunegruppe-baselinen har intet loft (R10). Svendborg får derfor 338 på indikatoren og 214,7 på Mobilitet. Ingen anden kategori kommer over 177.
+- **Standardvisningen får høje toppe.** Landkommunernes gruppesnit er ca. 6 %, og kommunegruppe-baselinen har intet loft (R10). Svendborg får derfor 338 på indikatoren og 214,7 på Mobilitet. Ingen anden kategori kommer over 177. Rettet samme dag med loftet ovenfor.
 - **`mobilitet_scores.csv`** har mistet kolonnerne `public_transport_pct` og `public_transport_ratio`, og `fetch_social_new_data.py` henter ikke længere LABY49. Tabellen bruges kun til valideringen i det nye script.
 - **Ingen retningspile ændret.** Indikatoren har stadig ingen pil, fordi Rejseplanens køreplanarkiv kun går tilbage til december 2025.
 

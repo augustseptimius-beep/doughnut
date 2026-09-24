@@ -315,7 +315,8 @@ export default function MetodePage() {
         <p className="text-sm text-gray-700 leading-relaxed mt-2">
           <strong>Inverterede indikatorer:</strong> For indikatorer hvor lavere er bedre (f.eks. kriminalitet, affald, børnefattigdom)
           beregnes ratioen inverteret: (landsgennemsnit / kommune) × 100, så højere ratio fortsat betyder bedre performance.
-          Sociale ratioer er klippet ved 150 i forhold til landsgennemsnittet, så én ekstremværdi ikke dominerer kategoriens gennemsnit. Kommunerne
+          Sociale ratioer er klippet ved 150, så én ekstremværdi ikke dominerer kategoriens gennemsnit. Loftet gælder i alle tre sammenligninger:
+          en score kan højst blive 150, også når den regnes om til kommunegruppen eller top 10 %. Kommunerne
           på loftet er derfor ikke indbyrdes rangordnet på den pågældende indikator. For økologiske sub-indikatorer med meget små
           nævnere (vandområder i god tilstand og de to bioscore-andele) er loftet 300.
         </p>
