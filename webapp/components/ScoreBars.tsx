@@ -10,6 +10,7 @@ import {
   scoreColor,
   scoreBarColor,
   visningsscore,
+  SOCIAL_LOFT,
   computeCategoryScores,
   categoryBaselineType,
   dimensionBaselineType,
@@ -563,10 +564,12 @@ export default function ScoreBars({
                       // avg-ratioen. Ellers ville tallet vise landsgennemsnittet,
                       // mens scoren måler mod kommunegruppen eller top 10% - og så
                       // ser en grøn score forkert ud ved siden af en dårligere råværdi.
-                      // Er ratioen klippet ved 150 i pipelinen, kan referencen ikke
-                      // udledes baglæns (den ville variere fra kommune til kommune),
-                      // så den vises ikke.
-                      const erKlippet = (kommune.ratios[ind.id] ?? 0) >= 150;
+                      // Er ratioen klippet ved loftet - i pipelinen (R1) eller efter
+                      // omskaleringen til den valgte baseline (R9, R10) - kan
+                      // referencen ikke udledes baglæns (den ville variere fra
+                      // kommune til kommune), så den vises ikke.
+                      const erKlippet =
+                        (kommune.ratios[ind.id] ?? 0) >= SOCIAL_LOFT || (score ?? 0) >= SOCIAL_LOFT;
                       const baselineAvg = (rawVal !== null && score !== null && score !== 0 && !erKlippet)
                         ? ind.inverse
                           ? (score * rawVal) / 100

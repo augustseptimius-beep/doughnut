@@ -408,10 +408,19 @@ export interface KommuneData {
 }
 
 /**
+ * Loftet for sociale ratios (arkitekturdokumentet R1). build_master_csv.py
+ * lægger det på landsgennemsnits-ratioen, og top 10%- og kommunegruppe-
+ * baselinen lægger det på igen efter omskaleringen (R9, R10). Uden det andet
+ * loft kunne én indikator løfte en hel kategori i standardvisningen: Svendborg
+ * fik 338 på offentlig transport og 214,7 på Mobilitet (sep. 2026).
+ */
+export const SOCIAL_LOFT = 150;
+
+/**
  * Beregner Top 10%-baselines dynamisk fra eksisterende ratios.
  * For hver social indikator: find de 10 bedste kommuner (højest ratio),
  * brug deres gennemsnit som ny baseline, og rescale alle kommuners ratio
- * til denne nye baseline.
+ * til denne nye baseline, højst SOCIAL_LOFT.
  * Ekologiske indikatorer har absolutte grænser og påvirkes ikke.
  */
 export function computeTop10Ratios(allData: KommuneData[]): void {
@@ -454,7 +463,7 @@ export function computeTop10Ratios(allData: KommuneData[]): void {
       if (ratio === null || top10Avg === 0) {
         k.top10_ratios[ind.id] = null;
       } else {
-        k.top10_ratios[ind.id] = parseFloat(((ratio / top10Avg) * 100).toFixed(2));
+        k.top10_ratios[ind.id] = Math.min(parseFloat(((ratio / top10Avg) * 100).toFixed(2)), SOCIAL_LOFT);
       }
     }
   }
@@ -480,8 +489,8 @@ export function kommunegruppeNavn(kode: string): string {
 /**
  * Beregner kommunegruppe-baselines dynamisk fra eksisterende ratios.
  * For hver social indikator og hver gruppe (G1-G5): beregn gruppens uvægtede
- * gennemsnit, og omskaler alle kommuners ratio til denne baseline.
- * 100 = den gennemsnitlige kommune i gruppen.
+ * gennemsnit, og omskaler alle kommuners ratio til denne baseline, højst
+ * SOCIAL_LOFT. 100 = den gennemsnitlige kommune i gruppen.
  */
 export function computeGroupRatios(allData: KommuneData[]): void {
   const realKommuner = allData.filter((k) => k.kommune_kode !== "000");
@@ -526,7 +535,7 @@ export function computeGroupRatios(allData: KommuneData[]): void {
       if (ratio === null || avg === undefined || avg === 0) {
         k.group_ratios[ind.id] = null;
       } else {
-        k.group_ratios[ind.id] = parseFloat(((ratio / avg) * 100).toFixed(2));
+        k.group_ratios[ind.id] = Math.min(parseFloat(((ratio / avg) * 100).toFixed(2)), SOCIAL_LOFT);
       }
     }
   }

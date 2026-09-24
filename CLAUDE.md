@@ -91,7 +91,7 @@ Alle kommuner har et sæt **ratios** hvor `100 = niveau med landsgennemsnit` (so
 
 ### Sociale indikatorer og kategorier
 
-Se `data/indikatorer.json` for aktuel liste (felterne er forklaret i filens `_om`). `shared.ts` oversætter registret til `INDICATORS` og `SOCIAL_CATEGORIES` med felterne id, name, table, source (URL), inverse, dataYear, baselineLevel (1=WHO/EU, 2=nationalt mål, 3=landsgennemsnit), absoluteScore, rawUnit. Kategoriscorer beregnes som simpelt gennemsnit via `computeCategoryScores()`. Baseline-toggle (kommunegruppe/avg/top10, standard kommunegruppe) påvirker KUN sociale indikatorer - økologiske har faste referencer (absolutte grænser eller landsgennemsnit) der aldrig omskaleres.
+Se `data/indikatorer.json` for aktuel liste (felterne er forklaret i filens `_om`). `shared.ts` oversætter registret til `INDICATORS` og `SOCIAL_CATEGORIES` med felterne id, name, table, source (URL), inverse, dataYear, baselineLevel (1=WHO/EU, 2=nationalt mål, 3=landsgennemsnit), absoluteScore, rawUnit. Kategoriscorer beregnes som simpelt gennemsnit via `computeCategoryScores()`. Baseline-toggle (kommunegruppe/avg/top10, standard kommunegruppe) påvirker KUN sociale indikatorer - økologiske har faste referencer (absolutte grænser eller landsgennemsnit) der aldrig omskaleres. En social indikator er højst 150 i alle tre visninger: `build_master_csv.py` klipper landsgennemsnits-ratioen, og `computeGroupRatios()`/`computeTop10Ratios()` klipper igen efter omskaleringen (`SOCIAL_LOFT` i shared.ts, fra sep. 2026).
 
 ### Farvelogik (konsistent på tværs af UI)
 
@@ -274,7 +274,7 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
     - **340 m i fugleflugt står for DST's 500 m ad vejnettet**, kalibreret alene på andelen uden stoppested. Scriptet sammenligner med LABY49 ved hver kørsel og STOPPER uden at røre data eller master over 3 procentpoints gennemsnitlig afvigelse - så er noget ændret hos en af kilderne. `--tving` skriver alligevel, når man har sikret sig at tallene er rigtige.
     - **Kør ikke i sommerkøreplanen** (25. juni-15. august); scriptet advarer. Det vælger selv en typisk tirsdag-torsdag i feedet, så ferieuger falder fra, og kvitterer køreplanens år i `data_years.json` under `Rejseplanen GTFS`.
     - **`data/befolkning_1km_2021_dk.csv` er committed** (de danske celler). Eurostats fil på 566 MB hentes kun, hvis den mangler. Adresser og køreplaner caches i systemets temp-mappe; `--genhent` henter forfra.
-    - **Landkommunerne er følsomme i standardvisningen.** Gruppesnittet for landkommunerne er ca. 6 %, og kommunegruppe-baselinen har intet loft (R10). Ét procentpoint flytter derfor en landkommunes score ca. 17 point, og Svendborg når 338 på indikatoren. Tærsklen på 10 afgange i timen er platformens eget valg blandt DST's fem serviceniveauer.
+    - **Landkommunerne er følsomme i standardvisningen.** Gruppesnittet for landkommunerne er ca. 6 %, så ét procentpoint flytter en landkommunes score ca. 17 point. Loftet på 150 (R10) holder toppen nede; uden det fik Svendborg 338 på indikatoren. Tærsklen på 10 afgange i timen er platformens eget valg blandt DST's fem serviceniveauer.
 
 ## Arbejdsprincipper for ændringer
 

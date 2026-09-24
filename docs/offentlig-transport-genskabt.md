@@ -130,10 +130,10 @@ Alle fire kilder kræver kun kreditering.
 3. **`fetch_social_new_data.py`** henter ikke længere LABY49, og `mobilitet_scores.csv` har mistet de to gamle kolonner. LABY49 bruges kun til valideringen i det nye script.
 4. **Metodesiden** har ny beregningstekst og nye begrænsninger for Mobilitet, med landstallet som pladsholder. Arkitekturdokumentets afsnit 7 har mistet afvigelsen for `public_transport`, og `data/CHANGELOG.md` har en note med alle ændringer.
 5. **Ændringer i tallene.** 85 ratios ændret; de 13 øvrige lå på loftet 150 både før og efter. Mobilitet skifter farve i 56 kommuner i standardvisningen (grøn/gul/rød fra 51/46/1 til 46/15/37), 16 med landsgennemsnit og 9 med top 10%. Referencen gik fra 30,02 % (uvægtet gennemsnit af gruppetal) til 37,01 % (Danmark som helhed).
+6. **Loft i standardvisningen.** Landkommunernes gruppesnit er ca. 6 %, og kommunegruppe-baselinen havde intet loft, så Svendborg fik 338 på indikatoren og 214,7 på Mobilitet. Samme dag fik baselinen samme loft på 150 som landsgennemsnit-visningen (arkitekturdokumentet R10). 16 kommuner står nu på loftet for offentlig transport, og Svendborgs Mobilitet er 120,5. Loftet gælder alle sociale indikatorer; se `data/CHANGELOG.md`.
 
 ## Åbent
 
-- **Loft i standardvisningen.** Kommunegruppe-baselinen har intet loft (arkitekturdokumentet R10), og landkommunernes gruppesnit er ca. 6 %. Svendborg får derfor 338 på indikatoren og 214,7 på Mobilitet, hvor ingen anden kategori kommer over 177. Landsgennemsnits-visningen har et loft på 150. Et tilsvarende loft i gruppe-baselinen ville rette det, men ændrer regel R10 for alle sociale indikatorer og hører til en separat beslutning.
 - **Retningspil.** Rejseplanen har et GTFS-arkiv siden december 2025. Fra 2027 kan scriptet køres på to årgange og give en pil.
 - **Tærsklen.** DST udgiver fem niveauer. At "god adgang" betyder mindst 10 afgange i timen, er platformens eget valg (se `rationale` i registret).
 

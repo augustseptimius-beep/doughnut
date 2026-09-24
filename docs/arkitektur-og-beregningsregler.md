@@ -46,10 +46,13 @@ rådata-CSV'erne konsolideres til `data/master_indicators.csv`.
 **R1 - Social ratio-cap.** Sociale ratios cappes ved 150,0. Formålet er at
 forhindre at en enkelt ekstremværdi dominerer kategorigennemsnittet. Cappet
 gælder alle sociale indikatorer, også dem der slås op på kommunenavn (R5).
+Top 10%- og kommunegruppe-baselinen lægger samme loft på igen efter
+omskaleringen (R9, R10), så en social ratio er højst 150 i alle tre visninger.
 
 Konsekvens for visningen: for en kappet kommune kan referenceværdien ikke
 udledes baglæns af ratio og råværdi. `ScoreBars` viser derfor ikke
-"Landsgns"/gruppe-værdien ved indikatorer hvor kommunens ratio er 150.
+"Landsgns"/gruppe-værdien ved indikatorer hvor kommunens ratio er 150, hverken
+i pipelinen eller efter omskaleringen til den valgte baseline.
 Referencen står i masterfilens `reference`-kolonne (R3).
 
 **R2 - Ratio beregnes ét sted, med én formel.** `beregn_ratio()` i
@@ -173,7 +176,9 @@ så 100 svarer til gennemsnittet af de ti bedste kommuner:
 2. Har indikatoren `absoluteScore: true`, kopieres ratio uændret (se R15).
 3. Findes der færre end 10 gyldige værdier, kopieres ratio uændret.
 4. Ellers sorteres alle ratios faldende, gennemsnittet af de 10 højeste
-   beregnes, og `ny ratio = parseFloat(((ratio / top10Avg) * 100).toFixed(2))`.
+   beregnes, og `ny ratio = Math.min(parseFloat(((ratio / top10Avg) * 100).toFixed(2)), 150)`.
+   Loftet er R1's (`SOCIAL_LOFT` i `shared.ts`). Det ændrer ingen tal i dag,
+   hvor den højeste top 10-ratio er 124,2, men holder reglen ens i de tre visninger.
 5. Er kommunens ratio `null`, eller er `top10Avg` nul, bliver resultatet `null`.
 
 Højeste ratio er altid den bedste præstation, også for inverse indikatorer,
@@ -184,6 +189,13 @@ med DST's kommunegrupper G1-G5 (`KOMMUNEGRUPPE`) som reference i stedet for
 top 10. Gruppegennemsnittet er uvægtet. `absoluteScore`-indikatorer kopieres
 uændret. Resultatet er `null` hvis kommunens ratio er `null`, hvis kommunen
 ikke findes i gruppemappingen, eller hvis gruppegennemsnittet er nul.
+
+Loftet på 150 gælder også her (fra sep. 2026) og lægges på efter
+omskaleringen. En ratio kan altså være klippet to gange: mod landsgennemsnittet
+i pipelinen (R1) og mod gruppesnittet her. Uden det andet loft kunne en kommune
+langt over sit gruppesnit komme over 300: landkommunernes snit for offentlig
+transport er ca. 6 %, så Svendborg fik 338 på indikatoren og 214,7 på hele
+Mobilitet, mens ingen kategori kan nå over 150 i landsgennemsnit-visningen.
 
 **R11 - Farvetærskler.** Retningen er modsat mellem de to halvdele af
 doughnutten, og det er den fejl der oftest bliver begået:

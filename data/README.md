@@ -39,7 +39,7 @@ Dette er den **konsoliderede master-fil** som webapp'en læser fra. Genereres af
 ### Scoringskonventioner
 
 **Sociale indikatorer:**
-- `ratio = 100` = landsgennemsnit (undtagen `education` og `bolig_fossil`, der scores mod et fast mål). Masteren gemmer altid ratio mod landsgennemsnittet; webappens baseline-toggle (kommunegruppe/top 10) omskalerer ved visning
+- `ratio = 100` = landsgennemsnit (undtagen `education` og `bolig_fossil`, der scores mod et fast mål). Masteren gemmer altid ratio mod landsgennemsnittet; webappens baseline-toggle (kommunegruppe/top 10) omskalerer ved visning, med samme loft på 150
 - `ratio > 100` = bedre end gennemsnit
 - `ratio < 100` = dårligere end gennemsnit
 - Inverterede indikatorer (kriminalitet, fattigdom mv.) vendes af `build_master_csv.py` (`ratio = reference / raw × 100`) - høj ratio = god performance. Alle ratios beregnes dér ud fra `raw_value` og `reference`, ikke i fetch-scripterne
