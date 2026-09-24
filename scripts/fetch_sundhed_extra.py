@@ -323,8 +323,8 @@ def serie_hjemsyg(aar: list[str]) -> dict[tuple[str, str], float]:
     """
     HJEMSYG: modtagere af hjemmesygepleje (eget hjem), alle aldre, pr. 1.000
     indb. med folketallet 1. januar samme år. {(kommune_kode, år): værdi};
-    landstallet (000) er summen af de 98 kommuner delt med hele landets
-    folketal. Bruges af både scoren og retningspilen (fetch_trend_history.py).
+    landstallet (000) er de 98 kommuner samlet (se dst.pr_indbygger). Bruges af
+    både scoren og retningspilen (fetch_trend_history.py).
     """
     rows = api_post("HJEMSYG", [
         {"code": "OMRÅDE", "values": ["*"]},
@@ -332,10 +332,7 @@ def serie_hjemsyg(aar: list[str]) -> dict[tuple[str, str], float]:
         {"code": "KOEN", "values": ["100"]},      # Mænd og kvinder i alt
         {"code": "Tid", "values": aar},
     ])
-    antal = {k: v for k, v in pr_kommune_aar(rows).items() if k[0] != "000"}
-    for a in {a for _, a in antal}:
-        antal[("000", a)] = sum(v for (k, aa), v in antal.items() if aa == a and k != "000")
-    return pr_indbygger(antal, 1000, 2)
+    return pr_indbygger(pr_kommune_aar(rows), 1000, 2)
 
 
 def fetch_hjemsyg() -> tuple[dict[str, float], float | None]:

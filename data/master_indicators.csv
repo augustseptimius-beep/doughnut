@@ -2246,104 +2246,104 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,poverty_relative,73.08,18.2,%,2024,DST IFOR12P,social,velfaerd,13.3
 741,Samsø,poverty_relative,96.38,13.8,%,2024,DST IFOR12P,social,velfaerd,13.3
 482,Langeland,poverty_relative,77.78,17.1,%,2024,DST IFOR12P,social,velfaerd,13.3
-201,Allerød,child_notifications,98.05,91.31,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-153,Brøndby,child_notifications,66.88,133.86,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-175,Rødovre,child_notifications,91.39,97.96,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-155,Dragør,child_notifications,150.0,58.99,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-190,Furesø,child_notifications,103.56,86.45,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-167,Hvidovre,child_notifications,93.49,95.76,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-230,Rudersdal,child_notifications,130.85,68.42,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-746,Skanderborg,child_notifications,150.0,58.21,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-269,Solrød,child_notifications,117.68,76.08,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-265,Roskilde,child_notifications,108.0,82.9,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-240,Egedal,child_notifications,137.4,65.16,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-151,Ballerup,child_notifications,81.35,110.05,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-223,Hørsholm,child_notifications,128.38,69.74,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-185,Tårnby,child_notifications,96.49,92.79,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-157,Gentofte,child_notifications,150.0,51.57,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-350,Lejre,child_notifications,93.26,96.0,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-163,Herlev,child_notifications,96.96,92.34,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-173,Lyngby-Taarbæk,child_notifications,114.71,78.05,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-210,Fredensborg,child_notifications,98.83,90.59,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-183,Ishøj,child_notifications,99.94,89.58,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-710,Favrskov,child_notifications,150.0,57.54,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-530,Billund,child_notifications,91.28,98.08,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-840,Rebild,child_notifications,113.7,78.74,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-187,Vallensbæk,child_notifications,124.55,71.88,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-253,Greve,child_notifications,119.36,75.01,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-147,Frederiksberg,child_notifications,122.14,73.3,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-259,Køge,child_notifications,86.98,102.93,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-159,Gladsaxe,child_notifications,113.26,79.05,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-217,Helsingør,child_notifications,93.33,95.93,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-250,Frederikssund,child_notifications,74.5,120.18,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-661,Holstebro,child_notifications,91.97,97.35,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-825,Læsø,child_notifications,127.26,70.35,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-657,Herning,child_notifications,131.78,67.94,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-260,Halsnæs,child_notifications,83.12,107.71,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-773,Morsø,child_notifications,84.36,106.13,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-219,Hillerød,child_notifications,103.79,86.26,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-340,Sorø,child_notifications,79.46,112.68,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-492,Ærø,child_notifications,92.52,96.77,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-561,Esbjerg,child_notifications,99.52,89.96,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-740,Silkeborg,child_notifications,107.07,83.62,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-615,Horsens,child_notifications,99.79,89.72,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-563,Fanø,child_notifications,119.74,74.77,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-316,Holbæk,child_notifications,87.77,102.0,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-766,Hedensted,child_notifications,107.85,83.01,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-607,Fredericia,child_notifications,78.61,113.89,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-410,Middelfart,child_notifications,92.61,96.67,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-329,Ringsted,child_notifications,106.89,83.76,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-370,Næstved,child_notifications,71.46,125.28,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-851,Aalborg,child_notifications,88.61,101.04,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-810,Brønderslev,child_notifications,100.11,89.43,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-727,Odder,child_notifications,113.1,79.16,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-336,Stevns,child_notifications,81.21,110.24,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-751,Aarhus,child_notifications,119.53,74.9,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-813,Frederikshavn,child_notifications,102.31,87.51,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-161,Glostrup,child_notifications,88.06,101.67,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-270,Gribskov,child_notifications,68.85,130.04,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-860,Hjørring,child_notifications,76.82,116.54,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-165,Albertslund,child_notifications,73.72,121.44,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-479,Svendborg,child_notifications,102.28,87.53,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-791,Viborg,child_notifications,106.17,84.33,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-480,Nordfyns,child_notifications,100.34,89.23,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-706,Syddjurs,child_notifications,111.29,80.45,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-440,Kerteminde,child_notifications,81.53,109.81,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-630,Vejle,child_notifications,123.39,72.56,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-101,København,child_notifications,99.51,89.97,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-730,Randers,child_notifications,92.72,96.56,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-760,Ringkøbing-Skjern,child_notifications,113.82,78.66,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-430,Faaborg-Midtfyn,child_notifications,90.81,98.59,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-320,Faxe,child_notifications,70.58,126.84,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-169,Høje-Taastrup,child_notifications,69.76,128.34,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-573,Varde,child_notifications,96.96,92.34,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-621,Kolding,child_notifications,106.97,83.7,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-420,Assens,child_notifications,66.35,134.94,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-580,Aabenraa,child_notifications,106.18,84.32,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-787,Thisted,child_notifications,82.27,108.83,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-756,Ikast-Brande,child_notifications,114.04,78.51,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-461,Odense,child_notifications,110.3,81.17,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-779,Skive,child_notifications,104.96,85.3,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-450,Nyborg,child_notifications,76.39,117.2,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-846,Mariagerfjord,child_notifications,93.39,95.87,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-820,Vesthimmerlands,child_notifications,73.37,122.02,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-540,Sønderborg,child_notifications,105.75,84.66,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-400,Bornholm,child_notifications,79.31,112.88,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-510,Haderslev,child_notifications,78.29,114.35,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-671,Struer,child_notifications,101.55,88.16,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-665,Lemvig,child_notifications,117.9,75.94,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-707,Norddjurs,child_notifications,91.99,97.33,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-330,Slagelse,child_notifications,67.42,132.79,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-306,Odsherred,child_notifications,64.49,138.82,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-575,Vejen,child_notifications,76.46,117.1,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-376,Guldborgsund,child_notifications,68.89,129.96,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-849,Jammerbugt,child_notifications,71.53,125.16,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-326,Kalundborg,child_notifications,78.32,114.31,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-390,Vordingborg,child_notifications,62.43,143.41,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-550,Tønder,child_notifications,74.19,120.67,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-360,Lolland,child_notifications,60.2,148.72,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-741,Samsø,child_notifications,83.29,107.49,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
-482,Langeland,child_notifications,60.58,147.78,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,89.53
+201,Allerød,child_notifications,101.12,91.31,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+153,Brøndby,child_notifications,68.98,133.86,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+175,Rødovre,child_notifications,94.25,97.96,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+155,Dragør,child_notifications,150.0,58.99,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+190,Furesø,child_notifications,106.8,86.45,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+167,Hvidovre,child_notifications,96.42,95.76,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+230,Rudersdal,child_notifications,134.95,68.42,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+746,Skanderborg,child_notifications,150.0,58.21,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+269,Solrød,child_notifications,121.36,76.08,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+265,Roskilde,child_notifications,111.38,82.9,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+240,Egedal,child_notifications,141.7,65.16,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+151,Ballerup,child_notifications,83.9,110.05,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+223,Hørsholm,child_notifications,132.39,69.74,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+185,Tårnby,child_notifications,99.5,92.79,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+157,Gentofte,child_notifications,150.0,51.57,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+350,Lejre,child_notifications,96.18,96.0,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+163,Herlev,child_notifications,99.99,92.34,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+173,Lyngby-Taarbæk,child_notifications,118.3,78.05,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+210,Fredensborg,child_notifications,101.92,90.59,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+183,Ishøj,child_notifications,103.07,89.58,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+710,Favrskov,child_notifications,150.0,57.54,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+530,Billund,child_notifications,94.14,98.08,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+840,Rebild,child_notifications,117.26,78.74,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+187,Vallensbæk,child_notifications,128.45,71.88,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+253,Greve,child_notifications,123.09,75.01,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+147,Frederiksberg,child_notifications,125.96,73.3,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+259,Køge,child_notifications,89.7,102.93,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+159,Gladsaxe,child_notifications,116.8,79.05,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+217,Helsingør,child_notifications,96.25,95.93,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+250,Frederikssund,child_notifications,76.83,120.18,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+661,Holstebro,child_notifications,94.84,97.35,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+825,Læsø,child_notifications,131.24,70.35,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+657,Herning,child_notifications,135.9,67.94,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+260,Halsnæs,child_notifications,85.72,107.71,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+773,Morsø,child_notifications,87.0,106.13,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+219,Hillerød,child_notifications,107.04,86.26,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+340,Sorø,child_notifications,81.94,112.68,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+492,Ærø,child_notifications,95.41,96.77,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+561,Esbjerg,child_notifications,102.63,89.96,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+740,Silkeborg,child_notifications,110.42,83.62,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+615,Horsens,child_notifications,102.91,89.72,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+563,Fanø,child_notifications,123.49,74.77,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+316,Holbæk,child_notifications,90.52,102.0,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+766,Hedensted,child_notifications,111.23,83.01,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+607,Fredericia,child_notifications,81.07,113.89,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+410,Middelfart,child_notifications,95.51,96.67,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+329,Ringsted,child_notifications,110.23,83.76,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+370,Næstved,child_notifications,73.7,125.28,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+851,Aalborg,child_notifications,91.38,101.04,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+810,Brønderslev,child_notifications,103.24,89.43,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+727,Odder,child_notifications,116.64,79.16,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+336,Stevns,child_notifications,83.75,110.24,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+751,Aarhus,child_notifications,123.27,74.9,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+813,Frederikshavn,child_notifications,105.51,87.51,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+161,Glostrup,child_notifications,90.81,101.67,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+270,Gribskov,child_notifications,71.0,130.04,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+860,Hjørring,child_notifications,79.23,116.54,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+165,Albertslund,child_notifications,76.03,121.44,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+479,Svendborg,child_notifications,105.48,87.53,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+791,Viborg,child_notifications,109.49,84.33,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+480,Nordfyns,child_notifications,103.47,89.23,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+706,Syddjurs,child_notifications,114.77,80.45,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+440,Kerteminde,child_notifications,84.08,109.81,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+630,Vejle,child_notifications,127.25,72.56,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+101,København,child_notifications,102.62,89.97,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+730,Randers,child_notifications,95.62,96.56,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+760,Ringkøbing-Skjern,child_notifications,117.38,78.66,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+430,Faaborg-Midtfyn,child_notifications,93.65,98.59,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+320,Faxe,child_notifications,72.79,126.84,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+169,Høje-Taastrup,child_notifications,71.94,128.34,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+573,Varde,child_notifications,99.99,92.34,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+621,Kolding,child_notifications,110.31,83.7,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+420,Assens,child_notifications,68.42,134.94,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+580,Aabenraa,child_notifications,109.5,84.32,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+787,Thisted,child_notifications,84.84,108.83,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+756,Ikast-Brande,child_notifications,117.6,78.51,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+461,Odense,child_notifications,113.75,81.17,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+779,Skive,child_notifications,108.24,85.3,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+450,Nyborg,child_notifications,78.78,117.2,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+846,Mariagerfjord,child_notifications,96.31,95.87,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+820,Vesthimmerlands,child_notifications,75.67,122.02,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+540,Sønderborg,child_notifications,109.06,84.66,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+400,Bornholm,child_notifications,81.79,112.88,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+510,Haderslev,child_notifications,80.74,114.35,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+671,Struer,child_notifications,104.73,88.16,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+665,Lemvig,child_notifications,121.58,75.94,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+707,Norddjurs,child_notifications,94.86,97.33,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+330,Slagelse,child_notifications,69.53,132.79,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+306,Odsherred,child_notifications,66.51,138.82,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+575,Vejen,child_notifications,78.85,117.1,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+376,Guldborgsund,child_notifications,71.04,129.96,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+849,Jammerbugt,child_notifications,73.77,125.16,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+326,Kalundborg,child_notifications,80.77,114.31,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+390,Vordingborg,child_notifications,64.38,143.41,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+550,Tønder,child_notifications,76.51,120.67,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+360,Lolland,child_notifications,62.08,148.72,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+741,Samsø,child_notifications,85.9,107.49,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
+482,Langeland,child_notifications,62.48,147.78,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
 201,Allerød,vacant_housing,150.0,2.48,%,2026,DST BOL101,social,bolig,6.14
 153,Brøndby,vacant_housing,150.0,2.9,%,2026,DST BOL101,social,bolig,6.14
 175,Rødovre,vacant_housing,150.0,3.51,%,2026,DST BOL101,social,bolig,6.14
@@ -3418,198 +3418,198 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,employment_origin_gap,117.27,96.37,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
 741,Samsø,employment_origin_gap,109.61,90.08,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
 482,Langeland,employment_origin_gap,122.02,100.28,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-201,Allerød,music_school,150.0,23.73,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-153,Brøndby,music_school,84.15,9.13,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-175,Rødovre,music_school,150.0,17.03,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-155,Dragør,music_school,130.14,14.12,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-190,Furesø,music_school,150.0,23.13,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-167,Hvidovre,music_school,150.0,17.56,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-230,Rudersdal,music_school,150.0,18.87,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-746,Skanderborg,music_school,150.0,19.3,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-269,Solrød,music_school,105.07,11.4,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-265,Roskilde,music_school,150.0,16.85,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-240,Egedal,music_school,100.74,10.93,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-151,Ballerup,music_school,150.0,25.18,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-223,Hørsholm,music_school,150.0,19.19,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-185,Tårnby,music_school,128.76,13.97,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-157,Gentofte,music_school,137.24,14.89,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-350,Lejre,music_school,150.0,17.81,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-163,Herlev,music_school,114.65,12.44,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-173,Lyngby-Taarbæk,music_school,150.0,20.39,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-210,Fredensborg,music_school,135.67,14.72,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-183,Ishøj,music_school,150.0,17.44,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-710,Favrskov,music_school,98.8,10.72,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-530,Billund,music_school,150.0,22.82,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-840,Rebild,music_school,101.84,11.05,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-187,Vallensbæk,music_school,150.0,17.85,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-253,Greve,music_school,140.28,15.22,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-147,Frederiksberg,music_school,94.01,10.2,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-259,Køge,music_school,88.29,9.58,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-159,Gladsaxe,music_school,124.15,13.47,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-217,Helsingør,music_school,88.02,9.55,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-250,Frederikssund,music_school,62.86,6.82,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-661,Holstebro,music_school,87.19,9.46,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-657,Herning,music_school,72.9,7.91,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-260,Halsnæs,music_school,141.29,15.33,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-773,Morsø,music_school,50.05,5.43,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-219,Hillerød,music_school,121.84,13.22,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-340,Sorø,music_school,109.22,11.85,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-492,Ærø,music_school,98.71,10.71,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-561,Esbjerg,music_school,150.0,18.13,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-740,Silkeborg,music_school,115.02,12.48,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-615,Horsens,music_school,87.19,9.46,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-316,Holbæk,music_school,81.75,8.87,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-766,Hedensted,music_school,73.09,7.93,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-607,Fredericia,music_school,107.0,11.61,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-410,Middelfart,music_school,99.63,10.81,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-329,Ringsted,music_school,138.43,15.02,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-370,Næstved,music_school,106.27,11.53,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-851,Aalborg,music_school,150.0,17.67,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-810,Brønderslev,music_school,93.92,10.19,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-727,Odder,music_school,103.32,11.21,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-336,Stevns,music_school,109.68,11.9,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-751,Aarhus,music_school,60.09,6.52,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-813,Frederikshavn,music_school,150.0,16.45,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-161,Glostrup,music_school,71.15,7.72,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-270,Gribskov,music_school,83.32,9.04,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-860,Hjørring,music_school,118.62,12.87,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-165,Albertslund,music_school,150.0,16.89,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-479,Svendborg,music_school,130.69,14.18,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-791,Viborg,music_school,69.77,7.57,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-480,Nordfyns,music_school,95.48,10.36,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-706,Syddjurs,music_school,102.86,11.16,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-440,Kerteminde,music_school,95.48,10.36,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-630,Vejle,music_school,93.73,10.17,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-101,København,music_school,23.04,2.5,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-730,Randers,music_school,67.28,7.3,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-760,Ringkøbing-Skjern,music_school,112.07,12.16,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-430,Faaborg-Midtfyn,music_school,124.79,13.54,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-320,Faxe,music_school,79.91,8.67,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-169,Høje-Taastrup,music_school,90.05,9.77,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-573,Varde,music_school,136.96,14.86,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-621,Kolding,music_school,114.19,12.39,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-420,Assens,music_school,118.62,12.87,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-580,Aabenraa,music_school,55.02,5.97,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-787,Thisted,music_school,106.45,11.55,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-756,Ikast-Brande,music_school,71.34,7.74,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-461,Odense,music_school,49.95,5.42,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-779,Skive,music_school,96.04,10.42,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-450,Nyborg,music_school,104.61,11.35,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-846,Mariagerfjord,music_school,142.86,15.5,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-820,Vesthimmerlands,music_school,129.22,14.02,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-540,Sønderborg,music_school,97.6,10.59,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-400,Bornholm,music_school,101.75,11.04,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-510,Haderslev,music_school,92.72,10.06,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-671,Struer,music_school,150.0,17.99,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-665,Lemvig,music_school,144.15,15.64,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-707,Norddjurs,music_school,86.27,9.36,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-330,Slagelse,music_school,49.95,5.42,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-306,Odsherred,music_school,85.81,9.31,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-575,Vejen,music_school,50.05,5.43,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-376,Guldborgsund,music_school,75.48,8.19,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-849,Jammerbugt,music_school,150.0,24.29,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-326,Kalundborg,music_school,70.32,7.63,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-390,Vordingborg,music_school,150.0,17.84,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-550,Tønder,music_school,70.14,7.61,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-360,Lolland,music_school,105.07,11.4,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-482,Langeland,music_school,136.22,14.78,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.85
-201,Allerød,library_use,150.0,9.04,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-153,Brøndby,library_use,64.64,2.87,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-175,Rødovre,library_use,105.86,4.7,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-155,Dragør,library_use,88.74,3.94,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-190,Furesø,library_use,144.37,6.41,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-167,Hvidovre,library_use,143.24,6.36,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-230,Rudersdal,library_use,150.0,7.55,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-746,Skanderborg,library_use,110.14,4.89,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-269,Solrød,library_use,98.87,4.39,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-265,Roskilde,library_use,150.0,7.3,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-240,Egedal,library_use,92.79,4.12,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-151,Ballerup,library_use,112.61,5.0,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-223,Hørsholm,library_use,150.0,7.5,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-185,Tårnby,library_use,113.96,5.06,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-157,Gentofte,library_use,150.0,10.27,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-350,Lejre,library_use,77.48,3.44,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-163,Herlev,library_use,98.2,4.36,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-173,Lyngby-Taarbæk,library_use,150.0,7.12,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-210,Fredensborg,library_use,98.65,4.38,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-183,Ishøj,library_use,62.39,2.77,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-710,Favrskov,library_use,117.79,5.23,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-530,Billund,library_use,78.15,3.47,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-840,Rebild,library_use,93.92,4.17,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-187,Vallensbæk,library_use,53.38,2.37,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-253,Greve,library_use,79.5,3.53,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-147,Frederiksberg,library_use,82.88,3.68,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-259,Køge,library_use,100.68,4.47,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-159,Gladsaxe,library_use,106.08,4.71,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-217,Helsingør,library_use,121.17,5.38,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-250,Frederikssund,library_use,97.52,4.33,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-661,Holstebro,library_use,92.79,4.12,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-825,Læsø,library_use,33.56,1.49,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-657,Herning,library_use,145.27,6.45,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-260,Halsnæs,library_use,91.22,4.05,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-773,Morsø,library_use,74.32,3.3,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-219,Hillerød,library_use,123.2,5.47,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-340,Sorø,library_use,94.59,4.2,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-492,Ærø,library_use,95.5,4.24,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-561,Esbjerg,library_use,75.0,3.33,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-740,Silkeborg,library_use,112.16,4.98,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-615,Horsens,library_use,76.13,3.38,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-316,Holbæk,library_use,78.38,3.48,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-766,Hedensted,library_use,73.2,3.25,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-607,Fredericia,library_use,70.27,3.12,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-410,Middelfart,library_use,105.63,4.69,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-329,Ringsted,library_use,79.73,3.54,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-370,Næstved,library_use,69.14,3.07,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-851,Aalborg,library_use,93.69,4.16,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-810,Brønderslev,library_use,117.34,5.21,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-727,Odder,library_use,150.0,6.78,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-336,Stevns,library_use,78.83,3.5,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-751,Aarhus,library_use,101.13,4.49,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-813,Frederikshavn,library_use,74.1,3.29,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-161,Glostrup,library_use,95.5,4.24,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-270,Gribskov,library_use,119.37,5.3,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-860,Hjørring,library_use,86.94,3.86,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-165,Albertslund,library_use,78.83,3.5,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-479,Svendborg,library_use,150.0,6.87,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-791,Viborg,library_use,105.86,4.7,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-480,Nordfyns,library_use,68.24,3.03,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-706,Syddjurs,library_use,95.72,4.25,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-440,Kerteminde,library_use,89.19,3.96,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-630,Vejle,library_use,105.41,4.68,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-101,København,library_use,98.42,4.37,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-730,Randers,library_use,97.3,4.32,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-760,Ringkøbing-Skjern,library_use,87.39,3.88,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-430,Faaborg-Midtfyn,library_use,96.62,4.29,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-320,Faxe,library_use,66.44,2.95,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-169,Høje-Taastrup,library_use,79.95,3.55,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-573,Varde,library_use,86.04,3.82,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-621,Kolding,library_use,84.23,3.74,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-420,Assens,library_use,75.23,3.34,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-580,Aabenraa,library_use,80.63,3.58,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-787,Thisted,library_use,70.72,3.14,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-756,Ikast-Brande,library_use,97.97,4.35,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-461,Odense,library_use,95.05,4.22,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-779,Skive,library_use,77.03,3.42,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-450,Nyborg,library_use,132.21,5.87,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-846,Mariagerfjord,library_use,93.69,4.16,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-820,Vesthimmerlands,library_use,74.77,3.32,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-540,Sønderborg,library_use,88.96,3.95,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-400,Bornholm,library_use,150.0,6.83,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-510,Haderslev,library_use,82.21,3.65,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-671,Struer,library_use,101.8,4.52,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-665,Lemvig,library_use,103.15,4.58,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-707,Norddjurs,library_use,78.15,3.47,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-330,Slagelse,library_use,63.29,2.81,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-306,Odsherred,library_use,75.0,3.33,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-575,Vejen,library_use,77.03,3.42,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-376,Guldborgsund,library_use,101.58,4.51,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-849,Jammerbugt,library_use,92.34,4.1,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-326,Kalundborg,library_use,62.84,2.79,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-390,Vordingborg,library_use,104.5,4.64,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-550,Tønder,library_use,74.55,3.31,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-360,Lolland,library_use,70.72,3.14,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-741,Samsø,library_use,150.0,6.88,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
-482,Langeland,library_use,93.92,4.17,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.44
+201,Allerød,music_school,150.0,23.73,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+153,Brøndby,music_school,84.07,9.13,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+175,Rødovre,music_school,150.0,17.03,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+155,Dragør,music_school,130.02,14.12,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+190,Furesø,music_school,150.0,23.13,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+167,Hvidovre,music_school,150.0,17.56,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+230,Rudersdal,music_school,150.0,18.87,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+746,Skanderborg,music_school,150.0,19.3,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+269,Solrød,music_school,104.97,11.4,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+265,Roskilde,music_school,150.0,16.85,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+240,Egedal,music_school,100.64,10.93,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+151,Ballerup,music_school,150.0,25.18,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+223,Hørsholm,music_school,150.0,19.19,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+185,Tårnby,music_school,128.64,13.97,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+157,Gentofte,music_school,137.11,14.89,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+350,Lejre,music_school,150.0,17.81,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+163,Herlev,music_school,114.55,12.44,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+173,Lyngby-Taarbæk,music_school,150.0,20.39,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+210,Fredensborg,music_school,135.54,14.72,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+183,Ishøj,music_school,150.0,17.44,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+710,Favrskov,music_school,98.71,10.72,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+530,Billund,music_school,150.0,22.82,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+840,Rebild,music_school,101.75,11.05,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+187,Vallensbæk,music_school,150.0,17.85,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+253,Greve,music_school,140.15,15.22,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+147,Frederiksberg,music_school,93.92,10.2,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+259,Køge,music_school,88.21,9.58,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+159,Gladsaxe,music_school,124.03,13.47,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+217,Helsingør,music_school,87.94,9.55,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+250,Frederikssund,music_school,62.8,6.82,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+661,Holstebro,music_school,87.11,9.46,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+657,Herning,music_school,72.84,7.91,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+260,Halsnæs,music_school,141.16,15.33,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+773,Morsø,music_school,50.0,5.43,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+219,Hillerød,music_school,121.73,13.22,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+340,Sorø,music_school,109.12,11.85,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+492,Ærø,music_school,98.62,10.71,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+561,Esbjerg,music_school,150.0,18.13,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+740,Silkeborg,music_school,114.92,12.48,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+615,Horsens,music_school,87.11,9.46,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+316,Holbæk,music_school,81.68,8.87,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+766,Hedensted,music_school,73.02,7.93,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+607,Fredericia,music_school,106.91,11.61,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+410,Middelfart,music_school,99.54,10.81,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+329,Ringsted,music_school,138.31,15.02,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+370,Næstved,music_school,106.17,11.53,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+851,Aalborg,music_school,150.0,17.67,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+810,Brønderslev,music_school,93.83,10.19,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+727,Odder,music_school,103.22,11.21,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+336,Stevns,music_school,109.58,11.9,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+751,Aarhus,music_school,60.04,6.52,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+813,Frederikshavn,music_school,150.0,16.45,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+161,Glostrup,music_school,71.09,7.72,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+270,Gribskov,music_school,83.24,9.04,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+860,Hjørring,music_school,118.51,12.87,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+165,Albertslund,music_school,150.0,16.89,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+479,Svendborg,music_school,130.57,14.18,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+791,Viborg,music_school,69.71,7.57,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+480,Nordfyns,music_school,95.4,10.36,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+706,Syddjurs,music_school,102.76,11.16,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+440,Kerteminde,music_school,95.4,10.36,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+630,Vejle,music_school,93.65,10.17,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+101,København,music_school,23.02,2.5,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+730,Randers,music_school,67.22,7.3,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+760,Ringkøbing-Skjern,music_school,111.97,12.16,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+430,Faaborg-Midtfyn,music_school,124.68,13.54,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+320,Faxe,music_school,79.83,8.67,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+169,Høje-Taastrup,music_school,89.96,9.77,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+573,Varde,music_school,136.83,14.86,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+621,Kolding,music_school,114.09,12.39,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+420,Assens,music_school,118.51,12.87,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+580,Aabenraa,music_school,54.97,5.97,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+787,Thisted,music_school,106.35,11.55,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+756,Ikast-Brande,music_school,71.27,7.74,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+461,Odense,music_school,49.91,5.42,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+779,Skive,music_school,95.95,10.42,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+450,Nyborg,music_school,104.51,11.35,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+846,Mariagerfjord,music_school,142.73,15.5,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+820,Vesthimmerlands,music_school,129.1,14.02,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+540,Sønderborg,music_school,97.51,10.59,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+400,Bornholm,music_school,101.66,11.04,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+510,Haderslev,music_school,92.63,10.06,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+671,Struer,music_school,150.0,17.99,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+665,Lemvig,music_school,144.01,15.64,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+707,Norddjurs,music_school,86.19,9.36,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+330,Slagelse,music_school,49.91,5.42,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+306,Odsherred,music_school,85.73,9.31,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+575,Vejen,music_school,50.0,5.43,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+376,Guldborgsund,music_school,75.41,8.19,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+849,Jammerbugt,music_school,150.0,24.29,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+326,Kalundborg,music_school,70.26,7.63,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+390,Vordingborg,music_school,150.0,17.84,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+550,Tønder,music_school,70.07,7.61,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+360,Lolland,music_school,104.97,11.4,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+482,Langeland,music_school,136.1,14.78,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
+201,Allerød,library_use,150.0,9.04,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+153,Brøndby,library_use,64.49,2.87,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+175,Rødovre,library_use,105.62,4.7,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+155,Dragør,library_use,88.54,3.94,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+190,Furesø,library_use,144.04,6.41,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+167,Hvidovre,library_use,142.92,6.36,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+230,Rudersdal,library_use,150.0,7.55,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+746,Skanderborg,library_use,109.89,4.89,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+269,Solrød,library_use,98.65,4.39,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+265,Roskilde,library_use,150.0,7.3,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+240,Egedal,library_use,92.58,4.12,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+151,Ballerup,library_use,112.36,5.0,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+223,Hørsholm,library_use,150.0,7.5,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+185,Tårnby,library_use,113.71,5.06,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+157,Gentofte,library_use,150.0,10.27,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+350,Lejre,library_use,77.3,3.44,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+163,Herlev,library_use,97.98,4.36,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+173,Lyngby-Taarbæk,library_use,150.0,7.12,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+210,Fredensborg,library_use,98.43,4.38,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+183,Ishøj,library_use,62.25,2.77,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+710,Favrskov,library_use,117.53,5.23,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+530,Billund,library_use,77.98,3.47,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+840,Rebild,library_use,93.71,4.17,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+187,Vallensbæk,library_use,53.26,2.37,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+253,Greve,library_use,79.33,3.53,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+147,Frederiksberg,library_use,82.7,3.68,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+259,Køge,library_use,100.45,4.47,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+159,Gladsaxe,library_use,105.84,4.71,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+217,Helsingør,library_use,120.9,5.38,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+250,Frederikssund,library_use,97.3,4.33,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+661,Holstebro,library_use,92.58,4.12,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+825,Læsø,library_use,33.48,1.49,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+657,Herning,library_use,144.94,6.45,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+260,Halsnæs,library_use,91.01,4.05,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+773,Morsø,library_use,74.16,3.3,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+219,Hillerød,library_use,122.92,5.47,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+340,Sorø,library_use,94.38,4.2,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+492,Ærø,library_use,95.28,4.24,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+561,Esbjerg,library_use,74.83,3.33,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+740,Silkeborg,library_use,111.91,4.98,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+615,Horsens,library_use,75.96,3.38,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+316,Holbæk,library_use,78.2,3.48,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+766,Hedensted,library_use,73.03,3.25,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+607,Fredericia,library_use,70.11,3.12,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+410,Middelfart,library_use,105.39,4.69,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+329,Ringsted,library_use,79.55,3.54,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+370,Næstved,library_use,68.99,3.07,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+851,Aalborg,library_use,93.48,4.16,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+810,Brønderslev,library_use,117.08,5.21,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+727,Odder,library_use,150.0,6.78,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+336,Stevns,library_use,78.65,3.5,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+751,Aarhus,library_use,100.9,4.49,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+813,Frederikshavn,library_use,73.93,3.29,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+161,Glostrup,library_use,95.28,4.24,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+270,Gribskov,library_use,119.1,5.3,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+860,Hjørring,library_use,86.74,3.86,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+165,Albertslund,library_use,78.65,3.5,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+479,Svendborg,library_use,150.0,6.87,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+791,Viborg,library_use,105.62,4.7,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+480,Nordfyns,library_use,68.09,3.03,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+706,Syddjurs,library_use,95.51,4.25,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+440,Kerteminde,library_use,88.99,3.96,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+630,Vejle,library_use,105.17,4.68,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+101,København,library_use,98.2,4.37,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+730,Randers,library_use,97.08,4.32,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+760,Ringkøbing-Skjern,library_use,87.19,3.88,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+430,Faaborg-Midtfyn,library_use,96.4,4.29,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+320,Faxe,library_use,66.29,2.95,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+169,Høje-Taastrup,library_use,79.78,3.55,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+573,Varde,library_use,85.84,3.82,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+621,Kolding,library_use,84.04,3.74,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+420,Assens,library_use,75.06,3.34,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+580,Aabenraa,library_use,80.45,3.58,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+787,Thisted,library_use,70.56,3.14,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+756,Ikast-Brande,library_use,97.75,4.35,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+461,Odense,library_use,94.83,4.22,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+779,Skive,library_use,76.85,3.42,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+450,Nyborg,library_use,131.91,5.87,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+846,Mariagerfjord,library_use,93.48,4.16,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+820,Vesthimmerlands,library_use,74.61,3.32,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+540,Sønderborg,library_use,88.76,3.95,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+400,Bornholm,library_use,150.0,6.83,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+510,Haderslev,library_use,82.02,3.65,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+671,Struer,library_use,101.57,4.52,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+665,Lemvig,library_use,102.92,4.58,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+707,Norddjurs,library_use,77.98,3.47,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+330,Slagelse,library_use,63.15,2.81,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+306,Odsherred,library_use,74.83,3.33,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+575,Vejen,library_use,76.85,3.42,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+376,Guldborgsund,library_use,101.35,4.51,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+849,Jammerbugt,library_use,92.13,4.1,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+326,Kalundborg,library_use,62.7,2.79,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+390,Vordingborg,library_use,104.27,4.64,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+550,Tønder,library_use,74.38,3.31,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+360,Lolland,library_use,70.56,3.14,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+741,Samsø,library_use,150.0,6.88,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
+482,Langeland,library_use,93.71,4.17,udlån/indb.,2025,DST BIB3A,social,kultur_fritid,4.45
 201,Allerød,kultur_spending,104.36,527.0,kr./indb.,2025,DST REGK31,social,kultur_fritid,505.0
 153,Brøndby,kultur_spending,121.78,615.0,kr./indb.,2025,DST REGK31,social,kultur_fritid,505.0
 175,Rødovre,kultur_spending,65.35,330.0,kr./indb.,2025,DST REGK31,social,kultur_fritid,505.0
@@ -3708,104 +3708,104 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,kultur_spending,81.98,414.0,kr./indb.,2025,DST REGK31,social,kultur_fritid,505.0
 741,Samsø,kultur_spending,40.59,205.0,kr./indb.,2025,DST REGK31,social,kultur_fritid,505.0
 482,Langeland,kultur_spending,69.7,352.0,kr./indb.,2025,DST REGK31,social,kultur_fritid,505.0
-201,Allerød,crime_rate,150.0,43.17,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-153,Brøndby,crime_rate,90.14,76.81,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-175,Rødovre,crime_rate,98.55,70.26,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-155,Dragør,crime_rate,150.0,38.06,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-190,Furesø,crime_rate,149.74,46.24,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-167,Hvidovre,crime_rate,86.46,80.08,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-230,Rudersdal,crime_rate,145.07,47.73,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-746,Skanderborg,crime_rate,150.0,33.0,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-269,Solrød,crime_rate,150.0,41.73,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-265,Roskilde,crime_rate,108.2,63.99,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-240,Egedal,crime_rate,150.0,40.14,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-151,Ballerup,crime_rate,96.09,72.06,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-223,Hørsholm,crime_rate,143.29,48.32,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-185,Tårnby,crime_rate,48.54,142.64,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-157,Gentofte,crime_rate,110.57,62.62,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-350,Lejre,crime_rate,150.0,34.6,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-163,Herlev,crime_rate,97.91,70.72,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-173,Lyngby-Taarbæk,crime_rate,113.08,61.23,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-210,Fredensborg,crime_rate,150.0,45.44,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-183,Ishøj,crime_rate,97.69,70.88,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-710,Favrskov,crime_rate,150.0,27.63,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-530,Billund,crime_rate,105.56,65.59,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-840,Rebild,crime_rate,150.0,31.87,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-187,Vallensbæk,crime_rate,124.13,55.78,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-253,Greve,crime_rate,111.25,62.24,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-147,Frederiksberg,crime_rate,93.08,74.39,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-259,Køge,crime_rate,115.98,59.7,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-159,Gladsaxe,crime_rate,117.52,58.92,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-217,Helsingør,crime_rate,105.31,65.75,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-250,Frederikssund,crime_rate,141.65,48.88,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-661,Holstebro,crime_rate,129.11,53.63,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-825,Læsø,crime_rate,150.0,31.41,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-657,Herning,crime_rate,139.04,49.8,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-260,Halsnæs,crime_rate,150.0,43.85,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-773,Morsø,crime_rate,150.0,34.32,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-219,Hillerød,crime_rate,99.8,69.38,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-340,Sorø,crime_rate,146.11,47.39,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-492,Ærø,crime_rate,150.0,22.62,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-561,Esbjerg,crime_rate,115.5,59.95,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-740,Silkeborg,crime_rate,150.0,43.96,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-615,Horsens,crime_rate,138.98,49.82,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-563,Fanø,crime_rate,150.0,42.81,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-316,Holbæk,crime_rate,135.84,50.97,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-766,Hedensted,crime_rate,150.0,39.74,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-607,Fredericia,crime_rate,99.65,69.48,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-410,Middelfart,crime_rate,128.22,54.0,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-329,Ringsted,crime_rate,131.48,52.66,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-370,Næstved,crime_rate,100.98,68.57,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-851,Aalborg,crime_rate,119.73,57.83,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-810,Brønderslev,crime_rate,150.0,33.13,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-727,Odder,crime_rate,150.0,27.95,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-336,Stevns,crime_rate,150.0,37.02,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-751,Aarhus,crime_rate,94.24,73.47,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-813,Frederikshavn,crime_rate,135.53,51.09,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-161,Glostrup,crime_rate,54.46,127.15,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-270,Gribskov,crime_rate,149.19,46.41,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-860,Hjørring,crime_rate,150.0,44.26,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-165,Albertslund,crime_rate,83.09,83.33,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-479,Svendborg,crime_rate,144.4,47.95,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-791,Viborg,crime_rate,150.0,44.73,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-480,Nordfyns,crime_rate,145.74,47.51,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-706,Syddjurs,crime_rate,150.0,37.05,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-440,Kerteminde,crime_rate,150.0,44.09,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-630,Vejle,crime_rate,119.11,58.13,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-101,København,crime_rate,59.2,116.96,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-730,Randers,crime_rate,125.05,55.37,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-760,Ringkøbing-Skjern,crime_rate,150.0,33.0,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-430,Faaborg-Midtfyn,crime_rate,150.0,43.8,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-320,Faxe,crime_rate,150.0,44.21,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-169,Høje-Taastrup,crime_rate,109.63,63.16,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-573,Varde,crime_rate,150.0,40.9,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-621,Kolding,crime_rate,129.03,53.66,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-420,Assens,crime_rate,150.0,44.63,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-580,Aabenraa,crime_rate,104.48,66.27,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-787,Thisted,crime_rate,150.0,32.77,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-756,Ikast-Brande,crime_rate,99.63,69.5,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-461,Odense,crime_rate,91.54,75.64,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-779,Skive,crime_rate,150.0,44.98,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-450,Nyborg,crime_rate,132.69,52.18,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-846,Mariagerfjord,crime_rate,150.0,43.79,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-820,Vesthimmerlands,crime_rate,150.0,42.27,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-540,Sønderborg,crime_rate,150.0,41.73,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-400,Bornholm,crime_rate,150.0,38.42,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-510,Haderslev,crime_rate,127.47,54.32,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-671,Struer,crime_rate,150.0,35.3,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-665,Lemvig,crime_rate,150.0,32.71,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-707,Norddjurs,crime_rate,146.2,47.36,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-330,Slagelse,crime_rate,100.03,69.22,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-306,Odsherred,crime_rate,113.73,60.88,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-575,Vejen,crime_rate,150.0,40.28,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-376,Guldborgsund,crime_rate,112.93,61.31,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-849,Jammerbugt,crime_rate,150.0,36.81,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-326,Kalundborg,crime_rate,146.66,47.21,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-390,Vordingborg,crime_rate,145.98,47.43,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-550,Tønder,crime_rate,139.94,49.48,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-360,Lolland,crime_rate,91.08,76.02,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-741,Samsø,crime_rate,131.16,52.79,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
-482,Langeland,crime_rate,150.0,37.25,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,69.24
+201,Allerød,crime_rate,146.44,43.17,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+153,Brøndby,crime_rate,82.31,76.81,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+175,Rødovre,crime_rate,89.98,70.26,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+155,Dragør,crime_rate,150.0,38.06,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+190,Furesø,crime_rate,136.72,46.24,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+167,Hvidovre,crime_rate,78.95,80.08,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+230,Rudersdal,crime_rate,132.45,47.73,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+746,Skanderborg,crime_rate,150.0,33.0,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+269,Solrød,crime_rate,150.0,41.73,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+265,Roskilde,crime_rate,98.8,63.99,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+240,Egedal,crime_rate,150.0,40.14,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+151,Ballerup,crime_rate,87.73,72.06,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+223,Hørsholm,crime_rate,130.84,48.32,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+185,Tårnby,crime_rate,44.32,142.64,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+157,Gentofte,crime_rate,100.96,62.62,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+350,Lejre,crime_rate,150.0,34.6,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+163,Herlev,crime_rate,89.39,70.72,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+173,Lyngby-Taarbæk,crime_rate,103.25,61.23,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+210,Fredensborg,crime_rate,139.13,45.44,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+183,Ishøj,crime_rate,89.19,70.88,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+710,Favrskov,crime_rate,150.0,27.63,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+530,Billund,crime_rate,96.39,65.59,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+840,Rebild,crime_rate,150.0,31.87,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+187,Vallensbæk,crime_rate,113.34,55.78,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+253,Greve,crime_rate,101.57,62.24,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+147,Frederiksberg,crime_rate,84.98,74.39,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+259,Køge,crime_rate,105.9,59.7,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+159,Gladsaxe,crime_rate,107.3,58.92,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+217,Helsingør,crime_rate,96.15,65.75,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+250,Frederikssund,crime_rate,129.34,48.88,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+661,Holstebro,crime_rate,117.88,53.63,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+825,Læsø,crime_rate,150.0,31.41,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+657,Herning,crime_rate,126.95,49.8,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+260,Halsnæs,crime_rate,144.17,43.85,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+773,Morsø,crime_rate,150.0,34.32,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+219,Hillerød,crime_rate,91.12,69.38,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+340,Sorø,crime_rate,133.4,47.39,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+492,Ærø,crime_rate,150.0,22.62,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+561,Esbjerg,crime_rate,105.45,59.95,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+740,Silkeborg,crime_rate,143.81,43.96,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+615,Horsens,crime_rate,126.9,49.82,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+563,Fanø,crime_rate,147.68,42.81,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+316,Holbæk,crime_rate,124.03,50.97,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+766,Hedensted,crime_rate,150.0,39.74,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+607,Fredericia,crime_rate,90.99,69.48,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+410,Middelfart,crime_rate,117.07,54.0,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+329,Ringsted,crime_rate,120.05,52.66,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+370,Næstved,crime_rate,92.2,68.57,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+851,Aalborg,crime_rate,109.32,57.83,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+810,Brønderslev,crime_rate,150.0,33.13,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+727,Odder,crime_rate,150.0,27.95,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+336,Stevns,crime_rate,150.0,37.02,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+751,Aarhus,crime_rate,86.05,73.47,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+813,Frederikshavn,crime_rate,123.74,51.09,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+161,Glostrup,crime_rate,49.72,127.15,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+270,Gribskov,crime_rate,136.22,46.41,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+860,Hjørring,crime_rate,142.84,44.26,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+165,Albertslund,crime_rate,75.87,83.33,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+479,Svendborg,crime_rate,131.85,47.95,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+791,Viborg,crime_rate,141.34,44.73,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+480,Nordfyns,crime_rate,133.07,47.51,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+706,Syddjurs,crime_rate,150.0,37.05,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+440,Kerteminde,crime_rate,143.39,44.09,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+630,Vejle,crime_rate,108.76,58.13,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+101,København,crime_rate,54.05,116.96,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+730,Randers,crime_rate,114.18,55.37,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+760,Ringkøbing-Skjern,crime_rate,150.0,33.0,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+430,Faaborg-Midtfyn,crime_rate,144.34,43.8,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+320,Faxe,crime_rate,143.0,44.21,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+169,Høje-Taastrup,crime_rate,100.09,63.16,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+573,Varde,crime_rate,150.0,40.9,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+621,Kolding,crime_rate,117.82,53.66,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+420,Assens,crime_rate,141.65,44.63,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+580,Aabenraa,crime_rate,95.4,66.27,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+787,Thisted,crime_rate,150.0,32.77,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+756,Ikast-Brande,crime_rate,90.96,69.5,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+461,Odense,crime_rate,83.58,75.64,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+779,Skive,crime_rate,140.55,44.98,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+450,Nyborg,crime_rate,121.16,52.18,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+846,Mariagerfjord,crime_rate,144.37,43.79,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+820,Vesthimmerlands,crime_rate,149.56,42.27,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+540,Sønderborg,crime_rate,150.0,41.73,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+400,Bornholm,crime_rate,150.0,38.42,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+510,Haderslev,crime_rate,116.38,54.32,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+671,Struer,crime_rate,150.0,35.3,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+665,Lemvig,crime_rate,150.0,32.71,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+707,Norddjurs,crime_rate,133.49,47.36,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+330,Slagelse,crime_rate,91.33,69.22,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+306,Odsherred,crime_rate,103.84,60.88,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+575,Vejen,crime_rate,150.0,40.28,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+376,Guldborgsund,crime_rate,103.12,61.31,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+849,Jammerbugt,crime_rate,150.0,36.81,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+326,Kalundborg,crime_rate,133.91,47.21,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+390,Vordingborg,crime_rate,133.29,47.43,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+550,Tønder,crime_rate,127.77,49.48,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+360,Lolland,crime_rate,83.16,76.02,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+741,Samsø,crime_rate,119.76,52.79,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
+482,Langeland,crime_rate,150.0,37.25,pr. 1.000 indb.,2025,DST STRAF11,social,tryghed,63.22
 201,Allerød,traffic_accidents,148.09,30.69,pr. 100.000 indb.,2023-2025,DST UHELDK1,social,tryghed,45.45
 153,Brøndby,traffic_accidents,150.0,28.22,pr. 100.000 indb.,2023-2025,DST UHELDK1,social,tryghed,45.45
 175,Rødovre,traffic_accidents,150.0,20.6,pr. 100.000 indb.,2023-2025,DST UHELDK1,social,tryghed,45.45
@@ -4862,104 +4862,104 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,public_transport,33.01,9.91,%,2025,DST LABY49,social,mobilitet,30.01898
 741,Samsø,public_transport,33.01,9.91,%,2025,DST LABY49,social,mobilitet,30.01898
 482,Langeland,public_transport,33.01,9.91,%,2025,DST LABY49,social,mobilitet,30.01898
-201,Allerød,vejr_skader,150.0,16.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-153,Brøndby,vejr_skader,150.0,10.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-175,Rødovre,vejr_skader,150.0,14.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-155,Dragør,vejr_skader,64.69,40.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-190,Furesø,vejr_skader,150.0,13.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-167,Hvidovre,vejr_skader,150.0,16.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-230,Rudersdal,vejr_skader,117.63,22.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-746,Skanderborg,vejr_skader,99.53,26.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-269,Solrød,vejr_skader,123.23,21.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-265,Roskilde,vejr_skader,150.0,15.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-240,Egedal,vejr_skader,150.0,16.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-151,Ballerup,vejr_skader,150.0,11.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-223,Hørsholm,vejr_skader,112.51,23.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-185,Tårnby,vejr_skader,95.84,27.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-157,Gentofte,vejr_skader,78.42,33.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-350,Lejre,vejr_skader,150.0,14.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-163,Herlev,vejr_skader,136.2,19.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-173,Lyngby-Taarbæk,vejr_skader,123.23,21.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-210,Fredensborg,vejr_skader,150.0,14.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-183,Ishøj,vejr_skader,150.0,11.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-710,Favrskov,vejr_skader,150.0,16.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-530,Billund,vejr_skader,117.63,22.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-840,Rebild,vejr_skader,92.42,28.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-187,Vallensbæk,vejr_skader,150.0,11.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-253,Greve,vejr_skader,143.76,18.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-147,Frederiksberg,vejr_skader,150.0,13.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-259,Køge,vejr_skader,112.51,23.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-159,Gladsaxe,vejr_skader,150.0,13.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-217,Helsingør,vejr_skader,143.76,18.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-250,Frederikssund,vejr_skader,150.0,17.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-661,Holstebro,vejr_skader,60.18,43.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-825,Læsø,vejr_skader,47.05,55.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-657,Herning,vejr_skader,107.82,24.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-260,Halsnæs,vejr_skader,129.39,20.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-773,Morsø,vejr_skader,57.51,45.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-219,Hillerød,vejr_skader,150.0,17.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-340,Sorø,vejr_skader,150.0,13.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-492,Ærø,vejr_skader,61.61,42.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-561,Esbjerg,vejr_skader,78.42,33.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-740,Silkeborg,vejr_skader,150.0,17.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-615,Horsens,vejr_skader,143.76,18.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-563,Fanø,vejr_skader,39.21,66.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-316,Holbæk,vejr_skader,150.0,15.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-766,Hedensted,vejr_skader,112.51,23.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-607,Fredericia,vejr_skader,99.53,26.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-410,Middelfart,vejr_skader,103.51,25.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-329,Ringsted,vejr_skader,150.0,14.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-370,Næstved,vejr_skader,150.0,15.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-851,Aalborg,vejr_skader,117.63,22.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-810,Brønderslev,vejr_skader,99.53,26.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-727,Odder,vejr_skader,107.82,24.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-336,Stevns,vejr_skader,123.23,21.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-751,Aarhus,vejr_skader,143.76,18.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-813,Frederikshavn,vejr_skader,95.84,27.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-161,Glostrup,vejr_skader,150.0,15.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-270,Gribskov,vejr_skader,103.51,25.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-860,Hjørring,vejr_skader,80.87,32.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-165,Albertslund,vejr_skader,150.0,6.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-479,Svendborg,vejr_skader,95.84,27.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-791,Viborg,vejr_skader,150.0,16.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-480,Nordfyns,vejr_skader,50.74,51.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-706,Syddjurs,vejr_skader,78.42,33.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-440,Kerteminde,vejr_skader,86.26,30.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-630,Vejle,vejr_skader,112.51,23.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-101,København,vejr_skader,150.0,10.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-730,Randers,vejr_skader,143.76,18.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-760,Ringkøbing-Skjern,vejr_skader,57.51,45.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-430,Faaborg-Midtfyn,vejr_skader,95.84,27.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-320,Faxe,vejr_skader,136.2,19.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-169,Høje-Taastrup,vejr_skader,150.0,12.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-573,Varde,vejr_skader,68.1,38.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-621,Kolding,vejr_skader,103.51,25.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-420,Assens,vejr_skader,95.84,27.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-580,Aabenraa,vejr_skader,103.51,25.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-787,Thisted,vejr_skader,53.91,48.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-756,Ikast-Brande,vejr_skader,99.53,26.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-461,Odense,vejr_skader,112.51,23.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-779,Skive,vejr_skader,83.48,31.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-450,Nyborg,vejr_skader,112.51,23.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-846,Mariagerfjord,vejr_skader,103.51,25.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-820,Vesthimmerlands,vejr_skader,89.23,29.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-540,Sønderborg,vejr_skader,92.42,28.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-400,Bornholm,vejr_skader,83.48,31.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-510,Haderslev,vejr_skader,99.53,26.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-671,Struer,vejr_skader,61.61,42.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-665,Lemvig,vejr_skader,39.21,66.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-707,Norddjurs,vejr_skader,89.23,29.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-330,Slagelse,vejr_skader,123.23,21.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-306,Odsherred,vejr_skader,78.42,33.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-575,Vejen,vejr_skader,92.42,28.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-376,Guldborgsund,vejr_skader,53.91,48.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-849,Jammerbugt,vejr_skader,63.12,41.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-326,Kalundborg,vejr_skader,136.2,19.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-390,Vordingborg,vejr_skader,68.1,38.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-550,Tønder,vejr_skader,92.42,28.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-360,Lolland,vejr_skader,76.11,34.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-741,Samsø,vejr_skader,60.18,43.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
-482,Langeland,vejr_skader,41.74,62.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,25.877551
+201,Allerød,vejr_skader,137.0,16.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+153,Brøndby,vejr_skader,150.0,10.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+175,Rødovre,vejr_skader,150.0,14.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+155,Dragør,vejr_skader,54.8,40.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+190,Furesø,vejr_skader,150.0,13.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+167,Hvidovre,vejr_skader,137.0,16.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+230,Rudersdal,vejr_skader,99.63,22.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+746,Skanderborg,vejr_skader,84.31,26.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+269,Solrød,vejr_skader,104.38,21.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+265,Roskilde,vejr_skader,146.13,15.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+240,Egedal,vejr_skader,137.0,16.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+151,Ballerup,vejr_skader,150.0,11.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+223,Hørsholm,vejr_skader,95.3,23.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+185,Tårnby,vejr_skader,81.18,27.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+157,Gentofte,vejr_skader,66.42,33.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+350,Lejre,vejr_skader,150.0,14.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+163,Herlev,vejr_skader,115.37,19.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+173,Lyngby-Taarbæk,vejr_skader,104.38,21.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+210,Fredensborg,vejr_skader,150.0,14.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+183,Ishøj,vejr_skader,150.0,11.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+710,Favrskov,vejr_skader,137.0,16.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+530,Billund,vejr_skader,99.63,22.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+840,Rebild,vejr_skader,78.28,28.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+187,Vallensbæk,vejr_skader,150.0,11.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+253,Greve,vejr_skader,121.78,18.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+147,Frederiksberg,vejr_skader,150.0,13.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+259,Køge,vejr_skader,95.3,23.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+159,Gladsaxe,vejr_skader,150.0,13.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+217,Helsingør,vejr_skader,121.78,18.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+250,Frederikssund,vejr_skader,128.94,17.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+661,Holstebro,vejr_skader,50.98,43.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+825,Læsø,vejr_skader,39.85,55.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+657,Herning,vejr_skader,91.33,24.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+260,Halsnæs,vejr_skader,109.6,20.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+773,Morsø,vejr_skader,48.71,45.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+219,Hillerød,vejr_skader,128.94,17.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+340,Sorø,vejr_skader,150.0,13.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+492,Ærø,vejr_skader,52.19,42.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+561,Esbjerg,vejr_skader,66.42,33.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+740,Silkeborg,vejr_skader,128.94,17.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+615,Horsens,vejr_skader,121.78,18.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+563,Fanø,vejr_skader,33.21,66.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+316,Holbæk,vejr_skader,146.13,15.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+766,Hedensted,vejr_skader,95.3,23.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+607,Fredericia,vejr_skader,84.31,26.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+410,Middelfart,vejr_skader,87.68,25.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+329,Ringsted,vejr_skader,150.0,14.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+370,Næstved,vejr_skader,146.13,15.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+851,Aalborg,vejr_skader,99.63,22.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+810,Brønderslev,vejr_skader,84.31,26.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+727,Odder,vejr_skader,91.33,24.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+336,Stevns,vejr_skader,104.38,21.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+751,Aarhus,vejr_skader,121.78,18.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+813,Frederikshavn,vejr_skader,81.18,27.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+161,Glostrup,vejr_skader,146.13,15.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+270,Gribskov,vejr_skader,87.68,25.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+860,Hjørring,vejr_skader,68.5,32.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+165,Albertslund,vejr_skader,150.0,6.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+479,Svendborg,vejr_skader,81.18,27.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+791,Viborg,vejr_skader,137.0,16.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+480,Nordfyns,vejr_skader,42.98,51.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+706,Syddjurs,vejr_skader,66.42,33.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+440,Kerteminde,vejr_skader,73.07,30.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+630,Vejle,vejr_skader,95.3,23.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+101,København,vejr_skader,150.0,10.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+730,Randers,vejr_skader,121.78,18.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+760,Ringkøbing-Skjern,vejr_skader,48.71,45.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+430,Faaborg-Midtfyn,vejr_skader,81.18,27.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+320,Faxe,vejr_skader,115.37,19.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+169,Høje-Taastrup,vejr_skader,150.0,12.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+573,Varde,vejr_skader,57.68,38.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+621,Kolding,vejr_skader,87.68,25.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+420,Assens,vejr_skader,81.18,27.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+580,Aabenraa,vejr_skader,87.68,25.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+787,Thisted,vejr_skader,45.67,48.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+756,Ikast-Brande,vejr_skader,84.31,26.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+461,Odense,vejr_skader,95.3,23.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+779,Skive,vejr_skader,70.71,31.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+450,Nyborg,vejr_skader,95.3,23.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+846,Mariagerfjord,vejr_skader,87.68,25.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+820,Vesthimmerlands,vejr_skader,75.58,29.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+540,Sønderborg,vejr_skader,78.28,28.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+400,Bornholm,vejr_skader,70.71,31.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+510,Haderslev,vejr_skader,84.31,26.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+671,Struer,vejr_skader,52.19,42.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+665,Lemvig,vejr_skader,33.21,66.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+707,Norddjurs,vejr_skader,75.58,29.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+330,Slagelse,vejr_skader,104.38,21.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+306,Odsherred,vejr_skader,66.42,33.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+575,Vejen,vejr_skader,78.28,28.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+376,Guldborgsund,vejr_skader,45.67,48.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+849,Jammerbugt,vejr_skader,53.46,41.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+326,Kalundborg,vejr_skader,115.37,19.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+390,Vordingborg,vejr_skader,57.68,38.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+550,Tønder,vejr_skader,78.28,28.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+360,Lolland,vejr_skader,64.47,34.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+741,Samsø,vejr_skader,50.98,43.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
+482,Langeland,vejr_skader,35.35,62.0,skader pr. 1.000 indb.,2023-2025,F&P skadesstatistik,social,klimatilpasning,21.9196
 201,Allerød,klimapaavirkning,112.73,3.382,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning,3.0
 153,Brøndby,klimapaavirkning,111.1,3.333,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning,3.0
 175,Rødovre,klimapaavirkning,62.2,1.866,ton CO₂e/person,2023,Klimaregnskabet.dk,ecological,klimapaavirkning,3.0
@@ -5450,102 +5450,102 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,cirkularitet_waste,142.54,774.0,kg/person,2023,DST + MST,ecological,forurening,543.0
 741,Samsø,cirkularitet_waste,113.26,615.0,kg/person,2023,DST + MST,ecological,forurening,543.0
 482,Langeland,cirkularitet_waste,158.93,863.0,kg/person,2023,DST + MST,ecological,forurening,543.0
-201,Allerød,naer_nitrogen,37.06,0.424,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-153,Brøndby,naer_nitrogen,13.46,0.154,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-175,Rødovre,naer_nitrogen,5.94,0.068,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-155,Dragør,naer_nitrogen,72.03,0.824,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-190,Furesø,naer_nitrogen,20.54,0.235,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-167,Hvidovre,naer_nitrogen,273.16,3.125,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-230,Rudersdal,naer_nitrogen,47.38,0.542,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-746,Skanderborg,naer_nitrogen,48.25,0.552,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-269,Solrød,naer_nitrogen,56.91,0.651,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-265,Roskilde,naer_nitrogen,45.19,0.517,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-240,Egedal,naer_nitrogen,30.68,0.351,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-151,Ballerup,naer_nitrogen,51.22,0.586,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-223,Hørsholm,naer_nitrogen,77.53,0.887,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-185,Tårnby,naer_nitrogen,89.6,1.025,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-157,Gentofte,naer_nitrogen,36.1,0.413,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-350,Lejre,naer_nitrogen,59.62,0.682,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-163,Herlev,naer_nitrogen,11.71,0.134,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-173,Lyngby-Taarbæk,naer_nitrogen,128.41,1.469,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-210,Fredensborg,naer_nitrogen,35.4,0.405,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-183,Ishøj,naer_nitrogen,25.87,0.296,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-710,Favrskov,naer_nitrogen,81.47,0.932,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-530,Billund,naer_nitrogen,261.1,2.987,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-840,Rebild,naer_nitrogen,93.27,1.067,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-187,Vallensbæk,naer_nitrogen,29.46,0.337,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-253,Greve,naer_nitrogen,100.52,1.15,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-259,Køge,naer_nitrogen,73.69,0.843,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-159,Gladsaxe,naer_nitrogen,4.98,0.057,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-217,Helsingør,naer_nitrogen,82.17,0.94,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-250,Frederikssund,naer_nitrogen,54.72,0.626,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-661,Holstebro,naer_nitrogen,173.34,1.983,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-825,Læsø,naer_nitrogen,248.51,2.843,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-657,Herning,naer_nitrogen,176.14,2.015,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-260,Halsnæs,naer_nitrogen,86.01,0.984,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-773,Morsø,naer_nitrogen,75.26,0.861,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-219,Hillerød,naer_nitrogen,48.16,0.551,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-340,Sorø,naer_nitrogen,68.79,0.787,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-492,Ærø,naer_nitrogen,88.02,1.007,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-561,Esbjerg,naer_nitrogen,115.91,1.326,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-740,Silkeborg,naer_nitrogen,65.03,0.744,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-615,Horsens,naer_nitrogen,87.94,1.006,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-316,Holbæk,naer_nitrogen,69.58,0.796,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-766,Hedensted,naer_nitrogen,184.97,2.116,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-607,Fredericia,naer_nitrogen,131.56,1.505,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-410,Middelfart,naer_nitrogen,119.76,1.37,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-329,Ringsted,naer_nitrogen,62.5,0.715,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-370,Næstved,naer_nitrogen,73.25,0.838,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-851,Aalborg,naer_nitrogen,98.69,1.129,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-810,Brønderslev,naer_nitrogen,71.59,0.819,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-727,Odder,naer_nitrogen,138.99,1.59,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-336,Stevns,naer_nitrogen,44.32,0.507,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-751,Aarhus,naer_nitrogen,73.08,0.836,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-813,Frederikshavn,naer_nitrogen,260.58,2.981,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-161,Glostrup,naer_nitrogen,14.77,0.169,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-270,Gribskov,naer_nitrogen,68.79,0.787,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-860,Hjørring,naer_nitrogen,108.65,1.243,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-165,Albertslund,naer_nitrogen,18.97,0.217,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-479,Svendborg,naer_nitrogen,83.39,0.954,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-791,Viborg,naer_nitrogen,113.02,1.293,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-480,Nordfyns,naer_nitrogen,103.32,1.182,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-706,Syddjurs,naer_nitrogen,51.57,0.59,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-440,Kerteminde,naer_nitrogen,98.78,1.13,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-630,Vejle,naer_nitrogen,134.35,1.537,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-101,København,naer_nitrogen,104.98,1.201,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-730,Randers,naer_nitrogen,97.03,1.11,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-760,Ringkøbing-Skjern,naer_nitrogen,265.91,3.042,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-430,Faaborg-Midtfyn,naer_nitrogen,98.6,1.128,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-320,Faxe,naer_nitrogen,81.03,0.927,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-169,Høje-Taastrup,naer_nitrogen,15.21,0.174,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-573,Varde,naer_nitrogen,136.89,1.566,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-621,Kolding,naer_nitrogen,121.5,1.39,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-420,Assens,naer_nitrogen,60.23,0.689,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-580,Aabenraa,naer_nitrogen,110.31,1.262,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-787,Thisted,naer_nitrogen,119.93,1.372,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-756,Ikast-Brande,naer_nitrogen,122.73,1.404,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-461,Odense,naer_nitrogen,102.88,1.177,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-779,Skive,naer_nitrogen,117.22,1.341,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-450,Nyborg,naer_nitrogen,133.04,1.522,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-846,Mariagerfjord,naer_nitrogen,79.55,0.91,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-820,Vesthimmerlands,naer_nitrogen,121.33,1.388,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-540,Sønderborg,naer_nitrogen,90.65,1.037,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-400,Bornholm,naer_nitrogen,124.48,1.424,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-510,Haderslev,naer_nitrogen,179.72,2.056,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-671,Struer,naer_nitrogen,67.92,0.777,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-665,Lemvig,naer_nitrogen,233.3,2.669,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-707,Norddjurs,naer_nitrogen,116.43,1.332,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-330,Slagelse,naer_nitrogen,86.36,0.988,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-306,Odsherred,naer_nitrogen,80.42,0.92,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-575,Vejen,naer_nitrogen,177.71,2.033,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-376,Guldborgsund,naer_nitrogen,174.04,1.991,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-849,Jammerbugt,naer_nitrogen,89.16,1.02,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-326,Kalundborg,naer_nitrogen,358.3,4.099,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-390,Vordingborg,naer_nitrogen,152.88,1.749,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-550,Tønder,naer_nitrogen,138.29,1.582,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-360,Lolland,naer_nitrogen,324.21,3.709,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-741,Samsø,naer_nitrogen,378.58,4.331,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
-482,Langeland,naer_nitrogen,221.07,2.529,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.144
+201,Allerød,naer_nitrogen,37.13,0.424,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+153,Brøndby,naer_nitrogen,13.49,0.154,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+175,Rødovre,naer_nitrogen,5.95,0.068,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+155,Dragør,naer_nitrogen,72.15,0.824,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+190,Furesø,naer_nitrogen,20.58,0.235,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+167,Hvidovre,naer_nitrogen,273.64,3.125,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+230,Rudersdal,naer_nitrogen,47.46,0.542,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+746,Skanderborg,naer_nitrogen,48.34,0.552,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+269,Solrød,naer_nitrogen,57.01,0.651,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+265,Roskilde,naer_nitrogen,45.27,0.517,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+240,Egedal,naer_nitrogen,30.74,0.351,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+151,Ballerup,naer_nitrogen,51.31,0.586,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+223,Hørsholm,naer_nitrogen,77.67,0.887,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+185,Tårnby,naer_nitrogen,89.75,1.025,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+157,Gentofte,naer_nitrogen,36.16,0.413,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+350,Lejre,naer_nitrogen,59.72,0.682,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+163,Herlev,naer_nitrogen,11.73,0.134,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+173,Lyngby-Taarbæk,naer_nitrogen,128.63,1.469,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+210,Fredensborg,naer_nitrogen,35.46,0.405,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+183,Ishøj,naer_nitrogen,25.92,0.296,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+710,Favrskov,naer_nitrogen,81.61,0.932,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+530,Billund,naer_nitrogen,261.56,2.987,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+840,Rebild,naer_nitrogen,93.43,1.067,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+187,Vallensbæk,naer_nitrogen,29.51,0.337,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+253,Greve,naer_nitrogen,100.7,1.15,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+259,Køge,naer_nitrogen,73.82,0.843,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+159,Gladsaxe,naer_nitrogen,4.99,0.057,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+217,Helsingør,naer_nitrogen,82.31,0.94,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+250,Frederikssund,naer_nitrogen,54.82,0.626,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+661,Holstebro,naer_nitrogen,173.64,1.983,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+825,Læsø,naer_nitrogen,248.95,2.843,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+657,Herning,naer_nitrogen,176.44,2.015,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+260,Halsnæs,naer_nitrogen,86.16,0.984,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+773,Morsø,naer_nitrogen,75.39,0.861,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+219,Hillerød,naer_nitrogen,48.25,0.551,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+340,Sorø,naer_nitrogen,68.91,0.787,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+492,Ærø,naer_nitrogen,88.18,1.007,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+561,Esbjerg,naer_nitrogen,116.11,1.326,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+740,Silkeborg,naer_nitrogen,65.15,0.744,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+615,Horsens,naer_nitrogen,88.09,1.006,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+316,Holbæk,naer_nitrogen,69.7,0.796,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+766,Hedensted,naer_nitrogen,185.29,2.116,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+607,Fredericia,naer_nitrogen,131.79,1.505,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+410,Middelfart,naer_nitrogen,119.96,1.37,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+329,Ringsted,naer_nitrogen,62.61,0.715,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+370,Næstved,naer_nitrogen,73.38,0.838,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+851,Aalborg,naer_nitrogen,98.86,1.129,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+810,Brønderslev,naer_nitrogen,71.72,0.819,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+727,Odder,naer_nitrogen,139.23,1.59,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+336,Stevns,naer_nitrogen,44.4,0.507,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+751,Aarhus,naer_nitrogen,73.2,0.836,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+813,Frederikshavn,naer_nitrogen,261.03,2.981,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+161,Glostrup,naer_nitrogen,14.8,0.169,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+270,Gribskov,naer_nitrogen,68.91,0.787,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+860,Hjørring,naer_nitrogen,108.84,1.243,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+165,Albertslund,naer_nitrogen,19.0,0.217,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+479,Svendborg,naer_nitrogen,83.54,0.954,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+791,Viborg,naer_nitrogen,113.22,1.293,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+480,Nordfyns,naer_nitrogen,103.5,1.182,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+706,Syddjurs,naer_nitrogen,51.66,0.59,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+440,Kerteminde,naer_nitrogen,98.95,1.13,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+630,Vejle,naer_nitrogen,134.59,1.537,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+101,København,naer_nitrogen,105.17,1.201,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+730,Randers,naer_nitrogen,97.2,1.11,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+760,Ringkøbing-Skjern,naer_nitrogen,266.37,3.042,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+430,Faaborg-Midtfyn,naer_nitrogen,98.77,1.128,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+320,Faxe,naer_nitrogen,81.17,0.927,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+169,Høje-Taastrup,naer_nitrogen,15.24,0.174,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+573,Varde,naer_nitrogen,137.13,1.566,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+621,Kolding,naer_nitrogen,121.72,1.39,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+420,Assens,naer_nitrogen,60.33,0.689,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+580,Aabenraa,naer_nitrogen,110.51,1.262,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+787,Thisted,naer_nitrogen,120.14,1.372,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+756,Ikast-Brande,naer_nitrogen,122.94,1.404,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+461,Odense,naer_nitrogen,103.06,1.177,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+779,Skive,naer_nitrogen,117.43,1.341,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+450,Nyborg,naer_nitrogen,133.27,1.522,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+846,Mariagerfjord,naer_nitrogen,79.68,0.91,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+820,Vesthimmerlands,naer_nitrogen,121.54,1.388,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+540,Sønderborg,naer_nitrogen,90.81,1.037,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+400,Bornholm,naer_nitrogen,124.69,1.424,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+510,Haderslev,naer_nitrogen,180.04,2.056,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+671,Struer,naer_nitrogen,68.04,0.777,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+665,Lemvig,naer_nitrogen,233.71,2.669,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+707,Norddjurs,naer_nitrogen,116.64,1.332,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+330,Slagelse,naer_nitrogen,86.51,0.988,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+306,Odsherred,naer_nitrogen,80.56,0.92,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+575,Vejen,naer_nitrogen,178.02,2.033,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+376,Guldborgsund,naer_nitrogen,174.34,1.991,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+849,Jammerbugt,naer_nitrogen,89.32,1.02,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+326,Kalundborg,naer_nitrogen,358.93,4.099,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+390,Vordingborg,naer_nitrogen,153.15,1.749,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+550,Tønder,naer_nitrogen,138.53,1.582,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+360,Lolland,naer_nitrogen,324.78,3.709,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+741,Samsø,naer_nitrogen,379.25,4.331,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
+482,Langeland,naer_nitrogen,221.45,2.529,ton N/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,1.142
 201,Allerød,naer_phosphorus,62.6,0.077,ton P/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,0.123
 153,Brøndby,naer_phosphorus,21.14,0.026,ton P/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,0.123
 155,Dragør,naer_phosphorus,56.1,0.069,ton P/1.000 indb.,2024,DST VANDUD,ecological,naeringsstoffer,0.123
@@ -8270,7 +8270,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 253,Greve,_dim_klimapaavirkning,438.33,,,,,ecological_dimension,klimapaavirkning,
 253,Greve,_dim_luftkvalitet,139.8,,,,,ecological_dimension,luftkvalitet,
 253,Greve,_dim_forurening,93.5,,,,,ecological_dimension,forurening,
-253,Greve,_dim_naeringsstoffer,100.52,,,,,ecological_dimension,naeringsstoffer,
+253,Greve,_dim_naeringsstoffer,100.7,,,,,ecological_dimension,naeringsstoffer,
 253,Greve,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet,
 253,Greve,_dim_vand,75.88,,,,,ecological_dimension,vand,
 253,Greve,_dim_arealanvendelse,316.2,,,,,ecological_dimension,arealanvendelse,
@@ -8326,7 +8326,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 657,Herning,_dim_klimapaavirkning,362.67,,,,,ecological_dimension,klimapaavirkning,
 657,Herning,_dim_luftkvalitet,133.8,,,,,ecological_dimension,luftkvalitet,
 657,Herning,_dim_forurening,59.73,,,,,ecological_dimension,forurening,
-657,Herning,_dim_naeringsstoffer,176.14,,,,,ecological_dimension,naeringsstoffer,
+657,Herning,_dim_naeringsstoffer,176.44,,,,,ecological_dimension,naeringsstoffer,
 657,Herning,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet,
 657,Herning,_dim_vand,97.22,,,,,ecological_dimension,vand,
 657,Herning,_dim_arealanvendelse,98.72,,,,,ecological_dimension,arealanvendelse,
@@ -8542,14 +8542,14 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 630,Vejle,_dim_klimapaavirkning,373.67,,,,,ecological_dimension,klimapaavirkning,
 630,Vejle,_dim_luftkvalitet,140.4,,,,,ecological_dimension,luftkvalitet,
 630,Vejle,_dim_forurening,78.36,,,,,ecological_dimension,forurening,
-630,Vejle,_dim_naeringsstoffer,134.35,,,,,ecological_dimension,naeringsstoffer,
+630,Vejle,_dim_naeringsstoffer,134.59,,,,,ecological_dimension,naeringsstoffer,
 630,Vejle,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet,
 630,Vejle,_dim_vand,88.6,,,,,ecological_dimension,vand,
 630,Vejle,_dim_arealanvendelse,97.18,,,,,ecological_dimension,arealanvendelse,
 101,København,_dim_klimapaavirkning,324.67,,,,,ecological_dimension,klimapaavirkning,
 101,København,_dim_luftkvalitet,140.0,,,,,ecological_dimension,luftkvalitet,
 101,København,_dim_forurening,108.13,,,,,ecological_dimension,forurening,
-101,København,_dim_naeringsstoffer,104.98,,,,,ecological_dimension,naeringsstoffer,
+101,København,_dim_naeringsstoffer,105.17,,,,,ecological_dimension,naeringsstoffer,
 101,København,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet,
 101,København,_dim_arealanvendelse,546.48,,,,,ecological_dimension,arealanvendelse,
 730,Randers,_dim_klimapaavirkning,352.33,,,,,ecological_dimension,klimapaavirkning,
@@ -8562,7 +8562,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 760,Ringkøbing-Skjern,_dim_klimapaavirkning,464.23,,,,,ecological_dimension,klimapaavirkning,
 760,Ringkøbing-Skjern,_dim_luftkvalitet,135.6,,,,,ecological_dimension,luftkvalitet,
 760,Ringkøbing-Skjern,_dim_forurening,61.39,,,,,ecological_dimension,forurening,
-760,Ringkøbing-Skjern,_dim_naeringsstoffer,265.91,,,,,ecological_dimension,naeringsstoffer,
+760,Ringkøbing-Skjern,_dim_naeringsstoffer,266.37,,,,,ecological_dimension,naeringsstoffer,
 760,Ringkøbing-Skjern,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet,
 760,Ringkøbing-Skjern,_dim_vand,148.1,,,,,ecological_dimension,vand,
 760,Ringkøbing-Skjern,_dim_arealanvendelse,104.02,,,,,ecological_dimension,arealanvendelse,
@@ -8618,14 +8618,14 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 787,Thisted,_dim_klimapaavirkning,406.33,,,,,ecological_dimension,klimapaavirkning,
 787,Thisted,_dim_luftkvalitet,123.4,,,,,ecological_dimension,luftkvalitet,
 787,Thisted,_dim_forurening,121.22,,,,,ecological_dimension,forurening,
-787,Thisted,_dim_naeringsstoffer,119.93,,,,,ecological_dimension,naeringsstoffer,
+787,Thisted,_dim_naeringsstoffer,120.14,,,,,ecological_dimension,naeringsstoffer,
 787,Thisted,_dim_biodiversitet,133.51,,,,,ecological_dimension,biodiversitet,
 787,Thisted,_dim_vand,139.69,,,,,ecological_dimension,vand,
 787,Thisted,_dim_arealanvendelse,85.92,,,,,ecological_dimension,arealanvendelse,
 756,Ikast-Brande,_dim_klimapaavirkning,351.33,,,,,ecological_dimension,klimapaavirkning,
 756,Ikast-Brande,_dim_luftkvalitet,135.2,,,,,ecological_dimension,luftkvalitet,
 756,Ikast-Brande,_dim_forurening,71.33,,,,,ecological_dimension,forurening,
-756,Ikast-Brande,_dim_naeringsstoffer,122.73,,,,,ecological_dimension,naeringsstoffer,
+756,Ikast-Brande,_dim_naeringsstoffer,122.94,,,,,ecological_dimension,naeringsstoffer,
 756,Ikast-Brande,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet,
 756,Ikast-Brande,_dim_vand,111.78,,,,,ecological_dimension,vand,
 756,Ikast-Brande,_dim_arealanvendelse,89.4,,,,,ecological_dimension,arealanvendelse,
@@ -8681,7 +8681,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 510,Haderslev,_dim_klimapaavirkning,356.67,,,,,ecological_dimension,klimapaavirkning,
 510,Haderslev,_dim_luftkvalitet,146.2,,,,,ecological_dimension,luftkvalitet,
 510,Haderslev,_dim_forurening,93.44,,,,,ecological_dimension,forurening,
-510,Haderslev,_dim_naeringsstoffer,179.72,,,,,ecological_dimension,naeringsstoffer,
+510,Haderslev,_dim_naeringsstoffer,180.04,,,,,ecological_dimension,naeringsstoffer,
 510,Haderslev,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet,
 510,Haderslev,_dim_vand,76.32,,,,,ecological_dimension,vand,
 510,Haderslev,_dim_arealanvendelse,117.0,,,,,ecological_dimension,arealanvendelse,
@@ -8744,7 +8744,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 326,Kalundborg,_dim_klimapaavirkning,513.47,,,,,ecological_dimension,klimapaavirkning,
 326,Kalundborg,_dim_luftkvalitet,140.0,,,,,ecological_dimension,luftkvalitet,
 326,Kalundborg,_dim_forurening,97.55,,,,,ecological_dimension,forurening,
-326,Kalundborg,_dim_naeringsstoffer,358.3,,,,,ecological_dimension,naeringsstoffer,
+326,Kalundborg,_dim_naeringsstoffer,358.93,,,,,ecological_dimension,naeringsstoffer,
 326,Kalundborg,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet,
 326,Kalundborg,_dim_vand,217.54,,,,,ecological_dimension,vand,
 326,Kalundborg,_dim_arealanvendelse,106.76,,,,,ecological_dimension,arealanvendelse,
@@ -8772,14 +8772,14 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 741,Samsø,_dim_klimapaavirkning,365.33,,,,,ecological_dimension,klimapaavirkning,
 741,Samsø,_dim_luftkvalitet,133.0,,,,,ecological_dimension,luftkvalitet,
 741,Samsø,_dim_forurening,134.63,,,,,ecological_dimension,forurening,
-741,Samsø,_dim_naeringsstoffer,378.58,,,,,ecological_dimension,naeringsstoffer,
+741,Samsø,_dim_naeringsstoffer,379.25,,,,,ecological_dimension,naeringsstoffer,
 741,Samsø,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet,
 741,Samsø,_dim_vand,147.78,,,,,ecological_dimension,vand,
 741,Samsø,_dim_arealanvendelse,114.08,,,,,ecological_dimension,arealanvendelse,
 482,Langeland,_dim_klimapaavirkning,342.67,,,,,ecological_dimension,klimapaavirkning,
 482,Langeland,_dim_luftkvalitet,144.4,,,,,ecological_dimension,luftkvalitet,
 482,Langeland,_dim_forurening,93.33,,,,,ecological_dimension,forurening,
-482,Langeland,_dim_naeringsstoffer,221.07,,,,,ecological_dimension,naeringsstoffer,
+482,Langeland,_dim_naeringsstoffer,221.45,,,,,ecological_dimension,naeringsstoffer,
 482,Langeland,_dim_biodiversitet,300.0,,,,,ecological_dimension,biodiversitet,
 482,Langeland,_dim_vand,133.59,,,,,ecological_dimension,vand,
 482,Langeland,_dim_arealanvendelse,117.55,,,,,ecological_dimension,arealanvendelse,

@@ -128,16 +128,20 @@ def _serie_vandud(udl: str, aar: list[str]) -> dict[tuple[str, str], float]:
     """VANDUD: udledning (UDL=KV kvælstof, FO fosfor) summeret over alle
     anlægstyper, i ton pr. 1.000 indb. med folketallet 1. januar samme år.
     {(kommune_kode, år): værdi} inkl. hele landet (000). Ingen registreret
-    udledning (0) udelades: det behandles som manglende data, ikke som
-    topscore (se data/CHANGELOG.md 22. sep. 2026)."""
+    udledning (0) giver ingen kommuneværdi: det behandles som manglende data,
+    ikke som topscore (se data/CHANGELOG.md 22. sep. 2026)."""
     rows = api_post("VANDUD", [
         {"code": "OMRÅDE", "values": ["*"]},
         {"code": "UDL", "values": [udl]},
         {"code": "ANLAEG", "values": ["*"]},
         {"code": "Tid", "values": aar},
     ])
-    antal = {k: v for k, v in pr_kommune_aar(rows).items() if v}
-    return pr_indbygger(antal, 1000, 3)
+    antal = pr_kommune_aar(rows)
+    # alle_i_naevner: en kommune uden række (Frederiksberg) har sit spildevand
+    # renset i nabokommunen, så dens indbyggere hører med i landstallet.
+    per_1000 = pr_indbygger(antal, 1000, 3, alle_i_naevner=True)
+    # Kommuner uden udledning får ingen værdi selv.
+    return {k: v for k, v in per_1000.items() if k[0] == "000" or antal.get(k)}
 
 
 def serie_naer_nitrogen(aar: list[str]) -> dict[tuple[str, str], float]:

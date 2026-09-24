@@ -2,6 +2,18 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-24 (landsgennemsnit betyder Danmark som helhed)
+
+- **Beslutning:** et landsgennemsnit er de 98 kommuner samlet, vægtet med indikatorens egen nævner. Det er ikke et uvægtet gennemsnit af kommunerne og ikke en hele-landet-række med tal uden kommune (arkitekturdokumentet R3).
+- **Tre referencer ændret:**
+  - Kriminalitet: 69,24 til 63,22 pr. 1.000 indb. 8,7% af anmeldelserne i 2025 har ingen kendt gerningskommune og talte med i DST's landstal, men hos ingen kommune.
+  - Vejrskader: 25,88 til 21,92 pr. 1.000 indb. Referencen var et uvægtet gennemsnit af kommunerne; nu er den vægtet med folketallet.
+  - Underretninger: 89,53 til 92,33 pr. 1.000 børn. DST's landstal tæller 3,1% færre underretninger end kommunerne tilsammen.
+  - Ubetydelige ændringer (højst 0,3%) for kvælstof, biblioteksudlån og musikskole, fordi alle tal pr. indbygger nu danner landstallet af kommunerne selv (`dst.pr_indbygger()`). For spildevand tæller alle 98 kommuners indbyggere med, også Frederiksberg, hvis spildevand renses i København.
+- **Ingen råværdier eller retningspile er ændret.**
+- **Farveskift:** 41 i landsgennemsnit-visningen (Klimatilpasning 33, Tryghed 6, Velfærd 2), 14 i standardvisningen (Klimatilpasning 8, Tryghed 6) og 28 med top 10%. Standardvisningen påvirkes kun gennem loftet på 150: færre kommuner rammer loftet (vejrskader 27 til 15, kriminalitet 39 til 25), og gruppesnittet beregnes af de afskårne værdier.
+- **Ikke ændret:** de fire UVM-indikatorer (mangler elevtal pr. kommune, kræver UVM-nøglen) og `public_transport` (data kun pr. kommunegruppe). Begge står i arkitekturdokumentets afsnit 7.
+
 ## 2026-09-23 (retningspilen og scoren er samme tal)
 
 - **Retningspilen beskrev et andet tal end scoren for 14 indikatorer.** Tidsserien (`fetch_trend_history.py`) havde sin egen definition af hver indikator. Eksempler: klassekvotient kun i folkeskolen mod scorens alle skoletyper (Samsø 17,1 mod 12,6), ubeboede boliger inkl. fritidshuse (Thisted 24% mod 11,5%), sportsanlæg talt med i bebygget areal, 16-64 år mod scorens 16-66 år, og Klimaregnskabets to "Samlet"-rækker lagt sammen i stedet for den største (Læsø -5,2 mod 4,7 ton). `education`s serie sluttede i 2019. Nu hentes 15 indikatorer af én funktion (`serie_<id>()` i fetch-scriptet), som både scoren og pilen bruger, og `tjek_konsistens.py` fejler, hvis serie og score afviger (CLAUDE.md pkt. 37).

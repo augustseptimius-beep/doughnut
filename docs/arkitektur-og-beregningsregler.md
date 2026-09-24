@@ -79,21 +79,36 @@ afvigelser over 0,5 point) og til R3's rekonstruktion.
   luftkvalitetsgrænser, 3 ton CO2e, EU's 65 procent genanvendelse og 30/10
   procent natur, 6 mg/L nitrat, 0 procent fossil varme.
 - `kommunegennemsnit`: uvægtet gennemsnit af kommunernes råværdier, beregnet
-  ved build. Bruges hvor kilden ikke har et landstal pr. kommunetabel (UVM,
-  LABY49, forsikringsskader).
-- `landstal`: fetch-scriptets referenceværdi, fx DST's tal for hele landet
-  eller et befolkningsvægtet gennemsnit. Feltet `definition` siger hvilken.
-  Scriptet skal skrive den i kolonnen `col`. Mangler kolonnen (ingen af
-  scripterne skriver den endnu, sep. 2026), rekonstrueres landstallet ved
+  ved build. Bruges kun hvor indikatorens nævner ikke findes (UVM og LABY49),
+  se afsnit 7.
+- `landstal`: fetch-scriptets referenceværdi. Feltet `definition` siger hvordan
+  den er fundet. Scriptet skriver den i kolonnen `col`. Mangler kolonnen (en
+  CSV der ikke er hentet siden sep. 2026), rekonstrueres landstallet ved
   hvert build fra scriptets egen ratio: medianen af `raw × 100 / ratio`
   (eller `raw × ratio / 100` for omvendt retning) over kommunerne, afrundet
   til færrest mulige decimaler uden at ramme færre af scriptets ratios. Det
   genskaber publicerede landstal som 81,6 år eksakt.
 
 Referencen skrives til masterfilens `reference`-kolonne for hver række.
-Bemærk at "landsgennemsnit" dermed ikke betyder det samme for alle
-indikatorer: DST's landstal er befolkningsvægtet, kommunegennemsnittet er
-det ikke. Det er et bevidst, dokumenteret valg pr. indikator.
+
+**Landsgennemsnit betyder Danmark som helhed (besluttet sep. 2026).** Et
+landstal er de 98 kommuner samlet, vægtet med indikatorens egen nævner:
+samlet antal delt med samlet befolkning for tal pr. indbygger, samlet areal for
+arealandele, osv. Det er ikke et uvægtet gennemsnit af kommunerne, og ikke
+kildens hele-landet-række, hvis den indeholder tal uden kommune. Tal pr.
+indbygger regnes i `dst.pr_indbygger()`, som danner landstallet af kommunerne
+selv. Det betyder noget for kriminalitet, hvor 8,7 procent af anmeldelserne
+(2025) ikke har en kendt gerningskommune, og underretninger, hvor DST's landstal
+tæller 3,1 procent færre end kommunerne tilsammen. For andele og gennemsnit fra
+DST (fx fattigdom, klassekvotient) bruges DST's hele-landet-tal, som for de
+undersøgte tabeller er det samme som kommunerne samlet.
+
+Begrundelse: standardvisningen (kommunegruppe) og top 10 dividerer med et
+uvægtet gennemsnit af ratioerne, så landstallet påvirker dem ikke. Det har kun
+betydning i landsgennemsnit-visningen og for de økologiske indikatorer, der
+måles mod gennemsnit. Landsgennemsnit-visningen skal derfor være den anden
+sammenligning, altså Danmark som helhed, og ikke en variant af den typiske
+kommune. Det er også det tal en læser kan slå op hos kilden.
 
 **R4 - Nul i nævneren.** Er råværdien 0 for en indikator med `ref / raw`,
 er det for en social indikator det bedst mulige og giver loftet 150. For en
@@ -439,9 +454,11 @@ tabellen.
 |---|---|---|
 | R3 | Landsgennemsnittet for de otte Sundhedsprofil-indikatorer beregnes af os som et befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+), ikke hentet fra kilden. Databasen udstiller ikke et landstal pr. kommunetabel. Reglen forudsætter ellers et landstal fra kilden | Bevidst, dokumenteret i `data/README.md` og på metodesiden |
 | R3 | Landstallet rekonstrueres stadig fra scriptets ratio for 11 af 52 landstal-indikatorer (Sundhedsprofilen, `overfladevand`, `naer_landbrug`, `pesticider`), fordi deres CSV'er ikke er hentet siden scripterne begyndte at skrive `<id>_ref` (sep. 2026) | Overgang. Lukkes ved næste kørsel af de fire scripts |
+| R3 | Fire UVM-indikatorer (`wellbeing`, `exam_grade`, `high_absence`, `youth_education`) måles mod et uvægtet kommunegennemsnit, ikke Danmark som helhed, fordi elevtallet pr. kommune ikke hentes. Effekten på referencen er 0,4-4 procent | Overgang. Lukkes når `fetch_udvidelse_data.py` henter elevtal (kræver UVM-nøglen) |
+| R3 | `public_transport` måles mod et uvægtet kommunegennemsnit. LABY49 findes kun pr. kommunegruppe, så alle kommuner i en gruppe har samme værdi; befolkningsvægtning ville flytte referencen 26 procent og måle gruppernes størrelse mere end servicen | Bevidst |
 | T1 | Retningen for Sundhedsprofilens indikatorer beregnes 2017 → 2025 (2021 → 2025 for `ensomhed` og `fysisk_aktivitet`), ikke over hele den tilgængelige serie 2010-2025. Reglen siger ellers hele serien | Bevidst, se punkt 23 i CLAUDE.md |
 
-Alle tre er bevidste og dokumenterede.
+Rækkerne er bevidste eller overgange og er dokumenterede.
 
 ---
 

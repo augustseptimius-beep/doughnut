@@ -17,7 +17,7 @@
 | Tidsperiode | Q1 2023 - Q4 2025 (2,5 år akkumuleret) |
 | Dækning | ~90% af forsikringsmarkedet |
 | Nøgle | Kommunenavn (ikke kommunekode) |
-| Landsgennemsnit (maj 2026) | ~26 skader pr. 1.000 indb. |
+| Landsgennemsnit | befolkningsvægtet, ca. 22 skader pr. 1.000 indb. (sep. 2026; indtil da uvægtet, ca. 26) |
 | Ratio-type | Invers social: (landsgennemsnit / kommune_val) × 100 |
 
 **Inkluderer:** Storm, skybrud, hagl, sne/frost, stormvand.

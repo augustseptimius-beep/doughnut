@@ -112,12 +112,34 @@ def folketal(aar: list[str], alder: list[str] | None = None) -> dict[tuple[str, 
 
 
 def pr_indbygger(taeller: dict[tuple[str, str], float], faktor: float, decimaler: int,
-                 alder: list[str] | None = None) -> dict[tuple[str, str], float]:
+                 alder: list[str] | None = None,
+                 alle_i_naevner: bool = False) -> dict[tuple[str, str], float]:
     """Tæller pr. `faktor` indbyggere (1.000, 100.000 ...) med folketallet 1. januar
-    samme år, se folketal(). Kommune-år uden folketal udelades."""
+    samme år, se folketal(). Kommune-år uden folketal udelades.
+
+    Landstallet ('000') er de 98 kommuner samlet: summen af deres tællere delt
+    med summen af deres folketal - "Danmark som helhed" (arkitekturdokumentet
+    R3). Tabellens egen hele-landet-række bruges ikke, fordi den kan indeholde
+    tal uden kommune: STRAF11 har 8,7% anmeldelser uden kendt gerningskommune
+    (2025), og UND2's landstal tæller 3,1% færre underretninger end
+    kommunerne tilsammen.
+
+    Nævneren er som udgangspunkt folketallet i de kommuner, der har et tal.
+    `alle_i_naevner=True` tager alle 98 med, til kilder hvor en manglende
+    kommune betyder at aktiviteten er registreret i en nabokommune, ikke at
+    tallet mangler (VANDUD: Frederiksbergs spildevand renses i København)."""
     folk = folketal(sorted({a for _, a in taeller}), alder)
-    return {(k, a): round(v / folk[(k, a)] * faktor, decimaler)
-            for (k, a), v in taeller.items() if folk.get((k, a))}
+    ud = {(k, a): round(v / folk[(k, a)] * faktor, decimaler)
+          for (k, a), v in taeller.items() if k != "000" and folk.get((k, a))}
+    from kommuner import KODER
+    for a in {a for k, a in taeller if k != "000"}:
+        med = [k for (k, aa) in ud if aa == a]
+        antal = sum(taeller[(k, a)] for k in med)
+        naevner = [k for k in KODER if (k, a) in folk] if alle_i_naevner else med
+        bef = sum(folk[(k, a)] for k in naevner)
+        if bef:
+            ud[("000", a)] = round(antal / bef * faktor, decimaler)
+    return ud
 
 
 def seneste(serie: dict[tuple[str, str], float], min_kommuner: int = 50,
