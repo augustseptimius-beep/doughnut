@@ -134,4 +134,10 @@ Kræver din beslutning. Intet af dette er gjort.
 5. **Forventede ændringer.** Med landsgennemsnits-baselinen skifter 16 kommuner farve. I kommunegruppe-baselinen går indikatoren fra 98 grønne til 47 grønne, 9 gule og 42 røde. De seks kommuner med 0 % får ratio 0.
 6. **Retningspil senere.** Rejseplanen har et GTFS-arkiv siden december 2025. Fra 2027 kan scriptet køres på to årgange og give en pil.
 
-Et åbent valg: tærsklen. Mindst 10 afgange i timen er DST's og FN's "god adgang" og det platformen måler i dag. Den giver 0 % i seks kommuner og skiller landkommunerne dårligt ad (median 4,3 %). En tærskel på 4 afgange ("middel eller bedre") ville skelne bedre på landet, men så afviger platformen fra DST's definition. Min anbefaling er at beholde 10 og vise fordelingen på alle fire niveauer, hvis kommunesiden en dag får plads til det.
+Et åbent valg: tærsklen. DST udgiver fem niveauer. At "god adgang" betyder mindst 10 afgange i timen, er platformens eget valg (se `rationale` i registret).
+
+Valget har støtte i DST's analyse: andelen af familier med bil stiger mest, når serviceniveauet falder fra mindst 10 til 4-9 afgange i timen. Det tyder på, at det er omkring 10 afgange, at bussen og toget bliver et reelt alternativ til bilen. Det passer til doughnut-logikken.
+
+Prisen betales i landkommunerne. 12 kommuner ligger under 2 %, og i kommunegruppe-baselinen flytter ét procentpoint en landkommunes score 17 point. Med 4 afgange i timen ville ét procentpoint flytte 5 point, og kun 4 kommuner ville ligge under 2 %. Svingene skyldes reelle ændringer i køreplanen (beregningen er deterministisk, der er ingen stikprøve), men én buslinje i en bymidte kan flytte en landkommune fra rød til grøn.
+
+Anbefaling: behold 10 ved skiftet, så indikatoren betyder det samme som i dag. Tag tærsklen op igen, hvis landkommunernes scorer svinger for meget fra år til år.
