@@ -2,6 +2,39 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-24 (landsgennemsnit betyder Danmark som helhed)
+
+- **Beslutning:** et landsgennemsnit er de 98 kommuner samlet, vægtet med indikatorens egen nævner. Det er ikke et uvægtet gennemsnit af kommunerne og ikke en hele-landet-række med tal uden kommune (arkitekturdokumentet R3).
+- **Tre referencer ændret:**
+  - Kriminalitet: 69,24 til 63,22 pr. 1.000 indb. 8,7% af anmeldelserne i 2025 har ingen kendt gerningskommune og talte med i DST's landstal, men hos ingen kommune.
+  - Vejrskader: 25,88 til 21,92 pr. 1.000 indb. Referencen var et uvægtet gennemsnit af kommunerne; nu er den vægtet med folketallet.
+  - Underretninger: 89,53 til 92,33 pr. 1.000 børn. DST's landstal tæller 3,1% færre underretninger end kommunerne tilsammen.
+  - Ubetydelige ændringer (højst 0,3%) for kvælstof, biblioteksudlån og musikskole, fordi alle tal pr. indbygger nu danner landstallet af kommunerne selv (`dst.pr_indbygger()`). For spildevand tæller alle 98 kommuners indbyggere med, også Frederiksberg, hvis spildevand renses i København.
+- **Ingen råværdier eller retningspile er ændret.**
+- **Farveskift:** 41 i landsgennemsnit-visningen (Klimatilpasning 33, Tryghed 6, Velfærd 2), 14 i standardvisningen (Klimatilpasning 8, Tryghed 6) og 28 med top 10%. Standardvisningen påvirkes kun gennem loftet på 150: færre kommuner rammer loftet (vejrskader 27 til 15, kriminalitet 39 til 25), og gruppesnittet beregnes af de afskårne værdier.
+- **Ikke ændret:** de fire UVM-indikatorer (mangler elevtal pr. kommune, kræver UVM-nøglen) og `public_transport` (data kun pr. kommunegruppe). Begge står i arkitekturdokumentets afsnit 7.
+
+## 2026-09-23 (retningspilen og scoren er samme tal)
+
+- **Retningspilen beskrev et andet tal end scoren for 14 indikatorer.** Tidsserien (`fetch_trend_history.py`) havde sin egen definition af hver indikator. Eksempler: klassekvotient kun i folkeskolen mod scorens alle skoletyper (Samsø 17,1 mod 12,6), ubeboede boliger inkl. fritidshuse (Thisted 24% mod 11,5%), sportsanlæg talt med i bebygget areal, 16-64 år mod scorens 16-66 år, og Klimaregnskabets to "Samlet"-rækker lagt sammen i stedet for den største (Læsø -5,2 mod 4,7 ton). `education`s serie sluttede i 2019. Nu hentes 15 indikatorer af én funktion (`serie_<id>()` i fetch-scriptet), som både scoren og pilen bruger, og `tjek_konsistens.py` fejler, hvis serie og score afviger (CLAUDE.md pkt. 37).
+- **To definitioner er ændret, så de kan bruges til begge dele.** Tal pr. indbygger deles nu med folketallet 1. januar i tallets eget år, ikke det nyeste kvartal (kriminalitet, trafikulykker, biblioteksudlån, musikskole, hjemmesygepleje, underretninger, kvælstof, fosfor, vandindvinding; median 0,7-1,4%, højst 4-9%). `employment_origin_gap` bruger 16-64 år, fordi DST kun har 16-66 fra 2022 (median 0,7%, højst 4,1%).
+- **Data hentet på ny 23. sep. for alle DST-indikatorer, både værdi og tidsserie**, så de er fra samme dag. Ny i data: trafikulykker 2025 (vinduet er nu 2023-2025) og underretninger 2025. UVM og Klimaregnskabet er ikke hentet (kræver nøgler); deres tidsserier er beholdt.
+- **Konsekvens for scoren:** 984 ratios i 12 indikatorer ændret. I standardvisningen (kommunegruppe) skifter 20 kategorier farve (Tryghed 10, Velfærd 6, Lighed 4), med landsgennemsnit 11, med top 10% 16. To økologiske dimensioner skifter: Greve (Næringsstoffer gul til rød) og Sønderborg (Vand gul til grøn). Trafikulykkerne står for det meste af Tryghed, og her er årsagen de nye 2025-tal, ikke definitionen.
+- **Konsekvens for pilene:** 173 pile vender retning, og 316 skifter vurdering. De største er `education` (54, serien sluttede i 2019), Bolig (30, ubeboede boliger), pædagoguddannede (17) og klassekvotient (15). 14 pile er fjernet: 9 for klimapåvirkning, hvor den gamle serie lagde to rækker sammen (kommer igen ved næste hentning med Klimaregnskabet-nøglen), 4 for tal der ikke har en score (Københavns vandindvinding, Frederiksbergs kvælstof og fosfor, Fanøs fosfor) og Glostrups fosfor, hvor serien før 2024 kun bestod af nuller, som nu behandles som manglende data ligesom i scoren.
+- **Dataår:** perioder og skoleår mærkes med slutåret i både score og pil. Elevtrivsel 2024 til 2026 (skoleåret 2025/26), karakterer og fravær 2024 til 2025 (2024/25), ungdomsuddannelse 2024 til 2023. UVM-scriptet registrerede ikke sit år, så sitet viste registrets faste år; værdierne i `data_years.json` er sat ud fra at scoren er lig tidsseriens punkt for det år, og scriptet skriver dem selv fremover. Middellevetidens pil hedder nu "... → 2021-2025" i stedet for startåret.
+- **Landstallet skrives af fetch-scripterne** (`<id>_ref`) for 41 af de 52 landstal. De 11 der stadig rekonstrueres (Sundhedsprofilen, VP3, landbrugskvælstof, pesticider), kommer fra scripts der ikke er kørt her; de skriver det ved næste kørsel.
+- `data/trend_history_log.txt` er fra den seneste fulde kørsel og ikke opdateret.
+
+## 2026-09-23 (én kommuneliste og ét DST-kald)
+
+- **Ny fil `data/kommuner.json`** med de 98 kommuner (kode, navn, kommunegruppe). Fetch-scripterne, `build_master_csv.py` og webappens kommunegruppe-baseline læser den i stedet for hver sin kopi. Master, noegletal og alle 104 sider på sitet er uændrede.
+- **`cba_2023_estimate.csv` og `klimatilpasning_scores.csv` har fået kolonnen `kommune_kode`** og slås nu op på kode i stedet for navn. Værdierne er uændrede. `fetch_klimatilpasning_data.py` skriver koden selv og stopper ved et ukendt kommunenavn.
+- **Rettet før den nåede sitet: `fetch_doughnut_data.py` ville have tilføjet 11 landsdele som kommuner.** Median-indkomsten fra PR #9 hentede alle områder i INDKP106 uden filter, så en fuld kørsel skrev 109 rækker (landsdelene 01-11 med kun indkomst). Den committede fil havde 98, fordi scriptet ikke var kørt fuldt siden. Fundet ved at køre scriptet i en kopi; `build_master_csv.py` stopper nu, hvis kommunerne ikke er præcis de 98.
+
+## 2026-09-23 (farve følger viste score)
+
+- **Farven følger nu den viste score.** Scores vises med én decimal, men farven blev afgjort af den uafrundede værdi, så fx Aalborgs Ligestilling stod som "100.0" i gult (99,963). Nu afrundes scoren én gang (`visningsscore()` i `shared.ts`), og tekst, farve, ringens tænder og tællingen "N af 13 kategorier over gennemsnittet" bruger samme tal. Ingen tal i master er ændret. I standardvisningen (kommunegruppe) skifter 9 kategorier farve: Herlev, Ærø og Syddjurs (Lighed), Ringsted (Velfærd og Fællesskab), Vejen (Mobilitet), Randers (Uddannelse), Skive (Demokrati) og Aalborg (Ligestilling). Alle lå under 0,05 fra grænsen på 85 eller 100.
+
 ## 2026-09-22 (rettelse: indkomstlighed manglede på sitet)
 
 - **`income_gender_gap` (Indkomstlighed mænd/kvinder) blev ikke vist i nogen kommune** fra median-omlægningen samme dag (PR #9) til denne rettelse. Enheden blev ændret til `% (kvinder/mænd, median)`, og kommaet forskød kolonnerne i webappens `split(",")`-parsing af master, så rækkerne ikke blev genkendt som sociale. Tallene i master var korrekte; kun visningen manglede. Ligestilling blev i perioden regnet på 2 af 3 indikatorer.

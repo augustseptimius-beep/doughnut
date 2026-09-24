@@ -36,11 +36,14 @@ Kør fra projektets rodmappe:
 """
 
 import csv
+import sys
 from collections import defaultdict
 from pathlib import Path
 
 import requests
 import openpyxl
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from kommuner import KOMMUNER  # noqa: E402  (de 98 kommuner, data/kommuner.json)
 
 EPT_URL = "https://ens.dk/media/7199/download"
 OUTPUT_FIL = Path("data/fjernvarme_mix_scores.csv")
@@ -48,41 +51,6 @@ TMP_XLSX = Path("/tmp/ept_fjernvarme.xlsx")
 AAR = 2024
 MIN_TJ = 100.0  # under dette: egenproduktion er reservekedel/fælles net
 
-KOMMUNER = {
-    "101": "København", "147": "Frederiksberg", "151": "Ballerup",
-    "153": "Brøndby", "155": "Dragør", "157": "Gentofte",
-    "159": "Gladsaxe", "161": "Glostrup", "163": "Herlev",
-    "165": "Albertslund", "167": "Hvidovre", "169": "Høje-Taastrup",
-    "173": "Lyngby-Taarbæk", "175": "Rødovre", "183": "Ishøj",
-    "185": "Tårnby", "187": "Vallensbæk", "190": "Furesø",
-    "201": "Allerød", "210": "Fredensborg", "217": "Helsingør",
-    "219": "Hillerød", "223": "Hørsholm", "230": "Rudersdal",
-    "240": "Egedal", "250": "Frederikssund", "253": "Greve",
-    "259": "Køge", "260": "Halsnæs", "265": "Roskilde",
-    "269": "Solrød", "270": "Gribskov", "306": "Odsherred",
-    "316": "Holbæk", "320": "Faxe", "326": "Kalundborg",
-    "329": "Ringsted", "330": "Slagelse", "336": "Stevns",
-    "340": "Sorø", "350": "Lejre", "360": "Lolland",
-    "370": "Næstved", "376": "Guldborgsund", "390": "Vordingborg",
-    "400": "Bornholm", "410": "Middelfart", "420": "Assens",
-    "430": "Faaborg-Midtfyn", "440": "Kerteminde", "450": "Nyborg",
-    "461": "Odense", "479": "Svendborg", "480": "Nordfyns",
-    "482": "Langeland", "492": "Ærø", "510": "Haderslev",
-    "530": "Billund", "540": "Sønderborg", "550": "Tønder",
-    "561": "Esbjerg", "563": "Fanø", "573": "Varde",
-    "575": "Vejen", "580": "Aabenraa", "607": "Fredericia",
-    "615": "Horsens", "621": "Kolding", "630": "Vejle",
-    "657": "Herning", "661": "Holstebro", "665": "Lemvig",
-    "671": "Struer", "706": "Syddjurs", "707": "Norddjurs",
-    "710": "Favrskov", "727": "Odder", "730": "Randers",
-    "740": "Silkeborg", "741": "Samsø", "746": "Skanderborg",
-    "751": "Aarhus", "756": "Ikast-Brande", "760": "Ringkøbing-Skjern",
-    "766": "Hedensted", "773": "Morsø", "779": "Skive",
-    "787": "Thisted", "791": "Viborg", "810": "Brønderslev",
-    "813": "Frederikshavn", "820": "Vesthimmerlands", "825": "Læsø",
-    "840": "Rebild", "846": "Mariagerfjord", "849": "Jammerbugt",
-    "851": "Aalborg", "860": "Hjørring",
-}
 
 BIO = ["skovflis_TJ", "traepiller_TJ", "halm_TJ", "trae- og biomasseaffald_TJ", "bio-olie_TJ", "biogas_TJ"]
 AFFALD = ["affald_TJ"]

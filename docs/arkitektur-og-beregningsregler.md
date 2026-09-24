@@ -79,31 +79,50 @@ afvigelser over 0,5 point) og til R3's rekonstruktion.
   luftkvalitetsgrænser, 3 ton CO2e, EU's 65 procent genanvendelse og 30/10
   procent natur, 6 mg/L nitrat, 0 procent fossil varme.
 - `kommunegennemsnit`: uvægtet gennemsnit af kommunernes råværdier, beregnet
-  ved build. Bruges hvor kilden ikke har et landstal pr. kommunetabel (UVM,
-  LABY49, forsikringsskader).
-- `landstal`: fetch-scriptets referenceværdi, fx DST's tal for hele landet
-  eller et befolkningsvægtet gennemsnit. Feltet `definition` siger hvilken.
-  Scriptet skal skrive den i kolonnen `col`. Mangler kolonnen (ingen af
-  scripterne skriver den endnu, sep. 2026), rekonstrueres landstallet ved
+  ved build. Bruges kun hvor indikatorens nævner ikke findes (UVM og LABY49),
+  se afsnit 7.
+- `landstal`: fetch-scriptets referenceværdi. Feltet `definition` siger hvordan
+  den er fundet. Scriptet skriver den i kolonnen `col`. Mangler kolonnen (en
+  CSV der ikke er hentet siden sep. 2026), rekonstrueres landstallet ved
   hvert build fra scriptets egen ratio: medianen af `raw × 100 / ratio`
   (eller `raw × ratio / 100` for omvendt retning) over kommunerne, afrundet
   til færrest mulige decimaler uden at ramme færre af scriptets ratios. Det
   genskaber publicerede landstal som 81,6 år eksakt.
 
 Referencen skrives til masterfilens `reference`-kolonne for hver række.
-Bemærk at "landsgennemsnit" dermed ikke betyder det samme for alle
-indikatorer: DST's landstal er befolkningsvægtet, kommunegennemsnittet er
-det ikke. Det er et bevidst, dokumenteret valg pr. indikator.
+
+**Landsgennemsnit betyder Danmark som helhed (besluttet sep. 2026).** Et
+landstal er de 98 kommuner samlet, vægtet med indikatorens egen nævner:
+samlet antal delt med samlet befolkning for tal pr. indbygger, samlet areal for
+arealandele, osv. Det er ikke et uvægtet gennemsnit af kommunerne, og ikke
+kildens hele-landet-række, hvis den indeholder tal uden kommune. Tal pr.
+indbygger regnes i `dst.pr_indbygger()`, som danner landstallet af kommunerne
+selv. Det betyder noget for kriminalitet, hvor 8,7 procent af anmeldelserne
+(2025) ikke har en kendt gerningskommune, og underretninger, hvor DST's landstal
+tæller 3,1 procent færre end kommunerne tilsammen. For andele og gennemsnit fra
+DST (fx fattigdom, klassekvotient) bruges DST's hele-landet-tal, som for de
+undersøgte tabeller er det samme som kommunerne samlet.
+
+Begrundelse: standardvisningen (kommunegruppe) og top 10 dividerer med et
+uvægtet gennemsnit af ratioerne, så landstallet påvirker dem ikke. Det har kun
+betydning i landsgennemsnit-visningen og for de økologiske indikatorer, der
+måles mod gennemsnit. Landsgennemsnit-visningen skal derfor være den anden
+sammenligning, altså Danmark som helhed, og ikke en variant af den typiske
+kommune. Det er også det tal en læser kan slå op hos kilden.
 
 **R4 - Nul i nævneren.** Er råværdien 0 for en indikator med `ref / raw`,
 er det for en social indikator det bedst mulige og giver loftet 150. For en
 økologisk er det det værst mulige og giver indikatorens `cap`, eller ingen
 værdi hvis den ikke har et. Mangler råværdien, er der ingen ratio.
 
-**R5 - Navnenøgle (`navn_col`).** `forbrug_co2` (`cba_2023_estimate.csv`,
-kolonnen `kommune`) og `vejr_skader` (`klimatilpasning_scores.csv`, kolonnen
-`kommune_navn`) slås op på kommunenavn, ikke kode. Ved manglende match er der
-ingen værdi, og der er bevidst intet fallback. Christiansø filtreres fra.
+**R5 - Kommunenøgle.** Alle kilde-CSV'er slås op på `kommune_kode`, og
+platformens kommuner er de 98 i `data/kommuner.json` (Christiansø er ikke
+med). To kilder har kun navne: `forbrug_co2` (`cba_2023_estimate.csv`,
+håndlavet) og `vejr_skader` (`klimatilpasning_scores.csv`). Indtil sep. 2026
+blev de slået op på navn i build-trinnet, så en stavevariant gav et tavst hul.
+Nu har begge CSV'er en `kommune_kode`-kolonne; fetch-scriptet slår koden op
+med `kommuner.kode_for_navn()` og stopper ved et ukendt navn. En kommune uden
+række i CSV'en får ingen værdi, og der er bevidst intet fallback.
 
 **R6 - Økologisk ratio-cap (`cap`).** Sætter en økologisk indikator feltet `cap`,
 klippes ratio til den værdi. I dag har `overfladevand`, `bio_vasentlig` og
@@ -314,6 +333,26 @@ indikatorer" på bjælken, medmindre forskellen skyldes manglende tidsserie på 
 indikator der faktisk scores. Fællesskab viser fx 4 af 5, fordi `sport_tilskuer`
 ingen pil har. Det er korrekt.
 
+**T9 - Pilen og scoren er samme tal (fra sep. 2026).** Tidsseriens værdi for
+scorens år skal være scorens råværdi. Indikatorer med en defineret
+beregning (tal pr. indbygger, andele, treårsgennemsnit) hentes af én funktion,
+`serie_<id>(perioder)` i fetch-scriptet, som scoren kalder med det nyeste år
+og `fetch_trend_history.py` med alle år (`SAMME_SOM_SCOREN`). Tre konventioner
+gælder begge steder:
+
+- Et tal pr. indbygger for år Y deles med folketallet 1. januar Y
+  (`dst.folketal()`), ikke med det nyeste kvartal.
+- En periode mærkes med slutåret (`dst_aar.aarstal()`): HISBK's "2021:2025"
+  er 2025, skoleåret "2024/2025" er 2025.
+- Et treårsgennemsnit for Y er gennemsnittet af raterne for Y-2, Y-1 og Y.
+
+`tjek_konsistens.py` sammenligner serie og score for alle indikatorer med pil
+og melder fejl, når mere end 10 procent af kommunerne afviger over 1 procent.
+Første kørsel fandt 14 indikatorer, hvor pilen beskrev et andet tal end
+scoren: andre kategorier (klassekvotient kun i folkeskolen, ubeboede boliger
+inkl. fritidshuse, sportsanlæg talt med i bebygget areal), en anden
+aldersgruppe, et andet folketal og en anden udtræksregel for Klimaregnskabet.
+
 ---
 
 ## 5. Designbeslutninger bag reglerne
@@ -377,8 +416,9 @@ omskaleres på deres allerede vendte ratio, hvilket er en bevidst forenkling.
    fejlkilde i projektet.
 2. **Forurening er den eneste gennemsnitsdimension.** Alle andre økologiske
    dimensioner er worst-of (R7), og reglen skal spejles i retningspilene (T6).
-3. **`forbrug_co2` og `vejr_skader` matcher på kommunenavn, ikke kode.**
-   Manglende match giver `null` uden fallback. Christiansø filtreres fra.
+3. **Kilder med kun kommunenavne får koden slået op i fetch-scriptet**
+   (`kommuner.kode_for_navn()`), ikke i build-trinnet. Et ukendt navn stopper
+   scriptet (R5). Christiansø er ikke blandt de 98.
 4. **`absoluteScore`-indikatorer må aldrig omskaleres af baseline-toggle**
    (R9, R10, R15). I dag `education` og `bolig_fossil`.
 5. **`bolig_fossil` afhænger af fjernvarmedata, og rækkefølgen er bindende:**
@@ -406,17 +446,19 @@ omskaleres på deres allerede vendte ratio, hvilket er en bevidst forenkling.
 
 ## 7. Kendte afvigelser mellem dokumentation og kode
 
-Opdateret 22. september 2026. R1 (`navn_key` omgik cappet) og R12
+Opdateret 23. september 2026. R1 (`navn_key` omgik cappet) og R12
 (`eco_naer_landbrug` havde `lowerIsBetter: true`) er lukket og fjernet fra
 tabellen.
 
 | Regel | Afvigelse | Status |
 |---|---|---|
 | R3 | Landsgennemsnittet for de otte Sundhedsprofil-indikatorer beregnes af os som et befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+), ikke hentet fra kilden. Databasen udstiller ikke et landstal pr. kommunetabel. Reglen forudsætter ellers et landstal fra kilden | Bevidst, dokumenteret i `data/README.md` og på metodesiden |
-| R3 | Landstallet for indikatorer med `reference.type = "landstal"` rekonstrueres ved hvert build fra fetch-scriptets egen ratio, fordi ingen af scripterne endnu skriver landstallet i sin egen kolonne. Reglen forudsætter at scriptet leverer det | Overgang. Lukkes script for script (planens opgave 6). Rekonstruktionen genskaber de publicerede landstal og kan ikke blive ældre end dataen |
+| R3 | Landstallet rekonstrueres stadig fra scriptets ratio for 11 af 52 landstal-indikatorer (Sundhedsprofilen, `overfladevand`, `naer_landbrug`, `pesticider`), fordi deres CSV'er ikke er hentet siden scripterne begyndte at skrive `<id>_ref` (sep. 2026) | Overgang. Lukkes ved næste kørsel af de fire scripts |
+| R3 | Fire UVM-indikatorer (`wellbeing`, `exam_grade`, `high_absence`, `youth_education`) måles mod et uvægtet kommunegennemsnit, ikke Danmark som helhed, fordi elevtallet pr. kommune ikke hentes. Effekten på referencen er 0,4-4 procent | Overgang. Lukkes når `fetch_udvidelse_data.py` henter elevtal (kræver UVM-nøglen) |
+| R3 | `public_transport` måles mod et uvægtet kommunegennemsnit. LABY49 findes kun pr. kommunegruppe, så alle kommuner i en gruppe har samme værdi; befolkningsvægtning ville flytte referencen 26 procent og måle gruppernes størrelse mere end servicen | Bevidst |
 | T1 | Retningen for Sundhedsprofilens indikatorer beregnes 2017 → 2025 (2021 → 2025 for `ensomhed` og `fysisk_aktivitet`), ikke over hele den tilgængelige serie 2010-2025. Reglen siger ellers hele serien | Bevidst, se punkt 23 i CLAUDE.md |
 
-Alle tre er bevidste og dokumenterede.
+Rækkerne er bevidste eller overgange og er dokumenterede.
 
 ---
 

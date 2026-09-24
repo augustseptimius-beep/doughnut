@@ -10,6 +10,10 @@ Den ene liste over indikatorer, sociale kategorier og økologiske dimensioner. `
 
 Reference, dækning (antal kommuner med værdi) og dataår pr. indikator, skrevet af `build_master_csv.py` sammen med master. Webappen udfylder tal i tekster herfra (pladsholdere som `{ref:pesticider:1}`), og buildet stopper hvis filen ikke passer med master. Ret den ikke i hånden.
 
+## `kommuner.json`
+
+De 98 kommuner med DST-kode, navn og kommunegruppe (DST KOMMUNEGRUPPER_V1_2018). Fetch-scripterne læser den via `scripts/kommuner.py`, og webappen bruger grupperne til kommunegruppe-baselinen. Christiansø (411) er ikke med. Alle rådata-CSV'er er nøglet på `kommune_kode`; de to kilder der kun har navne (`cba_2023_estimate.csv`, `klimatilpasning_scores.csv`) har fået koden slået op herfra.
+
 ## Hovedfilen: `master_indicators.csv`
 
 Dette er den **konsoliderede master-fil** som webapp'en læser fra. Genereres af `scripts/build_master_csv.py` ved at samle alle rådata-CSV'er.

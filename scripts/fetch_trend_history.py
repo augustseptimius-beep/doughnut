@@ -56,8 +56,10 @@ from api_noegler import (  # noqa: E402
     KLIMA_HJAELP,
     UVM_HJAELP,
 )
-from dst_aar import seneste_aar  # noqa: E402
+from dst_aar import aarstal, perioder_fra, seneste_aar  # noqa: E402
 from indkomst_median import median_disponibel  # noqa: E402
+from kommuner import KOMMUNER  # noqa: E402  (de 98 kommuner, data/kommuner.json)
+from fetch_climate_data import _extract_co2_per_capita  # noqa: E402  (samme udtræk som scoren)
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -82,25 +84,9 @@ def log(s: str) -> None:
     LOG.append(s)
 
 
-# ─── Kommuneliste: læses fra master_indicators.csv, så den altid matcher platformen ──
+# ─── Kommuneliste: data/kommuner.json, samme liste som resten af pipelinen ──
 
-def load_kommuner() -> dict[str, str]:
-    path = DATA_DIR / "master_indicators.csv"
-    if not path.exists():
-        log(f"FEJL: {path} findes ikke - kan ikke hente kommuneliste.")
-        sys.exit(1)
-    ud: dict[str, str] = {}
-    with open(path, encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            kode = (row.get("kommune_kode") or "").strip()
-            navn = (row.get("kommune_navn") or "").strip()
-            if kode and navn:
-                ud[kode] = navn
-    return ud
-
-
-KOMMUNER = load_kommuner()
-log(f"Kommuneliste: {len(KOMMUNER)} kommuner (fra master_indicators.csv)")
+log(f"Kommuneliste: {len(KOMMUNER)} kommuner (fra data/kommuner.json)")
 
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -389,7 +375,7 @@ def hent(ind):
             except ValueError:
                 continue
             periode = (r.get(tid_kol) or "").strip()
-            aar = periode[:4]
+            aar = aarstal(periode)   # slutåret for perioder som HISBK's "2021:2025"
             saml[(kode, aar)] += v
             perioder_pr_aar[aar].add(periode)
 
@@ -420,24 +406,17 @@ def serie(spec):
 
 
 # ══════════════════════════════════════════════════════════════════════════
-# INDIKATORLISTE - de 42 platform-indikatorer med efterprøvet historik.
+# INDIKATORLISTE - platform-indikatorer hvis historik hentes generisk her.
+# Resten: SAMME_SOM_SCOREN (scorens egne funktioner), Klimaregnskabet og UVM.
 #
 # platform-id matcher INDICATORS[].id i webapp/lib/shared.ts (sociale) eller
 # ECO_SUB_INDICATORS[].id i scripts/build_master_csv.py (økologiske).
-# "pr" normaliserer optællinger til pr. 1.000/100.000/10.000 indbyggere via
-# den historiske folketalsserie, så en kommune med faldende befolkning ikke
-# fejlagtigt ser ud til at forbedre sig.
+# Tal pr. indbygger er ikke her: de hentes af scorens egne serie_-funktioner
+# (SAMME_SOM_SCOREN nedenfor) med folketallet 1. januar samme år.
 # ══════════════════════════════════════════════════════════════════════════
-
-FOLKETAL = {"id": "folketal", "navn": "Folketal", "tabel": "FOLK1A", "helhed": True}
-# Master normaliserer underretninger pr. 1.000 0-17-årige, ikke hele befolkningen
-# (fetch_udvidelse_data.py). ALDER-koderne i FOLK1A er enkeltårige "0".."17".
-BOERNETAL = {"id": "boernetal", "navn": "Børnetal 0-17 år", "tabel": "FOLK1A",
-             "soeg_kode": [str(a) for a in range(18)], "soeg_var": "ALDER"}
 
 SIMPLE = [
     # --- Sundhed ---
-    dict(id="hjemsyg", navn="Hjemmesygepleje-modtagere", tabel="HJEMSYG", helhed=True, pr=1000),
     dict(id="hospital_short_taeller", navn="Sygehusophold, alle varigheder", tabel="SBR01",
          soeg=["alle varigheder"]),
     dict(id="hospital_short_naevner", navn="Sygehusophold, personer i alt", tabel="SBR01",
@@ -446,14 +425,8 @@ SIMPLE = [
          soeg=["12 timer eller derover"]),
 
     # --- Uddannelse ---
-    dict(id="class_size", navn="Klassekvotient i folkeskolen", tabel="KVOTIEN",
-         soeg=["=i alt"], ekstra=[{"soeg": ["folkeskoler"]}], pin_ialt=True),
     dict(id="daycare_ratio", navn="Normering i daginstitution 3-5 år", tabel="BOERN8",
          soeg=["daginstitution 3-5"], pin_ialt=True),
-    dict(id="educated_staff_taeller", navn="Pædagoguddannede", tabel="BOERN1",
-         soeg=["=pædagog", "=pædagogisk leder"]),
-    dict(id="educated_staff_naevner", navn="Personale i alt", tabel="BOERN1",
-         soeg=["=i alt"]),
     # HFUDD er hierarkisk (H20 "Gymnasiale uddannelser" har underkoder som
     # H2010 "Alment gymnasiale uddannelser" hvis tekst også indeholder
     # "gymnasiale") - derfor kode-match (soeg_kode), ikke tekstsøgning, for
@@ -473,8 +446,6 @@ SIMPLE = [
     # --- Velfærd ---
     dict(id="vulnerable_children", navn="Udsatte børn og unge", tabel="BU43",
          soeg=["udsatte børn og unge i alt"], pin_ialt=True),
-    dict(id="child_notifications", navn="Underretninger om børn", tabel="UND2",
-         soeg=["=i alt"], pr=1000),
     dict(id="neet_taeller", navn="NEET - ikke-aktive", tabel="NEET1",
          soeg=["=ikke-aktive (neet)"]),
     dict(id="neet_naevner", navn="NEET - aktive og ikke-aktive i alt", tabel="NEET1",
@@ -489,11 +460,6 @@ SIMPLE = [
     # --- Bolig ---
     dict(id="housing_area", navn="Boligareal pr. person", tabel="BOL106",
          soeg=["areal per person"], ekstra=[{"soeg": ["=i alt"]}], pin_ialt=True),
-    dict(id="vacant_housing_taeller", navn="Ubeboede boliger", tabel="BOL101",
-         soeg=["ubeboede"]),
-    # BOL101's BEBO-variabel har ingen "I alt"-værdi (kun beboet/ubeboet/
-    # fritidshus-ubeboet) - helhed=True lader DST summere alle tre selv.
-    dict(id="vacant_housing_naevner", navn="Boliger i alt", tabel="BOL101", helhed=True),
     # BEBO har elimination=False i BOL102 - SKAL angives eksplicit (kan ikke
     # udelades), derfor pin via ekstra på hver af de tre specs nedenfor.
     dict(id="housing_no_wc_taeller", navn="Boliger uden eget toilet", tabel="BOL102",
@@ -521,12 +487,6 @@ SIMPLE = [
          soeg=["=stemmeprocent"]),
 
     # --- Kultur & fritid ---
-    dict(id="music_school", navn="Musikskoleelever", tabel="SKOLM02B", helhed=True, pr=1000),
-    # BIB3A, ikke BIB1: DST har gjort BIB1 inaktiv (stopper 2024). Tallene er
-    # identiske, men BIB3A splitter på SAMLING (børn/voksne) - begge lægges
-    # sammen af DST, fordi SAMLING har elimination=True og ikke pinnes her.
-    dict(id="library_use", navn="Biblioteksudlån", tabel="BIB3A",
-         soeg=["=udlån"], ekstra=[{"soeg": ["materialetyper i alt"]}], pr=1),
     # REGK31: FUNKTION-koder matcher fetch_doughnut_data.py's egen definition.
     # PRISENHED har elimination=False - SKAL angives eksplicit (Pr. indbygger).
     dict(id="kultur_spending", navn="Kommunale kulturudgifter pr. indb.", tabel="REGK31",
@@ -540,12 +500,6 @@ SIMPLE = [
          ekstra=[{"soeg": ["driftskonti"]}, {"soeg": ["=i alt (netto)"]},
                  {"soeg": ["pr. indbygger"]}]),
 
-    # --- Tryghed ---
-    dict(id="traffic_accidents", navn="Trafikulykker", tabel="UHELDK1",
-         soeg=["personskade i alt"], pr=100000),
-    dict(id="crime_rate", navn="Anmeldte forbrydelser", tabel="STRAF11",
-         soeg=["=overtrædelsens art i alt"], pin_ialt=True, pr=1000,
-         tid="alle_kvartaler", kraev_hele_aar=True),
 
     # --- Foreningsliv ---
     dict(id="sports_membership", navn="Idrætsmedlemskaber", tabel="IDRAKT02",
@@ -562,12 +516,6 @@ SIMPLE = [
          soeg=["ledelsesarbejde"]),
     # income_gender_gap_taeller/_naevner (median K/M) hentes af median_serier()
     # nedenfor, ikke her - se indkomst_median.py.
-    dict(id="employment_origin_gap_taeller", navn="Beskæftigelse, ikke-vestlige", tabel="RAS200",
-         soeg=["ikke-vestlige lande"], undtag=["efterkommere"],
-         ekstra=[{"soeg": ["beskæftigelsesfrekvens"]}, {"soeg": ["=16-64 år"]}], pin_ialt=True),
-    dict(id="employment_origin_gap_naevner", navn="Beskæftigelse, dansk oprindelse", tabel="RAS200",
-         soeg=["dansk oprindelse"],
-         ekstra=[{"soeg": ["beskæftigelsesfrekvens"]}, {"soeg": ["=16-64 år"]}], pin_ialt=True),
     dict(id="le_gender_gap_taeller", navn="Middellevetid kvinder", tabel="HISBK",
          soeg=["=kvinder"], pin_ialt=True),
     dict(id="le_gender_gap_naevner", navn="Middellevetid mænd", tabel="HISBK",
@@ -583,26 +531,6 @@ SIMPLE = [
     dict(id="commute_distance", navn="Pendlingsafstand", tabel="AFSTB4",
          soeg=["beskæftigede i alt"], pin_ialt=True),
 
-    # --- Økologisk: næringsstoffer ---
-    # Master normaliserer pr. 1.000 indbyggere (fetch_eco_new_data.py) - rå
-    # VANDUD-tal er totaler i ton, derfor pr=1000 mod folketal.
-    dict(id="naer_nitrogen", navn="Kvælstofudledning til vandmiljø", tabel="VANDUD",
-         soeg=["kvælstof"], pr=1000),
-    dict(id="naer_phosphorus", navn="Fosforudledning til vandmiljø", tabel="VANDUD",
-         soeg=["fosfor"], pr=1000),
-
-    # --- Økologisk: vand ---
-    # Master bruger m³/person = mio_m³ × 1.000.000 / befolkning
-    # (fetch_vandindvinding_data.py) - rå VANDIND-tal er totaler i mio. m³.
-    dict(id="vandindvinding", navn="Vandindvinding, alment vandværk", tabel="VANDIND",
-         soeg=["vand i alt"], ekstra=[{"soeg": ["alment vandværk"]}], pr=1_000_000),
-
-    # --- Økologisk: arealanvendelse ---
-    dict(id="areal_intensiv", navn="Intensivt landbrugsareal", tabel="AREALDK2",
-         soeg=["intensivt landbrug (korn"], ekstra=[{"soeg": ["andel af samlet"]}], pin_ialt=True),
-    dict(id="areal_bebygget", navn="Bebygget areal og infrastruktur", tabel="AREALDK2",
-         soeg=["bebyggelse", "veje og jernbaner", "lufthavne", "sportsanlæg"],
-         ekstra=[{"soeg": ["andel af samlet"]}], pin_ialt=True),
 
     # --- Økologisk: forurening (cirkularitet) ---
     dict(id="cirkularitet_waste", navn="Husholdningsaffald pr. person", tabel="LABY25",
@@ -616,14 +544,11 @@ FORHOLD = {
     # hospital_short udgik som indikator sep. 2026 (r = 0,60 med hospital_long).
     # Tælleren hentes stadig, fordi hospital_short_naevner er FÆLLES nævner for
     # hospital_long - fjerner man hentningen, mister hospital_long sin pil.
-    "educated_staff": ("educated_staff_taeller", "educated_staff_naevner"),
     "low_education": ("low_education_taeller", "low_education_naevner"),
     "education": ("education_taeller", "education_naevner"),
     "neet": ("neet_taeller", "neet_naevner"),
-    "vacant_housing": ("vacant_housing_taeller", "vacant_housing_naevner"),
     "gender_leadership": ("gender_leadership_taeller", "gender_leadership_naevner"),
     "income_gender_gap": ("income_gender_gap_taeller", "income_gender_gap_naevner"),
-    "employment_origin_gap": ("employment_origin_gap_taeller", "employment_origin_gap_naevner"),
     "employment": ("employment_taeller", None),  # nævner er konstant 100 (allerede en frekvens)
     "hospital_long": ("hospital_long_taeller", "hospital_short_naevner"),
     "housing_no_wc": ("housing_no_wc_taeller", "housing_beboede_total"),
@@ -637,15 +562,63 @@ FORSKEL = {
 
 # Direkte platform-id'er der IKKE skal omregnes (allerede rå værdier fra SIMPLE)
 DIREKTE = {
-    "hjemsyg", "class_size", "daycare_ratio",
-    "vulnerable_children", "child_notifications", "poverty_relative", "child_poverty", "gini",
-    "housing_area", "voter_turnout_national", "voter_turnout", "music_school", "library_use",
-    "traffic_accidents", "crime_rate", "sports_membership",
+    "daycare_ratio",
+    "vulnerable_children", "poverty_relative", "child_poverty", "gini",
+    "housing_area", "voter_turnout_national", "voter_turnout", "sports_membership",
     "life_expectancy", "disposable_income", "commute_distance",
-    "naer_nitrogen", "naer_phosphorus", "vandindvinding", "areal_intensiv", "areal_bebygget",
     "cirkularitet_waste", "cirkularitet_recycling",
     "kultur_spending", "civil_society", "low_income",
 }
+
+
+# Indikatorer hvis pil hentes af SAMME funktion som scoren: serie_<id>() i
+# fetch-scriptet (se scripts/dst.py). {id: (modul, funktion, tabel, form)}.
+# form "perioder" sender tabellens perioder som de er ('2024:2025'); "aar"
+# sender årstal, fordi funktionen selv bygger kvartaler eller treårsvinduer.
+# Indtil sep. 2026 havde pilen sin egen definition af hver af dem, og den
+# passede ikke med scoren: klassekvotient kun i folkeskolen, ubeboede boliger
+# inkl. fritidshuse, andre arealkategorier, en anden aldersgruppe og et andet
+# folketal til "pr. indbygger". tjek_konsistens.py fanger nu en ny afvigelse.
+SAMME_SOM_SCOREN = {
+    "class_size": ("fetch_social_extra_data", "serie_class_size", "KVOTIEN", "perioder"),
+    "educated_staff": ("fetch_social_extra_data", "serie_educated_staff", "BOERN1", "perioder"),
+    "music_school": ("fetch_social_extra_data", "serie_music_school", "SKOLM02B", "perioder"),
+    "crime_rate": ("fetch_social_new_data", "serie_crime_rate", "STRAF11", "aar"),
+    "traffic_accidents": ("fetch_social_new_data", "serie_traffic_accidents", "UHELDK1", "aar"),
+    "library_use": ("fetch_social_new_data", "serie_library_use", "BIB3A", "perioder"),
+    "hjemsyg": ("fetch_sundhed_extra", "serie_hjemsyg", "HJEMSYG", "perioder"),
+    "child_notifications": ("fetch_udvidelse_data", "serie_child_notifications", "UND2", "perioder"),
+    "vacant_housing": ("fetch_doughnut_data", "serie_vacant_housing", "BOL101", "perioder"),
+    "employment_origin_gap": ("fetch_ligestilling_data", "serie_employment_origin_gap", "RAS200", "perioder"),
+    "naer_nitrogen": ("fetch_eco_new_data", "serie_naer_nitrogen", "VANDUD", "perioder"),
+    "naer_phosphorus": ("fetch_eco_new_data", "serie_naer_phosphorus", "VANDUD", "perioder"),
+    "vandindvinding": ("fetch_vandindvinding_data", "serie_vandindvinding", "VANDIND", "perioder"),
+    "areal_intensiv": ("fetch_dst_arealanvendelse", "serie_areal_intensiv", "AREALDK2", "perioder"),
+    "areal_bebygget": ("fetch_dst_arealanvendelse", "serie_areal_bebygget", "AREALDK2", "perioder"),
+}
+
+
+def samme_som_scoren() -> dict[str, dict]:
+    """Henter pilene i SAMME_SOM_SCOREN med scorens egne funktioner.
+    {id: {(kommune_kode, år): værdi}}, uden hele landet."""
+    import importlib
+    ud: dict[str, dict] = {}
+    for iid, (modul, funktion, tabel, form) in SAMME_SOM_SCOREN.items():
+        log(f"\n→ {iid}  [{tabel}, {modul}.{funktion}]")
+        try:
+            perioder = perioder_fra(tabel, FRA_AAR)
+            if form == "aar":
+                perioder = sorted({aarstal(p) for p in perioder})
+            data = getattr(importlib.import_module(modul), funktion)(perioder)
+        except Exception as e:
+            log(f"   FEJL: {e}")
+            continue
+        ud[iid] = {k: v for k, v in data.items() if k[0] in KOMMUNER}
+        th = sorted((a, v) for (k, a), v in ud[iid].items() if k == TEST_KOMMUNE)
+        if th:
+            log(f"   OK: {KOMMUNER[TEST_KOMMUNE]} {th[0][0]} = {th[0][1]}  →  "
+                f"{th[-1][0]} = {th[-1][1]}  ({len(ud[iid])} kommune-år i alt)")
+    return ud
 
 
 def median_serier() -> dict[str, dict]:
@@ -676,11 +649,6 @@ def fetch_dst_indicators() -> list[dict]:
     log(f"{len(SIMPLE)} rå udtræk, {len(KOMMUNER)} kommuner, fra {FRA_AAR}")
     log("=" * 66)
 
-    folk = serie(FOLKETAL)
-    log(f"\nFolketal hentet for {len(folk)} kommune-år.\n")
-    boern = serie(BOERNETAL)
-    log(f"\nBørnetal 0-17 år hentet for {len(boern)} kommune-år.\n")
-
     raw: dict[str, dict] = {}
     fejlet = []
     for spec in SIMPLE:
@@ -696,23 +664,15 @@ def fetch_dst_indicators() -> list[dict]:
         for (kode, aar), v in per_kommune_aar.items():
             ud.append({"kommune_kode": kode, "indicator_id": platform_id, "aar": aar, "vaerdi": v})
 
-    # Direkte + normaliserede (pr-faktor)
-    spec_by_id = {s["id"]: s for s in SIMPLE}
+    # Direkte platform-tal (ingen omregning)
     for platform_id in DIREKTE:
         data = raw.get(platform_id)
-        if not data:
-            continue
-        pr = spec_by_id.get(platform_id, {}).get("pr")
-        if pr:
-            befolkning = boern if platform_id == "child_notifications" else folk
-            normaliseret = {}
-            for n, v in data.items():
-                b = befolkning.get(n)
-                if b:
-                    normaliseret[n] = round(v / b * pr, 4)
-            skriv(platform_id, normaliseret)
-        else:
+        if data:
             skriv(platform_id, data)
+
+    # Samme funktion som scoren (inkl. alle tal pr. indbygger)
+    for platform_id, data in samme_som_scoren().items():
+        skriv(platform_id, data)
 
     # Forhold (tæller/nævner*100), undtagen employment (nævner=None -> værdien ER frekvensen)
     for platform_id, (taeller_id, naevner_id) in FORHOLD.items():
@@ -780,11 +740,13 @@ def fetch_klimapaavirkning() -> list[dict]:
             if not data:
                 mangler += 1
                 continue
-            traef = [x for x in data if x.get("type") == "Samlet CO2-udledning"
-                     and x.get("sektor") == "Samlet" and x.get("enhed") == "Ton CO2e/indb."]
-            if traef:
+            # Samme udtræk som scoren (fetch_climate_data.py): API'et har to
+            # "Samlet"-rækker, og scoren tager den største. Indtil sep. 2026
+            # lagde pilen dem sammen, som for Læsø gav -5,2 mod scorens 4,7.
+            vaerdi = _extract_co2_per_capita(data)
+            if vaerdi is not None:
                 ud.append({"kommune_kode": kode, "indicator_id": "klimapaavirkning",
-                           "aar": str(aar), "vaerdi": round(sum(x["værdi"] for x in traef), 4)})
+                           "aar": str(aar), "vaerdi": round(vaerdi, 4)})
             time.sleep(0.15)
         log(f"  {KOMMUNER[kode]:20} færdig")
 
@@ -856,9 +818,10 @@ def _uvm_parse(s) -> float | None:
 
 
 def _uvm_skoleaar_til_aar(periode: str) -> str | None:
-    """'2019/2020' -> '2019'. Almindelige kalenderår ('2019') går igennem uændret."""
-    m = re.match(r"(\d{4})", periode.strip())
-    return m.group(1) if m else None
+    """'2019/2020' -> '2020' (slutåret, samme regel som dst_aar.aarstal() og
+    scoren i fetch_udvidelse_data.py). Kalenderår ('2019') går igennem uændret."""
+    aar = aarstal(periode.strip())
+    return aar if re.fullmatch(r"\d{4}", aar) else None
 
 
 def uvm_serie(navn: str, body: dict, kom_key: str, aar_key: str,

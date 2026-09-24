@@ -31,7 +31,6 @@ Kør:
 from __future__ import annotations
 
 import csv
-import io
 import json
 import sys
 import time
@@ -39,53 +38,38 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from dst_aar import seneste_aar, seneste_periode, seneste_aar_liste  # noqa: E402
+from dst_aar import registrer_aar, seneste_aar_liste  # noqa: E402
+from dst import api_post, parse_value, pr_indbygger, pr_kommune_aar, seneste  # noqa: E402  (fælles DST-kald, scripts/dst.py)
 from api_noegler import hent_noegle, kraev_noegle, UVM_HJAELP  # noqa: E402
+from kommuner import KOMMUNER, KODER as VALID_CODES  # noqa: E402  (de 98 kommuner, data/kommuner.json)
 
 # ─── Konstanter ────────────────────────────────────────────────────────────
 UVM_TOKEN = hent_noegle("UVM_API_TOKEN")
 UVM_BASE = "https://api.uddannelsesstatistik.dk/Api/v1"
-DST_API  = "https://api.statbank.dk/v1/data"
 DELAY    = 0.7  # sekunder mellem API-kald
 
 ROOT       = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = ROOT / "data"
-
-VALID_CODES = {
-    "101","147","151","153","155","157","159","161","163","165",
-    "167","169","173","175","183","185","187","190","201","210",
-    "217","219","223","230","240","250","253","259","260","265",
-    "269","270","306","316","320","326","329","330","336","340",
-    "350","360","370","376","390","400","410","420","430","440",
-    "450","461","479","480","482","492","510","530","540","550",
-    "561","563","573","575","580","607","615","621","630","657",
-    "661","665","671","706","707","710","727","730","740","741",
-    "746","751","756","760","766","773","779","787","791","810",
-    "813","820","825","840","846","849","851","860",
-}
 
 
 # ─── HJÆLPEFUNKTIONER ──────────────────────────────────────────────────────
 
 def load_navn_to_kode() -> dict[str, str]:
     """
-    Bygger navn→kode-mapping fra doughnut_scores.csv.
+    Navn→kode-mapping fra data/kommuner.json.
     Bruges til at oversætte UVM-kommunenavne til DST-koder.
     """
-    path = OUTPUT_DIR / "doughnut_scores.csv"
-    if not path.exists():
-        print("  ADVARSEL: doughnut_scores.csv mangler - UVM-navnemapping vil fejle", file=sys.stderr)
-        return {}
     mapping = {}
-    with open(path, encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            kode = row.get("kommune_kode", "").strip()
-            navn = row.get("kommune_navn", "").strip()
-            if kode and navn:
-                mapping[navn] = kode
-                # Alias: "Aarhus" / "Åarhus" mv.
-                mapping[navn.replace("Å","Aa").replace("å","aa")] = kode
+    for kode, navn in KOMMUNER.items():
+        mapping[navn] = kode
+        # Alias: "Aarhus" / "Åarhus" mv.
+        mapping[navn.replace("Å", "Aa").replace("å", "aa")] = kode
     return mapping
+
+
+def _tom(v):
+    """Tom celle for manglende værdi (men 0 bevares)."""
+    return "" if v is None else v
 
 
 def parse_float(s: str | None) -> float | None:
@@ -143,11 +127,15 @@ def uvm_get_latest(
     kommune_key: str,
     year_key: str,
     value_key: str,
+    tabel: str | None = None,
 ) -> dict[str, tuple[str, float]]:
     """
     Finder den seneste årsværdi per kommune.
     Returnerer {kommune_navn: (år, float_value)}.
     Årstal sammenlignes som strenge - virker for "2023/2024" og "2023".
+    Med `tabel` (fx "GS/KARA/KARAGNS", registrets table-felt) noteres året i
+    data/data_years.json, så sitet viser det år tallet er fra. Skoleår mærkes
+    med slutåret ("2024/2025" -> 2025), ligesom i retningspilen.
     """
     best: dict[str, tuple[str, float]] = {}
     for row in rows:
@@ -158,6 +146,8 @@ def uvm_get_latest(
             continue
         if navn not in best or år > best[navn][0]:
             best[navn] = (år, val)
+    if tabel and best:
+        registrer_aar(tabel, max(år for år, _ in best.values()))
     return best
 
 
@@ -184,7 +174,7 @@ def fetch_exam_grade(navn_til_kode: dict[str, str]) -> tuple[dict[str, float], f
     ÅR_KEY   = "[Skoleår].[Skoleår].[Skoleår]"
     VAL_KEY  = "Gennemsnit - Obl. prøver"
 
-    latest = uvm_get_latest(rows, KOM_KEY, ÅR_KEY, VAL_KEY)
+    latest = uvm_get_latest(rows, KOM_KEY, ÅR_KEY, VAL_KEY, tabel="GS/KARA/KARAGNS")
 
     result: dict[str, float] = {}
     for navn, (år, val) in latest.items():
@@ -223,7 +213,7 @@ def fetch_high_absence(navn_til_kode: dict[str, str]) -> tuple[dict[str, float],
     ÅR_KEY  = "[Tid].[Skoleår].[Skoleår]"
     VAL_KEY = "Over 10 procent"
 
-    latest = uvm_get_latest(rows, KOM_KEY, ÅR_KEY, VAL_KEY)
+    latest = uvm_get_latest(rows, KOM_KEY, ÅR_KEY, VAL_KEY, tabel="GS/ELEVFRAV/FRAVAAR")
 
     result: dict[str, float] = {}
     for navn, (år, val) in latest.items():
@@ -281,6 +271,8 @@ def fetch_wellbeing(navn_til_kode: dict[str, str]) -> tuple[dict[str, float], fl
     for (navn, år) in scores:
         if navn not in latest_år or år > latest_år[navn]:
             latest_år[navn] = år
+    if latest_år:
+        registrer_aar("GS/TRIV/TRIVIND", max(latest_år.values()))
 
     result: dict[str, float] = {}
     for navn, år in latest_år.items():
@@ -331,7 +323,7 @@ def fetch_youth_education(navn_til_kode: dict[str, str]) -> tuple[dict[str, floa
     ÅR_KEY  = "[År].[År].[År]"
     VAL_KEY = "Komp: Med mindst en ungdomsuddannelsekompetence"
 
-    latest = uvm_get_latest(rows, KOM_KEY, ÅR_KEY, VAL_KEY)
+    latest = uvm_get_latest(rows, KOM_KEY, ÅR_KEY, VAL_KEY, tabel="GS/PROFMOD/PROFMOD")
 
     result: dict[str, float] = {}
     for navn, (år, val) in latest.items():
@@ -349,35 +341,6 @@ def fetch_youth_education(navn_til_kode: dict[str, str]) -> tuple[dict[str, floa
 
 # ─── DST API ───────────────────────────────────────────────────────────────
 
-def dst_post(table: str, variables: list[dict]) -> list[dict]:
-    """POST til DST StatBank API. Returnerer liste af rækker (CSV parsed)."""
-    payload = json.dumps({
-        "table": table, "format": "CSV", "lang": "da",
-        "valuePresentation": "Code",
-        "variables": variables,
-    }).encode("utf-8")
-    req = urllib.request.Request(
-        DST_API, data=payload,
-        headers={"Content-Type": "application/json"},
-    )
-    time.sleep(DELAY)
-    resp = urllib.request.urlopen(req, timeout=60)
-    content = resp.read().decode("utf-8-sig")
-    reader = csv.DictReader(io.StringIO(content), delimiter=";")
-    return list(reader)
-
-
-def dst_parse(raw: str) -> float | None:
-    """Parser DST-streng til float."""
-    s = str(raw).strip()
-    if s in ("", "..", ".", "x", "X", "-"):
-        return None
-    try:
-        return float(s.replace(".", "").replace(",", "."))
-    except ValueError:
-        return None
-
-
 # ─── DST: IFOR12P - Relativ fattigdom ─────────────────────────────────────
 
 def fetch_relative_poverty() -> tuple[dict[str, float], float | None]:
@@ -387,7 +350,7 @@ def fetch_relative_poverty() -> tuple[dict[str, float], float | None]:
     Lavere er bedre (inverse=True).
     """
     print("Henter relativ fattigdom (IFOR12P)...")
-    rows = dst_post("IFOR12P", [
+    rows = api_post("IFOR12P", [
         {"code": "KOMMUNEDK", "values": ["*"]},
         {"code": "INDKN", "values": ["60"]},
         {"code": "Tid", "values": seneste_aar_liste("IFOR12P", 3, ["2024", "2023", "2022"])},
@@ -398,7 +361,7 @@ def fetch_relative_poverty() -> tuple[dict[str, float], float | None]:
     for row in rows:
         kode = row.get("KOMMUNEDK", "").strip()
         år   = row.get("TID", "").strip()
-        val  = dst_parse(row.get("INDHOLD", ""))
+        val  = parse_value(row.get("INDHOLD", ""))
         if not kode or val is None:
             continue
         if kode not in latest or år > latest[kode][0]:
@@ -431,7 +394,7 @@ def fetch_gender_leadership() -> tuple[dict[str, float], float | None]:
     # Hent mænd og kvinder separat, summer alle brancher og aldre
     gennemlopte_år = seneste_aar_liste("RAS301", 3, ["2024", "2023", "2022"])
     for år in gennemlopte_år:
-        rows = dst_post("RAS301", [
+        rows = api_post("RAS301", [
             {"code": "OMRÅDE", "values": ["*"]},
             {"code": "SOCIO", "values": ["15"]},          # Lønmodtager med ledelsesarbejde
             {"code": "BRANCHE07", "values": ["*"]},        # Alle brancher
@@ -450,7 +413,7 @@ def fetch_gender_leadership() -> tuple[dict[str, float], float | None]:
     for row in rows:
         omr  = row.get("OMRÅDE", "").strip()
         koen = row.get("KOEN", "").strip()
-        val  = dst_parse(row.get("INDHOLD", ""))
+        val  = parse_value(row.get("INDHOLD", ""))
         if val is None:
             continue
         if omr in VALID_CODES or omr == "000":
@@ -492,7 +455,7 @@ def fetch_housing_facilities() -> tuple[
     aar_bol102 = seneste_aar_liste("BOL102", 2, ["2024", "2023"])
 
     # Hent alle toilet- og bad-koder + totalen for beboede boliger
-    rows = dst_post("BOL102", [
+    rows = api_post("BOL102", [
         {"code": "AMT", "values": ["*"]},
         {"code": "BEBO", "values": ["1000"]},          # Beboede boliger
         {"code": "TOILET", "values": ["1000616", "1000617", "1000618"]},
@@ -505,7 +468,7 @@ def fetch_housing_facilities() -> tuple[
         kode   = row.get("AMT", "").strip()
         toilet = row.get("TOILET", "").strip()
         år     = row.get("TID", "").strip()
-        val    = dst_parse(row.get("INDHOLD", ""))
+        val    = parse_value(row.get("INDHOLD", ""))
         if val is None:
             continue
         if kode in VALID_CODES or kode == "000":
@@ -539,7 +502,7 @@ def fetch_housing_facilities() -> tuple[
     nat_no_wc = round((nat_bad / nat_total) * 100, 4) if nat_total > 0 else None
 
     # Bad - separat kald
-    rows_bad = dst_post("BOL102", [
+    rows_bad = api_post("BOL102", [
         {"code": "AMT", "values": ["*"]},
         {"code": "BEBO", "values": ["1000"]},
         {"code": "BAD", "values": ["1000620", "1000621", "1000622"]},
@@ -551,7 +514,7 @@ def fetch_housing_facilities() -> tuple[
         kode = row.get("AMT", "").strip()
         bad  = row.get("BAD", "").strip()
         år   = row.get("TID", "").strip()
-        val  = dst_parse(row.get("INDHOLD", ""))
+        val  = parse_value(row.get("INDHOLD", ""))
         if val is None:
             continue
         if kode in VALID_CODES or kode == "000":
@@ -577,66 +540,33 @@ def fetch_housing_facilities() -> tuple[
 
 # ─── DST: UND2 - Underretninger om børn ───────────────────────────────────
 
-def fetch_child_notifications() -> tuple[dict[str, float], float | None]:
+def serie_child_notifications(aar: list[str]) -> dict[tuple[str, str], float]:
     """
-    UND2: Antal underretninger om børn og unge (i alt, alle aldre, begge køn).
-    Normaliseret pr. 1.000 indb. 0-17 år (fra FOLK1A).
-    Returnerer {kommune_kode: pr_1000}, national_rate.
-    Lavere er bedre (inverse=True).
-    """
-    print("Henter underretninger om børn (UND2)...")
+    UND2: underretninger om børn og unge (i alt, alle aldre, begge køn) pr.
+    1.000 indb. 0-17 år, med børnetallet 1. januar samme år (FOLK1A).
+    {(kommune_kode, år): værdi} inkl. hele landet (000). Lavere er bedre.
+    Bruges af både scoren og retningspilen (fetch_trend_history.py).
 
-    # Hent underretninger (ALDER1='00' = I alt, UNDERRET='00' = I alt)
-    rows = dst_post("UND2", [
+    Indtil sep. 2026 tog scoren det nyeste år pr. kommune for sig (så år
+    kunne blandes) og delte med børnetallet i FOLK1A's allernyeste kvartal.
+    """
+    rows = api_post("UND2", [
         {"code": "ADMKOM", "values": ["*"]},
         {"code": "UNDERRET", "values": ["00"]},
         {"code": "ALDER1", "values": ["00"]},
         {"code": "KON", "values": ["0"]},
-        {"code": "Tid", "values": seneste_aar_liste("UND2", 3, ["2024", "2023", "2022"])},
+        {"code": "Tid", "values": aar},
     ])
+    return pr_indbygger(pr_kommune_aar(rows, "ADMKOM"), 1000, 2,
+                        alder=[str(a) for a in range(18)])
 
-    und_latest: dict[str, tuple[str, float]] = {}
-    for row in rows:
-        kode = row.get("ADMKOM", "").strip()
-        år   = row.get("TID", "").strip()
-        val  = dst_parse(row.get("INDHOLD", ""))
-        if val is None:
-            continue
-        if kode not in und_latest or år > und_latest[kode][0]:
-            und_latest[kode] = (år, val)
 
-    # Hent børnepopulation 0-17 år (brug FOLK1A)
-    print("  Henter børnepopulation 0-17 (FOLK1A)...")
-    rows_pop = dst_post("FOLK1A", [
-        {"code": "OMRÅDE", "values": ["*"]},
-        {"code": "KØN", "values": ["TOT"]},
-        {"code": "ALDER", "values": [str(a) for a in range(18)]},
-        {"code": "Tid", "values": [seneste_periode("FOLK1A", fallback="2025K1")]},
-    ])
-
-    pop_0_17: dict[str, float] = {}
-    for row in rows_pop:
-        kode = row.get("OMRÅDE", "").strip()
-        val  = dst_parse(row.get("INDHOLD", ""))
-        if val is None:
-            continue
-        if kode in VALID_CODES or kode == "000":
-            pop_0_17[kode] = pop_0_17.get(kode, 0) + val
-
-    # Beregn pr. 1.000 børn
-    result: dict[str, float] = {}
-    for kode in VALID_CODES:
-        und = und_latest.get(kode)
-        pop = pop_0_17.get(kode)
-        if und and pop and pop > 0:
-            result[kode] = round((und[1] / pop) * 1000, 2)
-
-    # National
-    nat_und = und_latest.get("000")
-    nat_pop = pop_0_17.get("000")
-    nat_rate = round((nat_und[1] / nat_pop) * 1000, 2) if nat_und and nat_pop else None
-
-    print(f"  {len(result)} kommuner, nat. rate: {nat_rate} pr. 1.000")
+def fetch_child_notifications() -> tuple[dict[str, float], float | None]:
+    """Underretninger pr. 1.000 børn i nyeste år med data, og landstallet."""
+    print("Henter underretninger om børn (UND2)...")
+    aar, result, nat_rate = seneste(serie_child_notifications(
+        seneste_aar_liste("UND2", 2, ["2024", "2023"])), tabel="UND2")
+    print(f"  {len(result)} kommuner ({aar}), nat. rate: {nat_rate} pr. 1.000")
     return result, nat_rate
 
 
@@ -722,12 +652,14 @@ def main():
             kode,
             pov  if pov  is not None else "", pov_r  if pov_r  is not None else "",
             gl   if gl   is not None else "", gl_r   if gl_r   is not None else "",
+            _tom(pov_nat), _tom(gl_nat),
         ])
 
     write_csv("lighed_scores.csv", [
         "kommune_kode",
         "poverty_relative_pct", "poverty_relative_ratio",
         "gender_leadership_pct", "gender_leadership_ratio",
+        "poverty_relative_ref", "gender_leadership_ref",
     ], lighed_rows)
 
     # bolig_wc_scores.csv
@@ -741,12 +673,14 @@ def main():
             kode,
             wc   if wc   is not None else "", wc_r   if wc_r   is not None else "",
             bath if bath is not None else "", bath_r if bath_r is not None else "",
+            _tom(wc_nat), _tom(bath_nat),
         ])
 
     write_csv("bolig_wc_scores.csv", [
         "kommune_kode",
         "housing_no_wc_pct", "housing_no_wc_ratio",
         "housing_no_bath_pct", "housing_no_bath_ratio",
+        "housing_no_wc_ref", "housing_no_bath_ref",
     ], bolig_rows)
 
     # underretning_scores.csv
@@ -758,11 +692,13 @@ def main():
             kode,
             notif  if notif  is not None else "",
             notif_r if notif_r is not None else "",
+            _tom(notif_nat),
         ])
 
     write_csv("underretning_scores.csv", [
         "kommune_kode",
         "child_notifications_per_1k", "child_notifications_ratio",
+        "child_notifications_ref",
     ], underretning_rows)
 
     print("\n" + "=" * 65)

@@ -41,6 +41,9 @@ import urllib.request
 from pathlib import Path
 from statistics import mean
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from kommuner import KOMMUNER  # noqa: E402  (de 98 kommuner, data/kommuner.json)
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 API = "https://api.statbank.dk/v1/data"
@@ -59,7 +62,7 @@ def api_post(body: dict) -> dict:
 
 def gyldige_kommunekoder() -> set[str]:
     """
-    De 98 kommunekoder, læst fra master-CSV'en.
+    De 98 kommunekoder fra data/kommuner.json.
 
     FÆLDE: KV2GEO's områdeliste blander kommuner, landsdele og regioner, og
     REGIONERNE har også trecifrede koder (081-085 for Nordjylland, Midtjylland,
@@ -67,8 +70,7 @@ def gyldige_kommunekoder() -> set[str]:
     tager dem derfor med og overvurderer dækningen med fem. Slå altid op i den
     rigtige kommuneliste.
     """
-    with open(DATA / "master_indicators.csv", encoding="utf-8") as f:
-        return {row["kommune_kode"] for row in csv.DictReader(f)}
+    return set(KOMMUNER)
 
 
 def hent() -> tuple[dict[str, float], float, list[str]]:
@@ -131,10 +133,10 @@ def main() -> None:
     ud = DATA / "kulturvaner_scores.csv"
     with open(ud, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["kommune_kode", "sport_tilskuer_pct", "sport_tilskuer_ratio"])
+        w.writerow(["kommune_kode", "sport_tilskuer_pct", "sport_tilskuer_ratio", "sport_tilskuer_ref"])
         for kode in sorted(pr_kommune, key=int):
             pct = pr_kommune[kode]
-            w.writerow([kode, pct, ratio_direct(pct, nat)])
+            w.writerow([kode, pct, ratio_direct(pct, nat), nat])
     print(f"✓ Skrev {ud.relative_to(ROOT)} ({len(pr_kommune)} kommuner, {aar[0]}-{aar[-1]})")
 
     sys.path.insert(0, str(ROOT / "scripts"))

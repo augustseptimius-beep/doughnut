@@ -17,38 +17,23 @@ Kør fra projektets rodmappe:
 from __future__ import annotations
 
 import csv
-import io
-import json
 import os
 import sys
-import time
 import urllib.request
 import urllib.error
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dst_aar import seneste_kvartal, seneste_aar_liste  # noqa: E402
+from dst import api_post, parse_value, pr_indbygger, pr_kommune_aar, seneste  # noqa: E402  (fælles DST-kald, scripts/dst.py)
+from kommuner import KODER as VALID_CODES  # noqa: E402  (de 98 kommuner, data/kommuner.json)
 
-API_URL = "https://api.statbank.dk/v1/data"
-REQUEST_DELAY = 0.7
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 SUNDHED_DIR = DATA_DIR / "sundhedsdatabank"
 OUTPUT_DIR = DATA_DIR
 
-VALID_CODES = {
-    "101", "147", "151", "153", "155", "157", "159", "161", "163", "165",
-    "167", "169", "173", "175", "183", "185", "187", "190", "201", "210",
-    "217", "219", "223", "230", "240", "250", "253", "259", "260", "265",
-    "269", "270", "306", "316", "320", "326", "329", "330", "336", "340",
-    "350", "360", "370", "376", "390", "400", "410", "420", "430", "440",
-    "450", "461", "479", "480", "482", "492", "510", "530", "540", "550",
-    "561", "563", "573", "575", "580", "607", "615", "621", "630", "657",
-    "661", "665", "671", "706", "707", "710", "727", "730", "740", "741",
-    "746", "751", "756", "760", "766", "773", "779", "787", "791", "810",
-    "813", "820", "825", "840", "846", "849", "851", "860",
-}
 
 # Sundhedsdatabank.dk Excel-filer der er værd at inspicere
 SUNDHEDSDATABANK_FILES = [
@@ -76,15 +61,6 @@ SUNDHEDSDATABANK_FILES = [
 # Hjælpefunktioner
 # ---------------------------------------------------------------------------
 
-def parse_value(raw: str) -> float | None:
-    raw = raw.strip()
-    if raw in ("", "..", ".", "x", "X", "-"):
-        return None
-    try:
-        return float(raw.replace(".", "").replace(",", "."))
-    except ValueError:
-        return None
-
 
 def ratio_direct(val: float, nat: float) -> float:
     if nat == 0:
@@ -96,26 +72,6 @@ def ratio_inverse(val: float, nat: float) -> float:
     if val == 0:
         return 150
     return round((nat / val) * 100, 2)
-
-
-def api_post(table: str, variables: list[dict]) -> list[dict]:
-    payload = json.dumps({
-        "table": table,
-        "format": "CSV",
-        "lang": "da",
-        "valuePresentation": "Code",
-        "variables": variables,
-    }).encode("utf-8")
-    req = urllib.request.Request(
-        API_URL,
-        data=payload,
-        headers={"Content-Type": "application/json"},
-    )
-    time.sleep(REQUEST_DELAY)
-    resp = urllib.request.urlopen(req, timeout=60)
-    content = resp.read().decode("utf-8-sig")
-    reader = csv.DictReader(io.StringIO(content), delimiter=";")
-    return list(reader)
 
 
 def write_csv(filename: str, headers: list[str], rows: list[list]) -> None:
@@ -363,45 +319,33 @@ def fetch_boerneovervaeght() -> tuple[dict[str, float], float | None]:
 # DEL 5: DST HJEMSYG - Hjemmesygepleje-modtagere pr. kommune
 # ---------------------------------------------------------------------------
 
-def fetch_hjemsyg(population: dict[str, float]) -> tuple[dict[str, float], float | None]:
+def serie_hjemsyg(aar: list[str]) -> dict[tuple[str, str], float]:
     """
-    HJEMSYG: Modtagere af hjemmesygepleje (eget hjem), alle aldre.
-    Normaliseres til pr. 1.000 indbyggere vha. FOLK1A-befolkningstal.
-    Returnerer {kommune_kode: modtagere_pr_1000}, national_avg.
+    HJEMSYG: modtagere af hjemmesygepleje (eget hjem), alle aldre, pr. 1.000
+    indb. med folketallet 1. januar samme år. {(kommune_kode, år): værdi};
+    landstallet (000) er de 98 kommuner samlet (se dst.pr_indbygger). Bruges af
+    både scoren og retningspilen (fetch_trend_history.py).
     """
+    rows = api_post("HJEMSYG", [
+        {"code": "OMRÅDE", "values": ["*"]},
+        {"code": "ALDER1", "values": ["050"]},   # Alder i alt
+        {"code": "KOEN", "values": ["100"]},      # Mænd og kvinder i alt
+        {"code": "Tid", "values": aar},
+    ])
+    return pr_indbygger(pr_kommune_aar(rows), 1000, 2)
+
+
+def fetch_hjemsyg() -> tuple[dict[str, float], float | None]:
+    """Hjemmesygepleje-modtagere pr. 1.000 indb. i nyeste år med mindst 50
+    kommuner, og landstallet."""
     print("Henter hjemmesygepleje-modtagere (HJEMSYG)...")
-    nat_pop = population.get("000", 5_900_000)
-
-    for year in ["2025", "2024", "2023"]:
-        rows = api_post("HJEMSYG", [
-            {"code": "OMRÅDE", "values": ["*"]},
-            {"code": "ALDER1", "values": ["050"]},   # Alder i alt
-            {"code": "KOEN", "values": ["100"]},      # Mænd og kvinder i alt
-            {"code": "Tid", "values": [year]},
-        ])
-        counts: dict[str, float] = {}
-        for row in rows:
-            kode = row.get("OMRÅDE", "").strip()
-            val = parse_value(row.get("INDHOLD", ""))
-            if val is not None and kode in VALID_CODES:
-                counts[kode] = val
-
-        if len(counts) < 50:
-            print(f"  Kun {len(counts)} kommuner for {year}, prøver ældre...")
-            continue
-
-        result: dict[str, float] = {}
-        nat_count = sum(counts.values())
-        national = round(nat_count / nat_pop * 1000, 2) if nat_pop else None
-        for kode, count in counts.items():
-            if kode in population and population[kode] > 0:
-                result[kode] = round(count / population[kode] * 1000, 2)
-
-        print(f"  {len(result)} kommuner (år: {year}), landsgennemsnit: {national} pr. 1.000 indb.")
-        return result, national
-
-    print("  ⚠  Ikke nok data")
-    return {}, None
+    aar, result, national = seneste(serie_hjemsyg(
+        seneste_aar_liste("HJEMSYG", 3, fallback=["2025", "2024", "2023"])), tabel="HJEMSYG")
+    if not result:
+        print("  ⚠  Ikke nok data")
+        return {}, None
+    print(f"  {len(result)} kommuner (år: {aar}), landsgennemsnit: {national} pr. 1.000 indb.")
+    return result, national
 
 
 # ---------------------------------------------------------------------------
@@ -439,7 +383,7 @@ def main():
     print("\n" + "=" * 60)
     print("DEL 5: Hjemmesygepleje (DST HJEMSYG)")
     print("=" * 60)
-    hjemsyg_data, hjemsyg_nat = fetch_hjemsyg(population)
+    hjemsyg_data, hjemsyg_nat = fetch_hjemsyg()
 
     # Skriv CSV'er
     print("\n--- Gemmer CSV'er ---")
@@ -475,9 +419,10 @@ def main():
     for kode in sorted(VALID_CODES, key=int):
         val = hjemsyg_data.get(kode)
         ratio = ratio_inverse(val, hjemsyg_nat) if val is not None and hjemsyg_nat else ""
-        hjemsyg_rows.append([kode, val if val is not None else "", ratio])
+        hjemsyg_rows.append([kode, val if val is not None else "", ratio,
+                             hjemsyg_nat if hjemsyg_nat is not None else ""])
     write_csv("hjemsyg_scores.csv", [
-        "kommune_kode", "hjemsyg_raw", "hjemsyg_ratio",
+        "kommune_kode", "hjemsyg_raw", "hjemsyg_ratio", "hjemsyg_ref",
     ], hjemsyg_rows)
 
     print("\n" + "=" * 60)

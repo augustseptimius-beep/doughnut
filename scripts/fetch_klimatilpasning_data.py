@@ -17,21 +17,34 @@ målestok for klimatilpasningskapacitet. Se data/klimatilpasning.md for fuld
 metodediskussion og fremtidige forbedringer.
 
 Output: data/klimatilpasning_scores.csv
-Kolonner: kommune_navn, vejr_skader_raw, vejr_skader_ratio
+Kolonner: kommune_kode, kommune_navn, vejr_skader_raw, vejr_skader_ratio, vejr_skader_ref
+
+Kilden har kun kommunenavne. Koden slås op i data/kommuner.json, og et navn
+der ikke kan slås op, stopper scriptet (build_master_csv.py nøgler på kode).
 
 Ratio-konvention: INVERS social indikator.
   ratio = (landsgennemsnit / kommune_val) * 100
   100 = på landsgennemsnit, >100 = bedre end snit (færre skader), <100 = værre
+
+Landsgennemsnittet er Danmark som helhed: kommunernes tal vægtet med
+folketallet 1. januar 2025 (slutåret for skadesperioden), så det svarer til
+landets samlede skader pr. 1.000 indb. Indtil sep. 2026 var det et uvægtet
+gennemsnit af kommunerne (25,9 mod 21,9 vægtet). Skrives i vejr_skader_ref.
 
 Kør fra projektets rodmappe:
   python3 scripts/fetch_klimatilpasning_data.py
 """
 
 import csv
-import statistics
 import sys
 import urllib.request
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from kommuner import kode_for_navn  # noqa: E402  (de 98 kommuner, data/kommuner.json)
+from dst import folketal  # noqa: E402  (fælles DST-kald)
+
+BEFOLKNINGSAAR = "2025"   # slutåret for skadesperioden 2023-2025
 
 DATA_URL = "https://datawrapper.dwcdn.net/NDLlA/4/dataset.csv"
 OUTPUT_FILE = Path(__file__).parent.parent / "data" / "klimatilpasning_scores.csv"
@@ -62,23 +75,9 @@ def fetch_data() -> list[dict]:
 def compute_scores(rows: list[dict]) -> tuple[list[dict], float]:
     """
     Beregner inverse ratio: (landsgennemsnit / kommune_val) * 100.
-    Lavere skader = højere score = bedre.
+    Lavere skader = højere score = bedre. Landsgennemsnittet er
+    befolkningsvægtet (Danmark som helhed), se modulets docstring.
     """
-    values = []
-    for row in rows:
-        try:
-            val = float(row["antal skader pr 1000"])
-            values.append(val)
-        except (ValueError, KeyError):
-            pass
-
-    if not values:
-        print("FEJL: Ingen gyldige værdier fundet", file=sys.stderr)
-        sys.exit(1)
-
-    national_avg = statistics.mean(values)
-    print(f"  Landsgennemsnit: {national_avg:.2f} skader pr. 1.000 indb.")
-
     results = []
     for row in rows:
         navn = row["kom"].strip()
@@ -87,25 +86,36 @@ def compute_scores(rows: list[dict]) -> tuple[list[dict], float]:
             raw = float(row["antal skader pr 1000"])
         except (ValueError, KeyError):
             raw = None
+        results.append({"kommune_kode": kode_for_navn(navn), "kommune_navn": navn,
+                        "vejr_skader_raw": raw})
 
-        if raw is not None and raw > 0:
-            ratio = round((national_avg / raw) * 100, 2)
-        else:
-            ratio = None
+    ukendte = [r["kommune_navn"] for r in results if r["kommune_kode"] is None]
+    if ukendte:
+        print(f"FEJL: kommunenavne der ikke findes i data/kommuner.json: {ukendte}\n"
+              "  Tilføj en rettelse i NAME_CORRECTIONS.", file=sys.stderr)
+        sys.exit(1)
 
-        results.append({
-            "kommune_navn": navn,
-            "vejr_skader_raw": raw,
-            "vejr_skader_ratio": ratio,
-        })
+    folk = {k: v for (k, a), v in folketal([BEFOLKNINGSAAR]).items() if k != "000"}
+    med = [r for r in results if r["vejr_skader_raw"] is not None and folk.get(r["kommune_kode"])]
+    if not med:
+        print("FEJL: Ingen gyldige værdier fundet", file=sys.stderr)
+        sys.exit(1)
+    national_avg = round(sum(r["vejr_skader_raw"] * folk[r["kommune_kode"]] for r in med)
+                         / sum(folk[r["kommune_kode"]] for r in med), 4)
+    print(f"  Landsgennemsnit (befolkningsvægtet): {national_avg:.2f} skader pr. 1.000 indb.")
 
+    for r in results:
+        raw = r["vejr_skader_raw"]
+        r["vejr_skader_ratio"] = round((national_avg / raw) * 100, 2) if raw else None
+        r["vejr_skader_ref"] = national_avg
     return results, national_avg
 
 
 def write_csv(results: list[dict]) -> None:
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_FILE, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["kommune_navn", "vejr_skader_raw", "vejr_skader_ratio"])
+        writer = csv.DictWriter(f, fieldnames=["kommune_kode", "kommune_navn", "vejr_skader_raw", "vejr_skader_ratio",
+                                               "vejr_skader_ref"])
         writer.writeheader()
         writer.writerows(results)
     print(f"  Gemt: {OUTPUT_FILE}")

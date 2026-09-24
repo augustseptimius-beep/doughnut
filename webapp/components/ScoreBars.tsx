@@ -9,6 +9,7 @@ import {
   ECOLOGICAL_DIMENSIONS,
   scoreColor,
   scoreBarColor,
+  visningsscore,
   computeCategoryScores,
   categoryBaselineType,
   dimensionBaselineType,
@@ -45,17 +46,20 @@ interface ScoreBarsProps {
   defaultDataYear?: string;
 }
 
+// Farven afgøres af scoren som den vises (én decimal), se visningsscore().
 function ecoScoreColor(score: number | null): string {
-  if (score === null) return "text-gray-400";
-  if (score <= 85) return "text-emerald-600";   // klart under grænsen = godt
-  if (score <= 100) return "text-amber-500";    // tæt på grænsen
-  return "text-red-500";                         // overshoot
+  const s = visningsscore(score);
+  if (s === null) return "text-gray-400";
+  if (s <= 85) return "text-emerald-600";   // klart under grænsen = godt
+  if (s <= 100) return "text-amber-500";    // tæt på grænsen
+  return "text-red-500";                     // overshoot
 }
 
 function ecoBarColor(score: number | null): string {
-  if (score === null) return "bg-gray-200";
-  if (score <= 85) return "bg-emerald-500";
-  if (score <= 100) return "bg-amber-400";
+  const s = visningsscore(score);
+  if (s === null) return "bg-gray-200";
+  if (s <= 85) return "bg-emerald-500";
+  if (s <= 100) return "bg-amber-400";
   return "bg-red-500";
 }
 

@@ -81,7 +81,7 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   lighed: {
     id: "lighed",
-    scoring: "Gennemsnit af tre indikatorer: (1) Gini-koefficient (IFOR41, inverteret - lavere ulighed er bedre). (2) Andel i relativ fattigdom efter DST's mål med grænsen 50% af medianindkomsten (LABY07, inverteret). (3) Beskæftigelsesfrekvensen for personer med ikke-vestlig oprindelse i procent af frekvensen for personer med dansk oprindelse (RAS200, direkte). Score 100 = landsgennemsnit.",
+    scoring: "Gennemsnit af tre indikatorer: (1) Gini-koefficient (IFOR41, inverteret - lavere ulighed er bedre). (2) Andel i relativ fattigdom efter DST's mål med grænsen 50% af medianindkomsten (LABY07, inverteret). (3) Beskæftigelsesfrekvensen for indvandrere fra ikke-vestlige lande i procent af frekvensen for personer med dansk oprindelse, 16-64 år (RAS200, direkte). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: en rimelig fordeling af ressourcer og muligheder er grundlaget for et sammenhængende samfund.",
     limitations: "Gini og relativ fattigdom bygger på DST's indkomstregistre og er korrelerede mål - kommuner med høj ulighed har typisk også høj andel lavindkomst. Data er 2 år forsinket.",
   },
@@ -99,7 +99,7 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   klimatilpasning: {
     id: "klimatilpasning",
-    scoring: "1 indikator: Vejrrelaterede forsikringsskader pr. 1.000 indbyggere (F&P skadesstatistik, akkumuleret Q1 2023 - Q4 2025, inverteret - færre skader er bedre). Ratio = (landsgennemsnit / kommunens skader pr. 1.000 indb.) × 100. Score 100 = landsgennemsnit (uvægtet gennemsnit af kommunerne).",
+    scoring: "1 indikator: Vejrrelaterede forsikringsskader pr. 1.000 indbyggere (F&P skadesstatistik, akkumuleret Q1 2023 - Q4 2025, inverteret - færre skader er bedre). Ratio = (landsgennemsnit / kommunens skader pr. 1.000 indb.) × 100. Score 100 = landsgennemsnit (landet som helhed: kommunernes tal vægtet med indbyggertallet).",
     boundary: "Socialt fundament: borgere og bygninger skal være robuste over for klimarelateret ekstremvejr (skybrud, storm, oversvømmelse). Ingen absolut grænse - relativ til landsgennemsnit.",
     limitations: "Skadesdata er en proxy for klimarobusthed: den fanger realiserede skader, ikke fremtidig risiko eller kommunens tilpasningsindsats. Skadestal påvirkes også af bygningsmasse, forsikringsdækning og tilfældige vejrhændelser i perioden. Mulige fremtidige indikatorer: oversvømmelsesrisiko, klimatilpasningsplaner, grønne arealer til regnvandshåndtering. Se data/klimatilpasning.md for metodediskussion.",
   },

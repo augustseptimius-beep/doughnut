@@ -58,6 +58,10 @@ def _data_year(ind: dict) -> str:
     m = re.match(r"DST\s+([A-ZÆØÅ0-9_]+)", kilde)
     if m and _HENTEDE_AAR.get(m.group(1)):
         aar = _HENTEDE_AAR[m.group(1)]
+    elif _HENTEDE_AAR.get(ind.get("table") or ""):
+        # Ikke-DST-kilder der registrerer året under registrets table-navn,
+        # fx UVM's "GS/TRIV/TRIVIND" (fetch_udvidelse_data.py).
+        aar = _HENTEDE_AAR[ind["table"]]
     n = ind.get("period_years")
     if n and re.fullmatch(r"\d{4}", aar):
         aar = f"{int(aar) - n + 1}-{aar}"
@@ -74,9 +78,9 @@ NOEGLETAL = DATA_DIR / "noegletal.json"
 # Kommer fra data/indikatorer.json via scripts/indikatorregister.py. Det er
 # den ENESTE liste der skal opdateres når en indikator tilføjes eller fjernes;
 # webappen (shared.ts, data.ts) og build_trends_csv.py læser samme fil.
-# Felterne build_master bruger: id, csv, ratio_col, raw_col, unit, data_year,
-# source, category, dimension og særreglerne abs_target, navn_key,
-# inverse_ratio, special og cap (se registrets "_om" og funktionerne nedenfor).
+# Felterne build_master bruger: id, csv, raw_col, reference, inverse/
+# lower_is_better, formula, cap, ratio_col(_invers), unit, data_year,
+# period_years, source, category og dimension (se registrets "_om").
 import indikatorregister as ir  # noqa: E402
 
 
@@ -203,12 +207,9 @@ def _rekonstruer_landstal(ind, raekker, raws):
 def _csv_raekker(ind, kommuner, get_csv):
     """{kommune_kode: CSV-række eller None} for platformens kommuner."""
     rows = get_csv(ind["csv"])
-    navn_col = ind.get("navn_col")
-    if navn_col:
-        # forbrug_co2 og vejr_skader er nøglet på kommunenavn. Manglende match
-        # giver ingen værdi - bevidst intet fallback (Christiansø er filtreret fra).
-        by_navn = {r.get(navn_col): r for r in rows if r.get(navn_col)}
-        return {kode: by_navn.get(navn) for kode, navn in kommuner}
+    # Alle kilde-CSV'er er nøglet på kommune_kode. De to kilder der kun har
+    # navne (forbrug_co2, vejr_skader) fik koden tilføjet sep. 2026 ud fra
+    # data/kommuner.json, så en stavevariant ikke længere giver et tavst hul.
     by_kode = {}
     for r in rows:
         kode = r.get("kommune_kode")
@@ -296,6 +297,17 @@ def build_master():
 
     kommuner = [(r["kommune_kode"], r.get("kommune_navn", "")) for r in main_rows]
     print(f"Fundet {len(kommuner)} kommuner")
+
+    # Platformens kommuner er de 98 i data/kommuner.json. doughnut_scores.csv
+    # bestemmer kun rækkefølgen i master. Mangler en kommune her, ville den
+    # ellers forsvinde fra sitet uden fejl. Importeres først her, så en fejl i
+    # JSON-filen ikke vælter auto_build_master-importen (samme princip som registret).
+    from kommuner import KOMMUNER
+    afvigelser = sorted(set(kommuner) ^ set(KOMMUNER.items()))
+    if afvigelser or len(kommuner) != len(KOMMUNER):
+        print(f"FEJL: kommunerne i doughnut_scores.csv passer ikke med data/kommuner.json: "
+              f"{afvigelser or 'dubletter'}", file=sys.stderr)
+        sys.exit(1)
     print()
 
     # Cache CSV-loads (undgå at læse samme fil 5 gange)

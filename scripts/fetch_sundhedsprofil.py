@@ -44,6 +44,9 @@ import sys
 import urllib.parse
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from kommuner import KOMMUNER  # noqa: E402  (de 98 kommuner, data/kommuner.json)
+
 import requests
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -305,14 +308,11 @@ def ratio_inverse(kommune_val: float, national_avg: float) -> float:
 
 def kommune_koder() -> dict[str, str]:
     """
-    Navn -> kommunekode, læst fra master-CSV'en, som er repoets autoritative
+    Navn -> kommunekode fra data/kommuner.json, repoets autoritative
     kommuneliste. Sundhedsprofilen bruger enkelte andre stavemåder; de
     oversættes her.
     """
-    kort: dict[str, str] = {}
-    with open(DATA / "master_indicators.csv", encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            kort[row["kommune_navn"]] = row["kommune_kode"]
+    kort: dict[str, str] = {navn: kode for kode, navn in KOMMUNER.items()}
     alias = {
         "Bornholm": "Bornholms Regionskommune",
         "Vesthimmerlands": "Vesthimmerlands Kommune",
@@ -440,7 +440,7 @@ def main() -> None:
                                      "aar": a, "raw_value": pct})
 
     if umatchede:
-        print(f"\n⚠ Kommunenavne uden match i master: {sorted(umatchede)}")
+        print(f"\n⚠ Kommunenavne uden match i data/kommuner.json: {sorted(umatchede)}")
 
     # --- skriv scores-CSV ---
     ids = [i["id"] for i in INDIKATORER if i["id"] in seneste]
@@ -453,6 +453,7 @@ def main() -> None:
         header = ["kommune_kode"]
         for i in ids:
             header += [f"{i}_pct", f"{i}_ratio"]
+        header += [f"{i}_ref" for i in ids]   # landstallet (vægtet), se vaegtet_landsgennemsnit()
         w.writerow(header)
         for kode in alle_koder:
             row = [kode]
@@ -464,6 +465,7 @@ def main() -> None:
                 r = (ratio_inverse(pct, landstal[i]) if inverse[i]
                      else ratio_direct(pct, landstal[i]))
                 row += [pct, min(r, 150)]
+            row += [round(landstal[i], 4) for i in ids]
             w.writerow(row)
     print(f"\n✓ Skrev {ud.relative_to(ROOT)} ({len(alle_koder)} kommuner, {len(ids)} indikatorer)")
 

@@ -1,5 +1,7 @@
 {
   "AFSTB4": "2024",
+  "AREALDK2": "2024",
+  "BIB3A": "2025",
   "BIL800": "2026",
   "BOERN1": "2024",
   "BOERN8": "2024",
@@ -8,8 +10,13 @@
   "BOL106": "2026",
   "BU43": "2025",
   "FOLK1A": "2026",
+  "GS/ELEVFRAV/FRAVAAR": "2025",
+  "GS/KARA/KARAGNS": "2025",
+  "GS/PROFMOD/PROFMOD": "2023",
+  "GS/TRIV/TRIVIND": "2026",
   "HFUDD11": "2025",
   "HISBK": "2025",
+  "HJEMSYG": "2025",
   "IDRAKT02": "2025",
   "IDRFAC01": "2025",
   "IDRFIN02": "2025",
@@ -29,6 +36,8 @@
   "STRAF11": "2025",
   "SUNDAF01": "2024",
   "SYGP1": "2025",
-  "UHELDK1": "2024",
-  "UND2": "2024"
+  "UHELDK1": "2025",
+  "UND2": "2025",
+  "VANDIND": "2024",
+  "VANDUD": "2024"
 }

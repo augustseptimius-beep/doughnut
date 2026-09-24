@@ -506,8 +506,10 @@ def beregn_og_gem(
 
     # Gem CSV
     OUTPUT_FIL.parent.mkdir(parents=True, exist_ok=True)
+    for r in resultater:
+        r["naer_landbrug_ref"] = round(landssnit, 4)   # landstallet (markblok-vægtet)
     fieldnames = ["kommune_kode", "kommune_navn", "n_ceiling_kg_per_ha",
-                  "markblok_ha_i_opland", "n_ratio"]
+                  "markblok_ha_i_opland", "n_ratio", "naer_landbrug_ref"]
     with open(OUTPUT_FIL, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()

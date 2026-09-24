@@ -15,12 +15,15 @@ Nu står indikatorerne ét sted, data/indikatorer.json, og både Python og
 webappen læser derfra. Det fjerner selve sync-problemet, men tre ting kan
 stadig skride, og dem tjekker dette script:
 
-  1. Registret selv (dubletter, manglende felter, kategorier der peger forkert).
+  1. Registret selv (dubletter, manglende felter, kategorier der peger forkert)
+     og at master har præcis kommunerne i data/kommuner.json.
   2. Registret mod dataen: at master-CSV'en indeholder præcis registrets
      indikatorer, og at fortegnet i dataen passer med 'inverse' og
      'lower_is_better' (en fejl her vender en pil og en farve).
   3. Registret mod metodesidens fritekst: antal indikatorer, nævnte tabeller
      og worst-of/gennemsnit. Den tekst skrives stadig i hånden.
+  4. Retningspilen mod scoren: tidsseriens værdi for scorens år skal være
+     scorens råværdi, ellers beskriver pilen et andet tal end det der vises.
 
 Ren diagnose, skriver ingen filer - ligesom tjek_robusthed.py.
 
@@ -149,6 +152,51 @@ def _tjek_metodeside(fund: list[Fund], metode_tsx: str) -> None:
                          f"men beregningsteksten siger {'worst-of' if siger_worst else 'noget andet'}")
 
 
+# Pil mod score: en kommune "afviger" når seriens værdi for scorens år er mere
+# end PIL_TOLERANCE (relativt) fra scorens råværdi. Er det mere end
+# PIL_ANDEL_FEJL af kommunerne, beskriver pilen et andet tal end scoren (en
+# anden definition, et andet folketal) - det er en fejl. Færre afvigere er
+# typisk revisioner hos kilden mellem to hentninger og meldes som info.
+PIL_TOLERANCE = 0.01
+PIL_ANDEL_FEJL = 0.10
+
+
+def _tjek_pil_mod_score(fund: list[Fund], by_indicator: dict[str, list[dict]], raw: Path) -> None:
+    serie: dict[tuple[str, str], dict[str, float]] = {}
+    with open(raw, encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            v = _parse_float(r["vaerdi"])
+            if v is not None:
+                serie.setdefault((r["indicator_id"], r["kommune_kode"]), {})[r["aar"]] = v
+    for iid in sorted({i for i, _ in serie}):
+        rows = [r for r in by_indicator.get(iid, []) if _parse_float(r["raw_value"]) is not None]
+        if not rows:
+            continue
+        aarene = [r["data_year"] for r in rows]
+        aar = max(set(aarene), key=aarene.count).split("-")[-1]   # slutåret
+        par = []
+        for r in rows:
+            s_v = serie.get((iid, r["kommune_kode"]), {}).get(aar)
+            if s_v is not None:
+                par.append((r["kommune_navn"], _parse_float(r["raw_value"]), s_v))
+        if not par:
+            slut = max((a for (i, _), d in serie.items() if i == iid for a in d), default="?")
+            _info(fund, f"{iid}: pilens serie slutter i {slut}, scoren er fra {aar} - "
+                        f"kør fetch_trend_history.py, så pil og score er fra samme hentning")
+            continue
+        afviger = [(n, m, v) for n, m, v in par
+                   if abs(v - m) > PIL_TOLERANCE * max(abs(m), 1e-9)]
+        if not afviger:
+            continue
+        n, m, v = max(afviger, key=lambda t: abs(t[2] - t[1]) / max(abs(t[1]), 1e-9))
+        tekst = (f"{iid}: pilens serie afviger fra scoren i {len(afviger)} af {len(par)} "
+                 f"kommuner i {aar} (størst: {n} {m} i scoren, {v} i serien)")
+        if len(afviger) > PIL_ANDEL_FEJL * len(par):
+            _f(fund, tekst + " - pilen beskriver et andet tal end scoren")
+        else:
+            _info(fund, tekst)
+
+
 def kryds_tjek() -> list[Fund]:
     """Kører alle krydstjek og returnerer fundlisten. Kalder ikke sys.exit."""
     fund: list[Fund] = []
@@ -171,6 +219,14 @@ def kryds_tjek() -> list[Fund]:
 
     by_id = {i["id"]: i for i in reg["indikatorer"]}
     scoret = ir.scorede_sociale()
+
+    # 1b. Master har præcis de 98 kommuner i data/kommuner.json.
+    from kommuner import KOMMUNER
+    master_kommuner = {(r["kommune_kode"], r["kommune_navn"]) for rs in by_indicator.values() for r in rs}
+    for kode, navn in sorted(master_kommuner - set(KOMMUNER.items())):
+        _f(fund, f"master har kommunen {kode} {navn!r}, som ikke står i data/kommuner.json")
+    for kode, navn in sorted(set(KOMMUNER.items()) - master_kommuner):
+        _f(fund, f"kommunen {kode} {navn} fra data/kommuner.json mangler i master")
 
     # 2. Master indeholder præcis registrets indikatorer.
     master_ids = {i for i in by_indicator if not i.startswith("_dim_")}
@@ -218,6 +274,11 @@ def kryds_tjek() -> list[Fund]:
             trend_ids = {r["indicator_id"] for r in csv.DictReader(f)}
         for i in sorted(trend_ids - set(ir.op_er_godt())):
             _f(fund, f"{i}: har tidsserie i trend_history_raw.csv, men ingen retning i registret")
+
+    # 5b. Pilen og scoren skal beskrive samme tal. Tidsseriens værdi for
+    #     scorens år skal være scorens råværdi (CLAUDE.md pkt. 13 og 37).
+    if raw.exists():
+        _tjek_pil_mod_score(fund, by_indicator, raw)
 
     # 6. Metodesidens fritekst mod registret.
     metode_tsx = (ROOT / "webapp" / "app" / "metode" / "page.tsx").read_text(encoding="utf-8")

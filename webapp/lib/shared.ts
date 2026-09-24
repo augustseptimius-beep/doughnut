@@ -5,6 +5,7 @@
 // bruger. Doughnut-udgave og dataår beregnes i data.ts fra master-CSV'en.
 import registerJson from "../../data/indikatorer.json";
 import noegletalJson from "../../data/noegletal.json";
+import kommunerJson from "../../data/kommuner.json";
 
 interface RegisterIndikator {
   id: string;
@@ -244,22 +245,34 @@ export interface CategoryScore {
   }[];
 }
 
+/**
+ * Scoren som den vises: én decimal. Farver, tællinger ("N af 13 over
+ * gennemsnittet") og ringens tænder skal bruge samme tal som teksten, ellers
+ * kan en score på 99,96 stå som "100.0" og samtidig være farvet gul.
+ */
+export function visningsscore(score: number): number;
+export function visningsscore(score: number | null): number | null;
+export function visningsscore(score: number | null): number | null {
+  return score === null ? null : Number(score.toFixed(1));
+}
+
 export function computeCategoryScores(
   ratios: Record<string, number | null>
 ): CategoryScore[] {
   return SOCIAL_CATEGORIES.map((cat) => {
     const indicators = cat.indicatorIds.map((id) => ({
       indicator: INDICATORS.find((ind) => ind.id === id)!,
-      score: ratios[id] ?? null,
+      score: visningsscore(ratios[id] ?? null),
     }));
 
-    const validScores = indicators
-      .map((i) => i.score)
+    // Gennemsnittet regnes på de uafrundede ratios og afrundes bagefter.
+    const validScores = cat.indicatorIds
+      .map((id) => ratios[id] ?? null)
       .filter((s): s is number => s !== null);
 
     const score =
       validScores.length > 0
-        ? validScores.reduce((a, b) => a + b, 0) / validScores.length
+        ? visningsscore(validScores.reduce((a, b) => a + b, 0) / validScores.length)
         : null;
 
     return {
@@ -447,37 +460,17 @@ export function computeTop10Ratios(allData: KommuneData[]): void {
   }
 }
 
-// --- KOMMUNEGRUPPE-MAPPING (DST KOMMUNEGRUPPER_V1_2018) ---
-// G1: Hovedstadskommuner (24), G2: Storbykommuner (3),
-// G3: Provinsbykommuner (16), G4: Oplandskommuner (24), G5: Landkommuner (31)
-export const KOMMUNEGRUPPE: Record<string, number> = {
-  // G1: Hovedstadskommuner
-  "101": 1, "147": 1, "151": 1, "153": 1, "155": 1, "157": 1, "159": 1, "161": 1,
-  "163": 1, "165": 1, "167": 1, "169": 1, "173": 1, "175": 1, "183": 1, "185": 1,
-  "187": 1, "190": 1, "201": 1, "223": 1, "230": 1, "240": 1, "253": 1, "269": 1,
-  // G2: Storbykommuner
-  "461": 2, "751": 2, "851": 2,
-  // G3: Provinsbykommuner
-  "217": 3, "219": 3, "259": 3, "265": 3, "330": 3, "370": 3, "561": 3, "607": 3,
-  "615": 3, "621": 3, "630": 3, "657": 3, "661": 3, "730": 3, "740": 3, "791": 3,
-  // G4: Oplandskommuner
-  "210": 4, "250": 4, "260": 4, "270": 4, "316": 4, "320": 4, "329": 4, "336": 4,
-  "340": 4, "350": 4, "410": 4, "420": 4, "430": 4, "440": 4, "450": 4, "480": 4,
-  "575": 4, "706": 4, "710": 4, "727": 4, "746": 4, "756": 4, "766": 4, "840": 4,
-  // G5: Landkommuner
-  "306": 5, "326": 5, "360": 5, "376": 5, "390": 5, "400": 5, "479": 5, "482": 5,
-  "492": 5, "510": 5, "530": 5, "540": 5, "550": 5, "563": 5, "573": 5, "580": 5,
-  "665": 5, "671": 5, "707": 5, "741": 5, "760": 5, "773": 5, "779": 5, "787": 5,
-  "810": 5, "813": 5, "820": 5, "825": 5, "846": 5, "849": 5, "860": 5,
-};
+// --- KOMMUNEGRUPPER (DST KOMMUNEGRUPPER_V1_2018) ---
+// Fra data/kommuner.json, samme kommuneliste som Python-pipelinen bruger
+// (scripts/kommuner.py). G1 Hovedstadskommuner (24), G2 Storbykommuner (3),
+// G3 Provinsbykommuner (16), G4 Oplandskommuner (24), G5 Landkommuner (31).
+export const KOMMUNEGRUPPE: Record<string, number> = Object.fromEntries(
+  kommunerJson.kommuner.map((k) => [k.kode, k.gruppe]),
+);
 
-export const KOMMUNEGRUPPE_NAVNE: Record<number, string> = {
-  1: "Hovedstadskommuner",
-  2: "Storbykommuner",
-  3: "Provinsbykommuner",
-  4: "Oplandskommuner",
-  5: "Landkommuner",
-};
+export const KOMMUNEGRUPPE_NAVNE: Record<number, string> = Object.fromEntries(
+  Object.entries(kommunerJson.grupper).map(([gruppe, navn]) => [Number(gruppe), navn]),
+);
 
 export function kommunegruppeNavn(kode: string): string {
   const grp = KOMMUNEGRUPPE[kode];
@@ -540,15 +533,17 @@ export function computeGroupRatios(allData: KommuneData[]): void {
 }
 
 export function scoreColor(score: number | null): string {
-  if (score === null) return "text-gray-400";
-  if (score >= 100) return "text-emerald-600";
-  if (score >= 85) return "text-amber-500";
+  const s = visningsscore(score);
+  if (s === null) return "text-gray-400";
+  if (s >= 100) return "text-emerald-600";
+  if (s >= 85) return "text-amber-500";
   return "text-red-500";
 }
 
 export function scoreBarColor(score: number | null): string {
-  if (score === null) return "bg-gray-300";
-  if (score >= 100) return "bg-emerald-500";
-  if (score >= 85) return "bg-amber-400";
+  const s = visningsscore(score);
+  if (s === null) return "bg-gray-300";
+  if (s >= 100) return "bg-emerald-500";
+  if (s >= 85) return "bg-amber-400";
   return "bg-red-400";
 }

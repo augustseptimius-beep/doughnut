@@ -247,7 +247,9 @@ def tjek_aarstal(nyeste: dict[str, str]) -> None:
             continue
         tabel = m.group(1)
         hentet = reg.get(tabel)
-        if hentet and dy != hentet:
+        # Periodetal (period_years i registret) står som "2021-2025" i master,
+        # mens registret gemmer slutåret - sammenlign slutår med slutår.
+        if hentet and dy.split("-")[-1] != hentet:
             fund("ADVARSEL", iid,
                  f"master siger {dy}, men {tabel} blev hentet på {hentet}")
         n = nyeste.get(tabel)
