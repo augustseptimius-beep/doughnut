@@ -86,7 +86,7 @@ function kontrolRatio(ind: RegisterIndikator, raw: number | null, ref: number | 
     else if (raw === 0) x = Infinity;
     else x = (ref / raw) * 100;
   }
-  const cap = ind.category === "social" ? 150 : ind.cap;
+  const cap = ind.category === "social" ? Math.min(ind.cap ?? 150, 150) : ind.cap;
   if (cap !== undefined && x > cap) x = cap;
   if (!Number.isFinite(x)) return null;
   return Math.round(x * 100) / 100;

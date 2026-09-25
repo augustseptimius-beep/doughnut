@@ -1,7 +1,7 @@
 # Klimatilpasning - metodenote og fremtidigt arbejde
 
 **Opdateret:** September 2026 (undersøgelse af Kystplanlægger og HIP, se nedenfor)
-**Status:** To indikatorer implementeret: forsikringsskader (`vejr_skader`) og kystrisiko i 2070 (`kystrisiko`, fra sep. 2026). Kategorien måler restrisiko: hvor udsat kommunen er, når det der allerede er gjort, er regnet med.
+**Status:** To indikatorer implementeret: forsikringsskader (`vejr_skader`) og kystrisiko i 2070 (`kystrisiko`, fra sep. 2026). Kategorien måler restrisiko: hvor udsat kommunen er, når det der allerede er gjort, er regnet med. Kategorien er gennemsnittet af de to, og kystrisikoen tæller højst 100, så fravær af kyst ikke udligner vejrskader (CHANGELOG 25. sep. 2026). På sigt er den rigtige løsning at lægge skaderne sammen i kroner pr. indbygger, hvis F&P kan levere udbetalinger pr. kommune.
 
 ---
 

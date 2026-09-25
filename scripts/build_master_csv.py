@@ -118,6 +118,15 @@ def parse_float(s):
 SOCIAL_CAP = 150.0
 
 
+def _loft(ind):
+    """Indikatorens loft for ratio. Sociale: 150 (R1), eller lavere hvis
+    registret sætter 'cap' (kystrisiko: 100, så ingen risiko er neutral og
+    ikke en fordel). Økologiske: 'cap' hvis sat (R6), ellers intet loft."""
+    if ind["category"] == "social":
+        return min(float(ind.get("cap", SOCIAL_CAP)), SOCIAL_CAP)
+    return ind.get("cap")
+
+
 def _raw_over_ref(ind):
     """True: ratio = raw/ref×100. False: ratio = ref/raw×100.
 
@@ -158,7 +167,7 @@ def beregn_ratio(ind, raw, ref):
             x = math.inf
         else:
             x = ref / raw * 100
-    cap = SOCIAL_CAP if ind["category"] == "social" else ind.get("cap")
+    cap = _loft(ind)
     if cap is not None and x > cap:
         x = float(cap)
     if math.isinf(x):
@@ -189,7 +198,7 @@ def _rekonstruer_landstal(ind, raekker, raws):
     (150/cap) udelades, fordi de ikke siger noget om referencen.
     Beregnes ved hvert build fra den aktuelle CSV, så værdien aldrig er
     ældre end dataen."""
-    cap = SOCIAL_CAP if ind["category"] == "social" else ind.get("cap")
+    cap = _loft(ind)
     par = []
     for kode, r in raekker.items():
         raw, sr = raws.get(kode), _script_ratio(ind, r)
@@ -258,7 +267,7 @@ def beregn_indikator(ind, kommuner, get_csv):
             ref, kilde = _rekonstruer_landstal(ind, raekker, raws), "landstal, rekonstrueret"
 
     navne = dict(kommuner)
-    cap = SOCIAL_CAP if ind["category"] == "social" else ind.get("cap")
+    cap = _loft(ind)
     poster = []
     afvigelser = []
     for kode, _ in kommuner:

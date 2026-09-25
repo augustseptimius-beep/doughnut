@@ -45,8 +45,11 @@ selve kystlinjen. Summen deles med folketallet 1. januar 2021, datapakkens år
 
 Landstallet er Danmark som helhed: de 98 kommuners samlede risiko delt med
 deres samlede folketal (skrives i kystrisiko_ref). Ratioen beregnes af
-build_master_csv.py (invers: landstal / kommune × 100, loft 150). En kommune
-uden kystrisiko får derfor loftet 150.
+build_master_csv.py (invers: landstal / kommune × 100) med registrets loft på
+100: en kommune med kystrisiko under landstallet eller ingen kystrisiko står
+neutralt. Fravær af en fare er ikke robusthed ud over det sædvanlige, og med
+det almindelige loft på 150 ville en kommune uden kyst få en bonus, der i
+kategoriens gennemsnit udligner dens vejrskader.
 
 Afhængigheder (ud over standardbiblioteket): numpy og rasterio.
   pip3 install numpy rasterio
@@ -216,7 +219,7 @@ def main():
             "kystrisiko_oversvoemmelse_mio": round(risiko[k]["oversvoemmelse"] / 1e6, 3),
             "kystrisiko_erosion_mio": round(risiko[k]["erosion"] / 1e6, 3),
             "kystrisiko_raw": raw,
-            "kystrisiko_ratio": 150.0 if raw == 0 else round(min(landstal / raw * 100, 150), 2),
+            "kystrisiko_ratio": 100.0 if raw == 0 else round(min(landstal / raw * 100, 100), 2),
             "kystrisiko_ref": landstal,
         })
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)

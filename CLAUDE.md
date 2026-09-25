@@ -300,7 +300,7 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
     - **Datapakken er fra 2021 og er 4,3 GB.** `fetch_kystrisiko.py` henter kun de to risikolag for 2070 med range-requests og kræver `numpy` og `rasterio`. Serverens HEAD-svar har en forkert længde; størrelsen læses af `Content-Range`. Kør kun scriptet igen, når Kystdirektoratet udgiver en ny datapakke.
     - **Diger og klitter i højdemodellen 2014-2015 indgår, anden kystbeskyttelse som udgangspunkt ikke.** Nye tiltag slår først igennem ved en ny kortlægning, så indikatoren har ingen retningspil.
     - **Kystceller med centrum i havet tildeles den kommune, de berører.** Ellers tabes ca. 13 % af erosionsrisikoen, som ligger i selve kystlinjen.
-    - **43 kommuner står på loftet 150**, fordi alle under ca. 686 kr. pr. indbygger (2/3 af landstallet) rammer loftet med den inverse ratio. Det er bl.a. alle kommuner uden kyst.
+    - **Loftet er 100, ikke 150** (registrets `cap`, arkitekturdokumentet R1). Ingen eller lav kystrisiko er neutral, ikke en fordel; med 150 udlignede fraværet af kyst kommunens vejrskader i gennemsnittet. 51 kommuner står på 100. Loftet gælder også i kommunegruppe- og top10-visningen (`Indicator.loft` i `shared.ts`). Worst-of blev fravalgt: den skjuler `vejr_skader`, den eneste af de to der reagerer på tiltag, i de 35 kommuner hvor kystrisikoen er lavest, og den laveste af to relative mål ligger systematisk under 100.
 
 ## Arbejdsprincipper for ændringer
 

@@ -49,6 +49,15 @@ gælder alle sociale indikatorer, også dem der slås op på kommunenavn (R5).
 Top 10%- og kommunegruppe-baselinen lægger samme loft på igen efter
 omskaleringen (R9, R10), så en social ratio er højst 150 i alle tre visninger.
 
+En social indikator kan have et lavere loft i registret (`cap`, fra sep. 2026).
+Det bruges kun, hvor fravær af en belastning ellers ville blive belønnet:
+`kystrisiko` har loftet 100, så en kommune uden eller med lav kystrisiko står
+neutralt. Med 150 ville en kommune uden kyst få en bonus, der i Klimatilpasnings
+gennemsnit udligner dens vejrskader (Holstebro gik fra rød til grøn). Loftet
+gælder i alle tre visninger (`Indicator.loft` i `shared.ts`, `_loft()` i
+`build_master_csv.py` og kontrolkopien i `data.ts`), og registret afviser et
+socialt `cap` over 150.
+
 Konsekvens for visningen: for en kappet kommune kan referenceværdien ikke
 udledes baglæns af ratio og råværdi. `ScoreBars` viser derfor ikke
 "Landsgns"/gruppe-værdien ved indikatorer hvor kommunens ratio er 150, hverken
