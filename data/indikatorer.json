@@ -19,7 +19,7 @@
     "sports_facilities": "Fjernet sep. 2026: korrelerede negativt med resten af Fællesskab (CLAUDE.md pkt. 28).",
     "sports_spending": "Fjernet sep. 2026: som sports_facilities.",
     "naer_landbrug": "Fjernet sep. 2026: tålegrænsen for kvælstof pr. ha landbrug målte hvor følsomt kystvandet er, ikke hvor meget det belastes, og kunne ikke vise fremskridt. Afløst af naer_kystvand (statusbelastning mod målbelastning). Rådata ligger stadig i n_landbrug_scores.csv.",
-    "naer_nitrogen": "Fjernet sep. 2026: kvælstof fra spildevand indgår allerede i statusbelastningen, som naer_kystvand måler mod målbelastningen. Pr. indbygger i renseanlæggets kommune gav tallet et skævt billede (Frederiksbergs spildevand renses i København), og som relativ worst-of-indikator kunne en mindre kilde (ca. 5% af kvælstoffet) afgøre dimensionen. Rådata ligger stadig i naeringsstoffer_scores.csv.",
+    "naer_nitrogen": "Fjernet sep. 2026: kvælstof fra spildevand indgår allerede i statusbelastningen, som naer_kystvand måler mod målbelastningen. Pr. indbygger i renseanlæggets kommune gav tallet et skævt billede (Frederiksbergs spildevand renses i København), og som relativ worst-of-indikator kunne en mindre kilde (ca. 5% af kvælstoffet) afgøre dimensionen. Rådata ligger stadig i naeringsstoffer_scores.csv. Besluttet 25. sep. 2026 (docs/oekologisk-gennemgang-sep-2026.md afsnit 6): heller ikke som kontekst. Kontekst er kun til opdelinger af et scoret tal (CLAUDE.md pkt. 9), og kommunens spildevand er ikke en opdeling af kystvandets samlede belastning. Kommunens handlerum vises bedst med en kildeopdeling af belastningen pr. opland, hvis en sådan findes.",
     "naer_phosphorus": "Fjernet sep. 2026: som naer_nitrogen. Fosfor har ingen målbelastning for kystvandene (sat lig baseline i vandområdeplanerne), så der findes ingen grænse at måle det mod. Søernes fosformålbelastning er en kandidat til en senere indikator.",
     "areal_intensiv": "Slået sammen sep. 2026 med areal_bebygget til areal_antropiseret (Dao m.fl. 2015). De to andele er hinandens spejlbillede (by mod land), så worst-of af to relative andele gjorde 82 af 98 kommuner røde af konstruktionsmæssige grunde. Andelene står stadig i arealanvendelse_scores.csv.",
     "areal_bebygget": "Slået sammen sep. 2026 med areal_intensiv til areal_antropiseret, se dér."
@@ -1140,7 +1140,8 @@
       "baseline_type": "absolut",
       "boundary": "Mål: 2,5 ton CO₂e/person/år (territorial)",
       "raw_key": "eco_klima_raw",
-      "ratio_key": "klimapaavirkning_self"
+      "ratio_key": "klimapaavirkning_self",
+      "note": "Ratio = CO2e pr. indbygger / 2,5 ton × 100. Besluttet 25. sep. 2026 (docs/oekologisk-gennemgang-sep-2026.md afsnit 6): 2,5 ton frem for 3, fordi 2,5 har en kilde (Hot or Cool Institute 2021: 1,5-graders-niveau i 2030) og 3 ton ikke har. Valget flytter ingen farver (alle 98 er røde med begge). Forbehold: målet er udledt for husholdningernes forbrug og bruges her også på det territoriale tal; det står på metodesiden."
     },
     {
       "id": "luftkvalitet_no2",
@@ -1240,7 +1241,7 @@
       "boundary": "Grænse: målbelastningen (100 %)",
       "raw_key": "eco_naer_kystvand_raw",
       "ratio_key": "eco_naer_kystvand_ratio",
-      "note": "Statusbelastning (afstrømningsnormaliseret 2017-2021) / målbelastning for de kystvande kommunens areal afvander til, højeste i kæden nedstrøms, arealvægtet. Bilag 1.1 i Vandområdeplanerne 2021-2027 efter genbesøget (apr. 2026) + deloplande fra MiljøGIS. fetch_kvaelstof_kystvand.py."
+      "note": "Statusbelastning (afstrømningsnormaliseret 2017-2021) / målbelastning for de kystvande kommunens areal afvander til, højeste i kæden nedstrøms, arealvægtet. Bilag 1.1 i Vandområdeplanerne 2021-2027 efter genbesøget (apr. 2026) + deloplande fra MiljøGIS. fetch_kvaelstof_kystvand.py. Besluttet 25. sep. 2026 (docs/oekologisk-gennemgang-sep-2026.md afsnit 6): kæde-reglen (højeste overskridelse nedstrøms) beholdes, fordi planens egen statusbelastning for et kystvand omfatter hele oplandet opstrøms (Løgstør Bredning: 5.088 km² inkl. Thisted Bredning og Nissum Bredning). Uden kæden ville Thisted ligge på ca. 177 frem for 202,7. Tallet beskriver det vand kommunen afvander til, ikke kommunens eget bidrag."
     },
     {
       "id": "n_deposition",
@@ -1261,7 +1262,7 @@
       "boundary": "Tålegrænse: 10 kg N/ha/år",
       "raw_key": "eco_n_deposition_raw",
       "ratio_key": "eco_n_deposition_ratio",
-      "note": "DCE's DEHM-beregning af tør- og våddeposition pr. kommune, treårsgennemsnit. Tålegrænsen er midten af intervallet 5-15 kg N/ha/år for heder og klitter (Bobbink m.fl. 2022; Bak 2024, DCE-notat 2024|16). fetch_kvaelstofdeposition.py."
+      "note": "DCE's DEHM-beregning af tør- og våddeposition pr. kommune, treårsgennemsnit. Tålegrænsen er midten af intervallet 5-15 kg N/ha/år for heder og klitter (Bobbink m.fl. 2022; Bak 2024, DCE-notat 2024|16). fetch_kvaelstofdeposition.py. Besluttet 25. sep. 2026 (docs/oekologisk-gennemgang-sep-2026.md afsnit 6): tålegrænse 10 og placering under Næringsstoffer. Følsomhed: 5 kg → 98 kommuner over, 10 → 62, 15 → 2 (Aabenraa, Vejen). Dimensionen påvirkes næsten ikke, fordi naer_kystvand afgør den i 80 kommuner. Placering: planetary boundaries sorterer efter presset (kvælstofkredsløbet under biogeokemiske strømme), og biodiversitetsgrænsen måler tilstand; det følger også princippet én grænse = én dimension. Under Biodiversitet ville 2 kommuner skifte farve dér (Lyngby-Taarbæk, Fanø) og 1 på Næringsstoffer (Bornholm)."
     },
     {
       "id": "overfladevand",
@@ -1340,7 +1341,7 @@
       "boundary": "Mål: 2,5 ton CO₂e/person/år (forbrugsbaseret)",
       "raw_key": "forbrug_co2",
       "ratio_key": "forbrug_co2_self",
-      "note": "Tier 1-estimat: Osei-Owusu et al. (2020) for 2011, ganget med Energistyrelsens nationale udvikling pr. indbygger fra 2011 til seneste år (fetch_forbrug_co2.py henter tidsserien). Ratio = estimat / 2,5 ton × 100. Se data/methodology_note.md.",
+      "note": "Tier 1-estimat: Osei-Owusu et al. (2020) for 2011, ganget med Energistyrelsens nationale udvikling pr. indbygger fra 2011 til seneste år (fetch_forbrug_co2.py henter tidsserien). Ratio = estimat / 2,5 ton × 100. Se data/methodology_note.md. Besluttet 25. sep. 2026 (docs/oekologisk-gennemgang-sep-2026.md afsnit 6): grænsen 2,5 ton, se klimapaavirkning.",
       "table": "ENS Global Afrapportering"
     },
     {
@@ -1361,7 +1362,7 @@
       "boundary": "Landsgns.: {ref:pesticider:1}% af de aktive vandværker har fund",
       "raw_key": "eco_pesticid_raw",
       "ratio_key": "pesticider_self",
-      "note": "GEUS Jupiter: andel aktive almene vandværker med fund af pesticider eller nedbrydningsprodukter i seneste analyse (højst 10 år gammel), empirisk Bayes-udglattet (beta-binomial). Fra sep. 2026; før talte nedlagte værker og værker under kravværdien med som 'over'. CLAUDE.md pkt. 21."
+      "note": "GEUS Jupiter: andel aktive almene vandværker med fund af pesticider eller nedbrydningsprodukter i seneste analyse (højst 10 år gammel), empirisk Bayes-udglattet (beta-binomial). Fra sep. 2026; før talte nedlagte værker og værker under kravværdien med som 'over'. CLAUDE.md pkt. 21. Besluttet 25. sep. 2026 (docs/oekologisk-gennemgang-sep-2026.md afsnit 6): fund frem for over kravværdien. Kun 33 aktive vandværker er aktuelt over kravværdien (0,1 µg/l pr. stof), så næsten alle kommuner ville få 0 og indikatoren kunne ikke skelne dem; fund er GEUS' egen hovedindikator. Et fund over kravværdien ER en overskridelse af drikkevandskravet, men de fleste fund ligger under. Kravværdien er fastsat politisk ud fra et forsigtighedsprincip, ikke ud fra stoffernes giftighed (Miljøstyrelsen, jan. 2025)."
     },
     {
       "id": "nitrat",
@@ -1400,7 +1401,7 @@
       "raw_key": "eco_vandindvinding_raw",
       "ratio_key": "vandindvinding_self",
       "period_years": 3,
-      "note": "Fra sep. 2026 al indvinding (almene vandværker, virksomheder, markvanding) pr. landareal, treårsgennemsnit. Før almene vandværker pr. indbygger, som viste hvor HOFOR har kildepladser (Furesø, Ishøj, Lejre højest; København filtreret fra)."
+      "note": "Fra sep. 2026 al indvinding (almene vandværker, virksomheder, markvanding) pr. landareal, treårsgennemsnit. Før almene vandværker pr. indbygger, som viste hvor HOFOR har kildepladser (Furesø, Ishøj, Lejre højest; København filtreret fra). Besluttet 25. sep. 2026 (docs/oekologisk-gennemgang-sep-2026.md afsnit 6): pr. areal frem for pr. indbygger. Pr. indbygger viste hvor de store forsyninger har kildepladser og udelod 53% af indvindingen; pr. areal måler presset hvor vandet tages, i GEUS' enhed, og følger logikken i EEA's vandudnyttelsesindeks (WEI+). Kendt pris: små bykommuner (Herlev 0, Albertslund grøn; Frederiksberg, Ishøj, Furesø ekstreme). Næste skridt: grundvandsdannelsen i kommunen som nævner i stedet for landsgennemsnittet."
     },
     {
       "id": "areal_antropiseret",

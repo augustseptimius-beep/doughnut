@@ -15,6 +15,12 @@ Output CSV-kolonner (climate_scores.csv, scores klimapaavirkning-dimensionen):
 Ratio = (co2e_per_capita / Paris-budget) * 100
 Grænse = 2,5 ton CO2e/person/år (1,5-graders-niveau for 2030, Hot or Cool Institute 2021;
   indtil sep. 2026 3 ton, som ingen kilde kunne underbygge)
+  Besluttet 25. sep. 2026: 2,5 ton beholdes, fordi det er det eneste af de to
+  tal med en kilde, og valget flytter ingen farver (alle 98 kommuner er røde
+  med begge). Forbehold: Hot or Cool har udledt de 2,5 ton for husholdningernes
+  forbrug, og grænsen bruges her også på det territoriale tal (produktion til
+  eksport, landbrug). Det står på metodesiden. Gå kun tilbage til 3 ton, hvis
+  nogen finder en kilde til det. Se docs/oekologisk-gennemgang-sep-2026.md.
 > 100 = overshoot (overskrider planetær grænse)
 < 100 = inden for sikker zone
 

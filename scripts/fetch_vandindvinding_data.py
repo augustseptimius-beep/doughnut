@@ -27,6 +27,20 @@ Derfor måles der mod landsgennemsnittet.
 Markvandingen svinger med sommerens nedbør (286 mio. m³ i 2023, 92 mio. m³ i
 2024), så scoren er gennemsnittet af de tre seneste år.
 
+BESLUTNING 25. SEP. 2026: PR. AREAL, IKKE PR. INDBYGGER
+--------------------------------------------------------
+Pr. areal måler presset der, hvor vandet pumpes op, og følger logikken i
+EEA's vandudnyttelsesindeks (WEI+), hvor indvindingen sættes i forhold til
+den tilgængelige ressource i området. Prisen er de små bykommuner, hvor
+arealet er lille i forhold til kildepladserne eller der slet ingen er:
+Herlev har ingen indvinding og får 0, Albertslund står grøn, mens
+Frederiksberg (ca. 1.260), Ishøj (ca. 1.000) og Furesø (ca. 930) får
+ekstreme tal. Tallene er fysisk rigtige, men grundvandsoplandet er større
+end kommunen, så de skal formidles forsigtigt. En bykommune, hvis borgere
+bruger vand fra nabokommunen, får ikke det forbrug tilskrevet.
+Næste skridt: måle indvindingen mod grundvandsdannelsen i kommunen frem for
+mod landsgennemsnittet. Se docs/oekologisk-gennemgang-sep-2026.md afsnit 6.
+
 Datakilde:
   Danmarks Statistik VANDIND (VANDTYP=TOTVAND, INDKAT 100, 105, 110) og
   AREALDK2 (samlet areal minus søer og vandløb).

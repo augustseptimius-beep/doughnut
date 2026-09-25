@@ -291,6 +291,7 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
     - **Arealanvendelse er ét tal (antropiseret areal).** De to gamle andele står stadig i `arealanvendelse_scores.csv`.
     - **Klimagrænsen er 2,5 ton**, ikke 3. De 3 ton havde ingen kilde. `fetch_forbrug_co2.py` henter Energistyrelsens tidsserie og skal køres, når en ny Global Afrapportering udkommer (typisk april).
     - **Affald og genanvendelse er treårsmedianer** (fejlindberetninger i LABY25 2023).
+    - **Seks metodevalg er truffet (25. sep. 2026)** og står med argumenter i notatets afsnit 6, i registrets `note`-felter og i de berørte fetch-scripts' docstrings: klimagrænse 2,5 ton, spildevand ude (også som kontekst), pesticider som fund (ikke over kravværdien), vand pr. areal, tålegrænse 10 kg N/ha under Næringsstoffer, og kæde-reglen for kystvande. Læs argumenterne, før et af dem genåbnes. Pesticidfund formidles præcist: et fund over kravværdien (0,1 µg/l) er en overskridelse af drikkevandskravet, men de fleste fund ligger under, og kravværdien er en politisk forsigtighedsværdi, ikke en sundhedsgrænse.
     - **Delvis opdatering af pilene uden API-nøgler:** `python3 scripts/fetch_trend_history.py --kun id1,id2 --fjern id3` genberegner kun serier fra `SAMME_SOM_SCOREN` og fletter dem ind i `trend_history_raw.csv`.
 
 ## Arbejdsprincipper for ændringer

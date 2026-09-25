@@ -182,21 +182,50 @@ kvælstofnedfaldet afgør scoren.
    som nævner.
 9. **Kendte huller fra før** står uændret: jordsundhed, drænede arealer, kystpres, PFAS.
 
-## 6. Valg du bør tage stilling til
+## 6. Beslutninger (25. september 2026)
 
-Ændringerne er gennemført, men flere er skøn, der kan vendes med én linje i registret:
+Projektlederen har fulgt anbefalingerne nedenfor. Hvert valg kan vendes med én linje i registret,
+men argumenterne står her, i registrets `note`-felter og i de berørte fetch-scripts, så de ikke skal
+genopfindes.
 
-- **2,5 ton som klimagrænse** i stedet for 3. Alternativet er at beholde 3 ton med en note om at
-  det ikke har en kilde. Farverne ændres ikke af valget.
-- **Spildevandsindikatorerne fjernet.** Kommunen styrer spildevandet direkte, og det argument taler
-  for at beholde dem, fx som kontekst. Mod: de måler en del af et tal, der nu måles mod en rigtig
-  grænse, og pr. indbygger er de skæve.
-- **Pesticider som fund frem for over kravværdien.** Over kravværdien er det, borgerne kender, men
-  med 33 aktive værker kan det ikke skelne kommunerne.
-- **Vand pr. areal frem for pr. indbygger.** Det måler presset hvor det sker, men giver en
-  bykommune uden egne værker grønt, selv om dens borgere bruger vand fra nabokommunen.
-- **Tålegrænsen på 10 kg N/ha/år** (midten af 5-15). Med 5 er alle 98 kommuner over, med 10
-  er 62, og med 15 kun 2 (Aabenraa og Vejen). Og placeringen under Næringsstoffer frem for Biodiversitet.
+- **Klimagrænsen er 2,5 ton, ikke 3.** 2,5 ton har en kilde (Hot or Cool Institute 2021:
+  1,5-graders-niveauet for 2030), det har 3 ton ikke. Valget flytter ingen farver, fordi alle 98
+  kommuner er røde med begge tal. Forbeholdet er, at målet er udledt for husholdningernes forbrug og
+  her også bruges på det territoriale tal. Det står på metodesiden. Gå kun tilbage til 3 ton, hvis
+  nogen finder en kilde til det tal.
+- **Spildevandet forbliver fjernet, også som kontekst.** Spildevandet tæller stadig med, fordi det
+  indgår i kystvandenes statusbelastning. Pr. indbygger i renseanlæggets kommune viser tallet, hvor
+  anlægget ligger, og ikke hvem der udleder (Frederiksbergs spildevand renses i København). Kontekst
+  er kun til opdelinger af et scoret tal (CLAUDE.md pkt. 9), og kommunens spildevand er ikke en
+  opdeling af kystvandets samlede belastning. Skal kommunens handlerum vises, er vejen en
+  kildeopdeling af belastningen pr. opland (landbrug, spildevand, regnvand); det er ikke undersøgt,
+  om en sådan findes offentligt.
+- **Pesticider måles som fund.** Kun 33 aktive vandværker er aktuelt over kravværdien, så med den
+  afgrænsning ville næsten alle kommuner få 0, og indikatoren kunne ikke skelne dem. Fund er GEUS'
+  egen hovedindikator. Et fund kan ligge under eller over kravværdien (0,1 µg/l pr. stof); et fund
+  over er en overskridelse af drikkevandskravet, men de fleste fund ligger under. Kravværdien er
+  fastsat politisk ud fra et forsigtighedsprincip, ikke ud fra stoffernes giftighed (Miljøstyrelsen,
+  januar 2025). Det står nu på metodesiden.
+- **Vand måles pr. areal.** Pr. indbygger viste, hvor de store forsyninger har kildepladser, og
+  udelod 53% af indvindingen. Pr. areal måler presset, hvor vandet pumpes op, i GEUS' enhed og efter
+  samme logik som EEA's vandudnyttelsesindeks (WEI+), hvor indvindingen sættes i forhold til den
+  tilgængelige ressource. Prisen er de små bykommuner: Herlev har ingen indvinding og får 0,
+  Albertslund står grøn, mens Frederiksberg (ca. 1.260), Ishøj (ca. 1.000) og Furesø (ca. 930) får
+  ekstreme tal. Næste skridt er at måle indvindingen mod grundvandsdannelsen i kommunen i stedet
+  for mod landsgennemsnittet.
+- **Tålegrænsen er 10 kg N/ha/år, og nedfaldet står under Næringsstoffer.** Valget betyder meget
+  for indikatoren (5 kg: 98 kommuner over, 10: 62, 15: 2) og næsten intet for dimensionen, fordi
+  kystvandet afgør Næringsstoffer i 80 kommuner og nedfaldet kun i 8. Planetary boundaries sorterer
+  efter presset: kvælstofkredsløbet hører under de biogeokemiske strømme, uanset om skaden sker i
+  havet eller på heden, mens biodiversitetsgrænsen måler naturens tilstand. Det følger også
+  platformens princip om én grænse pr. dimension. Under Biodiversitet ville 2 kommuner skifte farve
+  dér (Lyngby-Taarbæk og Fanø fra grøn til gul) og 1 på Næringsstoffer (Bornholm fra rød til gul).
+- **Kystvandets kæde-regel beholdes.** Det var et valg, der ikke stod på listen. Planens
+  statusbelastning for et kystvand omfatter hele oplandet opstrøms (Løgstør Bredning: 5.088 km²
+  inkl. Thisted Bredning og Nissum Bredning), så kvælstof fra Thy tæller med i Løgstørs
+  overskridelse. Derfor får et delopland den højeste overskridelse i sin kæde. Uden kæden ville
+  Thisted ligge på ca. 177 frem for 202,7. Tallet beskriver det vand, kommunen afvander til, ikke
+  kommunens eget bidrag.
 
 ## 7. Kilder
 
@@ -216,6 +245,7 @@ kvælstofnedfaldet afgør scoren.
 - Kleinman, J.C. (1973). Proportions with extraneous variance: single and independent samples. Journal of the American Statistical Association 68:46-54.
 - Marshall, R.J. (1991). Mapping disease and mortality rates using empirical Bayes estimators. Applied Statistics 40:283.
 - Miljøstyrelsen (2023). Forvaltning af fremtidens drikkevandsressource.
+- Miljøstyrelsen (2025). Befolkningen kan have tillid til den danske vandforsyning. Nyhed, januar 2025. https://mst.dk/nyheder/2025/januar/befolkningen-kan-have-tillid-til-den-danske-vandforsyning
 - O'Neill, D.W., Fanning, A.L., Lamb, W.F. & Steinberger, J.K. (2018). A good life for all within planetary boundaries. Nature Sustainability 1:88-95.
 - Richardson, K. m.fl. (2023). Earth beyond six of nine planetary boundaries. Science Advances 9:eadh2458.
 - Styrelsen for Grøn Arealomlægning og Vandmiljø (2026). Vandområdeplanerne 2021-2027 efter genbesøget, revideret april 2026, bilag 1.1.

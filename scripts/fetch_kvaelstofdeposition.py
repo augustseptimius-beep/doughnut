@@ -24,8 +24,22 @@ naturtyper af DCE: Bak 2024, fagligt notat 2024|16). For de udbredte følsomme
 naturtyper - heder, klitter og klithede - er intervallet 5-15 kg N/ha/år, og
 10 er midten. DCE sammenholder selv gitterdepositionen (4-18 kg N/ha) med
 netop disse intervaller i "Atmosfærisk deposition 2023" (SR626).
-Med den nedre grænse (5) ville alle kommuner være langt over; med den øvre
-(15) ville ingen være det. Valget er dokumenteret på metodesiden.
+Valget betyder meget for indikatoren: med 5 er alle 98 kommuner over, med 10
+er 62, og med 15 kun 2 (Aabenraa og Vejen, 2022-2024). Det betyder næsten
+intet for dimensionen, fordi kystvandet (naer_kystvand) afgør Næringsstoffer
+i 80 kommuner og nedfaldet kun i 8. Valget er dokumenteret på metodesiden.
+
+PLACERING (besluttet 25. sep. 2026)
+-----------------------------------
+Indikatoren står under Næringsstoffer, ikke Biodiversitet. Planetary
+boundaries sorterer efter presset: kvælstofkredsløbet hører under de
+biogeokemiske strømme, uanset om skaden sker i havet eller på heden, mens
+biodiversitetsgrænsen måler naturens tilstand. Det følger også platformens
+princip om én planetær grænse pr. dimension. Flyttes den alligevel, skifter 2
+kommuner farve på Biodiversitet (Lyngby-Taarbæk og Fanø fra grøn til gul) og
+1 på Næringsstoffer (Bornholm fra rød til gul). Argumentet for at flytte er,
+at Biodiversitet i dag hverken har et presmål eller en retningspil.
+Se docs/oekologisk-gennemgang-sep-2026.md afsnit 6.
 
 TRE ÅR
 ------

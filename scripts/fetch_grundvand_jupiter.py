@@ -44,6 +44,19 @@ stof_status færdigklassificeret pr. anlæg, mens en borings-opgørelse ville
 kræve at vi selv genskabte DN's udvælgelse af "aktive indvindingsboringer".
 Vandværksniveauet er desuden tættere på det borgerne får ud af hanen.
 
+PESTICIDER: FUND, IKKE OVER KRAVVÆRDIEN (besluttet 25. sep. 2026)
+----------------------------------------------------------------
+Indikatoren er andelen af aktive almene vandværker med FUND i seneste
+analyse. Kun 33 aktive vandværker er aktuelt over kravværdien, så med den
+afgrænsning ville næsten alle kommuner få 0, og indikatoren kunne ikke skelne
+dem. Fund er GEUS' egen hovedindikator for pesticider i grundvandet.
+Ved formidling: et fund kan ligge under eller over kravværdien (0,1 µg/l pr.
+stof, 0,5 µg/l i alt). Et fund OVER kravværdien er en overskridelse af
+drikkevandskravet; de fleste fund ligger under. Kravværdien er fastsat
+politisk ud fra et forsigtighedsprincip, ikke ud fra stoffernes giftighed
+(Miljøstyrelsen, jan. 2025), så en overskridelse er ikke i sig selv det
+samme som en sundhedsrisiko.
+
 FÆLDE
 -----
 Jupiter-WFS'en IGNORERER `CQL_FILTER` uden at fejle og returnerer så alle

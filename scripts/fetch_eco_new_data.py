@@ -11,7 +11,11 @@ Opretter/opdaterer:
 
 Indikatorer (platformen scorer fra sep. 2026 kun affald og genanvendelse herfra;
 kvælstof og fosfor fra spildevand er fjernet, se data/indikatorer.json's
-_fjernet, men skrives stadig til naeringsstoffer_scores.csv som kildespor):
+_fjernet, men skrives stadig til naeringsstoffer_scores.csv som kildespor.
+Besluttet 25. sep. 2026: de kommer heller ikke tilbage som kontekst. Spildevandet
+tæller allerede med i kystvandenes statusbelastning (naer_kystvand), tallet pr.
+indbygger viser hvor renseanlægget ligger og ikke hvem der udleder, og kontekst
+er kun til opdelinger af et scoret tal (CLAUDE.md pkt. 9)):
   NÆRINGSSTOFFER:
     - VANDUD (KV): Kvælstof-udledning (ton total-N) pr. 1.000 indb. (inverteret - lavere er bedre)
     - VANDUD (FO): Fosfor-udledning (ton total-P) pr. 1.000 indb. (inverteret - lavere er bedre)

@@ -49,6 +49,25 @@ METODE
 - Pr. kommune: arealvægtet gennemsnit over de dele af kommunen, der ligger i
   et delopland med en overskridelse.
 
+HVORFOR KÆDEN (besluttet 25. sep. 2026)
+---------------------------------------
+Planens statusbelastning for et kystvand omfatter hele oplandet opstrøms:
+Løgstør Bredning har et helopland på 5.088 km², som rummer både Thisted
+Bredning og Nissum Bredning. Kvælstof fra Thy tæller altså med i Løgstørs
+overskridelse (207%), og reduktioner dér hjælper Løgstør. Derfor får et
+delopland den højeste overskridelse i sin kæde. Uden kæden ville Thisted
+ligge på ca. 177 frem for 202,7.
+
+TO FORBEHOLD VED FORMIDLING
+---------------------------
+- Tallet beskriver det vand kommunen afvander til, ikke kommunens eget
+  bidrag. Arealvægtningen antager en jævn belastning pr. areal, men
+  udvaskningen afhænger af jordtype og landbrug. Kommunerne omkring
+  Limfjorden deler derfor langt hen ad vejen samme tal.
+- Fanø, Varde og Tønder afvander delvist til Vesterhavet syd, der ikke har
+  en målbelastning; de vægtes kun på resten af arealet
+  (areal_andel_med_maal_pct, Fanø 73%).
+
 Krav: pip install geopandas pypdf
 
 Brug (fra projektets rodmappe):
