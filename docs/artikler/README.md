@@ -11,4 +11,4 @@ Alle tal er beregnet på datafilerne ved commit 80a914c (25. september 2026). `a
 python3 docs/artikler/analyse_artikler.py
 ```
 
-Opdateres data, passer tallene i artiklerne ikke længere. Kør scriptet og ret teksten, eller behold artiklerne som et øjebliksbillede af 25. september 2026.
+Efter artiklerne blev skrevet, er lavindkomst fjernet fra Lighed (se `data/CHANGELOG.md`, 25. september 2026). Artiklerne beskriver derfor Lighed med tre indikatorer og den sociale ring med 50. Opdateres data, passer tallene i artiklerne ikke længere. Kør scriptet og ret teksten, eller behold artiklerne som et øjebliksbillede af 25. september 2026.

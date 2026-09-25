@@ -15,6 +15,7 @@
   "_fjernet": {
     "car_access": "Fjernet 2026: 'flere biler = bedre' er skævt i en bæredygtighedsramme og gav landdistrikter en kunstigt høj mobilitets-score. Rådata ligger stadig i mobilitet_scores.csv.",
     "apprenticeship": "Pensioneret aug. 2026: UVM-nøgletallet findes ikke længere, fortegnet var tvivlsomt, og tallene var ustabile. Det rigtige måltal ville være praktikpladsgraden.",
+    "low_income": "Fjernet sep. 2026: samme tabel som børnefattigdom (LABY07, alle aldre mod 0-17 år), og de to korrelerede 0,87. Den korrelerede også 0,78 med relativ fattigdom (IFOR12P) under Velfærd, så fattigdomsniveauet talte både i Velfærd og i Lighed. Lighed måler nu fordelingen: Gini og beskæftigelsesgabet efter herkomst. Rådata ligger stadig i doughnut_scores.csv, og tidsserien er slettet af trend_history_raw.csv.",
     "medicin": "Fjernet sep. 2026: scorbar, men fortegnet var uafklaret. Blev fjernet frem for parkeret som kontekst (CLAUDE.md pkt. 9).",
     "sports_facilities": "Fjernet sep. 2026: korrelerede negativt med resten af Fællesskab (CLAUDE.md pkt. 28).",
     "sports_spending": "Fjernet sep. 2026: som sports_facilities.",
@@ -77,7 +78,7 @@
       "id": "lighed",
       "name": "Lighed",
       "description": "Fordelingen af indkomst og materielle ressourcer i kommunen - et mål for strukturel ulighed og sociale skel.",
-      "indicators": ["gini", "low_income", "employment_origin_gap"]
+      "indicators": ["gini", "employment_origin_gap"]
     },
     {
       "id": "mobilitet",
@@ -534,24 +535,6 @@
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Gini-koefficient måler den samlede indkomstulighed i kommunen. Høj ulighed underminerer social sammenhæng, tillid og fælles institutioner."
-    },
-    {
-      "id": "low_income",
-      "category": "social",
-      "dimension": "lighed",
-      "name": "Andel i lavindkomstgruppe",
-      "table": "LABY07",
-      "source": "DST LABY07",
-      "source_url": "https://www.statistikbanken.dk/LABY07",
-      "unit": "%",
-      "data_year": "2024",
-      "csv": "doughnut_scores.csv",
-      "ratio_col": "low_income_ratio",
-      "raw_col": "low_income_raw",
-      "reference": {"type": "landstal", "col": "low_income_ref", "definition": "DST's landstal (hele landet); fetch_doughnut_data.py"},
-      "inverse": true,
-      "baseline_level": 3,
-      "rationale": "Andel af befolkningen i relativ fattigdom efter DST's officielle mål (LABY07), hvor grænsen er 50% af medianindkomsten. Samme tabel som børnefattigdom, men for alle aldre. Adskiller sig fra relativ fattigdom under Velfærd (IFOR12P), der bruger 60%-grænsen."
     },
     {
       "id": "vulnerable_children",

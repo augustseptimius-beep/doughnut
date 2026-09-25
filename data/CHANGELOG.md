@@ -2,6 +2,13 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-25 (lavindkomst fjernet fra Lighed, Netlify bygger ved dataændringer)
+
+- **`low_income` er fjernet.** Andelen under 50 % af medianindkomsten (LABY07, alle aldre) kom fra samme tabel som børnefattigdom under Velfærd og korrelerede 0,87 med den og 0,78 med relativ fattigdom (IFOR12P). Fattigdomsniveauet talte dermed både i Velfærd og i Lighed. Lighed er nu gennemsnittet af Gini og beskæftigelsesgabet efter herkomst. De to korrelerer 0,09, så hver bestemmer halvdelen af kategorien.
+- **Konsekvens for Lighed:** landsgennemsnitsvisningen går fra 84/14/0 til 86/10/2 (grøn/gul/rød) med 17 skift, kommunegruppevisningen fra 42/55/1 til 58/36/4 med 41 skift. Velstående forstadskommuner falder, fordi lav fattigdom trak dem op (Rudersdal -18,5, Hørsholm -16,8, Gentofte -15,6 i gruppevisningen), mens Brøndby (+18,6), Ishøj (+17,5) og Høje-Taastrup (+14,7) stiger. Thisted 102,9 → 102,4.
+- Tidsserien er slettet af `trend_history_raw.csv`, og `fetch_trend_history.py` henter den ikke længere. Kun Lighed-pilen er ændret. Rådata ligger stadig i `doughnut_scores.csv`.
+- **Netlify bygger nu også ved ændringer i `data/`.** Med `base = "webapp"` sprang Netlify buildet over, når intet under `webapp/` var ændret ("Canceled build due to no content change"), så en ren dataopdatering blev ikke lagt ud. `netlify.toml` har fået en `ignore`-kommando, der også ser på `data/` og `netlify.toml`, og som bygger, når den forrige commit er ukendt.
+
 ## 2026-09-25 (kystrisiko under Klimatilpasning)
 
 - **Ny social indikator `kystrisiko`:** forventet årlig skade fra oversvømmelse fra havet og kysterosion i 2070 (RCP8.5) i kr. pr. indbygger, fra Kystdirektoratets Kystplanlægger (datapakke v1, marts 2021). Risikolagene (kr./år pr. 100 m-celle) summeres pr. kommune og deles med folketallet 1. januar 2021. Nyt script `fetch_kystrisiko.py`, ny fil `data/kystrisiko_scores.csv`.
