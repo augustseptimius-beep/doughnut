@@ -53,6 +53,7 @@
   "commute_distance": {"reference": 22.6, "daekning": 98, "data_year": "2024"},
   "public_transport": {"reference": 37.01, "daekning": 98, "data_year": "2026"},
   "vejr_skader": {"reference": 21.9196, "daekning": 98, "data_year": "2023-2025"},
+  "kystrisiko": {"reference": 1029.15, "daekning": 98, "data_year": "2021"},
   "klimapaavirkning": {"reference": 2.5, "daekning": 98, "data_year": "2023"},
   "luftkvalitet_no2": {"reference": 10.0, "daekning": 98, "data_year": "2024"},
   "luftkvalitet_pm25": {"reference": 5.0, "daekning": 98, "data_year": "2024"},

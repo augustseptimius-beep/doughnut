@@ -62,6 +62,10 @@ def valider(reg: dict) -> list[str]:
         for felt in _KRAEVEDE[kat]:
             if felt not in ind:
                 fejl.append(f"{iid}: mangler feltet {felt!r}")
+        # Et socialt loft kan kun sænke R1's 150 (kystrisiko: 100).
+        if kat == "social" and "cap" in ind and not (
+                isinstance(ind["cap"], (int, float)) and 0 < ind["cap"] <= 150):
+            fejl.append(f"{iid}: cap for en social indikator skal være et tal over 0 og højst 150")
         # Felter der skrives til master_indicators.csv. Webappen parser den med
         # split(","), så et komma forskyder kolonnerne og rækken forsvinder
         # tavst (sep. 2026: income_gender_gap manglede i alle 98 kommuner).

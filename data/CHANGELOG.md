@@ -2,6 +2,14 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-25 (kystrisiko under Klimatilpasning)
+
+- **Ny social indikator `kystrisiko`:** forventet årlig skade fra oversvømmelse fra havet og kysterosion i 2070 (RCP8.5) i kr. pr. indbygger, fra Kystdirektoratets Kystplanlægger (datapakke v1, marts 2021). Risikolagene (kr./år pr. 100 m-celle) summeres pr. kommune og deles med folketallet 1. januar 2021. Nyt script `fetch_kystrisiko.py`, ny fil `data/kystrisiko_scores.csv`.
+- **Landstal 1.029 kr. pr. indbygger pr. år** (6,0 mia. kr./år, heraf 4,1 mia. fra oversvømmelse og 1,9 mia. fra erosion). Højest: Lemvig 6.597 kr., Hvidovre 5.102, Fanø 4.926, Læsø 4.494, Samsø 4.357. Thisted 1.792 kr. (ratio 57,4). Loftet er 100 (registrets `cap`, R1): ingen eller lav kystrisiko er neutral, ikke en fordel. 51 kommuner står på 100.
+- **Klimatilpasning er nu gennemsnittet af `vejr_skader` og `kystrisiko`.** Farver fra 40/16/42 til 33/26/39 (grøn/gul/rød), 22 skift. Kystkommuner med få forsikringsskader falder (Hvidovre 137,0 → 78,6, Helsingør 121,8 → 76,5), og kommuner uden kystrisiko får kystrisikoen som neutral 100 (Holstebro 51,0 → 75,5, Frederiksberg 150 → 125). Thisted 45,7 → 51,6.
+- **Nyt: socialt loft pr. indikator.** Registrets `cap` kan nu sænke R1's loft på 150 for en social indikator; det lægges på i pipelinen og igen efter omskaleringen i kommunegruppe- og top10-visningen. Gennemsnit med loftet 150 (Holstebro blev grøn på fraværet af kyst) og worst-of (skjuler vejrskaderne, som er det eneste mål der reagerer på tiltag) blev fravalgt.
+- Begrundelse og forbehold: `data/klimatilpasning.md`.
+
 ## 2026-09-25 (UVM og Klimaregnskabet hentet med nye nøgler)
 
 - **Første hentning med de nye API-nøgler** efter tilbagekaldelsen i august: `fetch_udvidelse_data.py` og `fetch_trend_history.py` (fuld kørsel).

@@ -1,7 +1,7 @@
 # Klimatilpasning - metodenote og fremtidigt arbejde
 
-**Opdateret:** Maj 2026
-**Status:** Én indikator implementeret (proxy). Dimensionen er underudviklet.
+**Opdateret:** September 2026 (undersøgelse af Kystplanlægger og HIP, se nedenfor)
+**Status:** To indikatorer implementeret: forsikringsskader (`vejr_skader`) og kystrisiko i 2070 (`kystrisiko`, fra sep. 2026). Kategorien måler restrisiko: hvor udsat kommunen er, når det der allerede er gjort, er regnet med. Kategorien er gennemsnittet af de to, og kystrisikoen tæller højst 100, så fravær af kyst ikke udligner vejrskader (CHANGELOG 25. sep. 2026). På sigt er den rigtige løsning at lægge skaderne sammen i kroner pr. indbygger, hvis F&P kan levere udbetalinger pr. kommune.
 
 ---
 
@@ -51,6 +51,7 @@ OBS: Disse er fremtidige klimaprojektioner, ikke observerede data. Velegnet som 
 **Kystdirektoratets risikokortlægning (december 2024):**
 - 51 kommuner udpeget med "væsentlig oversvømmelsesrisiko" (binær variabel)
 - Ikke særlig differentieret - kan bruges som kontekst, ikke score
+- Kystplanlæggerens datapakke giver derimod et kontinuert tal pr. kommune, se "Undersøgt sep. 2026" nedenfor
 
 ### Tier 2 - Kræver GIS-behandling
 
@@ -69,7 +70,7 @@ OBS: Disse er fremtidige klimaprojektioner, ikke observerede data. Velegnet som 
 Disse måler hvad kommunen GØR, ikke hvad der sker. Langt mere relevant for Doughnut-rammen, men data er svær at finde på kommuneniveau:
 
 - **DK2020 ambitionsniveau:** Alle 98 kommuner har nu plan (ingen variation), men kvalitet varierer. CONCITO har vurderet planerne.
-- **Grøn infrastruktur/permeable overflader:** Ingen offentlig datakilde på kommuneniveau.
+- **Grøn infrastruktur/permeable overflader:** SDFI's befæstelseskort findes (nævnt i KL's vejviser og vist som støttelag i HIP, lavet på forårsortofoto, skråfoto og højdedata). Ikke undersøgt om det er landsdækkende og kan summeres pr. kommune. Befæstelse er desuden et tilstandsmål, ikke en indsats.
 - **Kommunale klimatilpasningsinvesteringer:** Budget/regnskabsdata via DST REGK, men svær at isolere klimatilpasning fra øvrige anlæg.
 
 ### Alternativ tilgang: Komposit-sårbarhedsindeks
@@ -80,6 +81,85 @@ En mere retfærdig indikator ville kombinere:
 3. Tilpasningskapacitet (grøn infrastruktur, investeringer)
 
 Dette er komplekst men fagligt korrekt. Se CONCITO (2024): "Adaptation approaches in Danish municipalities' climate action plans" for metodiske tilgange.
+
+---
+
+## Undersøgt sep. 2026: Kystplanlægger og HIP pr. kommune
+
+Anledning: KL's "Data- og værktøjsoversigt fra 5 webinarer om GIS-DATA-Klimatilpasning" (v1.0, 2023). Af kilderne i oversigten var Kystplanlægger og HIP de to, der kunne give et sammenligneligt tal for alle 98 kommuner. Kystplanlæggerens risiko for 2070 blev derefter indført som indikatoren `kystrisiko` (`scripts/fetch_kystrisiko.py`, se CHANGELOG 25. sep. 2026). Tallene for 2020 nedenfor er prøveberegningen; indikatoren bruger 2070, fordi kategorien skal måle robusthed over for klimaforandringerne. HIP-tallene er kun en prøveberegning.
+
+### Kystplanlægger (Kystdirektoratet) - oversvømmelse og erosion fra havet
+
+| Felt | Værdi |
+|------|-------|
+| Kilde | Kystplanlæggerens datapakke, version 1 af 18. marts 2021 |
+| URL | https://kystplanlaegger.dk/webgis-og-data/hent-data (zip på sftp.statens-it.dk, 4,3 GB, frit tilgængelig) |
+| Anvendte lag | `Oversvømmelse/Risiko/Oversvømmelses_Risiko_{2020,2070}.tif` og `Erosion/Risiko/Erosions_risiko_{2020,2070}.tif` |
+| Enhed | Forventet skade i kr./år pr. 100 m-celle (risiko = skade vægtet med sandsynligheden for 50-, 100-, 1.000- og 10.000-årshændelser) |
+| Scenarie | RCP8.5 for 2070 og 2120 |
+
+**Metode i prøveberegningen:** Kun de fire risikofiler blev hentet (ca. 70 MB hver, via range-requests i zip-filen). Cellerne blev summeret inden for DAWA's kommunegrænser (EPSG:25832). En celle tildeles den kommune, dens centrum ligger i, og kystceller med centrum i havet tildeles den kommune, de berører. Uden den regel tabes 3 % af oversvømmelsesrisikoen og 25 % af erosionsrisikoen, fordi skaden ligger i kystlinjen. Tallet pr. indbygger bruger folketallet 1. januar 2025.
+
+**Resultat (2020):**
+- Landstotal: 2.612 mio. kr./år fra oversvømmelse og 150 mio. kr./år fra erosion, i alt ca. 460 kr. pr. indbygger. I 2070 bliver det 4.091 hhv. 1.919 mio. kr./år.
+- Højest pr. indbygger: Fanø (2.888 kr.), Lemvig (2.143), Dragør (2.103), Læsø (2.098), Tårnby (2.013), Hvidovre (2.003) og Skive (1.720).
+- Thisted: 20,6 mio. kr./år fra oversvømmelse og 3,9 mio. fra erosion, 574 kr. pr. indbygger. I 2070 bliver det 1.811 kr., fordi erosionen vokser fra 3,9 til 41,8 mio. kr./år.
+- 19 kommuner ligger under 1 kr. pr. indbygger (indlandskommuner) og 21 under 10 kr. Medianen er ca. 400 kr.
+
+**Forbehold:**
+- Datapakken er fra 2021 og ikke opdateret siden. Kystdirektoratet skriver selv, at skadesberegningerne bygger på nationale datasæt, hvoraf nogle ikke er af nyeste dato, og at data ikke kan bruges til detailanalyser. Formålet er ifølge Kystdirektoratet overblik "i den enkelte kommune som på tværs af kommunegrænser", hvilket svarer til platformens brug.
+- Det er modelberegnet restrisiko. Ifølge metoderapporten (januar 2023, afsnit 2 og 7) indgår diger og klitter, fordi de ligger i Danmarks Højdemodel fra 2014-2015 med kommunernes rettelser. Anden kystbeskyttelse indgår som udgangspunkt ikke, og for den kroniske erosion antages eksisterende høfder og skråningsbeskyttelse at kollapse. Tiltag efter højdemodellen og datapakken fra 2021 slår derfor ikke igennem, før Kystdirektoratet opdaterer kortlægningen.
+- Metoderapporten oplyser ikke et landstal i kr./år, så landstotalen ovenfor kan ikke kontrolleres direkte mod den.
+- De 19 kommuner uden kystrisiko giver et scoringsproblem: med en invers ratio mod landsgennemsnittet (som `vejr_skader`) deles der med nul, og de ender alle på loftet 150.
+
+### HIP - terrænnært grundvand
+
+| Felt | Værdi |
+|------|-------|
+| Kilde | HIP (Klimadatastyrelsen og GEUS), offentlig download uden token |
+| URL | https://cdn.dataforsyningen.dk/HIP/historiske_modelberegninger/ |
+| Afprøvet 100 m | `terraennaert_grundvand_100m/statistik_1991-2020.zip` (3,4 GB): `annual_t10`, `annual_probability_depth_less_than_1m` |
+| Afprøvet 10 m | `terraennaert_grundvand_10m.zip` (3,2 GB): `shallow_groundwater_depth_statistics_10m_winter_p10_1991_2025.tif` (int16, dybde i cm, nedskaleret fra 100 m med maskinlæring) |
+| Adresser | Alle adgangsadresser fra DAWA (ca. 2,5 mio.), ikke vægtet med beboere |
+
+HIP har ikke et færdigt lag med "berørte bygninger" til download, så prøveberegningen lagde adgangsadresserne ned over rasteret.
+
+**100 m-modellen kan ikke bruges til formålet.** Ved en 10-årshændelse står grundvandet højere end 0,5 m under terræn ved medianen 71 % af kommunens adresser, og Albertslund, Glostrup, Brøndby og Hvidovre ligger øverst. Opløsningen er for grov til at skelne bebyggelse fra lavbund i samme celle.
+
+**10 m-versionen giver plausible tal.** Målt som andelen af adresser, hvor grundvandet i de 10 % vådeste vinterdage står højere end 50 cm under terræn:
+- Medianen er 3,7 % (kvartiler 1,5 % og 7,9 %).
+- Højest ligger Lemvig (36,5 %), Læsø (34,8 %), Samsø (24,6 %), Fanø (19,1 %), Nordfyns (16,6 %) og Frederikshavn (16,3 %).
+- Lavest ligger Frederiksberg, Brøndby, Albertslund og Hvidovre, alle under 0,2 %.
+- Thisted ligger på 7,8 %. Med en grænse på 1 m bliver det 47 %, og så skelner målet dårligt, fordi medianen er 40 %.
+
+**Forbehold:** 10 m-versionen er nedskaleret med maskinlæring og ikke valideret mod pejlinger i denne undersøgelse. Adgangsadresserne omfatter også sommerhuse og erhverv. Grænsen på 50 cm og vinterens 10 %-fraktil er valgt til prøven, ikke fagligt begrundet.
+
+### Hvad de to kilder tilføjer i forhold til `vejr_skader`
+
+Rangkorrelationen (Spearman, 98 kommuner) er 0,62 mellem Kystplanlægger og `vejr_skader`, 0,67 mellem terrænnært grundvand og `vejr_skader` og 0,53 mellem de to nye. De tre mål fanger i høj grad den samme geografiske udsathed: lave kyster, Vestjylland og øerne. Kystplanlæggeren tilføjer det, `vejr_skader` mangler (stormflod og erosion, jf. "Centrale forbehold" punkt 3 under den implementerede indikator). Terrænnært grundvand tilføjer mindre, er modelberegnet i to led og er ikke valideret.
+
+Ingen af de to kilder måler tilpasningsevne (Tier 3). Den grundlæggende svaghed ved dimensionen, at den måler geografi frem for indsats, er derfor ikke løst.
+
+---
+
+## Sammenvejning: nuværende løsning og det rigtige næste skridt
+
+**Nu (fra sep. 2026):** kategorien er gennemsnittet af `vejr_skader` og `kystrisiko`, og kystrisikoen tæller højst 100 (registrets `cap`, arkitekturdokumentet R1). To andre løsninger blev fravalgt:
+
+- **Gennemsnit med loftet 150.** En kommune uden kyst får 150, altså "50 % bedre end landet", selv om fravær af en fare ikke er robusthed. Bonussen udligner kommunens vejrskader: Holstebro (vejrskader 51) blev grøn på den måde.
+- **Worst-of.** `vejr_skader` er det eneste af de to mål, der reagerer på tiltag, og i de 35 kommuner hvor kystrisikoen er lavest, ville worst-of skjule det helt. Kystrisikoen står stille indtil en ny kortlægning. Desuden ligger den laveste af to mål, der hver er centreret om landsgennemsnittet, systematisk under 100, så rød kommer til at betyde "under gennemsnittet på mindst én". Worst-of virker for de økologiske dimensioner, fordi de måles mod absolutte grænser.
+
+Loftet på 100 er en mellemløsning: det fjerner bonussen uden at skjule nogen af de to mål. Men det er stadig to forskellige enheder (antal skader og kroner), der vejes lige, fordi vi ikke har noget bedre.
+
+**Det rigtige næste skridt: læg skaderne sammen i kroner.** Risiko er i forvejen defineret som forventet årlig skade i kr., og Kystplanlæggeren leverer netop det. Hvis forsikringsskaderne også fandtes i kroner pr. kommune, kunne kategorien være én indikator: samlet klimaskade pr. indbygger pr. år = vejrrelaterede forsikringsudbetalinger + forventet skade fra havet. Så er der ingen regel for sammenvejning og intet loft at sætte. En kommune uden kyst har kun sine vejrskader, og en indsats mod enhver fare sænker tallet. Det er samme logik, som Kystdirektoratet selv bruger.
+
+Hvad det kræver:
+
+1. **Udbetalinger pr. kommune fra F&P.** Datawrapper-kortet (`NDLlA`) har kun antal skader pr. 1.000 indbyggere. F&P's artikel henviser til to Excel-filer (kvartalsstatistik 2023-2025 og årsstatistik 2006-2024), som ikke er undersøgt, men artiklen viser ingen beløb pr. kommune. Den realistiske vej er en henvendelse til F&P fra Thisted Kommune/LIFE ACT. Stormflodsskader fra Naturskaderådet kunne i samme omgang afløse Kystplanlæggerens modeltal med faktiske skader.
+2. **En beslutning om tidshorisonten.** Forsikringsudbetalingerne er dagens skader, mens `kystrisiko` er 2070. Summen blander to horisonter. Den kan enten stå som den er (dagens vejrskader plus fremtidens kystrisiko, tydeligt beskrevet), eller kystdelen kan bruge 2020, så begge er i dag. Det skal afgøres, før indikatoren bygges.
+3. **Samme dækning.** Forsikringstallene dækker forsikrede private skader (ca. 90 % af markedet). Kystplanlæggeren dækker også infrastruktur, landbrug og offentlige bygninger. Forskellen skal stå på metodesiden.
+
+Lykkes det, erstatter den samlede indikator både `vejr_skader` og `kystrisiko`, og det sociale loft pr. indikator (`cap`) er ikke længere nødvendigt her.
 
 ---
 

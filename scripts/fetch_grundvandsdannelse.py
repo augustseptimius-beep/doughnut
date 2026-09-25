@@ -21,6 +21,12 @@ repoet (CLAUDE.md pkt. 8). Filerne bag (GeoTIFF i 100 m) ligger på
 Dataforsyningens FTP, som ikke kan nås fra alle miljøer. Derfor bruges WMS'ens
 GetFeatureInfo, der giver modelværdien i ét punkt.
 
+HIP-webappens frie download randbetingelser/periodemidlede/infiltration.zip
+på cdn.dataforsyningen.dk er IKKE samme lag (undersøgt 25. sep. 2026): dens
+recharge.tif aflæst i dette scripts egne gitterpunkter afviger over 5 % i 41 af
+96 kommuner (Roskilde 226 mod 314 mm/år). Skift derfor ikke til den uden at
+have fået afklaret hos Klimadatastyrelsen/GEUS, hvad filen er.
+
 METODE
 ------
 Kommunens gennemsnit er middelværdien af punkter i et regelmæssigt gitter

@@ -10,7 +10,6 @@ import {
   scoreColor,
   scoreBarColor,
   visningsscore,
-  SOCIAL_LOFT,
   computeCategoryScores,
   categoryBaselineType,
   dimensionBaselineType,
@@ -569,7 +568,7 @@ export default function ScoreBars({
                       // referencen ikke udledes baglæns (den ville variere fra
                       // kommune til kommune), så den vises ikke.
                       const erKlippet =
-                        (kommune.ratios[ind.id] ?? 0) >= SOCIAL_LOFT || (score ?? 0) >= SOCIAL_LOFT;
+                        (kommune.ratios[ind.id] ?? 0) >= ind.loft || (score ?? 0) >= ind.loft;
                       const baselineAvg = (rawVal !== null && score !== null && score !== 0 && !erKlippet)
                         ? ind.inverse
                           ? (score * rawVal) / 100

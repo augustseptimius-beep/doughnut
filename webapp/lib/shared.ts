@@ -101,6 +101,16 @@ export type BaselineLevel = 1 | 2 | 3;
 // Niveau 2: Nationale politiske mål (lovmål, regeringsmål)
 // Niveau 3: Landsgennemsnit (default når ingen absolut grænse findes)
 
+/**
+ * Loftet for sociale ratios (arkitekturdokumentet R1). build_master_csv.py
+ * lægger det på landsgennemsnits-ratioen, og top 10%- og kommunegruppe-
+ * baselinen lægger det på igen efter omskaleringen (R9, R10). Uden det andet
+ * loft kunne én indikator løfte en hel kategori i standardvisningen: Svendborg
+ * fik 338 på offentlig transport og 214,7 på Mobilitet (sep. 2026).
+ * En indikator kan have et lavere loft i registret (`cap`), se Indicator.loft.
+ */
+export const SOCIAL_LOFT = 150;
+
 export interface Indicator {
   id: string;
   name: string;
@@ -114,6 +124,8 @@ export interface Indicator {
   absoluteScore?: boolean;    // true = ratio er en absolut score (fx 100-fossil%), ikke relativ
                               // til landsgennemsnit. Påvirkes IKKE af baseline-toggle (avg/top10/gruppe).
   rawUnit?: string;           // Enhed for råværdi, f.eks. "pr. 1.000 indb.", "%", "km"
+  loft: number;               // Højeste ratio i alle visninger: SOCIAL_LOFT, eller registrets
+                              // lavere 'cap' (kystrisiko: 100, ingen risiko er neutral).
 }
 
 // Sociale indikatorer i registrets rækkefølge (= master-CSV'ens), inkl. de to
@@ -133,6 +145,7 @@ export const INDICATORS: Indicator[] = REGISTER.indikatorer
     absoluteTarget: i.target_label,
     absoluteScore: i.absolute_score,
     rawUnit: i.raw_unit ?? i.unit,
+    loft: Math.min(i.cap ?? SOCIAL_LOFT, SOCIAL_LOFT),
   }));
 
 /**
@@ -408,19 +421,10 @@ export interface KommuneData {
 }
 
 /**
- * Loftet for sociale ratios (arkitekturdokumentet R1). build_master_csv.py
- * lægger det på landsgennemsnits-ratioen, og top 10%- og kommunegruppe-
- * baselinen lægger det på igen efter omskaleringen (R9, R10). Uden det andet
- * loft kunne én indikator løfte en hel kategori i standardvisningen: Svendborg
- * fik 338 på offentlig transport og 214,7 på Mobilitet (sep. 2026).
- */
-export const SOCIAL_LOFT = 150;
-
-/**
  * Beregner Top 10%-baselines dynamisk fra eksisterende ratios.
  * For hver social indikator: find de 10 bedste kommuner (højest ratio),
  * brug deres gennemsnit som ny baseline, og rescale alle kommuners ratio
- * til denne nye baseline, højst SOCIAL_LOFT.
+ * til denne nye baseline, højst indikatorens loft (SOCIAL_LOFT eller lavere).
  * Ekologiske indikatorer har absolutte grænser og påvirkes ikke.
  */
 export function computeTop10Ratios(allData: KommuneData[]): void {
@@ -463,7 +467,7 @@ export function computeTop10Ratios(allData: KommuneData[]): void {
       if (ratio === null || top10Avg === 0) {
         k.top10_ratios[ind.id] = null;
       } else {
-        k.top10_ratios[ind.id] = Math.min(parseFloat(((ratio / top10Avg) * 100).toFixed(2)), SOCIAL_LOFT);
+        k.top10_ratios[ind.id] = Math.min(parseFloat(((ratio / top10Avg) * 100).toFixed(2)), ind.loft);
       }
     }
   }
@@ -490,7 +494,7 @@ export function kommunegruppeNavn(kode: string): string {
  * Beregner kommunegruppe-baselines dynamisk fra eksisterende ratios.
  * For hver social indikator og hver gruppe (G1-G5): beregn gruppens uvægtede
  * gennemsnit, og omskaler alle kommuners ratio til denne baseline, højst
- * SOCIAL_LOFT. 100 = den gennemsnitlige kommune i gruppen.
+ * indikatorens loft. 100 = den gennemsnitlige kommune i gruppen.
  */
 export function computeGroupRatios(allData: KommuneData[]): void {
   const realKommuner = allData.filter((k) => k.kommune_kode !== "000");
@@ -535,7 +539,7 @@ export function computeGroupRatios(allData: KommuneData[]): void {
       if (ratio === null || avg === undefined || avg === 0) {
         k.group_ratios[ind.id] = null;
       } else {
-        k.group_ratios[ind.id] = Math.min(parseFloat(((ratio / avg) * 100).toFixed(2)), SOCIAL_LOFT);
+        k.group_ratios[ind.id] = Math.min(parseFloat(((ratio / avg) * 100).toFixed(2)), ind.loft);
       }
     }
   }
