@@ -866,11 +866,11 @@ def fetch_uvm_historik() -> list[dict]:
         "exam_grade": uvm_serie(
             "Karaktergennemsnit (GS/KARA/KARAGNS)",
             {"område": "GS", "emne": "KARA", "underemne": "KARAGNS",
-             "nøgletal": ["Gennemsnit - Obl. prøver"],
+             "nøgletal": ["Gennemsnit i obl. 9.-klasseprøver"],
              "detaljering": ["[Bopælskommune].[Bopælskommune]", "[Skoleår].[Skoleår]"],
              "side_størrelse": 20000},
             "[Bopælskommune].[Bopælskommune].[Bopælskommune]",
-            "[Skoleår].[Skoleår].[Skoleår]", "Gennemsnit - Obl. prøver"),
+            "[Skoleår].[Skoleår].[Skoleår]", "Gennemsnit i obl. 9.-klasseprøver"),
         "high_absence": uvm_serie(
             "Elevfravær >10% (GS/ELEVFRAV/FRAVAAR)",
             {"område": "GS", "emne": "ELEVFRAV", "underemne": "FRAVAAR",
@@ -968,18 +968,32 @@ def main():
     kraev_noegle("KLIMAREGNSKABET_API_KEY", KLIMAREGNSKABET_KEY, KLIMA_HJAELP)
     kraev_noegle("UVM_API_TOKEN", UVM_TOKEN, UVM_HJAELP)
 
+    # Importeres før hentningen, så en fejl ikke først viser sig efter 10 min.
+    from fetch_sundhedsprofil import INDIKATORER as SP_INDIKATORER
+    andres = {i["id"] for i in SP_INDIKATORER if not i.get("kun_data")}
+
     alle = fetch_dst_indicators() + fetch_klimapaavirkning() + fetch_uvm_historik()
 
     if not alle:
         log("\nFEJL: ingen data hentet overhovedet.")
         return 1
 
+    # Sundhedsprofilens serier skrives ind i samme fil af fetch_sundhedsprofil.py
+    # og hentes ikke her. Uden dette slettede en fuld kørsel dem tavst (8
+    # indikatorer, 784 pile, sep. 2026). Listen læses fra scriptet selv, så den
+    # kun findes ét sted.
+    beholdt = []
+    if RAW_OUTPUT.exists():
+        with open(RAW_OUTPUT, encoding="utf-8") as f:
+            beholdt = [r for r in csv.DictReader(f) if r["indicator_id"] in andres]
+
     DATA_DIR.mkdir(exist_ok=True)
     with open(RAW_OUTPUT, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=["kommune_kode", "indicator_id", "aar", "vaerdi"])
         w.writeheader()
-        w.writerows(sorted(alle, key=lambda r: (r["indicator_id"], r["kommune_kode"], r["aar"])))
-    log(f"\nSkrevet: {RAW_OUTPUT.name} ({len(alle)} rækker)")
+        w.writerows(sorted(alle + beholdt, key=lambda r: (r["indicator_id"], r["kommune_kode"], r["aar"])))
+    log(f"\nSkrevet: {RAW_OUTPUT.name} ({len(alle)} rækker hentet, "
+        f"{len(beholdt)} bevaret fra fetch_sundhedsprofil.py)")
 
     dækning = defaultdict(set)
     for r in alle:

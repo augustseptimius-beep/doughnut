@@ -162,7 +162,7 @@ def fetch_exam_grade(navn_til_kode: dict[str, str]) -> tuple[dict[str, float], f
     print("Henter karaktergennemsnit (GS/KARA/KARAGNS)...")
     rows = uvm_post("statistik", {
         "område": "GS", "emne": "KARA", "underemne": "KARAGNS",
-        "nøgletal": ["Gennemsnit - Obl. prøver"],
+        "nøgletal": ["Gennemsnit i obl. 9.-klasseprøver"],
         "detaljering": [
             "[Bopælskommune].[Bopælskommune]",
             "[Skoleår].[Skoleår]",
@@ -172,7 +172,7 @@ def fetch_exam_grade(navn_til_kode: dict[str, str]) -> tuple[dict[str, float], f
 
     KOM_KEY  = "[Bopælskommune].[Bopælskommune].[Bopælskommune]"
     ÅR_KEY   = "[Skoleår].[Skoleår].[Skoleår]"
-    VAL_KEY  = "Gennemsnit - Obl. prøver"
+    VAL_KEY  = "Gennemsnit i obl. 9.-klasseprøver"
 
     latest = uvm_get_latest(rows, KOM_KEY, ÅR_KEY, VAL_KEY, tabel="GS/KARA/KARAGNS")
 

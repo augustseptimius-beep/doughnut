@@ -10,6 +10,13 @@ Log over større ændringer i datapipeline og master-fil.
 - **Nyt: socialt loft pr. indikator.** Registrets `cap` kan nu sænke R1's loft på 150 for en social indikator; det lægges på i pipelinen og igen efter omskaleringen i kommunegruppe- og top10-visningen. Gennemsnit med loftet 150 (Holstebro blev grøn på fraværet af kyst) og worst-of (skjuler vejrskaderne, som er det eneste mål der reagerer på tiltag) blev fravalgt.
 - Begrundelse og forbehold: `data/klimatilpasning.md`.
 
+## 2026-09-25 (UVM og Klimaregnskabet hentet med nye nøgler)
+
+- **Første hentning med de nye API-nøgler** efter tilbagekaldelsen i august: `fetch_udvidelse_data.py` og `fetch_trend_history.py` (fuld kørsel).
+- **UVM har omdøbt karaktergennemsnittet** fra "Gennemsnit - Obl. prøver" til "Gennemsnit i obl. 9.-klasseprøver" (GS/KARA/KARAGNS). Det gamle navn gav HTTP 400, og scriptet skrev tavst en tom `uvm_scores.csv`, så `exam_grade` forsvandt fra master. Rettet i begge scripts. Samme tal som før (Thisted 6,8 i 2024/25); nyt skoleår 2025/26. Nye navne findes med `POST /Api/v1/skema`.
+- **Konsekvens:** ét farveskift (Vesthimmerland, Uddannelse gul → grøn, 99,89 → 100,12). Karakter-pilen skifter vurdering i 22 kommuner, Uddannelse-pilen i 2. Klimapåvirkning får pil i 9 nye kommuner og skifter vurdering i 4.
+- **Fælde:** `fetch_trend_history.py` skriver `trend_history_raw.csv` forfra og sletter dermed de rækker `fetch_sundhedsprofil.py` har lagt der (8 indikatorer, 784 pile). Løst her ved at køre `fetch_sundhedsprofil.py` bagefter; sundhedsprofilens ratios flytter sig derved 0,01 (afrunding, råværdier uændrede). Rettet i samme omgang: en fuld kørsel af `fetch_trend_history.py` bevarer nu sundhedsprofilens serier (listen læses fra `fetch_sundhedsprofil.INDIKATORER`).
+
 ## 2026-09-25 (vand mod den bæredygtige grundvandsressource)
 
 - **Vand måles nu mod en absolut grænse.** `vandindvinding` er grundvandsindvindingen (VANDIND, `VANDTYP=GVAND`, alle tre kategorier, treårsgennemsnit 2022-2024) i procent af kommunens andel af Danmarks bæredygtige grundvandsressource. GEUS' nationale ressource (1.104 mio. m³/år, rapport 2023/08, bilag 2) fordeles efter DK-modellens infiltration til mættet zone (HIP, 1991-2020) gange landarealet. Ny fil `data/grundvandsdannelse_scores.csv` fra nyt script `fetch_grundvandsdannelse.py` (kræver `DATAFORSYNINGEN_TOKEN`).
