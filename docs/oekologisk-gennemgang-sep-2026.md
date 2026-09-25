@@ -15,7 +15,7 @@ committede master fra samme dag.
 | Forurening | Pesticider talte nedlagte vandværker og værker under kravværdien som "over"; 1 af 1 vandværk gav 100%. Nitrat medregnede nedlagte værker. Affald 2023 havde fejlindberetninger | Kun aktive værker; pesticider som andel med fund, empirisk Bayes-udglattet; affald og genanvendelse som treårsmedian | GEUS Jupiter; Kleinman 1973; Clayton & Kaldor 1987 |
 | Luftkvalitet | Metodesiden lovede befolkningsvægtning, koden tog arealgennemsnit | Befolkningsvægtet med Eurostats 1 km-grid | WHO; FN's verdensmålsindikator 11.6.2 |
 | Næringsstoffer | Ingen absolut grænse. Spildevand pr. indbygger i renseanlæggets kommune. "Tålegrænse pr. ha" målte følsomhed, ikke belastning. Vandområder: 28 kommuner på loftet 300 | Kvælstof til kystvande mod målbelastningen (absolut); kvælstofnedfald mod tålegrænsen (absolut); vandområder med komplement-formlen | Vandområdeplanerne efter genbesøget (2026); CONCITO 2025; DCE 2024; Bobbink m.fl. 2022 |
-| Vand | Almene vandværker pr. indbygger viste hvor HOFOR har kildepladser; 53% af indvindingen var udeladt | Al indvinding pr. landareal (mm/år), treårsgennemsnit | GEUS 2023 (samme afgrænsning og enhed) |
+| Vand | Almene vandværker pr. indbygger viste hvor HOFOR har kildepladser; 53% af indvindingen var udeladt; ingen grænse | Grundvandsindvinding i procent af kommunens andel af den bæredygtige grundvandsressource, fordelt efter grundvandsdannelsen (absolut) | GEUS 2023; DK-modellen (HIP) |
 | Arealanvendelse | Worst-of af to spejlvendte relative andele gjorde 82 af 98 røde af konstruktionsmæssige grunde | Ét tal: antropiseret areal | Dao m.fl. 2015; EEA 2020; CONCITO 2025 |
 | Biodiversitet | Formlen mål/andel eksploderede; over halvdelen af kommunerne stod på loftet 300 | Komplement-formlen, intet loft | Fanning m.fl. 2022; Richardson m.fl. 2023 |
 
@@ -93,13 +93,24 @@ committede master fra samme dag.
   det: Furesø, Ishøj, Ringsted, Roskilde, Køge og Lejre lå i top, Rødovre, Brøndby og
   Frederiksberg i bund, og seks kommuner var filtreret fra. Industri og markvanding (53% af
   indvindingen) var udeladt.
-- **Nu:** al indvinding i mm pr. år over landarealet, treårsgennemsnit (markvandingen svinger fra
-  92 til 286 mio. m³ med sommerens nedbør). Samme afgrænsning og enhed som GEUS' opgørelse af den
-  bæredygtige grundvandsressource (Henriksen m.fl. 2023). Mønstret følger GEUS: højest omkring
-  København, Aarhus, Odense og i markvandingsområderne ved Herning og Holstebro.
-- **Kendte skævheder:** grundvandsdannelsen er lavere på lerjord, så Lolland-Falster og
-  Vestsjælland står for lavt; små bykommuner med egne værker står meget højt (Frederiksberg 12
-  gange landsgennemsnittet), fordi grundvandsoplandet er større end kommunen.
+- **Nu (25. sep. 2026):** grundvandsindvindingen (almene vandværker, virksomheder og markvanding,
+  treårsgennemsnit) i procent af kommunens andel af Danmarks bæredygtige grundvandsressource. GEUS'
+  nationale ressource (1.104 mio. m³ om året, rapport 2023/08, bilag 2) fordeles efter
+  DK-modellens infiltration til mættet zone (HIP, 1991-2020) gange landarealet, hentet med
+  `fetch_grundvandsdannelse.py`. 100 = kommunen indvinder hele sin andel. Danmark samlet ligger på
+  63% (2022-2024).
+- **Kontrol mod GEUS' egne tal pr. modelområde:** fordelingen rammer ressourcen på Sjælland (110
+  mod 113 mio. m³), Fyn (66 mod 68-81) og Jylland (895 mod 930-1.113) inden for ca. 20%.
+  Lolland-Falster (20 mod 12) og Bornholm (14 mod 2) får for stor en andel, men samme farve som hos
+  GEUS. Sjælland er over 100% i begge opgørelser (144% hos os, 116% hos GEUS).
+- **Kun grundvand:** DST's grundvandsindvinding 2017-2021 (737 mio. m³ om året) rammer GEUS' egen
+  (734). Overfladevandet (ca. 240 mio. m³, især virksomheder som dambrug, der leder vandet tilbage)
+  indgik i mellemversionen og gjorde fx Vejle og Silkeborg røde.
+- **Kendte skævheder:** indvindingen registreres, hvor vandet pumpes op, så små bykommuner med
+  kildepladser står meget højt (Ishøj ca. 1.430, Frederiksberg ca. 1.310) og Herlev uden indvinding
+  på 0. Lokale problemer, som GEUS finder i dele af Vestjylland på grund af vandløbene, fanges kun
+  delvist, fordi fordelingen følger nedsivningen. Samsø og Læsø ligger uden for DK-modellen og har
+  ingen værdi.
 
 ### Arealanvendelse
 
@@ -143,11 +154,11 @@ Farvefordeling (grøn/gul/rød) pr. dimension før og efter:
 | Forurening | 38/17/43 | 24/35/39 | 49 |
 | Næringsstoffer | 2/5/91 | 0/0/98 | 7 |
 | Biodiversitet | 4/1/93 | 4/1/93 | 0 |
-| Vand | 38/15/39 (92 kommuner) | 49/5/44 (98 kommuner) | 51 |
+| Vand | 38/15/39 (92 kommuner) | 59/7/30 (96 kommuner) | se note |
 | Arealanvendelse | 2/14/82 | 16/26/56 | 28 |
 
 Thisted: Forurening 121 → 155 (nitrat 14,5 mg/L), Næringsstoffer 120 → 203 (Limfjorden, 203% af
-målbelastningen), Vand 140 → 27, Biodiversitet 134 → 111, Arealanvendelse 86 → 83.
+målbelastningen), Vand 140 → 17 (af sin andel af ressourcen), Biodiversitet 134 → 111, Arealanvendelse 86 → 83.
 
 Retningspile: nye pile for antropiseret areal og kvælstofnedfald (98 kommuner hver); pilene for
 spildevand, intensivt og bebygget areal er væk. Næringsstoffer har kun pil i 8 kommuner, hvor
@@ -155,20 +166,12 @@ kvælstofnedfaldet afgør scoren.
 
 ## 5. Hvad der ikke kunne løses
 
-1. **Vand har ingen absolut grænse pr. kommune.** GEUS' bæredygtige grundvandsressource pr.
-   delopland (58 områder) findes kun som kort i rapporten, og Miljøstyrelsen vurderer tallene ikke
-   autoritative på den skala. Grundvandsforekomsternes kvantitative tilstand (VP3) kan ikke bruges:
-   kun 9 af ca. 2.000 forekomster er i ringe tilstand. **Næste skridt (besluttet 25. sep. 2026):**
-   mål indvindingen mod grundvandsdannelsen i kommunen. Grænsen kan tages fra vandområdeplanernes
-   første screeningstrin, hvor en grundvandsforekomst højst må udnyttes 30% af
-   grundvandsdannelsen (GEUS 2023/08, s. 28), altså ratio = indvinding / (0,30 ×
-   grundvandsdannelse) × 100. Data: DK-modellens "infiltration til mættet zone" (HIP, 100 m,
-   gennemsnit 1990-2019, mm/år). Den ligger kun bag et gratis login hos Dataforsyningen (FTP
-   `HIP/randbetingelser` eller WMS med token), og FTP er ikke tilgængelig fra udviklingsmiljøet.
-   Før den bruges, skal HIP's ekspertvejledning for randbetingelser læses: infiltration til
-   mættet zone omfatter også vand, der hurtigt løber til dræn og vandløb, og 30%-kriteriet er
-   formuleret for en grundvandsforekomst, ikke for en kommune. Alternativet er stadig regnearket
-   bag GEUS' opgørelse (Vandbalancedata17dec2022.xls).
+1. **Vand: grænsen er nedskaleret, ikke GEUS' egen pr. kommune.** GEUS' ressource pr. delopland
+   står i rapportens bilag 2, men deloplandenes geometri er ikke offentliggjort, og Miljøstyrelsen
+   vurderer tallene usikre på den skala. Platformen fordeler derfor det nationale tal efter
+   grundvandsdannelsen (se afsnit 2). **Forslag:** bed GEUS om deloplandene som GIS-lag; så kan
+   ressourcen pr. delopland fordeles på kommunerne i stedet for landstallet. Grundvandsforekomsternes
+   kvantitative tilstand (VP3) kan ikke bruges: kun 9 af ca. 2.000 forekomster er i ringe tilstand.
 2. **Forbrugs-CO₂ er stadig et 2011-mønster.** Der findes ingen kommunefordelt forbrugsbaseret
    opgørelse efter 2011. Forskellene mellem kommuner er derfor 15 år gamle.
 3. **Tålegrænsen for kvælstofnedfald er én værdi.** Den rigtige grænse afhænger af naturtypen, og
@@ -214,13 +217,16 @@ genopfindes.
   over er en overskridelse af drikkevandskravet, men de fleste fund ligger under. Kravværdien er
   fastsat politisk ud fra et forsigtighedsprincip, ikke ud fra stoffernes giftighed (Miljøstyrelsen,
   januar 2025). Det står nu på metodesiden.
-- **Vand måles pr. areal.** Pr. indbygger viste, hvor de store forsyninger har kildepladser, og
-  udelod 53% af indvindingen. Pr. areal måler presset, hvor vandet pumpes op, i GEUS' enhed og efter
-  samme logik som EEA's vandudnyttelsesindeks (WEI+), hvor indvindingen sættes i forhold til den
-  tilgængelige ressource. Prisen er de små bykommuner: Herlev har ingen indvinding og får 0,
-  Albertslund står grøn, mens Frederiksberg (ca. 1.260), Ishøj (ca. 1.000) og Furesø (ca. 930) får
-  ekstreme tal. Næste skridt er at måle indvindingen mod grundvandsdannelsen i kommunen i stedet
-  for mod landsgennemsnittet.
+- **Vand måles pr. areal og siden mod den bæredygtige ressource.** Pr. indbygger viste, hvor de
+  store forsyninger har kildepladser, og udelod 53% af indvindingen. Pr. areal måler presset, hvor
+  vandet pumpes op. Samme dag blev næste skridt taget: nævneren er nu kommunens andel af GEUS'
+  bæredygtige grundvandsressource, fordelt efter grundvandsdannelsen i DK-modellen, frem for
+  landsgennemsnittet (afsnit 2). Et 30%-kriterium direkte på DK-modellens nedsivning blev fravalgt:
+  vandområdeplanernes 30% gælder grundvandsdannelsen til magasinerne, som er langt mindre end
+  nedsivningen (GEUS: 104 mm/år til magasin 1 på Sjælland), så kriteriet ville have givet en for
+  lempelig grænse. Landstallet fordelt efter nedsivningen svarer til ca. 7% af nedsivningen. Prisen
+  er uændret de små bykommuner: Herlev har ingen indvinding og får 0, mens Ishøj, Frederiksberg og
+  Furesø får ekstreme tal.
 - **Tålegrænsen er 10 kg N/ha/år, og nedfaldet står under Næringsstoffer.** Valget betyder meget
   for indikatoren (5 kg: 98 kommuner over, 10: 62, 15: 2) og næsten intet for dimensionen, fordi
   kystvandet afgør Næringsstoffer i 80 kommuner og nedfaldet kun i 8. Planetary boundaries sorterer
@@ -250,6 +256,7 @@ genopfindes.
 - GEUS: Henriksen, H.J., Ondracek, M. & Troldborg, L. (2023). Vandressourceopgørelse - datarapport. GEUS rapport 2023/08.
 - GEUS Jupiter (WFS `jupiter_anlaegsanalyser`, `jupiter_grp_anlaegsanalyser`).
 - Hot or Cool Institute (2021). 1.5-Degree Lifestyles: Towards a Fair Consumption Space for All.
+- Hydrologisk Informations- og Prognosesystem (HIP), Klimadatastyrelsen og GEUS: DK-modellen version 2023, infiltration til mættet zone 1991-2020 (WMS `hip_boundary_conditions_period_mean`, lag `infiltration`). https://hip.dataforsyningen.dk
 - Kleinman, J.C. (1973). Proportions with extraneous variance: single and independent samples. Journal of the American Statistical Association 68:46-54.
 - Marshall, R.J. (1991). Mapping disease and mortality rates using empirical Bayes estimators. Applied Statistics 40:283.
 - Miljøstyrelsen (2023). Forvaltning af fremtidens drikkevandsressource.

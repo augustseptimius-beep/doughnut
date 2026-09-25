@@ -2,58 +2,67 @@
 """
 Vandindvinding - Doughnut Economics indikator (vand-dimensionen)
 ================================================================
-Al indvinding af grund- og overfladevand i kommunen (almene vandværker,
-virksomheder med egen indvinding og markvanding) i mm pr. år over
-kommunens landareal, som treårsgennemsnit, målt mod Danmark som helhed.
+Grundvandsindvindingen i kommunen (almene vandværker, virksomheder med egen
+indvinding og markvanding) i procent af kommunens andel af Danmarks
+bæredygtige grundvandsressource, som treårsgennemsnit. 100 = kommunen
+indvinder præcis sin andel af det, der kan indvindes bæredygtigt.
 
-HVORFOR PR. AREAL OG ALLE KATEGORIER (fra sep. 2026)
-----------------------------------------------------
-Indtil sep. 2026 målte indikatoren indvinding fra almene vandværker pr.
-indbygger. Men indvindingen registreres hvor vandet pumpes op, ikke hvor det
-bruges, så tallet viste i praksis hvor HOFOR har kildepladser: Furesø, Ishøj,
-Ringsted, Roskilde, Køge og Lejre lå i top, Rødovre, Brøndby og Frederiksberg i
-bund, og København var filtreret fra. Og 53 procent af indvindingen (industri
-og markvanding) indgik slet ikke.
+GRÆNSEN (fra sep. 2026)
+-----------------------
+GEUS har opgjort Danmarks bæredygtige grundvandsressource til ca. 1,1 mia. m³
+om året (Henriksen m.fl. 2023, GEUS-rapport 2023/08, bilag 2, rækken HELE i
+scenariet med alle indvindinger: 1.104 mio. m³). Opgørelsen bygger på ni
+indikatorer, bl.a. vandområdeplanernes udnyttelsesgrad (højst 30% af
+grundvandsdannelsen til de øvre magasiner, 50% til de primære) og krav til
+vandløbenes vandføring, og det er det tal CONCITO (2025) bruger som Danmarks
+sikre råderum for vand.
 
-Presset på grundvandet sker hvor vandet tages. GEUS' opgørelse af den
-bæredygtige grundvandsressource (Henriksen m.fl. 2023), som CONCITO (2025)
-bruger som Danmarks sikre råderum for vand, regner netop med al indvinding
-(ALT-scenariet) og udtrykker både ressource og indvinding i mm pr. år. Denne
-indikator bruger samme enhed og afgrænsning. Den ideelle nævner ville være
-den bæredygtige ressource pr. område, men GEUS' tal pr. delopland findes kun
-som kort, og Miljøstyrelsen vurderer dem ikke-autoritative på den skala.
-Derfor måles der mod landsgennemsnittet.
+Ressourcen fordeles på kommunerne efter grundvandsdannelsen: DK-modellens
+infiltration til mættet zone (HIP, gennemsnit 1991-2020) gange landarealet
+(fetch_grundvandsdannelse.py). En kommune med sandjord og meget nedsivning
+får altså en større andel end en kommune med lerjord og samme areal.
 
-Markvandingen svinger med sommerens nedbør (286 mio. m³ i 2023, 92 mio. m³ i
-2024), så scoren er gennemsnittet af de tre seneste år.
+  ressource_k (mm/år) = infiltration_k × 1.104 mio. m³ / Σ(infiltration × landareal)
+  udnyttelse_k (%)    = grundvandsindvinding_k (mm/år) / ressource_k × 100
 
-BESLUTNING 25. SEP. 2026: PR. AREAL, IKKE PR. INDBYGGER
---------------------------------------------------------
-Pr. areal måler presset der, hvor vandet pumpes op, og følger logikken i
-EEA's vandudnyttelsesindeks (WEI+), hvor indvindingen sættes i forhold til
-den tilgængelige ressource i området. Prisen er de små bykommuner, hvor
-arealet er lille i forhold til kildepladserne eller der slet ingen er:
-Herlev har ingen indvinding og får 0, Albertslund står grøn, mens
-Frederiksberg (ca. 1.260), Ishøj (ca. 1.000) og Furesø (ca. 930) får
-ekstreme tal. Tallene er fysisk rigtige, men grundvandsoplandet er større
-end kommunen, så de skal formidles forsigtigt. En bykommune, hvis borgere
-bruger vand fra nabokommunen, får ikke det forbrug tilskrevet.
-Næste skridt: måle indvindingen mod grundvandsdannelsen i kommunen frem for
-mod landsgennemsnittet, med vandområdeplanernes screeningskriterium som
-grænse (højst 30% af grundvandsdannelsen, GEUS 2023/08 s. 28). Data og
-forbehold: docs/oekologisk-gennemgang-sep-2026.md afsnit 5, punkt 1.
+Tælleren er grundvand (VANDIND, VANDTYP=GVAND), fordi ressourcen er
+grundvand. DST's grundvandsindvinding 2017-2021 (737 mio. m³ om året i snit)
+rammer GEUS' egen indvinding for samme periode (734 mio. m³), så de to
+opgørelser har samme afgrænsning. Overfladevandet (ca. 240 mio. m³, især
+virksomheder) indgik indtil denne ændring.
+
+Forbehold, som også står på metodesiden:
+- Fordelingen efter grundvandsdannelse er en forenkling. GEUS' ressource pr.
+  område afhænger også af vandløb og magasinernes dybde; på Sjælland er den
+  mindre i forhold til nedsivningen end i Jylland. Se kontrollen i
+  docs/oekologisk-gennemgang-sep-2026.md.
+- Samsø og Læsø ligger uden for DK-modellen og får ingen vand-score frem
+  for et gæt.
+- Indvindingen registreres hvor vandet pumpes op. Små bykommuner med egne
+  kildepladser (Frederiksberg, Furesø, Ishøj) får meget høje tal, fordi
+  grundvandsoplandet er større end kommunen, og en bykommune, hvis borgere
+  bruger vand fra nabokommunen, får ikke forbruget tilskrevet.
+
+HISTORIK
+--------
+Indtil sep. 2026 målte indikatoren almene vandværker pr. indbygger, hvilket i
+praksis viste hvor HOFOR har kildepladser (Furesø, Ishøj og Lejre højest,
+København filtreret fra), og 53% af indvindingen indgik ikke. Derefter kort
+al indvinding (grund- og overfladevand) pr. landareal mod landsgennemsnittet
+(besluttet 25. sep. 2026), og samme dag skiftet til den bæredygtige ressource
+som nævner, da grundvandsdannelsen blev tilgængelig fra HIP.
+
+Markvandingen svinger med sommerens nedbør, så scoren er gennemsnittet af de
+tre seneste år.
 
 Datakilde:
-  Danmarks Statistik VANDIND (VANDTYP=TOTVAND, INDKAT 100, 105, 110) og
-  AREALDK2 (samlet areal minus søer og vandløb).
+  Danmarks Statistik VANDIND (VANDTYP=GVAND, INDKAT 100, 105, 110) og
+  AREALDK2 (samlet areal minus søer og vandløb); data/grundvandsdannelse_scores.csv.
 
 Output:
   data/vandindvinding_scores.csv
-  Kolonner: kommune_kode, kommune_navn, vandindvinding_mm_aar, vandindvinding_ratio,
-            vandindvinding_ref (landstallet), plus det gamle mål pr. indbygger
-            (almene vandværker, seneste år) som kildespor.
 
-Kør fra projektets rodmappe:
+Kør fra projektets rodmappe (efter fetch_grundvandsdannelse.py):
   python3 scripts/fetch_vandindvinding_data.py
 """
 
@@ -65,18 +74,22 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from kommuner import KOMMUNER  # noqa: E402  (de 98 kommuner, data/kommuner.json)
-from dst import api_post, folketal, parse_value, pr_kommune_aar, rullende, seneste  # noqa: E402  (fælles DST-kald)
+from dst import api_post, parse_value, pr_kommune_aar, rullende, seneste  # noqa: E402  (fælles DST-kald)
 from dst_aar import perioder_fra, seneste_aar_liste  # noqa: E402
 
 # ── Konstanter ────────────────────────────────────────────────────────────────
 
-OUTPUT_FIL = Path(__file__).resolve().parent.parent / "data" / "vandindvinding_scores.csv"
+DATA = Path(__file__).resolve().parent.parent / "data"
+OUTPUT_FIL = DATA / "vandindvinding_scores.csv"
+GRUNDVANDSDANNELSE_CSV = DATA / "grundvandsdannelse_scores.csv"
 
 INDKAT_ALLE = ["100", "105", "110"]   # alment vandværk, virksomheder, markvanding
+VANDTYP = "GVAND"                     # grundvand, samme afgrænsning som GEUS' ressource
 AAR_I_SNIT = 3
+RESSOURCE_DK_MIO_M3 = 1104            # GEUS 2023/08, bilag 2, HELE, alle indvindinger (ALT)
 
 
-# ── Vandindvinding pr. areal (samme funktion til score og retningspil) ───────
+# ── Nævneren: kommunens andel af den bæredygtige ressource ───────────────────
 
 def landareal_km2() -> dict[str, float]:
     """Landareal (samlet areal minus søer og vandløb) i km² pr. kommune fra
@@ -98,83 +111,115 @@ def landareal_km2() -> dict[str, float]:
     return km2
 
 
-def serie_vandindvinding(aar: list[str]) -> dict[tuple[str, str], float]:
+def infiltration_mm() -> dict[str, float]:
+    """Infiltration til mættet zone (mm/år) pr. kommune fra
+    fetch_grundvandsdannelse.py."""
+    if not GRUNDVANDSDANNELSE_CSV.exists():
+        raise SystemExit(f"FEJL: {GRUNDVANDSDANNELSE_CSV.name} mangler - kør "
+                         "scripts/fetch_grundvandsdannelse.py først")
+    with open(GRUNDVANDSDANNELSE_CSV, encoding="utf-8") as f:
+        ud = {r["kommune_kode"]: float(r["infiltration_mm_aar"])
+              for r in csv.DictReader(f) if r["infiltration_mm_aar"]}
+    # Samsø og Læsø ligger uden for DK-modellen og har intet tal.
+    if not set(ud) <= set(KOMMUNER) or len(ud) < 90:
+        raise SystemExit(f"FEJL: {GRUNDVANDSDANNELSE_CSV.name} har {len(ud)} kommuner med værdi")
+    return ud
+
+
+def ressource_mm(land: dict[str, float]) -> dict[str, float]:
+    """Kommunens andel af den bæredygtige ressource, udtrykt i mm/år over
+    kommunens landareal: infiltrationen gange landets samlede forhold mellem
+    ressource og infiltration."""
+    infil = infiltration_mm()
+    # mm × km² = 1.000 m³, så Σ(mm × km²) / 1.000 = mio. m³
+    samlet_infil_mio_m3 = sum(infil[k] * land[k] for k in infil) / 1000
+    andel = RESSOURCE_DK_MIO_M3 / samlet_infil_mio_m3
+    return {k: infil[k] * andel for k in infil}
+
+
+# ── Tæller og score (samme funktion til score og retningspil) ────────────────
+
+def serie_indvinding_mm(aar: list[str], land: dict[str, float]) -> dict[tuple[str, str], float]:
     """
-    Al vandindvinding (VANDIND, TOTVAND, alle tre kategorier) i mm pr. år over
-    kommunens landareal, treårsgennemsnit: værdien for år Y er gennemsnittet af
-    Y-2, Y-1 og Y. En kommune uden række i VANDIND et år har ingen registreret
-    indvinding og tæller 0. Landstallet (000) er de 98 kommuner samlet.
-
-    mio. m³ / km² = m, så mm = mio. m³ / km² × 1000.
-
-    Bruges af både scoren og retningspilen (fetch_trend_history.py).
+    Grundvandsindvinding (alle tre kategorier) i mm pr. år over kommunens
+    landareal, treårsgennemsnit: værdien for år Y er gennemsnittet af Y-2, Y-1
+    og Y. En kommune uden række i VANDIND et år har ingen registreret
+    indvinding og tæller 0. mio. m³ / km² × 1000 = mm.
     """
     alle = sorted({str(y) for a in aar for y in range(int(a) - AAR_I_SNIT + 1, int(a) + 1)})
     findes = set(perioder_fra("VANDIND", int(alle[0])))
     hent = [a for a in alle if a in findes]
     rows = api_post("VANDIND", [
         {"code": "OMRÅDE", "values": ["*"]},
-        {"code": "VANDTYP", "values": ["TOTVAND"]},
+        {"code": "VANDTYP", "values": [VANDTYP]},
         {"code": "INDKAT", "values": INDKAT_ALLE},
         {"code": "Tid", "values": hent},
     ])
     mio_m3 = {k: v for k, v in pr_kommune_aar(rows).items() if k[0] != "000"}
-    land = landareal_km2()
     enkelt: dict[tuple[str, str], float] = {}
     for a in hent:
-        for kode, km2 in land.items():
+        for kode in land:
             enkelt[(kode, a)] = mio_m3.get((kode, a), 0.0)
     snit = rullende(enkelt, AAR_I_SNIT, "gennemsnit", 6)
+    return {(k, a): snit[(k, a)] / land[k] * 1000 for (k, a) in snit if a in aar}
+
+
+def serie_vandindvinding(aar: list[str]) -> dict[tuple[str, str], float]:
+    """
+    Grundvandsindvinding i procent af kommunens andel af den bæredygtige
+    ressource, treårsgennemsnit. Landstallet (000) er Danmarks samlede
+    indvinding i procent af 1.104 mio. m³.
+
+    Bruges af både scoren og retningspilen (fetch_trend_history.py). Nævneren
+    er fast, så pilen følger indvindingen.
+    """
+    land = landareal_km2()
+    ress = ressource_mm(land)
+    indv = serie_indvinding_mm(aar, land)
     ud: dict[tuple[str, str], float] = {}
     for a in aar:
-        med = [k for k in land if (k, a) in snit]
-        for kode in med:
-            ud[(kode, a)] = round(snit[(kode, a)] / land[kode] * 1000, 2)
+        med = [k for k in land if (k, a) in indv]
+        for k in med:
+            if k in ress:
+                ud[(k, a)] = round(indv[(k, a)] / ress[k] * 100, 2)
         if med:
-            ud[("000", a)] = round(sum(snit[(k, a)] for k in med) / sum(land[k] for k in med) * 1000, 2)
+            # Landstallet er Danmark samlet, inkl. Samsø og Læsø, mod hele ressourcen.
+            samlet_mio_m3 = sum(indv[(k, a)] * land[k] for k in med) / 1000
+            ud[("000", a)] = round(samlet_mio_m3 / RESSOURCE_DK_MIO_M3 * 100, 2)
     return ud
 
 
-def serie_vandindvinding_pr_person(aar: list[str]) -> dict[tuple[str, str], float]:
-    """Det tidligere mål: almene vandværker (INDKAT=100) i m³ pr. indbygger,
-    folketallet 1. januar. Skrives stadig til CSV'en som kildespor, men scores
-    ikke (registreringsstedet gør det misvisende, se docstring)."""
-    rows = api_post("VANDIND", [
-        {"code": "OMRÅDE", "values": ["*"]},
-        {"code": "VANDTYP", "values": ["TOTVAND"]},
-        {"code": "INDKAT", "values": ["100"]},
-        {"code": "Tid", "values": aar},
-    ])
-    mio_m3 = {k: v for k, v in pr_kommune_aar(rows).items() if k[0] != "000"}
-    folk = folketal(sorted({a for _, a in mio_m3}))
-    return {(k, a): round(mio * 1_000_000 / folk[(k, a)], 2)
-            for (k, a), mio in mio_m3.items() if folk.get((k, a))}
-
-
 def beregn_og_gem() -> None:
-    """Henter nyeste år, beregner ratio (til krydstjek) og skriver CSV'en."""
+    """Henter nyeste år og skriver CSV'en."""
     sidste = seneste_aar_liste("VANDIND", 1, fallback=["2024"])
     aar, vaerdier, landssnit = seneste(serie_vandindvinding(sidste), tabel="VANDIND")
     if not vaerdier:
         print("FEJL: Ingen gyldige data til rådighed.")
         return
+    land = landareal_km2()
+    ress = ressource_mm(land)
+    indv = serie_indvinding_mm([aar], land)
+    infil = infiltration_mm()
     print(f"  {int(aar) - AAR_I_SNIT + 1}-{aar}: {len(vaerdier)}/98 kommuner")
-    print(f"  Danmark samlet: {landssnit:.1f} mm/år (al indvinding over landarealet)")
-    pr_person = {k: v for (k, a), v in serie_vandindvinding_pr_person([aar]).items()}
+    print(f"  Danmark samlet: {landssnit:.1f}% af den bæredygtige ressource "
+          f"({RESSOURCE_DK_MIO_M3} mio. m³/år)")
 
     OUTPUT_FIL.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_FIL, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["kommune_kode", "kommune_navn", "vandindvinding_mm_aar",
-                         "vandindvinding_ratio", "vandindvinding_ref",
-                         "almen_m3_pr_person_seneste_aar"])
+        writer.writerow(["kommune_kode", "kommune_navn", "udnyttelse_pct", "vandindvinding_ratio",
+                         "grundvandsindvinding_mm_aar", "ressource_mm_aar", "infiltration_mm_aar",
+                         "udnyttelse_dk_pct"])
         for kode in sorted(KOMMUNER):
             v = vaerdier.get(kode)
-            writer.writerow([kode, KOMMUNER[kode], "" if v is None else v,
-                             "" if v is None else round(v / landssnit * 100, 2), landssnit,
-                             pr_person.get(kode, "")])
+            writer.writerow([kode, KOMMUNER[kode], "" if v is None else v, "" if v is None else v,
+                             round(indv.get((kode, aar), 0.0), 2),
+                             "" if kode not in ress else round(ress[kode], 2),
+                             infil.get(kode, ""), landssnit])
     t = vaerdier.get("787")
-    print(f"\n  Thisted: {t} mm/år" if t is not None else "\n  Thisted: ingen værdi")
+    print(f"\n  Thisted: {t}% af sin andel af ressourcen" if t is not None else "\n  Thisted: ingen værdi")
+    over = sum(1 for v in vaerdier.values() if v > 100)
+    print(f"  Over 100%: {over} kommuner")
     print(f"\n✓ Gemt: {OUTPUT_FIL} ({len(KOMMUNER)} kommuner)")
 
 
@@ -182,9 +227,9 @@ def beregn_og_gem() -> None:
 
 def main():
     print("=" * 65)
-    print("Doughnut Economics - Vandindvinding pr. areal (DST VANDIND)")
+    print("Doughnut Economics - Grundvandsindvinding mod bæredygtig ressource")
     print("=" * 65)
-    print("Kilde: Statistikbanken VANDIND, alle indvindingskategorier, treårsgennemsnit")
+    print("Kilde: DST VANDIND (grundvand) + GEUS 2023/08 + DK-modellen (HIP)")
     print()
 
     beregn_og_gem()

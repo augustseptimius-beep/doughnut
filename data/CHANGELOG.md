@@ -2,6 +2,13 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-25 (vand mod den bæredygtige grundvandsressource)
+
+- **Vand måles nu mod en absolut grænse.** `vandindvinding` er grundvandsindvindingen (VANDIND, `VANDTYP=GVAND`, alle tre kategorier, treårsgennemsnit 2022-2024) i procent af kommunens andel af Danmarks bæredygtige grundvandsressource. GEUS' nationale ressource (1.104 mio. m³/år, rapport 2023/08, bilag 2) fordeles efter DK-modellens infiltration til mættet zone (HIP, 1991-2020) gange landarealet. Ny fil `data/grundvandsdannelse_scores.csv` fra nyt script `fetch_grundvandsdannelse.py` (kræver `DATAFORSYNINGEN_TOKEN`).
+- **Kun grundvand.** Overfladevandet (ca. 240 mio. m³/år, især virksomheder som dambrug) indgik i dagen før; det gjorde bl.a. Vejle (408 → 57) og Silkeborg (116 → 31) røde. DST's grundvandsindvinding 2017-2021 (737 mio. m³) rammer GEUS' egen (734).
+- **Konsekvens:** Danmark samlet 63% af ressourcen. Farver fra 49/5/44 (98 kommuner) til 59/7/30 (96 kommuner), 20 skift. Samsø og Læsø ligger uden for DK-modellen og har ingen vand-score. Thisted 16,8%.
+- Kontrol mod GEUS' ressource pr. modelområde og forbehold: `docs/oekologisk-gennemgang-sep-2026.md` afsnit 2.
+
 ## 2026-09-24 (gennemgang af de økologiske dimensioner)
 
 Samlet begrundelse, kilder og det der ikke kunne løses: `docs/oekologisk-gennemgang-sep-2026.md`.

@@ -102,8 +102,9 @@ andet end økologiske indikatorer med `lower_is_better: false`.
 - `maal`: et fast mål (`value`). Uddannelse 95 procent, WHO's
   luftkvalitetsgrænser, 2,5 ton CO2e (indtil sep. 2026 3 ton, uden kilde), EU's
   65 procent genanvendelse og 30/10 procent natur, 6 mg/L nitrat, 0 procent
-  fossil varme, kystvandenes målbelastning for kvælstof (100 procent) og
-  tålegrænsen for kvælstofnedfald (10 kg N/ha/år).
+  fossil varme, kystvandenes målbelastning for kvælstof (100 procent),
+  tålegrænsen for kvælstofnedfald (10 kg N/ha/år) og kommunens andel af den
+  bæredygtige grundvandsressource (100 procent, se afsnit 5).
 - `kommunegennemsnit`: uvægtet gennemsnit af kommunernes råværdier, beregnet
   ved build. Bruges kun hvor indikatorens nævner ikke findes (UVM), se
   afsnit 7.
@@ -178,7 +179,9 @@ rækker med `indicator_id = "_dim_<dimension>"`.
 **R14 - Ratiovalidering.** Gyldigt interval er 0 til 2000. Værdier udenfor
 rapporteres som en advarsel ved build, men klippes ikke. Intervallet er sat
 bevidst bredt. Enkelte kommuner ligger højt over 100 af reelle grunde
-(vandindvinding pr. areal på Frederiksberg er ca. 12 gange landsgennemsnittet).
+(grundvandsindvindingen i Ishøj og på Frederiksberg er 13-14 gange kommunens
+andel af den bæredygtige ressource, fordi kildepladserne ligger på et lille
+areal).
 
 ---
 
@@ -428,10 +431,11 @@ kommune.** Det gælder både biofysiske og juridiske grænser (WHO's
 luftkvalitetsretningslinjer, ekspertgruppens 6 mg/L for nitrat) og vedtagne
 politiske mål (EU's 30/10-procentmål for natur, EU's 65 procent genanvendelse,
 det nationale 95-procentmål for uddannelse, 0 procent fossil varme, 2,5 ton
-CO2e pr. person). Fra sep. 2026 også to nedskalerede biofysiske grænser for
-kvælstof: kystvandenes målbelastning fra vandområdeplanerne og tålegrænsen for
-kvælstofnedfald på følsom natur. Findes ingen sådan grænse, bruges
-landsgennemsnittet.
+CO2e pr. person). Fra sep. 2026 også tre nedskalerede biofysiske grænser:
+kystvandenes målbelastning for kvælstof fra vandområdeplanerne, tålegrænsen for
+kvælstofnedfald på følsom natur og Danmarks bæredygtige grundvandsressource
+(GEUS 2023), fordelt på kommunerne efter grundvandsdannelsen i DK-modellen.
+Findes ingen sådan grænse, bruges landsgennemsnittet.
 
 Pesticider er scoret mod landsgennemsnittet. Indikatoren er andelen af aktive
 vandværker med fund, og målet ville være nul fund, som ikke kan bruges som
@@ -439,11 +443,17 @@ nævner i en ratio, så `baselineType` er `relativ`. Det samme gælder
 vandområdernes tilstand (målet er 100 procent i god tilstand, altså nul der
 mangler).
 
-For vand og areal findes grænser (GEUS' bæredygtige grundvandsressource, 15
-procent antropiseret areal), men ikke pr. kommune: GEUS' tal pr. delopland
-findes kun som kort og er ikke autoritative på den skala, og en bykommune kan
-ikke være 85 procent natur. De to måles derfor mod landsgennemsnittet, og
-grænsen står som kontekst.
+For areal findes en grænse (15 procent antropiseret areal), men ikke pr.
+kommune: en bykommune kan ikke være 85 procent natur. Arealet måles derfor mod
+landsgennemsnittet, og grænsen står som kontekst.
+
+Vand blev målt på samme måde indtil 25. sep. 2026. Nu fordeles GEUS' nationale
+ressource (1.104 mio. m³/år) efter DK-modellens infiltration til mættet zone
+gange landareal. Fordelingen er en nedskalering, ikke GEUS' egen opgørelse pr.
+område, men den er kontrolleret mod GEUS' ressource pr. modelområde: Sjælland
+110 mod 113 mio. m³, Fyn og Jylland inden for ca. 20 procent. GEUS' tal pr.
+delopland (bilag 2 i rapporten) bruges ikke direkte, fordi deloplandenes
+geometri ikke er offentliggjort.
 
 Resultatet er at tre dimensioner ender som `blandet` (Forurening, Næringsstoffer
 og Uddannelse).
@@ -513,6 +523,14 @@ omskaleres på deres allerede vendte ratio, hvilket er en bevidst forenkling.
     genanvendelse bruger medianen (enkeltår med fejlindberetninger), vandindvinding
     og kvælstofnedfald gennemsnittet (reel, men vejrbestemt variation).
     `dst.rullende()` tager valget som parameter, og pilen bruger samme funktion.
+15. **Vand: grundvand, ikke alt vand, og to øer uden model.** Tælleren er
+    VANDIND med `VANDTYP=GVAND`, fordi GEUS' ressource er grundvand. Med
+    `TOTVAND` kommer ca. 240 mio. m³ overfladevand med, især fra virksomheder
+    (fx dambrug, der leder vandet tilbage), og Vejle og Silkeborg blev røde af
+    den grund. Samsø og Læsø ligger uden for DK-modellen og har ingen
+    grundvandsdannelse; de får ingen vand-score frem for et gæt.
+    `grundvandsdannelse_scores.csv` er statisk (1991-2020) og hentes kun igen ved
+    en ny version af DK-modellen; det kræver `DATAFORSYNINGEN_TOKEN`.
 
 ---
 

@@ -45,7 +45,7 @@ Dette er den **konsoliderede master-fil** som webapp'en læser fra. Genereres af
 - Inverterede indikatorer (kriminalitet, fattigdom mv.) vendes af `build_master_csv.py` (`ratio = reference / raw × 100`) - høj ratio = god performance. Alle ratios beregnes dér ud fra `raw_value` og `reference`, ikke i fetch-scripterne
 
 **Økologiske indikatorer:**
-- `ratio = 100` = på grænsen: en absolut grænse (WHO, EU-mål, 2,5 ton CO₂e pr. person, 6 mg/L nitrat, kystvandenes målbelastning for kvælstof, tålegrænsen for kvælstofnedfald) eller landsgennemsnittet for de relative sub-indikatorer (vandindvinding, arealanvendelse, vandområdernes tilstand, affald, pesticider)
+- `ratio = 100` = på grænsen: en absolut grænse (WHO, EU-mål, 2,5 ton CO₂e pr. person, 6 mg/L nitrat, kystvandenes målbelastning for kvælstof, tålegrænsen for kvælstofnedfald, kommunens andel af den bæredygtige grundvandsressource) eller landsgennemsnittet for de relative sub-indikatorer (arealanvendelse, vandområdernes tilstand, affald, pesticider)
 - Andele hvor højere er bedre (natur, genanvendelse, vandområder i god tilstand) regnes som den manglende andel mod det målet tillader: `ratio = (100 - raw) / (100 - reference) × 100` (`formula: "komplement"` i registret, arkitekturdokumentet R2a). Ingen økologisk ratio har et loft
 - `ratio < 100` = inden for grænsen (godt)
 - `ratio > 100` = overshoot (rødt)
@@ -120,7 +120,8 @@ De individuelle CSV-filer (`luftforurening_scores.csv`, `naeringsstoffer_scores.
 - **`n_deposition_scores.csv`** (`fetch_kvaelstofdeposition.py`): DCE's beregnede kvælstofnedfald pr. kommune (kg N/ha), treårsgennemsnit.
 - **`pesticider_scores.csv`**: `pesticid_pct_fund` er den empirisk Bayes-udglattede andel af aktive almene vandværker med fund; `pesticid_pct_fund_observeret` den rå andel.
 - **`forurening_scores.csv`**: husholdningsaffald og genanvendelse, begge treårsmedian af LABY25. Genanvendelsen lå før i `consumption_scores.csv`, som intet script skrev; den fil bruges ikke længere.
-- **`vandindvinding_scores.csv`**: `vandindvinding_mm_aar` er al indvinding (almene vandværker, virksomheder, markvanding) i mm/år over landarealet, treårsgennemsnit. Det gamle mål (almene vandværker pr. indbygger) står i `almen_m3_pr_person_seneste_aar` som kildespor.
+- **`vandindvinding_scores.csv`**: `udnyttelse_pct` er grundvandsindvindingen (almene vandværker, virksomheder, markvanding; kun grundvand) i procent af kommunens andel af GEUS' bæredygtige grundvandsressource (1.104 mio. m³/år), treårsgennemsnit. `grundvandsindvinding_mm_aar` er tælleren og `ressource_mm_aar` nævneren, begge i mm/år over landarealet; `udnyttelse_dk_pct` er Danmark samlet. Samsø og Læsø har ingen værdi (uden for DK-modellen).
+- **`grundvandsdannelse_scores.csv`** (`fetch_grundvandsdannelse.py`, kræver `DATAFORSYNINGEN_TOKEN`): DK-modellens infiltration til mættet zone, gennemsnit 1991-2020, i mm/år pr. kommune, som middel af punkter i et gitter på 500 m til 2 km (HIP). Statisk; hentes kun igen ved en ny modelversion.
 - **`arealanvendelse_scores.csv`**: `antropiseret_pct` er intensivt landbrug plus befæstet areal i pct. af landarealet uden søer og vandløb. De to andele hver for sig står stadig i filen.
 - **`luftforurening_scores.csv`**: `no2_ug_m3` og `pm25_ug_m3` er befolkningsvægtede; arealgennemsnittene står i `*_arealgns`.
 - **`cba_2023_estimate.csv`**: `cba_estimate` er estimatet for `estimat_aar` med Energistyrelsens seneste tidsserie (`fetch_forbrug_co2.py`). Kolonnen `cba_2023_estimate` er det gamle, håndberegnede tal.

@@ -27,6 +27,7 @@ Kommunens gennemsnit er middelværdien af punkter i et regelmæssigt gitter
 inden for kommunegrænsen (DAWA). Gitteret er tættere i små kommuner, så også
 Frederiksberg får et stabilt tal: 2 km i kommuner på mindst 200 km², 1 km fra
 50 km², ellers 500 m. Punkter uden modelværdi (søer, kyst) springes over.
+Samsø og Læsø ligger uden for DK-modellen og får intet tal.
 Punktværdierne gemmes i systemets temp-mappe, så en afbrudt kørsel kan
 genoptages; --genhent henter forfra.
 
@@ -169,14 +170,20 @@ def main() -> int:
         afstand, pk = plan[kode]
         v = [cache[f"{x},{y}"] for x, y in pk if cache.get(f"{x},{y}") is not None]
         if len(v) < 5:
-            raise SystemExit(f"FEJL: kun {len(v)} punkter med værdi i {KOMMUNER[kode]}")
+            # Samsø og Læsø ligger uden for DK-modellen. De får intet tal
+            # frem for et gæt, og vand-dimensionen mangler for dem.
+            print(f"  ⚠ {KOMMUNER[kode]}: {len(v)} punkter med værdi - uden for DK-modellen, springes over")
+            rows.append([kode, KOMMUNER[kode], "", len(v), afstand, PERIODE])
+            continue
         rows.append([kode, KOMMUNER[kode], round(sum(v) / len(v), 1), len(v), afstand, PERIODE])
     with open(OUTPUT, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["kommune_kode", "kommune_navn", "infiltration_mm_aar", "punkter", "gitter_m", "periode"])
         w.writerows(rows)
-    vals = [r[2] for r in rows]
-    print(f"✓ {OUTPUT.relative_to(ROOT)}: 98 kommuner, {min(vals)}-{max(vals)} mm/år")
+    vals = [r[2] for r in rows if r[2] != ""]
+    if len(vals) < 90:
+        raise SystemExit(f"FEJL: kun {len(vals)} kommuner med værdi - er tjenesten ændret?")
+    print(f"✓ {OUTPUT.relative_to(ROOT)}: {len(vals)}/98 kommuner, {min(vals)}-{max(vals)} mm/år")
     t = next(r for r in rows if r[0] == "787")
     print(f"  Thisted: {t[2]} mm/år ({t[3]} punkter)")
     return 0

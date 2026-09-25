@@ -49,6 +49,7 @@ doughnut/
 │   ├── fetch_kvaelstof_kystvand.py ← kvælstof til kystvande mod målbelastningen (VP3-PDF + MiljøGIS, punkt 39)
 │   ├── fetch_kvaelstofdeposition.py← kvælstofnedfald pr. kommune (DCE DEHM, punkt 39)
 │   ├── fetch_forbrug_co2.py       ← nutidsjustering af forbrugsbaseret CO2 med ENS' tidsserie
+│   ├── fetch_grundvandsdannelse.py← DK-modellens nedsivning pr. kommune (HIP, token, punkt 39)
 │   └── fetch_*.py                 ← øvrige fetchers (~15). Se build_master_csv.py for fuld pipeline.
 ├── docs/                    ← API-guides og mappings (statbank, Energi Data Service m.fl.)
 └── webapp/
@@ -112,7 +113,7 @@ Se `oekologiske_dimensioner` i `data/indikatorer.json` for den autoritative list
 | `forurening` | nitrat, pesticidfund (aktive vandværker), affald, genanvendelse |
 | `luftkvalitet` | NO₂, PM2.5 (befolkningsvægtet) |
 | `naeringsstoffer` | kvælstof til kystvande mod målbelastningen (`naer_kystvand`), kvælstofnedfald mod tålegrænse (`n_deposition`), overfladevandets tilstand (VP3) |
-| `vand` | al vandindvinding pr. landareal (mm/år) |
+| `vand` | grundvandsindvinding mod kommunens andel af den bæredygtige grundvandsressource (%) |
 | `arealanvendelse` | antropiseret areal (landbrug + befæstet, `areal_antropiseret`) |
 | `biodiversitet` | bioscore ≥8 mod 30%, bioscore ≥12 mod 10% |
 
@@ -288,11 +289,11 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
     - **Næringsstoffer måles mod en absolut grænse.** `naer_kystvand` er statusbelastningen af de kystvande kommunens areal afvander til, i procent af målbelastningen (højeste i kæden nedstrøms, arealvægtet). Tallene udtrækkes af bilag 1.1 i "Vandområdeplanerne 2021-2027 efter genbesøget" (PDF, april 2026) og gemmes i `data/vp3_kvaelstof_kystvande.csv`. Kommer en ny plan (VP4 ventes 2027), skal `PLAN_URL` og kontrolrækken i `fetch_kvaelstof_kystvand.py` opdateres. MiljøGIS' `malbelas_n` er IKKE den gældende målbelastning (546 mod 615,8 ton for Roskilde Fjord ydre); den stammer fra planen før genbesøget.
     - **`n_deposition` er DCE's nedfald pr. kommune mod 10 kg N/ha/år** (midten af 5-15 for heder og klitter). Tabellerne findes fra 2014 med huller før; DCE bruger enkelte gamle kommunenavne (Bogense, Århus), som scriptet oversætter.
     - **Spildevandsindikatorerne (`naer_nitrogen`, `naer_phosphorus`) og tålegrænsen pr. ha landbrug (`naer_landbrug`) er fjernet**, se registrets `_fjernet`. CSV'erne og scripterne står stadig.
-    - **Vandindvinding er al indvinding pr. landareal (mm/år), treårsgennemsnit.** Pr. indbygger viste den hvor HOFOR har kildepladser. Små bykommuner med egne værker får meget høje tal (Frederiksberg ca. 12 gange landsgennemsnittet); det er fysisk rigtigt, men grundvandsoplandet er større end kommunen.
+    - **Vand er grundvandsindvinding i procent af kommunens andel af den bæredygtige grundvandsressource (fra 25. sep. 2026).** GEUS' nationale ressource (1.104 mio. m³/år) fordeles efter DK-modellens nedsivning (`data/grundvandsdannelse_scores.csv`, statisk 1991-2020, fra `fetch_grundvandsdannelse.py` med `DATAFORSYNINGEN_TOKEN`). Kør den kun igen ved en ny version af DK-modellen; `fetch_vandindvinding_data.py` læser filen. Tælleren er kun grundvand (`GVAND`); overfladevand fra dambrug gjorde Vejle og Silkeborg røde. Samsø og Læsø er uden for DK-modellen og har ingen vand-score. Små bykommuner med kildepladser får ekstreme tal (Ishøj, Frederiksberg ca. 13-14 gange deres andel), fordi grundvandsoplandet er større end kommunen.
     - **Arealanvendelse er ét tal (antropiseret areal).** De to gamle andele står stadig i `arealanvendelse_scores.csv`.
     - **Klimagrænsen er 2,5 ton**, ikke 3. De 3 ton havde ingen kilde. `fetch_forbrug_co2.py` henter Energistyrelsens tidsserie og skal køres, når en ny Global Afrapportering udkommer (typisk april).
     - **Affald og genanvendelse er treårsmedianer** (fejlindberetninger i LABY25 2023).
-    - **Seks metodevalg er truffet (25. sep. 2026)** og står med argumenter i notatets afsnit 6, i registrets `note`-felter og i de berørte fetch-scripts' docstrings: klimagrænse 2,5 ton, spildevand ude (også som kontekst), pesticider som fund (ikke over kravværdien), vand pr. areal, tålegrænse 10 kg N/ha under Næringsstoffer, og kæde-reglen for kystvande. Læs argumenterne, før et af dem genåbnes. Pesticidfund formidles præcist: et fund over kravværdien (0,1 µg/l) er en overskridelse af drikkevandskravet, men de fleste fund ligger under, og kravværdien er en politisk forsigtighedsværdi, ikke en sundhedsgrænse.
+    - **Seks metodevalg er truffet (25. sep. 2026)** og står med argumenter i notatets afsnit 6, i registrets `note`-felter og i de berørte fetch-scripts' docstrings: klimagrænse 2,5 ton, spildevand ude (også som kontekst), pesticider som fund (ikke over kravværdien), vand pr. areal (samme dag gjort absolut, se ovenfor), tålegrænse 10 kg N/ha under Næringsstoffer, og kæde-reglen for kystvande. Læs argumenterne, før et af dem genåbnes. Pesticidfund formidles præcist: et fund over kravværdien (0,1 µg/l) er en overskridelse af drikkevandskravet, men de fleste fund ligger under, og kravværdien er en politisk forsigtighedsværdi, ikke en sundhedsgrænse.
     - **Delvis opdatering af pilene uden API-nøgler:** `python3 scripts/fetch_trend_history.py --kun id1,id2 --fjern id3` genberegner kun serier fra `SAMME_SOM_SCOREN` og fletter dem ind i `trend_history_raw.csv`.
 
 ## Arbejdsprincipper for ændringer
