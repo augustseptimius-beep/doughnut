@@ -45,7 +45,7 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   velfaerd: {
     id: "velfaerd",
-    scoring: "Gennemsnit af syv indikatorer: median disponibel indkomst (INDKP106), beskæftigelsesfrekvens (RAS200), børnefattigdom (inverteret, LABY07), udsatte børn og unge (inverteret, BU43), NEET (inverteret, NEET3), relativ fattigdom (inverteret, IFOR12P) og underretninger om børn (inverteret, UND2). Score 100 = landsgennemsnit. NB: Gini og lavindkomst er flyttet til dimensionen Lighed.",
+    scoring: "Gennemsnit af syv indikatorer: median disponibel indkomst (INDKP106), beskæftigelsesfrekvens (RAS200), børnefattigdom (inverteret, LABY07), udsatte børn og unge (inverteret, BU43), NEET (inverteret, NEET3), relativ fattigdom (inverteret, IFOR12P) og underretninger om børn (inverteret, UND2). Score 100 = landsgennemsnit. NB: Gini er flyttet til Lighed. Andelen med lavindkomst (LABY07, alle aldre) er fjernet i sep. 2026, fordi den var næsten samme tal som børnefattigdom fra samme tabel (korrelation 0,87).",
     boundary: "Socialt fundament: materielle levevilkår der sikrer værdigt liv for alle. Ingen absolut grænse - relativ til landsgennemsnit.",
     limitations: "Børnefattigdom (LABY07) og relativ fattigdom (IFOR12P) overlapper. Disponibel indkomst justerer ikke for købekraft mellem kommuner. DST udgiver ikke medianen pr. kommune; den er beregnet ud fra antal personer i DST's indkomstintervaller (INDKP106) med en usikkerhed på typisk under 1.000 kr. BU43 og NEET dækker forskellige aldersgrupper (0-22 og 16-24).",
   },
@@ -81,9 +81,9 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   lighed: {
     id: "lighed",
-    scoring: "Gennemsnit af tre indikatorer: (1) Gini-koefficient (IFOR41, inverteret - lavere ulighed er bedre). (2) Andel i relativ fattigdom efter DST's mål med grænsen 50% af medianindkomsten (LABY07, inverteret). (3) Beskæftigelsesfrekvensen for indvandrere fra ikke-vestlige lande i procent af frekvensen for personer med dansk oprindelse, 16-64 år (RAS200, direkte). Score 100 = landsgennemsnit.",
+    scoring: "Gennemsnit af to indikatorer: (1) Gini-koefficient (IFOR41, inverteret - lavere ulighed er bedre). (2) Beskæftigelsesfrekvensen for indvandrere fra ikke-vestlige lande i procent af frekvensen for personer med dansk oprindelse, 16-64 år (RAS200, direkte). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: en rimelig fordeling af ressourcer og muligheder er grundlaget for et sammenhængende samfund.",
-    limitations: "Gini og relativ fattigdom bygger på DST's indkomstregistre og er korrelerede mål - kommuner med høj ulighed har typisk også høj andel lavindkomst. Data er 2 år forsinket.",
+    limitations: "Kategorien måler fordelingen, ikke fattigdomsniveauet, som indgår i Velfærd. Indtil sep. 2026 indgik også andelen med lavindkomst (LABY07), men den var næsten samme tal som børnefattigdom under Velfærd (korrelation 0,87), så fattigdom talte to gange. De to tilbageværende indikatorer måler forskellige sider af ulighed og hænger næsten ikke sammen (korrelation 0,09), så hver af dem bestemmer halvdelen af kategorien. Gini afspejler både lave og meget høje indkomster, og velstående forstadskommuner har typisk en høj Gini. I kommuner med få indvandrere fra ikke-vestlige lande bygger beskæftigelsesgabet på få personer. Indkomstdata er 2 år forsinket.",
   },
   ligestilling: {
     id: "ligestilling",

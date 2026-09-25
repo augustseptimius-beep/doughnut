@@ -598,104 +598,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,_dim_ligestilling,2010-2012,2023-2025,,,11.25,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
 851,_dim_ligestilling,2010-2012,2023-2025,,,3.13,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
 860,_dim_ligestilling,2010-2012,2023-2025,,,4.64,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-101,_dim_lighed,2010-2012,2022-2024,,,5.77,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-147,_dim_lighed,2010-2012,2022-2024,,,6.69,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-151,_dim_lighed,2010-2012,2022-2024,,,3.01,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-153,_dim_lighed,2010-2012,2022-2024,,,-0.15,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-155,_dim_lighed,2010-2012,2022-2024,,,9.92,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-157,_dim_lighed,2010-2012,2022-2024,,,-1.95,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-159,_dim_lighed,2010-2012,2022-2024,,,5.23,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-161,_dim_lighed,2010-2012,2022-2024,,,-0.73,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-163,_dim_lighed,2010-2012,2022-2024,,,0.07,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-165,_dim_lighed,2010-2012,2022-2024,,,9.63,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-167,_dim_lighed,2010-2012,2022-2024,,,0.54,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-169,_dim_lighed,2010-2012,2022-2024,,,4.77,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-173,_dim_lighed,2010-2012,2022-2024,,,-4.19,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-175,_dim_lighed,2010-2012,2022-2024,,,-3.94,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-183,_dim_lighed,2010-2012,2022-2024,,,3.62,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-185,_dim_lighed,2010-2012,2022-2024,,,1.12,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-187,_dim_lighed,2010-2012,2022-2024,,,-6.8,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-190,_dim_lighed,2010-2012,2022-2024,,,9.48,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-201,_dim_lighed,2010-2012,2022-2024,,,8.7,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-210,_dim_lighed,2010-2012,2022-2024,,,9.11,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-217,_dim_lighed,2010-2012,2022-2024,,,7.36,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-219,_dim_lighed,2010-2012,2022-2024,,,2.31,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-223,_dim_lighed,2010-2012,2022-2024,,,2.47,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-230,_dim_lighed,2010-2012,2022-2024,,,2.84,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-240,_dim_lighed,2010-2012,2022-2024,,,0.51,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-250,_dim_lighed,2010-2012,2022-2024,,,1.13,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-253,_dim_lighed,2010-2012,2022-2024,,,0.61,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-259,_dim_lighed,2010-2012,2022-2024,,,3.58,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-260,_dim_lighed,2010-2012,2022-2024,,,5.32,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-265,_dim_lighed,2010-2012,2022-2024,,,7.24,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-269,_dim_lighed,2010-2012,2022-2024,,,11.89,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-270,_dim_lighed,2010-2012,2022-2024,,,4.86,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-306,_dim_lighed,2010-2012,2022-2024,,,6.89,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-316,_dim_lighed,2010-2012,2022-2024,,,12.95,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-320,_dim_lighed,2010-2012,2022-2024,,,6.79,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-326,_dim_lighed,2010-2012,2022-2024,,,10.53,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-329,_dim_lighed,2010-2012,2022-2024,,,7.06,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-330,_dim_lighed,2010-2012,2022-2024,,,4.78,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-336,_dim_lighed,2010-2012,2022-2024,,,14.01,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-340,_dim_lighed,2010-2012,2022-2024,,,4.03,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-350,_dim_lighed,2010-2012,2022-2024,,,12.89,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-360,_dim_lighed,2010-2012,2022-2024,,,14.7,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-370,_dim_lighed,2010-2012,2022-2024,,,3.68,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-376,_dim_lighed,2010-2012,2022-2024,,,6.67,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-390,_dim_lighed,2010-2012,2022-2024,,,13.4,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-400,_dim_lighed,2010-2012,2022-2024,,,4.65,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-410,_dim_lighed,2010-2012,2022-2024,,,5.91,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-420,_dim_lighed,2010-2012,2022-2024,,,9.26,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-430,_dim_lighed,2010-2012,2022-2024,,,5.53,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-440,_dim_lighed,2010-2012,2022-2024,,,-1.19,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-450,_dim_lighed,2010-2012,2022-2024,,,5.14,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-461,_dim_lighed,2010-2012,2022-2024,,,6.03,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-479,_dim_lighed,2010-2012,2022-2024,,,3.63,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-480,_dim_lighed,2010-2012,2022-2024,,,2.04,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-482,_dim_lighed,2010-2012,2022-2024,,,12.7,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-492,_dim_lighed,2010-2012,2022-2024,,,-5.95,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-510,_dim_lighed,2010-2012,2022-2024,,,7.45,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-530,_dim_lighed,2010-2012,2022-2024,,,1.77,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-540,_dim_lighed,2010-2012,2022-2024,,,7.33,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-550,_dim_lighed,2010-2012,2022-2024,,,6.67,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-561,_dim_lighed,2010-2012,2022-2024,,,13.12,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-563,_dim_lighed,2010-2012,2022-2024,,,14.41,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-573,_dim_lighed,2010-2012,2022-2024,,,16.55,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-575,_dim_lighed,2010-2012,2022-2024,,,-4.64,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-580,_dim_lighed,2010-2012,2022-2024,,,12.85,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-607,_dim_lighed,2010-2012,2022-2024,,,0.88,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-615,_dim_lighed,2010-2012,2022-2024,,,8.25,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-621,_dim_lighed,2010-2012,2022-2024,,,5.71,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-630,_dim_lighed,2010-2012,2022-2024,,,5.76,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-657,_dim_lighed,2010-2012,2022-2024,,,6.98,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-661,_dim_lighed,2010-2012,2022-2024,,,9.02,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-665,_dim_lighed,2010-2012,2022-2024,,,12.06,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-671,_dim_lighed,2010-2012,2022-2024,,,4.77,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-706,_dim_lighed,2010-2012,2022-2024,,,6.8,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-707,_dim_lighed,2010-2012,2022-2024,,,12.46,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-710,_dim_lighed,2010-2012,2022-2024,,,4.2,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-727,_dim_lighed,2010-2012,2022-2024,,,5.76,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-730,_dim_lighed,2010-2012,2022-2024,,,-2.09,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-740,_dim_lighed,2010-2012,2022-2024,,,10.32,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-741,_dim_lighed,2010-2012,2022-2024,,,-15.38,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-746,_dim_lighed,2010-2012,2022-2024,,,5.84,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-751,_dim_lighed,2010-2012,2022-2024,,,1.32,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-756,_dim_lighed,2010-2012,2022-2024,,,-3.44,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-760,_dim_lighed,2010-2012,2022-2024,,,14.66,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-766,_dim_lighed,2010-2012,2022-2024,,,6.25,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-773,_dim_lighed,2010-2012,2022-2024,,,23.58,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-779,_dim_lighed,2010-2012,2022-2024,,,8.37,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-787,_dim_lighed,2010-2012,2022-2024,,,12.5,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-791,_dim_lighed,2010-2012,2022-2024,,,6.97,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-810,_dim_lighed,2010-2012,2022-2024,,,12.76,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-813,_dim_lighed,2010-2012,2022-2024,,,0.37,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-820,_dim_lighed,2010-2012,2022-2024,,,13.49,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-825,_dim_lighed,2010-2012,2022-2024,,,15.99,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-840,_dim_lighed,2010-2012,2022-2024,,,16.4,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-846,_dim_lighed,2010-2012,2022-2024,,,7.28,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-849,_dim_lighed,2010-2012,2022-2024,,,15.34,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-851,_dim_lighed,2010-2012,2022-2024,,,0.25,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-860,_dim_lighed,2010-2012,2022-2024,,,13.23,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+101,_dim_lighed,2010-2012,2022-2024,,,3.26,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+147,_dim_lighed,2010-2012,2022-2024,,,6.63,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+151,_dim_lighed,2010-2012,2022-2024,,,5.45,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+153,_dim_lighed,2010-2012,2022-2024,,,2.69,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+155,_dim_lighed,2010-2012,2022-2024,,,5.79,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+157,_dim_lighed,2010-2012,2022-2024,,,-6.96,forkert,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+159,_dim_lighed,2010-2012,2022-2024,,,7.04,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+161,_dim_lighed,2010-2012,2022-2024,,,1.37,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+163,_dim_lighed,2010-2012,2022-2024,,,2.99,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+165,_dim_lighed,2010-2012,2022-2024,,,8.37,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+167,_dim_lighed,2010-2012,2022-2024,,,1.71,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+169,_dim_lighed,2010-2012,2022-2024,,,7.15,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+173,_dim_lighed,2010-2012,2022-2024,,,-5.67,forkert,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+175,_dim_lighed,2010-2012,2022-2024,,,1.18,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+183,_dim_lighed,2010-2012,2022-2024,,,2.98,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+185,_dim_lighed,2010-2012,2022-2024,,,3.13,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+187,_dim_lighed,2010-2012,2022-2024,,,-0.61,stagneret,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+190,_dim_lighed,2010-2012,2022-2024,,,10.24,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+201,_dim_lighed,2010-2012,2022-2024,,,7.4,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+210,_dim_lighed,2010-2012,2022-2024,,,6.52,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+217,_dim_lighed,2010-2012,2022-2024,,,2.51,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+219,_dim_lighed,2010-2012,2022-2024,,,5.08,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+223,_dim_lighed,2010-2012,2022-2024,,,2.27,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+230,_dim_lighed,2010-2012,2022-2024,,,-1.29,forkert,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+240,_dim_lighed,2010-2012,2022-2024,,,-0.03,stagneret,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+250,_dim_lighed,2010-2012,2022-2024,,,1.69,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+253,_dim_lighed,2010-2012,2022-2024,,,3.41,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+259,_dim_lighed,2010-2012,2022-2024,,,6.3,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+260,_dim_lighed,2010-2012,2022-2024,,,1.95,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+265,_dim_lighed,2010-2012,2022-2024,,,3.79,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+269,_dim_lighed,2010-2012,2022-2024,,,10.09,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+270,_dim_lighed,2010-2012,2022-2024,,,0.98,stagneret,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+306,_dim_lighed,2010-2012,2022-2024,,,3.19,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+316,_dim_lighed,2010-2012,2022-2024,,,13.07,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+320,_dim_lighed,2010-2012,2022-2024,,,4.62,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+326,_dim_lighed,2010-2012,2022-2024,,,10.07,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+329,_dim_lighed,2010-2012,2022-2024,,,7.52,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+330,_dim_lighed,2010-2012,2022-2024,,,5.54,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+336,_dim_lighed,2010-2012,2022-2024,,,13.52,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+340,_dim_lighed,2010-2012,2022-2024,,,4.12,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+350,_dim_lighed,2010-2012,2022-2024,,,14.96,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+360,_dim_lighed,2010-2012,2022-2024,,,17.35,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+370,_dim_lighed,2010-2012,2022-2024,,,4.71,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+376,_dim_lighed,2010-2012,2022-2024,,,7.11,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+390,_dim_lighed,2010-2012,2022-2024,,,17.13,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+400,_dim_lighed,2010-2012,2022-2024,,,3.41,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+410,_dim_lighed,2010-2012,2022-2024,,,7.7,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+420,_dim_lighed,2010-2012,2022-2024,,,12.01,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+430,_dim_lighed,2010-2012,2022-2024,,,6.21,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+440,_dim_lighed,2010-2012,2022-2024,,,-0.25,stagneret,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+450,_dim_lighed,2010-2012,2022-2024,,,4.26,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+461,_dim_lighed,2010-2012,2022-2024,,,8.73,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+479,_dim_lighed,2010-2012,2022-2024,,,6.23,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+480,_dim_lighed,2010-2012,2022-2024,,,3.57,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+482,_dim_lighed,2010-2012,2022-2024,,,10.84,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+492,_dim_lighed,2010-2012,2022-2024,,,-8.46,forkert,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+510,_dim_lighed,2010-2012,2022-2024,,,7.5,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+530,_dim_lighed,2010-2012,2022-2024,,,-5.68,forkert,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+540,_dim_lighed,2010-2012,2022-2024,,,10.14,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+550,_dim_lighed,2010-2012,2022-2024,,,6.28,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+561,_dim_lighed,2010-2012,2022-2024,,,11.35,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+563,_dim_lighed,2010-2012,2022-2024,,,5.67,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+573,_dim_lighed,2010-2012,2022-2024,,,16.17,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+575,_dim_lighed,2010-2012,2022-2024,,,-20.0,forkert,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+580,_dim_lighed,2010-2012,2022-2024,,,9.13,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+607,_dim_lighed,2010-2012,2022-2024,,,3.88,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+615,_dim_lighed,2010-2012,2022-2024,,,7.71,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+621,_dim_lighed,2010-2012,2022-2024,,,7.71,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+630,_dim_lighed,2010-2012,2022-2024,,,8.16,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+657,_dim_lighed,2010-2012,2022-2024,,,8.62,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+661,_dim_lighed,2010-2012,2022-2024,,,10.32,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+665,_dim_lighed,2010-2012,2022-2024,,,10.01,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+671,_dim_lighed,2010-2012,2022-2024,,,-1.04,forkert,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+706,_dim_lighed,2010-2012,2022-2024,,,5.94,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+707,_dim_lighed,2010-2012,2022-2024,,,11.32,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+710,_dim_lighed,2010-2012,2022-2024,,,6.29,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+727,_dim_lighed,2010-2012,2022-2024,,,2.39,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+730,_dim_lighed,2010-2012,2022-2024,,,2.68,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+740,_dim_lighed,2010-2012,2022-2024,,,9.5,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+741,_dim_lighed,2010-2012,2022-2024,,,-11.73,forkert,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+746,_dim_lighed,2010-2012,2022-2024,,,2.71,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+751,_dim_lighed,2010-2012,2022-2024,,,7.06,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+756,_dim_lighed,2010-2012,2022-2024,,,-1.32,forkert,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+760,_dim_lighed,2010-2012,2022-2024,,,12.8,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+766,_dim_lighed,2010-2012,2022-2024,,,8.06,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+773,_dim_lighed,2010-2012,2022-2024,,,23.37,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+779,_dim_lighed,2010-2012,2022-2024,,,7.46,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+787,_dim_lighed,2010-2012,2022-2024,,,12.17,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+791,_dim_lighed,2010-2012,2022-2024,,,7.66,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+810,_dim_lighed,2010-2012,2022-2024,,,10.2,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+813,_dim_lighed,2010-2012,2022-2024,,,0.1,stagneret,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+820,_dim_lighed,2010-2012,2022-2024,,,10.63,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+825,_dim_lighed,2010-2012,2022-2024,,,15.65,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+840,_dim_lighed,2010-2012,2022-2024,,,15.7,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+846,_dim_lighed,2010-2012,2022-2024,,,7.88,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+849,_dim_lighed,2010-2012,2022-2024,,,16.43,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+851,_dim_lighed,2010-2012,2022-2024,,,4.07,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
+860,_dim_lighed,2010-2012,2022-2024,,,9.52,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
 101,_dim_lokalsamfund,2010-2012,2025,,,-4.7,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 147,_dim_lokalsamfund,2010-2012,2025,,,30.46,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 151,_dim_lokalsamfund,2010-2012,2025,,,19.24,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
@@ -4711,104 +4711,6 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,low_education,2010-2012,2023-2025,29.2474,24.6176,-15.83,tempo,16,Danmarks Statistik,
 851,low_education,2010-2012,2023-2025,15.6179,9.9425,-36.34,rigtig,16,Danmarks Statistik,
 860,low_education,2010-2012,2023-2025,26.906,22.043,-18.07,rigtig,16,Danmarks Statistik,
-101,low_income,2015-2017,2022-2024,5.5667,4.9667,-10.78,rigtig,10,Danmarks Statistik,
-147,low_income,2015-2017,2022-2024,3.4333,3.2,-6.8,tempo,10,Danmarks Statistik,
-151,low_income,2015-2017,2022-2024,3.6,3.6667,1.85,forkert,10,Danmarks Statistik,
-153,low_income,2015-2017,2022-2024,6.3,6.6667,5.82,forkert,10,Danmarks Statistik,
-155,low_income,2015-2017,2022-2024,2.2,1.8,-18.18,rigtig,10,Danmarks Statistik,
-157,low_income,2015-2017,2022-2024,2.9,2.6667,-8.05,rigtig,10,Danmarks Statistik,
-159,low_income,2015-2017,2022-2024,4.1667,4.1,-1.6,tempo,10,Danmarks Statistik,
-161,low_income,2015-2017,2022-2024,4.0667,4.2667,4.92,forkert,10,Danmarks Statistik,
-163,low_income,2015-2017,2022-2024,3.4667,3.6667,5.77,forkert,10,Danmarks Statistik,
-165,low_income,2015-2017,2022-2024,6.0333,5.3,-12.15,rigtig,10,Danmarks Statistik,
-167,low_income,2015-2017,2022-2024,3.7333,3.8,1.79,forkert,10,Danmarks Statistik,
-169,low_income,2015-2017,2022-2024,5.5,5.5,0.0,stagneret,10,Danmarks Statistik,
-173,low_income,2015-2017,2022-2024,2.7,2.7333,1.23,forkert,10,Danmarks Statistik,
-175,low_income,2015-2017,2022-2024,4.2333,4.8333,14.17,forkert,10,Danmarks Statistik,
-183,low_income,2015-2017,2022-2024,6.1,5.8,-4.92,tempo,10,Danmarks Statistik,
-185,low_income,2015-2017,2022-2024,3.4333,3.5333,2.91,forkert,10,Danmarks Statistik,
-187,low_income,2015-2017,2022-2024,3.3,3.9333,19.19,forkert,10,Danmarks Statistik,
-190,low_income,2015-2017,2022-2024,2.9333,2.7,-7.95,rigtig,10,Danmarks Statistik,
-201,low_income,2015-2017,2022-2024,2.0667,1.8333,-11.29,rigtig,10,Danmarks Statistik,
-210,low_income,2015-2017,2022-2024,3.5,3.0,-14.29,rigtig,10,Danmarks Statistik,
-217,low_income,2015-2017,2022-2024,4.1,3.4,-17.07,rigtig,10,Danmarks Statistik,
-219,low_income,2015-2017,2022-2024,3.1,3.2,3.23,forkert,10,Danmarks Statistik,
-223,low_income,2015-2017,2022-2024,2.3333,2.2667,-2.86,tempo,10,Danmarks Statistik,
-230,low_income,2015-2017,2022-2024,2.4,2.1333,-11.11,rigtig,10,Danmarks Statistik,
-240,low_income,2015-2017,2022-2024,2.1,2.0667,-1.59,tempo,10,Danmarks Statistik,
-250,low_income,2015-2017,2022-2024,2.9667,2.9667,0.0,stagneret,10,Danmarks Statistik,
-253,low_income,2015-2017,2022-2024,3.3333,3.5,5.0,forkert,10,Danmarks Statistik,
-259,low_income,2015-2017,2022-2024,3.6,3.6667,1.85,forkert,10,Danmarks Statistik,
-260,low_income,2015-2017,2022-2024,3.6,3.1667,-12.04,rigtig,10,Danmarks Statistik,
-265,low_income,2015-2017,2022-2024,3.0667,2.6333,-14.13,rigtig,10,Danmarks Statistik,
-269,low_income,2015-2017,2022-2024,2.3667,2.0,-15.49,rigtig,10,Danmarks Statistik,
-270,low_income,2015-2017,2022-2024,3.4333,3.0,-12.62,rigtig,10,Danmarks Statistik,
-306,low_income,2015-2017,2022-2024,4.4333,3.8,-14.29,rigtig,10,Danmarks Statistik,
-316,low_income,2015-2017,2022-2024,3.9333,3.4333,-12.71,rigtig,10,Danmarks Statistik,
-320,low_income,2015-2017,2022-2024,4.2,3.7333,-11.11,rigtig,10,Danmarks Statistik,
-326,low_income,2015-2017,2022-2024,4.3667,3.8667,-11.45,rigtig,10,Danmarks Statistik,
-329,low_income,2015-2017,2022-2024,3.8,3.5667,-6.14,tempo,10,Danmarks Statistik,
-330,low_income,2015-2017,2022-2024,5.1,4.9333,-3.27,tempo,10,Danmarks Statistik,
-336,low_income,2015-2017,2022-2024,3.3333,2.8333,-15.0,rigtig,10,Danmarks Statistik,
-340,low_income,2015-2017,2022-2024,3.4667,3.3333,-3.85,tempo,10,Danmarks Statistik,
-350,low_income,2015-2017,2022-2024,2.6667,2.4333,-8.75,rigtig,10,Danmarks Statistik,
-360,low_income,2015-2017,2022-2024,5.3333,4.8333,-9.38,rigtig,10,Danmarks Statistik,
-370,low_income,2015-2017,2022-2024,4.0667,4.0,-1.64,tempo,10,Danmarks Statistik,
-376,low_income,2015-2017,2022-2024,5.2,4.9,-5.77,tempo,10,Danmarks Statistik,
-390,low_income,2015-2017,2022-2024,4.5,4.2333,-5.93,tempo,10,Danmarks Statistik,
-400,low_income,2015-2017,2022-2024,3.2667,3.0333,-7.14,rigtig,10,Danmarks Statistik,
-410,low_income,2015-2017,2022-2024,2.8333,2.7667,-2.35,tempo,10,Danmarks Statistik,
-420,low_income,2015-2017,2022-2024,3.5333,3.4,-3.77,tempo,10,Danmarks Statistik,
-430,low_income,2015-2017,2022-2024,3.2,3.0667,-4.17,tempo,10,Danmarks Statistik,
-440,low_income,2015-2017,2022-2024,3.2667,3.3667,3.06,forkert,10,Danmarks Statistik,
-450,low_income,2015-2017,2022-2024,3.8667,3.6,-6.9,rigtig,10,Danmarks Statistik,
-461,low_income,2015-2017,2022-2024,5.3,5.2667,-0.63,stagneret,10,Danmarks Statistik,
-479,low_income,2015-2017,2022-2024,4.2667,4.3333,1.56,forkert,10,Danmarks Statistik,
-480,low_income,2015-2017,2022-2024,3.3,3.3333,1.01,forkert,10,Danmarks Statistik,
-482,low_income,2015-2017,2022-2024,4.6667,3.9,-16.43,rigtig,10,Danmarks Statistik,
-492,low_income,2015-2017,2022-2024,3.5333,3.5667,0.94,stagneret,10,Danmarks Statistik,
-510,low_income,2015-2017,2022-2024,4.5333,4.2,-7.35,rigtig,10,Danmarks Statistik,
-530,low_income,2015-2017,2022-2024,3.2,2.6667,-16.67,rigtig,10,Danmarks Statistik,
-540,low_income,2015-2017,2022-2024,3.8667,3.8,-1.72,tempo,10,Danmarks Statistik,
-550,low_income,2015-2017,2022-2024,4.4667,4.1333,-7.46,rigtig,10,Danmarks Statistik,
-561,low_income,2015-2017,2022-2024,4.2,3.5,-16.67,rigtig,10,Danmarks Statistik,
-563,low_income,2015-2017,2022-2024,3.1333,2.1333,-31.91,rigtig,10,Danmarks Statistik,
-573,low_income,2015-2017,2022-2024,3.4667,2.8667,-17.31,rigtig,10,Danmarks Statistik,
-575,low_income,2015-2017,2022-2024,3.8333,2.8333,-26.09,rigtig,10,Danmarks Statistik,
-580,low_income,2015-2017,2022-2024,4.4333,3.5333,-20.3,rigtig,10,Danmarks Statistik,
-607,low_income,2015-2017,2022-2024,4.5667,4.8,5.11,forkert,10,Danmarks Statistik,
-615,low_income,2015-2017,2022-2024,3.9333,3.5667,-9.32,rigtig,10,Danmarks Statistik,
-621,low_income,2015-2017,2022-2024,3.9,3.8333,-1.71,tempo,10,Danmarks Statistik,
-630,low_income,2015-2017,2022-2024,3.5333,3.5,-0.94,stagneret,10,Danmarks Statistik,
-657,low_income,2015-2017,2022-2024,3.6,3.4667,-3.7,tempo,10,Danmarks Statistik,
-661,low_income,2015-2017,2022-2024,3.6333,3.4,-6.42,tempo,10,Danmarks Statistik,
-665,low_income,2015-2017,2022-2024,3.3,2.7667,-16.16,rigtig,10,Danmarks Statistik,
-671,low_income,2015-2017,2022-2024,4.2667,3.5667,-16.41,rigtig,10,Danmarks Statistik,
-706,low_income,2015-2017,2022-2024,3.1333,2.8667,-8.51,rigtig,10,Danmarks Statistik,
-707,low_income,2015-2017,2022-2024,4.3,3.6667,-14.73,rigtig,10,Danmarks Statistik,
-710,low_income,2015-2017,2022-2024,2.3,2.3,0.0,stagneret,10,Danmarks Statistik,
-727,low_income,2015-2017,2022-2024,2.9333,2.5667,-12.5,rigtig,10,Danmarks Statistik,
-730,low_income,2015-2017,2022-2024,4.3,4.8,11.63,forkert,10,Danmarks Statistik,
-740,low_income,2015-2017,2022-2024,3.0667,2.7,-11.96,rigtig,10,Danmarks Statistik,
-741,low_income,2015-2017,2022-2024,3.2333,3.9667,22.68,forkert,10,Danmarks Statistik,
-746,low_income,2015-2017,2022-2024,2.2,1.9333,-12.12,rigtig,10,Danmarks Statistik,
-751,low_income,2015-2017,2022-2024,4.2667,4.7,10.16,forkert,10,Danmarks Statistik,
-756,low_income,2015-2017,2022-2024,3.0333,3.2667,7.69,forkert,10,Danmarks Statistik,
-760,low_income,2015-2017,2022-2024,3.2667,2.6667,-18.37,rigtig,10,Danmarks Statistik,
-766,low_income,2015-2017,2022-2024,2.5333,2.4667,-2.63,tempo,10,Danmarks Statistik,
-773,low_income,2015-2017,2022-2024,4.1667,3.1667,-24.0,rigtig,10,Danmarks Statistik,
-779,low_income,2015-2017,2022-2024,3.6,3.2333,-10.19,rigtig,10,Danmarks Statistik,
-787,low_income,2015-2017,2022-2024,3.8,3.3,-13.16,rigtig,10,Danmarks Statistik,
-791,low_income,2015-2017,2022-2024,3.5667,3.3667,-5.61,tempo,10,Danmarks Statistik,
-810,low_income,2015-2017,2022-2024,4.1,3.3667,-17.89,rigtig,10,Danmarks Statistik,
-813,low_income,2015-2017,2022-2024,3.6667,3.6333,-0.91,stagneret,10,Danmarks Statistik,
-820,low_income,2015-2017,2022-2024,4.1667,3.3667,-19.2,rigtig,10,Danmarks Statistik,
-825,low_income,2015-2017,2022-2024,3.2,2.6667,-16.67,rigtig,10,Danmarks Statistik,
-840,low_income,2015-2017,2022-2024,2.4333,2.0,-17.81,rigtig,10,Danmarks Statistik,
-846,low_income,2015-2017,2022-2024,3.8333,3.6,-6.09,tempo,10,Danmarks Statistik,
-849,low_income,2015-2017,2022-2024,3.8,3.3,-13.16,rigtig,10,Danmarks Statistik,
-851,low_income,2015-2017,2022-2024,4.0667,4.3667,7.38,forkert,10,Danmarks Statistik,
-860,low_income,2015-2017,2022-2024,4.2,3.3333,-20.63,rigtig,10,Danmarks Statistik,
 101,mentalt_helbred,2017,2025,15.5,18.8,21.29,forkert,2,Danmarks Statistik,
 147,mentalt_helbred,2017,2025,13.6,15.3,12.5,forkert,2,Danmarks Statistik,
 151,mentalt_helbred,2017,2025,14.1,18.5,31.21,forkert,2,Danmarks Statistik,

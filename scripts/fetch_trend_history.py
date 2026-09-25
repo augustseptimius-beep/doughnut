@@ -504,8 +504,7 @@ SIMPLE = [
     # (se planens bilag 3.4: anlæg medregnet giver ca. 17% for højt tal).
 
     # --- Lighed ---
-    dict(id="low_income", navn="Andel i lavindkomstgruppe", tabel="LABY07",
-         soeg=["=alder i alt"]),
+    # low_income er fjernet som indikator sep. 2026 (se registrets _fjernet).
     dict(id="gender_leadership_taeller", navn="Kvinder i lederstillinger", tabel="RAS301",
          soeg=["=kvinder"], ekstra=[{"soeg": ["ledelsesarbejde"]}]),
     dict(id="gender_leadership_naevner", navn="Ledere i alt", tabel="RAS301",
@@ -559,7 +558,7 @@ DIREKTE = {
     "vulnerable_children", "poverty_relative", "child_poverty", "gini",
     "housing_area", "voter_turnout_national", "voter_turnout", "sports_membership",
     "life_expectancy", "disposable_income", "commute_distance",
-    "kultur_spending", "civil_society", "low_income",
+    "kultur_spending", "civil_society",
 }
 
 

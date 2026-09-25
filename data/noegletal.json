@@ -21,7 +21,6 @@
   "employment": {"reference": 77.4, "daekning": 98, "data_year": "2024"},
   "child_poverty": {"reference": 4.3, "daekning": 98, "data_year": "2024"},
   "gini": {"reference": 30.43, "daekning": 98, "data_year": "2024"},
-  "low_income": {"reference": 3.8, "daekning": 98, "data_year": "2024"},
   "vulnerable_children": {"reference": 3.5, "daekning": 98, "data_year": "2025"},
   "neet": {"reference": 9.14, "daekning": 98, "data_year": "2024"},
   "poverty_relative": {"reference": 13.3, "daekning": 98, "data_year": "2024"},
