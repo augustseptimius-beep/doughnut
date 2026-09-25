@@ -20,7 +20,7 @@ Resultatet er et estimat, ikke en måling. Det er beregnet til brug i Doughnut-p
 
 ### 2.1 Baseline (2011)
 
-**Kilde:** Osei-Owusu, K.A. et al. (2020). "Tracking the carbon emissions of Denmark's five regions from a producer and consumer perspective." *Ecological Economics*, 177, 106778.
+**Kilde:** Osei-Owusu, A.K. et al. (2020). "Tracking the carbon emissions of Denmark's five regions from a producer and consumer perspective." *Ecological Economics*, 177, 106778.
 
 **Metode i artiklen:** Forfatterne kombinerer LINE-modellen (kommunal interregional IO-model, 40 sektorer) med EXIOBASE v3.4 (global MRIO, 200 produkter, 49 regioner). Husholdningernes endelige efterspørgsel disaggregeres til 98 kommuner via forbrugsudgifter fra Danmarks Statistiks Forbrugsundersøgelse (46 forbrugskategorier). Direkte husholdningsemissioner (opvarmning, transport) hentes fra Region Syddanmarks data2go.dk-database og lægges oven i IO-beregningen.
 
@@ -112,6 +112,6 @@ Global Afrapportering 2025. National skalering - ikke kommunespecifikt opdateret
 
 ## 7. Kilder
 
-- Osei-Owusu, K.A., Nielsen, O.A., Birgisdottir, H. & Siemsen, T.I. (2020). "Tracking the carbon emissions of Denmark's five regions from a producer and consumer perspective." *Ecological Economics*, 177, 106778. https://doi.org/10.1016/j.ecolecon.2020.106778 (Kommunal CBA-baseline 2011)
+- Osei-Owusu, A.K., Thomsen, M., Lindahl, J., Javakhishvili Larsen, N. & Caro, D. (2020). "Tracking the carbon emissions of Denmark's five regions from a producer and consumer perspective." *Ecological Economics*, 177, 106778. https://doi.org/10.1016/j.ecolecon.2020.106778 (Kommunal CBA-baseline 2011)
 - Energistyrelsen (2025). "Danmarks globale klimapåvirkning - Global Afrapportering 2025." (National CBA 2023 + historisk tidsserie inkl. 2011-værdi på 14,07 ton/cap)
 - Danmarks Statistik, FOLK1A (befolkningstal).
