@@ -39,7 +39,9 @@ ekstreme tal. Tallene er fysisk rigtige, men grundvandsoplandet er større
 end kommunen, så de skal formidles forsigtigt. En bykommune, hvis borgere
 bruger vand fra nabokommunen, får ikke det forbrug tilskrevet.
 Næste skridt: måle indvindingen mod grundvandsdannelsen i kommunen frem for
-mod landsgennemsnittet. Se docs/oekologisk-gennemgang-sep-2026.md afsnit 6.
+mod landsgennemsnittet, med vandområdeplanernes screeningskriterium som
+grænse (højst 30% af grundvandsdannelsen, GEUS 2023/08 s. 28). Data og
+forbehold: docs/oekologisk-gennemgang-sep-2026.md afsnit 5, punkt 1.
 
 Datakilde:
   Danmarks Statistik VANDIND (VANDTYP=TOTVAND, INDKAT 100, 105, 110) og

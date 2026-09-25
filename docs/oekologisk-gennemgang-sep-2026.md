@@ -158,9 +158,17 @@ kvælstofnedfaldet afgør scoren.
 1. **Vand har ingen absolut grænse pr. kommune.** GEUS' bæredygtige grundvandsressource pr.
    delopland (58 områder) findes kun som kort i rapporten, og Miljøstyrelsen vurderer tallene ikke
    autoritative på den skala. Grundvandsforekomsternes kvantitative tilstand (VP3) kan ikke bruges:
-   kun 9 af ca. 2.000 forekomster er i ringe tilstand. **Forslag:** bed GEUS eller Miljøstyrelsen
-   om regnearket bag opgørelsen (Vandbalancedata17dec2022.xls) og brug den regionale ressource som
-   nævner.
+   kun 9 af ca. 2.000 forekomster er i ringe tilstand. **Næste skridt (besluttet 25. sep. 2026):**
+   mål indvindingen mod grundvandsdannelsen i kommunen. Grænsen kan tages fra vandområdeplanernes
+   første screeningstrin, hvor en grundvandsforekomst højst må udnyttes 30% af
+   grundvandsdannelsen (GEUS 2023/08, s. 28), altså ratio = indvinding / (0,30 ×
+   grundvandsdannelse) × 100. Data: DK-modellens "infiltration til mættet zone" (HIP, 100 m,
+   gennemsnit 1990-2019, mm/år). Den ligger kun bag et gratis login hos Dataforsyningen (FTP
+   `HIP/randbetingelser` eller WMS med token), og FTP er ikke tilgængelig fra udviklingsmiljøet.
+   Før den bruges, skal HIP's ekspertvejledning for randbetingelser læses: infiltration til
+   mættet zone omfatter også vand, der hurtigt løber til dræn og vandløb, og 30%-kriteriet er
+   formuleret for en grundvandsforekomst, ikke for en kommune. Alternativet er stadig regnearket
+   bag GEUS' opgørelse (Vandbalancedata17dec2022.xls).
 2. **Forbrugs-CO₂ er stadig et 2011-mønster.** Der findes ingen kommunefordelt forbrugsbaseret
    opgørelse efter 2011. Forskellene mellem kommuner er derfor 15 år gamle.
 3. **Tålegrænsen for kvælstofnedfald er én værdi.** Den rigtige grænse afhænger af naturtypen, og
