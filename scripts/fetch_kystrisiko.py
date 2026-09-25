@@ -49,7 +49,10 @@ build_master_csv.py (invers: landstal / kommune × 100) med registrets loft på
 100: en kommune med kystrisiko under landstallet eller ingen kystrisiko står
 neutralt. Fravær af en fare er ikke robusthed ud over det sædvanlige, og med
 det almindelige loft på 150 ville en kommune uden kyst få en bonus, der i
-kategoriens gennemsnit udligner dens vejrskader.
+kategoriens gennemsnit udligner dens vejrskader. Loftet er en mellemløsning:
+det rigtige næste skridt er at lægge skaderne sammen i kroner pr. indbygger
+med forsikringsudbetalingerne, se afsnittet om sammenvejning i
+data/klimatilpasning.md.
 
 Afhængigheder (ud over standardbiblioteket): numpy og rasterio.
   pip3 install numpy rasterio

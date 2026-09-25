@@ -142,6 +142,27 @@ Ingen af de to kilder måler tilpasningsevne (Tier 3). Den grundlæggende svaghe
 
 ---
 
+## Sammenvejning: nuværende løsning og det rigtige næste skridt
+
+**Nu (fra sep. 2026):** kategorien er gennemsnittet af `vejr_skader` og `kystrisiko`, og kystrisikoen tæller højst 100 (registrets `cap`, arkitekturdokumentet R1). To andre løsninger blev fravalgt:
+
+- **Gennemsnit med loftet 150.** En kommune uden kyst får 150, altså "50 % bedre end landet", selv om fravær af en fare ikke er robusthed. Bonussen udligner kommunens vejrskader: Holstebro (vejrskader 51) blev grøn på den måde.
+- **Worst-of.** `vejr_skader` er det eneste af de to mål, der reagerer på tiltag, og i de 35 kommuner hvor kystrisikoen er lavest, ville worst-of skjule det helt. Kystrisikoen står stille indtil en ny kortlægning. Desuden ligger den laveste af to mål, der hver er centreret om landsgennemsnittet, systematisk under 100, så rød kommer til at betyde "under gennemsnittet på mindst én". Worst-of virker for de økologiske dimensioner, fordi de måles mod absolutte grænser.
+
+Loftet på 100 er en mellemløsning: det fjerner bonussen uden at skjule nogen af de to mål. Men det er stadig to forskellige enheder (antal skader og kroner), der vejes lige, fordi vi ikke har noget bedre.
+
+**Det rigtige næste skridt: læg skaderne sammen i kroner.** Risiko er i forvejen defineret som forventet årlig skade i kr., og Kystplanlæggeren leverer netop det. Hvis forsikringsskaderne også fandtes i kroner pr. kommune, kunne kategorien være én indikator: samlet klimaskade pr. indbygger pr. år = vejrrelaterede forsikringsudbetalinger + forventet skade fra havet. Så er der ingen regel for sammenvejning og intet loft at sætte. En kommune uden kyst har kun sine vejrskader, og en indsats mod enhver fare sænker tallet. Det er samme logik, som Kystdirektoratet selv bruger.
+
+Hvad det kræver:
+
+1. **Udbetalinger pr. kommune fra F&P.** Datawrapper-kortet (`NDLlA`) har kun antal skader pr. 1.000 indbyggere. F&P's artikel henviser til to Excel-filer (kvartalsstatistik 2023-2025 og årsstatistik 2006-2024), som ikke er undersøgt, men artiklen viser ingen beløb pr. kommune. Den realistiske vej er en henvendelse til F&P fra Thisted Kommune/LIFE ACT. Stormflodsskader fra Naturskaderådet kunne i samme omgang afløse Kystplanlæggerens modeltal med faktiske skader.
+2. **En beslutning om tidshorisonten.** Forsikringsudbetalingerne er dagens skader, mens `kystrisiko` er 2070. Summen blander to horisonter. Den kan enten stå som den er (dagens vejrskader plus fremtidens kystrisiko, tydeligt beskrevet), eller kystdelen kan bruge 2020, så begge er i dag. Det skal afgøres, før indikatoren bygges.
+3. **Samme dækning.** Forsikringstallene dækker forsikrede private skader (ca. 90 % af markedet). Kystplanlæggeren dækker også infrastruktur, landbrug og offentlige bygninger. Forskellen skal stå på metodesiden.
+
+Lykkes det, erstatter den samlede indikator både `vejr_skader` og `kystrisiko`, og det sociale loft pr. indikator (`cap`) er ikke længere nødvendigt her.
+
+---
+
 ## Datakvalitetsvurdering (nuværende indikator)
 
 | Kriterie | Vurdering |
