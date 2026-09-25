@@ -6,6 +6,7 @@ node_modules/
 .next/
 *.copy.py
 biodiversitet_2021.zip
+*.delvis
 biodiversitet_data/
 biodiversitet_kommuner.xlsx
 biodiversitet_tmp/
