@@ -869,11 +869,11 @@ def fetch_uvm_historik() -> list[dict]:
         "exam_grade": uvm_serie(
             "Karaktergennemsnit (GS/KARA/KARAGNS)",
             {"område": "GS", "emne": "KARA", "underemne": "KARAGNS",
-             "nøgletal": ["Gennemsnit - Obl. prøver"],
+             "nøgletal": ["Gennemsnit i obl. 9.-klasseprøver"],
              "detaljering": ["[Bopælskommune].[Bopælskommune]", "[Skoleår].[Skoleår]"],
              "side_størrelse": 20000},
             "[Bopælskommune].[Bopælskommune].[Bopælskommune]",
-            "[Skoleår].[Skoleår].[Skoleår]", "Gennemsnit - Obl. prøver"),
+            "[Skoleår].[Skoleår].[Skoleår]", "Gennemsnit i obl. 9.-klasseprøver"),
         "high_absence": uvm_serie(
             "Elevfravær >10% (GS/ELEVFRAV/FRAVAAR)",
             {"område": "GS", "emne": "ELEVFRAV", "underemne": "FRAVAAR",

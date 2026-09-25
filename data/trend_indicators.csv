@@ -1096,103 +1096,103 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,_dim_tryghed,2010-2012,2023-2025,,,48.76,rigtig,16,Danmarks Statistik,gennemsnit af 2 indikatorer
 851,_dim_tryghed,2010-2012,2023-2025,,,43.47,rigtig,16,Danmarks Statistik,gennemsnit af 2 indikatorer
 860,_dim_tryghed,2010-2012,2023-2025,,,39.71,rigtig,16,Danmarks Statistik,gennemsnit af 2 indikatorer
-101,_dim_uddannelse,2010-2012,2024,,,6.24,rigtig,16,Danmarks Statistik,gennemsnit af 8 indikatorer
-147,_dim_uddannelse,2010-2012,2024-2026,,,-1.71,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-151,_dim_uddannelse,2010-2012,2024-2026,,,0.86,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-153,_dim_uddannelse,2010-2012,2024-2026,,,6.48,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-155,_dim_uddannelse,2010-2012,2024-2026,,,-2.56,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-157,_dim_uddannelse,2010-2012,2024,,,-1.66,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
-159,_dim_uddannelse,2010-2012,2024,,,-1.51,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
-161,_dim_uddannelse,2010-2012,2024-2026,,,4.56,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-163,_dim_uddannelse,2010-2012,2024-2026,,,3.4,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-165,_dim_uddannelse,2010-2012,2024-2026,,,6.37,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-167,_dim_uddannelse,2010-2012,2024-2026,,,1.94,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-169,_dim_uddannelse,2010-2012,2024-2026,,,7.61,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-173,_dim_uddannelse,2010-2012,2024-2026,,,-2.34,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-175,_dim_uddannelse,2010-2012,2024-2026,,,4.21,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-183,_dim_uddannelse,2010-2012,2024-2026,,,7.05,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-185,_dim_uddannelse,2010-2012,2024-2026,,,0.3,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-187,_dim_uddannelse,2010-2012,2024-2026,,,3.52,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+101,_dim_uddannelse,2010-2012,2024-2026,,,6.24,rigtig,16,Danmarks Statistik,gennemsnit af 8 indikatorer
+147,_dim_uddannelse,2010-2012,2024-2026,,,-1.52,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+151,_dim_uddannelse,2010-2012,2024-2026,,,0.65,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+153,_dim_uddannelse,2010-2012,2024-2026,,,6.36,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+155,_dim_uddannelse,2010-2012,2024-2026,,,-2.32,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+157,_dim_uddannelse,2010-2012,2024-2026,,,-1.66,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
+159,_dim_uddannelse,2010-2012,2024-2026,,,-1.51,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
+161,_dim_uddannelse,2010-2012,2024-2026,,,4.61,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+163,_dim_uddannelse,2010-2012,2024-2026,,,3.35,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+165,_dim_uddannelse,2010-2012,2024-2026,,,6.43,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+167,_dim_uddannelse,2010-2012,2024-2026,,,1.99,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+169,_dim_uddannelse,2010-2012,2024-2026,,,7.56,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+173,_dim_uddannelse,2010-2012,2024-2026,,,-2.25,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+175,_dim_uddannelse,2010-2012,2024-2026,,,4.1,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+183,_dim_uddannelse,2010-2012,2024-2026,,,7.17,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+185,_dim_uddannelse,2010-2012,2024-2026,,,0.52,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+187,_dim_uddannelse,2010-2012,2024-2026,,,3.36,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 190,_dim_uddannelse,2010-2012,2024-2026,,,0.04,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-201,_dim_uddannelse,2010-2012,2024-2026,,,-3.01,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-210,_dim_uddannelse,2010-2012,2024-2026,,,-1.03,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-217,_dim_uddannelse,2010-2012,2024-2026,,,1.36,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+201,_dim_uddannelse,2010-2012,2024-2026,,,-2.87,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+210,_dim_uddannelse,2010-2012,2024-2026,,,-1.18,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+217,_dim_uddannelse,2010-2012,2024-2026,,,1.15,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 219,_dim_uddannelse,2010-2012,2024-2026,,,0.81,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 223,_dim_uddannelse,2010-2012,2024-2026,,,-8.18,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-230,_dim_uddannelse,2010-2012,2024-2026,,,-6.82,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-240,_dim_uddannelse,2010-2012,2024-2026,,,-0.89,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-250,_dim_uddannelse,2010-2012,2024-2026,,,2.6,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-253,_dim_uddannelse,2010-2012,2024-2026,,,2.88,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-259,_dim_uddannelse,2010-2012,2024-2026,,,-0.92,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-260,_dim_uddannelse,2010-2012,2024-2026,,,1.65,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-265,_dim_uddannelse,2010-2012,2024-2026,,,-0.11,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-269,_dim_uddannelse,2010-2012,2024-2026,,,-1.79,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+230,_dim_uddannelse,2010-2012,2024-2026,,,-6.84,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+240,_dim_uddannelse,2010-2012,2024-2026,,,-0.74,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+250,_dim_uddannelse,2010-2012,2024-2026,,,2.76,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+253,_dim_uddannelse,2010-2012,2024-2026,,,2.72,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+259,_dim_uddannelse,2010-2012,2024-2026,,,-1.08,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+260,_dim_uddannelse,2010-2012,2024-2026,,,1.31,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+265,_dim_uddannelse,2010-2012,2024-2026,,,-0.16,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+269,_dim_uddannelse,2010-2012,2024-2026,,,-1.89,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 270,_dim_uddannelse,2010-2012,2024-2026,,,0.82,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 306,_dim_uddannelse,2010-2012,2024-2026,,,0.24,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-316,_dim_uddannelse,2010-2012,2024-2026,,,0.04,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-320,_dim_uddannelse,2010-2012,2024-2026,,,-2.35,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-326,_dim_uddannelse,2010-2012,2024-2026,,,1.68,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-329,_dim_uddannelse,2010-2012,2024-2026,,,4.37,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-330,_dim_uddannelse,2010-2012,2024-2026,,,1.86,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-336,_dim_uddannelse,2010-2012,2024-2026,,,-4.65,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-340,_dim_uddannelse,2010-2012,2024-2026,,,0.99,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-350,_dim_uddannelse,2010-2012,2024-2026,,,-4.61,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-360,_dim_uddannelse,2010-2012,2024-2026,,,-2.15,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-370,_dim_uddannelse,2010-2012,2024-2026,,,-0.17,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-376,_dim_uddannelse,2010-2012,2024-2026,,,0.67,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-390,_dim_uddannelse,2010-2012,2024-2026,,,1.93,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-400,_dim_uddannelse,2010-2012,2024-2026,,,2.44,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-410,_dim_uddannelse,2010-2012,2024-2026,,,0.04,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+316,_dim_uddannelse,2010-2012,2024-2026,,,0.05,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+320,_dim_uddannelse,2010-2012,2024-2026,,,-2.24,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+326,_dim_uddannelse,2010-2012,2024-2026,,,1.85,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+329,_dim_uddannelse,2010-2012,2024-2026,,,4.32,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+330,_dim_uddannelse,2010-2012,2024-2026,,,1.75,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+336,_dim_uddannelse,2010-2012,2024-2026,,,-4.71,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+340,_dim_uddannelse,2010-2012,2024-2026,,,0.94,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+350,_dim_uddannelse,2010-2012,2024-2026,,,-4.56,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+360,_dim_uddannelse,2010-2012,2024-2026,,,-1.79,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+370,_dim_uddannelse,2010-2012,2024-2026,,,-0.22,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+376,_dim_uddannelse,2010-2012,2024-2026,,,0.73,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+390,_dim_uddannelse,2010-2012,2024-2026,,,2.11,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+400,_dim_uddannelse,2010-2012,2024-2026,,,2.54,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+410,_dim_uddannelse,2010-2012,2024-2026,,,0.09,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 420,_dim_uddannelse,2010-2012,2024-2026,,,-0.97,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 430,_dim_uddannelse,2010-2012,2024-2026,,,0.33,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-440,_dim_uddannelse,2010-2012,2024-2026,,,-4.01,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-450,_dim_uddannelse,2010-2012,2024-2026,,,0.79,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-461,_dim_uddannelse,2010-2012,2024-2026,,,6.28,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+440,_dim_uddannelse,2010-2012,2024-2026,,,-4.06,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+450,_dim_uddannelse,2010-2012,2024-2026,,,0.85,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+461,_dim_uddannelse,2010-2012,2024-2026,,,6.23,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 479,_dim_uddannelse,2010-2012,2024-2026,,,-6.98,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-480,_dim_uddannelse,2010-2012,2024-2026,,,-2.84,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-482,_dim_uddannelse,2010-2012,2024-2026,,,-1.11,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-492,_dim_uddannelse,2010-2012,2024-2026,,,-5.01,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-510,_dim_uddannelse,2010-2012,2024-2026,,,-1.38,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+480,_dim_uddannelse,2010-2012,2024-2026,,,-2.67,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+482,_dim_uddannelse,2010-2012,2024-2026,,,-0.88,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+492,_dim_uddannelse,2010-2012,2024-2026,,,-5.28,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+510,_dim_uddannelse,2010-2012,2024-2026,,,-1.43,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 530,_dim_uddannelse,2010-2012,2024-2026,,,-1.1,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-540,_dim_uddannelse,2010-2012,2024-2026,,,0.53,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-550,_dim_uddannelse,2010-2012,2024-2026,,,-1.76,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-561,_dim_uddannelse,2010-2012,2024-2026,,,-4.61,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-563,_dim_uddannelse,2010-2012,2024-2026,,,0.71,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+540,_dim_uddannelse,2010-2012,2024-2026,,,0.42,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+550,_dim_uddannelse,2010-2012,2024-2026,,,-1.82,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+561,_dim_uddannelse,2010-2012,2024-2026,,,-4.51,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+563,_dim_uddannelse,2010-2012,2024-2026,,,0.46,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 573,_dim_uddannelse,2010-2012,2024-2026,,,-3.13,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-575,_dim_uddannelse,2010-2012,2024-2026,,,-3.27,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-580,_dim_uddannelse,2010-2012,2024-2026,,,-0.46,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-607,_dim_uddannelse,2010-2012,2024-2026,,,1.77,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-615,_dim_uddannelse,2010-2012,2024-2026,,,-2.62,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+575,_dim_uddannelse,2010-2012,2024-2026,,,-3.22,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+580,_dim_uddannelse,2010-2012,2024-2026,,,-0.4,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+607,_dim_uddannelse,2010-2012,2024-2026,,,1.82,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+615,_dim_uddannelse,2010-2012,2024-2026,,,-2.73,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 621,_dim_uddannelse,2010-2012,2024-2026,,,-0.6,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-630,_dim_uddannelse,2010-2012,2024-2026,,,-0.18,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+630,_dim_uddannelse,2010-2012,2024-2026,,,-0.23,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 657,_dim_uddannelse,2010-2012,2024-2026,,,-1.0,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-661,_dim_uddannelse,2010-2012,2024-2026,,,-1.58,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-665,_dim_uddannelse,2010-2012,2024-2026,,,3.15,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-671,_dim_uddannelse,2010-2012,2024-2026,,,0.55,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-706,_dim_uddannelse,2010-2012,2024-2026,,,-1.47,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-707,_dim_uddannelse,2010-2012,2024-2026,,,-0.88,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-710,_dim_uddannelse,2010-2012,2024-2026,,,-3.65,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-727,_dim_uddannelse,2010-2012,2024-2026,,,-1.65,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-730,_dim_uddannelse,2010-2012,2024-2026,,,2.11,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-740,_dim_uddannelse,2010-2012,2024-2026,,,-0.43,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-741,_dim_uddannelse,2010-2012,2024-2026,,,-9.59,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-746,_dim_uddannelse,2010-2012,2024-2026,,,-6.19,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-751,_dim_uddannelse,2010-2012,2024-2026,,,2.62,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-756,_dim_uddannelse,2010-2012,2024-2026,,,-3.06,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+661,_dim_uddannelse,2010-2012,2024-2026,,,-1.69,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+665,_dim_uddannelse,2010-2012,2024-2026,,,2.88,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+671,_dim_uddannelse,2010-2012,2024-2026,,,0.33,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+706,_dim_uddannelse,2010-2012,2024-2026,,,-1.52,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+707,_dim_uddannelse,2010-2012,2024-2026,,,-0.6,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+710,_dim_uddannelse,2010-2012,2024-2026,,,-3.6,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+727,_dim_uddannelse,2010-2012,2024-2026,,,-1.7,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+730,_dim_uddannelse,2010-2012,2024-2026,,,2.06,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+740,_dim_uddannelse,2010-2012,2024-2026,,,-0.48,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+741,_dim_uddannelse,2010-2012,2024-2026,,,-9.75,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+746,_dim_uddannelse,2010-2012,2024-2026,,,-6.14,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+751,_dim_uddannelse,2010-2012,2024-2026,,,2.57,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+756,_dim_uddannelse,2010-2012,2024-2026,,,-3.33,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 760,_dim_uddannelse,2010-2012,2024-2026,,,-3.71,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-766,_dim_uddannelse,2010-2012,2024-2026,,,-6.67,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-773,_dim_uddannelse,2010-2012,2024-2026,,,-4.22,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-779,_dim_uddannelse,2010-2012,2024-2026,,,-1.25,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+766,_dim_uddannelse,2010-2012,2024-2026,,,-6.89,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+773,_dim_uddannelse,2010-2012,2024-2026,,,-4.16,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+779,_dim_uddannelse,2010-2012,2024-2026,,,-1.42,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 787,_dim_uddannelse,2010-2012,2024-2026,,,-0.45,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 791,_dim_uddannelse,2010-2012,2024-2026,,,-1.63,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-810,_dim_uddannelse,2010-2012,2024-2026,,,-2.41,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-813,_dim_uddannelse,2010-2012,2024-2026,,,0.0,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-820,_dim_uddannelse,2010-2012,2024-2026,,,0.43,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-825,_dim_uddannelse,2010-2012,2024-2026,,,15.09,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-840,_dim_uddannelse,2010-2012,2024-2026,,,-1.26,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+810,_dim_uddannelse,2010-2012,2024-2026,,,-2.36,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+813,_dim_uddannelse,2010-2012,2024-2026,,,0.06,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+820,_dim_uddannelse,2010-2012,2024-2026,,,0.49,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+825,_dim_uddannelse,2010-2012,2024-2026,,,15.6,rigtig,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+840,_dim_uddannelse,2010-2012,2024-2026,,,-1.16,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 846,_dim_uddannelse,2010-2012,2024-2026,,,-2.11,forkert,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-849,_dim_uddannelse,2010-2012,2024-2026,,,-0.73,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
-851,_dim_uddannelse,2010-2012,2024-2026,,,-0.98,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+849,_dim_uddannelse,2010-2012,2024-2026,,,-0.62,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
+851,_dim_uddannelse,2010-2012,2024-2026,,,-0.93,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 860,_dim_uddannelse,2010-2012,2024-2026,,,0.89,stagneret,16,Danmarks Statistik,gennemsnit af 9 indikatorer
 101,_dim_vand,2010-2012,2022-2024,,,-333.83,forkert,15,Danmarks Statistik,vandindvinding
 147,_dim_vand,2010-2012,2022-2024,,,2.24,tempo,15,Danmarks Statistik,vandindvinding
@@ -3054,104 +3054,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,ensomhed,2021,2025,10.2,10.4,1.96,stagneret,2,Danmarks Statistik,
 851,ensomhed,2021,2025,13.6,11.7,-13.97,rigtig,2,Danmarks Statistik,
 860,ensomhed,2021,2025,11.4,10.6,-7.02,stagneret,2,Danmarks Statistik,
-101,exam_grade,2011-2013,2023-2025,7.0,7.8667,12.38,rigtig,15,Danmarks Statistik,
-147,exam_grade,2011-2013,2023-2025,7.6,8.2667,8.77,rigtig,15,Danmarks Statistik,
-151,exam_grade,2011-2013,2023-2025,7.0333,7.3333,4.27,tempo,15,Danmarks Statistik,
-153,exam_grade,2011-2013,2023-2025,6.3333,6.9,8.95,rigtig,15,Danmarks Statistik,
-155,exam_grade,2011-2013,2023-2025,7.6,7.9333,4.39,tempo,15,Danmarks Statistik,
-157,exam_grade,2011-2013,2023-2025,8.1,8.6333,6.58,rigtig,15,Danmarks Statistik,
-159,exam_grade,2011-2013,2023-2025,7.4,7.8,5.41,rigtig,15,Danmarks Statistik,
-161,exam_grade,2011-2013,2023-2025,6.9333,7.0333,1.44,tempo,15,Danmarks Statistik,
-163,exam_grade,2011-2013,2023-2025,6.7667,7.5,10.84,rigtig,15,Danmarks Statistik,
-165,exam_grade,2011-2013,2023-2025,6.5333,6.9,5.61,rigtig,15,Danmarks Statistik,
-167,exam_grade,2011-2013,2023-2025,6.6333,7.3,10.05,rigtig,15,Danmarks Statistik,
-169,exam_grade,2011-2013,2023-2025,6.6,7.0333,6.57,rigtig,15,Danmarks Statistik,
-173,exam_grade,2011-2013,2023-2025,8.1,8.5667,5.76,rigtig,15,Danmarks Statistik,
-175,exam_grade,2011-2013,2023-2025,6.9333,7.4333,7.21,rigtig,15,Danmarks Statistik,
-183,exam_grade,2011-2013,2023-2025,6.1667,6.8333,10.81,rigtig,15,Danmarks Statistik,
-185,exam_grade,2011-2013,2023-2025,6.7333,7.3333,8.91,rigtig,15,Danmarks Statistik,
-187,exam_grade,2011-2013,2023-2025,7.0333,7.5333,7.11,rigtig,15,Danmarks Statistik,
-190,exam_grade,2011-2013,2023-2025,7.7333,8.3,7.33,rigtig,15,Danmarks Statistik,
-201,exam_grade,2011-2013,2023-2025,7.8,8.1333,4.27,tempo,15,Danmarks Statistik,
-210,exam_grade,2011-2013,2023-2025,7.5,7.7667,3.56,tempo,15,Danmarks Statistik,
-217,exam_grade,2011-2013,2023-2025,7.1333,7.5,5.14,rigtig,15,Danmarks Statistik,
-219,exam_grade,2011-2013,2023-2025,7.4,7.6667,3.6,tempo,15,Danmarks Statistik,
-223,exam_grade,2011-2013,2023-2025,8.0667,8.5,5.37,rigtig,15,Danmarks Statistik,
-230,exam_grade,2011-2013,2023-2025,8.1,8.3333,2.88,tempo,15,Danmarks Statistik,
-240,exam_grade,2011-2013,2023-2025,7.3333,7.5333,2.73,tempo,15,Danmarks Statistik,
-250,exam_grade,2011-2013,2023-2025,6.8,7.1333,4.9,rigtig,15,Danmarks Statistik,
-253,exam_grade,2011-2013,2023-2025,6.9333,7.4333,7.21,rigtig,15,Danmarks Statistik,
-259,exam_grade,2011-2013,2023-2025,6.6667,7.4333,11.5,rigtig,15,Danmarks Statistik,
-260,exam_grade,2011-2013,2023-2025,6.5,6.9667,7.18,rigtig,15,Danmarks Statistik,
-265,exam_grade,2011-2013,2023-2025,7.5,7.7333,3.11,tempo,15,Danmarks Statistik,
-269,exam_grade,2011-2013,2023-2025,7.2667,7.7,5.96,rigtig,15,Danmarks Statistik,
-270,exam_grade,2011-2013,2023-2025,7.0,7.0333,0.48,stagneret,15,Danmarks Statistik,
-306,exam_grade,2011-2013,2023-2025,6.2333,6.8333,9.63,rigtig,15,Danmarks Statistik,
-316,exam_grade,2011-2013,2023-2025,6.7333,7.1667,6.44,rigtig,15,Danmarks Statistik,
-320,exam_grade,2011-2013,2023-2025,6.5667,6.7333,2.54,tempo,15,Danmarks Statistik,
-326,exam_grade,2011-2013,2023-2025,6.5,6.7,3.08,tempo,15,Danmarks Statistik,
-329,exam_grade,2011-2013,2023-2025,6.7,7.2,7.46,rigtig,15,Danmarks Statistik,
-330,exam_grade,2011-2013,2023-2025,6.7,7.1667,6.97,rigtig,15,Danmarks Statistik,
-336,exam_grade,2011-2013,2023-2025,6.3333,6.9667,10.0,rigtig,15,Danmarks Statistik,
-340,exam_grade,2011-2013,2023-2025,6.9333,7.3,5.29,rigtig,15,Danmarks Statistik,
-350,exam_grade,2011-2013,2023-2025,7.1667,7.4,3.26,tempo,15,Danmarks Statistik,
-360,exam_grade,2011-2013,2023-2025,6.3,6.3333,0.53,stagneret,15,Danmarks Statistik,
-370,exam_grade,2011-2013,2023-2025,6.7667,7.0,3.45,tempo,15,Danmarks Statistik,
-376,exam_grade,2011-2013,2023-2025,6.4667,6.7667,4.64,tempo,15,Danmarks Statistik,
-390,exam_grade,2011-2013,2023-2025,6.4,6.9667,8.85,rigtig,15,Danmarks Statistik,
-400,exam_grade,2011-2013,2023-2025,6.7333,7.2333,7.43,rigtig,15,Danmarks Statistik,
-410,exam_grade,2011-2013,2023-2025,7.0667,7.1667,1.42,tempo,15,Danmarks Statistik,
-420,exam_grade,2011-2013,2023-2025,6.8,7.1333,4.9,rigtig,15,Danmarks Statistik,
-430,exam_grade,2011-2013,2023-2025,6.7,6.7667,1.0,stagneret,15,Danmarks Statistik,
-440,exam_grade,2011-2013,2023-2025,7.0,7.0667,0.95,stagneret,15,Danmarks Statistik,
-450,exam_grade,2011-2013,2023-2025,6.9667,7.1333,2.39,tempo,15,Danmarks Statistik,
-461,exam_grade,2011-2013,2023-2025,7.0667,7.3,3.3,tempo,15,Danmarks Statistik,
-479,exam_grade,2011-2013,2023-2025,7.0,7.1333,1.9,tempo,15,Danmarks Statistik,
-480,exam_grade,2011-2013,2023-2025,6.6333,6.6667,0.5,stagneret,15,Danmarks Statistik,
-482,exam_grade,2011-2013,2023-2025,6.2667,6.5667,4.79,tempo,15,Danmarks Statistik,
-492,exam_grade,2011-2013,2023-2025,6.8333,7.4,8.29,rigtig,15,Danmarks Statistik,
-510,exam_grade,2011-2013,2023-2025,6.8333,6.9333,1.46,tempo,15,Danmarks Statistik,
-530,exam_grade,2011-2013,2023-2025,6.8333,6.6667,-2.44,forkert,15,Danmarks Statistik,
-540,exam_grade,2011-2013,2023-2025,6.8667,7.2,4.85,rigtig,15,Danmarks Statistik,
-550,exam_grade,2011-2013,2023-2025,6.5667,6.8333,4.06,tempo,15,Danmarks Statistik,
-561,exam_grade,2011-2013,2023-2025,6.9333,6.9,-0.48,stagneret,15,Danmarks Statistik,
-563,exam_grade,2011-2013,2023-2025,7.4333,7.5667,1.79,tempo,15,Danmarks Statistik,
-573,exam_grade,2011-2013,2023-2025,6.8333,6.8667,0.49,stagneret,15,Danmarks Statistik,
-575,exam_grade,2011-2013,2023-2025,6.7,6.8333,1.99,tempo,15,Danmarks Statistik,
-580,exam_grade,2011-2013,2023-2025,6.8333,6.7667,-0.98,stagneret,15,Danmarks Statistik,
-607,exam_grade,2011-2013,2023-2025,6.6333,6.8333,3.02,tempo,15,Danmarks Statistik,
-615,exam_grade,2011-2013,2023-2025,6.8333,7.2,5.37,rigtig,15,Danmarks Statistik,
-621,exam_grade,2011-2013,2023-2025,7.1333,7.5333,5.61,rigtig,15,Danmarks Statistik,
-630,exam_grade,2011-2013,2023-2025,7.0,7.4333,6.19,rigtig,15,Danmarks Statistik,
-657,exam_grade,2011-2013,2023-2025,6.9667,7.2333,3.83,tempo,15,Danmarks Statistik,
-661,exam_grade,2011-2013,2023-2025,6.9333,7.1333,2.88,tempo,15,Danmarks Statistik,
-665,exam_grade,2011-2013,2023-2025,6.9,7.3333,6.28,rigtig,15,Danmarks Statistik,
-671,exam_grade,2011-2013,2023-2025,6.7333,7.1,5.45,rigtig,15,Danmarks Statistik,
-706,exam_grade,2011-2013,2023-2025,7.0,7.3333,4.76,tempo,15,Danmarks Statistik,
-707,exam_grade,2011-2013,2023-2025,6.6,6.4,-3.03,forkert,15,Danmarks Statistik,
-710,exam_grade,2011-2013,2023-2025,7.2333,7.5333,4.15,tempo,15,Danmarks Statistik,
-727,exam_grade,2011-2013,2023-2025,7.0667,7.4,4.72,tempo,15,Danmarks Statistik,
-730,exam_grade,2011-2013,2023-2025,6.8667,7.2333,5.34,rigtig,15,Danmarks Statistik,
-740,exam_grade,2011-2013,2023-2025,7.2,7.4667,3.7,tempo,15,Danmarks Statistik,
-741,exam_grade,2011-2013,2023-2025,6.6,7.1,7.58,rigtig,15,Danmarks Statistik,
-746,exam_grade,2011-2013,2023-2025,7.3667,7.4,0.45,stagneret,15,Danmarks Statistik,
-751,exam_grade,2011-2013,2023-2025,7.3,7.7667,6.39,rigtig,15,Danmarks Statistik,
-756,exam_grade,2011-2013,2023-2025,6.7,7.0333,4.98,rigtig,15,Danmarks Statistik,
-760,exam_grade,2011-2013,2023-2025,6.7,7.1,5.97,rigtig,15,Danmarks Statistik,
-766,exam_grade,2011-2013,2023-2025,6.7333,6.8667,1.98,tempo,15,Danmarks Statistik,
-773,exam_grade,2011-2013,2023-2025,6.6,6.7667,2.53,tempo,15,Danmarks Statistik,
-779,exam_grade,2011-2013,2023-2025,6.6667,7.0,5.0,rigtig,15,Danmarks Statistik,
-787,exam_grade,2011-2013,2023-2025,6.7333,7.0,3.96,tempo,15,Danmarks Statistik,
-791,exam_grade,2011-2013,2023-2025,6.8667,7.2,4.85,rigtig,15,Danmarks Statistik,
-810,exam_grade,2011-2013,2023-2025,6.8667,7.1333,3.88,tempo,15,Danmarks Statistik,
-813,exam_grade,2011-2013,2023-2025,6.7,7.0667,5.47,rigtig,15,Danmarks Statistik,
-820,exam_grade,2011-2013,2023-2025,6.5333,7.0667,8.16,rigtig,15,Danmarks Statistik,
-825,exam_grade,2011-2013,2023-2025,6.6,6.6667,1.01,tempo,15,Danmarks Statistik,
-840,exam_grade,2011-2013,2023-2025,6.8667,7.6667,11.65,rigtig,15,Danmarks Statistik,
-846,exam_grade,2011-2013,2023-2025,6.8667,7.1333,3.88,tempo,15,Danmarks Statistik,
-849,exam_grade,2011-2013,2023-2025,6.6667,6.8333,2.5,tempo,15,Danmarks Statistik,
-851,exam_grade,2011-2013,2023-2025,7.0,7.5333,7.62,rigtig,15,Danmarks Statistik,
-860,exam_grade,2011-2013,2023-2025,6.7667,7.0667,4.43,tempo,15,Danmarks Statistik,
+101,exam_grade,2011-2013,2024-2026,7.0,7.8667,12.38,rigtig,16,Danmarks Statistik,
+147,exam_grade,2011-2013,2024-2026,7.6,8.4,10.53,rigtig,16,Danmarks Statistik,
+151,exam_grade,2011-2013,2024-2026,7.0333,7.2,2.37,tempo,16,Danmarks Statistik,
+153,exam_grade,2011-2013,2024-2026,6.3333,6.8333,7.89,rigtig,16,Danmarks Statistik,
+155,exam_grade,2011-2013,2024-2026,7.6,8.1,6.58,rigtig,16,Danmarks Statistik,
+157,exam_grade,2011-2013,2024-2026,8.1,8.6333,6.58,rigtig,16,Danmarks Statistik,
+159,exam_grade,2011-2013,2024-2026,7.4,7.8,5.41,rigtig,16,Danmarks Statistik,
+161,exam_grade,2011-2013,2024-2026,6.9333,7.0667,1.92,tempo,16,Danmarks Statistik,
+163,exam_grade,2011-2013,2024-2026,6.7667,7.4667,10.34,rigtig,16,Danmarks Statistik,
+165,exam_grade,2011-2013,2024-2026,6.5333,6.9333,6.12,rigtig,16,Danmarks Statistik,
+167,exam_grade,2011-2013,2024-2026,6.6667,7.3667,10.5,rigtig,16,Danmarks Statistik,
+169,exam_grade,2011-2013,2024-2026,6.6,7.0,6.06,rigtig,16,Danmarks Statistik,
+173,exam_grade,2011-2013,2024-2026,8.1,8.6333,6.58,rigtig,16,Danmarks Statistik,
+175,exam_grade,2011-2013,2024-2026,6.9333,7.3667,6.25,rigtig,16,Danmarks Statistik,
+183,exam_grade,2011-2013,2024-2026,6.1667,6.9,11.89,rigtig,16,Danmarks Statistik,
+185,exam_grade,2011-2013,2024-2026,6.7333,7.4667,10.89,rigtig,16,Danmarks Statistik,
+187,exam_grade,2011-2013,2024-2026,7.0333,7.4333,5.69,rigtig,16,Danmarks Statistik,
+190,exam_grade,2011-2013,2024-2026,7.7333,8.3,7.33,rigtig,16,Danmarks Statistik,
+201,exam_grade,2011-2013,2024-2026,7.8,8.2333,5.56,rigtig,16,Danmarks Statistik,
+210,exam_grade,2011-2013,2024-2026,7.5333,7.7,2.21,tempo,16,Danmarks Statistik,
+217,exam_grade,2011-2013,2024-2026,7.1333,7.3667,3.27,tempo,16,Danmarks Statistik,
+219,exam_grade,2011-2013,2024-2026,7.4,7.6667,3.6,tempo,16,Danmarks Statistik,
+223,exam_grade,2011-2013,2024-2026,8.0667,8.5,5.37,rigtig,16,Danmarks Statistik,
+230,exam_grade,2011-2013,2024-2026,8.1,8.3333,2.88,tempo,16,Danmarks Statistik,
+240,exam_grade,2011-2013,2024-2026,7.3333,7.6333,4.09,tempo,16,Danmarks Statistik,
+250,exam_grade,2011-2013,2024-2026,6.8,7.2333,6.37,rigtig,16,Danmarks Statistik,
+253,exam_grade,2011-2013,2024-2026,6.9333,7.3333,5.77,rigtig,16,Danmarks Statistik,
+259,exam_grade,2011-2013,2024-2026,6.6667,7.3333,10.0,rigtig,16,Danmarks Statistik,
+260,exam_grade,2011-2013,2024-2026,6.5,6.7667,4.1,tempo,16,Danmarks Statistik,
+265,exam_grade,2011-2013,2024-2026,7.5,7.7,2.67,tempo,16,Danmarks Statistik,
+269,exam_grade,2011-2013,2024-2026,7.2667,7.6333,5.05,rigtig,16,Danmarks Statistik,
+270,exam_grade,2011-2013,2024-2026,7.0,7.0333,0.48,stagneret,16,Danmarks Statistik,
+306,exam_grade,2011-2013,2024-2026,6.2333,6.8333,9.63,rigtig,16,Danmarks Statistik,
+316,exam_grade,2011-2013,2024-2026,6.7,7.1333,6.47,rigtig,16,Danmarks Statistik,
+320,exam_grade,2011-2013,2024-2026,6.5667,6.8,3.55,tempo,16,Danmarks Statistik,
+326,exam_grade,2011-2013,2024-2026,6.5,6.8,4.62,rigtig,16,Danmarks Statistik,
+329,exam_grade,2011-2013,2024-2026,6.7,7.1667,6.97,rigtig,16,Danmarks Statistik,
+330,exam_grade,2011-2013,2024-2026,6.7,7.1,5.97,rigtig,16,Danmarks Statistik,
+336,exam_grade,2011-2013,2024-2026,6.3333,6.9333,9.47,rigtig,16,Danmarks Statistik,
+340,exam_grade,2011-2013,2024-2026,6.9333,7.2667,4.81,rigtig,16,Danmarks Statistik,
+350,exam_grade,2011-2013,2024-2026,7.2,7.4667,3.7,tempo,16,Danmarks Statistik,
+360,exam_grade,2011-2013,2024-2026,6.2667,6.5,3.72,tempo,16,Danmarks Statistik,
+370,exam_grade,2011-2013,2024-2026,6.7667,6.9667,2.96,tempo,16,Danmarks Statistik,
+376,exam_grade,2011-2013,2024-2026,6.4667,6.8,5.15,rigtig,16,Danmarks Statistik,
+390,exam_grade,2011-2013,2024-2026,6.4,7.0667,10.42,rigtig,16,Danmarks Statistik,
+400,exam_grade,2011-2013,2024-2026,6.7667,7.3333,8.37,rigtig,16,Danmarks Statistik,
+410,exam_grade,2011-2013,2024-2026,7.0667,7.2,1.89,tempo,16,Danmarks Statistik,
+420,exam_grade,2011-2013,2024-2026,6.8333,7.1667,4.88,rigtig,16,Danmarks Statistik,
+430,exam_grade,2011-2013,2024-2026,6.7,6.7667,1.0,stagneret,16,Danmarks Statistik,
+440,exam_grade,2011-2013,2024-2026,7.0,7.0333,0.48,stagneret,16,Danmarks Statistik,
+450,exam_grade,2011-2013,2024-2026,6.9667,7.1667,2.87,tempo,16,Danmarks Statistik,
+461,exam_grade,2011-2013,2024-2026,7.0667,7.2667,2.83,tempo,16,Danmarks Statistik,
+479,exam_grade,2011-2013,2024-2026,7.0,7.1333,1.9,tempo,16,Danmarks Statistik,
+480,exam_grade,2011-2013,2024-2026,6.6,6.7333,2.02,tempo,16,Danmarks Statistik,
+482,exam_grade,2011-2013,2024-2026,6.2667,6.7,6.91,rigtig,16,Danmarks Statistik,
+492,exam_grade,2011-2013,2024-2026,6.8333,7.2333,5.85,rigtig,16,Danmarks Statistik,
+510,exam_grade,2011-2013,2024-2026,6.8333,6.9,0.98,stagneret,16,Danmarks Statistik,
+530,exam_grade,2011-2013,2024-2026,6.8333,6.6667,-2.44,forkert,16,Danmarks Statistik,
+540,exam_grade,2011-2013,2024-2026,6.8667,7.1333,3.88,tempo,16,Danmarks Statistik,
+550,exam_grade,2011-2013,2024-2026,6.5667,6.8,3.55,tempo,16,Danmarks Statistik,
+561,exam_grade,2011-2013,2024-2026,6.9333,6.9667,0.48,stagneret,16,Danmarks Statistik,
+563,exam_grade,2011-2013,2024-2026,7.4333,7.4,-0.45,stagneret,16,Danmarks Statistik,
+573,exam_grade,2011-2013,2024-2026,6.8333,6.8667,0.49,stagneret,16,Danmarks Statistik,
+575,exam_grade,2011-2013,2024-2026,6.7,6.8667,2.49,tempo,16,Danmarks Statistik,
+580,exam_grade,2011-2013,2024-2026,6.8333,6.8,-0.49,stagneret,16,Danmarks Statistik,
+607,exam_grade,2011-2013,2024-2026,6.6667,6.9,3.5,tempo,16,Danmarks Statistik,
+615,exam_grade,2011-2013,2024-2026,6.8333,7.1333,4.39,tempo,16,Danmarks Statistik,
+621,exam_grade,2011-2013,2024-2026,7.1333,7.5333,5.61,rigtig,16,Danmarks Statistik,
+630,exam_grade,2011-2013,2024-2026,7.0,7.4,5.71,rigtig,16,Danmarks Statistik,
+657,exam_grade,2011-2013,2024-2026,6.9667,7.2333,3.83,tempo,16,Danmarks Statistik,
+661,exam_grade,2011-2013,2024-2026,6.9667,7.1,1.91,tempo,16,Danmarks Statistik,
+665,exam_grade,2011-2013,2024-2026,6.9333,7.2,3.85,tempo,16,Danmarks Statistik,
+671,exam_grade,2011-2013,2024-2026,6.7,6.9333,3.48,tempo,16,Danmarks Statistik,
+706,exam_grade,2011-2013,2024-2026,7.0,7.3,4.29,tempo,16,Danmarks Statistik,
+707,exam_grade,2011-2013,2024-2026,6.6,6.5667,-0.51,stagneret,16,Danmarks Statistik,
+710,exam_grade,2011-2013,2024-2026,7.2333,7.5667,4.61,rigtig,16,Danmarks Statistik,
+727,exam_grade,2011-2013,2024-2026,7.0667,7.3667,4.25,tempo,16,Danmarks Statistik,
+730,exam_grade,2011-2013,2024-2026,6.8667,7.2,4.85,rigtig,16,Danmarks Statistik,
+740,exam_grade,2011-2013,2024-2026,7.2,7.4333,3.24,tempo,16,Danmarks Statistik,
+741,exam_grade,2011-2013,2024-2026,6.6,7.0,6.06,rigtig,16,Danmarks Statistik,
+746,exam_grade,2011-2013,2024-2026,7.3667,7.4333,0.9,stagneret,16,Danmarks Statistik,
+751,exam_grade,2011-2013,2024-2026,7.3,7.7333,5.94,rigtig,16,Danmarks Statistik,
+756,exam_grade,2011-2013,2024-2026,6.7,6.8667,2.49,tempo,16,Danmarks Statistik,
+760,exam_grade,2011-2013,2024-2026,6.7,7.1,5.97,rigtig,16,Danmarks Statistik,
+766,exam_grade,2011-2013,2024-2026,6.7333,6.7333,-0.0,stagneret,16,Danmarks Statistik,
+773,exam_grade,2011-2013,2024-2026,6.6,6.8,3.03,tempo,16,Danmarks Statistik,
+779,exam_grade,2011-2013,2024-2026,6.6667,6.9,3.5,tempo,16,Danmarks Statistik,
+787,exam_grade,2011-2013,2024-2026,6.7333,7.0,3.96,tempo,16,Danmarks Statistik,
+791,exam_grade,2011-2013,2024-2026,6.8667,7.2,4.85,rigtig,16,Danmarks Statistik,
+810,exam_grade,2011-2013,2024-2026,6.8667,7.1667,4.37,tempo,16,Danmarks Statistik,
+813,exam_grade,2011-2013,2024-2026,6.7,7.1,5.97,rigtig,16,Danmarks Statistik,
+820,exam_grade,2011-2013,2024-2026,6.5333,7.1,8.67,rigtig,16,Danmarks Statistik,
+825,exam_grade,2011-2013,2024-2026,6.6,6.9667,5.56,rigtig,16,Danmarks Statistik,
+840,exam_grade,2011-2013,2024-2026,6.8667,7.7333,12.62,rigtig,16,Danmarks Statistik,
+846,exam_grade,2011-2013,2024-2026,6.8667,7.1333,3.88,tempo,16,Danmarks Statistik,
+849,exam_grade,2011-2013,2024-2026,6.6667,6.9,3.5,tempo,16,Danmarks Statistik,
+851,exam_grade,2011-2013,2024-2026,7.0,7.5667,8.1,rigtig,16,Danmarks Statistik,
+860,exam_grade,2011-2013,2024-2026,6.7667,7.0667,4.43,rigtig,16,Danmarks Statistik,
 101,gender_leadership,2010-2012,2022-2024,32.8521,37.9023,15.37,rigtig,15,Danmarks Statistik,
 147,gender_leadership,2010-2012,2022-2024,36.9298,42.2068,14.29,rigtig,15,Danmarks Statistik,
 151,gender_leadership,2010-2012,2022-2024,28.581,31.8447,11.42,rigtig,15,Danmarks Statistik,
@@ -4034,20 +4034,28 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,income_gender_gap,2010-2012,2022-2024,91.0641,84.7578,-6.93,forkert,15,Danmarks Statistik,
 851,income_gender_gap,2010-2012,2022-2024,90.9757,87.399,-3.93,forkert,15,Danmarks Statistik,
 860,income_gender_gap,2010-2012,2022-2024,91.1808,86.2429,-5.42,forkert,15,Danmarks Statistik,
-101,klimapaavirkning,2018-2020,2022-2024,2.3404,1.3907,-40.58,rigtig,7,Klimaregnskabet.dk,
+101,klimapaavirkning,2018-2020,2022-2024,2.3425,1.3922,-40.57,rigtig,7,Klimaregnskabet.dk,
 147,klimapaavirkning,2018-2020,2022-2024,1.885,1.0607,-43.73,rigtig,7,Klimaregnskabet.dk,
 151,klimapaavirkning,2018-2020,2022-2024,4.7331,2.8985,-38.76,rigtig,7,Klimaregnskabet.dk,
+153,klimapaavirkning,2018-2020,2022-2024,4.8334,3.5037,-27.51,rigtig,7,Klimaregnskabet.dk,
+155,klimapaavirkning,2018-2020,2022-2024,2.9003,1.822,-37.18,rigtig,7,Klimaregnskabet.dk,
+157,klimapaavirkning,2018-2020,2022-2024,3.3176,2.1951,-33.83,rigtig,7,Klimaregnskabet.dk,
+159,klimapaavirkning,2018-2020,2022-2024,3.8039,2.5319,-33.44,rigtig,7,Klimaregnskabet.dk,
+161,klimapaavirkning,2018-2020,2022-2024,4.7986,3.4148,-28.84,rigtig,7,Klimaregnskabet.dk,
 163,klimapaavirkning,2018-2020,2022-2024,3.4255,2.1949,-35.93,rigtig,7,Klimaregnskabet.dk,
 165,klimapaavirkning,2018-2020,2022-2024,3.6051,2.5649,-28.85,rigtig,7,Klimaregnskabet.dk,
+167,klimapaavirkning,2018-2020,2022-2024,3.3981,2.3386,-31.18,rigtig,7,Klimaregnskabet.dk,
+169,klimapaavirkning,2018-2020,2022-2024,4.8102,3.1897,-33.69,rigtig,7,Klimaregnskabet.dk,
 173,klimapaavirkning,2018-2020,2022-2024,3.9957,2.4106,-39.67,rigtig,7,Klimaregnskabet.dk,
 175,klimapaavirkning,2018-2020,2022-2024,3.0627,1.9857,-35.17,rigtig,7,Klimaregnskabet.dk,
-183,klimapaavirkning,2018-2020,2022-2024,3.958,2.8267,-28.58,rigtig,7,Klimaregnskabet.dk,
+183,klimapaavirkning,2018-2020,2022-2024,3.958,2.8272,-28.57,rigtig,7,Klimaregnskabet.dk,
 185,klimapaavirkning,2018-2020,2022-2024,3.9637,2.4843,-37.32,rigtig,7,Klimaregnskabet.dk,
 187,klimapaavirkning,2018-2020,2022-2024,3.1085,2.2033,-29.12,rigtig,7,Klimaregnskabet.dk,
 190,klimapaavirkning,2018-2020,2022-2024,3.9789,2.5881,-34.95,rigtig,7,Klimaregnskabet.dk,
 201,klimapaavirkning,2018-2020,2022-2024,4.752,3.5002,-26.34,rigtig,7,Klimaregnskabet.dk,
 210,klimapaavirkning,2018-2020,2022-2024,3.6829,2.7308,-25.85,rigtig,7,Klimaregnskabet.dk,
-219,klimapaavirkning,2018-2020,2022-2024,4.6858,3.2631,-30.36,rigtig,7,Klimaregnskabet.dk,
+217,klimapaavirkning,2018-2020,2022-2024,3.2359,2.2099,-31.71,rigtig,7,Klimaregnskabet.dk,
+219,klimapaavirkning,2018-2020,2022-2024,4.7137,3.2631,-30.77,rigtig,7,Klimaregnskabet.dk,
 223,klimapaavirkning,2018-2020,2022-2024,3.9234,2.7394,-30.18,rigtig,7,Klimaregnskabet.dk,
 230,klimapaavirkning,2018-2020,2022-2024,4.8077,3.1167,-35.17,rigtig,7,Klimaregnskabet.dk,
 240,klimapaavirkning,2018-2020,2022-2024,3.6989,2.5045,-32.29,rigtig,7,Klimaregnskabet.dk,
@@ -4094,21 +4102,21 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 607,klimapaavirkning,2018-2020,2022-2024,14.461,10.9963,-23.96,rigtig,7,Klimaregnskabet.dk,
 615,klimapaavirkning,2018-2020,2022-2024,6.6777,4.456,-33.27,rigtig,7,Klimaregnskabet.dk,
 621,klimapaavirkning,2018-2020,2022-2024,7.9997,5.5881,-30.15,rigtig,7,Klimaregnskabet.dk,
-630,klimapaavirkning,2018-2020,2022-2024,7.1792,5.5805,-22.27,rigtig,7,Klimaregnskabet.dk,
+630,klimapaavirkning,2018-2020,2022-2024,7.1792,5.5805,-22.27,tempo,7,Klimaregnskabet.dk,
 657,klimapaavirkning,2018-2020,2022-2024,8.1515,7.2501,-11.06,tempo,7,Klimaregnskabet.dk,
 661,klimapaavirkning,2018-2020,2022-2024,8.7,8.2084,-5.65,tempo,7,Klimaregnskabet.dk,
 665,klimapaavirkning,2018-2020,2022-2024,19.9815,17.0474,-14.68,tempo,7,Klimaregnskabet.dk,
 671,klimapaavirkning,2018-2020,2022-2024,7.2067,6.665,-7.52,tempo,7,Klimaregnskabet.dk,
-706,klimapaavirkning,2018-2020,2022-2024,8.0858,6.3758,-21.15,rigtig,7,Klimaregnskabet.dk,
+706,klimapaavirkning,2018-2020,2022-2024,8.0858,6.3758,-21.15,tempo,7,Klimaregnskabet.dk,
 707,klimapaavirkning,2018-2020,2022-2024,9.3954,8.4735,-9.81,tempo,7,Klimaregnskabet.dk,
 710,klimapaavirkning,2018-2020,2022-2024,9.8055,7.23,-26.27,rigtig,7,Klimaregnskabet.dk,
 727,klimapaavirkning,2018-2020,2022-2024,5.9234,4.8429,-18.24,tempo,7,Klimaregnskabet.dk,
 730,klimapaavirkning,2018-2020,2022-2024,4.7735,4.0787,-14.55,tempo,7,Klimaregnskabet.dk,
-740,klimapaavirkning,2018-2020,2022-2024,5.8054,4.4992,-22.5,rigtig,7,Klimaregnskabet.dk,
+740,klimapaavirkning,2018-2020,2022-2024,5.8054,4.4992,-22.5,tempo,7,Klimaregnskabet.dk,
 741,klimapaavirkning,2018-2020,2022-2024,8.6956,8.3436,-4.05,tempo,7,Klimaregnskabet.dk,
 746,klimapaavirkning,2018-2020,2022-2024,5.7383,4.6494,-18.98,tempo,7,Klimaregnskabet.dk,
 751,klimapaavirkning,2018-2020,2022-2024,3.3049,2.7598,-16.49,tempo,7,Klimaregnskabet.dk,
-756,klimapaavirkning,2018-2020,2022-2024,9.0766,7.1966,-20.71,rigtig,7,Klimaregnskabet.dk,
+756,klimapaavirkning,2018-2020,2022-2024,9.0766,7.1966,-20.71,tempo,7,Klimaregnskabet.dk,
 760,klimapaavirkning,2018-2020,2022-2024,15.1436,13.6514,-9.85,tempo,7,Klimaregnskabet.dk,
 766,klimapaavirkning,2018-2020,2022-2024,10.1582,7.3901,-27.25,rigtig,7,Klimaregnskabet.dk,
 773,klimapaavirkning,2018-2020,2022-2024,11.2092,9.8164,-12.43,tempo,7,Klimaregnskabet.dk,
@@ -4118,6 +4126,7 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 810,klimapaavirkning,2018-2020,2022-2024,13.1242,11.209,-14.59,tempo,7,Klimaregnskabet.dk,
 813,klimapaavirkning,2018-2020,2022-2024,8.5072,7.7505,-8.89,tempo,7,Klimaregnskabet.dk,
 820,klimapaavirkning,2018-2020,2022-2024,18.4376,17.3427,-5.94,tempo,7,Klimaregnskabet.dk,
+825,klimapaavirkning,2018-2020,2022-2024,5.9982,4.9032,-18.25,tempo,7,Klimaregnskabet.dk,
 840,klimapaavirkning,2018-2020,2022-2024,19.0848,16.8808,-11.55,tempo,7,Klimaregnskabet.dk,
 846,klimapaavirkning,2018-2020,2022-2024,14.518,12.4354,-14.35,tempo,7,Klimaregnskabet.dk,
 849,klimapaavirkning,2018-2020,2022-2024,11.1355,10.2546,-7.91,stagneret,7,Klimaregnskabet.dk,
@@ -6384,7 +6393,7 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 217,wellbeing,2015-2017,2024-2026,3.6933,3.56,-3.61,forkert,12,Danmarks Statistik,
 219,wellbeing,2015-2017,2024-2026,3.7067,3.5533,-4.14,forkert,12,Danmarks Statistik,
 223,wellbeing,2015-2017,2024-2026,3.8467,3.6733,-4.51,forkert,12,Danmarks Statistik,
-230,wellbeing,2015-2017,2024-2026,3.82,3.6467,-4.54,forkert,12,Danmarks Statistik,
+230,wellbeing,2015-2017,2024-2026,3.82,3.64,-4.71,forkert,12,Danmarks Statistik,
 240,wellbeing,2015-2017,2024-2026,3.6467,3.4733,-4.75,forkert,12,Danmarks Statistik,
 250,wellbeing,2015-2017,2024-2026,3.6267,3.5467,-2.21,forkert,12,Danmarks Statistik,
 253,wellbeing,2015-2017,2024-2026,3.72,3.54,-4.84,forkert,12,Danmarks Statistik,
