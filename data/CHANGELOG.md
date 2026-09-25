@@ -2,6 +2,13 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-25 (kystrisiko under Klimatilpasning)
+
+- **Ny social indikator `kystrisiko`:** forventet årlig skade fra oversvømmelse fra havet og kysterosion i 2070 (RCP8.5) i kr. pr. indbygger, fra Kystdirektoratets Kystplanlægger (datapakke v1, marts 2021). Risikolagene (kr./år pr. 100 m-celle) summeres pr. kommune og deles med folketallet 1. januar 2021. Nyt script `fetch_kystrisiko.py`, ny fil `data/kystrisiko_scores.csv`.
+- **Landstal 1.029 kr. pr. indbygger pr. år** (6,0 mia. kr./år, heraf 4,1 mia. fra oversvømmelse og 1,9 mia. fra erosion). Højest: Lemvig 6.597 kr., Hvidovre 5.102, Fanø 4.926, Læsø 4.494, Samsø 4.357. Thisted 1.792 kr. (ratio 57,4). 43 kommuner står på loftet 150.
+- **Klimatilpasning er nu gennemsnittet af `vejr_skader` og `kystrisiko`.** Farver fra 40/16/42 til 51/9/38 (grøn/gul/rød), 30 skift. Kystkommuner med få forsikringsskader falder (Hvidovre 137,0 → 78,6, Helsingør 121,8 → 76,5), kommuner uden kystrisiko stiger (Holstebro 51,0 → 100,5, Tønder 78,3 → 114,1).
+- Begrundelse og forbehold: `data/klimatilpasning.md`.
+
 ## 2026-09-25 (vand mod den bæredygtige grundvandsressource)
 
 - **Vand måles nu mod en absolut grænse.** `vandindvinding` er grundvandsindvindingen (VANDIND, `VANDTYP=GVAND`, alle tre kategorier, treårsgennemsnit 2022-2024) i procent af kommunens andel af Danmarks bæredygtige grundvandsressource. GEUS' nationale ressource (1.104 mio. m³/år, rapport 2023/08, bilag 2) fordeles efter DK-modellens infiltration til mættet zone (HIP, 1991-2020) gange landarealet. Ny fil `data/grundvandsdannelse_scores.csv` fra nyt script `fetch_grundvandsdannelse.py` (kræver `DATAFORSYNINGEN_TOKEN`).

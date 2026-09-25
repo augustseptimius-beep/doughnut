@@ -95,7 +95,7 @@
       "id": "klimatilpasning",
       "name": "Klimatilpasning",
       "description": "Kommunens robusthed over for klimaforandringer: oversvømmelse, hedebølger, tørke og ekstremvejr.",
-      "indicators": ["vejr_skader"]
+      "indicators": ["vejr_skader", "kystrisiko"]
     },
     {
       "id": "energi",
@@ -1123,6 +1123,25 @@
       "inverse": true,
       "baseline_level": 3,
       "note": "Proxy: vejrrelaterede forsikringsskader pr. 1.000 indb. (F&P, 2023-2025). Kilden har kun kommunenavne; fetch-scriptet slår koden op i data/kommuner.json. Se data/klimatilpasning.md."
+    },
+    {
+      "id": "kystrisiko",
+      "category": "social",
+      "dimension": "klimatilpasning",
+      "name": "Forventet årlig skade fra havet i 2070 pr. indb.",
+      "table": "Kystplanlægger",
+      "source": "Kystdirektoratet Kystplanlægger",
+      "source_url": "https://kystplanlaegger.dk/webgis-og-data/hent-data",
+      "unit": "kr. pr. indb. pr. år",
+      "data_year": "2021",
+      "csv": "kystrisiko_scores.csv",
+      "ratio_col": "kystrisiko_ratio",
+      "raw_col": "kystrisiko_raw",
+      "reference": {"type": "landstal", "col": "kystrisiko_ref", "definition": "de 98 kommuners samlede forventede årlige skade delt med deres samlede folketal (1. jan. 2021), dvs. landet som helhed; fetch_kystrisiko.py"},
+      "inverse": true,
+      "baseline_level": 3,
+      "rationale": "Forventet årlig skade fra oversvømmelse fra havet og kysterosion i 2070 i kroner pr. indbygger, beregnet af Kystdirektoratet med havstigning efter klimascenariet RCP8.5. Tallet er risikoen efter det, der allerede er bygget: diger og klitter i højdemodellen er regnet med. Det supplerer forsikringsskaderne, som ikke dækker stormflod. En kommune uden kystrisiko får den højeste score.",
+      "note": "Kystplanlæggerens datapakke v1 (marts 2021), risikolag for 2070 summeret pr. kommune og delt med folketallet 1. jan. 2021 (fetch_kystrisiko.py). Kun faren fremskrives; bygninger og værdier er dagens. Tiltag efter højdemodellen 2014-2015 slår ikke igennem før en ny kortlægning, så indikatoren har ingen tidsserie. Se data/klimatilpasning.md."
     },
     {
       "id": "klimapaavirkning",

@@ -1,7 +1,7 @@
 # Klimatilpasning - metodenote og fremtidigt arbejde
 
 **Opdateret:** September 2026 (undersøgelse af Kystplanlægger og HIP, se nedenfor)
-**Status:** Én indikator implementeret (proxy). Dimensionen er underudviklet.
+**Status:** To indikatorer implementeret: forsikringsskader (`vejr_skader`) og kystrisiko i 2070 (`kystrisiko`, fra sep. 2026). Kategorien måler restrisiko: hvor udsat kommunen er, når det der allerede er gjort, er regnet med.
 
 ---
 
@@ -86,7 +86,7 @@ Dette er komplekst men fagligt korrekt. Se CONCITO (2024): "Adaptation approache
 
 ## Undersøgt sep. 2026: Kystplanlægger og HIP pr. kommune
 
-Anledning: KL's "Data- og værktøjsoversigt fra 5 webinarer om GIS-DATA-Klimatilpasning" (v1.0, 2023). Af kilderne i oversigten var Kystplanlægger og HIP de to, der kunne give et sammenligneligt tal for alle 98 kommuner. Tallene nedenfor er en prøveberegning, ikke en indikator: de er ikke i master, og der er ikke skrevet et fetch-script.
+Anledning: KL's "Data- og værktøjsoversigt fra 5 webinarer om GIS-DATA-Klimatilpasning" (v1.0, 2023). Af kilderne i oversigten var Kystplanlægger og HIP de to, der kunne give et sammenligneligt tal for alle 98 kommuner. Kystplanlæggerens risiko for 2070 blev derefter indført som indikatoren `kystrisiko` (`scripts/fetch_kystrisiko.py`, se CHANGELOG 25. sep. 2026). Tallene for 2020 nedenfor er prøveberegningen; indikatoren bruger 2070, fordi kategorien skal måle robusthed over for klimaforandringerne. HIP-tallene er kun en prøveberegning.
 
 ### Kystplanlægger (Kystdirektoratet) - oversvømmelse og erosion fra havet
 

@@ -18,9 +18,9 @@ For each municipality the platform computes and displays:
 
 - **13 social categories** (health, education, welfare, housing, democracy,
   culture, safety, civil society, equality, mobility, gender equality, climate
-  adaptation, energy) built from **49 scored indicators**.
+  adaptation, energy) built from **50 scored indicators**.
 - **7 ecological dimensions** (climate impact, pollution, air quality,
-  nutrients, water, land use, biodiversity) built from **17 scored
+  nutrients, water, land use, biodiversity) built from **15 scored
   sub-indicators**, measured against an absolute boundary where a meaningful
   one exists at municipal level and against the national average otherwise.
 - **16 context indicators** that are shown but deliberately not scored, because
