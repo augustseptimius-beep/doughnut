@@ -64,7 +64,7 @@
   "bio_vasentlig": {"reference": 30.0, "daekning": 98, "data_year": "2021"},
   "bio_uerstattelig": {"reference": 10.0, "daekning": 98, "data_year": "2021"},
   "forbrug_co2": {"reference": 2.5, "daekning": 98, "data_year": "2024"},
-  "pesticider": {"reference": 30.4713, "daekning": 94, "data_year": "2026"},
+  "pesticider": {"reference": 30.518, "daekning": 94, "data_year": "2026"},
   "nitrat": {"reference": 6.0, "daekning": 94, "data_year": "2026"},
   "vandindvinding": {"reference": 100.0, "daekning": 96, "data_year": "2022-2024"},
   "areal_antropiseret": {"reference": 70.39, "daekning": 98, "data_year": "2024"},

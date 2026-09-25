@@ -48,7 +48,7 @@ master, der lå på main før gennemgangen.
   stoffer der ikke hører hjemme i grundvandet er tilstedeværelsen selv signalet. Landsandel 30,5%.
 - **Småtal.** 18 kommuner havde under 5 vandværker. Andelen udglattes nu med empirisk Bayes
   (beta-binomial, momentmetoden, Kleinman 1973): kommuner med få værker trækkes mod landsandelen.
-  Prioren svarer til ca. 13 vandværkers vægt. Pesticid-ratioen går nu fra 37 til 184 mod før 0 til
+  Prioren svarer til ca. 12 vandværkers vægt. Pesticid-ratioen går nu fra 37 til 185 mod før 0 til
   1.092, og indikatoren ejer ikke længere gennemsnittet i dimensionen.
 - **Nitrat.** Kun aktive værker. Thisted går fra 5,2 til 14,5 mg/L. Mod Greenpeace/Schullehners
   top 20 stiger korrelationen fra 0,80 til 0,93, og den gennemsnitlige afvigelse falder fra 1,7 til

@@ -6038,100 +6038,100 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,forbrug_co2,432.8,10.82,ton CO₂e/person,2024,Osei-Owusu et al. 2020 + ENS Global Afrapportering,ecological,klimapaavirkning,2.5
 741,Samsø,forbrug_co2,440.8,11.02,ton CO₂e/person,2024,Osei-Owusu et al. 2020 + ENS Global Afrapportering,ecological,klimapaavirkning,2.5
 482,Langeland,forbrug_co2,413.2,10.33,ton CO₂e/person,2024,Osei-Owusu et al. 2020 + ENS Global Afrapportering,ecological,klimapaavirkning,2.5
-201,Allerød,pesticider,118.9,36.23,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-175,Rødovre,pesticider,130.75,39.84,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-190,Furesø,pesticider,127.14,38.74,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-167,Hvidovre,pesticider,116.47,35.49,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-230,Rudersdal,pesticider,163.92,49.95,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-746,Skanderborg,pesticider,123.66,37.68,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-269,Solrød,pesticider,101.77,31.01,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-265,Roskilde,pesticider,132.85,40.48,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-240,Egedal,pesticider,145.65,44.38,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-151,Ballerup,pesticider,115.22,35.11,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-223,Hørsholm,pesticider,92.78,28.27,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-185,Tårnby,pesticider,108.63,33.1,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-157,Gentofte,pesticider,116.47,35.49,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-350,Lejre,pesticider,120.74,36.79,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-173,Lyngby-Taarbæk,pesticider,108.63,33.1,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-210,Fredensborg,pesticider,86.54,26.37,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-183,Ishøj,pesticider,130.75,39.84,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-710,Favrskov,pesticider,83.26,25.37,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-530,Billund,pesticider,58.81,17.92,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-840,Rebild,pesticider,78.93,24.05,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-187,Vallensbæk,pesticider,116.47,35.49,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-253,Greve,pesticider,101.77,31.01,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-147,Frederiksberg,pesticider,116.47,35.49,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-259,Køge,pesticider,131.01,39.92,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-159,Gladsaxe,pesticider,108.63,33.1,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-217,Helsingør,pesticider,90.38,27.54,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-250,Frederikssund,pesticider,159.79,48.69,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-661,Holstebro,pesticider,84.54,25.76,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-825,Læsø,pesticider,92.78,28.27,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-657,Herning,pesticider,59.96,18.27,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-260,Halsnæs,pesticider,124.58,37.96,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-773,Morsø,pesticider,85.98,26.2,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-219,Hillerød,pesticider,62.94,19.18,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-340,Sorø,pesticider,100.49,30.62,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-492,Ærø,pesticider,76.27,23.24,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-561,Esbjerg,pesticider,88.31,26.91,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-740,Silkeborg,pesticider,91.59,27.91,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-615,Horsens,pesticider,120.34,36.67,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-563,Fanø,pesticider,92.78,28.27,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-316,Holbæk,pesticider,101.64,30.97,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-766,Hedensted,pesticider,88.08,26.84,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-607,Fredericia,pesticider,114.34,34.84,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-410,Middelfart,pesticider,94.84,28.9,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-329,Ringsted,pesticider,65.04,19.82,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-370,Næstved,pesticider,48.9,14.9,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-851,Aalborg,pesticider,109.28,33.3,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-810,Brønderslev,pesticider,134.91,41.11,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-727,Odder,pesticider,109.02,33.22,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-336,Stevns,pesticider,153.69,46.83,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-751,Aarhus,pesticider,105.84,32.25,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-813,Frederikshavn,pesticider,151.29,46.1,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-161,Glostrup,pesticider,130.75,39.84,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-270,Gribskov,pesticider,163.99,49.97,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-860,Hjørring,pesticider,184.11,56.1,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-165,Albertslund,pesticider,108.63,33.1,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-479,Svendborg,pesticider,163.99,49.97,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-791,Viborg,pesticider,81.85,24.94,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-480,Nordfyns,pesticider,79.88,24.34,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-706,Syddjurs,pesticider,86.41,26.33,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-440,Kerteminde,pesticider,108.92,33.19,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-630,Vejle,pesticider,106.0,32.3,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-730,Randers,pesticider,81.85,24.94,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-760,Ringkøbing-Skjern,pesticider,59.96,18.27,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-430,Faaborg-Midtfyn,pesticider,97.21,29.62,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-320,Faxe,pesticider,59.1,18.01,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-169,Høje-Taastrup,pesticider,124.58,37.96,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-573,Varde,pesticider,96.12,29.29,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-621,Kolding,pesticider,62.45,19.03,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-420,Assens,pesticider,132.49,40.37,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-580,Aabenraa,pesticider,72.63,22.13,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-787,Thisted,pesticider,135.9,41.41,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-756,Ikast-Brande,pesticider,76.04,23.17,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-461,Odense,pesticider,136.42,41.57,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-779,Skive,pesticider,60.61,18.47,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-450,Nyborg,pesticider,101.41,30.9,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-846,Mariagerfjord,pesticider,81.81,24.93,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-820,Vesthimmerlands,pesticider,102.69,31.29,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-540,Sønderborg,pesticider,37.45,11.41,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-400,Bornholm,pesticider,163.99,49.97,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-510,Haderslev,pesticider,131.11,39.95,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-671,Struer,pesticider,100.49,30.62,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-665,Lemvig,pesticider,56.25,17.14,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-707,Norddjurs,pesticider,81.72,24.9,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-330,Slagelse,pesticider,98.13,29.9,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-306,Odsherred,pesticider,59.24,18.05,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-575,Vejen,pesticider,47.52,14.48,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-376,Guldborgsund,pesticider,101.21,30.84,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-849,Jammerbugt,pesticider,117.03,35.66,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-326,Kalundborg,pesticider,88.74,27.04,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-390,Vordingborg,pesticider,65.27,19.89,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-550,Tønder,pesticider,134.09,40.86,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-360,Lolland,pesticider,85.98,26.2,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-741,Samsø,pesticider,154.18,46.98,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
-482,Langeland,pesticider,85.59,26.08,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.4713
+201,Allerød,pesticider,119.27,36.4,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+175,Rødovre,pesticider,131.82,40.23,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+190,Furesø,pesticider,127.92,39.04,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+167,Hvidovre,pesticider,117.11,35.74,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+230,Rudersdal,pesticider,165.77,50.59,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+746,Skanderborg,pesticider,123.76,37.77,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+269,Solrød,pesticider,101.81,31.07,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+265,Roskilde,pesticider,133.17,40.64,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+240,Egedal,pesticider,146.44,44.69,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+151,Ballerup,pesticider,115.67,35.3,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+223,Hørsholm,pesticider,92.47,28.22,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+185,Tårnby,pesticider,108.92,33.24,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+157,Gentofte,pesticider,117.11,35.74,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+350,Lejre,pesticider,120.78,36.86,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+173,Lyngby-Taarbæk,pesticider,108.92,33.24,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+210,Fredensborg,pesticider,86.01,26.25,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+183,Ishøj,pesticider,131.82,40.23,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+710,Favrskov,pesticider,83.0,25.33,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+530,Billund,pesticider,57.77,17.63,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+840,Rebild,pesticider,78.64,24.0,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+187,Vallensbæk,pesticider,117.11,35.74,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+253,Greve,pesticider,101.81,31.07,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+147,Frederiksberg,pesticider,117.11,35.74,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+259,Køge,pesticider,131.43,40.11,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+159,Gladsaxe,pesticider,108.92,33.24,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+217,Helsingør,pesticider,90.05,27.48,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+250,Frederikssund,pesticider,160.43,48.96,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+661,Holstebro,pesticider,84.15,25.68,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+825,Læsø,pesticider,92.47,28.22,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+657,Herning,pesticider,59.34,18.11,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+260,Halsnæs,pesticider,125.14,38.19,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+773,Morsø,pesticider,85.69,26.15,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+219,Hillerød,pesticider,62.23,18.99,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+340,Sorø,pesticider,100.43,30.65,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+492,Ærø,pesticider,75.46,23.03,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+561,Esbjerg,pesticider,88.05,26.87,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+740,Silkeborg,pesticider,91.42,27.9,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+615,Horsens,pesticider,120.45,36.76,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+563,Fanø,pesticider,92.47,28.22,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+316,Holbæk,pesticider,101.51,30.98,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+766,Hedensted,pesticider,87.85,26.81,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+607,Fredericia,pesticider,114.65,34.99,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+410,Middelfart,pesticider,94.67,28.89,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+329,Ringsted,pesticider,64.36,19.64,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+370,Næstved,pesticider,48.36,14.76,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+851,Aalborg,pesticider,109.18,33.32,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+810,Brønderslev,pesticider,135.33,41.3,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+727,Odder,pesticider,109.08,33.29,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+336,Stevns,pesticider,154.43,47.13,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+751,Aarhus,pesticider,105.77,32.28,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+813,Frederikshavn,pesticider,152.21,46.45,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+161,Glostrup,pesticider,131.82,40.23,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+270,Gribskov,pesticider,165.08,50.38,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+860,Hjørring,pesticider,185.01,56.46,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+165,Albertslund,pesticider,108.92,33.24,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+479,Svendborg,pesticider,164.92,50.33,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+791,Viborg,pesticider,85.95,26.23,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+480,Nordfyns,pesticider,79.56,24.28,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+706,Syddjurs,pesticider,86.18,26.3,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+440,Kerteminde,pesticider,109.05,33.28,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+630,Vejle,pesticider,105.9,32.32,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+730,Randers,pesticider,81.62,24.91,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+760,Ringkøbing-Skjern,pesticider,59.34,18.11,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+430,Faaborg-Midtfyn,pesticider,97.06,29.62,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+320,Faxe,pesticider,58.39,17.82,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+169,Høje-Taastrup,pesticider,125.14,38.19,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+573,Varde,pesticider,95.98,29.29,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+621,Kolding,pesticider,61.96,18.91,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+420,Assens,pesticider,132.71,40.5,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+580,Aabenraa,pesticider,72.25,22.05,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+787,Thisted,pesticider,136.21,41.57,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+756,Ikast-Brande,pesticider,75.53,23.05,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+461,Odense,pesticider,137.16,41.86,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+779,Skive,pesticider,60.06,18.33,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+450,Nyborg,pesticider,101.35,30.93,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+846,Mariagerfjord,pesticider,81.56,24.89,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+820,Vesthimmerlands,pesticider,102.56,31.3,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+540,Sønderborg,pesticider,36.77,11.22,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+400,Bornholm,pesticider,164.98,50.35,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+510,Haderslev,pesticider,131.33,40.08,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+671,Struer,pesticider,100.43,30.65,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+665,Lemvig,pesticider,55.18,16.84,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+707,Norddjurs,pesticider,81.43,24.85,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+330,Slagelse,pesticider,98.01,29.91,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+306,Odsherred,pesticider,58.69,17.91,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+575,Vejen,pesticider,46.79,14.28,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+376,Guldborgsund,pesticider,101.09,30.85,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+849,Jammerbugt,pesticider,117.05,35.72,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+326,Kalundborg,pesticider,88.54,27.02,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+390,Vordingborg,pesticider,64.85,19.79,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+550,Tønder,pesticider,134.35,41.0,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+360,Lolland,pesticider,85.69,26.15,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+741,Samsø,pesticider,155.84,47.56,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
+482,Langeland,pesticider,85.13,25.98,% vandværker med fund,2026,GEUS Jupiter,ecological,forurening,30.518
 201,Allerød,nitrat,20.0,1.2,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 175,Rødovre,nitrat,52.33,3.14,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 190,Furesø,nitrat,11.67,0.7,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
@@ -6145,7 +6145,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 223,Hørsholm,nitrat,20.0,1.2,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 185,Tårnby,nitrat,37.33,2.24,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 157,Gentofte,nitrat,20.0,1.2,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
-350,Lejre,nitrat,47.67,2.86,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
+350,Lejre,nitrat,47.5,2.85,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 173,Lyngby-Taarbæk,nitrat,36.67,2.2,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 210,Fredensborg,nitrat,60.17,3.61,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 183,Ishøj,nitrat,50.67,3.04,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
@@ -6179,7 +6179,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 370,Næstved,nitrat,29.67,1.78,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 851,Aalborg,nitrat,343.33,20.6,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 810,Brønderslev,nitrat,71.5,4.29,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
-727,Odder,nitrat,37.17,2.23,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
+727,Odder,nitrat,37.5,2.25,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 336,Stevns,nitrat,36.33,2.18,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 751,Aarhus,nitrat,16.67,1.0,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 813,Frederikshavn,nitrat,59.17,3.55,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
@@ -6200,19 +6200,19 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 169,Høje-Taastrup,nitrat,32.67,1.96,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 573,Varde,nitrat,33.17,1.99,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 621,Kolding,nitrat,22.67,1.36,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
-420,Assens,nitrat,28.5,1.71,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
+420,Assens,nitrat,28.17,1.69,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 580,Aabenraa,nitrat,16.17,0.97,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 787,Thisted,nitrat,241.67,14.5,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 756,Ikast-Brande,nitrat,7.17,0.43,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 461,Odense,nitrat,24.0,1.44,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 779,Skive,nitrat,26.5,1.59,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 450,Nyborg,nitrat,31.17,1.87,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
-846,Mariagerfjord,nitrat,68.33,4.1,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
+846,Mariagerfjord,nitrat,68.17,4.09,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 820,Vesthimmerlands,nitrat,83.5,5.01,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 540,Sønderborg,nitrat,44.5,2.67,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 400,Bornholm,nitrat,24.17,1.45,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 510,Haderslev,nitrat,28.83,1.73,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
-671,Struer,nitrat,143.0,8.58,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
+671,Struer,nitrat,147.17,8.83,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 665,Lemvig,nitrat,16.67,1.0,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 707,Norddjurs,nitrat,160.33,9.62,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
 330,Slagelse,nitrat,57.5,3.45,mg/L,2026,GEUS Jupiter,ecological,forurening,6.0
@@ -7918,7 +7918,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 482,Langeland,ctx_ve_selvforsyning,,145.7379,%,2023,Klimaregnskabet.dk,context,klimapaavirkning,
 201,Allerød,_dim_klimapaavirkning,554.0,,,,,ecological_dimension,klimapaavirkning,
 201,Allerød,_dim_luftkvalitet,136.6,,,,,ecological_dimension,luftkvalitet,
-201,Allerød,_dim_forurening,99.02,,,,,ecological_dimension,forurening,
+201,Allerød,_dim_forurening,99.11,,,,,ecological_dimension,forurening,
 201,Allerød,_dim_naeringsstoffer,150.1,,,,,ecological_dimension,naeringsstoffer,
 201,Allerød,_dim_biodiversitet,120.84,,,,,ecological_dimension,biodiversitet,
 201,Allerød,_dim_vand,184.94,,,,,ecological_dimension,vand,
@@ -7932,7 +7932,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 153,Brøndby,_dim_arealanvendelse,104.09,,,,,ecological_dimension,arealanvendelse,
 175,Rødovre,_dim_klimapaavirkning,431.2,,,,,ecological_dimension,klimapaavirkning,
 175,Rødovre,_dim_luftkvalitet,141.4,,,,,ecological_dimension,luftkvalitet,
-175,Rødovre,_dim_forurening,99.73,,,,,ecological_dimension,forurening,
+175,Rødovre,_dim_forurening,100.0,,,,,ecological_dimension,forurening,
 175,Rødovre,_dim_naeringsstoffer,106.2,,,,,ecological_dimension,naeringsstoffer,
 175,Rødovre,_dim_biodiversitet,142.39,,,,,ecological_dimension,biodiversitet,
 175,Rødovre,_dim_vand,292.95,,,,,ecological_dimension,vand,
@@ -7946,84 +7946,84 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 155,Dragør,_dim_arealanvendelse,88.99,,,,,ecological_dimension,arealanvendelse,
 190,Furesø,_dim_klimapaavirkning,531.2,,,,,ecological_dimension,klimapaavirkning,
 190,Furesø,_dim_luftkvalitet,138.2,,,,,ecological_dimension,luftkvalitet,
-190,Furesø,_dim_forurening,85.72,,,,,ecological_dimension,forurening,
+190,Furesø,_dim_forurening,85.91,,,,,ecological_dimension,forurening,
 190,Furesø,_dim_naeringsstoffer,136.5,,,,,ecological_dimension,naeringsstoffer,
 190,Furesø,_dim_biodiversitet,95.23,,,,,ecological_dimension,biodiversitet,
 190,Furesø,_dim_vand,1037.07,,,,,ecological_dimension,vand,
 190,Furesø,_dim_arealanvendelse,74.64,,,,,ecological_dimension,arealanvendelse,
 167,Hvidovre,_dim_klimapaavirkning,425.6,,,,,ecological_dimension,klimapaavirkning,
 167,Hvidovre,_dim_luftkvalitet,139.6,,,,,ecological_dimension,luftkvalitet,
-167,Hvidovre,_dim_forurening,102.99,,,,,ecological_dimension,forurening,
+167,Hvidovre,_dim_forurening,103.15,,,,,ecological_dimension,forurening,
 167,Hvidovre,_dim_naeringsstoffer,106.2,,,,,ecological_dimension,naeringsstoffer,
 167,Hvidovre,_dim_biodiversitet,142.44,,,,,ecological_dimension,biodiversitet,
 167,Hvidovre,_dim_vand,31.82,,,,,ecological_dimension,vand,
 167,Hvidovre,_dim_arealanvendelse,116.81,,,,,ecological_dimension,arealanvendelse,
 230,Rudersdal,_dim_klimapaavirkning,666.8,,,,,ecological_dimension,klimapaavirkning,
 230,Rudersdal,_dim_luftkvalitet,137.4,,,,,ecological_dimension,luftkvalitet,
-230,Rudersdal,_dim_forurening,114.07,,,,,ecological_dimension,forurening,
+230,Rudersdal,_dim_forurening,114.53,,,,,ecological_dimension,forurening,
 230,Rudersdal,_dim_naeringsstoffer,103.7,,,,,ecological_dimension,naeringsstoffer,
 230,Rudersdal,_dim_biodiversitet,104.7,,,,,ecological_dimension,biodiversitet,
 230,Rudersdal,_dim_vand,283.07,,,,,ecological_dimension,vand,
 230,Rudersdal,_dim_arealanvendelse,76.5,,,,,ecological_dimension,arealanvendelse,
 746,Skanderborg,_dim_klimapaavirkning,466.0,,,,,ecological_dimension,klimapaavirkning,
 746,Skanderborg,_dim_luftkvalitet,137.8,,,,,ecological_dimension,luftkvalitet,
-746,Skanderborg,_dim_forurening,112.95,,,,,ecological_dimension,forurening,
+746,Skanderborg,_dim_forurening,112.98,,,,,ecological_dimension,forurening,
 746,Skanderborg,_dim_naeringsstoffer,118.8,,,,,ecological_dimension,naeringsstoffer,
 746,Skanderborg,_dim_biodiversitet,127.39,,,,,ecological_dimension,biodiversitet,
 746,Skanderborg,_dim_vand,41.1,,,,,ecological_dimension,vand,
 746,Skanderborg,_dim_arealanvendelse,91.26,,,,,ecological_dimension,arealanvendelse,
 269,Solrød,_dim_klimapaavirkning,544.4,,,,,ecological_dimension,klimapaavirkning,
 269,Solrød,_dim_luftkvalitet,141.8,,,,,ecological_dimension,luftkvalitet,
-269,Solrød,_dim_forurening,79.84,,,,,ecological_dimension,forurening,
+269,Solrød,_dim_forurening,79.85,,,,,ecological_dimension,forurening,
 269,Solrød,_dim_naeringsstoffer,105.0,,,,,ecological_dimension,naeringsstoffer,
 269,Solrød,_dim_biodiversitet,138.11,,,,,ecological_dimension,biodiversitet,
 269,Solrød,_dim_vand,528.84,,,,,ecological_dimension,vand,
 269,Solrød,_dim_arealanvendelse,113.94,,,,,ecological_dimension,arealanvendelse,
 265,Roskilde,_dim_klimapaavirkning,515.2,,,,,ecological_dimension,klimapaavirkning,
 265,Roskilde,_dim_luftkvalitet,143.0,,,,,ecological_dimension,luftkvalitet,
-265,Roskilde,_dim_forurening,91.15,,,,,ecological_dimension,forurening,
+265,Roskilde,_dim_forurening,91.23,,,,,ecological_dimension,forurening,
 265,Roskilde,_dim_naeringsstoffer,175.6,,,,,ecological_dimension,naeringsstoffer,
 265,Roskilde,_dim_biodiversitet,137.01,,,,,ecological_dimension,biodiversitet,
 265,Roskilde,_dim_vand,302.51,,,,,ecological_dimension,vand,
 265,Roskilde,_dim_arealanvendelse,107.66,,,,,ecological_dimension,arealanvendelse,
 240,Egedal,_dim_klimapaavirkning,495.6,,,,,ecological_dimension,klimapaavirkning,
 240,Egedal,_dim_luftkvalitet,139.6,,,,,ecological_dimension,luftkvalitet,
-240,Egedal,_dim_forurening,88.58,,,,,ecological_dimension,forurening,
+240,Egedal,_dim_forurening,88.78,,,,,ecological_dimension,forurening,
 240,Egedal,_dim_naeringsstoffer,180.0,,,,,ecological_dimension,naeringsstoffer,
 240,Egedal,_dim_biodiversitet,129.11,,,,,ecological_dimension,biodiversitet,
 240,Egedal,_dim_vand,311.39,,,,,ecological_dimension,vand,
 240,Egedal,_dim_arealanvendelse,88.24,,,,,ecological_dimension,arealanvendelse,
 151,Ballerup,_dim_klimapaavirkning,440.4,,,,,ecological_dimension,klimapaavirkning,
 151,Ballerup,_dim_luftkvalitet,139.4,,,,,ecological_dimension,luftkvalitet,
-151,Ballerup,_dim_forurening,86.73,,,,,ecological_dimension,forurening,
+151,Ballerup,_dim_forurening,86.85,,,,,ecological_dimension,forurening,
 151,Ballerup,_dim_naeringsstoffer,150.6,,,,,ecological_dimension,naeringsstoffer,
 151,Ballerup,_dim_biodiversitet,140.96,,,,,ecological_dimension,biodiversitet,
 151,Ballerup,_dim_vand,379.36,,,,,ecological_dimension,vand,
 151,Ballerup,_dim_arealanvendelse,103.52,,,,,ecological_dimension,arealanvendelse,
 223,Hørsholm,_dim_klimapaavirkning,670.4,,,,,ecological_dimension,klimapaavirkning,
 223,Hørsholm,_dim_luftkvalitet,134.2,,,,,ecological_dimension,luftkvalitet,
-223,Hørsholm,_dim_forurening,95.21,,,,,ecological_dimension,forurening,
+223,Hørsholm,_dim_forurening,95.13,,,,,ecological_dimension,forurening,
 223,Hørsholm,_dim_naeringsstoffer,106.2,,,,,ecological_dimension,naeringsstoffer,
 223,Hørsholm,_dim_biodiversitet,135.73,,,,,ecological_dimension,biodiversitet,
 223,Hørsholm,_dim_vand,297.12,,,,,ecological_dimension,vand,
 223,Hørsholm,_dim_arealanvendelse,76.39,,,,,ecological_dimension,arealanvendelse,
 185,Tårnby,_dim_klimapaavirkning,454.0,,,,,ecological_dimension,klimapaavirkning,
 185,Tårnby,_dim_luftkvalitet,136.6,,,,,ecological_dimension,luftkvalitet,
-185,Tårnby,_dim_forurening,103.11,,,,,ecological_dimension,forurening,
+185,Tårnby,_dim_forurening,103.19,,,,,ecological_dimension,forurening,
 185,Tårnby,_dim_naeringsstoffer,104.1,,,,,ecological_dimension,naeringsstoffer,
 185,Tårnby,_dim_biodiversitet,72.57,,,,,ecological_dimension,biodiversitet,
 185,Tårnby,_dim_vand,33.1,,,,,ecological_dimension,vand,
 185,Tårnby,_dim_arealanvendelse,65.11,,,,,ecological_dimension,arealanvendelse,
 157,Gentofte,_dim_klimapaavirkning,695.6,,,,,ecological_dimension,klimapaavirkning,
 157,Gentofte,_dim_luftkvalitet,137.4,,,,,ecological_dimension,luftkvalitet,
-157,Gentofte,_dim_forurening,87.82,,,,,ecological_dimension,forurening,
+157,Gentofte,_dim_forurening,87.98,,,,,ecological_dimension,forurening,
 157,Gentofte,_dim_naeringsstoffer,106.2,,,,,ecological_dimension,naeringsstoffer,
 157,Gentofte,_dim_biodiversitet,132.63,,,,,ecological_dimension,biodiversitet,
 157,Gentofte,_dim_vand,626.53,,,,,ecological_dimension,vand,
 157,Gentofte,_dim_arealanvendelse,121.76,,,,,ecological_dimension,arealanvendelse,
 350,Lejre,_dim_klimapaavirkning,517.6,,,,,ecological_dimension,klimapaavirkning,
 350,Lejre,_dim_luftkvalitet,142.0,,,,,ecological_dimension,luftkvalitet,
-350,Lejre,_dim_forurening,86.31,,,,,ecological_dimension,forurening,
+350,Lejre,_dim_forurening,86.28,,,,,ecological_dimension,forurening,
 350,Lejre,_dim_naeringsstoffer,183.0,,,,,ecological_dimension,naeringsstoffer,
 350,Lejre,_dim_biodiversitet,135.69,,,,,ecological_dimension,biodiversitet,
 350,Lejre,_dim_vand,148.23,,,,,ecological_dimension,vand,
@@ -8037,328 +8037,328 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 163,Herlev,_dim_arealanvendelse,119.38,,,,,ecological_dimension,arealanvendelse,
 173,Lyngby-Taarbæk,_dim_klimapaavirkning,559.6,,,,,ecological_dimension,klimapaavirkning,
 173,Lyngby-Taarbæk,_dim_luftkvalitet,139.4,,,,,ecological_dimension,luftkvalitet,
-173,Lyngby-Taarbæk,_dim_forurening,86.6,,,,,ecological_dimension,forurening,
+173,Lyngby-Taarbæk,_dim_forurening,86.67,,,,,ecological_dimension,forurening,
 173,Lyngby-Taarbæk,_dim_naeringsstoffer,106.2,,,,,ecological_dimension,naeringsstoffer,
 173,Lyngby-Taarbæk,_dim_biodiversitet,79.87,,,,,ecological_dimension,biodiversitet,
 173,Lyngby-Taarbæk,_dim_vand,252.08,,,,,ecological_dimension,vand,
 173,Lyngby-Taarbæk,_dim_arealanvendelse,82.3,,,,,ecological_dimension,arealanvendelse,
 210,Fredensborg,_dim_klimapaavirkning,509.6,,,,,ecological_dimension,klimapaavirkning,
 210,Fredensborg,_dim_luftkvalitet,133.0,,,,,ecological_dimension,luftkvalitet,
-210,Fredensborg,_dim_forurening,113.67,,,,,ecological_dimension,forurening,
+210,Fredensborg,_dim_forurening,113.54,,,,,ecological_dimension,forurening,
 210,Fredensborg,_dim_naeringsstoffer,121.7,,,,,ecological_dimension,naeringsstoffer,
 210,Fredensborg,_dim_biodiversitet,128.8,,,,,ecological_dimension,biodiversitet,
 210,Fredensborg,_dim_vand,175.66,,,,,ecological_dimension,vand,
 210,Fredensborg,_dim_arealanvendelse,72.75,,,,,ecological_dimension,arealanvendelse,
 183,Ishøj,_dim_klimapaavirkning,384.8,,,,,ecological_dimension,klimapaavirkning,
 183,Ishøj,_dim_luftkvalitet,139.0,,,,,ecological_dimension,luftkvalitet,
-183,Ishøj,_dim_forurening,107.72,,,,,ecological_dimension,forurening,
+183,Ishøj,_dim_forurening,107.99,,,,,ecological_dimension,forurening,
 183,Ishøj,_dim_naeringsstoffer,105.0,,,,,ecological_dimension,naeringsstoffer,
 183,Ishøj,_dim_biodiversitet,137.7,,,,,ecological_dimension,biodiversitet,
 183,Ishøj,_dim_vand,1427.85,,,,,ecological_dimension,vand,
 183,Ishøj,_dim_arealanvendelse,100.98,,,,,ecological_dimension,arealanvendelse,
 710,Favrskov,_dim_klimapaavirkning,446.4,,,,,ecological_dimension,klimapaavirkning,
 710,Favrskov,_dim_luftkvalitet,134.2,,,,,ecological_dimension,luftkvalitet,
-710,Favrskov,_dim_forurening,107.37,,,,,ecological_dimension,forurening,
+710,Favrskov,_dim_forurening,107.3,,,,,ecological_dimension,forurening,
 710,Favrskov,_dim_naeringsstoffer,125.0,,,,,ecological_dimension,naeringsstoffer,
 710,Favrskov,_dim_biodiversitet,140.37,,,,,ecological_dimension,biodiversitet,
 710,Favrskov,_dim_vand,24.62,,,,,ecological_dimension,vand,
 710,Favrskov,_dim_arealanvendelse,102.05,,,,,ecological_dimension,arealanvendelse,
 530,Billund,_dim_klimapaavirkning,434.8,,,,,ecological_dimension,klimapaavirkning,
 530,Billund,_dim_luftkvalitet,139.4,,,,,ecological_dimension,luftkvalitet,
-530,Billund,_dim_forurening,63.88,,,,,ecological_dimension,forurening,
+530,Billund,_dim_forurening,63.62,,,,,ecological_dimension,forurening,
 530,Billund,_dim_naeringsstoffer,153.0,,,,,ecological_dimension,naeringsstoffer,
 530,Billund,_dim_biodiversitet,135.97,,,,,ecological_dimension,biodiversitet,
 530,Billund,_dim_vand,93.36,,,,,ecological_dimension,vand,
 530,Billund,_dim_arealanvendelse,87.85,,,,,ecological_dimension,arealanvendelse,
 840,Rebild,_dim_klimapaavirkning,674.52,,,,,ecological_dimension,klimapaavirkning,
 840,Rebild,_dim_luftkvalitet,129.2,,,,,ecological_dimension,luftkvalitet,
-840,Rebild,_dim_forurening,117.79,,,,,ecological_dimension,forurening,
+840,Rebild,_dim_forurening,117.72,,,,,ecological_dimension,forurening,
 840,Rebild,_dim_naeringsstoffer,163.1,,,,,ecological_dimension,naeringsstoffer,
 840,Rebild,_dim_biodiversitet,135.64,,,,,ecological_dimension,biodiversitet,
 840,Rebild,_dim_vand,24.59,,,,,ecological_dimension,vand,
 840,Rebild,_dim_arealanvendelse,100.18,,,,,ecological_dimension,arealanvendelse,
 187,Vallensbæk,_dim_klimapaavirkning,465.2,,,,,ecological_dimension,klimapaavirkning,
 187,Vallensbæk,_dim_luftkvalitet,138.8,,,,,ecological_dimension,luftkvalitet,
-187,Vallensbæk,_dim_forurening,88.28,,,,,ecological_dimension,forurening,
+187,Vallensbæk,_dim_forurening,88.44,,,,,ecological_dimension,forurening,
 187,Vallensbæk,_dim_naeringsstoffer,106.2,,,,,ecological_dimension,naeringsstoffer,
 187,Vallensbæk,_dim_biodiversitet,139.24,,,,,ecological_dimension,biodiversitet,
 187,Vallensbæk,_dim_vand,325.45,,,,,ecological_dimension,vand,
 187,Vallensbæk,_dim_arealanvendelse,93.64,,,,,ecological_dimension,arealanvendelse,
 253,Greve,_dim_klimapaavirkning,528.8,,,,,ecological_dimension,klimapaavirkning,
 253,Greve,_dim_luftkvalitet,139.8,,,,,ecological_dimension,luftkvalitet,
-253,Greve,_dim_forurening,81.45,,,,,ecological_dimension,forurening,
+253,Greve,_dim_forurening,81.46,,,,,ecological_dimension,forurening,
 253,Greve,_dim_naeringsstoffer,112.0,,,,,ecological_dimension,naeringsstoffer,
 253,Greve,_dim_biodiversitet,141.81,,,,,ecological_dimension,biodiversitet,
 253,Greve,_dim_vand,307.13,,,,,ecological_dimension,vand,
 253,Greve,_dim_arealanvendelse,111.05,,,,,ecological_dimension,arealanvendelse,
 147,Frederiksberg,_dim_klimapaavirkning,464.4,,,,,ecological_dimension,klimapaavirkning,
 147,Frederiksberg,_dim_luftkvalitet,141.8,,,,,ecological_dimension,luftkvalitet,
-147,Frederiksberg,_dim_forurening,107.95,,,,,ecological_dimension,forurening,
+147,Frederiksberg,_dim_forurening,108.11,,,,,ecological_dimension,forurening,
 147,Frederiksberg,_dim_naeringsstoffer,106.2,,,,,ecological_dimension,naeringsstoffer,
 147,Frederiksberg,_dim_biodiversitet,141.99,,,,,ecological_dimension,biodiversitet,
 147,Frederiksberg,_dim_vand,1306.78,,,,,ecological_dimension,vand,
 147,Frederiksberg,_dim_arealanvendelse,127.38,,,,,ecological_dimension,arealanvendelse,
 259,Køge,_dim_klimapaavirkning,492.4,,,,,ecological_dimension,klimapaavirkning,
 259,Køge,_dim_luftkvalitet,143.2,,,,,ecological_dimension,luftkvalitet,
-259,Køge,_dim_forurening,98.77,,,,,ecological_dimension,forurening,
+259,Køge,_dim_forurening,98.88,,,,,ecological_dimension,forurening,
 259,Køge,_dim_naeringsstoffer,107.8,,,,,ecological_dimension,naeringsstoffer,
 259,Køge,_dim_biodiversitet,132.83,,,,,ecological_dimension,biodiversitet,
 259,Køge,_dim_vand,339.67,,,,,ecological_dimension,vand,
 259,Køge,_dim_arealanvendelse,97.37,,,,,ecological_dimension,arealanvendelse,
 159,Gladsaxe,_dim_klimapaavirkning,459.6,,,,,ecological_dimension,klimapaavirkning,
 159,Gladsaxe,_dim_luftkvalitet,141.0,,,,,ecological_dimension,luftkvalitet,
-159,Gladsaxe,_dim_forurening,84.12,,,,,ecological_dimension,forurening,
+159,Gladsaxe,_dim_forurening,84.19,,,,,ecological_dimension,forurening,
 159,Gladsaxe,_dim_naeringsstoffer,114.3,,,,,ecological_dimension,naeringsstoffer,
 159,Gladsaxe,_dim_biodiversitet,126.93,,,,,ecological_dimension,biodiversitet,
 159,Gladsaxe,_dim_vand,532.77,,,,,ecological_dimension,vand,
 159,Gladsaxe,_dim_arealanvendelse,119.38,,,,,ecological_dimension,arealanvendelse,
 217,Helsingør,_dim_klimapaavirkning,471.2,,,,,ecological_dimension,klimapaavirkning,
 217,Helsingør,_dim_luftkvalitet,133.2,,,,,ecological_dimension,luftkvalitet,
-217,Helsingør,_dim_forurening,85.23,,,,,ecological_dimension,forurening,
+217,Helsingør,_dim_forurening,85.15,,,,,ecological_dimension,forurening,
 217,Helsingør,_dim_naeringsstoffer,165.6,,,,,ecological_dimension,naeringsstoffer,
 217,Helsingør,_dim_biodiversitet,116.76,,,,,ecological_dimension,biodiversitet,
 217,Helsingør,_dim_vand,164.1,,,,,ecological_dimension,vand,
 217,Helsingør,_dim_arealanvendelse,76.86,,,,,ecological_dimension,arealanvendelse,
 250,Frederikssund,_dim_klimapaavirkning,459.2,,,,,ecological_dimension,klimapaavirkning,
 250,Frederikssund,_dim_luftkvalitet,138.8,,,,,ecological_dimension,luftkvalitet,
-250,Frederikssund,_dim_forurening,116.8,,,,,ecological_dimension,forurening,
+250,Frederikssund,_dim_forurening,116.96,,,,,ecological_dimension,forurening,
 250,Frederikssund,_dim_naeringsstoffer,183.3,,,,,ecological_dimension,naeringsstoffer,
 250,Frederikssund,_dim_biodiversitet,126.34,,,,,ecological_dimension,biodiversitet,
 250,Frederikssund,_dim_vand,160.34,,,,,ecological_dimension,vand,
 250,Frederikssund,_dim_arealanvendelse,99.67,,,,,ecological_dimension,arealanvendelse,
 661,Holstebro,_dim_klimapaavirkning,434.4,,,,,ecological_dimension,klimapaavirkning,
 661,Holstebro,_dim_luftkvalitet,132.8,,,,,ecological_dimension,luftkvalitet,
-661,Holstebro,_dim_forurening,86.8,,,,,ecological_dimension,forurening,
+661,Holstebro,_dim_forurening,86.7,,,,,ecological_dimension,forurening,
 661,Holstebro,_dim_naeringsstoffer,177.4,,,,,ecological_dimension,naeringsstoffer,
 661,Holstebro,_dim_biodiversitet,135.56,,,,,ecological_dimension,biodiversitet,
 661,Holstebro,_dim_vand,77.51,,,,,ecological_dimension,vand,
 661,Holstebro,_dim_arealanvendelse,95.6,,,,,ecological_dimension,arealanvendelse,
 825,Læsø,_dim_klimapaavirkning,529.2,,,,,ecological_dimension,klimapaavirkning,
 825,Læsø,_dim_luftkvalitet,112.8,,,,,ecological_dimension,luftkvalitet,
-825,Læsø,_dim_forurening,150.82,,,,,ecological_dimension,forurening,
+825,Læsø,_dim_forurening,150.75,,,,,ecological_dimension,forurening,
 825,Læsø,_dim_naeringsstoffer,106.2,,,,,ecological_dimension,naeringsstoffer,
 825,Læsø,_dim_biodiversitet,75.82,,,,,ecological_dimension,biodiversitet,
 825,Læsø,_dim_arealanvendelse,33.29,,,,,ecological_dimension,arealanvendelse,
 657,Herning,_dim_klimapaavirkning,437.6,,,,,ecological_dimension,klimapaavirkning,
 657,Herning,_dim_luftkvalitet,136.2,,,,,ecological_dimension,luftkvalitet,
-657,Herning,_dim_forurening,72.14,,,,,ecological_dimension,forurening,
+657,Herning,_dim_forurening,71.98,,,,,ecological_dimension,forurening,
 657,Herning,_dim_naeringsstoffer,169.9,,,,,ecological_dimension,naeringsstoffer,
 657,Herning,_dim_biodiversitet,137.43,,,,,ecological_dimension,biodiversitet,
 657,Herning,_dim_vand,81.22,,,,,ecological_dimension,vand,
 657,Herning,_dim_arealanvendelse,94.27,,,,,ecological_dimension,arealanvendelse,
 260,Halsnæs,_dim_klimapaavirkning,421.2,,,,,ecological_dimension,klimapaavirkning,
 260,Halsnæs,_dim_luftkvalitet,134.2,,,,,ecological_dimension,luftkvalitet,
-260,Halsnæs,_dim_forurening,127.98,,,,,ecological_dimension,forurening,
+260,Halsnæs,_dim_forurening,128.12,,,,,ecological_dimension,forurening,
 260,Halsnæs,_dim_naeringsstoffer,183.3,,,,,ecological_dimension,naeringsstoffer,
 260,Halsnæs,_dim_biodiversitet,104.63,,,,,ecological_dimension,biodiversitet,
 260,Halsnæs,_dim_vand,111.78,,,,,ecological_dimension,vand,
 260,Halsnæs,_dim_arealanvendelse,91.09,,,,,ecological_dimension,arealanvendelse,
 773,Morsø,_dim_klimapaavirkning,493.6,,,,,ecological_dimension,klimapaavirkning,
 773,Morsø,_dim_luftkvalitet,129.0,,,,,ecological_dimension,luftkvalitet,
-773,Morsø,_dim_forurening,97.83,,,,,ecological_dimension,forurening,
+773,Morsø,_dim_forurening,97.75,,,,,ecological_dimension,forurening,
 773,Morsø,_dim_naeringsstoffer,231.6,,,,,ecological_dimension,naeringsstoffer,
 773,Morsø,_dim_biodiversitet,140.64,,,,,ecological_dimension,biodiversitet,
 773,Morsø,_dim_vand,17.86,,,,,ecological_dimension,vand,
 773,Morsø,_dim_arealanvendelse,118.53,,,,,ecological_dimension,arealanvendelse,
 219,Hillerød,_dim_klimapaavirkning,467.6,,,,,ecological_dimension,klimapaavirkning,
 219,Hillerød,_dim_luftkvalitet,136.2,,,,,ecological_dimension,luftkvalitet,
-219,Hillerød,_dim_forurening,79.01,,,,,ecological_dimension,forurening,
+219,Hillerød,_dim_forurening,78.83,,,,,ecological_dimension,forurening,
 219,Hillerød,_dim_naeringsstoffer,179.4,,,,,ecological_dimension,naeringsstoffer,
 219,Hillerød,_dim_biodiversitet,102.9,,,,,ecological_dimension,biodiversitet,
 219,Hillerød,_dim_vand,231.76,,,,,ecological_dimension,vand,
 219,Hillerød,_dim_arealanvendelse,77.45,,,,,ecological_dimension,arealanvendelse,
 340,Sorø,_dim_klimapaavirkning,482.8,,,,,ecological_dimension,klimapaavirkning,
 340,Sorø,_dim_luftkvalitet,143.4,,,,,ecological_dimension,luftkvalitet,
-340,Sorø,_dim_forurening,88.58,,,,,ecological_dimension,forurening,
+340,Sorø,_dim_forurening,88.56,,,,,ecological_dimension,forurening,
 340,Sorø,_dim_naeringsstoffer,147.7,,,,,ecological_dimension,naeringsstoffer,
 340,Sorø,_dim_biodiversitet,134.69,,,,,ecological_dimension,biodiversitet,
 340,Sorø,_dim_vand,39.92,,,,,ecological_dimension,vand,
 340,Sorø,_dim_arealanvendelse,93.59,,,,,ecological_dimension,arealanvendelse,
 492,Ærø,_dim_klimapaavirkning,427.2,,,,,ecological_dimension,klimapaavirkning,
 492,Ærø,_dim_luftkvalitet,146.6,,,,,ecological_dimension,luftkvalitet,
-492,Ærø,_dim_forurening,159.15,,,,,ecological_dimension,forurening,
+492,Ærø,_dim_forurening,158.95,,,,,ecological_dimension,forurening,
 492,Ærø,_dim_naeringsstoffer,164.1,,,,,ecological_dimension,naeringsstoffer,
 492,Ærø,_dim_biodiversitet,135.87,,,,,ecological_dimension,biodiversitet,
 492,Ærø,_dim_vand,16.16,,,,,ecological_dimension,vand,
 492,Ærø,_dim_arealanvendelse,107.64,,,,,ecological_dimension,arealanvendelse,
 561,Esbjerg,_dim_klimapaavirkning,430.4,,,,,ecological_dimension,klimapaavirkning,
 561,Esbjerg,_dim_luftkvalitet,142.6,,,,,ecological_dimension,luftkvalitet,
-561,Esbjerg,_dim_forurening,82.19,,,,,ecological_dimension,forurening,
+561,Esbjerg,_dim_forurening,82.13,,,,,ecological_dimension,forurening,
 561,Esbjerg,_dim_naeringsstoffer,214.0,,,,,ecological_dimension,naeringsstoffer,
 561,Esbjerg,_dim_biodiversitet,137.56,,,,,ecological_dimension,biodiversitet,
 561,Esbjerg,_dim_vand,68.98,,,,,ecological_dimension,vand,
 561,Esbjerg,_dim_arealanvendelse,107.26,,,,,ecological_dimension,arealanvendelse,
 740,Silkeborg,_dim_klimapaavirkning,444.4,,,,,ecological_dimension,klimapaavirkning,
 740,Silkeborg,_dim_luftkvalitet,135.2,,,,,ecological_dimension,luftkvalitet,
-740,Silkeborg,_dim_forurening,82.99,,,,,ecological_dimension,forurening,
+740,Silkeborg,_dim_forurening,82.95,,,,,ecological_dimension,forurening,
 740,Silkeborg,_dim_naeringsstoffer,141.1,,,,,ecological_dimension,naeringsstoffer,
 740,Silkeborg,_dim_biodiversitet,129.77,,,,,ecological_dimension,biodiversitet,
 740,Silkeborg,_dim_vand,31.29,,,,,ecological_dimension,vand,
 740,Silkeborg,_dim_arealanvendelse,78.55,,,,,ecological_dimension,arealanvendelse,
 615,Horsens,_dim_klimapaavirkning,440.8,,,,,ecological_dimension,klimapaavirkning,
 615,Horsens,_dim_luftkvalitet,141.0,,,,,ecological_dimension,luftkvalitet,
-615,Horsens,_dim_forurening,95.39,,,,,ecological_dimension,forurening,
+615,Horsens,_dim_forurening,95.42,,,,,ecological_dimension,forurening,
 615,Horsens,_dim_naeringsstoffer,146.4,,,,,ecological_dimension,naeringsstoffer,
 615,Horsens,_dim_biodiversitet,136.03,,,,,ecological_dimension,biodiversitet,
 615,Horsens,_dim_vand,64.68,,,,,ecological_dimension,vand,
 615,Horsens,_dim_arealanvendelse,98.38,,,,,ecological_dimension,arealanvendelse,
 563,Fanø,_dim_klimapaavirkning,488.0,,,,,ecological_dimension,klimapaavirkning,
 563,Fanø,_dim_luftkvalitet,141.8,,,,,ecological_dimension,luftkvalitet,
-563,Fanø,_dim_forurening,122.49,,,,,ecological_dimension,forurening,
+563,Fanø,_dim_forurening,122.42,,,,,ecological_dimension,forurening,
 563,Fanø,_dim_naeringsstoffer,187.7,,,,,ecological_dimension,naeringsstoffer,
 563,Fanø,_dim_biodiversitet,75.28,,,,,ecological_dimension,biodiversitet,
 563,Fanø,_dim_vand,12.35,,,,,ecological_dimension,vand,
 563,Fanø,_dim_arealanvendelse,22.92,,,,,ecological_dimension,arealanvendelse,
 316,Holbæk,_dim_klimapaavirkning,483.6,,,,,ecological_dimension,klimapaavirkning,
 316,Holbæk,_dim_luftkvalitet,141.4,,,,,ecological_dimension,luftkvalitet,
-316,Holbæk,_dim_forurening,84.31,,,,,ecological_dimension,forurening,
+316,Holbæk,_dim_forurening,84.28,,,,,ecological_dimension,forurening,
 316,Holbæk,_dim_naeringsstoffer,175.3,,,,,ecological_dimension,naeringsstoffer,
 316,Holbæk,_dim_biodiversitet,141.79,,,,,ecological_dimension,biodiversitet,
 316,Holbæk,_dim_vand,70.5,,,,,ecological_dimension,vand,
 316,Holbæk,_dim_arealanvendelse,103.84,,,,,ecological_dimension,arealanvendelse,
 766,Hedensted,_dim_klimapaavirkning,448.4,,,,,ecological_dimension,klimapaavirkning,
 766,Hedensted,_dim_luftkvalitet,140.8,,,,,ecological_dimension,luftkvalitet,
-766,Hedensted,_dim_forurening,98.79,,,,,ecological_dimension,forurening,
+766,Hedensted,_dim_forurening,98.73,,,,,ecological_dimension,forurening,
 766,Hedensted,_dim_naeringsstoffer,146.2,,,,,ecological_dimension,naeringsstoffer,
 766,Hedensted,_dim_biodiversitet,138.81,,,,,ecological_dimension,biodiversitet,
 766,Hedensted,_dim_vand,37.31,,,,,ecological_dimension,vand,
 766,Hedensted,_dim_arealanvendelse,107.97,,,,,ecological_dimension,arealanvendelse,
 607,Fredericia,_dim_klimapaavirkning,441.16,,,,,ecological_dimension,klimapaavirkning,
 607,Fredericia,_dim_luftkvalitet,146.6,,,,,ecological_dimension,luftkvalitet,
-607,Fredericia,_dim_forurening,76.79,,,,,ecological_dimension,forurening,
+607,Fredericia,_dim_forurening,76.86,,,,,ecological_dimension,forurening,
 607,Fredericia,_dim_naeringsstoffer,187.1,,,,,ecological_dimension,naeringsstoffer,
 607,Fredericia,_dim_biodiversitet,133.56,,,,,ecological_dimension,biodiversitet,
 607,Fredericia,_dim_vand,96.09,,,,,ecological_dimension,vand,
 607,Fredericia,_dim_arealanvendelse,99.76,,,,,ecological_dimension,arealanvendelse,
 410,Middelfart,_dim_klimapaavirkning,453.2,,,,,ecological_dimension,klimapaavirkning,
 410,Middelfart,_dim_luftkvalitet,145.2,,,,,ecological_dimension,luftkvalitet,
-410,Middelfart,_dim_forurening,95.55,,,,,ecological_dimension,forurening,
+410,Middelfart,_dim_forurening,95.51,,,,,ecological_dimension,forurening,
 410,Middelfart,_dim_naeringsstoffer,185.6,,,,,ecological_dimension,naeringsstoffer,
 410,Middelfart,_dim_biodiversitet,140.14,,,,,ecological_dimension,biodiversitet,
 410,Middelfart,_dim_vand,35.93,,,,,ecological_dimension,vand,
 410,Middelfart,_dim_arealanvendelse,108.15,,,,,ecological_dimension,arealanvendelse,
 329,Ringsted,_dim_klimapaavirkning,472.4,,,,,ecological_dimension,klimapaavirkning,
 329,Ringsted,_dim_luftkvalitet,144.8,,,,,ecological_dimension,luftkvalitet,
-329,Ringsted,_dim_forurening,82.29,,,,,ecological_dimension,forurening,
+329,Ringsted,_dim_forurening,82.12,,,,,ecological_dimension,forurening,
 329,Ringsted,_dim_naeringsstoffer,131.4,,,,,ecological_dimension,naeringsstoffer,
 329,Ringsted,_dim_biodiversitet,137.74,,,,,ecological_dimension,biodiversitet,
 329,Ringsted,_dim_vand,163.88,,,,,ecological_dimension,vand,
 329,Ringsted,_dim_arealanvendelse,102.34,,,,,ecological_dimension,arealanvendelse,
 370,Næstved,_dim_klimapaavirkning,475.2,,,,,ecological_dimension,klimapaavirkning,
 370,Næstved,_dim_luftkvalitet,143.4,,,,,ecological_dimension,luftkvalitet,
-370,Næstved,_dim_forurening,72.06,,,,,ecological_dimension,forurening,
+370,Næstved,_dim_forurening,71.92,,,,,ecological_dimension,forurening,
 370,Næstved,_dim_naeringsstoffer,131.9,,,,,ecological_dimension,naeringsstoffer,
 370,Næstved,_dim_biodiversitet,134.41,,,,,ecological_dimension,biodiversitet,
 370,Næstved,_dim_vand,34.72,,,,,ecological_dimension,vand,
 370,Næstved,_dim_arealanvendelse,106.0,,,,,ecological_dimension,arealanvendelse,
 851,Aalborg,_dim_klimapaavirkning,625.48,,,,,ecological_dimension,klimapaavirkning,
 851,Aalborg,_dim_luftkvalitet,126.2,,,,,ecological_dimension,luftkvalitet,
-851,Aalborg,_dim_forurening,180.81,,,,,ecological_dimension,forurening,
+851,Aalborg,_dim_forurening,180.78,,,,,ecological_dimension,forurening,
 851,Aalborg,_dim_naeringsstoffer,120.3,,,,,ecological_dimension,naeringsstoffer,
 851,Aalborg,_dim_biodiversitet,132.93,,,,,ecological_dimension,biodiversitet,
 851,Aalborg,_dim_vand,88.1,,,,,ecological_dimension,vand,
 851,Aalborg,_dim_arealanvendelse,99.7,,,,,ecological_dimension,arealanvendelse,
 810,Brønderslev,_dim_klimapaavirkning,476.8,,,,,ecological_dimension,klimapaavirkning,
 810,Brønderslev,_dim_luftkvalitet,124.0,,,,,ecological_dimension,luftkvalitet,
-810,Brønderslev,_dim_forurening,114.77,,,,,ecological_dimension,forurening,
+810,Brønderslev,_dim_forurening,114.87,,,,,ecological_dimension,forurening,
 810,Brønderslev,_dim_naeringsstoffer,119.3,,,,,ecological_dimension,naeringsstoffer,
 810,Brønderslev,_dim_biodiversitet,139.63,,,,,ecological_dimension,biodiversitet,
 810,Brønderslev,_dim_vand,19.81,,,,,ecological_dimension,vand,
 810,Brønderslev,_dim_arealanvendelse,107.19,,,,,ecological_dimension,arealanvendelse,
 727,Odder,_dim_klimapaavirkning,452.8,,,,,ecological_dimension,klimapaavirkning,
 727,Odder,_dim_luftkvalitet,136.2,,,,,ecological_dimension,luftkvalitet,
-727,Odder,_dim_forurening,101.11,,,,,ecological_dimension,forurening,
+727,Odder,_dim_forurening,101.2,,,,,ecological_dimension,forurening,
 727,Odder,_dim_naeringsstoffer,155.9,,,,,ecological_dimension,naeringsstoffer,
 727,Odder,_dim_biodiversitet,140.03,,,,,ecological_dimension,biodiversitet,
 727,Odder,_dim_vand,36.13,,,,,ecological_dimension,vand,
 727,Odder,_dim_arealanvendelse,111.44,,,,,ecological_dimension,arealanvendelse,
 336,Stevns,_dim_klimapaavirkning,500.4,,,,,ecological_dimension,klimapaavirkning,
 336,Stevns,_dim_luftkvalitet,141.0,,,,,ecological_dimension,luftkvalitet,
-336,Stevns,_dim_forurening,96.92,,,,,ecological_dimension,forurening,
+336,Stevns,_dim_forurening,97.11,,,,,ecological_dimension,forurening,
 336,Stevns,_dim_naeringsstoffer,107.7,,,,,ecological_dimension,naeringsstoffer,
 336,Stevns,_dim_biodiversitet,132.83,,,,,ecological_dimension,biodiversitet,
 336,Stevns,_dim_vand,49.4,,,,,ecological_dimension,vand,
 336,Stevns,_dim_arealanvendelse,117.56,,,,,ecological_dimension,arealanvendelse,
 751,Aarhus,_dim_klimapaavirkning,430.4,,,,,ecological_dimension,klimapaavirkning,
 751,Aarhus,_dim_luftkvalitet,135.2,,,,,ecological_dimension,luftkvalitet,
-751,Aarhus,_dim_forurening,87.73,,,,,ecological_dimension,forurening,
+751,Aarhus,_dim_forurening,87.72,,,,,ecological_dimension,forurening,
 751,Aarhus,_dim_naeringsstoffer,115.2,,,,,ecological_dimension,naeringsstoffer,
 751,Aarhus,_dim_biodiversitet,137.64,,,,,ecological_dimension,biodiversitet,
 751,Aarhus,_dim_vand,190.69,,,,,ecological_dimension,vand,
 751,Aarhus,_dim_arealanvendelse,108.0,,,,,ecological_dimension,arealanvendelse,
 813,Frederikshavn,_dim_klimapaavirkning,504.8,,,,,ecological_dimension,klimapaavirkning,
 813,Frederikshavn,_dim_luftkvalitet,116.4,,,,,ecological_dimension,luftkvalitet,
-813,Frederikshavn,_dim_forurening,116.44,,,,,ecological_dimension,forurening,
+813,Frederikshavn,_dim_forurening,116.67,,,,,ecological_dimension,forurening,
 813,Frederikshavn,_dim_naeringsstoffer,103.67,,,,,ecological_dimension,naeringsstoffer,
 813,Frederikshavn,_dim_biodiversitet,124.99,,,,,ecological_dimension,biodiversitet,
 813,Frederikshavn,_dim_vand,23.63,,,,,ecological_dimension,vand,
 813,Frederikshavn,_dim_arealanvendelse,80.3,,,,,ecological_dimension,arealanvendelse,
 161,Glostrup,_dim_klimapaavirkning,449.2,,,,,ecological_dimension,klimapaavirkning,
 161,Glostrup,_dim_luftkvalitet,139.4,,,,,ecological_dimension,luftkvalitet,
-161,Glostrup,_dim_forurening,99.68,,,,,ecological_dimension,forurening,
+161,Glostrup,_dim_forurening,99.94,,,,,ecological_dimension,forurening,
 161,Glostrup,_dim_naeringsstoffer,108.4,,,,,ecological_dimension,naeringsstoffer,
 161,Glostrup,_dim_biodiversitet,142.8,,,,,ecological_dimension,biodiversitet,
 161,Glostrup,_dim_vand,667.76,,,,,ecological_dimension,vand,
 161,Glostrup,_dim_arealanvendelse,109.53,,,,,ecological_dimension,arealanvendelse,
 270,Gribskov,_dim_klimapaavirkning,471.2,,,,,ecological_dimension,klimapaavirkning,
 270,Gribskov,_dim_luftkvalitet,133.2,,,,,ecological_dimension,luftkvalitet,
-270,Gribskov,_dim_forurening,120.47,,,,,ecological_dimension,forurening,
+270,Gribskov,_dim_forurening,120.74,,,,,ecological_dimension,forurening,
 270,Gribskov,_dim_naeringsstoffer,183.3,,,,,ecological_dimension,naeringsstoffer,
 270,Gribskov,_dim_biodiversitet,106.73,,,,,ecological_dimension,biodiversitet,
 270,Gribskov,_dim_vand,51.36,,,,,ecological_dimension,vand,
 270,Gribskov,_dim_arealanvendelse,82.85,,,,,ecological_dimension,arealanvendelse,
 860,Hjørring,_dim_klimapaavirkning,491.6,,,,,ecological_dimension,klimapaavirkning,
 860,Hjørring,_dim_luftkvalitet,121.6,,,,,ecological_dimension,luftkvalitet,
-860,Hjørring,_dim_forurening,130.18,,,,,ecological_dimension,forurening,
+860,Hjørring,_dim_forurening,130.41,,,,,ecological_dimension,forurening,
 860,Hjørring,_dim_naeringsstoffer,111.6,,,,,ecological_dimension,naeringsstoffer,
 860,Hjørring,_dim_biodiversitet,138.5,,,,,ecological_dimension,biodiversitet,
 860,Hjørring,_dim_vand,32.73,,,,,ecological_dimension,vand,
 860,Hjørring,_dim_arealanvendelse,100.67,,,,,ecological_dimension,arealanvendelse,
 165,Albertslund,_dim_klimapaavirkning,378.0,,,,,ecological_dimension,klimapaavirkning,
 165,Albertslund,_dim_luftkvalitet,137.8,,,,,ecological_dimension,luftkvalitet,
-165,Albertslund,_dim_forurening,88.57,,,,,ecological_dimension,forurening,
+165,Albertslund,_dim_forurening,88.64,,,,,ecological_dimension,forurening,
 165,Albertslund,_dim_naeringsstoffer,113.8,,,,,ecological_dimension,naeringsstoffer,
 165,Albertslund,_dim_biodiversitet,139.8,,,,,ecological_dimension,biodiversitet,
 165,Albertslund,_dim_vand,8.93,,,,,ecological_dimension,vand,
 165,Albertslund,_dim_arealanvendelse,72.27,,,,,ecological_dimension,arealanvendelse,
 479,Svendborg,_dim_klimapaavirkning,443.2,,,,,ecological_dimension,klimapaavirkning,
 479,Svendborg,_dim_luftkvalitet,147.8,,,,,ecological_dimension,luftkvalitet,
-479,Svendborg,_dim_forurening,109.77,,,,,ecological_dimension,forurening,
+479,Svendborg,_dim_forurening,110.01,,,,,ecological_dimension,forurening,
 479,Svendborg,_dim_naeringsstoffer,156.8,,,,,ecological_dimension,naeringsstoffer,
 479,Svendborg,_dim_biodiversitet,138.97,,,,,ecological_dimension,biodiversitet,
 479,Svendborg,_dim_vand,47.76,,,,,ecological_dimension,vand,
 479,Svendborg,_dim_arealanvendelse,105.03,,,,,ecological_dimension,arealanvendelse,
 791,Viborg,_dim_klimapaavirkning,441.6,,,,,ecological_dimension,klimapaavirkning,
 791,Viborg,_dim_luftkvalitet,133.4,,,,,ecological_dimension,luftkvalitet,
-791,Viborg,_dim_forurening,78.13,,,,,ecological_dimension,forurening,
+791,Viborg,_dim_forurening,79.16,,,,,ecological_dimension,forurening,
 791,Viborg,_dim_naeringsstoffer,215.7,,,,,ecological_dimension,naeringsstoffer,
 791,Viborg,_dim_biodiversitet,135.47,,,,,ecological_dimension,biodiversitet,
 791,Viborg,_dim_vand,47.53,,,,,ecological_dimension,vand,
 791,Viborg,_dim_arealanvendelse,90.55,,,,,ecological_dimension,arealanvendelse,
 480,Nordfyns,_dim_klimapaavirkning,435.2,,,,,ecological_dimension,klimapaavirkning,
 480,Nordfyns,_dim_luftkvalitet,142.8,,,,,ecological_dimension,luftkvalitet,
-480,Nordfyns,_dim_forurening,84.55,,,,,ecological_dimension,forurening,
+480,Nordfyns,_dim_forurening,84.47,,,,,ecological_dimension,forurening,
 480,Nordfyns,_dim_naeringsstoffer,181.4,,,,,ecological_dimension,naeringsstoffer,
 480,Nordfyns,_dim_biodiversitet,139.21,,,,,ecological_dimension,biodiversitet,
 480,Nordfyns,_dim_vand,38.72,,,,,ecological_dimension,vand,
 480,Nordfyns,_dim_arealanvendelse,114.72,,,,,ecological_dimension,arealanvendelse,
 706,Syddjurs,_dim_klimapaavirkning,446.8,,,,,ecological_dimension,klimapaavirkning,
 706,Syddjurs,_dim_luftkvalitet,129.6,,,,,ecological_dimension,luftkvalitet,
-706,Syddjurs,_dim_forurening,98.11,,,,,ecological_dimension,forurening,
+706,Syddjurs,_dim_forurening,98.05,,,,,ecological_dimension,forurening,
 706,Syddjurs,_dim_naeringsstoffer,122.6,,,,,ecological_dimension,naeringsstoffer,
 706,Syddjurs,_dim_biodiversitet,128.54,,,,,ecological_dimension,biodiversitet,
 706,Syddjurs,_dim_vand,35.9,,,,,ecological_dimension,vand,
 706,Syddjurs,_dim_arealanvendelse,86.97,,,,,ecological_dimension,arealanvendelse,
 440,Kerteminde,_dim_klimapaavirkning,438.0,,,,,ecological_dimension,klimapaavirkning,
 440,Kerteminde,_dim_luftkvalitet,142.8,,,,,ecological_dimension,luftkvalitet,
-440,Kerteminde,_dim_forurening,83.28,,,,,ecological_dimension,forurening,
+440,Kerteminde,_dim_forurening,83.31,,,,,ecological_dimension,forurening,
 440,Kerteminde,_dim_naeringsstoffer,179.3,,,,,ecological_dimension,naeringsstoffer,
 440,Kerteminde,_dim_biodiversitet,139.97,,,,,ecological_dimension,biodiversitet,
 440,Kerteminde,_dim_vand,48.12,,,,,ecological_dimension,vand,
 440,Kerteminde,_dim_arealanvendelse,115.87,,,,,ecological_dimension,arealanvendelse,
 630,Vejle,_dim_klimapaavirkning,450.8,,,,,ecological_dimension,klimapaavirkning,
 630,Vejle,_dim_luftkvalitet,142.6,,,,,ecological_dimension,luftkvalitet,
-630,Vejle,_dim_forurening,103.97,,,,,ecological_dimension,forurening,
+630,Vejle,_dim_forurening,103.94,,,,,ecological_dimension,forurening,
 630,Vejle,_dim_naeringsstoffer,156.4,,,,,ecological_dimension,naeringsstoffer,
 630,Vejle,_dim_biodiversitet,138.86,,,,,ecological_dimension,biodiversitet,
 630,Vejle,_dim_vand,57.35,,,,,ecological_dimension,vand,
@@ -8372,230 +8372,230 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 101,København,_dim_arealanvendelse,114.18,,,,,ecological_dimension,arealanvendelse,
 730,Randers,_dim_klimapaavirkning,425.2,,,,,ecological_dimension,klimapaavirkning,
 730,Randers,_dim_luftkvalitet,133.0,,,,,ecological_dimension,luftkvalitet,
-730,Randers,_dim_forurening,104.31,,,,,ecological_dimension,forurening,
+730,Randers,_dim_forurening,104.25,,,,,ecological_dimension,forurening,
 730,Randers,_dim_naeringsstoffer,156.3,,,,,ecological_dimension,naeringsstoffer,
 730,Randers,_dim_biodiversitet,138.59,,,,,ecological_dimension,biodiversitet,
 730,Randers,_dim_vand,29.15,,,,,ecological_dimension,vand,
 730,Randers,_dim_arealanvendelse,108.96,,,,,ecological_dimension,arealanvendelse,
 760,Ringkøbing-Skjern,_dim_klimapaavirkning,557.08,,,,,ecological_dimension,klimapaavirkning,
 760,Ringkøbing-Skjern,_dim_luftkvalitet,136.2,,,,,ecological_dimension,luftkvalitet,
-760,Ringkøbing-Skjern,_dim_forurening,75.69,,,,,ecological_dimension,forurening,
+760,Ringkøbing-Skjern,_dim_forurening,75.53,,,,,ecological_dimension,forurening,
 760,Ringkøbing-Skjern,_dim_naeringsstoffer,165.5,,,,,ecological_dimension,naeringsstoffer,
 760,Ringkøbing-Skjern,_dim_biodiversitet,129.09,,,,,ecological_dimension,biodiversitet,
 760,Ringkøbing-Skjern,_dim_vand,87.36,,,,,ecological_dimension,vand,
 760,Ringkøbing-Skjern,_dim_arealanvendelse,97.13,,,,,ecological_dimension,arealanvendelse,
 430,Faaborg-Midtfyn,_dim_klimapaavirkning,440.4,,,,,ecological_dimension,klimapaavirkning,
 430,Faaborg-Midtfyn,_dim_luftkvalitet,146.4,,,,,ecological_dimension,luftkvalitet,
-430,Faaborg-Midtfyn,_dim_forurening,89.0,,,,,ecological_dimension,forurening,
+430,Faaborg-Midtfyn,_dim_forurening,88.97,,,,,ecological_dimension,forurening,
 430,Faaborg-Midtfyn,_dim_naeringsstoffer,175.4,,,,,ecological_dimension,naeringsstoffer,
 430,Faaborg-Midtfyn,_dim_biodiversitet,138.23,,,,,ecological_dimension,biodiversitet,
 430,Faaborg-Midtfyn,_dim_vand,31.9,,,,,ecological_dimension,vand,
 430,Faaborg-Midtfyn,_dim_arealanvendelse,102.59,,,,,ecological_dimension,arealanvendelse,
 320,Faxe,_dim_klimapaavirkning,471.6,,,,,ecological_dimension,klimapaavirkning,
 320,Faxe,_dim_luftkvalitet,142.8,,,,,ecological_dimension,luftkvalitet,
-320,Faxe,_dim_forurening,80.19,,,,,ecological_dimension,forurening,
+320,Faxe,_dim_forurening,80.02,,,,,ecological_dimension,forurening,
 320,Faxe,_dim_naeringsstoffer,121.7,,,,,ecological_dimension,naeringsstoffer,
 320,Faxe,_dim_biodiversitet,132.93,,,,,ecological_dimension,biodiversitet,
 320,Faxe,_dim_vand,74.08,,,,,ecological_dimension,vand,
 320,Faxe,_dim_arealanvendelse,99.52,,,,,ecological_dimension,arealanvendelse,
 169,Høje-Taastrup,_dim_klimapaavirkning,420.4,,,,,ecological_dimension,klimapaavirkning,
 169,Høje-Taastrup,_dim_luftkvalitet,140.2,,,,,ecological_dimension,luftkvalitet,
-169,Høje-Taastrup,_dim_forurening,89.28,,,,,ecological_dimension,forurening,
+169,Høje-Taastrup,_dim_forurening,89.42,,,,,ecological_dimension,forurening,
 169,Høje-Taastrup,_dim_naeringsstoffer,144.2,,,,,ecological_dimension,naeringsstoffer,
 169,Høje-Taastrup,_dim_biodiversitet,139.81,,,,,ecological_dimension,biodiversitet,
 169,Høje-Taastrup,_dim_vand,202.25,,,,,ecological_dimension,vand,
 169,Høje-Taastrup,_dim_arealanvendelse,100.36,,,,,ecological_dimension,arealanvendelse,
 573,Varde,_dim_klimapaavirkning,603.04,,,,,ecological_dimension,klimapaavirkning,
 573,Varde,_dim_luftkvalitet,140.4,,,,,ecological_dimension,luftkvalitet,
-573,Varde,_dim_forurening,99.39,,,,,ecological_dimension,forurening,
+573,Varde,_dim_forurening,99.35,,,,,ecological_dimension,forurening,
 573,Varde,_dim_naeringsstoffer,150.7,,,,,ecological_dimension,naeringsstoffer,
 573,Varde,_dim_biodiversitet,124.94,,,,,ecological_dimension,biodiversitet,
 573,Varde,_dim_vand,36.96,,,,,ecological_dimension,vand,
 573,Varde,_dim_arealanvendelse,88.83,,,,,ecological_dimension,arealanvendelse,
 621,Kolding,_dim_klimapaavirkning,440.4,,,,,ecological_dimension,klimapaavirkning,
 621,Kolding,_dim_luftkvalitet,144.2,,,,,ecological_dimension,luftkvalitet,
-621,Kolding,_dim_forurening,69.0,,,,,ecological_dimension,forurening,
+621,Kolding,_dim_forurening,68.88,,,,,ecological_dimension,forurening,
 621,Kolding,_dim_naeringsstoffer,254.9,,,,,ecological_dimension,naeringsstoffer,
 621,Kolding,_dim_biodiversitet,139.76,,,,,ecological_dimension,biodiversitet,
 621,Kolding,_dim_vand,39.67,,,,,ecological_dimension,vand,
 621,Kolding,_dim_arealanvendelse,107.17,,,,,ecological_dimension,arealanvendelse,
 420,Assens,_dim_klimapaavirkning,433.6,,,,,ecological_dimension,klimapaavirkning,
 420,Assens,_dim_luftkvalitet,145.8,,,,,ecological_dimension,luftkvalitet,
-420,Assens,_dim_forurening,96.45,,,,,ecological_dimension,forurening,
+420,Assens,_dim_forurening,96.42,,,,,ecological_dimension,forurening,
 420,Assens,_dim_naeringsstoffer,192.4,,,,,ecological_dimension,naeringsstoffer,
 420,Assens,_dim_biodiversitet,141.4,,,,,ecological_dimension,biodiversitet,
 420,Assens,_dim_vand,38.97,,,,,ecological_dimension,vand,
 420,Assens,_dim_arealanvendelse,105.92,,,,,ecological_dimension,arealanvendelse,
 580,Aabenraa,_dim_klimapaavirkning,424.4,,,,,ecological_dimension,klimapaavirkning,
 580,Aabenraa,_dim_luftkvalitet,151.0,,,,,ecological_dimension,luftkvalitet,
-580,Aabenraa,_dim_forurening,95.82,,,,,ecological_dimension,forurening,
+580,Aabenraa,_dim_forurening,95.72,,,,,ecological_dimension,forurening,
 580,Aabenraa,_dim_naeringsstoffer,161.4,,,,,ecological_dimension,naeringsstoffer,
 580,Aabenraa,_dim_biodiversitet,136.79,,,,,ecological_dimension,biodiversitet,
 580,Aabenraa,_dim_vand,57.86,,,,,ecological_dimension,vand,
 580,Aabenraa,_dim_arealanvendelse,107.12,,,,,ecological_dimension,arealanvendelse,
 787,Thisted,_dim_klimapaavirkning,490.4,,,,,ecological_dimension,klimapaavirkning,
 787,Thisted,_dim_luftkvalitet,125.0,,,,,ecological_dimension,luftkvalitet,
-787,Thisted,_dim_forurening,154.84,,,,,ecological_dimension,forurening,
+787,Thisted,_dim_forurening,154.91,,,,,ecological_dimension,forurening,
 787,Thisted,_dim_naeringsstoffer,202.7,,,,,ecological_dimension,naeringsstoffer,
 787,Thisted,_dim_biodiversitet,110.76,,,,,ecological_dimension,biodiversitet,
 787,Thisted,_dim_vand,16.84,,,,,ecological_dimension,vand,
 787,Thisted,_dim_arealanvendelse,82.58,,,,,ecological_dimension,arealanvendelse,
 756,Ikast-Brande,_dim_klimapaavirkning,424.0,,,,,ecological_dimension,klimapaavirkning,
 756,Ikast-Brande,_dim_luftkvalitet,136.8,,,,,ecological_dimension,luftkvalitet,
-756,Ikast-Brande,_dim_forurening,73.92,,,,,ecological_dimension,forurening,
+756,Ikast-Brande,_dim_forurening,73.79,,,,,ecological_dimension,forurening,
 756,Ikast-Brande,_dim_naeringsstoffer,170.6,,,,,ecological_dimension,naeringsstoffer,
 756,Ikast-Brande,_dim_biodiversitet,134.67,,,,,ecological_dimension,biodiversitet,
 756,Ikast-Brande,_dim_vand,99.21,,,,,ecological_dimension,vand,
 756,Ikast-Brande,_dim_arealanvendelse,87.38,,,,,ecological_dimension,arealanvendelse,
 461,Odense,_dim_klimapaavirkning,406.0,,,,,ecological_dimension,klimapaavirkning,
 461,Odense,_dim_luftkvalitet,144.4,,,,,ecological_dimension,luftkvalitet,
-461,Odense,_dim_forurening,92.09,,,,,ecological_dimension,forurening,
+461,Odense,_dim_forurening,92.28,,,,,ecological_dimension,forurening,
 461,Odense,_dim_naeringsstoffer,172.5,,,,,ecological_dimension,naeringsstoffer,
 461,Odense,_dim_biodiversitet,141.71,,,,,ecological_dimension,biodiversitet,
 461,Odense,_dim_vand,205.05,,,,,ecological_dimension,vand,
 461,Odense,_dim_arealanvendelse,103.58,,,,,ecological_dimension,arealanvendelse,
 779,Skive,_dim_klimapaavirkning,437.6,,,,,ecological_dimension,klimapaavirkning,
 779,Skive,_dim_luftkvalitet,131.6,,,,,ecological_dimension,luftkvalitet,
-779,Skive,_dim_forurening,75.8,,,,,ecological_dimension,forurening,
+779,Skive,_dim_forurening,75.66,,,,,ecological_dimension,forurening,
 779,Skive,_dim_naeringsstoffer,220.2,,,,,ecological_dimension,naeringsstoffer,
 779,Skive,_dim_biodiversitet,138.47,,,,,ecological_dimension,biodiversitet,
 779,Skive,_dim_vand,23.65,,,,,ecological_dimension,vand,
 779,Skive,_dim_arealanvendelse,109.19,,,,,ecological_dimension,arealanvendelse,
 450,Nyborg,_dim_klimapaavirkning,480.28,,,,,ecological_dimension,klimapaavirkning,
 450,Nyborg,_dim_luftkvalitet,143.6,,,,,ecological_dimension,luftkvalitet,
-450,Nyborg,_dim_forurening,115.05,,,,,ecological_dimension,forurening,
+450,Nyborg,_dim_forurening,115.03,,,,,ecological_dimension,forurening,
 450,Nyborg,_dim_naeringsstoffer,195.3,,,,,ecological_dimension,naeringsstoffer,
 450,Nyborg,_dim_biodiversitet,141.69,,,,,ecological_dimension,biodiversitet,
 450,Nyborg,_dim_vand,59.79,,,,,ecological_dimension,vand,
 450,Nyborg,_dim_arealanvendelse,112.53,,,,,ecological_dimension,arealanvendelse,
 846,Mariagerfjord,_dim_klimapaavirkning,499.6,,,,,ecological_dimension,klimapaavirkning,
 846,Mariagerfjord,_dim_luftkvalitet,130.6,,,,,ecological_dimension,luftkvalitet,
-846,Mariagerfjord,_dim_forurening,104.8,,,,,ecological_dimension,forurening,
+846,Mariagerfjord,_dim_forurening,104.7,,,,,ecological_dimension,forurening,
 846,Mariagerfjord,_dim_naeringsstoffer,194.2,,,,,ecological_dimension,naeringsstoffer,
 846,Mariagerfjord,_dim_biodiversitet,134.37,,,,,ecological_dimension,biodiversitet,
 846,Mariagerfjord,_dim_vand,26.84,,,,,ecological_dimension,vand,
 846,Mariagerfjord,_dim_arealanvendelse,95.27,,,,,ecological_dimension,arealanvendelse,
 820,Vesthimmerlands,_dim_klimapaavirkning,689.16,,,,,ecological_dimension,klimapaavirkning,
 820,Vesthimmerlands,_dim_luftkvalitet,130.4,,,,,ecological_dimension,luftkvalitet,
-820,Vesthimmerlands,_dim_forurening,108.26,,,,,ecological_dimension,forurening,
+820,Vesthimmerlands,_dim_forurening,108.23,,,,,ecological_dimension,forurening,
 820,Vesthimmerlands,_dim_naeringsstoffer,223.4,,,,,ecological_dimension,naeringsstoffer,
 820,Vesthimmerlands,_dim_biodiversitet,139.5,,,,,ecological_dimension,biodiversitet,
 820,Vesthimmerlands,_dim_vand,87.86,,,,,ecological_dimension,vand,
 820,Vesthimmerlands,_dim_arealanvendelse,106.72,,,,,ecological_dimension,arealanvendelse,
 540,Sønderborg,_dim_klimapaavirkning,425.2,,,,,ecological_dimension,klimapaavirkning,
 540,Sønderborg,_dim_luftkvalitet,151.0,,,,,ecological_dimension,luftkvalitet,
-540,Sønderborg,_dim_forurening,74.61,,,,,ecological_dimension,forurening,
+540,Sønderborg,_dim_forurening,74.44,,,,,ecological_dimension,forurening,
 540,Sønderborg,_dim_naeringsstoffer,144.8,,,,,ecological_dimension,naeringsstoffer,
 540,Sønderborg,_dim_biodiversitet,139.94,,,,,ecological_dimension,biodiversitet,
 540,Sønderborg,_dim_vand,54.57,,,,,ecological_dimension,vand,
 540,Sønderborg,_dim_arealanvendelse,114.16,,,,,ecological_dimension,arealanvendelse,
 400,Bornholm,_dim_klimapaavirkning,411.6,,,,,ecological_dimension,klimapaavirkning,
 400,Bornholm,_dim_luftkvalitet,136.6,,,,,ecological_dimension,luftkvalitet,
-400,Bornholm,_dim_forurening,116.21,,,,,ecological_dimension,forurening,
+400,Bornholm,_dim_forurening,116.46,,,,,ecological_dimension,forurening,
 400,Bornholm,_dim_naeringsstoffer,109.7,,,,,ecological_dimension,naeringsstoffer,
 400,Bornholm,_dim_biodiversitet,123.69,,,,,ecological_dimension,biodiversitet,
 400,Bornholm,_dim_vand,23.91,,,,,ecological_dimension,vand,
 400,Bornholm,_dim_arealanvendelse,96.45,,,,,ecological_dimension,arealanvendelse,
 510,Haderslev,_dim_klimapaavirkning,430.4,,,,,ecological_dimension,klimapaavirkning,
 510,Haderslev,_dim_luftkvalitet,147.6,,,,,ecological_dimension,luftkvalitet,
-510,Haderslev,_dim_forurening,90.46,,,,,ecological_dimension,forurening,
+510,Haderslev,_dim_forurening,90.51,,,,,ecological_dimension,forurening,
 510,Haderslev,_dim_naeringsstoffer,256.0,,,,,ecological_dimension,naeringsstoffer,
 510,Haderslev,_dim_biodiversitet,139.13,,,,,ecological_dimension,biodiversitet,
 510,Haderslev,_dim_vand,44.1,,,,,ecological_dimension,vand,
 510,Haderslev,_dim_arealanvendelse,108.75,,,,,ecological_dimension,arealanvendelse,
 671,Struer,_dim_klimapaavirkning,428.8,,,,,ecological_dimension,klimapaavirkning,
 671,Struer,_dim_luftkvalitet,133.0,,,,,ecological_dimension,luftkvalitet,
-671,Struer,_dim_forurening,111.63,,,,,ecological_dimension,forurening,
+671,Struer,_dim_forurening,112.66,,,,,ecological_dimension,forurening,
 671,Struer,_dim_naeringsstoffer,198.4,,,,,ecological_dimension,naeringsstoffer,
 671,Struer,_dim_biodiversitet,139.54,,,,,ecological_dimension,biodiversitet,
 671,Struer,_dim_vand,25.92,,,,,ecological_dimension,vand,
 671,Struer,_dim_arealanvendelse,118.88,,,,,ecological_dimension,arealanvendelse,
 665,Lemvig,_dim_klimapaavirkning,695.56,,,,,ecological_dimension,klimapaavirkning,
 665,Lemvig,_dim_luftkvalitet,131.0,,,,,ecological_dimension,luftkvalitet,
-665,Lemvig,_dim_forurening,69.35,,,,,ecological_dimension,forurening,
+665,Lemvig,_dim_forurening,69.08,,,,,ecological_dimension,forurening,
 665,Lemvig,_dim_naeringsstoffer,173.4,,,,,ecological_dimension,naeringsstoffer,
 665,Lemvig,_dim_biodiversitet,132.01,,,,,ecological_dimension,biodiversitet,
 665,Lemvig,_dim_vand,44.23,,,,,ecological_dimension,vand,
 665,Lemvig,_dim_arealanvendelse,100.2,,,,,ecological_dimension,arealanvendelse,
 707,Norddjurs,_dim_klimapaavirkning,424.4,,,,,ecological_dimension,klimapaavirkning,
 707,Norddjurs,_dim_luftkvalitet,127.4,,,,,ecological_dimension,luftkvalitet,
-707,Norddjurs,_dim_forurening,128.66,,,,,ecological_dimension,forurening,
+707,Norddjurs,_dim_forurening,128.59,,,,,ecological_dimension,forurening,
 707,Norddjurs,_dim_naeringsstoffer,117.9,,,,,ecological_dimension,naeringsstoffer,
 707,Norddjurs,_dim_biodiversitet,133.71,,,,,ecological_dimension,biodiversitet,
 707,Norddjurs,_dim_vand,54.46,,,,,ecological_dimension,vand,
 707,Norddjurs,_dim_arealanvendelse,96.51,,,,,ecological_dimension,arealanvendelse,
 330,Slagelse,_dim_klimapaavirkning,465.6,,,,,ecological_dimension,klimapaavirkning,
 330,Slagelse,_dim_luftkvalitet,144.4,,,,,ecological_dimension,luftkvalitet,
-330,Slagelse,_dim_forurening,95.48,,,,,ecological_dimension,forurening,
+330,Slagelse,_dim_forurening,95.45,,,,,ecological_dimension,forurening,
 330,Slagelse,_dim_naeringsstoffer,149.2,,,,,ecological_dimension,naeringsstoffer,
 330,Slagelse,_dim_biodiversitet,140.11,,,,,ecological_dimension,biodiversitet,
 330,Slagelse,_dim_vand,91.9,,,,,ecological_dimension,vand,
 330,Slagelse,_dim_arealanvendelse,111.37,,,,,ecological_dimension,arealanvendelse,
 306,Odsherred,_dim_klimapaavirkning,463.2,,,,,ecological_dimension,klimapaavirkning,
 306,Odsherred,_dim_luftkvalitet,136.0,,,,,ecological_dimension,luftkvalitet,
-306,Odsherred,_dim_forurening,100.94,,,,,ecological_dimension,forurening,
+306,Odsherred,_dim_forurening,100.8,,,,,ecological_dimension,forurening,
 306,Odsherred,_dim_naeringsstoffer,163.4,,,,,ecological_dimension,naeringsstoffer,
 306,Odsherred,_dim_biodiversitet,136.91,,,,,ecological_dimension,biodiversitet,
 306,Odsherred,_dim_vand,55.13,,,,,ecological_dimension,vand,
 306,Odsherred,_dim_arealanvendelse,101.28,,,,,ecological_dimension,arealanvendelse,
 575,Vejen,_dim_klimapaavirkning,456.56,,,,,ecological_dimension,klimapaavirkning,
 575,Vejen,_dim_luftkvalitet,145.2,,,,,ecological_dimension,luftkvalitet,
-575,Vejen,_dim_forurening,69.14,,,,,ecological_dimension,forurening,
+575,Vejen,_dim_forurening,68.96,,,,,ecological_dimension,forurening,
 575,Vejen,_dim_naeringsstoffer,254.8,,,,,ecological_dimension,naeringsstoffer,
 575,Vejen,_dim_biodiversitet,139.8,,,,,ecological_dimension,biodiversitet,
 575,Vejen,_dim_vand,61.53,,,,,ecological_dimension,vand,
 575,Vejen,_dim_arealanvendelse,107.56,,,,,ecological_dimension,arealanvendelse,
 376,Guldborgsund,_dim_klimapaavirkning,439.2,,,,,ecological_dimension,klimapaavirkning,
 376,Guldborgsund,_dim_luftkvalitet,146.0,,,,,ecological_dimension,luftkvalitet,
-376,Guldborgsund,_dim_forurening,128.97,,,,,ecological_dimension,forurening,
+376,Guldborgsund,_dim_forurening,128.95,,,,,ecological_dimension,forurening,
 376,Guldborgsund,_dim_naeringsstoffer,158.1,,,,,ecological_dimension,naeringsstoffer,
 376,Guldborgsund,_dim_biodiversitet,135.04,,,,,ecological_dimension,biodiversitet,
 376,Guldborgsund,_dim_vand,37.69,,,,,ecological_dimension,vand,
 376,Guldborgsund,_dim_arealanvendelse,113.65,,,,,ecological_dimension,arealanvendelse,
 849,Jammerbugt,_dim_klimapaavirkning,500.8,,,,,ecological_dimension,klimapaavirkning,
 849,Jammerbugt,_dim_luftkvalitet,123.8,,,,,ecological_dimension,luftkvalitet,
-849,Jammerbugt,_dim_forurening,140.67,,,,,ecological_dimension,forurening,
+849,Jammerbugt,_dim_forurening,140.68,,,,,ecological_dimension,forurening,
 849,Jammerbugt,_dim_naeringsstoffer,126.7,,,,,ecological_dimension,naeringsstoffer,
 849,Jammerbugt,_dim_biodiversitet,128.36,,,,,ecological_dimension,biodiversitet,
 849,Jammerbugt,_dim_vand,16.18,,,,,ecological_dimension,vand,
 849,Jammerbugt,_dim_arealanvendelse,92.43,,,,,ecological_dimension,arealanvendelse,
 326,Kalundborg,_dim_klimapaavirkning,616.16,,,,,ecological_dimension,klimapaavirkning,
 326,Kalundborg,_dim_luftkvalitet,141.0,,,,,ecological_dimension,luftkvalitet,
-326,Kalundborg,_dim_forurening,92.4,,,,,ecological_dimension,forurening,
+326,Kalundborg,_dim_forurening,92.35,,,,,ecological_dimension,forurening,
 326,Kalundborg,_dim_naeringsstoffer,144.0,,,,,ecological_dimension,naeringsstoffer,
 326,Kalundborg,_dim_biodiversitet,129.67,,,,,ecological_dimension,biodiversitet,
 326,Kalundborg,_dim_vand,58.08,,,,,ecological_dimension,vand,
 326,Kalundborg,_dim_arealanvendelse,106.42,,,,,ecological_dimension,arealanvendelse,
 390,Vordingborg,_dim_klimapaavirkning,460.8,,,,,ecological_dimension,klimapaavirkning,
 390,Vordingborg,_dim_luftkvalitet,141.8,,,,,ecological_dimension,luftkvalitet,
-390,Vordingborg,_dim_forurening,98.94,,,,,ecological_dimension,forurening,
+390,Vordingborg,_dim_forurening,98.84,,,,,ecological_dimension,forurening,
 390,Vordingborg,_dim_naeringsstoffer,143.4,,,,,ecological_dimension,naeringsstoffer,
 390,Vordingborg,_dim_biodiversitet,133.53,,,,,ecological_dimension,biodiversitet,
 390,Vordingborg,_dim_vand,34.03,,,,,ecological_dimension,vand,
 390,Vordingborg,_dim_arealanvendelse,105.0,,,,,ecological_dimension,arealanvendelse,
 550,Tønder,_dim_klimapaavirkning,1006.6,,,,,ecological_dimension,klimapaavirkning,
 550,Tønder,_dim_luftkvalitet,150.6,,,,,ecological_dimension,luftkvalitet,
-550,Tønder,_dim_forurening,97.23,,,,,ecological_dimension,forurening,
+550,Tønder,_dim_forurening,97.29,,,,,ecological_dimension,forurening,
 550,Tønder,_dim_naeringsstoffer,148.0,,,,,ecological_dimension,naeringsstoffer,
 550,Tønder,_dim_biodiversitet,129.74,,,,,ecological_dimension,biodiversitet,
 550,Tønder,_dim_vand,58.05,,,,,ecological_dimension,vand,
 550,Tønder,_dim_arealanvendelse,109.49,,,,,ecological_dimension,arealanvendelse,
 360,Lolland,_dim_klimapaavirkning,432.8,,,,,ecological_dimension,klimapaavirkning,
 360,Lolland,_dim_luftkvalitet,146.6,,,,,ecological_dimension,luftkvalitet,
-360,Lolland,_dim_forurening,118.5,,,,,ecological_dimension,forurening,
+360,Lolland,_dim_forurening,118.42,,,,,ecological_dimension,forurening,
 360,Lolland,_dim_naeringsstoffer,149.6,,,,,ecological_dimension,naeringsstoffer,
 360,Lolland,_dim_biodiversitet,138.14,,,,,ecological_dimension,biodiversitet,
 360,Lolland,_dim_vand,37.63,,,,,ecological_dimension,vand,
 360,Lolland,_dim_arealanvendelse,121.48,,,,,ecological_dimension,arealanvendelse,
 741,Samsø,_dim_klimapaavirkning,440.8,,,,,ecological_dimension,klimapaavirkning,
 741,Samsø,_dim_luftkvalitet,133.8,,,,,ecological_dimension,luftkvalitet,
-741,Samsø,_dim_forurening,75.31,,,,,ecological_dimension,forurening,
+741,Samsø,_dim_forurening,75.73,,,,,ecological_dimension,forurening,
 741,Samsø,_dim_naeringsstoffer,156.2,,,,,ecological_dimension,naeringsstoffer,
 741,Samsø,_dim_biodiversitet,128.26,,,,,ecological_dimension,biodiversitet,
 741,Samsø,_dim_arealanvendelse,105.94,,,,,ecological_dimension,arealanvendelse,
 482,Langeland,_dim_klimapaavirkning,413.2,,,,,ecological_dimension,klimapaavirkning,
 482,Langeland,_dim_luftkvalitet,145.4,,,,,ecological_dimension,luftkvalitet,
-482,Langeland,_dim_forurening,116.42,,,,,ecological_dimension,forurening,
+482,Langeland,_dim_forurening,116.3,,,,,ecological_dimension,forurening,
 482,Langeland,_dim_naeringsstoffer,145.5,,,,,ecological_dimension,naeringsstoffer,
 482,Langeland,_dim_biodiversitet,138.56,,,,,ecological_dimension,biodiversitet,
 482,Langeland,_dim_vand,28.97,,,,,ecological_dimension,vand,
