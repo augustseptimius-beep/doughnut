@@ -193,9 +193,10 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
 5. **Alle kilde-CSV'er er nøglet på `kommune_kode` (fra sep. 2026).** `cba_2023_estimate.csv` (håndlavet) og `klimatilpasning_scores.csv` har kun navne fra kilden; de har fået en `kommune_kode`-kolonne, og `fetch_klimatilpasning_data.py` slår koden op med `kode_for_navn()` og stopper ved et ukendt navn. Tidligere blev de slået op på navn i build-trinnet, hvor en stavevariant gav et tavst hul. Christiansø er ikke med.
 6. **Farvelogik er OMVENDT:** sociale vil op (≥100 = grøn), økologiske vil ned (≤85 = grøn).
 7. **`master_indicators.csv`, `noegletal.json`, `trend_indicators.csv` og `data_years.json` skal committes.** Netlify har ingen adgang til kildernes API'er under build, så sitet bygges udelukkende fra de committede CSV'er.
-8. **API-nøgler læses KUN fra miljøvariabler. Skriv aldrig en nøgle ind i en fil der ligger i git.** To kilder kræver adgang:
+8. **API-nøgler læses KUN fra miljøvariabler. Skriv aldrig en nøgle ind i en fil der ligger i git.** Tre kilder kræver adgang:
     - `KLIMAREGNSKABET_API_KEY` (bemærk ET) - Klimaregnskabet.dk. Bruges af Netlify-funktionen, `fetch_climate_data.py`, `fetch_trend_history.py` og `probe_api.py`.
     - `UVM_API_TOKEN` - Uddannelsesstatistik. Bruges af `fetch_udvidelse_data.py` og `fetch_trend_history.py`. Det er et JWT bundet til den bruger der oprettede det, med flere års levetid.
+    - `DATAFORSYNINGEN_TOKEN` - Dataforsyningen (Klimadatastyrelsen). Bruges kun af `fetch_grundvandsdannelse.py` til HIP's WMS (DK-modellens grundvandsdannelse). Tallet er statisk (1991-2020), så scriptet skal kun køres igen ved en ny modelversion. Token'et oprettes gratis under "Min bruger" på dataforsyningen.dk.
 
     Lokalt: `export` i shell-profilen. I produktion: Netlify → Site configuration → Environment variables. Til webappen lokalt: kopiér `webapp/.env.example` til `webapp/.env` (git-ignoreret).
 
