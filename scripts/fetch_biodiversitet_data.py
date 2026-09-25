@@ -8,10 +8,10 @@ Tærskelværdier (DCE/AU SR456):
   Bioscore >= 8  = "sandsynligvis væsentlige naturværdier"
   Bioscore >= 12 = "uerstattelige levesteder for rødlistede arter"
 
-Planetary boundary-grænser:
-  biodiversitet_ratio    = (pct natur >= 8  / 30%) × 100   [30x30-målet]
-  uerstattelig_ratio     = (pct natur >= 12 / 10%) × 100   [EU 10%-mål]
-  ratio > 100 = inden for grænsen, ratio < 100 = underskud
+Ratio (komplement-formlen, fra sep. 2026):
+  biodiversitet_ratio    = (100 - pct natur >= 8)  / 70 × 100   [30x30-målet]
+  uerstattelig_ratio     = (100 - pct natur >= 12) / 90 × 100   [EU 10%-mål]
+  ratio > 100 = under målet (overshoot), ratio < 100 = målet er nået
 
 Krav:
   pip3 install geopandas rasterio rasterstats requests numpy
@@ -187,12 +187,15 @@ with open(OUTPUT_FIL, "w", newline="", encoding="utf-8") as f:
         pct_u = round(s["pct_uerstattelig"] or 0.0, 2)
         mean  = round(s["mean"]             or 0.0, 2)
 
-        # Ratio: mål / faktisk andel × 100 - samme konvention som CO2:
-        # ratio > 100 = under målet (shortfall/dårligt), ratio < 100 = over målet (godt)
-        # Eks: 15% natur ud af 30% mål → ratio = (30/15)*100 = 200 (shortfall)
-        #      45% natur ud af 30% mål → ratio = (30/45)*100 = 67  (inden for grænsen)
-        bio_ratio = round(MÅL_VASENTLIG    / pct_v * 100, 2) if pct_v > 0 else 999.0
-        uer_ratio = round(MÅL_UERSTATTELIG / pct_u * 100, 2) if pct_u > 0 else 999.0
+        # Ratio med komplement-formlen (fra sep. 2026, arkitekturdokumentet R2a):
+        # andelen UDEN naturværdi målt mod det målet tillader. "Mindst 30% natur"
+        # er det samme som "højst 70% uden", så ratio = (100 - andel) / 70 × 100.
+        # Eks: 15% natur → 85/70 = 121 (over loftet); 45% natur → 55/70 = 79.
+        # Indtil sep. 2026 var ratioen mål/andel, som gav tusinder for andele nær
+        # 0 og måtte cappes ved 300 - et loft over halvdelen af kommunerne ramte.
+        # build_master_csv.py beregner scoren; kolonnerne her er krydstjek.
+        bio_ratio = round((100 - pct_v) / (100 - MÅL_VASENTLIG) * 100, 2)
+        uer_ratio = round((100 - pct_u) / (100 - MÅL_UERSTATTELIG) * 100, 2)
 
         # Strip foranstillet nul fra kommunekode (DAWA: "0101" → "101")
         kode = str(int(row["kode"]))

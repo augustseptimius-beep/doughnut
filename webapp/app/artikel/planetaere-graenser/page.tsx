@@ -99,9 +99,29 @@ export default function PlanetaereGraenserPage() {
             en femdobbelt overskridelse og en af de mest markante i hele rapporten.
           </p>
           <p className="text-sm text-gray-700 leading-relaxed mt-2">
-            Vores arealdimension viser fordelingen mellem intensivt landbrug og bebygget areal for hver
-            kommune. Vi måler den i dag mod landsgennemsnittet, så man kan se forskel på kommunerne -
-            men 15%-grænsen er den biofysiske virkelighed bag tallene.
+            Vores arealdimension måler netop antropiseret areal - intensivt landbrug og befæstet areal
+            tilsammen - for hver kommune, med samme definition som rapporten. Vi måler den mod
+            landsgennemsnittet, så man kan se forskel på kommunerne, men 15%-grænsen er den biofysiske
+            virkelighed bag tallene.
+          </p>
+        </section>
+
+        {/* 4b. Kvælstof */}
+        <section>
+          <h3 className="text-base font-semibold text-gray-900 mb-3 pb-2 border-b border-gray-200">
+            Kvælstof: en grænse der kan måles pr. kommune
+          </h3>
+          <p className="text-sm text-gray-700 leading-relaxed">
+            For kvælstof bruger rapporten vandområdeplanernes målbelastning som dansk grænse: den
+            mængde kvælstof kystvandene kan tåle og stadig nå god økologisk tilstand. Danmark samlet
+            udleder omkring 55.800 ton om året mod en målbelastning på 37.900 ton, altså halvanden
+            gang for meget.
+          </p>
+          <p className="text-sm text-gray-700 leading-relaxed mt-2">
+            Målbelastningen er fastsat for hvert enkelt kystvand, og derfor kan den regnes ned på
+            kommunerne: hvert areal afvander til et bestemt kystvand. Platformen gør det fra september
+            2026. Det er en af de få steder, hvor en nedskaleret grænse og ikke et landsgennemsnit
+            afgør kommunens score, og for de fleste kommuner ligger belastningen et godt stykke over.
           </p>
         </section>
 

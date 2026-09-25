@@ -76,6 +76,9 @@ function kontrolRatio(ind: RegisterIndikator, raw: number | null, ref: number | 
   let x: number;
   if (ind.formula === "100_minus_raw") {
     x = 100 - raw;
+  } else if (ind.formula === "komplement") {
+    if (ref === null || ref >= 100) return null;
+    x = ((100 - raw) / (100 - ref)) * 100;
   } else {
     if (!ref) return null;
     const rawOverRef = ind.category === "social" ? !ind.inverse : !!ind.lower_is_better;
@@ -314,7 +317,7 @@ const RAW_KEY_BY_INDICATOR_ID: Record<string, string> = Object.fromEntries(
 );
 
 // Master indicator_id → menneskeligt navn, så tooltip på en dimensionspil kan
-// sige "bestemt af Fosforudledning" i stedet for "naer_phosphorus".
+// sige "bestemt af Kvælstofnedfald fra luften" i stedet for "n_deposition".
 const LABEL_BY_INDICATOR_ID: Record<string, string> = (() => {
   const m: Record<string, string> = {};
   for (const ind of INDICATORS) m[ind.id] = ind.name;

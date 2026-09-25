@@ -529,10 +529,8 @@ SIMPLE = [
 
 
     # --- Økologisk: forurening (cirkularitet) ---
-    dict(id="cirkularitet_waste", navn="Husholdningsaffald pr. person", tabel="LABY25",
-         soeg=["kg. pr. indbygger"], pin_ialt=True),
-    dict(id="cirkularitet_recycling", navn="Genanvendelse af husholdningsaffald", tabel="LABY25",
-         soeg=["genanvend"], pin_ialt=True),
+    # cirkularitet_waste og cirkularitet_recycling hentes fra sep. 2026 med
+    # scorens egen treårsmedian (SAMME_SOM_SCOREN nedenfor).
 ]
 
 # Forhold: id_taeller / id_naevner slås sammen til platform-id, ratio = tæller/nævner*100
@@ -561,7 +559,6 @@ DIREKTE = {
     "vulnerable_children", "poverty_relative", "child_poverty", "gini",
     "housing_area", "voter_turnout_national", "voter_turnout", "sports_membership",
     "life_expectancy", "disposable_income", "commute_distance",
-    "cirkularitet_waste", "cirkularitet_recycling",
     "kultur_spending", "civil_society", "low_income",
 }
 
@@ -586,26 +583,30 @@ SAMME_SOM_SCOREN = {
     "child_notifications": ("fetch_udvidelse_data", "serie_child_notifications", "UND2", "perioder"),
     "vacant_housing": ("fetch_doughnut_data", "serie_vacant_housing", "BOL101", "perioder"),
     "employment_origin_gap": ("fetch_ligestilling_data", "serie_employment_origin_gap", "RAS200", "perioder"),
-    "naer_nitrogen": ("fetch_eco_new_data", "serie_naer_nitrogen", "VANDUD", "perioder"),
-    "naer_phosphorus": ("fetch_eco_new_data", "serie_naer_phosphorus", "VANDUD", "perioder"),
-    "vandindvinding": ("fetch_vandindvinding_data", "serie_vandindvinding", "VANDIND", "perioder"),
-    "areal_intensiv": ("fetch_dst_arealanvendelse", "serie_areal_intensiv", "AREALDK2", "perioder"),
-    "areal_bebygget": ("fetch_dst_arealanvendelse", "serie_areal_bebygget", "AREALDK2", "perioder"),
+    "vandindvinding": ("fetch_vandindvinding_data", "serie_vandindvinding", "VANDIND", "aar"),
+    "areal_antropiseret": ("fetch_dst_arealanvendelse", "serie_areal_antropiseret", "AREALDK2", "perioder"),
+    "cirkularitet_waste": ("fetch_eco_new_data", "serie_cirkularitet_waste", "LABY25", "aar"),
+    "cirkularitet_recycling": ("fetch_eco_new_data", "serie_cirkularitet_recycling", "LABY25", "aar"),
+    # Ikke en DST-tabel: årene kommer fra modulets egen trend_perioder().
+    "n_deposition": ("fetch_kvaelstofdeposition", "serie_n_deposition", None, "aar"),
 }
 
 
-def samme_som_scoren() -> dict[str, dict]:
+def samme_som_scoren(kun: list[str] | None = None) -> dict[str, dict]:
     """Henter pilene i SAMME_SOM_SCOREN med scorens egne funktioner.
     {id: {(kommune_kode, år): værdi}}, uden hele landet."""
     import importlib
     ud: dict[str, dict] = {}
     for iid, (modul, funktion, tabel, form) in SAMME_SOM_SCOREN.items():
+        if kun is not None and iid not in kun:
+            continue
         log(f"\n→ {iid}  [{tabel}, {modul}.{funktion}]")
         try:
-            perioder = perioder_fra(tabel, FRA_AAR)
+            mod = importlib.import_module(modul)
+            perioder = mod.trend_perioder(FRA_AAR) if tabel is None else perioder_fra(tabel, FRA_AAR)
             if form == "aar":
                 perioder = sorted({aarstal(p) for p in perioder})
-            data = getattr(importlib.import_module(modul), funktion)(perioder)
+            data = getattr(mod, funktion)(perioder)
         except Exception as e:
             log(f"   FEJL: {e}")
             continue
@@ -926,7 +927,47 @@ def auto_build_trends():
         log("  Rådata er gemt OK. Kør manuelt: python3 scripts/build_trends_csv.py")
 
 
+def delvis_opdatering(kun: list[str], fjern: list[str]) -> int:
+    """Genberegner kun de nævnte serier (fra SAMME_SOM_SCOREN) og fletter dem
+    ind i den eksisterende trend_history_raw.csv; serierne i `fjern` slettes.
+    Kræver ingen API-nøgler, fordi Klimaregnskabet og UVM ikke røres.
+
+    Til når en indikators definition ændres eller en ny kommer til, så man
+    ikke skal hente alle ~50 serier forfra. Pilen og scoren skal stadig være
+    samme tal (CLAUDE.md pkt. 37) - derfor kun serier med scorens egen funktion."""
+    ukendte = [i for i in kun if i not in SAMME_SOM_SCOREN]
+    if ukendte:
+        log(f"FEJL: --kun understøtter kun serier i SAMME_SOM_SCOREN, ikke {ukendte}")
+        return 1
+    nye = samme_som_scoren(kun)
+    mangler = [i for i in kun if not nye.get(i)]
+    if mangler:
+        log(f"FEJL: ingen data for {mangler} - den eksisterende fil er ikke rørt.")
+        return 1
+    with open(RAW_OUTPUT, encoding="utf-8") as f:
+        rows = [r for r in csv.DictReader(f) if r["indicator_id"] not in set(kun) | set(fjern)]
+    for iid, data in nye.items():
+        rows += [{"kommune_kode": k, "indicator_id": iid, "aar": a, "vaerdi": v}
+                 for (k, a), v in data.items()]
+    with open(RAW_OUTPUT, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=["kommune_kode", "indicator_id", "aar", "vaerdi"])
+        w.writeheader()
+        w.writerows(sorted(rows, key=lambda r: (r["indicator_id"], r["kommune_kode"], r["aar"])))
+    log(f"\nSkrevet: {RAW_OUTPUT.name} ({len(rows)} rækker; genberegnet {kun}, fjernet {fjern})")
+    auto_build_trends()
+    return 0
+
+
 def main():
+    import argparse
+    ap = argparse.ArgumentParser(description="Tidsserier til retningspilene")
+    ap.add_argument("--kun", default="", help="Kommasepareret: genberegn kun disse serier (SAMME_SOM_SCOREN)")
+    ap.add_argument("--fjern", default="", help="Kommasepareret: slet disse serier fra trend_history_raw.csv")
+    args = ap.parse_args()
+    if args.kun or args.fjern:
+        return delvis_opdatering([i for i in args.kun.split(",") if i],
+                                 [i for i in args.fjern.split(",") if i])
+
     kraev_noegle("KLIMAREGNSKABET_API_KEY", KLIMAREGNSKABET_KEY, KLIMA_HJAELP)
     kraev_noegle("UVM_API_TOKEN", UVM_TOKEN, UVM_HJAELP)
 

@@ -1,8 +1,10 @@
 # Metodenote: Nutidsjustering af forbrugsbaseret CO2 pr. indbygger (2011 -> 2023)
 
-**Dato:** 12. april 2026
+**Dato:** 12. april 2026, opdateret 24. september 2026
 **Forfatter:** Klimateamet, Thisted Kommune (beregning assisteret af AI)
-**Version:** 1.1 - Tier 1 (kun national skalering, korrigeret skaleringsfaktor)
+**Version:** 1.2 - Tier 1 (kun national skalering), nu opdateret til 2024 med scriptet `scripts/fetch_forbrug_co2.py`
+
+> **Opdatering september 2026 (version 1.2).** Skaleringsfaktoren beregnes nu af `scripts/fetch_forbrug_co2.py`, der henter Energistyrelsens datafil bag Global Afrapportering (ark "2", rækken "Udledninger pr. indbygger (ton CO2e)") og tager seneste år delt med 2011 fra samme tidsserie. Med Global Afrapportering 2026 er tallene revideret: 2011 = 13,46 ton pr. indbygger (før 14,07), 2023 = 9,63 (før 10,11) og 2024 = 9,73. Faktoren 2011→2024 er 0,7226 (før 0,7186 for 2011→2023), og estimatet gælder nu 2024. Resultatet står i kolonnen `cba_estimate` i `data/cba_2023_estimate.csv`; det håndberegnede 2023-tal er bevaret i `cba_2023_estimate`. Grænsen på platformen er samtidig ændret fra 3 til 2,5 ton pr. person (Hot or Cool Institute 2021, niveauet for 2030 i et 1,5-graders-forløb), fordi de 3 ton ikke havde en kilde. Afsnittene nedenfor beskriver metoden og tallene for version 1.1.
 
 ---
 

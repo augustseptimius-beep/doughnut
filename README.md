@@ -117,17 +117,19 @@ Requires Python 3.9 or newer. The scripts use only the standard library.
 **Scripts must be run from the repository root, not from `scripts/`.** They
 write to `data/` using paths relative to the working directory.
 
-Two sources need credentials, read from the environment and never stored in the
+Three sources need credentials, read from the environment and never stored in the
 repository:
 
 | Variable | Source | Used by |
 |---|---|---|
 | `KLIMAREGNSKABET_API_KEY` | Klimaregnskabet.dk | `fetch_climate_data.py`, `fetch_trend_history.py` |
 | `UVM_API_TOKEN` | Uddannelsesstatistik | `fetch_udvidelse_data.py`, `fetch_trend_history.py` |
+| `DATAFORSYNINGEN_TOKEN` | Dataforsyningen (HIP, DK-model) | `fetch_grundvandsdannelse.py` |
 
 ```bash
 export KLIMAREGNSKABET_API_KEY="..."
 export UVM_API_TOKEN="..."
+export DATAFORSYNINGEN_TOKEN="..."
 ```
 
 Every other source is open and needs no key. A script that needs a missing

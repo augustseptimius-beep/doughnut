@@ -45,7 +45,7 @@ export default function OmPage() {
             <strong>Sociale dimensioner:</strong> Tallet er relativt til et sammenligningsgrundlag, sat til 100. Som standard er det gennemsnittet i kommunens kommunegruppe; det kan skiftes til landsgennemsnittet eller top 10 %. Under 100 betyder underskud, over 100 betyder bedre end sammenligningsgrundlaget.
           </p>
           <p className="text-sm text-gray-700 leading-relaxed mt-2">
-            <strong>Økologiske dimensioner:</strong> Tallet viser hvor tæt kommunen er på grænseværdien. Nogle grænser er absolutte (WHO, EU-mål, Paris-budgettet), andre er landsgennemsnittet, hvor der ikke findes en meningsfuld grænse pr. kommune. En værdi under 100 er under grænsen, over 100 betyder overshoot.
+            <strong>Økologiske dimensioner:</strong> Tallet viser hvor tæt kommunen er på grænseværdien. Nogle grænser er absolutte (WHO, EU-mål, 2,5 ton CO₂e pr. person, kystvandenes målbelastning for kvælstof, den bæredygtige grundvandsressource), andre er landsgennemsnittet, hvor der ikke findes en meningsfuld grænse pr. kommune. En værdi under 100 er under grænsen, over 100 betyder overshoot.
           </p>
           <p className="text-xs text-gray-400 mt-3">
             Bemærk: For indikatorer hvor lavere er bedre (f.eks. Gini-koefficient og børnefattigdom) er værdierne inverteret, så høj værdi fortsat betyder bedre end gennemsnit.

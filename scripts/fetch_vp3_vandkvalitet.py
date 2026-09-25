@@ -20,8 +20,13 @@ ikke med i nævneren.
 Ratio-konvention (eco: høj = værre, konsistent med resten af platformen):
   pct_god        = andel af kommunens vandområder i god tilstand
   national_pct   = samme andel på landsplan (pooled)
-  ratio          = (national_pct / pct_god) * 100   [høj pct = lav ratio = grøn]
-  Cappes ved 300. pct_god = 0 → ratio = 300.
+  ratio          = (100 - pct_god) / (100 - national_pct) * 100
+  Komplement-formlen (fra sep. 2026, arkitekturdokumentet R2a): andelen der
+  IKKE er i god tilstand, målt mod samme andel for hele landet. Indtil da var
+  ratio = national_pct / pct_god, cappet ved 300 - de 28 kommuner uden et
+  eneste vandområde i god tilstand stod alle på loftet, og en kommune med 10%
+  i god tilstand blev grøn, selv om 90% af dens vandområder ikke var det.
+  Ratioen beregnes af build_master_csv.py; kolonnen her er et krydstjek.
 Vi scorer mod landsgennemsnittet (så kommuner kan skelnes). EU's mål er at ALLE
 vandområder skal være i mindst god tilstand i 2027 - det vises som kontekst på
 metodesiden, ikke som scoringsgrænse (samme tilgang som arealanvendelse).
@@ -73,8 +78,6 @@ GOD_TILSTAND = {
     "Godt økologisk potentiale",
 }
 UKENDT = {"Ukendt", "", None}
-
-CAP = 300.0
 
 NAVN_TIL_KODE = {navn: kode for kode, navn in KOMMUNER.items()}
 
@@ -188,10 +191,7 @@ def main():
             })
             continue
         pct = round(god / total * 100, 2)
-        if pct <= 0:
-            ratio = CAP
-        else:
-            ratio = round(min((national_pct / pct) * 100, CAP), 2)
+        ratio = round((100 - pct) / (100 - national_pct) * 100, 2)
         rows_out.append({
             "kommune_kode": kode, "kommune_navn": navn,
             "pct_god_tilstand": pct, "antal_vandomraader": total, "vandkvalitet_ratio": ratio,

@@ -140,6 +140,15 @@ def beregn_ratio(ind, raw, ref):
         return None
     if ind.get("formula") == "100_minus_raw":
         x = 100 - raw
+    elif ind.get("formula") == "komplement":
+        # Økologisk andel hvor højere er bedre (natur, genanvendelse, vand i god
+        # tilstand). Målet "mindst ref %" er det samme som loftet "højst
+        # 100 - ref % uden", og ratioen er den manglende andel målt mod loftet
+        # (R2a). Så har alle økologiske ratios nul ved ingen belastning, og en
+        # andel nær 0 giver ikke længere ratios i tusindvis.
+        if ref is None or ref >= 100:
+            return None
+        x = (100 - raw) / (100 - ref) * 100
     else:
         if not ref:
             return None
@@ -189,7 +198,13 @@ def _rekonstruer_landstal(ind, raekker, raws):
         par.append((raw, sr))
     if not par:
         return None
-    bud = [raw * 100 / sr if _raw_over_ref(ind) else raw * sr / 100 for raw, sr in par]
+    if ind.get("formula") == "komplement":
+        # ratio = (100 - raw) / (100 - ref) × 100  →  ref = 100 - (100 - raw) × 100 / ratio
+        bud = [100 - (100 - raw) * 100 / sr for raw, sr in par if raw < 100]
+        if not bud:
+            return None
+    else:
+        bud = [raw * 100 / sr if _raw_over_ref(ind) else raw * sr / 100 for raw, sr in par]
     median = statistics.median(bud)
 
     def traeffere(ref):
