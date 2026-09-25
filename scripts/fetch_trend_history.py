@@ -758,11 +758,8 @@ def fetch_klimapaavirkning() -> list[dict]:
 # allerede i svaret, den bliver bare smidt væk. Her genbruges samme
 # statistik-kald, men ALLE år gemmes i stedet for kun det seneste.
 #
-# apprenticeship (EUD/PRAK/SØG) er bevidst UDELADT: nøgletalsnavnet UVM
-# forventer er ændret siden fetch_udvidelse_data.py blev skrevet - selv et
-# enkelt-års opslag fejler nu ("Nøgletal ... kunne ikke findes"). Det er et
-# fortilfælde for hele den indikator, ikke kun for historik, og løses ikke
-# her - se ADVARSEL i loggen.
+# apprenticeship (EUD/PRAK/SØG) er pensioneret aug. 2026, fordi UVM ikke
+# længere kender nøgletallet - se `_fjernet` i data/indikatorer.json.
 # ══════════════════════════════════════════════════════════════════════════
 
 UVM_BASE = "https://api.uddannelsesstatistik.dk/Api/v1"
