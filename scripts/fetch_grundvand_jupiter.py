@@ -315,7 +315,10 @@ def eb_beta_binomial(tal: dict[str, tuple[int, int]]) -> tuple[float, float, flo
     p = sum(x for x, _ in tal.values()) / N
     k = len(tal)
     S = sum(n * (x / n - p) ** 2 for x, n in tal.values())
-    naevner = N - sum(n * n for _, n in tal.values()) / N
+    # E[S] = (k-1)·p(1-p) + tau2·(N - Σn²/N - (k-1)) med vægte n_i (Kleinman
+    # 1973). Leddet -(k-1) i nævneren manglede før 25. sep. 2026 og gav en
+    # ca. 5% for lille tau2, altså lidt for meget udglatning.
+    naevner = N - sum(n * n for _, n in tal.values()) / N - (k - 1)
     tau2 = (S - p * (1 - p) * (k - 1)) / naevner
     if tau2 <= 0:                       # ingen variation ud over tilfældigheden
         return 1e6 * p, 1e6 * (1 - p), p

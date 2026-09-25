@@ -4,8 +4,8 @@ Gennemgang af de syv økologiske dimensioner med fokus på svagheder i data og m
 omlægning hvor der fandtes en bedre kilde eller en metode med belæg i litteraturen. Hvor der
 ikke fandtes noget bedre, er indikatoren beholdt, og hullet står i afsnit 5.
 
-Alle tal er beregnet på master-CSV'en efter omlægningen (24. september 2026). "Før" er den
-committede master fra samme dag.
+Alle tal er beregnet på master-CSV'en efter omlægningen (24.-25. september 2026). "Før" er den
+master, der lå på main før gennemgangen.
 
 ## 1. Kort fortalt
 
@@ -154,7 +154,7 @@ Farvefordeling (grøn/gul/rød) pr. dimension før og efter:
 | Forurening | 38/17/43 | 24/35/39 | 49 |
 | Næringsstoffer | 2/5/91 | 0/0/98 | 7 |
 | Biodiversitet | 4/1/93 | 4/1/93 | 0 |
-| Vand | 38/15/39 (92 kommuner) | 59/7/30 (96 kommuner) | se note |
+| Vand | 38/15/39 (92 kommuner) | 59/7/30 (96 kommuner) | 52 |
 | Arealanvendelse | 2/14/82 | 16/26/56 | 28 |
 
 Thisted: Forurening 121 → 155 (nitrat 14,5 mg/L), Næringsstoffer 120 → 203 (Limfjorden, 203% af
