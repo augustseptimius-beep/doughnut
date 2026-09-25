@@ -2,6 +2,12 @@
   base = "webapp"
   command = "npm run build"
   publish = "out"
+  # Netlify springer som standard buildet over, når intet under base (webapp/)
+  # er ændret. Webappen bygges af ../data (masterfil, register, kommuneliste),
+  # så en commit der kun opdaterer data, blev aldrig lagt ud (sep. 2026).
+  # Kommandoen køres fra webapp/. Exit 0 = spring over, alt andet = byg.
+  # Kendes den forrige byggede commit ikke, bygges der altid.
+  ignore = "[ -n \"$CACHED_COMMIT_REF\" ] && [ \"$CACHED_COMMIT_REF\" != \"$COMMIT_REF\" ] && git diff --quiet \"$CACHED_COMMIT_REF\" \"$COMMIT_REF\" -- . ../data ../netlify.toml"
 
 [functions]
   directory = "netlify/functions"
