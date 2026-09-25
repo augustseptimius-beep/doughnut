@@ -195,8 +195,8 @@ kvælstofnedfaldet afgør scoren.
   med 33 aktive værker kan det ikke skelne kommunerne.
 - **Vand pr. areal frem for pr. indbygger.** Det måler presset hvor det sker, men giver en
   bykommune uden egne værker grønt, selv om dens borgere bruger vand fra nabokommunen.
-- **Tålegrænsen på 10 kg N/ha/år** (midten af 5-15). Med 5 er alle kommuner langt over, med 15
-  ingen. Og placeringen under Næringsstoffer frem for Biodiversitet.
+- **Tålegrænsen på 10 kg N/ha/år** (midten af 5-15). Med 5 er alle 98 kommuner over, med 10
+  er 62, og med 15 kun 2 (Aabenraa og Vejen). Og placeringen under Næringsstoffer frem for Biodiversitet.
 
 ## 7. Kilder
 
