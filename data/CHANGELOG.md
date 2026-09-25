@@ -7,7 +7,7 @@ Log over større ændringer i datapipeline og master-fil.
 - **Første hentning med de nye API-nøgler** efter tilbagekaldelsen i august: `fetch_udvidelse_data.py` og `fetch_trend_history.py` (fuld kørsel).
 - **UVM har omdøbt karaktergennemsnittet** fra "Gennemsnit - Obl. prøver" til "Gennemsnit i obl. 9.-klasseprøver" (GS/KARA/KARAGNS). Det gamle navn gav HTTP 400, og scriptet skrev tavst en tom `uvm_scores.csv`, så `exam_grade` forsvandt fra master. Rettet i begge scripts. Samme tal som før (Thisted 6,8 i 2024/25); nyt skoleår 2025/26. Nye navne findes med `POST /Api/v1/skema`.
 - **Konsekvens:** ét farveskift (Vesthimmerland, Uddannelse gul → grøn, 99,89 → 100,12). Karakter-pilen skifter vurdering i 22 kommuner, Uddannelse-pilen i 2. Klimapåvirkning får pil i 9 nye kommuner og skifter vurdering i 4.
-- **Fælde:** `fetch_trend_history.py` skriver `trend_history_raw.csv` forfra og sletter dermed de rækker `fetch_sundhedsprofil.py` har lagt der (8 indikatorer, 784 pile). Løst her ved at køre `fetch_sundhedsprofil.py` bagefter; sundhedsprofilens ratios flytter sig derved 0,01 (afrunding, råværdier uændrede).
+- **Fælde:** `fetch_trend_history.py` skriver `trend_history_raw.csv` forfra og sletter dermed de rækker `fetch_sundhedsprofil.py` har lagt der (8 indikatorer, 784 pile). Løst her ved at køre `fetch_sundhedsprofil.py` bagefter; sundhedsprofilens ratios flytter sig derved 0,01 (afrunding, råværdier uændrede). Rettet i samme omgang: en fuld kørsel af `fetch_trend_history.py` bevarer nu sundhedsprofilens serier (listen læses fra `fetch_sundhedsprofil.INDIKATORER`).
 
 ## 2026-09-25 (vand mod den bæredygtige grundvandsressource)
 
