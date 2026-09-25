@@ -107,9 +107,9 @@ Anledning: KL's "Data- og værktøjsoversigt fra 5 webinarer om GIS-DATA-Klimati
 - 19 kommuner ligger under 1 kr. pr. indbygger (indlandskommuner) og 21 under 10 kr. Medianen er ca. 400 kr.
 
 **Forbehold:**
-- Landstotalen er ikke kontrolleret mod Kystdirektoratets metoderapport. Det skal ske, før tallet bruges.
 - Datapakken er fra 2021 og ikke opdateret siden. Kystdirektoratet skriver selv, at skadesberegningerne bygger på nationale datasæt, hvoraf nogle ikke er af nyeste dato, og at data ikke kan bruges til detailanalyser. Formålet er ifølge Kystdirektoratet overblik "i den enkelte kommune som på tværs af kommunegrænser", hvilket svarer til platformens brug.
-- Det er modelberegnet risiko og måler udsathed, ikke tilpasningsevne. Det er ikke undersøgt, hvordan eksisterende kystbeskyttelse indgår i modellen.
+- Det er modelberegnet restrisiko. Ifølge metoderapporten (januar 2023, afsnit 2 og 7) indgår diger og klitter, fordi de ligger i Danmarks Højdemodel fra 2014-2015 med kommunernes rettelser. Anden kystbeskyttelse indgår som udgangspunkt ikke, og for den kroniske erosion antages eksisterende høfder og skråningsbeskyttelse at kollapse. Tiltag efter højdemodellen og datapakken fra 2021 slår derfor ikke igennem, før Kystdirektoratet opdaterer kortlægningen.
+- Metoderapporten oplyser ikke et landstal i kr./år, så landstotalen ovenfor kan ikke kontrolleres direkte mod den.
 - De 19 kommuner uden kystrisiko giver et scoringsproblem: med en invers ratio mod landsgennemsnittet (som `vejr_skader`) deles der med nul, og de ender alle på loftet 150.
 
 ### HIP - terrænnært grundvand
