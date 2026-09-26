@@ -65,9 +65,16 @@ const REGISTER = registerJson as unknown as Register;
 // En ukendt pladsholder stopper buildet i stedet for at stå rå på siden.
 interface Noegletal {
   kommuner: number;
-  indikatorer: Record<string, { reference: number | null; daekning: number; data_year: string }>;
+  // faa_tilfaelde: kommuner hvor tallet bygger på under 20 tilfælde (registrets smaa_tal)
+  indikatorer: Record<string, { reference: number | null; daekning: number; data_year: string; faa_tilfaelde?: string[] }>;
 }
 export const NOEGLETAL = noegletalJson as unknown as Noegletal;
+
+// Bygger kommunens tal på under 20 tilfælde? Så er forskellen til
+// sammenligningsgrundlaget usikker (NCHS' grænse, arkitekturdokumentet R16).
+export function faaTilfaelde(indikatorId: string, kommuneKode: string): boolean {
+  return NOEGLETAL.indikatorer[indikatorId]?.faa_tilfaelde?.includes(kommuneKode) ?? false;
+}
 
 function formatTal(x: number, decimaler: number): string {
   const [hel, brok] = Math.abs(x).toFixed(decimaler).split(".");
@@ -128,8 +135,7 @@ export interface Indicator {
                               // lavere 'cap' (kystrisiko: 100, ingen risiko er neutral).
 }
 
-// Sociale indikatorer i registrets rækkefølge (= master-CSV'ens), inkl. de to
-// der står i master uden at blive scoret (housing_no_wc/no_bath). Hvad der
+// Sociale indikatorer i registrets rækkefølge (= master-CSV'ens). Hvad der
 // scores, afgøres af SOCIAL_CATEGORIES[].indicatorIds.
 export const INDICATORS: Indicator[] = REGISTER.indikatorer
   .filter((i) => i.category === "social")

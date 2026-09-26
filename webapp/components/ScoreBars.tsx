@@ -17,6 +17,7 @@ import {
   TREND_LABEL,
   trendBeskrivelse,
   trendPilOpad,
+  faaTilfaelde,
   type TrendKontekst,
 } from "@/lib/shared";
 import { useBaseline } from "@/lib/baseline-context";
@@ -153,7 +154,7 @@ function TrendMarker({ trend, kontekst = "indikator" }: { trend?: TrendPost; kon
 }
 
 // Kontekst-blok under Klimapåvirkning-dimensionen: sektorfordeling af den
-// territoriale udledning, samlet energiforbrug og VE-el selvforsyningsgrad.
+// territoriale udledning.
 // Vises, men indgår IKKE i scoren - sektorerne er blot en opdeling af det
 // allerede scorede territoriale tal (eco_klima_raw), ikke et nyt måltal.
 function KlimaKontekst({ kommune }: { kommune: KommuneData }) {
@@ -162,8 +163,6 @@ function KlimaKontekst({ kommune }: { kommune: KommuneData }) {
   const landbrug = rv["ctx_klima_landbrug"] ?? null;
   const energi = rv["ctx_klima_energi"] ?? null;
   const transport = rv["ctx_klima_transport"] ?? null;
-  const energiforbrug = rv["ctx_energiforbrug"] ?? null;
-  const veSelvforsyning = rv["ctx_ve_selvforsyning"] ?? null;
 
   const harSektorer = total !== null && total > 0 && landbrug !== null && energi !== null && transport !== null;
   const segments = harSektorer
@@ -176,7 +175,7 @@ function KlimaKontekst({ kommune }: { kommune: KommuneData }) {
   const segSum = segments.reduce((s, x) => s + x.val, 0);
   const restPct = harSektorer ? Math.max(0, 100 - (segSum / (total as number)) * 100) : 0;
 
-  if (!harSektorer && energiforbrug === null && veSelvforsyning === null) return null;
+  if (!harSektorer) return null;
 
   return (
     <div className="px-3 py-3 bg-blue-50/40 border-t border-blue-100">
@@ -221,26 +220,8 @@ function KlimaKontekst({ kommune }: { kommune: KommuneData }) {
         </div>
       )}
 
-      {(energiforbrug !== null || veSelvforsyning !== null) && (
-        <div className="flex flex-wrap gap-x-4 gap-y-2">
-          {energiforbrug !== null && (
-            <div className="text-sm">
-              <span className="text-gray-500">Samlet energiforbrug:</span>{" "}
-              <span className="font-medium text-gray-700">{(energiforbrug as number).toFixed(0)} GJ/indb.</span>
-            </div>
-          )}
-          {veSelvforsyning !== null && (
-            <div className="text-sm">
-              <span className="text-gray-500">VE-el selvforsyningsgrad:</span>{" "}
-              <span className="font-medium text-gray-700">{(veSelvforsyning as number).toFixed(0)}%</span>
-            </div>
-          )}
-        </div>
-      )}
       <p className="mt-1.5 text-[11px] text-gray-400">
-        Sektorfordelingen viser hvad der udgør den territoriale udledning ovenfor. VE-el selvforsyningsgrad kan
-        overstige 100% - kommunen kan producere mere sol-/vindstrøm end den selv bruger og eksportere resten til
-        nettet.
+        Sektorfordelingen viser hvad der udgør den territoriale udledning ovenfor.
       </p>
     </div>
   );
@@ -269,16 +250,13 @@ function VurderingPrik({ score }: { score: VurderingScore | undefined }) {
   );
 }
 
-// Kontekst-blok under Energi-dimensionen: lokal VE + fjernvarmens brændselsmix.
+// Kontekst-blok under Energi-dimensionen: fritidsboliger + fjernvarmens brændselsmix.
 // Vises, men indgår IKKE i scoren (se metode-siden for begrundelse).
 function EnergiKontekst({ kommune }: { kommune: KommuneData }) {
   const rv = kommune.rawValues ?? {};
   const fossilSamlet = rv["bolig_fossil"] ?? null;
   const fossilDirekte = rv["ctx_fossil_direkte"] ?? null;
   const fossilViaFjv = rv["ctx_fossil_via_fjv"] ?? null;
-  const veKw = rv["ctx_ve_kw_per_indb"] ?? null;
-  const veSol = rv["ctx_ve_sol_mw"] ?? null;
-  const veVind = rv["ctx_ve_vind_mw"] ?? null;
   const bio = rv["ctx_fjv_biomasse"] ?? null;
   const affald = rv["ctx_fjv_affald"] ?? null;
   const fossil = rv["ctx_fjv_fossil"] ?? null;
@@ -324,19 +302,6 @@ function EnergiKontekst({ kommune }: { kommune: KommuneData }) {
             Udgør {(fritidAndel as number).toFixed(1)}% af kommunens samlede boligareal. Holdes uden for scoren:
             sommerhuse er typisk elopvarmede og har derfor lavere fossilandel end helårsboliger. Hvis de talte med,
             ville sommerhuskommuner fremstå kunstigt bedre på et mål der handler om husstandes varmeregninger.
-          </p>
-        </div>
-      )}
-
-      {/* Lokal VE-kapacitet */}
-      {veKw !== null && (
-        <div className="mb-3">
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-700">Lokal VE-kapacitet (sol + landvind)</span>
-            <span className="text-sm font-medium text-gray-700">{veKw} kW/indb.</span>
-          </div>
-          <p className="mt-0.5 text-[11px] text-gray-400">
-            Sol {veSol ?? "–"} MW + landvind {veVind ?? "–"} MW. Leveres til det nationale elnet, ikke kun til kommunens egne husstande.
           </p>
         </div>
       )}
@@ -625,6 +590,14 @@ export default function ScoreBars({
                               {ind.absoluteTarget && (
                                 <span className="px-1.5 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-medium">
                                   Mål: {ind.absoluteTarget}
+                                </span>
+                              )}
+                              {faaTilfaelde(ind.id, kommune.kommune_kode) && (
+                                <span
+                                  className="px-1.5 py-0.5 bg-amber-50 text-amber-700 rounded text-[10px] font-medium"
+                                  title="Tallet bygger på færre end 20 tilfælde og kan svinge meget fra år til år. Forskellen til sammenligningsgrundlaget er derfor usikker."
+                                >
+                                  Få tilfælde
                                 </span>
                               )}
                               {!ind.absoluteTarget && (

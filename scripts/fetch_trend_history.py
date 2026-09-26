@@ -454,24 +454,8 @@ SIMPLE = [
          soeg=["gini"], pin_ialt=True),
 
     # --- Bolig ---
-    dict(id="housing_area", navn="Boligareal pr. person", tabel="BOL106",
-         soeg=["areal per person"], ekstra=[{"soeg": ["=i alt"]}], pin_ialt=True),
-    # BEBO har elimination=False i BOL102 - SKAL angives eksplicit (kan ikke
-    # udelades), derfor pin via ekstra på hver af de tre specs nedenfor.
-    dict(id="housing_no_wc_taeller", navn="Boliger uden eget toilet", tabel="BOL102",
-         soeg=["wc udenfor boligen", "andet/intet toilet"],
-         ekstra=[{"soeg": ["boliger med cpr tilmeldte personer"]}]),
-    dict(id="housing_no_bath_taeller", navn="Boliger uden eget bad", tabel="BOL102",
-         soeg=["ikke bad eller adgang til bad"],
-         ekstra=[{"soeg": ["boliger med cpr tilmeldte personer"]}]),
-    # helhed=True lader DST summere ALLE toilet-/bad-kategorier, inkl. "Uoplyst".
-    # Master (fetch_udvidelse_data.py) udelader "Uoplyst" i sin nævner. Efterprøvet
-    # på alle 98 kommuner 2010-2026: forskellen flytter trend-procenten med højst
-    # 0,75 pp og vender retningen i NUL kommuner, fordi "Uoplyst" er promillestort.
-    # Én fælles nævner til både toilet og bad er derfor valgt frem for to ekstra kald.
-    dict(id="housing_beboede_total", navn="Beboede boliger i alt (nævner: toilet/bad)",
-         tabel="BOL102", helhed=True,
-         ekstra=[{"soeg": ["boliger med cpr tilmeldte personer"]}]),
+    # housing_area, housing_no_wc og housing_no_bath er fjernet sep. 2026 (se
+    # registrets _fjernet). Trangboethed hentes via SAMME_SOM_SCOREN.
 
     # --- Demokrati ---
     dict(id="voter_turnout_national", navn="Stemmedeltagelse folketingsvalg", tabel="LABY09",
@@ -543,8 +527,6 @@ FORHOLD = {
     "income_gender_gap": ("income_gender_gap_taeller", "income_gender_gap_naevner"),
     "employment": ("employment_taeller", None),  # nævner er konstant 100 (allerede en frekvens)
     "hospital_long": ("hospital_long_taeller", "hospital_short_naevner"),
-    "housing_no_wc": ("housing_no_wc_taeller", "housing_beboede_total"),
-    "housing_no_bath": ("housing_no_bath_taeller", "housing_beboede_total"),
 }
 
 # Forskel (ikke forhold): kvinder minus mænd, ikke divideret
@@ -556,7 +538,7 @@ FORSKEL = {
 DIREKTE = {
     "daycare_ratio",
     "vulnerable_children", "poverty_relative", "child_poverty", "gini",
-    "housing_area", "voter_turnout_national", "voter_turnout", "sports_membership",
+    "voter_turnout_national", "voter_turnout", "sports_membership",
     "life_expectancy", "disposable_income", "commute_distance",
     "kultur_spending", "civil_society",
 }
@@ -580,7 +562,7 @@ SAMME_SOM_SCOREN = {
     "neet": ("fetch_social_new_data", "serie_neet", "NEET3", "perioder"),
     "hjemsyg": ("fetch_sundhed_extra", "serie_hjemsyg", "HJEMSYG", "perioder"),
     "child_notifications": ("fetch_udvidelse_data", "serie_child_notifications", "UND2", "perioder"),
-    "vacant_housing": ("fetch_doughnut_data", "serie_vacant_housing", "BOL101", "perioder"),
+    "trangboethed": ("fetch_trangboethed", "serie_trangboethed", "BOL103", "perioder"),
     "employment_origin_gap": ("fetch_ligestilling_data", "serie_employment_origin_gap", "RAS200", "perioder"),
     "vandindvinding": ("fetch_vandindvinding_data", "serie_vandindvinding", "VANDIND", "aar"),
     "areal_antropiseret": ("fetch_dst_arealanvendelse", "serie_areal_antropiseret", "AREALDK2", "perioder"),

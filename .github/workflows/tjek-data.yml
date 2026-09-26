@@ -1,0 +1,33 @@
+# Tjekker registret, masterfilen og metodesiden ved hver pull request.
+#
+# Netlifys deploy preview bygger allerede webappen (validerMaster i data.ts).
+# Det her fanger resten: en metodetekst der ikke passer med registret, forkert
+# fortegn i data, en tidsserie registret ikke kender, og en masterfil der ikke
+# er genberegnet efter en ændring i registret eller en rådata-CSV.
+# Python 3.9 er valgt med vilje: det er versionen på maskinen, der kører
+# datapipelinen (CLAUDE.md pkt. 19), så syntaks den ikke kan, fanges her.
+name: Tjek data og register
+
+on:
+  pull_request:
+    paths:
+      - "data/**"
+      - "scripts/**"
+      - "webapp/app/metode/**"
+      - ".github/workflows/tjek-data.yml"
+
+jobs:
+  tjek:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+      - name: Konsistenstjek (register, fortegn, metodetekst, pil mod score)
+        run: python3 scripts/tjek_konsistens.py
+      - name: Masterfilen er genberegnet
+        run: |
+          python3 scripts/build_master_csv.py
+          git diff --exit-code -- data/master_indicators.csv data/noegletal.json \
+            || { echo "::error::master_indicators.csv eller noegletal.json passer ikke med registret og rådata. Kør python3 scripts/build_master_csv.py og commit resultatet."; exit 1; }

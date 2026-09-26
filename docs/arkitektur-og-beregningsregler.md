@@ -115,8 +115,9 @@ andet end økologiske indikatorer med `lower_is_better: false`.
   tålegrænsen for kvælstofnedfald (10 kg N/ha/år) og kommunens andel af den
   bæredygtige grundvandsressource (100 procent, se afsnit 5).
 - `kommunegennemsnit`: uvægtet gennemsnit af kommunernes råværdier, beregnet
-  ved build. Bruges kun hvor indikatorens nævner ikke findes (UVM), se
-  afsnit 7.
+  ved build. Bruges i dag af ingen indikator. De fire UVM-indikatorer brugte
+  typen indtil sep. 2026 og vægtes nu med folkeskoleelever efter
+  bopælskommune (DST UDDAKT20).
 - `landstal`: fetch-scriptets referenceværdi. Feltet `definition` siger hvordan
   den er fundet. Scriptet skriver den i kolonnen `col`. Mangler kolonnen (en
   CSV der ikke er hentet siden sep. 2026), rekonstrueres landstallet ved
@@ -280,6 +281,17 @@ gennemsnit, top 10 og kommunegruppe påvirker udelukkende sociale indikatorer.
 landsgennemsnittet, og ændres aldrig af toggle. `absoluteScore`-indikatorer omskaleres heller ikke, selvom de er
 sociale.
 
+**R16 - Tal på få tilfælde markeres, men scores uændret (fra sep. 2026).** For
+indikatorer med `smaa_tal` i registret regnes raten tilbage til et antal:
+råværdi × folketal / `pr` × `aar`, med folketallet 1. januar fra
+`data/folketal.csv`. Er antallet under 20, skrives kommunen i
+`noegletal.json` (`faa_tilfaelde`), og kommunesiden viser mærket "få
+tilfælde". Grænsen er NCHS': en rate på under 20 hændelser har en relativ
+standardfejl på mindst 23 % (CDC WONDER). Pt. rammer det kun trafikulykker i 8
+små kommuner; kriminalitet og vejrskader har flere end 20 tilfælde overalt.
+Mærket antager uafhængige hændelser. Vejrskader kommer ofte i klumper (én storm
+rammer mange huse), så deres reelle usikkerhed er større, end tallet viser.
+
 ---
 
 ## 4. Retningspile
@@ -369,16 +381,16 @@ målrettede. Resultatet var at Forurening og Vand begge stod som positiv retning
 men med pile der pegede modsat. Ændrer du i `aggreger_dimensioner()`, så sørg
 for at **begge** grene målretter `pct`.
 
-**T8 - Masteren kan indeholde indikatorer platformen ikke scorer.**
-`housing_no_wc` og `housing_no_bath` står i masteren med `dimension=bolig`, men
-står ikke i kategoriens `indicators`-liste i registret. Bolig scorer og viser
-kun 2 indikatorer. `indikatorregister.ikke_scoret()` (sociale indikatorer der
-ikke står i nogen kategori) holder dem ude af dimensionsaggregatet i
-`build_trends_csv.py`, men de beholder deres egen indikatorrække.
+**T8 - En social indikator uden kategori er en fejl.** Enhver social indikator i
+registret skal stå i en kategoris `indicators`-liste. `housing_no_wc` og
+`housing_no_bath` stod i masteren uden at blive scoret, indtil de blev fjernet i
+sep. 2026, og `tjek_konsistens.py` melder nu tilfældet som fejl.
+`indikatorregister.ikke_scoret()` holder en sådan indikator ude af
+dimensionsaggregatet i `build_trends_csv.py` som sikkerhedsnet.
 
-Uden det gennemsnitter Bolig-pilen 4 indikatorer ved siden af et tal beregnet på
-2, og de to usynlige dominerer (`housing_no_bath` er faldet omkring 39 procent
-på landsplan).
+Uden det gennemsnitter kategoriens pil flere indikatorer end det tal, den står
+ved siden af. Det skete for Bolig, hvor de to usynlige dominerede
+(`housing_no_bath` faldt omkring 39 procent på landsplan).
 
 **Regel: tilføjer du tidsserie til en indikator, så tjek at den faktisk står i
 sin kategoris `indicators` i registret.** Ellers holdes den ude af pilen, og den
@@ -545,7 +557,9 @@ omskaleres på deres allerede vendte ratio, hvilket er en bevidst forenkling.
 
 ## 7. Kendte afvigelser mellem dokumentation og kode
 
-Opdateret 24. september 2026. R1 (`navn_key` omgik cappet), R12
+Opdateret 26. september 2026. To rækker er lukket: Sundhedsprofilens rekonstruerede landstal (`sundhedsprofil_scores.csv` har nu landstallene i egne kolonner) og UVM-indikatorernes uvægtede kommunegennemsnit (vægtes nu med elevtal fra DST UDDAKT20).
+
+Før det: opdateret 24. september 2026. R1 (`navn_key` omgik cappet), R12
 (`eco_naer_landbrug` havde `lowerIsBetter: true`) og R3 for `public_transport`
 (uvægtet gennemsnit af kommunegruppe-tal) er lukket og fjernet fra tabellen.
 `public_transport` beregnes nu pr. kommune af `fetch_offentlig_transport.py`
@@ -554,8 +568,6 @@ og måles mod Danmark som helhed.
 | Regel | Afvigelse | Status |
 |---|---|---|
 | R3 | Landsgennemsnittet for de otte Sundhedsprofil-indikatorer beregnes af os som et befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+), ikke hentet fra kilden. Databasen udstiller ikke et landstal pr. kommunetabel. Reglen forudsætter ellers et landstal fra kilden | Bevidst, dokumenteret i `data/README.md` og på metodesiden |
-| R3 | Landstallet rekonstrueres stadig fra scriptets ratio for de 8 Sundhedsprofil-indikatorer, fordi `sundhedsprofil_scores.csv` ikke er hentet siden scripterne begyndte at skrive `<id>_ref` (sep. 2026). `overfladevand` og `pesticider` skriver det nu selv | Overgang. Lukkes ved næste kørsel af `fetch_sundhedsprofil.py` |
-| R3 | Fire UVM-indikatorer (`wellbeing`, `exam_grade`, `high_absence`, `youth_education`) måles mod et uvægtet kommunegennemsnit, ikke Danmark som helhed, fordi elevtallet pr. kommune ikke hentes. Effekten på referencen er 0,4-4 procent | Overgang. Lukkes når `fetch_udvidelse_data.py` henter elevtal (kræver UVM-nøglen) |
 | T1 | Retningen for Sundhedsprofilens indikatorer beregnes 2017 → 2025 (2021 → 2025 for `ensomhed` og `fysisk_aktivitet`), ikke over hele den tilgængelige serie 2010-2025. Reglen siger ellers hele serien | Bevidst, se punkt 23 i CLAUDE.md |
 
 Rækkerne er bevidste eller overgange og er dokumenterede.

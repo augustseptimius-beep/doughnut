@@ -18,13 +18,15 @@ For each municipality the platform computes and displays:
 
 - **13 social categories** (health, education, welfare, housing, democracy,
   culture, safety, civil society, equality, mobility, gender equality, climate
-  adaptation, energy) built from **49 scored indicators**.
+  adaptation, energy) built from **48 scored indicators**.
 - **7 ecological dimensions** (climate impact, pollution, air quality,
   nutrients, water, land use, biodiversity) built from **15 scored
   sub-indicators**, measured against an absolute boundary where a meaningful
   one exists at municipal level and against the national average otherwise.
-- **16 context indicators** that are shown but deliberately not scored, because
-  they describe a scored number rather than adding a new one.
+- **11 context indicators** that are shown but deliberately not scored, because
+  they describe a scored number rather than adding a new one. An indicator
+  that could be scored is either scored or removed; the removed ones and the
+  reasons are listed under `_fjernet` in `data/indikatorer.json`.
 
 Data comes from around 50 distinct public sources, chiefly Statistics Denmark
 (Statistikbanken), the Danish Environmental Portal, GEUS Jupiter (groundwater),

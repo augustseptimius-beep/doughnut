@@ -7,6 +7,16 @@ endnu. Prioriteret efter værdi. Læs den før næste større runde på modellen
 Hvad der ER gjort denne session er dokumenteret i CLAUDE.md (punkt 9-11), `concito-analyse-og-roadmap.md`
 og metode-siden. Dette er kun de løse ender.
 
+> **Status 26. sep. 2026: alle punkter er afgjort.** Notatet står som historik.
+>
+> 1. Scoringsfilosofi: løst. Hver dimension klassificeres som absolut, relativ eller blandet, og bjælken viser "mod mål"/"blandet" (CLAUDE.md pkt. 12). Næringsstoffer, arealanvendelse og vand måles nu mod absolutte grænser (pkt. 39).
+> 2. Education: løst. Scores mod 95 % med `absolute_score` (pkt. 11).
+> 3. REshare: fravalgt. VE-kapaciteten er taget ud som kontekst, fordi tal for elproduktion pr. kommune blev læst som kommunens egen forsyning. REshare har samme problem.
+> 4. Energiforbrug pr. indbygger: fravalgt og fjernet som kontekst. Ingen grænse pr. kommune, og forbruget indgår i CO2-udledningen (registrets `_fjernet`).
+> 5. Fjernvarme for de 18 fælles-net-kommuner: løst med ENS' net-fil (CLAUDE.md pkt. 10). Kun Stevns bruger stadig landssnittet.
+> - Worst-of mod gennemsnit er nedskrevet (CLAUDE.md pkt. 3 og 14, arkitekturdokumentet).
+> - Energi-tærsklen: uændret, bevidst.
+
 ---
 
 ## Høj værdi

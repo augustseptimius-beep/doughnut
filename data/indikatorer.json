@@ -7,14 +7,24 @@
     "Felter: category (social/ecological/context), dimension (kategori- eller dimensions-id), name (visningsnavn), table og source_url (kildelink på metodesiden), source (kort kildetekst i master), unit (enhed i master), raw_unit (enhed i UI, hvis den afviger fra unit), data_year (bruges kun hvis data/data_years.json ikke kender DST-tabellen), csv/ratio_col/raw_col (hvor build_master_csv.py læser tallet).",
     "Retning: sociale har 'inverse' (true = lavere råværdi er bedre), økologiske har 'lower_is_better'. Retningspilene (build_trends_csv.py) udleder deres op_er_godt af de to felter.",
     "period_years: tallet dækker en periode, ikke ét år (HISBK er femårige intervaller, trafikulykker et treårigt gennemsnit). data_year i master skrives så som 'start-slut' ud fra slutåret, fx 2021-2025.",
-    "En social indikator der ikke står i nogen kategoris 'indicators', skrives stadig til master, men scores ikke og holdes ude af kategoriens pil. En økologisk indikator skal stå i sin dimensions liste.",
-    "Scoring: build_master_csv.py beregner ALLE ratios selv ud fra raw_col og 'reference' (type maal: fast mål; kommunegennemsnit: uvægtet gennemsnit af kommunernes råværdi, beregnet ved build; landstal: fetch-scriptets referenceværdi i kolonnen 'col'). Landsgennemsnit betyder Danmark som helhed: de 98 kommuner samlet, vægtet med indikatorens egen nævner (DST's hele-landet-tal, når det er det samme; ellers summen af kommunerne). Uvægtet kommunegennemsnit bruges kun hvor nævneren ikke findes (UVM, public_transport), se arkitekturdokumentet afsnit 7. Retningen følger inverse/lower_is_better: sociale raw/ref×100 (inverse: ref/raw×100), økologiske raw/ref×100 (højere-er-bedre: ref/raw×100). Sociale cappes ved 150, økologiske ved 'cap' hvis sat. formula '100_minus_raw' (kun bolig_fossil) giver 100 minus råværdien. formula 'komplement' (økologiske andele hvor højere er bedre: natur, genanvendelse, vand i god tilstand) giver (100 - raw)/(100 - ref)×100: den manglende andel målt mod det målet tillader, så alle økologiske ratios har nul ved ingen belastning (arkitekturdokumentet R2a).",
+    "En social indikator skal stå i en kategoris 'indicators'; tjek_konsistens.py melder en social indikator uden kategori som fejl (sep. 2026). En økologisk indikator skal stå i sin dimensions liste.",
+    "smaa_tal: {pr, aar} for tal pr. indbygger, der kan bygge på få tilfælde. build_master_csv.py regner antallet tilbage (råværdi × folketal / pr × aar, folketal fra data/folketal.csv) og skriver kommuner under 20 tilfælde i noegletal.json (faa_tilfaelde). Kommunesiden viser dem med mærket 'få tilfælde'. Scoren ændres ikke.",
+    "Scoring: build_master_csv.py beregner ALLE ratios selv ud fra raw_col og 'reference' (type maal: fast mål; kommunegennemsnit: uvægtet gennemsnit af kommunernes råværdi, beregnet ved build; landstal: fetch-scriptets referenceværdi i kolonnen 'col'). Landsgennemsnit betyder Danmark som helhed: de 98 kommuner samlet, vægtet med indikatorens egen nævner (DST's hele-landet-tal, når det er det samme; ellers summen af kommunerne). Uvægtet kommunegennemsnit bruges i dag af ingen indikator; UVM-indikatorerne vægtes med elevtal (DST UDDAKT20) fra sep. 2026. Retningen følger inverse/lower_is_better: sociale raw/ref×100 (inverse: ref/raw×100), økologiske raw/ref×100 (højere-er-bedre: ref/raw×100). Sociale cappes ved 150, økologiske ved 'cap' hvis sat. formula '100_minus_raw' (kun bolig_fossil) giver 100 minus råværdien. formula 'komplement' (økologiske andele hvor højere er bedre: natur, genanvendelse, vand i god tilstand) giver (100 - raw)/(100 - ref)×100: den manglende andel målt mod det målet tillader, så alle økologiske ratios har nul ved ingen belastning (arkitekturdokumentet R2a).",
     "ratio_col er fetch-scriptets egen ratio. Den indgår ikke i scoren, men bruges til krydstjek og - så længe en CSV mangler landstal-kolonnen - til at rekonstruere landstallet (ratio_col_invers: kolonnen er på den inverterede skala).",
     "Øvrige felter: absolute_score (social ratio omskaleres ikke af baseline-toggle), target_label (tekst for målet i UI), baseline_level (1 WHO/EU, 2 nationalt mål, 3 landsgennemsnit), baseline_type (økologisk: absolut/relativ), cap (loft for ratio: økologisk R6; socialt kun lavere end 150, fx kystrisiko 100, så ingen risiko er neutral og ikke en fordel, R1)."
   ],
   "_fjernet": {
     "car_access": "Fjernet 2026: 'flere biler = bedre' er skævt i en bæredygtighedsramme og gav landdistrikter en kunstigt høj mobilitets-score. Rådata ligger stadig i mobilitet_scores.csv.",
     "apprenticeship": "Pensioneret aug. 2026: UVM-nøgletallet findes ikke længere, fortegnet var tvivlsomt, og tallene var ustabile. Det rigtige måltal ville være praktikpladsgraden.",
+    "vacant_housing": "Fjernet sep. 2026: korrelerede -0,85 med boligareal pr. person, så Bolig udlignede sig selv (landkommuner blev straffet for tomme boliger og belønnet for plads). Måler desuden affolkning og boligmarked, ikke hvordan beboerne bor. Afløst af trangboethed. Rådata ligger stadig i doughnut_scores.csv.",
+    "housing_area": "Fjernet sep. 2026: som vacant_housing. Belønnede desuden \"jo mere plads, jo bedre\", som strider mod rammen (samme fejl som car_access). Trangboethed måler i stedet underskud under en bundgrænse. Rådata ligger stadig i bolig_extra_scores.csv.",
+    "housing_no_wc": "Fjernet sep. 2026: stod i master uden at blive scoret, hvilket bryder reglen om at en indikator enten scores eller fjernes. Niveauet er så lavt (median 0,4 %, højst 1,4 %), at en inverteret ratio ville forstørre promiller til hele farveskift. Rådata ligger stadig i bolig_wc_scores.csv.",
+    "housing_no_bath": "Fjernet sep. 2026: som housing_no_wc (median 0,7 %, højst 3,9 % på Frederiksberg). Rådata ligger stadig i bolig_wc_scores.csv.",
+    "ctx_ve_kw_per_indb": "Fjernet sep. 2026 sammen med ctx_ve_sol_mw og ctx_ve_vind_mw: installeret sol- og vindkapacitet leverer til det nationale net, men et tal pr. kommune under Energi blev let læst som kommunens egen grønne forsyning. Kunne ikke scores meningsfuldt og er ikke en opdeling af et scoret tal (CLAUDE.md pkt. 9). Rådata ligger stadig i ve_kapacitet_scores.csv.",
+    "ctx_ve_sol_mw": "Fjernet sep. 2026, se ctx_ve_kw_per_indb.",
+    "ctx_ve_vind_mw": "Fjernet sep. 2026, se ctx_ve_kw_per_indb.",
+    "ctx_ve_selvforsyning": "Fjernet sep. 2026: VE-elproduktion i forhold til kommunens elforbrug (Klimaregnskabet). Samme problem som ctx_ve_kw_per_indb: strømmen går til det nationale net, og tallet er ikke en opdeling af den scorede udledning. Rådata ligger stadig i klimaregnskab_kontekst.csv.",
+    "ctx_energiforbrug": "Fjernet sep. 2026: samlet energiforbrug pr. indbygger kunne i princippet scores, men der findes ingen meningsfuld grænse pr. kommune, og forbruget indgår allerede i den scorede CO2-udledning. Efter reglen i CLAUDE.md pkt. 9 er den fjernet frem for parkeret som kontekst. Rådata ligger stadig i klimaregnskab_kontekst.csv.",
     "low_income": "Fjernet sep. 2026: samme tabel som børnefattigdom (LABY07, alle aldre mod 0-17 år), og de to korrelerede 0,87. Den korrelerede også 0,78 med relativ fattigdom (IFOR12P) under Velfærd, så fattigdomsniveauet talte både i Velfærd og i Lighed. Lighed måler nu fordelingen: Gini og beskæftigelsesgabet efter herkomst. Rådata ligger stadig i doughnut_scores.csv, og tidsserien er slettet af trend_history_raw.csv.",
     "medicin": "Fjernet sep. 2026: scorbar, men fortegnet var uafklaret. Blev fjernet frem for parkeret som kontekst (CLAUDE.md pkt. 9).",
     "sports_facilities": "Fjernet sep. 2026: korrelerede negativt med resten af Fællesskab (CLAUDE.md pkt. 28).",
@@ -47,8 +57,8 @@
     {
       "id": "bolig",
       "name": "Bolig",
-      "description": "Adgang til gode, sunde og bæredygtige boliger i trygge nærmiljøer.",
-      "indicators": ["vacant_housing", "housing_area"]
+      "description": "Om borgerne har plads nok i deres bolig, målt som andelen der bor med flere personer end værelser. Kategorien måler kun trangboethed; boligudgifter og hjemløshed findes ikke som kommunetal, der kan bruges.",
+      "indicators": ["trangboethed"]
     },
     {
       "id": "demokrati",
@@ -77,7 +87,7 @@
     {
       "id": "lighed",
       "name": "Lighed",
-      "description": "Fordelingen af indkomst og materielle ressourcer i kommunen - et mål for strukturel ulighed og sociale skel.",
+      "description": "Fordelingen af indkomst og beskæftigelse i kommunen - et mål for strukturel ulighed og sociale skel. Fattigdomsniveauet måles under Velfærd; lavindkomst blev taget ud af Lighed i sep. 2026, så fattigdom ikke tæller to gange.",
       "indicators": ["gini", "employment_origin_gap"]
     },
     {
@@ -101,7 +111,7 @@
     {
       "id": "energi",
       "name": "Energi",
-      "description": "Husstandenes fossile energiafhængighed - andel af det opvarmede boligareal (m²) der varmes med olie eller naturgas, direkte eller via fjernvarme. Fossil opvarmning belaster klimaet og udsætter husstande for høje, svingende varmeregninger. Måles på areal frem for antal beboere, fordi varmebehov skalerer med kvadratmeter. Omfatter kun helårsboliger. Fritidsboliger, lokal VE-produktion og fjernvarmens brændselsmix vises som kontekst, men indgår ikke i scoren.",
+      "description": "Husstandenes fossile energiafhængighed - andel af det opvarmede boligareal (m²) der varmes med olie eller naturgas, direkte eller via fjernvarme. Fossil opvarmning belaster klimaet og udsætter husstande for høje, svingende varmeregninger. Måles på areal frem for antal beboere, fordi varmebehov skalerer med kvadratmeter. Omfatter kun helårsboliger. Fritidsboliger og fjernvarmens brændselsmix vises som kontekst, men indgår ikke i scoren. Lokal VE-produktion vises ikke (fjernet sep. 2026), fordi strømmen går til det nationale net og tallet blev læst som kommunens egen forsyning.",
       "indicators": ["bolig_fossil"]
     }
   ],
@@ -296,9 +306,10 @@
       "csv": "uvm_scores.csv",
       "ratio_col": "wellbeing_ratio",
       "raw_col": "wellbeing_score",
-      "reference": {"type": "kommunegennemsnit", "definition": "uvægtet gennemsnit af kommunerne (UVM udstiller intet landstal pr. kommunetabel)"},
+      "reference": {"type": "landstal", "col": "wellbeing_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), alle klassetrin; fetch_udvidelse_data.py"},
       "inverse": false,
-      "baseline_level": 3
+      "baseline_level": 3,
+      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026."
     },
     {
       "id": "rygning",
@@ -424,9 +435,10 @@
       "csv": "uvm_scores.csv",
       "ratio_col": "exam_grade_ratio",
       "raw_col": "exam_grade_avg",
-      "reference": {"type": "kommunegennemsnit", "definition": "uvægtet gennemsnit af kommunerne"},
+      "reference": {"type": "landstal", "col": "exam_grade_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), 9. klasse; fetch_udvidelse_data.py"},
       "inverse": false,
-      "baseline_level": 3
+      "baseline_level": 3,
+      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026."
     },
     {
       "id": "high_absence",
@@ -441,9 +453,10 @@
       "csv": "uvm_scores.csv",
       "ratio_col": "high_absence_ratio",
       "raw_col": "high_absence_pct",
-      "reference": {"type": "kommunegennemsnit", "definition": "uvægtet gennemsnit af kommunerne"},
+      "reference": {"type": "landstal", "col": "high_absence_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), alle klassetrin; fetch_udvidelse_data.py"},
       "inverse": true,
-      "baseline_level": 3
+      "baseline_level": 3,
+      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026."
     },
     {
       "id": "youth_education",
@@ -458,9 +471,10 @@
       "csv": "uvm_scores.csv",
       "ratio_col": "youth_education_ratio",
       "raw_col": "youth_education_pct",
-      "reference": {"type": "kommunegennemsnit", "definition": "uvægtet gennemsnit af kommunerne"},
+      "reference": {"type": "landstal", "col": "youth_education_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), 9. klasse; fetch_udvidelse_data.py"},
       "inverse": false,
-      "baseline_level": 3
+      "baseline_level": 3,
+      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026."
     },
     {
       "id": "disposable_income",
@@ -609,77 +623,23 @@
       "baseline_level": 3
     },
     {
-      "id": "vacant_housing",
+      "id": "trangboethed",
       "category": "social",
       "dimension": "bolig",
-      "name": "Ubeboede boliger",
-      "table": "BOL101",
-      "source": "DST BOL101",
-      "source_url": "https://www.statistikbanken.dk/BOL101",
-      "unit": "%",
+      "name": "Trangboethed (flere personer end værelser)",
+      "table": "BOL103",
+      "source": "DST BOL103",
+      "source_url": "https://www.statistikbanken.dk/BOL103",
+      "unit": "% af beboerne",
       "data_year": "2026",
-      "csv": "doughnut_scores.csv",
-      "ratio_col": "vacant_housing_ratio",
-      "raw_col": "vacant_housing_raw",
-      "reference": {"type": "landstal", "col": "vacant_housing_ref", "definition": "DST's landstal (hele landet); fetch_doughnut_data.py"},
+      "csv": "trangboethed_scores.csv",
+      "ratio_col": "trangboethed_ratio",
+      "raw_col": "trangboethed_raw",
+      "reference": {"type": "landstal", "col": "trangboethed_ref", "definition": "de 98 kommuner samlet: personer i trangboede boliger / alle personer i boliger med oplyst antal værelser; fetch_trangboethed.py"},
       "inverse": true,
       "baseline_level": 3,
-      "rationale": "Høj andel tomme boliger signalerer fraflytning og lavt boligmarked. Inverteret: kommuner med færre tomme boliger scorer bedre.",
-      "note": "Ubeboede i pct. af beboede + ubeboede parcel-, række- og etageboliger (BOL101, ANVENDELSE 125/130/140). Fritidshuse, kollegier og institutioner er ikke med. Retningspilen bruger samme funktion (serie_vacant_housing)."
-    },
-    {
-      "id": "housing_area",
-      "category": "social",
-      "dimension": "bolig",
-      "name": "Boligareal pr. person (m²)",
-      "table": "BOL106",
-      "source": "DST BOL106",
-      "source_url": "https://www.statistikbanken.dk/BOL106",
-      "unit": "m²",
-      "data_year": "2026",
-      "csv": "bolig_extra_scores.csv",
-      "ratio_col": "housing_area_ratio",
-      "raw_col": "housing_area_m2",
-      "reference": {"type": "landstal", "col": "housing_area_ref", "definition": "DST's landstal (hele landet); fetch_social_extra_data.py"},
-      "inverse": false,
-      "baseline_level": 3,
-      "rationale": "Boligareal pr. person afspejler boligstandard og -træthed. Mere plads er generelt forbundet med bedre livskvalitet."
-    },
-    {
-      "id": "housing_no_wc",
-      "category": "social",
-      "dimension": "bolig",
-      "name": "Boliger uden eget toilet (%)",
-      "table": "BOL102",
-      "source": "DST BOL102",
-      "source_url": "https://www.statistikbanken.dk/BOL102",
-      "unit": "%",
-      "data_year": "2026",
-      "csv": "bolig_wc_scores.csv",
-      "ratio_col": "housing_no_wc_ratio",
-      "raw_col": "housing_no_wc_pct",
-      "reference": {"type": "landstal", "col": "housing_no_wc_ref", "definition": "DST's landstal (hele landet), ellers uvægtet gennemsnit af kommunerne; fetch_udvidelse_data.py"},
-      "inverse": true,
-      "baseline_level": 3,
-      "note": "Står i master, men scores og vises ikke: indgår ikke i nogen social kategori. Holdes derfor ude af Bolig-pilen (CLAUDE.md pkt. 18)."
-    },
-    {
-      "id": "housing_no_bath",
-      "category": "social",
-      "dimension": "bolig",
-      "name": "Boliger uden eget bad (%)",
-      "table": "BOL102",
-      "source": "DST BOL102",
-      "source_url": "https://www.statistikbanken.dk/BOL102",
-      "unit": "%",
-      "data_year": "2026",
-      "csv": "bolig_wc_scores.csv",
-      "ratio_col": "housing_no_bath_ratio",
-      "raw_col": "housing_no_bath_pct",
-      "reference": {"type": "landstal", "col": "housing_no_bath_ref", "definition": "DST's landstal (hele landet), ellers uvægtet gennemsnit af kommunerne; fetch_udvidelse_data.py"},
-      "inverse": true,
-      "baseline_level": 3,
-      "note": "Som housing_no_wc: i master, men ikke scoret."
+      "rationale": "Andel af beboerne i helårsboliger (parcel-, række- og etageboliger), der bor i en bolig med flere personer end værelser (DST BOL103). Trangboethed er et af de mest brugte mål for utilstrækkelige boligforhold og måler et underskud under en bundgrænse: det straffer for lidt plads uden at belønne meget plads. Definitionen er en forenkling af Eurostats overbelægningsmål, som kræver oplysninger om husstandens alder og sammensætning. Inverteret: lavere andel er bedre.",
+      "note": "Erstatter vacant_housing og housing_area (sep. 2026), som korrelerede -0,85 og udlignede hinanden. Husstande på 7+ tælles som 7 personer og boliger med 6+ værelser som 6. Retningspilen bruger samme funktion (serie_trangboethed)."
     },
     {
       "id": "bolig_fossil",
@@ -701,8 +661,8 @@
       "baseline_level": 2,
       "absolute_score": true,
       "target_label": "0% fossil (udfasningsmål)",
-      "rationale": "Kommunens samlede fossile varmeafhængighed: direkte olie-/gasopvarmning PLUS den fossile andel af fjernvarmen (fjernvarme-dækning × fjernvarmens fossile brændselsandel fra Energistyrelsens EPT). Opgøres på helårsboligernes OPVARMEDE AREAL i m² (DST BYGB40), ikke på antal beboere - varmebehov skalerer med kvadratmeter, ikke med hoveder. Scoret mod et absolut mål på 0% fossil, ikke landsgennemsnit, da udfasning af olie/gas er dansk politik. Inverteret: lavere andel er bedre. Værst er Nordsjællands gasområder (fx Furesø, Rudersdal); bedst er biomasse-fjernvarmebyer som Aarhus.",
-      "note": "Samlet fossil varmeafhængighed (direkte olie/gas + fjernvarmens fossile andel), scoret mod absolut mål 0%: ratio = 100 - samlet fossil%, beregnet i fetch_bolig_fossil.py. Grundlag er BYGB40 (opvarmet areal i m², kun helårsboliger), ikke BOL202 (personer). Fritidsboliger er kontekst. Se CLAUDE.md pkt. 10."
+      "rationale": "Kommunens samlede fossile varmeafhængighed: direkte olie-/gasopvarmning PLUS den fossile andel af fjernvarmen (fjernvarme-dækning × fjernvarmens fossile brændselsandel fra Energistyrelsens EPT; for kommuner uden egen varmeproduktion bruges det forsynende fjernvarmenets leverede mix). Opgøres på helårsboligernes OPVARMEDE AREAL i m² (DST BYGB40), ikke på antal beboere - varmebehov skalerer med kvadratmeter, ikke med hoveder. Scoret mod et absolut mål på 0% fossil, ikke landsgennemsnit, da udfasning af olie/gas er dansk politik. Inverteret: lavere andel er bedre. Værst er Nordsjællands gasområder (fx Furesø, Rudersdal); bedst er biomasse-fjernvarmebyer som Aarhus.",
+      "note": "Samlet fossil varmeafhængighed (direkte olie/gas + fjernvarmens fossile andel), scoret mod absolut mål 0%: ratio = 100 - samlet fossil%, beregnet i fetch_bolig_fossil.py. Grundlag er BYGB40 (opvarmet areal i m², kun helårsboliger), ikke BOL202 (personer). Fritidsboliger er kontekst. Fra sep. 2026 får de 17 kommuner uden egen varmeproduktion det forsynende nets leverede mix (ENS Fjernvarmenet, fetch_fjernvarme_mix.py) i stedet for landssnittet på 13,3 %; kun Stevns har intet net og bruger landssnittet. Se CLAUDE.md pkt. 10."
     },
     {
       "id": "voter_turnout",
@@ -883,6 +843,7 @@
       "ratio_col": "crime_ratio",
       "raw_col": "crime_per_1k",
       "reference": {"type": "landstal", "col": "crime_rate_ref", "definition": "de 98 kommuner samlet pr. 1.000 indb.; anmeldelser uden kendt gerningskommune (8,7% i 2025) er ikke med; fetch_social_new_data.py"},
+      "smaa_tal": {"pr": 1000, "aar": 1},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Anmeldte forbrydelser pr. 1.000 indb. er den bedst tilgængelige kvantitative indikator for tryghed på kommuneniveau. Lav kriminalitet er en forudsætning for social tillid og aktivt deltagelse i det offentlige rum."
@@ -902,10 +863,11 @@
       "ratio_col": "traffic_accidents_ratio",
       "raw_col": "traffic_accidents_per_100k",
       "reference": {"type": "landstal", "col": "traffic_accidents_ref", "definition": "de 98 kommuner samlet pr. 100.000 indb., treårigt gennemsnit; fetch_social_new_data.py"},
+      "smaa_tal": {"pr": 100000, "aar": 3},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Tilskadekomne og dræbte i færdselsuheld pr. 100.000 indb., opgjort som treårigt gennemsnit (UHELDK1). Ét års tal er ren støj i små kommuner: Læsø lå i 2024 på et niveau der svarer til omkring to tilskadekomne, så én ulykke fra eller til flyttede scoren med titalls point. Trafiksikkerhed er en direkte indikator for fysisk tryghed i det offentlige rum og for kvaliteten af infrastruktur og hastighedszoner. Inverteret: færre ulykker er bedre.",
-      "note": "Treårigt gennemsnit af UHELDK1 (sep. 2026), fordi ét års tal er støj i små kommuner. CLAUDE.md pkt. 26."
+      "note": "Treårigt gennemsnit af UHELDK1 (sep. 2026), fordi ét års tal er støj i små kommuner. Kommuner hvor tallet stadig bygger på under 20 tilskadekomne, får mærket 'få tilfælde' (smaa_tal, arkitekturdokumentet R16). CLAUDE.md pkt. 26."
     },
     {
       "id": "sports_membership",
@@ -1103,6 +1065,7 @@
       "ratio_col": "vejr_skader_ratio",
       "raw_col": "vejr_skader_raw",
       "reference": {"type": "landstal", "col": "vejr_skader_ref", "definition": "befolkningsvægtet gennemsnit af de 98 kommuner (folketal 1. jan. 2025), dvs. landet som helhed; fetch_klimatilpasning_data.py"},
+      "smaa_tal": {"pr": 1000, "aar": 1},
       "inverse": true,
       "baseline_level": 3,
       "note": "Proxy: vejrrelaterede forsikringsskader pr. 1.000 indb. (F&P, 2023-2025). Kilden har kun kommunenavne; fetch-scriptet slår koden op i data/kommuner.json. Se data/klimatilpasning.md."
@@ -1427,36 +1390,6 @@
       "note": "Intensivt landbrug (D1+D2+D4) + befæstet og bebygget (A1+A2+B1+B2+C1) i pct. af landarealet uden søer og vandløb (Dao m.fl. 2015; EEA 2020; CONCITO 2025)."
     },
     {
-      "id": "ctx_ve_kw_per_indb",
-      "category": "context",
-      "dimension": "energi",
-      "source": "Energi Data Service",
-      "unit": "kW/indb.",
-      "data_year": "2024",
-      "csv": "ve_kapacitet_scores.csv",
-      "raw_col": "ve_kw_per_indb"
-    },
-    {
-      "id": "ctx_ve_sol_mw",
-      "category": "context",
-      "dimension": "energi",
-      "source": "Energi Data Service",
-      "unit": "MW",
-      "data_year": "2024",
-      "csv": "ve_kapacitet_scores.csv",
-      "raw_col": "ve_sol_mw"
-    },
-    {
-      "id": "ctx_ve_vind_mw",
-      "category": "context",
-      "dimension": "energi",
-      "source": "Energi Data Service",
-      "unit": "MW",
-      "data_year": "2024",
-      "csv": "ve_kapacitet_scores.csv",
-      "raw_col": "ve_vind_mw"
-    },
-    {
       "id": "ctx_fjv_biomasse",
       "category": "context",
       "dimension": "energi",
@@ -1484,7 +1417,8 @@
       "unit": "%",
       "data_year": "2024",
       "csv": "fjernvarme_mix_scores.csv",
-      "raw_col": "fjv_fossil_pct"
+      "raw_col": "fjv_fossil_pct",
+      "note": "Kommuner uden egen varmeproduktion viser fra sep. 2026 det forsynende nets leverede mix (ENS Fjernvarmenet, status 'net' i fjernvarme_mix_scores.csv); de øvrige viser produktionen i kommunen (EPT). Gælder alle fire ctx_fjv_*."
     },
     {
       "id": "ctx_fjv_ren",
@@ -1566,27 +1500,6 @@
       "data_year": "2023",
       "csv": "klimaregnskab_kontekst.csv",
       "raw_col": "klima_transport"
-    },
-    {
-      "id": "ctx_energiforbrug",
-      "category": "context",
-      "dimension": "klimapaavirkning",
-      "source": "Klimaregnskabet.dk",
-      "unit": "GJ/indb.",
-      "data_year": "2023",
-      "csv": "klimaregnskab_kontekst.csv",
-      "raw_col": "energiforbrug"
-    },
-    {
-      "id": "ctx_ve_selvforsyning",
-      "category": "context",
-      "dimension": "klimapaavirkning",
-      "source": "Klimaregnskabet.dk",
-      "unit": "%",
-      "data_year": "2023",
-      "csv": "klimaregnskab_kontekst.csv",
-      "raw_col": "ve_selvforsyning",
-      "note": "Leveres som forhold (1,71) af Klimaregnskabet og ganges med 100 i fetch_climate_data.py."
     }
   ]
 }

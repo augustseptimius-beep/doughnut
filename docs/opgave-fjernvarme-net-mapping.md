@@ -1,5 +1,7 @@
 # Opgave: Fjernvarme-fossilandel via net→kommune-mapping (de 18 fælles-net-kommuner)
 
+> **Status: løst 26. sep. 2026** i `fetch_fjernvarme_mix.py` (MVP-scope). 17 af 18 kommuner har fået nettets mix; Stevns har intet net i EPT og bruger stadig landssnittet. Dokumentet står som baggrund.
+
 > Selvstændig opgavebeskrivelse til en ny session. Forudsætter ingen kontekst ud over dette dokument
 > og kodebasen. Skrevet 19. juni 2026. Datakilder og join er allerede verificeret (se nedenfor).
 

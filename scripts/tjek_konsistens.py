@@ -236,7 +236,7 @@ def kryds_tjek() -> list[Fund]:
         niveau = _f if (i in scoret or by_id[i]["category"] == "ecological") else _info
         niveau(fund, f"{i}: står i registret, men har ingen rækker i master (mangler CSV'en {by_id[i]['csv']}?)")
     for i in sorted(ir.ikke_scoret()):
-        _info(fund, f"{i} står i master, men scores ikke (ikke i nogen kategori, se CLAUDE.md pkt. 18)")
+        _f(fund, f"{i}: social indikator uden kategori - scor den eller flyt den til _fjernet (CLAUDE.md pkt. 9 og 18)")
 
     # 3. Retning mod dataen: fortegnet på korrelationen mellem råværdi og ratio
     #    skal passe med 'inverse' (sociale) og 'lower_is_better' (økologiske).

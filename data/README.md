@@ -105,7 +105,7 @@ Viser hvilken **vej** en kommune bevæger sig, ikke kun hvor den ligger. Én ræ
 - **Retningen beregnes på råværdier, aldrig på ratio.** Ratio er relativ til en baseline, og platformen har en baseline-toggle (avg/top10/gruppe). En ratio-baseret pil ville skifte retning når brugeren skifter baseline.
 - **Øko-dimensioner bruger worst-of:** pilen følger den sub-indikator der bestemmer dimensionens score (højeste ratio). Undtagelse: Forurening bruger gennemsnit, ligesom i scoren.
 - **Ingen fallback.** Har den score-afgørende sub-indikator ingen tidsserie, får dimensionen ingen pil. Ellers ville pilen beskrive noget andet end tallet ved siden af.
-- **51 af de 64 scorede indikatorer har historik** (sep. 2026). De 13 uden vises med et skraveret felt (`ingen`): DCE-luftkort, bioscore, vandområdeplanerne (kystvandenes kvælstof og vandområdernes tilstand), Jupiter-analyser, forbrugsbaseret CO₂, forsikringsskader og fossil opvarmning findes ikke som årlige tidsserier pr. kommune, `public_transport` beregnes fra køreplaner, og Rejseplanens arkiv går kun tilbage til december 2025, og `sport_tilskuer` bruger begge tilgængelige år i selve målet.
+- **49 af de 63 scorede indikatorer har historik** (sep. 2026). De 14 uden vises med et skraveret felt (`ingen`): DCE-luftkort, bioscore, vandområdeplanerne (kystvandenes kvælstof og vandområdernes tilstand), Jupiter-analyser, forbrugsbaseret CO₂, forsikringsskader, kystrisikoen og fossil opvarmning findes ikke som årlige tidsserier pr. kommune, `public_transport` beregnes fra køreplaner, og Rejseplanens arkiv går kun tilbage til december 2025, og `sport_tilskuer` bruger begge tilgængelige år i selve målet.
 
 Genereres af `scripts/fetch_trend_history.py` → `scripts/build_trends_csv.py`. **Skal genberegnes sammen med `master_indicators.csv`**, ellers kan pil og tal komme til at høre til forskellige årgange.
 
@@ -126,6 +126,14 @@ De individuelle CSV-filer (`luftforurening_scores.csv`, `naeringsstoffer_scores.
 - **`luftforurening_scores.csv`**: `no2_ug_m3` og `pm25_ug_m3` er befolkningsvægtede; arealgennemsnittene står i `*_arealgns`.
 - **`cba_2023_estimate.csv`**: `cba_estimate` er estimatet for `estimat_aar` med Energistyrelsens seneste tidsserie (`fetch_forbrug_co2.py`). Kolonnen `cba_2023_estimate` er det gamle, håndberegnede tal.
 - **`naeringsstoffer_scores.csv`** og **`n_landbrug_scores.csv`** bruges ikke længere af platformen (indikatorerne er fjernet), men bevares som kildespor.
+
+### Sociale rådata og kontekst (ændret sep. 2026)
+
+- **`trangboethed_scores.csv`** (`fetch_trangboethed.py`): andelen af beboerne i helårsboliger med flere personer end værelser (DST BOL103), landstal i `trangboethed_ref`. Afløser ubeboede boliger og boligareal, som udlignede hinanden (CHANGELOG 26. sep. 2026).
+- **`fjernvarme_mix_scores.csv`** (`fetch_fjernvarme_mix.py`): fjernvarmens brændselsmix i procent. `fjv_status` er `ok` (kommunens egen produktion, EPT), `net` (kommunen har ingen egen produktion og får det forsynende nets leverede mix fra ENS' Fjernvarmenet; nettet står i `fjv_net`) eller `fælles_net` (intet net fundet, kun Stevns; `fetch_bolig_fossil.py` bruger så landssnittet).
+- **`folketal.csv`** (`fetch_folketal.py`): folketal 1. januar (FOLK1A). Bruges kun til mærket "få tilfælde" (registrets `smaa_tal`, arkitekturdokumentet R16), ikke til scoren.
+- **`uvm_scores.csv`**: `*_ref` er fra sep. 2026 landstal vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20).
+- Bruges ikke længere, men står som kildespor: **`bolig_wc_scores.csv`** (boliger uden toilet og bad), **`bolig_extra_scores.csv`** (boligareal), **`ve_kapacitet_scores.csv`** (VE-kapacitet) og kolonnerne `energiforbrug` og `ve_selvforsyning` i **`klimaregnskab_kontekst.csv`**. Begrundelserne står under `_fjernet` i `indikatorer.json`.
 
 ### `kulturvaner_scores.csv`
 

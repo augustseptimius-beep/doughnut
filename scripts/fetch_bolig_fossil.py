@@ -27,8 +27,9 @@ Kilder:
   - DST BYGB40 (Bygninger og deres opvarmede areal): giver BÅDE direkte fossil
     (oliefyr, oliekaminer, naturgas) OG fjernvarme-dækning på samme arealbasis.
   - data/fjernvarme_mix_scores.csv (Energistyrelsen EPT): fjernvarmens fossile
-    brændselsandel pr. kommune. For de 18 fælles-net-kommuner uden lokalt mix
-    bruges TJ-vægtet landsgennemsnit.
+    brændselsandel pr. kommune. Kommuner uden egen produktion får det forsynende
+    nets andel (fetch_fjernvarme_mix.py); findes intet net, bruges TJ-vægtet
+    landsgennemsnit.
 
 VIGTIGT: fjernvarme_mix_scores.csv skal være genereret FØR dette script køres
 (kør fetch_fjernvarme_mix.py først).
@@ -105,8 +106,9 @@ def auto_build_master():
 def load_fjernvarme_fossil() -> tuple[dict[str, float], float]:
     """Læser fjernvarmens fossile brændselsandel pr. kommune fra
     fjernvarme_mix_scores.csv. Returnerer ({kode: fjv_fossil_pct}, landssnit).
+    Kommuner uden egen produktion har det forsynende nets mix (status=net).
     Landssnit beregnes over kommuner med egen produktion (status=ok) og bruges
-    for de 18 fælles-net-kommuner uden lokalt mix."""
+    kun for kommuner, hvor intet net kunne findes."""
     path = DATA_DIR / "fjernvarme_mix_scores.csv"
     if not path.exists():
         print("  ADVARSEL: fjernvarme_mix_scores.csv mangler - kør fetch_fjernvarme_mix.py først.")
@@ -132,8 +134,10 @@ def load_fjernvarme_fossil() -> tuple[dict[str, float], float]:
             kode = (row.get("kommune_kode") or "").strip()
             val = csv_float(row.get("fjv_fossil_pct") or "")
             tj = csv_float(row.get("fjv_total_tj") or "") or 0.0
-            if (row.get("fjv_status") or "").strip() == "ok" and val is not None:
+            status = (row.get("fjv_status") or "").strip()
+            if status in ("ok", "net") and val is not None:
                 per_kommune[kode] = val
+            if status == "ok" and val is not None:  # landssnit kun af egne producenter
                 w_sum += val * tj
                 tj_sum += tj
     # TJ-vægtet landssnit: domineres af de store værker (typisk affald/biomasse,
@@ -141,7 +145,7 @@ def load_fjernvarme_fossil() -> tuple[dict[str, float], float]:
     # forsynes af netop de store metro-net.
     nat_avg = round(w_sum / tj_sum, 2) if tj_sum else 0.0
     print(f"  Fjernvarme-fossil: {len(per_kommune)} kommuner med eget mix, "
-          f"TJ-vægtet landssnit {nat_avg:.1f}% (bruges for fælles-net-kommuner)")
+          f"TJ-vægtet landssnit {nat_avg:.1f}% (bruges hvor intet net er fundet)")
     return per_kommune, nat_avg
 
 

@@ -26,6 +26,9 @@ Output CSV-filer (skrives til data/):
 Kør:
   cd /sti/til/doughnut
   python3 scripts/fetch_udvidelse_data.py
+
+  Kun de elevvægtede landstal for UVM-indikatorerne (ingen UVM-nøgle):
+  python3 scripts/fetch_udvidelse_data.py --kun-landstal
 """
 
 from __future__ import annotations
@@ -583,6 +586,85 @@ def write_csv(filename: str, headers: list[str], rows: list[list]) -> None:
     print(f"  Gemt: {filepath} ({len(rows)} rækker)")
 
 
+# ─── Elevvægtede landstal for UVM-indikatorerne (sep. 2026) ──────────────
+# UVM udstiller intet landstal pr. kommunetabel, så indtil sep. 2026 blev de
+# fire indikatorer målt mod et uvægtet gennemsnit af kommunerne (Læsø vejede
+# som København). Landstallet er nu Danmark som helhed (arkitekturdokumentet
+# R3): kommunernes værdier vægtet med folkeskoleelever efter bopælskommune
+# (DST UDDAKT20, pr. 1. oktober, nyeste år). Karakterer og ungdomsuddannelse
+# vægtes med 9. klasse, fravær og trivsel med alle klassetrin. Vægtene kræver
+# ingen UVM-nøgle, så landstallene kan genberegnes med --kun-landstal.
+UVM_VAEGT = {
+    # indikator: (rå kolonne, ratio-kolonne, UDDAKT20-uddannelse, lavere er bedre)
+    "exam_grade": ("exam_grade_avg", "exam_grade_ratio", "U29", False),
+    "high_absence": ("high_absence_pct", "high_absence_ratio", "TOT", True),
+    "wellbeing": ("wellbeing_score", "wellbeing_ratio", "TOT", False),
+    "youth_education": ("youth_education_pct", "youth_education_ratio", "U29", False),
+}
+
+
+def elevtal(uddannelse: str) -> dict[str, float]:
+    """Folkeskoleelever pr. 1. oktober efter bopælskommune (UDDAKT20), nyeste år.
+    `uddannelse` er 'TOT' (alle klassetrin) eller fx 'U29' (9. klasse)."""
+    from dst_aar import seneste_aar
+    aar = seneste_aar("UDDAKT20")
+    rows = api_post("UDDAKT20", [
+        {"code": "UDDANNELSE", "values": [uddannelse]},
+        {"code": "GRUNDSKOL", "values": ["1012"]},
+        {"code": "BOPOMR", "values": ["*"]},
+        {"code": "FSTATUS", "values": ["B"]},
+        {"code": "Tid", "values": [aar]},
+    ])
+    registrer_aar("UDDAKT20", aar)
+    return {k: v for (k, _), v in pr_kommune_aar(rows, "BOPOMR").items() if k != "000"}
+
+
+def elevvaegtet(vaerdier: dict[str, float], vaegte: dict[str, float]) -> float | None:
+    """Gennemsnit af kommunernes værdier vægtet med elevtal. Kun kommuner med både
+    værdi og vægt tæller med."""
+    med = [k for k, v in vaerdier.items() if v is not None and vaegte.get(k)]
+    n = sum(vaegte[k] for k in med)
+    return round(sum(vaerdier[k] * vaegte[k] for k in med) / n, 2) if n else None
+
+
+def uvm_rækker(vaerdier: dict[str, dict[str, float]]) -> tuple[list[str], list[list]]:
+    """Kolonner og rækker til uvm_scores.csv med elevvægtede landstal.
+    `vaerdier` er {indikator: {kommune_kode: råværdi}}."""
+    vaegte = {u: elevtal(u) for u in {v[2] for v in UVM_VAEGT.values()}}
+    ref = {i: elevvaegtet(vaerdier[i], vaegte[u]) for i, (_, _, u, _) in UVM_VAEGT.items()}
+    for i, r in ref.items():
+        print(f"  {i}: elevvægtet landstal {r}")
+    kolonner = ["kommune_kode"]
+    for i, (raw, rat, _, _) in UVM_VAEGT.items():
+        kolonner += [raw, rat]
+    kolonner += [f"{i}_ref" for i in UVM_VAEGT]
+    rows = []
+    for kode in sorted(VALID_CODES, key=int):
+        row = [kode]
+        for i, (_, _, _, lavere) in UVM_VAEGT.items():
+            v = vaerdier[i].get(kode)
+            r = None
+            if v is not None and ref[i]:
+                r = ratio_inverse(v, ref[i]) if lavere else ratio_direct(v, ref[i])
+            row += [_tom(v), _tom(r)]
+        row += [_tom(ref[i]) for i in UVM_VAEGT]
+        rows.append(row)
+    return kolonner, rows
+
+
+def kun_landstal() -> None:
+    """Genberegner landstal og ratios i den eksisterende uvm_scores.csv uden at
+    hente UVM-data (kræver ingen nøgle)."""
+    with open(OUTPUT_DIR / "uvm_scores.csv", encoding="utf-8") as f:
+        eksisterende = list(csv.DictReader(f))
+    # CSV-filen har punktum som decimaltegn; parse_float() læser DST/UVM-formatet
+    # (punktum = tusindtalsseparator) og må ikke bruges her.
+    vaerdier = {i: {r["kommune_kode"]: float(r[raw]) for r in eksisterende if r.get(raw)}
+                for i, (raw, _, _, _) in UVM_VAEGT.items()}
+    kolonner, rows = uvm_rækker(vaerdier)
+    write_csv("uvm_scores.csv", kolonner, rows)
+
+
 # ─── MAIN ──────────────────────────────────────────────────────────────────
 
 def main():
@@ -605,33 +687,13 @@ def main():
     wellbeing, wb_nat      = fetch_wellbeing(navn_til_kode)
     youth_edu, ye_nat      = fetch_youth_education(navn_til_kode)
 
-    uvm_rows = []
-    for kode in sorted(VALID_CODES, key=int):
-        eg  = exam.get(kode)
-        ab  = absence.get(kode)
-        wb  = wellbeing.get(kode)
-        ye  = youth_edu.get(kode)
-
-        eg_ratio  = ratio_direct(eg, exam_nat)     if eg  is not None and exam_nat   else None
-        ab_ratio  = ratio_inverse(ab, absence_nat) if ab  is not None and absence_nat else None
-        wb_ratio  = ratio_direct(wb, wb_nat)       if wb  is not None and wb_nat      else None
-        ye_ratio  = ratio_direct(ye, ye_nat)       if ye  is not None and ye_nat      else None
-
-        uvm_rows.append([
-            kode,
-            eg  if eg  is not None else "", eg_ratio  if eg_ratio  is not None else "",
-            ab  if ab  is not None else "", ab_ratio  if ab_ratio  is not None else "",
-            wb  if wb  is not None else "", wb_ratio  if wb_ratio  is not None else "",
-            ye  if ye  is not None else "", ye_ratio  if ye_ratio  is not None else "",
-        ])
-
-    write_csv("uvm_scores.csv", [
-        "kommune_kode",
-        "exam_grade_avg", "exam_grade_ratio",
-        "high_absence_pct", "high_absence_ratio",
-        "wellbeing_score", "wellbeing_ratio",
-        "youth_education_pct", "youth_education_ratio",
-    ], uvm_rows)
+    # exam_nat m.fl. (uvægtede gennemsnit) bruges ikke længere; landstallet er
+    # elevvægtet, se UVM_VAEGT.
+    kolonner, uvm_rows = uvm_rækker({
+        "exam_grade": exam, "high_absence": absence,
+        "wellbeing": wellbeing, "youth_education": youth_edu,
+    })
+    write_csv("uvm_scores.csv", kolonner, uvm_rows)
 
     # ── DST ──────────────────────────────────────────────────────
     print("\n--- DST: Danmarks Statistik ---")
@@ -707,7 +769,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if "--kun-landstal" in sys.argv:
+        kun_landstal()
+    else:
+        main()
 
     # ── AUTO-REBUILD af master_indicators.csv ──────────────────────
     try:

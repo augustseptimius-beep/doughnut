@@ -97,104 +97,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,_dim_arealanvendelse,2011,2024,,,2.58,tempo,4,Danmarks Statistik,areal_antropiseret
 851,_dim_arealanvendelse,2011,2024,,,4.23,rigtig,4,Danmarks Statistik,areal_antropiseret
 860,_dim_arealanvendelse,2011,2024,,,4.01,rigtig,4,Danmarks Statistik,areal_antropiseret
-101,_dim_bolig,2010-2012,2024-2026,,,3.69,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-147,_dim_bolig,2010-2012,2024-2026,,,11.78,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-151,_dim_bolig,2010-2012,2024-2026,,,-4.97,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-153,_dim_bolig,2010-2012,2024-2026,,,-27.72,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-155,_dim_bolig,2010-2012,2024-2026,,,3.06,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-157,_dim_bolig,2010-2012,2024-2026,,,13.61,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-159,_dim_bolig,2010-2012,2024-2026,,,0.82,stagneret,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-161,_dim_bolig,2010-2012,2024-2026,,,-15.32,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-163,_dim_bolig,2010-2012,2024-2026,,,-10.77,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-165,_dim_bolig,2010-2012,2024-2026,,,-117.15,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-167,_dim_bolig,2010-2012,2024-2026,,,10.93,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-169,_dim_bolig,2010-2012,2024-2026,,,-24.12,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-173,_dim_bolig,2010-2012,2024-2026,,,1.93,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-175,_dim_bolig,2010-2012,2024-2026,,,9.3,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-183,_dim_bolig,2010-2012,2024-2026,,,19.28,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-185,_dim_bolig,2010-2012,2024-2026,,,0.22,stagneret,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-187,_dim_bolig,2010-2012,2024-2026,,,12.31,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-190,_dim_bolig,2010-2012,2024-2026,,,15.34,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-201,_dim_bolig,2010-2012,2024-2026,,,-5.54,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-210,_dim_bolig,2010-2012,2024-2026,,,6.46,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-217,_dim_bolig,2010-2012,2024-2026,,,11.32,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-219,_dim_bolig,2010-2012,2024-2026,,,0.84,stagneret,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-223,_dim_bolig,2010-2012,2024-2026,,,3.46,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-230,_dim_bolig,2010-2012,2024-2026,,,-4.0,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-240,_dim_bolig,2010-2012,2024-2026,,,-4.04,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-250,_dim_bolig,2010-2012,2024-2026,,,6.77,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-253,_dim_bolig,2010-2012,2024-2026,,,6.25,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-259,_dim_bolig,2010-2012,2024-2026,,,1.8,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-260,_dim_bolig,2010-2012,2024-2026,,,14.9,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-265,_dim_bolig,2010-2012,2024-2026,,,-3.49,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-269,_dim_bolig,2010-2012,2024-2026,,,5.71,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-270,_dim_bolig,2010-2012,2024-2026,,,6.56,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-306,_dim_bolig,2010-2012,2024-2026,,,6.21,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-316,_dim_bolig,2010-2012,2024-2026,,,4.69,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-320,_dim_bolig,2010-2012,2024-2026,,,10.91,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-326,_dim_bolig,2010-2012,2024-2026,,,1.18,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-329,_dim_bolig,2010-2012,2024-2026,,,8.87,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-330,_dim_bolig,2010-2012,2024-2026,,,4.33,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-336,_dim_bolig,2010-2012,2024-2026,,,9.68,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-340,_dim_bolig,2010-2012,2024-2026,,,11.81,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-350,_dim_bolig,2010-2012,2024-2026,,,4.63,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-360,_dim_bolig,2010-2012,2024-2026,,,-7.65,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-370,_dim_bolig,2010-2012,2024-2026,,,16.6,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-376,_dim_bolig,2010-2012,2024-2026,,,-1.5,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-390,_dim_bolig,2010-2012,2024-2026,,,-0.49,stagneret,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-400,_dim_bolig,2010-2012,2024-2026,,,-31.06,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-410,_dim_bolig,2010-2012,2024-2026,,,2.66,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-420,_dim_bolig,2010-2012,2024-2026,,,-1.73,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-430,_dim_bolig,2010-2012,2024-2026,,,-3.94,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-440,_dim_bolig,2010-2012,2024-2026,,,-3.72,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-450,_dim_bolig,2010-2012,2024-2026,,,-3.88,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-461,_dim_bolig,2010-2012,2024-2026,,,-15.41,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-479,_dim_bolig,2010-2012,2024-2026,,,3.5,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-480,_dim_bolig,2010-2012,2024-2026,,,-0.62,stagneret,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-482,_dim_bolig,2010-2012,2024-2026,,,-4.09,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-492,_dim_bolig,2010-2012,2024-2026,,,-10.35,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-510,_dim_bolig,2010-2012,2024-2026,,,2.78,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-530,_dim_bolig,2010-2012,2024-2026,,,-5.76,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-540,_dim_bolig,2010-2012,2024-2026,,,6.44,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-550,_dim_bolig,2010-2012,2024-2026,,,5.02,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-561,_dim_bolig,2010-2012,2024-2026,,,-16.17,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-563,_dim_bolig,2010-2012,2024-2026,,,-9.99,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-573,_dim_bolig,2010-2012,2024-2026,,,-0.64,stagneret,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-575,_dim_bolig,2010-2012,2024-2026,,,1.87,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-580,_dim_bolig,2010-2012,2024-2026,,,7.95,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-607,_dim_bolig,2010-2012,2024-2026,,,2.04,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-615,_dim_bolig,2010-2012,2024-2026,,,0.37,stagneret,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-621,_dim_bolig,2010-2012,2024-2026,,,-9.54,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-630,_dim_bolig,2010-2012,2024-2026,,,7.75,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-657,_dim_bolig,2010-2012,2024-2026,,,-10.74,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-661,_dim_bolig,2010-2012,2024-2026,,,-6.3,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-665,_dim_bolig,2010-2012,2024-2026,,,-8.66,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-671,_dim_bolig,2010-2012,2024-2026,,,-2.97,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-706,_dim_bolig,2010-2012,2024-2026,,,-2.77,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-707,_dim_bolig,2010-2012,2024-2026,,,-3.1,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-710,_dim_bolig,2010-2012,2024-2026,,,-3.82,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-727,_dim_bolig,2010-2012,2024-2026,,,2.22,rigtig,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-730,_dim_bolig,2010-2012,2024-2026,,,-4.55,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-740,_dim_bolig,2010-2012,2024-2026,,,-6.49,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-741,_dim_bolig,2010-2012,2024-2026,,,-6.21,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-746,_dim_bolig,2010-2012,2024-2026,,,-2.34,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-751,_dim_bolig,2010-2012,2024-2026,,,-15.66,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-756,_dim_bolig,2010-2012,2024-2026,,,-5.12,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-760,_dim_bolig,2010-2012,2024-2026,,,0.26,stagneret,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-766,_dim_bolig,2010-2012,2024-2026,,,-4.71,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-773,_dim_bolig,2010-2012,2024-2026,,,-4.44,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-779,_dim_bolig,2010-2012,2024-2026,,,-6.41,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-787,_dim_bolig,2010-2012,2024-2026,,,-2.09,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-791,_dim_bolig,2010-2012,2024-2026,,,-7.68,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-810,_dim_bolig,2010-2012,2024-2026,,,-5.34,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-813,_dim_bolig,2010-2012,2024-2026,,,-13.96,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-820,_dim_bolig,2010-2012,2024-2026,,,-8.52,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-825,_dim_bolig,2010-2012,2024-2026,,,-9.39,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-840,_dim_bolig,2010-2012,2024-2026,,,-0.54,stagneret,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-846,_dim_bolig,2010-2012,2024-2026,,,-2.62,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-849,_dim_bolig,2010-2012,2024-2026,,,-9.05,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-851,_dim_bolig,2010-2012,2024-2026,,,-16.26,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
-860,_dim_bolig,2010-2012,2024-2026,,,-5.08,forkert,17,Danmarks Statistik,gennemsnit af 2 indikatorer
+101,_dim_bolig,2010-2012,2024-2026,,,3.54,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+147,_dim_bolig,2010-2012,2024-2026,,,6.66,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+151,_dim_bolig,2010-2012,2024-2026,,,3.39,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+153,_dim_bolig,2010-2012,2024-2026,,,-50.03,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+155,_dim_bolig,2010-2012,2024-2026,,,-0.73,stagneret,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+157,_dim_bolig,2010-2012,2024-2026,,,6.39,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+159,_dim_bolig,2010-2012,2024-2026,,,-11.24,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+161,_dim_bolig,2010-2012,2024-2026,,,-57.48,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+163,_dim_bolig,2010-2012,2024-2026,,,-15.89,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+165,_dim_bolig,2010-2012,2024-2026,,,-1.94,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+167,_dim_bolig,2010-2012,2024-2026,,,-2.22,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+169,_dim_bolig,2010-2012,2024-2026,,,-29.11,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+173,_dim_bolig,2010-2012,2024-2026,,,0.44,stagneret,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+175,_dim_bolig,2010-2012,2024-2026,,,-17.5,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+183,_dim_bolig,2010-2012,2024-2026,,,-32.55,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+185,_dim_bolig,2010-2012,2024-2026,,,-2.07,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+187,_dim_bolig,2010-2012,2024-2026,,,-53.38,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+190,_dim_bolig,2010-2012,2024-2026,,,11.39,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+201,_dim_bolig,2010-2012,2024-2026,,,5.89,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+210,_dim_bolig,2010-2012,2024-2026,,,-1.72,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+217,_dim_bolig,2010-2012,2024-2026,,,13.38,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+219,_dim_bolig,2010-2012,2024-2026,,,7.95,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+223,_dim_bolig,2010-2012,2024-2026,,,12.3,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+230,_dim_bolig,2010-2012,2024-2026,,,23.07,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+240,_dim_bolig,2010-2012,2024-2026,,,-7.26,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+250,_dim_bolig,2010-2012,2024-2026,,,15.48,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+253,_dim_bolig,2010-2012,2024-2026,,,-18.12,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+259,_dim_bolig,2010-2012,2024-2026,,,4.18,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+260,_dim_bolig,2010-2012,2024-2026,,,-4.76,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+265,_dim_bolig,2010-2012,2024-2026,,,11.0,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+269,_dim_bolig,2010-2012,2024-2026,,,-9.56,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+270,_dim_bolig,2010-2012,2024-2026,,,8.94,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+306,_dim_bolig,2010-2012,2024-2026,,,17.46,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+316,_dim_bolig,2010-2012,2024-2026,,,8.99,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+320,_dim_bolig,2010-2012,2024-2026,,,-6.27,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+326,_dim_bolig,2010-2012,2024-2026,,,12.11,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+329,_dim_bolig,2010-2012,2024-2026,,,-8.22,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+330,_dim_bolig,2010-2012,2024-2026,,,2.5,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+336,_dim_bolig,2010-2012,2024-2026,,,9.37,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+340,_dim_bolig,2010-2012,2024-2026,,,5.83,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+350,_dim_bolig,2010-2012,2024-2026,,,-5.58,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+360,_dim_bolig,2010-2012,2024-2026,,,9.84,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+370,_dim_bolig,2010-2012,2024-2026,,,2.99,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+376,_dim_bolig,2010-2012,2024-2026,,,8.15,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+390,_dim_bolig,2010-2012,2024-2026,,,3.58,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+400,_dim_bolig,2010-2012,2024-2026,,,-6.16,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+410,_dim_bolig,2010-2012,2024-2026,,,19.8,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+420,_dim_bolig,2010-2012,2024-2026,,,9.05,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+430,_dim_bolig,2010-2012,2024-2026,,,11.26,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+440,_dim_bolig,2010-2012,2024-2026,,,-3.02,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+450,_dim_bolig,2010-2012,2024-2026,,,11.27,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+461,_dim_bolig,2010-2012,2024-2026,,,10.49,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+479,_dim_bolig,2010-2012,2024-2026,,,7.94,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+480,_dim_bolig,2010-2012,2024-2026,,,2.97,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+482,_dim_bolig,2010-2012,2024-2026,,,11.31,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+492,_dim_bolig,2010-2012,2024-2026,,,-5.51,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+510,_dim_bolig,2010-2012,2024-2026,,,8.54,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+530,_dim_bolig,2010-2012,2024-2026,,,2.8,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+540,_dim_bolig,2010-2012,2024-2026,,,9.02,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+550,_dim_bolig,2010-2012,2024-2026,,,0.93,stagneret,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+561,_dim_bolig,2010-2012,2024-2026,,,21.26,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+563,_dim_bolig,2010-2012,2024-2026,,,12.68,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+573,_dim_bolig,2010-2012,2024-2026,,,9.66,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+575,_dim_bolig,2010-2012,2024-2026,,,7.06,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+580,_dim_bolig,2010-2012,2024-2026,,,11.07,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+607,_dim_bolig,2010-2012,2024-2026,,,4.22,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+615,_dim_bolig,2010-2012,2024-2026,,,4.36,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+621,_dim_bolig,2010-2012,2024-2026,,,1.33,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+630,_dim_bolig,2010-2012,2024-2026,,,3.54,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+657,_dim_bolig,2010-2012,2024-2026,,,14.9,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+661,_dim_bolig,2010-2012,2024-2026,,,12.75,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+665,_dim_bolig,2010-2012,2024-2026,,,5.67,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+671,_dim_bolig,2010-2012,2024-2026,,,13.45,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+706,_dim_bolig,2010-2012,2024-2026,,,15.11,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+707,_dim_bolig,2010-2012,2024-2026,,,11.39,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+710,_dim_bolig,2010-2012,2024-2026,,,5.01,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+727,_dim_bolig,2010-2012,2024-2026,,,13.17,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+730,_dim_bolig,2010-2012,2024-2026,,,8.81,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+740,_dim_bolig,2010-2012,2024-2026,,,6.64,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+741,_dim_bolig,2010-2012,2024-2026,,,-31.22,forkert,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+746,_dim_bolig,2010-2012,2024-2026,,,16.07,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+751,_dim_bolig,2010-2012,2024-2026,,,19.1,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+756,_dim_bolig,2010-2012,2024-2026,,,0.57,stagneret,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+760,_dim_bolig,2010-2012,2024-2026,,,6.24,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+766,_dim_bolig,2010-2012,2024-2026,,,10.72,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+773,_dim_bolig,2010-2012,2024-2026,,,19.46,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+779,_dim_bolig,2010-2012,2024-2026,,,23.26,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+787,_dim_bolig,2010-2012,2024-2026,,,6.04,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+791,_dim_bolig,2010-2012,2024-2026,,,10.43,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+810,_dim_bolig,2010-2012,2024-2026,,,5.27,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+813,_dim_bolig,2010-2012,2024-2026,,,5.59,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+820,_dim_bolig,2010-2012,2024-2026,,,20.9,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+825,_dim_bolig,2010-2012,2024-2026,,,5.38,tempo,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+840,_dim_bolig,2010-2012,2024-2026,,,18.37,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+846,_dim_bolig,2010-2012,2024-2026,,,18.19,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+849,_dim_bolig,2010-2012,2024-2026,,,19.67,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+851,_dim_bolig,2010-2012,2024-2026,,,15.66,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
+860,_dim_bolig,2010-2012,2024-2026,,,23.08,rigtig,17,Danmarks Statistik,gennemsnit af 1 indikatorer
 101,_dim_demokrati,2011,2026,,,2.72,rigtig,5,Danmarks Statistik,gennemsnit af 2 indikatorer
 147,_dim_demokrati,2011,2026,,,1.09,rigtig,5,Danmarks Statistik,gennemsnit af 2 indikatorer
 151,_dim_demokrati,2011,2026,,,-8.16,forkert,5,Danmarks Statistik,gennemsnit af 2 indikatorer
@@ -3642,300 +3642,6 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,hospital_long,2017-2019,2023-2025,9.3187,9.2697,-0.53,stagneret,9,Danmarks Statistik,
 851,hospital_long,2017-2019,2023-2025,8.3109,7.8907,-5.06,tempo,9,Danmarks Statistik,
 860,hospital_long,2017-2019,2023-2025,9.1928,8.9882,-2.23,tempo,9,Danmarks Statistik,
-101,housing_area,2010-2012,2024-2026,41.8333,40.9333,-2.15,stagneret,17,Danmarks Statistik,
-147,housing_area,2010-2012,2024-2026,48.2333,47.4333,-1.66,stagneret,17,Danmarks Statistik,
-151,housing_area,2010-2012,2024-2026,44.1667,45.3333,2.64,tempo,17,Danmarks Statistik,
-153,housing_area,2010-2012,2024-2026,44.5667,41.6333,-6.58,forkert,17,Danmarks Statistik,
-155,housing_area,2010-2012,2024-2026,52.5,53.8,2.48,tempo,17,Danmarks Statistik,
-157,housing_area,2010-2012,2024-2026,53.0333,54.2,2.2,tempo,17,Danmarks Statistik,
-159,housing_area,2010-2012,2024-2026,41.1667,41.7667,1.46,stagneret,17,Danmarks Statistik,
-161,housing_area,2010-2012,2024-2026,45.2,43.7667,-3.17,forkert,17,Danmarks Statistik,
-163,housing_area,2010-2012,2024-2026,43.2333,43.6667,1.0,stagneret,17,Danmarks Statistik,
-165,housing_area,2010-2012,2024-2026,40.8667,42.0333,2.85,tempo,17,Danmarks Statistik,
-167,housing_area,2010-2012,2024-2026,42.2333,42.1667,-0.16,stagneret,17,Danmarks Statistik,
-169,housing_area,2010-2012,2024-2026,43.4333,41.9667,-3.38,forkert,17,Danmarks Statistik,
-173,housing_area,2010-2012,2024-2026,46.7667,46.8333,0.14,stagneret,17,Danmarks Statistik,
-175,housing_area,2010-2012,2024-2026,42.4,41.5,-2.12,stagneret,17,Danmarks Statistik,
-183,housing_area,2010-2012,2024-2026,43.1333,41.9,-2.86,forkert,17,Danmarks Statistik,
-185,housing_area,2010-2012,2024-2026,43.8333,43.9667,0.3,stagneret,17,Danmarks Statistik,
-187,housing_area,2010-2012,2024-2026,46.0667,43.4333,-5.72,forkert,17,Danmarks Statistik,
-190,housing_area,2010-2012,2024-2026,49.6,51.1,3.02,tempo,17,Danmarks Statistik,
-201,housing_area,2010-2012,2024-2026,49.9,53.1,6.41,tempo,17,Danmarks Statistik,
-210,housing_area,2010-2012,2024-2026,49.8667,51.8667,4.01,tempo,17,Danmarks Statistik,
-217,housing_area,2010-2012,2024-2026,47.7,51.2,7.34,rigtig,17,Danmarks Statistik,
-219,housing_area,2010-2012,2024-2026,48.8,50.9667,4.44,tempo,17,Danmarks Statistik,
-223,housing_area,2010-2012,2024-2026,56.2,59.3333,5.58,tempo,17,Danmarks Statistik,
-230,housing_area,2010-2012,2024-2026,53.9667,56.4333,4.57,tempo,17,Danmarks Statistik,
-240,housing_area,2010-2012,2024-2026,48.3333,50.1667,3.79,tempo,17,Danmarks Statistik,
-250,housing_area,2010-2012,2024-2026,49.6,53.4333,7.73,rigtig,17,Danmarks Statistik,
-253,housing_area,2010-2012,2024-2026,49.7333,50.6333,1.81,stagneret,17,Danmarks Statistik,
-259,housing_area,2010-2012,2024-2026,49.1,51.2,4.28,tempo,17,Danmarks Statistik,
-260,housing_area,2010-2012,2024-2026,48.9,52.5333,7.43,rigtig,17,Danmarks Statistik,
-265,housing_area,2010-2012,2024-2026,47.4667,50.0333,5.41,tempo,17,Danmarks Statistik,
-269,housing_area,2010-2012,2024-2026,50.9333,52.0667,2.23,tempo,17,Danmarks Statistik,
-270,housing_area,2010-2012,2024-2026,52.0,56.9333,9.49,rigtig,17,Danmarks Statistik,
-306,housing_area,2010-2012,2024-2026,55.4667,60.6,9.25,rigtig,17,Danmarks Statistik,
-316,housing_area,2010-2012,2024-2026,51.3,55.0,7.21,rigtig,17,Danmarks Statistik,
-320,housing_area,2010-2012,2024-2026,55.6333,58.2667,4.73,tempo,17,Danmarks Statistik,
-326,housing_area,2010-2012,2024-2026,55.5667,59.9,7.8,rigtig,17,Danmarks Statistik,
-329,housing_area,2010-2012,2024-2026,51.0,53.0333,3.99,tempo,17,Danmarks Statistik,
-330,housing_area,2010-2012,2024-2026,52.2333,54.9,5.11,tempo,17,Danmarks Statistik,
-336,housing_area,2010-2012,2024-2026,56.0333,59.7,6.54,tempo,17,Danmarks Statistik,
-340,housing_area,2010-2012,2024-2026,54.3,58.4333,7.61,rigtig,17,Danmarks Statistik,
-350,housing_area,2010-2012,2024-2026,52.8667,55.3667,4.73,tempo,17,Danmarks Statistik,
-360,housing_area,2010-2012,2024-2026,60.2667,65.6333,8.9,rigtig,17,Danmarks Statistik,
-370,housing_area,2010-2012,2024-2026,53.1,56.0,5.46,tempo,17,Danmarks Statistik,
-376,housing_area,2010-2012,2024-2026,58.5,62.6,7.01,rigtig,17,Danmarks Statistik,
-390,housing_area,2010-2012,2024-2026,57.3,61.5667,7.45,rigtig,17,Danmarks Statistik,
-400,housing_area,2010-2012,2024-2026,60.0,64.1333,6.89,rigtig,17,Danmarks Statistik,
-410,housing_area,2010-2012,2024-2026,55.6,60.2333,8.33,rigtig,17,Danmarks Statistik,
-420,housing_area,2010-2012,2024-2026,58.2,63.2667,8.71,rigtig,17,Danmarks Statistik,
-430,housing_area,2010-2012,2024-2026,59.0333,63.2333,7.11,rigtig,17,Danmarks Statistik,
-440,housing_area,2010-2012,2024-2026,55.1333,59.6333,8.16,rigtig,17,Danmarks Statistik,
-450,housing_area,2010-2012,2024-2026,55.9667,59.7,6.67,rigtig,17,Danmarks Statistik,
-461,housing_area,2010-2012,2024-2026,48.7,50.2667,3.22,tempo,17,Danmarks Statistik,
-479,housing_area,2010-2012,2024-2026,54.9667,58.1,5.7,tempo,17,Danmarks Statistik,
-480,housing_area,2010-2012,2024-2026,58.7,63.5,8.18,rigtig,17,Danmarks Statistik,
-482,housing_area,2010-2012,2024-2026,65.5,70.8333,8.14,rigtig,17,Danmarks Statistik,
-492,housing_area,2010-2012,2024-2026,67.7,75.2667,11.18,rigtig,17,Danmarks Statistik,
-510,housing_area,2010-2012,2024-2026,56.6,61.5667,8.78,rigtig,17,Danmarks Statistik,
-530,housing_area,2010-2012,2024-2026,56.1333,60.4,7.6,rigtig,17,Danmarks Statistik,
-540,housing_area,2010-2012,2024-2026,56.3,61.0333,8.41,rigtig,17,Danmarks Statistik,
-550,housing_area,2010-2012,2024-2026,61.4,67.0333,9.17,rigtig,17,Danmarks Statistik,
-561,housing_area,2010-2012,2024-2026,52.3667,56.9,8.66,rigtig,17,Danmarks Statistik,
-563,housing_area,2010-2012,2024-2026,64.5667,69.4,7.49,rigtig,17,Danmarks Statistik,
-573,housing_area,2010-2012,2024-2026,57.4667,62.8,9.28,rigtig,17,Danmarks Statistik,
-575,housing_area,2010-2012,2024-2026,58.2,63.0,8.25,rigtig,17,Danmarks Statistik,
-580,housing_area,2010-2012,2024-2026,58.1,62.7333,7.97,rigtig,17,Danmarks Statistik,
-607,housing_area,2010-2012,2024-2026,51.9667,55.0667,5.97,tempo,17,Danmarks Statistik,
-615,housing_area,2010-2012,2024-2026,53.1,54.6333,2.89,tempo,17,Danmarks Statistik,
-621,housing_area,2010-2012,2024-2026,53.0333,55.9333,5.47,tempo,17,Danmarks Statistik,
-630,housing_area,2010-2012,2024-2026,54.6,56.8667,4.15,tempo,17,Danmarks Statistik,
-657,housing_area,2010-2012,2024-2026,55.2,59.1,7.07,rigtig,17,Danmarks Statistik,
-661,housing_area,2010-2012,2024-2026,55.3,58.8,6.33,tempo,17,Danmarks Statistik,
-665,housing_area,2010-2012,2024-2026,61.7,69.0,11.83,rigtig,17,Danmarks Statistik,
-671,housing_area,2010-2012,2024-2026,57.8,65.0667,12.57,rigtig,17,Danmarks Statistik,
-706,housing_area,2010-2012,2024-2026,57.8,61.6333,6.63,rigtig,17,Danmarks Statistik,
-707,housing_area,2010-2012,2024-2026,59.0333,64.3,8.92,rigtig,17,Danmarks Statistik,
-710,housing_area,2010-2012,2024-2026,54.8667,58.6333,6.87,rigtig,17,Danmarks Statistik,
-727,housing_area,2010-2012,2024-2026,55.3333,59.4667,7.47,rigtig,17,Danmarks Statistik,
-730,housing_area,2010-2012,2024-2026,54.6,58.1333,6.47,tempo,17,Danmarks Statistik,
-740,housing_area,2010-2012,2024-2026,54.2,56.9,4.98,tempo,17,Danmarks Statistik,
-741,housing_area,2010-2012,2024-2026,69.3333,75.4667,8.85,rigtig,17,Danmarks Statistik,
-746,housing_area,2010-2012,2024-2026,52.6333,55.4333,5.32,tempo,17,Danmarks Statistik,
-751,housing_area,2010-2012,2024-2026,45.8333,46.9333,2.4,tempo,17,Danmarks Statistik,
-756,housing_area,2010-2012,2024-2026,55.9333,59.2667,5.96,tempo,17,Danmarks Statistik,
-760,housing_area,2010-2012,2024-2026,58.0,63.5333,9.54,rigtig,17,Danmarks Statistik,
-766,housing_area,2010-2012,2024-2026,57.6,62.1667,7.93,rigtig,17,Danmarks Statistik,
-773,housing_area,2010-2012,2024-2026,60.9667,67.0667,10.01,rigtig,17,Danmarks Statistik,
-779,housing_area,2010-2012,2024-2026,57.9667,64.4333,11.16,rigtig,17,Danmarks Statistik,
-787,housing_area,2010-2012,2024-2026,60.2333,65.6333,8.97,rigtig,17,Danmarks Statistik,
-791,housing_area,2010-2012,2024-2026,56.3,60.3,7.1,rigtig,17,Danmarks Statistik,
-810,housing_area,2010-2012,2024-2026,59.6333,63.3333,6.2,tempo,17,Danmarks Statistik,
-813,housing_area,2010-2012,2024-2026,57.3667,62.5667,9.06,rigtig,17,Danmarks Statistik,
-820,housing_area,2010-2012,2024-2026,60.2,66.2,9.97,rigtig,17,Danmarks Statistik,
-825,housing_area,2010-2012,2024-2026,68.8,74.9667,8.96,rigtig,17,Danmarks Statistik,
-840,housing_area,2010-2012,2024-2026,59.7333,63.2667,5.92,tempo,17,Danmarks Statistik,
-846,housing_area,2010-2012,2024-2026,58.0333,63.8333,9.99,rigtig,17,Danmarks Statistik,
-849,housing_area,2010-2012,2024-2026,60.2,66.2667,10.08,rigtig,17,Danmarks Statistik,
-851,housing_area,2010-2012,2024-2026,52.1333,54.4,4.35,tempo,17,Danmarks Statistik,
-860,housing_area,2010-2012,2024-2026,58.4667,64.7,10.66,rigtig,17,Danmarks Statistik,
-101,housing_no_bath,2010-2012,2024-2026,7.6351,3.7506,-50.88,rigtig,17,Danmarks Statistik,
-147,housing_no_bath,2010-2012,2024-2026,7.5982,3.9424,-48.11,rigtig,17,Danmarks Statistik,
-151,housing_no_bath,2010-2012,2024-2026,0.2037,0.1277,-37.29,tempo,17,Danmarks Statistik,
-153,housing_no_bath,2010-2012,2024-2026,0.2534,0.1041,-58.91,rigtig,17,Danmarks Statistik,
-155,housing_no_bath,2010-2012,2024-2026,0.8401,0.5702,-32.12,tempo,17,Danmarks Statistik,
-157,housing_no_bath,2010-2012,2024-2026,2.6574,1.852,-30.31,tempo,17,Danmarks Statistik,
-159,housing_no_bath,2010-2012,2024-2026,1.2604,0.8978,-28.76,tempo,17,Danmarks Statistik,
-161,housing_no_bath,2010-2012,2024-2026,2.607,1.2875,-50.61,rigtig,17,Danmarks Statistik,
-163,housing_no_bath,2010-2012,2024-2026,1.1869,0.8884,-25.14,tempo,17,Danmarks Statistik,
-165,housing_no_bath,2010-2012,2024-2026,0.2965,0.2448,-17.43,tempo,17,Danmarks Statistik,
-167,housing_no_bath,2010-2012,2024-2026,1.2465,0.568,-54.43,rigtig,17,Danmarks Statistik,
-169,housing_no_bath,2010-2012,2024-2026,1.3242,0.8277,-37.5,tempo,17,Danmarks Statistik,
-173,housing_no_bath,2010-2012,2024-2026,1.5084,0.9999,-33.71,tempo,17,Danmarks Statistik,
-175,housing_no_bath,2010-2012,2024-2026,1.1996,0.8765,-26.93,tempo,17,Danmarks Statistik,
-183,housing_no_bath,2010-2012,2024-2026,0.1165,0.0736,-36.84,tempo,17,Danmarks Statistik,
-185,housing_no_bath,2010-2012,2024-2026,1.3869,0.8418,-39.31,rigtig,17,Danmarks Statistik,
-187,housing_no_bath,2010-2012,2024-2026,0.1214,0.1198,-1.35,tempo,17,Danmarks Statistik,
-190,housing_no_bath,2010-2012,2024-2026,0.4978,0.3254,-34.63,tempo,17,Danmarks Statistik,
-201,housing_no_bath,2010-2012,2024-2026,0.6016,0.2559,-57.47,rigtig,17,Danmarks Statistik,
-210,housing_no_bath,2010-2012,2024-2026,0.4649,0.2503,-46.16,rigtig,17,Danmarks Statistik,
-217,housing_no_bath,2010-2012,2024-2026,3.275,2.0719,-36.74,tempo,17,Danmarks Statistik,
-219,housing_no_bath,2010-2012,2024-2026,1.5256,0.6627,-56.56,rigtig,17,Danmarks Statistik,
-223,housing_no_bath,2010-2012,2024-2026,0.4993,0.3358,-32.76,tempo,17,Danmarks Statistik,
-230,housing_no_bath,2010-2012,2024-2026,0.5857,0.4182,-28.6,tempo,17,Danmarks Statistik,
-240,housing_no_bath,2010-2012,2024-2026,0.326,0.1997,-38.74,tempo,17,Danmarks Statistik,
-250,housing_no_bath,2010-2012,2024-2026,1.5046,0.9863,-34.45,tempo,17,Danmarks Statistik,
-253,housing_no_bath,2010-2012,2024-2026,0.3757,0.126,-66.46,rigtig,17,Danmarks Statistik,
-259,housing_no_bath,2010-2012,2024-2026,1.3521,0.7849,-41.95,rigtig,17,Danmarks Statistik,
-260,housing_no_bath,2010-2012,2024-2026,2.9651,1.7806,-39.95,rigtig,17,Danmarks Statistik,
-265,housing_no_bath,2010-2012,2024-2026,1.3624,0.6853,-49.7,rigtig,17,Danmarks Statistik,
-269,housing_no_bath,2010-2012,2024-2026,0.4483,0.1866,-58.37,rigtig,17,Danmarks Statistik,
-270,housing_no_bath,2010-2012,2024-2026,1.8651,1.0355,-44.48,rigtig,17,Danmarks Statistik,
-306,housing_no_bath,2010-2012,2024-2026,3.967,2.7399,-30.93,tempo,17,Danmarks Statistik,
-316,housing_no_bath,2010-2012,2024-2026,2.5933,1.497,-42.28,rigtig,17,Danmarks Statistik,
-320,housing_no_bath,2010-2012,2024-2026,1.7658,0.9022,-48.91,rigtig,17,Danmarks Statistik,
-326,housing_no_bath,2010-2012,2024-2026,2.1282,1.4469,-32.02,tempo,17,Danmarks Statistik,
-329,housing_no_bath,2010-2012,2024-2026,1.8888,1.083,-42.66,rigtig,17,Danmarks Statistik,
-330,housing_no_bath,2010-2012,2024-2026,2.1972,1.3201,-39.92,rigtig,17,Danmarks Statistik,
-336,housing_no_bath,2010-2012,2024-2026,2.4512,1.3687,-44.16,rigtig,17,Danmarks Statistik,
-340,housing_no_bath,2010-2012,2024-2026,2.6835,1.474,-45.07,rigtig,17,Danmarks Statistik,
-350,housing_no_bath,2010-2012,2024-2026,1.5274,0.9776,-36.0,tempo,17,Danmarks Statistik,
-360,housing_no_bath,2010-2012,2024-2026,3.4442,2.5935,-24.7,tempo,17,Danmarks Statistik,
-370,housing_no_bath,2010-2012,2024-2026,1.8818,1.1431,-39.25,rigtig,17,Danmarks Statistik,
-376,housing_no_bath,2010-2012,2024-2026,3.3898,2.1936,-35.29,tempo,17,Danmarks Statistik,
-390,housing_no_bath,2010-2012,2024-2026,3.1993,1.9359,-39.49,rigtig,17,Danmarks Statistik,
-400,housing_no_bath,2010-2012,2024-2026,1.7783,1.1611,-34.71,tempo,17,Danmarks Statistik,
-410,housing_no_bath,2010-2012,2024-2026,1.3129,0.7514,-42.77,rigtig,17,Danmarks Statistik,
-420,housing_no_bath,2010-2012,2024-2026,1.3896,0.9315,-32.97,tempo,17,Danmarks Statistik,
-430,housing_no_bath,2010-2012,2024-2026,0.9759,0.5421,-44.45,rigtig,17,Danmarks Statistik,
-440,housing_no_bath,2010-2012,2024-2026,1.1654,0.7423,-36.31,tempo,17,Danmarks Statistik,
-450,housing_no_bath,2010-2012,2024-2026,1.3476,0.6337,-52.98,rigtig,17,Danmarks Statistik,
-461,housing_no_bath,2010-2012,2024-2026,0.8717,0.4517,-48.19,rigtig,17,Danmarks Statistik,
-479,housing_no_bath,2010-2012,2024-2026,1.8741,1.1694,-37.6,tempo,17,Danmarks Statistik,
-480,housing_no_bath,2010-2012,2024-2026,1.5264,0.9615,-37.01,tempo,17,Danmarks Statistik,
-482,housing_no_bath,2010-2012,2024-2026,2.9499,2.0332,-31.08,tempo,17,Danmarks Statistik,
-492,housing_no_bath,2010-2012,2024-2026,2.5857,1.6815,-34.97,tempo,17,Danmarks Statistik,
-510,housing_no_bath,2010-2012,2024-2026,1.132,0.6452,-43.01,rigtig,17,Danmarks Statistik,
-530,housing_no_bath,2010-2012,2024-2026,0.4947,0.3009,-39.18,tempo,17,Danmarks Statistik,
-540,housing_no_bath,2010-2012,2024-2026,1.0123,0.5443,-46.23,rigtig,17,Danmarks Statistik,
-550,housing_no_bath,2010-2012,2024-2026,0.7654,0.5513,-27.97,tempo,17,Danmarks Statistik,
-561,housing_no_bath,2010-2012,2024-2026,1.1368,0.697,-38.69,tempo,17,Danmarks Statistik,
-563,housing_no_bath,2010-2012,2024-2026,1.0624,0.6943,-34.65,tempo,17,Danmarks Statistik,
-573,housing_no_bath,2010-2012,2024-2026,0.8884,0.5472,-38.4,tempo,17,Danmarks Statistik,
-575,housing_no_bath,2010-2012,2024-2026,0.7032,0.3575,-49.17,rigtig,17,Danmarks Statistik,
-580,housing_no_bath,2010-2012,2024-2026,1.0269,0.6328,-38.38,tempo,17,Danmarks Statistik,
-607,housing_no_bath,2010-2012,2024-2026,0.9594,0.6555,-31.67,tempo,17,Danmarks Statistik,
-615,housing_no_bath,2010-2012,2024-2026,1.518,0.6406,-57.8,rigtig,17,Danmarks Statistik,
-621,housing_no_bath,2010-2012,2024-2026,1.176,0.7057,-39.99,rigtig,17,Danmarks Statistik,
-630,housing_no_bath,2010-2012,2024-2026,1.2735,0.6227,-51.1,rigtig,17,Danmarks Statistik,
-657,housing_no_bath,2010-2012,2024-2026,0.8341,0.5164,-38.09,tempo,17,Danmarks Statistik,
-661,housing_no_bath,2010-2012,2024-2026,0.8115,0.5705,-29.7,tempo,17,Danmarks Statistik,
-665,housing_no_bath,2010-2012,2024-2026,1.7884,1.1115,-37.85,tempo,17,Danmarks Statistik,
-671,housing_no_bath,2010-2012,2024-2026,0.8581,0.6024,-29.79,tempo,17,Danmarks Statistik,
-706,housing_no_bath,2010-2012,2024-2026,1.9887,1.1473,-42.31,rigtig,17,Danmarks Statistik,
-707,housing_no_bath,2010-2012,2024-2026,2.2541,1.8447,-18.16,tempo,17,Danmarks Statistik,
-710,housing_no_bath,2010-2012,2024-2026,1.1983,0.5459,-54.44,rigtig,17,Danmarks Statistik,
-727,housing_no_bath,2010-2012,2024-2026,1.3583,0.7442,-45.21,rigtig,17,Danmarks Statistik,
-730,housing_no_bath,2010-2012,2024-2026,1.4238,0.8695,-38.93,tempo,17,Danmarks Statistik,
-740,housing_no_bath,2010-2012,2024-2026,1.4026,0.6794,-51.56,rigtig,17,Danmarks Statistik,
-741,housing_no_bath,2010-2012,2024-2026,3.3792,1.4458,-57.22,rigtig,17,Danmarks Statistik,
-746,housing_no_bath,2010-2012,2024-2026,0.9971,0.5071,-49.14,rigtig,17,Danmarks Statistik,
-751,housing_no_bath,2010-2012,2024-2026,1.0811,0.4995,-53.8,rigtig,17,Danmarks Statistik,
-756,housing_no_bath,2010-2012,2024-2026,0.7024,0.4203,-40.17,rigtig,17,Danmarks Statistik,
-760,housing_no_bath,2010-2012,2024-2026,0.9245,0.6272,-32.15,tempo,17,Danmarks Statistik,
-766,housing_no_bath,2010-2012,2024-2026,0.9765,0.4795,-50.9,rigtig,17,Danmarks Statistik,
-773,housing_no_bath,2010-2012,2024-2026,3.7022,2.5881,-30.09,tempo,17,Danmarks Statistik,
-779,housing_no_bath,2010-2012,2024-2026,1.1625,0.7785,-33.03,tempo,17,Danmarks Statistik,
-787,housing_no_bath,2010-2012,2024-2026,2.3546,1.5072,-35.99,tempo,17,Danmarks Statistik,
-791,housing_no_bath,2010-2012,2024-2026,1.1633,0.6773,-41.78,rigtig,17,Danmarks Statistik,
-810,housing_no_bath,2010-2012,2024-2026,1.0867,0.7012,-35.47,tempo,17,Danmarks Statistik,
-813,housing_no_bath,2010-2012,2024-2026,1.6947,1.0039,-40.76,rigtig,17,Danmarks Statistik,
-820,housing_no_bath,2010-2012,2024-2026,1.7645,0.1401,-92.06,rigtig,17,Danmarks Statistik,
-825,housing_no_bath,2010-2012,2024-2026,0.7167,0.4064,-43.3,rigtig,17,Danmarks Statistik,
-840,housing_no_bath,2010-2012,2024-2026,1.6743,0.9328,-44.29,rigtig,17,Danmarks Statistik,
-846,housing_no_bath,2010-2012,2024-2026,2.143,0.081,-96.22,rigtig,17,Danmarks Statistik,
-849,housing_no_bath,2010-2012,2024-2026,1.1965,0.7383,-38.29,tempo,17,Danmarks Statistik,
-851,housing_no_bath,2010-2012,2024-2026,1.3241,0.7422,-43.95,rigtig,17,Danmarks Statistik,
-860,housing_no_bath,2010-2012,2024-2026,1.7588,1.1555,-34.3,tempo,17,Danmarks Statistik,
-101,housing_no_wc,2010-2012,2024-2026,1.3665,0.8802,-35.59,rigtig,17,Danmarks Statistik,
-147,housing_no_wc,2010-2012,2024-2026,1.6728,1.4719,-12.01,tempo,17,Danmarks Statistik,
-151,housing_no_wc,2010-2012,2024-2026,0.1308,0.5909,351.78,forkert,17,Danmarks Statistik,
-153,housing_no_wc,2010-2012,2024-2026,0.0,0.1871,,ingen,17,Danmarks Statistik,
-155,housing_no_wc,2010-2012,2024-2026,0.3854,0.2933,-23.91,tempo,17,Danmarks Statistik,
-157,housing_no_wc,2010-2012,2024-2026,0.9648,0.8015,-16.93,tempo,17,Danmarks Statistik,
-159,housing_no_wc,2010-2012,2024-2026,0.1106,0.0745,-32.66,rigtig,17,Danmarks Statistik,
-161,housing_no_wc,2010-2012,2024-2026,0.1246,0.0638,-48.82,rigtig,17,Danmarks Statistik,
-163,housing_no_wc,2010-2012,2024-2026,0.1322,0.0396,-70.06,rigtig,17,Danmarks Statistik,
-165,housing_no_wc,2010-2012,2024-2026,0.1833,0.1718,-6.26,tempo,17,Danmarks Statistik,
-167,housing_no_wc,2010-2012,2024-2026,0.2104,0.4442,111.12,forkert,17,Danmarks Statistik,
-169,housing_no_wc,2010-2012,2024-2026,0.1217,0.116,-4.66,tempo,17,Danmarks Statistik,
-173,housing_no_wc,2010-2012,2024-2026,1.085,0.5321,-50.96,rigtig,17,Danmarks Statistik,
-175,housing_no_wc,2010-2012,2024-2026,0.1993,0.1562,-21.63,tempo,17,Danmarks Statistik,
-183,housing_no_wc,2010-2012,2024-2026,0.1199,0.2199,83.38,forkert,17,Danmarks Statistik,
-185,housing_no_wc,2010-2012,2024-2026,0.3422,0.3011,-12.01,tempo,17,Danmarks Statistik,
-187,housing_no_wc,2010-2012,2024-2026,0.0,0.0276,,ingen,17,Danmarks Statistik,
-190,housing_no_wc,2010-2012,2024-2026,0.112,0.0185,-83.48,rigtig,17,Danmarks Statistik,
-201,housing_no_wc,2010-2012,2024-2026,0.2574,0.7177,178.88,forkert,17,Danmarks Statistik,
-210,housing_no_wc,2010-2012,2024-2026,0.1334,0.1019,-23.57,tempo,17,Danmarks Statistik,
-217,housing_no_wc,2010-2012,2024-2026,0.6775,0.5601,-17.32,tempo,17,Danmarks Statistik,
-219,housing_no_wc,2010-2012,2024-2026,0.6926,0.8167,17.91,forkert,17,Danmarks Statistik,
-223,housing_no_wc,2010-2012,2024-2026,0.1744,0.1593,-8.66,tempo,17,Danmarks Statistik,
-230,housing_no_wc,2010-2012,2024-2026,0.2418,0.4259,76.13,forkert,17,Danmarks Statistik,
-240,housing_no_wc,2010-2012,2024-2026,0.2043,0.0882,-56.83,rigtig,17,Danmarks Statistik,
-250,housing_no_wc,2010-2012,2024-2026,0.5685,0.4504,-20.78,tempo,17,Danmarks Statistik,
-253,housing_no_wc,2010-2012,2024-2026,0.1623,0.1484,-8.53,tempo,17,Danmarks Statistik,
-259,housing_no_wc,2010-2012,2024-2026,0.593,0.3935,-33.64,rigtig,17,Danmarks Statistik,
-260,housing_no_wc,2010-2012,2024-2026,1.1451,0.9583,-16.32,tempo,17,Danmarks Statistik,
-265,housing_no_wc,2010-2012,2024-2026,1.1769,1.2919,9.77,forkert,17,Danmarks Statistik,
-269,housing_no_wc,2010-2012,2024-2026,0.1188,0.1061,-10.64,tempo,17,Danmarks Statistik,
-270,housing_no_wc,2010-2012,2024-2026,0.7547,0.5252,-30.4,rigtig,17,Danmarks Statistik,
-306,housing_no_wc,2010-2012,2024-2026,1.7867,1.435,-19.68,tempo,17,Danmarks Statistik,
-316,housing_no_wc,2010-2012,2024-2026,1.138,0.9037,-20.59,tempo,17,Danmarks Statistik,
-320,housing_no_wc,2010-2012,2024-2026,0.6989,0.8467,21.15,forkert,17,Danmarks Statistik,
-326,housing_no_wc,2010-2012,2024-2026,0.9401,0.7002,-25.52,tempo,17,Danmarks Statistik,
-329,housing_no_wc,2010-2012,2024-2026,1.1206,0.8358,-25.42,tempo,17,Danmarks Statistik,
-330,housing_no_wc,2010-2012,2024-2026,1.0014,0.6654,-33.56,rigtig,17,Danmarks Statistik,
-336,housing_no_wc,2010-2012,2024-2026,0.7687,0.5891,-23.37,tempo,17,Danmarks Statistik,
-340,housing_no_wc,2010-2012,2024-2026,0.8023,0.4008,-50.04,rigtig,17,Danmarks Statistik,
-350,housing_no_wc,2010-2012,2024-2026,0.3048,0.1966,-35.5,rigtig,17,Danmarks Statistik,
-360,housing_no_wc,2010-2012,2024-2026,0.8603,0.4934,-42.65,rigtig,17,Danmarks Statistik,
-370,housing_no_wc,2010-2012,2024-2026,0.7109,0.5143,-27.66,rigtig,17,Danmarks Statistik,
-376,housing_no_wc,2010-2012,2024-2026,1.0279,0.7031,-31.6,rigtig,17,Danmarks Statistik,
-390,housing_no_wc,2010-2012,2024-2026,1.3246,0.8351,-36.95,rigtig,17,Danmarks Statistik,
-400,housing_no_wc,2010-2012,2024-2026,0.7912,0.5931,-25.03,tempo,17,Danmarks Statistik,
-410,housing_no_wc,2010-2012,2024-2026,0.7256,0.3174,-56.26,rigtig,17,Danmarks Statistik,
-420,housing_no_wc,2010-2012,2024-2026,0.2945,0.2211,-24.93,tempo,17,Danmarks Statistik,
-430,housing_no_wc,2010-2012,2024-2026,0.7491,0.4178,-44.23,rigtig,17,Danmarks Statistik,
-440,housing_no_wc,2010-2012,2024-2026,0.5536,0.3062,-44.7,rigtig,17,Danmarks Statistik,
-450,housing_no_wc,2010-2012,2024-2026,0.4385,0.1262,-71.22,rigtig,17,Danmarks Statistik,
-461,housing_no_wc,2010-2012,2024-2026,1.3099,0.8703,-33.56,rigtig,17,Danmarks Statistik,
-479,housing_no_wc,2010-2012,2024-2026,0.9847,0.7298,-25.88,tempo,17,Danmarks Statistik,
-480,housing_no_wc,2010-2012,2024-2026,0.4655,0.2852,-38.72,rigtig,17,Danmarks Statistik,
-482,housing_no_wc,2010-2012,2024-2026,0.7767,0.4625,-40.45,rigtig,17,Danmarks Statistik,
-492,housing_no_wc,2010-2012,2024-2026,1.2365,0.5878,-52.46,rigtig,17,Danmarks Statistik,
-510,housing_no_wc,2010-2012,2024-2026,0.7057,0.4874,-30.93,rigtig,17,Danmarks Statistik,
-530,housing_no_wc,2010-2012,2024-2026,0.2846,0.2797,-1.72,tempo,17,Danmarks Statistik,
-540,housing_no_wc,2010-2012,2024-2026,0.335,0.2821,-15.78,tempo,17,Danmarks Statistik,
-550,housing_no_wc,2010-2012,2024-2026,0.3309,0.2653,-19.82,tempo,17,Danmarks Statistik,
-561,housing_no_wc,2010-2012,2024-2026,0.7069,0.516,-27.0,rigtig,17,Danmarks Statistik,
-563,housing_no_wc,2010-2012,2024-2026,0.4249,0.3665,-13.76,tempo,17,Danmarks Statistik,
-573,housing_no_wc,2010-2012,2024-2026,0.2559,0.2386,-6.77,tempo,17,Danmarks Statistik,
-575,housing_no_wc,2010-2012,2024-2026,0.3117,0.2137,-31.44,rigtig,17,Danmarks Statistik,
-580,housing_no_wc,2010-2012,2024-2026,0.5777,0.4077,-29.43,rigtig,17,Danmarks Statistik,
-607,housing_no_wc,2010-2012,2024-2026,0.6943,0.506,-27.13,rigtig,17,Danmarks Statistik,
-615,housing_no_wc,2010-2012,2024-2026,1.2399,0.953,-23.14,tempo,17,Danmarks Statistik,
-621,housing_no_wc,2010-2012,2024-2026,0.4694,0.4583,-2.36,tempo,17,Danmarks Statistik,
-630,housing_no_wc,2010-2012,2024-2026,0.9279,0.4064,-56.2,rigtig,17,Danmarks Statistik,
-657,housing_no_wc,2010-2012,2024-2026,0.967,0.6029,-37.65,rigtig,17,Danmarks Statistik,
-661,housing_no_wc,2010-2012,2024-2026,0.9326,0.4994,-46.45,rigtig,17,Danmarks Statistik,
-665,housing_no_wc,2010-2012,2024-2026,0.37,0.5067,36.97,forkert,17,Danmarks Statistik,
-671,housing_no_wc,2010-2012,2024-2026,0.2516,0.2397,-4.7,tempo,17,Danmarks Statistik,
-706,housing_no_wc,2010-2012,2024-2026,0.3357,0.2518,-24.99,tempo,17,Danmarks Statistik,
-707,housing_no_wc,2010-2012,2024-2026,0.6165,0.8644,40.22,forkert,17,Danmarks Statistik,
-710,housing_no_wc,2010-2012,2024-2026,0.3194,0.2069,-35.21,rigtig,17,Danmarks Statistik,
-727,housing_no_wc,2010-2012,2024-2026,0.4245,0.4395,3.53,forkert,17,Danmarks Statistik,
-730,housing_no_wc,2010-2012,2024-2026,0.5605,0.3474,-38.01,rigtig,17,Danmarks Statistik,
-740,housing_no_wc,2010-2012,2024-2026,0.9109,0.3838,-57.86,rigtig,17,Danmarks Statistik,
-741,housing_no_wc,2010-2012,2024-2026,0.4972,0.2721,-45.27,rigtig,17,Danmarks Statistik,
-746,housing_no_wc,2010-2012,2024-2026,0.3024,0.3402,12.49,forkert,17,Danmarks Statistik,
-751,housing_no_wc,2010-2012,2024-2026,2.3535,1.3128,-44.22,rigtig,17,Danmarks Statistik,
-756,housing_no_wc,2010-2012,2024-2026,0.2335,0.2406,3.04,forkert,17,Danmarks Statistik,
-760,housing_no_wc,2010-2012,2024-2026,0.4835,0.3478,-28.06,rigtig,17,Danmarks Statistik,
-766,housing_no_wc,2010-2012,2024-2026,0.1717,0.0778,-54.7,rigtig,17,Danmarks Statistik,
-773,housing_no_wc,2010-2012,2024-2026,0.5538,0.4218,-23.84,tempo,17,Danmarks Statistik,
-779,housing_no_wc,2010-2012,2024-2026,0.5397,0.4104,-23.96,tempo,17,Danmarks Statistik,
-787,housing_no_wc,2010-2012,2024-2026,0.7398,0.8731,18.01,forkert,17,Danmarks Statistik,
-791,housing_no_wc,2010-2012,2024-2026,0.639,0.451,-29.42,rigtig,17,Danmarks Statistik,
-810,housing_no_wc,2010-2012,2024-2026,0.2716,0.1704,-37.26,rigtig,17,Danmarks Statistik,
-813,housing_no_wc,2010-2012,2024-2026,0.3873,0.2307,-40.43,rigtig,17,Danmarks Statistik,
-820,housing_no_wc,2010-2012,2024-2026,0.8417,0.2362,-71.94,rigtig,17,Danmarks Statistik,
-825,housing_no_wc,2010-2012,2024-2026,0.2607,0.3383,29.75,forkert,17,Danmarks Statistik,
-840,housing_no_wc,2010-2012,2024-2026,0.2262,0.0998,-55.89,rigtig,17,Danmarks Statistik,
-846,housing_no_wc,2010-2012,2024-2026,0.6198,0.2892,-53.34,rigtig,17,Danmarks Statistik,
-849,housing_no_wc,2010-2012,2024-2026,0.2506,0.1421,-43.29,rigtig,17,Danmarks Statistik,
-851,housing_no_wc,2010-2012,2024-2026,1.2188,0.6839,-43.88,rigtig,17,Danmarks Statistik,
-860,housing_no_wc,2010-2012,2024-2026,0.6216,0.4321,-30.49,rigtig,17,Danmarks Statistik,
 101,income_gender_gap,2010-2012,2022-2024,95.8007,90.8282,-5.19,forkert,15,Danmarks Statistik,
 147,income_gender_gap,2010-2012,2022-2024,89.3086,87.3204,-2.23,forkert,15,Danmarks Statistik,
 151,income_gender_gap,2010-2012,2022-2024,91.8707,87.8411,-4.39,forkert,15,Danmarks Statistik,
@@ -5787,104 +5493,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,traffic_accidents,2010-2012,2023-2025,167.2167,81.1133,-51.49,rigtig,16,Danmarks Statistik,
 851,traffic_accidents,2010-2012,2023-2025,112.9833,56.2367,-50.23,rigtig,16,Danmarks Statistik,
 860,traffic_accidents,2010-2012,2023-2025,137.71,76.0933,-44.74,tempo,16,Danmarks Statistik,
-101,vacant_housing,2010-2012,2024-2026,5.28,4.7767,-9.53,rigtig,15,Danmarks Statistik,
-147,vacant_housing,2010-2012,2024-2026,4.3367,3.2433,-25.21,rigtig,15,Danmarks Statistik,
-151,vacant_housing,2010-2012,2024-2026,2.12,2.3867,12.58,forkert,15,Danmarks Statistik,
-153,vacant_housing,2010-2012,2024-2026,1.9167,2.8533,48.87,forkert,15,Danmarks Statistik,
-155,vacant_housing,2010-2012,2024-2026,2.9233,2.8167,-3.65,rigtig,15,Danmarks Statistik,
-157,vacant_housing,2010-2012,2024-2026,7.6367,5.7267,-25.01,rigtig,15,Danmarks Statistik,
-159,vacant_housing,2010-2012,2024-2026,3.57,3.5633,-0.19,stagneret,15,Danmarks Statistik,
-161,vacant_housing,2010-2012,2024-2026,3.12,3.9767,27.46,forkert,15,Danmarks Statistik,
-163,vacant_housing,2010-2012,2024-2026,2.7067,3.3167,22.54,forkert,15,Danmarks Statistik,
-165,vacant_housing,2010-2012,2024-2026,2.3867,8.0467,237.15,forkert,15,Danmarks Statistik,
-167,vacant_housing,2010-2012,2024-2026,3.3,2.5733,-22.02,rigtig,15,Danmarks Statistik,
-169,vacant_housing,2010-2012,2024-2026,3.53,5.1133,44.85,forkert,15,Danmarks Statistik,
-173,vacant_housing,2010-2012,2024-2026,4.5867,4.4167,-3.71,rigtig,15,Danmarks Statistik,
-175,vacant_housing,2010-2012,2024-2026,4.2933,3.4033,-20.73,rigtig,15,Danmarks Statistik,
-183,vacant_housing,2010-2012,2024-2026,4.6033,2.6967,-41.42,rigtig,15,Danmarks Statistik,
-185,vacant_housing,2010-2012,2024-2026,2.3133,2.31,-0.14,stagneret,15,Danmarks Statistik,
-187,vacant_housing,2010-2012,2024-2026,3.8567,2.6867,-30.34,rigtig,15,Danmarks Statistik,
-190,vacant_housing,2010-2012,2024-2026,4.4467,3.2167,-27.66,rigtig,15,Danmarks Statistik,
-201,vacant_housing,2010-2012,2024-2026,2.46,2.89,17.48,forkert,15,Danmarks Statistik,
-210,vacant_housing,2010-2012,2024-2026,4.0,3.6433,-8.92,rigtig,15,Danmarks Statistik,
-217,vacant_housing,2010-2012,2024-2026,5.2067,4.41,-15.3,rigtig,15,Danmarks Statistik,
-219,vacant_housing,2010-2012,2024-2026,3.9667,4.0767,2.77,forkert,15,Danmarks Statistik,
-223,vacant_housing,2010-2012,2024-2026,4.4967,4.4367,-1.33,rigtig,15,Danmarks Statistik,
-230,vacant_housing,2010-2012,2024-2026,4.5133,5.08,12.56,forkert,15,Danmarks Statistik,
-240,vacant_housing,2010-2012,2024-2026,2.4967,2.7933,11.88,forkert,15,Danmarks Statistik,
-250,vacant_housing,2010-2012,2024-2026,4.14,3.9,-5.8,rigtig,15,Danmarks Statistik,
-253,vacant_housing,2010-2012,2024-2026,3.1167,2.7833,-10.7,rigtig,15,Danmarks Statistik,
-259,vacant_housing,2010-2012,2024-2026,3.4233,3.4467,0.68,stagneret,15,Danmarks Statistik,
-260,vacant_housing,2010-2012,2024-2026,5.51,4.2767,-22.38,rigtig,15,Danmarks Statistik,
-265,vacant_housing,2010-2012,2024-2026,3.3933,3.8133,12.38,forkert,15,Danmarks Statistik,
-269,vacant_housing,2010-2012,2024-2026,2.9367,2.6667,-9.19,rigtig,15,Danmarks Statistik,
-270,vacant_housing,2010-2012,2024-2026,5.4167,5.22,-3.63,rigtig,15,Danmarks Statistik,
-306,vacant_housing,2010-2012,2024-2026,9.2767,8.9833,-3.16,rigtig,15,Danmarks Statistik,
-316,vacant_housing,2010-2012,2024-2026,4.94,4.8333,-2.16,rigtig,15,Danmarks Statistik,
-320,vacant_housing,2010-2012,2024-2026,6.69,5.5467,-17.09,rigtig,15,Danmarks Statistik,
-326,vacant_housing,2010-2012,2024-2026,6.9267,7.3033,5.44,forkert,15,Danmarks Statistik,
-329,vacant_housing,2010-2012,2024-2026,4.8767,4.2067,-13.74,rigtig,15,Danmarks Statistik,
-330,vacant_housing,2010-2012,2024-2026,6.65,6.4133,-3.56,rigtig,15,Danmarks Statistik,
-336,vacant_housing,2010-2012,2024-2026,7.2067,6.2833,-12.81,rigtig,15,Danmarks Statistik,
-340,vacant_housing,2010-2012,2024-2026,6.18,5.19,-16.02,rigtig,15,Danmarks Statistik,
-350,vacant_housing,2010-2012,2024-2026,3.9033,3.7267,-4.53,rigtig,15,Danmarks Statistik,
-360,vacant_housing,2010-2012,2024-2026,12.17,15.1133,24.19,forkert,15,Danmarks Statistik,
-370,vacant_housing,2010-2012,2024-2026,5.8167,4.2033,-27.74,rigtig,15,Danmarks Statistik,
-376,vacant_housing,2010-2012,2024-2026,9.0033,9.9033,10.0,forkert,15,Danmarks Statistik,
-390,vacant_housing,2010-2012,2024-2026,9.9133,10.75,8.44,stagneret,15,Danmarks Statistik,
-400,vacant_housing,2010-2012,2024-2026,6.7467,11.4033,69.02,forkert,15,Danmarks Statistik,
-410,vacant_housing,2010-2012,2024-2026,5.76,5.9333,3.01,forkert,15,Danmarks Statistik,
-420,vacant_housing,2010-2012,2024-2026,6.52,7.3133,12.17,forkert,15,Danmarks Statistik,
-430,vacant_housing,2010-2012,2024-2026,6.2,7.13,15.0,forkert,15,Danmarks Statistik,
-440,vacant_housing,2010-2012,2024-2026,4.87,5.63,15.61,forkert,15,Danmarks Statistik,
-450,vacant_housing,2010-2012,2024-2026,5.4033,6.1833,14.44,forkert,15,Danmarks Statistik,
-461,vacant_housing,2010-2012,2024-2026,4.28,5.7367,34.03,forkert,15,Danmarks Statistik,
-479,vacant_housing,2010-2012,2024-2026,6.1433,6.0633,-1.3,rigtig,15,Danmarks Statistik,
-480,vacant_housing,2010-2012,2024-2026,6.4467,7.0533,9.41,forkert,15,Danmarks Statistik,
-482,vacant_housing,2010-2012,2024-2026,22.9133,26.6533,16.32,forkert,15,Danmarks Statistik,
-492,vacant_housing,2010-2012,2024-2026,22.2467,29.34,31.88,forkert,15,Danmarks Statistik,
-510,vacant_housing,2010-2012,2024-2026,7.48,7.72,3.21,forkert,15,Danmarks Statistik,
-530,vacant_housing,2010-2012,2024-2026,6.4633,7.7,19.13,forkert,15,Danmarks Statistik,
-540,vacant_housing,2010-2012,2024-2026,7.1067,6.79,-4.46,rigtig,15,Danmarks Statistik,
-550,vacant_housing,2010-2012,2024-2026,12.9967,12.8833,-0.87,stagneret,15,Danmarks Statistik,
-561,vacant_housing,2010-2012,2024-2026,4.6733,6.59,41.01,forkert,15,Danmarks Statistik,
-563,vacant_housing,2010-2012,2024-2026,5.86,7.47,27.47,forkert,15,Danmarks Statistik,
-573,vacant_housing,2010-2012,2024-2026,7.6167,8.42,10.55,forkert,15,Danmarks Statistik,
-575,vacant_housing,2010-2012,2024-2026,6.2667,6.55,4.52,forkert,15,Danmarks Statistik,
-580,vacant_housing,2010-2012,2024-2026,7.1967,6.6267,-7.92,rigtig,15,Danmarks Statistik,
-607,vacant_housing,2010-2012,2024-2026,5.6167,5.7233,1.9,forkert,15,Danmarks Statistik,
-615,vacant_housing,2010-2012,2024-2026,5.7233,5.8467,2.15,forkert,15,Danmarks Statistik,
-621,vacant_housing,2010-2012,2024-2026,5.5133,6.8667,24.55,forkert,15,Danmarks Statistik,
-630,vacant_housing,2010-2012,2024-2026,6.5867,5.84,-11.34,rigtig,15,Danmarks Statistik,
-657,vacant_housing,2010-2012,2024-2026,5.8367,7.5033,28.56,forkert,15,Danmarks Statistik,
-661,vacant_housing,2010-2012,2024-2026,6.3067,7.5,18.92,forkert,15,Danmarks Statistik,
-665,vacant_housing,2010-2012,2024-2026,11.2667,14.55,29.14,forkert,15,Danmarks Statistik,
-671,vacant_housing,2010-2012,2024-2026,8.4267,9.9867,18.51,forkert,15,Danmarks Statistik,
-706,vacant_housing,2010-2012,2024-2026,7.4767,8.3867,12.17,forkert,15,Danmarks Statistik,
-707,vacant_housing,2010-2012,2024-2026,8.0467,9.2633,15.12,forkert,15,Danmarks Statistik,
-710,vacant_housing,2010-2012,2024-2026,3.9033,4.47,14.52,forkert,15,Danmarks Statistik,
-727,vacant_housing,2010-2012,2024-2026,5.0633,5.2167,3.03,forkert,15,Danmarks Statistik,
-730,vacant_housing,2010-2012,2024-2026,5.6933,6.58,15.57,forkert,15,Danmarks Statistik,
-740,vacant_housing,2010-2012,2024-2026,4.5467,5.3633,17.96,forkert,15,Danmarks Statistik,
-741,vacant_housing,2010-2012,2024-2026,28.9833,35.1467,21.27,forkert,15,Danmarks Statistik,
-746,vacant_housing,2010-2012,2024-2026,3.5,3.85,10.0,forkert,15,Danmarks Statistik,
-751,vacant_housing,2010-2012,2024-2026,3.2733,4.3767,33.71,forkert,15,Danmarks Statistik,
-756,vacant_housing,2010-2012,2024-2026,5.5167,6.41,16.19,forkert,15,Danmarks Statistik,
-760,vacant_housing,2010-2012,2024-2026,7.8367,8.5433,9.02,forkert,15,Danmarks Statistik,
-766,vacant_housing,2010-2012,2024-2026,5.1533,6.0467,17.34,forkert,15,Danmarks Statistik,
-773,vacant_housing,2010-2012,2024-2026,10.18,12.1033,18.89,forkert,15,Danmarks Statistik,
-779,vacant_housing,2010-2012,2024-2026,7.7567,9.6167,23.98,forkert,15,Danmarks Statistik,
-787,vacant_housing,2010-2012,2024-2026,10.09,11.4167,13.15,forkert,15,Danmarks Statistik,
-791,vacant_housing,2010-2012,2024-2026,5.9633,7.3033,22.47,forkert,15,Danmarks Statistik,
-810,vacant_housing,2010-2012,2024-2026,7.2667,8.4933,16.88,forkert,15,Danmarks Statistik,
-813,vacant_housing,2010-2012,2024-2026,11.0033,15.0733,36.99,forkert,15,Danmarks Statistik,
-820,vacant_housing,2010-2012,2024-2026,8.85,11.24,27.01,forkert,15,Danmarks Statistik,
-825,vacant_housing,2010-2012,2024-2026,27.7433,35.4433,27.75,forkert,15,Danmarks Statistik,
-840,vacant_housing,2010-2012,2024-2026,6.0067,6.4267,6.99,forkert,15,Danmarks Statistik,
-846,vacant_housing,2010-2012,2024-2026,7.9233,9.13,15.23,forkert,15,Danmarks Statistik,
-849,vacant_housing,2010-2012,2024-2026,9.63,12.3433,28.18,forkert,15,Danmarks Statistik,
-851,vacant_housing,2010-2012,2024-2026,4.81,6.5833,36.87,forkert,15,Danmarks Statistik,
-860,vacant_housing,2010-2012,2024-2026,9.3,11.2367,20.82,forkert,15,Danmarks Statistik,
+101,trangboethed,2010-2012,2024-2026,19.2767,18.5933,-3.54,stagneret,17,Danmarks Statistik,
+147,trangboethed,2010-2012,2024-2026,12.26,11.4433,-6.66,stagneret,17,Danmarks Statistik,
+151,trangboethed,2010-2012,2024-2026,13.18,12.7333,-3.39,stagneret,17,Danmarks Statistik,
+153,trangboethed,2010-2012,2024-2026,13.1733,19.7633,50.03,forkert,17,Danmarks Statistik,
+155,trangboethed,2010-2012,2024-2026,8.7,8.7633,0.73,stagneret,17,Danmarks Statistik,
+157,trangboethed,2010-2012,2024-2026,10.8467,10.1533,-6.39,stagneret,17,Danmarks Statistik,
+159,trangboethed,2010-2012,2024-2026,15.0667,16.76,11.24,forkert,17,Danmarks Statistik,
+161,trangboethed,2010-2012,2024-2026,12.2367,19.27,57.48,forkert,17,Danmarks Statistik,
+163,trangboethed,2010-2012,2024-2026,12.6667,14.68,15.89,forkert,17,Danmarks Statistik,
+165,trangboethed,2010-2012,2024-2026,18.8567,19.2233,1.94,stagneret,17,Danmarks Statistik,
+167,trangboethed,2010-2012,2024-2026,15.9033,16.2567,2.22,stagneret,17,Danmarks Statistik,
+169,trangboethed,2010-2012,2024-2026,17.7467,22.9133,29.11,forkert,17,Danmarks Statistik,
+173,trangboethed,2010-2012,2024-2026,10.54,10.4933,-0.44,stagneret,17,Danmarks Statistik,
+175,trangboethed,2010-2012,2024-2026,15.4667,18.1733,17.5,forkert,17,Danmarks Statistik,
+183,trangboethed,2010-2012,2024-2026,18.9667,25.14,32.55,forkert,17,Danmarks Statistik,
+185,trangboethed,2010-2012,2024-2026,12.41,12.6667,2.07,stagneret,17,Danmarks Statistik,
+187,trangboethed,2010-2012,2024-2026,15.63,23.9733,53.38,forkert,17,Danmarks Statistik,
+190,trangboethed,2010-2012,2024-2026,11.68,10.35,-11.39,rigtig,17,Danmarks Statistik,
+201,trangboethed,2010-2012,2024-2026,9.34,8.79,-5.89,tempo,17,Danmarks Statistik,
+210,trangboethed,2010-2012,2024-2026,11.61,11.81,1.72,stagneret,17,Danmarks Statistik,
+217,trangboethed,2010-2012,2024-2026,14.0533,12.1733,-13.38,rigtig,17,Danmarks Statistik,
+219,trangboethed,2010-2012,2024-2026,11.2767,10.38,-7.95,stagneret,17,Danmarks Statistik,
+223,trangboethed,2010-2012,2024-2026,7.7767,6.82,-12.3,rigtig,17,Danmarks Statistik,
+230,trangboethed,2010-2012,2024-2026,9.78,7.5233,-23.07,rigtig,17,Danmarks Statistik,
+240,trangboethed,2010-2012,2024-2026,9.83,10.5433,7.26,stagneret,17,Danmarks Statistik,
+250,trangboethed,2010-2012,2024-2026,12.4667,10.5367,-15.48,rigtig,17,Danmarks Statistik,
+253,trangboethed,2010-2012,2024-2026,9.64,11.3867,18.12,forkert,17,Danmarks Statistik,
+259,trangboethed,2010-2012,2024-2026,13.2367,12.6833,-4.18,stagneret,17,Danmarks Statistik,
+260,trangboethed,2010-2012,2024-2026,13.0967,13.72,4.76,stagneret,17,Danmarks Statistik,
+265,trangboethed,2010-2012,2024-2026,11.5467,10.2767,-11.0,rigtig,17,Danmarks Statistik,
+269,trangboethed,2010-2012,2024-2026,7.5,8.2167,9.56,forkert,17,Danmarks Statistik,
+270,trangboethed,2010-2012,2024-2026,12.3,11.2,-8.94,rigtig,17,Danmarks Statistik,
+306,trangboethed,2010-2012,2024-2026,10.2533,8.4633,-17.46,rigtig,17,Danmarks Statistik,
+316,trangboethed,2010-2012,2024-2026,11.2767,10.2633,-8.99,rigtig,17,Danmarks Statistik,
+320,trangboethed,2010-2012,2024-2026,9.2433,9.8233,6.27,forkert,17,Danmarks Statistik,
+326,trangboethed,2010-2012,2024-2026,10.5133,9.24,-12.11,rigtig,17,Danmarks Statistik,
+329,trangboethed,2010-2012,2024-2026,11.92,12.9,8.22,stagneret,17,Danmarks Statistik,
+330,trangboethed,2010-2012,2024-2026,10.25,9.9933,-2.5,stagneret,17,Danmarks Statistik,
+336,trangboethed,2010-2012,2024-2026,10.5633,9.5733,-9.37,stagneret,17,Danmarks Statistik,
+340,trangboethed,2010-2012,2024-2026,9.72,9.1533,-5.83,tempo,17,Danmarks Statistik,
+350,trangboethed,2010-2012,2024-2026,10.63,11.2233,5.58,stagneret,17,Danmarks Statistik,
+360,trangboethed,2010-2012,2024-2026,8.2333,7.4233,-9.84,rigtig,17,Danmarks Statistik,
+370,trangboethed,2010-2012,2024-2026,9.3633,9.0833,-2.99,tempo,17,Danmarks Statistik,
+376,trangboethed,2010-2012,2024-2026,7.93,7.2833,-8.15,rigtig,17,Danmarks Statistik,
+390,trangboethed,2010-2012,2024-2026,8.4833,8.18,-3.58,tempo,17,Danmarks Statistik,
+400,trangboethed,2010-2012,2024-2026,7.5267,7.99,6.16,forkert,17,Danmarks Statistik,
+410,trangboethed,2010-2012,2024-2026,7.39,5.9267,-19.8,rigtig,17,Danmarks Statistik,
+420,trangboethed,2010-2012,2024-2026,7.2167,6.5633,-9.05,rigtig,17,Danmarks Statistik,
+430,trangboethed,2010-2012,2024-2026,7.5167,6.67,-11.26,rigtig,17,Danmarks Statistik,
+440,trangboethed,2010-2012,2024-2026,6.9467,7.1567,3.02,forkert,17,Danmarks Statistik,
+450,trangboethed,2010-2012,2024-2026,7.3667,6.5367,-11.27,rigtig,17,Danmarks Statistik,
+461,trangboethed,2010-2012,2024-2026,10.4267,9.3333,-10.49,rigtig,17,Danmarks Statistik,
+479,trangboethed,2010-2012,2024-2026,8.3167,7.6567,-7.94,rigtig,17,Danmarks Statistik,
+480,trangboethed,2010-2012,2024-2026,6.6267,6.43,-2.97,tempo,17,Danmarks Statistik,
+482,trangboethed,2010-2012,2024-2026,5.8367,5.1767,-11.31,rigtig,17,Danmarks Statistik,
+492,trangboethed,2010-2012,2024-2026,4.8967,5.1667,5.51,forkert,17,Danmarks Statistik,
+510,trangboethed,2010-2012,2024-2026,7.49,6.85,-8.54,rigtig,17,Danmarks Statistik,
+530,trangboethed,2010-2012,2024-2026,6.55,6.3667,-2.8,tempo,17,Danmarks Statistik,
+540,trangboethed,2010-2012,2024-2026,8.1267,7.3933,-9.02,rigtig,17,Danmarks Statistik,
+550,trangboethed,2010-2012,2024-2026,7.1933,7.1267,-0.93,stagneret,17,Danmarks Statistik,
+561,trangboethed,2010-2012,2024-2026,8.6567,6.8167,-21.26,rigtig,17,Danmarks Statistik,
+563,trangboethed,2010-2012,2024-2026,4.7067,4.11,-12.68,rigtig,17,Danmarks Statistik,
+573,trangboethed,2010-2012,2024-2026,8.4167,7.6033,-9.66,rigtig,17,Danmarks Statistik,
+575,trangboethed,2010-2012,2024-2026,7.51,6.98,-7.06,rigtig,17,Danmarks Statistik,
+580,trangboethed,2010-2012,2024-2026,7.2267,6.4267,-11.07,rigtig,17,Danmarks Statistik,
+607,trangboethed,2010-2012,2024-2026,8.3767,8.0233,-4.22,tempo,17,Danmarks Statistik,
+615,trangboethed,2010-2012,2024-2026,8.7833,8.4,-4.36,tempo,17,Danmarks Statistik,
+621,trangboethed,2010-2012,2024-2026,8.53,8.4167,-1.33,tempo,17,Danmarks Statistik,
+630,trangboethed,2010-2012,2024-2026,9.2367,8.91,-3.54,tempo,17,Danmarks Statistik,
+657,trangboethed,2010-2012,2024-2026,7.7633,6.6067,-14.9,rigtig,17,Danmarks Statistik,
+661,trangboethed,2010-2012,2024-2026,6.38,5.5667,-12.75,rigtig,17,Danmarks Statistik,
+665,trangboethed,2010-2012,2024-2026,5.88,5.5467,-5.67,tempo,17,Danmarks Statistik,
+671,trangboethed,2010-2012,2024-2026,7.1367,6.1767,-13.45,rigtig,17,Danmarks Statistik,
+706,trangboethed,2010-2012,2024-2026,8.78,7.4533,-15.11,rigtig,17,Danmarks Statistik,
+707,trangboethed,2010-2012,2024-2026,7.0833,6.2767,-11.39,rigtig,17,Danmarks Statistik,
+710,trangboethed,2010-2012,2024-2026,7.59,7.21,-5.01,tempo,17,Danmarks Statistik,
+727,trangboethed,2010-2012,2024-2026,7.1633,6.22,-13.17,rigtig,17,Danmarks Statistik,
+730,trangboethed,2010-2012,2024-2026,7.3367,6.69,-8.81,rigtig,17,Danmarks Statistik,
+740,trangboethed,2010-2012,2024-2026,7.8767,7.3533,-6.64,rigtig,17,Danmarks Statistik,
+741,trangboethed,2010-2012,2024-2026,4.2067,5.52,31.22,forkert,17,Danmarks Statistik,
+746,trangboethed,2010-2012,2024-2026,7.9867,6.7033,-16.07,rigtig,17,Danmarks Statistik,
+751,trangboethed,2010-2012,2024-2026,13.2133,10.69,-19.1,rigtig,17,Danmarks Statistik,
+756,trangboethed,2010-2012,2024-2026,7.6167,7.5733,-0.57,stagneret,17,Danmarks Statistik,
+760,trangboethed,2010-2012,2024-2026,7.11,6.6667,-6.24,tempo,17,Danmarks Statistik,
+766,trangboethed,2010-2012,2024-2026,7.2133,6.44,-10.72,rigtig,17,Danmarks Statistik,
+773,trangboethed,2010-2012,2024-2026,7.5867,6.11,-19.46,rigtig,17,Danmarks Statistik,
+779,trangboethed,2010-2012,2024-2026,7.31,5.61,-23.26,rigtig,17,Danmarks Statistik,
+787,trangboethed,2010-2012,2024-2026,7.1767,6.7433,-6.04,tempo,17,Danmarks Statistik,
+791,trangboethed,2010-2012,2024-2026,7.2567,6.5,-10.43,rigtig,17,Danmarks Statistik,
+810,trangboethed,2010-2012,2024-2026,7.2133,6.8333,-5.27,tempo,17,Danmarks Statistik,
+813,trangboethed,2010-2012,2024-2026,6.74,6.3633,-5.59,tempo,17,Danmarks Statistik,
+820,trangboethed,2010-2012,2024-2026,7.7367,6.12,-20.9,rigtig,17,Danmarks Statistik,
+825,trangboethed,2010-2012,2024-2026,3.84,3.6333,-5.38,tempo,17,Danmarks Statistik,
+840,trangboethed,2010-2012,2024-2026,7.3833,6.0267,-18.37,rigtig,17,Danmarks Statistik,
+846,trangboethed,2010-2012,2024-2026,7.9167,6.4767,-18.19,rigtig,17,Danmarks Statistik,
+849,trangboethed,2010-2012,2024-2026,6.7967,5.46,-19.67,rigtig,17,Danmarks Statistik,
+851,trangboethed,2010-2012,2024-2026,8.4067,7.09,-15.66,rigtig,17,Danmarks Statistik,
+860,trangboethed,2010-2012,2024-2026,7.61,5.8533,-23.08,rigtig,17,Danmarks Statistik,
 101,vandindvinding,2010-2012,2022-2024,44.7033,193.9367,333.83,forkert,15,Danmarks Statistik,
 147,vandindvinding,2010-2012,2022-2024,1330.6467,1300.8133,-2.24,tempo,15,Danmarks Statistik,
 151,vandindvinding,2010-2012,2022-2024,469.21,361.06,-23.05,rigtig,15,Danmarks Statistik,
