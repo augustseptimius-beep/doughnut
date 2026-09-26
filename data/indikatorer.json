@@ -19,6 +19,11 @@
     "housing_area": "Fjernet sep. 2026: som vacant_housing. Belønnede desuden \"jo mere plads, jo bedre\", som strider mod rammen (samme fejl som car_access). Trangboethed måler i stedet underskud under en bundgrænse. Rådata ligger stadig i bolig_extra_scores.csv.",
     "housing_no_wc": "Fjernet sep. 2026: stod i master uden at blive scoret, hvilket bryder reglen om at en indikator enten scores eller fjernes. Niveauet er så lavt (median 0,4 %, højst 1,4 %), at en inverteret ratio ville forstørre promiller til hele farveskift. Rådata ligger stadig i bolig_wc_scores.csv.",
     "housing_no_bath": "Fjernet sep. 2026: som housing_no_wc (median 0,7 %, højst 3,9 % på Frederiksberg). Rådata ligger stadig i bolig_wc_scores.csv.",
+    "ctx_ve_kw_per_indb": "Fjernet sep. 2026 sammen med ctx_ve_sol_mw og ctx_ve_vind_mw: installeret sol- og vindkapacitet leverer til det nationale net, men et tal pr. kommune under Energi blev let læst som kommunens egen grønne forsyning. Kunne ikke scores meningsfuldt og er ikke en opdeling af et scoret tal (CLAUDE.md pkt. 9). Rådata ligger stadig i ve_kapacitet_scores.csv.",
+    "ctx_ve_sol_mw": "Fjernet sep. 2026, se ctx_ve_kw_per_indb.",
+    "ctx_ve_vind_mw": "Fjernet sep. 2026, se ctx_ve_kw_per_indb.",
+    "ctx_ve_selvforsyning": "Fjernet sep. 2026: VE-elproduktion i forhold til kommunens elforbrug (Klimaregnskabet). Samme problem som ctx_ve_kw_per_indb: strømmen går til det nationale net, og tallet er ikke en opdeling af den scorede udledning. Rådata ligger stadig i klimaregnskab_kontekst.csv.",
+    "ctx_energiforbrug": "Fjernet sep. 2026: samlet energiforbrug pr. indbygger kunne i princippet scores, men der findes ingen meningsfuld grænse pr. kommune, og forbruget indgår allerede i den scorede CO2-udledning. Efter reglen i CLAUDE.md pkt. 9 er den fjernet frem for parkeret som kontekst. Rådata ligger stadig i klimaregnskab_kontekst.csv.",
     "low_income": "Fjernet sep. 2026: samme tabel som børnefattigdom (LABY07, alle aldre mod 0-17 år), og de to korrelerede 0,87. Den korrelerede også 0,78 med relativ fattigdom (IFOR12P) under Velfærd, så fattigdomsniveauet talte både i Velfærd og i Lighed. Lighed måler nu fordelingen: Gini og beskæftigelsesgabet efter herkomst. Rådata ligger stadig i doughnut_scores.csv, og tidsserien er slettet af trend_history_raw.csv.",
     "medicin": "Fjernet sep. 2026: scorbar, men fortegnet var uafklaret. Blev fjernet frem for parkeret som kontekst (CLAUDE.md pkt. 9).",
     "sports_facilities": "Fjernet sep. 2026: korrelerede negativt med resten af Fællesskab (CLAUDE.md pkt. 28).",
@@ -1377,36 +1382,6 @@
       "note": "Intensivt landbrug (D1+D2+D4) + befæstet og bebygget (A1+A2+B1+B2+C1) i pct. af landarealet uden søer og vandløb (Dao m.fl. 2015; EEA 2020; CONCITO 2025)."
     },
     {
-      "id": "ctx_ve_kw_per_indb",
-      "category": "context",
-      "dimension": "energi",
-      "source": "Energi Data Service",
-      "unit": "kW/indb.",
-      "data_year": "2024",
-      "csv": "ve_kapacitet_scores.csv",
-      "raw_col": "ve_kw_per_indb"
-    },
-    {
-      "id": "ctx_ve_sol_mw",
-      "category": "context",
-      "dimension": "energi",
-      "source": "Energi Data Service",
-      "unit": "MW",
-      "data_year": "2024",
-      "csv": "ve_kapacitet_scores.csv",
-      "raw_col": "ve_sol_mw"
-    },
-    {
-      "id": "ctx_ve_vind_mw",
-      "category": "context",
-      "dimension": "energi",
-      "source": "Energi Data Service",
-      "unit": "MW",
-      "data_year": "2024",
-      "csv": "ve_kapacitet_scores.csv",
-      "raw_col": "ve_vind_mw"
-    },
-    {
       "id": "ctx_fjv_biomasse",
       "category": "context",
       "dimension": "energi",
@@ -1516,27 +1491,6 @@
       "data_year": "2023",
       "csv": "klimaregnskab_kontekst.csv",
       "raw_col": "klima_transport"
-    },
-    {
-      "id": "ctx_energiforbrug",
-      "category": "context",
-      "dimension": "klimapaavirkning",
-      "source": "Klimaregnskabet.dk",
-      "unit": "GJ/indb.",
-      "data_year": "2023",
-      "csv": "klimaregnskab_kontekst.csv",
-      "raw_col": "energiforbrug"
-    },
-    {
-      "id": "ctx_ve_selvforsyning",
-      "category": "context",
-      "dimension": "klimapaavirkning",
-      "source": "Klimaregnskabet.dk",
-      "unit": "%",
-      "data_year": "2023",
-      "csv": "klimaregnskab_kontekst.csv",
-      "raw_col": "ve_selvforsyning",
-      "note": "Leveres som forhold (1,71) af Klimaregnskabet og ganges med 100 i fetch_climate_data.py."
     }
   ]
 }

@@ -65,9 +65,6 @@
   "nitrat": {"reference": 6.0, "daekning": 94, "data_year": "2026"},
   "vandindvinding": {"reference": 100.0, "daekning": 96, "data_year": "2022-2024"},
   "areal_antropiseret": {"reference": 70.39, "daekning": 98, "data_year": "2024"},
-  "ctx_ve_kw_per_indb": {"reference": null, "daekning": 98, "data_year": "2024"},
-  "ctx_ve_sol_mw": {"reference": null, "daekning": 98, "data_year": "2024"},
-  "ctx_ve_vind_mw": {"reference": null, "daekning": 98, "data_year": "2024"},
   "ctx_fjv_biomasse": {"reference": null, "daekning": 80, "data_year": "2024"},
   "ctx_fjv_affald": {"reference": null, "daekning": 80, "data_year": "2024"},
   "ctx_fjv_fossil": {"reference": null, "daekning": 80, "data_year": "2024"},
@@ -78,8 +75,6 @@
   "ctx_fritid_andel": {"reference": null, "daekning": 98, "data_year": "2026"},
   "ctx_klima_landbrug": {"reference": null, "daekning": 98, "data_year": "2023"},
   "ctx_klima_energi": {"reference": null, "daekning": 98, "data_year": "2023"},
-  "ctx_klima_transport": {"reference": null, "daekning": 98, "data_year": "2023"},
-  "ctx_energiforbrug": {"reference": null, "daekning": 98, "data_year": "2023"},
-  "ctx_ve_selvforsyning": {"reference": null, "daekning": 98, "data_year": "2023"}
+  "ctx_klima_transport": {"reference": null, "daekning": 98, "data_year": "2023"}
  }
 }
