@@ -330,7 +330,7 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
 - **`docs/aabne-traade-juni-2026.md`** - prioriterede løse ender og uudnyttede indsigter (scoringsfilosofi, education-badge, REshare, energiforbrug m.m.). Læs før næste større runde.
 - **`docs/oekologisk-gennemgang-sep-2026.md`** - gennemgang af de økologiske dimensioner: fundne svagheder, hvad der er ændret med hvilken kilde, og hvad der ikke kunne løses. Læs før næste ændring i det økologiske loft.
 - **`docs/arkitektur-og-beregningsregler.md`** - de normative beregningsregler (R1-R15), retningspilenes regler (T1-T8), kendte fælder og registrerede afvigelser mellem dokumentation og kode. Læs før enhver ændring i scoringen.
-- **`docs/artikler/`** - to metodeartikler (.docx) til offentligheden om den sociale og den økologiske ring, med følsomhedstest og svagheder. Tallene er et øjebliksbillede af data 25. sep. 2026 og genskabes med `analyse_artikler.py`.
+- **`docs/artikler/`** - to metodeartikler (.docx) til offentligheden om den sociale og den økologiske ring, med følsomhedstest og svagheder. Tallene er et øjebliksbillede af data 26. sep. 2026 og genskabes med `analyse_artikler.py`. Kopier ligger i `webapp/public/artikler/` og linkes fra metodesiden.
 
 ## Vedligehold af denne fil
 
