@@ -127,6 +127,14 @@ De individuelle CSV-filer (`luftforurening_scores.csv`, `naeringsstoffer_scores.
 - **`cba_2023_estimate.csv`**: `cba_estimate` er estimatet for `estimat_aar` med Energistyrelsens seneste tidsserie (`fetch_forbrug_co2.py`). Kolonnen `cba_2023_estimate` er det gamle, håndberegnede tal.
 - **`naeringsstoffer_scores.csv`** og **`n_landbrug_scores.csv`** bruges ikke længere af platformen (indikatorerne er fjernet), men bevares som kildespor.
 
+### Sociale rådata og kontekst (ændret sep. 2026)
+
+- **`trangboethed_scores.csv`** (`fetch_trangboethed.py`): andelen af beboerne i helårsboliger med flere personer end værelser (DST BOL103), landstal i `trangboethed_ref`. Afløser ubeboede boliger og boligareal, som udlignede hinanden (CHANGELOG 26. sep. 2026).
+- **`fjernvarme_mix_scores.csv`** (`fetch_fjernvarme_mix.py`): fjernvarmens brændselsmix i procent. `fjv_status` er `ok` (kommunens egen produktion, EPT), `net` (kommunen har ingen egen produktion og får det forsynende nets leverede mix fra ENS' Fjernvarmenet; nettet står i `fjv_net`) eller `fælles_net` (intet net fundet, kun Stevns; `fetch_bolig_fossil.py` bruger så landssnittet).
+- **`folketal.csv`** (`fetch_folketal.py`): folketal 1. januar (FOLK1A). Bruges kun til mærket "få tilfælde" (registrets `smaa_tal`, arkitekturdokumentet R16), ikke til scoren.
+- **`uvm_scores.csv`**: `*_ref` er fra sep. 2026 landstal vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20).
+- Bruges ikke længere, men står som kildespor: **`bolig_wc_scores.csv`** (boliger uden toilet og bad), **`bolig_extra_scores.csv`** (boligareal), **`ve_kapacitet_scores.csv`** (VE-kapacitet) og kolonnerne `energiforbrug` og `ve_selvforsyning` i **`klimaregnskab_kontekst.csv`**. Begrundelserne står under `_fjernet` i `indikatorer.json`.
+
 ### `kulturvaner_scores.csv`
 
 Fra DST's kulturvaneundersøgelse (KV2GEO), hentet af `scripts/fetch_kulturvaner.py`.

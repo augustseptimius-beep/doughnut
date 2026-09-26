@@ -87,7 +87,7 @@
     {
       "id": "lighed",
       "name": "Lighed",
-      "description": "Fordelingen af indkomst og materielle ressourcer i kommunen - et mål for strukturel ulighed og sociale skel.",
+      "description": "Fordelingen af indkomst og beskæftigelse i kommunen - et mål for strukturel ulighed og sociale skel. Fattigdomsniveauet måles under Velfærd; lavindkomst blev taget ud af Lighed i sep. 2026, så fattigdom ikke tæller to gange.",
       "indicators": ["gini", "employment_origin_gap"]
     },
     {
@@ -111,7 +111,7 @@
     {
       "id": "energi",
       "name": "Energi",
-      "description": "Husstandenes fossile energiafhængighed - andel af det opvarmede boligareal (m²) der varmes med olie eller naturgas, direkte eller via fjernvarme. Fossil opvarmning belaster klimaet og udsætter husstande for høje, svingende varmeregninger. Måles på areal frem for antal beboere, fordi varmebehov skalerer med kvadratmeter. Omfatter kun helårsboliger. Fritidsboliger, lokal VE-produktion og fjernvarmens brændselsmix vises som kontekst, men indgår ikke i scoren.",
+      "description": "Husstandenes fossile energiafhængighed - andel af det opvarmede boligareal (m²) der varmes med olie eller naturgas, direkte eller via fjernvarme. Fossil opvarmning belaster klimaet og udsætter husstande for høje, svingende varmeregninger. Måles på areal frem for antal beboere, fordi varmebehov skalerer med kvadratmeter. Omfatter kun helårsboliger. Fritidsboliger og fjernvarmens brændselsmix vises som kontekst, men indgår ikke i scoren. Lokal VE-produktion vises ikke (fjernet sep. 2026), fordi strømmen går til det nationale net og tallet blev læst som kommunens egen forsyning.",
       "indicators": ["bolig_fossil"]
     }
   ],
@@ -308,7 +308,8 @@
       "raw_col": "wellbeing_score",
       "reference": {"type": "landstal", "col": "wellbeing_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), alle klassetrin; fetch_udvidelse_data.py"},
       "inverse": false,
-      "baseline_level": 3
+      "baseline_level": 3,
+      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026."
     },
     {
       "id": "rygning",
@@ -436,7 +437,8 @@
       "raw_col": "exam_grade_avg",
       "reference": {"type": "landstal", "col": "exam_grade_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), 9. klasse; fetch_udvidelse_data.py"},
       "inverse": false,
-      "baseline_level": 3
+      "baseline_level": 3,
+      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026."
     },
     {
       "id": "high_absence",
@@ -453,7 +455,8 @@
       "raw_col": "high_absence_pct",
       "reference": {"type": "landstal", "col": "high_absence_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), alle klassetrin; fetch_udvidelse_data.py"},
       "inverse": true,
-      "baseline_level": 3
+      "baseline_level": 3,
+      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026."
     },
     {
       "id": "youth_education",
@@ -470,7 +473,8 @@
       "raw_col": "youth_education_pct",
       "reference": {"type": "landstal", "col": "youth_education_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), 9. klasse; fetch_udvidelse_data.py"},
       "inverse": false,
-      "baseline_level": 3
+      "baseline_level": 3,
+      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026."
     },
     {
       "id": "disposable_income",
@@ -657,8 +661,8 @@
       "baseline_level": 2,
       "absolute_score": true,
       "target_label": "0% fossil (udfasningsmål)",
-      "rationale": "Kommunens samlede fossile varmeafhængighed: direkte olie-/gasopvarmning PLUS den fossile andel af fjernvarmen (fjernvarme-dækning × fjernvarmens fossile brændselsandel fra Energistyrelsens EPT). Opgøres på helårsboligernes OPVARMEDE AREAL i m² (DST BYGB40), ikke på antal beboere - varmebehov skalerer med kvadratmeter, ikke med hoveder. Scoret mod et absolut mål på 0% fossil, ikke landsgennemsnit, da udfasning af olie/gas er dansk politik. Inverteret: lavere andel er bedre. Værst er Nordsjællands gasområder (fx Furesø, Rudersdal); bedst er biomasse-fjernvarmebyer som Aarhus.",
-      "note": "Samlet fossil varmeafhængighed (direkte olie/gas + fjernvarmens fossile andel), scoret mod absolut mål 0%: ratio = 100 - samlet fossil%, beregnet i fetch_bolig_fossil.py. Grundlag er BYGB40 (opvarmet areal i m², kun helårsboliger), ikke BOL202 (personer). Fritidsboliger er kontekst. Se CLAUDE.md pkt. 10."
+      "rationale": "Kommunens samlede fossile varmeafhængighed: direkte olie-/gasopvarmning PLUS den fossile andel af fjernvarmen (fjernvarme-dækning × fjernvarmens fossile brændselsandel fra Energistyrelsens EPT; for kommuner uden egen varmeproduktion bruges det forsynende fjernvarmenets leverede mix). Opgøres på helårsboligernes OPVARMEDE AREAL i m² (DST BYGB40), ikke på antal beboere - varmebehov skalerer med kvadratmeter, ikke med hoveder. Scoret mod et absolut mål på 0% fossil, ikke landsgennemsnit, da udfasning af olie/gas er dansk politik. Inverteret: lavere andel er bedre. Værst er Nordsjællands gasområder (fx Furesø, Rudersdal); bedst er biomasse-fjernvarmebyer som Aarhus.",
+      "note": "Samlet fossil varmeafhængighed (direkte olie/gas + fjernvarmens fossile andel), scoret mod absolut mål 0%: ratio = 100 - samlet fossil%, beregnet i fetch_bolig_fossil.py. Grundlag er BYGB40 (opvarmet areal i m², kun helårsboliger), ikke BOL202 (personer). Fritidsboliger er kontekst. Fra sep. 2026 får de 17 kommuner uden egen varmeproduktion det forsynende nets leverede mix (ENS Fjernvarmenet, fetch_fjernvarme_mix.py) i stedet for landssnittet på 13,3 %; kun Stevns har intet net og bruger landssnittet. Se CLAUDE.md pkt. 10."
     },
     {
       "id": "voter_turnout",
@@ -863,7 +867,7 @@
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Tilskadekomne og dræbte i færdselsuheld pr. 100.000 indb., opgjort som treårigt gennemsnit (UHELDK1). Ét års tal er ren støj i små kommuner: Læsø lå i 2024 på et niveau der svarer til omkring to tilskadekomne, så én ulykke fra eller til flyttede scoren med titalls point. Trafiksikkerhed er en direkte indikator for fysisk tryghed i det offentlige rum og for kvaliteten af infrastruktur og hastighedszoner. Inverteret: færre ulykker er bedre.",
-      "note": "Treårigt gennemsnit af UHELDK1 (sep. 2026), fordi ét års tal er støj i små kommuner. CLAUDE.md pkt. 26."
+      "note": "Treårigt gennemsnit af UHELDK1 (sep. 2026), fordi ét års tal er støj i små kommuner. Kommuner hvor tallet stadig bygger på under 20 tilskadekomne, får mærket 'få tilfælde' (smaa_tal, arkitekturdokumentet R16). CLAUDE.md pkt. 26."
     },
     {
       "id": "sports_membership",
@@ -1413,7 +1417,8 @@
       "unit": "%",
       "data_year": "2024",
       "csv": "fjernvarme_mix_scores.csv",
-      "raw_col": "fjv_fossil_pct"
+      "raw_col": "fjv_fossil_pct",
+      "note": "Kommuner uden egen varmeproduktion viser fra sep. 2026 det forsynende nets leverede mix (ENS Fjernvarmenet, status 'net' i fjernvarme_mix_scores.csv); de øvrige viser produktionen i kommunen (EPT). Gælder alle fire ctx_fjv_*."
     },
     {
       "id": "ctx_fjv_ren",
