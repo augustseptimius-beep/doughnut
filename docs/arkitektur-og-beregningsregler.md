@@ -115,8 +115,9 @@ andet end økologiske indikatorer med `lower_is_better: false`.
   tålegrænsen for kvælstofnedfald (10 kg N/ha/år) og kommunens andel af den
   bæredygtige grundvandsressource (100 procent, se afsnit 5).
 - `kommunegennemsnit`: uvægtet gennemsnit af kommunernes råværdier, beregnet
-  ved build. Bruges kun hvor indikatorens nævner ikke findes (UVM), se
-  afsnit 7.
+  ved build. Bruges i dag af ingen indikator. De fire UVM-indikatorer brugte
+  typen indtil sep. 2026 og vægtes nu med folkeskoleelever efter
+  bopælskommune (DST UDDAKT20).
 - `landstal`: fetch-scriptets referenceværdi. Feltet `definition` siger hvordan
   den er fundet. Scriptet skriver den i kolonnen `col`. Mangler kolonnen (en
   CSV der ikke er hentet siden sep. 2026), rekonstrueres landstallet ved
@@ -545,7 +546,7 @@ omskaleres på deres allerede vendte ratio, hvilket er en bevidst forenkling.
 
 ## 7. Kendte afvigelser mellem dokumentation og kode
 
-Opdateret 26. september 2026. Rækken om Sundhedsprofilens rekonstruerede landstal er lukket: `sundhedsprofil_scores.csv` har nu landstallene i egne kolonner.
+Opdateret 26. september 2026. To rækker er lukket: Sundhedsprofilens rekonstruerede landstal (`sundhedsprofil_scores.csv` har nu landstallene i egne kolonner) og UVM-indikatorernes uvægtede kommunegennemsnit (vægtes nu med elevtal fra DST UDDAKT20).
 
 Før det: opdateret 24. september 2026. R1 (`navn_key` omgik cappet), R12
 (`eco_naer_landbrug` havde `lowerIsBetter: true`) og R3 for `public_transport`
@@ -556,7 +557,6 @@ og måles mod Danmark som helhed.
 | Regel | Afvigelse | Status |
 |---|---|---|
 | R3 | Landsgennemsnittet for de otte Sundhedsprofil-indikatorer beregnes af os som et befolkningsvægtet gennemsnit af de 98 kommuneandele (DST FOLK1A, 16+), ikke hentet fra kilden. Databasen udstiller ikke et landstal pr. kommunetabel. Reglen forudsætter ellers et landstal fra kilden | Bevidst, dokumenteret i `data/README.md` og på metodesiden |
-| R3 | Fire UVM-indikatorer (`wellbeing`, `exam_grade`, `high_absence`, `youth_education`) måles mod et uvægtet kommunegennemsnit, ikke Danmark som helhed, fordi elevtallet pr. kommune ikke hentes. Effekten på referencen er 0,4-4 procent | Overgang. Lukkes når `fetch_udvidelse_data.py` henter elevtal (kræver UVM-nøglen) |
 | T1 | Retningen for Sundhedsprofilens indikatorer beregnes 2017 → 2025 (2021 → 2025 for `ensomhed` og `fysisk_aktivitet`), ikke over hele den tilgængelige serie 2010-2025. Reglen siger ellers hele serien | Bevidst, se punkt 23 i CLAUDE.md |
 
 Rækkerne er bevidste eller overgange og er dokumenterede.

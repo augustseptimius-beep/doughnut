@@ -8,7 +8,7 @@
     "Retning: sociale har 'inverse' (true = lavere råværdi er bedre), økologiske har 'lower_is_better'. Retningspilene (build_trends_csv.py) udleder deres op_er_godt af de to felter.",
     "period_years: tallet dækker en periode, ikke ét år (HISBK er femårige intervaller, trafikulykker et treårigt gennemsnit). data_year i master skrives så som 'start-slut' ud fra slutåret, fx 2021-2025.",
     "En social indikator der ikke står i nogen kategoris 'indicators', skrives stadig til master, men scores ikke og holdes ude af kategoriens pil. En økologisk indikator skal stå i sin dimensions liste.",
-    "Scoring: build_master_csv.py beregner ALLE ratios selv ud fra raw_col og 'reference' (type maal: fast mål; kommunegennemsnit: uvægtet gennemsnit af kommunernes råværdi, beregnet ved build; landstal: fetch-scriptets referenceværdi i kolonnen 'col'). Landsgennemsnit betyder Danmark som helhed: de 98 kommuner samlet, vægtet med indikatorens egen nævner (DST's hele-landet-tal, når det er det samme; ellers summen af kommunerne). Uvægtet kommunegennemsnit bruges kun hvor nævneren ikke findes (UVM, public_transport), se arkitekturdokumentet afsnit 7. Retningen følger inverse/lower_is_better: sociale raw/ref×100 (inverse: ref/raw×100), økologiske raw/ref×100 (højere-er-bedre: ref/raw×100). Sociale cappes ved 150, økologiske ved 'cap' hvis sat. formula '100_minus_raw' (kun bolig_fossil) giver 100 minus råværdien. formula 'komplement' (økologiske andele hvor højere er bedre: natur, genanvendelse, vand i god tilstand) giver (100 - raw)/(100 - ref)×100: den manglende andel målt mod det målet tillader, så alle økologiske ratios har nul ved ingen belastning (arkitekturdokumentet R2a).",
+    "Scoring: build_master_csv.py beregner ALLE ratios selv ud fra raw_col og 'reference' (type maal: fast mål; kommunegennemsnit: uvægtet gennemsnit af kommunernes råværdi, beregnet ved build; landstal: fetch-scriptets referenceværdi i kolonnen 'col'). Landsgennemsnit betyder Danmark som helhed: de 98 kommuner samlet, vægtet med indikatorens egen nævner (DST's hele-landet-tal, når det er det samme; ellers summen af kommunerne). Uvægtet kommunegennemsnit bruges i dag af ingen indikator; UVM-indikatorerne vægtes med elevtal (DST UDDAKT20) fra sep. 2026. Retningen følger inverse/lower_is_better: sociale raw/ref×100 (inverse: ref/raw×100), økologiske raw/ref×100 (højere-er-bedre: ref/raw×100). Sociale cappes ved 150, økologiske ved 'cap' hvis sat. formula '100_minus_raw' (kun bolig_fossil) giver 100 minus råværdien. formula 'komplement' (økologiske andele hvor højere er bedre: natur, genanvendelse, vand i god tilstand) giver (100 - raw)/(100 - ref)×100: den manglende andel målt mod det målet tillader, så alle økologiske ratios har nul ved ingen belastning (arkitekturdokumentet R2a).",
     "ratio_col er fetch-scriptets egen ratio. Den indgår ikke i scoren, men bruges til krydstjek og - så længe en CSV mangler landstal-kolonnen - til at rekonstruere landstallet (ratio_col_invers: kolonnen er på den inverterede skala).",
     "Øvrige felter: absolute_score (social ratio omskaleres ikke af baseline-toggle), target_label (tekst for målet i UI), baseline_level (1 WHO/EU, 2 nationalt mål, 3 landsgennemsnit), baseline_type (økologisk: absolut/relativ), cap (loft for ratio: økologisk R6; socialt kun lavere end 150, fx kystrisiko 100, så ingen risiko er neutral og ikke en fordel, R1)."
   ],
@@ -298,7 +298,7 @@
       "csv": "uvm_scores.csv",
       "ratio_col": "wellbeing_ratio",
       "raw_col": "wellbeing_score",
-      "reference": {"type": "kommunegennemsnit", "definition": "uvægtet gennemsnit af kommunerne (UVM udstiller intet landstal pr. kommunetabel)"},
+      "reference": {"type": "landstal", "col": "wellbeing_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), alle klassetrin; fetch_udvidelse_data.py"},
       "inverse": false,
       "baseline_level": 3
     },
@@ -426,7 +426,7 @@
       "csv": "uvm_scores.csv",
       "ratio_col": "exam_grade_ratio",
       "raw_col": "exam_grade_avg",
-      "reference": {"type": "kommunegennemsnit", "definition": "uvægtet gennemsnit af kommunerne"},
+      "reference": {"type": "landstal", "col": "exam_grade_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), 9. klasse; fetch_udvidelse_data.py"},
       "inverse": false,
       "baseline_level": 3
     },
@@ -443,7 +443,7 @@
       "csv": "uvm_scores.csv",
       "ratio_col": "high_absence_ratio",
       "raw_col": "high_absence_pct",
-      "reference": {"type": "kommunegennemsnit", "definition": "uvægtet gennemsnit af kommunerne"},
+      "reference": {"type": "landstal", "col": "high_absence_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), alle klassetrin; fetch_udvidelse_data.py"},
       "inverse": true,
       "baseline_level": 3
     },
@@ -460,7 +460,7 @@
       "csv": "uvm_scores.csv",
       "ratio_col": "youth_education_ratio",
       "raw_col": "youth_education_pct",
-      "reference": {"type": "kommunegennemsnit", "definition": "uvægtet gennemsnit af kommunerne"},
+      "reference": {"type": "landstal", "col": "youth_education_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), 9. klasse; fetch_udvidelse_data.py"},
       "inverse": false,
       "baseline_level": 3
     },

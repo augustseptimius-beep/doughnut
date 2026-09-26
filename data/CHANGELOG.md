@@ -2,6 +2,11 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-26 (UVM-indikatorerne måles mod Danmark som helhed)
+
+- **`exam_grade`, `high_absence`, `wellbeing` og `youth_education` måles nu mod et elevvægtet landstal** i stedet for et uvægtet gennemsnit af kommunerne. Vægtene er folkeskoleelever pr. 1. oktober efter bopælskommune (DST UDDAKT20): 9. klasse for karakterer og ungdomsuddannelse, alle klassetrin for fravær og trivsel. UVM udstiller intet landstal, og vægtene kræver ingen UVM-nøgle (`fetch_udvidelse_data.py --kun-landstal`). Lukker afvigelsen i arkitekturdokumentets afsnit 7.
+- Landstallene flytter sig lidt: karakterer 7,25 → 7,36, højt fravær 22,91 → 21,82 %, trivsel 3,58 → 3,60, ungdomsuddannelse 83,25 → 84,05 %. Uddannelse skifter farve i 4 kommuner med landsgennemsnit og 1 med kommunegruppe. Råværdierne er uændrede.
+
 ## 2026-09-26 (Bolig måles som trangboethed)
 
 - **Bolig er nu én indikator, `trangboethed`:** andelen af beboerne i helårsboliger (parcel-, række- og etageboliger), der bor med flere personer end værelser. Beregnet af platformen fra DST BOL103 (boliger efter antal værelser og husstandsstørrelse) i nyt script `fetch_trangboethed.py`, ny fil `data/trangboethed_scores.csv`. Landstal 10,26 % (2026); højest Ishøj 25,7 og Vallensbæk 25,0, lavest Læsø 3,4. Thisted 7,0 %. Retningspil fra 2010 med samme funktion som scoren.
