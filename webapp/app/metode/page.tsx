@@ -127,8 +127,9 @@ const ECO_METHODS: Record<string, MethodInfo> = {
   forurening: {
     id: "forurening",
     scoring: "Gennemsnit af fire indikatorer (ikke worst-of): (1) Pesticider: andel af kommunens aktive almene vandværker, hvor seneste analyse (højst 10 år gammel) har fund af pesticider eller nedbrydningsprodukter. Andelen udglattes med empirisk Bayes (beta-binomial), så en kommune med få vandværker trækkes mod landsgennemsnittet - ratio = (kommunens andel / landsgennemsnit) × 100. (2) Nitrat i drikkevand: gennemsnit over kommunens aktive almene vandværker, vægtet efter anlæggenes tilladte årsindvinding - ratio = (mg/L / 6 mg/L) × 100. (3) Genanvendelse: den andel af husholdningsaffaldet, der ikke indsamles til genanvendelse, målt mod de 35%, som EU's 65%-mål tillader - ratio = ((100 − genanvendt %) / 35) × 100. (4) Affald: husholdningsaffald kg/person, inverteret ratio mod landsgennemsnittet. Affald og genanvendelse er medianen af de tre seneste år. Dimensionens score er det uvægtede gennemsnit af de fire.",
-    boundary: "Pesticider: landsgennemsnittet, hvor {ref:pesticider:1}% af de aktive almene vandværker har fund. Nitrat: 6 mg/L (ekspertgruppens anbefaling 2025). Genanvendelse: 65% (EU Affaldsdirektiv 2035). Affald: landsgennemsnit som reference.",
+    boundary: "Pesticider: landsgennemsnittet, hvor {ref:pesticider:1}% af de aktive almene vandværker har fund. Nitrat: 6 mg/L, som en international ekspertgruppe nedsat af Miljøministeriet anbefalede i 2025 som ny sundhedsbaseret grænseværdi (i dag 50 mg/L). Genanvendelse: 65% (EU Affaldsdirektiv 2035). Affald: landsgennemsnit som reference.",
     boundarySources: [
+      { label: "Miljøministeriet (2025): ekspertvurdering af grænseværdien for nitrat i drikkevandet", url: "https://mim.dk/nyheder/pressemeddelelser/2025/december/miljoeministeren-igangsaetter-indsats-efter-ekspertvurdering-af-graensevaerdien-for-nitrat-i-drikkevandet" },
       { label: "Kleinman (1973), Proportions with extraneous variance, JASA 68:46-54 (empirisk Bayes-udglatning)", url: "https://doi.org/10.1080/01621459.1973.10481332" },
       { label: "GEUS, Jupiter - national boringsdatabase", url: "https://www.geus.dk/produkter-ydelser-og-faciliteter/data-og-kort/national-boringsdatabase-jupiter" },
       { label: "Miljøstyrelsen (2025): kravværdien for pesticider er fastsat politisk ud fra et forsigtighedsprincip", url: "https://mst.dk/nyheder/2025/januar/befolkningen-kan-have-tillid-til-den-danske-vandforsyning" },
@@ -564,7 +565,7 @@ export default function MetodePage() {
           indeholder de beregnede ratioer der vises på platformen. Webappen er bygget med Next.js og deployet på Netlify.
         </p>
         <p className="text-sm text-gray-600 leading-relaxed mt-2">
-          Platformen er open source og under aktiv udvikling. Bidrag og feedback er velkomne.
+          Koden ligger offentligt på GitHub, men der er endnu ikke givet en licens til genbrug; den beslutning ligger hos Thisted Kommune. Platformen er under aktiv udvikling, og feedback er velkommen.
         </p>
       </section>
     </div>
