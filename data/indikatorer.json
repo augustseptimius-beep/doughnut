@@ -7,7 +7,8 @@
     "Felter: category (social/ecological/context), dimension (kategori- eller dimensions-id), name (visningsnavn), table og source_url (kildelink på metodesiden), source (kort kildetekst i master), unit (enhed i master), raw_unit (enhed i UI, hvis den afviger fra unit), data_year (bruges kun hvis data/data_years.json ikke kender DST-tabellen), csv/ratio_col/raw_col (hvor build_master_csv.py læser tallet).",
     "Retning: sociale har 'inverse' (true = lavere råværdi er bedre), økologiske har 'lower_is_better'. Retningspilene (build_trends_csv.py) udleder deres op_er_godt af de to felter.",
     "period_years: tallet dækker en periode, ikke ét år (HISBK er femårige intervaller, trafikulykker et treårigt gennemsnit). data_year i master skrives så som 'start-slut' ud fra slutåret, fx 2021-2025.",
-    "En social indikator der ikke står i nogen kategoris 'indicators', skrives stadig til master, men scores ikke og holdes ude af kategoriens pil. En økologisk indikator skal stå i sin dimensions liste.",
+    "En social indikator skal stå i en kategoris 'indicators'; tjek_konsistens.py melder en social indikator uden kategori som fejl (sep. 2026). En økologisk indikator skal stå i sin dimensions liste.",
+    "smaa_tal: {pr, aar} for tal pr. indbygger, der kan bygge på få tilfælde. build_master_csv.py regner antallet tilbage (råværdi × folketal / pr × aar, folketal fra data/folketal.csv) og skriver kommuner under 20 tilfælde i noegletal.json (faa_tilfaelde). Kommunesiden viser dem med mærket 'få tilfælde'. Scoren ændres ikke.",
     "Scoring: build_master_csv.py beregner ALLE ratios selv ud fra raw_col og 'reference' (type maal: fast mål; kommunegennemsnit: uvægtet gennemsnit af kommunernes råværdi, beregnet ved build; landstal: fetch-scriptets referenceværdi i kolonnen 'col'). Landsgennemsnit betyder Danmark som helhed: de 98 kommuner samlet, vægtet med indikatorens egen nævner (DST's hele-landet-tal, når det er det samme; ellers summen af kommunerne). Uvægtet kommunegennemsnit bruges i dag af ingen indikator; UVM-indikatorerne vægtes med elevtal (DST UDDAKT20) fra sep. 2026. Retningen følger inverse/lower_is_better: sociale raw/ref×100 (inverse: ref/raw×100), økologiske raw/ref×100 (højere-er-bedre: ref/raw×100). Sociale cappes ved 150, økologiske ved 'cap' hvis sat. formula '100_minus_raw' (kun bolig_fossil) giver 100 minus råværdien. formula 'komplement' (økologiske andele hvor højere er bedre: natur, genanvendelse, vand i god tilstand) giver (100 - raw)/(100 - ref)×100: den manglende andel målt mod det målet tillader, så alle økologiske ratios har nul ved ingen belastning (arkitekturdokumentet R2a).",
     "ratio_col er fetch-scriptets egen ratio. Den indgår ikke i scoren, men bruges til krydstjek og - så længe en CSV mangler landstal-kolonnen - til at rekonstruere landstallet (ratio_col_invers: kolonnen er på den inverterede skala).",
     "Øvrige felter: absolute_score (social ratio omskaleres ikke af baseline-toggle), target_label (tekst for målet i UI), baseline_level (1 WHO/EU, 2 nationalt mål, 3 landsgennemsnit), baseline_type (økologisk: absolut/relativ), cap (loft for ratio: økologisk R6; socialt kun lavere end 150, fx kystrisiko 100, så ingen risiko er neutral og ikke en fordel, R1)."
@@ -838,6 +839,7 @@
       "ratio_col": "crime_ratio",
       "raw_col": "crime_per_1k",
       "reference": {"type": "landstal", "col": "crime_rate_ref", "definition": "de 98 kommuner samlet pr. 1.000 indb.; anmeldelser uden kendt gerningskommune (8,7% i 2025) er ikke med; fetch_social_new_data.py"},
+      "smaa_tal": {"pr": 1000, "aar": 1},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Anmeldte forbrydelser pr. 1.000 indb. er den bedst tilgængelige kvantitative indikator for tryghed på kommuneniveau. Lav kriminalitet er en forudsætning for social tillid og aktivt deltagelse i det offentlige rum."
@@ -857,6 +859,7 @@
       "ratio_col": "traffic_accidents_ratio",
       "raw_col": "traffic_accidents_per_100k",
       "reference": {"type": "landstal", "col": "traffic_accidents_ref", "definition": "de 98 kommuner samlet pr. 100.000 indb., treårigt gennemsnit; fetch_social_new_data.py"},
+      "smaa_tal": {"pr": 100000, "aar": 3},
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Tilskadekomne og dræbte i færdselsuheld pr. 100.000 indb., opgjort som treårigt gennemsnit (UHELDK1). Ét års tal er ren støj i små kommuner: Læsø lå i 2024 på et niveau der svarer til omkring to tilskadekomne, så én ulykke fra eller til flyttede scoren med titalls point. Trafiksikkerhed er en direkte indikator for fysisk tryghed i det offentlige rum og for kvaliteten af infrastruktur og hastighedszoner. Inverteret: færre ulykker er bedre.",
@@ -1058,6 +1061,7 @@
       "ratio_col": "vejr_skader_ratio",
       "raw_col": "vejr_skader_raw",
       "reference": {"type": "landstal", "col": "vejr_skader_ref", "definition": "befolkningsvægtet gennemsnit af de 98 kommuner (folketal 1. jan. 2025), dvs. landet som helhed; fetch_klimatilpasning_data.py"},
+      "smaa_tal": {"pr": 1000, "aar": 1},
       "inverse": true,
       "baseline_level": 3,
       "note": "Proxy: vejrrelaterede forsikringsskader pr. 1.000 indb. (F&P, 2023-2025). Kilden har kun kommunenavne; fetch-scriptet slår koden op i data/kommuner.json. Se data/klimatilpasning.md."

@@ -1,5 +1,5 @@
 {
- "_om": "Genereres af scripts/build_master_csv.py sammen med master_indicators.csv. Ret den ikke i hånden. daekning = antal kommuner med en værdi.",
+ "_om": "Genereres af scripts/build_master_csv.py sammen med master_indicators.csv. Ret den ikke i hånden. daekning = antal kommuner med en værdi. faa_tilfaelde = kommuner hvor tallet bygger på under 20 tilfælde (registrets smaa_tal).",
  "kommuner": 98,
  "indikatorer": {
   "life_expectancy": {"reference": 81.6, "daekning": 94, "data_year": "2021-2025"},
@@ -37,7 +37,7 @@
   "library_use": {"reference": 4.45, "daekning": 97, "data_year": "2025"},
   "kultur_spending": {"reference": 505.0, "daekning": 98, "data_year": "2025"},
   "crime_rate": {"reference": 63.22, "daekning": 98, "data_year": "2025"},
-  "traffic_accidents": {"reference": 45.45, "daekning": 98, "data_year": "2023-2025"},
+  "traffic_accidents": {"reference": 45.45, "daekning": 98, "data_year": "2023-2025", "faa_tilfaelde": ["155", "269", "187", "825", "492", "563", "741", "482"]},
   "sports_membership": {"reference": 46.7, "daekning": 98, "data_year": "2025"},
   "class_size": {"reference": 20.2, "daekning": 98, "data_year": "2025"},
   "daycare_ratio": {"reference": 5.8, "daekning": 98, "data_year": "2024"},

@@ -490,6 +490,39 @@ def build_master():
     _skriv_noegletal(output_rows, len(kommuner))
 
 
+FAA_TILFAELDE = 20  # NCHS: under 20 hændelser giver en relativ standardfejl på mindst 23 %
+
+
+def _faa_tilfaelde(output_rows):
+    """{indikator: [kommunekoder]} hvor tallet bygger på under FAA_TILFAELDE
+    tilfælde. Antallet regnes tilbage fra raten med folketallet i
+    data/folketal.csv (fetch_folketal.py): råværdi × folketal / pr × aar.
+    Ændrer ikke scoren; kommunesiden viser et mærke (arkitekturdokumentet R16).
+    Mangler folketalsfilen, markeres intet, og der advares."""
+    reg = {i["id"]: i for i in ir.register()["indikatorer"] if i.get("smaa_tal")}
+    if not reg:
+        return {}
+    sti = DATA_DIR / "folketal.csv"
+    if not sti.exists():
+        print("  ADVARSEL: data/folketal.csv mangler - ingen 'få tilfælde'-markering. "
+              "Kør python3 scripts/fetch_folketal.py")
+        return {}
+    with open(sti, newline="", encoding="utf-8") as f:
+        folk = {r["kommune_kode"]: float(r["folketal"]) for r in csv.DictReader(f)}
+    ud = {}
+    for r in output_rows:
+        ind = reg.get(r["indicator_id"])
+        if not ind or r["raw_value"] == "" or r["kommune_kode"] not in folk:
+            continue
+        st = ind["smaa_tal"]
+        antal = float(r["raw_value"]) * folk[r["kommune_kode"]] / st["pr"] * st["aar"]
+        if antal < FAA_TILFAELDE:
+            ud.setdefault(r["indicator_id"], []).append(r["kommune_kode"])
+    for iid, koder in ud.items():
+        print(f"  Få tilfælde (under {FAA_TILFAELDE}): {iid} i {len(koder)} kommuner")
+    return ud
+
+
 def _skriv_noegletal(output_rows, antal_kommuner):
     """data/noegletal.json: reference, dækning og dataår pr. indikator.
 
@@ -510,9 +543,12 @@ def _skriv_noegletal(output_rows, antal_kommuner):
             d["reference"] = r["reference"]
         if r["ratio"] != "" or (r["category"] == "context" and r["raw_value"] != ""):
             d["daekning"] += 1
+    for iid, koder in _faa_tilfaelde(output_rows).items():
+        pr_ind[iid]["faa_tilfaelde"] = koder
     ud = {
         "_om": "Genereres af scripts/build_master_csv.py sammen med master_indicators.csv. "
-               "Ret den ikke i hånden. daekning = antal kommuner med en værdi.",
+               "Ret den ikke i hånden. daekning = antal kommuner med en værdi. "
+               "faa_tilfaelde = kommuner hvor tallet bygger på under 20 tilfælde (registrets smaa_tal).",
         "kommuner": antal_kommuner,
         "indikatorer": pr_ind,
     }

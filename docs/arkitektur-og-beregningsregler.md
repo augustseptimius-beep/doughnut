@@ -281,6 +281,17 @@ gennemsnit, top 10 og kommunegruppe påvirker udelukkende sociale indikatorer.
 landsgennemsnittet, og ændres aldrig af toggle. `absoluteScore`-indikatorer omskaleres heller ikke, selvom de er
 sociale.
 
+**R16 - Tal på få tilfælde markeres, men scores uændret (fra sep. 2026).** For
+indikatorer med `smaa_tal` i registret regnes raten tilbage til et antal:
+råværdi × folketal / `pr` × `aar`, med folketallet 1. januar fra
+`data/folketal.csv`. Er antallet under 20, skrives kommunen i
+`noegletal.json` (`faa_tilfaelde`), og kommunesiden viser mærket "få
+tilfælde". Grænsen er NCHS': en rate på under 20 hændelser har en relativ
+standardfejl på mindst 23 % (CDC WONDER). Pt. rammer det kun trafikulykker i 8
+små kommuner; kriminalitet og vejrskader har flere end 20 tilfælde overalt.
+Mærket antager uafhængige hændelser. Vejrskader kommer ofte i klumper (én storm
+rammer mange huse), så deres reelle usikkerhed er større, end tallet viser.
+
 ---
 
 ## 4. Retningspile

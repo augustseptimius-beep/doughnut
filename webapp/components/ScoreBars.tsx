@@ -17,6 +17,7 @@ import {
   TREND_LABEL,
   trendBeskrivelse,
   trendPilOpad,
+  faaTilfaelde,
   type TrendKontekst,
 } from "@/lib/shared";
 import { useBaseline } from "@/lib/baseline-context";
@@ -589,6 +590,14 @@ export default function ScoreBars({
                               {ind.absoluteTarget && (
                                 <span className="px-1.5 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-medium">
                                   Mål: {ind.absoluteTarget}
+                                </span>
+                              )}
+                              {faaTilfaelde(ind.id, kommune.kommune_kode) && (
+                                <span
+                                  className="px-1.5 py-0.5 bg-amber-50 text-amber-700 rounded text-[10px] font-medium"
+                                  title="Tallet bygger på færre end 20 tilfælde og kan svinge meget fra år til år. Forskellen til sammenligningsgrundlaget er derfor usikker."
+                                >
+                                  Få tilfælde
                                 </span>
                               )}
                               {!ind.absoluteTarget && (

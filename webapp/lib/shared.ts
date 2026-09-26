@@ -65,9 +65,16 @@ const REGISTER = registerJson as unknown as Register;
 // En ukendt pladsholder stopper buildet i stedet for at stå rå på siden.
 interface Noegletal {
   kommuner: number;
-  indikatorer: Record<string, { reference: number | null; daekning: number; data_year: string }>;
+  // faa_tilfaelde: kommuner hvor tallet bygger på under 20 tilfælde (registrets smaa_tal)
+  indikatorer: Record<string, { reference: number | null; daekning: number; data_year: string; faa_tilfaelde?: string[] }>;
 }
 export const NOEGLETAL = noegletalJson as unknown as Noegletal;
+
+// Bygger kommunens tal på under 20 tilfælde? Så er forskellen til
+// sammenligningsgrundlaget usikker (NCHS' grænse, arkitekturdokumentet R16).
+export function faaTilfaelde(indikatorId: string, kommuneKode: string): boolean {
+  return NOEGLETAL.indikatorer[indikatorId]?.faa_tilfaelde?.includes(kommuneKode) ?? false;
+}
 
 function formatTal(x: number, decimaler: number): string {
   const [hel, brok] = Math.abs(x).toFixed(decimaler).split(".");

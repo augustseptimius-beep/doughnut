@@ -23,6 +23,7 @@ doughnut/
 │   │                                Læses af både Python-pipelinen og webappen (punkt 32).
 │   ├── kommuner.json              ← de 98 kommuner: kode, navn og kommunegruppe. Læses af scripts/kommuner.py
 │   │                                og shared.ts (kommunegruppe-baselinen). Ret kun her (punkt 36).
+│   ├── folketal.csv               ← folketal 1. januar (FOLK1A), til "få tilfælde"-mærket (punkt 26). fetch_folketal.py
 │   ├── noegletal.json             ← reference, dækning og dataår pr. indikator. Genereres af build_master_csv.py
 │   │                                sammen med master; udfylder tal i tekster (punkt 35)
 │   ├── master_indicators.csv      ← ★ KONSOLIDERET MASTER-FIL (webapp læser KUN herfra)
@@ -255,7 +256,7 @@ Scriptet gemmer direkte til `data/doughnut_scores.csv`. Fra `scripts/` havner fi
 
 25. **`fysisk_aktivitet` hentes, men scores ikke - og det er ikke en kontekst-indikator.** Den korrelerer 0,90 med svær overvægt og 0,80 med kostskalaen. Med alle tre ville én underliggende konstruktion fylde tre af Sundheds ni pladser. Tallet står i `sundhedsprofil_scores.csv` og er markeret `kun_data=True` i INDIKATORER, så det hverken når master eller trend-historikken. Skal prioriteringen laves om, er det ét flag.
 
-26. **`traffic_accidents` er et treårigt gennemsnit (fra sep. 2026).** Værdien for år Y er gennemsnittet af raterne pr. 100.000 for Y-2, Y-1 og Y, hver med folketallet 1. januar samme år (`serie_traffic_accidents()`, som pilen også bruger). Baggrund: ét års tal er ren støj i små kommuner - Læsøs gamle score på 35 hvilede på omkring to tilskadekomne. Samme greb som `vejr_skader` (2023-2025). Ændrer man det tilbage til ét år, genindfører man støjen.
+26. **`traffic_accidents` er et treårigt gennemsnit (fra sep. 2026).** Værdien for år Y er gennemsnittet af raterne pr. 100.000 for Y-2, Y-1 og Y, hver med folketallet 1. januar samme år (`serie_traffic_accidents()`, som pilen også bruger). Baggrund: ét års tal er ren støj i små kommuner - Læsøs gamle score på 35 hvilede på omkring to tilskadekomne. Samme greb som `vejr_skader` (2023-2025). Ændrer man det tilbage til ét år, genindfører man støjen. Selv med tre år bygger tallet på under 20 tilskadekomne i 8 små kommuner; de får mærket "få tilfælde" på kommunesiden (registrets `smaa_tal`, folketal fra `data/folketal.csv` via `fetch_folketal.py`, arkitekturdokumentet R16). Scoren ændres ikke.
 
 27. **`sport_tilskuer` dækker kun 76 af 98 kommuner, og hullet er systematisk.** DST's kulturvaneundersøgelse (KV2GEO) undertrykker tal hvor stikprøven er for lille. De 22 kommuner uden tal har median ca. 24.000 indbyggere mod ca. 53.000 for dem med tal, og Læsø, Fanø, Samsø, Ærø og Langeland er blandt dem. De får Fællesskab beregnet på fire indikatorer hvor de øvrige bruger fem. Det er en bevidst afvejning, ikke en fejl, men den skal stå på metodesiden hver gang kategorien ændres. Indikatoren får ingen retningspil, fordi tabellen kun har 2024 og 2025 og begge år indgår i det toårige gennemsnit.
     - **Fælde: KV2GEO's regionskoder er trecifrede** (081-085). Et filter på "tre cifre og ikke 000" tager regionerne med som var de kommuner og overvurderer dækningen med fem. `fetch_kulturvaner.py` slår op i master-CSV'ens kommuneliste i stedet. Samme fælde kan findes i andre DST-tabeller der blander kommuner, landsdele og regioner i én områdedimension.

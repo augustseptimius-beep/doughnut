@@ -72,7 +72,7 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
     id: "tryghed",
     scoring: "Gennemsnit af to indikatorer: (1) Anmeldte forbrydelser pr. 1.000 indb. (STRAF11, inverteret). (2) Trafikulykker - tilskadekomne og dræbte pr. 100.000 indb., treårigt gennemsnit (UHELDK1, inverteret). Score 100 = landsgennemsnit.",
     boundary: "Socialt fundament: borgere skal kunne leve trygt - i det offentlige rum og i trafikken.",
-    limitations: "Anmeldt kriminalitet afspejler ikke oplevet tryghed eller mørketallet. Politiets tilstedeværelse og anmeldelseskultur varierer, og kriminalitetsscoren rammer 150-loftet i en stor del af de tyndt befolkede kommuner, så den kan ikke skelne mellem dem. Trafikulykker varierer med vejnet og pendlingsforhold og opgøres fra sep. 2026 som et treårigt gennemsnit, fordi ét års tal i de mindste kommuner hviler på en håndfuld personer. Selv med tre år er grundlaget i ø-kommunerne tyndt.",
+    limitations: "Anmeldt kriminalitet afspejler ikke oplevet tryghed eller mørketallet. Politiets tilstedeværelse og anmeldelseskultur varierer, og kriminalitetsscoren rammer 150-loftet i en stor del af de tyndt befolkede kommuner, så den kan ikke skelne mellem dem. Trafikulykker varierer med vejnet og pendlingsforhold og opgøres fra sep. 2026 som et treårigt gennemsnit, fordi ét års tal i de mindste kommuner hviler på en håndfuld personer. Selv med tre år er grundlaget i ø-kommunerne tyndt. Kommuner, hvor tallet bygger på færre end 20 tilskadekomne, er mærket \"få tilfælde\" på kommunesiden. Under 20 hændelser er den tilfældige usikkerhed på en rate mindst 23 %, som det amerikanske sundhedsstatistiske kontor NCHS bruger som grænse for, hvornår en rate er pålidelig.",
   },
   lokalsamfund: {
     id: "lokalsamfund",

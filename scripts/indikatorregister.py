@@ -66,6 +66,12 @@ def valider(reg: dict) -> list[str]:
         if kat == "social" and "cap" in ind and not (
                 isinstance(ind["cap"], (int, float)) and 0 < ind["cap"] <= 150):
             fejl.append(f"{iid}: cap for en social indikator skal være et tal over 0 og højst 150")
+        # smaa_tal: antal = råværdi × folketal / pr × aar (build_master_csv.py).
+        st = ind.get("smaa_tal")
+        if st is not None and not (
+                isinstance(st, dict) and isinstance(st.get("pr"), (int, float)) and st["pr"] > 0
+                and isinstance(st.get("aar"), (int, float)) and st["aar"] > 0):
+            fejl.append(f"{iid}: smaa_tal skal være {{'pr': tal > 0, 'aar': tal > 0}}")
         # Felter der skrives til master_indicators.csv. Webappen parser den med
         # split(","), så et komma forskyder kolonnerne og rækken forsvinder
         # tavst (sep. 2026: income_gender_gap manglede i alle 98 kommuner).
