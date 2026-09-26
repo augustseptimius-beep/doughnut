@@ -2,6 +2,13 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-26 (oprydning: uscorede indikatorer, fjernvarmenet og få tilfælde)
+
+- **`housing_no_wc` og `housing_no_bath` er fjernet.** De stod i master uden at blive scoret. Niveauet er promiller (median 0,4 og 0,7 %), så en inverteret ratio ville forstørre tilfældige forskelle til farveskift. Tidsserien er slettet. `tjek_konsistens.py` melder nu en social indikator uden kategori som fejl. Ingen farveskift.
+- **Kontekst-indikatorerne `ctx_ve_kw_per_indb`, `ctx_ve_sol_mw`, `ctx_ve_vind_mw`, `ctx_ve_selvforsyning` og `ctx_energiforbrug` er fjernet.** VE-tallene leverer til det nationale net og blev let læst som kommunens egen forsyning; energiforbruget har ingen grænse pr. kommune og indgår i CO2-udledningen. 11 kontekst-indikatorer tilbage.
+- **De 18 kommuner uden egen fjernvarmeproduktion får nu det forsynende nets mix** fra Energistyrelsens "Fjernvarmenet 2022-2024" i stedet for landssnittet på 13,3 % fossil. Storkøbenhavns Fjernvarme er 6,2 % fossil. Energi stiger for Frederiksberg (86,5 → 93,6), Albertslund (86,6 → 93,7), Brøndby, Gentofte og de øvrige metro-kommuner. Fanø ligger på Esbjerg-Varde-nettet (26,8 % fossil) og falder fra 88,5 til 79,9, fra gul til rød. Kerteminde falder 1,7 (Fjernvarme Fyn, 16,3 %). Stevns har intet net i EPT og beholder landssnittet. Genhentningen af EPT tog også Energistyrelsens små revisioner af 2024-tallene med (12 kommuner, under 2 point).
+- **Nyt mærke "få tilfælde"** på kommunesiden, når et tal pr. indbygger bygger på under 20 tilfælde (registrets `smaa_tal`, ny `data/folketal.csv`). Rammer trafikulykker i Dragør, Solrød, Vallensbæk, Læsø, Ærø, Fanø, Samsø og Langeland. Scoren ændres ikke.
+
 ## 2026-09-26 (UVM-indikatorerne måles mod Danmark som helhed)
 
 - **`exam_grade`, `high_absence`, `wellbeing` og `youth_education` måles nu mod et elevvægtet landstal** i stedet for et uvægtet gennemsnit af kommunerne. Vægtene er folkeskoleelever pr. 1. oktober efter bopælskommune (DST UDDAKT20): 9. klasse for karakterer og ungdomsuddannelse, alle klassetrin for fravær og trivsel. UVM udstiller intet landstal, og vægtene kræver ingen UVM-nøgle (`fetch_udvidelse_data.py --kun-landstal`). Lukker afvigelsen i arkitekturdokumentets afsnit 7.
