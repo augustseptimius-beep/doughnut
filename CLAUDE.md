@@ -144,7 +144,7 @@ interface KommuneData {
 
 ## Data pipeline - hvordan data opdateres
 
-Datapipelinen er manuel og script-baseret. Der er IKKE CI/CD der henter data automatisk.
+Datapipelinen er manuel og script-baseret. Der er IKKE CI/CD der henter data automatisk. En GitHub Action (`.github/workflows/tjek-data.yml`, fra sep. 2026) kører `tjek_konsistens.py` på Python 3.9 og kontrollerer, at masterfilen er genberegnet, ved hver pull request der rører `data/`, `scripts/` eller metodesiden.
 
 ### Typisk flow når en indikator skal opdateres
 
