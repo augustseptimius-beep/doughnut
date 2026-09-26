@@ -128,8 +128,7 @@ export interface Indicator {
                               // lavere 'cap' (kystrisiko: 100, ingen risiko er neutral).
 }
 
-// Sociale indikatorer i registrets rækkefølge (= master-CSV'ens), inkl. de to
-// der står i master uden at blive scoret (housing_no_wc/no_bath). Hvad der
+// Sociale indikatorer i registrets rækkefølge (= master-CSV'ens). Hvad der
 // scores, afgøres af SOCIAL_CATEGORIES[].indicatorIds.
 export const INDICATORS: Indicator[] = REGISTER.indikatorer
   .filter((i) => i.category === "social")

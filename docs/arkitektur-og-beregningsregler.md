@@ -370,16 +370,16 @@ målrettede. Resultatet var at Forurening og Vand begge stod som positiv retning
 men med pile der pegede modsat. Ændrer du i `aggreger_dimensioner()`, så sørg
 for at **begge** grene målretter `pct`.
 
-**T8 - Masteren kan indeholde indikatorer platformen ikke scorer.**
-`housing_no_wc` og `housing_no_bath` står i masteren med `dimension=bolig`, men
-står ikke i kategoriens `indicators`-liste i registret. Bolig scorer og viser
-kun trangboethed (fra sep. 2026; før ubeboede boliger og boligareal). `indikatorregister.ikke_scoret()` (sociale indikatorer der
-ikke står i nogen kategori) holder dem ude af dimensionsaggregatet i
-`build_trends_csv.py`, men de beholder deres egen indikatorrække.
+**T8 - En social indikator uden kategori er en fejl.** Enhver social indikator i
+registret skal stå i en kategoris `indicators`-liste. `housing_no_wc` og
+`housing_no_bath` stod i masteren uden at blive scoret, indtil de blev fjernet i
+sep. 2026, og `tjek_konsistens.py` melder nu tilfældet som fejl.
+`indikatorregister.ikke_scoret()` holder en sådan indikator ude af
+dimensionsaggregatet i `build_trends_csv.py` som sikkerhedsnet.
 
-Uden det gennemsnitter Bolig-pilen 4 indikatorer ved siden af et tal beregnet på
-2, og de to usynlige dominerer (`housing_no_bath` er faldet omkring 39 procent
-på landsplan).
+Uden det gennemsnitter kategoriens pil flere indikatorer end det tal, den står
+ved siden af. Det skete for Bolig, hvor de to usynlige dominerede
+(`housing_no_bath` faldt omkring 39 procent på landsplan).
 
 **Regel: tilføjer du tidsserie til en indikator, så tjek at den faktisk står i
 sin kategoris `indicators` i registret.** Ellers holdes den ude af pilen, og den

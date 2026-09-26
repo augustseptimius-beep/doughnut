@@ -76,9 +76,10 @@ import indikatorregister as ir  # noqa: E402
 #                                  mængde som build_master_csv.py bruger, så pilen
 #                                  beskriver det tal den står ved siden af.
 #   ir.ikke_scoret()             - sociale indikatorer der står i master, men ikke
-#                                  i nogen kategori (housing_no_wc/no_bath). De
-#                                  beholder deres egen række her, men holdes ude af
-#                                  kategoriens pil (CLAUDE.md pkt. 18).
+#                                  i nogen kategori. Der er ingen i dag, og
+#                                  tjek_konsistens.py melder det som fejl, men
+#                                  skulle én opstå, holdes den ude af kategoriens
+#                                  pil (CLAUDE.md pkt. 18).
 #
 # sport_tilskuer har ingen pil, fordi den ikke står i trend_history_raw.csv:
 # KV2GEO har kun 2024 og 2025, og begge år indgår i indikatorens gennemsnit.
