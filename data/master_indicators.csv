@@ -2344,38 +2344,38 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,trangboethed,148.91,6.89,% af beboerne,2026,DST BOL103,social,bolig,10.26
 741,Samsø,trangboethed,150.0,5.23,% af beboerne,2026,DST BOL103,social,bolig,10.26
 482,Langeland,trangboethed,150.0,4.59,% af beboerne,2026,DST BOL103,social,bolig,10.26
-201,Allerød,bolig_fossil,38.25,61.75,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-153,Brøndby,bolig_fossil,76.36,23.64,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-175,Rødovre,bolig_fossil,60.16,39.84,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-155,Dragør,bolig_fossil,23.47,76.53,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+201,Allerød,bolig_fossil,38.68,61.32,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+153,Brøndby,bolig_fossil,82.34,17.66,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+175,Rødovre,bolig_fossil,64.45,35.55,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+155,Dragør,bolig_fossil,23.82,76.18,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 190,Furesø,bolig_fossil,16.87,83.13,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 167,Hvidovre,bolig_fossil,67.92,32.08,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-230,Rudersdal,bolig_fossil,19.01,80.99,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+230,Rudersdal,bolig_fossil,19.31,80.69,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 746,Skanderborg,bolig_fossil,88.89,11.11,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-269,Solrød,bolig_fossil,59.11,40.89,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+269,Solrød,bolig_fossil,62.66,37.34,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 265,Roskilde,bolig_fossil,76.46,23.54,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 240,Egedal,bolig_fossil,55.97,44.03,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-151,Ballerup,bolig_fossil,54.08,45.92,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+151,Ballerup,bolig_fossil,57.78,42.22,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 223,Hørsholm,bolig_fossil,48.45,51.55,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-185,Tårnby,bolig_fossil,46.86,53.14,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-157,Gentofte,bolig_fossil,70.13,29.87,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+185,Tårnby,bolig_fossil,49.63,50.37,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+157,Gentofte,bolig_fossil,75.56,24.44,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 350,Lejre,bolig_fossil,62.61,37.39,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-163,Herlev,bolig_fossil,56.75,43.25,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+163,Herlev,bolig_fossil,60.58,39.42,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 173,Lyngby-Taarbæk,bolig_fossil,30.32,69.68,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-210,Fredensborg,bolig_fossil,54.89,45.11,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+210,Fredensborg,bolig_fossil,55.93,44.07,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 183,Ishøj,bolig_fossil,74.09,25.91,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 710,Favrskov,bolig_fossil,83.71,16.29,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 530,Billund,bolig_fossil,88.25,11.75,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 840,Rebild,bolig_fossil,81.62,18.38,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-187,Vallensbæk,bolig_fossil,61.41,38.59,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-253,Greve,bolig_fossil,47.56,52.44,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-147,Frederiksberg,bolig_fossil,86.52,13.48,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-259,Køge,bolig_fossil,38.98,61.02,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+187,Vallensbæk,bolig_fossil,65.7,34.3,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+253,Greve,bolig_fossil,49.96,50.04,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+147,Frederiksberg,bolig_fossil,93.62,6.38,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+259,Køge,bolig_fossil,38.95,61.05,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 159,Gladsaxe,bolig_fossil,31.15,68.85,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 217,Helsingør,bolig_fossil,58.03,41.97,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 250,Frederikssund,bolig_fossil,50.07,49.93,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 661,Holstebro,bolig_fossil,88.86,11.14,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-825,Læsø,bolig_fossil,72.4,27.6,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+825,Læsø,bolig_fossil,73.36,26.64,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 657,Herning,bolig_fossil,89.26,10.74,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 260,Halsnæs,bolig_fossil,82.03,17.97,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 773,Morsø,bolig_fossil,52.74,47.26,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
@@ -2384,10 +2384,10 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 492,Ærø,bolig_fossil,87.32,12.68,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 561,Esbjerg,bolig_fossil,71.72,28.28,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 740,Silkeborg,bolig_fossil,54.81,45.19,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-615,Horsens,bolig_fossil,87.43,12.57,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-563,Fanø,bolig_fossil,88.49,11.51,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+615,Horsens,bolig_fossil,87.58,12.42,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+563,Fanø,bolig_fossil,79.89,20.11,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 316,Holbæk,bolig_fossil,42.99,57.01,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-766,Hedensted,bolig_fossil,66.82,33.18,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+766,Hedensted,bolig_fossil,66.98,33.02,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 607,Fredericia,bolig_fossil,93.66,6.34,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 410,Middelfart,bolig_fossil,69.31,30.69,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 329,Ringsted,bolig_fossil,73.44,26.56,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
@@ -2398,15 +2398,15 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 336,Stevns,bolig_fossil,53.92,46.08,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 751,Aarhus,bolig_fossil,96.15,3.85,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 813,Frederikshavn,bolig_fossil,73.12,26.88,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-161,Glostrup,bolig_fossil,64.46,35.54,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+161,Glostrup,bolig_fossil,64.34,35.66,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 270,Gribskov,bolig_fossil,70.38,29.62,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 860,Hjørring,bolig_fossil,84.17,15.83,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-165,Albertslund,bolig_fossil,86.58,13.42,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+165,Albertslund,bolig_fossil,93.65,6.35,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 479,Svendborg,bolig_fossil,55.12,44.88,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-791,Viborg,bolig_fossil,60.55,39.45,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+791,Viborg,bolig_fossil,60.72,39.28,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 480,Nordfyns,bolig_fossil,65.15,34.85,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 706,Syddjurs,bolig_fossil,90.92,9.08,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-440,Kerteminde,bolig_fossil,70.37,29.63,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+440,Kerteminde,bolig_fossil,68.7,31.3,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 630,Vejle,bolig_fossil,74.87,25.13,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 101,København,bolig_fossil,90.75,9.25,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 730,Randers,bolig_fossil,80.87,19.13,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
@@ -2420,7 +2420,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 580,Aabenraa,bolig_fossil,78.65,21.35,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 787,Thisted,bolig_fossil,80.79,19.21,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 756,Ikast-Brande,bolig_fossil,78.41,21.59,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-461,Odense,bolig_fossil,82.81,17.19,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+461,Odense,bolig_fossil,82.52,17.48,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 779,Skive,bolig_fossil,70.72,29.28,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 450,Nyborg,bolig_fossil,79.85,20.15,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 846,Mariagerfjord,bolig_fossil,75.09,24.91,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
@@ -2432,13 +2432,13 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 665,Lemvig,bolig_fossil,87.65,12.35,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 707,Norddjurs,bolig_fossil,89.35,10.65,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 330,Slagelse,bolig_fossil,67.49,32.51,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-306,Odsherred,bolig_fossil,69.12,30.88,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-575,Vejen,bolig_fossil,72.03,27.97,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+306,Odsherred,bolig_fossil,68.95,31.05,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+575,Vejen,bolig_fossil,72.28,27.72,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 376,Guldborgsund,bolig_fossil,78.47,21.53,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-849,Jammerbugt,bolig_fossil,76.14,23.86,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+849,Jammerbugt,bolig_fossil,77.01,22.99,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 326,Kalundborg,bolig_fossil,88.35,11.65,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 390,Vordingborg,bolig_fossil,76.82,23.18,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
-550,Tønder,bolig_fossil,74.71,25.29,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
+550,Tønder,bolig_fossil,74.75,25.25,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 360,Lolland,bolig_fossil,84.44,15.56,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 741,Samsø,bolig_fossil,88.95,11.05,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
 482,Langeland,bolig_fossil,85.7,14.3,% fossil (mål 0),2026,DST BYGB40 + Energistyrelsen EPT,social,energi,0.0
@@ -6126,24 +6126,38 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,areal_antropiseret,121.48,85.51,%,2024,DST AREALDK2,ecological,arealanvendelse,70.39
 741,Samsø,areal_antropiseret,105.94,74.57,%,2024,DST AREALDK2,ecological,arealanvendelse,70.39
 482,Langeland,areal_antropiseret,109.26,76.91,%,2024,DST AREALDK2,ecological,arealanvendelse,70.39
+201,Allerød,ctx_fjv_biomasse,,69.6,%,2024,Energistyrelsen EPT,context,energi,
+153,Brøndby,ctx_fjv_biomasse,,60.5,%,2024,Energistyrelsen EPT,context,energi,
+175,Rødovre,ctx_fjv_biomasse,,60.5,%,2024,Energistyrelsen EPT,context,energi,
+155,Dragør,ctx_fjv_biomasse,,60.5,%,2024,Energistyrelsen EPT,context,energi,
 190,Furesø,ctx_fjv_biomasse,,0.7,%,2024,Energistyrelsen EPT,context,energi,
 167,Hvidovre,ctx_fjv_biomasse,,96.7,%,2024,Energistyrelsen EPT,context,energi,
 230,Rudersdal,ctx_fjv_biomasse,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 746,Skanderborg,ctx_fjv_biomasse,,47.4,%,2024,Energistyrelsen EPT,context,energi,
+269,Solrød,ctx_fjv_biomasse,,60.5,%,2024,Energistyrelsen EPT,context,energi,
 265,Roskilde,ctx_fjv_biomasse,,0.5,%,2024,Energistyrelsen EPT,context,energi,
 240,Egedal,ctx_fjv_biomasse,,45.1,%,2024,Energistyrelsen EPT,context,energi,
+151,Ballerup,ctx_fjv_biomasse,,60.5,%,2024,Energistyrelsen EPT,context,energi,
 223,Hørsholm,ctx_fjv_biomasse,,52.6,%,2024,Energistyrelsen EPT,context,energi,
+185,Tårnby,ctx_fjv_biomasse,,60.5,%,2024,Energistyrelsen EPT,context,energi,
+157,Gentofte,ctx_fjv_biomasse,,60.5,%,2024,Energistyrelsen EPT,context,energi,
 350,Lejre,ctx_fjv_biomasse,,80.1,%,2024,Energistyrelsen EPT,context,energi,
+163,Herlev,ctx_fjv_biomasse,,60.5,%,2024,Energistyrelsen EPT,context,energi,
 173,Lyngby-Taarbæk,ctx_fjv_biomasse,,3.2,%,2024,Energistyrelsen EPT,context,energi,
+210,Fredensborg,ctx_fjv_biomasse,,69.6,%,2024,Energistyrelsen EPT,context,energi,
 183,Ishøj,ctx_fjv_biomasse,,100.0,%,2024,Energistyrelsen EPT,context,energi,
 710,Favrskov,ctx_fjv_biomasse,,60.1,%,2024,Energistyrelsen EPT,context,energi,
 530,Billund,ctx_fjv_biomasse,,57.8,%,2024,Energistyrelsen EPT,context,energi,
 840,Rebild,ctx_fjv_biomasse,,48.4,%,2024,Energistyrelsen EPT,context,energi,
-259,Køge,ctx_fjv_biomasse,,48.7,%,2024,Energistyrelsen EPT,context,energi,
+187,Vallensbæk,ctx_fjv_biomasse,,60.5,%,2024,Energistyrelsen EPT,context,energi,
+253,Greve,ctx_fjv_biomasse,,60.5,%,2024,Energistyrelsen EPT,context,energi,
+147,Frederiksberg,ctx_fjv_biomasse,,60.5,%,2024,Energistyrelsen EPT,context,energi,
+259,Køge,ctx_fjv_biomasse,,48.8,%,2024,Energistyrelsen EPT,context,energi,
 159,Gladsaxe,ctx_fjv_biomasse,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 217,Helsingør,ctx_fjv_biomasse,,88.8,%,2024,Energistyrelsen EPT,context,energi,
 250,Frederikssund,ctx_fjv_biomasse,,5.3,%,2024,Energistyrelsen EPT,context,energi,
 661,Holstebro,ctx_fjv_biomasse,,44.7,%,2024,Energistyrelsen EPT,context,energi,
+825,Læsø,ctx_fjv_biomasse,,93.8,%,2024,Energistyrelsen EPT,context,energi,
 657,Herning,ctx_fjv_biomasse,,80.6,%,2024,Energistyrelsen EPT,context,energi,
 260,Halsnæs,ctx_fjv_biomasse,,81.7,%,2024,Energistyrelsen EPT,context,energi,
 773,Morsø,ctx_fjv_biomasse,,14.4,%,2024,Energistyrelsen EPT,context,energi,
@@ -6152,9 +6166,10 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 492,Ærø,ctx_fjv_biomasse,,57.8,%,2024,Energistyrelsen EPT,context,energi,
 561,Esbjerg,ctx_fjv_biomasse,,9.4,%,2024,Energistyrelsen EPT,context,energi,
 740,Silkeborg,ctx_fjv_biomasse,,14.7,%,2024,Energistyrelsen EPT,context,energi,
-615,Horsens,ctx_fjv_biomasse,,38.8,%,2024,Energistyrelsen EPT,context,energi,
+615,Horsens,ctx_fjv_biomasse,,39.3,%,2024,Energistyrelsen EPT,context,energi,
+563,Fanø,ctx_fjv_biomasse,,3.4,%,2024,Energistyrelsen EPT,context,energi,
 316,Holbæk,ctx_fjv_biomasse,,30.8,%,2024,Energistyrelsen EPT,context,energi,
-766,Hedensted,ctx_fjv_biomasse,,33.4,%,2024,Energistyrelsen EPT,context,energi,
+766,Hedensted,ctx_fjv_biomasse,,32.2,%,2024,Energistyrelsen EPT,context,energi,
 607,Fredericia,ctx_fjv_biomasse,,66.4,%,2024,Energistyrelsen EPT,context,energi,
 410,Middelfart,ctx_fjv_biomasse,,85.2,%,2024,Energistyrelsen EPT,context,energi,
 329,Ringsted,ctx_fjv_biomasse,,58.8,%,2024,Energistyrelsen EPT,context,energi,
@@ -6166,11 +6181,13 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 813,Frederikshavn,ctx_fjv_biomasse,,5.9,%,2024,Energistyrelsen EPT,context,energi,
 161,Glostrup,ctx_fjv_biomasse,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 270,Gribskov,ctx_fjv_biomasse,,42.6,%,2024,Energistyrelsen EPT,context,energi,
-860,Hjørring,ctx_fjv_biomasse,,52.4,%,2024,Energistyrelsen EPT,context,energi,
+860,Hjørring,ctx_fjv_biomasse,,52.1,%,2024,Energistyrelsen EPT,context,energi,
+165,Albertslund,ctx_fjv_biomasse,,60.5,%,2024,Energistyrelsen EPT,context,energi,
 479,Svendborg,ctx_fjv_biomasse,,7.2,%,2024,Energistyrelsen EPT,context,energi,
-791,Viborg,ctx_fjv_biomasse,,7.8,%,2024,Energistyrelsen EPT,context,energi,
+791,Viborg,ctx_fjv_biomasse,,7.7,%,2024,Energistyrelsen EPT,context,energi,
 480,Nordfyns,ctx_fjv_biomasse,,70.5,%,2024,Energistyrelsen EPT,context,energi,
 706,Syddjurs,ctx_fjv_biomasse,,96.8,%,2024,Energistyrelsen EPT,context,energi,
+440,Kerteminde,ctx_fjv_biomasse,,40.0,%,2024,Energistyrelsen EPT,context,energi,
 630,Vejle,ctx_fjv_biomasse,,56.3,%,2024,Energistyrelsen EPT,context,energi,
 101,København,ctx_fjv_biomasse,,65.8,%,2024,Energistyrelsen EPT,context,energi,
 730,Randers,ctx_fjv_biomasse,,90.5,%,2024,Energistyrelsen EPT,context,energi,
@@ -6184,7 +6201,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 580,Aabenraa,ctx_fjv_biomasse,,88.7,%,2024,Energistyrelsen EPT,context,energi,
 787,Thisted,ctx_fjv_biomasse,,42.1,%,2024,Energistyrelsen EPT,context,energi,
 756,Ikast-Brande,ctx_fjv_biomasse,,26.1,%,2024,Energistyrelsen EPT,context,energi,
-461,Odense,ctx_fjv_biomasse,,39.6,%,2024,Energistyrelsen EPT,context,energi,
+461,Odense,ctx_fjv_biomasse,,40.3,%,2024,Energistyrelsen EPT,context,energi,
 779,Skive,ctx_fjv_biomasse,,65.6,%,2024,Energistyrelsen EPT,context,energi,
 450,Nyborg,ctx_fjv_biomasse,,5.0,%,2024,Energistyrelsen EPT,context,energi,
 846,Mariagerfjord,ctx_fjv_biomasse,,76.4,%,2024,Energistyrelsen EPT,context,energi,
@@ -6196,34 +6213,48 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 665,Lemvig,ctx_fjv_biomasse,,87.9,%,2024,Energistyrelsen EPT,context,energi,
 707,Norddjurs,ctx_fjv_biomasse,,82.7,%,2024,Energistyrelsen EPT,context,energi,
 330,Slagelse,ctx_fjv_biomasse,,80.7,%,2024,Energistyrelsen EPT,context,energi,
-306,Odsherred,ctx_fjv_biomasse,,13.1,%,2024,Energistyrelsen EPT,context,energi,
-575,Vejen,ctx_fjv_biomasse,,79.5,%,2024,Energistyrelsen EPT,context,energi,
+306,Odsherred,ctx_fjv_biomasse,,12.7,%,2024,Energistyrelsen EPT,context,energi,
+575,Vejen,ctx_fjv_biomasse,,71.6,%,2024,Energistyrelsen EPT,context,energi,
 376,Guldborgsund,ctx_fjv_biomasse,,50.0,%,2024,Energistyrelsen EPT,context,energi,
-849,Jammerbugt,ctx_fjv_biomasse,,62.1,%,2024,Energistyrelsen EPT,context,energi,
+849,Jammerbugt,ctx_fjv_biomasse,,62.7,%,2024,Energistyrelsen EPT,context,energi,
 326,Kalundborg,ctx_fjv_biomasse,,86.0,%,2024,Energistyrelsen EPT,context,energi,
 390,Vordingborg,ctx_fjv_biomasse,,81.6,%,2024,Energistyrelsen EPT,context,energi,
-550,Tønder,ctx_fjv_biomasse,,40.6,%,2024,Energistyrelsen EPT,context,energi,
+550,Tønder,ctx_fjv_biomasse,,40.7,%,2024,Energistyrelsen EPT,context,energi,
 360,Lolland,ctx_fjv_biomasse,,99.1,%,2024,Energistyrelsen EPT,context,energi,
 741,Samsø,ctx_fjv_biomasse,,97.0,%,2024,Energistyrelsen EPT,context,energi,
 482,Langeland,ctx_fjv_biomasse,,87.0,%,2024,Energistyrelsen EPT,context,energi,
+201,Allerød,ctx_fjv_affald,,19.8,%,2024,Energistyrelsen EPT,context,energi,
+153,Brøndby,ctx_fjv_affald,,31.3,%,2024,Energistyrelsen EPT,context,energi,
+175,Rødovre,ctx_fjv_affald,,31.3,%,2024,Energistyrelsen EPT,context,energi,
+155,Dragør,ctx_fjv_affald,,31.3,%,2024,Energistyrelsen EPT,context,energi,
 190,Furesø,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 167,Hvidovre,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 230,Rudersdal,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 746,Skanderborg,ctx_fjv_affald,,30.3,%,2024,Energistyrelsen EPT,context,energi,
+269,Solrød,ctx_fjv_affald,,31.3,%,2024,Energistyrelsen EPT,context,energi,
 265,Roskilde,ctx_fjv_affald,,92.9,%,2024,Energistyrelsen EPT,context,energi,
 240,Egedal,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
+151,Ballerup,ctx_fjv_affald,,31.3,%,2024,Energistyrelsen EPT,context,energi,
 223,Hørsholm,ctx_fjv_affald,,41.8,%,2024,Energistyrelsen EPT,context,energi,
+185,Tårnby,ctx_fjv_affald,,31.3,%,2024,Energistyrelsen EPT,context,energi,
+157,Gentofte,ctx_fjv_affald,,31.3,%,2024,Energistyrelsen EPT,context,energi,
 350,Lejre,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
+163,Herlev,ctx_fjv_affald,,31.3,%,2024,Energistyrelsen EPT,context,energi,
 173,Lyngby-Taarbæk,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
+210,Fredensborg,ctx_fjv_affald,,19.8,%,2024,Energistyrelsen EPT,context,energi,
 183,Ishøj,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 710,Favrskov,ctx_fjv_affald,,25.0,%,2024,Energistyrelsen EPT,context,energi,
 530,Billund,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 840,Rebild,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
+187,Vallensbæk,ctx_fjv_affald,,31.3,%,2024,Energistyrelsen EPT,context,energi,
+253,Greve,ctx_fjv_affald,,31.3,%,2024,Energistyrelsen EPT,context,energi,
+147,Frederiksberg,ctx_fjv_affald,,31.3,%,2024,Energistyrelsen EPT,context,energi,
 259,Køge,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 159,Gladsaxe,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 217,Helsingør,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 250,Frederikssund,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 661,Holstebro,ctx_fjv_affald,,48.1,%,2024,Energistyrelsen EPT,context,energi,
+825,Læsø,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 657,Herning,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 260,Halsnæs,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 773,Morsø,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
@@ -6232,7 +6263,8 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 492,Ærø,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 561,Esbjerg,ctx_fjv_affald,,41.8,%,2024,Energistyrelsen EPT,context,energi,
 740,Silkeborg,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
-615,Horsens,ctx_fjv_affald,,37.0,%,2024,Energistyrelsen EPT,context,energi,
+615,Horsens,ctx_fjv_affald,,35.9,%,2024,Energistyrelsen EPT,context,energi,
+563,Fanø,ctx_fjv_affald,,53.4,%,2024,Energistyrelsen EPT,context,energi,
 316,Holbæk,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 766,Hedensted,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 607,Fredericia,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
@@ -6244,13 +6276,15 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 727,Odder,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 751,Aarhus,ctx_fjv_affald,,18.2,%,2024,Energistyrelsen EPT,context,energi,
 813,Frederikshavn,ctx_fjv_affald,,17.3,%,2024,Energistyrelsen EPT,context,energi,
-161,Glostrup,ctx_fjv_affald,,96.5,%,2024,Energistyrelsen EPT,context,energi,
+161,Glostrup,ctx_fjv_affald,,96.3,%,2024,Energistyrelsen EPT,context,energi,
 270,Gribskov,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
-860,Hjørring,ctx_fjv_affald,,33.8,%,2024,Energistyrelsen EPT,context,energi,
+860,Hjørring,ctx_fjv_affald,,33.6,%,2024,Energistyrelsen EPT,context,energi,
+165,Albertslund,ctx_fjv_affald,,31.3,%,2024,Energistyrelsen EPT,context,energi,
 479,Svendborg,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 791,Viborg,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 480,Nordfyns,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 706,Syddjurs,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
+440,Kerteminde,ctx_fjv_affald,,30.3,%,2024,Energistyrelsen EPT,context,energi,
 630,Vejle,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 101,København,ctx_fjv_affald,,24.4,%,2024,Energistyrelsen EPT,context,energi,
 730,Randers,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
@@ -6264,7 +6298,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 580,Aabenraa,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 787,Thisted,ctx_fjv_affald,,35.3,%,2024,Energistyrelsen EPT,context,energi,
 756,Ikast-Brande,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
-461,Odense,ctx_fjv_affald,,26.6,%,2024,Energistyrelsen EPT,context,energi,
+461,Odense,ctx_fjv_affald,,27.0,%,2024,Energistyrelsen EPT,context,energi,
 779,Skive,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 450,Nyborg,ctx_fjv_affald,,77.4,%,2024,Energistyrelsen EPT,context,energi,
 846,Mariagerfjord,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
@@ -6286,24 +6320,38 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 741,Samsø,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 482,Langeland,ctx_fjv_affald,,0.0,%,2024,Energistyrelsen EPT,context,energi,
+201,Allerød,ctx_fjv_fossil,,10.5,%,2024,Energistyrelsen EPT,context,energi,
+153,Brøndby,ctx_fjv_fossil,,6.2,%,2024,Energistyrelsen EPT,context,energi,
+175,Rødovre,ctx_fjv_fossil,,6.2,%,2024,Energistyrelsen EPT,context,energi,
+155,Dragør,ctx_fjv_fossil,,6.2,%,2024,Energistyrelsen EPT,context,energi,
 190,Furesø,ctx_fjv_fossil,,99.3,%,2024,Energistyrelsen EPT,context,energi,
 167,Hvidovre,ctx_fjv_fossil,,3.3,%,2024,Energistyrelsen EPT,context,energi,
-230,Rudersdal,ctx_fjv_fossil,,100.0,%,2024,Energistyrelsen EPT,context,energi,
+230,Rudersdal,ctx_fjv_fossil,,98.9,%,2024,Energistyrelsen EPT,context,energi,
 746,Skanderborg,ctx_fjv_fossil,,2.2,%,2024,Energistyrelsen EPT,context,energi,
+269,Solrød,ctx_fjv_fossil,,6.2,%,2024,Energistyrelsen EPT,context,energi,
 265,Roskilde,ctx_fjv_fossil,,2.7,%,2024,Energistyrelsen EPT,context,energi,
 240,Egedal,ctx_fjv_fossil,,14.2,%,2024,Energistyrelsen EPT,context,energi,
+151,Ballerup,ctx_fjv_fossil,,6.2,%,2024,Energistyrelsen EPT,context,energi,
 223,Hørsholm,ctx_fjv_fossil,,5.6,%,2024,Energistyrelsen EPT,context,energi,
+185,Tårnby,ctx_fjv_fossil,,6.2,%,2024,Energistyrelsen EPT,context,energi,
+157,Gentofte,ctx_fjv_fossil,,6.2,%,2024,Energistyrelsen EPT,context,energi,
 350,Lejre,ctx_fjv_fossil,,19.9,%,2024,Energistyrelsen EPT,context,energi,
+163,Herlev,ctx_fjv_fossil,,6.2,%,2024,Energistyrelsen EPT,context,energi,
 173,Lyngby-Taarbæk,ctx_fjv_fossil,,41.7,%,2024,Energistyrelsen EPT,context,energi,
+210,Fredensborg,ctx_fjv_fossil,,10.5,%,2024,Energistyrelsen EPT,context,energi,
 183,Ishøj,ctx_fjv_fossil,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 710,Favrskov,ctx_fjv_fossil,,7.2,%,2024,Energistyrelsen EPT,context,energi,
 530,Billund,ctx_fjv_fossil,,4.7,%,2024,Energistyrelsen EPT,context,energi,
 840,Rebild,ctx_fjv_fossil,,15.0,%,2024,Energistyrelsen EPT,context,energi,
-259,Køge,ctx_fjv_fossil,,44.7,%,2024,Energistyrelsen EPT,context,energi,
+187,Vallensbæk,ctx_fjv_fossil,,6.2,%,2024,Energistyrelsen EPT,context,energi,
+253,Greve,ctx_fjv_fossil,,6.2,%,2024,Energistyrelsen EPT,context,energi,
+147,Frederiksberg,ctx_fjv_fossil,,6.2,%,2024,Energistyrelsen EPT,context,energi,
+259,Køge,ctx_fjv_fossil,,44.8,%,2024,Energistyrelsen EPT,context,energi,
 159,Gladsaxe,ctx_fjv_fossil,,60.6,%,2024,Energistyrelsen EPT,context,energi,
 217,Helsingør,ctx_fjv_fossil,,10.4,%,2024,Energistyrelsen EPT,context,energi,
 250,Frederikssund,ctx_fjv_fossil,,40.5,%,2024,Energistyrelsen EPT,context,energi,
 661,Holstebro,ctx_fjv_fossil,,5.8,%,2024,Energistyrelsen EPT,context,energi,
+825,Læsø,ctx_fjv_fossil,,6.2,%,2024,Energistyrelsen EPT,context,energi,
 657,Herning,ctx_fjv_fossil,,7.5,%,2024,Energistyrelsen EPT,context,energi,
 260,Halsnæs,ctx_fjv_fossil,,8.0,%,2024,Energistyrelsen EPT,context,energi,
 773,Morsø,ctx_fjv_fossil,,41.1,%,2024,Energistyrelsen EPT,context,energi,
@@ -6312,9 +6360,10 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 492,Ærø,ctx_fjv_fossil,,0.2,%,2024,Energistyrelsen EPT,context,energi,
 561,Esbjerg,ctx_fjv_fossil,,26.3,%,2024,Energistyrelsen EPT,context,energi,
 740,Silkeborg,ctx_fjv_fossil,,45.0,%,2024,Energistyrelsen EPT,context,energi,
-615,Horsens,ctx_fjv_fossil,,5.1,%,2024,Energistyrelsen EPT,context,energi,
+615,Horsens,ctx_fjv_fossil,,4.9,%,2024,Energistyrelsen EPT,context,energi,
+563,Fanø,ctx_fjv_fossil,,26.8,%,2024,Energistyrelsen EPT,context,energi,
 316,Holbæk,ctx_fjv_fossil,,47.1,%,2024,Energistyrelsen EPT,context,energi,
-766,Hedensted,ctx_fjv_fossil,,14.6,%,2024,Energistyrelsen EPT,context,energi,
+766,Hedensted,ctx_fjv_fossil,,14.1,%,2024,Energistyrelsen EPT,context,energi,
 607,Fredericia,ctx_fjv_fossil,,5.1,%,2024,Energistyrelsen EPT,context,energi,
 410,Middelfart,ctx_fjv_fossil,,14.0,%,2024,Energistyrelsen EPT,context,energi,
 329,Ringsted,ctx_fjv_fossil,,7.3,%,2024,Energistyrelsen EPT,context,energi,
@@ -6324,13 +6373,15 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 727,Odder,ctx_fjv_fossil,,22.8,%,2024,Energistyrelsen EPT,context,energi,
 751,Aarhus,ctx_fjv_fossil,,2.9,%,2024,Energistyrelsen EPT,context,energi,
 813,Frederikshavn,ctx_fjv_fossil,,20.7,%,2024,Energistyrelsen EPT,context,energi,
-161,Glostrup,ctx_fjv_fossil,,3.5,%,2024,Energistyrelsen EPT,context,energi,
+161,Glostrup,ctx_fjv_fossil,,3.7,%,2024,Energistyrelsen EPT,context,energi,
 270,Gribskov,ctx_fjv_fossil,,32.5,%,2024,Energistyrelsen EPT,context,energi,
 860,Hjørring,ctx_fjv_fossil,,5.8,%,2024,Energistyrelsen EPT,context,energi,
+165,Albertslund,ctx_fjv_fossil,,6.2,%,2024,Energistyrelsen EPT,context,energi,
 479,Svendborg,ctx_fjv_fossil,,26.6,%,2024,Energistyrelsen EPT,context,energi,
-791,Viborg,ctx_fjv_fossil,,32.8,%,2024,Energistyrelsen EPT,context,energi,
+791,Viborg,ctx_fjv_fossil,,32.5,%,2024,Energistyrelsen EPT,context,energi,
 480,Nordfyns,ctx_fjv_fossil,,18.8,%,2024,Energistyrelsen EPT,context,energi,
 706,Syddjurs,ctx_fjv_fossil,,0.2,%,2024,Energistyrelsen EPT,context,energi,
+440,Kerteminde,ctx_fjv_fossil,,16.3,%,2024,Energistyrelsen EPT,context,energi,
 630,Vejle,ctx_fjv_fossil,,16.2,%,2024,Energistyrelsen EPT,context,energi,
 101,København,ctx_fjv_fossil,,9.0,%,2024,Energistyrelsen EPT,context,energi,
 730,Randers,ctx_fjv_fossil,,2.5,%,2024,Energistyrelsen EPT,context,energi,
@@ -6344,7 +6395,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 580,Aabenraa,ctx_fjv_fossil,,0.2,%,2024,Energistyrelsen EPT,context,energi,
 787,Thisted,ctx_fjv_fossil,,7.9,%,2024,Energistyrelsen EPT,context,energi,
 756,Ikast-Brande,ctx_fjv_fossil,,19.1,%,2024,Energistyrelsen EPT,context,energi,
-461,Odense,ctx_fjv_fossil,,17.0,%,2024,Energistyrelsen EPT,context,energi,
+461,Odense,ctx_fjv_fossil,,17.3,%,2024,Energistyrelsen EPT,context,energi,
 779,Skive,ctx_fjv_fossil,,7.4,%,2024,Energistyrelsen EPT,context,energi,
 450,Nyborg,ctx_fjv_fossil,,7.5,%,2024,Energistyrelsen EPT,context,energi,
 846,Mariagerfjord,ctx_fjv_fossil,,8.3,%,2024,Energistyrelsen EPT,context,energi,
@@ -6356,34 +6407,48 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 665,Lemvig,ctx_fjv_fossil,,2.8,%,2024,Energistyrelsen EPT,context,energi,
 707,Norddjurs,ctx_fjv_fossil,,1.0,%,2024,Energistyrelsen EPT,context,energi,
 330,Slagelse,ctx_fjv_fossil,,7.5,%,2024,Energistyrelsen EPT,context,energi,
-306,Odsherred,ctx_fjv_fossil,,16.6,%,2024,Energistyrelsen EPT,context,energi,
-575,Vejen,ctx_fjv_fossil,,5.7,%,2024,Energistyrelsen EPT,context,energi,
+306,Odsherred,ctx_fjv_fossil,,17.2,%,2024,Energistyrelsen EPT,context,energi,
+575,Vejen,ctx_fjv_fossil,,5.1,%,2024,Energistyrelsen EPT,context,energi,
 376,Guldborgsund,ctx_fjv_fossil,,18.2,%,2024,Energistyrelsen EPT,context,energi,
-849,Jammerbugt,ctx_fjv_fossil,,12.7,%,2024,Energistyrelsen EPT,context,energi,
+849,Jammerbugt,ctx_fjv_fossil,,11.1,%,2024,Energistyrelsen EPT,context,energi,
 326,Kalundborg,ctx_fjv_fossil,,0.3,%,2024,Energistyrelsen EPT,context,energi,
 390,Vordingborg,ctx_fjv_fossil,,3.7,%,2024,Energistyrelsen EPT,context,energi,
-550,Tønder,ctx_fjv_fossil,,12.3,%,2024,Energistyrelsen EPT,context,energi,
+550,Tønder,ctx_fjv_fossil,,12.2,%,2024,Energistyrelsen EPT,context,energi,
 360,Lolland,ctx_fjv_fossil,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 741,Samsø,ctx_fjv_fossil,,0.3,%,2024,Energistyrelsen EPT,context,energi,
 482,Langeland,ctx_fjv_fossil,,0.3,%,2024,Energistyrelsen EPT,context,energi,
+201,Allerød,ctx_fjv_ren,,0.1,%,2024,Energistyrelsen EPT,context,energi,
+153,Brøndby,ctx_fjv_ren,,2.0,%,2024,Energistyrelsen EPT,context,energi,
+175,Rødovre,ctx_fjv_ren,,2.0,%,2024,Energistyrelsen EPT,context,energi,
+155,Dragør,ctx_fjv_ren,,2.0,%,2024,Energistyrelsen EPT,context,energi,
 190,Furesø,ctx_fjv_ren,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 167,Hvidovre,ctx_fjv_ren,,0.0,%,2024,Energistyrelsen EPT,context,energi,
-230,Rudersdal,ctx_fjv_ren,,0.0,%,2024,Energistyrelsen EPT,context,energi,
+230,Rudersdal,ctx_fjv_ren,,1.1,%,2024,Energistyrelsen EPT,context,energi,
 746,Skanderborg,ctx_fjv_ren,,20.1,%,2024,Energistyrelsen EPT,context,energi,
+269,Solrød,ctx_fjv_ren,,2.0,%,2024,Energistyrelsen EPT,context,energi,
 265,Roskilde,ctx_fjv_ren,,3.9,%,2024,Energistyrelsen EPT,context,energi,
 240,Egedal,ctx_fjv_ren,,40.7,%,2024,Energistyrelsen EPT,context,energi,
+151,Ballerup,ctx_fjv_ren,,2.0,%,2024,Energistyrelsen EPT,context,energi,
 223,Hørsholm,ctx_fjv_ren,,0.0,%,2024,Energistyrelsen EPT,context,energi,
+185,Tårnby,ctx_fjv_ren,,2.0,%,2024,Energistyrelsen EPT,context,energi,
+157,Gentofte,ctx_fjv_ren,,2.0,%,2024,Energistyrelsen EPT,context,energi,
 350,Lejre,ctx_fjv_ren,,0.0,%,2024,Energistyrelsen EPT,context,energi,
+163,Herlev,ctx_fjv_ren,,2.0,%,2024,Energistyrelsen EPT,context,energi,
 173,Lyngby-Taarbæk,ctx_fjv_ren,,55.1,%,2024,Energistyrelsen EPT,context,energi,
+210,Fredensborg,ctx_fjv_ren,,0.1,%,2024,Energistyrelsen EPT,context,energi,
 183,Ishøj,ctx_fjv_ren,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 710,Favrskov,ctx_fjv_ren,,7.6,%,2024,Energistyrelsen EPT,context,energi,
 530,Billund,ctx_fjv_ren,,37.5,%,2024,Energistyrelsen EPT,context,energi,
 840,Rebild,ctx_fjv_ren,,36.6,%,2024,Energistyrelsen EPT,context,energi,
-259,Køge,ctx_fjv_ren,,6.5,%,2024,Energistyrelsen EPT,context,energi,
+187,Vallensbæk,ctx_fjv_ren,,2.0,%,2024,Energistyrelsen EPT,context,energi,
+253,Greve,ctx_fjv_ren,,2.0,%,2024,Energistyrelsen EPT,context,energi,
+147,Frederiksberg,ctx_fjv_ren,,2.0,%,2024,Energistyrelsen EPT,context,energi,
+259,Køge,ctx_fjv_ren,,6.4,%,2024,Energistyrelsen EPT,context,energi,
 159,Gladsaxe,ctx_fjv_ren,,39.4,%,2024,Energistyrelsen EPT,context,energi,
 217,Helsingør,ctx_fjv_ren,,0.8,%,2024,Energistyrelsen EPT,context,energi,
 250,Frederikssund,ctx_fjv_ren,,54.2,%,2024,Energistyrelsen EPT,context,energi,
 661,Holstebro,ctx_fjv_ren,,1.4,%,2024,Energistyrelsen EPT,context,energi,
+825,Læsø,ctx_fjv_ren,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 657,Herning,ctx_fjv_ren,,11.8,%,2024,Energistyrelsen EPT,context,energi,
 260,Halsnæs,ctx_fjv_ren,,10.4,%,2024,Energistyrelsen EPT,context,energi,
 773,Morsø,ctx_fjv_ren,,44.5,%,2024,Energistyrelsen EPT,context,energi,
@@ -6392,9 +6457,10 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 492,Ærø,ctx_fjv_ren,,42.0,%,2024,Energistyrelsen EPT,context,energi,
 561,Esbjerg,ctx_fjv_ren,,22.5,%,2024,Energistyrelsen EPT,context,energi,
 740,Silkeborg,ctx_fjv_ren,,40.2,%,2024,Energistyrelsen EPT,context,energi,
-615,Horsens,ctx_fjv_ren,,19.1,%,2024,Energistyrelsen EPT,context,energi,
+615,Horsens,ctx_fjv_ren,,19.9,%,2024,Energistyrelsen EPT,context,energi,
+563,Fanø,ctx_fjv_ren,,16.4,%,2024,Energistyrelsen EPT,context,energi,
 316,Holbæk,ctx_fjv_ren,,22.1,%,2024,Energistyrelsen EPT,context,energi,
-766,Hedensted,ctx_fjv_ren,,52.0,%,2024,Energistyrelsen EPT,context,energi,
+766,Hedensted,ctx_fjv_ren,,53.6,%,2024,Energistyrelsen EPT,context,energi,
 607,Fredericia,ctx_fjv_ren,,28.5,%,2024,Energistyrelsen EPT,context,energi,
 410,Middelfart,ctx_fjv_ren,,0.7,%,2024,Energistyrelsen EPT,context,energi,
 329,Ringsted,ctx_fjv_ren,,33.9,%,2024,Energistyrelsen EPT,context,energi,
@@ -6406,11 +6472,13 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 813,Frederikshavn,ctx_fjv_ren,,56.1,%,2024,Energistyrelsen EPT,context,energi,
 161,Glostrup,ctx_fjv_ren,,0.0,%,2024,Energistyrelsen EPT,context,energi,
 270,Gribskov,ctx_fjv_ren,,24.9,%,2024,Energistyrelsen EPT,context,energi,
-860,Hjørring,ctx_fjv_ren,,8.0,%,2024,Energistyrelsen EPT,context,energi,
+860,Hjørring,ctx_fjv_ren,,8.5,%,2024,Energistyrelsen EPT,context,energi,
+165,Albertslund,ctx_fjv_ren,,2.0,%,2024,Energistyrelsen EPT,context,energi,
 479,Svendborg,ctx_fjv_ren,,66.2,%,2024,Energistyrelsen EPT,context,energi,
-791,Viborg,ctx_fjv_ren,,59.4,%,2024,Energistyrelsen EPT,context,energi,
+791,Viborg,ctx_fjv_ren,,59.8,%,2024,Energistyrelsen EPT,context,energi,
 480,Nordfyns,ctx_fjv_ren,,10.7,%,2024,Energistyrelsen EPT,context,energi,
 706,Syddjurs,ctx_fjv_ren,,3.0,%,2024,Energistyrelsen EPT,context,energi,
+440,Kerteminde,ctx_fjv_ren,,13.4,%,2024,Energistyrelsen EPT,context,energi,
 630,Vejle,ctx_fjv_ren,,27.5,%,2024,Energistyrelsen EPT,context,energi,
 101,København,ctx_fjv_ren,,0.9,%,2024,Energistyrelsen EPT,context,energi,
 730,Randers,ctx_fjv_ren,,7.1,%,2024,Energistyrelsen EPT,context,energi,
@@ -6424,7 +6492,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 580,Aabenraa,ctx_fjv_ren,,11.1,%,2024,Energistyrelsen EPT,context,energi,
 787,Thisted,ctx_fjv_ren,,14.7,%,2024,Energistyrelsen EPT,context,energi,
 756,Ikast-Brande,ctx_fjv_ren,,54.7,%,2024,Energistyrelsen EPT,context,energi,
-461,Odense,ctx_fjv_ren,,16.9,%,2024,Energistyrelsen EPT,context,energi,
+461,Odense,ctx_fjv_ren,,15.4,%,2024,Energistyrelsen EPT,context,energi,
 779,Skive,ctx_fjv_ren,,26.9,%,2024,Energistyrelsen EPT,context,energi,
 450,Nyborg,ctx_fjv_ren,,10.1,%,2024,Energistyrelsen EPT,context,energi,
 846,Mariagerfjord,ctx_fjv_ren,,15.3,%,2024,Energistyrelsen EPT,context,energi,
@@ -6436,10 +6504,10 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 665,Lemvig,ctx_fjv_ren,,9.2,%,2024,Energistyrelsen EPT,context,energi,
 707,Norddjurs,ctx_fjv_ren,,16.4,%,2024,Energistyrelsen EPT,context,energi,
 330,Slagelse,ctx_fjv_ren,,4.1,%,2024,Energistyrelsen EPT,context,energi,
-306,Odsherred,ctx_fjv_ren,,70.3,%,2024,Energistyrelsen EPT,context,energi,
-575,Vejen,ctx_fjv_ren,,14.8,%,2024,Energistyrelsen EPT,context,energi,
+306,Odsherred,ctx_fjv_ren,,70.1,%,2024,Energistyrelsen EPT,context,energi,
+575,Vejen,ctx_fjv_ren,,23.3,%,2024,Energistyrelsen EPT,context,energi,
 376,Guldborgsund,ctx_fjv_ren,,5.5,%,2024,Energistyrelsen EPT,context,energi,
-849,Jammerbugt,ctx_fjv_ren,,25.3,%,2024,Energistyrelsen EPT,context,energi,
+849,Jammerbugt,ctx_fjv_ren,,26.1,%,2024,Energistyrelsen EPT,context,energi,
 326,Kalundborg,ctx_fjv_ren,,13.7,%,2024,Energistyrelsen EPT,context,energi,
 390,Vordingborg,ctx_fjv_ren,,14.7,%,2024,Energistyrelsen EPT,context,energi,
 550,Tønder,ctx_fjv_ren,,47.1,%,2024,Energistyrelsen EPT,context,energi,
@@ -6544,38 +6612,38 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,ctx_fossil_direkte,,15.56,%,2026,DST BYGB40,context,energi,
 741,Samsø,ctx_fossil_direkte,,10.95,%,2026,DST BYGB40,context,energi,
 482,Langeland,ctx_fossil_direkte,,14.16,%,2026,DST BYGB40,context,energi,
-201,Allerød,ctx_fossil_via_fjv,,2.02,%,2026,DST BYGB40 + EPT,context,energi,
-153,Brøndby,ctx_fossil_via_fjv,,11.16,%,2026,DST BYGB40 + EPT,context,energi,
-175,Rødovre,ctx_fossil_via_fjv,,8.01,%,2026,DST BYGB40 + EPT,context,energi,
-155,Dragør,ctx_fossil_via_fjv,,0.65,%,2026,DST BYGB40 + EPT,context,energi,
+201,Allerød,ctx_fossil_via_fjv,,1.59,%,2026,DST BYGB40 + EPT,context,energi,
+153,Brøndby,ctx_fossil_via_fjv,,5.18,%,2026,DST BYGB40 + EPT,context,energi,
+175,Rødovre,ctx_fossil_via_fjv,,3.72,%,2026,DST BYGB40 + EPT,context,energi,
+155,Dragør,ctx_fossil_via_fjv,,0.3,%,2026,DST BYGB40 + EPT,context,energi,
 190,Furesø,ctx_fossil_via_fjv,,46.37,%,2026,DST BYGB40 + EPT,context,energi,
 167,Hvidovre,ctx_fossil_via_fjv,,1.98,%,2026,DST BYGB40 + EPT,context,energi,
-230,Rudersdal,ctx_fossil_via_fjv,,26.8,%,2026,DST BYGB40 + EPT,context,energi,
+230,Rudersdal,ctx_fossil_via_fjv,,26.51,%,2026,DST BYGB40 + EPT,context,energi,
 746,Skanderborg,ctx_fossil_via_fjv,,1.5,%,2026,DST BYGB40 + EPT,context,energi,
-269,Solrød,ctx_fossil_via_fjv,,6.62,%,2026,DST BYGB40 + EPT,context,energi,
+269,Solrød,ctx_fossil_via_fjv,,3.08,%,2026,DST BYGB40 + EPT,context,energi,
 265,Roskilde,ctx_fossil_via_fjv,,1.55,%,2026,DST BYGB40 + EPT,context,energi,
 240,Egedal,ctx_fossil_via_fjv,,5.09,%,2026,DST BYGB40 + EPT,context,energi,
-151,Ballerup,ctx_fossil_via_fjv,,6.91,%,2026,DST BYGB40 + EPT,context,energi,
+151,Ballerup,ctx_fossil_via_fjv,,3.21,%,2026,DST BYGB40 + EPT,context,energi,
 223,Hørsholm,ctx_fossil_via_fjv,,1.87,%,2026,DST BYGB40 + EPT,context,energi,
-185,Tårnby,ctx_fossil_via_fjv,,5.18,%,2026,DST BYGB40 + EPT,context,energi,
-157,Gentofte,ctx_fossil_via_fjv,,10.14,%,2026,DST BYGB40 + EPT,context,energi,
+185,Tårnby,ctx_fossil_via_fjv,,2.41,%,2026,DST BYGB40 + EPT,context,energi,
+157,Gentofte,ctx_fossil_via_fjv,,4.71,%,2026,DST BYGB40 + EPT,context,energi,
 350,Lejre,ctx_fossil_via_fjv,,2.5,%,2026,DST BYGB40 + EPT,context,energi,
-163,Herlev,ctx_fossil_via_fjv,,7.17,%,2026,DST BYGB40 + EPT,context,energi,
+163,Herlev,ctx_fossil_via_fjv,,3.33,%,2026,DST BYGB40 + EPT,context,energi,
 173,Lyngby-Taarbæk,ctx_fossil_via_fjv,,15.42,%,2026,DST BYGB40 + EPT,context,energi,
-210,Fredensborg,ctx_fossil_via_fjv,,4.88,%,2026,DST BYGB40 + EPT,context,energi,
+210,Fredensborg,ctx_fossil_via_fjv,,3.84,%,2026,DST BYGB40 + EPT,context,energi,
 183,Ishøj,ctx_fossil_via_fjv,,0.0,%,2026,DST BYGB40 + EPT,context,energi,
 710,Favrskov,ctx_fossil_via_fjv,,4.7,%,2026,DST BYGB40 + EPT,context,energi,
 530,Billund,ctx_fossil_via_fjv,,3.29,%,2026,DST BYGB40 + EPT,context,energi,
 840,Rebild,ctx_fossil_via_fjv,,8.8,%,2026,DST BYGB40 + EPT,context,energi,
-187,Vallensbæk,ctx_fossil_via_fjv,,8.02,%,2026,DST BYGB40 + EPT,context,energi,
-253,Greve,ctx_fossil_via_fjv,,4.47,%,2026,DST BYGB40 + EPT,context,energi,
-147,Frederiksberg,ctx_fossil_via_fjv,,13.27,%,2026,DST BYGB40 + EPT,context,energi,
-259,Køge,ctx_fossil_via_fjv,,11.01,%,2026,DST BYGB40 + EPT,context,energi,
+187,Vallensbæk,ctx_fossil_via_fjv,,3.72,%,2026,DST BYGB40 + EPT,context,energi,
+253,Greve,ctx_fossil_via_fjv,,2.08,%,2026,DST BYGB40 + EPT,context,energi,
+147,Frederiksberg,ctx_fossil_via_fjv,,6.16,%,2026,DST BYGB40 + EPT,context,energi,
+259,Køge,ctx_fossil_via_fjv,,11.03,%,2026,DST BYGB40 + EPT,context,energi,
 159,Gladsaxe,ctx_fossil_via_fjv,,36.74,%,2026,DST BYGB40 + EPT,context,energi,
 217,Helsingør,ctx_fossil_via_fjv,,4.6,%,2026,DST BYGB40 + EPT,context,energi,
 250,Frederikssund,ctx_fossil_via_fjv,,12.51,%,2026,DST BYGB40 + EPT,context,energi,
 661,Holstebro,ctx_fossil_via_fjv,,4.5,%,2026,DST BYGB40 + EPT,context,energi,
-825,Læsø,ctx_fossil_via_fjv,,1.79,%,2026,DST BYGB40 + EPT,context,energi,
+825,Læsø,ctx_fossil_via_fjv,,0.83,%,2026,DST BYGB40 + EPT,context,energi,
 657,Herning,ctx_fossil_via_fjv,,5.9,%,2026,DST BYGB40 + EPT,context,energi,
 260,Halsnæs,ctx_fossil_via_fjv,,4.04,%,2026,DST BYGB40 + EPT,context,energi,
 773,Morsø,ctx_fossil_via_fjv,,10.78,%,2026,DST BYGB40 + EPT,context,energi,
@@ -6584,10 +6652,10 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 492,Ærø,ctx_fossil_via_fjv,,0.1,%,2026,DST BYGB40 + EPT,context,energi,
 561,Esbjerg,ctx_fossil_via_fjv,,21.54,%,2026,DST BYGB40 + EPT,context,energi,
 740,Silkeborg,ctx_fossil_via_fjv,,25.94,%,2026,DST BYGB40 + EPT,context,energi,
-615,Horsens,ctx_fossil_via_fjv,,3.83,%,2026,DST BYGB40 + EPT,context,energi,
-563,Fanø,ctx_fossil_via_fjv,,8.54,%,2026,DST BYGB40 + EPT,context,energi,
+615,Horsens,ctx_fossil_via_fjv,,3.68,%,2026,DST BYGB40 + EPT,context,energi,
+563,Fanø,ctx_fossil_via_fjv,,17.15,%,2026,DST BYGB40 + EPT,context,energi,
 316,Holbæk,ctx_fossil_via_fjv,,3.98,%,2026,DST BYGB40 + EPT,context,energi,
-766,Hedensted,ctx_fossil_via_fjv,,4.79,%,2026,DST BYGB40 + EPT,context,energi,
+766,Hedensted,ctx_fossil_via_fjv,,4.63,%,2026,DST BYGB40 + EPT,context,energi,
 607,Fredericia,ctx_fossil_via_fjv,,4.53,%,2026,DST BYGB40 + EPT,context,energi,
 410,Middelfart,ctx_fossil_via_fjv,,7.28,%,2026,DST BYGB40 + EPT,context,energi,
 329,Ringsted,ctx_fossil_via_fjv,,3.36,%,2026,DST BYGB40 + EPT,context,energi,
@@ -6598,15 +6666,15 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 336,Stevns,ctx_fossil_via_fjv,,0.05,%,2026,DST BYGB40 + EPT,context,energi,
 751,Aarhus,ctx_fossil_via_fjv,,2.76,%,2026,DST BYGB40 + EPT,context,energi,
 813,Frederikshavn,ctx_fossil_via_fjv,,13.39,%,2026,DST BYGB40 + EPT,context,energi,
-161,Glostrup,ctx_fossil_via_fjv,,2.09,%,2026,DST BYGB40 + EPT,context,energi,
+161,Glostrup,ctx_fossil_via_fjv,,2.21,%,2026,DST BYGB40 + EPT,context,energi,
 270,Gribskov,ctx_fossil_via_fjv,,10.18,%,2026,DST BYGB40 + EPT,context,energi,
 860,Hjørring,ctx_fossil_via_fjv,,3.59,%,2026,DST BYGB40 + EPT,context,energi,
-165,Albertslund,ctx_fossil_via_fjv,,13.19,%,2026,DST BYGB40 + EPT,context,energi,
+165,Albertslund,ctx_fossil_via_fjv,,6.12,%,2026,DST BYGB40 + EPT,context,energi,
 479,Svendborg,ctx_fossil_via_fjv,,7.67,%,2026,DST BYGB40 + EPT,context,energi,
-791,Viborg,ctx_fossil_via_fjv,,18.73,%,2026,DST BYGB40 + EPT,context,energi,
+791,Viborg,ctx_fossil_via_fjv,,18.56,%,2026,DST BYGB40 + EPT,context,energi,
 480,Nordfyns,ctx_fossil_via_fjv,,7.33,%,2026,DST BYGB40 + EPT,context,energi,
 706,Syddjurs,ctx_fossil_via_fjv,,0.1,%,2026,DST BYGB40 + EPT,context,energi,
-440,Kerteminde,ctx_fossil_via_fjv,,7.55,%,2026,DST BYGB40 + EPT,context,energi,
+440,Kerteminde,ctx_fossil_via_fjv,,9.22,%,2026,DST BYGB40 + EPT,context,energi,
 630,Vejle,ctx_fossil_via_fjv,,9.72,%,2026,DST BYGB40 + EPT,context,energi,
 101,København,ctx_fossil_via_fjv,,8.84,%,2026,DST BYGB40 + EPT,context,energi,
 730,Randers,ctx_fossil_via_fjv,,1.59,%,2026,DST BYGB40 + EPT,context,energi,
@@ -6620,7 +6688,7 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 580,Aabenraa,ctx_fossil_via_fjv,,0.1,%,2026,DST BYGB40 + EPT,context,energi,
 787,Thisted,ctx_fossil_via_fjv,,4.45,%,2026,DST BYGB40 + EPT,context,energi,
 756,Ikast-Brande,ctx_fossil_via_fjv,,12.68,%,2026,DST BYGB40 + EPT,context,energi,
-461,Odense,ctx_fossil_via_fjv,,16.42,%,2026,DST BYGB40 + EPT,context,energi,
+461,Odense,ctx_fossil_via_fjv,,16.71,%,2026,DST BYGB40 + EPT,context,energi,
 779,Skive,ctx_fossil_via_fjv,,3.5,%,2026,DST BYGB40 + EPT,context,energi,
 450,Nyborg,ctx_fossil_via_fjv,,4.7,%,2026,DST BYGB40 + EPT,context,energi,
 846,Mariagerfjord,ctx_fossil_via_fjv,,4.43,%,2026,DST BYGB40 + EPT,context,energi,
@@ -6632,13 +6700,13 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 665,Lemvig,ctx_fossil_via_fjv,,1.69,%,2026,DST BYGB40 + EPT,context,energi,
 707,Norddjurs,ctx_fossil_via_fjv,,0.6,%,2026,DST BYGB40 + EPT,context,energi,
 330,Slagelse,ctx_fossil_via_fjv,,3.15,%,2026,DST BYGB40 + EPT,context,energi,
-306,Odsherred,ctx_fossil_via_fjv,,4.76,%,2026,DST BYGB40 + EPT,context,energi,
-575,Vejen,ctx_fossil_via_fjv,,2.4,%,2026,DST BYGB40 + EPT,context,energi,
+306,Odsherred,ctx_fossil_via_fjv,,4.93,%,2026,DST BYGB40 + EPT,context,energi,
+575,Vejen,ctx_fossil_via_fjv,,2.14,%,2026,DST BYGB40 + EPT,context,energi,
 376,Guldborgsund,ctx_fossil_via_fjv,,10.41,%,2026,DST BYGB40 + EPT,context,energi,
-849,Jammerbugt,ctx_fossil_via_fjv,,6.89,%,2026,DST BYGB40 + EPT,context,energi,
+849,Jammerbugt,ctx_fossil_via_fjv,,6.02,%,2026,DST BYGB40 + EPT,context,energi,
 326,Kalundborg,ctx_fossil_via_fjv,,0.14,%,2026,DST BYGB40 + EPT,context,energi,
 390,Vordingborg,ctx_fossil_via_fjv,,1.29,%,2026,DST BYGB40 + EPT,context,energi,
-550,Tønder,ctx_fossil_via_fjv,,5.11,%,2026,DST BYGB40 + EPT,context,energi,
+550,Tønder,ctx_fossil_via_fjv,,5.07,%,2026,DST BYGB40 + EPT,context,energi,
 360,Lolland,ctx_fossil_via_fjv,,0.0,%,2026,DST BYGB40 + EPT,context,energi,
 741,Samsø,ctx_fossil_via_fjv,,0.1,%,2026,DST BYGB40 + EPT,context,energi,
 482,Langeland,ctx_fossil_via_fjv,,0.14,%,2026,DST BYGB40 + EPT,context,energi,
