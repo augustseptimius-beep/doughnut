@@ -454,8 +454,7 @@ SIMPLE = [
          soeg=["gini"], pin_ialt=True),
 
     # --- Bolig ---
-    dict(id="housing_area", navn="Boligareal pr. person", tabel="BOL106",
-         soeg=["areal per person"], ekstra=[{"soeg": ["=i alt"]}], pin_ialt=True),
+    # housing_area er fjernet som indikator sep. 2026 (se registrets _fjernet).
     # BEBO har elimination=False i BOL102 - SKAL angives eksplicit (kan ikke
     # udelades), derfor pin via ekstra på hver af de tre specs nedenfor.
     dict(id="housing_no_wc_taeller", navn="Boliger uden eget toilet", tabel="BOL102",
@@ -556,7 +555,7 @@ FORSKEL = {
 DIREKTE = {
     "daycare_ratio",
     "vulnerable_children", "poverty_relative", "child_poverty", "gini",
-    "housing_area", "voter_turnout_national", "voter_turnout", "sports_membership",
+    "voter_turnout_national", "voter_turnout", "sports_membership",
     "life_expectancy", "disposable_income", "commute_distance",
     "kultur_spending", "civil_society",
 }
@@ -580,7 +579,7 @@ SAMME_SOM_SCOREN = {
     "neet": ("fetch_social_new_data", "serie_neet", "NEET3", "perioder"),
     "hjemsyg": ("fetch_sundhed_extra", "serie_hjemsyg", "HJEMSYG", "perioder"),
     "child_notifications": ("fetch_udvidelse_data", "serie_child_notifications", "UND2", "perioder"),
-    "vacant_housing": ("fetch_doughnut_data", "serie_vacant_housing", "BOL101", "perioder"),
+    "trangboethed": ("fetch_trangboethed", "serie_trangboethed", "BOL103", "perioder"),
     "employment_origin_gap": ("fetch_ligestilling_data", "serie_employment_origin_gap", "RAS200", "perioder"),
     "vandindvinding": ("fetch_vandindvinding_data", "serie_vandindvinding", "VANDIND", "aar"),
     "areal_antropiseret": ("fetch_dst_arealanvendelse", "serie_areal_antropiseret", "AREALDK2", "perioder"),

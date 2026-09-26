@@ -2,6 +2,13 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-26 (Bolig måles som trangboethed)
+
+- **Bolig er nu én indikator, `trangboethed`:** andelen af beboerne i helårsboliger (parcel-, række- og etageboliger), der bor med flere personer end værelser. Beregnet af platformen fra DST BOL103 (boliger efter antal værelser og husstandsstørrelse) i nyt script `fetch_trangboethed.py`, ny fil `data/trangboethed_scores.csv`. Landstal 10,26 % (2026); højest Ishøj 25,7 og Vallensbæk 25,0, lavest Læsø 3,4. Thisted 7,0 %. Retningspil fra 2010 med samme funktion som scoren.
+- **`vacant_housing` og `housing_area` er fjernet.** De korrelerede -0,85 (-0,56 i kommunegruppevisningen), så landkommuner blev straffet for tomme boliger og belønnet for plads, og kategorien udlignede sig selv. Boligareal belønnede desuden "jo mere plads, jo bedre". Trangboethed måler et underskud under en bundgrænse. Definitionen er en forenkling af Eurostats overbelægningsmål, som kræver alders- og husstandsoplysninger, BOL103 ikke har.
+- **Konsekvens for Bolig:** landsgennemsnitsvisningen går fra 62/29/7 til 70/10/18 (grøn/gul/rød) med 63 skift, kommunegruppevisningen fra 46/44/8 til 58/13/27 med 67 skift. Hovedstadens omegn falder (Vallensbæk og Ishøj ca. -74 med landsgennemsnit), øer og landkommuner stiger. 35 kommuner står på loftet på 150 med landsgennemsnit, 4 i kommunegruppevisningen. Thisted 96,0 → 101,1 (kommunegruppe).
+- Boligudgifter og hjemløshed er undersøgt og fravalgt: DST's boligbyrde (SILC) findes kun på landsplan.
+
 ## 2026-09-25 (lavindkomst fjernet fra Lighed, Netlify bygger ved dataændringer)
 
 - **`low_income` er fjernet.** Andelen under 50 % af medianindkomsten (LABY07, alle aldre) kom fra samme tabel som børnefattigdom under Velfærd og korrelerede 0,87 med den og 0,78 med relativ fattigdom (IFOR12P). Fattigdomsniveauet talte dermed både i Velfærd og i Lighed. Lighed er nu gennemsnittet af Gini og beskæftigelsesgabet efter herkomst. De to korrelerer 0,09, så hver bestemmer halvdelen af kategorien.

@@ -51,10 +51,11 @@ const SOCIAL_METHODS: Record<string, MethodInfo> = {
   },
   bolig: {
     id: "bolig",
-    scoring: "Gennemsnit af to indikatorer: (1) Andel ubeboede boliger (BOL101, inverteret). (2) Gennemsnitligt boligareal pr. person i m² (BOL106, direkte). Score 100 = landsgennemsnit. NB: Fossil opvarmning er flyttet til dimensionen Energi, da opvarmningskilde er et energispørgsmål, ikke boligstandard.",
-    boundary: "Socialt fundament: alle borgere bør have adgang til en god, rummelig og bæredygtig bolig.",
-    limitations: "Ubeboede boliger fanger ikke boligkvalitet eller pris. Boligareal pr. person er et gennemsnit og skjuler ulighed.",
+    scoring: "Enkelt indikator: andelen af beboerne i helårsboliger (parcel-, række- og etageboliger), der bor i en bolig med flere personer end værelser (BOL103, inverteret). Beregnet af platformen ud fra DST's opgørelse af boliger efter antal værelser og husstandsstørrelse. Score 100 = landsgennemsnit ({ref:trangboethed:1}% for Danmark som helhed). NB: Fossil opvarmning er flyttet til dimensionen Energi, da opvarmningskilde er et energispørgsmål, ikke boligstandard.",
+    boundary: "Socialt fundament: alle borgere bør have en bolig med plads nok til husstanden.",
+    limitations: "Definitionen, flere personer end værelser, er en forenkling af Eurostats overbelægningsmål, der tager højde for husstandens alder og sammensætning; de oplysninger findes ikke pr. kommune. Et par i en etværelseslejlighed tæller derfor som trangboet. Husstande på 7 personer eller flere tælles som 7, og boliger med 6 værelser eller flere som 6. Trangboethed er størst i hovedstadens omegn og mindst på øerne og i landkommunerne, og mange land- og økommuner står på loftet på 150 med landsgennemsnittet som sammenligning. Boligudgifter og hjemløshed indgår ikke, fordi der ikke er fundet kommunetal, der kan bruges; DST opgør boligbyrden kun på landsplan. Kategorien har kun én indikator og er derfor følsom over for fejl i den ene kilde. Indtil september 2026 bestod den af ubeboede boliger (BOL101) og boligareal pr. person (BOL106). De to korrelerede -0,85: landkommuner blev straffet for tomme boliger og belønnet for plads, så kategorien udlignede sig selv. Boligareal belønnede desuden jo mere plads, jo bedre, hvor trangboethed kun måler, om der er for lidt.",
   },
+
   demokrati: {
     id: "demokrati",
     scoring: "Gennemsnit af 2 indikatorer: (1) Stemmedeltagelse ved kommunalvalget 2025 (LABY08, direkte ratio til landsgennemsnit). (2) Stemmedeltagelse ved folketingsvalget 2026 (LABY09, direkte ratio til landsgennemsnit). Score 100 = landsgennemsnit. NB: Kønsbalance i ledelse er flyttet til dimensionen Ligestilling.",

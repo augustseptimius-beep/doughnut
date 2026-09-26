@@ -372,7 +372,7 @@ for at **begge** grene målretter `pct`.
 **T8 - Masteren kan indeholde indikatorer platformen ikke scorer.**
 `housing_no_wc` og `housing_no_bath` står i masteren med `dimension=bolig`, men
 står ikke i kategoriens `indicators`-liste i registret. Bolig scorer og viser
-kun 2 indikatorer. `indikatorregister.ikke_scoret()` (sociale indikatorer der
+kun trangboethed (fra sep. 2026; før ubeboede boliger og boligareal). `indikatorregister.ikke_scoret()` (sociale indikatorer der
 ikke står i nogen kategori) holder dem ude af dimensionsaggregatet i
 `build_trends_csv.py`, men de beholder deres egen indikatorrække.
 

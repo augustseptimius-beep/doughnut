@@ -2246,202 +2246,104 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,child_notifications,62.08,148.72,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
 741,Samsø,child_notifications,85.9,107.49,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
 482,Langeland,child_notifications,62.48,147.78,pr. 1.000 indb. 0-17 år,2025,DST UND2,social,velfaerd,92.33
-201,Allerød,vacant_housing,150.0,2.48,%,2026,DST BOL101,social,bolig,6.14
-153,Brøndby,vacant_housing,150.0,2.9,%,2026,DST BOL101,social,bolig,6.14
-175,Rødovre,vacant_housing,150.0,3.51,%,2026,DST BOL101,social,bolig,6.14
-155,Dragør,vacant_housing,150.0,3.11,%,2026,DST BOL101,social,bolig,6.14
-190,Furesø,vacant_housing,150.0,3.13,%,2026,DST BOL101,social,bolig,6.14
-167,Hvidovre,vacant_housing,150.0,2.11,%,2026,DST BOL101,social,bolig,6.14
-230,Rudersdal,vacant_housing,124.8,4.92,%,2026,DST BOL101,social,bolig,6.14
-746,Skanderborg,vacant_housing,150.0,3.42,%,2026,DST BOL101,social,bolig,6.14
-269,Solrød,vacant_housing,150.0,2.6,%,2026,DST BOL101,social,bolig,6.14
-265,Roskilde,vacant_housing,150.0,3.25,%,2026,DST BOL101,social,bolig,6.14
-240,Egedal,vacant_housing,150.0,2.9,%,2026,DST BOL101,social,bolig,6.14
-151,Ballerup,vacant_housing,150.0,2.01,%,2026,DST BOL101,social,bolig,6.14
-223,Hørsholm,vacant_housing,146.54,4.19,%,2026,DST BOL101,social,bolig,6.14
-185,Tårnby,vacant_housing,150.0,2.32,%,2026,DST BOL101,social,bolig,6.14
-157,Gentofte,vacant_housing,107.72,5.7,%,2026,DST BOL101,social,bolig,6.14
-350,Lejre,vacant_housing,150.0,3.6,%,2026,DST BOL101,social,bolig,6.14
-163,Herlev,vacant_housing,150.0,2.97,%,2026,DST BOL101,social,bolig,6.14
-173,Lyngby-Taarbæk,vacant_housing,145.84,4.21,%,2026,DST BOL101,social,bolig,6.14
-210,Fredensborg,vacant_housing,150.0,3.39,%,2026,DST BOL101,social,bolig,6.14
-183,Ishøj,vacant_housing,150.0,2.48,%,2026,DST BOL101,social,bolig,6.14
-710,Favrskov,vacant_housing,134.95,4.55,%,2026,DST BOL101,social,bolig,6.14
-530,Billund,vacant_housing,77.33,7.94,%,2026,DST BOL101,social,bolig,6.14
-840,Rebild,vacant_housing,99.19,6.19,%,2026,DST BOL101,social,bolig,6.14
-187,Vallensbæk,vacant_housing,150.0,2.38,%,2026,DST BOL101,social,bolig,6.14
-253,Greve,vacant_housing,150.0,2.59,%,2026,DST BOL101,social,bolig,6.14
-147,Frederiksberg,vacant_housing,150.0,3.08,%,2026,DST BOL101,social,bolig,6.14
-259,Køge,vacant_housing,150.0,3.33,%,2026,DST BOL101,social,bolig,6.14
-159,Gladsaxe,vacant_housing,150.0,3.79,%,2026,DST BOL101,social,bolig,6.14
-217,Helsingør,vacant_housing,150.0,4.07,%,2026,DST BOL101,social,bolig,6.14
-250,Frederikssund,vacant_housing,150.0,3.72,%,2026,DST BOL101,social,bolig,6.14
-661,Holstebro,vacant_housing,80.47,7.63,%,2026,DST BOL101,social,bolig,6.14
-825,Læsø,vacant_housing,16.79,36.58,%,2026,DST BOL101,social,bolig,6.14
-657,Herning,vacant_housing,80.9,7.59,%,2026,DST BOL101,social,bolig,6.14
-260,Halsnæs,vacant_housing,145.5,4.22,%,2026,DST BOL101,social,bolig,6.14
-773,Morsø,vacant_housing,49.16,12.49,%,2026,DST BOL101,social,bolig,6.14
-219,Hillerød,vacant_housing,150.0,4.08,%,2026,DST BOL101,social,bolig,6.14
-340,Sorø,vacant_housing,120.16,5.11,%,2026,DST BOL101,social,bolig,6.14
-492,Ærø,vacant_housing,20.47,30.0,%,2026,DST BOL101,social,bolig,6.14
-561,Esbjerg,vacant_housing,92.47,6.64,%,2026,DST BOL101,social,bolig,6.14
-740,Silkeborg,vacant_housing,129.26,4.75,%,2026,DST BOL101,social,bolig,6.14
-615,Horsens,vacant_housing,115.85,5.3,%,2026,DST BOL101,social,bolig,6.14
-563,Fanø,vacant_housing,80.47,7.63,%,2026,DST BOL101,social,bolig,6.14
-316,Holbæk,vacant_housing,124.8,4.92,%,2026,DST BOL101,social,bolig,6.14
-766,Hedensted,vacant_housing,105.68,5.81,%,2026,DST BOL101,social,bolig,6.14
-607,Fredericia,vacant_housing,114.13,5.38,%,2026,DST BOL101,social,bolig,6.14
-410,Middelfart,vacant_housing,101.15,6.07,%,2026,DST BOL101,social,bolig,6.14
-329,Ringsted,vacant_housing,125.82,4.88,%,2026,DST BOL101,social,bolig,6.14
-370,Næstved,vacant_housing,149.76,4.1,%,2026,DST BOL101,social,bolig,6.14
-851,Aalborg,vacant_housing,94.46,6.5,%,2026,DST BOL101,social,bolig,6.14
-810,Brønderslev,vacant_housing,70.17,8.75,%,2026,DST BOL101,social,bolig,6.14
-727,Odder,vacant_housing,126.34,4.86,%,2026,DST BOL101,social,bolig,6.14
-336,Stevns,vacant_housing,96.54,6.36,%,2026,DST BOL101,social,bolig,6.14
-751,Aarhus,vacant_housing,150.0,3.72,%,2026,DST BOL101,social,bolig,6.14
-813,Frederikshavn,vacant_housing,40.16,15.29,%,2026,DST BOL101,social,bolig,6.14
-161,Glostrup,vacant_housing,150.0,3.78,%,2026,DST BOL101,social,bolig,6.14
-270,Gribskov,vacant_housing,118.53,5.18,%,2026,DST BOL101,social,bolig,6.14
-860,Hjørring,vacant_housing,52.3,11.74,%,2026,DST BOL101,social,bolig,6.14
-165,Albertslund,vacant_housing,92.61,6.63,%,2026,DST BOL101,social,bolig,6.14
-479,Svendborg,vacant_housing,102.16,6.01,%,2026,DST BOL101,social,bolig,6.14
-791,Viborg,vacant_housing,88.09,6.97,%,2026,DST BOL101,social,bolig,6.14
-480,Nordfyns,vacant_housing,84.11,7.3,%,2026,DST BOL101,social,bolig,6.14
-706,Syddjurs,vacant_housing,72.32,8.49,%,2026,DST BOL101,social,bolig,6.14
-440,Kerteminde,vacant_housing,116.73,5.26,%,2026,DST BOL101,social,bolig,6.14
-630,Vejle,vacant_housing,97.93,6.27,%,2026,DST BOL101,social,bolig,6.14
-101,København,vacant_housing,133.19,4.61,%,2026,DST BOL101,social,bolig,6.14
-730,Randers,vacant_housing,97.77,6.28,%,2026,DST BOL101,social,bolig,6.14
-760,Ringkøbing-Skjern,vacant_housing,69.38,8.85,%,2026,DST BOL101,social,bolig,6.14
-430,Faaborg-Midtfyn,vacant_housing,89.77,6.84,%,2026,DST BOL101,social,bolig,6.14
-320,Faxe,vacant_housing,109.64,5.6,%,2026,DST BOL101,social,bolig,6.14
-169,Høje-Taastrup,vacant_housing,134.95,4.55,%,2026,DST BOL101,social,bolig,6.14
-573,Varde,vacant_housing,71.73,8.56,%,2026,DST BOL101,social,bolig,6.14
-621,Kolding,vacant_housing,92.05,6.67,%,2026,DST BOL101,social,bolig,6.14
-420,Assens,vacant_housing,81.0,7.58,%,2026,DST BOL101,social,bolig,6.14
-580,Aabenraa,vacant_housing,91.92,6.68,%,2026,DST BOL101,social,bolig,6.14
-787,Thisted,vacant_housing,53.25,11.53,%,2026,DST BOL101,social,bolig,6.14
-756,Ikast-Brande,vacant_housing,94.9,6.47,%,2026,DST BOL101,social,bolig,6.14
-461,Odense,vacant_housing,113.7,5.4,%,2026,DST BOL101,social,bolig,6.14
-779,Skive,vacant_housing,63.76,9.63,%,2026,DST BOL101,social,bolig,6.14
-450,Nyborg,vacant_housing,104.6,5.87,%,2026,DST BOL101,social,bolig,6.14
-846,Mariagerfjord,vacant_housing,65.32,9.4,%,2026,DST BOL101,social,bolig,6.14
-820,Vesthimmerlands,vacant_housing,54.34,11.3,%,2026,DST BOL101,social,bolig,6.14
-540,Sønderborg,vacant_housing,90.16,6.81,%,2026,DST BOL101,social,bolig,6.14
-400,Bornholm,vacant_housing,52.34,11.73,%,2026,DST BOL101,social,bolig,6.14
-510,Haderslev,vacant_housing,81.87,7.5,%,2026,DST BOL101,social,bolig,6.14
-671,Struer,vacant_housing,60.49,10.15,%,2026,DST BOL101,social,bolig,6.14
-665,Lemvig,vacant_housing,40.61,15.12,%,2026,DST BOL101,social,bolig,6.14
-707,Norddjurs,vacant_housing,65.32,9.4,%,2026,DST BOL101,social,bolig,6.14
-330,Slagelse,vacant_housing,95.34,6.44,%,2026,DST BOL101,social,bolig,6.14
-306,Odsherred,vacant_housing,66.16,9.28,%,2026,DST BOL101,social,bolig,6.14
-575,Vejen,vacant_housing,96.54,6.36,%,2026,DST BOL101,social,bolig,6.14
-376,Guldborgsund,vacant_housing,62.78,9.78,%,2026,DST BOL101,social,bolig,6.14
-849,Jammerbugt,vacant_housing,49.32,12.45,%,2026,DST BOL101,social,bolig,6.14
-326,Kalundborg,vacant_housing,74.24,8.27,%,2026,DST BOL101,social,bolig,6.14
-390,Vordingborg,vacant_housing,56.9,10.79,%,2026,DST BOL101,social,bolig,6.14
-550,Tønder,vacant_housing,46.69,13.15,%,2026,DST BOL101,social,bolig,6.14
-360,Lolland,vacant_housing,38.74,15.85,%,2026,DST BOL101,social,bolig,6.14
-741,Samsø,vacant_housing,17.23,35.63,%,2026,DST BOL101,social,bolig,6.14
-482,Langeland,vacant_housing,22.78,26.95,%,2026,DST BOL101,social,bolig,6.14
-201,Allerød,housing_area,98.7,53.2,m²,2026,DST BOL106,social,bolig,53.9
-153,Brøndby,housing_area,76.81,41.4,m²,2026,DST BOL106,social,bolig,53.9
-175,Rødovre,housing_area,76.81,41.4,m²,2026,DST BOL106,social,bolig,53.9
-155,Dragør,housing_area,100.0,53.9,m²,2026,DST BOL106,social,bolig,53.9
-190,Furesø,housing_area,94.99,51.2,m²,2026,DST BOL106,social,bolig,53.9
-167,Hvidovre,housing_area,78.48,42.3,m²,2026,DST BOL106,social,bolig,53.9
-230,Rudersdal,housing_area,104.45,56.3,m²,2026,DST BOL106,social,bolig,53.9
-746,Skanderborg,housing_area,103.15,55.6,m²,2026,DST BOL106,social,bolig,53.9
-269,Solrød,housing_area,96.47,52.0,m²,2026,DST BOL106,social,bolig,53.9
-265,Roskilde,housing_area,92.95,50.1,m²,2026,DST BOL106,social,bolig,53.9
-240,Egedal,housing_area,92.95,50.1,m²,2026,DST BOL106,social,bolig,53.9
-151,Ballerup,housing_area,83.67,45.1,m²,2026,DST BOL106,social,bolig,53.9
-223,Hørsholm,housing_area,110.02,59.3,m²,2026,DST BOL106,social,bolig,53.9
-185,Tårnby,housing_area,81.82,44.1,m²,2026,DST BOL106,social,bolig,53.9
-157,Gentofte,housing_area,100.74,54.3,m²,2026,DST BOL106,social,bolig,53.9
-350,Lejre,housing_area,102.97,55.5,m²,2026,DST BOL106,social,bolig,53.9
-163,Herlev,housing_area,80.15,43.2,m²,2026,DST BOL106,social,bolig,53.9
-173,Lyngby-Taarbæk,housing_area,87.01,46.9,m²,2026,DST BOL106,social,bolig,53.9
-210,Fredensborg,housing_area,96.47,52.0,m²,2026,DST BOL106,social,bolig,53.9
-183,Ishøj,housing_area,77.18,41.6,m²,2026,DST BOL106,social,bolig,53.9
-710,Favrskov,housing_area,108.91,58.7,m²,2026,DST BOL106,social,bolig,53.9
-530,Billund,housing_area,112.62,60.7,m²,2026,DST BOL106,social,bolig,53.9
-840,Rebild,housing_area,117.81,63.5,m²,2026,DST BOL106,social,bolig,53.9
-187,Vallensbæk,housing_area,79.96,43.1,m²,2026,DST BOL106,social,bolig,53.9
-253,Greve,housing_area,93.69,50.5,m²,2026,DST BOL106,social,bolig,53.9
-147,Frederiksberg,housing_area,87.94,47.4,m²,2026,DST BOL106,social,bolig,53.9
-259,Køge,housing_area,94.99,51.2,m²,2026,DST BOL106,social,bolig,53.9
-159,Gladsaxe,housing_area,77.37,41.7,m²,2026,DST BOL106,social,bolig,53.9
-217,Helsingør,housing_area,95.36,51.4,m²,2026,DST BOL106,social,bolig,53.9
-250,Frederikssund,housing_area,99.44,53.6,m²,2026,DST BOL106,social,bolig,53.9
-661,Holstebro,housing_area,109.28,58.9,m²,2026,DST BOL106,social,bolig,53.9
-825,Læsø,housing_area,141.56,76.3,m²,2026,DST BOL106,social,bolig,53.9
-657,Herning,housing_area,110.02,59.3,m²,2026,DST BOL106,social,bolig,53.9
-260,Halsnæs,housing_area,98.14,52.9,m²,2026,DST BOL106,social,bolig,53.9
-773,Morsø,housing_area,125.05,67.4,m²,2026,DST BOL106,social,bolig,53.9
-219,Hillerød,housing_area,94.99,51.2,m²,2026,DST BOL106,social,bolig,53.9
-340,Sorø,housing_area,108.72,58.6,m²,2026,DST BOL106,social,bolig,53.9
-492,Ærø,housing_area,140.45,75.7,m²,2026,DST BOL106,social,bolig,53.9
-561,Esbjerg,housing_area,106.12,57.2,m²,2026,DST BOL106,social,bolig,53.9
-740,Silkeborg,housing_area,105.75,57.0,m²,2026,DST BOL106,social,bolig,53.9
-615,Horsens,housing_area,101.67,54.8,m²,2026,DST BOL106,social,bolig,53.9
-563,Fanø,housing_area,129.13,69.6,m²,2026,DST BOL106,social,bolig,53.9
-316,Holbæk,housing_area,102.6,55.3,m²,2026,DST BOL106,social,bolig,53.9
-766,Hedensted,housing_area,115.4,62.2,m²,2026,DST BOL106,social,bolig,53.9
-607,Fredericia,housing_area,102.41,55.2,m²,2026,DST BOL106,social,bolig,53.9
-410,Middelfart,housing_area,112.06,60.4,m²,2026,DST BOL106,social,bolig,53.9
-329,Ringsted,housing_area,99.07,53.4,m²,2026,DST BOL106,social,bolig,53.9
-370,Næstved,housing_area,104.08,56.1,m²,2026,DST BOL106,social,bolig,53.9
-851,Aalborg,housing_area,101.11,54.5,m²,2026,DST BOL106,social,bolig,53.9
-810,Brønderslev,housing_area,118.37,63.8,m²,2026,DST BOL106,social,bolig,53.9
-727,Odder,housing_area,110.58,59.6,m²,2026,DST BOL106,social,bolig,53.9
-336,Stevns,housing_area,111.13,59.9,m²,2026,DST BOL106,social,bolig,53.9
-751,Aarhus,housing_area,87.01,46.9,m²,2026,DST BOL106,social,bolig,53.9
-813,Frederikshavn,housing_area,116.88,63.0,m²,2026,DST BOL106,social,bolig,53.9
-161,Glostrup,housing_area,80.33,43.3,m²,2026,DST BOL106,social,bolig,53.9
-270,Gribskov,housing_area,106.49,57.4,m²,2026,DST BOL106,social,bolig,53.9
-860,Hjørring,housing_area,120.78,65.1,m²,2026,DST BOL106,social,bolig,53.9
-165,Albertslund,housing_area,77.74,41.9,m²,2026,DST BOL106,social,bolig,53.9
-479,Svendborg,housing_area,108.16,58.3,m²,2026,DST BOL106,social,bolig,53.9
-791,Viborg,housing_area,112.43,60.6,m²,2026,DST BOL106,social,bolig,53.9
-480,Nordfyns,housing_area,118.74,64.0,m²,2026,DST BOL106,social,bolig,53.9
-706,Syddjurs,housing_area,114.29,61.6,m²,2026,DST BOL106,social,bolig,53.9
-440,Kerteminde,housing_area,110.58,59.6,m²,2026,DST BOL106,social,bolig,53.9
-630,Vejle,housing_area,105.75,57.0,m²,2026,DST BOL106,social,bolig,53.9
-101,København,housing_area,75.88,40.9,m²,2026,DST BOL106,social,bolig,53.9
-730,Randers,housing_area,108.16,58.3,m²,2026,DST BOL106,social,bolig,53.9
-760,Ringkøbing-Skjern,housing_area,118.55,63.9,m²,2026,DST BOL106,social,bolig,53.9
-430,Faaborg-Midtfyn,housing_area,117.81,63.5,m²,2026,DST BOL106,social,bolig,53.9
-320,Faxe,housing_area,108.35,58.4,m²,2026,DST BOL106,social,bolig,53.9
-169,Høje-Taastrup,housing_area,77.92,42.0,m²,2026,DST BOL106,social,bolig,53.9
-573,Varde,housing_area,117.07,63.1,m²,2026,DST BOL106,social,bolig,53.9
-621,Kolding,housing_area,104.08,56.1,m²,2026,DST BOL106,social,bolig,53.9
-420,Assens,housing_area,117.81,63.5,m²,2026,DST BOL106,social,bolig,53.9
-580,Aabenraa,housing_area,116.88,63.0,m²,2026,DST BOL106,social,bolig,53.9
-787,Thisted,housing_area,122.26,65.9,m²,2026,DST BOL106,social,bolig,53.9
-756,Ikast-Brande,housing_area,110.02,59.3,m²,2026,DST BOL106,social,bolig,53.9
-461,Odense,housing_area,93.32,50.3,m²,2026,DST BOL106,social,bolig,53.9
-779,Skive,housing_area,120.41,64.9,m²,2026,DST BOL106,social,bolig,53.9
-450,Nyborg,housing_area,111.32,60.0,m²,2026,DST BOL106,social,bolig,53.9
-846,Mariagerfjord,housing_area,118.92,64.1,m²,2026,DST BOL106,social,bolig,53.9
-820,Vesthimmerlands,housing_area,123.75,66.7,m²,2026,DST BOL106,social,bolig,53.9
-540,Sønderborg,housing_area,113.54,61.2,m²,2026,DST BOL106,social,bolig,53.9
-400,Bornholm,housing_area,119.67,64.5,m²,2026,DST BOL106,social,bolig,53.9
-510,Haderslev,housing_area,115.03,62.0,m²,2026,DST BOL106,social,bolig,53.9
-671,Struer,housing_area,121.52,65.5,m²,2026,DST BOL106,social,bolig,53.9
-665,Lemvig,housing_area,128.94,69.5,m²,2026,DST BOL106,social,bolig,53.9
-707,Norddjurs,housing_area,120.04,64.7,m²,2026,DST BOL106,social,bolig,53.9
-330,Slagelse,housing_area,102.04,55.0,m²,2026,DST BOL106,social,bolig,53.9
-306,Odsherred,housing_area,113.17,61.0,m²,2026,DST BOL106,social,bolig,53.9
-575,Vejen,housing_area,117.81,63.5,m²,2026,DST BOL106,social,bolig,53.9
-376,Guldborgsund,housing_area,116.7,62.9,m²,2026,DST BOL106,social,bolig,53.9
-849,Jammerbugt,housing_area,123.56,66.6,m²,2026,DST BOL106,social,bolig,53.9
-326,Kalundborg,housing_area,111.5,60.1,m²,2026,DST BOL106,social,bolig,53.9
-390,Vordingborg,housing_area,114.84,61.9,m²,2026,DST BOL106,social,bolig,53.9
-550,Tønder,housing_area,125.05,67.4,m²,2026,DST BOL106,social,bolig,53.9
-360,Lolland,housing_area,122.63,66.1,m²,2026,DST BOL106,social,bolig,53.9
-741,Samsø,housing_area,141.19,76.1,m²,2026,DST BOL106,social,bolig,53.9
-482,Langeland,housing_area,132.47,71.4,m²,2026,DST BOL106,social,bolig,53.9
+201,Allerød,trangboethed,123.17,8.33,% af beboerne,2026,DST BOL103,social,bolig,10.26
+153,Brøndby,trangboethed,50.94,20.14,% af beboerne,2026,DST BOL103,social,bolig,10.26
+175,Rødovre,trangboethed,54.69,18.76,% af beboerne,2026,DST BOL103,social,bolig,10.26
+155,Dragør,trangboethed,114.51,8.96,% af beboerne,2026,DST BOL103,social,bolig,10.26
+190,Furesø,trangboethed,99.32,10.33,% af beboerne,2026,DST BOL103,social,bolig,10.26
+167,Hvidovre,trangboethed,64.73,15.85,% af beboerne,2026,DST BOL103,social,bolig,10.26
+230,Rudersdal,trangboethed,133.59,7.68,% af beboerne,2026,DST BOL103,social,bolig,10.26
+746,Skanderborg,trangboethed,150.0,6.62,% af beboerne,2026,DST BOL103,social,bolig,10.26
+269,Solrød,trangboethed,125.12,8.2,% af beboerne,2026,DST BOL103,social,bolig,10.26
+265,Roskilde,trangboethed,101.08,10.15,% af beboerne,2026,DST BOL103,social,bolig,10.26
+240,Egedal,trangboethed,96.43,10.64,% af beboerne,2026,DST BOL103,social,bolig,10.26
+151,Ballerup,trangboethed,78.38,13.09,% af beboerne,2026,DST BOL103,social,bolig,10.26
+223,Hørsholm,trangboethed,149.13,6.88,% af beboerne,2026,DST BOL103,social,bolig,10.26
+185,Tårnby,trangboethed,82.08,12.5,% af beboerne,2026,DST BOL103,social,bolig,10.26
+157,Gentofte,trangboethed,101.68,10.09,% af beboerne,2026,DST BOL103,social,bolig,10.26
+350,Lejre,trangboethed,92.18,11.13,% af beboerne,2026,DST BOL103,social,bolig,10.26
+163,Herlev,trangboethed,66.97,15.32,% af beboerne,2026,DST BOL103,social,bolig,10.26
+173,Lyngby-Taarbæk,trangboethed,98.75,10.39,% af beboerne,2026,DST BOL103,social,bolig,10.26
+210,Fredensborg,trangboethed,83.69,12.26,% af beboerne,2026,DST BOL103,social,bolig,10.26
+183,Ishøj,trangboethed,39.89,25.72,% af beboerne,2026,DST BOL103,social,bolig,10.26
+710,Favrskov,trangboethed,144.3,7.11,% af beboerne,2026,DST BOL103,social,bolig,10.26
+530,Billund,trangboethed,150.0,6.18,% af beboerne,2026,DST BOL103,social,bolig,10.26
+840,Rebild,trangboethed,150.0,5.86,% af beboerne,2026,DST BOL103,social,bolig,10.26
+187,Vallensbæk,trangboethed,40.97,25.04,% af beboerne,2026,DST BOL103,social,bolig,10.26
+253,Greve,trangboethed,88.68,11.57,% af beboerne,2026,DST BOL103,social,bolig,10.26
+147,Frederiksberg,trangboethed,90.8,11.3,% af beboerne,2026,DST BOL103,social,bolig,10.26
+259,Køge,trangboethed,81.49,12.59,% af beboerne,2026,DST BOL103,social,bolig,10.26
+159,Gladsaxe,trangboethed,60.75,16.89,% af beboerne,2026,DST BOL103,social,bolig,10.26
+217,Helsingør,trangboethed,84.72,12.11,% af beboerne,2026,DST BOL103,social,bolig,10.26
+250,Frederikssund,trangboethed,97.99,10.47,% af beboerne,2026,DST BOL103,social,bolig,10.26
+661,Holstebro,trangboethed,150.0,5.38,% af beboerne,2026,DST BOL103,social,bolig,10.26
+825,Læsø,trangboethed,150.0,3.35,% af beboerne,2026,DST BOL103,social,bolig,10.26
+657,Herning,trangboethed,150.0,6.6,% af beboerne,2026,DST BOL103,social,bolig,10.26
+260,Halsnæs,trangboethed,74.89,13.7,% af beboerne,2026,DST BOL103,social,bolig,10.26
+773,Morsø,trangboethed,150.0,5.86,% af beboerne,2026,DST BOL103,social,bolig,10.26
+219,Hillerød,trangboethed,98.75,10.39,% af beboerne,2026,DST BOL103,social,bolig,10.26
+340,Sorø,trangboethed,111.16,9.23,% af beboerne,2026,DST BOL103,social,bolig,10.26
+492,Ærø,trangboethed,150.0,5.38,% af beboerne,2026,DST BOL103,social,bolig,10.26
+561,Esbjerg,trangboethed,150.0,6.65,% af beboerne,2026,DST BOL103,social,bolig,10.26
+740,Silkeborg,trangboethed,139.02,7.38,% af beboerne,2026,DST BOL103,social,bolig,10.26
+615,Horsens,trangboethed,123.47,8.31,% af beboerne,2026,DST BOL103,social,bolig,10.26
+563,Fanø,trangboethed,150.0,4.07,% af beboerne,2026,DST BOL103,social,bolig,10.26
+316,Holbæk,trangboethed,102.5,10.01,% af beboerne,2026,DST BOL103,social,bolig,10.26
+766,Hedensted,trangboethed,150.0,6.54,% af beboerne,2026,DST BOL103,social,bolig,10.26
+607,Fredericia,trangboethed,129.22,7.94,% af beboerne,2026,DST BOL103,social,bolig,10.26
+410,Middelfart,trangboethed,150.0,5.69,% af beboerne,2026,DST BOL103,social,bolig,10.26
+329,Ringsted,trangboethed,83.41,12.3,% af beboerne,2026,DST BOL103,social,bolig,10.26
+370,Næstved,trangboethed,112.38,9.13,% af beboerne,2026,DST BOL103,social,bolig,10.26
+851,Aalborg,trangboethed,146.36,7.01,% af beboerne,2026,DST BOL103,social,bolig,10.26
+810,Brønderslev,trangboethed,150.0,6.8,% af beboerne,2026,DST BOL103,social,bolig,10.26
+727,Odder,trangboethed,150.0,5.9,% af beboerne,2026,DST BOL103,social,bolig,10.26
+336,Stevns,trangboethed,105.56,9.72,% af beboerne,2026,DST BOL103,social,bolig,10.26
+751,Aarhus,trangboethed,95.71,10.72,% af beboerne,2026,DST BOL103,social,bolig,10.26
+813,Frederikshavn,trangboethed,150.0,6.16,% af beboerne,2026,DST BOL103,social,bolig,10.26
+161,Glostrup,trangboethed,51.66,19.86,% af beboerne,2026,DST BOL103,social,bolig,10.26
+270,Gribskov,trangboethed,94.65,10.84,% af beboerne,2026,DST BOL103,social,bolig,10.26
+860,Hjørring,trangboethed,150.0,5.72,% af beboerne,2026,DST BOL103,social,bolig,10.26
+165,Albertslund,trangboethed,51.79,19.81,% af beboerne,2026,DST BOL103,social,bolig,10.26
+479,Svendborg,trangboethed,137.72,7.45,% af beboerne,2026,DST BOL103,social,bolig,10.26
+791,Viborg,trangboethed,150.0,6.44,% af beboerne,2026,DST BOL103,social,bolig,10.26
+480,Nordfyns,trangboethed,150.0,6.29,% af beboerne,2026,DST BOL103,social,bolig,10.26
+706,Syddjurs,trangboethed,138.84,7.39,% af beboerne,2026,DST BOL103,social,bolig,10.26
+440,Kerteminde,trangboethed,138.27,7.42,% af beboerne,2026,DST BOL103,social,bolig,10.26
+630,Vejle,trangboethed,116.86,8.78,% af beboerne,2026,DST BOL103,social,bolig,10.26
+101,København,trangboethed,55.19,18.59,% af beboerne,2026,DST BOL103,social,bolig,10.26
+730,Randers,trangboethed,150.0,6.77,% af beboerne,2026,DST BOL103,social,bolig,10.26
+760,Ringkøbing-Skjern,trangboethed,150.0,6.48,% af beboerne,2026,DST BOL103,social,bolig,10.26
+430,Faaborg-Midtfyn,trangboethed,150.0,6.47,% af beboerne,2026,DST BOL103,social,bolig,10.26
+320,Faxe,trangboethed,104.8,9.79,% af beboerne,2026,DST BOL103,social,bolig,10.26
+169,Høje-Taastrup,trangboethed,44.96,22.82,% af beboerne,2026,DST BOL103,social,bolig,10.26
+573,Varde,trangboethed,136.62,7.51,% af beboerne,2026,DST BOL103,social,bolig,10.26
+621,Kolding,trangboethed,121.56,8.44,% af beboerne,2026,DST BOL103,social,bolig,10.26
+420,Assens,trangboethed,150.0,6.42,% af beboerne,2026,DST BOL103,social,bolig,10.26
+580,Aabenraa,trangboethed,150.0,6.34,% af beboerne,2026,DST BOL103,social,bolig,10.26
+787,Thisted,trangboethed,146.57,7.0,% af beboerne,2026,DST BOL103,social,bolig,10.26
+756,Ikast-Brande,trangboethed,139.21,7.37,% af beboerne,2026,DST BOL103,social,bolig,10.26
+461,Odense,trangboethed,110.68,9.27,% af beboerne,2026,DST BOL103,social,bolig,10.26
+779,Skive,trangboethed,150.0,5.38,% af beboerne,2026,DST BOL103,social,bolig,10.26
+450,Nyborg,trangboethed,150.0,6.51,% af beboerne,2026,DST BOL103,social,bolig,10.26
+846,Mariagerfjord,trangboethed,150.0,6.42,% af beboerne,2026,DST BOL103,social,bolig,10.26
+820,Vesthimmerlands,trangboethed,150.0,5.78,% af beboerne,2026,DST BOL103,social,bolig,10.26
+540,Sønderborg,trangboethed,139.97,7.33,% af beboerne,2026,DST BOL103,social,bolig,10.26
+400,Bornholm,trangboethed,129.71,7.91,% af beboerne,2026,DST BOL103,social,bolig,10.26
+510,Haderslev,trangboethed,150.0,6.54,% af beboerne,2026,DST BOL103,social,bolig,10.26
+671,Struer,trangboethed,150.0,6.03,% af beboerne,2026,DST BOL103,social,bolig,10.26
+665,Lemvig,trangboethed,150.0,5.35,% af beboerne,2026,DST BOL103,social,bolig,10.26
+707,Norddjurs,trangboethed,150.0,6.04,% af beboerne,2026,DST BOL103,social,bolig,10.26
+330,Slagelse,trangboethed,102.91,9.97,% af beboerne,2026,DST BOL103,social,bolig,10.26
+306,Odsherred,trangboethed,123.17,8.33,% af beboerne,2026,DST BOL103,social,bolig,10.26
+575,Vejen,trangboethed,150.0,6.74,% af beboerne,2026,DST BOL103,social,bolig,10.26
+376,Guldborgsund,trangboethed,142.11,7.22,% af beboerne,2026,DST BOL103,social,bolig,10.26
+849,Jammerbugt,trangboethed,150.0,5.44,% af beboerne,2026,DST BOL103,social,bolig,10.26
+326,Kalundborg,trangboethed,112.13,9.15,% af beboerne,2026,DST BOL103,social,bolig,10.26
+390,Vordingborg,trangboethed,127.45,8.05,% af beboerne,2026,DST BOL103,social,bolig,10.26
+550,Tønder,trangboethed,148.7,6.9,% af beboerne,2026,DST BOL103,social,bolig,10.26
+360,Lolland,trangboethed,148.91,6.89,% af beboerne,2026,DST BOL103,social,bolig,10.26
+741,Samsø,trangboethed,150.0,5.23,% af beboerne,2026,DST BOL103,social,bolig,10.26
+482,Langeland,trangboethed,150.0,4.59,% af beboerne,2026,DST BOL103,social,bolig,10.26
 201,Allerød,housing_no_wc,79.9,0.7464,%,2026,DST BOL102,social,bolig,0.5964
 153,Brøndby,housing_no_wc,150.0,0.2013,%,2026,DST BOL102,social,bolig,0.5964
 175,Rødovre,housing_no_wc,150.0,0.1263,%,2026,DST BOL102,social,bolig,0.5964

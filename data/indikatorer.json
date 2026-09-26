@@ -15,6 +15,8 @@
   "_fjernet": {
     "car_access": "Fjernet 2026: 'flere biler = bedre' er skævt i en bæredygtighedsramme og gav landdistrikter en kunstigt høj mobilitets-score. Rådata ligger stadig i mobilitet_scores.csv.",
     "apprenticeship": "Pensioneret aug. 2026: UVM-nøgletallet findes ikke længere, fortegnet var tvivlsomt, og tallene var ustabile. Det rigtige måltal ville være praktikpladsgraden.",
+    "vacant_housing": "Fjernet sep. 2026: korrelerede -0,85 med boligareal pr. person, så Bolig udlignede sig selv (landkommuner blev straffet for tomme boliger og belønnet for plads). Måler desuden affolkning og boligmarked, ikke hvordan beboerne bor. Afløst af trangboethed. Rådata ligger stadig i doughnut_scores.csv.",
+    "housing_area": "Fjernet sep. 2026: som vacant_housing. Belønnede desuden \"jo mere plads, jo bedre\", som strider mod rammen (samme fejl som car_access). Trangboethed måler i stedet underskud under en bundgrænse. Rådata ligger stadig i bolig_extra_scores.csv.",
     "low_income": "Fjernet sep. 2026: samme tabel som børnefattigdom (LABY07, alle aldre mod 0-17 år), og de to korrelerede 0,87. Den korrelerede også 0,78 med relativ fattigdom (IFOR12P) under Velfærd, så fattigdomsniveauet talte både i Velfærd og i Lighed. Lighed måler nu fordelingen: Gini og beskæftigelsesgabet efter herkomst. Rådata ligger stadig i doughnut_scores.csv, og tidsserien er slettet af trend_history_raw.csv.",
     "medicin": "Fjernet sep. 2026: scorbar, men fortegnet var uafklaret. Blev fjernet frem for parkeret som kontekst (CLAUDE.md pkt. 9).",
     "sports_facilities": "Fjernet sep. 2026: korrelerede negativt med resten af Fællesskab (CLAUDE.md pkt. 28).",
@@ -47,8 +49,8 @@
     {
       "id": "bolig",
       "name": "Bolig",
-      "description": "Adgang til gode, sunde og bæredygtige boliger i trygge nærmiljøer.",
-      "indicators": ["vacant_housing", "housing_area"]
+      "description": "Om borgerne har plads nok i deres bolig, målt som andelen der bor med flere personer end værelser. Kategorien måler kun trangboethed; boligudgifter og hjemløshed findes ikke som kommunetal, der kan bruges.",
+      "indicators": ["trangboethed"]
     },
     {
       "id": "demokrati",
@@ -609,41 +611,23 @@
       "baseline_level": 3
     },
     {
-      "id": "vacant_housing",
+      "id": "trangboethed",
       "category": "social",
       "dimension": "bolig",
-      "name": "Ubeboede boliger",
-      "table": "BOL101",
-      "source": "DST BOL101",
-      "source_url": "https://www.statistikbanken.dk/BOL101",
-      "unit": "%",
+      "name": "Trangboethed (flere personer end værelser)",
+      "table": "BOL103",
+      "source": "DST BOL103",
+      "source_url": "https://www.statistikbanken.dk/BOL103",
+      "unit": "% af beboerne",
       "data_year": "2026",
-      "csv": "doughnut_scores.csv",
-      "ratio_col": "vacant_housing_ratio",
-      "raw_col": "vacant_housing_raw",
-      "reference": {"type": "landstal", "col": "vacant_housing_ref", "definition": "DST's landstal (hele landet); fetch_doughnut_data.py"},
+      "csv": "trangboethed_scores.csv",
+      "ratio_col": "trangboethed_ratio",
+      "raw_col": "trangboethed_raw",
+      "reference": {"type": "landstal", "col": "trangboethed_ref", "definition": "de 98 kommuner samlet: personer i trangboede boliger / alle personer i boliger med oplyst antal værelser; fetch_trangboethed.py"},
       "inverse": true,
       "baseline_level": 3,
-      "rationale": "Høj andel tomme boliger signalerer fraflytning og lavt boligmarked. Inverteret: kommuner med færre tomme boliger scorer bedre.",
-      "note": "Ubeboede i pct. af beboede + ubeboede parcel-, række- og etageboliger (BOL101, ANVENDELSE 125/130/140). Fritidshuse, kollegier og institutioner er ikke med. Retningspilen bruger samme funktion (serie_vacant_housing)."
-    },
-    {
-      "id": "housing_area",
-      "category": "social",
-      "dimension": "bolig",
-      "name": "Boligareal pr. person (m²)",
-      "table": "BOL106",
-      "source": "DST BOL106",
-      "source_url": "https://www.statistikbanken.dk/BOL106",
-      "unit": "m²",
-      "data_year": "2026",
-      "csv": "bolig_extra_scores.csv",
-      "ratio_col": "housing_area_ratio",
-      "raw_col": "housing_area_m2",
-      "reference": {"type": "landstal", "col": "housing_area_ref", "definition": "DST's landstal (hele landet); fetch_social_extra_data.py"},
-      "inverse": false,
-      "baseline_level": 3,
-      "rationale": "Boligareal pr. person afspejler boligstandard og -træthed. Mere plads er generelt forbundet med bedre livskvalitet."
+      "rationale": "Andel af beboerne i helårsboliger (parcel-, række- og etageboliger), der bor i en bolig med flere personer end værelser (DST BOL103). Trangboethed er et af de mest brugte mål for utilstrækkelige boligforhold og måler et underskud under en bundgrænse: det straffer for lidt plads uden at belønne meget plads. Definitionen er en forenkling af Eurostats overbelægningsmål, som kræver oplysninger om husstandens alder og sammensætning. Inverteret: lavere andel er bedre.",
+      "note": "Erstatter vacant_housing og housing_area (sep. 2026), som korrelerede -0,85 og udlignede hinanden. Husstande på 7+ tælles som 7 personer og boliger med 6+ værelser som 6. Retningspilen bruger samme funktion (serie_trangboethed)."
     },
     {
       "id": "housing_no_wc",
