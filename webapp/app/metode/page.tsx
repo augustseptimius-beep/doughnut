@@ -255,29 +255,6 @@ export default function MetodePage() {
           Danmarks 98 Doughnuts anvender Kate Raworths Doughnut Economics-ramme til at vurdere alle danske kommuners præstation på to linser: det <strong>sociale fundament</strong> (opfylder vi borgernes basale behov?) og det <strong>økologiske loft</strong> (respekterer vi naturens grænser?). Modellen er politisk neutral - den måler, ikke rangordner.
         </p>
 
-        {/* Metodeartikler til download (docs/artikler/, kopieret til public/artikler/) */}
-        <div className="p-4 bg-white border border-gray-200 rounded-xl mb-4">
-          <h3 className="font-bold text-gray-900 mb-1">Metodeartikler</h3>
-          <p className="text-sm text-gray-600 leading-relaxed mb-2">
-            To artikler forklarer metoden mere udførligt, tester hvor følsomme resultaterne er over for metodens valg, og gennemgår svaghederne.
-            Tallene er et øjebliksbillede af data fra 26. september 2026.
-          </p>
-          <ul className="text-sm space-y-1">
-            <li>
-              <a href="/artikler/metodeartikel-1-social-ring.docx" download className="text-blue-600 hover:underline font-medium">
-                Et socialt fundament for 98 kommuner
-              </a>{" "}
-              <span className="text-gray-400">(Word, 230 kB)</span>
-            </li>
-            <li>
-              <a href="/artikler/metodeartikel-2-oekologisk-ring.docx" download className="text-blue-600 hover:underline font-medium">
-                Et økologisk loft for 98 kommuner
-              </a>{" "}
-              <span className="text-gray-400">(Word, 250 kB)</span>
-            </li>
-          </ul>
-        </div>
-
         {/* Baseline-hierarki */}
         <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl mb-2">
           <h3 className="font-bold text-emerald-900 mb-3">Hierarki for baseline-valg</h3>

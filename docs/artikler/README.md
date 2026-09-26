@@ -1,6 +1,6 @@
 # Metodeartikler
 
-To artikler, der forklarer metoden bag Danmarks 98 Doughnuts og gennemgår dens svagheder. De er skrevet til nysgerrige læsere og kan downloades fra metodesiden (`webapp/public/artikler/`, kopier af filerne her).
+To artikler, der forklarer metoden bag Danmarks 98 Doughnuts og gennemgår dens svagheder. De er skrevet til nysgerrige læsere. De er endnu ikke lagt på platformen; det sker først efter godkendelse.
 
 - `metodeartikel-1-social-ring.docx`: den sociale ring (13 kategorier, 48 indikatorer).
 - `metodeartikel-2-oekologisk-ring.docx`: den økologiske ring (7 dimensioner, 15 indikatorer).
@@ -11,4 +11,4 @@ Alle tal er beregnet på datafilerne ved commit bb573ec (26. september 2026), ef
 python3 docs/artikler/analyse_artikler.py
 ```
 
-Opdateres data, passer tallene i artiklerne ikke længere. Kør scriptet og ret teksten, eller behold artiklerne som et øjebliksbillede af 26. september 2026. Retter du artiklerne, så kopiér dem også til `webapp/public/artikler/`.
+Opdateres data, passer tallene i artiklerne ikke længere. Kør scriptet og ret teksten, eller behold artiklerne som et øjebliksbillede af 26. september 2026.
