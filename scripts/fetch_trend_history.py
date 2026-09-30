@@ -22,7 +22,11 @@ en tekst siden dette blev skrevet. Tjek loggen (trend_history_log.txt).
 
 Output:
   data/trend_history_raw.csv   - kommune_kode,indicator_id,aar,vaerdi
+  data/trend_history_land.csv  - indicator_id,aar,vaerdi: hele landets serie, til grafen ved pilen
   data/trend_history_log.txt   - fuld log, inkl. evt. fejlede indikatorer
+
+  --kun-land henter kun landsserierne (ingen API-nøgler, kommunernes serier røres ikke). Landet er
+  scorens eget landstal for året, se land_vaegtet() og arkitekturdokumentets T10.
 
 Kør fra projektets rodmappe:
   python3 scripts/fetch_trend_history.py
@@ -64,7 +68,12 @@ from fetch_climate_data import _extract_co2_per_capita  # noqa: E402  (samme udt
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 RAW_OUTPUT = DATA_DIR / "trend_history_raw.csv"
+# Hele landet som tidsserie, samme skema uden kommunekoden: indicator_id,aar,vaerdi. Ligger i
+# en egen fil, fordi rækkerne ikke må komme i nærheden af medianen over de 98 kommuner, som
+# build_trends_csv.py regner "rigtig" og "tempo" ud fra. Se afsnittet om landsserier i main().
+LAND_OUTPUT = DATA_DIR / "trend_history_land.csv"
 LOG_OUTPUT = DATA_DIR / "trend_history_log.txt"
+LAND = "000"  # DST's kode for hele landet
 
 DST_API = "https://api.statbank.dk/v1"
 FRA_AAR = 2010
@@ -196,7 +205,10 @@ def beskriv_tabel(info, areal_id, tid_id):
         log(f"     {v['id']} ({len(tekster)} værdier): {vis}")
 
 
-def hent(ind):
+def hent(ind, kun_land=False):
+    """Henter én indikator fra DST. Rækkerne er {kommune_kode, aar, vaerdi}; hele landet
+    ("000") er med, når tabellen har en hele-landet-række, og hentes i samme kald som
+    kommunerne. Med kun_land hentes kun hele landet (til landsserierne, se LAND_OUTPUT)."""
     log(f"\n→ {ind['navn']}  [{ind['tabel']}]")
     try:
         info = json.loads(_hent(f"{DST_API}/tableinfo/{ind['tabel']}?lang=da&format=JSON"))
@@ -262,14 +274,25 @@ def hent(ind):
             return []
 
     findes = {str(x.get("id")) for x in areal.get("values", [])}
+    # Hele landet er tabellens egen række med koden 000. Teksten slås op, fordi den
+    # varierer mellem tabeller ("Hele landet", "Danmark") og er det, svaret indeholder.
+    land_tekst = next((str(x.get("text") or "").strip() for x in areal.get("values", [])
+                       if str(x.get("id")) == LAND), None) if LAND in findes else None
     koder = [k for k in KOMMUNER if k in findes]
     mangler_n = len(KOMMUNER) - len(koder)
-    if mangler_n:
-        log(f"   Tabellen kender ikke {mangler_n} af {len(KOMMUNER)} kommuner. De udelades.")
-    if not koder:
-        log("   FEJL: tabellen kender ingen af platformens kommuner.")
-        return []
-    valg = {areal["id"]: koder}
+    if kun_land:
+        if land_tekst is None:
+            log("   Tabellen har ingen hele-landet-række, så ingen landsserie.")
+            return []
+        koder, omraader = [], [LAND]
+    else:
+        if mangler_n:
+            log(f"   Tabellen kender ikke {mangler_n} af {len(KOMMUNER)} kommuner. De udelades.")
+        if not koder:
+            log("   FEJL: tabellen kender ingen af platformens kommuner.")
+            return []
+        omraader = koder + ([LAND] if land_tekst is not None else [])
+    valg = {areal["id"]: omraader}
     brugte = set()
     if noegle_id:
         valg[noegle_id] = noegle_valg
@@ -322,7 +345,7 @@ def hent(ind):
     if udeladt:
         log(f"   Udeladt, lægges sammen af DST: {', '.join(udeladt)}")
 
-    pr_periode = len(koder)
+    pr_periode = len(omraader)
     for k, v in valg.items():
         if k != areal["id"]:
             pr_periode *= len(v)
@@ -363,8 +386,11 @@ def hent(ind):
         for r in raekker:
             omr = (r.get(areal_kol) or "").strip()
             felt = omr.split()
-            kode = felt[0] if felt and felt[0].isdigit() else navn2kode.get(omr)
-            if kode not in KOMMUNER:
+            if land_tekst is not None and omr == land_tekst:
+                kode = LAND
+            else:
+                kode = felt[0] if felt and felt[0].isdigit() else navn2kode.get(omr)
+            if kode not in KOMMUNER and kode != LAND:
                 continue
             raa = (r.get(val_kol) or "").strip()
             if raa in ("", "..", ".", "x", "X", "-"):
@@ -389,20 +415,25 @@ def hent(ind):
     ud = [{"kommune_kode": k, "aar": a, "vaerdi": round(v, 4)} for (k, a), v in saml.items()]
 
     th = sorted((int(r["aar"]), r["vaerdi"]) for r in ud if r["kommune_kode"] == TEST_KOMMUNE)
+    land = sorted((int(r["aar"]), r["vaerdi"]) for r in ud if r["kommune_kode"] == LAND)
     if th:
         log(f"   OK: Thisted {th[0][0]} = {th[0][1]:,.1f}  →  {th[-1][0]} = {th[-1][1]:,.1f}  "
             f"({len(ud)} kommune-år i alt)".replace(",", "."))
+    elif kun_land and land:
+        log(f"   OK: hele landet {land[0][0]} = {land[0][1]:,.2f}  →  {land[-1][0]} = {land[-1][1]:,.2f}"
+            .replace(",", "."))
     else:
         log(f"   OK: {len(ud)} kommune-år hentet (ingen Thisted-tal - kan være normalt).")
     return ud
 
 
-def serie(spec):
-    """Henter én indikator og returnerer {(kommunekode, år): værdi}."""
+def serie(spec, kun_land=False):
+    """Henter én indikator og returnerer {(kommunekode, år): værdi}, med hele landet under
+    koden 000, hvis tabellen har det."""
     ind = dict(spec)
     ind.setdefault("tabel", "")
     ind.setdefault("navn", ind.get("id", "?"))
-    return {(r["kommune_kode"], r["aar"]): r["vaerdi"] for r in hent(ind)}
+    return {(r["kommune_kode"], r["aar"]): r["vaerdi"] for r in hent(ind, kun_land)}
 
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -575,7 +606,8 @@ SAMME_SOM_SCOREN = {
 
 def samme_som_scoren(kun: list[str] | None = None) -> dict[str, dict]:
     """Henter pilene i SAMME_SOM_SCOREN med scorens egne funktioner.
-    {id: {(kommune_kode, år): værdi}}, uden hele landet."""
+    {id: {(kommune_kode, år): værdi}}. Hele landet (000) er med, når funktionen giver det: det er
+    scorens eget landstal for året, så landsserien er samme tal som referencen i master."""
     import importlib
     ud: dict[str, dict] = {}
     for iid, (modul, funktion, tabel, form) in SAMME_SOM_SCOREN.items():
@@ -591,7 +623,7 @@ def samme_som_scoren(kun: list[str] | None = None) -> dict[str, dict]:
         except Exception as e:
             log(f"   FEJL: {e}")
             continue
-        ud[iid] = {k: v for k, v in data.items() if k[0] in KOMMUNER}
+        ud[iid] = {k: v for k, v in data.items() if k[0] in KOMMUNER or k[0] == LAND}
         th = sorted((a, v) for (k, a), v in ud[iid].items() if k == TEST_KOMMUNE)
         if th:
             log(f"   OK: {KOMMUNER[TEST_KOMMUNE]} {th[0][0]} = {th[0][1]}  →  "
@@ -614,23 +646,26 @@ def median_serier() -> dict[str, dict]:
     ud = {"disposable_income": {}, "income_gender_gap_taeller": {}, "income_gender_gap_naevner": {}}
     navn = {"MOK": "disposable_income", "K": "income_gender_gap_taeller", "M": "income_gender_gap_naevner"}
     for (kode, koen, a), v in med.items():
-        if kode in KOMMUNER:
+        if kode in KOMMUNER or kode == LAND:
             ud[navn[koen]][(kode, a)] = float(v)
     for k, d in ud.items():
         log(f"  {k:28} {len({kk for kk, _ in d})} kommuner")
     return ud
 
 
-def fetch_dst_indicators() -> list[dict]:
+def fetch_dst_indicators(kun_land: bool = False) -> list[dict]:
+    """Rækkerne til trend_history_raw.csv og, under kommunekoden 000, til landsserierne.
+    Med kun_land hentes de generiske udtræk kun for hele landet."""
     log("=" * 66)
     log(f"DST-historik, startet {datetime.now():%Y-%m-%d %H:%M}")
-    log(f"{len(SIMPLE)} rå udtræk, {len(KOMMUNER)} kommuner, fra {FRA_AAR}")
+    log(f"{len(SIMPLE)} rå udtræk, {len(KOMMUNER)} kommuner og hele landet, fra {FRA_AAR}"
+        + (" (kun hele landet)" if kun_land else ""))
     log("=" * 66)
 
     raw: dict[str, dict] = {}
     fejlet = []
     for spec in SIMPLE:
-        data = serie(spec)
+        data = serie(spec, kun_land)
         if not data:
             fejlet.append(spec["id"])
         raw[spec["id"]] = data
@@ -905,9 +940,86 @@ def auto_build_trends():
         log("  Rådata er gemt OK. Kør manuelt: python3 scripts/build_trends_csv.py")
 
 
+def _vaegtet(vaerdier: dict[str, float], vaegte: dict[str, float]) -> float | None:
+    """Gennemsnit af kommunernes værdier vægtet med `vaegte`. Kun kommuner med både værdi og vægt
+    tæller med."""
+    med = [k for k, v in vaerdier.items() if v is not None and vaegte.get(k)]
+    n = sum(vaegte[k] for k in med)
+    return round(sum(vaerdier[k] * vaegte[k] for k in med) / n, 4) if n else None
+
+
+def land_vaegtet() -> list[dict]:
+    """Landsserier for indikatorerne, hvis landstal er et VÆGTET gennemsnit af kommunernes værdier
+    (arkitekturdokumentet R3), og som ikke kommer fra en række i DST's tabel: Sundhedsprofilen
+    (befolkning 16+, FOLK1A) og UVM's fire (folkeskoleelever efter bopælskommune, UDDAKT20).
+
+    Serien er kommunernes værdier fra trend_history_raw.csv, år for år, vægtet med SCORENS EGNE
+    vægte: nyeste års befolkning hhv. elevtal. For det nyeste år er det derfor præcis scorens
+    landstal (master.reference); for ældre år er det samme regel med nyeste års vægte, ikke det
+    års egne, så landslinjen er et vægtet gennemsnit og ikke en opgørelse af landets tal dengang.
+    Kræver ingen API-nøgler: vægtene kommer fra DST."""
+    from dst import folketal
+    from dst_aar import seneste_kvartal
+    from fetch_sundhedsprofil import INDIKATORER as SP_INDIKATORER
+    from fetch_udvidelse_data import UVM_VAEGT, elevtal
+
+    serier: dict[str, dict[str, dict[str, float]]] = defaultdict(lambda: defaultdict(dict))
+    with open(RAW_OUTPUT, encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            try:
+                serier[r["indicator_id"]][r["aar"]][r["kommune_kode"]] = float(r["vaerdi"])
+            except ValueError:
+                continue
+
+    vaegte: dict[str, dict[str, float]] = {}
+    sp_ider = [i["id"] for i in SP_INDIKATORER if not i.get("kun_data") and i["id"] in serier]
+    if sp_ider:
+        aar = seneste_kvartal("FOLK1A", "K1", fallback="2025K1")[:4]
+        folk = folketal([aar], [str(a) for a in range(16, 126)])
+        for i in sp_ider:
+            vaegte[i] = {k: v for (k, _), v in folk.items() if k != LAND}
+    elevvaegte: dict[str, dict[str, float]] = {}
+    for iid, (_, _, uddannelse, _) in UVM_VAEGT.items():
+        if iid in serier:
+            if uddannelse not in elevvaegte:
+                elevvaegte[uddannelse] = elevtal(uddannelse)
+            vaegte[iid] = elevvaegte[uddannelse]
+
+    ud = []
+    for iid, pr_aar in sorted(serier.items()):
+        if iid not in vaegte:
+            continue
+        for aar, vaerdier in sorted(pr_aar.items()):
+            v = _vaegtet(vaerdier, vaegte[iid])
+            if v is not None:
+                ud.append({"indicator_id": iid, "aar": aar, "vaerdi": v})
+        log(f"   {iid}: vægtet landsserie {min(pr_aar)}-{max(pr_aar)}, seneste "
+            f"{_vaegtet(pr_aar[max(pr_aar)], vaegte[iid])}")
+    return ud
+
+
+def skriv_land(rows: list[dict], fjern: list[str] | None = None) -> int:
+    """Skriver landsserierne til LAND_OUTPUT (indicator_id,aar,vaerdi). Rækker for indikatorer,
+    der ikke er med i `rows`, bevares, så en delvis kørsel ikke sletter de øvrige: landsserierne
+    for Sundhedsprofilen og UVM kommer ikke herfra. Indikatorerne i `fjern` slettes."""
+    nye = {r["indicator_id"] for r in rows}
+    bort = nye | set(fjern or [])
+    beholdt = []
+    if LAND_OUTPUT.exists():
+        with open(LAND_OUTPUT, encoding="utf-8") as f:
+            beholdt = [r for r in csv.DictReader(f) if r["indicator_id"] not in bort]
+    ud = [{"indicator_id": r["indicator_id"], "aar": r["aar"], "vaerdi": r["vaerdi"]} for r in rows]
+    with open(LAND_OUTPUT, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=["indicator_id", "aar", "vaerdi"])
+        w.writeheader()
+        w.writerows(sorted(ud + beholdt, key=lambda r: (r["indicator_id"], r["aar"])))
+    return len(ud) + len(beholdt)
+
+
 def delvis_opdatering(kun: list[str], fjern: list[str]) -> int:
     """Genberegner kun de nævnte serier (fra SAMME_SOM_SCOREN) og fletter dem
     ind i den eksisterende trend_history_raw.csv; serierne i `fjern` slettes.
+    Landsserierne for de samme indikatorer skrives til trend_history_land.csv.
     Kræver ingen API-nøgler, fordi Klimaregnskabet og UVM ikke røres.
 
     Til når en indikators definition ændres eller en ny kommer til, så man
@@ -924,14 +1036,39 @@ def delvis_opdatering(kun: list[str], fjern: list[str]) -> int:
         return 1
     with open(RAW_OUTPUT, encoding="utf-8") as f:
         rows = [r for r in csv.DictReader(f) if r["indicator_id"] not in set(kun) | set(fjern)]
+    land = []
     for iid, data in nye.items():
         rows += [{"kommune_kode": k, "indicator_id": iid, "aar": a, "vaerdi": v}
-                 for (k, a), v in data.items()]
+                 for (k, a), v in data.items() if k != LAND]
+        land += [{"indicator_id": iid, "aar": a, "vaerdi": v}
+                 for (k, a), v in data.items() if k == LAND]
     with open(RAW_OUTPUT, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=["kommune_kode", "indicator_id", "aar", "vaerdi"])
         w.writeheader()
         w.writerows(sorted(rows, key=lambda r: (r["indicator_id"], r["kommune_kode"], r["aar"])))
     log(f"\nSkrevet: {RAW_OUTPUT.name} ({len(rows)} rækker; genberegnet {kun}, fjernet {fjern})")
+    # De genberegnede serier mister deres gamle landsserie, også hvis funktionen ikke længere giver
+    # en ny: en landsserie fra en tidligere definition må ikke stå ved siden af en ny kommuneserie.
+    antal_land = skriv_land(land, fjern=fjern + kun)
+    log(f"Skrevet: {LAND_OUTPUT.name} ({antal_land} rækker)")
+    auto_build_trends()
+    return 0
+
+
+def land_opdatering() -> int:
+    """Henter kun landsserierne (hele landet) og skriver trend_history_land.csv. Kommunernes
+    tidsserier og pilene røres ikke. Kræver ingen API-nøgler: Klimaregnskabet og UVM's landsserier
+    hentes ikke her, og deres rækker i filen bevares."""
+    rows = [{"indicator_id": r["indicator_id"], "aar": r["aar"], "vaerdi": r["vaerdi"]}
+            for r in fetch_dst_indicators(kun_land=True) if r["kommune_kode"] == LAND]
+    log("\nVægtede landsserier (Sundhedsprofilen og UVM)")
+    rows += land_vaegtet()
+    if not rows:
+        log("\nFEJL: ingen landsserier hentet. Filen er ikke rørt.")
+        return 1
+    antal = skriv_land(rows)
+    log(f"\nSkrevet: {LAND_OUTPUT.name} ({antal} rækker, {len({r['indicator_id'] for r in rows})} "
+        f"indikatorer hentet)")
     auto_build_trends()
     return 0
 
@@ -941,7 +1078,12 @@ def main():
     ap = argparse.ArgumentParser(description="Tidsserier til retningspilene")
     ap.add_argument("--kun", default="", help="Kommasepareret: genberegn kun disse serier (SAMME_SOM_SCOREN)")
     ap.add_argument("--fjern", default="", help="Kommasepareret: slet disse serier fra trend_history_raw.csv")
+    ap.add_argument("--kun-land", action="store_true",
+                    help="Hent kun landsserierne (hele landet) til trend_history_land.csv. Rører ikke "
+                         "kommunernes tidsserier. Kræver ingen API-nøgler.")
     args = ap.parse_args()
+    if args.kun_land:
+        return land_opdatering()
     if args.kun or args.fjern:
         return delvis_opdatering([i for i in args.kun.split(",") if i],
                                  [i for i in args.fjern.split(",") if i])
@@ -953,7 +1095,11 @@ def main():
     from fetch_sundhedsprofil import INDIKATORER as SP_INDIKATORER
     andres = {i["id"] for i in SP_INDIKATORER if not i.get("kun_data")}
 
-    alle = fetch_dst_indicators() + fetch_klimapaavirkning() + fetch_uvm_historik()
+    hentet = fetch_dst_indicators() + fetch_klimapaavirkning() + fetch_uvm_historik()
+    # Hele landet (000) kommer med i samme udtræk, men hører ikke til kommunefilen: build_trends_csv.py
+    # regner medianen "rigtig" og "tempo" ud fra alle rækker i den, og landet er ingen kommune.
+    land = [r for r in hentet if r["kommune_kode"] == LAND]
+    alle = [r for r in hentet if r["kommune_kode"] != LAND]
 
     if not alle:
         log("\nFEJL: ingen data hentet overhovedet.")
@@ -975,6 +1121,10 @@ def main():
         w.writerows(sorted(alle + beholdt, key=lambda r: (r["indicator_id"], r["kommune_kode"], r["aar"])))
     log(f"\nSkrevet: {RAW_OUTPUT.name} ({len(alle)} rækker hentet, "
         f"{len(beholdt)} bevaret fra fetch_sundhedsprofil.py)")
+    log("\nVægtede landsserier (Sundhedsprofilen og UVM)")
+    land += land_vaegtet()
+    antal_land = skriv_land(land)
+    log(f"Skrevet: {LAND_OUTPUT.name} ({antal_land} rækker)")
 
     dækning = defaultdict(set)
     for r in alle:
@@ -982,6 +1132,8 @@ def main():
     log("\nDækning pr. indikator (antal kommuner med mindst ét år):")
     for iid in sorted(dækning):
         log(f"  {iid:28} {len(dækning[iid])}/{len(KOMMUNER)} kommuner")
+    uden_land = sorted(set(dækning) - {r["indicator_id"] for r in land})
+    log(f"\nUden landsserie i denne kørsel ({len(uden_land)}): {', '.join(uden_land) or 'ingen'}")
 
     LOG_OUTPUT.write_text("\n".join(LOG), encoding="utf-8")
     log(f"\nSkrevet: {LOG_OUTPUT.name}")

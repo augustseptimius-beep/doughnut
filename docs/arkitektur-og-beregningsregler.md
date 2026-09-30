@@ -421,6 +421,46 @@ scoren: andre kategorier (klassekvotient kun i folkeskolen, ubeboede boliger
 inkl. fritidshuse, sportsanlæg talt med i bebygget areal), en anden
 aldersgruppe, et andet folketal og en anden udtræksregel for Klimaregnskabet.
 
+**T10 - Grafen ved pilen viser hele landet som scorens eget landstal (fra sep.
+2026).** Peger man på en pil ved en indikator eller en worst-of-dimension, viser
+et kort kommunens og hele landets tal år for år. Kommunens serie er den, pilen
+bygger på (`trend_history_raw.csv`), og landets står i `trend_history_land.csv`.
+Grafen tegner hele serien, altså de år pilens periode dækker, ikke kun de
+seneste ti.
+
+- **Landet er scorens landstal for året (R3), ikke tabellens hele-landet-række,
+  når de to er forskellige.** En indikator med en `serie_<id>()` får landsserien
+  fra samme funktion som scoren: den giver ("000", år) ved siden af kommunerne,
+  og `samme_som_scoren()` beholder rækken. De generiske udtræk henter tabellens
+  000-række i samme DST-kald (`hent()`), og forholdstal (tæller/nævner) regnes
+  på landets tæller og nævner. Sundhedsprofilen og UVM's fire har et vægtet
+  landstal og får en vægtet serie (`land_vaegtet()`): kommunernes værdier
+  vægtet med nyeste års befolkning 16+ hhv. folkeskoleelever, altså scorens egne
+  vægte. For det nyeste år er det præcis scorens landstal; for ældre år er det
+  samme regel med nyeste års vægte og ikke det års egne.
+- **Serien ender i scorens landstal.** `tjek_konsistens.py` kræver, at landsserien
+  for scorens år er `master.reference` (tolerance 0,5 %), og melder en fejl
+  ellers. Indikatorer, der måles mod et fast mål, har ingen landsreference i
+  master. `education` og `vandindvinding` kontrolleres mod landstallet i deres
+  egen CSV (`LAND_ANDEN_KILDE`), og `cirkularitet_recycling` står uden kontrol.
+  En indikator, der ikke kan gengive sit landstal, får ingen landsserie, og
+  grafen viser så kun kommunen.
+- **Landet får ingen retning.** "Rigtig" og "tempo" er kommunernes indbyrdes
+  sammenligning (T3), og landet er ingen kommune. Landsserien ligger derfor i egne
+  filer og er aldrig med i medianen. `trend_land.csv` har kun periode, endepunkter
+  og procentændring, regnet af `build_trends_csv.py` med samme `endepunkter()` og
+  `pct_aendring()` som kommunernes (T2).
+- **Kun tal i siden, SVG først ved hover.** Serien hænger på `TrendPost.serie` og
+  sættes af `medTidsserier()` i `data.ts` på den åbnede kommune alene:
+  `allKommuner` bærer alle 98 kommuner og skal aldrig have serier på. `TrendKort`
+  (`components/TrendGraf.tsx`) monteres først, mens tooltippen er åben.
+- **Uden landsserie:** `klimapaavirkning` (Klimaregnskabets landstal kræver
+  nøglen) og `n_deposition` (DCE's tal findes kun pr. kommune). Grafen viser dem
+  uden landslinje og siger det.
+- **Landsserierne kan hentes uden API-nøgler** med
+  `python3 scripts/fetch_trend_history.py --kun-land`. Kommunernes serier og
+  pilene røres ikke.
+
 ---
 
 ## 5. Designbeslutninger bag reglerne

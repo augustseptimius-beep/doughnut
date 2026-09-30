@@ -20,6 +20,12 @@ platformen.md" afsnit 4 og 5 for den fulde begrundelse - kort resumé her:
 Output: data/trend_indicators.csv, kommasepareret (samme konvention som
 master_indicators.csv - se CLAUDE.md pitfall om split(",")-parsing).
 
+Sammen med den skrives data/trend_land.csv: endepunkterne af hele landets serie
+(data/trend_history_land.csv), regnet med SAMME endepunkts- og procentregel som
+kommunernes. Den bruges kun af grafen ved pilen, som viser landet ved siden af
+kommunen. Landet får ingen retning: "rigtig" og "tempo" er kommunernes indbyrdes
+sammenligning, og landet er ingen kommune. Se build_land_trends().
+
 VIGTIGT - `pct` betyder to forskellige ting, afhængigt af rækketype:
 
   Enkelt-indikator (fx "crime_rate")
@@ -60,6 +66,8 @@ DATA_DIR = ROOT / "data"
 RAW_INPUT = DATA_DIR / "trend_history_raw.csv"
 MASTER_INPUT = DATA_DIR / "master_indicators.csv"
 OUTPUT = DATA_DIR / "trend_indicators.csv"
+LAND_INPUT = DATA_DIR / "trend_history_land.csv"
+LAND_OUTPUT = DATA_DIR / "trend_land.csv"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import indikatorregister as ir  # noqa: E402
@@ -323,6 +331,43 @@ def aggreger_dimensioner(poster, eco_struktur, social_struktur):
     return ud
 
 
+def build_land_trends() -> None:
+    """Endepunkterne af hele landets serie pr. indikator, til grafen ved pilen.
+
+    Samme endepunkter() og pct_aendring() som kommunerne, så landets tal i grafens forklaring
+    er regnet på samme måde som kommunens. Landet får ingen retning og indgår ikke i medianen
+    ovenfor: den er kommunernes indbyrdes sammenligning. Indikatorer uden landsserie får ingen
+    række, og grafen viser så kun kommunen."""
+    if not LAND_INPUT.exists():
+        print(f"\n{LAND_INPUT.name} findes ikke - {LAND_OUTPUT.name} er ikke skrevet. "
+              f"Kør scripts/fetch_trend_history.py --kun-land.")
+        return
+    serier: dict[str, dict[str, float]] = defaultdict(dict)
+    with open(LAND_INPUT, encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            try:
+                serier[r["indicator_id"]][r["aar"]] = float(r["vaerdi"])
+            except (ValueError, TypeError):
+                continue
+    rows = []
+    for iid, serie in sorted(serier.items()):
+        if len(serie) < 2:
+            continue
+        f_lab, s_lab, start, slut, n_aar = endepunkter(serie)
+        pct = pct_aendring(start, slut)
+        rows.append({
+            "indicator_id": iid, "periode_start": f_lab, "periode_slut": s_lab,
+            "vaerdi_start": round(start, 4), "vaerdi_slut": round(slut, 4),
+            "pct": round(pct, 2) if pct is not None else "", "n_aar": n_aar,
+        })
+    with open(LAND_OUTPUT, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=["indicator_id", "periode_start", "periode_slut",
+                                          "vaerdi_start", "vaerdi_slut", "pct", "n_aar"])
+        w.writeheader()
+        w.writerows(rows)
+    print(f"✓ Skrev {len(rows)} landsserier til {LAND_OUTPUT.relative_to(ROOT)}")
+
+
 def build_trends():
     if not RAW_INPUT.exists():
         print(f"FEJL: {RAW_INPUT} findes ikke. Kør scripts/fetch_trend_history.py først.",
@@ -425,6 +470,7 @@ def build_trends():
 
     print(f"\n✓ Skrev {len(output_rows)} rækker til {OUTPUT.relative_to(ROOT)}")
     print(f"  Filstørrelse: {OUTPUT.stat().st_size / 1024:.1f} KB")
+    build_land_trends()
 
 
 def auto_build_trends():

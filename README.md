@@ -71,7 +71,9 @@ written in Danish, as is most documentation in this repository.
 ```
 data/          CSV data. master_indicators.csv is the consolidated file the
                web app reads; the other CSVs are the per-source raw track.
-               trend_indicators.csv holds the direction-of-travel arrows.
+               trend_indicators.csv holds the direction-of-travel arrows;
+               trend_history_land.csv and trend_land.csv the national series
+               shown beside the municipality in the hover chart.
 scripts/       Python fetchers, one or more per data source, plus the two
                build scripts that consolidate them.
 docs/          Architecture, methodology and data-source mapping.
@@ -148,8 +150,8 @@ Most fetchers call the consolidation step automatically and print
 `✓ Master-CSV opdateret` when they do. If that line is missing, run
 `build_master_csv.py` by hand.
 
-`master_indicators.csv`, `trend_indicators.csv` and `data_years.json` are all
-committed deliberately: the build reads from them, so the site can be rebuilt
+`master_indicators.csv`, `trend_indicators.csv`, `trend_history_land.csv`,
+`trend_land.csv` and `data_years.json` are all committed deliberately: the build reads from them, so the site can be rebuilt
 without network access to any upstream API.
 
 Before a data update, run the diagnostic:

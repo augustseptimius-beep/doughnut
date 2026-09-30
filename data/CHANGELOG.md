@@ -2,6 +2,15 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-09-30 (grafen ved retningspilen: landsserier)
+
+- **Peger man på en retningspil, viser et kort nu kommunens og hele landets tal år for år.** Kommunens serie er den, pilen bygger på (`trend_history_raw.csv`), og grafen tegner hele serien (op til 17 år), altså de år pilens periode dækker. Kortet monteres først ved hover, fokus eller tryk; siden rummer kun tal (31 KB pr. kommuneside). Worst-of-dimensionernes pil viser den afgørende indikators graf.
+- **Ny fil `trend_history_land.csv`** (`indicator_id,aar,vaerdi`) med hele landets tal, og **`trend_land.csv`** med landets endepunkter, regnet af `build_trends_csv.py` med samme regel som kommunernes. Landet får ingen retning og er ikke med i medianen bag "rigtig" og "tempo". `trend_indicators.csv` er byte for byte uændret.
+- **Landet er scorens eget landstal for året.** Scorens `serie_<id>()` giver landstallet ved siden af kommunerne, de generiske udtræk henter tabellens 000-række i samme kald, og Sundhedsprofilen og UVM's fire får et vægtet gennemsnit med scorens vægte (`land_vaegtet()`). 47 af 49 indikatorer med kommuneserie har en landsserie. `klimapaavirkning` (kræver Klimaregnskabets nøgle) og `n_deposition` (findes kun pr. kommune) har ingen.
+- **`tjek_konsistens.py` kontrollerer, at hver landsserie ender i scorens landstal** (`master.reference`, tolerance 0,5 %). 44 stemmer med master, `education` og `vandindvinding` med landstallet i deres egen CSV, og `cirkularitet_recycling` står uden kontrol, fordi den måles mod et fast mål og ikke har en landstalskolonne.
+- **`python3 scripts/fetch_trend_history.py --kun-land` henter landsserierne uden API-nøgler** og rører hverken kommunernes serier eller pilene.
+- Tooltippen ved pilene lytter nu på pointer-hændelser: mus viser ved hover, berøring ved tryk. En berøringsskærm sender et `mouseleave` lige efter et tryk, som skjulte tooltippen i samme øjeblik, den blev vist.
+
 ## 2026-09-26 (oprydning: uscorede indikatorer, fjernvarmenet og få tilfælde)
 
 - **`housing_no_wc` og `housing_no_bath` er fjernet.** De stod i master uden at blive scoret. Niveauet er promiller (median 0,4 og 0,7 %), så en inverteret ratio ville forstørre tilfældige forskelle til farveskift. Tidsserien er slettet. `tjek_konsistens.py` melder nu en social indikator uden kategori som fejl. Ingen farveskift.
