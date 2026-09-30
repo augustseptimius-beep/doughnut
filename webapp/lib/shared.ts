@@ -76,7 +76,7 @@ export function faaTilfaelde(indikatorId: string, kommuneKode: string): boolean 
   return NOEGLETAL.indikatorer[indikatorId]?.faa_tilfaelde?.includes(kommuneKode) ?? false;
 }
 
-function formatTal(x: number, decimaler: number): string {
+export function formatTal(x: number, decimaler: number): string {
   const [hel, brok] = Math.abs(x).toFixed(decimaler).split(".");
   const tusinder = hel.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   return (x < 0 ? "-" : "") + tusinder + (brok ? "," + brok : "");
@@ -356,6 +356,37 @@ export interface TrendPost {
   // (worst-of), eller "gennemsnit af N indikatorer". Vises i tooltip, så
   // brugeren kan se hvad pilen faktisk beskriver.
   noegleIndikator?: string;
+  // Kun sat på worst-of-dimensioner: den afgørende sub-indikators id, så pilen kan vise dens
+  // tidsserie. Tom ved "gennemsnit af N indikatorer", som ikke har én fælles serie.
+  noegleId?: string;
+  // Tidsserien bag pilen, til grafen der tegnes ved hover. Sættes kun på den åbnede kommune
+  // (data.ts::medTidsserier), aldrig på de 98 i allKommuner.
+  serie?: TrendSerie;
+}
+
+/** Periode og ændring for én linje i grafen ved pilen. Kommunens er pilens egne tal, landets er
+ *  regnet med samme endepunktsregel (build_trends_csv.py, data/trend_land.csv). */
+export interface TrendEndepunkter {
+  periodeStart: string;
+  periodeSlut: string;
+  vaerdiStart: number | null;
+  vaerdiSlut: number | null;
+  pct: number | null;
+}
+
+/** Tidsserien bag en pil: kommunens og hele landets råværdi pr. år. Kun tal - SVG'en bygges først,
+ *  når man peger på pilen (ScoreBars.tsx, TrendGraf), så siden ikke rummer nogen tegninger og
+ *  intet skal holdes ajour, når data opdateres. Hele landet er scorens eget landstal for året
+ *  (data/trend_history_land.csv); `land` er null, hvor det ikke kan gengives præcist. */
+export interface TrendSerie {
+  navn: string;                    // indikatorens visningsnavn
+  enhed: string;                   // råværdiens enhed
+  kommuneNavn: string;
+  aar: number[];                   // stigende, hvert år hvor kommunen eller landet har et tal
+  kommune: (number | null)[];      // samme længde som aar; null = hul, aldrig nul
+  land: (number | null)[] | null;
+  kommuneEndepunkter: TrendEndepunkter;
+  landEndepunkter: TrendEndepunkter | null;
 }
 
 // Ét sted for retningsteksterne, så ScoreBars og DoughnutRing altid siger det

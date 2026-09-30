@@ -109,6 +109,20 @@ Viser hvilken **vej** en kommune bevæger sig, ikke kun hvor den ligger. Én ræ
 
 Genereres af `scripts/fetch_trend_history.py` → `scripts/build_trends_csv.py`. **Skal genberegnes sammen med `master_indicators.csv`**, ellers kan pil og tal komme til at høre til forskellige årgange.
 
+### Grafen ved pilen: kommune- og landsserier
+
+Peger man på en pil, viser et kort kommunens og hele landets tal år for år. Tallene ligger i tre filer, og de skal committes sammen med `trend_indicators.csv`:
+
+| Fil | Indhold |
+|---|---|
+| `trend_history_raw.csv` | `kommune_kode,indicator_id,aar,vaerdi`. Kommunens serie, den pilen bygger på |
+| `trend_history_land.csv` | `indicator_id,aar,vaerdi`. Hele landets råværdi pr. år |
+| `trend_land.csv` | `indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pct,n_aar`. Landets endepunkter, regnet af `build_trends_csv.py` med samme regel som kommunernes. Landet får ingen retning: "rigtig" og "tempo" er kommunernes indbyrdes sammenligning |
+
+- **Landet er scorens landstal for året**, altså det tal indikatoren måles mod (arkitekturdokumentet R3), og ikke altid tabellens egen hele-landet-række. Landsserien kommer fra scorens egen `serie_<id>()`, fra tabellens 000-række eller, for Sundhedsprofilen og UVM's fire, som et vægtet gennemsnit af kommunernes værdier med nyeste års befolkning 16+ hhv. elevtal.
+- **Serien ender i scorens landstal.** `tjek_konsistens.py` sammenligner landsserien for scorens år med `master.reference` og melder fejl ved afvigelse. 47 af de 49 indikatorer med kommuneserie har en landsserie. `klimapaavirkning` og `n_deposition` har ingen (Klimaregnskabets landstal kræver API-nøglen, og DCE's nedfald findes kun pr. kommune).
+- **Hent landsserierne uden API-nøgler:** `python3 scripts/fetch_trend_history.py --kun-land`. Kommunernes serier og pilene røres ikke.
+
 ## Rådata-CSV'er (debug/transparens)
 
 De individuelle CSV-filer (`luftforurening_scores.csv`, `naeringsstoffer_scores.csv` mv.) er bevaret som **rådata-spor**. De genereres af deres respektive `scripts/fetch_*.py`-scripts og gør det muligt at debugge data-pipelinen tilbage til kilden.

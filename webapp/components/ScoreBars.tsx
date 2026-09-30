@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
   type KommuneData,
@@ -22,6 +22,7 @@ import {
 } from "@/lib/shared";
 import { useBaseline } from "@/lib/baseline-context";
 import type { VurderingScore, VurderingEntry } from "@/lib/vurdering";
+import { TrendKort, trendSerieTekst } from "./TrendGraf";
 
 // Baseline-mærke vises kun for absolut og blandet; relativ er normen
 // (intet mærke, forklaret i ringens legende).
@@ -78,22 +79,94 @@ function trendTitle(t: TrendPost, kontekst: TrendKontekst): string {
 // Eget tooltip i stedet for SVG's indbyggede <title> - den native title-boks
 // har en indbygget forsinkelse på typisk 0,5-1 sekund og opfører sig
 // forskelligt fra browser til browser. Dette vises straks ved hover (og ved
-// tastaturfokus), via en portal til <body> så det ikke bliver beskåret af
-// kortenes egen overflow-hidden.
+// tastaturfokus og tryk), via en portal til <body> så det ikke bliver beskåret
+// af kortenes egen overflow-hidden.
+//
+// Har pilen en tidsserie (trend.serie), er tooltippen et kort med en graf af kommunens
+// og landets tal (TrendGraf.tsx). Kortet monteres først, mens tooltippen er åben: siden
+// rummer kun tallene, ingen tegninger.
+//
+// Mus og pen har hover. Berøring har ikke: et tryk viser tooltippen, og et tryk et andet
+// sted skjuler den. Der lyttes derfor på pointer-hændelser og ikke på mus-hændelser, fordi
+// en berøringsskærm sender et mouseleave lige efter et tryk, som ellers skjuler tooltippen
+// i samme øjeblik, den blev vist.
+const TOOLTIP_TEKST =
+  "fixed z-[100] pointer-events-none w-max max-w-[220px] rounded-md bg-gray-900 px-2 py-1.5 text-[11px] leading-snug text-white shadow-lg";
+const TOOLTIP_KORT =
+  "fixed z-[100] pointer-events-none max-w-[calc(100vw-1rem)] rounded-md border border-gray-200 bg-white p-2.5 text-gray-700 shadow-lg";
+const TOOLTIP_MARGEN = 8;
+
 function TrendMarker({ trend, kontekst = "indikator" }: { trend?: TrendPost; kontekst?: TrendKontekst }) {
   const ref = useRef<SVGSVGElement>(null);
-  const [pos, setPos] = useState<{ x: number; y: number; above: boolean } | null>(null);
+  const boksRef = useRef<HTMLDivElement>(null);
+  // Markørens plads på skærmen, mens tooltippen er åben, og boksens endelige plads, målt efter at
+  // den er tegnet: et graf-kort er højere end en tekst og skal ikke klippes af vinduets kant.
+  const [anker, setAnker] = useState<{ x: number; top: number; bottom: number } | null>(null);
+  const [plads, setPlads] = useState<{ left: number; top: number } | null>(null);
 
-  const label = !trend || trend.retning === "ingen" ? TREND_LABEL.ingen : trendTitle(trend, kontekst);
+  const serie = trend?.serie;
+  const tekst = !trend || trend.retning === "ingen" ? TREND_LABEL.ingen : trendTitle(trend, kontekst);
+  // Skærmlæsere får tallene bag grafen med, ikke kun retningen.
+  const label = serie ? `${tekst}. ${trendSerieTekst(serie, kontekst === "indikator")}` : tekst;
 
   const vis = () => {
     const r = ref.current?.getBoundingClientRect();
     if (!r) return;
-    const above = r.top > 48;
-    setPos({ x: r.left + r.width / 2, y: above ? r.top - 6 : r.bottom + 6, above });
+    setAnker({ x: r.left + r.width / 2, top: r.top, bottom: r.bottom });
   };
-  const skjul = () => setPos(null);
-  const handlers = { onMouseEnter: vis, onMouseLeave: skjul, onFocus: vis, onBlur: skjul };
+  const skjul = useCallback(() => {
+    setAnker(null);
+    setPlads(null);
+  }, []);
+
+  useLayoutEffect(() => {
+    const boks = boksRef.current;
+    if (!anker || !boks) return;
+    const b = boks.getBoundingClientRect();
+    // Det synlige område, ikke layoutvinduet: på en telefon kan siden være bredere end skærmen
+    // (window.innerWidth er så større end det, man ser), og et fixed-element skal stå indenfor det,
+    // man ser. visualViewport følger også en zoom.
+    const vv = window.visualViewport;
+    const x0 = (vv?.offsetLeft ?? 0) + TOOLTIP_MARGEN;
+    const x1 = (vv ? vv.offsetLeft + vv.width : window.innerWidth) - b.width - TOOLTIP_MARGEN;
+    const y0 = (vv?.offsetTop ?? 0) + TOOLTIP_MARGEN;
+    const y1 = (vv ? vv.offsetTop + vv.height : window.innerHeight) - b.height - TOOLTIP_MARGEN;
+    const left = Math.max(x0, Math.min(anker.x - b.width / 2, x1));
+    const over = anker.top - b.height - 6;
+    const top = Math.max(y0, Math.min(over >= y0 ? over : anker.bottom + 6, y1));
+    setPlads({ left, top });
+  }, [anker]);
+
+  // Mens tooltippen er åben: et tryk uden for markøren, Escape, scroll og resize skjuler den.
+  // Boksen følger ikke med ved scroll, så den skjules i stedet for at stå et forkert sted.
+  useEffect(() => {
+    if (!anker) return;
+    const udenfor = (e: PointerEvent) => {
+      if (!ref.current?.contains(e.target as Node)) skjul();
+    };
+    const escape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") skjul();
+    };
+    document.addEventListener("pointerdown", udenfor);
+    document.addEventListener("keydown", escape);
+    window.addEventListener("scroll", skjul, { passive: true, capture: true });
+    window.addEventListener("resize", skjul, { passive: true });
+    return () => {
+      document.removeEventListener("pointerdown", udenfor);
+      document.removeEventListener("keydown", escape);
+      window.removeEventListener("scroll", skjul, { capture: true });
+      window.removeEventListener("resize", skjul);
+    };
+  }, [anker, skjul]);
+
+  const hover = (e: React.PointerEvent) => e.pointerType !== "touch";
+  const handlers = {
+    onPointerEnter: (e: React.PointerEvent) => { if (hover(e)) vis(); },
+    onPointerLeave: (e: React.PointerEvent) => { if (hover(e)) skjul(); },
+    onPointerUp: (e: React.PointerEvent) => { if (!hover(e)) vis(); },
+    onFocus: vis,
+    onBlur: skjul,
+  };
 
   let inner: React.ReactNode;
   let farve: string;
@@ -121,8 +194,6 @@ function TrendMarker({ trend, kontekst = "indikator" }: { trend?: TrendPost; kon
       : <path d="M6 10.5 L1.5 3 L10.5 3 Z" fill="currentColor" />;
   }
 
-  const halvBredde = 110; // halvdelen af max-w-[220px] herunder
-
   return (
     <>
       <svg
@@ -136,16 +207,18 @@ function TrendMarker({ trend, kontekst = "indikator" }: { trend?: TrendPost; kon
       >
         {inner}
       </svg>
-      {pos && typeof document !== "undefined" && createPortal(
+      {anker && typeof document !== "undefined" && createPortal(
         <div
+          ref={boksRef}
           role="tooltip"
-          className={`fixed z-[100] -translate-x-1/2 ${pos.above ? "-translate-y-full" : ""} pointer-events-none w-max max-w-[220px] rounded-md bg-gray-900 px-2 py-1.5 text-[11px] leading-snug text-white shadow-lg`}
+          className={serie ? TOOLTIP_KORT : TOOLTIP_TEKST}
           style={{
-            left: Math.min(Math.max(pos.x, halvBredde + 8), window.innerWidth - halvBredde - 8),
-            top: pos.y,
+            left: plads?.left ?? 0,
+            top: plads?.top ?? 0,
+            visibility: plads ? "visible" : "hidden",
           }}
         >
-          {label}
+          {serie && trend ? <TrendKort trend={trend} kontekst={kontekst} /> : label}
         </div>,
         document.body
       )}

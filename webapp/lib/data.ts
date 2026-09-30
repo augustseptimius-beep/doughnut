@@ -21,7 +21,7 @@ export type {
   CategoryScore,
 } from "./shared";
 
-import { INDICATORS, ECOLOGICAL_DIMENSIONS, ECO_INDICATOR_KEYS, INDIKATORREGISTER, NOEGLETAL, visningsscore, computeTop10Ratios, computeGroupRatios, type KommuneData, type RegisterIndikator, type TrendPost, type TrendDirection } from "./shared";
+import { INDICATORS, ECOLOGICAL_DIMENSIONS, ECO_INDICATOR_KEYS, INDIKATORREGISTER, NOEGLETAL, visningsscore, computeTop10Ratios, computeGroupRatios, udfyldTal, type KommuneData, type RegisterIndikator, type TrendPost, type TrendDirection, type TrendSerie, type TrendEndepunkter } from "./shared";
 
 let cachedData: KommuneData[] | null = null;
 
@@ -352,6 +352,9 @@ function loadTrendsByKommune(): Map<string, Record<string, TrendPost>> {
       nAar: parseInt(r.n_aar, 10) || 0,
       kilde: r.kilde,
       noegleIndikator: LABEL_BY_INDICATOR_ID[noegle] ?? noegle,
+      // Kun en worst-of-dimension peger på ÉN indikator (id'et står i CSV'en); "gennemsnit af N
+      // indikatorer" har ingen fælles serie at tegne.
+      noegleId: noegle && LABEL_BY_INDICATOR_ID[noegle] ? noegle : undefined,
     };
 
     if (!byKommune.has(r.kommune_kode)) byKommune.set(r.kommune_kode, {});
@@ -363,6 +366,133 @@ function loadTrendsByKommune(): Map<string, Record<string, TrendPost>> {
   }
 
   return byKommune;
+}
+
+// ─── Tidsserier bag retningspilene ───────────────────────────────────
+// Grafen ved pilen (ScoreBars.tsx, TrendGraf) viser kommunens og hele landets tal år for år.
+// Kommunernes serier ligger i data/trend_history_raw.csv, hele landets i
+// data/trend_history_land.csv (begge fra scripts/fetch_trend_history.py), og landets endepunkter
+// i data/trend_land.csv (scripts/build_trends_csv.py). Kun den åbnede kommunes serier følger med
+// siden: allKommuner bærer alle 98 kommuner, og med serier på dem alle ville hver kommuneside
+// blive 98 gange tungere. Tallene er kun tal; SVG'en bygges først ved hover.
+
+function laesDataCsv(filnavn: string): Record<string, string>[] {
+  const csvPath = path.join(process.cwd(), "..", "data", filnavn);
+  if (!fs.existsSync(csvPath)) return [];
+  const linjer = fs.readFileSync(csvPath, "utf-8").trim().split("\n");
+  if (linjer.length < 2) return [];
+  const hoved = linjer[0].split(",").map((h) => h.trim());
+  return linjer.slice(1).map((linje) => {
+    const kol = linje.split(",");
+    return Object.fromEntries(hoved.map((h, i) => [h, (kol[i] ?? "").trim()]));
+  });
+}
+
+interface Tidsserier {
+  kommuner: Map<string, Map<string, Map<number, number>>>; // kommunekode → indikator → år → værdi
+  land: Map<string, Map<number, number>>;                  // indikator → år → værdi
+  landEndepunkter: Map<string, TrendEndepunkter>;
+}
+
+let cachedTidsserier: Tidsserier | null = null;
+
+function loadTidsserier(): Tidsserier {
+  if (cachedTidsserier) return cachedTidsserier;
+  const kommuner = new Map<string, Map<string, Map<number, number>>>();
+  for (const r of laesDataCsv("trend_history_raw.csv")) {
+    const v = parseFloatOrNull(r.vaerdi);
+    const aar = parseInt(r.aar, 10);
+    if (v === null || !Number.isFinite(aar)) continue;
+    if (!kommuner.has(r.kommune_kode)) kommuner.set(r.kommune_kode, new Map());
+    const pr = kommuner.get(r.kommune_kode)!;
+    if (!pr.has(r.indicator_id)) pr.set(r.indicator_id, new Map());
+    pr.get(r.indicator_id)!.set(aar, v);
+  }
+  const land = new Map<string, Map<number, number>>();
+  for (const r of laesDataCsv("trend_history_land.csv")) {
+    const v = parseFloatOrNull(r.vaerdi);
+    const aar = parseInt(r.aar, 10);
+    if (v === null || !Number.isFinite(aar)) continue;
+    if (!land.has(r.indicator_id)) land.set(r.indicator_id, new Map());
+    land.get(r.indicator_id)!.set(aar, v);
+  }
+  const landEndepunkter = new Map<string, TrendEndepunkter>();
+  for (const r of laesDataCsv("trend_land.csv")) {
+    landEndepunkter.set(r.indicator_id, {
+      periodeStart: r.periode_start,
+      periodeSlut: r.periode_slut,
+      vaerdiStart: parseFloatOrNull(r.vaerdi_start),
+      vaerdiSlut: parseFloatOrNull(r.vaerdi_slut),
+      pct: parseFloatOrNull(r.pct),
+    });
+  }
+  cachedTidsserier = { kommuner, land, landEndepunkter };
+  return cachedTidsserier;
+}
+
+// Økologiske retningsposter nøgles i UI'et på rawKey og dimensionsposter på "_dim_<id>"; serierne
+// nøgles på indicator_id.
+const INDICATOR_ID_BY_RAW_KEY: Record<string, string> = Object.fromEntries(
+  Object.entries(ECO_RAW_KEY_MAP).map(([indicatorId, keys]) => [keys.rawKey, indicatorId])
+);
+
+function serieFor(
+  kommune: KommuneData,
+  indikatorId: string,
+  t: Tidsserier
+): TrendSerie | null {
+  const egen = t.kommuner.get(kommune.kommune_kode)?.get(indikatorId);
+  const post = kommune.trends[indikatorId];
+  const reg = INDIKATORREGISTER.indikatorer.find((i) => i.id === indikatorId);
+  // Uden en pil (retningen "ingen") er der intet at vise en graf ved siden af.
+  if (!egen || egen.size < 2 || !post || post.retning === "ingen" || !reg) return null;
+
+  const egneAar = [...egen.keys()].sort((a, b) => a - b);
+  const foerste = egneAar[0];
+  const sidste = egneAar[egneAar.length - 1];
+  // Grafens år er kommunens: landets tal uden for kommunens periode hører ikke til den pil, grafen
+  // står ved. Inden for perioden tegnes landet også de år, kommunen har et hul.
+  const landMap = t.land.get(indikatorId);
+  const landAar = landMap ? [...landMap.keys()].filter((a) => a >= foerste && a <= sidste) : [];
+  const aar = [...new Set([...egneAar, ...landAar])].sort((a, b) => a - b);
+  const land = landMap && landAar.length >= 2 ? aar.map((a) => landMap.get(a) ?? null) : null;
+
+  return {
+    navn: udfyldTal(reg.name ?? indikatorId),
+    enhed: reg.raw_unit ?? reg.unit ?? "",
+    kommuneNavn: kommune.kommune_navn,
+    aar,
+    kommune: aar.map((a) => egen.get(a) ?? null),
+    land,
+    kommuneEndepunkter: {
+      periodeStart: post.periodeStart,
+      periodeSlut: post.periodeSlut,
+      vaerdiStart: post.vaerdiStart,
+      vaerdiSlut: post.vaerdiSlut,
+      pct: post.pct,
+    },
+    landEndepunkter: land ? t.landEndepunkter.get(indikatorId) ?? null : null,
+  };
+}
+
+/**
+ * Den åbnede kommune med tidsserierne bag pilene: hver retningspost, der har en serie, får
+ * `serie`. Bruges kun af kommunesiden. Returnerer en kopi, så de 98 kommuner i cachen (og dermed
+ * allKommuner) forbliver uden serier.
+ */
+export function medTidsserier(kommune: KommuneData): KommuneData {
+  const t = loadTidsserier();
+  const trends: Record<string, TrendPost> = { ...kommune.trends };
+  for (const [noegle, post] of Object.entries(kommune.trends)) {
+    // Dimensionsposter peger på deres afgørende indikator; enkeltposter på sig selv.
+    const indikatorId = noegle.startsWith("_dim_")
+      ? post.noegleId
+      : INDICATOR_ID_BY_RAW_KEY[noegle] ?? noegle;
+    if (!indikatorId) continue;
+    const serie = serieFor(kommune, indikatorId, t);
+    if (serie) trends[noegle] = { ...post, serie };
+  }
+  return { ...kommune, trends };
 }
 
 export function loadData(): KommuneData[] {

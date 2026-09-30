@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import {
   getKommune,
   getAllKommuner,
+  medTidsserier,
   getIndicatorDataYears,
   DOUGHNUT_DEFAULT_DATA_YEAR,
 } from "@/lib/data";
@@ -40,8 +41,10 @@ export default async function KommunePage({ params }: Props) {
         </div>
       </div>
 
+      {/* Kun den åbnede kommune bærer tidsserierne bag pilene (grafen tegnes først ved hover).
+          allKommuner er uden: 98 kommuner med serier ville gøre hver side 98 gange tungere. */}
       <KommuneClient
-        kommune={kommune}
+        kommune={medTidsserier(kommune)}
         allKommuner={allKommuner}
         indicatorDataYears={getIndicatorDataYears()}
         defaultDataYear={DOUGHNUT_DEFAULT_DATA_YEAR}

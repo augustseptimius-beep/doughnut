@@ -24,6 +24,9 @@ stadig skride, og dem tjekker dette script:
      og worst-of/gennemsnit. Den tekst skrives stadig i hånden.
   4. Retningspilen mod scoren: tidsseriens værdi for scorens år skal være
      scorens råværdi, ellers beskriver pilen et andet tal end det der vises.
+  5. Landsserien bag grafen ved pilen mod scorens landstal: landets værdi for
+     scorens år skal være master.reference, ellers viser grafen et andet "hele
+     landet" end det, scoren måles mod.
 
 Ren diagnose, skriver ingen filer - ligesom tjek_robusthed.py.
 
@@ -197,6 +200,93 @@ def _tjek_pil_mod_score(fund: list[Fund], by_indicator: dict[str, list[dict]], r
             _info(fund, tekst)
 
 
+LAND_TOLERANCE = 0.005   # relativt; master.reference er afrundet til to decimaler
+LAND_MIN_TOLERANCE = 0.006
+
+# Indikatorer, der måles mod et fast mål og derfor ingen landsreference har i master, men hvis fetch-script
+# skriver landstallet i sin egen CSV: landsserien kontrolleres mod den kolonne i stedet.
+# cirkularitet_recycling har ingen sådan kolonne og står uden kontrol.
+LAND_ANDEN_KILDE = {
+    "education": ("doughnut_scores.csv", "education_ref"),
+    "vandindvinding": ("vandindvinding_scores.csv", "udnyttelse_dk_pct"),
+}
+
+
+def _landstal_fra_csv(filnavn: str, kolonne: str) -> float | None:
+    with open(ROOT / "data" / filnavn, encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            v = _parse_float(r.get(kolonne, ""))
+            if v is not None:
+                return v
+    return None
+
+
+def _tjek_landserier(fund: list[Fund], by_indicator: dict[str, list[dict]], by_id: dict[str, dict]) -> None:
+    """Landsserien (data/trend_history_land.csv) mod scorens landstal.
+
+    Grafen ved pilen viser kommunen ved siden af "hele landet". Landet er scorens eget landstal for
+    året (arkitekturdokumentet R3: Danmark som helhed, ikke tabellens hele-landet-række, når de to er
+    forskellige), så landsserien SKAL ende i master.reference for scorens år. Afviger den, viser grafen
+    et andet land end det, scoren måles mod, og serien må ikke stå der. Indikatorer, der måles mod
+    et fast mål, har ingen landsreference at kontrollere mod og noteres blot."""
+    land_csv = ROOT / "data" / "trend_history_land.csv"
+    land_trend = ROOT / "data" / "trend_land.csv"
+    if not land_csv.exists():
+        if land_trend.exists():
+            _f(fund, "trend_land.csv findes uden trend_history_land.csv - de to skrives sammen")
+        return
+    if not land_trend.exists():
+        _f(fund, "trend_history_land.csv findes uden trend_land.csv - kør build_trends_csv.py")
+    serie: dict[str, dict[str, float]] = {}
+    with open(land_csv, encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            v = _parse_float(r["vaerdi"])
+            if v is not None:
+                serie.setdefault(r["indicator_id"], {})[r["aar"]] = v
+    raw = ROOT / "data" / "trend_history_raw.csv"
+    kommune_ider: set[str] = set()
+    if raw.exists():
+        with open(raw, encoding="utf-8") as f:
+            kommune_ider = {r["indicator_id"] for r in csv.DictReader(f)}
+    uden_kontrol = []
+    for iid in sorted(serie):
+        if iid not in kommune_ider:
+            _f(fund, f"{iid}: har en landsserie, men ingen kommuneserie i trend_history_raw.csv")
+            continue
+        ind = by_id.get(iid)
+        if ind is None:
+            _f(fund, f"{iid}: har en landsserie, men står ikke i registret")
+            continue
+        er_landstal = (ind.get("reference") or {}).get("type") == "landstal"
+        if not er_landstal and iid not in LAND_ANDEN_KILDE:
+            uden_kontrol.append(iid)
+            continue
+        # Alle scorede rækker for indikatoren bestemmer scorens år; landstallet er master.reference,
+        # eller for et fast mål landstallet i fetch-scriptets egen CSV.
+        rows = [r for r in by_indicator.get(iid, []) if r.get("data_year")]
+        if not rows:
+            continue
+        if er_landstal:
+            ref = _parse_float(rows[0]["reference"])
+        else:
+            ref = _landstal_fra_csv(*LAND_ANDEN_KILDE[iid])
+        aarene = [r["data_year"] for r in rows]
+        aar = max(set(aarene), key=aarene.count).split("-")[-1]   # slutåret
+        if aar not in serie[iid]:
+            sidste = max(serie[iid])
+            _info(fund, f"{iid}: landsserien slutter i {sidste}, scoren er fra {aar} - "
+                        f"kør fetch_trend_history.py --kun-land")
+            continue
+        v = serie[iid][aar]
+        if ref is None or abs(v - ref) > max(LAND_MIN_TOLERANCE, LAND_TOLERANCE * abs(ref)):
+            kilde = "master.reference" if er_landstal else "{}:{}".format(*LAND_ANDEN_KILDE[iid])
+            _f(fund, f"{iid}: landsserien er {v} i {aar}, men scorens landstal ({kilde}) er {ref} - "
+                     f"grafen ville vise et andet 'hele landet' end det, scoren måles mod")
+    if uden_kontrol:
+        _info(fund, "landsserier uden kontrol (måles mod et fast mål og har ingen landstalskolonne): "
+                    + ", ".join(uden_kontrol))
+
+
 def kryds_tjek() -> list[Fund]:
     """Kører alle krydstjek og returnerer fundlisten. Kalder ikke sys.exit."""
     fund: list[Fund] = []
@@ -279,6 +369,9 @@ def kryds_tjek() -> list[Fund]:
     #     scorens år skal være scorens råværdi (CLAUDE.md pkt. 13 og 37).
     if raw.exists():
         _tjek_pil_mod_score(fund, by_indicator, raw)
+
+    # 5c. Landsserien bag grafen ved pilen skal ende i scorens landstal.
+    _tjek_landserier(fund, by_indicator, by_id)
 
     # 6. Metodesidens fritekst mod registret.
     metode_tsx = (ROOT / "webapp" / "app" / "metode" / "page.tsx").read_text(encoding="utf-8")
