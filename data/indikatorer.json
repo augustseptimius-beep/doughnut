@@ -15,6 +15,7 @@
   ],
   "_fjernet": {
     "car_access": "Fjernet 2026: 'flere biler = bedre' er skævt i en bæredygtighedsramme og gav landdistrikter en kunstigt høj mobilitets-score. Rådata ligger stadig i mobilitet_scores.csv.",
+    "daycare_ratio": "Fjernet okt. 2026: normering er et ressourcemål, ikke et udfald, og korrelerede negativt med alle syv øvrige mål i Uddannelse (-0,14 i snit) og med Velfærd (-0,30), formentlig fordi normeringen følger behovet. Samme fejltype som sports_facilities og sports_spending i Fællesskab. Rådata ligger stadig i lokalsamfund_extra_scores.csv.",
     "apprenticeship": "Pensioneret aug. 2026: UVM-nøgletallet findes ikke længere, fortegnet var tvivlsomt, og tallene var ustabile. Det rigtige måltal ville være praktikpladsgraden.",
     "vacant_housing": "Fjernet sep. 2026: korrelerede -0,85 med boligareal pr. person, så Bolig udlignede sig selv (landkommuner blev straffet for tomme boliger og belønnet for plads). Måler desuden affolkning og boligmarked, ikke hvordan beboerne bor. Afløst af trangboethed. Rådata ligger stadig i doughnut_scores.csv.",
     "housing_area": "Fjernet sep. 2026: som vacant_housing. Belønnede desuden \"jo mere plads, jo bedre\", som strider mod rammen (samme fejl som car_access). Trangboethed måler i stedet underskud under en bundgrænse. Rådata ligger stadig i bolig_extra_scores.csv.",
@@ -46,7 +47,7 @@
       "id": "uddannelse",
       "name": "Uddannelse",
       "description": "Adgang til og gennemførelse af uddannelse for alle aldersgrupper - grundlag for personlig udvikling og samfundsdeltagelse.",
-      "indicators": ["education", "low_education", "exam_grade", "high_absence", "youth_education", "wellbeing", "class_size", "daycare_ratio", "educated_staff"]
+      "indicators": ["education", "low_education", "exam_grade", "high_absence", "youth_education", "wellbeing", "class_size", "educated_staff"]
     },
     {
       "id": "velfaerd",
@@ -904,24 +905,6 @@
       "inverse": true,
       "baseline_level": 3,
       "rationale": "Klassekvotient i grundskolen er en anerkendt kvalitetsindikator. Mindre klasser muliggør mere individuel opmærksomhed og er et politisk prioriteret mål."
-    },
-    {
-      "id": "daycare_ratio",
-      "category": "social",
-      "dimension": "uddannelse",
-      "name": "Normering daginstitution (3-5 år)",
-      "table": "BOERN8",
-      "source": "DST BOERN8",
-      "source_url": "https://www.statistikbanken.dk/BOERN8",
-      "unit": "børn/voksen",
-      "data_year": "2024",
-      "csv": "lokalsamfund_extra_scores.csv",
-      "ratio_col": "daycare_ratio",
-      "raw_col": "daycare_ratio_val",
-      "reference": {"type": "landstal", "col": "daycare_ratio_ref", "definition": "DST's landstal (hele landet); fetch_social_extra_data.py"},
-      "inverse": true,
-      "baseline_level": 3,
-      "rationale": "Normering i daginstitutioner (børn pr. voksen) er et grundlæggende kvalitetsmål for det tidlige barndomsmiljø. Lav normering gavner børns trivsel og personalets arbejdsmiljø."
     },
     {
       "id": "social_stoette",

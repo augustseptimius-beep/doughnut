@@ -40,7 +40,6 @@
   "traffic_accidents": {"reference": 45.45, "daekning": 98, "data_year": "2023-2025", "faa_tilfaelde": ["155", "269", "187", "825", "492", "563", "741", "482"]},
   "sports_membership": {"reference": 46.7, "daekning": 98, "data_year": "2025"},
   "class_size": {"reference": 20.2, "daekning": 98, "data_year": "2025"},
-  "daycare_ratio": {"reference": 5.8, "daekning": 98, "data_year": "2024"},
   "social_stoette": {"reference": 5.2033, "daekning": 98, "data_year": "2025"},
   "sport_tilskuer": {"reference": 45.5, "daekning": 76, "data_year": "2024-2025"},
   "ensomhed": {"reference": 10.7994, "daekning": 98, "data_year": "2025"},
