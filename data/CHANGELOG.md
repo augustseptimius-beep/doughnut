@@ -2,6 +2,11 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-10-01 (Uddannelse: normering daginstitution fjernet)
+
+- **`daycare_ratio` (normering i daginstitutioner 3-5 år, BOERN8) er fjernet fra Uddannelse.** Den er et ressourcemål, ikke et udfald, og korrelerede negativt med alle syv øvrige mål i kategorien (snit -0,14) og med Velfærd (snit -0,30), formentlig fordi normeringen følger behovet. Samme fejltype som `sports_facilities` og `sports_spending` i Fællesskab. `educated_staff` (pædagoguddannede) står, fordi den korrelerer svagt med alt (snit -0,04) og dermed ikke trækker kategorien den forkerte vej. Rådata ligger stadig i `lokalsamfund_extra_scores.csv`.
+- Uddannelse er nu gennemsnit af otte indikatorer. Kategoriscoren med og uden indikatoren korrelerer 0,97 (98 kommuner, landsgennemsnit); median forskel 1,5 point, størst 6,5, 5 kommuner skifter farve. 62 scorede indikatorer (47 sociale). Serien er fjernet fra `trend_history_raw.csv` og landsserien fra `trend_history_land.csv`; `trend_indicators.csv` og `trend_land.csv` er genberegnet.
+
 ## 2026-09-30 (grafen ved retningspilen: landsserier)
 
 - **Peger man på en retningspil, viser et kort nu kommunens og hele landets tal år for år.** Kommunens serie er den, pilen bygger på (`trend_history_raw.csv`), og grafen tegner hele serien (op til 17 år), altså de år pilens periode dækker. Kortet monteres først ved hover, fokus eller tryk; siden rummer kun tal (31 KB pr. kommuneside). Worst-of-dimensionernes pil viser den afgørende indikators graf.

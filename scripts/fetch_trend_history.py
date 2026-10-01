@@ -456,8 +456,6 @@ SIMPLE = [
          soeg=["12 timer eller derover"]),
 
     # --- Uddannelse ---
-    dict(id="daycare_ratio", navn="Normering i daginstitution 3-5 år", tabel="BOERN8",
-         soeg=["daginstitution 3-5"], pin_ialt=True),
     # HFUDD er hierarkisk (H20 "Gymnasiale uddannelser" har underkoder som
     # H2010 "Alment gymnasiale uddannelser" hvis tekst også indeholder
     # "gymnasiale") - derfor kode-match (soeg_kode), ikke tekstsøgning, for
@@ -567,7 +565,6 @@ FORSKEL = {
 
 # Direkte platform-id'er der IKKE skal omregnes (allerede rå værdier fra SIMPLE)
 DIREKTE = {
-    "daycare_ratio",
     "vulnerable_children", "poverty_relative", "child_poverty", "gini",
     "voter_turnout_national", "voter_turnout", "sports_membership",
     "life_expectancy", "disposable_income", "commute_distance",
