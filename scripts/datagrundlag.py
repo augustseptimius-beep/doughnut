@@ -24,7 +24,9 @@ Brug:
     con = forbindelse()
     con.execute(f"SELECT navn FROM read_parquet('{url}')")
 
-Kræver `pip install duckdb`, kun til selve forespørgslen.
+Kræver `pip install duckdb`, kun til selve forespørgslen. På Python 3.9 er
+den nyeste DuckDB 1.4.5; snapshot-forespørgslerne og GeoPackage-eksporten er
+afprøvet på den.
 """
 
 from __future__ import annotations
@@ -36,6 +38,7 @@ import urllib.request
 BASE = "https://datagrundlag.s3.eu-west-1.amazonaws.com/filer/dk"
 USER_AGENT = "DoughnutDK/1.0 (+https://github.com/augustseptimius-beep/doughnut)"
 _SNAPSHOT = re.compile(r"_gc2_snapshot_date=(\d{4}-\d{2}-\d{2})")
+_FILNAVN = re.compile(r"[A-Za-z0-9_.-]+\.parquet")
 
 
 def _json(url: str) -> dict:
@@ -59,7 +62,12 @@ def snapshot(skema: str, relation: str, dato: str | None = None) -> tuple[str, s
                            + (f" på eller før {dato}" if dato else ""))
     valgt = datoer[-1]
     href = _json(f"{rod}/_gc2_snapshot_date={valgt}/item.json")["assets"]["data"]["href"]
-    return f"{rod}/_gc2_snapshot_date={valgt}/{href[2:] if href.startswith('./') else href}", valgt
+    fil = href[2:] if href.startswith("./") else href
+    # URL'en sættes ind i SQL hos den der kalder, så filnavnet fra kataloget
+    # skal være et rent parquet-navn.
+    if not _FILNAVN.fullmatch(fil):
+        raise RuntimeError(f"Uventet filnavn i STAC-kataloget for {skema}.{relation}: {href!r}")
+    return f"{rod}/_gc2_snapshot_date={valgt}/{fil}", valgt
 
 
 def forbindelse(spatial: bool = True):
