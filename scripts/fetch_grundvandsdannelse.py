@@ -30,7 +30,7 @@ have fået afklaret hos Klimadatastyrelsen/GEUS, hvad filen er.
 METODE
 ------
 Kommunens gennemsnit er middelværdien af punkter i et regelmæssigt gitter
-inden for kommunegrænsen (DAWA). Gitteret er tættere i små kommuner, så også
+inden for kommunegrænsen (DAGI). Gitteret er tættere i små kommuner, så også
 Frederiksberg får et stabilt tal: 2 km i kommuner på mindst 200 km², 1 km fra
 50 km², ellers 500 m. Punkter uden modelværdi (søer, kyst) springes over.
 Samsø og Læsø ligger uden for DK-modellen og får intet tal.
@@ -69,6 +69,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from api_noegler import hent_noegle, kraev_noegle  # noqa: E402
+from kommunegraenser import hent_kommunegraenser  # noqa: E402
 from kommuner import KOMMUNER  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -77,7 +78,6 @@ CACHE = Path(tempfile.gettempdir()) / "hip_infiltration_punkter.json"
 
 WMS = "https://api.dataforsyningen.dk/wms/hip_boundary_conditions_period_mean"
 LAG = "infiltration"
-DAWA_URL = "https://api.dataforsyningen.dk/kommuner?format=geojson"
 PERIODE = "1991-2020"
 
 TOKEN = hent_noegle("DATAFORSYNINGEN_TOKEN")
@@ -139,12 +139,11 @@ def main() -> int:
     args = ap.parse_args()
     kraev_noegle("DATAFORSYNINGEN_TOKEN", TOKEN, TOKEN_HJAELP)
 
-    import geopandas as gpd
-    kom = gpd.read_file(DAWA_URL).to_crs(25832)
+    kom = hent_kommunegraenser(25832)
     kom["kode"] = kom["kode"].astype(int).astype(str)
     kom = kom[kom["kode"].isin(KOMMUNER)].dissolve(by="kode")
     if len(kom) != 98:
-        raise SystemExit(f"FEJL: fandt {len(kom)} kommuner i DAWA, ikke 98")
+        raise SystemExit(f"FEJL: fandt {len(kom)} kommuner i kommunegraenser_25832.gpkg, ikke 98")
 
     cache: dict[str, float | None] = {}
     if CACHE.exists() and not args.genhent:

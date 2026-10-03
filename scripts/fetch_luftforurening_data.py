@@ -47,10 +47,11 @@ import geopandas as gpd
 import pandas as pd
 from shapely.geometry import Point
 
+from kommunegraenser import hent_kommunegraenser  # scripts/kommunegraenser.py
+
 # ── Konfiguration ─────────────────────────────────────────────────────────────
 
 WFS_BASE   = "https://arld-extgeo.miljoeportal.dk/geoserver/wfs"
-DAWA_URL   = "https://api.dataforsyningen.dk/kommuner?format=geojson"
 # Absolut sti, så scriptet kan køres fra projektets rodmappe som alle de andre
 # (CLAUDE.md's driftsregel). Med den gamle relative sti "../data/..." havnede
 # CSV'en et forkert sted hvis man ikke stod i scripts/.
@@ -130,13 +131,9 @@ print("\n" + "="*60)
 print("  Luftforurening (NO2 + PM2.5) pr. kommune - DCE/AU 2023")
 print("="*60)
 
-print("\nTrin 1/4: Henter kommunegrænser fra Dataforsyningen...")
+print("\nTrin 1/4: Indlæser kommunegrænser (DAGI, data/kommunegraenser_25832.gpkg)...")
 try:
-    r_kom = requests.get(DAWA_URL, timeout=30, headers={"User-Agent": "DoughnutDK/1.0"})
-    r_kom.raise_for_status()
-    kommuner = gpd.GeoDataFrame.from_features(r_kom.json()["features"])
-    kommuner.crs = "EPSG:4326"
-    kommuner = kommuner.to_crs(epsg=25832)
+    kommuner = hent_kommunegraenser(25832)
     print(f"  OK: {len(kommuner)} kommuner")
 except Exception as e:
     print(f"  FEJL: {e}")

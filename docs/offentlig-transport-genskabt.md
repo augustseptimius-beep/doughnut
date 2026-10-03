@@ -112,12 +112,12 @@ At genskabe atlassets egen rejsetidsmodel ville kræve en ruteplanlægger (fx R5
 - **Befolkningen er fra 2021** og fordeles ligeligt på adresserne i en celle. Blander en celle sommerhuse og helårsboliger, får sommerhusene for meget vægt.
 - **Én hverdag om efteråret.** DST bruger marts. Scriptet advarer, hvis det vælger en dato i sommerkøreplanen (25. juni til 15. august), for så bliver tallene for lave.
 - **Meget højt skilles ikke ud.** Det kræver en regel om flere transporttyper, og platformen bruger højt + meget højt samlet.
-- **DAWA.** Adresserne hentes fra Dataforsyningens DAWA-API. Lukker det, findes de samme adresser i Datafordeleren (DAR), som kræver en gratis bruger.
+- **Adresserne er en kørselsafhængighed.** DAWA lukkede 1. juli 2026. Adresserne læses nu fra DAR-snapshots på datagrundlag.dk, en uofficiel tjeneste, der kan være forsinket i forhold til kilden. Giver den op, findes de samme adresser i Datafordeleren (DAR), som kræver en gratis bruger. Tallene er de samme som med DAWA: 3,94 mio. gældende adresser og 2,61 mio. adgangspunkter (DAR's gældende status er `3`, DAWA's var `1`).
 
 ## Kilder og kreditering
 
 - Rejseplanen GTFS, CC BY 4.0. "Indeholder kollektivtrafikdata fra Rejseplanen."
-- Danmarks Adresseregister (DAR) via Dataforsyningen, frie data.
+- Danmarks Adresseregister (DAR) og DAGI, Klimadatastyrelsen via Datafordeleren, læst fra datagrundlag.dk. Frie grunddata.
 - Eurostat, [Census 2021 population grid](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/population-grids), © European Union. `data/befolkning_1km_2021_dk.csv` er de danske celler (38.870 celler med beboere), udtrukket af scriptet.
 - DST LABY49, kun til validering.
 

@@ -36,7 +36,7 @@ DATAKILDER
 2. Geometri: kystvandenes deloplande fra MiljøGIS (VP3 2. endelige 2025, lag
    vp3_2e2025_kystvand_opland_afg). Deloplandene overlapper ikke, og op_id er
    kystvandets id i bilag 1.1.
-3. Kommunegrænser: DAWA.
+3. Kommunegrænser: DAGI, data/kommunegraenser_25832.gpkg (kommunegraenser.py).
 
 METODE
 ------
@@ -90,6 +90,7 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from kommunegraenser import hent_kommunegraenser  # noqa: E402
 from kommuner import KOMMUNER  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -100,7 +101,6 @@ PLAN_URL = ("https://sgavmst.dk/media/etsko0yf/"
             "vandomraadeplanerne-2021-2027-efter-genbesoeget-justeret.pdf")
 WFS = ("https://wfs2-miljoegis.mim.dk/vp3_2endelig2025/ows?service=WFS&version=1.1.0"
        "&request=GetFeature&typeName=vp3_2e2025_kystvand_opland_afg&outputFormat=application/json")
-DAWA_URL = "https://api.dataforsyningen.dk/kommuner?format=geojson"
 
 # Kontrolrække: fanger en forskudt kolonne i PDF-udtrækket. Tallene står i
 # planens eksempel side 197 og i bilag 1.1.
@@ -238,7 +238,7 @@ def main() -> int:
                         t["kaede_pct"] if t["kaede_pct"] is not None else ""])
     print(f"  ✓ {KYSTVANDE_CSV.relative_to(ROOT)}")
 
-    print("  Henter deloplande (MiljøGIS) og kommunegrænser (DAWA)...")
+    print("  Henter deloplande (MiljøGIS)...")
     opl = gpd.read_file(WFS)
     if opl.crs is None or opl.crs.to_epsg() != 25832:
         opl = opl.set_crs(25832, allow_override=True) if opl.total_bounds[0] > 1000 else opl.to_crs(25832)
@@ -247,7 +247,7 @@ def main() -> int:
     if uden:
         raise SystemExit(f"FEJL: deloplande og bilag 1.1 passer ikke sammen: {uden}")
     opl["kaede_pct"] = opl["op_id"].map(lambda k: tab[k]["kaede_pct"])
-    kom = gpd.read_file(DAWA_URL).to_crs(25832)
+    kom = hent_kommunegraenser(25832)
     kom["kode"] = kom["kode"].astype(int).astype(str)
     ov = gpd.overlay(opl[["op_id", "kaede_pct", "geometry"]], kom[["kode", "geometry"]], how="intersection")
     ov["a"] = ov.geometry.area
