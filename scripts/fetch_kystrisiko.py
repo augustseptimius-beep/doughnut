@@ -36,7 +36,8 @@ forfra.
 
 METODE
 ------
-Cellerne summeres inden for DAWA's kommunegrænser (EPSG:25832). En celle
+Cellerne summeres inden for kommunegrænserne (DAGI, EPSG:25832, fra
+data/kommunegraenser_25832.gpkg via kommunegraenser.py). En celle
 tilhører den kommune, dens centrum ligger i. Kystceller med centrum i havet
 tildeles den kommune, de berører; uden den regel tabes ca. 2 % af
 oversvømmelsesrisikoen og 13 % af erosionsrisikoen, fordi skaden ligger i
@@ -54,8 +55,8 @@ det rigtige næste skridt er at lægge skaderne sammen i kroner pr. indbygger
 med forsikringsudbetalingerne, se afsnittet om sammenvejning i
 data/klimatilpasning.md.
 
-Afhængigheder (ud over standardbiblioteket): numpy og rasterio.
-  pip3 install numpy rasterio
+Afhængigheder (ud over standardbiblioteket): numpy, rasterio og geopandas.
+  pip3 install numpy rasterio geopandas
 
 Brug (fra projektets rodmappe):
   python3 scripts/fetch_kystrisiko.py [--genhent]
@@ -69,7 +70,6 @@ from __future__ import annotations
 import argparse
 import csv
 import io
-import json
 import sys
 import tempfile
 import time
@@ -79,6 +79,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dst import folketal  # noqa: E402
+from kommunegraenser import hent_kommunegraenser  # noqa: E402
 from kommuner import KOMMUNER  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -91,7 +92,6 @@ LAG = {
     "oversvoemmelse": "Kystplanlægger_Datapakke/Oversvømmelse/Risiko/Oversvømmelses_Risiko_2070.tif",
     "erosion": "Kystplanlægger_Datapakke/Erosion/Risiko/Erosions_risiko_2070.tif",
 }
-DAWA_URL = "https://api.dataforsyningen.dk/kommuner?format=geojson&srid=25832"
 BEFOLKNINGSAAR = "2021"   # datapakkens år
 
 
@@ -160,15 +160,10 @@ def hent_lag(genhent: bool) -> dict[str, Path]:
     return stier
 
 
-def kommunegraenser(genhent: bool) -> list[tuple[dict, int]]:
-    sti = CACHE / "dawa_kommuner_25832.geojson"
-    if genhent or not sti.exists():
-        print("Henter kommunegrænser (DAWA)...")
-        with urllib.request.urlopen(DAWA_URL, timeout=300) as r:
-            sti.write_bytes(r.read())
-    gj = json.loads(sti.read_text(encoding="utf-8"))
-    return [(f["geometry"], int(f["properties"]["kode"])) for f in gj["features"]
-            if f["properties"]["kode"].lstrip("0") in KOMMUNER]
+def kommunegraenser() -> list[tuple[dict, int]]:
+    from shapely.geometry import mapping
+    kom = hent_kommunegraenser(25832)
+    return [(mapping(g), int(k)) for k, g in zip(kom["kode"], kom["geometry"])]
 
 
 def summer_pr_kommune(stier: dict[str, Path], former) -> dict[str, dict[str, float]]:
@@ -199,11 +194,11 @@ def summer_pr_kommune(stier: dict[str, Path], former) -> dict[str, dict[str, flo
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[1])
-    ap.add_argument("--genhent", action="store_true", help="hent rasterlag og kommunegrænser forfra")
+    ap.add_argument("--genhent", action="store_true", help="hent rasterlagene forfra")
     args = ap.parse_args()
 
     stier = hent_lag(args.genhent)
-    risiko = summer_pr_kommune(stier, kommunegraenser(args.genhent))
+    risiko = summer_pr_kommune(stier, kommunegraenser())
     folk = {k: v for (k, a), v in folketal([BEFOLKNINGSAAR]).items() if k in KOMMUNER}
     manglende = [KOMMUNER[k] for k in KOMMUNER if not folk.get(k)]
     if manglende:

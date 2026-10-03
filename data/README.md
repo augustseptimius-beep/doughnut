@@ -10,6 +10,10 @@ Den ene liste over indikatorer, sociale kategorier og økologiske dimensioner. `
 
 Reference, dækning (antal kommuner med værdi) og dataår pr. indikator, skrevet af `build_master_csv.py` sammen med master. Webappen udfylder tal i tekster herfra (pladsholdere som `{ref:pesticider:1}`), og buildet stopper hvis filen ikke passer med master. Ret den ikke i hånden.
 
+## `kommunegraenser_25832.gpkg` og `kommunegraenser_25832.json`
+
+De 98 kommuners grænser fra DAGI (Klimadatastyrelsen via Datafordeleren) i EPSG:25832, læst fra datagrundlag.dk. Kolonnerne er `kode` (fire cifre, "0787"), `navn` og geometri. Syv fetch-scripts bruger dem til rumlige analyser via `scripts/kommunegraenser.py`. Filen afløste DAWA, som lukkede 1. juli 2026. `.json` ved siden af gemmer snapshot-datoen og hentedatoen. Christiansø (0411) er ikke med. Genskab med `python3 scripts/hent_kommunegraenser.py` (kræver `duckdb`), kun når en kommunegrænse er ændret. Kilde skal angives: DAGI, Klimadatastyrelsen.
+
 ## `kommuner.json`
 
 De 98 kommuner med DST-kode, navn og kommunegruppe (DST KOMMUNEGRUPPER_V1_2018). Fetch-scripterne læser den via `scripts/kommuner.py`, og webappen bruger grupperne til kommunegruppe-baselinen. Christiansø (411) er ikke med. Alle rådata-CSV'er er nøglet på `kommune_kode`; de to kilder der kun har navne (`cba_2023_estimate.csv`, `klimatilpasning_scores.csv`) har fået koden slået op herfra.

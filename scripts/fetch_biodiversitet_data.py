@@ -30,8 +30,9 @@ import sys
 import subprocess
 
 import numpy as np
-import geopandas as gpd
 from rasterstats import zonal_stats
+
+from kommunegraenser import hent_kommunegraenser  # scripts/kommunegraenser.py
 
 # ── Konstanter ────────────────────────────────────────────────────────────────
 
@@ -45,7 +46,6 @@ RASTER_NAVN          = "Bioscore_tiff.tif"
 # kan trække værdier ud af - derfor er raster-vejen den rigtige her.
 DATAPAKKE_URL        = "https://files-miljoegis.mim.dk/biodiversitet/biodiversitet_2021.zip"
 ARBEJDSMAPPE         = "biodiversitet_tmp"
-DAWA_URL             = "https://dawa.aws.dk/kommuner?format=geojson"
 
 TÆRSKEL_VÆSENTLIG    = 8
 TÆRSKEL_UERSTATTELIG = 12
@@ -121,10 +121,9 @@ else:
 
 # ── Trin 2: Hent kommunegrænser ───────────────────────────────────────────────
 
-print("Trin 2/4: Henter kommunegrænser fra DAWA...")
+print("Trin 2/4: Indlæser kommunegrænser (DAGI, data/kommunegraenser_25832.gpkg)...")
 try:
-    kommuner = gpd.read_file(DAWA_URL)
-    kommuner = kommuner.to_crs(epsg=25832)
+    kommuner = hent_kommunegraenser(25832)
     print(f"  OK: {len(kommuner)} kommuner")
 except Exception as e:
     print(f"FEJL: {e}")
@@ -197,7 +196,7 @@ with open(OUTPUT_FIL, "w", newline="", encoding="utf-8") as f:
         bio_ratio = round((100 - pct_v) / (100 - MÅL_VASENTLIG) * 100, 2)
         uer_ratio = round((100 - pct_u) / (100 - MÅL_UERSTATTELIG) * 100, 2)
 
-        # Strip foranstillet nul fra kommunekode (DAWA: "0101" → "101")
+        # Strip foranstillet nul fra kommunekode (DAGI: "0101" → "101")
         kode = str(int(row["kode"]))
 
         writer.writerow([

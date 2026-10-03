@@ -2,6 +2,12 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-10-03 (DAWA udskiftet med DAGI og DAR fra datagrundlag.dk)
+
+- **DAWA er lukket** (410 Gone). De otte scripts, der brugte den, læser nu kommunegrænser fra den committede fil `data/kommunegraenser_25832.gpkg` (DAGI, 98 kommuner) og transportscriptet adresser fra DAR-snapshots på datagrundlag.dk. Se CLAUDE.md pkt. 42.
+- **Ingen committede tal er ændret.** `fetch_kystrisiko.py` giver en byte-identisk `kystrisiko_scores.csv` med de nye grænser. `fetch_offentlig_transport.py` giver samme landstal (37,0 %) og samme køreplansdag (30. sep.), og 14 af 98 kommuner ændrer sig højst 0,04 procentpoint i anden decimal. Valideringen mod LABY49 viser 1,2 procentpoint i gennemsnit, som før. Kommunearealerne passer med de DAWA-beregnede (median 0,006 %, højst 0,3 %).
+- Nye filer: `data/kommunegraenser_25832.gpkg` og `.json`, `scripts/kommunegraenser.py`, `scripts/hent_kommunegraenser.py`, `scripts/datagrundlag.py`. Transportscriptet kræver nu `duckdb` (`pip install duckdb`) og har tilvalget `--dar-dato`.
+
 ## 2026-10-01 (Uddannelse: normering daginstitution fjernet)
 
 - **`daycare_ratio` (normering i daginstitutioner 3-5 år, BOERN8) er fjernet fra Uddannelse.** Den er et ressourcemål, ikke et udfald, og korrelerede negativt med alle syv øvrige mål i kategorien (snit -0,14) og med Velfærd (snit -0,30), formentlig fordi normeringen følger behovet. Samme fejltype som `sports_facilities` og `sports_spending` i Fællesskab. `educated_staff` (pædagoguddannede) står, fordi den korrelerer svagt med alt (snit -0,04) og dermed ikke trækker kategorien den forkerte vej. Rådata ligger stadig i `lokalsamfund_extra_scores.csv`.
