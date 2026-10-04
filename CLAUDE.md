@@ -156,6 +156,8 @@ Datapipelinen er manuel og script-baseret. Der er IKKE CI/CD der henter data aut
 
 ### Typisk flow når en indikator skal opdateres
 
+**Python-pakker:** `python3 -m pip install -r requirements.txt` (fra rodmappen). Kun de rumlige scripts, Excel-kilderne og transportscriptet kræver pakker; resten kører på standardbiblioteket.
+
 1. **Kør relevant fetch-script** fra rodmappen:
    ```bash
    cd /sti/til/doughnut
