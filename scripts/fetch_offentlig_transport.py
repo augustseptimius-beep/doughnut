@@ -52,18 +52,22 @@ tallene er rigtige. Kan LABY49 ikke hentes, fortsætter scriptet med en advarsel
 
 KILDER OG KREDITERING:
   - Rejseplanen GTFS, CC BY 4.0. "Indeholder kollektivtrafikdata fra Rejseplanen."
-  - DAR-adresser fra Dataforsyningen (DAWA), frie data.
+  - DAR-adresser og DAGI-kommuner (Klimadatastyrelsen via Datafordeleren), læst fra
+    datagrundlag.dk (scripts/datagrundlag.py), frie grunddata. Indtil juli 2026 kom
+    adresserne fra DAWA, som er lukket.
   - Eurostat, Census 2021 population grid (1 km), (c) European Union.
     Afledt fil: data/befolkning_1km_2021_dk.csv (kun danske celler).
   - DST LABY49, kun til validering.
 
-Kører med standardbiblioteket alene (Python 3.9+). Første kørsel henter ca.
-60 MB køreplaner og 4 mio. adresser (4-5 minutter). Derefter genbruges cachen.
+Kører med standardbiblioteket og DuckDB (pip install duckdb), som læser adresserne.
+Første kørsel henter ca. 60 MB køreplaner og læser 4 mio. adresser fra
+datagrundlag.dk (et par minutter). Derefter genbruges cachen.
 
 Kør fra projektets rodmappe:
   python3 scripts/fetch_offentlig_transport.py
   python3 scripts/fetch_offentlig_transport.py --genhent        # hent alt forfra
   python3 scripts/fetch_offentlig_transport.py --dato 20260929  # bestemt hverdag
+  python3 scripts/fetch_offentlig_transport.py --dar-dato 2026-09-27  # bestemt DAR-snapshot
   python3 scripts/fetch_offentlig_transport.py --tving          # skriv trods afvigelse
 """
 
@@ -81,7 +85,6 @@ import time
 import urllib.request
 import zipfile
 from collections import defaultdict
-from concurrent.futures import ThreadPoolExecutor
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -90,11 +93,11 @@ DATA_DIR = ROOT / "data"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from dst import api_post  # noqa: E402
+from datagrundlag import forbindelse, snapshot  # noqa: E402
 from dst_aar import registrer_aar  # noqa: E402
 from kommuner import GRUPPE, KOMMUNER  # noqa: E402
 
 GTFS_URL = "https://www.rejseplanen.info/labs/GTFS.zip"
-DAWA_URL = "https://api.dataforsyningen.dk/adresser?kommunekode={:04d}&struktur=mini&format=csv"
 GRID_URL = "https://gisco-services.ec.europa.eu/census/2021/Eurostat_Census-GRID_2021_V3.zip"
 GRID_CSV_I_ZIP = "Eurostat_Census-GRID_2021_V3/ESTAT_Census_2021_V3.csv"
 
@@ -279,45 +282,60 @@ def stoppesteder(zf: zipfile.ZipFile, afgange: dict[str, int]) -> list[tuple[flo
     return ud
 
 
-# ─── Adresser (DAR via DAWA) ───────────────────────────────────────────
-def hent_kommune_adresser(kode: str, mappe: Path, genhent: bool) -> Path:
-    """Gældende adresser for én kommune, samlet pr. adgangspunkt (x, y, antal enheder)."""
-    ud = mappe / f"{int(kode):04d}.csv"
-    if ud.exists() and ud.stat().st_size > 0 and not genhent:
-        return ud
-    sidste_fejl: Exception | None = None
-    for forsoeg in range(1, 6):
-        try:
-            punkter: dict[str, list] = {}
-            with aabn(DAWA_URL.format(int(kode))) as r:
-                for a in csv.DictReader(io.TextIOWrapper(r, encoding="utf-8-sig")):
-                    if a["status"] != "1":      # 1 = gældende, 3 = foreløbig (ikke bygget)
-                        continue
-                    p = punkter.get(a["adgangsadresseid"])
-                    if p is None:
-                        punkter[a["adgangsadresseid"]] = [a["x"], a["y"], 1]
-                    else:
-                        p[2] += 1
-            tmp = ud.with_suffix(".tmp")
-            with open(tmp, "w", newline="", encoding="utf-8") as fh:
-                w = csv.writer(fh)
-                w.writerow(["x", "y", "enheder"])
-                w.writerows(punkter.values())
-            tmp.replace(ud)
-            return ud
-        except Exception as e:  # noqa: BLE001
-            sidste_fejl = e
-            time.sleep(3 * forsoeg)
-    raise RuntimeError(f"Kunne ikke hente adresser for kommune {kode}: {sidste_fejl}")
+# ─── Adresser (DAR og DAGI via datagrundlag.dk) ────────────────────────
+# Gældende er status 3 i DAR (DAWA brugte 1). Pr. adgangspunkt: x, y i længde/
+# bredde (DAR ligger i EPSG:25832, laea() ovenfor tager længde/bredde) og antal
+# gældende adresser, altså enheder med etage og dør.
+ADGANGSPUNKTER_SQL = """
+CREATE OR REPLACE TEMP TABLE adgangspunkter AS
+SELECT k.kommunekode AS kommune,
+       round(first(ST_X(ST_Transform(p.the_geom, 'EPSG:25832', 'EPSG:4326', true))), 6) AS x,
+       round(first(ST_Y(ST_Transform(p.the_geom, 'EPSG:25832', 'EPSG:4326', true))), 6) AS y,
+       count(*) AS enheder
+FROM read_parquet('{husnummer}') h
+JOIN read_parquet('{adresse}') a ON a.husnummer = h.id_lokalid AND a.status = '3'
+JOIN read_parquet('{adressepunkt}') p ON p.id_lokalid = h.adgangspunkt
+JOIN read_parquet('{kommune}') k ON k.id_lokalid = h.kommuneinddeling
+WHERE h.status = '3' AND coalesce(k.udenforkommuneinddeling, 0) = 0
+GROUP BY h.id_lokalid, k.kommunekode
+"""
 
 
-def adresser(cache: Path, genhent: bool):
+def hent_adresser(mappe: Path, genhent: bool, dar_dato: str | None) -> list[Path]:
+    """Én CSV pr. kommune med gældende adresser samlet pr. adgangspunkt (x, y, enheder).
+
+    En enkelt forespørgsel mod DAR- og DAGI-snapshots på datagrundlag.dk i stedet
+    for 98 kald til DAWA, der lukkede 1. juli 2026. Uden `dar_dato` bruges det
+    nyeste snapshot; med en dato det nyeste på eller før den."""
+    koder = sorted(KOMMUNER, key=int)
+    filer = [mappe / f"{int(k):04d}.csv" for k in koder]
+    if not genhent and dar_dato is None and all(f.exists() and f.stat().st_size > 0 for f in filer):
+        return filer
+    kilder = {navn: snapshot(skema, relation, dar_dato) for navn, (skema, relation) in {
+        "husnummer": ("dar", "husnummer"), "adresse": ("dar", "adresse"),
+        "adressepunkt": ("dar", "adressepunkt"), "kommune": ("dagi", "kommuneinddeling")}.items()}
+    print("  Snapshots på datagrundlag.dk: "
+          + ", ".join(f"{navn} {dato}" for navn, (_, dato) in kilder.items()))
+    con = forbindelse()
+    con.execute(ADGANGSPUNKTER_SQL.format(**{navn: url for navn, (url, _) in kilder.items()}))
+    for kode, fil in zip(koder, filer):
+        raekker = con.execute("SELECT x, y, enheder FROM adgangspunkter WHERE kommune = ?",
+                              [f"{int(kode):04d}"]).fetchall()
+        tmp = fil.with_suffix(".tmp")
+        with open(tmp, "w", newline="", encoding="utf-8") as fh:
+            w = csv.writer(fh)
+            w.writerow(["x", "y", "enheder"])
+            w.writerows(raekker)
+        tmp.replace(fil)
+    return filer
+
+
+def adresser(cache: Path, genhent: bool, dar_dato: str | None = None):
     mappe = cache / "adresser"
     mappe.mkdir(parents=True, exist_ok=True)
     koder = sorted(KOMMUNER, key=int)
     t0 = time.time()
-    with ThreadPoolExecutor(4) as ex:
-        filer = list(ex.map(lambda k: hent_kommune_adresser(k, mappe, genhent), koder))
+    filer = hent_adresser(mappe, genhent, dar_dato)
     xs: list[float] = []
     ys: list[float] = []
     enheder: list[int] = []
@@ -461,6 +479,7 @@ def main() -> int:
         description="Adgang til offentlig transport pr. kommune (verdensmål 11.2.1), genskabt fra åbne data.")
     ap.add_argument("--dato", help="hverdag i GTFS-feedet, ÅÅÅÅMMDD (standard: vælges automatisk)")
     ap.add_argument("--genhent", action="store_true", help="hent køreplaner og adresser forfra")
+    ap.add_argument("--dar-dato", help="DAR-snapshot på eller før denne dato, ÅÅÅÅ-MM-DD (standard: nyeste)")
     ap.add_argument("--cache", type=Path, default=STANDARD_CACHE, help="mappe til downloads")
     ap.add_argument("--radius", type=float, default=RADIUS_M, help="rækkevidde i meter, fugleflugt")
     ap.add_argument("--tving", action="store_true",
@@ -479,8 +498,8 @@ def main() -> int:
     print(f"  {len(stop):,} stoppesteder med afgange kl. 6-20, "
           f"{sum(afgange.values()):,} afgange i alt")
 
-    print("\n2/4 Adresser (DAR via DAWA)")
-    koder, xs, ys, enheder, kommune = adresser(args.cache, args.genhent)
+    print("\n2/4 Adresser (DAR via datagrundlag.dk)")
+    koder, xs, ys, enheder, kommune = adresser(args.cache, args.genhent, args.dar_dato)
 
     print("\n3/4 Befolkning (Eurostat Census 2021, 1 km)")
     if not GRID_FIL.exists():

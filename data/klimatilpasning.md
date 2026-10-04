@@ -98,7 +98,7 @@ Anledning: KL's "Data- og værktøjsoversigt fra 5 webinarer om GIS-DATA-Klimati
 | Enhed | Forventet skade i kr./år pr. 100 m-celle (risiko = skade vægtet med sandsynligheden for 50-, 100-, 1.000- og 10.000-årshændelser) |
 | Scenarie | RCP8.5 for 2070 og 2120 |
 
-**Metode i prøveberegningen:** Kun de fire risikofiler blev hentet (ca. 70 MB hver, via range-requests i zip-filen). Cellerne blev summeret inden for DAWA's kommunegrænser (EPSG:25832). En celle tildeles den kommune, dens centrum ligger i, og kystceller med centrum i havet tildeles den kommune, de berører. Uden den regel tabes 3 % af oversvømmelsesrisikoen og 25 % af erosionsrisikoen, fordi skaden ligger i kystlinjen. Tallet pr. indbygger bruger folketallet 1. januar 2025.
+**Metode i prøveberegningen:** Kun de fire risikofiler blev hentet (ca. 70 MB hver, via range-requests i zip-filen). Cellerne blev summeret inden for DAWA's kommunegrænser (EPSG:25832; `fetch_kystrisiko.py` bruger i dag DAGI-grænserne fra `data/kommunegraenser_25832.gpkg` og giver samme resultat). En celle tildeles den kommune, dens centrum ligger i, og kystceller med centrum i havet tildeles den kommune, de berører. Uden den regel tabes 3 % af oversvømmelsesrisikoen og 25 % af erosionsrisikoen, fordi skaden ligger i kystlinjen. Tallet pr. indbygger bruger folketallet 1. januar 2025.
 
 **Resultat (2020):**
 - Landstotal: 2.612 mio. kr./år fra oversvømmelse og 150 mio. kr./år fra erosion, i alt ca. 460 kr. pr. indbygger. I 2070 bliver det 4.091 hhv. 1.919 mio. kr./år.

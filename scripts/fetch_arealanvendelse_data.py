@@ -11,7 +11,7 @@ Kilde: geodata.fvm.dk (LFST). Åbent, ingen login krævet.
 Metode:
   1. Hent alle Paragraf3-polygoner fra LFST WFS (pagineret)
   2. Hent alle Markblokke-polygoner fra LFST WFS (pagineret)
-  3. Hent kommunegrænser fra DAWA
+  3. Indlæs kommunegrænser (DAGI, data/kommunegraenser_25832.gpkg)
   4. Spatial join: summer §3-areal og markblok-areal pr. kommune
   5. Score §3-natur mod EU Biodiversitetsstrategi 30%-mål
 
@@ -42,12 +42,13 @@ import urllib.error
 from pathlib import Path
 
 import geopandas as gpd
+
+from kommunegraenser import hent_kommunegraenser  # scripts/kommunegraenser.py
 from shapely.geometry import shape
 
 # ── Konstanter ────────────────────────────────────────────────────────────────
 
 LFST_WFS     = "https://geodata.fvm.dk/geoserver/ows"
-DAWA_URL     = "https://dawa.aws.dk/kommuner?format=geojson"
 DST_API      = "https://api.statbank.dk/v1"
 OUTPUT_FIL   = Path("../data/land_use_scores.csv")
 
@@ -254,11 +255,10 @@ def hent_paragraf3() -> gpd.GeoDataFrame:
 # ── Trin 2: Hent kommunegrænser ──────────────────────────────────────────────
 
 def hent_kommuner() -> gpd.GeoDataFrame:
-    """Henter kommunegrænser fra DAWA API."""
-    print("\nTrin 2/4: Henter kommunegrænser fra DAWA...")
+    """Indlæser kommunegrænserne fra data/kommunegraenser_25832.gpkg."""
+    print("\nTrin 2/4: Indlæser kommunegrænser (DAGI)...")
     try:
-        kommuner = gpd.read_file(DAWA_URL)
-        kommuner = kommuner.to_crs(epsg=25832)
+        kommuner = hent_kommunegraenser(25832)
         # Beregn totalareal pr. kommune (i km²)
         kommuner["total_km2"] = kommuner.geometry.area / 1_000_000
         # Normaliser kommunekode (fjern foranstillede nuller)

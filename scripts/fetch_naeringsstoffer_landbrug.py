@@ -26,7 +26,7 @@ Metode:
   2. Hent alle markblokke fra LFST WFS (~300.000 polygoner, 10-20 min)
   3. Overlay markblokke × kystvandoplande → markblok_ha pr. opland
   4. Beregn n_ceiling_kg_per_ha pr. opland = malbelas_n×1000 / markblok_ha
-  5. Hent kommunegrænser fra DAWA
+  5. Indlæs kommunegrænser (DAGI, data/kommunegraenser_25832.gpkg)
   6. Overlay kystvandoplande × kommuner, vægtet af markblok-overlap
   7. Beregn kommunens N-loft som markblok-vægtet snit af oplandenes ceiling
 
@@ -56,12 +56,13 @@ from pathlib import Path
 
 import geopandas as gpd
 
+from kommunegraenser import hent_kommunegraenser  # scripts/kommunegraenser.py
+
 # -- Konstanter ---------------------------------------------------------------
 
 VP3_WFS      = "https://wfs2-miljoegis.mim.dk/vp3_2endelig2025/ows"
 VP3_LAYER    = "vp3_2e2025_opl_marin_inds"
 LFST_WFS     = "https://geodata.fvm.dk/geoserver/ows"
-DAWA_URL     = "https://dawa.aws.dk/kommuner?format=geojson"
 OUTPUT_FIL   = Path("../data/n_landbrug_scores.csv")
 
 VP3_PAGE     = 200    # VP3 har ~108 features
@@ -346,11 +347,10 @@ def beregn_markblok_pr_opland(
 # -- Trin 4: Hent kommunegrænser -----------------------------------------------
 
 def hent_kommuner() -> gpd.GeoDataFrame:
-    """Henter kommunegrænser fra DAWA API."""
-    print("\nTrin 4/6: Henter kommunegrænser fra DAWA...")
+    """Indlæser kommunegrænserne fra data/kommunegraenser_25832.gpkg."""
+    print("\nTrin 4/6: Indlæser kommunegrænser (DAGI)...")
     try:
-        kommuner = gpd.read_file(DAWA_URL)
-        kommuner = kommuner.to_crs(epsg=25832)
+        kommuner = hent_kommunegraenser(25832)
         kommuner["kode"] = kommuner["kode"].apply(lambda k: str(int(k)))
         kommuner["total_km2"] = kommuner.geometry.area / 1_000_000
         print(f"  OK: {len(kommuner)} kommuner hentet")
