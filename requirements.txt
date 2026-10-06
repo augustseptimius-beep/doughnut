@@ -1,0 +1,19 @@
+# Python-pakker til datapipelinen (scripts/). Webappen bruger npm, ikke denne fil.
+# Installér: python3 -m pip install -r requirements.txt
+# Testet på Python 3.9 (maskinen der kører pipelinen) og 3.11. Standardbiblioteket
+# dækker resten, og de fleste scripts bruger slet ikke disse pakker.
+
+requests                  # fetch_climate_data, fetch_sundhedsprofil, fetch_luftforurening_data m.fl.
+openpyxl                  # Excel-kilder: fetch_fjernvarme_mix, fetch_forbrug_co2, fetch_sundhed_extra
+pypdf                     # fetch_kvaelstof_kystvand (VP3-planens PDF)
+
+# Rumlige analyser (kommunegrænser fra data/kommunegraenser_25832.gpkg, CLAUDE.md pkt. 42)
+geopandas>=1.0            # trækker pandas, shapely, pyogrio og pyproj med
+shapely>=2.0
+numpy
+rasterio>=1.4             # fetch_kystrisiko
+rasterstats               # fetch_biodiversitet_data
+
+# DAR-adresser og DAGI fra datagrundlag.dk: fetch_offentlig_transport, hent_kommunegraenser.
+# 1.4.5 er den nyeste DuckDB på Python 3.9.
+duckdb>=1.4
