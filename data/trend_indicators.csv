@@ -721,7 +721,7 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 223,_dim_lokalsamfund,2010-2012,2025,,,4.47,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 230,_dim_lokalsamfund,2010-2012,2025,,,-4.28,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 240,_dim_lokalsamfund,2010-2012,2025,,,-0.32,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-250,_dim_lokalsamfund,2010-2012,2025,,,-6.25,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+250,_dim_lokalsamfund,2010-2012,2025,,,-6.26,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 253,_dim_lokalsamfund,2010-2012,2025,,,-16.36,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 259,_dim_lokalsamfund,2010-2012,2025,,,10.82,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 260,_dim_lokalsamfund,2010-2012,2025,,,11.07,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
@@ -735,7 +735,7 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 329,_dim_lokalsamfund,2010-2012,2025,,,-14.35,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 330,_dim_lokalsamfund,2010-2012,2025,,,4.9,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 336,_dim_lokalsamfund,2010-2012,2025,,,2.8,tempo,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-340,_dim_lokalsamfund,2010-2012,2025,,,21.55,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+340,_dim_lokalsamfund,2010-2012,2025,,,21.54,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 350,_dim_lokalsamfund,2010-2012,2025,,,14.54,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 360,_dim_lokalsamfund,2010-2012,2025,,,0.03,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 370,_dim_lokalsamfund,2010-2012,2025,,,7.02,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
@@ -755,7 +755,7 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 510,_dim_lokalsamfund,2010-2012,2025,,,-0.04,stagneret,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 530,_dim_lokalsamfund,2010-2012,2025,,,16.53,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 540,_dim_lokalsamfund,2010-2012,2025,,,-3.82,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
-550,_dim_lokalsamfund,2010-2012,2025,,,-3.12,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
+550,_dim_lokalsamfund,2010-2012,2025,,,-3.11,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 561,_dim_lokalsamfund,2010-2012,2025,,,6.9,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 563,_dim_lokalsamfund,2010-2012,2025,,,-4.19,forkert,16,Danmarks Statistik,gennemsnit af 4 indikatorer
 573,_dim_lokalsamfund,2010-2012,2025,,,14.58,rigtig,16,Danmarks Statistik,gennemsnit af 4 indikatorer
@@ -1175,10 +1175,10 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 727,_dim_uddannelse,2010-2012,2024-2026,,,-1.71,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
 730,_dim_uddannelse,2010-2012,2024-2026,,,1.53,rigtig,16,Danmarks Statistik,gennemsnit af 8 indikatorer
 740,_dim_uddannelse,2010-2012,2024-2026,,,-1.08,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
-741,_dim_uddannelse,2010-2012,2024-2026,,,-9.53,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
+741,_dim_uddannelse,2010-2012,2024-2026,,,-9.52,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
 746,_dim_uddannelse,2010-2012,2024-2026,,,-7.67,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
 751,_dim_uddannelse,2010-2012,2024-2026,,,3.02,rigtig,16,Danmarks Statistik,gennemsnit af 8 indikatorer
-756,_dim_uddannelse,2010-2012,2024-2026,,,-3.65,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
+756,_dim_uddannelse,2010-2012,2024-2026,,,-3.64,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
 760,_dim_uddannelse,2010-2012,2024-2026,,,-4.18,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
 766,_dim_uddannelse,2010-2012,2024-2026,,,-8.07,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
 773,_dim_uddannelse,2010-2012,2024-2026,,,-6.12,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
@@ -1190,7 +1190,7 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 820,_dim_uddannelse,2010-2012,2024-2026,,,0.12,stagneret,16,Danmarks Statistik,gennemsnit af 8 indikatorer
 825,_dim_uddannelse,2010-2012,2024-2026,,,14.51,rigtig,16,Danmarks Statistik,gennemsnit af 8 indikatorer
 840,_dim_uddannelse,2010-2012,2024-2026,,,-1.66,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
-846,_dim_uddannelse,2010-2012,2024-2026,,,-2.07,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
+846,_dim_uddannelse,2010-2012,2024-2026,,,-2.06,forkert,16,Danmarks Statistik,gennemsnit af 8 indikatorer
 849,_dim_uddannelse,2010-2012,2024-2026,,,-0.81,stagneret,16,Danmarks Statistik,gennemsnit af 8 indikatorer
 851,_dim_uddannelse,2010-2012,2024-2026,,,-0.72,stagneret,16,Danmarks Statistik,gennemsnit af 8 indikatorer
 860,_dim_uddannelse,2010-2012,2024-2026,,,-0.13,stagneret,16,Danmarks Statistik,gennemsnit af 8 indikatorer
@@ -1688,7 +1688,7 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 153,child_poverty,2015-2017,2022-2024,8.3,8.1,-2.41,tempo,10,Danmarks Statistik,
 155,child_poverty,2015-2017,2022-2024,2.2667,1.7667,-22.06,rigtig,10,Danmarks Statistik,
 157,child_poverty,2015-2017,2022-2024,2.2333,2.3667,5.97,forkert,10,Danmarks Statistik,
-159,child_poverty,2015-2017,2022-2024,4.5667,4.5667,0.0,stagneret,10,Danmarks Statistik,
+159,child_poverty,2015-2017,2022-2024,4.5667,4.5667,-0.0,stagneret,10,Danmarks Statistik,
 161,child_poverty,2015-2017,2022-2024,4.1667,4.2,0.8,stagneret,10,Danmarks Statistik,
 163,child_poverty,2015-2017,2022-2024,3.8667,3.9,0.86,stagneret,10,Danmarks Statistik,
 165,child_poverty,2015-2017,2022-2024,6.1333,5.7667,-5.98,rigtig,10,Danmarks Statistik,
@@ -3040,7 +3040,7 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 751,exam_grade,2011-2013,2024-2026,7.3,7.7333,5.94,rigtig,16,Danmarks Statistik,
 756,exam_grade,2011-2013,2024-2026,6.7,6.8667,2.49,tempo,16,Danmarks Statistik,
 760,exam_grade,2011-2013,2024-2026,6.7,7.1,5.97,rigtig,16,Danmarks Statistik,
-766,exam_grade,2011-2013,2024-2026,6.7333,6.7333,0.0,stagneret,16,Danmarks Statistik,
+766,exam_grade,2011-2013,2024-2026,6.7333,6.7333,-0.0,stagneret,16,Danmarks Statistik,
 773,exam_grade,2011-2013,2024-2026,6.6,6.8,3.03,tempo,16,Danmarks Statistik,
 779,exam_grade,2011-2013,2024-2026,6.6667,6.9,3.5,tempo,16,Danmarks Statistik,
 787,exam_grade,2011-2013,2024-2026,6.7333,7.0,3.96,tempo,16,Danmarks Statistik,
@@ -4551,7 +4551,7 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 326,n_deposition,2016-2018,2022-2024,10.7967,9.9067,-8.24,stagneret,9,DCE (DEHM-modellen),
 329,n_deposition,2016-2018,2022-2024,11.89,11.4167,-3.98,stagneret,9,DCE (DEHM-modellen),
 330,n_deposition,2016-2018,2022-2024,11.7767,10.87,-7.7,stagneret,9,DCE (DEHM-modellen),
-336,n_deposition,2016-2018,2022-2024,10.88,9.86,-9.38,rigtig,9,DCE (DEHM-modellen),
+336,n_deposition,2016-2018,2022-2024,10.88,9.86,-9.37,rigtig,9,DCE (DEHM-modellen),
 340,n_deposition,2016-2018,2022-2024,12.1567,11.2067,-7.81,stagneret,9,DCE (DEHM-modellen),
 350,n_deposition,2016-2018,2022-2024,11.1467,10.2533,-8.01,stagneret,9,DCE (DEHM-modellen),
 360,n_deposition,2016-2018,2022-2024,11.5967,10.5267,-9.23,rigtig,9,DCE (DEHM-modellen),
