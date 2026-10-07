@@ -2,6 +2,15 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-10-06 (dataopdatering: educated_staff til 2025)
+
+- **`educated_staff` (pædagoguddannede, DST BOERN1) er opdateret fra 2024 til 2025.** Landstallet går fra 46,94 til 47,1 %. Kommunernes råværdi flytter sig fra -10,0 til +4,0 procentpoint, median +0,3. Største fald er Læsø (50,0 til 40,0, en lille personalegruppe), største stigning Samsø (17,86 til 21,88). Pilen er genberegnet med `fetch_trend_history.py --kun educated_staff` og slutter nu også i 2025.
+- **Ét farveskift på kategori:** Struer går fra gul til grøn på Uddannelse (99,94 til 100,25, landsgennemsnits-baseline). Råværdien stiger fra 47,19 til 48,5 %.
+- **Robusthedstjekket (3. okt.) meldte seks indikatorer; kun `educated_staff` var bagud.** `crime_rate` er en falsk alarm: STRAF11 har kun 2026K1-K2, og scriptet kræver fire hele kvartaler, så 2025 er det nyeste hele år. `traffic_accidents` (2023-2025), `vandindvinding` (2022-2024) og `cirkularitet_*` (2021-2023) viser allerede kildens nyeste år.
+- **`fetch_grundvandsdannelse.py` er kørt efter DAWA-skiftet (punkt 42).** `grundvandsdannelse_scores.csv` er byte-identisk med den committede (96 af 98 kommuner; Samsø og Læsø ligger uden for DK-modellen). De tre API-nøgler er testet og giver HTTP 200.
+- **Byg master og trendfil på Python 3.9, ikke nyere.** Samme data giver på 3.13 ±0,01 i 6 rækker for `_dim_forurening` og 6 `pct`-værdier i `trend_indicators.csv` (afrunding), og CI (`tjek`, som kører 3.9) afviser så masteren. Filerne i denne opdatering er bygget på 3.9 og har derfor ingen afrundingsændringer ud over `educated_staff`.
+- `data_years.json` har også `BOERN8` 2024 til 2025. Det ændrer ingen score, fordi `daycare_ratio` er fjernet fra Uddannelse (1. okt.).
+
 ## 2026-10-03 (DAWA udskiftet med DAGI og DAR fra datagrundlag.dk)
 
 - **DAWA er lukket** (410 Gone). De otte scripts, der brugte den, læser nu kommunegrænser fra den committede fil `data/kommunegraenser_25832.gpkg` (DAGI, 98 kommuner) og transportscriptet adresser fra DAR-snapshots på datagrundlag.dk. Se CLAUDE.md pkt. 42.

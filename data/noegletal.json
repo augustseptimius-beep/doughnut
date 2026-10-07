@@ -44,7 +44,7 @@
   "sport_tilskuer": {"reference": 45.5, "daekning": 76, "data_year": "2024-2025"},
   "ensomhed": {"reference": 10.7994, "daekning": 98, "data_year": "2025"},
   "civil_society": {"reference": 74.0, "daekning": 98, "data_year": "2025"},
-  "educated_staff": {"reference": 46.94, "daekning": 98, "data_year": "2024"},
+  "educated_staff": {"reference": 47.1, "daekning": 98, "data_year": "2025"},
   "commute_distance": {"reference": 22.6, "daekning": 98, "data_year": "2024"},
   "public_transport": {"reference": 37.01, "daekning": 98, "data_year": "2026"},
   "vejr_skader": {"reference": 21.9196, "daekning": 98, "data_year": "2023-2025"},
