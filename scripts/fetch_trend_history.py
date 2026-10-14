@@ -592,6 +592,7 @@ SAMME_SOM_SCOREN = {
     "child_notifications": ("fetch_udvidelse_data", "serie_child_notifications", "UND2", "perioder"),
     "trangboethed": ("fetch_trangboethed", "serie_trangboethed", "BOL103", "perioder"),
     "employment_origin_gap": ("fetch_ligestilling_data", "serie_employment_origin_gap", "RAS200", "perioder"),
+    "employment_gender_gap": ("fetch_ligestilling_data", "serie_employment_gender_gap", "RAS200", "perioder"),
     "vandindvinding": ("fetch_vandindvinding_data", "serie_vandindvinding", "VANDIND", "aar"),
     "areal_antropiseret": ("fetch_dst_arealanvendelse", "serie_areal_antropiseret", "AREALDK2", "perioder"),
     "cirkularitet_waste": ("fetch_eco_new_data", "serie_cirkularitet_waste", "LABY25", "aar"),

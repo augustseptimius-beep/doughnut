@@ -500,104 +500,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,_dim_kultur_fritid,2010-2012,2025,,,1.3,rigtig,16,Danmarks Statistik,gennemsnit af 3 indikatorer
 851,_dim_kultur_fritid,2010-2012,2025,,,-9.69,forkert,16,Danmarks Statistik,gennemsnit af 3 indikatorer
 860,_dim_kultur_fritid,2010-2012,2025,,,-12.71,forkert,16,Danmarks Statistik,gennemsnit af 3 indikatorer
-101,_dim_ligestilling,2010-2012,2023-2025,,,8.03,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-147,_dim_ligestilling,2010-2012,2023-2025,,,8.36,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-151,_dim_ligestilling,2010-2012,2023-2025,,,7.45,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-153,_dim_ligestilling,2010-2012,2023-2025,,,15.45,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-155,_dim_ligestilling,2010-2012,2023-2025,,,-14.58,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-157,_dim_ligestilling,2010-2012,2023-2025,,,-1.84,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-159,_dim_ligestilling,2010-2012,2023-2025,,,8.78,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-161,_dim_ligestilling,2010-2012,2023-2025,,,1.46,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-163,_dim_ligestilling,2010-2012,2023-2025,,,11.9,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-165,_dim_ligestilling,2010-2012,2023-2025,,,18.22,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-167,_dim_ligestilling,2010-2012,2023-2025,,,6.53,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-169,_dim_ligestilling,2010-2012,2023-2025,,,-3.61,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-173,_dim_ligestilling,2010-2012,2023-2025,,,13.24,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-175,_dim_ligestilling,2010-2012,2023-2025,,,4.65,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-183,_dim_ligestilling,2010-2012,2023-2025,,,-5.92,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-185,_dim_ligestilling,2010-2012,2023-2025,,,5.2,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-187,_dim_ligestilling,2010-2012,2023-2025,,,-7.82,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-190,_dim_ligestilling,2010-2012,2023-2025,,,-8.07,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-201,_dim_ligestilling,2010-2012,2023-2025,,,18.23,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-210,_dim_ligestilling,2010-2012,2023-2025,,,5.96,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-217,_dim_ligestilling,2010-2012,2023-2025,,,-5.85,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-219,_dim_ligestilling,2010-2012,2023-2025,,,-11.41,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-223,_dim_ligestilling,2010-2012,2023-2025,,,-3.35,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-230,_dim_ligestilling,2010-2012,2023-2025,,,3.24,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-240,_dim_ligestilling,2010-2012,2023-2025,,,4.05,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-250,_dim_ligestilling,2010-2012,2023-2025,,,-0.18,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-253,_dim_ligestilling,2010-2012,2023-2025,,,-7.61,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-259,_dim_ligestilling,2010-2012,2023-2025,,,-4.34,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-260,_dim_ligestilling,2010-2012,2023-2025,,,6.53,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-265,_dim_ligestilling,2010-2012,2023-2025,,,7.89,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-269,_dim_ligestilling,2010-2012,2023-2025,,,-38.6,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-270,_dim_ligestilling,2010-2012,2023-2025,,,1.19,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-306,_dim_ligestilling,2010-2012,2023-2025,,,9.21,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-316,_dim_ligestilling,2010-2012,2023-2025,,,0.43,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-320,_dim_ligestilling,2010-2012,2023-2025,,,6.69,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-326,_dim_ligestilling,2010-2012,2023-2025,,,3.16,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-329,_dim_ligestilling,2010-2012,2023-2025,,,9.05,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-330,_dim_ligestilling,2010-2012,2023-2025,,,7.46,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-336,_dim_ligestilling,2010-2012,2023-2025,,,-13.41,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-340,_dim_ligestilling,2010-2012,2023-2025,,,-7.68,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-350,_dim_ligestilling,2010-2012,2023-2025,,,21.55,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-360,_dim_ligestilling,2010-2012,2023-2025,,,-1.08,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-370,_dim_ligestilling,2010-2012,2023-2025,,,11.22,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-376,_dim_ligestilling,2010-2012,2023-2025,,,6.74,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-390,_dim_ligestilling,2010-2012,2023-2025,,,6.73,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-400,_dim_ligestilling,2010-2012,2023-2025,,,2.48,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-410,_dim_ligestilling,2010-2012,2023-2025,,,1.34,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-420,_dim_ligestilling,2010-2012,2023-2025,,,9.84,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-430,_dim_ligestilling,2010-2012,2023-2025,,,1.45,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-440,_dim_ligestilling,2010-2012,2023-2025,,,10.15,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-450,_dim_ligestilling,2010-2012,2023-2025,,,18.65,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-461,_dim_ligestilling,2010-2012,2023-2025,,,0.21,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-479,_dim_ligestilling,2010-2012,2023-2025,,,-1.4,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-480,_dim_ligestilling,2010-2012,2023-2025,,,-2.19,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-482,_dim_ligestilling,2010-2012,2023-2025,,,23.0,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-492,_dim_ligestilling,2010-2012,2022-2024,,,26.32,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
-510,_dim_ligestilling,2010-2012,2023-2025,,,-6.36,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-530,_dim_ligestilling,2010-2012,2023-2025,,,-6.19,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-540,_dim_ligestilling,2010-2012,2023-2025,,,6.44,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-550,_dim_ligestilling,2010-2012,2023-2025,,,4.68,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-561,_dim_ligestilling,2010-2012,2023-2025,,,4.53,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-563,_dim_ligestilling,2010-2012,2022-2024,,,-10.47,forkert,15,Danmarks Statistik,gennemsnit af 2 indikatorer
-573,_dim_ligestilling,2010-2012,2023-2025,,,7.34,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-575,_dim_ligestilling,2010-2012,2023-2025,,,-2.71,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-580,_dim_ligestilling,2010-2012,2023-2025,,,9.65,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-607,_dim_ligestilling,2010-2012,2023-2025,,,-14.92,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-615,_dim_ligestilling,2010-2012,2023-2025,,,3.12,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-621,_dim_ligestilling,2010-2012,2023-2025,,,3.21,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-630,_dim_ligestilling,2010-2012,2023-2025,,,10.22,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-657,_dim_ligestilling,2010-2012,2023-2025,,,0.79,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-661,_dim_ligestilling,2010-2012,2023-2025,,,0.87,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-665,_dim_ligestilling,2010-2012,2023-2025,,,0.34,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-671,_dim_ligestilling,2010-2012,2023-2025,,,-10.97,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-706,_dim_ligestilling,2010-2012,2023-2025,,,10.18,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-707,_dim_ligestilling,2010-2012,2023-2025,,,5.19,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-710,_dim_ligestilling,2010-2012,2023-2025,,,3.77,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-727,_dim_ligestilling,2010-2012,2023-2025,,,20.91,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-730,_dim_ligestilling,2010-2012,2023-2025,,,-3.07,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-740,_dim_ligestilling,2010-2012,2023-2025,,,4.02,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-741,_dim_ligestilling,2010-2012,2022-2024,,,24.15,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
-746,_dim_ligestilling,2010-2012,2023-2025,,,3.59,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-751,_dim_ligestilling,2010-2012,2023-2025,,,4.71,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-756,_dim_ligestilling,2010-2012,2023-2025,,,-3.37,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-760,_dim_ligestilling,2010-2012,2023-2025,,,7.88,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-766,_dim_ligestilling,2010-2012,2023-2025,,,4.86,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-773,_dim_ligestilling,2010-2012,2023-2025,,,19.29,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-779,_dim_ligestilling,2010-2012,2023-2025,,,12.43,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-787,_dim_ligestilling,2010-2012,2023-2025,,,-0.48,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-791,_dim_ligestilling,2010-2012,2023-2025,,,1.8,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-810,_dim_ligestilling,2010-2012,2023-2025,,,19.92,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-813,_dim_ligestilling,2010-2012,2023-2025,,,0.44,stagneret,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-820,_dim_ligestilling,2010-2012,2023-2025,,,5.67,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-825,_dim_ligestilling,2010-2012,2022-2024,,,23.8,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
-840,_dim_ligestilling,2010-2012,2023-2025,,,6.21,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-846,_dim_ligestilling,2010-2012,2023-2025,,,6.82,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-849,_dim_ligestilling,2010-2012,2023-2025,,,11.25,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-851,_dim_ligestilling,2010-2012,2023-2025,,,3.13,tempo,15,Danmarks Statistik,gennemsnit af 3 indikatorer
-860,_dim_ligestilling,2010-2012,2023-2025,,,4.64,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+101,_dim_ligestilling,2010-2012,2023-2025,,,5.93,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+147,_dim_ligestilling,2010-2012,2023-2025,,,6.35,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+151,_dim_ligestilling,2010-2012,2023-2025,,,5.19,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+153,_dim_ligestilling,2010-2012,2023-2025,,,11.43,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+155,_dim_ligestilling,2010-2012,2023-2025,,,-10.93,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+157,_dim_ligestilling,2010-2012,2023-2025,,,-1.53,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+159,_dim_ligestilling,2010-2012,2023-2025,,,6.25,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+161,_dim_ligestilling,2010-2012,2023-2025,,,1.19,tempo,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+163,_dim_ligestilling,2010-2012,2023-2025,,,8.78,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+165,_dim_ligestilling,2010-2012,2023-2025,,,14.01,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+167,_dim_ligestilling,2010-2012,2023-2025,,,4.73,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+169,_dim_ligestilling,2010-2012,2023-2025,,,-2.55,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+173,_dim_ligestilling,2010-2012,2023-2025,,,10.02,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+175,_dim_ligestilling,2010-2012,2023-2025,,,3.14,tempo,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+183,_dim_ligestilling,2010-2012,2023-2025,,,-3.65,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+185,_dim_ligestilling,2010-2012,2023-2025,,,3.94,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+187,_dim_ligestilling,2010-2012,2023-2025,,,-5.57,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+190,_dim_ligestilling,2010-2012,2023-2025,,,-6.11,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+201,_dim_ligestilling,2010-2012,2023-2025,,,13.33,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+210,_dim_ligestilling,2010-2012,2023-2025,,,4.76,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+217,_dim_ligestilling,2010-2012,2023-2025,,,-4.44,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+219,_dim_ligestilling,2010-2012,2023-2025,,,-8.48,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+223,_dim_ligestilling,2010-2012,2023-2025,,,-2.4,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+230,_dim_ligestilling,2010-2012,2023-2025,,,2.61,tempo,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+240,_dim_ligestilling,2010-2012,2023-2025,,,3.26,tempo,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+250,_dim_ligestilling,2010-2012,2023-2025,,,0.06,stagneret,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+253,_dim_ligestilling,2010-2012,2023-2025,,,-5.81,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+259,_dim_ligestilling,2010-2012,2023-2025,,,-2.99,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+260,_dim_ligestilling,2010-2012,2023-2025,,,4.31,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+265,_dim_ligestilling,2010-2012,2023-2025,,,5.84,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+269,_dim_ligestilling,2010-2012,2023-2025,,,-28.73,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+270,_dim_ligestilling,2010-2012,2023-2025,,,0.69,stagneret,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+306,_dim_ligestilling,2010-2012,2023-2025,,,6.75,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+316,_dim_ligestilling,2010-2012,2023-2025,,,0.29,stagneret,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+320,_dim_ligestilling,2010-2012,2023-2025,,,5.22,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+326,_dim_ligestilling,2010-2012,2023-2025,,,2.04,tempo,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+329,_dim_ligestilling,2010-2012,2023-2025,,,7.23,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+330,_dim_ligestilling,2010-2012,2023-2025,,,5.3,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+336,_dim_ligestilling,2010-2012,2023-2025,,,-10.11,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+340,_dim_ligestilling,2010-2012,2023-2025,,,-6.07,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+350,_dim_ligestilling,2010-2012,2023-2025,,,16.52,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+360,_dim_ligestilling,2010-2012,2023-2025,,,-1.23,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+370,_dim_ligestilling,2010-2012,2023-2025,,,8.55,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+376,_dim_ligestilling,2010-2012,2023-2025,,,4.81,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+390,_dim_ligestilling,2010-2012,2023-2025,,,4.88,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+400,_dim_ligestilling,2010-2012,2023-2025,,,1.91,tempo,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+410,_dim_ligestilling,2010-2012,2023-2025,,,0.92,stagneret,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+420,_dim_ligestilling,2010-2012,2023-2025,,,6.95,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+430,_dim_ligestilling,2010-2012,2023-2025,,,0.85,stagneret,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+440,_dim_ligestilling,2010-2012,2023-2025,,,6.09,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+450,_dim_ligestilling,2010-2012,2023-2025,,,13.51,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+461,_dim_ligestilling,2010-2012,2023-2025,,,-0.26,stagneret,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+479,_dim_ligestilling,2010-2012,2023-2025,,,-1.49,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+480,_dim_ligestilling,2010-2012,2023-2025,,,-2.18,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+482,_dim_ligestilling,2010-2012,2023-2025,,,16.95,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+492,_dim_ligestilling,2010-2012,2022-2024,,,17.27,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+510,_dim_ligestilling,2010-2012,2023-2025,,,-4.4,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+530,_dim_ligestilling,2010-2012,2023-2025,,,-4.15,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+540,_dim_ligestilling,2010-2012,2023-2025,,,4.87,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+550,_dim_ligestilling,2010-2012,2023-2025,,,3.84,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+561,_dim_ligestilling,2010-2012,2023-2025,,,3.49,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+563,_dim_ligestilling,2010-2012,2022-2024,,,-6.97,forkert,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+573,_dim_ligestilling,2010-2012,2023-2025,,,5.88,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+575,_dim_ligestilling,2010-2012,2023-2025,,,-1.35,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+580,_dim_ligestilling,2010-2012,2023-2025,,,7.46,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+607,_dim_ligestilling,2010-2012,2023-2025,,,-11.54,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+615,_dim_ligestilling,2010-2012,2023-2025,,,2.15,tempo,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+621,_dim_ligestilling,2010-2012,2023-2025,,,2.37,tempo,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+630,_dim_ligestilling,2010-2012,2023-2025,,,7.5,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+657,_dim_ligestilling,2010-2012,2023-2025,,,1.18,tempo,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+661,_dim_ligestilling,2010-2012,2023-2025,,,0.81,stagneret,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+665,_dim_ligestilling,2010-2012,2023-2025,,,0.49,stagneret,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+671,_dim_ligestilling,2010-2012,2023-2025,,,-7.91,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+706,_dim_ligestilling,2010-2012,2023-2025,,,8.07,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+707,_dim_ligestilling,2010-2012,2023-2025,,,4.12,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+710,_dim_ligestilling,2010-2012,2023-2025,,,3.07,tempo,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+727,_dim_ligestilling,2010-2012,2023-2025,,,15.5,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+730,_dim_ligestilling,2010-2012,2023-2025,,,-2.68,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+740,_dim_ligestilling,2010-2012,2023-2025,,,3.37,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+741,_dim_ligestilling,2010-2012,2022-2024,,,16.07,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+746,_dim_ligestilling,2010-2012,2023-2025,,,2.9,tempo,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+751,_dim_ligestilling,2010-2012,2023-2025,,,3.31,tempo,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+756,_dim_ligestilling,2010-2012,2023-2025,,,-1.88,forkert,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+760,_dim_ligestilling,2010-2012,2023-2025,,,6.41,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+766,_dim_ligestilling,2010-2012,2023-2025,,,4.02,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+773,_dim_ligestilling,2010-2012,2023-2025,,,14.91,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+779,_dim_ligestilling,2010-2012,2023-2025,,,9.22,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+787,_dim_ligestilling,2010-2012,2023-2025,,,-0.02,stagneret,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+791,_dim_ligestilling,2010-2012,2023-2025,,,1.34,tempo,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+810,_dim_ligestilling,2010-2012,2023-2025,,,14.94,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+813,_dim_ligestilling,2010-2012,2023-2025,,,0.18,stagneret,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+820,_dim_ligestilling,2010-2012,2023-2025,,,4.4,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+825,_dim_ligestilling,2010-2012,2022-2024,,,17.38,rigtig,15,Danmarks Statistik,gennemsnit af 3 indikatorer
+840,_dim_ligestilling,2010-2012,2023-2025,,,4.74,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+846,_dim_ligestilling,2010-2012,2023-2025,,,5.23,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+849,_dim_ligestilling,2010-2012,2023-2025,,,8.76,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+851,_dim_ligestilling,2010-2012,2023-2025,,,2.26,tempo,15,Danmarks Statistik,gennemsnit af 4 indikatorer
+860,_dim_ligestilling,2010-2012,2023-2025,,,3.42,rigtig,15,Danmarks Statistik,gennemsnit af 4 indikatorer
 101,_dim_lighed,2010-2012,2022-2024,,,3.26,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
 147,_dim_lighed,2010-2012,2022-2024,,,6.63,rigtig,15,Danmarks Statistik,gennemsnit af 2 indikatorer
 151,_dim_lighed,2010-2012,2022-2024,,,5.45,tempo,15,Danmarks Statistik,gennemsnit af 2 indikatorer
@@ -2760,6 +2760,104 @@ kommune_kode,indicator_id,periode_start,periode_slut,vaerdi_start,vaerdi_slut,pc
 849,employment,2010-2012,2022-2024,71.9667,77.7,7.97,rigtig,15,Danmarks Statistik,
 851,employment,2010-2012,2022-2024,69.1667,75.4667,9.11,rigtig,15,Danmarks Statistik,
 860,employment,2010-2012,2022-2024,71.5,77.0333,7.74,rigtig,15,Danmarks Statistik,
+101,employment_gender_gap,2010-2012,2022-2024,98.86,98.4933,-0.37,stagneret,15,Danmarks Statistik,
+147,employment_gender_gap,2010-2012,2022-2024,97.6967,98.01,0.32,stagneret,15,Danmarks Statistik,
+151,employment_gender_gap,2010-2012,2022-2024,97.7967,96.2167,-1.62,forkert,15,Danmarks Statistik,
+153,employment_gender_gap,2010-2012,2022-2024,92.54,91.96,-0.63,stagneret,15,Danmarks Statistik,
+155,employment_gender_gap,2010-2012,2022-2024,98.5667,98.5767,0.01,stagneret,15,Danmarks Statistik,
+157,employment_gender_gap,2010-2012,2022-2024,97.62,97.0267,-0.61,stagneret,15,Danmarks Statistik,
+159,employment_gender_gap,2010-2012,2022-2024,98.7833,97.46,-1.34,forkert,15,Danmarks Statistik,
+161,employment_gender_gap,2010-2012,2022-2024,96.76,97.13,0.38,stagneret,15,Danmarks Statistik,
+163,employment_gender_gap,2010-2012,2022-2024,97.5367,96.96,-0.59,stagneret,15,Danmarks Statistik,
+165,employment_gender_gap,2010-2012,2022-2024,94.92,96.2467,1.4,rigtig,15,Danmarks Statistik,
+167,employment_gender_gap,2010-2012,2022-2024,96.6033,95.9767,-0.65,stagneret,15,Danmarks Statistik,
+169,employment_gender_gap,2010-2012,2022-2024,92.9633,93.5267,0.61,stagneret,15,Danmarks Statistik,
+173,employment_gender_gap,2010-2012,2022-2024,100.31,100.65,0.34,stagneret,15,Danmarks Statistik,
+175,employment_gender_gap,2010-2012,2022-2024,97.67,96.3267,-1.38,forkert,15,Danmarks Statistik,
+183,employment_gender_gap,2010-2012,2022-2024,90.6,93.4933,3.19,rigtig,15,Danmarks Statistik,
+185,employment_gender_gap,2010-2012,2022-2024,97.9467,98.1133,0.17,stagneret,15,Danmarks Statistik,
+187,employment_gender_gap,2010-2012,2022-2024,94.7733,95.9033,1.19,rigtig,15,Danmarks Statistik,
+190,employment_gender_gap,2010-2012,2022-2024,98.0733,97.8433,-0.23,stagneret,15,Danmarks Statistik,
+201,employment_gender_gap,2010-2012,2022-2024,98.8567,97.5133,-1.36,forkert,15,Danmarks Statistik,
+210,employment_gender_gap,2010-2012,2022-2024,94.44,95.5267,1.15,rigtig,15,Danmarks Statistik,
+217,employment_gender_gap,2010-2012,2022-2024,97.1033,96.9067,-0.2,stagneret,15,Danmarks Statistik,
+219,employment_gender_gap,2010-2012,2022-2024,97.29,97.5767,0.29,stagneret,15,Danmarks Statistik,
+223,employment_gender_gap,2010-2012,2022-2024,96.89,97.3333,0.46,stagneret,15,Danmarks Statistik,
+230,employment_gender_gap,2010-2012,2022-2024,98.44,99.1367,0.71,stagneret,15,Danmarks Statistik,
+240,employment_gender_gap,2010-2012,2022-2024,95.79,96.66,0.91,stagneret,15,Danmarks Statistik,
+250,employment_gender_gap,2010-2012,2022-2024,95.0233,95.7767,0.79,stagneret,15,Danmarks Statistik,
+253,employment_gender_gap,2010-2012,2022-2024,96.07,95.68,-0.41,stagneret,15,Danmarks Statistik,
+259,employment_gender_gap,2010-2012,2022-2024,94.2933,95.3167,1.09,rigtig,15,Danmarks Statistik,
+260,employment_gender_gap,2010-2012,2022-2024,96.0767,93.8433,-2.32,forkert,15,Danmarks Statistik,
+265,employment_gender_gap,2010-2012,2022-2024,97.6633,97.3467,-0.32,stagneret,15,Danmarks Statistik,
+269,employment_gender_gap,2010-2012,2022-2024,95.19,96.0167,0.87,stagneret,15,Danmarks Statistik,
+270,employment_gender_gap,2010-2012,2022-2024,96.17,95.38,-0.82,stagneret,15,Danmarks Statistik,
+306,employment_gender_gap,2010-2012,2022-2024,93.8133,93.2533,-0.6,stagneret,15,Danmarks Statistik,
+316,employment_gender_gap,2010-2012,2022-2024,94.3767,94.2633,-0.12,stagneret,15,Danmarks Statistik,
+320,employment_gender_gap,2010-2012,2022-2024,92.5733,93.3233,0.81,stagneret,15,Danmarks Statistik,
+326,employment_gender_gap,2010-2012,2022-2024,93.5133,92.2967,-1.3,forkert,15,Danmarks Statistik,
+329,employment_gender_gap,2010-2012,2022-2024,92.9233,94.5633,1.76,rigtig,15,Danmarks Statistik,
+330,employment_gender_gap,2010-2012,2022-2024,95.3033,94.1533,-1.21,forkert,15,Danmarks Statistik,
+336,employment_gender_gap,2010-2012,2022-2024,94.1533,93.9467,-0.22,stagneret,15,Danmarks Statistik,
+340,employment_gender_gap,2010-2012,2022-2024,94.02,92.8567,-1.24,forkert,15,Danmarks Statistik,
+350,employment_gender_gap,2010-2012,2022-2024,94.4767,95.8167,1.42,rigtig,15,Danmarks Statistik,
+360,employment_gender_gap,2010-2012,2022-2024,95.9667,94.3767,-1.66,forkert,15,Danmarks Statistik,
+370,employment_gender_gap,2010-2012,2022-2024,93.8633,94.3933,0.56,stagneret,15,Danmarks Statistik,
+376,employment_gender_gap,2010-2012,2022-2024,96.21,95.27,-0.98,stagneret,15,Danmarks Statistik,
+390,employment_gender_gap,2010-2012,2022-2024,94.2267,93.5867,-0.68,stagneret,15,Danmarks Statistik,
+400,employment_gender_gap,2010-2012,2022-2024,93.17,93.3633,0.21,stagneret,15,Danmarks Statistik,
+410,employment_gender_gap,2010-2012,2022-2024,94.7467,94.4267,-0.34,stagneret,15,Danmarks Statistik,
+420,employment_gender_gap,2010-2012,2022-2024,94.55,92.9167,-1.73,forkert,15,Danmarks Statistik,
+430,employment_gender_gap,2010-2012,2022-2024,93.4133,92.5133,-0.96,stagneret,15,Danmarks Statistik,
+440,employment_gender_gap,2010-2012,2022-2024,98.48,92.4667,-6.11,forkert,15,Danmarks Statistik,
+450,employment_gender_gap,2010-2012,2022-2024,94.5133,92.6967,-1.92,forkert,15,Danmarks Statistik,
+461,employment_gender_gap,2010-2012,2022-2024,98.45,96.8067,-1.67,forkert,15,Danmarks Statistik,
+479,employment_gender_gap,2010-2012,2022-2024,97.48,95.76,-1.76,forkert,15,Danmarks Statistik,
+480,employment_gender_gap,2010-2012,2022-2024,94.4633,92.41,-2.17,forkert,15,Danmarks Statistik,
+482,employment_gender_gap,2010-2012,2022-2024,96.8033,95.62,-1.22,forkert,15,Danmarks Statistik,
+492,employment_gender_gap,2010-2012,2022-2024,98.5033,97.67,-0.85,stagneret,15,Danmarks Statistik,
+510,employment_gender_gap,2010-2012,2022-2024,92.8867,94.2833,1.5,rigtig,15,Danmarks Statistik,
+530,employment_gender_gap,2010-2012,2022-2024,90.2633,92.0333,1.96,rigtig,15,Danmarks Statistik,
+540,employment_gender_gap,2010-2012,2022-2024,94.4733,94.6033,0.14,stagneret,15,Danmarks Statistik,
+550,employment_gender_gap,2010-2012,2022-2024,91.5433,92.7767,1.35,rigtig,15,Danmarks Statistik,
+561,employment_gender_gap,2010-2012,2022-2024,95.34,95.7033,0.38,stagneret,15,Danmarks Statistik,
+563,employment_gender_gap,2010-2012,2022-2024,96.0633,96.0867,0.02,stagneret,15,Danmarks Statistik,
+573,employment_gender_gap,2010-2012,2022-2024,91.7433,93.13,1.51,rigtig,15,Danmarks Statistik,
+575,employment_gender_gap,2010-2012,2022-2024,89.1933,91.64,2.74,rigtig,15,Danmarks Statistik,
+580,employment_gender_gap,2010-2012,2022-2024,91.97,92.7967,0.9,stagneret,15,Danmarks Statistik,
+607,employment_gender_gap,2010-2012,2022-2024,94.4233,93.0933,-1.41,forkert,15,Danmarks Statistik,
+615,employment_gender_gap,2010-2012,2022-2024,94.3767,93.6667,-0.75,stagneret,15,Danmarks Statistik,
+621,employment_gender_gap,2010-2012,2022-2024,94.15,93.98,-0.18,stagneret,15,Danmarks Statistik,
+630,employment_gender_gap,2010-2012,2022-2024,94.5,93.8733,-0.66,stagneret,15,Danmarks Statistik,
+657,employment_gender_gap,2010-2012,2022-2024,90.82,92.9267,2.32,rigtig,15,Danmarks Statistik,
+661,employment_gender_gap,2010-2012,2022-2024,92.1767,92.7633,0.64,stagneret,15,Danmarks Statistik,
+665,employment_gender_gap,2010-2012,2022-2024,92.31,93.1867,0.95,stagneret,15,Danmarks Statistik,
+671,employment_gender_gap,2010-2012,2022-2024,90.53,91.69,1.28,rigtig,15,Danmarks Statistik,
+706,employment_gender_gap,2010-2012,2022-2024,92.1867,93.79,1.74,rigtig,15,Danmarks Statistik,
+707,employment_gender_gap,2010-2012,2022-2024,93.9667,94.8,0.89,stagneret,15,Danmarks Statistik,
+710,employment_gender_gap,2010-2012,2022-2024,93.6,94.4867,0.95,stagneret,15,Danmarks Statistik,
+727,employment_gender_gap,2010-2012,2022-2024,94.18,93.48,-0.74,stagneret,15,Danmarks Statistik,
+730,employment_gender_gap,2010-2012,2022-2024,95.1467,93.73,-1.49,forkert,15,Danmarks Statistik,
+740,employment_gender_gap,2010-2012,2022-2024,93.53,94.8433,1.4,rigtig,15,Danmarks Statistik,
+741,employment_gender_gap,2010-2012,2022-2024,96.5667,96.4833,-0.09,stagneret,15,Danmarks Statistik,
+746,employment_gender_gap,2010-2012,2022-2024,94.04,94.8133,0.82,stagneret,15,Danmarks Statistik,
+751,employment_gender_gap,2010-2012,2022-2024,97.4867,96.6033,-0.91,stagneret,15,Danmarks Statistik,
+756,employment_gender_gap,2010-2012,2022-2024,91.0367,93.38,2.57,rigtig,15,Danmarks Statistik,
+760,employment_gender_gap,2010-2012,2022-2024,90.87,92.68,1.99,rigtig,15,Danmarks Statistik,
+766,employment_gender_gap,2010-2012,2022-2024,91.1867,92.57,1.52,rigtig,15,Danmarks Statistik,
+773,employment_gender_gap,2010-2012,2022-2024,91.4467,93.0367,1.74,rigtig,15,Danmarks Statistik,
+779,employment_gender_gap,2010-2012,2022-2024,93.06,92.68,-0.41,stagneret,15,Danmarks Statistik,
+787,employment_gender_gap,2010-2012,2022-2024,92.2133,93.4433,1.33,rigtig,15,Danmarks Statistik,
+791,employment_gender_gap,2010-2012,2022-2024,93.4533,93.4267,-0.03,stagneret,15,Danmarks Statistik,
+810,employment_gender_gap,2010-2012,2022-2024,93.3633,93.3667,0.0,stagneret,15,Danmarks Statistik,
+813,employment_gender_gap,2010-2012,2022-2024,94.7033,94.1433,-0.59,stagneret,15,Danmarks Statistik,
+820,employment_gender_gap,2010-2012,2022-2024,91.6467,92.17,0.57,stagneret,15,Danmarks Statistik,
+825,employment_gender_gap,2010-2012,2022-2024,94.8567,99.1567,4.53,rigtig,15,Danmarks Statistik,
+840,employment_gender_gap,2010-2012,2022-2024,92.9933,93.29,0.32,stagneret,15,Danmarks Statistik,
+846,employment_gender_gap,2010-2012,2022-2024,93.2167,93.6467,0.46,stagneret,15,Danmarks Statistik,
+849,employment_gender_gap,2010-2012,2022-2024,93.4967,94.6967,1.28,rigtig,15,Danmarks Statistik,
+851,employment_gender_gap,2010-2012,2022-2024,97.3833,97.04,-0.35,stagneret,15,Danmarks Statistik,
+860,employment_gender_gap,2010-2012,2022-2024,95.49,95.2667,-0.23,stagneret,15,Danmarks Statistik,
 101,employment_origin_gap,2010-2012,2022-2024,67.3367,79.2033,17.62,tempo,15,Danmarks Statistik,
 147,employment_origin_gap,2010-2012,2022-2024,63.9133,79.0933,23.75,rigtig,15,Danmarks Statistik,
 151,employment_origin_gap,2010-2012,2022-2024,70.6,84.92,20.28,rigtig,15,Danmarks Statistik,

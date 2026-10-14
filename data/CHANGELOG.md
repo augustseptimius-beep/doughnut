@@ -2,6 +2,19 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-10-14 (Ligestilling: beskæftigelsesgab mellem kønnene)
+
+- **Ny indikator `employment_gender_gap`:** kvinders beskæftigelsesfrekvens i procent af mænds, 16-64 år, alle herkomster (DST RAS200, 2024). Samme tabel og aldersgruppe som `employment`. Landstallet er 95,5 % (DST hele landet), kommunerne ligger mellem 91,5 og 100,5, median 94,2.
+- **Scores mod et absolut mål på ingen forskel (100 %), loft 100,** som `absolute_score` (omskaleres ikke af baseline-toggle). Loftet betyder, at en kommune hvor kvinder er mere i arbejde end mænd (kun Frederiksberg) ikke får bonus. 97 af 98 kommuner står gule (85-100), ingen røde.
+- **Ligestilling er nu gennemsnit af fire indikatorer** (før tre). I landsgennemsnits-baselinen skifter 13 kommuner farve på kategorien, 12 fra grøn til gul (bl.a. Gentofte, Ishøj, Holbæk, Vejle, Silkeborg; alle lå mindre end 2 point over 100) og Struer fra rød til gul (83,0 til 85,1). Årsagen er, at den nye indikator højst kan give 100, mens de øvrige tre ligger omkring landsgennemsnittet.
+- **Retningspil** fra 2008 via `serie_employment_gender_gap()` (samme funktion som scoren, `SAMME_SOM_SCOREN`). Landsserien har ingen kontrol, fordi indikatoren måles mod et fast mål.
+- Master og trendfiler er bygget på Python 3.9 (som CI). `fetch_ligestilling_data.py` blev kørt i sin helhed; de øvrige indikatorers tal er uændrede.
+- **`income_gender_gap` og `employment_origin_gap` scores nu også mod mål 100 (ingen forskel) med loft 100,** ikke mod landsgennemsnit, som `absolute_score`. Begge er parritetsgab, hvor ingen forskel er en meningsfuld grænse. Gini og kønsgabet i middellevetid bliver relative (0 er ikke et meningsfuldt mål). Råværdier og pile er uændrede; kun ratio og reference (nu 100 i stedet for 85,48 og 82,18).
+  - Indkomstgabet ligger fra 77 til 94 (median 84): ingen grønne, 40 gule, 58 røde på indikatoren (før 35, 63, 0). Herkomstgabet 73 til 102 (median 85): 2, 45, 51 (før 60, 38, 0).
+  - **Kategorifarver (landsgennemsnits-baseline):** Ligestilling 20 grønne, 77 gule, 1 rød (før 39, 59, 0 med beskæftigelsesgabet). Lighed 54 grønne, 36 gule, 8 røde (før 86, 10, 2).
+  - Rød betyder, at gabet findes, ikke at kommunen klarer sig dårligere end andre; teksten på metodesiden siger det. Kategorierne er nu gennemsnit af relative og absolutte scores.
+- Undersøgt og fravalgt samme dag: langtidsledighed (DST AULK04) og Natura 2000 som andel af kommunens areal (korrelerer 0,90 med `bio_vasentlig`, jf. `docs/concito-analyse-og-roadmap.md`).
+
 ## 2026-10-06 (dataopdatering: educated_staff til 2025)
 
 - **`educated_staff` (pædagoguddannede, DST BOERN1) er opdateret fra 2024 til 2025.** Landstallet går fra 46,94 til 47,1 %. Kommunernes råværdi flytter sig fra -10,0 til +4,0 procentpoint, median +0,3. Største fald er Læsø (50,0 til 40,0, en lille personalegruppe), største stigning Samsø (17,86 til 21,88). Pilen er genberegnet med `fetch_trend_history.py --kun educated_staff` og slutter nu også i 2025.

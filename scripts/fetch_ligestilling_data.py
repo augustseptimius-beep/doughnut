@@ -13,6 +13,8 @@ Indikatorer:
                                 (INDKP106, median beregnet af intervaller), direkte: højere = bedre
   employment_origin_gap       - beskæftigelsesfrekvens ikke-vestlige / dansk oprindelse i %
                                 (RAS200, 2024), direkte: højere = bedre
+  employment_gender_gap       - kvinders beskæftigelsesfrekvens i % af mænds (RAS200, 16-64 år),
+                                direkte: højere = bedre. Scores mod mål 100 (ingen forskel), loft 100
 
 Bemærk: LIGEFI1 (barselsdagpengedage) er KUN på landsdel-niveau i DST,
         ikke kommuneniveau, og er derfor udeladt.
@@ -163,6 +165,37 @@ def fetch_employment_by_origin() -> tuple[dict[str, float], float | None]:
     return ratio, national
 
 
+def serie_employment_gender_gap(aar: list[str]) -> dict[tuple[str, str], float]:
+    """
+    RAS200: kvinders beskæftigelsesfrekvens i procent af mænds, 16-64 år,
+    alle herkomster. {(kommune_kode, år): pct} inkl. hele landet (000).
+    100 = ingen forskel; under 100 = kvinder har lavere frekvens end mænd.
+    Samme form som income_gender_gap (kvinder i % af mænd) og samme
+    aldersgruppe som employment. Bruges af både scoren og retningspilen.
+    """
+    rows = api_post("RAS200", [
+        {"code": "OMRÅDE", "values": ["*"]},
+        {"code": "HERKOMST", "values": ["00"]},
+        {"code": "ALDER", "values": ["16-64"]},
+        {"code": "KØN", "values": ["M", "K"]},
+        {"code": "BEREGNING", "values": ["BFK"]},
+        {"code": "Tid", "values": aar},
+    ])
+    maend = pr_kommune_aar([r for r in rows if r.get("KØN") == "M"])
+    kvinder = pr_kommune_aar([r for r in rows if r.get("KØN") == "K"])
+    return {k: round(kvinder[k] / maend[k] * 100, 2)
+            for k in kvinder if maend.get(k)}
+
+
+def fetch_employment_by_gender() -> tuple[dict[str, float], float | None]:
+    """Kønsforskel i beskæftigelsesfrekvens i nyeste år med data, og landstallet."""
+    print("Henter beskaeftigelse pr. koen (RAS200)...")
+    aar, ratio, national = seneste(serie_employment_gender_gap(
+        seneste_aar_liste("RAS200", 2, fallback=["2024", "2023"])), tabel="RAS200")
+    print(f"  {len(ratio)} kommuner ({aar}), national: kvinders frekvens er {national}% af maends")
+    return ratio, national
+
+
 # ---------------------------------------------------------------------------
 # Beregn ratio (direkte og inverteret)
 # ---------------------------------------------------------------------------
@@ -198,6 +231,9 @@ def main():
     print("\n--- BESKAEFTIGELSE (herkomstforskelle) ---")
     emp_origin, nat_emp_origin = fetch_employment_by_origin()
 
+    print("\n--- BESKAEFTIGELSE (koensforskelle) ---")
+    emp_gender, _ = fetch_employment_by_gender()
+
     # Saml og gem
     rows = []
     for kode in sorted(VALID_CODES, key=int):
@@ -207,11 +243,18 @@ def main():
 
         # income_gender_gap: direkte (hoejere kvinde-andel = bedre)
         inc_val = income_gap.get(kode)
-        inc_ratio = ratio_direct(inc_val, nat_income) if inc_val is not None and nat_income else ""
+        # (fra okt. 2026 scoret mod mål 100, loft 100; build_master_csv.py regner ratioen)
+        inc_ratio = round(min(inc_val, 100.0), 2) if inc_val is not None else ""
 
         # employment_origin_gap: direkte (hoejere ratio = mere lighed)
         emp_val = emp_origin.get(kode)
-        emp_ratio = ratio_direct(emp_val, nat_emp_origin) if emp_val is not None and nat_emp_origin else ""
+        # (fra okt. 2026 scoret mod mål 100, loft 100)
+        emp_ratio = round(min(emp_val, 100.0), 2) if emp_val is not None else ""
+
+        # employment_gender_gap: mål 100 (ingen forskel), loft 100 - kvinder over
+        # mænd giver ingen bonus (som build_master_csv.py: reference maal + cap)
+        gen_val = emp_gender.get(kode)
+        gen_ratio = round(min(gen_val, 100.0), 2) if gen_val is not None else ""
 
         rows.append([
             kode,
@@ -224,6 +267,8 @@ def main():
             nat_le_gap if nat_le_gap is not None else "",
             nat_income if nat_income is not None else "",
             nat_emp_origin if nat_emp_origin is not None else "",
+            gen_val if gen_val is not None else "",
+            gen_ratio,
         ])
 
     write_csv("ligestilling_scores.csv", [
@@ -232,6 +277,7 @@ def main():
         "income_gender_gap_pct",     "income_gender_gap_ratio",
         "employment_origin_gap_pct", "employment_origin_gap_ratio",
         "le_gender_gap_ref", "income_gender_gap_ref", "employment_origin_gap_ref",
+        "employment_gender_gap_pct", "employment_gender_gap_ratio",
     ], rows)
 
     # Vis eksempel
@@ -241,6 +287,7 @@ def main():
             print(f"  le_gap={r[1]} aar, ratio={r[2]}")
             print(f"  income_gap={r[3]}%, ratio={r[4]}")
             print(f"  emp_gap={r[5]}%, ratio={r[6]}")
+            print(f"  emp_gender_gap={r[10]}%, ratio={r[11]}")
 
     print("\n" + "=" * 60)
     print("Ligestillingsindikatorer hentet!")
