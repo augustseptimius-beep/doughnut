@@ -2830,104 +2830,104 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 550,Tønder,le_gender_gap,95.0,4.0,år (kønsgab),2021-2025,DST HISBK,social,ligestilling,3.8
 360,Lolland,le_gender_gap,69.09,5.5,år (kønsgab),2021-2025,DST HISBK,social,ligestilling,3.8
 482,Langeland,le_gender_gap,115.15,3.3,år (kønsgab),2021-2025,DST HISBK,social,ligestilling,3.8
-201,Allerød,income_gender_gap,95.47,81.61,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-153,Brøndby,income_gender_gap,102.01,87.2,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-175,Rødovre,income_gender_gap,104.64,89.45,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-155,Dragør,income_gender_gap,94.82,81.05,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-190,Furesø,income_gender_gap,97.94,83.72,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-167,Hvidovre,income_gender_gap,103.63,88.58,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-230,Rudersdal,income_gender_gap,93.74,80.13,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-746,Skanderborg,income_gender_gap,95.94,82.01,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-269,Solrød,income_gender_gap,97.12,83.02,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-265,Roskilde,income_gender_gap,99.98,85.46,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-240,Egedal,income_gender_gap,99.65,85.18,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-151,Ballerup,income_gender_gap,102.41,87.54,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-223,Hørsholm,income_gender_gap,90.24,77.14,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-185,Tårnby,income_gender_gap,102.42,87.55,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-157,Gentofte,income_gender_gap,94.13,80.46,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-350,Lejre,income_gender_gap,98.0,83.77,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-163,Herlev,income_gender_gap,104.82,89.6,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-173,Lyngby-Taarbæk,income_gender_gap,103.65,88.6,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-210,Fredensborg,income_gender_gap,98.4,84.11,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-183,Ishøj,income_gender_gap,103.18,88.2,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-710,Favrskov,income_gender_gap,95.72,81.82,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-530,Billund,income_gender_gap,92.43,79.01,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-840,Rebild,income_gender_gap,94.6,80.86,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-187,Vallensbæk,income_gender_gap,99.38,84.95,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-253,Greve,income_gender_gap,98.23,83.97,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-147,Frederiksberg,income_gender_gap,101.67,86.91,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-259,Køge,income_gender_gap,99.17,84.77,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-159,Gladsaxe,income_gender_gap,104.73,89.52,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-217,Helsingør,income_gender_gap,102.55,87.66,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-250,Frederikssund,income_gender_gap,99.24,84.83,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-661,Holstebro,income_gender_gap,96.57,82.55,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-825,Læsø,income_gender_gap,105.03,89.78,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-657,Herning,income_gender_gap,95.24,81.41,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-260,Halsnæs,income_gender_gap,100.53,85.93,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-773,Morsø,income_gender_gap,98.2,83.94,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-219,Hillerød,income_gender_gap,100.73,86.1,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-340,Sorø,income_gender_gap,97.81,83.61,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-492,Ærø,income_gender_gap,105.16,89.89,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-561,Esbjerg,income_gender_gap,98.01,83.78,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-740,Silkeborg,income_gender_gap,97.99,83.76,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-615,Horsens,income_gender_gap,97.02,82.93,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-563,Fanø,income_gender_gap,95.62,81.74,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-316,Holbæk,income_gender_gap,99.4,84.97,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-766,Hedensted,income_gender_gap,93.88,80.25,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-607,Fredericia,income_gender_gap,97.11,83.01,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-410,Middelfart,income_gender_gap,98.03,83.8,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-329,Ringsted,income_gender_gap,98.84,84.49,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-370,Næstved,income_gender_gap,99.63,85.16,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-851,Aalborg,income_gender_gap,101.61,86.86,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-810,Brønderslev,income_gender_gap,98.54,84.23,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-727,Odder,income_gender_gap,96.86,82.8,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-336,Stevns,income_gender_gap,97.57,83.4,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-751,Aarhus,income_gender_gap,102.87,87.93,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-813,Frederikshavn,income_gender_gap,98.81,84.46,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-161,Glostrup,income_gender_gap,103.38,88.37,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-270,Gribskov,income_gender_gap,101.52,86.78,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-860,Hjørring,income_gender_gap,101.02,86.35,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-165,Albertslund,income_gender_gap,107.86,92.2,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-479,Svendborg,income_gender_gap,103.31,88.31,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-791,Viborg,income_gender_gap,97.55,83.39,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-480,Nordfyns,income_gender_gap,97.78,83.58,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-706,Syddjurs,income_gender_gap,98.06,83.82,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-440,Kerteminde,income_gender_gap,97.94,83.72,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-630,Vejle,income_gender_gap,96.29,82.31,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-101,København,income_gender_gap,105.69,90.34,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-730,Randers,income_gender_gap,98.71,84.38,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-760,Ringkøbing-Skjern,income_gender_gap,93.55,79.97,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-430,Faaborg-Midtfyn,income_gender_gap,98.96,84.59,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-320,Faxe,income_gender_gap,98.87,84.51,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-169,Høje-Taastrup,income_gender_gap,100.51,85.92,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-573,Varde,income_gender_gap,94.71,80.96,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-621,Kolding,income_gender_gap,97.52,83.36,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-420,Assens,income_gender_gap,99.61,85.15,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-580,Aabenraa,income_gender_gap,98.62,84.3,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-787,Thisted,income_gender_gap,98.65,84.33,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-756,Ikast-Brande,income_gender_gap,95.46,81.6,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-461,Odense,income_gender_gap,104.42,89.26,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-779,Skive,income_gender_gap,97.48,83.33,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-450,Nyborg,income_gender_gap,100.63,86.02,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-846,Mariagerfjord,income_gender_gap,97.29,83.16,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-820,Vesthimmerlands,income_gender_gap,98.0,83.77,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-540,Sønderborg,income_gender_gap,101.09,86.41,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-400,Bornholm,income_gender_gap,104.71,89.51,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-510,Haderslev,income_gender_gap,99.2,84.8,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-671,Struer,income_gender_gap,96.29,82.31,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-665,Lemvig,income_gender_gap,93.28,79.74,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-707,Norddjurs,income_gender_gap,98.34,84.06,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-330,Slagelse,income_gender_gap,100.88,86.23,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-306,Odsherred,income_gender_gap,103.24,88.25,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-575,Vejen,income_gender_gap,93.69,80.09,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-376,Guldborgsund,income_gender_gap,104.98,89.74,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-849,Jammerbugt,income_gender_gap,99.65,85.18,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-326,Kalundborg,income_gender_gap,97.94,83.72,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-390,Vordingborg,income_gender_gap,102.89,87.95,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-550,Tønder,income_gender_gap,98.49,84.19,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-360,Lolland,income_gender_gap,106.47,91.01,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-741,Samsø,income_gender_gap,109.56,93.65,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
-482,Langeland,income_gender_gap,106.45,90.99,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,85.48
+201,Allerød,income_gender_gap,81.61,81.61,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+153,Brøndby,income_gender_gap,87.2,87.2,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+175,Rødovre,income_gender_gap,89.45,89.45,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+155,Dragør,income_gender_gap,81.05,81.05,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+190,Furesø,income_gender_gap,83.72,83.72,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+167,Hvidovre,income_gender_gap,88.58,88.58,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+230,Rudersdal,income_gender_gap,80.13,80.13,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+746,Skanderborg,income_gender_gap,82.01,82.01,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+269,Solrød,income_gender_gap,83.02,83.02,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+265,Roskilde,income_gender_gap,85.46,85.46,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+240,Egedal,income_gender_gap,85.18,85.18,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+151,Ballerup,income_gender_gap,87.54,87.54,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+223,Hørsholm,income_gender_gap,77.14,77.14,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+185,Tårnby,income_gender_gap,87.55,87.55,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+157,Gentofte,income_gender_gap,80.46,80.46,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+350,Lejre,income_gender_gap,83.77,83.77,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+163,Herlev,income_gender_gap,89.6,89.6,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+173,Lyngby-Taarbæk,income_gender_gap,88.6,88.6,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+210,Fredensborg,income_gender_gap,84.11,84.11,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+183,Ishøj,income_gender_gap,88.2,88.2,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+710,Favrskov,income_gender_gap,81.82,81.82,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+530,Billund,income_gender_gap,79.01,79.01,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+840,Rebild,income_gender_gap,80.86,80.86,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+187,Vallensbæk,income_gender_gap,84.95,84.95,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+253,Greve,income_gender_gap,83.97,83.97,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+147,Frederiksberg,income_gender_gap,86.91,86.91,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+259,Køge,income_gender_gap,84.77,84.77,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+159,Gladsaxe,income_gender_gap,89.52,89.52,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+217,Helsingør,income_gender_gap,87.66,87.66,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+250,Frederikssund,income_gender_gap,84.83,84.83,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+661,Holstebro,income_gender_gap,82.55,82.55,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+825,Læsø,income_gender_gap,89.78,89.78,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+657,Herning,income_gender_gap,81.41,81.41,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+260,Halsnæs,income_gender_gap,85.93,85.93,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+773,Morsø,income_gender_gap,83.94,83.94,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+219,Hillerød,income_gender_gap,86.1,86.1,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+340,Sorø,income_gender_gap,83.61,83.61,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+492,Ærø,income_gender_gap,89.89,89.89,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+561,Esbjerg,income_gender_gap,83.78,83.78,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+740,Silkeborg,income_gender_gap,83.76,83.76,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+615,Horsens,income_gender_gap,82.93,82.93,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+563,Fanø,income_gender_gap,81.74,81.74,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+316,Holbæk,income_gender_gap,84.97,84.97,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+766,Hedensted,income_gender_gap,80.25,80.25,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+607,Fredericia,income_gender_gap,83.01,83.01,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+410,Middelfart,income_gender_gap,83.8,83.8,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+329,Ringsted,income_gender_gap,84.49,84.49,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+370,Næstved,income_gender_gap,85.16,85.16,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+851,Aalborg,income_gender_gap,86.86,86.86,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+810,Brønderslev,income_gender_gap,84.23,84.23,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+727,Odder,income_gender_gap,82.8,82.8,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+336,Stevns,income_gender_gap,83.4,83.4,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+751,Aarhus,income_gender_gap,87.93,87.93,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+813,Frederikshavn,income_gender_gap,84.46,84.46,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+161,Glostrup,income_gender_gap,88.37,88.37,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+270,Gribskov,income_gender_gap,86.78,86.78,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+860,Hjørring,income_gender_gap,86.35,86.35,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+165,Albertslund,income_gender_gap,92.2,92.2,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+479,Svendborg,income_gender_gap,88.31,88.31,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+791,Viborg,income_gender_gap,83.39,83.39,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+480,Nordfyns,income_gender_gap,83.58,83.58,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+706,Syddjurs,income_gender_gap,83.82,83.82,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+440,Kerteminde,income_gender_gap,83.72,83.72,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+630,Vejle,income_gender_gap,82.31,82.31,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+101,København,income_gender_gap,90.34,90.34,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+730,Randers,income_gender_gap,84.38,84.38,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+760,Ringkøbing-Skjern,income_gender_gap,79.97,79.97,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+430,Faaborg-Midtfyn,income_gender_gap,84.59,84.59,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+320,Faxe,income_gender_gap,84.51,84.51,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+169,Høje-Taastrup,income_gender_gap,85.92,85.92,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+573,Varde,income_gender_gap,80.96,80.96,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+621,Kolding,income_gender_gap,83.36,83.36,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+420,Assens,income_gender_gap,85.15,85.15,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+580,Aabenraa,income_gender_gap,84.3,84.3,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+787,Thisted,income_gender_gap,84.33,84.33,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+756,Ikast-Brande,income_gender_gap,81.6,81.6,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+461,Odense,income_gender_gap,89.26,89.26,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+779,Skive,income_gender_gap,83.33,83.33,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+450,Nyborg,income_gender_gap,86.02,86.02,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+846,Mariagerfjord,income_gender_gap,83.16,83.16,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+820,Vesthimmerlands,income_gender_gap,83.77,83.77,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+540,Sønderborg,income_gender_gap,86.41,86.41,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+400,Bornholm,income_gender_gap,89.51,89.51,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+510,Haderslev,income_gender_gap,84.8,84.8,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+671,Struer,income_gender_gap,82.31,82.31,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+665,Lemvig,income_gender_gap,79.74,79.74,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+707,Norddjurs,income_gender_gap,84.06,84.06,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+330,Slagelse,income_gender_gap,86.23,86.23,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+306,Odsherred,income_gender_gap,88.25,88.25,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+575,Vejen,income_gender_gap,80.09,80.09,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+376,Guldborgsund,income_gender_gap,89.74,89.74,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+849,Jammerbugt,income_gender_gap,85.18,85.18,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+326,Kalundborg,income_gender_gap,83.72,83.72,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+390,Vordingborg,income_gender_gap,87.95,87.95,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+550,Tønder,income_gender_gap,84.19,84.19,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+360,Lolland,income_gender_gap,91.01,91.01,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+741,Samsø,income_gender_gap,93.65,93.65,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
+482,Langeland,income_gender_gap,90.99,90.99,% (kvinders medianindkomst af mænds),2024,DST INDKP106 (median),social,ligestilling,100.0
 201,Allerød,employment_gender_gap,97.77,97.77,% (kvinders BFK af mænds),2024,DST RAS200,social,ligestilling,100.0
 153,Brøndby,employment_gender_gap,91.56,91.56,% (kvinders BFK af mænds),2024,DST RAS200,social,ligestilling,100.0
 175,Rødovre,employment_gender_gap,95.78,95.78,% (kvinders BFK af mænds),2024,DST RAS200,social,ligestilling,100.0
@@ -3026,104 +3026,104 @@ kommune_kode,kommune_navn,indicator_id,ratio,raw_value,unit,data_year,source,cat
 360,Lolland,employment_gender_gap,93.56,93.56,% (kvinders BFK af mænds),2024,DST RAS200,social,ligestilling,100.0
 741,Samsø,employment_gender_gap,99.62,99.62,% (kvinders BFK af mænds),2024,DST RAS200,social,ligestilling,100.0
 482,Langeland,employment_gender_gap,97.08,97.08,% (kvinders BFK af mænds),2024,DST RAS200,social,ligestilling,100.0
-201,Allerød,employment_origin_gap,99.73,81.96,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-153,Brøndby,employment_origin_gap,105.48,86.68,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-175,Rødovre,employment_origin_gap,107.52,88.36,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-155,Dragør,employment_origin_gap,91.69,75.35,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-190,Furesø,employment_origin_gap,105.85,86.99,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-167,Hvidovre,employment_origin_gap,107.11,88.02,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-230,Rudersdal,employment_origin_gap,105.0,86.29,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-746,Skanderborg,employment_origin_gap,97.87,80.43,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-269,Solrød,employment_origin_gap,104.08,85.53,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-265,Roskilde,employment_origin_gap,98.36,80.83,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-240,Egedal,employment_origin_gap,105.23,86.48,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-151,Ballerup,employment_origin_gap,104.92,86.22,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-223,Hørsholm,employment_origin_gap,104.55,85.92,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-185,Tårnby,employment_origin_gap,106.4,87.44,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-157,Gentofte,employment_origin_gap,98.16,80.67,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-350,Lejre,employment_origin_gap,99.55,81.81,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-163,Herlev,employment_origin_gap,108.08,88.82,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-173,Lyngby-Taarbæk,employment_origin_gap,97.92,80.47,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-210,Fredensborg,employment_origin_gap,103.38,84.96,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-183,Ishøj,employment_origin_gap,108.46,89.13,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-710,Favrskov,employment_origin_gap,104.38,85.78,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-530,Billund,employment_origin_gap,113.8,93.52,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-840,Rebild,employment_origin_gap,114.82,94.36,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-187,Vallensbæk,employment_origin_gap,107.59,88.42,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-253,Greve,employment_origin_gap,103.18,84.79,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-147,Frederiksberg,employment_origin_gap,95.87,78.79,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-259,Køge,employment_origin_gap,92.67,76.16,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-159,Gladsaxe,employment_origin_gap,108.74,89.36,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-217,Helsingør,employment_origin_gap,91.53,75.22,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-250,Frederikssund,employment_origin_gap,96.93,79.66,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-661,Holstebro,employment_origin_gap,99.36,81.65,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-825,Læsø,employment_origin_gap,111.78,91.86,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-657,Herning,employment_origin_gap,100.92,82.94,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-260,Halsnæs,employment_origin_gap,100.1,82.26,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-773,Morsø,employment_origin_gap,118.84,97.66,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-219,Hillerød,employment_origin_gap,101.23,83.19,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-340,Sorø,employment_origin_gap,98.95,81.32,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-492,Ærø,employment_origin_gap,110.76,91.02,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-561,Esbjerg,employment_origin_gap,103.36,84.94,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-740,Silkeborg,employment_origin_gap,97.1,79.8,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-615,Horsens,employment_origin_gap,100.57,82.65,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-563,Fanø,employment_origin_gap,123.66,101.62,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-316,Holbæk,employment_origin_gap,99.25,81.56,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-766,Hedensted,employment_origin_gap,101.28,83.23,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-607,Fredericia,employment_origin_gap,91.07,74.84,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-410,Middelfart,employment_origin_gap,103.05,84.69,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-329,Ringsted,employment_origin_gap,92.76,76.23,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-370,Næstved,employment_origin_gap,100.24,82.38,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-851,Aalborg,employment_origin_gap,96.37,79.2,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-810,Brønderslev,employment_origin_gap,98.66,81.08,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-727,Odder,employment_origin_gap,92.09,75.68,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-336,Stevns,employment_origin_gap,106.06,87.16,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-751,Aarhus,employment_origin_gap,89.04,73.17,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-813,Frederikshavn,employment_origin_gap,95.06,78.12,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-161,Glostrup,employment_origin_gap,106.79,87.76,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-270,Gribskov,employment_origin_gap,102.08,83.89,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-860,Hjørring,employment_origin_gap,105.23,86.48,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-165,Albertslund,employment_origin_gap,111.65,91.75,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-479,Svendborg,employment_origin_gap,99.14,81.47,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-791,Viborg,employment_origin_gap,101.23,83.19,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-480,Nordfyns,employment_origin_gap,94.03,77.27,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-706,Syddjurs,employment_origin_gap,96.02,78.91,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-440,Kerteminde,employment_origin_gap,106.5,87.52,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-630,Vejle,employment_origin_gap,97.53,80.15,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-101,København,employment_origin_gap,97.37,80.02,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-730,Randers,employment_origin_gap,95.9,78.81,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-760,Ringkøbing-Skjern,employment_origin_gap,115.87,95.22,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-430,Faaborg-Midtfyn,employment_origin_gap,99.57,81.83,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-320,Faxe,employment_origin_gap,98.98,81.34,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-169,Høje-Taastrup,employment_origin_gap,106.45,87.48,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-573,Varde,employment_origin_gap,106.64,87.64,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-621,Kolding,employment_origin_gap,95.81,78.74,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-420,Assens,employment_origin_gap,105.74,86.9,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-580,Aabenraa,employment_origin_gap,97.23,79.9,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-787,Thisted,employment_origin_gap,113.76,93.49,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-756,Ikast-Brande,employment_origin_gap,90.4,74.29,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-461,Odense,employment_origin_gap,88.96,73.11,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-779,Skive,employment_origin_gap,109.14,89.69,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-450,Nyborg,employment_origin_gap,96.33,79.16,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-846,Mariagerfjord,employment_origin_gap,109.19,89.73,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-820,Vesthimmerlands,employment_origin_gap,114.16,93.82,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-540,Sønderborg,employment_origin_gap,93.79,77.08,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-400,Bornholm,employment_origin_gap,110.08,90.46,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-510,Haderslev,employment_origin_gap,97.79,80.36,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-671,Struer,employment_origin_gap,104.68,86.03,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-665,Lemvig,employment_origin_gap,120.46,98.99,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-707,Norddjurs,employment_origin_gap,108.7,89.33,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-330,Slagelse,employment_origin_gap,94.26,77.46,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-306,Odsherred,employment_origin_gap,106.17,87.25,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-575,Vejen,employment_origin_gap,111.19,91.38,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-376,Guldborgsund,employment_origin_gap,103.25,84.85,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-849,Jammerbugt,employment_origin_gap,105.23,86.48,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-326,Kalundborg,employment_origin_gap,108.09,88.83,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-390,Vordingborg,employment_origin_gap,111.83,91.9,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-550,Tønder,employment_origin_gap,107.52,88.36,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-360,Lolland,employment_origin_gap,117.27,96.37,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-741,Samsø,employment_origin_gap,109.61,90.08,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
-482,Langeland,employment_origin_gap,122.02,100.28,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,82.18
+201,Allerød,employment_origin_gap,81.96,81.96,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+153,Brøndby,employment_origin_gap,86.68,86.68,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+175,Rødovre,employment_origin_gap,88.36,88.36,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+155,Dragør,employment_origin_gap,75.35,75.35,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+190,Furesø,employment_origin_gap,86.99,86.99,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+167,Hvidovre,employment_origin_gap,88.02,88.02,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+230,Rudersdal,employment_origin_gap,86.29,86.29,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+746,Skanderborg,employment_origin_gap,80.43,80.43,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+269,Solrød,employment_origin_gap,85.53,85.53,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+265,Roskilde,employment_origin_gap,80.83,80.83,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+240,Egedal,employment_origin_gap,86.48,86.48,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+151,Ballerup,employment_origin_gap,86.22,86.22,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+223,Hørsholm,employment_origin_gap,85.92,85.92,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+185,Tårnby,employment_origin_gap,87.44,87.44,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+157,Gentofte,employment_origin_gap,80.67,80.67,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+350,Lejre,employment_origin_gap,81.81,81.81,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+163,Herlev,employment_origin_gap,88.82,88.82,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+173,Lyngby-Taarbæk,employment_origin_gap,80.47,80.47,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+210,Fredensborg,employment_origin_gap,84.96,84.96,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+183,Ishøj,employment_origin_gap,89.13,89.13,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+710,Favrskov,employment_origin_gap,85.78,85.78,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+530,Billund,employment_origin_gap,93.52,93.52,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+840,Rebild,employment_origin_gap,94.36,94.36,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+187,Vallensbæk,employment_origin_gap,88.42,88.42,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+253,Greve,employment_origin_gap,84.79,84.79,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+147,Frederiksberg,employment_origin_gap,78.79,78.79,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+259,Køge,employment_origin_gap,76.16,76.16,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+159,Gladsaxe,employment_origin_gap,89.36,89.36,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+217,Helsingør,employment_origin_gap,75.22,75.22,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+250,Frederikssund,employment_origin_gap,79.66,79.66,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+661,Holstebro,employment_origin_gap,81.65,81.65,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+825,Læsø,employment_origin_gap,91.86,91.86,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+657,Herning,employment_origin_gap,82.94,82.94,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+260,Halsnæs,employment_origin_gap,82.26,82.26,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+773,Morsø,employment_origin_gap,97.66,97.66,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+219,Hillerød,employment_origin_gap,83.19,83.19,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+340,Sorø,employment_origin_gap,81.32,81.32,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+492,Ærø,employment_origin_gap,91.02,91.02,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+561,Esbjerg,employment_origin_gap,84.94,84.94,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+740,Silkeborg,employment_origin_gap,79.8,79.8,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+615,Horsens,employment_origin_gap,82.65,82.65,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+563,Fanø,employment_origin_gap,100.0,101.62,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+316,Holbæk,employment_origin_gap,81.56,81.56,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+766,Hedensted,employment_origin_gap,83.23,83.23,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+607,Fredericia,employment_origin_gap,74.84,74.84,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+410,Middelfart,employment_origin_gap,84.69,84.69,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+329,Ringsted,employment_origin_gap,76.23,76.23,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+370,Næstved,employment_origin_gap,82.38,82.38,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+851,Aalborg,employment_origin_gap,79.2,79.2,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+810,Brønderslev,employment_origin_gap,81.08,81.08,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+727,Odder,employment_origin_gap,75.68,75.68,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+336,Stevns,employment_origin_gap,87.16,87.16,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+751,Aarhus,employment_origin_gap,73.17,73.17,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+813,Frederikshavn,employment_origin_gap,78.12,78.12,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+161,Glostrup,employment_origin_gap,87.76,87.76,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+270,Gribskov,employment_origin_gap,83.89,83.89,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+860,Hjørring,employment_origin_gap,86.48,86.48,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+165,Albertslund,employment_origin_gap,91.75,91.75,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+479,Svendborg,employment_origin_gap,81.47,81.47,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+791,Viborg,employment_origin_gap,83.19,83.19,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+480,Nordfyns,employment_origin_gap,77.27,77.27,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+706,Syddjurs,employment_origin_gap,78.91,78.91,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+440,Kerteminde,employment_origin_gap,87.52,87.52,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+630,Vejle,employment_origin_gap,80.15,80.15,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+101,København,employment_origin_gap,80.02,80.02,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+730,Randers,employment_origin_gap,78.81,78.81,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+760,Ringkøbing-Skjern,employment_origin_gap,95.22,95.22,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+430,Faaborg-Midtfyn,employment_origin_gap,81.83,81.83,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+320,Faxe,employment_origin_gap,81.34,81.34,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+169,Høje-Taastrup,employment_origin_gap,87.48,87.48,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+573,Varde,employment_origin_gap,87.64,87.64,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+621,Kolding,employment_origin_gap,78.74,78.74,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+420,Assens,employment_origin_gap,86.9,86.9,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+580,Aabenraa,employment_origin_gap,79.9,79.9,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+787,Thisted,employment_origin_gap,93.49,93.49,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+756,Ikast-Brande,employment_origin_gap,74.29,74.29,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+461,Odense,employment_origin_gap,73.11,73.11,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+779,Skive,employment_origin_gap,89.69,89.69,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+450,Nyborg,employment_origin_gap,79.16,79.16,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+846,Mariagerfjord,employment_origin_gap,89.73,89.73,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+820,Vesthimmerlands,employment_origin_gap,93.82,93.82,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+540,Sønderborg,employment_origin_gap,77.08,77.08,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+400,Bornholm,employment_origin_gap,90.46,90.46,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+510,Haderslev,employment_origin_gap,80.36,80.36,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+671,Struer,employment_origin_gap,86.03,86.03,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+665,Lemvig,employment_origin_gap,98.99,98.99,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+707,Norddjurs,employment_origin_gap,89.33,89.33,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+330,Slagelse,employment_origin_gap,77.46,77.46,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+306,Odsherred,employment_origin_gap,87.25,87.25,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+575,Vejen,employment_origin_gap,91.38,91.38,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+376,Guldborgsund,employment_origin_gap,84.85,84.85,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+849,Jammerbugt,employment_origin_gap,86.48,86.48,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+326,Kalundborg,employment_origin_gap,88.83,88.83,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+390,Vordingborg,employment_origin_gap,91.9,91.9,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+550,Tønder,employment_origin_gap,88.36,88.36,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+360,Lolland,employment_origin_gap,96.37,96.37,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+741,Samsø,employment_origin_gap,90.08,90.08,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
+482,Langeland,employment_origin_gap,100.0,100.28,% (ikkevestlig/dansk BFK),2024,DST RAS200,social,lighed,100.0
 201,Allerød,music_school,150.0,23.73,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
 153,Brøndby,music_school,84.07,9.13,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86
 175,Rødovre,music_school,150.0,17.03,pr. 1.000 indb.,2025,DST SKOLM02B,social,kultur_fritid,10.86

@@ -243,11 +243,13 @@ def main():
 
         # income_gender_gap: direkte (hoejere kvinde-andel = bedre)
         inc_val = income_gap.get(kode)
-        inc_ratio = ratio_direct(inc_val, nat_income) if inc_val is not None and nat_income else ""
+        # (fra okt. 2026 scoret mod mål 100, loft 100; build_master_csv.py regner ratioen)
+        inc_ratio = round(min(inc_val, 100.0), 2) if inc_val is not None else ""
 
         # employment_origin_gap: direkte (hoejere ratio = mere lighed)
         emp_val = emp_origin.get(kode)
-        emp_ratio = ratio_direct(emp_val, nat_emp_origin) if emp_val is not None and nat_emp_origin else ""
+        # (fra okt. 2026 scoret mod mål 100, loft 100)
+        emp_ratio = round(min(emp_val, 100.0), 2) if emp_val is not None else ""
 
         # employment_gender_gap: mål 100 (ingen forskel), loft 100 - kvinder over
         # mænd giver ingen bonus (som build_master_csv.py: reference maal + cap)

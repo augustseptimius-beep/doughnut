@@ -751,10 +751,13 @@
       "csv": "ligestilling_scores.csv",
       "ratio_col": "income_gender_gap_ratio",
       "raw_col": "income_gender_gap_pct",
-      "reference": {"type": "landstal", "col": "income_gender_gap_ref", "definition": "DST's landstal (hele landet); fetch_ligestilling_data.py"},
+      "reference": {"type": "maal", "value": 100, "label": "100 % (ingen forskel mellem kvinders og mænds medianindkomst)"},
       "inverse": false,
-      "baseline_level": 3,
-      "note": "Median som disposable_income, se scripts/indkomst_median.py."
+      "cap": 100,
+      "baseline_level": 2,
+      "absolute_score": true,
+      "target_label": "100 % (ingen kønsforskel)",
+      "note": "Median som disposable_income, se scripts/indkomst_median.py. Fra okt. 2026 scoret mod mål 100 (ingen forskel) med loft 100, ikke mod landsgennemsnit; ratio_col i CSV'en er kun krydstjek."
     },
     {
       "id": "employment_gender_gap",
@@ -793,10 +796,13 @@
       "csv": "ligestilling_scores.csv",
       "ratio_col": "employment_origin_gap_ratio",
       "raw_col": "employment_origin_gap_pct",
-      "reference": {"type": "landstal", "col": "employment_origin_gap_ref", "definition": "DST's landstal (hele landet); fetch_ligestilling_data.py"},
+      "reference": {"type": "maal", "value": 100, "label": "100 % (ingen forskel mellem ikke-vestlige og danskeres beskæftigelsesfrekvens)"},
       "inverse": false,
-      "baseline_level": 3,
-      "note": "Indvandrere fra ikke-vestlige lande (HERKOMST 25) mod personer med dansk oprindelse (10), 16-64 år. Indtil sep. 2026 16-66 år, som DST kun har fra 2022; 16-64 giver en retningspil fra 2008 og er samme aldersgruppe som employment."
+      "cap": 100,
+      "baseline_level": 2,
+      "absolute_score": true,
+      "target_label": "100 % (ingen forskel)",
+      "note": "Fra okt. 2026 scoret mod mål 100 (ingen forskel) med loft 100, ikke mod landsgennemsnit; ratio_col i CSV'en er kun krydstjek. Indvandrere fra ikke-vestlige lande (HERKOMST 25) mod personer med dansk oprindelse (10), 16-64 år. Indtil sep. 2026 16-66 år, som DST kun har fra 2022; 16-64 giver en retningspil fra 2008 og er samme aldersgruppe som employment."
     },
     {
       "id": "music_school",
