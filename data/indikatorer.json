@@ -101,7 +101,7 @@
       "id": "ligestilling",
       "name": "Ligestilling",
       "description": "Kønsbalance og lige muligheder i kommunen - herunder repræsentation på arbejdsmarkedet og i ledelse.",
-      "indicators": ["gender_leadership", "le_gender_gap", "income_gender_gap"]
+      "indicators": ["gender_leadership", "le_gender_gap", "income_gender_gap", "employment_gender_gap"]
     },
     {
       "id": "klimatilpasning",
@@ -755,6 +755,29 @@
       "inverse": false,
       "baseline_level": 3,
       "note": "Median som disposable_income, se scripts/indkomst_median.py."
+    },
+    {
+      "id": "employment_gender_gap",
+      "category": "social",
+      "dimension": "ligestilling",
+      "name": "Beskæftigelse kvinder vs. mænd (%)",
+      "table": "RAS200",
+      "source": "DST RAS200",
+      "source_url": "https://www.statistikbanken.dk/RAS200",
+      "unit": "% (kvinders BFK af mænds)",
+      "raw_unit": "% (kvinders beskæftigelsesfrekvens / mænds)",
+      "data_year": "2024",
+      "csv": "ligestilling_scores.csv",
+      "ratio_col": "employment_gender_gap_ratio",
+      "raw_col": "employment_gender_gap_pct",
+      "reference": {"type": "maal", "value": 100, "label": "100 % (ingen forskel mellem kvinders og mænds beskæftigelsesfrekvens)"},
+      "inverse": false,
+      "cap": 100,
+      "baseline_level": 2,
+      "absolute_score": true,
+      "target_label": "100 % (ingen kønsforskel)",
+      "rationale": "Kvinders beskæftigelsesfrekvens (16-64 år) i procent af mænds. Scoret mod et absolut mål på ingen forskel, ikke mod landsgennemsnittet: en kønsforskel i adgangen til arbejde er et ligestillingsproblem uanset, hvor stor den er i resten af landet. Scoren er højst 100, så en kommune hvor kvinder er mere i arbejde end mænd ikke får bonus for det.",
+      "note": "Samme tabel, aldersgruppe og herkomst I alt som employment (RAS200, 16-64, BFK). Mål 100 med loft 100 (cap), som kystrisiko. absolute_score: omskaleres ikke af baseline-toggle. Pilen bruger serie_employment_gender_gap() i fetch_ligestilling_data.py, samme funktion som scoren."
     },
     {
       "id": "employment_origin_gap",
