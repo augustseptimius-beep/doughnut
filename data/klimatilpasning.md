@@ -1,7 +1,7 @@
 # Klimatilpasning - metodenote og fremtidigt arbejde
 
 **Opdateret:** Oktober 2026 (nyt F&P-kort med hele 2025; september 2026: undersøgelse af Kystplanlægger og HIP, se nedenfor)
-**Status:** To indikatorer implementeret: forsikringsskader (`vejr_skader`) og kystrisiko i 2070 (`kystrisiko`, fra sep. 2026). Kategorien måler restrisiko: hvor udsat kommunen er, når det der allerede er gjort, er regnet med. Kategorien er gennemsnittet af de to, og kystrisikoen tæller højst 100, så fravær af kyst ikke udligner vejrskader (CHANGELOG 25. sep. 2026). På sigt er den rigtige løsning at lægge skaderne sammen i kroner pr. indbygger, hvis F&P kan levere udbetalinger pr. kommune.
+**Status:** To indikatorer implementeret: forsikringsskader (`vejr_skader`) og kystrisiko med dagens havniveau (`kystrisiko`, fra sep. 2026; 2020-laget fra okt. 2026, før 2070). Kategorien måler restrisiko: hvor udsat kommunen er, når det der allerede er gjort, er regnet med. Kategorien er gennemsnittet af de to, og kystrisikoen tæller højst 100, så fravær af kyst ikke udligner vejrskader (CHANGELOG 25. sep. 2026). På sigt er den rigtige løsning at lægge skaderne sammen i kroner pr. indbygger, hvis F&P kan levere udbetalinger pr. kommune.
 
 ---
 
@@ -86,7 +86,7 @@ Dette er komplekst men fagligt korrekt. Se CONCITO (2024): "Adaptation approache
 
 ## Undersøgt sep. 2026: Kystplanlægger og HIP pr. kommune
 
-Anledning: KL's "Data- og værktøjsoversigt fra 5 webinarer om GIS-DATA-Klimatilpasning" (v1.0, 2023). Af kilderne i oversigten var Kystplanlægger og HIP de to, der kunne give et sammenligneligt tal for alle 98 kommuner. Kystplanlæggerens risiko for 2070 blev derefter indført som indikatoren `kystrisiko` (`scripts/fetch_kystrisiko.py`, se CHANGELOG 25. sep. 2026). Tallene for 2020 nedenfor er prøveberegningen; indikatoren bruger 2070, fordi kategorien skal måle robusthed over for klimaforandringerne. HIP-tallene er kun en prøveberegning.
+Anledning: KL's "Data- og værktøjsoversigt fra 5 webinarer om GIS-DATA-Klimatilpasning" (v1.0, 2023). Af kilderne i oversigten var Kystplanlægger og HIP de to, der kunne give et sammenligneligt tal for alle 98 kommuner. Kystplanlæggerens risiko for 2070 blev derefter indført som indikatoren `kystrisiko` (`scripts/fetch_kystrisiko.py`, se CHANGELOG 25. sep. 2026). Indikatoren brugte først 2070, fordi kategorien skal måle robusthed over for klimaforandringerne. Fra okt. 2026 bruger den 2020-laget, se "Valg af kilde og horisont okt. 2026" nedenfor. Tallene for 2020 nedenfor er den oprindelige prøveberegning (folketal 2025); indikatoren deler med folketallet 2021. HIP-tallene er kun en prøveberegning.
 
 ### Kystplanlægger (Kystdirektoratet) - oversvømmelse og erosion fra havet
 
@@ -156,10 +156,41 @@ Loftet på 100 er en mellemløsning: det fjerner bonussen uden at skjule nogen a
 Hvad det kræver:
 
 1. **Udbetalinger pr. kommune fra F&P.** Kommunekortene (`z0zEO` pr. 1.000 indb., `TUJ9b` antal) har kun det samlede antal skader, uden skadetype og uden beløb. F&P's to Excel-filer (kvartalsstatistik 2023-2025 og årsstatistik 2006-2024, undersøgt okt. 2026) har skadetype, dækningsområde og for årsstatistikken erstatninger i kroner, men kun for hele landet. Artiklens tekst nævner enkelte kommuner der er hårdt ramt af skybrudsskader, så F&P har formentlig typerne pr. kommune internt. Den realistiske vej er en henvendelse til F&P fra Thisted Kommune/LIFE ACT. Stormflodsskader fra Naturskaderådet kunne i samme omgang afløse Kystplanlæggerens modeltal med faktiske skader.
-2. **En beslutning om tidshorisonten.** Forsikringsudbetalingerne er dagens skader, mens `kystrisiko` er 2070. Summen blander to horisonter. Den kan enten stå som den er (dagens vejrskader plus fremtidens kystrisiko, tydeligt beskrevet), eller kystdelen kan bruge 2020, så begge er i dag. Det skal afgøres, før indikatoren bygges.
+2. **En beslutning om tidshorisonten.** Afgjort okt. 2026: `kystrisiko` bruger 2020-laget, så begge mål er i dag. Den oprindelige tekst: Forsikringsudbetalingerne er dagens skader, mens `kystrisiko` var 2070. Summen blander to horisonter. Den kan enten stå som den er (dagens vejrskader plus fremtidens kystrisiko, tydeligt beskrevet), eller kystdelen kan bruge 2020, så begge er i dag. Det skal afgøres, før indikatoren bygges.
 3. **Samme dækning.** Forsikringstallene dækker forsikrede private skader (ca. 90 % af markedet). Kystplanlæggeren dækker også infrastruktur, landbrug og offentlige bygninger. Forskellen skal stå på metodesiden.
 
 Lykkes det, erstatter den samlede indikator både `vejr_skader` og `kystrisiko`, og det sociale loft pr. indikator (`cap`) er ikke længere nødvendigt her.
+
+---
+
+## Valg af kilde og horisont okt. 2026
+
+**Beslutning:** `kystrisiko` bruger Kystplanlæggerens 2020-lag (dagens havniveau) i stedet for 2070 (RCP8.5). Kystplanlæggeren beholdes frem for DTU's nyere stormflodsberegninger, fordi den er offentlig og kan regnes efter.
+
+**Horisont.** `vejr_skader` er dagens skader, og kategorien måler restrisiko, så begge mål er nu i dag. Rækkefølgen ændres kun lidt (rangkorrelation 0,94 mellem 2020 og 2070). Erosionen fylder langt mindre i 2020: 150 mod 1.919 mio. kr./år på landsplan, fordi 2070-lagene antager, at høfder og skråningsbeskyttelse bryder sammen. Landstallet går fra 1.029 til 473 kr. pr. indbygger. Thisted: 568 kr. pr. indbygger (20,6 mio. fra oversvømmelse, 3,9 mio. fra erosion).
+
+**Undersøgte alternativer:**
+
+| Kilde | Hvad den har | Vurdering |
+|---|---|---|
+| DTU Management, "Skader ved stormfloder i Danmark" (for KL, Realdania og Klimaalliancen, okt. 2025) | Skade pr. kommune, sektor, klimascenarie, år (2024-2124) og hændelse (5- til 500-årshændelser) | Rangerer kommunerne tættere på de faktiske erstatninger (se nedenfor), men tallene er ikke offentlige. Arket er delt af Per S. Kaspersen og ligger ikke i repoet. Kan genåbnes, hvis DTU tillader offentliggørelse og bekræfter den årlige skade |
+| Naturskaderådet, skadesstatistik pr. kommune 1991-2017 | Antal sager og erstatning pr. kommune og hændelse (stormflod, oversvømmelse) | Slutter i 2017 og er for tilfældig som indikator (få store hændelser). Brugt til validering |
+| F&P, pressebilag | Storm- og skybrudsskader pr. kommune for enkelte kvartaler og halvår | Ingen sammenhængende serie |
+| DMI Klimaatlas | Vandstand, nedbør m.m. pr. kyststrækning | Fare, ikke skade |
+
+**Validering mod faktiske skader.** Rangkorrelation (Spearman) pr. indbygger mellem modellen og Naturskaderådets udbetalte stormflodserstatninger 1991-2017:
+
+| Faktiske skader | Kystplanlægger 2020 | Kystplanlægger 2070 | DTU 2024 (egen beregning) |
+|---|---|---|---|
+| Alle hændelser, kroner | 0,63 | 0,64 | 0,74 |
+| Antal sager | 0,70 | 0,71 | 0,81 |
+| Uden Bodil (dec. 2013) | 0,70 | 0,72 | 0,79 |
+
+DTU-tallet er den årlige skade regnet af os ud fra skaden ved 5- til 500-årshændelser (trapez over sandsynligheden), alle sektorer undtagen menneskelige omkostninger, SSP2-4,5. Forskellen skyldes især, at Kystplanlæggeren kun regner med hændelser fra 50 år og op, mens ca. 80 % af DTU's skade kommer fra hyppigere hændelser, og at Hvidovre, Tårnby og København har høj risiko i Kystplanlæggeren men lav i DTU og i de faktiske erstatninger (formentlig diger bygget efter højdemodellen 2014-2015, ikke verificeret). Alle modeller ligger langt over de udbetalte erstatninger (54 mio. kr./år i gennemsnit 1991-2017), så tallene bruges kun relativt til landsgennemsnittet.
+
+**Indkomst som nævner** (skade som andel af disponibel indkomst) blev afprøvet og fravalgt: rangkorrelationen med skade pr. indbygger er 0,999, fordi skaderne varierer langt mere end indkomsten.
+
+**Stormflod og erosion** står hver for sig i `kystrisiko_scores.csv` (`kystrisiko_oversvoemmelse_mio`, `kystrisiko_erosion_mio`). De er ikke delt i to indikatorer, fordi erosionen kun er 5 % af landstallet i 2020 og ellers ville veje lige så meget som oversvømmelse.
 
 ---
 

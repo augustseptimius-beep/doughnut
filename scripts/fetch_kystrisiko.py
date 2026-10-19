@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-fetch_kystrisiko.py - forventet årlig skade fra havet i 2070 pr. indbygger
+fetch_kystrisiko.py - forventet årlig skade fra havet i dag pr. indbygger
 ==========================================================================
 
 Anden indikator under Klimatilpasning (ved siden af vejr_skader): hvor meget
-oversvømmelse fra havet og kysterosion ventes at koste kommunen om året i 2070,
-i kr. pr. indbygger. Kategorien måler kommunens restrisiko over for
+oversvømmelse fra havet og kysterosion ventes at koste kommunen om året med
+dagens havniveau (Kystplanlæggerens 2020-lag), i kr. pr. indbygger. Kategorien måler kommunens restrisiko over for
 klimaforandringerne: hvad der er tilbage, når det der allerede er gjort, er
 regnet med. Se data/klimatilpasning.md.
 
@@ -14,18 +14,32 @@ DATAKILDE
 Kystdirektoratets Kystplanlægger, datapakke version 1 af 18. marts 2021
 (https://kystplanlaegger.dk/webgis-og-data/hent-data). To rasterlag i
 100 m × 100 m, enhed kr./år pr. celle ("forventet årlig skade", FÅS):
-  Oversvømmelse/Risiko/Oversvømmelses_Risiko_2070.tif
-  Erosion/Risiko/Erosions_risiko_2070.tif
+  Oversvømmelse/Risiko/Oversvømmelses_Risiko_2020.tif
+  Erosion/Risiko/Erosions_risiko_2020.tif
 Risikoen er skaden ved 50-, 100-, 1.000- og 10.000-årshændelser vægtet med
-deres sandsynlighed, med havstigning efter RCP8.5.
+deres sandsynlighed.
+
+HVORFOR 2020 OG IKKE 2070 (beslutning okt. 2026)
+------------------------------------------------
+Indtil okt. 2026 brugte indikatoren 2070-lagene (havstigning efter RCP8.5).
+Kategorien måler restrisiko, og vejr_skader er dagens skader, så kystrisikoen
+bruger nu samme horisont. Rækkefølgen af kommunerne ændres kun lidt
+(rangkorrelation 0,94 mellem 2020 og 2070). Erosionen fylder langt mindre i
+2020 (150 mod 1.919 mio. kr./år på landsplan), fordi 2070-lagene antager, at
+høfder og skråningsbeskyttelse bryder sammen. Datapakken har også lag for 2070
+og 2120, hvis horisonten skal genåbnes.
+
+DTU's stormflodsberegninger for KL, Realdania og Klimaalliancen (2025) blev
+afprøvet som alternativ og rangerer kommunerne lidt tættere på
+Naturskaderådets udbetalte erstatninger 1991-2017, men tallene er ikke
+offentlige. Kystplanlæggeren er valgt, fordi den er offentlig og kan regnes
+efter. Se data/klimatilpasning.md.
 
 Hvad modellen regner med (metoderapporten, januar 2023):
   - Diger og klitter indgår, fordi de ligger i Danmarks Højdemodel 2014-2015
     med kommunernes rettelser. Øvrig kystbeskyttelse indgår som udgangspunkt
     ikke, og ved kronisk erosion antages høfder og skråningsbeskyttelse at
     kollapse.
-  - 2070 ændrer kun faren (havstigning), ikke sårbarheden: bygninger og
-    værdier er dagens.
   - Tiltag efter højdemodellen slår ikke igennem, før Kystdirektoratet
     opdaterer kortlægningen. Tallet flytter sig derfor ikke år for år og har
     ingen retningspil.
@@ -39,8 +53,8 @@ METODE
 Cellerne summeres inden for kommunegrænserne (DAGI, EPSG:25832, fra
 data/kommunegraenser_25832.gpkg via kommunegraenser.py). En celle
 tilhører den kommune, dens centrum ligger i. Kystceller med centrum i havet
-tildeles den kommune, de berører; uden den regel tabes ca. 2 % af
-oversvømmelsesrisikoen og 13 % af erosionsrisikoen, fordi skaden ligger i
+tildeles den kommune, de berører; uden den regel tabes ca. 3 % af
+oversvømmelsesrisikoen og 25 % af erosionsrisikoen (2020-lagene), fordi skaden ligger i
 selve kystlinjen. Summen deles med folketallet 1. januar 2021, datapakkens år
 (dst.folketal()).
 
@@ -89,8 +103,8 @@ CACHE = Path(tempfile.gettempdir()) / "kystplanlaegger"
 ZIP_URL = ("https://sftp.statens-it.dk/public/file/8zi0btrjy0skysr1g0slmq/"
            "Kystplanl%C3%A6gger_Datapakke.zip")
 LAG = {
-    "oversvoemmelse": "Kystplanlægger_Datapakke/Oversvømmelse/Risiko/Oversvømmelses_Risiko_2070.tif",
-    "erosion": "Kystplanlægger_Datapakke/Erosion/Risiko/Erosions_risiko_2070.tif",
+    "oversvoemmelse": "Kystplanlægger_Datapakke/Oversvømmelse/Risiko/Oversvømmelses_Risiko_2020.tif",
+    "erosion": "Kystplanlægger_Datapakke/Erosion/Risiko/Erosions_risiko_2020.tif",
 }
 BEFOLKNINGSAAR = "2021"   # datapakkens år
 
@@ -148,7 +162,7 @@ def hent_lag(genhent: bool) -> dict[str, Path]:
     if not mangler:
         print(f"  Rasterlag fra cachen ({CACHE})")
         return stier
-    print("Henter Kystplanlæggerens risikolag for 2070 (range-requests i zip-filen)...")
+    print("Henter Kystplanlæggerens risikolag for 2020 (range-requests i zip-filen)...")
     with zipfile.ZipFile(_RangeFil(ZIP_URL)) as z:
         for k in mangler:
             tmp = stier[k].with_suffix(".tmp")

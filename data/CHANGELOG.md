@@ -2,6 +2,13 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-10-19 (kystrisiko: dagens havniveau i stedet for 2070)
+
+- **`kystrisiko` bruger nu Kystplanlæggerens 2020-lag i stedet for 2070 (RCP8.5).** Kategorien måler restrisiko, og `vejr_skader` er dagens skader, så begge mål er nu i dag. Samme datapakke og samme metode; kun lagene er skiftet. Landstallet går fra 1.029 til 473 kr. pr. indbygger, og erosionen falder fra 1.919 til 150 mio. kr./år på landsplan, fordi 2070-lagene antager, at kystbeskyttelsen bryder sammen. 59 kommuner står på loftet 100 (før 51).
+- **Største ændringer:** Helsingør, Gribskov og Hjørring falder fra 3.100-3.600 til 420-510 kr. pr. indbygger (erosion). Thisted går fra 1.792 til 568 kr. (score 57,4 til 83,2); kategorien fra 52,9 til 65,8, stadig rød.
+- **Ti farveskift på Klimatilpasning:** Helsingør rød til grøn, Hedensted gul til grøn, Gentofte, Hørsholm, Gribskov, Kalundborg, Bornholm og Nyborg rød til gul, København grøn til gul, Norddjurs gul til rød.
+- DTU's stormflodsberegninger (2025) blev afprøvet som alternativ og fravalgt, fordi de ikke er offentlige. Analysen står i `data/klimatilpasning.md`.
+
 ## 2026-10-19 (vejr_skader: F&P's nye kort med hele 2025)
 
 - **`vejr_skader` hentes nu fra F&P's opdaterede kommunekort (`z0zEO`), som dækker 1. januar 2023 - 31. december 2025.** Scriptet hentede stadig det ældre kort (`NDLlA`), som analysesiden ikke længere viser, og som dækkede en kortere periode, selv om metodenoten skrev "Q1 2023 - Q4 2025 (2,5 år)". Alle 98 kommuner har nye råværdier. Landstallet går fra 21,92 til 24,62 skader pr. 1.000 indb., hvilket svarer til F&P's egne ca. 143.500 skader i perioden. Thisted går fra 48 til 51 (score 45,7 til 48,3).
