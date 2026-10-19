@@ -1057,7 +1057,7 @@
       "id": "kystrisiko",
       "category": "social",
       "dimension": "klimatilpasning",
-      "name": "Forventet årlig skade fra havet i 2070 pr. indb.",
+      "name": "Forventet årlig skade fra havet pr. indb.",
       "table": "Kystplanlægger",
       "source": "Kystdirektoratet Kystplanlægger",
       "source_url": "https://kystplanlaegger.dk/webgis-og-data/hent-data",
@@ -1070,8 +1070,8 @@
       "inverse": true,
       "cap": 100,
       "baseline_level": 3,
-      "rationale": "Forventet årlig skade fra oversvømmelse fra havet og kysterosion i 2070 i kroner pr. indbygger, beregnet af Kystdirektoratet med havstigning efter klimascenariet RCP8.5. Tallet er risikoen efter det, der allerede er bygget: diger og klitter i højdemodellen er regnet med. Det supplerer forsikringsskaderne, som ikke dækker stormflod. Scoren er højst 100: en kommune uden eller med lav kystrisiko står neutralt, fordi fravær af en fare ikke er robusthed ud over det sædvanlige, og en høj score her ellers ville udligne kommunens vejrskader.",
-      "note": "Kystplanlæggerens datapakke v1 (marts 2021), risikolag for 2070 summeret pr. kommune og delt med folketallet 1. jan. 2021 (fetch_kystrisiko.py). Kun faren fremskrives; bygninger og værdier er dagens. Tiltag efter højdemodellen 2014-2015 slår ikke igennem før en ny kortlægning, så indikatoren har ingen tidsserie. Loftet 100 er en mellemløsning; det rigtige næste skridt er at lægge skaderne sammen i kroner pr. indbygger med vejr_skader, se afsnittet om sammenvejning i data/klimatilpasning.md."
+      "rationale": "Forventet årlig skade fra oversvømmelse fra havet og kysterosion med dagens havniveau i kroner pr. indbygger, beregnet af Kystdirektoratet. Tallet er risikoen efter det, der allerede er bygget: diger og klitter i højdemodellen er regnet med. Det supplerer forsikringsskaderne, som ikke dækker stormflod. Scoren er højst 100: en kommune uden eller med lav kystrisiko står neutralt, fordi fravær af en fare ikke er robusthed ud over det sædvanlige, og en høj score her ellers ville udligne kommunens vejrskader.",
+      "note": "Kystplanlæggerens datapakke v1 (marts 2021), risikolag for 2020 summeret pr. kommune og delt med folketallet 1. jan. 2021 (fetch_kystrisiko.py). Indtil okt. 2026 2070-lagene (RCP8.5); 2020 er valgt, så begge indikatorer i kategorien måler dagens risiko. Tiltag efter højdemodellen 2014-2015 slår ikke igennem før en ny kortlægning, så indikatoren har ingen tidsserie. Loftet 100 er en mellemløsning; det rigtige næste skridt er at lægge skaderne sammen i kroner pr. indbygger med vejr_skader, se afsnittet om sammenvejning i data/klimatilpasning.md."
     },
     {
       "id": "klimapaavirkning",

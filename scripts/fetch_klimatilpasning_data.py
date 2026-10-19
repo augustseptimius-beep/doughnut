@@ -5,11 +5,12 @@ fetch_klimatilpasning_data.py
 Henter F&P's (Forsikring & Pension) vejrrelaterede skadestatistik
 pr. 1.000 indbyggere for alle 98 kommuner.
 
-Datakilde: Datawrapper-kort publiceret af F&P i november 2025.
+Datakilde: Datawrapper-kort fra F&P (z0zEO), opdateret med hele 2025.
 Analyse: "Sådan er Danmark blevet ramt af vejrrelaterede skader de seneste år"
 URL: https://fogp.dk/tal-og-analyser/saadan-er-danmark-blevet-ramt-af-vejrrelaterede-skader-de-seneste-aar/
 
-Tidsperiode: Q1 2023 - Q4 2025 (2,5 år akkumuleret)
+Tidsperiode: 1. januar 2023 - 31. december 2025 (3 år akkumuleret).
+Indtil okt. 2026 brugte scriptet et ældre kort (NDLlA) med en kortere periode.
 Dækning: ~90% af forsikringsmarkedet
 
 OBS: Indikatoren er en PROXY for vejrrelateret sårbarhed, ikke en direkte
@@ -46,7 +47,9 @@ from dst import folketal  # noqa: E402  (fælles DST-kald)
 
 BEFOLKNINGSAAR = "2025"   # slutåret for skadesperioden 2023-2025
 
-DATA_URL = "https://datawrapper.dwcdn.net/NDLlA/4/dataset.csv"
+DATA_URL = "https://datawrapper.dwcdn.net/z0zEO/4/dataset.csv"
+KOL_NAVN = "komnavn"
+KOL_VAERDI = "antal skader pr 1000 indbygger"
 OUTPUT_FILE = Path(__file__).parent.parent / "data" / "klimatilpasning_scores.csv"
 
 # Navne-mapping: Datawrapper-navne → kanoniske kommunenavne i projektet
@@ -80,10 +83,10 @@ def compute_scores(rows: list[dict]) -> tuple[list[dict], float]:
     """
     results = []
     for row in rows:
-        navn = row["kom"].strip()
+        navn = row[KOL_NAVN].strip()
         navn = NAME_CORRECTIONS.get(navn, navn)
         try:
-            raw = float(row["antal skader pr 1000"])
+            raw = float(row[KOL_VAERDI])
         except (ValueError, KeyError):
             raw = None
         results.append({"kommune_kode": kode_for_navn(navn), "kommune_navn": navn,
