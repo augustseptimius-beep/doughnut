@@ -2,6 +2,13 @@
 
 Log over større ændringer i datapipeline og master-fil.
 
+## 2026-10-19 (vejr_skader: F&P's nye kort med hele 2025)
+
+- **`vejr_skader` hentes nu fra F&P's opdaterede kommunekort (`z0zEO`), som dækker 1. januar 2023 - 31. december 2025.** Scriptet hentede stadig det ældre kort (`NDLlA`), som analysesiden ikke længere viser, og som dækkede en kortere periode, selv om metodenoten skrev "Q1 2023 - Q4 2025 (2,5 år)". Alle 98 kommuner har nye råværdier. Landstallet går fra 21,92 til 24,62 skader pr. 1.000 indb., hvilket svarer til F&P's egne ca. 143.500 skader i perioden. Thisted går fra 48 til 51 (score 45,7 til 48,3).
+- **Største spring:** Slagelse 21 til 34, Frederiksberg 13 til 19, Frederikshavn 27 til 38, Esbjerg 33 til 46. Fordi landstallet stiger mere end mange kommuner, stiger scoren for de fleste, også hvor råværdien stiger lidt.
+- **Syv farveskift på Klimatilpasning** (landsgennemsnits-baseline): Rudersdal, Billund, Vejle og Aalborg gul til grøn, Sønderborg rød til gul, Faxe grøn til gul, Slagelse gul til rød.
+- F&P udgiver ikke skadetype eller beløb pr. kommune; Excel-statistikken er kun på landsplan (`data/klimatilpasning.md`).
+
 ## 2026-10-06 (dataopdatering: educated_staff til 2025)
 
 - **`educated_staff` (pædagoguddannede, DST BOERN1) er opdateret fra 2024 til 2025.** Landstallet går fra 46,94 til 47,1 %. Kommunernes råværdi flytter sig fra -10,0 til +4,0 procentpoint, median +0,3. Største fald er Læsø (50,0 til 40,0, en lille personalegruppe), største stigning Samsø (17,86 til 21,88). Pilen er genberegnet med `fetch_trend_history.py --kun educated_staff` og slutter nu også i 2025.

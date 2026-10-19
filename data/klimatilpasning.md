@@ -1,6 +1,6 @@
 # Klimatilpasning - metodenote og fremtidigt arbejde
 
-**Opdateret:** September 2026 (undersøgelse af Kystplanlægger og HIP, se nedenfor)
+**Opdateret:** Oktober 2026 (nyt F&P-kort med hele 2025; september 2026: undersøgelse af Kystplanlægger og HIP, se nedenfor)
 **Status:** To indikatorer implementeret: forsikringsskader (`vejr_skader`) og kystrisiko i 2070 (`kystrisiko`, fra sep. 2026). Kategorien måler restrisiko: hvor udsat kommunen er, når det der allerede er gjort, er regnet med. Kategorien er gennemsnittet af de to, og kystrisikoen tæller højst 100, så fravær af kyst ikke udligner vejrskader (CHANGELOG 25. sep. 2026). På sigt er den rigtige løsning at lægge skaderne sammen i kroner pr. indbygger, hvis F&P kan levere udbetalinger pr. kommune.
 
 ---
@@ -13,11 +13,11 @@
 |------|-------|
 | Kilde | F&P (Forsikring & Pension) |
 | URL | https://fogp.dk/tal-og-analyser/saadan-er-danmark-blevet-ramt-af-vejrrelaterede-skader-de-seneste-aar/ |
-| Data-URL | https://datawrapper.dwcdn.net/NDLlA/4/dataset.csv |
-| Tidsperiode | Q1 2023 - Q4 2025 (2,5 år akkumuleret) |
+| Data-URL | https://datawrapper.dwcdn.net/z0zEO/4/dataset.csv (fra okt. 2026; før det ældre kort `NDLlA` med en kortere periode) |
+| Tidsperiode | 1. januar 2023 - 31. december 2025 (3 år akkumuleret) |
 | Dækning | ~90% af forsikringsmarkedet |
 | Nøgle | Kommunenavn (ikke kommunekode) |
-| Landsgennemsnit | befolkningsvægtet, ca. 22 skader pr. 1.000 indb. (sep. 2026; indtil da uvægtet, ca. 26) |
+| Landsgennemsnit | befolkningsvægtet, ca. 25 skader pr. 1.000 indb. (okt. 2026; F&P skriver selv ca. 143.500 skader i perioden) |
 | Ratio-type | Invers social: (landsgennemsnit / kommune_val) × 100 |
 
 **Inkluderer:** Storm, skybrud, hagl, sne/frost, stormvand.
@@ -31,7 +31,7 @@
 
 3. **Stormflod mangler:** Naturskaderådets stormflodsskader er IKKE inkluderet i F&P's tal. For kystnære kommuner (inkl. Thisted) undervurderer indikatoren dermed den reelle klimarisiko. Naturskaderådet udgiver årsrapporter med skadestatistik, men det er uklart om kommunefordelt data er offentligt tilgængeligt.
 
-4. **Kort tidsserie:** Kun 2,5 år (2023-2025). Et enkelt ekstremt vejrår kan dominere resultatet for en lille kommune. Fanø og Lemvig topper listen (66 pr. 1.000) - delvist pga. de er lille og udsat.
+4. **Kort tidsserie:** Kun 3 år (2023-2025). Et enkelt ekstremt vejrår kan dominere resultatet for en lille kommune. Langeland, Fanø og Lemvig topper listen (72-78 pr. 1.000) - delvist fordi de er små og udsatte.
 
 5. **Forsikringsmarkedsdækning:** ~10% af markedet mangler. Kan give skævhed hvis udfaldende selskaber er geografisk koncentrerede.
 
@@ -155,7 +155,7 @@ Loftet på 100 er en mellemløsning: det fjerner bonussen uden at skjule nogen a
 
 Hvad det kræver:
 
-1. **Udbetalinger pr. kommune fra F&P.** Datawrapper-kortet (`NDLlA`) har kun antal skader pr. 1.000 indbyggere. F&P's artikel henviser til to Excel-filer (kvartalsstatistik 2023-2025 og årsstatistik 2006-2024), som ikke er undersøgt, men artiklen viser ingen beløb pr. kommune. Den realistiske vej er en henvendelse til F&P fra Thisted Kommune/LIFE ACT. Stormflodsskader fra Naturskaderådet kunne i samme omgang afløse Kystplanlæggerens modeltal med faktiske skader.
+1. **Udbetalinger pr. kommune fra F&P.** Kommunekortene (`z0zEO` pr. 1.000 indb., `TUJ9b` antal) har kun det samlede antal skader, uden skadetype og uden beløb. F&P's to Excel-filer (kvartalsstatistik 2023-2025 og årsstatistik 2006-2024, undersøgt okt. 2026) har skadetype, dækningsområde og for årsstatistikken erstatninger i kroner, men kun for hele landet. Artiklens tekst nævner enkelte kommuner der er hårdt ramt af skybrudsskader, så F&P har formentlig typerne pr. kommune internt. Den realistiske vej er en henvendelse til F&P fra Thisted Kommune/LIFE ACT. Stormflodsskader fra Naturskaderådet kunne i samme omgang afløse Kystplanlæggerens modeltal med faktiske skader.
 2. **En beslutning om tidshorisonten.** Forsikringsudbetalingerne er dagens skader, mens `kystrisiko` er 2070. Summen blander to horisonter. Den kan enten stå som den er (dagens vejrskader plus fremtidens kystrisiko, tydeligt beskrevet), eller kystdelen kan bruge 2020, så begge er i dag. Det skal afgøres, før indikatoren bygges.
 3. **Samme dækning.** Forsikringstallene dækker forsikrede private skader (ca. 90 % af markedet). Kystplanlæggeren dækker også infrastruktur, landbrug og offentlige bygninger. Forskellen skal stå på metodesiden.
 
@@ -188,4 +188,4 @@ python3 scripts/fetch_klimatilpasning_data.py
 
 Scriptet henter automatisk nyeste data fra Datawrapper-URL og rebuild master-CSV.
 
-**OBS:** Datawrapper-URL'en (NDLlA/4/) kan ændre sig når F&P opdaterer analysen. Tjek om URL'en stadig virker ved næste dataopdatering. Alternativt kan data hentes direkte fra F&P's kvartalsvise Excel-statistik, men det kræver manuel aggregering pr. kommune.
+**OBS:** F&P skifter kortet ud, når analysen opdateres, og det gamle bliver stående med de gamle tal. Indtil okt. 2026 hentede scriptet `NDLlA`, efter at analysesiden var skiftet til `z0zEO` med hele 2025. Tjek derfor ved hver opdatering, hvilket kort analysesiden viser nu (søg efter `datawrapper-chart-` i sidens kilde), og ret `DATA_URL` og kolonnenavnene i scriptet. F&P's Excel-statistik er ikke et alternativ: den har ingen kommuneopdeling.
