@@ -1,0 +1,1 @@
+Andel af befolkningen med mindst én kontakt til almen praktiserende læge i løbet af året (DST SYGP1). Måler adgang til og brug af primær sundhedsydelse. Direkte: højere andel er bedre, da det signalerer at borgerne kommer til lægen.

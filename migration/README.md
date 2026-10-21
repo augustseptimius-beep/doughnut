@@ -1,8 +1,27 @@
 # migration/ - værktøjer til Lovable-migreringen
 
-Hører til `docs/lovable-migration-spec.md` (fase 0). Intet her påvirker det nuværende site: Netlify bygger kun `webapp/`, og scriptet ændrer ikke en eneste fil udenfor `migration/baseline/`.
+Hører til `docs/lovable-migration-spec.md` (fase 0 og 1). Intet her påvirker det nuværende site: Netlify bygger kun `webapp/`, og scriptene skriver kun i `migration/`.
 
-## Hvad er det
+| Mappe | Fase | Indhold |
+|---|---|---|
+| `baseline/` | 0 | "Fotografiet" af det nuværende site (facit) |
+| `fase1/` | 1 | `convert.mjs` (konvertering), `verify.mjs` (verifikation), `lib.mjs`, **`rapport.md`** |
+| `lovable/` | 1 | Frøet til det nye Lovable-repo: `data/snapshots/`, `registry/`, `content/metode/`. Flyttes ind i fase 2 |
+
+## Fase 1: kør
+
+Fra repo-roden, efter fase 0:
+
+```
+node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./migration/register-ts.mjs migration/fase1/convert.mjs
+node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./migration/register-ts.mjs migration/fase1/verify.mjs
+```
+
+`convert.mjs` afviser at køre, hvis `data/master_indicators.csv`, `webapp/lib/shared.ts` eller `webapp/lib/data.ts` er ændret siden fase 0-baselinen. Den overskriver kun de genererede filer i `migration/lovable/`; de håndskrevne (`registry/types.ts`, `transforms.ts`, `legacy.ts`, `content/metode/generelt/`, `content/metode/README.md`) røres ikke. `verify.mjs` skal slutte med "A-E: 0 fejl". Resultater og fund: `fase1/rapport.md`.
+
+Efter fase 1 er filerne i `migration/lovable/` kilden. Konverteringen køres kun igen, hvis data på det gamle site ændres før fase 2. I så fald køres fase 0 først.
+
+## Fase 0: hvad er det
 
 Et "fotografi" af det nuværende site, taget ved at køre den nuværende kode (`webapp/lib/data.ts` og `shared.ts`, uændret). Det nye system sammenlignes med fotografiet tal for tal (spec afsnit 12) og skal ramme det med 0 afvigelser.
 
@@ -16,9 +35,9 @@ Et "fotografi" af det nuværende site, taget ved at køre den nuværende kode (`
 
 Scorerne pr. indikator inde i en kategori gemmes ikke to gange: de er identiske med `ratios`/`top10_ratios`/`group_ratios` (verificeret, 0 afvigelser over 14.112 værdier). Kategorien gemmer kun `score`, `indicatorCount` og `hasData`.
 
-## Kør
+## Fase 0: kør
 
-Fra repo-roden. Kræver Node 22.18 eller nyere. Ingen installation.
+Fra repo-roden. Kræver Node 22.18 eller nyere og python3 (fase 1 læser lister fra `scripts/build_master_csv.py`). Ingen installation.
 
 ```
 node --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./migration/register-ts.mjs migration/export_baseline.mjs
@@ -43,4 +62,4 @@ Afstemningen er testet negativt: en planlagt dublet og en ukendt eco-indikator b
 
 Baseline passer kun til den master-CSV, den er lavet fra. Hashen står i feltet `source.master_indicators_csv_sha256` i begge JSON-filer (fotografi taget 2026-10-21).
 
-Skal `data/master_indicators.csv` ændres, før fase 1 er afsluttet, så kør eksporten igen, så baseline og fase 1-konverteringen bygger på samme version. Kontrol: `sha256sum data/master_indicators.csv`.
+Skal `data/master_indicators.csv` ændres før fase 2, så kør fase 0 og derefter fase 1 igen, så baseline og konvertering bygger på samme version. `convert.mjs` nægter at køre, hvis de ikke passer sammen.

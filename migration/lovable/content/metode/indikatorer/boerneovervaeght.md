@@ -1,0 +1,1 @@
+Andel af 6-7-årige børn med overvægt ved skolestart (DST LABY26, baseret på skolesundhedsplejens målinger). Tidlig indikator for folkesundhed og social ulighed. Inverteret: lavere andel er bedre. Begrænsning: data går kun til 2018 - DST opdaterer ikke længere tabellen.

@@ -146,7 +146,7 @@ kommune_kode,kommune_navn,raw_value,ratio
 - `sha256`: hash af snapshot-filen. Loaderen i dev-mode advarer ved mismatch.
 
 ### 4.3 Register: `registry/indicators.ts`
-Typet array. Felter (alle normative):
+Typet array. Den autoritative typedefinition er `registry/types.ts` (oprettet i fase 1). Afvigelser fra skitsen nedenfor, besluttet i fase 1: `dstTable` hedder `sourceTable` (feltet rummer også ikke-DST-tabeller), og der er tilføjet `decimals` (ratioens afrunding) og `legacy` (placering i den gamle pipeline, så import genkender gamle `*_scores.csv`-filer). Skitse:
 ```ts
 interface IndicatorDef {
   id: string;
@@ -156,7 +156,7 @@ interface IndicatorDef {
   scoredInCategory: boolean;      // social: indgår i kategoriscoren. false for housing_no_wc, housing_no_bath (B16)
   sortOrder: number;
   unit: string;
-  dstTable?: string;
+  sourceTable?: string;
   sourceName: string;             // "DST HISBK"
   sourceUrl: string;
   inverse: boolean;
@@ -189,13 +189,13 @@ Fra registret genereres de konstanter, komponenterne bruger i dag (`INDICATORS`,
 
 R1-R15 er uændrede fra v1 og verificeret mod koden 2026-10-21. R16-R22 er nye: de er ratio-formlerne fra fetch-scripts, som skal bruges af edge functions og af import, så import virker med råværdier alene.
 
-**R1 Social ratio-cap:** sociale ratios cappes ved 150.0 (`build_master_csv.py:351-353`), også efter abs_target.
-**R2 abs_target:** `ratio = min(raw / abs_target * 100, 150)`, 2 decimaler. Kun `education` (95). `bolig_fossil` er absolut scoret, men dens ratio (100 - samlet fossil%) beregnes i hentningen (R23).
-**R3 inverse_10000:** `direct = round(10000 / inverse, 2)`, null/0 -> null. `naer_nitrogen`, `naer_phosphorus`, `cirkularitet_waste`.
+**R1 Social ratio-cap:** sociale ratios cappes ved 150.0 (`build_master_csv.py:351-353`), også efter abs_target. Undtagelse (fase 1-fund): navn-nøgle-grenen (`build_master_csv.py:303-329`) capper ikke, så `vejr_skader` har intet loft (op til 431). Gengives 1:1 (`ratioCap` udeladt i registret) indtil August beslutter andet (fase 1-rapport 2a).
+**R2 abs_target:** `ratio = min(raw / abs_target * 100, 150)`, 2 decimaler. Kun `education` (95). `bolig_fossil` er absolut scoret, men dens råværdi (samlet fossil%) beregnes i hentningen (R23), og ratioen er `complement_100` (R24).
+**R3 inverse_10000:** `direct = round(10000 / inverse, 2)`, null/0 -> null. `naer_nitrogen`, `naer_phosphorus`, `cirkularitet_waste`. Siden fase 1 er dette en importregel for gamle CSV-filer (`legacy.ratioColIsInverse` i registret), ikke en transform: snapshots gemmer den færdige ratio, og fra råværdi er formlen `relative_national` direct.
 **R4 recycling_eu_target:** `ratio = round(65 / pct * 100, 2)`, null/0 -> null. `cirkularitet_recycling`.
 **R5 cba_div3:** `ratio = round(raw / 3 * 100, 2)`. `forbrug_co2`, navn-nøglet, intet fallback.
 **R6 Eco-cap:** klip til `ratioCap`. `overfladevand`, `bio_vasentlig`, `bio_uerstattelig` = 300.
-**R7 Dimensionsscore:** ikke-null sub-ratios pr. kommune og dimension. `worst_of` = round(max, 2), `average` = round(gennemsnit, 2), ingen = null. Kun `forurening` er `average`. Beregnes i frontend.
+**R7 Dimensionsscore:** ikke-null sub-ratios pr. kommune og dimension. `worst_of` = max (sub-ratios har højst 2 decimaler, så ingen afrunding), `average` = gennemsnit summeret eksakt i hundrededele og afrundet halvt op til 2 decimaler, ingen = null. Kun `forurening` er `average`. Beregnes i frontend. Det gamle site summerede floats i build-rækkefølge, så hvor gennemsnittet ligger præcis på x,xx5 (14 kommuner pr. 2026-10-21) afviger det nye med 0,01. Accepteret (fase 1-rapport 3e).
 **R8 Kategoriscore:** gennemsnit af ikke-null ratios for indikatorer med `scoredInCategory=true` (`computeCategoryScores`).
 **R9 Top10:** absoluteScore kopieres. Ellers gennemsnit af de 10 højeste ratios, ny = `parseFloat((ratio/top10Avg*100).toFixed(2))`. Under 10 værdier: kopier (`computeTop10Ratios`).
 **R10 Kommunegruppe:** absoluteScore kopieres. Ellers uvægtet gruppegennemsnit G1-G5, ny = `parseFloat((ratio/gruppeAvg*100).toFixed(2))` (`computeGroupRatios`).
@@ -212,9 +212,11 @@ R1-R15 er uændrede fra v1 og verificeret mod koden 2026-10-21. R16-R22 er nye: 
 **R20 ref_over_pct, poolet (overfladevand VP3):** `ratio = round(min(reference / pct * 100, 300), 2)`, pct = 0 -> 300. reference = poolet national andel vandområder i god tilstand. Kilde: `fetch_vp3_vandkvalitet.py:210-227`.
 **R21 pct_over_ref med gulv (pesticider):** pct = 0 -> ratio 0.0. pct > 0 -> `ratio = round(max(101.0, pct / reference * 100), 1)`. reference = poolet national andel boringer over 0,1 µg/l. BEMÆRK gulvet: enhver kommune med mindst én boring over grænsen får mindst 101 (overskredet), selv under landsgennemsnit. Kilde: `fetch_pesticider_data.py:215-227`.
 **R22 Poolede referenceværdier:** for R19, R20, R21 kan referencen IKKE beregnes ud fra kommunernes råværdier (den er arealvægtet eller poolet over underliggende enheder). Ved import skal referenceværdien derfor angives sammen med filen og gemmes i manifestet. Er den ikke angivet, bruges manifestets seneste reference_value, og importen markeres med advarsel.
-**R23 Relative sociale ratios:** formlen er normalt `(kommune/national)*100` (direkte) eller `(national/kommune)*100` (inverse), cap 150. "National" er pr. script enten DST's landstal (kode 000) eller et beregnet snit. Hvert scripts konkrete definition er normativ og dokumenteres i funktionens header ved porteringen (fase 6). `bolig_fossil` beregnes som `100 - (direkte_fossil% + fjv_dækning% × fjv_fossil_andel%)` med TJ-vægtet landssnit for de 18 fælles-net-kommuner, jf. `fetch_bolig_fossil.py`.
+**R23 Relative sociale ratios:** formlen er normalt `(kommune/national)*100` (direkte) eller `(national/kommune)*100` (inverse), cap 150. Invers med råværdi 0 giver loftet (det gamle sites adfærd, fx `boerneovervaeght` = 150 for 4 kommuner; fase 1-rapport 2b). Fase 1 verificerede formlen mod data for alle relative indikatorer og udledte "national" som referenceværdi i manifestet. "National" er pr. script enten DST's landstal (kode 000) eller et beregnet snit. Hvert scripts konkrete definition er normativ og dokumenteres i funktionens header ved porteringen (fase 6). `bolig_fossil` beregnes som `100 - (direkte_fossil% + fjv_dækning% × fjv_fossil_andel%)` med TJ-vægtet landssnit for de 18 fælles-net-kommuner, jf. `fetch_bolig_fossil.py`.
 
-Transform-typen i registret er én af: `none` (ratio leveres færdig), `inverse_10000`, `recycling_eu_target`, `cba_div3`, `abs_target`, `abs_limit`, `target_over_pct`, `ref_over_raw`, `ref_over_pct_pooled`, `pct_over_ref_floor`, `relative_national`. Parametre (limit, target, cap) står i registret, ikke i funktionskoden.
+**R24 complement_100 (fossil opvarmning):** `ratio = 100 - raw`. Kun `bolig_fossil` (raw = samlet fossil%). Tilføjet i fase 1, så også denne ratio kan udledes af råværdien.
+
+Transform-typen i registret (`registry/types.ts`) er én af: `none` (ingen ratio, kun kontekst), `relative_national`, `abs_target`, `abs_limit`, `cba_div3`, `recycling_eu_target`, `target_over_pct`, `ref_over_raw`, `ref_over_pct_pooled`, `pct_over_ref_floor`, `complement_100`. Parametre (limit, target, cap, decimals) står i registret, referenceværdier i manifestet, implementeringen i `registry/transforms.ts`. Fase 1 verificerede, at transform + reference genskaber den gemte ratio fra råværdien for 66 af 67 scorede indikatorer (den sidste, `naer_phosphorus`, afviger i én række på grænsen pga. dobbelt afrunding i den gamle pipeline).
 
 ---
 
@@ -303,7 +305,9 @@ Uafklarede punkter, der skal afgøres i fase 6, før porteringen af den pågæld
 | pesticider | `fetch_pesticider_data.py` | pct_over_ref_floor (R21) | Manuel kilde (DN/GEUS) |
 | nitrat | `fetch_nitrat_data.py` | abs_limit (R17) | Manuel kilde (Greenpeace/GEUS) |
 | forbrug_co2 | ingen (`cba_2023_estimate.csv`, se `docs/methodology_note.md`) | cba_div3 (R5) | Statisk metodeestimat |
-| cirkularitet_recycling | INGEN SCRIPT FINDES. `consumption_scores.csv` har ukendt oprindelse (kildelabel: DST LABY25) | recycling_eu_target (R4) | Oprindelse skal dokumenteres i fase 1. Kan blive api-kilde senere, men det er ny udvikling, ikke en port |
+| cirkularitet_recycling | INGEN SCRIPT FINDES. `consumption_scores.csv` blev tilføjet manuelt i commit `f9eba2c` (2026-05-01): hele procenter, landssnit 58%, år 2023. Kildelabel "DST LABY25" er tvivlsom (LABY25 er affaldsmængde, ikke genanvendelse) | recycling_eu_target (R4) | Oprindelse uafklaret, spørgsmål til August (fase 1-rapport afsnit 7). Kan blive api-kilde senere, men det er ny udvikling, ikke en port |
+
+I alt 10 frosne indikatorer (rækkerne for luftkvalitet og biodiversitet dækker to hver).
 
 ---
 
@@ -357,7 +361,7 @@ Ingen redigering af enkeltværdier (B6). Ingen redigering af metode-tekster i ad
 
 ## 12. Paritetstest (acceptkriterium)
 
-Tre lag, alle med 0 afvigelser (numerisk tolerance 0,01, null = null):
+Tre lag, alle med 0 afvigelser (null = null). Værdier skal være bit-identiske; eneste tolerance er 0,01 på et `average`-dimensionsgennemsnit, der ligger præcis på x,xx5 (R7). Fase 1 viste at det kan opnås: `migration/fase1/verify.mjs` er en reference-implementering af lag 1-3 mod snapshots og kan genbruges.
 
 1. **Værdier:** `KommuneData[]` fra ny loader sammenlignes med `parity_baseline.json` (fase 0) for alle 98 kommuner og alle nøgler i ratios, top10_ratios, group_ratios, eco_ratios og rawValues.
 2. **Metadata:** de genererede `INDICATORS`, `SOCIAL_CATEGORIES`, `ECOLOGICAL_DIMENSIONS`, `KOMMUNEGRUPPE` og `DOUGHNUT_*` sammenlignes felt for felt med `metadata_baseline.json` (eksport af de nuværende konstanter, fase 0). Dokumenterede afvigelser (enhedskonflikter, afsnit 3) står på en eksplicit undtagelsesliste i testen.
@@ -419,7 +423,7 @@ Bindende rækkefølge. En fase starter først når den forriges acceptkriterium 
 | Fase | Hvor | Indhold | Acceptkriterium | Model |
 |---|---|---|---|---|
 | 0 | doughnut-repo | Eksportér baseline til `migration/baseline/` med `migration/export_baseline.mjs`: `parity_baseline.json` (værdier, top10-/gruppe-/øko-scorer og kategoriscorer i alle tre baselines), `metadata_baseline.json` (alle konstanter, afledte baselineTypes, `eco_raw_key_map`) og `url_liste.txt` | 98 kommuner. Tællinger afstemt mod master-CSV uden differens. To kørsler giver byte-identisk output. **Gennemført 2026-10-21.** Fra nu til fase 1-rundturen er afsluttet må `data/master_indicators.csv` ikke ændres uden at eksporten køres igen (sha256 står i baseline-filerne, se `migration/README.md`) | Sonnet |
-| 1 | doughnut-repo, `migration/` | Engangskonvertering (`tools/migration/`): master-CSV -> snapshots + manifest (method=frozen), shared.ts + build-lister -> `registry/`, metode-datastrukturer -> markdown (mekanisk), dimensionsårstal udgår (udledes). Fase 1-rapport med konflikter og afvigelser. Oprindelsen af `consumption_scores.csv` dokumenteres | Rundtur: snapshots samlet = master-CSV minus `_dim_`-rækker, række for række. August har skimmet rapporten | Opus |
+| 1 | doughnut-repo, `migration/` | Engangskonvertering (`migration/fase1/convert.mjs`) til `migration/lovable/`: master-CSV -> snapshots + manifest (method=frozen), shared.ts + build-lister -> `registry/`, metode-datastrukturer -> markdown (mekanisk), dimensionsårstal udgår (udledes). Fase 1-rapport med konflikter og afvigelser. Oprindelsen af `consumption_scores.csv` dokumenteres | Rundtur: snapshots samlet = master-CSV minus `_dim_`-rækker, række for række. August har skimmet rapporten. **Gennemført 2026-10-21** (afventer Augusts skim): rundtur 7.349/7.349 rækker, registret genskaber alle konstanter, reference-loader bit-identisk med fase 0 (undtagen 14 x,xx5-gennemsnit, R7), seks plantede fejl fanget, deterministisk. Se `migration/fase1/rapport.md` | Opus |
 | 2 | Privat Lovable (eller kommunalt, 13.1) | Opret projekt (EU-region), git sync, spike V1-V9, flyt indholdet fra `migration/` ind i det nye repo, port app (afsnit 6) | V-punkter noteret i afsnit 14. App bygger og viser forside + én kommuneside | Opus (spike), Sonnet (port) |
 | 3 | Lovable | Loader (afsnit 7), routing, paritetstest (afsnit 12) | 0 afvigelser i alle tre lag | Opus |
 | 4 | Lovable | Metode-side (afsnit 8) med pladsholdere | August godkender. Ingen håndskrevne årstal/kilder tilbage i markdown | Sonnet |
@@ -446,6 +450,7 @@ Efter fase 7 arkiveres doughnut-repoet (B13). Netlify-sitet fryses, slettes ikke
 10. Biodiversitet med pct = 0 giver 999, som cappes til 300 (R18 + R6).
 11. `housing_no_wc` og `housing_no_bath` har data, men indgår ikke i nogen kategoriscore i dag (B16). Afklares med August efter migreringen, ikke under.
 12. Python-scripts og data-CSV'er må ikke slettes under migreringen (B14).
+13. Fase 1 fandt tre faglige uoverensstemmelser på det live site, som gengives 1:1 (B16) og afventer August: `vejr_skader` uden loft (R1), råværdi 0 giver topscore for `boerneovervaeght` (R23), og pesticider mærkes "mod mål 0%" men regnes relativt (R21). Se `migration/fase1/rapport.md` afsnit 2.
 
 ---
 

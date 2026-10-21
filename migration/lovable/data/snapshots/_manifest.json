@@ -1,0 +1,689 @@
+{
+  "schema_version": 1,
+  "indicators": {
+    "life_expectancy": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/doughnut_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 94,
+      "reference_value": 81.5998,
+      "sha256": "eec88f240a121a8f750ece83fe2eac6db2f25d3dc544f1e3edf846729267d575"
+    },
+    "education": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/doughnut_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "79b0c55dbfaf6668201453c1b50178237b44b08b50a8d8a9d936a25a5e6c3ccb"
+    },
+    "disposable_income": {
+      "data_year": "2022",
+      "method": "frozen",
+      "source_ref": "fase1:data/doughnut_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 287679,
+      "sha256": "4576d3fb03340031f397d90e289d703a015ee98dd21003069c7343991dae4c53"
+    },
+    "employment": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/doughnut_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 77.3991,
+      "sha256": "fdf76edd12a4b3491968c2d0f318dc3fbab68e5e58f22cb95fdad3d00d044faa"
+    },
+    "child_poverty": {
+      "data_year": "2022",
+      "method": "frozen",
+      "source_ref": "fase1:data/doughnut_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 4.30008,
+      "sha256": "961e9e2806283e637538dfc0a321f3e5da20effbdc17fdb281d7a3f01a1b9022"
+    },
+    "gini": {
+      "data_year": "2022",
+      "method": "frozen",
+      "source_ref": "fase1:data/doughnut_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 30.4301,
+      "sha256": "e034091a32d0d2cfcaa0a1481fb30f12f9d2f7f1b56036b98de0f420c2695a99"
+    },
+    "low_income": {
+      "data_year": "2022",
+      "method": "frozen",
+      "source_ref": "fase1:data/doughnut_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 3.79996,
+      "sha256": "fcf97a42b1e370ece36389d2faf3ec975807a15e92abbc396dfdc44236920ae4"
+    },
+    "vacant_housing": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/doughnut_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 6.14002,
+      "sha256": "686dcdc8a7853f058f8fc4f843efee73868ee7168b1747114e17ed881520cabd"
+    },
+    "bolig_fossil": {
+      "data_year": "2026",
+      "method": "frozen",
+      "source_ref": "fase1:data/bolig_fossil_scores.csv@d2c208f",
+      "fetched_at": "2026-06-20T07:10:39+02:00",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "4ce7fe89d66af7bade7f2a48e0705a7c7aa8b348c3c8ce1d92e62f8b187fd634"
+    },
+    "voter_turnout": {
+      "data_year": "2021",
+      "method": "frozen",
+      "source_ref": "fase1:data/democracy_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 67.2094,
+      "sha256": "878659a95a7f051159d20baa456cf9d9561fcd98fdbd88bc3f3496fe593be4b5"
+    },
+    "voter_turnout_national": {
+      "data_year": "2026",
+      "method": "frozen",
+      "source_ref": "fase1:data/democracy_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 83.9905,
+      "sha256": "86e861b43f97662d77a6ea996126b32269db07cc7f84996fdc9ce8a40af61175"
+    },
+    "sports_membership": {
+      "data_year": "2022",
+      "method": "frozen",
+      "source_ref": "fase1:data/faellesskaber_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 46.1001,
+      "sha256": "0c5ac3b72b2860e732f8426b92ffedae65f9bfc5093131d35cacf5f609eeca1c"
+    },
+    "crime_rate": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/faellesskaber_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 73.7099,
+      "sha256": "41e7aa42685b60d7e755c524e9bf5c9790805d888900df706642f75aae650bd3"
+    },
+    "traffic_accidents": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/faellesskaber_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 42.0297,
+      "sha256": "c89ecd9acc368e9dfdd6c24d23490cf87ce56c39a47ed02f7583237c4824233a"
+    },
+    "library_use": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/lokalsamfund_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 97,
+      "reference_value": 4.14999,
+      "sha256": "bddd72601a7580efafc0314f30b68641439b44d184dc3232d706a11ac7d5c833"
+    },
+    "sports_facilities": {
+      "data_year": "2022",
+      "method": "frozen",
+      "source_ref": "fase1:data/lokalsamfund_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 20.7201,
+      "sha256": "6d38671011ce7cf0262bf41835dc1c81d3091204bc85a5aa362b2cffa2e33e87"
+    },
+    "commute_distance": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/mobilitet_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 22.4998,
+      "sha256": "faf0ded20fdf48c544466fd2b97cd8dca14d368e9bb5f82b6d01b2020a3c95bc"
+    },
+    "public_transport": {
+      "data_year": "2025",
+      "method": "frozen",
+      "source_ref": "fase1:data/mobilitet_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 29.9375,
+      "sha256": "f85672d5927ab30d309a51a669bde12f1a14136f714634abff3b8b5812995739"
+    },
+    "vejr_skader": {
+      "data_year": "2023-2025",
+      "method": "frozen",
+      "source_ref": "fase1:data/klimatilpasning_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 25.8776,
+      "sha256": "627a9cdb8af13775b033bcc53f207822eecc259d88db3713652241ee5d000b73"
+    },
+    "vulnerable_children": {
+      "data_year": "2022",
+      "method": "frozen",
+      "source_ref": "fase1:data/velfaerd_extra_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 3.6,
+      "sha256": "3785783d222bac06c9b3232f1942ccc765c4db0dd818dc339e779d328d73a9d5"
+    },
+    "neet": {
+      "data_year": "2022",
+      "method": "frozen",
+      "source_ref": "fase1:data/velfaerd_extra_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 9.64004,
+      "sha256": "3debabe1448f9824c5e25da7ab65bef720c0988fcbd237cb94f00f6a0f9ecc6c"
+    },
+    "hospital_short": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/sundhed_extra_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 47.6398,
+      "sha256": "b54f1978aab6ba6483d0af7fe8f6b0aa9bdec2ef7b1915d1fa88fb7d0f308d8a"
+    },
+    "hospital_long": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/sundhed_extra_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 8.18006,
+      "sha256": "622709ad5f3e646cbe975aedfbdabba7d90e40245c1b0856b982b19edefdebfa"
+    },
+    "gp_distance": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/sundhed_extra_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 2.40002,
+      "sha256": "b6e63da4ab903399874f26785947de7d09cc64fb2deab7d25642bf652a7963ec"
+    },
+    "medicin": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/medicin_scores.csv@6c73511",
+      "fetched_at": "2026-05-04T14:24:38+02:00",
+      "row_count": 98,
+      "reference_value": 65.4,
+      "sha256": "99d838c8a32f7c96f2d291cb4392995d97e29a01c1f3663465e1e003c4a48484"
+    },
+    "laegekontakt": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/laegekontakt_scores.csv@6c73511",
+      "fetched_at": "2026-05-04T14:24:38+02:00",
+      "row_count": 98,
+      "reference_value": 85.8102,
+      "sha256": "ceaf5641d1681d9c688b7ebf307d2c117facdf34db93796263c3ab6de62f8d48"
+    },
+    "boerneovervaeght": {
+      "data_year": "2018",
+      "method": "frozen",
+      "source_ref": "fase1:data/boerneovervaeght_scores.csv@6c73511",
+      "fetched_at": "2026-05-04T14:24:38+02:00",
+      "row_count": 95,
+      "reference_value": 13.9999,
+      "sha256": "e11cd0e06b3be57e83847355a11d2fe2d20d183154c75d003adf51b4193bc40e"
+    },
+    "hjemsyg": {
+      "data_year": "2025",
+      "method": "frozen",
+      "source_ref": "fase1:data/hjemsyg_scores.csv@6c73511",
+      "fetched_at": "2026-05-04T14:24:38+02:00",
+      "row_count": 98,
+      "reference_value": 25.3901,
+      "sha256": "7805cb6656d1ae61ac88225615a3d36540b40178777c160805607b4034f64206"
+    },
+    "low_education": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/uddannelse_extra_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 14.2099,
+      "sha256": "fae8aa5c2fb4216efa54af90da034df450375d9a2a86ebb0ef2eccbffdb1aa66"
+    },
+    "housing_area": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/bolig_extra_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 53.8004,
+      "sha256": "c2519c2620f7040c65f4e81c48c3d9e59f872dbe470e45628272ee2609ab129d"
+    },
+    "music_school": {
+      "data_year": "2022",
+      "method": "frozen",
+      "source_ref": "fase1:data/samskabelse_extra_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 95,
+      "reference_value": 10.75,
+      "sha256": "02b241fab4deac984514066cf187b6d309947269073b9a477ecb86fa7dddf5c0"
+    },
+    "kultur_spending": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/doughnut_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 470.003,
+      "sha256": "7c07779018274628413092441b52cd76af3c6a1c3c16f7dea35280ca9bccca2a"
+    },
+    "civil_society": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/doughnut_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 73.9997,
+      "sha256": "92a0e61bce98bf4e08c2e8413147122db0e49a21db1bcce2f32e5b20633af5ea"
+    },
+    "class_size": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/lokalsamfund_extra_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 20.3002,
+      "sha256": "cf7ea27da98bde667359371459a8678a8b2a68199ab77927fe600d88f7f1c756"
+    },
+    "daycare_ratio": {
+      "data_year": "2022",
+      "method": "frozen",
+      "source_ref": "fase1:data/lokalsamfund_extra_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 5.8,
+      "sha256": "82f19180e743226b7647bf90bc2d0466c56e3c1fb1995e7ee82e3a9a2a39d9df"
+    },
+    "sports_spending": {
+      "data_year": "2022",
+      "method": "frozen",
+      "source_ref": "fase1:data/lokalsamfund_extra_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 495.999,
+      "sha256": "87b7fab0f66c5231a77481fe656f90f2be52beb56e4e4f84d43772102e0a1a2c"
+    },
+    "educated_staff": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/lokalsamfund_extra_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 46.9398,
+      "sha256": "66ec35b4eec1bb1fb5bc9987855fe346fe49aac9f83fb2e543a9ae3ae2f496ad"
+    },
+    "exam_grade": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/uvm_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 7.30077,
+      "sha256": "8210a9f80a37a76591cd94ce9550f3fb41358ff4a634e3875b6307b90a69373c"
+    },
+    "high_absence": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/uvm_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 22.9124,
+      "sha256": "d69057bc362f46409e5a36b1997b0e08ca9a7c4cb0fdef92f5d9ba8b96b79957"
+    },
+    "youth_education": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/uvm_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 83.2466,
+      "sha256": "be9e7a286e5c95f8ed88221971bfa79c85d49d2fc56d5b341a235a0663868d5b"
+    },
+    "apprenticeship": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/uvm_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 95,
+      "reference_value": 37.1643,
+      "sha256": "1a9d9bcdf3b19d6cfdb17ad8f69a5a7a01520aced1bce34860f05633a1cf2ca5"
+    },
+    "wellbeing": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/uvm_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 95,
+      "reference_value": 3.55789,
+      "sha256": "313e8e39787016c8a6a0c3a3ce9bff1ea865e9221c819b8f0859ee3598893f2c"
+    },
+    "poverty_relative": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/lighed_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 13.3001,
+      "sha256": "82facbc3f6a35e22ac580b989a4f0568c9a798d3bdcd0b521d9976c4f8fe1e95"
+    },
+    "child_notifications": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/underretning_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 86.1496,
+      "sha256": "191b144ab1a99c8e44924490013058f64aa7c7849505e340e8331518e3c74964"
+    },
+    "housing_no_wc": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/bolig_wc_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 0.620402,
+      "sha256": "7dfc2bc9b03d1183e858133a11de19fbe89836a6b7df964b8ce8b38bd9fd7ec0"
+    },
+    "housing_no_bath": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/bolig_wc_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 1.2813,
+      "sha256": "b456a302480d8c3b521fc34fe01fa33eebf17faed8d17bc9647d821dc574276d"
+    },
+    "gender_leadership": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/lighed_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 32.1098,
+      "sha256": "718bda1a06d9ec313b7a96498c9df23d7833215570072e2466b4f62103da9866"
+    },
+    "le_gender_gap": {
+      "data_year": "2025",
+      "method": "frozen",
+      "source_ref": "fase1:data/ligestilling_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 94,
+      "reference_value": 3.79995,
+      "sha256": "521d4e0b376546337bc98671781af3acda433e97f6fd2778d7f82081cfcccf7b"
+    },
+    "income_gender_gap": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/ligestilling_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 80.0198,
+      "sha256": "c9617167b1d6695f6a509a5a5932704c0e11b3e1b794588aba6078b5c70ebad0"
+    },
+    "employment_origin_gap": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/ligestilling_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 82.5301,
+      "sha256": "1b7f183a5e5d00f1eaeed79aa48335f13b4cbd40b053d467901324f077c362ed"
+    },
+    "klimapaavirkning": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/climate_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "acb95ef879a0b68f27a0961a11addf4095ab6f7a877870193f4f5cc97e6adad9"
+    },
+    "forbrug_co2": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/cba_2023_estimate.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "fdc2825dc44cc65532d055146d54faa1ba43fb005feb14fbd3df9ec3f4633e91"
+    },
+    "pesticider": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/pesticider_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 7.54603,
+      "sha256": "32fa57213b7a1fa341314a1cce01e925b43266eba6bb814853dc0e601fab6a4b"
+    },
+    "nitrat": {
+      "data_year": "2025",
+      "method": "frozen",
+      "source_ref": "fase1:data/nitrat_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "1328e940ff16af8dec9e5da697d7e9e0afea532281105d73c8007324ecbd7cc7"
+    },
+    "cirkularitet_recycling": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/consumption_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "4c0ca42db0eff737d7ae976ba46f420b891c5f4d949370ba0b41acf3aa50b369"
+    },
+    "cirkularitet_waste": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/forurening_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 542.997,
+      "sha256": "1aea71b20141bfb3df8e87670b702d9958e0f8104f504f583da4459fc05f19ad"
+    },
+    "luftkvalitet_no2": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/luftforurening_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "fca851ebed7b9d601534066c1243f6c24e2d1f50bafeb5ee682d2bdcca901c60"
+    },
+    "luftkvalitet_pm25": {
+      "data_year": "2023",
+      "method": "frozen",
+      "source_ref": "fase1:data/luftforurening_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "32cedca8d9c01043642f04fb401e3879b00cf742a400516316e4518e1a0e5bcf"
+    },
+    "naer_nitrogen": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/naeringsstoffer_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 1.13753,
+      "sha256": "107730cfa13d16b1c3fb44cc8a74b3b124558dc1f0f2efb6bd285e8a2f6f7a78"
+    },
+    "naer_phosphorus": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/naeringsstoffer_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 0.122875,
+      "sha256": "11dfe49df1e168df825cd12caace9b9c69c38398d305062f97ef70bb13899c73"
+    },
+    "naer_landbrug": {
+      "data_year": "2025",
+      "method": "frozen",
+      "source_ref": "fase1:data/n_landbrug_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 14.7257,
+      "sha256": "e243a1c63f9a9fce8cdfa3da120ebb9349bb55efb6869bd332a450a3b025ce5a"
+    },
+    "overfladevand": {
+      "data_year": "2025",
+      "method": "frozen",
+      "source_ref": "fase1:data/vp3_vandkvalitet_scores.csv@6679684",
+      "fetched_at": "2026-06-18T20:49:05+02:00",
+      "row_count": 98,
+      "reference_value": 5.83828,
+      "sha256": "f6bd07569b4caae63b3a523b9c8741d1d660dbf414c288cc5079ebffbdc659cb"
+    },
+    "vandindvinding": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/vandindvinding_scores.csv@df5a92a",
+      "fetched_at": "2026-05-01T21:07:10+02:00",
+      "row_count": 92,
+      "reference_value": 72.9473,
+      "sha256": "020e825390401eb2a6f1cc56a2f6893716bb5af2f6b10629eace44ea58deb2c2"
+    },
+    "areal_intensiv": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/arealanvendelse_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 54.7003,
+      "sha256": "b3321da5b2de2353d2cff8168d7b74061a6c2f75015a342089d3e19590600b14"
+    },
+    "areal_bebygget": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/arealanvendelse_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": 14.2,
+      "sha256": "f2c2fd6e1ba873c5c081b5c83ac4896ce760c9f616e3aafc26e8056265cd6346"
+    },
+    "bio_vasentlig": {
+      "data_year": "2021",
+      "method": "frozen",
+      "source_ref": "fase1:data/biodiversitet_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "457f4a09b274335166e3a55891a30551ac26af4e0fb18328e9abcf4c396da2e0"
+    },
+    "bio_uerstattelig": {
+      "data_year": "2021",
+      "method": "frozen",
+      "source_ref": "fase1:data/biodiversitet_scores.csv@f9eba2c",
+      "fetched_at": "2026-05-01T20:47:36+02:00",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "a4866d74047c03951e91e5277f09d76cac7a8efd8733545c4d47d55beeadfc2c"
+    },
+    "ctx_ve_kw_per_indb": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/ve_kapacitet_scores.csv@d2c208f",
+      "fetched_at": "2026-06-20T07:10:39+02:00",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "4c54d02e126fcb3afa701a15b4af22d8ec5dc997aed6bca63932ebda7329cfdf"
+    },
+    "ctx_ve_sol_mw": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/ve_kapacitet_scores.csv@d2c208f",
+      "fetched_at": "2026-06-20T07:10:39+02:00",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "134c1a1e0cfb178f1c5d6475b2c0398d7e5dfbebcf898c45d5e02f3ecc2d0543"
+    },
+    "ctx_ve_vind_mw": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/ve_kapacitet_scores.csv@d2c208f",
+      "fetched_at": "2026-06-20T07:10:39+02:00",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "9598e9454595a8e6da296c4c9171042056ca20d2ab333f212d224e4321c9f2b2"
+    },
+    "ctx_fjv_biomasse": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/fjernvarme_mix_scores.csv@d2c208f",
+      "fetched_at": "2026-06-20T07:10:39+02:00",
+      "row_count": 80,
+      "reference_value": null,
+      "sha256": "4f8fb92e958d1ee792dd0811ce4688468f73222fa52a5eab2dc3cde422c8b8b3"
+    },
+    "ctx_fjv_affald": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/fjernvarme_mix_scores.csv@d2c208f",
+      "fetched_at": "2026-06-20T07:10:39+02:00",
+      "row_count": 80,
+      "reference_value": null,
+      "sha256": "a48f85a57bb18346767d565f74688bf4e5160e98be3c55549c9fef15e9ad0c8d"
+    },
+    "ctx_fjv_fossil": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/fjernvarme_mix_scores.csv@d2c208f",
+      "fetched_at": "2026-06-20T07:10:39+02:00",
+      "row_count": 80,
+      "reference_value": null,
+      "sha256": "bf2758c6c86ed76825138ba7e25048a85e8cd8eb1808902594667550e6263a27"
+    },
+    "ctx_fjv_ren": {
+      "data_year": "2024",
+      "method": "frozen",
+      "source_ref": "fase1:data/fjernvarme_mix_scores.csv@d2c208f",
+      "fetched_at": "2026-06-20T07:10:39+02:00",
+      "row_count": 80,
+      "reference_value": null,
+      "sha256": "912a5d6f8001bef58f16cb3ce5819ee3c10d80c2726eb8022317e45123b92ce0"
+    },
+    "ctx_fossil_direkte": {
+      "data_year": "2026",
+      "method": "frozen",
+      "source_ref": "fase1:data/bolig_fossil_scores.csv@d2c208f",
+      "fetched_at": "2026-06-20T07:10:39+02:00",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "3f867ce088c969ade731789139b9a552ba7c548d6758ad6312d8a9e46c9fbe76"
+    },
+    "ctx_fossil_via_fjv": {
+      "data_year": "2026",
+      "method": "frozen",
+      "source_ref": "fase1:data/bolig_fossil_scores.csv@d2c208f",
+      "fetched_at": "2026-06-20T07:10:39+02:00",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "b1f620762a2ddaf464443839792e3429a384ecd5684124b9511d2f108cd0bfbd"
+    }
+  }
+}

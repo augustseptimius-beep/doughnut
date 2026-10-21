@@ -1,0 +1,1 @@
+Recepter pr. 100 borgere på psykoanaleptika (DST MEDI1, ATC-gruppe N06: antidepressiva, ADHD-medicin og demens-medicin). Anvendes som proxy for mental sundhed. Inverteret: lavere forbrug er bedre. NB: Højt forbrug kan også afspejle bedre adgang til diagnose og behandling, ikke kun ringere mental sundhed.

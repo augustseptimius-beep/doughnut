@@ -1,0 +1,1 @@
+Antal modtagere af hjemmesygepleje pr. 1.000 indbyggere (DST HJEMSYG). Proxy for sygelighed og plejebyrde, særligt blandt ældre. Inverteret: lavere antal er bedre. Begrænsning: 2025-tallene er foreløbige (baseret på første halvår) og kan ændre sig.
