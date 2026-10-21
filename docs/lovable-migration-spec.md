@@ -235,7 +235,7 @@ Transform-typen i registret er én af: `none` (ratio leveres færdig), `inverse_
 
 Routes: `/`, `/kommune/:navn`, `/metode`, `/om`, `/artikel/planetaere-graenser`, `/admin/*`. Ukendt kommune -> "ikke fundet"-side med link til forsiden. Titel og meta-beskrivelse sættes pr. rute.
 
-**URL-kompatibilitet (acceptkriterium fase 7):** alle URL'er det nuværende site udgiver skal virke på det nye. Fase 0 udtrækker listen fra `webapp/out/` (inkl. evt. `.html`-varianter og URL-encodede navne som `K%C3%B8benhavn`). Afvigelser løses med redirects.
+**URL-kompatibilitet (acceptkriterium fase 7):** alle URL'er det nuværende site udgiver skal virke på det nye. Fase 0 udtrækker listen fra `webapp/out/` (inkl. evt. `.html`-varianter og URL-encodede navne som `K%C3%B8benhavn`). Afvigelser løses med redirects. Fase 0 fandt: 102 URL'er (4 sider + 98 kommuner, listet i `migration/baseline/url_liste.txt`), ingen redirects i `netlify.toml`, sitets egne links bruger `encodeURIComponent`, og filnavnene i `webapp/out/` er NFC-normaliserede. Varianter med `.html` eller efterfølgende `/` er ikke listet og testes mod det live site i fase 7.
 
 ---
 
@@ -361,7 +361,7 @@ Tre lag, alle med 0 afvigelser (numerisk tolerance 0,01, null = null):
 
 1. **Værdier:** `KommuneData[]` fra ny loader sammenlignes med `parity_baseline.json` (fase 0) for alle 98 kommuner og alle nøgler i ratios, top10_ratios, group_ratios, eco_ratios og rawValues.
 2. **Metadata:** de genererede `INDICATORS`, `SOCIAL_CATEGORIES`, `ECOLOGICAL_DIMENSIONS`, `KOMMUNEGRUPPE` og `DOUGHNUT_*` sammenlignes felt for felt med `metadata_baseline.json` (eksport af de nuværende konstanter, fase 0). Dokumenterede afvigelser (enhedskonflikter, afsnit 3) står på en eksplicit undtagelsesliste i testen.
-3. **Afledte scorer:** `computeCategoryScores` for alle kommuner og alle tre baselines sammenlignes med baseline-eksporten.
+3. **Afledte scorer:** `computeCategoryScores` for alle kommuner og alle tre baselines sammenlignes med baseline-eksporten. Baseline gemmer kategoriens `score`, `indicatorCount` og `hasData`; scorerne pr. indikator er identiske med ratio-felterne og dækkes af lag 1.
 
 Derudover visuel kontrol af Thisted (787), København (101), Aarhus (751) og Læsø (825): donut, scorebars, vurderingsboks, alle tre baseline-stillinger og print.
 
@@ -418,7 +418,7 @@ Bindende rækkefølge. En fase starter først når den forriges acceptkriterium 
 
 | Fase | Hvor | Indhold | Acceptkriterium | Model |
 |---|---|---|---|---|
-| 0 | doughnut-repo | Eksportér `parity_baseline.json` (værdier + kategoriscorer, alle baselines), `metadata_baseline.json` (alle konstanter) og URL-liste fra `webapp/out/` | Filerne findes, 98 kommuner | Sonnet |
+| 0 | doughnut-repo | Eksportér baseline til `migration/baseline/` med `migration/export_baseline.mjs`: `parity_baseline.json` (værdier, top10-/gruppe-/øko-scorer og kategoriscorer i alle tre baselines), `metadata_baseline.json` (alle konstanter, afledte baselineTypes, `eco_raw_key_map`) og `url_liste.txt` | 98 kommuner. Tællinger afstemt mod master-CSV uden differens. To kørsler giver byte-identisk output. **Gennemført 2026-10-21.** Fra nu til fase 1-rundturen er afsluttet må `data/master_indicators.csv` ikke ændres uden at eksporten køres igen (sha256 står i baseline-filerne, se `migration/README.md`) | Sonnet |
 | 1 | doughnut-repo, `migration/` | Engangskonvertering (`tools/migration/`): master-CSV -> snapshots + manifest (method=frozen), shared.ts + build-lister -> `registry/`, metode-datastrukturer -> markdown (mekanisk), dimensionsårstal udgår (udledes). Fase 1-rapport med konflikter og afvigelser. Oprindelsen af `consumption_scores.csv` dokumenteres | Rundtur: snapshots samlet = master-CSV minus `_dim_`-rækker, række for række. August har skimmet rapporten | Opus |
 | 2 | Privat Lovable (eller kommunalt, 13.1) | Opret projekt (EU-region), git sync, spike V1-V9, flyt indholdet fra `migration/` ind i det nye repo, port app (afsnit 6) | V-punkter noteret i afsnit 14. App bygger og viser forside + én kommuneside | Opus (spike), Sonnet (port) |
 | 3 | Lovable | Loader (afsnit 7), routing, paritetstest (afsnit 12) | 0 afvigelser i alle tre lag | Opus |
