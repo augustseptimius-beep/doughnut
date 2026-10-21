@@ -1,409 +1,492 @@
-# Migrationsspecifikation: Danmarks 98 Doughnuts til Lovable + Supabase
+# Migrationsspecifikation v2: Danmarks 98 Doughnuts til Lovable
 
-**Status:** Godkendt plan. Implementering IKKE påbegyndt.
-**Godkendt af:** August, 2026-08-06.
-**Målgruppe:** AI-agenter (Claude, Lovables agent) der skal implementere migreringen. Dokumentet er normativt: afvigelser fra dette dokument kræver eksplicit godkendelse fra August. Afsnit markeret [info] er baggrund, ikke krav.
+**Status:** v2, godkendt princip. Implementering IKKE påbegyndt.
+**Historik:** v1 godkendt 2026-08-06. v2 skrevet 2026-10-21 efter review (16 fund) og to nye beslutninger fra August: (1) kun Lovable som leverandør, ingen egne underleverandører, (2) git er sandheden, data skal altid kunne hentes på ny via scripts, og metode-tekster ligger som filer i repoet.
+**Målgruppe:** AI-agenter (Claude, Lovables agent) der implementerer migreringen. Dokumentet er normativt. Afvigelser kræver eksplicit godkendelse fra August. Afsnit markeret [info] er baggrund.
 
 ---
 
-## 0. Beslutningslog (låste beslutninger)
+## 0. Grundprincip
 
-Disse beslutninger er truffet og skal IKKE genforhandles af implementerende agenter:
+> **Git er sandheden. Alt andet kan smides væk og genskabes.**
+
+Alle tal, al metadata og alle metode-tekster ligger som filer i ét git-repo. Det offentlige site læser direkte fra disse filer (bundlet ved build). Der er INGEN database med indikatordata. Datahentning sker via scripts (Lovable edge functions), som producerer nye filer, der committes til git.
+
+Konsekvenser:
+- Flytning mellem Lovable-workspaces er ikke en datarisiko: et nyt projekt fra repoet har alle data.
+- Exit ved udbud: repoet er et almindeligt Vite + React-projekt med data som CSV.
+- Ingen databaseadgang, RLS eller rækkegrænser på det offentlige site.
+- Ændringshistorik på alt (tal, tekster, metadata) via git.
+
+**Hvert faktum har præcis ét hjem** (se afsnit 3). Intet faktum må skrives to steder. Det er løsningen på at metode-siden går i utakt med data. Ved v2-review blev der konstateret to aktive eksempler: metode-siden angiver dataår "2022" for Lighed (reelt 2022-2024) og "2023" for Ligestilling (reelt 2023-2025), fordi dimensionsårstal er håndskrevet i `metode/page.tsx`.
+
+---
+
+## 1. Beslutningslog (låste beslutninger)
 
 | # | Beslutning | Begrundelse |
 |---|---|---|
-| B1 | Platformen genopbygges i Lovable (Vite + React + shadcn/ui), ikke Next.js | Lovable understøtter ikke Next.js. SPA med React Router erstatter static export |
-| B2 | Supabase er backend: Postgres + Auth + Edge Functions | Muliggør admin-UI, import, bruger-features |
-| B3 | AL indikator- og dimensions-metadata flyttes til databasen fra dag 1 | Fjerner tre-steders-problemet (shared.ts + build_master_csv.py + metode-side) som har givet utakt |
-| B4 | Metode-sidens prosa gemmes i databasen (markdown-felter), redigerbar i admin-UI | Godkendt af August inkl. trade-off: prosa versionsstyres ikke længere i git |
-| B5 | Øko-dimensionsscorer (worst-of/gennemsnit) beregnes ved indlæsning i frontend, IKKE gemt i databasen | Fjerner risiko for forældede aggregater efter admin-redigering. Logikken er triviel (max/gennemsnit) |
-| B6 | Kun nuværende værdier gemmes pr. (kommune, indikator). Historik over år er IKKE i scope | Matcher nuværende funktionalitet. Historik er en fremtidig mulighed, ikke MVP |
-| B7 | Statbank/EDS/UVM-fetchere porteres til Supabase Edge Functions. Geodata- og manuelle kilder opdateres via admin-import | Se disposition i afsnit 11 |
-| B8 | Edge functions udløses manuelt via "Opdater nu"-knapper i admin. Cron-planlægning er IKKE i scope for fase 6 | Holder scope stramt; data opdateres alligevel sjældent |
-| B9 | Python-scripts i `scripts/` bevares urørt i repoet under hele migreringen | Reference og fallback indtil nyt system er verificeret |
-| B10 | Gammelt Netlify-site kører parallelt indtil paritet er verificeret og August godkender go-live | Ingen nedetid, mulighed for rollback |
-
----
-
-## 1. Mål og ikke-mål
-
-### Mål
-1. Funktionel paritet: det nye site viser samme tal, farver, scorer og tekster som det nuværende for alle 98 kommuner.
-2. Admin-UI hvor August (uden kode/terminal) kan: redigere værdier, redigere indikator-metadata og metode-prosa, importere CSV/Excel, og udløse datahentning.
-3. Metadata har ét hjem (databasen). Metode-siden genereres derfra og KAN ikke komme i utakt med data.
-4. Fundament for senere bruger-features (konti, feedback, gemte sammenligninger).
-
-### Ikke-mål (må IKKE implementeres uden ny godkendelse)
-- Historiske tidsserier pr. indikator (B6).
-- Cron-planlagt datahentning (B8).
-- Ændringer i scoringsmetode, grænseværdier, farvetærskler eller indikatorlisten. Migreringen er 1:1 på al faglig logik.
-- SSR/prerendering af kommunesider (accepteret trade-off, se afsnit 14).
-- Bruger-features (fase 7) er IKKE en del af fase 1-6 og specificeres separat senere.
+| B1 | Appen genopbygges i Lovable som Vite + React + TypeScript + Tailwind + shadcn/ui. Hvis Lovable tilbyder prerendering/SSR ved oprettelse (V1), foretrækkes det | Lovable understøtter ikke Next.js. Prerendering ville løse SEO-trade-off |
+| B2 | Lovable er eneste leverandør. Backend = Lovable Cloud. Ingen eget Supabase, Netlify eller andre underleverandører i målbilledet | Kommunen opretter ikke egne underleverandører. Lovable Cloud er dækket af Lovables databehandleraftale |
+| B3 | Git er sandheden (afsnit 0). Indikatorværdier ligger som snapshot-filer i repoet, ikke i en database | Data altid genskabelig, uafhængig af workspace og flytning |
+| B4 | Metadata ligger i et typet register i repoet. Metode-tekster ligger som markdown-filer. Redigering sker via Lovables chat, som committer til git | Godkendt af August (valg a). Giver versionshistorik og ét hjem pr. faktum |
+| B5 | Dataår, kilde-tidspunkt og hentemetode skrives KUN af snapshot-commit-funktionen til et manifest, aldrig i hånden | Fjerner utakt mellem data og metode-side |
+| B6 | Al dataskrivning sker som filer der ender i git. Ingen manuel redigering af enkeltværdier i admin. Rettelser sker via import af en fil | Ellers kan data ikke genskabes |
+| B7 | Datahentning sker i to trin: (1) hent + valider + vis diff (skriver intet), (2) godkendt commit af snapshot til git i ét atomisk commit | Ingen halve opdateringer, menneskelig godkendelse |
+| B8 | Kilder med API porteres til edge functions. Geodata- og manuelle kilder er "frosne": snapshot i git er kilden, opdateres via import | Se afsnit 9 |
+| B9 | Edge functions udløses manuelt fra admin. Ingen cron i scope | Data opdateres sjældent |
+| B10 | Øko-dimensionsscorer og baselines (top10, gruppe) beregnes i frontend ved indlæsning, som i dag | Uændret faglig logik |
+| B11 | Kun nuværende værdier (ingen tidsserier i UI). Git-historikken bevarer tidligere værdier | Matcher nuværende funktionalitet |
+| B12 | Persondata (rigtige brugerkonti, feedback) må KUN behandles i et kommunalt Lovable Business/Enterprise-workspace med databehandleraftale. I et privat workspace bruges kun offentlige data og en testkonto uden persondata | Lovable: "Free and Pro accounts have no data processing agreement" |
+| B13 | Ét repo efter fase 2: Lovable-projektets repo rummer app, data, register, metode-tekster, edge functions, Python-opskrifter og denne spec. Det nuværende doughnut-repo arkiveres efter go-live | Én kilde, ingen tvivl om hvor noget bor |
+| B14 | Python-scripts bevares urørt (flyttes til `tools/python/` i det nye repo) som opskrift og fallback | Frosne kilder kan genskabes af en Claude-session uden for Lovable |
+| B15 | Det gamle site kører parallelt indtil go-live er godkendt. Rollback = peg domænet tilbage | Ingen nedetid |
+| B16 | Migreringen er 1:1 på al faglig logik. Kendte uklarheder (fx housing_no_wc/no_bath uden kategori) bevares og listes til senere afklaring | Paritet før forbedring |
 
 ---
 
 ## 2. Målarkitektur
 
 ```
-Lovable-projekt (Vite + React + TypeScript + Tailwind + shadcn/ui)
-├── Offentligt site (ingen login)
-│   ├── /                      Forside med kommunesøgning
-│   ├── /kommune/:navn         Kommuneside (donut, scorebars, vurdering)
-│   ├── /metode                GENERERET fra databasen (afsnit 9)
-│   ├── /om                    Statisk tekst
-│   └── /artikel/planetaere-graenser   Statisk tekst
-├── Admin (bag Supabase Auth login)
-│   ├── /admin                 Oversigt + "Opdater nu"-knapper (fase 6)
-│   ├── /admin/vaerdier        Rediger indicator_values
-│   ├── /admin/indikatorer     Rediger indicators + dimensions inkl. metode-prosa
-│   ├── /admin/import          Import-funktionen (afsnit 10)
-│   └── /admin/log             import_log-visning
-└── Supabase
-    ├── Postgres (skema i afsnit 3)
-    ├── Auth (kun August har skriveadgang)
-    └── Edge Functions (fase 6, afsnit 11)
+Lovable-projekt (ét repo, git sync begge veje)
+├── src/                              Appen (Vite + React)
+│   ├── pages/                        Forside, Kommune, Metode, Om, Artikel, Admin
+│   ├── components/                   Porterede komponenter (afsnit 6)
+│   └── lib/
+│       ├── shared.ts                 Typer + compute-funktioner (porteret)
+│       └── data.ts                   Loader: snapshots -> KommuneData[] (afsnit 7)
+├── registry/                         ★ METADATA (typet TypeScript, eneste hjem)
+│   ├── settings.ts                   DOUGHNUT_EDITION_YEAR m.m.
+│   ├── kommuner.ts                   98 kommuner: kode, navn, kommunegruppe
+│   ├── dimensions.ts                 Sociale kategorier + øko-dimensioner
+│   ├── indicators.ts                 Alle indikatorer inkl. transform og hentekonfiguration
+│   └── references.ts                 Kildehenvisninger (label + url), refereret via id
+├── content/metode/                   ★ METODE-TEKSTER (markdown, eneste hjem)
+│   ├── generelt/*.md                 Generelle afsnit (baseline-hierarki, scoring, grænser, databehandling)
+│   ├── dimensioner/<dimension_id>.md
+│   └── indikatorer/<indicator_id>.md
+├── data/snapshots/                   ★ VÆRDIER (eneste hjem)
+│   ├── <indicator_id>.csv            Én fil pr. indikator
+│   └── _manifest.json                Dataår, kilde, tidspunkt, metode pr. indikator (skrives kun af commit-snapshot)
+├── supabase/functions/               Edge functions (Lovable Cloud)
+│   ├── _shared/                      Fælles: statbank-klient, transforms, validering, git-commit
+│   ├── fetch-<kilde>/                Én funktion pr. kilde (afsnit 9), dry-run only
+│   └── commit-snapshot/              Eneste funktion der skriver til git
+├── tools/
+│   ├── python/                       De gamle scripts (B14)
+│   └── migration/                    Engangs-konvertering (fase 1)
+└── docs/                             Denne spec + metodenoter fra data/
 ```
 
-Dataflow ved sidevisning: appen henter ved opstart (1) alle rækker fra `kommuner`, `dimensions`, `indicators` og (2) alle rækker fra `indicator_values`. Derfra bygges `KommuneData[]` i browseren efter kontrakten i afsnit 6. Ca. 6.000 værdirækker; sammenligneligt med nuværende 676 KB CSV. Ingen paginering nødvendig.
+Det offentlige site bruger ingen database og ingen edge functions. Admin bruger Lovable Cloud Auth + edge functions. Fase 8 (bruger-features) indfører databasetabeller og specificeres separat.
 
----
-
-## 3. Databaseskema (normativt)
-
-Kolonnenavne og typer er normative. Postgres/Supabase.
-
-```sql
-create table kommuner (
-  kode           text primary key,          -- "101".."860", tre cifre som tekst
-  navn           text not null unique,      -- "Thisted", "København"
-  kommunegruppe  int  not null check (kommunegruppe between 1 and 5)
-  -- Seedes fra KOMMUNEGRUPPE i webapp/lib/shared.ts (DST KOMMUNEGRUPPER_V1_2018)
-);
-
-create table dimensions (
-  id            text primary key,           -- "sundhed", "klimapaavirkning", ...
-  navn          text not null,              -- "Sundhed", "Klimapåvirkning"
-  kind          text not null check (kind in ('social','ecological')),
-  short_name    text,                       -- kun eco: label i SVG-ringen ("KLIMA")
-  description   text,                       -- fra SOCIAL_CATEGORIES.description / ECOLOGICAL_DIMENSIONS.description
-  boundary_text text,                       -- kun eco: ECOLOGICAL_DIMENSIONS.boundary
-  unit          text,                       -- kun eco
-  source_label  text,                       -- kun eco
-  source_url    text,                       -- kun eco
-  aggregation   text not null default 'worst_of'
-                check (aggregation in ('worst_of','average')),
-                -- eco: 'worst_of' for alle UNDTAGEN forurening='average'.
-                -- social: feltet ignoreres (kategoriscore er altid gennemsnit)
-  sort_order    int not null,
-  metode_tekst  text,                       -- markdown, redigerbar i admin
-  begraensninger text                       -- markdown, redigerbar i admin
-);
-
-create table indicators (
-  id             text primary key,          -- "life_expectancy", "luftkvalitet_no2", "ctx_ve_sol_mw"
-  navn           text not null,
-  kind           text not null check (kind in ('social','ecological','context')),
-  dimension_id   text not null references dimensions(id),
-  unit           text,
-  data_year      text,                      -- tekst, ikke int: "2023-2025" forekommer
-  source_name    text,                      -- "DST HISBK", "DCE Biodiversitetskort (bioscore)"
-  source_url     text,                      -- link vist på metode-siden
-  dst_table      text,                      -- "HISBK", "GS/KARA/KARAGNS", null hvis ikke DST/UVM
-  baseline_level int check (baseline_level in (1,2,3)),
-  inverse        boolean not null default false,
-  absolute_score boolean not null default false,  -- se afsnit 4, regel R7
-  baseline_type  text check (baseline_type in ('absolut','relativ')),
-  transform      text not null default 'none'
-                 check (transform in ('none','inverse_10000','recycling_eu_target',
-                                      'cba_div3','abs_target','social_cap')),
-                 -- normativ transformregel for skriveveje, se afsnit 4
-  abs_target     numeric,                   -- kun ved transform='abs_target' (education: 95)
-  ratio_cap      numeric,                   -- 150 for sociale, 300 hvor sat for eco, ellers null
-  lower_is_better boolean,                  -- kun eco-sub: styrer visning
-  boundary_text  text,                      -- kun eco-sub: grænsetekst til UI
-  raw_key        text,                      -- kun eco-sub: rawValues-nøgle (fra ECO_RAW_KEY_MAP)
-  ratio_key      text,                      -- kun eco-sub: ratio-nøgle (fra ECO_RAW_KEY_MAP), kan være null
-  name_keyed     boolean not null default false, -- true: kildedata matches på kommunenavn (vejr_skader, forbrug_co2)
-  sort_order     int not null,
-  active         boolean not null default true,
-  metode_tekst   text,                      -- markdown, redigerbar i admin
-  begraensninger text                       -- markdown, redigerbar i admin
-);
-
-create table indicator_values (
-  kommune_kode  text not null references kommuner(kode),
-  indicator_id  text not null references indicators(id),
-  raw_value     numeric,                    -- null tilladt
-  ratio         numeric,                    -- null tilladt; FÆRDIG direkte ratio (samme semantik som master-CSV)
-  updated_at    timestamptz not null default now(),
-  updated_by    text not null,              -- 'seed' | 'import' | 'edge:<funktionsnavn>' | 'admin'
-  primary key (kommune_kode, indicator_id)
-);
-
-create table import_log (
-  id          bigint generated always as identity primary key,
-  created_at  timestamptz not null default now(),
-  kind        text not null check (kind in ('seed','file_import','edge_function','manual_edit')),
-  indicator_id text,                        -- null ved multi-indikator-kørsler
-  source_ref  text,                         -- filnavn eller edge-funktionsnavn
-  row_count   int,
-  detail      jsonb                         -- diffs: [{kommune_kode, felt, gammel, ny}]
-);
-
-create table admin_users (
-  user_id uuid primary key references auth.users(id)
-);
+Dataflow ved opdatering:
+```
+Admin: "Hent kilde X"  ->  fetch-X (dry-run)  ->  diff + validering vises
+       August godkender ->  commit-snapshot   ->  ét git-commit (snapshots + manifest)
+       Lovable git sync ->  August trykker Publicér  ->  nyt data live
 ```
 
-### RLS-politikker (normative)
-- `kommuner`, `dimensions`, `indicators`, `indicator_values`: SELECT for alle (anon + authenticated). INSERT/UPDATE/DELETE kun hvis `auth.uid()` findes i `admin_users`.
-- `import_log`, `admin_users`: al adgang kun for `admin_users`.
-- Edge functions bruger service role og logger til `import_log` med `kind='edge_function'`.
-- Acceptkriterium: en anonym klient kan læse alle offentlige tabeller og kan IKKE skrive til nogen tabel. Testes eksplicit i fase 5.
-
-### Semantik der SKAL bevares
-- `ratio`-kolonnen indeholder den FÆRDIGE ratio, identisk med `ratio`-kolonnen i `data/master_indicators.csv` i dag. Alle transformationer (afsnit 4) sker på skrivetidspunktet, aldrig ved læsning.
-- Sociale ratios: 100 = landsgennemsnit (eller absolut mål ved `absolute_score`), højere = bedre.
-- Øko-ratios: 100 = grænsen, højere = værre (overshoot).
-- Kontekst-indikatorer (`kind='context'`): kun `raw_value`, `ratio` er altid null.
-- Kommune "000" (Danmark-aggregat) må ikke forekomme i `kommuner`. Christiansø er ikke en kommune og må ikke forekomme.
-
 ---
 
-## 4. Transform- og beregningsregler (normative invarianter)
+## 3. Fakta og deres hjem (normativt)
 
-Disse regler er projektets faglige kerne. De er i dag implementeret i `scripts/build_master_csv.py` og `webapp/lib/shared.ts` (linjereferencer nedenfor). Enhver port SKAL reproducere dem præcist. Paritetstesten (afsnit 8) verificerer dem.
-
-**R1 - Social ratio-cap:** alle sociale ratios cappes ved 150.0 (build_master_csv.py:351-353). Gælder også efter abs_target-beregning.
-
-**R2 - Absolut mål (transform='abs_target'):** `ratio = min(raw / abs_target * 100, 150)`, afrundet til 2 decimaler (build_master_csv.py:346-348). Bruges i dag KUN af `education` (abs_target=95). `bolig_fossil` er OGSÅ absolut scoret, men dens ratio (100 - samlet fossil%) beregnes i fetch-scriptet og gemmes færdig; dens transform er 'none'.
-
-**R3 - Inverse eco-ratio (transform='inverse_10000'):** kildedata leverer inverteret ratio (lav = værre). Konvertering: `direct = round(10000 / inverse, 2)`; null eller 0 giver null (build_master_csv.py:229-234). Gælder: `naer_nitrogen`, `naer_phosphorus`, `cirkularitet_waste`.
-
-**R4 - Genanvendelse (transform='recycling_eu_target'):** `ratio = round((65 / pct) * 100, 2)`; null eller 0 giver null (build_master_csv.py:237-242). Over 100 = genanvender for lidt. Gælder kun `cirkularitet_recycling`.
-
-**R5 - Forbrugs-CO2 (transform='cba_div3'):** `ratio = round((raw / 3) * 100, 2)` (build_master_csv.py:245-249). Gælder kun `forbrug_co2`. Kildedata er navn-nøglet (name_keyed=true), intet fallback ved manglende match.
-
-**R6 - Eco ratio-cap:** hvor `ratio_cap` er sat, klippes ratio til cap-værdien (build_master_csv.py:436-440). I dag: `overfladevand`, `bio_vasentlig`, `bio_uerstattelig` = 300.
-
-**R7 - Dimensionsscore (eco):** pr. kommune og dimension: saml alle ikke-null sub-ratios. `aggregation='worst_of'`: score = round(max, 2). `aggregation='average'`: score = round(gennemsnit, 2). Ingen sub-ratios = score er null (build_master_csv.py:252-265, 497-525). KUN `forurening` har 'average'. Beregnes ved indlæsning i frontend (beslutning B5), ikke gemt i DB.
-
-**R8 - Social kategoriscore:** simpelt gennemsnit af ikke-null indikator-ratios i kategorien; ingen data = null (shared.ts:835-862, `computeCategoryScores`). Porteres uændret.
-
-**R9 - Top10-baseline:** pr. social indikator: (a) hvis `absolute_score`: kopier ratio uændret; (b) ellers: sorter alle kommuners ratio faldende, tag gennemsnit af de 10 højeste, ny ratio = `parseFloat((ratio / top10Avg * 100).toFixed(2))`; (c) færre end 10 gyldige værdier: kopier ratio uændret (shared.ts:913-957, `computeTop10Ratios`). Porteres uændret.
-
-**R10 - Kommunegruppe-baseline:** pr. social indikator og gruppe G1-G5: uvægtet gruppegennemsnit af ratio, ny ratio = `parseFloat((ratio / gruppeAvg * 100).toFixed(2))`; `absolute_score` kopieres uændret (shared.ts:1002-1049, `computeGroupRatios`). Gruppetilhør fra `kommuner.kommunegruppe`. Porteres uændret.
-
-**R11 - Farvetærskler:** sociale: score >= 100 grøn (emerald), >= 85 amber, < 85 rød (shared.ts:1051-1063). Økologiske: <= 85 grøn, <= 100 amber, > 100 rød (`ecoScoreColor`/`ecoBarColor` i ScoreBars.tsx). OMVENDT retning - må ikke forveksles.
-
-**R12 - baselineType-udledning:** social indikator: 'absolut' hvis `absolute_score`, ellers 'relativ'. Dimension/kategori: alle ens type = den type, ellers 'blandet'; tom liste = 'relativ' (shared.ts:864-890). Porteres uændret.
-
-**R13 - null vs. manglende:** i `KommuneData` skal ALLE aktive indikatorer have en nøgle i `ratios` (null hvis ingen data), og ALLE eco-dimensioner en nøgle i `eco_ratios` (null hvis ingen data). client.tsx skelner mellem null og undefined ved optælling af "afventer data" (data.ts:178-192). Skal bevares.
-
-**R14 - Ratio-validering:** gyldigt interval 0-2000; værdier udenfor er en fejl der skal rapporteres, ikke klippes (build_master_csv.py:530-536). Bruges i import-funktionen og paritetstesten.
-
-**R15 - Baseline-toggle:** påvirker KUN sociale indikatorer. Øko-dimensioner har absolutte grænser og ændres aldrig af toggle (avg/top10/gruppe).
-
----
-
-## 5. Frontend-port: fil-for-fil
-
-Alle stier er relative til nuværende `webapp/` hhv. nyt Lovable-projekt `src/`.
-
-| Nuværende fil | Ny fil | Handling |
+| Faktum | Eneste hjem | Skrives af |
 |---|---|---|
-| `lib/shared.ts` | `src/lib/shared.ts` | Typer + compute-funktioner (R8-R12) kopieres ORDRET. Konstant-arrays (INDICATORS, SOCIAL_CATEGORIES, ECOLOGICAL_DIMENSIONS, KOMMUNEGRUPPE) FJERNES - erstattes af DB-load, se afsnit 6 |
-| `lib/data.ts` | `src/lib/data.ts` | Omskrives: Supabase-klient i stedet for fs/CSV. Kontrakt i afsnit 6. ECO_RAW_KEY_MAP udgår (erstattet af `indicators.raw_key`/`ratio_key`) |
-| `lib/vurdering.ts` | `src/lib/vurdering.ts` | Kopieres ordret |
-| `lib/baseline-context.tsx` | `src/lib/baseline-context.tsx` | Kopieres; `"use client"` slettes |
-| `components/*.tsx` (alle 7) | `src/components/*.tsx` | Kopieres; `"use client"` slettes; `next/link` -> `react-router-dom` Link (kun KommuneSearch.tsx); imports af konstanter skiftes til metadata-context |
-| `app/layout.tsx` | `src/App.tsx` + `src/components/Layout.tsx` | Header/footer/nav bevares visuelt identisk; BaselineProvider + MetadataProvider wrapper |
-| `app/page.tsx` | `src/pages/Forside.tsx` | Kopieres |
-| `app/kommune/[navn]/page.tsx` | `src/pages/Kommune.tsx` | `generateStaticParams` udgår. Route-param `:navn` afkodes med `decodeURIComponent`; opslag matcher navn (case-insensitivt) ELLER kode, som `getKommune` i dag (data.ts:220-228) |
-| `app/kommune/[navn]/client.tsx` | del af `src/pages/Kommune.tsx` | Server/client-skel udgår; logik bevares |
-| `app/metode/page.tsx` | `src/pages/Metode.tsx` | OMSKRIVES: genereret fra DB (afsnit 9). Prosa udtrækkes til DB i fase 1 |
-| `app/om/page.tsx`, `app/artikel/...` | `src/pages/Om.tsx`, `src/pages/ArtikelPlanetaereGraenser.tsx` | Kopieres |
-| `app/globals.css` | `src/index.css` | Tailwind 4-opsætning overføres |
-| `netlify/functions/klimaregnskabet.mts` | udgår | Kaldes ikke af frontenden. API-nøglen (`KLIMAREGNSKABET_API_KEY`) flyttes til Supabase secret til brug i fase 6 |
+| Indikatornavn, enhed, kategori/dimension, transform, grænse, inverse, absoluteScore, baselineLevel, baselineType, DST-tabel, kilde-navn, kilde-URL, hentekonfiguration | `registry/indicators.ts` | Udvikler / Lovable-chat |
+| Kategori- og dimensionsnavn, beskrivelse, aggregering, sortering, grænsetekst | `registry/dimensions.ts` | Udvikler / Lovable-chat |
+| Kildehenvisninger med flere links (fx `boundarySources`) | `registry/references.ts` | Udvikler / Lovable-chat |
+| Kommuner og kommunegrupper | `registry/kommuner.ts` | Udvikler |
+| Doughnut-edition og standard-dataår | `registry/settings.ts` | Udvikler / Lovable-chat |
+| Metode-prosa (scoring-forklaring, rationale, begrænsninger, generelle afsnit) | `content/metode/**/*.md` | Lovable-chat |
+| Værdier (raw_value, ratio) pr. kommune × indikator | `data/snapshots/<id>.csv` | KUN `commit-snapshot` (og fase 1-konvertering) |
+| Dataår, hentetidspunkt, hentemetode, referenceværdi, rækkeantal | `data/snapshots/_manifest.json` | KUN `commit-snapshot` (og fase 1-konvertering) |
+| Dimensionens dataår-interval | INGEN, udledes altid (min-max af indikatorernes dataår fra manifest) | Ingen |
+| Dimensionsscore (worst-of/gennemsnit), top10- og gruppe-baseline | INGEN, beregnes i frontend (R7, R9, R10) | Ingen |
 
-Routing (react-router-dom): `/`, `/kommune/:navn`, `/metode`, `/om`, `/artikel/planetaere-graenser`, `/admin/*` (beskyttet). 404 renderer en "kommune ikke fundet"-side med link til forsiden.
+Regel: metode-side, scorebars, tooltips og print-visning læser fra de samme hjem. Ingen komponent må have hårdkodede kopier af fakta fra tabellen.
 
----
-
-## 6. Dataindlæsning i den nye app (loader-kontrakt)
-
-### Metadata-load (erstatter konstant-arrays)
-Ved app-opstart hentes `dimensions` og `indicators` (kun `active=true`) og der bygges objekter med PRÆCIS samme form som de nuværende konstanter:
-
-- `INDICATORS: Indicator[]` fra `indicators` hvor kind='social' eller 'ecological', sorteret på `sort_order`.
-- `SOCIAL_CATEGORIES: SocialCategory[]` fra `dimensions` hvor kind='social'; `indicatorIds` = sociale indikatorer med matchende `dimension_id`, sorteret på `sort_order`.
-- `ECOLOGICAL_DIMENSIONS: EcologicalDimension[]` fra `dimensions` hvor kind='ecological'; `subIndicators` bygges fra eco-indikatorer med matchende `dimension_id` (rawKey, ratioKey, label=navn, unit, boundary=boundary_text, lowerIsBetter, baselineType).
-
-Disse leveres via en React context (`MetadataProvider`) og en modul-level getter, så komponenterne kan beholde deres nuværende brugsmønster med minimale ændringer. Typerne i shared.ts ændres IKKE.
-
-### Værdi-load (erstatter parseMasterCsv)
-Hent alle rækker fra `indicator_values` (join på `indicators` for kind/raw_key/ratio_key). Byg `KommuneData[]` efter PRÆCIS de regler `loadData()` bruger i dag (data.ts:120-218):
-
-1. Gruppér pr. kommune.
-2. `kind='social'`: `ratios[indicator_id] = ratio`; `rawValues[indicator_id] = raw_value` hvis ikke null.
-3. `kind='context'`: `rawValues[indicator_id] = raw_value` hvis ikke null.
-4. `kind='ecological'`: `rawValues[raw_key] = raw_value` hvis ikke null; `rawValues[ratio_key] = ratio` hvis ratio_key ikke er null og ratio ikke null.
-5. Beregn `eco_ratios[dimension_id]` pr. R7 (worst-of/average af sub-ratios) - NYT i loaderen, da `_dim_`-rækker ikke findes i DB.
-6. Udfyld null for alle manglende indikatorer og dimensioner (R13).
-7. Kør `computeTop10Ratios` og `computeGroupRatios` (uændrede).
-8. `social_avg` og `overall_avg` sættes til null (bruges ikke af UI).
-
-Resultatet caches i memory for sessionen (som `cachedData` i dag).
+**Konfliktregel for fase 1-konverteringen:** hvor `webapp/lib/shared.ts` og `scripts/build_master_csv.py` er uenige, vinder `shared.ts` (det er hvad UI viser i dag). Kendte konflikter (enheder): `child_notifications`, `bolig_fossil`, `le_gender_gap`, `income_gender_gap`, `employment_origin_gap`. Dataår er konsistente mellem de to filer pr. 2026-10-21. Alle konflikter listes i fase 1-rapporten.
 
 ---
 
-## 7. Fase 1: Seed-procedure
+## 4. Filformater (normative)
 
-Seed sker fra det eksisterende repo og SKAL være reproducerbar:
+### 4.1 Snapshot: `data/snapshots/<indicator_id>.csv`
+```
+kommune_kode,kommune_navn,raw_value,ratio
+101,København,81.2,98.45
+```
+- UTF-8, komma-separeret, header som vist, sorteret på `kommune_kode`.
+- `ratio` er den FÆRDIGE ratio (alle transforms anvendt, samme semantik som `ratio` i nuværende `master_indicators.csv`). Tom celle = null.
+- Kontekst-indikatorer: `ratio` er altid tom.
+- Kun kommuner med mindst én værdi har en række. Kommune "000" og Christiansø forekommer aldrig.
+- Tal skrives uden tusindtalsseparator, punktum som decimaltegn, uden afrunding ud over hvad kilden/transformen giver.
+- Felter må ikke indeholde komma (kommunenavne gør ikke). Parseren skal alligevel være en rigtig CSV-parser (papaparse), ikke `split(",")`.
 
-1. Nyt script `scripts/generate_supabase_seed.py` læser:
-   - `data/master_indicators.csv` -> `indicator_values` (kolonnerne ratio/raw_value overføres uændret; `_dim_`-rækker SPRINGES OVER, jf. B5) + kommuneliste -> `kommuner`.
-   - `webapp/lib/shared.ts` er IKKE maskinlæsbar fra Python; metadata-seed for `dimensions` og `indicators` skrives i stedet som en manuelt gennemgået SQL/CSV-fil, genereret af den implementerende AI ud fra shared.ts + build_master_csv.py's tre lister (SOCIAL_INDICATORS, ECO_SUB_INDICATORS, CONTEXT_INDICATORS). Felterne transform/ratio_cap/name_keyed udfyldes efter reglerne i afsnit 4.
-   - `KOMMUNEGRUPPE`-mapping fra shared.ts -> `kommuner.kommunegruppe`.
-2. Output: `supabase/seed.sql` committes i repoet, så seed kan genkøres og reviewes.
-3. Metode-prosa: teksterne i `app/metode/page.tsx` udtrækkes afsnit for afsnit til `dimensions.metode_tekst`/`begraensninger` og `indicators.metode_tekst`. Udtrækket samles i et gennemgangs-dokument som August godkender FØR det seedes (fejlbart, manuelt arbejde - skal reviewes).
-4. Konsistenstjek efter seed: antal kommuner = 98; antal værdirækker = antal ikke-`_dim_`-rækker i master-CSV; stikprøve på 5 kommuner sammenlignes felt for felt.
+### 4.2 Manifest: `data/snapshots/_manifest.json`
+```json
+{
+  "schema_version": 1,
+  "indicators": {
+    "life_expectancy": {
+      "data_year": "2023",
+      "method": "api",
+      "source_ref": "fetch-statbank-social",
+      "fetched_at": "2026-10-21T10:00:00Z",
+      "row_count": 98,
+      "reference_value": null,
+      "sha256": "..."
+    }
+  }
+}
+```
+- `method`: `api` (hentet af edge function), `import` (fil-import), `frozen` (fra fase 1-konvertering, ikke genhentet siden).
+- `reference_value`: national referenceværdi brugt i ratio-beregningen, hvor relevant (afsnit 5, R20-R22). Gemmes så ratio kan efterprøves.
+- `sha256`: hash af snapshot-filen. Loaderen i dev-mode advarer ved mismatch.
+
+### 4.3 Register: `registry/indicators.ts`
+Typet array. Felter (alle normative):
+```ts
+interface IndicatorDef {
+  id: string;
+  name: string;
+  kind: "social" | "ecological" | "context";
+  dimensionId: string;            // hører til denne kategori/dimension (visning, metode-side)
+  scoredInCategory: boolean;      // social: indgår i kategoriscoren. false for housing_no_wc, housing_no_bath (B16)
+  sortOrder: number;
+  unit: string;
+  dstTable?: string;
+  sourceName: string;             // "DST HISBK"
+  sourceUrl: string;
+  inverse: boolean;
+  absoluteScore?: boolean;
+  baselineLevel?: 1 | 2 | 3;
+  absoluteTarget?: string;        // visningstekst, fx "95% (nationalt uddannelsesmål)"
+  // øko-sub:
+  rawKey?: string; ratioKey?: string | null; boundary?: string; lowerIsBetter?: boolean;
+  baselineType?: "absolut" | "relativ";
+  // beregning og hentning:
+  transform: Transform;            // afsnit 5
+  ratioCap?: number;               // 150 for sociale, 300 hvor sat for eco
+  nameKeyed?: boolean;             // matches på kommunenavn (vejr_skader, forbrug_co2)
+  expectedCoverage: number;        // forventet antal kommuner (98, eller lavere hvor kilden mangler kommuner)
+  update: { method: "api"; fn: string } | { method: "frozen"; recipe: string }; // recipe = sti i tools/python/
+  active: boolean;
+}
+```
+Fra registret genereres de konstanter, komponenterne bruger i dag (`INDICATORS`, `SOCIAL_CATEGORIES`, `ECOLOGICAL_DIMENSIONS`, `KOMMUNEGRUPPE`, `DOUGHNUT_*`), med PRÆCIS samme form og indhold. Da registret er statisk kode, forbliver konstanterne modul-konstanter, og compute-funktionerne i `shared.ts` kan porteres uændret.
+
+### 4.4 Metode-tekster
+- Markdown, ingen rå HTML. Renderes med react-markdown.
+- Filnavn = id. Manglende fil = sektionen udelades (ingen fejl).
+- Tekster må referere til fakta via pladsholdere i stedet for at gentage dem: `{{year:<indicator_id>}}`, `{{year:dim:<dimension_id>}}`, `{{unit:<id>}}`, `{{source:<id>}}`. Pladsholdere udfyldes fra registret/manifestet ved rendering. Ukendt pladsholder = byggefejl.
+- Regel: årstal, enheder og kildelinks må ikke skrives som fri tekst i markdown, når en pladsholder findes.
 
 ---
 
-## 8. Fase 3: Paritetstest (acceptkriterium for go-live)
+## 5. Transform- og beregningsregler (normative invarianter)
 
-1. FØR migrering: kør et lille script i det nuværende webapp (`webapp/scripts/export_parity_baseline.ts`, køres med tsx/node) der kalder `loadData()` og dumper HELE `KommuneData[]` (inkl. top10_ratios, group_ratios, eco_ratios, rawValues) til `data/parity_baseline.json`. Committes.
-2. Det nye system implementerer en dev-side `/admin/paritet` (eller et script) der bygger `KommuneData[]` fra Supabase og sammenligner mod `parity_baseline.json`.
-3. Sammenligning: ALLE 98 kommuner, ALLE nøgler i ratios/top10_ratios/group_ratios/eco_ratios/rawValues. Numerisk tolerance: absolut afvigelse <= 0.01 (afrundingsforskelle mellem Python og JS). null skal matche null.
-4. Acceptkriterium: 0 afvigelser. Enhver afvigelse skal forklares og rettes; "tæt nok" findes ikke.
-5. Derudover visuel kontrol af mindst: Thisted (787), København (101), Aarhus (751), Læsø (825) - donut, scorebars, vurderingsboks, baseline-toggle i alle tre stillinger, print-visning.
+R1-R15 er uændrede fra v1 og verificeret mod koden 2026-10-21. R16-R22 er nye: de er ratio-formlerne fra fetch-scripts, som skal bruges af edge functions og af import, så import virker med råværdier alene.
 
----
+**R1 Social ratio-cap:** sociale ratios cappes ved 150.0 (`build_master_csv.py:351-353`), også efter abs_target.
+**R2 abs_target:** `ratio = min(raw / abs_target * 100, 150)`, 2 decimaler. Kun `education` (95). `bolig_fossil` er absolut scoret, men dens ratio (100 - samlet fossil%) beregnes i hentningen (R23).
+**R3 inverse_10000:** `direct = round(10000 / inverse, 2)`, null/0 -> null. `naer_nitrogen`, `naer_phosphorus`, `cirkularitet_waste`.
+**R4 recycling_eu_target:** `ratio = round(65 / pct * 100, 2)`, null/0 -> null. `cirkularitet_recycling`.
+**R5 cba_div3:** `ratio = round(raw / 3 * 100, 2)`. `forbrug_co2`, navn-nøglet, intet fallback.
+**R6 Eco-cap:** klip til `ratioCap`. `overfladevand`, `bio_vasentlig`, `bio_uerstattelig` = 300.
+**R7 Dimensionsscore:** ikke-null sub-ratios pr. kommune og dimension. `worst_of` = round(max, 2), `average` = round(gennemsnit, 2), ingen = null. Kun `forurening` er `average`. Beregnes i frontend.
+**R8 Kategoriscore:** gennemsnit af ikke-null ratios for indikatorer med `scoredInCategory=true` (`computeCategoryScores`).
+**R9 Top10:** absoluteScore kopieres. Ellers gennemsnit af de 10 højeste ratios, ny = `parseFloat((ratio/top10Avg*100).toFixed(2))`. Under 10 værdier: kopier (`computeTop10Ratios`).
+**R10 Kommunegruppe:** absoluteScore kopieres. Ellers uvægtet gruppegennemsnit G1-G5, ny = `parseFloat((ratio/gruppeAvg*100).toFixed(2))` (`computeGroupRatios`).
+**R11 Farver:** social >=100 grøn, >=85 amber, <85 rød. Eco <=85 grøn, <=100 amber, >100 rød. OMVENDT retning.
+**R12 baselineType:** social = absolut hvis absoluteScore, ellers relativ. Dimension: alle ens = den type, ellers blandet, tom = relativ.
+**R13 null vs. manglende:** alle aktive indikatorer har nøgle i `ratios` (null hvis ingen data), alle eco-dimensioner har nøgle i `eco_ratios` (null hvis ingen data).
+**R14 Validering:** ratio uden for 0-2000 er en fejl (blokerer commit), ikke noget der klippes.
+**R15 Baseline-toggle** påvirker kun sociale indikatorer.
 
-## 9. Metode 2.0 (genereret metode-side)
+**R16 abs_limit (luftkvalitet):** `ratio = round(raw / limit * 100, 1)`. NO2 limit 10 µg/m³, PM2.5 limit 5 µg/m³ (WHO 2021). Kilde: `fetch_luftforurening_data.py:155-156`.
+**R17 abs_limit (nitrat):** `ratio = round(raw / 6.0 * 100, 1)` (mg/L). Kilde: `fetch_nitrat_data.py:119`.
+**R18 target_over_pct (biodiversitet):** `ratio = round(target / pct * 100, 2)`, pct = 0 -> 999.0 (derefter cap 300 via R6). Target 30 for `bio_vasentlig`, 10 for `bio_uerstattelig`. Kilde: `fetch_biodiversitet_data.py:165-166`.
+**R19 ref_over_raw (N-loft landbrug):** `ratio = round(reference / raw * 100, 2)`, hvor reference = arealvægtet landssnit (kg N/ha). Kilde: `fetch_naeringsstoffer_landbrug.py:194, 492`.
+**R20 ref_over_pct, poolet (overfladevand VP3):** `ratio = round(min(reference / pct * 100, 300), 2)`, pct = 0 -> 300. reference = poolet national andel vandområder i god tilstand. Kilde: `fetch_vp3_vandkvalitet.py:210-227`.
+**R21 pct_over_ref med gulv (pesticider):** pct = 0 -> ratio 0.0. pct > 0 -> `ratio = round(max(101.0, pct / reference * 100), 1)`. reference = poolet national andel boringer over 0,1 µg/l. BEMÆRK gulvet: enhver kommune med mindst én boring over grænsen får mindst 101 (overskredet), selv under landsgennemsnit. Kilde: `fetch_pesticider_data.py:215-227`.
+**R22 Poolede referenceværdier:** for R19, R20, R21 kan referencen IKKE beregnes ud fra kommunernes råværdier (den er arealvægtet eller poolet over underliggende enheder). Ved import skal referenceværdien derfor angives sammen med filen og gemmes i manifestet. Er den ikke angivet, bruges manifestets seneste reference_value, og importen markeres med advarsel.
+**R23 Relative sociale ratios:** formlen er normalt `(kommune/national)*100` (direkte) eller `(national/kommune)*100` (inverse), cap 150. "National" er pr. script enten DST's landstal (kode 000) eller et beregnet snit. Hvert scripts konkrete definition er normativ og dokumenteres i funktionens header ved porteringen (fase 6). `bolig_fossil` beregnes som `100 - (direkte_fossil% + fjv_dækning% × fjv_fossil_andel%)` med TJ-vægtet landssnit for de 18 fælles-net-kommuner, jf. `fetch_bolig_fossil.py`.
 
-Metode-siden bygges af databasen, IKKE af håndskrevet JSX:
-
-- Pr. dimension (begge kinds, sorteret på sort_order): navn, description, boundary_text, aggregation forklaret ("worst-of" / "gennemsnit"), metode_tekst (markdown), begraensninger (markdown).
-- Pr. indikator under dimensionen: navn, kilde som link (source_name -> source_url), dst_table, data_year, unit, baseline (baseline_level, baseline_type, abs_target/boundary_text), inverse-markering, metode_tekst.
-- "Sidst opdateret" pr. indikator: max(updated_at) fra indicator_values for den indikator.
-- Markdown renderes med en let renderer (fx react-markdown); ingen rå HTML fra DB.
-- Kontekst-indikatorer vises i en tydeligt markeret "vises, men scores ikke"-sektion under deres dimension.
-
-Konsekvens: retter August et dataår, kildelink eller en tekst i admin, slår det igennem på metode-siden og i UI-tooltips samtidig. Det er hele pointen med B3.
-
----
-
-## 10. Admin-modul
-
-### Adgang
-Supabase Auth, email + password, kun August. `admin_users`-tabellen styrer skriveadgang (RLS, afsnit 3). Ingen selvregistrering: signup slås fra; brugeren oprettes manuelt i Supabase-dashboardet.
-
-### /admin/vaerdier
-Tabel med filtrering på indikator og kommune. Inline-redigering af raw_value og ratio. Ved redigering af raw_value på en indikator med transform != 'none' tilbydes automatisk genberegning af ratio efter reglerne i afsnit 4 (vises som forhåndsvisning, August bekræfter). Hver gemning skriver `import_log` med kind='manual_edit' og diff i detail.
-
-### /admin/indikatorer
-CRUD for indicators og dimensions, inkl. markdown-editor for metode_tekst/begraensninger med preview. Nye indikatorer kan oprettes (id, kind, dimension, transform osv.); sletning er soft (active=false).
-
-### /admin/import (import-funktionen)
-Fire trin, alle i browseren:
-
-1. **Upload/indsæt:** CSV-fil, Excel-fil (første ark) eller indsat tabeltekst (tab/komma-separeret). Parses klient-side (papaparse + SheetJS).
-2. **Mapping:** brugeren vælger mål-indikator. Systemet foreslår kolonnemapping: kommune-kolonne (auto-detektér 'kommune_kode'/'kommune_navn'/'kommune'), raw-kolonne, evt. ratio-kolonne. Hvis kun raw leveres og indikatoren har transform != 'none', beregnes ratio efter afsnit 4. Understøtter de eksisterende `data/*_scores.csv`-formater direkte (kolonnenavne fra build_master_csv.py's lister vises som hint).
-3. **Validering og diff:** kommunematch på kode, ellers navn (eksakt match mod kommuner.navn; name_keyed-indikatorer matcher altid på navn). Rapport: X/98 kommuner matchet, umatchede rækker listes (fx Christiansø -> ignoreres med advarsel), ratios uden for 0-2000 blokerer (R14), og en diff-tabel "kommune: gammel -> ny" for alle ændringer. Intet skrives endnu.
-4. **Commit:** kræver eksplicit bekræftelse. Upsert til indicator_values, én import_log-række med kind='file_import', row_count og fuld diff i detail.
-
-Import-funktionen er den permanente opdateringsvej for geodata/manuelle indikatorer (afsnit 11) og fallback for alt andet.
-
-### /admin/log
-Læsevisning af import_log, nyeste først, med udfoldelig diff.
+Transform-typen i registret er én af: `none` (ratio leveres færdig), `inverse_10000`, `recycling_eu_target`, `cba_div3`, `abs_target`, `abs_limit`, `target_over_pct`, `ref_over_raw`, `ref_over_pct_pooled`, `pct_over_ref_floor`, `relative_national`. Parametre (limit, target, cap) står i registret, ikke i funktionskoden.
 
 ---
 
-## 11. Edge functions (fase 6): disposition pr. datakilde
+## 6. Frontend-port: fil-for-fil
 
-Ratio-formlerne i de eksisterende fetch-scripts er normative; porten skal reproducere deres output. Generel social-formel: direkte `(kommune/landsgennemsnit)*100`, inverse `(landsgennemsnit/kommune)*100`, cap 150 (R1). Hver funktion logger til import_log og opdaterer KUN sine egne indikatorer.
-
-### Porteres til Supabase Edge Functions (TypeScript/Deno)
-| Funktion | Erstatter | Kilde | Bemærkning |
-|---|---|---|---|
-| `fetch-statbank-social` | fetch_doughnut_data.py m.fl. | api.statbank.dk | Største funktion; alle DST-sociale indikatorer. Kan opdeles pr. script-modstykke |
-| `fetch-uvm` | fetch_udvidelse_data.py | api.uddannelsesstatistik.dk | |
-| `fetch-eds-ve` | fetch_ve_kapacitet.py | api.energidataservice.dk CapacityPerMunicipality | Kontekst-indikatorer ctx_ve_* |
-| `fetch-fjernvarme-mix` | fetch_fjernvarme_mix.py | ens.dk/media/7199/download (Excel) | SheetJS-parsing. SKAL køre før fetch-bolig-fossil |
-| `fetch-bolig-fossil` | fetch_bolig_fossil.py | api.statbank.dk BOL202 + ctx_fjv_fossil fra DB | Læser fjernvarmens fossilandel fra indicator_values i stedet for CSV. TJ-vægtet landssnit for de 18 fælles-net-kommuner SKAL genimplementeres præcist - flag til grundig test |
-| `fetch-klimaregnskabet` | fetch_climate_data.py | klimaregnskabet.dk API | API-nøgle som Supabase secret |
-| `fetch-klimatilpasning` | fetch_klimatilpasning_data.py | datawrapper CSV (F&P) | name_keyed |
-| `fetch-arealanvendelse` | fetch_dst_arealanvendelse.py | api.statbank.dk AREALDK2 | |
-| `fetch-vandindvinding` | fetch_vandindvinding_data.py | api.statbank.dk VANDIND | |
-| `fetch-naeringsstoffer-np` | del af fetch_eco_new_data/naeringsstoffer | api.statbank.dk VANDUD | transform inverse_10000 |
-| `fetch-affald-genanvendelse` | del af forurening/consumption | api.statbank.dk | transforms inverse_10000 + recycling_eu_target |
-
-Orkestrering: en `update-all`-funktion kalder ovenstående i korrekt rækkefølge (fjernvarme-mix før bolig-fossil; resten uafhængige). Admin har både "Opdater alt" og pr.-funktion-knapper.
-
-### Porteres IKKE - opdateres via /admin/import
-| Indikatorer | Nuværende script | Hvorfor ikke |
+| Nuværende (`webapp/`) | Nyt | Handling |
 |---|---|---|
-| luftkvalitet_no2, luftkvalitet_pm25 | fetch_luftforurening_data.py | WFS/geodata-beregning (geopandas) |
-| bio_vasentlig, bio_uerstattelig | fetch_biodiversitet_data.py | DCE bioscore-raster; statisk 2021-data |
-| naer_landbrug | fetch_naeringsstoffer_landbrug.py | VP3 geoserver/geodata |
-| overfladevand | fetch_vp3_vandkvalitet.py | VP3 shapefile-zip |
-| pesticider | fetch_pesticider_data.py | Manuel kilde (DN/GEUS) |
-| nitrat | fetch_nitrat_data.py | Manuel kilde (Greenpeace/GEUS) |
-| forbrug_co2 | cba_2023_estimate.csv | Statisk metodeestimat (se data/methodology_note.md) |
+| `lib/shared.ts` | `src/lib/shared.ts` | Typer og compute-funktioner kopieres ordret. Konstanterne genereres nu fra `registry/` (4.3) og re-eksporteres med samme navne. `computeCategoryScores` filtrerer på `scoredInCategory` (R8) |
+| `lib/data.ts` | `src/lib/data.ts` | Omskrives til snapshot-loader (afsnit 7). `ECO_RAW_KEY_MAP` udgår (erstattet af `rawKey`/`ratioKey` i registret) |
+| `lib/vurdering.ts`, `lib/baseline-context.tsx` | `src/lib/` | Kopieres. `"use client"` slettes |
+| `components/*.tsx` (7 stk.) | `src/components/` | Kopieres. `"use client"` slettes. `next/link` -> `react-router-dom` Link (KommuneSearch.tsx) |
+| `app/layout.tsx` | `src/App.tsx` + `src/components/Layout.tsx` | Visuelt identisk |
+| `app/page.tsx`, `app/om/page.tsx`, `app/artikel/...` | `src/pages/` | Kopieres |
+| `app/kommune/[navn]/page.tsx` + `client.tsx` | `src/pages/Kommune.tsx` | Opslag på navn (case-insensitivt, URL-dekodet) eller kode, som `getKommune` |
+| `app/metode/page.tsx` | `src/pages/Metode.tsx` | Omskrives: genereres fra register + manifest + markdown (afsnit 8). Datastrukturerne `INDICATOR_RATIONALES`, `SOCIAL_METHODS`, `ECO_METHODS` udtrækkes mekanisk i fase 1 |
+| `app/globals.css` | `src/index.css` | Overføres |
+| `netlify/functions/klimaregnskabet.mts` | udgår | Kaldes ikke af frontenden. Nøglen bliver Lovable-secret til `fetch-klimaregnskabet` |
 
-Disse ligger stille mellem sjældne opdateringer. Ved behov: kør det gamle Python-script lokalt (eller bed en Claude-session om det), tag den producerede CSV, og træk den ind via import-funktionen.
+Routes: `/`, `/kommune/:navn`, `/metode`, `/om`, `/artikel/planetaere-graenser`, `/admin/*`. Ukendt kommune -> "ikke fundet"-side med link til forsiden. Titel og meta-beskrivelse sættes pr. rute.
+
+**URL-kompatibilitet (acceptkriterium fase 7):** alle URL'er det nuværende site udgiver skal virke på det nye. Fase 0 udtrækker listen fra `webapp/out/` (inkl. evt. `.html`-varianter og URL-encodede navne som `K%C3%B8benhavn`). Afvigelser løses med redirects.
 
 ---
 
-## 12. Faseplan med acceptkriterier
+## 7. Loader-kontrakt (snapshots -> KommuneData[])
 
-Rækkefølgen er bindende. En fase påbegyndes først når den forriges acceptkriterium er opfyldt. Efter fase 4 KAN sitet gå live (Augusts beslutning); fase 5-6 kan bygges på et kørende site.
+1. Indlæs alle snapshot-filer via `import.meta.glob('/data/snapshots/*.csv', { query: '?raw', eager: true })` og manifestet. Ét bundle, ingen netværkskald, ingen database.
+2. Parse med papaparse. Kun indikatorer med `active=true` i registret indlæses. Snapshot uden registerpost = byggefejl. Aktiv registerpost uden snapshot = byggefejl.
+3. Pr. kommune (fra `registry/kommuner.ts`) bygges KommuneData efter samme regler som `loadData()` i dag (`webapp/lib/data.ts:120-218`):
+   - social: `ratios[id] = ratio`, `rawValues[id] = raw` hvis ikke null
+   - context: `rawValues[id] = raw` hvis ikke null
+   - ecological: `rawValues[rawKey] = raw` hvis ikke null, `rawValues[ratioKey] = ratio` hvis ratioKey og ratio ikke null
+4. `eco_ratios[dimensionId]` beregnes efter R7.
+5. Udfyld null efter R13.
+6. Kør `computeTop10Ratios` og `computeGroupRatios` (uændrede).
+7. `social_avg` og `overall_avg` = null.
+8. Resultatet caches i modulet.
 
-| Fase | Indhold | Acceptkriterium | Anbefalet model |
+---
+
+## 8. Metode-siden (genereret)
+
+Bygges af: register (navne, kilder, tabeller, enheder, grænser, transform-forklaring), manifest (dataår, sidst opdateret, hentemetode), markdown (prosa). Indhold pr. dimension: navn, beskrivelse, grænse, aggregering (worst-of/gennemsnit), dataår-interval (udledt, aldrig håndskrevet), kildehenvisninger fra `references.ts`, prosa fra `content/metode/dimensioner/<id>.md`. Pr. indikator: navn, kilde-link, DST-tabel, dataår, enhed, baseline, inverse/direkte, "sidst opdateret" og "hentemetode" (api/import/frossen) fra manifest, rationale fra `content/metode/indikatorer/<id>.md`. Generelle afsnit fra `content/metode/generelt/` i fast rækkefølge (defineret i `registry/settings.ts`).
+
+Kontekst-indikatorer vises i en markeret "vises, men scores ikke"-sektion. `scoredInCategory=false`-indikatorer vises med markering "indgår ikke i kategoriscoren".
+
+---
+
+## 9. Datakilder: disposition pr. script (normativ)
+
+Verificeret mod koden 2026-10-21. "Producent" = scriptet der skriver CSV'en i dag. Hver indikator skal have præcis én edge function eller være frossen.
+
+### 9.1 Porteres til edge functions (method = api)
+
+| Edge function | Erstatter | Indikatorer | Kilde |
 |---|---|---|---|
-| 0 | parity_baseline.json genereres og committes i DETTE repo (afsnit 8, trin 1) | Filen findes og indeholder 98 kommuner | Sonnet |
-| 1 | Supabase-projekt, skema (afsnit 3), seed (afsnit 7), metode-prosa-udtræk godkendt af August | Konsistenstjek i 7.4 bestået; RLS-læsetest OK | Opus |
-| 2 | Lovable-projekt, GitHub-kobling, fil-port (afsnit 5), MetadataProvider | Appen bygger og renderer forside + en kommuneside med DB-data | Sonnet |
-| 3 | Loader-kontrakt (afsnit 6), routing, paritetstest | 0 afvigelser i paritetstesten (afsnit 8) | Opus |
-| 4 | Metode 2.0 (afsnit 9) | Metode-siden viser samme faglige indhold som i dag, genereret fra DB; August godkender visuelt | Sonnet |
-| 5 | Auth + admin-modul inkl. import (afsnit 10) | August kan uden hjælp: rette en værdi, rette en metode-tekst, importere en *_scores.csv og se diffen. RLS-skrivetest: anonym klient afvises | Sonnet |
-| 6 | Edge functions (afsnit 11) | Hver funktion kørt mod produktion giver værdier identiske med seneste Python-kørsel (eller forklarede, godkendte afvigelser pga. friskere kildedata) | Opus (skabelon, bolig_fossil, beregninger); Sonnet (øvrige) |
-| 7 | Bruger-features | Specificeres separat - IKKE dækket af dette dokument | - |
-| 8 | Go-live: domæne peges om, gammelt Netlify-site fryses (ikke slettes) | August godkender. Rollback = peg domænet tilbage | Haiku |
+| `fetch-doughnut` | `fetch_doughnut_data.py` | life_expectancy, education, disposable_income, employment, child_poverty, gini, low_income, vacant_housing, kultur_spending, civil_society | api.statbank.dk |
+| `fetch-social-new` | `fetch_social_new_data.py` | crime_rate, traffic_accidents, sports_membership, library_use, sports_facilities, commute_distance, public_transport, vulnerable_children, neet | api.statbank.dk |
+| `fetch-social-extra` | `fetch_social_extra_data.py` | housing_area, class_size, daycare_ratio, sports_spending, educated_staff, music_school, hospital_short, hospital_long, gp_distance, low_education | api.statbank.dk |
+| `fetch-sundhed` | `fetch_sundhed_extra.py` | medicin, laegekontakt, boerneovervaeght, hjemsyg | api.statbank.dk (Excel-delene fra Sundhedsdatastyrelsen bruges ikke af aktive indikatorer og porteres ikke) |
+| `fetch-udvidelse` | `fetch_udvidelse_data.py` | exam_grade, high_absence, youth_education, apprenticeship, wellbeing, poverty_relative, gender_leadership, child_notifications, housing_no_wc, housing_no_bath | api.uddannelsesstatistik.dk + api.statbank.dk |
+| `fetch-ligestilling` | `fetch_ligestilling_data.py` | le_gender_gap, income_gender_gap, employment_origin_gap | api.statbank.dk |
+| `fetch-demokrati` | `fetch_democracy_data.py` | voter_turnout, voter_turnout_national | api.statbank.dk |
+| `fetch-klimaregnskabet` | `fetch_climate_data.py` | klimapaavirkning | klimaregnskabet.dk (API-nøgle som Lovable-secret) |
+| `fetch-klimatilpasning` | `fetch_klimatilpasning_data.py` | vejr_skader | datawrapper CSV (F&P), navn-nøglet |
+| `fetch-arealanvendelse` | `fetch_dst_arealanvendelse.py` | areal_intensiv, areal_bebygget | api.statbank.dk AREALDK2 |
+| `fetch-vandindvinding` | `fetch_vandindvinding_data.py` | vandindvinding | api.statbank.dk VANDIND |
+| `fetch-eco-dst` | `fetch_eco_new_data.py` | naer_nitrogen, naer_phosphorus, cirkularitet_waste | api.statbank.dk VANDUD m.fl. |
+| `fetch-ve` | `fetch_ve_kapacitet.py` | ctx_ve_kw_per_indb, ctx_ve_sol_mw, ctx_ve_vind_mw | api.energidataservice.dk |
+| `fetch-fjernvarme` | `fetch_fjernvarme_mix.py` | ctx_fjv_biomasse, ctx_fjv_affald, ctx_fjv_fossil, ctx_fjv_ren | ens.dk Excel (SheetJS fra SheetJS' egen distribution, ikke npm `xlsx`, jf. CVE-2023-30533) |
+| `fetch-bolig-fossil` | `fetch_bolig_fossil.py` | bolig_fossil, ctx_fossil_direkte, ctx_fossil_via_fjv | api.statbank.dk BOL202 + fjernvarme-snapshot fra git. SKAL køres efter `fetch-fjernvarme` (læser dens snapshot, ikke en CSV i data/) |
+
+Uafklarede punkter, der skal afgøres i fase 6, før porteringen af den pågældende funktion:
+- `doughnut_scores.csv` skrives i dag af tre scripts (`fetch_doughnut_data.py`, `fetch_land_use_data.py`, `fetch_udvidelse_data.py`). Kolonne-ejerskab fastlægges, så hver indikator har én producent.
+- `forurening_scores.csv` skrives af både `fetch_eco_new_data.py` og `fetch_luftforurening_data.py`. Det afklares hvem der producerer `waste_ratio`.
+- `fetch_land_use_data.py` og `fetch_arealanvendelse_data.py` bruges ikke af `build_master_csv.py` og porteres ikke (bekræftes i fase 6).
+
+### 9.2 Frosne (method = frozen, opdateres via import)
+
+| Indikatorer | Opskrift i `tools/python/` | Transform | Hvorfor frossen |
+|---|---|---|---|
+| luftkvalitet_no2, luftkvalitet_pm25 | `fetch_luftforurening_data.py` | abs_limit (R16) | WFS-geodata, punkt-i-polygon |
+| bio_vasentlig, bio_uerstattelig | `fetch_biodiversitet_data.py` | target_over_pct (R18), cap 300 | DCE-raster, statiske 2021-data |
+| naer_landbrug | `fetch_naeringsstoffer_landbrug.py` | ref_over_raw (R19) | VP3-geodata, arealvægtning |
+| overfladevand | `fetch_vp3_vandkvalitet.py` | ref_over_pct_pooled (R20), cap 300 | VP3-shapefile |
+| pesticider | `fetch_pesticider_data.py` | pct_over_ref_floor (R21) | Manuel kilde (DN/GEUS) |
+| nitrat | `fetch_nitrat_data.py` | abs_limit (R17) | Manuel kilde (Greenpeace/GEUS) |
+| forbrug_co2 | ingen (`cba_2023_estimate.csv`, se `docs/methodology_note.md`) | cba_div3 (R5) | Statisk metodeestimat |
+| cirkularitet_recycling | INGEN SCRIPT FINDES. `consumption_scores.csv` har ukendt oprindelse (kildelabel: DST LABY25) | recycling_eu_target (R4) | Oprindelse skal dokumenteres i fase 1. Kan blive api-kilde senere, men det er ny udvikling, ikke en port |
 
 ---
 
-## 13. Kendte fælder (arvet viden - SKAL respekteres)
+## 10. Edge function-kontrakt (normativ)
 
-1. Farvelogik er OMVENDT mellem social og eco (R11). Hyppigste fejlkilde.
-2. Forurening er ENESTE gennemsnits-dimension; alle andre eco-dimensioner er worst-of (R7).
-3. `forbrug_co2` og `vejr_skader` matcher på kommunenavn, ikke kode. Manglende match = null, intet fallback. Christiansø filtreres fra.
-4. `absolute_score`-indikatorer (education, bolig_fossil) må ALDRIG omskaleres af baseline-toggle (R9, R10).
-5. bolig_fossil afhænger af fjernvarme-mix-data; rækkefølgen er bindende (afsnit 11).
-6. null vs. undefined-skelnen i eco_ratios er semantisk bærende i UI'et (R13).
-7. Kommunenavne indeholder æ/ø/å og "Høje-Taastrup", "Ringkøbing-Skjern" m.fl. URL-encoding og navnematch skal håndtere dette; match er case-insensitivt.
-8. Ingen kommune når grønt på bolig_fossil - det er korrekt og bevidst (absolut mål 0%), ikke en databug.
-9. Python-scripts og data/-CSV'er må ikke slettes eller "ryddes op" under migreringen (B9).
+### 10.1 `fetch-*` (dry-run, skriver aldrig)
+- Kræver gyldigt Lovable Cloud Auth-JWT. Brugerens e-mail SKAL stå i secret `ADMIN_EMAILS` (kommasepareret), ellers 403. Ingen databasetabel til admins i MVP.
+- Input: `{ indicator_ids?: string[] }` (default: alle funktionens indikatorer).
+- Output pr. indikator: `{ rows, data_year, reference_value, validation: { errors[], warnings[] }, diff: [{ kommune_kode, felt, gammel, ny }] }`. Diff beregnes mod snapshot-filen i git.
+- Fejl i én indikator stopper ikke de øvrige. Fejl rapporteres med konkret URL/tabel og HTTP-status.
+- Kilde-forespørgsler (tabel, variabler, år) står i registret (`update`-konfiguration), ikke hårdkodet.
+
+### 10.2 Validering (fælles for fetch og import)
+Fejl (blokerer commit):
+- Ukendt kommunekode eller -navn (Christiansø og "000" ignoreres med advarsel)
+- Dubletter
+- ratio uden for 0-2000 (R14), NaN eller ikke-numeriske værdier
+- Færre kommuner end `expectedCoverage`
+- Pooled transform uden referenceværdi og uden tidligere reference i manifestet
+
+Advarsler (vises, blokerer ikke):
+- Ændring over 25% i ratio for over 10 kommuner
+- data_year ældre end manifestets nuværende
+- Reference_value genbrugt fra manifest (R22)
+
+### 10.3 `commit-snapshot` (eneste skrivende funktion)
+- Samme adgangskrav som 10.1.
+- Input: godkendte rows pr. indikator + metadata (data_year, method, source_ref, reference_value).
+- Validerer igen (10.2). Skriver snapshot-filer + opdateret manifest i ÉT commit via GitHub API (fine-grained token begrænset til repoets contents, gemt som secret `GITHUB_TOKEN`). Commit-besked: `data: <indikatorer> (<source_ref>, dataår <år>)`.
+- Fallback hvis IT ikke tillader en GitHub-token: funktionen returnerer en zip med de ændrede filer i korrekte stier. August committer dem med GitHub Desktop. Admin-UI viser trin-for-trin-vejledning.
+- Efter commit: Lovable synkroniserer, og August publicerer.
+
+### 10.4 Kørselsrækkefølge
+Admin har "Hent alt" som kalder funktionerne én ad gangen fra browseren (ikke én samlet funktion, af hensyn til tidsgrænser): `fetch-fjernvarme` før `fetch-bolig-fossil`, resten i vilkårlig rækkefølge. Samlet diff vises, og ét commit dækker alle godkendte indikatorer.
 
 ---
 
-## 14. Risici og accepterede trade-offs
+## 11. Admin-modul
+
+Adgang: Lovable Cloud Auth. Den reelle beskyttelse ligger i edge functions (`ADMIN_EMAILS`). Admin-sider skjules for ikke-admins, men det er kosmetisk. Selvregistrering slås fra hvis Lovable Cloud tillader det (V6). Ellers er det harmløst, fordi funktionerne kræver allowlist.
+
+Sider:
+- **/admin**: oversigt pr. indikator med dataår, hentemetode og sidst opdateret (fra manifest). Knapper: "Hent" pr. funktion og "Hent alt".
+- **/admin/import**: 1) Upload CSV/Excel eller indsæt tabel (papaparse + SheetJS, klient-side). 2) Vælg indikator, auto-mapping af kommune-, raw- og evt. ratio-kolonne. Kender de gamle `*_scores.csv`-kolonnenavne. Leveres kun raw, beregnes ratio efter registrets transform (afsnit 5). For poolede transforms spørges der efter referenceværdi (R22). 3) Validering (10.2) + diff. 4) Commit via `commit-snapshot` med method = import.
+- **/admin/paritet**: kører paritetstesten (afsnit 12) i browseren, så den kan køres uden Claude.
+- **/admin/log**: viser git-historikken for `data/snapshots/` via GitHub API (eller link til GitHub, hvis ingen token).
+
+Ingen redigering af enkeltværdier (B6). Ingen redigering af metode-tekster i admin (B4: sker via Lovable-chat).
+
+---
+
+## 12. Paritetstest (acceptkriterium)
+
+Tre lag, alle med 0 afvigelser (numerisk tolerance 0,01, null = null):
+
+1. **Værdier:** `KommuneData[]` fra ny loader sammenlignes med `parity_baseline.json` (fase 0) for alle 98 kommuner og alle nøgler i ratios, top10_ratios, group_ratios, eco_ratios og rawValues.
+2. **Metadata:** de genererede `INDICATORS`, `SOCIAL_CATEGORIES`, `ECOLOGICAL_DIMENSIONS`, `KOMMUNEGRUPPE` og `DOUGHNUT_*` sammenlignes felt for felt med `metadata_baseline.json` (eksport af de nuværende konstanter, fase 0). Dokumenterede afvigelser (enhedskonflikter, afsnit 3) står på en eksplicit undtagelsesliste i testen.
+3. **Afledte scorer:** `computeCategoryScores` for alle kommuner og alle tre baselines sammenlignes med baseline-eksporten.
+
+Derudover visuel kontrol af Thisted (787), København (101), Aarhus (751) og Læsø (825): donut, scorebars, vurderingsboks, alle tre baseline-stillinger og print.
+
+Testen indgår i repoet og kører både som script og på `/admin/paritet`.
+
+---
+
+## 13. Workspace, ejerskab og arbejdsform
+
+### 13.1 Hvor bygges der
+Fordi alt kan genskabes fra git (B3), er workspace-valget primært et spørgsmål om databehandleraftale og hvem der har adgang, ikke om data.
+
+**Standardvej (anbefalet, B):** fase 2-6 bygges i Augusts private Lovable-workspace, hvor Claude har direkte adgang. Kun offentlige data og en testkonto uden persondata (B12). I fase 7 overføres projektet til det kommunale workspace. Virker Lovables overdragelse ikke (V7), oprettes et nyt kommunalt projekt fra repoet. Fordi alt ligger i git, mistes intet.
+
+**Alternativ (A):** byg direkte i det kommunale workspace. Bruges hvis IT afviser privat byggeri. Claude arbejder så via GitHub (13.2). Faseplanen er den samme.
+
+Afklares inden fase 2 (August):
+- Lovable: kan et projekt flyttes fra et privat til et kommunalt Business/Enterprise-workspace med git sync bevaret? Bevares EU-region?
+- IT: findes der (eller kommer der) et kommunalt Business/Enterprise-workspace? Accepteres privat byggeri af fase 2-6 med offentlige data? Må projektet synkronisere med et GitHub-repo, og må `commit-snapshot` få en GitHub-token?
+
+### 13.2 Når Claude ikke har adgang til det kommunale workspace
+Det er et varigt vilkår efter go-live.
+1. **Foretrukket:** det kommunale projekt synkroniserer med et GitHub-repo, Claude har skriveadgang til. Claude pusher kode, register, markdown og snapshots. Lovable synkroniserer. August publicerer.
+2. **Fallback:** Claude skriver færdige promptpakker, som August indsætter i Lovables chat. Lovables svar/diff sendes retur til Claude.
+3. Paritetstesten og datahentning kan køres af August alene fra admin.
+4. Opdatering af frosne kilder: en Claude-session kører Python-opskriften fra `tools/python/` og producerer en importfil, som August importerer i admin.
+
+### 13.3 Workspace-indstillinger (kommunalt)
+Fra Lovables vejledning til offentlig sektor: publiceringsblokering ved kritiske sikkerhedsfund slås til, EU-region bekræftes ved oprettelse, deling og connectors sættes restriktivt, sikkerhedsscanning planlægges månedligt.
+
+---
+
+## 14. Verifikationspunkter (fase 2-spike, FØR videre byggeri)
+
+Hvert punkt verificeres i et testprojekt og resultatet noteres her. Et negativt svar udløser fallbacken.
+
+| # | Spørgsmål | Fallback hvis nej |
+|---|---|---|
+| V1 | Kan Lovable oprette projektet med prerendering/SSR? | Vite SPA (accepteret SEO-trade-off) |
+| V2 | Kan edge functions i Lovable Cloud lave udgående HTTP til statbank, EDS, uddannelsesstatistik, ens.dk, datawrapper og klimaregnskabet, og læse secrets? | Den pågældende kilde bliver frossen |
+| V3 | Kan frontend og edge functions importere samme `registry/`-filer? | Registret placeres i `supabase/functions/_shared/registry/`, og frontend importerer derfra via alias |
+| V4 | Kan edge functions verificere Auth-JWT og læse brugerens e-mail? | Admin-allowlist via Lovable Cloud-tabel med security definer-funktion `is_admin()` (aldrig en policy der slår op i sin egen tabel) |
+| V5 | Deployes ændringer i `supabase/functions/`, der pushes via GitHub, automatisk? | August beder Lovables agent deploye efter push (promptpakke) |
+| V6 | Kan selvregistrering slås fra? | Harmløst pga. allowlist (11) |
+| V7 | Kan projektet flyttes fra privat til kommunalt workspace? | Nyt kommunalt projekt fra repoet |
+| V8 | Rækker edge functions' tidsgrænse til den største kilde (`fetch-udvidelse`)? | Funktionen deles op pr. indikatorgruppe |
+| V9 | Kan Vite bundle `data/snapshots/*.csv` via `import.meta.glob` i Lovables build? | Snapshots lægges i `public/data/` og hentes ved opstart (én samlet fil) |
+
+---
+
+## 15. Faseplan
+
+Bindende rækkefølge. En fase starter først når den forriges acceptkriterium er opfyldt.
+
+| Fase | Hvor | Indhold | Acceptkriterium | Model |
+|---|---|---|---|---|
+| 0 | doughnut-repo | Eksportér `parity_baseline.json` (værdier + kategoriscorer, alle baselines), `metadata_baseline.json` (alle konstanter) og URL-liste fra `webapp/out/` | Filerne findes, 98 kommuner | Sonnet |
+| 1 | doughnut-repo, `migration/` | Engangskonvertering (`tools/migration/`): master-CSV -> snapshots + manifest (method=frozen), shared.ts + build-lister -> `registry/`, metode-datastrukturer -> markdown (mekanisk), dimensionsårstal udgår (udledes). Fase 1-rapport med konflikter og afvigelser. Oprindelsen af `consumption_scores.csv` dokumenteres | Rundtur: snapshots samlet = master-CSV minus `_dim_`-rækker, række for række. August har skimmet rapporten | Opus |
+| 2 | Privat Lovable (eller kommunalt, 13.1) | Opret projekt (EU-region), git sync, spike V1-V9, flyt indholdet fra `migration/` ind i det nye repo, port app (afsnit 6) | V-punkter noteret i afsnit 14. App bygger og viser forside + én kommuneside | Opus (spike), Sonnet (port) |
+| 3 | Lovable | Loader (afsnit 7), routing, paritetstest (afsnit 12) | 0 afvigelser i alle tre lag | Opus |
+| 4 | Lovable | Metode-side (afsnit 8) med pladsholdere | August godkender. Ingen håndskrevne årstal/kilder tilbage i markdown | Sonnet |
+| 5 | Lovable | Admin: auth, allowlist, import, `commit-snapshot`, paritetsside | August importerer en `*_scores.csv`, ser diff, committer, og ændringen ses efter publicering. Ikke-admin afvises af funktionerne | Sonnet |
+| 6 | Lovable | Edge functions (9.1), én ad gangen. Start med `fetch-doughnut` som skabelon | Hver funktion i dry-run giver værdier identiske med nuværende snapshot (eller forklarede afvigelser pga. nyere kildedata) | Opus (skabelon, bolig-fossil), Sonnet (resten) |
+| 7 | Kommunalt workspace | Overførsel (V7 eller nyt projekt fra repo), secrets genoprettes, domæne, URL-kompatibilitet, workspace-indstillinger (13.3) | Paritetstest grøn i kommunalt workspace. Alle URL'er fra fase 0 virker. August godkender go-live | Sonnet |
+| 8 | Kommunalt workspace | Bruger-features | Specificeres separat. Indfører databasetabeller, RLS med `is_admin()`-mønster, og persondata kun her (B12) | - |
+
+Efter fase 7 arkiveres doughnut-repoet (B13). Netlify-sitet fryses, slettes ikke.
+
+---
+
+## 16. Kendte fælder
+
+1. Farvelogik er OMVENDT mellem social og eco (R11).
+2. Kun `forurening` er gennemsnits-dimension (R7).
+3. `forbrug_co2` og `vejr_skader` matcher på navn. Christiansø filtreres.
+4. absoluteScore-indikatorer omskaleres aldrig af baseline-toggle.
+5. `fetch-fjernvarme` før `fetch-bolig-fossil`.
+6. null vs. undefined i eco_ratios er semantisk (R13).
+7. Kommunenavne med æøå og bindestreg: URL-dekodning og case-insensitivt match.
+8. Ingen kommune er grøn på bolig_fossil. Det er korrekt.
+9. Pesticid-ratio har gulv på 101 for kommuner med mindst én overskridelse (R21). Det er bevidst, ikke en fejl.
+10. Biodiversitet med pct = 0 giver 999, som cappes til 300 (R18 + R6).
+11. `housing_no_wc` og `housing_no_bath` har data, men indgår ikke i nogen kategoriscore i dag (B16). Afklares med August efter migreringen, ikke under.
+12. Python-scripts og data-CSV'er må ikke slettes under migreringen (B14).
+
+---
+
+## 17. Risici og accepterede trade-offs
 
 | Risiko | Håndtering |
 |---|---|
-| Talregression ved port af beregninger | Paritetstest med 0-tolerance (afsnit 8); fuld matrix, ikke stikprøver |
-| Metode-prosa-udtræk mister nuancer | Gennemgangs-dokument godkendes af August før seed (7.3) |
-| SEO: SPA erstatter 98 pre-renderede statiske sider | ACCEPTERET trade-off for MVP. Kan senere afbødes med prerendering. Titel/meta sættes dynamisk pr. rute |
-| Metode-prosa versionsstyres ikke i git | ACCEPTERET (B4). import_log giver ændringshistorik på data; prosa-historik findes ikke i MVP |
-| Lovable-credits: porten koster beskeder til Lovables agent | Fase 2-3 er dyrest. Arbejd i store, veldefinerede beskeder ud fra dette dokument i stedet for mange små |
-| RLS-fejl eksponerer skriveadgang | Eksplicit negativ test i fase 5-acceptkriteriet |
-| Supabase free tier-grænser (DB-størrelse, edge-kald) | Datamængden er lille (<10 MB). Ved pause-varsler på free tier: opgradér eller acceptér ugentlig aktivitet |
-| bolig_fossil-genimplementering (TJ-vægtning, 18 fælles-net-kommuner) | Udpeget som særskilt testpunkt i fase 6 |
+| Talregression | Paritetstest i tre lag, 0-tolerance (12) |
+| Kilder ændrer sig (DST-revisioner, døde links) | Dry-run + diff + validering. Fejl falder tilbage til eksisterende snapshot. Forvent årligt vedligehold |
+| Lovable-funktioner virker anderledes end antaget | Spike V1-V9 i fase 2, før der bygges videre |
+| Overdragelse mellem workspaces fejler | Irrelevant for data (B3). Nyt projekt fra repo |
+| IT afviser GitHub-token | Zip-fallback + GitHub Desktop (10.3) |
+| SEO ved SPA | Accepteret hvis V1 er negativ. Titel/meta pr. rute |
+| Lovable-credits (byg + hver tekstrettelse via chat) | Store, præcise beskeder ud fra denne spec. Privat i fase 2-6 |
+| Publicering kræver manuelt klik efter data-commit | Accepteret. Svarer til i dag |
 
 ---
 
-## 15. Vedligehold af dette dokument
+## 18. Sporbarhed: review-fund (2026-10-21) og hvor de er løst
 
-Dokumentet opdateres når en fase afsluttes (markér acceptkriterium som opfyldt med dato) eller en låst beslutning ændres af August (tilføj række i beslutningsloggen med begrundelse). Implementerende AI'er skal referere til afsnitsnumre herfra i commits og beskeder, fx "implementerer afsnit 6, R7".
+| # | Fund | Løst i |
+|---|---|---|
+| 1 | Lovable Cloud giver ikke dashboard eller service role | B2, B3 (ingen database til data), V4, V6 |
+| 2 | Supabase-API returnerer max 1.000 rækker (7.349 rækker) | B3: ingen database, data bundles (7, V9) |
+| 3 | RLS-rekursion og åbne edge functions | Allowlist i funktioner (10.1). `is_admin()`-mønster for fase 8 |
+| 4 | Paritetstest fangede ikke metadata/kategori-medlemskab | `scoredInCategory` (4.3), paritet lag 2 og 3 (12) |
+| 5 | Compute-funktioner vs. fjernede konstanter | Registret er statisk kode, konstanterne består (4.3) |
+| 6 | Dataår opdateres ikke ved hentning | B5, manifest (4.2), udledte dimensionsår (3, 8) |
+| 7 | Metode-skema for tyndt | `references.ts`, generelle afsnit, markdown pr. id (2, 4.4, 8) |
+| 8 | Import virkede ikke med råværdier | R16-R22, transform-typer (5), reference_value (4.2) |
+| 9 | Fejl i kildedisposition | Komplet tabel (9), uafklarede punkter listet, genanvendelse frossen |
+| 10 | Enhedskonflikter | Konfliktregel (3) + undtagelsesliste (12) |
+| 11 | Uklar repo-strategi | B13, mappestruktur (2) |
+| 12 | Gamle URL'er | Acceptkriterium fase 7, URL-liste i fase 0 (6) |
+| 13 | Ikke-atomisk import | Ét git-commit pr. opdatering (10.3) |
+| 14 | npm `xlsx` CVE | SheetJS' egen distribution (9.1) |
+| 15 | Free tier pauser | Ikke relevant: det offentlige site bruger ingen database |
+| 16 | SPA/SSR ukontrolleret | V1 |
+
+---
+
+## 19. Vedligehold af dette dokument
+
+Opdateres når en fase afsluttes (acceptkriterium markeres med dato), når et V-punkt er afklaret (resultat noteres i afsnit 14), eller når en låst beslutning ændres af August (ny række i beslutningsloggen med begrundelse). Implementerende AI'er refererer til afsnitsnumre i commits, fx "implementerer afsnit 7, R7".

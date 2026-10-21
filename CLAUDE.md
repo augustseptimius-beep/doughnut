@@ -198,7 +198,7 @@ Default til Sonnet hvis i tvivl.
 - **`docs/statbank_doughnut_mapping.md`** - mapping mellem DST-tabeller og Doughnut-indikatorer.
 - **`docs/concito-analyse-og-roadmap.md`** - hvad vi kan/ikke kan bruge fra CONCITO-rapporten + bevidste fravalg. Læs før øko-ændringer.
 - **`docs/aabne-traade-juni-2026.md`** - prioriterede løse ender og uudnyttede indsigter (scoringsfilosofi, education-badge, REshare, energiforbrug m.m.). Læs før næste større runde.
-- **`docs/lovable-migration-spec.md`** - NORMATIV spec for migrering til Lovable + Supabase (godkendt aug. 2026). SKAL læses før alt migrationsarbejde. Indeholder låste beslutninger, DB-skema, beregningsregler (R1-R15), faseplan og acceptkriterier.
+- **`docs/lovable-migration-spec.md`** - NORMATIV spec v2 for migrering til Lovable (okt. 2026). SKAL læses før alt migrationsarbejde. Princip: git er sandheden (data som snapshot-filer, metadata i typet register, metode-tekster som markdown), kun Lovable som leverandør. Indeholder låste beslutninger (B1-B16), beregningsregler (R1-R23), kildedisposition, verifikationspunkter, faseplan og acceptkriterier.
 
 ## Vedligehold af denne fil
 
