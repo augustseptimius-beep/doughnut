@@ -335,7 +335,7 @@ export default function MetodePage() {
         <p className="text-sm text-gray-700 leading-relaxed mt-4">
           <strong>Vægtning:</strong> Hver kategori (f.eks. Sundhed, Velfærd, Bolig) beregnes som et simpelt gennemsnit af sine indikatorer.
           Det samlede sociale gennemsnit er et gennemsnit af kategorierne - ikke af de individuelle indikatorer.
-          Det betyder at kategorier med få indikatorer (f.eks. Bolig og Energi med 1) vægter lige så tungt som kategorier med mange (f.eks. Sundhed og Uddannelse med 9).
+          Det betyder at kategorier med få indikatorer (f.eks. Bolig og Energi med 1) vægter lige så tungt som kategorier med mange (f.eks. Sundhed med 9 og Uddannelse med 8).
           Dette er et bevidst valg: hver dimension i doughnut-modellen anses for lige vigtig, uanset hvor mange indikatorer der måler den.
         </p>
         <p className="text-sm text-gray-700 leading-relaxed mt-2">
