@@ -310,7 +310,8 @@
       "reference": {"type": "landstal", "col": "wellbeing_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), alle klassetrin; fetch_udvidelse_data.py"},
       "inverse": false,
       "baseline_level": 3,
-      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026."
+      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026.",
+      "rationale": "Elevernes egen vurdering af trivslen i folkeskolen, som gennemsnit af alle trivselsspørgsmål på en skala fra 1 til 5 (UVM, GS/TRIV/TRIVIND). Det er et udfaldsmål og ikke et mål for ressourcer. Direkte: højere score er bedre."
     },
     {
       "id": "rygning",
@@ -439,7 +440,8 @@
       "reference": {"type": "landstal", "col": "exam_grade_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), 9. klasse; fetch_udvidelse_data.py"},
       "inverse": false,
       "baseline_level": 3,
-      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026."
+      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026.",
+      "rationale": "Gennemsnit af karaktererne ved folkeskolens afgangseksamen (UVM, GS/KARA/KARAGNS). Det er et direkte fagligt udfaldsmål for grundskolen, men det afspejler også elevernes baggrund. Direkte: højere gennemsnit er bedre."
     },
     {
       "id": "high_absence",
@@ -457,7 +459,8 @@
       "reference": {"type": "landstal", "col": "high_absence_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), alle klassetrin; fetch_udvidelse_data.py"},
       "inverse": true,
       "baseline_level": 3,
-      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026."
+      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026.",
+      "rationale": "Andel elever med mere end 10 % fravær (UVM, GS/ELEVFRAV/FRAVAAR). Højt fravær kan pege på mistrivsel i skolen. Inverteret: lavere andel er bedre."
     },
     {
       "id": "youth_education",
@@ -475,7 +478,8 @@
       "reference": {"type": "landstal", "col": "youth_education_ref", "definition": "elevvægtet gennemsnit af kommunerne: folkeskoleelever efter bopælskommune (DST UDDAKT20), 9. klasse; fetch_udvidelse_data.py"},
       "inverse": false,
       "baseline_level": 3,
-      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026."
+      "note": "Landstallet er fra sep. 2026 vægtet med folkeskoleelever efter bopælskommune (DST UDDAKT20), fordi UVM ikke udgiver et landstal. Indtil da var det et uvægtet gennemsnit af kommunerne, hvor Læsø vejede lige så meget som København. Se CHANGELOG 26. sep. 2026.",
+      "rationale": "Andel af eleverne i 9. klasse, der forventes at opnå ungdomsuddannelseskompetence (UVM, GS/PROFMOD/PROFMOD). Tallet er en forventning og ikke en optælling af, hvor mange der faktisk gennemfører. Direkte: højere andel er bedre."
     },
     {
       "id": "disposable_income",
@@ -603,7 +607,8 @@
       "raw_col": "poverty_relative_pct",
       "reference": {"type": "landstal", "col": "poverty_relative_ref", "definition": "DST's landstal (hele landet), ellers uvægtet gennemsnit af kommunerne; fetch_udvidelse_data.py"},
       "inverse": true,
-      "baseline_level": 3
+      "baseline_level": 3,
+      "rationale": "Andel af befolkningen med disponibel indkomst under 60 % af medianen (DST IFOR12P). Indikatoren dækker alle aldre og supplerer børnefattigdom, som kun tæller børn. Inverteret: lavere andel er bedre."
     },
     {
       "id": "child_notifications",
@@ -621,7 +626,8 @@
       "raw_col": "child_notifications_per_1k",
       "reference": {"type": "landstal", "col": "child_notifications_ref", "definition": "de 98 kommuner samlet pr. 1.000 0-17-årige (DST's eget landstal tæller 3,1% færre underretninger); fetch_udvidelse_data.py"},
       "inverse": true,
-      "baseline_level": 3
+      "baseline_level": 3,
+      "rationale": "Underretninger om børn og unge pr. 1.000 børn på 0-17 år (DST UND2). Tallet afspejler både børnenes forhold og kommunens og omgivelsernes tilbøjelighed til at underrette, så det er et tegn på udsathed og ikke et rent mål. Inverteret: færre underretninger er bedre."
     },
     {
       "id": "trangboethed",
@@ -717,7 +723,8 @@
       "raw_col": "gender_leadership_pct",
       "reference": {"type": "landstal", "col": "gender_leadership_ref", "definition": "national andel kvinder i ledelse (DST RAS301, hele landet), ikke 50%; fetch_udvidelse_data.py"},
       "inverse": false,
-      "baseline_level": 3
+      "baseline_level": 3,
+      "rationale": "Andel kvinder blandt lønmodtagere med ledelsesarbejde (DST RAS301, SOCIO 15). Sammenligningsgrundlaget er den nationale kvindeandel og ikke 50 %, så kommunen vurderes på, om den ligger over eller under landet. Direkte: højere andel er bedre."
     },
     {
       "id": "le_gender_gap",
@@ -736,7 +743,8 @@
       "raw_col": "le_gender_gap_years",
       "reference": {"type": "landstal", "col": "le_gender_gap_ref", "definition": "DST's landstal (hele landet); fetch_ligestilling_data.py"},
       "inverse": true,
-      "baseline_level": 3
+      "baseline_level": 3,
+      "rationale": "Forskellen i middellevetid mellem kvinder og mænd i år, kvinder minus mænd (DST HISBK, femårigt interval). Et stort gab peger på forskelle i kønnenes sundhedsvilkår. Inverteret: mindre gab er bedre."
     },
     {
       "id": "income_gender_gap",
@@ -754,7 +762,8 @@
       "reference": {"type": "landstal", "col": "income_gender_gap_ref", "definition": "DST's landstal (hele landet); fetch_ligestilling_data.py"},
       "inverse": false,
       "baseline_level": 3,
-      "note": "Median som disposable_income, se scripts/indkomst_median.py."
+      "note": "Median som disposable_income, se scripts/indkomst_median.py.",
+      "rationale": "Kvinders median disponible indkomst i procent af mænds (DST INDKP106). Medianen er beregnet af platformen ud fra DST's indkomstintervaller, se Ligestilling. Direkte: højere andel er bedre."
     },
     {
       "id": "employment_origin_gap",
@@ -773,7 +782,8 @@
       "reference": {"type": "landstal", "col": "employment_origin_gap_ref", "definition": "DST's landstal (hele landet); fetch_ligestilling_data.py"},
       "inverse": false,
       "baseline_level": 3,
-      "note": "Indvandrere fra ikke-vestlige lande (HERKOMST 25) mod personer med dansk oprindelse (10), 16-64 år. Indtil sep. 2026 16-66 år, som DST kun har fra 2022; 16-64 giver en retningspil fra 2008 og er samme aldersgruppe som employment."
+      "note": "Indvandrere fra ikke-vestlige lande (HERKOMST 25) mod personer med dansk oprindelse (10), 16-64 år. Indtil sep. 2026 16-66 år, som DST kun har fra 2022; 16-64 giver en retningspil fra 2008 og er samme aldersgruppe som employment.",
+      "rationale": "Beskæftigelsesfrekvensen for indvandrere fra ikke-vestlige lande i procent af frekvensen for personer med dansk oprindelse, 16-64 år (DST RAS200). Den viser, hvor ens arbejdsmarkedet inkluderer de to grupper. Direkte: højere andel er bedre."
     },
     {
       "id": "music_school",
@@ -1051,7 +1061,8 @@
       "smaa_tal": {"pr": 1000, "aar": 1},
       "inverse": true,
       "baseline_level": 3,
-      "note": "Proxy: vejrrelaterede forsikringsskader pr. 1.000 indb. (F&P, 2023-2025). Kilden har kun kommunenavne; fetch-scriptet slår koden op i data/kommuner.json. Se data/klimatilpasning.md."
+      "note": "Proxy: vejrrelaterede forsikringsskader pr. 1.000 indb. (F&P, 2023-2025). Kilden har kun kommunenavne; fetch-scriptet slår koden op i data/kommuner.json. Se data/klimatilpasning.md.",
+      "rationale": "Vejrrelaterede forsikringsskader (storm, skybrud, hagl og frost) pr. 1.000 indbyggere, akkumuleret fra Q1 2023 til Q4 2025 (Forsikring & Pension). Tallet viser faktiske skader og reagerer derfor på tiltag, men det afspejler også geografisk udsathed og bygningsmasse. Stormflod er ikke med. Inverteret: færre skader er bedre."
     },
     {
       "id": "kystrisiko",
